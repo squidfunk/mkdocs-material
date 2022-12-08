@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "no-self-assign": "off",
+    "no-null/no-null": "off"
+  }
+}

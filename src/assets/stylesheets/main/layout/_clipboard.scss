@@ -1,0 +1,102 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Clipboard button variables
+:root {
+  --md-clipboard-icon: svg-load("material/content-copy.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Clipboard button
+.md-clipboard {
+  position: absolute;
+  top: px2em(8px);
+  right: px2em(8px);
+  z-index: 1;
+  width: px2em(24px);
+  height: px2em(24px);
+  color: var(--md-default-fg-color--lightest);
+  border-radius: px2rem(2px);
+  outline-color: var(--md-accent-fg-color);
+  outline-offset: px2rem(2px);
+  cursor: pointer;
+  transition: color 250ms;
+
+  // [print]: Hide button
+  @media print {
+    display: none;
+  }
+
+  // Hide outline for pointer devices
+  &:not(.focus-visible) {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  // Darken color on code block hover
+  :hover > & {
+    color: var(--md-default-fg-color--light);
+  }
+
+  // Button on focus/hover
+  &:is(:focus, :hover) {
+    color: var(--md-accent-fg-color);
+  }
+
+  // Button icon - the width and height are defined in `em`, so the size is
+  // automatically adjusted for nested code blocks (e.g. in admonitions)
+  &::after {
+    display: block;
+    width: px2em(18px);
+    height: px2em(18px);
+    margin: 0 auto;
+    background-color: currentcolor;
+    mask-image: var(--md-clipboard-icon);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    content: "";
+  }
+
+  // Inline clipboard button
+  &--inline {
+    cursor: pointer;
+
+    // Code block
+    code {
+      transition:
+        color            250ms,
+        background-color 250ms;
+    }
+
+    // Code block on focus/hover
+    &:is(:focus, :hover) code {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+  }
+}

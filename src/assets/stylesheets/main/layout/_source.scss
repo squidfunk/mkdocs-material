@@ -1,0 +1,182 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Show repository facts
+@keyframes facts {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: px2rem(13px);
+  }
+}
+
+// Show repository fact
+@keyframes fact {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Repository information variables
+:root {
+  --md-source-forks-icon: svg-load("octicons/repo-forked-16.svg");
+  --md-source-repositories-icon: svg-load("octicons/repo-16.svg");
+  --md-source-stars-icon: svg-load("octicons/star-16.svg");
+  --md-source-version-icon: svg-load("octicons/tag-16.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Repository information
+.md-source {
+  display: block;
+  font-size: px2rem(13px);
+  line-height: 1.2;
+  white-space: nowrap;
+  outline-color: var(--md-accent-fg-color);
+  // Hack: promote to own layer to reduce jitter
+  backface-visibility: hidden;
+  transition: opacity 250ms;
+
+  // Repository information on hover
+  &:hover {
+    opacity: 0.7;
+  }
+
+  // Repository icon
+  &__icon {
+    display: inline-block;
+    width: px2rem(40px);
+    height: px2rem(48px);
+    vertical-align: middle;
+
+    // Align with margin only (as opposed to normal button alignment)
+    svg {
+      margin-top: px2rem(12px);
+      margin-inline-start: px2rem(12px);
+    }
+
+    // Adjust spacing if icon is present
+    + .md-source__repository {
+      margin-inline-start: px2rem(-40px);
+      padding-inline-start: px2rem(40px);
+    }
+  }
+
+  // Repository name
+  &__repository {
+    display: inline-block;
+    max-width: calc(100% - #{px2rem(24px)});
+    margin-inline-start: px2rem(12px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+  }
+
+  // Repository facts
+  &__facts {
+    display: flex;
+    gap: px2rem(8px);
+    width: 100%;
+    margin: px2rem(2px) 0 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: px2rem(11px);
+    list-style-type: none;
+    opacity: 0.75;
+
+    // Show after the data was loaded
+    .md-source__repository--active & {
+      animation: facts 250ms ease-in;
+    }
+  }
+
+  // Repository fact
+  &__fact {
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    // Show after the data was loaded
+    .md-source__repository--active & {
+      animation: fact 400ms ease-out;
+    }
+
+    // Repository fact icon
+    &::before {
+      display: inline-block;
+      width: px2rem(12px);
+      height: px2rem(12px);
+      margin-inline-end: px2rem(2px);
+      vertical-align: text-top;
+      background-color: currentcolor;
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
+    }
+
+    // Adjust spacing for 2nd+ fact
+    &:nth-child(1n+2) {
+      flex-shrink: 0;
+    }
+
+    // Repository fact: version
+    &--version::before {
+      mask-image: var(--md-source-version-icon);
+    }
+
+    // Repository fact: stars
+    &--stars::before {
+      mask-image: var(--md-source-stars-icon);
+    }
+
+    // Repository fact: forks
+    &--forks::before {
+      mask-image: var(--md-source-forks-icon);
+    }
+
+    // Repository fact: repositories
+    &--repositories::before {
+      mask-image: var(--md-source-repositories-icon);
+    }
+  }
+}

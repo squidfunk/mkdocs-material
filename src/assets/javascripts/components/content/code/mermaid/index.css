@@ -1,0 +1,377 @@
+/*
+ * Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+/* ----------------------------------------------------------------------------
+ * Rules: general
+ * ------------------------------------------------------------------------- */
+
+/* General node */
+.node circle,
+.node ellipse,
+.node path,
+.node polygon,
+.node rect {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* General marker */
+marker {
+  fill: var(--md-mermaid-edge-color) !important;
+}
+
+/* General edge label */
+.edgeLabel .label rect {
+  fill: transparent;
+}
+
+/* ----------------------------------------------------------------------------
+ * Rules: flowcharts
+ * ------------------------------------------------------------------------- */
+
+/* Flowchart node label */
+.label {
+  color: var(--md-mermaid-label-fg-color);
+  font-family: var(--md-mermaid-font-family);
+}
+
+/* Flowchart node label container */
+.label foreignObject {
+  overflow: visible;
+  line-height: initial;
+}
+
+/* Flowchart edge label in node label */
+.label div .edgeLabel {
+  color: var(--md-mermaid-label-fg-color);
+  background-color: var(--md-mermaid-label-bg-color);
+}
+
+/* Flowchart edge label */
+.edgeLabel,
+.edgeLabel rect {
+  color: var(--md-mermaid-edge-color);
+  background-color: var(--md-mermaid-label-bg-color);
+  fill: var(--md-mermaid-label-bg-color);
+}
+
+/* Flowchart edge path */
+.edgePath .path,
+.flowchart-link {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* Flowchart arrow head */
+.edgePath .arrowheadPath {
+  fill: var(--md-mermaid-edge-color);
+  stroke: none;
+}
+
+/* Flowchart subgraph */
+.cluster rect {
+  fill: var(--md-default-fg-color--lightest);
+  stroke: var(--md-default-fg-color--lighter);
+}
+
+/* Flowchart subgraph labels */
+.cluster span {
+  color: var(--md-mermaid-label-fg-color);
+  font-family: var(--md-mermaid-font-family);
+}
+
+/* Flowchart markers */
+defs #flowchart-circleStart,
+defs #flowchart-circleEnd,
+defs #flowchart-crossStart,
+defs #flowchart-crossEnd,
+defs #flowchart-pointStart,
+defs #flowchart-pointEnd {
+  stroke: none;
+}
+
+/* ----------------------------------------------------------------------------
+ * Rules: class diagrams
+ * ------------------------------------------------------------------------- */
+
+/* Class group node */
+g.classGroup line,
+g.classGroup rect {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Class group node text */
+g.classGroup text {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Class label box */
+.classLabel .box {
+  background-color: var(--md-mermaid-label-bg-color);
+  opacity: 1;
+  fill: var(--md-mermaid-label-bg-color);
+}
+
+/* Class label text */
+.classLabel .label {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Class group divider */
+.node .divider {
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Class relation */
+.relation {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* Class relation cardinality */
+.cardinality {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Class relation cardinality text */
+.cardinality text {
+  fill: inherit !important;
+}
+
+/* Class extension, composition and dependency marker */
+defs #classDiagram-extensionStart,
+defs #classDiagram-extensionEnd,
+defs #classDiagram-compositionStart,
+defs #classDiagram-compositionEnd,
+defs #classDiagram-dependencyStart,
+defs #classDiagram-dependencyEnd {
+  fill: var(--md-mermaid-edge-color) !important;
+  stroke: var(--md-mermaid-edge-color) !important;
+}
+
+/* Class aggregation marker */
+defs #classDiagram-aggregationStart,
+defs #classDiagram-aggregationEnd {
+  fill: var(--md-mermaid-label-bg-color) !important;
+  stroke: var(--md-mermaid-edge-color) !important;
+}
+
+/* ----------------------------------------------------------------------------
+ * Rules: state diagrams
+ * ------------------------------------------------------------------------- */
+
+/* State group node */
+g.stateGroup rect {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* State group title */
+g.stateGroup .state-title {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color) !important;
+}
+
+/* State group background */
+g.stateGroup .composit {
+  fill: var(--md-mermaid-label-bg-color);
+}
+
+/* State node label */
+.nodeLabel {
+  color: var(--md-mermaid-label-fg-color);
+  font-family: var(--md-mermaid-font-family);
+}
+
+/* State start and end marker */
+.start-state,
+.node circle.state-start,
+.node circle.state-end {
+  fill: var(--md-mermaid-edge-color);
+  stroke: none;
+}
+
+/* State end marker */
+.end-state-outer,
+.end-state-inner {
+  fill: var(--md-mermaid-edge-color);
+}
+
+/* State end marker */
+.end-state-inner,
+.node circle.state-end {
+  stroke: var(--md-mermaid-label-bg-color);
+}
+
+/* State transition */
+.transition {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* State fork and join */
+[id^=state-fork] rect,
+[id^=state-join] rect {
+  fill: var(--md-mermaid-edge-color) !important;
+  stroke: none !important;
+}
+
+/* State cluster (yes, 2x... Mermaid WTF) */
+.statediagram-cluster.statediagram-cluster .inner {
+  fill: var(--md-default-bg-color);
+}
+
+/* State cluster node */
+.statediagram-cluster rect {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* State cluster divider */
+.statediagram-state rect.divider {
+  fill: var(--md-default-fg-color--lightest);
+  stroke: var(--md-default-fg-color--lighter);
+}
+
+/* State diagram markers */
+defs #statediagram-barbEnd {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* ----------------------------------------------------------------------------
+ * Rules: entity-relationship diagrams
+ * ------------------------------------------------------------------------- */
+
+ /* Entity node */
+.entityBox {
+  fill: var(--md-mermaid-label-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Entity node label */
+.entityLabel {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Entity relationship label container */
+.relationshipLabelBox {
+  background-color: var(--md-mermaid-label-bg-color);
+  opacity: 1;
+  fill: var(--md-mermaid-label-bg-color);
+  fill-opacity: 1;
+}
+
+/* Entity relationship label */
+.relationshipLabel {
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Entity relationship line { */
+.relationshipLine {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* Entity relationship line markers */
+defs #ZERO_OR_ONE_START *,
+defs #ZERO_OR_ONE_END *,
+defs #ZERO_OR_MORE_START *,
+defs #ZERO_OR_MORE_END *,
+defs #ONLY_ONE_START *,
+defs #ONLY_ONE_END *,
+defs #ONE_OR_MORE_START *,
+defs #ONE_OR_MORE_END * {
+  stroke: var(--md-mermaid-edge-color) !important;
+}
+
+/* Entity relationship line markers */
+defs #ZERO_OR_MORE_START circle,
+defs #ZERO_OR_MORE_END circle {
+  fill: var(--md-mermaid-label-bg-color);
+}
+
+/* ----------------------------------------------------------------------------
+ * Rules: sequence diagrams
+ * ------------------------------------------------------------------------- */
+
+/* Sequence actor */
+.actor {
+  fill: var(--md-mermaid-label-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Sequence actor text */
+text.actor > tspan {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-label-fg-color);
+}
+
+/* Sequence actor line */
+line {
+  stroke: var(--md-default-fg-color--lighter);
+}
+
+/* Sequence message line */
+.messageLine0,
+.messageLine1 {
+  stroke: var(--md-mermaid-edge-color);
+}
+
+/* Sequence message, loop and note text */
+.messageText,
+.loopText > tspan,
+.noteText > tspan {
+  font-family: var(--md-mermaid-font-family) !important;
+  fill: var(--md-mermaid-edge-color);
+  stroke: none;
+}
+
+/* Sequence note text */
+.noteText > tspan {
+  fill: hsl(0, 0%, 0%);
+}
+
+/* Sequence arrow head */
+#arrowhead path {
+  fill: var(--md-mermaid-edge-color);
+  stroke: none;
+}
+
+/* Sequence loop line */
+.loopLine {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Sequence label box */
+.labelBox {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: none;
+}
+
+/* Sequence label text */
+.labelText,
+.labelText > span {
+  font-family: var(--md-mermaid-font-family);
+  fill: var(--md-mermaid-node-fg-color);
+}

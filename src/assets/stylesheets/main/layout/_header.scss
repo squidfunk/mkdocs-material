@@ -1,0 +1,262 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Header - by default, the header will be sticky and stay always on top of the
+// viewport. If this behavior is not desired, just set `position: static`.
+.md-header {
+  position: sticky;
+  top: 0;
+  inset-inline: 0;
+  z-index: 4;
+  display: block;
+  color: var(--md-primary-bg-color);
+  background-color: var(--md-primary-fg-color);
+  // Hack: reduce jitter by adding a transparent box shadow of the same size
+  // so the size of the layer doesn't change during animation
+  box-shadow:
+    0 0           px2rem(4px) rgba(0, 0, 0, 0),
+    0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
+
+  // [print]: Hide header
+  @media print {
+    display: none;
+  }
+
+  // Header is hidden
+  &[hidden] {
+    transform: translateY(-100%);
+    transition:
+      transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
+      box-shadow 250ms;
+  }
+
+  // Header in shadow state, i.e. shadow is visible
+  &--shadow {
+    box-shadow:
+      0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
+      0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
+    transition:
+      transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      box-shadow 250ms;
+  }
+
+  // Header wrapper
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding: 0 px2rem(4px);
+  }
+
+  // Header button
+  &__button {
+    position: relative;
+    z-index: 1;
+    margin: px2rem(4px);
+    padding: px2rem(8px);
+    color: currentcolor;
+    vertical-align: middle;
+    outline-color: var(--md-accent-fg-color);
+    cursor: pointer;
+    transition: opacity 250ms;
+
+    // Button on hover
+    &:hover {
+      opacity: 0.7;
+    }
+
+    // Header button is visible
+    &:not([hidden]) {
+      display: inline-block;
+    }
+
+    // Hide outline for pointer devices
+    &:not(.focus-visible) {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    // Button with logo, pointing to `config.site_url`
+    &.md-logo {
+      margin: px2rem(4px);
+      padding: px2rem(8px);
+
+      // [tablet -]: Hide button
+      @include break-to-device(tablet) {
+        display: none;
+      }
+
+      // Image or icon
+      :is(img, svg) {
+        display: block;
+        width: auto;
+        height: px2rem(24px);
+        fill: currentcolor;
+      }
+    }
+
+    // Button for search
+    &[for="__search"] {
+
+      // [tablet landscape +]: Hide button
+      @include break-from-device(tablet landscape) {
+        display: none;
+      }
+
+      // [no-js]: Hide button
+      .no-js & {
+        display: none;
+      }
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & svg {
+        transform: scaleX(-1);
+      }
+    }
+
+    // Button for drawer
+    &[for="__drawer"] {
+
+      // [screen +]: Hide button
+      @include break-from-device(screen) {
+        display: none;
+      }
+    }
+  }
+
+  // Header topic
+  &__topic {
+    position: absolute;
+    display: flex;
+    max-width: 100%;
+    white-space: nowrap;
+    transition:
+      transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   150ms;
+
+    // Second header topic - title of the current page
+    & + & {
+      z-index: -1;
+      transform: translateX(px2rem(25px));
+      opacity: 0;
+      transition:
+        transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
+        opacity   150ms;
+      pointer-events: none;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: translateX(px2rem(-25px));
+      }
+    }
+
+    // Adjust font weight of site title
+    &:first-child {
+      font-weight: 700;
+    }
+  }
+
+  // Header title
+  &__title {
+    flex-grow: 1;
+    height: px2rem(48px);
+    margin-inline-end: px2rem(8px);
+    margin-inline-start: px2rem(20px);
+    font-size: px2rem(18px);
+    line-height: px2rem(48px);
+
+    // Header title in active state, i.e. page title is visible
+    &--active .md-header__topic {
+      z-index: -1;
+      transform: translateX(px2rem(-25px));
+      opacity: 0;
+      transition:
+        transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
+        opacity   150ms;
+      pointer-events: none;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: translateX(px2rem(25px));
+      }
+
+      // Second header topic - title of the current page
+      + .md-header__topic {
+        z-index: 0;
+        transform: translateX(0);
+        opacity: 1;
+        transition:
+          transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   150ms;
+        pointer-events: initial;
+      }
+    }
+
+    // Add ellipsis in case of overflowing text
+    > .md-header__ellipsis {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  // Header option
+  &__option {
+    display: flex;
+    flex-shrink: 0;
+    max-width: 100%;
+    white-space: nowrap;
+    transition:
+      max-width  0ms 250ms,
+      opacity  250ms 250ms;
+
+    // Hide toggle when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      max-width: 0;
+      opacity: 0;
+      transition:
+        max-width 0ms,
+        opacity   0ms;
+    }
+  }
+
+  // Repository information container
+  &__source {
+    display: none;
+
+    // [tablet landscape +]: Show repository information
+    @include break-from-device(tablet landscape) {
+      display: block;
+      width: px2rem(234px);
+      max-width: px2rem(234px);
+      margin-inline-start: px2rem(20px);
+    }
+
+    // [screen +]: Adjust spacing of search bar
+    @include break-from-device(screen) {
+      margin-inline-start: px2rem(28px);
+    }
+  }
+}

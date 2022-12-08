@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in tags plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
+      "enum": [
+        "tags"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "tags": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "tags_file": {
+              "title": "Markdown file to render tags index",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_file",
+              "pattern": "\\.md$",
+              "default": "tags.md"
+            },
+            "tags_extra_files": {
+              "title": "Markdown files to render additional tags indexes",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_extra_files",
+              "type": "object",
+              "patternProperties": {
+                "\\.md$": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": false
+            },
+            "tags_slugify": {
+              "title": "Tags slugify function",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify",
+              "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
+            },
+            "tags_slugify_separator": {
+              "title": "Tags slugify separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify_separator",
+              "type": "string",
+              "default": "\"-\""
+            },
+            "tags_allowed": {
+              "title": "Tags allowed",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_allowed",
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

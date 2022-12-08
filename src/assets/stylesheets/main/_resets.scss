@@ -1,0 +1,118 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Enforce correct box model and prevent adjustments of font size after
+// orientation changes in IE and iOS
+html {
+  box-sizing: border-box;
+  text-size-adjust: none;
+}
+
+// All elements shall inherit the document default
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+
+  // [reduced motion]: Disable all transitions
+  @media (prefers-reduced-motion) {
+    transition: none !important; // stylelint-disable-line
+  }
+}
+
+// Remove margin in all browsers
+body {
+  margin: 0;
+}
+
+// Reset tap outlines on iOS and Android
+a,
+button,
+label,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Reset link styles
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Normalize horizontal separator styles
+hr {
+  display: block;
+  box-sizing: content-box;
+  height: px2rem(1px);
+  padding: 0;
+  overflow: visible;
+  border: 0;
+}
+
+// Normalize font-size in all browsers
+small {
+  font-size: 80%;
+}
+
+// Prevent subscript and superscript from affecting line-height
+sub,
+sup {
+  line-height: 1em;
+}
+
+// Remove border on image
+img {
+  border-style: none;
+}
+
+// Reset table styles
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+// Reset table cell styles
+td,
+th {
+  font-weight: 400;
+  vertical-align: top;
+}
+
+// Reset button styles
+button {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+  background: transparent;
+  border: 0;
+}
+
+// Reset input styles
+input {
+  border: 0;
+  outline: none;
+}

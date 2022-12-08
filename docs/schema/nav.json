@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Navigation tree",
+  "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "title": "Navigation item",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
+        "pattern": "\\.md$"
+      },
+      {
+        "type": "object",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
+        "patternProperties": {
+          ".*": {
+            "oneOf": [
+              {
+                "title": "Navigation item",
+                "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
+                "pattern": "\\.md$"
+              },
+              {
+                "$ref": "#"
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "additionalItems": false
+}

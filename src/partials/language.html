@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,19 +20,9 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Import translations for given language -->
-{% import "partials/language/" + config.theme.language + ".html" as lang %}
-
-<!-- Import fallback translations -->
-{% import "partials/language/en.html" as fallback %}
+<!-- Import translations for given language and fallback -->
+{% import "partials/languages/" ~ config.theme.language ~ ".html" as lang %}
+{% import "partials/languages/en.html" as fallback %}
 
 <!-- Re-export translations -->
-{% macro t(key) %}{{ {
-  "direction": config.theme.direction,
-  "search.language": (
-    config.extra.search | default({})
-  ).language,
-  "search.tokenizer": (
-    config.extra.search | default({})
-  ).tokenizer | default("", true),
-}[key] or lang.t(key) or fallback.t(key) }}{% endmacro %}
+{% macro t(key) %}{{ lang.t(key) or fallback.t(key) }}{% endmacro %}

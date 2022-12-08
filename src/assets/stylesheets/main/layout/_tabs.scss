@@ -1,0 +1,110 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Navigation tabs
+.md-tabs {
+  // Must be higher than the z-index of the back-to-top button, or the button
+  // will overlay the navigation tabs bar when scrolling up fast.
+  z-index: 3;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  color: var(--md-primary-bg-color);
+  line-height: 1.3;
+  background-color: var(--md-primary-fg-color);
+
+  // [print]: Hide tabs
+  @media print {
+    display: none;
+  }
+
+  // [tablet -]: Hide tabs
+  @include break-to-device(tablet) {
+    display: none;
+  }
+
+  // Navigation tabs are hidden
+  &[hidden] {
+    pointer-events: none;
+  }
+
+  // Navigation tabs list
+  &__list {
+    margin: 0;
+    margin-inline-start: px2rem(4px);
+    padding: 0;
+    white-space: nowrap;
+    list-style: none;
+    contain: content;
+  }
+
+  // Navigation tabs item
+  &__item {
+    display: inline-block;
+    height: px2rem(48px);
+    padding-inline: px2rem(12px);
+  }
+
+  // Navigation tabs link - could be defined as block elements and aligned via
+  // line height, but this would imply more repaints when scrolling
+  &__link {
+    display: block;
+    margin-top: px2rem(16px);
+    font-size: px2rem(14px);
+    outline-color: var(--md-accent-fg-color);
+    outline-offset: px2rem(4px);
+    // Hack: save a repaint when tabs are appearing on scrolling up
+    backface-visibility: hidden;
+    opacity: 0.7;
+    transition:
+      transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   250ms;
+
+    // Active link and link on focus/hover
+    &--active,
+    &:is(:focus, :hover) {
+      color: inherit;
+      opacity: 1;
+    }
+
+    // Delay transitions by a small amount
+    @for $i from 2 through 16 {
+      .md-tabs__item:nth-child(#{$i}) & {
+        transition-delay: 20ms * ($i - 1);
+      }
+    }
+
+    // Hide tabs upon scrolling - disable transition to minimizes repaints
+    // while scrolling down, while scrolling up seems to be okay
+    .md-tabs[hidden] & {
+      transform: translateY(50%);
+      opacity: 0;
+      transition:
+        transform 0ms 100ms,
+        opacity 100ms;
+    }
+  }
+}

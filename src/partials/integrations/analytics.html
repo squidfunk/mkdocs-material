@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,30 +20,30 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Google Analytics integration -->
-{% set analytics = config.google_analytics %}
-<script type="text/javascript">
-  window.ga = window.ga || function() {
-    (ga.q = ga.q || []).push(arguments)
-  }
-  ga.l = +new Date
+<!-- Determine analytics provider -->
+{% if config.extra.analytics %}
+  {% set provider = config.extra.analytics.provider %}
+{% endif %}
 
-  /* Setup integration and send page view */
-  ga("create", "{{ analytics[0] }}", "{{ analytics[1] }}")
-  ga("set", "anonymizeIp", true)
-  ga("send", "pageview")
+<!-- Set up analytics provider -->
+{% if provider %}
+  {% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
 
-  /* Register handler to log search on blur */
-  document.addEventListener("DOMContentLoaded", () => {
-    if (document.forms.search) {
-      var query = document.forms.search.query
-      query.addEventListener("blur", function() {
-        if (this.value) {
-          var path = document.location.pathname;
-          ga("send", "pageview", path + "?q=" + this.value)
-        }
-      })
-    }
-  })
-</script>
-<script async src="https://www.google-analytics.com/analytics.js"></script>
+  <!-- Consent necessary -->
+  {% if config.extra.consent %}
+    <script>
+      if (typeof __md_analytics !== "undefined") {
+        var consent = __md_get("__consent")
+        if (consent && consent.analytics)
+          __md_analytics()
+      }
+    </script>
+
+  <!-- Consent unnecessary -->
+  {% else %}
+    <script>
+      if (typeof __md_analytics !== "undefined")
+        __md_analytics()
+    </script>
+  {% endif %}
+{% endif %}

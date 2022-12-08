@@ -1,0 +1,193 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+@use "sass:color";
+@use "sass:list";
+
+// ----------------------------------------------------------------------------
+// Variables
+// ----------------------------------------------------------------------------
+
+/// Admonition flavours
+$admonitions: (
+  note:                       pencil-circle $clr-blue-a200,
+  abstract summary tldr:      clipboard-text $clr-light-blue-a400,
+  info todo:                  information $clr-cyan-a700,
+  tip hint important:         fire $clr-teal-a700,
+  success check done:         check $clr-green-a700,
+  question help faq:          help-circle $clr-light-green-a700,
+  warning caution attention:  alert $clr-orange-a400,
+  failure fail missing:       close $clr-red-a200,
+  danger error:               lightning-bolt-circle $clr-red-a400,
+  bug:                        shield-bug $clr-pink-a400,
+  example:                    test-tube $clr-deep-purple-a200,
+  quote cite:                 format-quote-close $clr-grey
+) !default;
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Admonition variables
+:root {
+  @each $names, $props in $admonitions {
+    --md-admonition-icon--#{nth($names, 1)}:
+      svg-load("material/#{nth($props, 1)}.svg");
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Admonition - note that all styles also apply to details tags, which are
+  // rendered as collapsible admonitions with summary elements as titles.
+  .admonition,
+  details {
+    display: flow-root;
+    margin: px2em(20px, 12.8px) 0;
+    padding: 0 px2rem(12px);
+    color: var(--md-admonition-fg-color);
+    font-size: px2rem(12.8px);
+    page-break-inside: avoid;
+    background-color: var(--md-admonition-bg-color);
+    border: px2rem(1px) solid $clr-blue-a200;
+    border-radius: px2rem(4px);
+    box-shadow: var(--md-shadow-z1);
+
+    // [print]: Omit shadow as it may lead to rendering errors
+    @media print {
+      box-shadow: none;
+    }
+
+    // Hack: Chrome exhibits a weird issue where it will set nested elements to
+    // content-box. Doesn't happen in other browsers, so looks like a bug.
+    > * {
+      box-sizing: border-box;
+    }
+
+    // Adjust vertical spacing for nested admonitions
+    :is(.admonition, details) {
+      margin-top: 1em;
+      margin-bottom: 1em;
+    }
+
+    // Adjust spacing for contained table wrappers
+    .md-typeset__scrollwrap {
+      margin: 1em px2rem(-12px);
+    }
+
+    // Adjust spacing for contained tables
+    .md-typeset__table {
+      padding: 0 px2rem(12px);
+    }
+
+    // Adjust spacing for single-child tabbed block container
+    > .tabbed-set:only-child {
+      margin-top: 0;
+    }
+
+    // Adjust spacing on last child
+    html & > :last-child {
+      margin-bottom: px2rem(12px);
+    }
+  }
+
+  // Admonition title
+  .admonition-title,
+  summary {
+    position: relative;
+    margin-block: 0;
+    margin-inline: px2rem(-12px);
+    padding-block: px2rem(8px);
+    padding-inline: px2rem(40px) px2rem(12px);
+    font-weight: 700;
+    background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
+    border: none;
+    border-inline-start-width: px2rem(4px);
+    border-start-start-radius: px2rem(2px);
+    border-start-end-radius: px2rem(2px);
+
+    // Adjust spacing for title-only admonitions
+    html &:last-child {
+      margin-bottom: 0;
+    }
+
+    // Admonition icon
+    &::before {
+      position: absolute;
+      top: px2em(10px);
+      inset-inline-start: px2rem(12px);
+      width: px2rem(20px);
+      height: px2rem(20px);
+      background-color: $clr-blue-a200;
+      mask-image: var(--md-admonition-icon--note);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
+    }
+
+    // Inline code block
+    code {
+      box-shadow: 0 0 0 px2rem(1px) var(--md-default-fg-color--lightest);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: flavours
+// ----------------------------------------------------------------------------
+
+// Define admonition flavors
+@each $names, $props in $admonitions {
+  $name: list.nth($names, 1);
+  $tint: list.nth($props, 2);
+
+  // Admonition flavour selectors
+  $flavours: ();
+  @each $name in $names {
+    $flavours: list.join($flavours, ".#{$name}", $separator: comma);
+  }
+
+  // Admonition flavour
+  .md-typeset :is(.admonition, details):is(#{$flavours}) {
+    border-color: $tint;
+  }
+
+  // Admonition flavour title
+  .md-typeset :is(#{$flavours}) > :is(.admonition-title, summary) {
+    background-color: color.adjust($tint, $alpha: -0.9);
+
+    // Admonition icon
+    &::before {
+      background-color: $tint;
+      mask-image: var(--md-admonition-icon--#{$name});
+    }
+
+    // Details marker
+    &::after {
+      color: $tint;
+    }
+  }
+}

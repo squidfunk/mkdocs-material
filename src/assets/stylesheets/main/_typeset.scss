@@ -1,0 +1,615 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules: font definitions
+// ----------------------------------------------------------------------------
+
+// Enable font-smoothing in Webkit and FF
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Font with fallback for body copy
+  --md-text-font-family:
+    var(--md-text-font, _),
+    -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+
+  // Font with fallback for code
+  --md-code-font-family:
+    var(--md-code-font, _),
+    SFMono-Regular, Consolas, Menlo, monospace;
+}
+
+// Define default fonts
+body,
+input {
+  color: var(--md-typeset-color);
+  font-feature-settings: "kern", "liga";
+  font-family: var(--md-text-font-family);
+}
+
+// Define monospaced fonts
+code,
+pre,
+kbd {
+  color: var(--md-typeset-color);
+  font-feature-settings: "kern";
+  font-family: var(--md-code-font-family);
+}
+
+// ----------------------------------------------------------------------------
+// Rules: typesetted content
+// ----------------------------------------------------------------------------
+
+// General variables
+:root {
+  --md-typeset-table-sort-icon: svg-load("material/sort.svg");
+  --md-typeset-table-sort-icon--asc: svg-load("material/sort-ascending.svg");
+  --md-typeset-table-sort-icon--desc: svg-load("material/sort-descending.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Content that is typeset - if possible, all margins, paddings and font sizes
+// should be set in ems, so nested blocks (e.g. admonitions) render correctly.
+.md-typeset {
+  font-size: px2rem(16px);
+  line-height: 1.6;
+  color-adjust: exact;
+
+  // [print]: We'll use a smaller `font-size` for printing, so code examples
+  // don't break too early, and `16px` looks too big anyway.
+  @media print {
+    font-size: px2rem(13.6px);
+  }
+
+  // Default spacing
+  ul,
+  ol,
+  dl,
+  figure,
+  blockquote,
+  pre {
+    margin-block: 1em;
+  }
+
+  // Headline on level 1
+  h1 {
+    margin: 0 0 px2em(40px, 32px);
+    color: var(--md-default-fg-color--light);
+    font-weight: 300;
+    font-size: px2em(32px);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  // Headline on level 2
+  h2 {
+    margin: px2em(40px, 25px) 0 px2em(16px, 25px);
+    font-weight: 300;
+    font-size: px2em(25px);
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  // Headline on level 3
+  h3 {
+    margin: px2em(32px, 20px) 0 px2em(16px, 20px);
+    font-weight: 400;
+    font-size: px2em(20px);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+
+  // Headline on level 3 following level 2
+  h2 + h3 {
+    margin-top: px2em(16px, 20px);
+  }
+
+  // Headline on level 4
+  h4 {
+    margin: px2em(16px) 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  // Headline on level 5-6
+  h5,
+  h6 {
+    margin: px2em(16px, 12.8px) 0;
+    color: var(--md-default-fg-color--light);
+    font-weight: 700;
+    font-size: px2em(12.8px);
+    letter-spacing: -0.01em;
+  }
+
+  // Headline on level 5
+  h5 {
+    text-transform: uppercase;
+  }
+
+  // Horizontal separator
+  hr {
+    display: flow-root;
+    margin: 1.5em 0;
+    border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+  }
+
+  // Text link
+  a {
+    color: var(--md-typeset-a-color);
+    word-break: break-word;
+
+    // Also enable color transition on pseudo elements
+    &,
+    &::before {
+      transition: color 125ms;
+    }
+
+    // Text link on focus/hover
+    &:focus,
+    &:hover {
+      color: var(--md-accent-fg-color);
+
+      // Inline code block
+      code {
+        background-color: var(--md-accent-fg-color--transparent);
+      }
+    }
+
+    // Inline code block
+    code {
+      color: currentcolor;
+      transition: background-color 125ms;
+    }
+
+    // Show outline for keyboard devices
+    &.focus-visible {
+      outline-color: var(--md-accent-fg-color);
+      outline-offset: px2rem(4px);
+    }
+  }
+
+  // Code block
+  code,
+  pre,
+  kbd {
+    color: var(--md-code-fg-color);
+    direction: ltr;
+    font-variant-ligatures: none;
+
+    // [print]: Wrap text and hide scollbars
+    @media print {
+      white-space: pre-wrap;
+    }
+  }
+
+  // Inline code block
+  code {
+    padding: 0 px2em(4px, 13.6px);
+    font-size: px2em(13.6px);
+    word-break: break-word;
+    background-color: var(--md-code-bg-color);
+    border-radius: px2rem(2px);
+    box-decoration-break: clone;
+
+    // Hide outline for pointer devices
+    &:not(.focus-visible) {
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  }
+
+  // Unformatted content
+  pre {
+    position: relative;
+    display: flow-root;
+    line-height: 1.4;
+
+    // Code block
+    > code {
+      display: block;
+      margin: 0;
+      padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
+      overflow: auto;
+      word-break: normal;
+      outline-color: var(--md-accent-fg-color);
+      box-shadow: none;
+      box-decoration-break: slice;
+      touch-action: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+      // Code block on hover
+      &:hover {
+        scrollbar-color: var(--md-accent-fg-color) transparent;
+      }
+
+      // Webkit scrollbar
+      &::-webkit-scrollbar {
+        width: px2rem(4px);
+        height: px2rem(4px);
+      }
+
+      // Webkit scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--md-default-fg-color--lighter);
+
+        // Webkit scrollbar thumb on hover
+        &:hover {
+          background-color: var(--md-accent-fg-color);
+        }
+      }
+    }
+  }
+
+  // Keyboard key
+  kbd {
+    display: inline-block;
+    padding: 0 px2em(8px, 12px);
+    color: var(--md-default-fg-color);
+    font-size: px2em(12px);
+    vertical-align: text-top;
+    word-break: break-word;
+    background-color: var(--md-typeset-kbd-color);
+    border-radius: px2rem(2px);
+    box-shadow:
+      0 px2rem(2px)  0 px2rem(1px) var(--md-typeset-kbd-border-color),
+      0 px2rem(2px)  0             var(--md-typeset-kbd-border-color),
+      0 px2rem(-2px) px2rem(4px)   var(--md-typeset-kbd-accent-color) inset;
+  }
+
+  // Text highlighting marker
+  mark {
+    color: inherit;
+    word-break: break-word;
+    background-color: var(--md-typeset-mark-color);
+    box-decoration-break: clone;
+  }
+
+  // Abbreviation
+  abbr {
+    text-decoration: none;
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
+    cursor: help;
+
+    // Show tooltip for touch devices
+    @media (hover: none) {
+      position: relative;
+
+      // Tooltip
+      &[title]:is(:focus, :hover)::after {
+        position: absolute;
+        inset-inline-start: 0;
+        display: inline-block;
+        width: auto;
+        min-width: max-content;
+        max-width: 80%;
+        margin-top: 2em;
+        padding: px2rem(4px) px2rem(6px);
+        color: var(--md-default-bg-color);
+        font-size: px2rem(14px);
+        background-color: var(--md-default-fg-color);
+        border-radius: px2rem(2px);
+        box-shadow: var(--md-shadow-z3);
+        content: attr(title);
+      }
+    }
+  }
+
+  // Small text
+  small {
+    opacity: 0.75;
+  }
+
+  // Superscript and subscript
+  sup,
+  sub {
+    margin-inline-start: px2em(1px, 12.8px);
+  }
+
+  // Blockquotes, possibly nested
+  blockquote {
+    padding-inline-start: px2rem(12px);
+    margin-inline: 0;
+    color: var(--md-default-fg-color--light);
+    border-inline-start: px2rem(4px) solid var(--md-default-fg-color--lighter);
+  }
+
+  // Unordered list
+  ul {
+    list-style-type: disc;
+  }
+
+  // Unordered and ordered list
+  ul,
+  ol {
+    margin-inline-start: px2em(10px);
+    padding: 0;
+
+    // Adjust display mode if not hidden
+    &:not([hidden]) {
+      display: flow-root;
+    }
+
+    // Nested ordered list
+    ol {
+      list-style-type: lower-alpha;
+
+      // Triply nested ordered list
+      ol {
+        list-style-type: lower-roman;
+      }
+    }
+
+    // List element
+    li {
+      margin-bottom: 0.5em;
+      margin-inline-start: px2em(20px);
+
+      // Adjust spacing
+      p,
+      blockquote {
+        margin: 0.5em 0;
+      }
+
+      // Adjust spacing on last child
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Nested list
+      :is(ul, ol) {
+        margin-block: 0.5em;
+        margin-inline-start: px2em(10px);
+      }
+    }
+  }
+
+  // Definition list
+  dd {
+    margin-block: 1em 1.5em;
+    margin-inline-start: px2em(30px);
+  }
+
+  // Image or video
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // Image
+  img {
+
+    // Adjust spacing when left-aligned
+    &[align="left"] {
+      margin: 1em;
+      margin-left: 0;
+    }
+
+    // Adjust spacing when right-aligned
+    &[align="right"] {
+      margin: 1em;
+      margin-right: 0;
+    }
+
+    // Adjust spacing when sole children
+    &[align]:only-child {
+      margin-top: 0;
+    }
+
+    // Hide images for dark mode
+    &[src$="#only-dark"],
+    &[src$="#gh-dark-mode-only"] {
+      display: none;
+    }
+  }
+
+  // Figure
+  figure {
+    display: flow-root;
+    width: fit-content;
+    max-width: 100%;
+    margin: 1em auto;
+    text-align: center;
+
+    // Figure images
+    img {
+      display: block;
+    }
+  }
+
+  // Figure caption
+  figcaption {
+    max-width: px2rem(480px);
+    margin: 1em auto;
+    font-style: italic;
+  }
+
+  // Limit width to container
+  iframe {
+    max-width: 100%;
+  }
+
+  // Data table
+  table:not([class]) {
+    display: inline-block;
+    max-width: 100%;
+    overflow: auto;
+    font-size: px2rem(12.8px);
+    background-color: var(--md-default-bg-color);
+    border: px2rem(1px) solid var(--md-typeset-table-color);
+    border-radius: px2rem(2px);
+    touch-action: auto;
+
+    // [print]: Reset display mode so table header wraps when printing
+    @media print {
+      display: table;
+    }
+
+    // Due to margin collapse because of the necessary inline-block hack, we
+    // cannot increase the bottom margin on the table, so we just increase the
+    // top margin on the following element
+    + * {
+      margin-top: 1.5em;
+    }
+
+    // Elements in table heading and cell
+    :is(th, td) > * {
+
+      // Adjust spacing on first child
+      &:first-child {
+        margin-top: 0;
+      }
+
+      // Adjust spacing on last child
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Table heading and cell
+    :is(th, td):not([align]) {
+      text-align: left;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        text-align: right;
+      }
+    }
+
+    // Table heading
+    th {
+      min-width: px2rem(100px);
+      padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
+      font-weight: 700;
+      vertical-align: top;
+    }
+
+    // Table cell
+    td {
+      padding: px2em(12px, 12.8px) px2em(16px, 12.8px);
+      vertical-align: top;
+      border-top: px2rem(1px) solid var(--md-typeset-table-color);
+    }
+
+    // Table body row
+    tbody tr {
+      transition: background-color 125ms;
+
+      // Table row on hover
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.035);
+        box-shadow: 0 px2rem(1px) 0 var(--md-default-bg-color) inset;
+      }
+    }
+
+    // Text link in table
+    a {
+      word-break: normal;
+    }
+  }
+
+  // Sortable table
+  table th[role="columnheader"] {
+    cursor: pointer;
+
+    // Sort icon
+    &::after {
+      display: inline-block;
+      width: 1.2em;
+      height: 1.2em;
+      margin-inline-start: 0.5em;
+      vertical-align: text-bottom;
+      mask-image: var(--md-typeset-table-sort-icon);
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      transition: background-color 125ms;
+      content: "";
+    }
+
+    // Show sort icon on hover
+    &:hover::after {
+      background-color: var(--md-default-fg-color--lighter);
+    }
+
+    // Sort ascending icon
+    &[aria-sort="ascending"]::after {
+      background-color: var(--md-default-fg-color--light);
+      mask-image: var(--md-typeset-table-sort-icon--asc);
+    }
+
+    // Sort descending icon
+    &[aria-sort="descending"]::after {
+      background-color: var(--md-default-fg-color--light);
+      mask-image: var(--md-typeset-table-sort-icon--desc);
+    }
+  }
+
+  // Data table scroll wrapper
+  &__scrollwrap {
+    margin: 1em px2rem(-16px);
+    overflow-x: auto;
+    touch-action: auto;
+  }
+
+  // Data table wrapper
+  &__table {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 0 px2rem(16px);
+
+    // [print]: Reset display mode so table header wraps when printing
+    @media print {
+      display: block;
+    }
+
+    // Data table
+    html & table {
+      display: table;
+      width: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: top-level
+// ----------------------------------------------------------------------------
+
+// [mobile -]: Align with body copy
+@include break-to-device(mobile) {
+
+  // Top-level unformatted content
+  .md-content__inner > pre {
+    margin: 1em px2rem(-16px);
+
+    // Code block
+    code {
+      border-radius: 0;
+    }
+  }
+}

@@ -1,0 +1,394 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Tabbed variables
+:root {
+  --md-tabbed-icon--prev: svg-load("material/chevron-left.svg");
+  --md-tabbed-icon--next: svg-load("material/chevron-right.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Tabbed container
+  .tabbed-set {
+    position: relative;
+    display: flex;
+    flex-flow: column wrap;
+    margin: 1em 0;
+    border-radius: px2rem(2px);
+
+    // Tab radio button - the Tabbed extension will generate radio buttons with
+    // labels, so tabs can be triggered without the necessity for JavaScript.
+    // This is pretty cool, as it has great accessibility out-of-the box, so
+    // we just hide the radio button and toggle the label color for indication.
+    > input {
+      position: absolute;
+      width: 0;
+      height: 0;
+      opacity: 0;
+
+      // Adjust scroll margin
+      &:target {
+        --md-scroll-offset: #{px2em(10px, 16px)};
+      }
+
+      // Tab label states
+      @for $i from 20 through 1 {
+        &:nth-child(#{$i}) {
+
+          // Tab is active
+          &:checked {
+
+            // Tab label
+            ~ .tabbed-labels > :nth-child(#{$i}) {
+              @extend %tabbed-label;
+            }
+
+            // Tab content
+            ~ .tabbed-content > :nth-child(#{$i}) {
+              @extend %tabbed-content;
+            }
+          }
+
+          // Tab label on keyboard focus
+          &.focus-visible ~ .tabbed-labels > :nth-child(#{$i}) {
+            @extend %tabbed-label-focus-visible;
+          }
+        }
+      }
+    }
+  }
+
+  // Tabbed labels
+  .tabbed-labels {
+    display: flex;
+    max-width: 100%;
+    overflow: auto;
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
+    -ms-overflow-style: none;          // IE, Edge
+    scrollbar-width: none;             // Firefox
+
+    // [print]: Move one layer up for ordering
+    @media print {
+      display: contents;
+    }
+
+    // [screen and no reduced motion]: Disable animation
+    @media screen {
+
+      // [js]: Show animated tab indicator
+      .js & {
+        position: relative;
+
+        // Tab indicator
+        &::before {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          width: var(--md-indicator-width);
+          height: 2px;
+          background: var(--md-accent-fg-color);
+          transform: translateX(var(--md-indicator-x));
+          transition:
+            width     225ms,
+            transform 250ms;
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          content: "";
+        }
+      }
+    }
+
+    // Webkit scrollbar
+    &::-webkit-scrollbar {
+      display: none;                   // Chrome, Safari
+    }
+
+    // Tab label
+    > label {
+      flex-shrink: 0;
+      width: auto;
+      padding: px2em(10px, 12.8px) 1.25em px2em(8px, 12.8px);
+      color: var(--md-default-fg-color--light);
+      font-weight: 700;
+      font-size: px2rem(12.8px);
+      white-space: nowrap;
+      border-bottom: px2rem(2px) solid transparent;
+      border-radius: px2rem(2px) px2rem(2px) 0 0;
+      cursor: pointer;
+      transition:
+        background-color 250ms,
+        color            250ms;
+      scroll-margin-inline-start: px2rem(20px);
+
+      // [print]: Intersperse labels with containers
+      @media print {
+
+        // Ensure correct order of labels
+        @for $i from 1 through 20 {
+          &:nth-child(#{$i}) {
+            order: $i;
+          }
+        }
+      }
+
+      // Tab label on hover
+      &:hover {
+        color: var(--md-accent-fg-color);
+      }
+    }
+  }
+
+  // Tabbed content
+  .tabbed-content {
+    width: 100%;
+
+    // [print]: Move one layer up for ordering
+    @media print {
+      display: contents;
+    }
+  }
+
+  // Tabbed block
+  .tabbed-block {
+    display: none;
+
+    // [print]: Intersperse labels with containers
+    @media print {
+      display: block;
+
+      // Ensure correct order of containers
+      @for $i from 1 through 20 {
+        &:nth-child(#{$i}) {
+          order: $i;
+        }
+      }
+    }
+
+    // Code block is the first child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
+    > pre:first-child,
+    > .highlight:first-child > pre {
+      margin: 0;
+
+      // Remove rounded borders on code block
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+
+    // Code block is the first child of a tab - remove margin and mirror
+    // previous (now deprecated) SuperFences code block grouping behavior
+    > .highlight:first-child {
+
+      // Code block title - remove spacing and rounded borders
+      > .filename {
+        margin: 0;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      // Code block with line numbers - unfortunately, these selectors need to
+      // be overly specific so they don't bleed into code blocks in annotations.
+      > .highlighttable {
+        margin: 0;
+
+        // Remove rounded borders on line numbers and titles
+        > tbody > tr > .filename span.filename,
+        > tbody > tr > .linenos {
+          margin: 0;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+
+        // Remove rounded borders on code blocks
+        > tbody > tr > .code > div > pre > code {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+      // Code block result container - adjust spacing
+      + .result {
+        margin-top: px2em(-2px);
+      }
+    }
+
+    // Adjust spacing for nested tabbed container
+    > .tabbed-set {
+      margin: 0;
+    }
+  }
+
+  // Tabbed button
+  .tabbed-button {
+    display: block;
+    align-self: center;
+    width: px2rem(18px);
+    height: px2rem(18px);
+    margin-top: px2rem(2px);
+    color: var(--md-default-fg-color--light);
+    border-radius: 100%;
+    cursor: pointer;
+    transition: background-color 250ms;
+    pointer-events: initial;
+
+    // Tabbed button on hover
+    &:hover {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // Tabbed button icon
+    &::after {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: currentcolor;
+      transition:
+        background-color 250ms,
+        transform        250ms;
+      mask-image: var(--md-tabbed-icon--prev);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
+    }
+  }
+
+  // Tabbed control
+  .tabbed-control {
+    position: absolute;
+    display: flex;
+    justify-content: start;
+    width: px2rem(24px);
+    height: px2rem(38px);
+    background:
+      linear-gradient(
+        to right,
+        var(--md-default-bg-color) 60%,
+        transparent
+      );
+    transition: opacity 125ms;
+    pointer-events: none;
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+      transform: rotate(180deg);
+    }
+
+    // Tabbed control is hidden
+    &[hidden] {
+      opacity: 0;
+    }
+
+    // Tabbed control next
+    &--next {
+      right: 0;
+      justify-content: end;
+      background:
+        linear-gradient(
+          to left,
+          var(--md-default-bg-color) 60%,
+          transparent
+        );
+
+      // Tabbed button icon content
+      .tabbed-button::after {
+        mask-image: var(--md-tabbed-icon--next);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: top-level
+// ----------------------------------------------------------------------------
+
+// [mobile -]: Align with body copy
+@include break-to-device(mobile) {
+
+  // Top-level tabbed labels
+  .md-content__inner > .tabbed-set .tabbed-labels {
+    max-width: 100vw;
+    margin: 0 px2rem(-16px);
+    padding-inline-start: px2rem(16px);
+    scroll-padding-inline-start: px2rem(16px);
+
+    // Hack: some browsers ignore the right padding on flex containers,
+    // see https://bit.ly/3lsPS3S
+    &::after {
+      padding-inline-end: px2rem(16px);
+      content: "";
+    }
+
+    // Tabbed control previous
+    ~ .tabbed-control--prev {
+      width: px2rem(40px);
+      margin-inline-start: px2rem(-16px);
+      padding-inline-start: px2rem(16px);
+    }
+
+    // Tabbed control next
+    ~ .tabbed-control--next {
+      width: px2rem(40px);
+      margin-inline-end: px2rem(-16px);
+      padding-inline-end: px2rem(16px);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Placeholders: improve colocation for better compression
+// ----------------------------------------------------------------------------
+
+// Tab label placeholder
+%tabbed-label {
+
+  // [screen]: Show active state
+  @media screen {
+    color: var(--md-accent-fg-color);
+
+    // [no-js]: Show border (indicator is animated with JavaScript)
+    .no-js & {
+      border-color: var(--md-accent-fg-color);
+    }
+  }
+}
+
+// Tab label on keyboard focus placeholder
+%tabbed-label-focus-visible {
+  background-color: var(--md-accent-fg-color--transparent);
+}
+
+// Tab content placeholder
+%tabbed-content {
+  display: block;
+}

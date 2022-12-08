@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,14 +20,21 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Social links in footer -->
-{% if config.extra.social %}
-  <div class="md-footer-social">
-    <link rel="stylesheet" type="text/css"
-        href="{{ 'assets/fonts/font-awesome.css' | url }}" />
-    {% for social in config.extra.social %}
-      <a href="{{ social.link }}" class="md-footer-social__link
-            fa fa-{{ social.type }}"></a>
-    {% endfor %}
-  </div>
-{% endif %}
+<!-- Social links -->
+<div class="md-social">
+  {% for social in config.extra.social %}
+    {% set title = social.name %}
+    {% if not title and "//" in social.link %}
+      {% set _, url = social.link.split("//") %}
+      {% set title  = url.split("/")[0] %}
+    {% endif %}
+    <a
+      href="{{ social.link }}"
+      target="_blank" rel="noopener"
+      title="{{ title | e }}"
+      class="md-social__link"
+    >
+      {% include ".icons/" ~ social.icon ~ ".svg" %}
+    </a>
+  {% endfor %}
+</div>

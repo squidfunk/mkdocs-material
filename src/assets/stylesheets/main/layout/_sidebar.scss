@@ -1,0 +1,209 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Sidebar
+.md-sidebar {
+  position: sticky;
+  top: px2rem(48px);
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: px2rem(242px);
+  padding: px2rem(24px) 0;
+
+  // [print]: Hide sidebar
+  @media print {
+    display: none;
+  }
+
+  // Primary sidebar with navigation
+  &--primary {
+
+    // [tablet -]: Show navigation as drawer
+    @include break-to-device(tablet) {
+      position: fixed;
+      top: 0;
+      inset-inline-start: px2rem(-242px);
+      z-index: 5;
+      display: block;
+      width: px2rem(242px);
+      height: 100%;
+      background-color: var(--md-default-bg-color);
+      transform: translateX(0);
+      transition:
+        transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms;
+
+      // Show sidebar when drawer is active
+      [data-md-toggle="drawer"]:checked ~ .md-container & {
+        box-shadow: var(--md-shadow-z3);
+        transform: translateX(px2rem(242px));
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          transform: translateX(px2rem(-242px));
+        }
+      }
+
+      // Stretch scroll wrapper for primary sidebar
+      .md-sidebar__scrollwrap {
+        position: absolute;
+        inset: 0;
+        margin: 0;
+        scroll-snap-type: none;
+        overflow: hidden;
+      }
+    }
+  }
+
+  // [screen +]: Show navigation as sidebar
+  @include break-from-device(screen) {
+    height: 0;
+
+    // [no-js]: Switch to native sticky behavior
+    .no-js & {
+      height: auto;
+    }
+
+    // Adjust spacing for sticky navigation tabs
+    .md-header--lifted ~ .md-container & {
+      top: px2rem(96px);
+    }
+  }
+
+  // Secondary sidebar with table of contents
+  &--secondary {
+    display: none;
+    order: 2;
+
+    // [tablet landscape +]: Show table of contents as sidebar
+    @include break-from-device(tablet landscape) {
+      height: 0;
+
+      // [no-js]: Switch to native sticky behavior
+      .no-js & {
+        height: auto;
+      }
+
+      // Sidebar is visible
+      &:not([hidden]) {
+        display: block;
+      }
+
+      // Ensure smooth scrolling on iOS
+      .md-sidebar__scrollwrap {
+        touch-action: pan-y;
+      }
+    }
+  }
+
+  // Sidebar scroll wrapper
+  &__scrollwrap {
+    margin: 0 px2rem(4px);
+    overflow-y: auto;
+    // Hack: promote to own layer to reduce jitter
+    backface-visibility: hidden;
+    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+    // to the bottom if `scroll-snap-type` is set on the initial render. For
+    // this reason, we disable scroll snapping until this is resolved (#1667).
+    // scroll-snap-type: y mandatory;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+    // Sidebar scroll wrapper on hover
+    &:hover {
+      scrollbar-color: var(--md-accent-fg-color) transparent;
+    }
+
+    // Webkit scrollbar
+    &::-webkit-scrollbar {
+      width: px2rem(4px);
+      height: px2rem(4px);
+    }
+
+    // Webkit scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--md-default-fg-color--lighter);
+
+      // Webkit scrollbar thumb on hover
+      &:hover {
+        background-color: var(--md-accent-fg-color);
+      }
+    }
+  }
+
+  // Hack: the scrollbar is only visible when the sidebar's contents overflow,
+  // which is nice, but leads to the problem where the chevrons of expandable
+  // sections will jump by `4px` when the sidebar is shown. We wanted to fix
+  // this problem for so long, but haven't found a clean way of doing it.
+  // Until now. The following declaration is only applied to Webkit browsers
+  // (e.g. Chrome and Safari), which support styling of scrollbars. The trick
+  // is to add conditional padding on the side of the scrollbar only if the
+  // sidebar's content doesn't overflow. This hack is inspired and adapted
+  // from Ayke van Laëthem's year old trick – see https://bit.ly/3Sb1qql
+  @supports selector(::-webkit-scrollbar) {
+
+    // Sidebar scroll wrapper
+    &__scrollwrap {
+      scrollbar-gutter: auto;
+    }
+
+    // Sidebar wrapper
+    &__inner {
+      padding-inline-end: calc(100% - #{px2rem(230px)});
+    }
+  }
+}
+
+// [tablet -]: Show overlay on active drawer
+@include break-to-device(tablet) {
+
+  // Drawer overlay
+  .md-overlay {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    width: 0;
+    height: 0;
+    background-color: hsla(0, 0%, 0%, 0.54);
+    opacity: 0;
+    transition:
+      width     0ms 250ms,
+      height    0ms 250ms,
+      opacity 250ms;
+
+    // Show overlay when drawer is active
+    [data-md-toggle="drawer"]:checked ~ & {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      transition:
+        width     0ms,
+        height    0ms,
+        opacity 250ms;
+    }
+  }
+}

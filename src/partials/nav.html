@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,23 +20,37 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Determine class according to configuration -->
+{% set class = "md-nav md-nav--primary" %}
+{% if "navigation.tabs" in features %}
+  {% set class = class ~ " md-nav--lifted" %}
+{% endif %}
+{% if "toc.integrate" in features %}
+  {% set class = class ~ " md-nav--integrated" %}
+{% endif %}
+
 <!-- Main navigation -->
-<nav class="md-nav md-nav--primary" data-md-level="0">
+<nav
+  class="{{ class }}"
+  aria-label="{{ lang.t('nav.title') }}"
+  data-md-level="0"
+>
 
   <!-- Site title -->
-  <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}"
-        title="{{ config.site_name }}" class="md-nav__button md-logo">
-      {% if config.theme.logo.icon %}
-        <i class="md-icon">{{ config.theme.logo.icon }}</i>
-      {% else %}
-        <img src="{{ config.theme.logo | url }}" width="48" height="48" />
-      {% endif %}
+  <label class="md-nav__title" for="__drawer">
+    <a
+      href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
+      title="{{ config.site_name | e }}"
+      class="md-nav__button md-logo"
+      aria-label="{{ config.site_name }}"
+      data-md-component="logo"
+    >
+      {% include "partials/logo.html" %}
     </a>
     {{ config.site_name }}
   </label>
 
-  <!-- Repository containing source -->
+  <!-- Repository information -->
   {% if config.repo_url %}
     <div class="md-nav__source">
       {% include "partials/source.html" %}
@@ -46,7 +60,7 @@
   <!-- Render item list -->
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
-      {% set path = "nav-" + loop.index | string %}
+      {% set path = "__nav_" ~ loop.index %}
       {% set level = 1 %}
       {% include "partials/nav-item.html" %}
     {% endfor %}

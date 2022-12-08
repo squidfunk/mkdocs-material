@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in meta plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#built-in-meta-plugin",
+      "enum": [
+        "meta"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#built-in-meta-plugin",
+          "type": "object",
+          "properties": {
+            "meta_file": {
+              "title": "Meta file name",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#+meta.meta_file",
+              "pattern": "\\.yml$",
+              "default": "\"**/.meta.yml\""
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

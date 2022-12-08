@@ -1,0 +1,661 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Navigation variables
+:root {
+  --md-nav-icon--prev: svg-load("material/arrow-left.svg");
+  --md-nav-icon--next: svg-load("material/chevron-right.svg");
+  --md-toc-icon: svg-load("material/table-of-contents.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Navigation
+.md-nav {
+  font-size: px2rem(14px);
+  line-height: 1.3;
+
+  // Navigation title
+  &__title {
+    display: block;
+    padding: 0 px2rem(12px);
+    overflow: hidden;
+    font-weight: 700;
+    text-overflow: ellipsis;
+
+    // Navigaton button
+    .md-nav__button {
+      display: none;
+
+      // Stretch images based on height, as it's the smaller dimension
+      img {
+        width: auto;
+        height: 100%;
+      }
+
+      // Button with logo, pointing to `config.site_url`
+      &.md-logo {
+
+        // Image or icon
+        :is(img, svg) {
+          display: block;
+          width: auto;
+          max-width: 100%;
+          height: px2rem(48px);
+          object-fit: contain;
+          fill: currentcolor;
+        }
+      }
+    }
+  }
+
+  // Navigation list
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  // Navigation item
+  &__item {
+    padding: 0 px2rem(12px);
+
+    // Navigation item on level 2
+    & & {
+      padding-inline-end: 0;
+    }
+  }
+
+  // Navigation link
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.625em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: color 125ms;
+    scroll-snap-align: start;
+
+    // Navigation link that was passed
+    &--passed {
+      color: var(--md-default-fg-color--light);
+    }
+
+    // Active link
+    .md-nav__item &--active {
+      color: var(--md-typeset-a-color);
+    }
+
+    // Stretch section index link to full width
+    .md-nav__item &--index [href] {
+      width: 100%;
+    }
+
+    // Navigation link on focus/hover
+    &:is(:focus, :hover) {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Show outline for keyboard devices
+    &.focus-visible {
+      outline-color: var(--md-accent-fg-color);
+      outline-offset: px2rem(4px);
+    }
+
+    // Navigation link for table of contents
+    .md-nav--primary &[for="__toc"] {
+      display: none;
+
+      // Table of contents icon
+      .md-icon::after {
+        display: block;
+        width: 100%;
+        height: 100%;
+        mask-image: var(--md-toc-icon);
+        background-color: currentcolor;
+      }
+
+      // Hide table of contents
+      ~ .md-nav {
+        display: none;
+      }
+    }
+
+    // Navigation link children (for section indexes)
+    > * {
+      display: flex;
+      cursor: pointer;
+    }
+  }
+
+  // Navigation icon
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  // Repository information container
+  &__source {
+    display: none;
+  }
+
+  // [tablet -]: Layered navigation
+  @include break-to-device(tablet) {
+
+    // Primary and nested navigation
+    &--primary,
+    &--primary & {
+      position: absolute;
+      top: 0;
+      inset-inline: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      background-color: var(--md-default-bg-color);
+    }
+
+    // Primary navigation
+    &--primary {
+
+      // Navigation title and item
+      :is(.md-nav__title, .md-nav__item) {
+        font-size: px2rem(16px);
+        line-height: 1.5;
+      }
+
+      // Navigation title
+      .md-nav__title {
+        position: relative;
+        height: px2rem(112px);
+        padding: px2rem(60px) px2rem(16px) px2rem(4px);
+        color: var(--md-default-fg-color--light);
+        line-height: px2rem(48px);
+        white-space: nowrap;
+        background-color: var(--md-default-fg-color--lightest);
+        cursor: pointer;
+
+        // Navigation icon
+        .md-nav__icon {
+          position: absolute;
+          top: px2rem(8px);
+          inset-inline-start: px2rem(8px);
+          display: block;
+          width: px2rem(24px);
+          height: px2rem(24px);
+          margin: px2rem(4px);
+
+          // Navigation icon in link to previous level
+          &::after {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: currentcolor;
+            mask-image: var(--md-nav-icon--prev);
+            mask-position: center;
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            content: "";
+          }
+        }
+
+        // Navigation list
+        ~ .md-nav__list {
+          overflow-y: auto;
+          background-color: var(--md-default-bg-color);
+          box-shadow:
+            0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
+          scroll-snap-type: y mandatory;
+          touch-action: pan-y;
+
+          // Omit border on first child
+          > :first-child {
+            border-top: 0;
+          }
+        }
+
+        // Top-level navigation title
+        &[for="__drawer"] {
+          color: var(--md-primary-bg-color);
+          font-weight: 700;
+          background-color: var(--md-primary-fg-color);
+        }
+
+        // Button with logo, pointing to `config.site_url`
+        .md-logo {
+          position: absolute;
+          top: px2rem(4px);
+          inset-inline: px2rem(4px);
+          display: block;
+          margin: px2rem(4px);
+          padding: px2rem(8px);
+        }
+      }
+
+      // Navigation list
+      .md-nav__list {
+        flex: 1;
+      }
+
+      // Navigation item
+      .md-nav__item {
+        padding: 0;
+        border-top: px2rem(1px) solid var(--md-default-fg-color--lightest);
+
+        // Navigation link in active navigation
+        &--active > .md-nav__link {
+          color: var(--md-typeset-a-color);
+
+          // Navigation link on focus/hover
+          &:is(:focus, :hover) {
+            color: var(--md-accent-fg-color);
+          }
+        }
+      }
+
+      // Navigation link
+      .md-nav__link {
+        margin-top: 0;
+        padding: px2rem(12px) px2rem(16px);
+
+        // Navigation icon
+        .md-nav__icon {
+          width: px2rem(24px);
+          height: px2rem(24px);
+          margin-inline-end: px2rem(-4px);
+          font-size: px2rem(24px);
+
+          // Navigation icon in link to next level
+          &::after {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: currentcolor;
+            mask-image: var(--md-nav-icon--next);
+            mask-position: center;
+            mask-repeat: no-repeat;
+            mask-size: contain;
+            content: "";
+          }
+        }
+      }
+
+      // Flip icon vertically
+      .md-nav__icon {
+
+        // Adjust for right-to-left languages
+        [dir="rtl"] &::after {
+          transform: scale(-1);
+        }
+      }
+
+      // Table of contents contained in primary navigation
+      .md-nav--secondary {
+
+        // Navigation on level 2-6
+        .md-nav {
+          position: static;
+          background-color: transparent;
+
+          // Navigation link on level 3
+          .md-nav__link {
+            padding-inline-start: px2rem(28px);
+          }
+
+          // Navigation link on level 4
+          .md-nav .md-nav__link {
+            padding-inline-start: px2rem(40px);
+          }
+
+          // Navigation link on level 5
+          .md-nav .md-nav .md-nav__link {
+            padding-inline-start: px2rem(52px);
+          }
+
+          // Navigation link on level 6
+          .md-nav .md-nav .md-nav .md-nav__link {
+            padding-inline-start: px2rem(64px);
+          }
+        }
+      }
+    }
+
+    // Table of contents
+    &--secondary {
+      background-color: transparent;
+    }
+
+    // Toggle for nested navigation
+    &__toggle ~ & {
+      display: flex;
+      transform: translateX(100%);
+      opacity: 0;
+      transition:
+        transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
+        opacity   125ms 50ms;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: translateX(-100%);
+      }
+    }
+
+    // Show nested navigation when toggle is active
+    &__toggle:checked ~ & {
+      transform: translateX(0);
+      opacity: 1;
+      transition:
+        transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   125ms 125ms;
+
+      // Navigation list
+      > .md-nav__list {
+        // Hack: promote to own layer to reduce jitter
+        backface-visibility: hidden;
+      }
+    }
+  }
+
+  // [tablet portrait -]: Layered navigation with table of contents
+  @include break-to-device(tablet portrait) {
+
+    // Show link to table of contents
+    &--primary &__link[for="__toc"] {
+      display: flex;
+
+      // Show table of contents icon
+      .md-icon::after {
+        content: "";
+      }
+
+      // Hide navigation link to current page
+      + .md-nav__link {
+        display: none;
+      }
+
+      // Show table of contents
+      ~ .md-nav {
+        display: flex;
+      }
+    }
+
+    // Repository information container
+    &__source {
+      display: block;
+      padding: 0 px2rem(4px);
+      color: var(--md-primary-bg-color);
+      background-color: var(--md-primary-fg-color--dark);
+    }
+  }
+
+  // [tablet landscape]: Layered navigation with table of contents
+  @include break-at-device(tablet landscape) {
+
+    // Show link to integrated table of contents
+    &--integrated &__link[for="__toc"] {
+      display: flex;
+
+      // Show table of contents icon
+      .md-icon::after {
+        content: "";
+      }
+
+      // Hide navigation link to current page
+      + .md-nav__link {
+        display: none;
+      }
+
+      // Show table of contents
+      ~ .md-nav {
+        display: flex;
+      }
+    }
+  }
+
+  // [tablet landscape +]: Tree-like table of contents
+  @include break-from-device(tablet landscape) {
+
+    // Navigation title
+    &--secondary &__title {
+      position: sticky;
+      top: 0;
+      // Hack: because of the hack that we need to make .md-ellipsis work in
+      // Safari, we need to set `z-index` here as - see https://bit.ly/3s5M2jm
+      z-index: 1;
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
+
+      // Adjust snapping behavior
+      &[for="__toc"] {
+        scroll-snap-align: start;
+      }
+
+      // Hide navigation icon
+      .md-nav__icon {
+        display: none;
+      }
+    }
+  }
+
+  // [screen +]: Tree-like navigation
+  @include break-from-device(screen) {
+    transition: max-height 250ms cubic-bezier(0.86, 0, 0.07, 1);
+
+    // Navigation title
+    &--primary &__title {
+      position: sticky;
+      top: 0;
+      // Hack: because of the hack that we need to make .md-ellipsis work in
+      // Safari, we need to set `z-index` here as - see https://bit.ly/3s5M2jm
+      z-index: 1;
+      background: var(--md-default-bg-color);
+      box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
+
+      // Adjust snapping behavior
+      &[for="__drawer"] {
+        scroll-snap-align: start;
+      }
+
+      // Hide navigation icon
+      .md-nav__icon {
+        display: none;
+      }
+    }
+
+    // Hide toggle for nested navigation
+    &__toggle ~ & {
+      display: none;
+    }
+
+    // Show nested navigation when toggle is active or indeterminate
+    &__toggle:is(:checked, :indeterminate) ~ & {
+      display: block;
+    }
+
+    // Hide navigation title in nested navigation
+    &__item--nested > & > &__title {
+      display: none;
+    }
+
+    // Navigation section
+    &__item--section {
+      display: block;
+      margin: 1.25em 0;
+
+      // Adjust spacing on last child
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Show navigation link as title
+      > .md-nav__link {
+        font-weight: 700;
+        pointer-events: none;
+
+        // Make navigation link clickable
+        &--index [href] {
+          pointer-events: initial;
+        }
+
+        // Hide naviation icon
+        .md-nav__icon {
+          display: none;
+        }
+      }
+
+      // Navigation
+      > .md-nav {
+        display: block;
+
+        // Adjust spacing on next level item
+        > .md-nav__list > .md-nav__item {
+          padding: 0;
+        }
+      }
+    }
+
+    // Navigation icon
+    &__icon {
+      width: px2rem(18px);
+      height: px2rem(18px);
+      border-radius: 100%;
+      transition:
+        background-color 250ms,
+        transform        250ms;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: rotate(180deg);
+      }
+
+      // Navigation icon on hover
+      &:hover {
+        background-color: var(--md-accent-fg-color--transparent);
+      }
+
+      // Navigation icon content
+      &::after {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        vertical-align: px2rem(-2px);
+        background-color: currentcolor;
+        mask-image: var(--md-nav-icon--next);
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        content: "";
+      }
+
+      // Navigation icon - rotate icon when toggle is active or indeterminate
+      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link &,
+      .md-nav__item--nested .md-nav__toggle:indeterminate ~ .md-nav__link & {
+        transform: rotate(90deg);
+      }
+    }
+
+    // Modifier for when navigation tabs are rendered
+    &--lifted {
+
+      // Hide nested level 0 navigation items and site title
+      > .md-nav__list > .md-nav__item--nested,
+      > .md-nav__title {
+        display: none;
+      }
+
+      // Hide level 0 navigation items
+      > .md-nav__list > .md-nav__item {
+        display: none;
+
+        // Active parent navigation item
+        &--active {
+          display: block;
+          padding: 0;
+
+          // Show navigation link as title
+          > .md-nav__link {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            margin-top: 0;
+            padding: 0 px2rem(12px);
+            font-weight: 700;
+            background: var(--md-default-bg-color);
+            box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
+
+            // Non-index section should not be clickable
+            &:not(.md-nav__link--index) {
+              pointer-events: none;
+            }
+
+            // Hide naviation icon
+            .md-nav__icon {
+              display: none;
+            }
+          }
+        }
+      }
+
+      // Hack: Always show active navigation tab on breakpoint screen, despite
+      // of checkbox being checked or not. Fixes #1655.
+      .md-nav[data-md-level="1"] {
+        display: block;
+
+        // Adjust spacing for level 1 navigation items
+        > .md-nav__list > .md-nav__item {
+          padding-inline-end: px2rem(12px);
+        }
+      }
+    }
+
+    // Modifier for when table of contents is rendered in primary navigation
+    &--integrated > .md-nav__list > .md-nav__item--active {
+
+      // Add spacing to container for non-nested navigation items
+      &:not(.md-nav__item--nested) {
+        padding: 0 px2rem(12px);
+
+        // Remove padding as it's given by container
+        > .md-nav__link {
+          padding: 0;
+        }
+      }
+
+      // Show integrated table of contents
+      .md-nav--secondary {
+        display: block;
+        margin-bottom: 1.25em;
+        border-inline-start: px2rem(1px) solid var(--md-primary-fg-color);
+
+        // Hide table of contents title
+        > .md-nav__title {
+          display: none;
+        }
+      }
+    }
+  }
+}

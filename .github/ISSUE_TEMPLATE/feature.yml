@@ -1,0 +1,34 @@
+name: Feature
+description: Suggest an idea
+body:
+  - type: checkboxes
+    attributes:
+      label: Contribution guidelines
+      description: Please read the contribution guidelines before proceeding.
+      options:
+        - label: I've read the [contribution guidelines](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md) and wholeheartedly agree
+          required: true
+  - type: checkboxes
+    attributes:
+      label: I want to suggest an idea and checked that ...
+      description: Make sure that your request fulfills all of the following requirements. If one requirement cannot be satisfied, explain in detail why.
+      options:
+      - label: ... to my best knowledge, my idea wouldn't break something for other users
+      - label: ... the documentation does not mention anything about my idea
+      - label: ... there are no open or closed issues that are related to my idea
+  - type: textarea
+    attributes:
+      label: Description
+      description: Please describe your idea in a reasonable amount of detail.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Use Cases
+      description: Please describe how your idea would benefit you and other users.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Screenshots / Mockups
+      description: If applicable, provide mockups or screenshots. You can drag-and-drop images here, or link to external assets.

@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -30,11 +30,11 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# Makefiles
-[*.py]
-indent_size = 4
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
 
-# Makefiles
-[Makefile]
-indent_style = tab
-indent_size = 8
+# Python
+[*.py]
+indent_style = space
+indent_size = 4

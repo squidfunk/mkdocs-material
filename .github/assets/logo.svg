@@ -1,0 +1,237 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        @keyframes backdrop {
+          0% {
+            transform: scale(0.9) rotateZ(45deg);
+            opacity: 0.1;
+          }
+
+          10% {
+            opacity: 1;
+          }
+
+          15% {
+            transform: scale(1.1) rotateZ(35deg);
+          }
+
+          50% {
+            transform: scale(1) rotateZ(0deg);
+          }
+
+          75% {
+            transform: scale(1.1) rotateZ(-35deg);
+            opacity: 1;
+          }
+
+          100% {
+            transform: scale(0.9) rotateZ(-45deg);
+            opacity: 0.1;
+          }
+        }
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 320px;
+          height: 320px;
+          font-family:
+            system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+            sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+          letter-spacing: -1px;
+          background: #FFFFFF;
+          border-radius: 2px;
+        }
+
+        .logo {
+          position: relative;
+          width: 40%;
+        }
+
+        .logo svg {
+          position: relative;
+          display: block;
+          margin: 20%;
+          fill: #FFFFFF;
+        }
+
+        .backdrop {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: linear-gradient(#1A1A1A, #5E5E5E);
+          border-radius: 100%;
+          animation: backdrop infinite both 10s 1s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        h1 {
+          margin: 24px 0 4px;
+          color: #1A1A1A;
+          font-weight: bold;
+          font-size: 24px;
+        }
+
+        h2 {
+          margin: 4px 0;
+          color: #5E5E5E;
+          font-size: 14px;
+        }
+
+      </style>
+      <div class="container">
+        <div class="logo">
+          <div class="backdrop"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
+            <polygon id="p1">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="1s;p1o.end+1s" id="p1i"
+                keyTimes="0;1" keySplines="0.16 1 0.3 1"
+                values="
+                  3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319;
+                  3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="p1i.end+5s" id="p1o"
+                keyTimes="0;1" keySplines="0.7 0 0.84 0"
+                values="
+                  3.136 17.387, 3.136 60.319, 46.068 81.786, 3.136 17.387;
+                  3.136 17.387, 3.136 60.319,  3.136 60.319, 3.136 60.319
+                "
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="1" to="0.5"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p1o.end"
+                from="0.5" to="1"
+              />
+            </polygon>
+            <polygon id="p2" style="fill-opacity: 0.5;">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="1s;p2o.end+1s" id="p2i"
+                keyTimes="0;1" keySplines="0.16 1 0.3 1"
+                values="
+                  21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319;
+                  21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="p2i.end+5s" id="p2o"
+                keyTimes="0;1" keySplines="0.7 0 0.84 0"
+                values="
+                  21.910  8.000, 64.843 72.398, 46.068 81.786, 3.136 17.387;
+                  21.910 50.932, 21.910 50.932,  3.136 60.319, 3.136 60.319
+                "
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="0.5" to="1"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p2o.end"
+                from="1" to="0.5"
+              />
+            </polygon>
+            <clipPath id="clip">
+              <polygon id="p3">
+                <animate
+                  attributeName="points" calcMode="spline" fill="freeze"
+                  dur="2s" begin="1s;p3o.end+1s" id="p3i"
+                  keyTimes="0;1" keySplines="0.16 1 0.3 1"
+                  values="
+                    21.910 50.932, 21.910 50.932, 89 89, 89 0;
+                    21.910  8.000, 64.843 72.398, 89 89, 89 0
+                  "
+                />
+                <animate
+                  attributeName="points" calcMode="spline" fill="freeze"
+                  dur="2s" begin="p3i.end+5s" id="p3o"
+                  keyTimes="0;1" keySplines="0.7 0 0.84 0"
+                  values="
+                    21.910  8.000, 64.843 72.398, 89 89, 89 0;
+                    21.910 50.932, 21.910 50.932, 89 89, 89 0
+                  "
+                />
+              </polygon>
+            </clipPath>
+            <polygon id="p4" clip-path="url(#clip)">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="1.25s;p4o.end+1s" id="p4i"
+                keyTimes="0;1" keySplines="0.16 1 0.3 1"
+                values="
+                  67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052;
+                  67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="p4i.end+5s" id="p4o"
+                keyTimes="0;1" keySplines="0.7 0 0.84 0"
+                values="
+                  67.535 17.387, 21.509  48.04, 62.151 68.361, 67.535 71.052;
+                  67.535 71.052, 67.535 71.052, 62.151 68.361, 67.535 71.052
+                "
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="1" to="0.5"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p4o.end"
+                from="0.5" to="1"
+              />
+            </polygon>
+            <polygon id="p5" clip-path="url(#clip)" style="fill-opacity: 0.25;">
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="1.25s;p5o.end+1s" id="p5i"
+                keyTimes="0;1" keySplines="0.16 1 0.3 1"
+                values="
+                  67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053;
+                  67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387
+                "
+              />
+              <animate
+                attributeName="points" calcMode="spline" fill="freeze"
+                dur="2s" begin="p5i.end+5s" id="p5o"
+                keyTimes="0;1" keySplines="0.7 0 0.84 0"
+                values="
+                  67.535 71.053, 86.309 61.665, 86.309  8.000, 67.535 17.387;
+                  67.535 71.053, 86.309 61.665, 86.309 61.665, 67.535 71.053
+                "
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="5s" begin="p1i.end"
+                from="0.25" to="1"
+              />
+              <animate
+                attributeName="fill-opacity" fill="freeze"
+                dur="0.1s" begin="p5o.end"
+                from="1" to="0.25"
+              />
+            </polygon>
+          </svg>
+        </div>
+        <h1>Material for MkDocs</h1>
+        <h2>Documentation that simply works</h2>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

@@ -1,0 +1,709 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Search variables
+:root {
+  --md-search-result-icon: svg-load("material/file-search-outline.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Search
+.md-search {
+  position: relative;
+
+  // [tablet landscape +]: Header-embedded search
+  @include break-from-device(tablet landscape) {
+    padding: px2rem(4px) 0;
+  }
+
+  // [no-js]: Hide search
+  .no-js & {
+    display: none;
+  }
+
+  // Search overlay
+  &__overlay {
+    z-index: 1;
+    opacity: 0;
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      position: absolute;
+      top: px2rem(-20px);
+      inset-inline-start: px2rem(-44px);
+      width: px2rem(40px);
+      height: px2rem(40px);
+      overflow: hidden;
+      background-color: var(--md-default-bg-color);
+      border-radius: px2rem(20px);
+      transform-origin: center;
+      transition:
+        transform 300ms 100ms,
+        opacity   200ms 200ms;
+      pointer-events: none;
+
+      // Show overlay when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        opacity: 1;
+        transition:
+          transform 400ms,
+          opacity   100ms;
+      }
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      position: fixed;
+      top: 0;
+      inset-inline-start: 0;
+      width: 0;
+      height: 0;
+      background-color: hsla(0, 0%, 0%, 0.54);
+      cursor: pointer;
+      transition:
+        width     0ms 250ms,
+        height    0ms 250ms,
+        opacity 250ms;
+
+      // Show overlay when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        width: 100%;
+        // Hack: when the header is translated upon scrolling, a new layer is
+        // induced, which means that the height will now refer to the height of
+        // the header, albeit positioning is fixed. This should be mitigated
+        // in all cases when setting the height to 2x the viewport.
+        height: 200vh;
+        opacity: 1;
+        transition:
+          width     0ms,
+          height    0ms,
+          opacity 250ms;
+      }
+    }
+
+    // Adjust appearance when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+
+      // [mobile portrait -]: Scale up 45 times
+      @include break-to-device(mobile portrait) {
+        transform: scale(45);
+      }
+
+      // [mobile landscape]: Scale up 60 times
+      @include break-at-device(mobile landscape) {
+        transform: scale(60);
+      }
+
+      // [tablet portrait]: Scale up 75 times
+      @include break-at-device(tablet portrait) {
+        transform: scale(75);
+      }
+    }
+  }
+
+  // Search wrapper
+  &__inner {
+    // Hack: promote to own layer to reduce jitter
+    backface-visibility: hidden;
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      position: fixed;
+      top: 0;
+      inset-inline-start: 0;
+      z-index: 2;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+      transform: translateX(5%);
+      opacity: 0;
+      transition:
+        width       0ms 300ms,
+        height      0ms 300ms,
+        transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity   150ms 150ms;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: translateX(-5%);
+      }
+
+      // Adjust appearance when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        width: 100%;
+        height: 100%;
+        transform: translateX(0);
+        opacity: 1;
+        transition:
+          width       0ms   0ms,
+          height      0ms   0ms,
+          transform 150ms 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+          opacity   150ms 150ms;
+      }
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      position: relative;
+      float: inline-end;
+      width: px2rem(234px);
+      padding: px2rem(2px) 0;
+      transition: width 250ms cubic-bezier(0.1, 0.7, 0.1, 1);
+    }
+
+    // Adjust appearance when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+
+      // [tablet landscape]: Omit overlaying header title
+      @include break-at-device(tablet landscape) {
+        width: px2rem(468px);
+      }
+
+      // [screen +]: Match width of content area
+      @include break-from-device(screen) {
+        width: px2rem(688px);
+      }
+    }
+  }
+
+  // Search form
+  &__form {
+    position: relative;
+    z-index: 2;
+    height: px2rem(48px);
+    background-color: var(--md-default-bg-color);
+    box-shadow: 0 0 px2rem(12px) transparent;
+    transition:
+      color            250ms,
+      background-color 250ms;
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      height: px2rem(36px);
+      background-color: hsla(0, 0%, 0%, 0.26);
+      border-radius: px2rem(2px);
+
+      // Search form on hover
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.12);
+      }
+    }
+
+    // Adjust appearance when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      color: var(--md-default-fg-color);
+      background-color: var(--md-default-bg-color);
+      border-radius: px2rem(2px) px2rem(2px) 0 0;
+      box-shadow: 0 0 px2rem(12px) hsla(0, 0%, 0%, 0.07);
+    }
+  }
+
+  // Search input
+  &__input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    padding-inline: px2rem(72px) px2rem(44px);
+    font-size: px2rem(18px);
+    text-overflow: ellipsis;
+    background: transparent;
+
+    // Search placeholder
+    &::placeholder {
+      transition: color 250ms;
+    }
+
+    // Search icon and placeholder
+    ~ .md-search__icon,
+    &::placeholder {
+      color: var(--md-default-fg-color--light);
+    }
+
+    // Remove the "x" rendered by Internet Explorer
+    &::-ms-clear {
+      display: none;
+    }
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      width: 100%;
+      height: px2rem(48px);
+      font-size: px2rem(18px);
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      padding-inline-start: px2rem(44px);
+      color: inherit;
+      font-size: px2rem(16px);
+
+      // Search placeholder
+      &::placeholder {
+        color: var(--md-primary-bg-color--light);
+      }
+
+      // Search icon
+      + .md-search__icon {
+        color: var(--md-primary-bg-color);
+      }
+
+      // Adjust appearance when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        text-overflow: clip;
+
+        // Search icon and placeholder
+        + .md-search__icon,
+        &::placeholder {
+          color: var(--md-default-fg-color--light);
+        }
+      }
+    }
+  }
+
+  // Search icon
+  &__icon {
+    display: inline-block;
+    width: px2rem(24px);
+    height: px2rem(24px);
+    cursor: pointer;
+    transition:
+      color   250ms,
+      opacity 250ms;
+
+    // Search icon on hover
+    &:hover {
+      opacity: 0.7;
+    }
+
+    // Search focus button
+    &[for="__search"] {
+      position: absolute;
+      top: px2rem(6px);
+      inset-inline-start: px2rem(10px);
+      z-index: 2;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & svg {
+        transform: scaleX(-1);
+      }
+
+      // [tablet portrait -]: Search modal
+      @include break-to-device(tablet portrait) {
+        top: px2rem(12px);
+        inset-inline-start: px2rem(16px);
+
+        // Hide the magnifying glass
+        svg:first-child {
+          display: none;
+        }
+      }
+
+      // [tablet landscape +]: Header-embedded search
+      @include break-from-device(tablet landscape) {
+        pointer-events: none;
+
+        // Hide the back arrow
+        svg:last-child {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // Search options
+  &__options {
+    position: absolute;
+    top: px2rem(6px);
+    inset-inline-end: px2rem(10px);
+    z-index: 2;
+    pointer-events: none;
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      top: px2rem(12px);
+      inset-inline-end: px2rem(16px);
+    }
+
+    // Search option buttons
+    > * {
+      margin-inline-start: px2rem(4px);
+      color: var(--md-default-fg-color--light);
+      transform: scale(0.75);
+      opacity: 0;
+      transition:
+        transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
+        opacity   150ms;
+
+      // Hide outline for pointer devices
+      &:not(.focus-visible) {
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      // Show reset button when search is active and input non-empty
+      [data-md-toggle="search"]:checked ~ .md-header
+      .md-search__input:valid ~ & {
+        transform: scale(1);
+        opacity: 1;
+        pointer-events: initial;
+
+        // Search focus icon
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  // Search suggestions
+  &__suggest {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-inline: px2rem(72px) px2rem(44px);
+    color: var(--md-default-fg-color--lighter);
+    font-size: px2rem(18px);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 50ms;
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      padding-inline-start: px2rem(44px);
+      font-size: px2rem(16px);
+    }
+
+    // Show suggestions when search is active
+    [data-md-toggle="search"]:checked ~ .md-header & {
+      opacity: 1;
+      transition: opacity 300ms 100ms;
+    }
+  }
+
+  // Search output
+  &__output {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    overflow: hidden;
+    border-end-start-radius: px2rem(2px);
+    border-end-end-radius: px2rem(2px);
+
+    // [tablet portrait -]: Search modal
+    @include break-to-device(tablet portrait) {
+      top: px2rem(48px);
+      bottom: 0;
+    }
+
+    // [tablet landscape +]: Header-embedded search
+    @include break-from-device(tablet landscape) {
+      top: px2rem(38px);
+      opacity: 0;
+      transition: opacity 400ms;
+
+      // Show output when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        box-shadow: var(--md-shadow-z3);
+        opacity: 1;
+      }
+    }
+  }
+
+  // Search scroll wrapper
+  &__scrollwrap {
+    height: 100%;
+    overflow-y: auto;
+    background-color: var(--md-default-bg-color);
+    // Hack: promote to own layer to reduce jitter
+    backface-visibility: hidden;
+    // Hack: Chrome 88+ has weird overscroll behavior. Overall, scroll snapping
+    // seems to be something that is not ready for prime time on some browsers.
+    // scroll-snap-type: y mandatory;
+    touch-action: pan-y;
+
+    // Mitigiate excessive repaints on non-retina devices
+    @media (max-resolution: 1dppx) {
+      transform: translateZ(0);
+    }
+
+    // [tablet landscape]: Set fixed width to omit unnecessary reflow
+    @include break-at-device(tablet landscape) {
+      width: px2rem(468px);
+    }
+
+    // [screen +]: Set fixed width to omit unnecessary reflow
+    @include break-from-device(screen) {
+      width: px2rem(688px);
+    }
+
+    // [tablet landscape +]: Limit height to viewport
+    @include break-from-device(tablet landscape) {
+      max-height: 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+      // Show scroll wrapper when search is active
+      [data-md-toggle="search"]:checked ~ .md-header & {
+        max-height: 75vh;
+      }
+
+      // Search scroll wrapper on hover
+      &:hover {
+        scrollbar-color: var(--md-accent-fg-color) transparent;
+      }
+
+      // Webkit scrollbar
+      &::-webkit-scrollbar {
+        width: px2rem(4px);
+        height: px2rem(4px);
+      }
+
+      // Webkit scrollbar thumb
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--md-default-fg-color--lighter);
+
+        // Webkit scrollbar thumb on hover
+        &:hover {
+          background-color: var(--md-accent-fg-color);
+        }
+      }
+    }
+  }
+}
+
+// Search result
+.md-search-result {
+  color: var(--md-default-fg-color);
+  word-break: break-word;
+
+  // Search result metadata
+  &__meta {
+    padding: 0 px2rem(16px);
+    color: var(--md-default-fg-color--light);
+    font-size: px2rem(12.8px);
+    line-height: px2rem(36px);
+    background-color: var(--md-default-fg-color--lightest);
+    scroll-snap-align: start;
+
+    // [tablet landscape +]: Adjust spacing
+    @include break-from-device(tablet landscape) {
+      padding-inline-start: px2rem(44px);
+    }
+  }
+
+  // Search result list
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    // Hack: omit accidental text selection on fast toggle of more button
+    user-select: none;
+  }
+
+  // Search result item
+  &__item {
+    box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
+
+    // Omit border on first child
+    &:first-child {
+      box-shadow: none;
+    }
+  }
+
+  // Search result link
+  &__link {
+    display: block;
+    outline: none;
+    transition: background-color 250ms;
+    scroll-snap-align: start;
+
+    // Search result link on focus/hover
+    &:is(:focus, :hover) {
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // Adjust spacing on last child of last link
+    &:last-child p:last-child {
+      margin-bottom: px2rem(12px);
+    }
+  }
+
+  // Search result more link
+  &__more summary {
+    display: block;
+    padding: px2em(12px) px2rem(16px);
+    color: var(--md-typeset-a-color);
+    font-size: px2rem(12.8px);
+    outline: none;
+    cursor: pointer;
+    transition:
+      color            250ms,
+      background-color 250ms;
+    scroll-snap-align: start;
+
+    // [tablet landscape +]: Adjust spacing
+    @include break-from-device(tablet landscape) {
+      padding-inline-start: px2rem(44px);
+    }
+
+    // Search result more link on focus/hover
+    &:is(:focus, :hover) {
+      color: var(--md-accent-fg-color);
+      background-color: var(--md-accent-fg-color--transparent);
+    }
+
+    // Hide native details marker - modern
+    &::marker {
+      display: none;
+    }
+
+    // Hide native details marker - legacy, must be split into a seprate rule,
+    // so older browsers don't consider the selector list as invalid
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    // Adjust transparency of less relevant results
+    ~ * > * {
+      opacity: 0.65;
+    }
+  }
+
+  // Search result article
+  &__article {
+    position: relative;
+    padding: 0 px2rem(16px);
+    overflow: hidden;
+
+    // [tablet landscape +]: Adjust spacing
+    @include break-from-device(tablet landscape) {
+      padding-inline-start: px2rem(44px);
+    }
+
+    // Search result article document
+    &--document {
+
+      // Search result title
+      .md-search-result__title {
+        margin: px2rem(11px) 0;
+        font-weight: 400;
+        font-size: px2rem(16px);
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Search result icon
+  &__icon {
+    position: absolute;
+    inset-inline-start: 0;
+    width: px2rem(24px);
+    height: px2rem(24px);
+    margin: px2rem(10px);
+    color: var(--md-default-fg-color--light);
+
+    // [tablet portrait -]: Hide icon
+    @include break-to-device(tablet portrait) {
+      display: none;
+    }
+
+    // Search result icon content
+    &::after {
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      background-color: currentcolor;
+      mask-image: var(--md-search-result-icon);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: contain;
+      content: "";
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  // Search result title
+  &__title {
+    margin: 0.5em 0;
+    font-weight: 700;
+    font-size: px2rem(12.8px);
+    line-height: 1.6;
+  }
+
+  // Search result teaser
+  &__teaser {
+    display: -webkit-box;
+    max-height: px2rem(40px);
+    margin: 0.5em 0;
+    overflow: hidden;
+    color: var(--md-default-fg-color--light);
+    font-size: px2rem(12.8px);
+    line-height: 1.6;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    // [mobile -]: Adjust number of lines
+    @include break-to-device(mobile) {
+      max-height: px2rem(60px);
+      -webkit-line-clamp: 3;
+    }
+
+    // [tablet landscape]: Adjust number of lines
+    @include break-at-device(tablet landscape) {
+      max-height: px2rem(60px);
+      -webkit-line-clamp: 3;
+    }
+
+    // Search term highlighting
+    mark {
+      text-decoration: underline;
+      background-color: transparent;
+    }
+  }
+
+  // Search result terms
+  &__terms {
+    margin: 0.5em 0;
+    font-size: px2rem(12.8px);
+    font-style: italic;
+  }
+
+  // Search term highlighting
+  mark {
+    color: var(--md-accent-fg-color);
+    background-color: transparent;
+  }
+}

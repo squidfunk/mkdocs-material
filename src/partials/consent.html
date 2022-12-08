@@ -1,0 +1,107 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Determine cookies -->
+{% set cookies = config.extra.consent.cookies | d({}) %}
+{% if config.extra.analytics %}
+  {% if "analytics" not in cookies %}
+    {% set _ = cookies.update({ "analytics": "Google Analytics" }) %}
+  {% endif %}
+{% endif %}
+{% if config.repo_url and "github.com" in config.repo_url %}
+  {% if "github" not in cookies %}
+    {% set _ = cookies.update({ "github": "GitHub" }) %}
+  {% endif %}
+{% endif %}
+
+<!-- Determine actions -->
+{% set actions = config.extra.consent.actions %}
+{% if not actions %}
+  {% set actions = ["accept", "manage"] %}
+{% endif %}
+
+<!-- Determine initial settings state -->
+{% if not "manage" in actions %}
+  {% set checked = "checked" %}
+{% endif %}
+
+<!-- Consent title -->
+<h4>{{ config.extra.consent.title }}</h4>
+<p>{{ config.extra.consent.description }}</p>
+
+<!-- Consent settings -->
+<input
+  class="md-toggle"
+  type="checkbox"
+  id="__settings"
+  {{ checked }}
+/>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    {% for type in cookies %}
+      {% set checked = "" %}
+      {% if cookies[type] is string %}
+        {% set name = cookies[type] %}
+        {% set checked = "checked" %}
+      {% else %}
+        {% set name = cookies[type].name %}
+        {% if cookies[type].checked %}
+          {% set checked = "checked" %}
+        {% endif %}
+      {% endif %}
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="{{ type }}" {{ checked }}>
+          <span class="task-list-indicator"></span>
+          {{ name }}
+        <label>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+<!-- Consent controls -->
+<div class="md-consent__controls">
+  {% for action in actions %}
+
+    <!-- Button to accept cookies -->
+    {% if action == "accept" %}
+      <button class="md-button md-button--primary">
+        {{- lang.t("consent.accept") -}}
+      </button>
+    {% endif %}
+
+    <!-- Button to reject cookies -->
+    {% if action == "reject" %}
+      <button type="reset" class="md-button md-button--primary">
+        {{- lang.t("consent.reject") -}}
+      </button>
+    {% endif %}
+
+    <!-- Button to manage settings -->
+    {% if action == "manage" %}
+      <label class="md-button" for="__settings">
+        {{- lang.t("consent.manage") -}}
+      </label>
+    {% endif %}
+  {% endfor %}
+</div>

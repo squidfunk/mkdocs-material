@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "alwaysStrict": true,
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "lib": [
+      "dom",
+      "esnext",
+      "webworker"
+    ],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "paths": {
+      "~/*": ["./assets/javascripts/*"],
+      "_/*": ["./.overrides/assets/javascripts/*"]
+    },
+    "removeComments": false,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "stripInternal": true,
+    "target": "es2015"
+  },
+  "include": [
+    "src/assets/javascripts",
+    "src/.overrides/assets/javascripts",
+    "tools",
+    "typings"
+  ]
+}

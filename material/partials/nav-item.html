@@ -1,57 +1,90 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% set class = "md-nav__item" %}
-{% if nav_item.active %}
-  {% set class = "md-nav__item md-nav__item--active" %}
-{% endif %}
-{% if nav_item.children %}
-  <li class="{{ class }} md-nav__item--nested">
-    {% if nav_item.active %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" checked>
-    {% else %}
-      <input class="md-toggle md-nav__toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}">
+{% macro render(nav_item, path, level) %}
+  {% set class = "md-nav__item" %}
+  {% if nav_item.active %}
+    {% set class = class ~ " md-nav__item--active" %}
+  {% endif %}
+  {% if nav_item.children %}
+    {% if "navigation.sections" in features and level == 1 + (
+      "navigation.tabs" in features
+    ) %}
+      {% set class = class ~ " md-nav__item--section" %}
     {% endif %}
-    <label class="md-nav__link" for="{{ path }}">
-      {{ nav_item.title }}
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="{{ level }}">
-      <label class="md-nav__title" for="{{ path }}">
-        {{ nav_item.title }}
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        {% set base = path %}
+    <li class="{{ class }} md-nav__item--nested">
+      {% set checked = "checked" if nav_item.active %}
+      {% if "navigation.expand" in features and not checked %}
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" checked>
+      {% else %}
+        <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+      {% endif %}
+      {% set indexes = [] %}
+      {% if "navigation.indexes" in features %}
         {% for nav_item in nav_item.children %}
-          {% set path = base + "-" + loop.index | string %}
-          {% set level = level + 1 %}
-          {% include "partials/nav-item.html"  %}
+          {% if nav_item.is_index and not index is defined %}
+            {% set _ = indexes.append(nav_item) %}
+          {% endif %}
         {% endfor %}
-      </ul>
-    </nav>
-  </li>
-{% elif nav_item == page %}
-  <li class="{{ class }}">
-    {% set toc_ = page.toc %}
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    {% if toc_ | first is defined and "\x3ch1 id=" in page.content %}
-      {% set toc_ = (toc_ | first).children %}
-    {% endif %}
-    {% if toc_ | first is defined %}
-      <label class="md-nav__link md-nav__link--active" for="__toc">
+      {% endif %}
+      {% if not indexes %}
+        <label class="md-nav__link" for="{{ path }}">
+          {{ nav_item.title }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      {% else %}
+        {% set index = indexes | first %}
+        {% set class = "md-nav__link--active" if index == page %}
+        <div class="md-nav__link md-nav__link--index {{ class }}">
+          <a href="{{ index.url | url }}">{{ nav_item.title }}</a>
+          {% if nav_item.children | length > 1 %}
+            <label for="{{ path }}">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          {% endif %}
+        </div>
+      {% endif %}
+      <nav class="md-nav" aria-label="{{ nav_item.title }}" data-md-level="{{ level }}">
+        <label class="md-nav__title" for="{{ path }}">
+          <span class="md-nav__icon md-icon"></span>
+          {{ nav_item.title }}
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          {% for nav_item in nav_item.children %}
+            {% if not indexes or nav_item != indexes | first %}
+              {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+    </li>
+  {% elif nav_item == page %}
+    <li class="{{ class }}">
+      {% set toc = page.toc %}
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      {% set first = toc | first %}
+      {% if first and first.level == 1 %}
+        {% set toc = first.children %}
+      {% endif %}
+      {% if toc %}
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          {{ nav_item.title }}
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      {% endif %}
+      <a href="{{ nav_item.url | url }}" class="md-nav__link md-nav__link--active">
         {{ nav_item.title }}
-      </label>
-    {% endif %}
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link md-nav__link--active">
-      {{ nav_item.title }}
-    </a>
-    {% if toc_ | first is defined %}
-      {% include "partials/toc.html" %}
-    {% endif %}
-  </li>
-{% else %}
-  <li class="{{ class }}">
-    <a href="{{ nav_item.url | url }}" title="{{ nav_item.title | striptags }}" class="md-nav__link">
-      {{ nav_item.title }}
-    </a>
-  </li>
-{% endif %}
+      </a>
+      {% if toc %}
+        {% include "partials/toc.html" %}
+      {% endif %}
+    </li>
+  {% else %}
+    <li class="{{ class }}">
+      <a href="{{ nav_item.url | url }}" class="md-nav__link">
+        {{ nav_item.title }}
+      </a>
+    </li>
+  {% endif %}
+{% endmacro %}
+{{ render(nav_item, path, level) }}

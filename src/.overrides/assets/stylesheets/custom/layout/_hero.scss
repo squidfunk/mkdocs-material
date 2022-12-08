@@ -1,0 +1,124 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Landing page container
+.mdx-container {
+  padding-top: px2rem(20px);
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(0, 0%, 100%, 1)' /></svg>") no-repeat bottom,
+    linear-gradient(
+      to bottom,
+      var(--md-primary-fg-color),
+      hsla(280, 67%, 55%, 1) 99%,
+      var(--md-default-bg-color) 99%
+    );
+
+  // Adjust background for slate theme
+  [data-md-color-scheme="slate"] & {
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1123 258'><path d='M1124,2c0,0 0,256 0,256l-1125,0l0,-48c0,0 16,5 55,5c116,0 197,-92 325,-92c121,0 114,46 254,46c140,0 214,-167 572,-166Z' style='fill: hsla(232, 15%, 21%, 1)' /></svg>") no-repeat bottom,
+      linear-gradient(
+        to bottom,
+        var(--md-primary-fg-color),
+        hsla(280, 67%, 55%, 1) 99%,
+        var(--md-default-bg-color) 99%
+      );
+  }
+}
+
+// Landing page hero
+.mdx-hero {
+  margin: 0 px2rem(16px);
+  color: var(--md-primary-bg-color);
+
+  // Hero headline
+  h1 {
+    margin-bottom: px2rem(20px);
+    color: currentcolor;
+    font-weight: 700;
+
+    // [mobile portrait -]: Larger hero headline
+    @include break-to-device(mobile portrait) {
+      font-size: px2rem(28px);
+    }
+  }
+
+  // Hero content
+  &__content {
+    padding-bottom: px2rem(120px);
+  }
+
+  // [tablet landscape +]: Columnar display
+  @include break-from-device(tablet landscape) {
+    display: flex;
+    align-items: stretch;
+
+    // Adjust spacing and set dimensions
+    &__content {
+      max-width: px2rem(380px);
+      margin-top: px2rem(70px);
+      padding-bottom: 14vw;
+    }
+
+    // Hero image
+    &__image {
+      order: 1;
+      width: px2rem(760px);
+      transform: translateX(#{px2rem(80px)});
+    }
+  }
+
+  // [screen +]: Columnar display and adjusted spacing
+  @include break-from-device(screen) {
+
+    // Hero image
+    &__image {
+      transform: translateX(#{px2rem(160px)});
+    }
+  }
+
+  // Button
+  .md-button {
+    margin-top: px2rem(10px);
+    margin-right: px2rem(10px);
+    color: var(--md-primary-bg-color);
+
+    // Button on focus/hover
+    &:focus,
+    &:hover {
+      color: var(--md-accent-bg-color);
+      background-color: var(--md-accent-fg-color);
+      border-color: var(--md-accent-fg-color);
+    }
+
+    // Primary button
+    &--primary {
+      color: hsla(280, 37%, 48%, 1);
+      background-color: var(--md-primary-bg-color);
+      border-color: var(--md-primary-bg-color);
+    }
+  }
+}
