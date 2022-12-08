@@ -412,11 +412,10 @@ class Parser(HTMLParser):
                     data = self.section.title
 
                 # Remove element if empty (or only whitespace)
-                prev, last = data[-2:]
-                if last == f"<{tag}>":
-                    del data[len(data) - 1:]
-                elif last.isspace() and prev == f"<{tag}>":
-                    del data[len(data) - 2:]
+                if data[-1] == f"<{tag}>":
+                    del data[-1:]
+                elif data[-1].isspace() and data[-2] == f"<{tag}>":
+                    del data[-2:]
 
                 # Append to section title or text
                 else:
