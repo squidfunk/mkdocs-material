@@ -32,8 +32,12 @@
   Hack: check whether the content contains a h1 headline. If it doesn't, the
   page title (or respectively site name) is used as the main headline.
 -->
-{% if not "\x3ch1" in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+{% if title_override %}
+  {{ title_override }}
+{% else %}
+  {% if not "\x3ch1" in page.content %}
+    <h1>{{ page.title | d(config.site_name, true)}}</h1>
+  {% endif %}
 {% endif %}
 
 <!-- Page content -->
