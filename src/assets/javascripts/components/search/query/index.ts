@@ -88,7 +88,7 @@ export interface SearchQuery {
 export function watchSearchQuery(
   el: HTMLInputElement, { rx$ }: SearchWorker
 ): Observable<SearchQuery> {
-  const fn = __search?.transform || defaultTransform
+  const fn = (s: string) => s
 
   /* Immediately show search dialog */
   const { searchParams } = getLocation()

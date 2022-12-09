@@ -109,9 +109,7 @@ const print$    = watchPrint()
 /* Retrieve search index, if search is enabled */
 const config = configuration()
 const index$ = document.forms.namedItem("search")
-  ? __search?.index || requestJSON<SearchIndex>(
-    new URL("search/search_index.json", config.base)
-  )
+  ? Promise.resolve({})
   : NEVER
 
 /* Set up Clipboard.js integration */
