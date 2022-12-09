@@ -39,7 +39,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.49d13af5.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.cc0e2da7.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
@@ -218,7 +218,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.404898f1.min.js" | url
+        "search": "assets/javascripts/workers/search.8e7a41fd.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
@@ -257,7 +257,7 @@
       <script>"use strict";"serviceWorker"in navigator&&navigator.serviceWorker.register("/service-worker.js",{scope:"/"}).then(function(e){console.log("PWA Registration succeeded. Scope is "+e.scope)}).catch(function(e){console.log("PWA Registration failed with "+e)})</script>
     {% endblock %}
     {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.68ca7693.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.cea3306a.min.css' | url }}">
       <script src="{{ 'assets/javascripts/extra/bundle.f719a234.min.js' | url }}" defer></script>
     {% endif %}
   </body>
