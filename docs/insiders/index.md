@@ -7,7 +7,7 @@ title: Insiders
 Material for MkDocs follows the __sponsorware__ release strategy, which means
 that new features are first exclusively released to sponsors as part of
 [Insiders]. Read on to learn [what sponsorships achieve],
-[how to become a sponsor] to get access to Insiders, and [what's in for you]!
+[how to become a sponsor] to get access to Insiders, and [what's in it for you]!
 
 <!-- <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
@@ -24,13 +24,13 @@ This documentation is built with Insiders
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
   [how to become a sponsor]: #how-to-become-a-sponsor
-  [what's in for you]: #whats-in-for-me
+  [what's in it for you]: #whats-in-it-for-me
   [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## What is Insiders?
 
 Material for MkDocs Insiders is a private fork of Material for MkDocs, hosted as
-a private GitHub repository. Almost[^1] [all new features][what's in for you]
+a private GitHub repository. Almost[^1] [all new features][what's in it for you]
 are developed as part of this fork, which means that they are immediately
 available to all eligible sponsors, as they are made collaborators of this
 repository.
@@ -78,7 +78,7 @@ a handful of them, [thanks to our awesome sponsors]!
   [completed funding goals]: #goals-completed
   [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
-## What's in for me?
+## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
 access to 19 additional features__ that you can start using right away, and
