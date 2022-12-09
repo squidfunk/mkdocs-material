@@ -71,7 +71,7 @@ theme:
             }
             ```
 
-            `yaml.customTags` would be needed if you want to use and configure [Emojis](reference/icons-emojis.md).
+            `yaml.customTags` part will be needed if you want to use and configure [Emojis](reference/icons-emojis.md).
 
     === "Other"
 
