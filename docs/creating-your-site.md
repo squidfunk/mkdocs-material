@@ -62,9 +62,16 @@ theme:
             {
               "yaml.schemas": {
                 "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-              }
+              },
+              "yaml.customTags": [
+                "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+              ]
             }
             ```
+
+            `yaml.customTags` would be needed if you want to use and configure [Emojis](reference/icons-emojis.md).
 
     === "Other"
 
