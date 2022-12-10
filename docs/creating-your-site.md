@@ -58,7 +58,7 @@ theme:
         2.  Add the schema under the `yaml.schemas` key in your user or
             workspace [`settings.json`][settings.json]:
 
-            ``` { .json .annotate }
+            ``` json
             {
               "yaml.schemas": {
                 "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
@@ -71,12 +71,13 @@ theme:
             }
             ```
 
-            1. `yaml.customTags` part will be needed if you want to use and configure [Emojis](reference/icons-emojis.md).
+            1.  This setting is necessary if you plan to use [icons and emojis],
+                or Visual Studio Code will show errors on certain lines.
 
     === "Other"
 
-        1.  Ensure your editor of choice has support for YAML schema validation.
-        2.  Add the following lines at the top of `mkdocs.yml`:
+        3.  Ensure your editor of choice has support for YAML schema validation.
+        4.  Add the following lines at the top of `mkdocs.yml`:
 
             ``` yaml
             # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
@@ -96,6 +97,7 @@ theme:
   [extension]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/extensions
   [plugin]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/plugins
   [$ref]: https://json-schema.org/understanding-json-schema/structuring.html#ref
+  [icons and emojis]: reference/icons-emojis.md
 
 ### Advanced configuration
 
