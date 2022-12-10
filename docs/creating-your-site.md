@@ -58,13 +58,20 @@ theme:
         2.  Add the schema under the `yaml.schemas` key in your user or
             workspace [`settings.json`][settings.json]:
 
-            ``` json
+            ``` { .json .annotate }
             {
               "yaml.schemas": {
                 "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-              }
+              },
+              "yaml.customTags": [ // (1)!
+                "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+              ]
             }
             ```
+
+            1. `yaml.customTags` part will be needed if you want to use and configure [Emojis](reference/icons-emojis.md).
 
     === "Other"
 
