@@ -38,13 +38,6 @@
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
-        {% if palette.primary %}
-          {% import "partials/palette.html" as map %}
-          {% set primary = map.primary(
-            palette.primary | replace(" ", "-") | lower
-          ) %}
-          <meta name="theme-color" content="{{ primary }}">
-        {% endif %}
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
@@ -81,8 +74,10 @@
     {% if not palette is mapping %}
       {% set palette = palette | first %}
     {% endif %}
-    {% set scheme = palette.scheme | d("default", true) %}
-    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ palette.primary | replace(' ', '-') }}" data-md-color-accent="{{ palette.accent | replace(' ', '-') }}">
+    {% set scheme  = palette.scheme  | d("default", true) %}
+    {% set primary = palette.primary | d("", true) %}
+    {% set accent  = palette.accent  | d("", true) %}
+    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ primary | replace(' ', '-') }}" data-md-color-accent="{{ accent | replace(' ', '-') }}">
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
@@ -239,13 +234,13 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.ce0331ff.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.c0285e69.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
     {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.27126f53.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.73715943.min.css' | url }}">
       <script src="{{ 'assets/javascripts/extra/bundle.f719a234.min.js' | url }}" defer></script>
     {% endif %}
   </body>

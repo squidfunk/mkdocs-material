@@ -113,7 +113,6 @@ assets may also be put in the `overrides` directory:
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ pagination.html                  # Pagination (used for blog)
-│  ├─ palette.html                     # Color palette
 │  ├─ post.html                        # Blog post excerpt
 │  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
