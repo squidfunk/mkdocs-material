@@ -26,19 +26,25 @@ import lunr from "lunr"
  * Global types
  * ------------------------------------------------------------------------- */
 
-type Fields = "text" | "title" | "tags"
-
 declare global {
   namespace lunr {
 
     /**
+     * Indexed fields
+     */
+    type Fields = "text" | "title" | "tags"
+
+    /**
      * Index - expose inverted index
      */
-    interface Index { // this is defined in the actual inverface...
+    interface Index {
       invertedIndex: Record<string, unknown>
       fields: Fields[]
     }
 
+    /**
+     * Improve typings of query builder
+     */
     interface Builder {
       field(
         fieldName: string,
