@@ -148,14 +148,12 @@ export function mountPalette(
           const { backgroundColor } = window.getComputedStyle(header)
 
           /* Return color in hexadecimal format */
-          return `#${
-            backgroundColor.match(/\d+/g)!
-              .map(value => (+value).toString(16).padStart(2, "0"))
-              .join("")
-          }`
+          return backgroundColor.match(/\d+/g)!
+            .map(value => (+value).toString(16).padStart(2, "0"))
+            .join("")
         })
       )
-        .subscribe(color => meta.content = color)
+        .subscribe(color => meta.content = `#${color}`)
 
     /* Revert transition durations after color switch */
     push$.pipe(observeOn(asyncScheduler))
