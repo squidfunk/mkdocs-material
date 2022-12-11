@@ -27,7 +27,9 @@
               "type": "array",
               "items": {
                 "pattern": "(\\*|\\.md)$"
-              }
+              },
+              "uniqueItems": true,
+              "minItems": 1
             }
           },
           "additionalProperties": false

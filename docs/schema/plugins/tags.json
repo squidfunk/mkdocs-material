@@ -36,7 +36,8 @@
                   "type": "array",
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "uniqueItems": true
                 }
               },
               "additionalProperties": false
@@ -59,6 +60,7 @@
               "items": {
                 "type": "string"
               },
+              "uniqueItems": true,
               "default": []
             }
           },
