@@ -25,7 +25,7 @@
  * ------------------------------------------------------------------------- */
 
 /**
- * Table for indexing
+ * Position table
  */
 export type PositionTable = number[][]
 
@@ -46,62 +46,103 @@ export type Position = number
  * when executing the query. It then highlights all occurrences, and returns
  * their concatenation. In case of multiple blocks, two are returned.
  *
- * @param value - String value
+ * @param input - Input value
  * @param table - Table for indexing
  * @param positions - Occurrences
  *
  * @returns Highlighted string value
  */
 export function highlight(
-  value: string, table: PositionTable, positions: Position[]
+  input: string, table: PositionTable, positions: Position[]
 ): string {
+  return highlightAll([input], table, positions).pop()!
+}
 
-  /* Map occurrences to blocks */
-  const blocks = new Map<number, number[]>()
-  for (const i of positions.sort((a, b) => a - b)) {
-    const block = i >>> 20
-    const index = i & 0xFFFFF
+/**
+ * Highlight all occurrences in a set of strings
+ *
+ * @param inputs - Input values
+ * @param table - Table for indexing
+ * @param positions - Occurrences
+ *
+ * @returns Highlighted string values
+ */
+export function highlightAll(
+  inputs: string[], table: PositionTable, positions: Position[]
+): string[] {
 
-    /* Ensure presence of block group */
-    let group = blocks.get(block)
-    if (typeof group === "undefined")
-      blocks.set(block, group = [])
+  /* Map blocks to input values */
+  const mapping = [0]
+  for (let t = 1; t < table.length; t++) {
+    const prev = table[t - 1]
+    const next = table[t]
 
-    /* Add index to group */
-    group.push(index)
+    /* Check if table points to new block */
+    const p = prev[prev.length - 1] >>> 2 & 0x3FF
+    const q = next[0]               >>> 12
+
+    /* Add block to mapping */
+    mapping.push(+(p > q) + mapping[mapping.length - 1])
   }
 
-  /* Compute slices */
-  const slices: string[] = []
-  for (const [block, indexes] of blocks) {
-    const t = table[block]
+  /* Highlight strings one after another */
+  return inputs.map((input, i) => {
 
-    /* Extract positions and length */
-    const start  = t[0]            >>> 12
-    const end    = t[t.length - 1] >>> 12
-    const length = t[t.length - 1] >>> 2 & 0x3FF
+    /* Map occurrences to blocks */
+    const blocks = new Map<number, number[]>()
+    for (const p of positions.sort((a, b) => a - b)) {
+      const index = p & 0xFFFFF
+      const block = p >>> 20
+      if (mapping[block] !== i)
+        continue
 
-    /* Extract and highlight slice/block */
-    let slice = value.slice(start, end + length)
-    for (const i of indexes.sort((a, b) => b - a)) {
+      /* Ensure presence of block group */
+      let group = blocks.get(block)
+      if (typeof group === "undefined")
+        blocks.set(block, group = [])
 
-      /* Retrieve offset and length of match */
-      const p = (t[i] >>> 12) - start
-      const q = (t[i] >>> 2 & 0x3FF) + p
-
-      /* Wrap occurrence */
-      slice = [
-        slice.slice(0, p),
-        "<mark>", slice.slice(p, q), "</mark>",
-        slice.slice(q)
-      ].join("")
+      /* Add index to group */
+      group.push(index)
     }
 
-    /* Append slice and abort if we have two */
-    if (slices.push(slice) === 2)
-      break
-  }
+    /* Just return string, if no occurrences */
+    if (blocks.size === 0)
+      return input
 
-  /* Return highlighted string value */
-  return slices.join("")
+    /* Compute slices */
+    const slices: string[] = []
+    for (const [block, indexes] of blocks) {
+      const t = table[block]
+
+      /* Extract positions and length */
+      const start  = t[0]            >>> 12
+      const end    = t[t.length - 1] >>> 12
+      const length = t[t.length - 1] >>> 2 & 0x3FF
+
+      /* Extract and highlight slice */
+      let slice = input.slice(start, end + length)
+      for (const j of indexes.sort((a, b) => b - a)) {
+
+        /* Retrieve offset and length of match */
+        const p = (t[j] >>> 12) - start
+        const q = (t[j] >>> 2 & 0x3FF) + p
+
+        /* Wrap occurrence */
+        slice = [
+          slice.slice(0, p),
+          "<mark>",
+          slice.slice(p, q),
+          "</mark>",
+          slice.slice(q)
+        ].join("")
+      }
+
+      /* Append slice and abort if we have two */
+      if (slices.push(slice) === 2)
+        break
+    }
+
+    /* Return highlighted slices */
+    return slices.join("")
+  })
 }

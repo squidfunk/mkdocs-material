@@ -41,15 +41,12 @@ type VisitorFn = (
 /**
  * Split a string using the given separator
  *
- * This function intentionally expects a visitor function argument, as opposed
- * to collecting and returning all sections, for better memory efficiency.
- *
- * @param value - String value
+ * @param input - Input value
  * @param separator - Separator
  * @param fn - Visitor function
  */
 export function split(
-  value: string, separator: RegExp, fn: VisitorFn
+  input: string, separator: RegExp, fn: VisitorFn
 ): void {
   separator = new RegExp(separator, "g")
 
@@ -57,10 +54,10 @@ export function split(
   let match: RegExpExecArray | null
   let index = 0
   do {
-    match = separator.exec(value)
+    match = separator.exec(input)
 
     /* Emit non-empty range */
-    const until = match?.index ?? value.length
+    const until = match?.index ?? input.length
     if (index < until)
       fn(index, until)
 

@@ -30,6 +30,7 @@ import {
   Position,
   PositionTable,
   highlight,
+  highlightAll,
   tokenize
 } from "../internal"
 import {
@@ -46,7 +47,9 @@ import {
 /**
  * Search item
  */
-export interface SearchItem extends SearchDocument {
+export interface SearchItem
+  extends SearchDocument
+{
   score: number                        /* Score (relevance) */
   terms: SearchQueryTerms              /* Search query terms */
 }
@@ -213,6 +216,8 @@ export class Search {
       .reduce<SearchItem[]>((item, { ref, score, matchData }) => {
         let doc = this.map.get(ref)
         if (typeof doc !== "undefined") {
+
+          /* Shallow copy document */
           doc = { ...doc }
           if (doc.tags)
             doc.tags = [...doc.tags]
@@ -223,39 +228,29 @@ export class Search {
             Object.keys(matchData.metadata)
           )
 
-          // we must collect all positions for each term!
-          // we now take the keys of the index
+          /* Highlight matches in fields */
           for (const field of this.index.fields) {
-            if (!(field in doc))
+            if (typeof doc[field] === "undefined")
               continue
 
-            /* Collect matches */
+            /* Collect positions from matches */
             const positions: Position[] = []
             for (const match of Object.values(matchData.metadata))
-              if (field in match)
+              if (typeof match[field] !== "undefined")
                 positions.push(...match[field].position)
 
-            /* Skip field, if no highlighting is necessary */
+            /* Skip highlighting, if no positions were collected */
             if (!positions.length)
               continue
 
-            // @ts-expect-error - @todo fix typings
-            if (Array.isArray(doc[field])) {
-              // @ts-expect-error - @todo fix typings
-              for (let i = 0; i < doc[field].length; i++) {
-                // @ts-expect-error - @todo fix typings
-                doc[field][i] = highlight(doc[field][i],
-                  this.table.get([doc.location, field].join(":"))!,
-                  positions
-                )
-              }
-            } else {
-              // @ts-expect-error - @todo fix typings
-              doc[field] = highlight(doc[field],
-                this.table.get([doc.location, field].join(":"))!,
-                positions
-              )
-            }
+            /* Load table and determine highlighting method */
+            const table = this.table.get([doc.location, field].join(":"))!
+            const fn = Array.isArray(doc[field])
+              ? highlightAll
+              : highlight
+
+            // @ts-expect-error - stop moaning, TypeScript!
+            doc[field] = fn(doc[field], table, positions)
           }
 
           /* Highlight title and text and apply post-query boosts */
