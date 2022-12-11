@@ -86,8 +86,15 @@ export function watchSearchShare(
       map(({ value }) => {
         const url = getLocation()
         url.hash = ""
-        url.searchParams.delete("h")
-        url.searchParams.set("q", value)
+
+        /* Compute readable query strings */
+        value = value
+          .replace(/\s+/g, "+")        /* Collapse whitespace */
+          .replace(/&/g, "%26")        /* Escape '&' character */
+          .replace(/=/g, "%3D")        /* Escape '=' character */
+
+        /* Replace query string */
+        url.search = `q=${value}`
         return { url }
       })
     )
