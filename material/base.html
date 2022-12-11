@@ -92,7 +92,7 @@
       {% if page.toc | first is defined %}
         {% set skip = page.toc | first %}
         <a href="{{ skip.url | url }}" class="md-skip">
-          {{ lang.t("skip.link") }}
+          {{ lang.t("action.skip") }}
         </a>
       {% endif %}
     </div>
@@ -240,7 +240,7 @@
       {% endfor %}
     {% endblock %}
     {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.c507a49a.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.07698e60.min.css' | url }}">
       <script src="{{ 'assets/javascripts/extra/bundle.f719a234.min.js' | url }}" defer></script>
     {% endif %}
   </body>

@@ -196,7 +196,7 @@
       {% if page.toc | first is defined %}
         {% set skip = page.toc | first %}
         <a href="{{ skip.url | url }}" class="md-skip">
-          {{ lang.t("skip.link") }}
+          {{ lang.t("action.skip") }}
         </a>
       {% endif %}
     </div>
