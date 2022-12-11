@@ -150,47 +150,58 @@
       ]
     },
     {
-      "type": "object",
-      "properties": {
-        "pymdownx.emoji": {
+      "oneOf": [
+        {
           "title": "Emoji – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji",
+          "enum": [
+            "pymdownx.emoji"
+          ]
+        },
+        {
           "type": "object",
           "properties": {
-            "emoji_generator": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_generator",
-              "default": "!!python/name:materialx.emoji.to_svg"
-            },
-            "emoji_index": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_index",
-              "default": "!!python/name:materialx.emoji.twemoji"
-            },
-            "options": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+            "pymdownx.emoji": {
+              "title": "Emoji – Python Markdown Extensions",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji",
               "type": "object",
               "properties": {
-                "custom_icons": {
+                "emoji_generator": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_generator",
+                  "default": "!!python/name:materialx.emoji.to_svg"
+                },
+                "emoji_index": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.emoji_index",
+                  "default": "!!python/name:materialx.emoji.twemoji"
+                },
+                "options": {
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
-                  "type": "array",
-                  "items": {
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
-                    "type": "string"
+                  "type": "object",
+                  "properties": {
+                    "custom_icons": {
+                      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+                      "type": "array",
+                      "items": {
+                        "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.emoji.options.custom_icons",
+                        "type": "string"
+                      },
+                      "uniqueItems": true,
+                      "minItems": 1
+                    }
                   },
-                  "uniqueItems": true,
-                  "minItems": 1
+                  "additionalProperties": false
                 }
               },
-              "additionalProperties": false
+              "additionalProperties": false,
+              "required": [
+                "emoji_generator",
+                "emoji_index"
+              ]
             }
           },
-          "additionalProperties": false,
-          "required": [
-            "emoji_generator",
-            "emoji_index"
-          ]
+          "additionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     {
       "oneOf": [
@@ -561,27 +572,38 @@
       "additionalProperties": false
     },
     {
-      "type": "object",
-      "properties": {
-        "pymdownx.tasklist": {
+      "oneOf": [
+        {
           "title": "Tasklist – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist",
+          "enum": [
+            "pymdownx.tasklist"
+          ]
+        },
+        {
           "type": "object",
           "properties": {
-            "custom_checkbox": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.custom_checkbox",
-              "type": "boolean",
-              "default": true
-            },
-            "clickable_checkbox": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.clickable_checkbox",
-              "type": "boolean"
+            "pymdownx.tasklist": {
+              "title": "Tasklist – Python Markdown Extensions",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist",
+              "type": "object",
+              "properties": {
+                "custom_checkbox": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.custom_checkbox",
+                  "type": "boolean",
+                  "default": true
+                },
+                "clickable_checkbox": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tasklist.clickable_checkbox",
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
         }
-      },
-      "additionalProperties": false
+      ]
     },
     {
       "oneOf": [
