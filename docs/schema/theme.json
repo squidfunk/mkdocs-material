@@ -179,6 +179,12 @@
           ]
         },
         {
+          "title": "Site language: Armenian",
+          "enum": [
+            "hy"
+          ]
+        },
+        {
           "title": "Site language: Indonesian",
           "enum": [
             "id"
@@ -212,6 +218,12 @@
           "title": "Site language: Korean",
           "enum": [
             "kr"
+          ]
+        },
+        {
+          "title": "Site language: Lithuanian",
+          "enum": [
+            "lt"
           ]
         },
         {
@@ -335,6 +347,12 @@
           ]
         },
         {
+          "title": "Site language: Tagalog",
+          "enum": [
+            "tl"
+          ]
+        },
+        {
           "title": "Site language: Turkish",
           "enum": [
             "tr"
@@ -344,6 +362,18 @@
           "title": "Site language: Ukrainian",
           "enum": [
             "uk"
+          ]
+        },
+        {
+          "title": "Site language: Urdu",
+          "enum": [
+            "ur"
+          ]
+        },
+        {
+          "title": "Site language: Uzbek",
+          "enum": [
+            "uz"
           ]
         },
         {
@@ -406,6 +436,9 @@
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/",
       "type": "object",
       "properties": {
+        "edit": {
+          "$ref": "#/definitions/icon"
+        },
         "logo": {
           "$ref": "#/definitions/icon"
         },
@@ -458,7 +491,7 @@
           "defaultSnippets": [
             {
               "label": "note",
-              "body": "note: ${1:material/pencil}"
+              "body": "note: ${1:material/pencil-circle}"
             },
             {
               "label": "abstract",
@@ -474,7 +507,7 @@
             },
             {
               "label": "success",
-              "body": "success: ${1:material/check-bold}"
+              "body": "success: ${1:material/check}"
             },
             {
               "label": "question",
@@ -486,19 +519,19 @@
             },
             {
               "label": "failure",
-              "body": "failure: ${1:material/close-thick}"
+              "body": "failure: ${1:material/close}"
             },
             {
               "label": "danger",
-              "body": "danger: ${1:material/lightning-bolt}"
+              "body": "danger: ${1:material/lightning-bolt-circle}"
             },
             {
               "label": "bug",
-              "body": "bug: ${1:material/bug}"
+              "body": "bug: ${1:material/shield-bug}"
             },
             {
               "label": "example",
-              "body": "example: ${1:material/format-list-numbered}"
+              "body": "example: ${1:material/test-tube}"
             },
             {
               "label": "quote",
@@ -508,10 +541,10 @@
         },
         "tag": {
           "title": "Tag icon",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers",
           "type": "object",
           "patternProperties": {
-            "^\\w+$": {
+            "^[\\w-]+$": {
               "$ref": "#/definitions/icon"
             }
           },
@@ -520,6 +553,10 @@
       },
       "additionalProperties": false,
       "defaultSnippets": [
+        {
+          "label": "edit",
+          "body": "edit: ${1:material/pencil}"
+        },
         {
           "label": "logo",
           "body": "logo: ${1:material/library}"

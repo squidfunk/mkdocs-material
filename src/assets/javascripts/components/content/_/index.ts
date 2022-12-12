@@ -22,7 +22,7 @@
 
 import { Observable, merge } from "rxjs"
 
-import { getElements } from "~/browser"
+import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
 import { Annotation } from "../annotation"
@@ -68,6 +68,7 @@ export type Content =
  * Mount options
  */
 interface MountOptions {
+  viewport$: Observable<Viewport>      /* Viewport observable */
   target$: Observable<HTMLElement>     /* Location target observable */
   print$: Observable<boolean>          /* Media print observable */
 }
@@ -88,13 +89,13 @@ interface MountOptions {
  * @returns Content component observable
  */
 export function mountContent(
-  el: HTMLElement, { target$, print$ }: MountOptions
+  el: HTMLElement, { viewport$, target$, print$ }: MountOptions
 ): Observable<Component<Content>> {
   return merge(
 
     /* Code blocks */
     ...getElements("pre:not(.mermaid) > code", el)
-      .map(child => mountCodeBlock(child, { print$ })),
+      .map(child => mountCodeBlock(child, { target$, print$ })),
 
     /* Mermaid diagrams */
     ...getElements("pre.mermaid", el)
@@ -110,6 +111,6 @@ export function mountContent(
 
     /* Content tabs */
     ...getElements("[data-tabs]", el)
-      .map(child => mountContentTabs(child))
+      .map(child => mountContentTabs(child, { viewport$ }))
   )
 }

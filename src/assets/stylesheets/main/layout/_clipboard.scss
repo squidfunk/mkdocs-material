@@ -76,6 +76,7 @@
     margin: 0 auto;
     background-color: currentcolor;
     mask-image: var(--md-clipboard-icon);
+    mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
     content: "";

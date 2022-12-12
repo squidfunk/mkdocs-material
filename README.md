@@ -1,6 +1,9 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/">
+  <a href="https://squidfunk.github.io/mkdocs-material/#gh-light-mode-only">
     <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
+  </a>
+  <a href="https://squidfunk.github.io/mkdocs-material/#gh-dark-mode-only">
+    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo-dark.svg" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
@@ -116,6 +119,33 @@
   <a href="https://www.hyperledger.org/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png" height="58"
   /></a>
+  <a href="https://ipfabric.io/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png" height="58"
+  /></a>
+  <a href="https://www.apex.ai/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png" height="58"
+  /></a>
+  <a href="https://jitterbit.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png" height="58"
+  /></a>
+  <a href="https://sparkfun.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png" height="58"
+  /></a>
+  <a href="https://automationtechnology.de/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png" height="58"
+  /></a>
+  <a href="https://eccenca.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png" height="58"
+  /></a>
+  <a href="https://sealvault.org/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png" height="58"
+  /></a>
+  <a href="https://neptune.ai/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
+  /></a>
+  <a href="https://cash.app/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
@@ -153,7 +183,7 @@ documentation works for everyone.
 
 ### Open Source
 
-Trust 10,000+ users – choose a mature and actively maintained solution built
+Trust 20,000+ users – choose a mature and actively maintained solution built
 with state-of-the-art Open Source technologies. Keep ownership of your content
 without fear of vendor lock-in. Licensed under MIT.
 
@@ -183,7 +213,6 @@ For detailed installation instructions, configuration options, and a demo, visit
 
 [Atlassian](https://atlassian.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
-[Binance](https://docs.binance.org/),
 [Bloomberg](https://bloomberg.github.io/selekt/),
 [CERN](http://abpcomputing.web.cern.ch/),
 [Datadog](https://datadoghq.dev/integrations-core/),
@@ -191,6 +220,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Hewlett Packard](https://hewlettpackard.github.io/squest/),
 [ING](https://ing-bank.github.io/baker/),
 [Intel](https://open-amt-cloud-toolkit.github.io/docs/),
+[JetBrains](https://jetbrains.github.io/projector-client/mkdocs/),
 [LinkedIn](https://linkedin.github.io/school-of-sre/),
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),

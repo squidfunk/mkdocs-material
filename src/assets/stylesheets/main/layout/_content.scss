@@ -68,7 +68,7 @@
   // Button inside of the content area - these buttons are meant for actions on
   // a document-level, i.e. linking to related source code files, printing etc.
   &__button {
-    float: right;
+    float: inline-end;
     margin: px2rem(8px) 0;
     margin-inline-start: px2rem(8px);
     padding: 0;
@@ -76,11 +76,6 @@
     // [print]: Hide buttons
     @media print {
       display: none;
-    }
-
-    // Adjust for right-to-left languages
-    [dir="rtl"] & {
-      float: left;
     }
 
     // Adjust default link color for icons

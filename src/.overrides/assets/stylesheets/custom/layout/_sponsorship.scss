@@ -1,0 +1,129 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Premium sponsors
+  .mdx-premium {
+
+    // Paragraphs
+    p {
+      margin: 2em 0;
+      text-align: center;
+    }
+
+    // Premium sponsor image
+    img {
+      height: px2rem(65px);
+    }
+
+    // Premium sponsor list
+    p:last-child {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      // Premium sponsor link
+      > a {
+        display: block;
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // Sponsorship
+  .mdx-sponsorship {
+
+    // Sponsorship list
+    &__list {
+      margin: 2em 0;
+
+      // Clearfix, because we can't use overflow: auto
+      &::after {
+        display: block;
+        clear: both;
+        content: "";
+      }
+    }
+
+    // Sponsorship item
+    &__item {
+      display: block;
+      float: inline-start;
+      width: px2rem(32px);
+      height: px2rem(32px);
+      margin: px2rem(4px);
+      overflow: hidden;
+      border-radius: 100%;
+      transform: scale(1);
+      transition:
+        color     125ms,
+        transform 125ms;
+
+      // Sponsor item on focus/hover
+      &:focus,
+      &:hover {
+        transform: scale(1.1);
+
+        // Sponsor avatar
+        img {
+          filter: grayscale(0%);
+        }
+      }
+
+      // Private sponsor
+      &--private {
+        color: var(--md-default-fg-color--lighter);
+        font-weight: 700;
+        font-size: px2rem(12px);
+        line-height: px2rem(32px);
+        text-align: center;
+        background: var(--md-default-fg-color--lightest);
+      }
+
+      // Sponsor avatar
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        filter: grayscale(100%) opacity(75%);
+        transition: filter 125ms;
+      }
+    }
+  }
+
+  // Sponsorship button
+  .mdx-sponsorship-button {
+    font-weight: 400;
+  }
+
+  // Sponsorship count and total
+  .mdx-sponsorship-count,
+  .mdx-sponsorship-total {
+    font-weight: 700;
+  }
+}

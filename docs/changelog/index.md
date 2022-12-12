@@ -1,10 +1,101 @@
----
-template: overrides/main.html
----
-
 # Changelog
 
 ## Material for MkDocs
+
+### 8.5.11 <small>_ November 30, 2022</small> { id="8.5.11" }
+
+- Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+
+### 8.5.10 <small>_ November 11, 2022</small> { id="8.5.10" }
+
+- Adjusted CSS to better allow for custom primary and accent colors
+- Fixed #4620: Primary color is not applied (8.5.9 regression)
+
+### 8.5.9 <small>_ November 8, 2022</small> { id="8.5.9" }
+
+- Fixed #4600: Illegible link colors for black and white primary colors
+- Fixed #4594: Need to set schema to change link color
+
+### 8.5.8 <small>_ November 3, 2022</small> { id="8.5.8" }
+
+- Added support for always showing settings in cookie consent
+- Fixed #4571: Buttons invisible if primary color is `white` or `black`
+- Fixed #4517: Illegible note in sequence diagram when using `slate` scheme
+
+### 8.5.7 <small>_ October 22, 2022</small> { id="8.5.7" }
+
+- Deprecated additional admonition qualifiers to reduce size of CSS
+- Fixed #4511: Search boost does not apply to sections
+
+### 8.5.6 <small>_ October 2, 2022</small> { id="8.5.6" }
+
+- Modernized appearance of admonitions (with fallback, see docs)
+- Improved appearance of inline code blocks in admonition titles
+
+### 8.5.5 <small>_ October 1, 2022</small> { id="8.5.5" }
+
+- Updated MkDocs to 1.4
+- Fixed compatibility issues with MkDocs 1.4
+- Fixed #4430: build error when enabling consent without repository URL
+
+### 8.5.4 <small>_ September 30, 2022</small> { id="8.5.4" }
+
+- Fixed expand icons shift on sidebar overflow (using `scrollbar-gutter`)
+- Fixed #4429: Text in sequence diagrams overflows in Firefox
+
+### 8.5.3 <small>_ September 20, 2022</small> { id="8.5.3" }
+
+- Fixed build error when enabling cookie consent without analytics
+- Fixed #4381: Code blocks render ligatures for some fonts
+
+### 8.5.2 <small>_ September 18, 2022</small> { id="8.5.2" }
+
+- Updated Mermaid.js to version 9.1.7
+- Fixed overly large headlines in search results (8.5.0 regression)
+- Fixed #4358: Navigation sections appear as clickable (8.5.0 regression)
+- Fixed #4356: GitHub repository statistics fetched before cookie consent
+
+### 8.5.1 <small>_ September 15, 2022</small> { id="8.5.1" }
+
+- Fixed #4366: Removed dependencies with native extensions
+
+### 8.5.0 <small>_ September 13, 2022</small> { id="8.5.0" }
+
+- Added support for social cards
+- Added support for code annotation anchor links (deep linking)
+- Added support for code annotation comment stripping (syntax modifier)
+- Added support for sidebars scrolling automatically to active item
+- Added support for anchor following table of contents (= auto scroll)
+- Added support for tag icons
+
+### 8.4.4 <small>_ September 12, 2022</small> { id="8.4.4" }
+
+- Moved comments integration to separate partial (`comments.html`)
+
+### 8.4.3 <small>_ September 7, 2022</small> { id="8.4.3" }
+
+- Added Simple Icons to bundled icons (+2,300 icons)
+- Added support for changing edit icon
+- Moved page actions to separate partial (`actions.html`)
+- Fixed #4291: Version switching doesn't stay on page when anchors are used
+- Fixed #4327: Links in data tables do not receive link styling
+
+### 8.4.2 <small>_ August 27, 2022</small> { id="8.4.2" }
+
+- Updated Slovenian translations
+- Fixed #4277: Feedback widget hidden after navigation with instant loading
+- Fixed numeric tags in front matter breaking search functionality
+
+### 8.4.1 <small>_ August 21, 2022</small> { id="8.4.1" }
+
+- Updated Croatian and Hebrew translations
+
+### 8.4.0 <small>_ August 13, 2022</small> { id="8.4.0" }
+
+- Added support for cookie consent
+- Added support for feedback widget (Was this page helpful?)
+- Added support for dismissable announcement bar
+- Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 ### 8.3.9 <small>_ July 4, 2022</small> { id="8.3.9" }
 

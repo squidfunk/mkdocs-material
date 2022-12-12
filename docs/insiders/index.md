@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 title: Insiders
 ---
 
@@ -8,9 +7,9 @@ title: Insiders
 Material for MkDocs follows the __sponsorware__ release strategy, which means
 that new features are first exclusively released to sponsors as part of
 [Insiders]. Read on to learn [what sponsorships achieve],
-[how to become a sponsor] to get access to Insiders, and [what's in for you]!
+[how to become a sponsor] to get access to Insiders, and [what's in it for you]!
 
-<figure class="mdx-video" markdown>
+<!-- <figure class="mdx-video" markdown>
   <div class="mdx-video__inner">
     <iframe src="https://streamable.com/e/yslhdu" allowfullscreen></iframe>
   </div>
@@ -20,18 +19,18 @@ This documentation is built with Insiders
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
   </figcaption>
-</figure>
+</figure> -->
 
   [Insiders]: #what-is-insiders
   [what sponsorships achieve]: #what-sponsorships-achieve
   [how to become a sponsor]: #how-to-become-a-sponsor
-  [what's in for you]: #whats-in-for-me
+  [what's in it for you]: #whats-in-it-for-me
   [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## What is Insiders?
 
 Material for MkDocs Insiders is a private fork of Material for MkDocs, hosted as
-a private GitHub repository. Almost[^1] [all new features][what's in for you]
+a private GitHub repository. Almost[^1] [all new features][what's in it for you]
 are developed as part of this fork, which means that they are immediately
 available to all eligible sponsors, as they are made collaborators of this
 repository.
@@ -46,10 +45,10 @@ funding goal is hit, the features that are tied to it are merged back into
 Material for MkDocs and released for general availability, making them available
 to all users. Bugfixes are always released in tandem.
 
-Sponsorships start as low as [__$10 a month__][how to become a sponsor].[^2]
+Sponsorships start as low as [__$15 a month__][how to become a sponsor].[^2]
 
   [^2]:
-    Note that $10 a month is the minimum amount to become eligible for
+    Note that $15 a month is the minimum amount to become eligible for
     Insiders. While GitHub Sponsors also allows to sponsor lower amounts or
     one-time amounts, those can't be granted access to Insiders due to
     technical reasons.
@@ -79,40 +78,33 @@ a handful of them, [thanks to our awesome sponsors]!
   [completed funding goals]: #goals-completed
   [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
-## What's in for me?
+## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 26 additional features__ that you can start using right away, and
+access to 19 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Additional tags indexes] :material-alert-decagram:{ .mdx-pulse title="Added on July 7, 2022" }
-- [x] [Document contributors] :material-alert-decagram:{ .mdx-pulse title="Added on June 24, 2022" }
-- [x] [Automatic light / dark mode] :material-alert-decagram:{ .mdx-pulse title="Added on June 11, 2022" }
+- [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
+- [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Tags plugin: allow list] + [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Blog plugin: custom index pages]
+- [x] [Blog plugin: related links]
+- [x] [Blog plugin]
+- [x] [Navigation status]
+- [x] [Meta plugin]
+- [x] [Tags plugin: additional indexes]
+- [x] [Document contributors]
+- [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
 - [x] [Navigation pruning]
 - [x] [Tooltips]
 - [x] [Chinese search support]
-- [x] [Tag icons]
 - [x] [Card grids]
-- [x] [Offline plugin]
 - [x] [Privacy plugin]
-- [x] [Table of contents anchor following]
 - [x] [Annotations]
 - [x] [Navigation icons]
-- [x] Sidebars automatically scroll to active item
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
-- [x] [Dismissable announcement bar]
-- [x] [Was this page helpful?]
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
-- [x] [Social cards]
-- [x] [Cookie consent]
 
 </div>
 
@@ -122,7 +114,7 @@ New features are added every other week. Be sure to come back.
 
 Thanks for your interest in sponsoring! In order to become an eligible sponsor
 with your GitHub account, visit [squidfunk's sponsor profile], and complete
-a sponsorship of __$10 a month or more__. You can use your individual or
+a sponsorship of __$15 a month or more__. You can use your individual or
 organization GitHub account for sponsoring.
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
@@ -180,6 +172,15 @@ You can cancel your sponsorship anytime.[^5]
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
 [![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
 [![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
+[![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
+[![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
+[![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
+[![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
+[![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
+[![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
+[![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
+[![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
+[![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 
 </div>
 
@@ -201,6 +202,15 @@ You can cancel your sponsorship anytime.[^5]
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
   [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
   [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
+  [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
+  [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
+  [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
+  [Sparkfun]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png
+  [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
+  [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
+  [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
+  [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
+  [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
 
 <hr />
 
@@ -227,60 +237,21 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 7,000 – Royal Gold
-
-- [x] [Cookie consent]
-- [x] [Was this page helpful?]
-- [x] [Dismissable announcement bar]
-
-  [Cookie consent]: ../setup/ensuring-data-privacy.md#native-cookie-consent
-  [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
-  [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
-
-#### $ 8,000 – Scotch Bonnet
-
-- [x] [Social cards]
-- [x] [Code annotations: anchor links]
-- [x] [Code annotations: strip comments]
-- [x] [Tag icons]
-- [x] [Table of contents anchor following]
-- [x] Sidebars automatically scroll to active item
-
-  [Social cards]: ../setup/setting-up-social-cards.md
-  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
-  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
-  [Tag icons]: ../setup/setting-up-tags.md#tag-icons
-  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
-
-#### $ 10,000 – Carolina Reaper
-
-- [x] [Brand new search plugin]
-- [x] [Rich search previews]
-- [x] [Tokenizer with lookahead]
-- [x] [Advanced search highlighting]
-- [x] [Excluding content from search]
-- [x] [Offline plugin]
-
-  [Brand new search plugin]: ../blog/2021/search-better-faster-smaller.md
-  [Rich search previews]: ../blog/2021/search-better-faster-smaller.md#rich-search-previews
-  [Tokenizer with lookahead]: ../blog/2021/search-better-faster-smaller.md#tokenizer-lookahead
-  [Advanced search highlighting]: ../blog/2021/search-better-faster-smaller.md#accurate-highlighting
-  [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
-  [Offline plugin]: ../setup/building-for-offline-usage.md
-
 #### $ 12,000 – Piri Piri
 
-- [x] [Annotations]
+- [x] [Blog plugin]
 - [x] [Chinese search support]
+- [x] [Annotations]
 - [x] [Navigation icons]
 - [x] [Navigation pruning]
-- [ ] Navigation status badges
-- [ ] Blog plugin
+- [x] [Navigation status]
 
+  [Blog plugin]: ../setup/setting-up-a-blog.md
+  [Chinese search support]: ../blog/posts/chinese-search-support.md
   [Annotations]: ../reference/annotations.md
-  [Chinese search support]: ../blog/2022/chinese-search-support.md
   [Navigation icons]: ../reference/index.md#setting-the-page-icon
   [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
+  [Navigation status]: ../reference/index.md#setting-the-page-status
 
 #### $ 14,000 – Goat's Horn
 
@@ -300,11 +271,28 @@ are released for general availability.
 
 #### $ 16,000 – Chipotle
 
-- [x] [Additional tags indexes]
-- [ ] [Instant previews]
-- [ ] ... more to be announced
+- [x] [Meta plugin]
+- [x] [Blog plugin: related links]
+- [x] [Blog plugin: custom index pages]
+- [x] [Tags plugin: additional indexes]
+- [x] [Tags plugin: allow list] and [custom sorting]
+- [x] [Navigation subtitles]
 
-  [Additional tags indexes]: ../setup/setting-up-tags.md#tags-extra-files
+  [Meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
+  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
+  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
+  [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
+  [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
+  [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
+
+#### $ 20,000 – Jalapeño
+
+- [x] [Privacy plugin: external links]
+- [ ] [Instant previews]
+- ... more to be announced
+
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
 ### Goals completed
@@ -312,6 +300,47 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 10,000 – Carolina Reaper
+
+- [x] [Brand new search plugin]
+- [x] [Rich search previews]
+- [x] [Tokenizer with lookahead]
+- [x] [Advanced search highlighting]
+- [x] [Excluding content from search]
+- [x] [Offline plugin]
+
+  [Brand new search plugin]: ../blog/posts/search-better-faster-smaller.md
+  [Rich search previews]: ../blog/posts/search-better-faster-smaller.md#rich-search-previews
+  [Tokenizer with lookahead]: ../blog/posts/search-better-faster-smaller.md#tokenizer-lookahead
+  [Advanced search highlighting]: ../blog/posts/search-better-faster-smaller.md#accurate-highlighting
+  [Excluding content from search]: ../setup/setting-up-site-search.md#search-exclusion
+  [Offline plugin]: ../setup/building-for-offline-usage.md
+
+#### $ 8,000 – Scotch Bonnet
+
+- [x] [Social cards]
+- [x] [Code annotations: anchor links]
+- [x] [Code annotations: strip comments]
+- [x] [Tag icons]
+- [x] [Table of contents anchor following]
+- [x] Sidebars automatically scroll to active item
+
+  [Social cards]: ../setup/setting-up-social-cards.md
+  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
+  [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
+  [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
+  [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
+
+#### $ 7,000 – Royal Gold
+
+- [x] [Cookie consent]
+- [x] [Was this page helpful?]
+- [x] [Dismissable announcement bar]
+
+  [Cookie consent]: ../setup/ensuring-data-privacy.md#cookie-consent
+  [Was this page helpful?]: ../setup/setting-up-site-analytics.md#was-this-page-helpful
+  [Dismissable announcement bar]: ../setup/setting-up-the-header.md#mark-as-read
 
 #### $ 6,000 – Trinidad Scorpion
 
@@ -405,20 +434,28 @@ can be used by all users.
 
 ### Compatibility
 
-_We're running an open source project and want to make sure that users can
-change and build the documentation without having access to Insiders. Is this
-still possible?_
+_We're building an open source project and want to allow outside collaborators
+to run and build our documentation locally without having access to Insiders.
+Is this still possible?_
 
 Yes. Insiders is compatible with Material for MkDocs. Almost all new features
-are implemented behind feature flags; almost all configuration changes are 
-backward-compatible. This means that developers will be able to build the
-documentation locally with Material for MkDocs and when they push their changes,
-it can be built with Insiders (e.g. as part of GitHub Actions).
+and configuration options are either backward-compatible or implemented behind
+feature flags. When working with outside collaborators, it should be rarely
+necessary to change the general appearance of your site. Most Insiders features
+enhance the overall experience, e.g. by adding icons to pages or providing a
+feedback widget. While this features add value for the user of your site, they
+shouldn't be necessary for previewing when making changes to content. Currently,
+the only content-related features in Insiders that can't be properly previewed
+by non-Insiders users are:
 
-When using built-in plugins that are solely available via Insiders, it might be 
-necessary to split the `mkdocs.yml` configuration into a base configuration, and
-one with plugin overrides. Note that this is a limitation of MkDocs, which can
-be mitigated by using [configuration inheritance].
+- [Annotations]
+- [Card grids]
+
+This means that outside collaborators are able to build the documentation
+locally with Material for MkDocs and when they push their changes, your CI
+pipeline will build it with Insiders. When using built-in plugins that are
+exclusive to Insiders, it's recommended to split configuration into a base
+`mkdocs.yml` and one with plugin overrides via [configuration inheritance].
 
 See the [getting started guide] for more information.
 
@@ -446,8 +483,8 @@ Material for MkDocs?_
 
 Yes. Whether you're an individual or a company, you may use _Material for MkDocs
 Insiders_ precisely under the same terms as Material for MkDocs, which are given
-by the [MIT license]. However, we kindly ask you to respect the following
-guidelines:
+by the [MIT license]. However, we kindly ask you to respect our
+__fair use policy__:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
   it for public, private or commercial projects, privately fork or mirror it,

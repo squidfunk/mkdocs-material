@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Setting up site analytics
 
 As with any other service offered on the web, understanding how your project
@@ -10,7 +6,7 @@ MkDocs natively integrates with [Google Analytics] and offers a customizable
 [cookie consent] and a [feedback widget].
 
   [Google Analytics]: https://developers.google.com/analytics
-  [cookie consent]: ensuring-data-privacy.md#native-cookie-consent
+  [cookie consent]: ensuring-data-privacy.md#cookie-consent
   [feedback widget]: #was-this-page-helpful
 
 ## Configuration
@@ -70,9 +66,9 @@ following lines to `mkdocs.yml`:
 
 ### Was this page helpful?
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-3.2.0][Insiders] ·
-:octicons-milestone-24: Default: _none_
+[:octicons-tag-24: 8.4.0][Was this page helpful? support] ·
+:octicons-milestone-24: Default: _none_ ·
+:octicons-beaker-24: Experimental
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.
@@ -94,7 +90,7 @@ extra:
           data: 0
           note: >- # (2)!
             Thanks for your feedback! Help us improve this page by
-            using our <a href="..." target=_blank>feedback form</a>.
+            using our <a href="..." target="_blank" rel="noopener">feedback form</a>.
 ```
 
 1.  This feature is natively integrated with [Google Analytics][analytics],
@@ -169,9 +165,9 @@ integrated with the [cookie consent] feature[^1].
 
 The following properties are available for each rating:
 
-`icon`{ #feedback-rating-icon }
+[`icon`](#+analytics.feedback.ratings.icon){ #+analytics.feedback.ratings.icon }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must point to a valid icon path referencing [any icon bundled
     with the theme][custom icons], or the build will not succeed. Some popular
     combinations:
@@ -180,24 +176,24 @@ The following properties are available for each rating:
     * :material-thumb-up-outline: + :material-thumb-down-outline: – `material/thumb-up-outline` + `material/thumb-down-outline`
     * :material-heart: + :material-heart-broken: – `material/heart` + `material/heart-broken`
 
-`name`{ #feedback-rating-name }
+[`name`](#+analytics.feedback.ratings.name){ #+analytics.feedback.ratings.name }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is shown on user interaction (i.e. keyboard focus
     or mouse hover), explaining the meaning of the rating behind the icon.
 
-`data`{ #feedback-rating-data }
+[`data`](#+analytics.feedback.ratings.data){ #+analytics.feedback.ratings.data }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is sent as a data value with the custom event
     that is transmitted to Google Analytics[^2] (or any custom integration).
 
   [^2]:
     Note that for Google Analytics, the data value must be an integer.
 
-`note`{ #feedback-rating-note }
+[`note`](#+analytics.feedback.ratings.note){ #+analytics.feedback.ratings.note }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is shown after the user selected the rating.
     It may contain arbitrary HTML tags, which is especially useful to ask the
     user to provide more detailed feedback for the current page through a form.
@@ -221,7 +217,7 @@ The following properties are available for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
-  [Insiders]: ../insiders/index.md
+  [Was this page helpful? support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [feedback widget]: #feedback
   [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png
@@ -233,10 +229,10 @@ The following properties are available for each rating:
 
 ### Hiding the feedback widget
 
-When [Metadata] is enabled, the [feedback widget] can be hidden for a document
-with custom front matter. Add the following lines at the top of a Markdown file:
+The [feedback widget] can be hidden for a document with the front matter `hide`
+property. Add the following lines at the top of a Markdown file:
 
-``` sh
+``` yaml
 ---
 hide:
   - feedback
@@ -245,8 +241,6 @@ hide:
 # Document title
 ...
 ```
-
-  [Metadata]: extensions/python-markdown.md#metadata
 
 ## Customization
 
@@ -257,7 +251,7 @@ JavaScript-based tracking solution, just follow the guide on [theme extension]
 and create a new partial in the `overrides` folder. The name of the partial is
 used to configure the custom integration via `mkdocs.yml`:
 
-=== ":octicons-file-code-16: overrides/partials/integrations/analytics/custom.html"
+=== ":octicons-file-code-16: `overrides/partials/integrations/analytics/custom.html`"
 
     ``` html
     <script>
@@ -279,7 +273,7 @@ used to configure the custom integration via `mkdocs.yml`:
         observable to listen for navigation events, which always emits the
         current `URL`.
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra:
@@ -301,7 +295,7 @@ A custom feedback widget integration just needs to process the events that are
 generated by users interacting with the feedback widget with the help of some
 [additional JavaScript]:
 
-=== ":octicons-file-code-16: docs/javascripts/feedback.js"
+=== ":octicons-file-code-16: `docs/javascripts/feedback.js`"
 
     ``` js
     var feedback = document.forms.feedback
@@ -317,7 +311,7 @@ generated by users interacting with the feedback widget with the help of some
     })
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:

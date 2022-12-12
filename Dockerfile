@@ -18,13 +18,13 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.9.2-alpine3.13
+FROM python:3.11.0-alpine3.17
 
 # Build-time flags
 ARG WITH_PLUGINS=true
 
 # Environment variables
-ENV PACKAGES=/usr/local/lib/python3.9/site-packages
+ENV PACKAGES=/usr/local/lib/python3.11/site-packages
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # Set build directory
@@ -32,23 +32,27 @@ WORKDIR /tmp
 
 # Copy files necessary for build
 COPY material material
-COPY MANIFEST.in MANIFEST.in
 COPY package.json package.json
 COPY README.md README.md
 COPY requirements.txt requirements.txt
-COPY setup.py setup.py
+COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
 RUN \
   apk upgrade --update-cache -a \
 && \
   apk add --no-cache \
+    cairo \
+    freetype-dev \
     git \
     git-fast-import \
+    jpeg-dev \
     openssh \
+    zlib-dev \
 && \
   apk add --no-cache --virtual .build \
     gcc \
+    libffi-dev \
     musl-dev \
 && \
   pip install --no-cache-dir . \
@@ -56,7 +60,9 @@ RUN \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
     pip install --no-cache-dir \
       "mkdocs-minify-plugin>=0.3" \
-      "mkdocs-redirects>=1.0"; \
+      "mkdocs-redirects>=1.0" \
+      "pillow>=9.0" \
+      "cairosvg>=2.5"; \
   fi \
 && \
   apk del .build \
@@ -74,6 +80,9 @@ RUN \
     -type f \
     -path "*/__pycache__/*" \
     -exec rm -f {} \;
+
+# Trust git directory, required for git >= 2.35.2
+RUN git config --global --add safe.directory /docs
 
 # Set working directory
 WORKDIR /docs

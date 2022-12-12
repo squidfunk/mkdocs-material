@@ -46,10 +46,10 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Set up Python dependencies
-        run: pip install --upgrade setuptools wheel twine
+        run: pip install --upgrade build twine
 
       - name: Build Python package
-        run: python setup.py build sdist bdist_wheel --universal
+        run: python -m build
 
       - name: Publish Python package
         env:
@@ -91,7 +91,9 @@ jobs:
             ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
 
       - name: Check Docker image
-        run:
+        working-directory: /tmp
+        run: |
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} new .
           docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
 
       - name: Publish Docker image

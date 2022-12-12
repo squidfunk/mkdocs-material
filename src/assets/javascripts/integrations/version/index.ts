@@ -134,7 +134,7 @@ export function setupVersionSelector(
                 map(sitemap => {
                   const location = getLocation()
                   const path = location.href.replace(config.base, "")
-                  return sitemap.includes(path)
+                  return sitemap.includes(path.split("#")[0])
                     ? new URL(`../${version}/${path}`, config.base)
                     : new URL(url)
                 })

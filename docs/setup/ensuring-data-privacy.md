@@ -1,28 +1,24 @@
----
-template: overrides/main.html
----
-
 # Ensuring data privacy
 
 Material for MkDocs makes compliance with data privacy regulations very easy, 
 as it offers a native [cookie consent] solution to seek explicit consent from
-users before setting up [tracking]. Additionally, external assets can be
+users before setting up [analytics]. Additionally, external assets can be
 automatically downloaded for [self-hosting].
 
-  [cookie consent]: #native-cookie-consent
-  [tracking]: setting-up-site-analytics.md
+  [cookie consent]: #cookie-consent
+  [analytics]: setting-up-site-analytics.md
   [self-hosting]: #built-in-privacy-plugin
 
 ## Configuration
 
-### Cookie consent { #native-cookie-consent }
+### Cookie consent
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-2.10.0][Insiders] ·
-:octicons-milestone-24: Default: _none_
+[:octicons-tag-24: 8.4.0][Cookie consent support] ·
+:octicons-milestone-24: Default: _none_ ·
+:octicons-beaker-24: Experimental
 
 Material for MkDocs ships a native and extensible cookie consent form which
-asks the user for consent prior to sending any data via analytics. Add the
+asks the user for consent prior to sending requests to third parties. Add the
 following to `mkdocs.yml`:
 
 ``` yaml
@@ -41,26 +37,30 @@ extra:
 
 The following properties are available:
 
-`title`{ #consent-title }
+[`title`](#+consent.title){ #+consent.title }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the title of the cookie consent, which is rendered at the 
     top of the form and must be set to a non-empty string.
 
-`description`{ #consent-description }
+[`description`](#+consent.description){ #+consent.description }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the description of the cookie consent, is rendered below
     the title, and may include raw HTML (e.g. a links to the terms of service).
 
-`cookies`{ #consent-cookies }
+[`cookies`](#+consent.cookies){ #+consent.cookies }
 
-:   [:octicons-tag-24: insiders-4.5.1][Insiders] · :octicons-milestone-24: 
-    Default: _none_ – This property allows to add custom cookies or change the 
-    initial `checked` state and name of the `analytics` cookie. Each cookie must 
-    receive a unique identifier which is used as a key in the `cookies` map, and
-    can be either set to a string, or to a map defining `name` and `checked`
-    state:
+:   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
+    cookies or change the initial `checked` state and name of built-in cookies.
+    Currently, the following cookies are built-in:
+
+    - __Google Analytics__ – `analytics` (enabled by default)
+    - __GitHub__ – `github` (enabled by default)
+
+    Each cookie must receive a unique identifier which is used as a key in the
+    `cookies` map, and can be either set to a string, or to a map defining
+    `name` and `checked` state:
 
     ===  "Custom cookie name"
 
@@ -96,24 +96,26 @@ The following properties are available:
             the `analytics` cookie must be added back explicitly, or analytics
             won't be triggered.
 
-
-    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will automatically include a setting for the user to disable it. [Custom cookies]
+    If Google Analytics was configured via `mkdocs.yml`, the cookie consent will
+    automatically include a setting for the user to disable it. [Custom cookies]
     can be used from JavaScript.
 
-`actions`{ #consent-actions }
+[`actions`](#+consent.actions){ #+consent.actions }
 
-:   [:octicons-tag-24: insiders-4.17.1][Insiders] · :octicons-milestone-24: 
-    Default: `[accept, manage]` – This property defines which buttons are shown
-    and in which order, e.g. to allow the user to accept cookies and manage
-    settings:
+:   :octicons-milestone-24: Default: `[accept, manage]` – This property defines
+    which buttons are shown and in which order, e.g. to allow the user to accept 
+    cookies and manage settings:
 
     ``` yaml
     extra:
       consent:
         actions:
           - accept
-          - manage
+          - manage # (1)!
     ```
+
+    1.  If the `manage` settings button is omitted from the `actions` property,
+        the settings are always shown.
 
     The cookie consent form includes three types of buttons:
 
@@ -123,11 +125,11 @@ The following properties are available:
 
 When a user first visits your site, a cookie consent form is rendered:
 
-[![cookie consent enabled]][cookie consent enabled]
+[![Cookie consent enabled]][Cookie consent enabled]
 
-  [Insiders]: ../insiders/index.md
   [Custom cookies]: #custom-cookies
-  [cookie consent enabled]: ../assets/screenshots/consent.png
+  [Cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
+  [Cookie consent enabled]: ../assets/screenshots/consent.png
 
 #### Change cookie settings
 
@@ -156,13 +158,8 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - privacy # (1)!
+  - privacy
 ```
-
-1.  Note that the privacy plugin should be located at the end of the list of
-    `plugins`, as it will scan the resulting HTML for resources to download and
-    replace. If a plugin after the privacy plugin adds further
-    [external assets], these assets will not be downloaded.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
@@ -170,19 +167,26 @@ plugins:
 
 The following configuration options are available:
 
-`enabled`{ #enabled }
+[`enabled`](#+privacy.enabled){ #+privacy.enabled }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, e.g. for local builds, use an [environment variable]:
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
       - privacy:
-          enabled: !ENV [PRIVACY, false]
+          enabled: !ENV [CI, false]
     ```
 
-`externals`{ #externals }
+  [Insiders]: ../insiders/index.md
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+
+#### External assets
+
+The following configuration options are available for external assets:
+
+[`external_assets`](#+privacy.external_assets){ #+privacy.external_assets }
 
 :   :octicons-milestone-24: Default: `bundle` – This option specifies what the
     plugin should do when encountering external assets. There are two options:
@@ -192,7 +196,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals: bundle
+          external_assets: bundle
     ```
 
     If you've removed all external assets from your project via [customization],
@@ -203,22 +207,21 @@ The following configuration options are available:
     Using `report` in [strict mode] will make the build fail when external
     assets are detected.
 
-    [customization]: ../customization.md
-    [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
+[`external_assets_dir`](#+privacy.external_assets_dir){ #+privacy.external_assets_dir }
 
-`externals_dir`{ #externals-dir }
-
-:   :octicons-milestone-24: Default: `assets/externals` – This option
+:   :octicons-milestone-24: Default: `assets/external` – This option
     specifies where the downloaded [external assets] will be stored. It's
     normally not necessary to change this option:
 
     ``` yaml
     plugins:
       - privacy:
-          externals_dir: assets/externals
+          external_assets_dir: assets/external
     ```
 
-`externals_exclude`{ #externals-exclude }
+    The path must be defined relative to [`docs_dir`][docs_dir].
+
+[`external_assets_exclude`](#+privacy.external_assets_exclude){ #+privacy.external_assets_exclude }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
@@ -227,7 +230,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - privacy:
-          externals_exclude: # (1)!
+          external_assets_exclude: # (1)!
             - cdn.jsdelivr.net/npm/mathjax@3/* 
             - giscus.app/*
     ```
@@ -244,15 +247,7 @@ The following configuration options are available:
     dynamically created or relative URLs, which can't be resolved by the privacy
     plugin due to [technical limitations].
 
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [MathJax]: ../reference/mathjax.md
-  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
-  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
-  [comment system]: adding-a-comment-system.md
-  [external assets]: #how-it-works
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-
-??? question "Why can't Material for MkDocs bundle all assets by design?"
+!!! question "Why can't Material for MkDocs bundle all assets by design?"
 
     The primary reason why Material for MkDocs can't just bundle all of its own
     assets is the integration with [Google Fonts], which offers over a thousand
@@ -269,12 +264,68 @@ The following configuration options are available:
     
     This is the very reason the [built-in privacy plugin] exists — it automates
     the process of downloading all external assets manually to ensure compliance
-    with GDPR. Note that there are some [technical limitations].
+    with GDPR with some some [technical limitations].
 
+  [customization]: ../customization.md
+  [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
+  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
+  [MathJax]: ../reference/mathjax.md
+  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
+  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
+  [comment system]: adding-a-comment-system.md
+  [external assets]: #how-it-works
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [Google Fonts]: changing-the-fonts.md
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [technical limitations]: #limitations
+
+#### External links :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.26.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+The following configuration options are available for external links:
+
+[`external_links`](#+privacy.external_links){ #+privacy.external_links }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should automatically annotate external links. By default,
+    [`rel="noopener"`][noopener] is added to all links with `target="_blank"`:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links: true
+    ```
+
+[`external_links_attr_map`](#+privacy.external_links_attr_map){ #+privacy.external_links_attr_map }
+
+:   :octicons-milestone-24: Default: _None_ – This option specifies custom
+    attributes that should be added to external links, like for example
+    `target="_blank"` so all external links open in a new window:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links_attr_map:
+            target: _blank
+    ```
+
+[`external_links_noopener`](#+privacy.external_links_noopener){ #+privacy.external_links_noopener }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should automatically add [`rel="noopener"`][noopener] to all links
+    with `target="_blank"` for security reasons:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_links_noopener: true
+    ```
+
+  [noopener]: https://mathiasbynens.github.io/rel-noopener/
 
 #### How it works
 
@@ -291,7 +342,7 @@ then replaced with the URL to the local copy. An example:
 The external script is downloaded, and the link is replaced with:
 
 ``` html
-<script src="assets/externals/example.com/script.js"></script>
+<script src="assets/external/example.com/script.js"></script>
 ```
 
 Style sheets are scanned for external `url(...)` references, e.g. images and
@@ -311,7 +362,7 @@ removed during the build process.
 
     ``` { .sh id="example" }
     .
-    └─ assets/externals/
+    └─ assets/external/
        ├─ unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
        ├─ fonts.googleapis.com/css
        ├─ fonts.gstatic.com/s/
@@ -441,7 +492,7 @@ If you've customized the [cookie consent] and added a `custom` cookie, the user
 will be prompted to accept your custom cookie. Use [additional JavaScript] to
 check whether the user accepted it:
 
-=== ":octicons-file-code-16: docs/javascripts/consent.js"
+=== ":octicons-file-code-16: `docs/javascripts/consent.js`"
 
     ``` js
     var consent = __md_get("__consent")
@@ -450,7 +501,7 @@ check whether the user accepted it:
     }
     ```
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:

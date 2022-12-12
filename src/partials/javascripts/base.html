@@ -29,6 +29,9 @@
   /* Compute base path once to integrate with instant loading */
   __md_scope = new URL("{{ config.extra.scope | d(base_url) }}", location)
 
+  /* Compute hash from the given string - see https://bit.ly/3pvPjXG */
+  __md_hash = v => [...v].reduce((h, c) => (h << 5) - h + c.charCodeAt(0), 0)
+
   /* Fetch the value for a key from the given storage */
   __md_get = (key, storage = localStorage, scope = __md_scope) => (
     JSON.parse(storage.getItem(scope.pathname + "." + key))

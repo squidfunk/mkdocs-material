@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 icon: material/alphabet-greek
 ---
 
@@ -21,7 +20,7 @@ This configuration enables support for rendering block and inline block
 equations through [MathJax]. Create a configuration file and add the following
 lines to `mkdocs.yml`:
 
-=== ":octicons-file-code-16: docs/javascripts/mathjax.js"
+=== ":octicons-file-code-16: `docs/javascripts/mathjax.js`"
 
     ``` js
     window.MathJax = {
@@ -44,7 +43,7 @@ lines to `mkdocs.yml`:
 
     1. This integrates MathJax with [instant loading].
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     markdown_extensions:

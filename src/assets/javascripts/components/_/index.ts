@@ -32,6 +32,7 @@ import { getElement, getElements } from "~/browser"
 export type ComponentType =
   | "announce"                         /* Announcement bar */
   | "container"                        /* Container */
+  | "consent"                          /* Consent */
   | "content"                          /* Content */
   | "dialog"                           /* Dialog */
   | "header"                           /* Header */
@@ -76,6 +77,7 @@ export type Component<
 interface ComponentTypeMap {
   "announce": HTMLElement              /* Announcement bar */
   "container": HTMLElement             /* Container */
+  "consent": HTMLElement               /* Consent */
   "content": HTMLElement               /* Content */
   "dialog": HTMLElement                /* Dialog */
   "header": HTMLElement                /* Header */

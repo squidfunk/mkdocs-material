@@ -20,32 +20,23 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Edit button -->
-{% if page.edit_url %}
-  <a
-    href="{{ page.edit_url }}"
-    title="{{ lang.t('edit.link.title') }}"
-    class="md-content__button md-icon"
-  >
-    {% include ".icons/material/pencil.svg" %}
-  </a>
-{% endif %}
-
 <!-- Tags -->
 {% if "tags" in config.plugins %}
   {% include "partials/tags.html" %}
 {% endif %}
 
+<!-- Actions -->
+{% include "partials/actions.html" %}
+
 <!--
-  Hack: check whether the content contains a h1 headline. If it
-  doesn't, the page title (or respectively site name) is used
-  as the main headline.
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
+  page title (or respectively site name) is used as the main headline.
 -->
 {% if not "\x3ch1" in page.content %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
-<!-- Markdown content -->
+<!-- Page content -->
 {{ page.content }}
 
 <!-- Source file information -->
@@ -55,3 +46,9 @@
 ) %}
   {% include "partials/source-file.html" %}
 {% endif %}
+
+<!-- Was this page helpful? -->
+{% include "partials/feedback.html" %}
+
+<!-- Comment system -->
+{% include "partials/comments.html" %}

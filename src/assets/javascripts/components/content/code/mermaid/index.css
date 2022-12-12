@@ -337,12 +337,18 @@ line {
   stroke: var(--md-mermaid-edge-color);
 }
 
-/* Sequence message and loop text */
+/* Sequence message, loop and note text */
 .messageText,
-.loopText > tspan {
+.loopText > tspan,
+.noteText > tspan {
   font-family: var(--md-mermaid-font-family) !important;
   fill: var(--md-mermaid-edge-color);
   stroke: none;
+}
+
+/* Sequence note text */
+.noteText > tspan {
+  fill: hsl(0, 0%, 0%);
 }
 
 /* Sequence arrow head */

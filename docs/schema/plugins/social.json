@@ -3,7 +3,7 @@
   "title": "Built-in social plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#built-in-social-plugin",
       "enum": [
         "social"
       ]
@@ -12,28 +12,28 @@
       "type": "object",
       "properties": {
         "social": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#built-in-social-plugin",
           "type": "object",
           "properties": {
             "cards": {
               "title": "Social card generation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards",
               "type": "boolean",
               "default": true
             },
             "cards_color": {
               "title": "Social card color palette",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
               "type": "object",
               "properties": {
                 "fill": {
                   "title": "Background fill color",
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
                   "type": "string"
                 },
                 "text": {
                   "title": "Foreground text color",
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-color",
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
                   "type": "string"
                 }
               },
@@ -48,7 +48,7 @@
             },
             "cards_dir": {
               "title": "Social card directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#cards-dir",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_dir",
               "type": "string",
               "default": "assets/images/social"
             }

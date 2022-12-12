@@ -22,7 +22,7 @@
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.5.11">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -34,10 +34,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.1d29e8d0.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.975780f9.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.cbb835fc.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
         {% if palette.primary %}
           {% import "partials/palette.html" as map %}
           {% set primary = map.primary(
@@ -61,13 +61,18 @@
         <style>:root{--md-text-font:"{{ text }}";--md-code-font:"{{ code }}"}</style>
       {% endif %}
     {% endblock %}
-    {% for path in config["extra_css"] %}
+    {% for path in config.extra_css %}
       <link rel="stylesheet" href="{{ path | url }}">
     {% endfor %}
     {% include "partials/javascripts/base.html" %}
     {% block analytics %}
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
+    {% if page.meta and page.meta.meta %}
+      {% for tag in page.meta.meta %}
+        <meta {% for key, value in tag.items() %} {{ key }}="{{value}}" {% endfor %}>
+      {% endfor %}
+    {% endif %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
@@ -76,10 +81,10 @@
     {% if not palette is mapping %}
       {% set palette = palette | first %}
     {% endif %}
-    {% set scheme  = palette.scheme  | replace(" ", "-") | lower %}
-    {% set primary = palette.primary | replace(" ", "-") | lower %}
-    {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}">
+    {% set scheme  = palette.scheme | d("default", true) %}
+    {% set primary = palette.primary %}
+    {% set accent  = palette.accent %}
+    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ primary | replace(' ', '-') }}" data-md-color-accent="{{ accent | replace(' ', '-') }}">
   {% else %}
     <body dir="{{ direction }}">
   {% endif %}
@@ -102,21 +107,29 @@
       {% if self.announce() %}
         <aside class="md-banner">
           <div class="md-banner__inner md-grid md-typeset">
+            {% if "announce.dismiss" in features %}
+              <button class="md-banner__button md-icon" aria-label="{{ lang.t('announce.dismiss') }}">
+                {% include ".icons/material/close.svg" %}
+              </button>
+            {% endif %}
             {% block announce %}{% endblock %}
           </div>
+          {% if "announce.dismiss" in features %}
+            {% include "partials/javascripts/announce.html" %}
+          {% endif %}
         </aside>
       {% endif %}
     </div>
     {% if config.extra.version %}
       <div data-md-component="outdated" hidden>
-        <aside class="md-banner md-banner--warning">
-          {% if self.outdated() %}
+        {% if self.outdated() %}
+          <aside class="md-banner md-banner--warning">
             <div class="md-banner__inner md-grid md-typeset">
               {% block outdated %}{% endblock %}
             </div>
             {% include "partials/javascripts/outdated.html" %}
-          {% endif %}
-        </aside>
+          </aside>
+        {% endif %}
       </div>
     {% endif %}
     {% block header %}
@@ -159,14 +172,16 @@
               </div>
             {% endif %}
           {% endblock %}
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              {% block content %}
-                {% include "partials/content.html" %}
-              {% endblock %}
-            </article>
-            {% include "partials/javascripts/content.html" %}
-          </div>
+          {% block container %}
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                {% block content %}
+                  {% include "partials/content.html" %}
+                {% endblock %}
+              </article>
+            </div>
+          {% endblock %}
+          {% include "partials/javascripts/content.html" %}
         </div>
         {% if "navigation.top" in features %}
           <a href="#" class="md-top md-icon" data-md-component="top" hidden>
@@ -182,15 +197,29 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
+    {% if config.extra.consent %}
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            {% include "partials/consent.html" %}
+          </form>
+        </aside>
+      </div>
+      {% include "partials/javascripts/consent.html" %}
+    {% endif %}
     {% block config %}
       {%- set app = {
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.b97dbffb.min.js" | url
+        "search": "assets/javascripts/workers/search.16e2a7d4.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
+      {%- endif -%}
+      {%- if config.extra.tags -%}
+        {%- set _ = app.update({ "tags": config.extra.tags }) -%}
       {%- endif -%}
       {%- set translations = app.translations -%}
       {%- for key in [
@@ -216,10 +245,14 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.6c7ad80a.min.js' | url }}"></script>
-      {% for path in config["extra_javascript"] %}
+      <script src="{{ 'assets/javascripts/bundle.3020a18e.min.js' | url }}"></script>
+      {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
+    {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.5c7f4198.min.css' | url }}">
+      <script src="{{ 'assets/javascripts/extra/bundle.cfb3feee.min.js' | url }}" defer></script>
+    {% endif %}
   </body>
 </html>

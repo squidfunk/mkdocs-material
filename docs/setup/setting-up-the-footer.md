@@ -1,21 +1,16 @@
----
-template: overrides/main.html
----
-
 # Setting up the footer
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
-channels, e.g. :fontawesome-brands-medium:{ style="color: #00AB6C" },
-:fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
-:fontawesome-brands-facebook:{ style="color: #4267B2" }, which can be
-configured via `mkdocs.yml`.
+channels, e.g. :fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }, which you can easily
+configure via `mkdocs.yml`.
 
 ## Configuration
 
 ### Social links
 
-[:octicons-tag-24: 1.0.0][social support] ·
+[:octicons-tag-24: 1.0.0][Social links support] ·
 :octicons-milestone-24: Default: _none_
 
 Social links are rendered next to the copyright notice as part of the 
@@ -42,15 +37,14 @@ extra:
 
 The following properties are available for each link:
 
-`icon`{ #social-icon }
+[`icon`](#+social.icon){ #+social.icon }
 
-:   [:octicons-tag-24: 5.0.0][social.icon support] · :octicons-milestone-24:
-    Default: _none_ · :octicons-alert-24: Required – This property must contain
-    a valid path to any icon bundled with the theme, or the
-    build will not succeed. Some popular choices:
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+    This property must contain a valid path to any icon bundled with the theme,
+    or the build will not succeed. Some popular choices:
 
-    * :fontawesome-brands-behance: – `fontawesome/brands/behance`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
+    * :fontawesome-brands-facebook: – `fontawesome/brands/facebook`
     * :fontawesome-brands-github: – `fontawesome/brands/github`
     * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
@@ -60,9 +54,9 @@ The following properties are available for each link:
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
 
-`link`{ #social-link }
+[`link`](#+social.link){ #+social.link }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to a relative or absolute URL including the URI 
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
@@ -84,12 +78,11 @@ The following properties are available for each link:
               link: mailto:<email-address>
         ```
 
-`name`{ #social-name }
+[`name`](#+social.name){ #+social.name }
 
-:   [:octicons-tag-24: 5.1.5][social.name support] · :octicons-milestone-24: 
-    Default: _domain name from_ `link`_, if available_ – This property is used
-    as the link's `title` attribute and can be set to a discernable name to
-    improve accessibility:
+:   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
+    This property is used as the link's `title` attribute and can be set to a 
+    discernable name to improve accessibility:
 
     ``` yaml
     extra:
@@ -100,9 +93,7 @@ The following properties are available for each link:
     ```
 
   [icon search]: ../reference/icons-emojis.md#search
-  [social support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [social.icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
-  [social.name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.1.5
+  [Social links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
 
 ### Copyright notice
 
@@ -152,11 +143,11 @@ extra:
 
 ### Hiding prev/next links
 
-When [Metadata] is enabled, the footer navigation showing links to the previous
-and next page can be hidden by adding the following lines to the front matter of
-a page:
+The footer navigation showing links to the previous and next page can be hidden
+with the front matter `hide` property. Add the following lines at the top of a 
+Markdown file:
 
-``` sh
+``` yaml
 ---
 hide:
   - footer
@@ -166,8 +157,6 @@ hide:
 ...
 ```
 
-[Metadata]: extensions/python-markdown.md#metadata
-
 ## Customization
 
 ### Custom copyright
@@ -176,7 +165,7 @@ hide:
 :octicons-file-symlink-file-24: Customization
 
 In order to customize and override the [copyright notice], [extend the theme]
-and [override the `copyright` partial][overriding partials], which normally
+and [override the `copyright.html` partial][overriding partials], which normally
 includes the `copyright` property set in `mkdocs.yml`.
 
   [Custom copyright support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0

@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Creating your site
 
 After you've [installed] Material for MkDocs, you can bootstrap your project 
@@ -41,56 +37,14 @@ This will create the following structure:
 
 ### Minimal configuration
 
-Simply add the following lines to `mkdocs.yml` to enable the theme. Note that
-since there are several [installation methods], minimal configuration might be
-slightly different:
+Simply add the following lines to `mkdocs.yml` to enable the theme:
 
-=== ":fontawesome-brands-python: pip"
-
-    ``` yaml
-    theme:
-      name: material
-    ```
-
-=== ":fontawesome-brands-docker: docker"
-
-    ``` yaml
-    theme:
-      name: material
-    ```
-
-=== ":fontawesome-brands-git-alt: git"
-
-    ``` yaml
-    theme:
-      name: null
-      custom_dir: mkdocs-material/material
-
-      # 404 page
-      static_templates:
-        - 404.html
-
-      # Necessary for search to work properly
-      include_search_page: false
-      search_index_only: true
-
-      # Default values, taken from mkdocs_theme.yml
-      language: en
-      font:
-        text: Roboto
-        code: Roboto Mono
-      favicon: assets/favicon.png
-      icon:
-        logo: logo
-    ```
-
-    When you clone from GitHub, you must list all of the themes' defaults
-    explicitly, because [`mkdocs_theme.yml`][mkdocs_theme.yml] is not
-    loaded automatically as described in the [custom theme guide].
+``` yaml
+theme:
+  name: material
+```
 
   [installation methods]: getting-started.md#installation
-  [mkdocs_theme.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/src/mkdocs_theme.yml
-  [custom theme guide]: https://www.mkdocs.org/user-guide/custom-themes/#creating-a-custom-theme
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
@@ -108,14 +62,22 @@ slightly different:
             {
               "yaml.schemas": {
                 "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-              }
+              },
+              "yaml.customTags": [ // (1)!
+                "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+              ]
             }
             ```
 
+            1.  This setting is necessary if you plan to use [icons and emojis],
+                or Visual Studio Code will show errors on certain lines.
+
     === "Other"
 
-        1.  Ensure your editor of choice has support for YAML schema validation.
-        2.  Add the following lines at the top of `mkdocs.yml`:
+        3.  Ensure your editor of choice has support for YAML schema validation.
+        4.  Add the following lines at the top of `mkdocs.yml`:
 
             ``` yaml
             # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
@@ -135,6 +97,7 @@ slightly different:
   [extension]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/extensions
   [plugin]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/plugins
   [$ref]: https://json-schema.org/understanding-json-schema/structuring.html#ref
+  [icons and emojis]: reference/icons-emojis.md
 
 ### Advanced configuration
 
@@ -153,6 +116,7 @@ and much more:
 - [Setting up site search]
 - [Setting up site analytics]
 - [Setting up social cards]
+- [Setting up a blog]
 - [Setting up tags]
 - [Setting up versioning]
 - [Setting up the header]
@@ -164,7 +128,7 @@ and much more:
 </div>
 
 Furthermore, see the list of supported [Markdown extensions] that are natively
-integrated with Material for MkDocs, delivering a low-effort and unprecedented 
+integrated with Material for MkDocs, delivering an unprecedented low-effort
 technical writing experience.
 
   [Changing the colors]: setup/changing-the-colors.md
@@ -176,6 +140,7 @@ technical writing experience.
   [Setting up site search]: setup/setting-up-site-search.md
   [Setting up site analytics]: setup/setting-up-site-analytics.md
   [Setting up social cards]: setup/setting-up-social-cards.md
+  [Setting up a blog]: setup/setting-up-a-blog.md
   [Setting up tags]: setup/setting-up-tags.md
   [Setting up versioning]: setup/setting-up-versioning.md
   [Setting up the header]: setup/setting-up-the-header.md

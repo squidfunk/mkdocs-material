@@ -1,10 +1,149 @@
----
-template: overrides/main.html
----
-
 # Changelog
 
 ## Material for MkDocs Insiders
+
+### 4.26.6 <small>_ November 28, 2022</small> { id="4.26.6" }
+
+- Fixed #4683: Tags plugin crashes when a tag is empty
+
+### 4.26.5 <small>_ November 27, 2022</small> { id="4.26.5" }
+
+- Fixed #4632: Post excerpt title link doesn't point to top of the page
+
+### 4.26.4 <small>_ November 27, 2022</small> { id="4.26.4" }
+
+- Fixed redundant file extension when using privacy plugin
+
+### 4.26.3 <small>_ November 15, 2022</small> { id="4.26.3" }
+
+- Fixed #4637: Attachments w/o titles in related links error in blog plugin
+- Fixed #4631: Remote favicons not downloaded and inlined by privacy plugin
+
+### 4.26.2 <small>_ November 3, 2022</small> { id="4.26.2" }
+
+- Updated MkDocs to 1.4.2
+- Added support for tag compare functions when sorting on index pages
+- Fixed footnotes being rendered in post excerpts without separators
+- Fixed error in blog plugin when `toc` extension is not enabled
+- Fixed issues with invalid asset paths and linked post titles
+- Fixed #4572: Privacy plugin fails when symlinks cannot be created
+- Fixed #4545: Blog plugin doesn't automatically link headline to post
+- Fixed #4542: Blog plugin doesn't allow for multiple instances
+- Fixed #4532: Blog plugin doesn't allow for mixed use of date and datetime
+
+### 4.26.1 <small>_ October 22, 2022</small> { id="4.26.1" }
+
+- Improved reporting of configuration errors in tags plugin
+- Fixed #4515: Privacy plugin fails when site URL is not defined
+- Fixed #4514: Privacy plugin doesn't fetch Google fonts (4.26.0 regression)
+
+### 4.26.0 <small>_ October 18, 2022</small> { id="4.26.0" }
+
+- Refactored privacy plugin to prepare for new features
+- Added support for `rel=noopener` links in privacy plugin
+- Resolve encoding issues with blog and privacy plugin
+
+### 4.25.5 <small>_ October 16, 2022</small> { id="4.25.5" }
+
+- Updated MkDocs to 1.4.1
+- Added namespace prefix to built-in plugins
+- Updated `content` and `header` partial
+
+### 4.25.4 <small>_ October 9, 2022</small> { id="4.25.4" }
+
+- Fixed other path issues for standalone blogs (4.24.2 regression)
+
+### 4.25.3 <small>_ October 9, 2022</small> { id="4.25.3" }
+
+- Fixed #4457: Posts not collected for standalone blog (4.24.2 regression)
+
+### 4.25.2 <small>_ October 4, 2022</small> { id="4.25.2" }
+
+- Fixed #4452: Blog and tags plugin crash when specifying slugify function
+
+### 4.25.1 <small>_ October 3, 2022</small> { id="4.25.1" }
+
+- Updated `mkdocs-rss-plugin` in `Dockerfile` to fix MkDocs compat errors
+
+### 4.25.0 <small>_ October 2, 2022</small> { id="4.25.0" }
+
+- Added support for navigation subtitles
+- Added support for defining an allow list for built-in tags plugin
+- Added support for custom slugify functions for built-in tags plugin
+- Improved stability of search plugin when using `--dirtyreload`
+
+### 4.24.2 <small>_ October 1, 2022</small> { id="4.24.2" }
+
+- Updated MkDocs to 1.4
+- Fixed compatibility issues with MkDocs 1.4
+- Fixed incorrectly generated paths in privacy plugin
+- Fixed blog index page not showing navigation when using meta plugin
+
+### 4.24.1 <small>_ September 30, 2022</small> { id="4.24.1" }
+
+- Fixed #4430: build error when enabling consent without repository URL
+
+### 4.24.0 <small>_ September 27, 2022</small> { id="4.24.0" }
+
+- Added support for custom content on index pages (blog)
+- Added support for keeping content on paginated index pages (blog)
+- Added support for limiting categories in post excerpts (blog)
+- Added support for simple override of templates via front matter (blog)
+- Added icon in navigation for pages with encrypted content
+- Fixed #4396: Front matter of index pages not inherited by pagination (blog)
+- Improved performance by building post excerpts once (blog)
+
+### 4.23.6 <small>_ September 22, 2022</small> { id="4.23.6" }
+
+- Fixed #4389: Blog posts in first week of year in wrong archive
+- Fixed (= switched) footer previous and next links for blog posts
+
+### 4.23.5 <small>_ September 18, 2022</small> { id="4.23.5" }
+
+- Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
+- Fixed #4374: Fixed invalid URLs of related links to other blog posts
+
+### 4.23.4 <small>_ September 14, 2022</small> { id="4.23.4" }
+
+- Fixed #4365: Recursion error in blog plugin due to `deepcopy`
+- Fixed path errors for blog plugin on Windows
+- Fixed publishing workflow in forked repositories
+
+### 4.23.3 <small>_ September 13, 2022</small> { id="4.23.3" }
+
+- Fixed previous and next page links for drafts of blog posts
+
+### 4.23.2 <small>_ September 13, 2022</small> { id="4.23.2" }
+
+- Fixed #4348: Blog plugin crashes on custom `nav` title
+- Fixed blog plugin crashing when category contained only drafts
+- Fixed rendering of content from blog index file
+
+### 4.23.1 <small>_ September 12, 2022</small> { id="4.23.1" }
+
+- Fixed #4345: Blog plugin errors with default settings
+
+### 4.23.0 <small>_ September 12, 2022</small> { id="4.23.0" }
+
+- Added blogging support via built-in blog plugin
+
+### 4.22.1 <small>_ September 7, 2022</small> { id="4.22.1" }
+
+- Fixed #4217: Tooltips in data tables render in wrong position
+
+### 4.22.0 <small>_ August 21, 2022</small> { id="4.22.0" }
+
+- Added support for navigation status
+
+### 4.21.1 <small>_ August 13, 2022</small> { id="4.21.1" }
+
+- Fixed #4176: Broken image when avatar is served by Gravatar
+- Fixed #4212: Deferred search initialization for file:// locations
+
+### 4.21.0 <small>_ July 17, 2022</small> { id="4.21.0" }
+
+- Added meta plugin: set front matter for all pages in a folder
+- Fixed #4114: Tags plugin fails if only `tags_extra_files` is set
 
 ### 4.20.1 <small>_ July 11, 2022</small> { id="4.20.1" }
 

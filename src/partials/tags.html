@@ -29,12 +29,24 @@
 {% if tags %}
   <nav class="md-tags" {{ hidden }}>
     {% for tag in tags %}
+      {% if config.extra.tags %}
+        {% set icon = " md-tag-icon" %}
+        {% if tag.type %}
+          {% set icon = icon ~ " md-tag-icon--" ~ tag.type %}
+        {% endif %}
+      {% endif %}
+
+      <!-- Render tag with link -->
       {% if tag.url %}
-        <a href="{{ tag.url | url }}" class="md-tag">
-          {{ tag.name }}
+        <a href="{{ tag.url | url }}" class="md-tag{{ icon }}">
+          {{- tag.name -}}
         </a>
+
+      <!-- Render tag without link -->
       {% else %}
-        <span class="md-tag">{{ tag.name }}</span>
+        <span class="md-tag{{ icon }}">
+          {{- tag.name -}}
+        </span>
       {% endif %}
     {% endfor %}
   </nav>

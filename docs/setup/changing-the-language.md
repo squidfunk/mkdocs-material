@@ -1,7 +1,3 @@
----
-template: overrides/main.html
----
-
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
@@ -13,7 +9,7 @@ available.
 
 ### Site language
 
-[:octicons-tag-24: 1.12.0][language support] ·
+[:octicons-tag-24: 1.12.0][Site language support] ·
 :octicons-milestone-24: Default: `en`
 
 You can set the site language in `mkdocs.yml` with:
@@ -56,12 +52,14 @@ The following languages are supported:
 - `hi` – Hindi
 - `hr` – Croatian
 - `hu` – Hungarian
+- `hy` – Armenian
 - `id` – Indonesian
 - `is` – Icelandic
 - `it` – Italian
 - `ja` – Japanese
 - `ka` – Georgian
 - `kr` – Korean
+- `lt` – Lithuanian
 - `lv` – Latvian
 - `mk` – Macedonian
 - `mn` – Mongolian
@@ -82,8 +80,10 @@ The following languages are supported:
 - `sr` – Serbian
 - `sv` – Swedish
 - `th` – Thai
+- `tl` – Tagalog
 - `tr` – Turkish
 - `uk` – Ukrainian
+- `ur` – Urdu
 - `uz` – Uzbek
 - `vi` – Vietnamese
 - `zh` – Chinese (Simplified)
@@ -96,7 +96,7 @@ The following languages are supported:
 Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
 
-  [language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
+  [Site language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
@@ -104,7 +104,7 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
 ### Site language selector
 
-[:octicons-tag-24: 7.0.0][alternate support] ·
+[:octicons-tag-24: 7.0.0][Site language selector support] ·
 :octicons-milestone-24: Default: _none_ ·
 :octicons-beaker-24: Experimental
 
@@ -129,35 +129,35 @@ extra:
 
 The following properties are available for each alternate language:
 
-`name`{ #language-name }
+[`name`](#+alternate.name){ #+alternate.name }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This value of this property is used inside the language selector as the
     name of the language and must be set to a non-empty string.
 
-`link`{ #language-link }
+[`link`](#+alternate.link){ #+alternate.link }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to an absolute link, which might also point to
     another domain or subdomain not necessarily generated with MkDocs.
 
-`lang`{ #language-lang }
+[`lang`](#+alternate.lang){ #+alternate.lang }
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: Required –
+:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must contain an [ISO 639-1 language code] and is used for
     the `hreflang` attribute of the link, improving discoverability via search
     engines.
 
 [![Language selector preview]][Language selector preview]
 
-  [alternate support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
+  [Site language selector support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
 
 ### Directionality
 
-[:octicons-tag-24: 2.5.0][direction support] ·
+[:octicons-tag-24: 2.5.0][Directionality support] ·
 :octicons-milestone-24: Default: _automatically set_
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
@@ -188,7 +188,7 @@ Click on a tile to change the directionality:
   })
 </script>
 
-  [direction support]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.5.0
+  [Directionality support]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.5.0
 
 ## Customization
 
@@ -199,7 +199,7 @@ the guide on [theme extension] and create a new partial in the `overrides`
 folder. Then, import the [translations] of the language as a fallback and only
 adjust the ones you want to override:
 
-=== ":octicons-file-code-16: overrides/partials/languages/custom.html"
+=== ":octicons-file-code-16: `overrides/partials/languages/custom.html`"
 
     ``` html
     <!-- Import translations for language and fallback -->
@@ -214,7 +214,7 @@ adjust the ones you want to override:
 
     <!-- Re-export translations -->
     {% macro t(key) %}{{
-      override(key) or language(key) or fallback.t(key)
+      override(key) or language.t(key) or fallback.t(key)
     }}{% endmacro %}
     ```
 
@@ -224,7 +224,7 @@ adjust the ones you want to override:
     2.  Check the [list of available languages], pick the translation you want
         to override for your language and add them here.
 
-=== ":octicons-file-code-16: mkdocs.yml"
+=== ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     theme:

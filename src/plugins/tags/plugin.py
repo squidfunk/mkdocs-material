@@ -26,108 +26,121 @@ from collections import defaultdict
 from markdown.extensions.toc import slugify
 from mkdocs import utils
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config.config_options import Type
+from mkdocs.config.base import Config
+from mkdocs.config import config_options as opt
 from mkdocs.plugins import BasePlugin
 
 # -----------------------------------------------------------------------------
 # Class
 # -----------------------------------------------------------------------------
 
-# Tags plugin
-class TagsPlugin(BasePlugin):
+# Tags plugin configuration scheme
+class TagsPluginConfig(Config):
+    tags_file = opt.Optional(opt.Type(str))
 
-    # Configuration scheme
-    config_scheme = (
-        ("tags_file", Type(str, required = False)),
-    )
+# -----------------------------------------------------------------------------
+
+# Tags plugin
+class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Initialize plugin
-    def __init__(self):
+    def on_config(self, config):
         self.tags = defaultdict(list)
         self.tags_file = None
-        self.slugify = None
 
-    # Retrieve configuration for anchor generation
-    def on_config(self, config):
-        if "toc" in config["markdown_extensions"]:
-            toc = { "slugify": slugify, "separator": "-" }
-            if "toc" in config["mdx_configs"]:
-                toc = { **toc, **config["mdx_configs"]["toc"] }
+        # Retrieve tags mapping from configuration
+        self.tags_map = config.extra.get("tags")
 
-            # Partially apply slugify function
-            self.slugify = lambda value: (
-                toc["slugify"](str(value), toc["separator"])
-            )
+        # Use override of slugify function
+        toc = { "slugify": slugify, "separator": "-" }
+        if "toc" in config.mdx_configs:
+            toc = { **toc, **config.mdx_configs["toc"] }
 
-    # Hack: 2nd pass for tags index page
-    def on_nav(self, nav, files, **kwargs):
-        file = self.config.get("tags_file")
+        # Partially apply slugify function
+        self.slugify = lambda value: (
+            toc["slugify"](str(value), toc["separator"])
+        )
+
+    # Hack: 2nd pass for tags index page(s)
+    def on_nav(self, nav, config, files):
+        file = self.config.tags_file
         if file:
-            self.tags_file = files.get_file_from_path(file)
-            if not self.tags_file:
-                log.error(f"Configuration error: {file} doesn't exist.")
-                sys.exit()
-
-            # Add tags file to files
-            files.append(self.tags_file)
+            self.tags_file = self._get_tags_file(files, file)
 
     # Build and render tags index page
-    def on_page_markdown(self, markdown, page, **kwargs):
+    def on_page_markdown(self, markdown, page, config, files):
         if page.file == self.tags_file:
-            return self.__render_tag_index(markdown)
+            return self._render_tag_index(markdown)
 
         # Add page to tags index
         for tag in page.meta.get("tags", []):
             self.tags[tag].append(page)
 
     # Inject tags into page (after search and before minification)
-    def on_page_context(self, context, page, **kwargs):
+    def on_page_context(self, context, page, config, nav):
         if "tags" in page.meta:
             context["tags"] = [
-                self.__render_tag(tag)
+                self._render_tag(tag)
                     for tag in page.meta["tags"]
             ]
 
     # -------------------------------------------------------------------------
 
+    # Obtain tags file
+    def _get_tags_file(self, files, path):
+        file = files.get_file_from_path(path)
+        if not file:
+            log.error(f"Tags file '{path}' does not exist.")
+            sys.exit()
+
+        # Add tags file to files
+        files.append(file)
+        return file
+
     # Render tags index
-    def __render_tag_index(self, markdown):
+    def _render_tag_index(self, markdown):
         if not "[TAGS]" in markdown:
             markdown += "\n[TAGS]"
 
         # Replace placeholder in Markdown with rendered tags index
         return markdown.replace("[TAGS]", "\n".join([
-            self.__render_tag_links(*args)
+            self._render_tag_links(*args)
                 for args in sorted(self.tags.items())
         ]))
 
     # Render the given tag and links to all pages with occurrences
-    def __render_tag_links(self, tag, pages):
-        content = [f"## <span class=\"md-tag\">{tag}</span>", ""]
+    def _render_tag_links(self, tag, pages):
+        classes = ["md-tag"]
+        if isinstance(self.tags_map, dict):
+            classes.append("md-tag-icon")
+            type = self.tags_map.get(tag)
+            if type:
+                classes.append(f"md-tag-icon--{type}")
+
+        # Render section for tag and a link to each page
+        classes = " ".join(classes)
+        content = [f"## <span class=\"{classes}\">{tag}</span>", ""]
         for page in pages:
             url = utils.get_relative_url(
-                page.file.src_path.replace(os.path.sep, "/"),
-                self.tags_file.src_path.replace(os.path.sep, "/")
+                page.file.src_uri,
+                self.tags_file.src_uri
             )
 
-            # Ensure forward slashes, as we have to use the path of the source
-            # file which contains the operating system's path separator.
-            content.append("- [{}]({})".format(
-                page.meta.get("title", page.title),
-                url
-            ))
+            # Render link to page
+            title = page.meta.get("title", page.title)
+            content.append(f"- [{title}]({url})")
 
         # Return rendered tag links
         return "\n".join(content)
 
     # Render the given tag, linking to the tags index (if enabled)
-    def __render_tag(self, tag):
+    def _render_tag(self, tag):
+        type = self.tags_map.get(tag) if self.tags_map else None
         if not self.tags_file or not self.slugify:
-            return dict(name = tag)
+            return dict(name = tag, type = type)
         else:
-            url = self.tags_file.url
-            url += f"#{self.slugify(tag)}"
-            return dict(name = tag, url = url)
+            url = f"{self.tags_file.url}#{self.slugify(tag)}"
+            return dict(name = tag, type = type, url = url)
 
 # -----------------------------------------------------------------------------
 # Data

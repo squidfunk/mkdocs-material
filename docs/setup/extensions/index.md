@@ -1,5 +1,4 @@
 ---
-template: overrides/main.html
 title: Extensions
 ---
 
@@ -35,7 +34,6 @@ configuration:
 - [Footnotes]
 - [Highlight]
 - [Keys]
-- [Metadata]
 - [Markdown in HTML]
 - [SmartSymbols]
 - [Snippets]
@@ -60,7 +58,6 @@ configuration:
   [Footnotes]: python-markdown.md#footnotes
   [Highlight]: python-markdown-extensions.md#highlight
   [Keys]: python-markdown-extensions.md#keys
-  [Metadata]: python-markdown.md#metadata
   [Markdown in HTML]: python-markdown.md#markdown-in-html
   [SmartSymbols]: python-markdown-extensions.md#smartsymbols
   [Snippets]: python-markdown-extensions.md#snippets
@@ -88,7 +85,6 @@ gradually add what you want to use:
 markdown_extensions:
 
   # Python Markdown
-  - meta
   - toc:
       permalink: true
 
@@ -113,7 +109,6 @@ markdown_extensions:
   - attr_list
   - def_list
   - footnotes
-  - meta
   - md_in_html
   - toc:
       permalink: true

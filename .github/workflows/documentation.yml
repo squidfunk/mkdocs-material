@@ -55,22 +55,29 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install .
           pip install \
-            "mkdocs-git-committers-plugin-2>=0.4.3" \
+            "cairosvg>=2.5" \
+            "mkdocs-git-committers-plugin-2>=1.1.1" \
             "mkdocs-git-revision-date-localized-plugin>=1.0" \
             "mkdocs-minify-plugin>=0.3" \
-            "mkdocs-redirects>=1.0"
+            "mkdocs-rss-plugin>=1.2" \
+            "mkdocs-redirects>=1.0" \
+            "pillow<10"
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
+          # Warning: please don't use this method when installing Insiders from
+          # CI! We have to do it this way in order to allow for overrides on our
+          # own documentation, but you should stick to the method we recommend
+          # in the publishing guide – see https://bit.ly/3zjdJtw
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
           cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
-          echo "THEME_DIR=mkdocs-material-insiders/material" >> $GITHUB_ENV
+          rm -rf material
+          cp -r mkdocs-material-insiders/material material
 
       - name: Deploy documentation
         env:

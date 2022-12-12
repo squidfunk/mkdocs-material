@@ -71,8 +71,8 @@
   z-index: 0;
   width: var(--md-tooltip-width);
   max-width: calc(100vw - 2 * #{px2rem(16px)});
-  max-height: 0;
   color: var(--md-default-fg-color);
+  font-family: var(--md-text-font-family);
   background-color: var(--md-default-bg-color);
   border-radius: px2rem(2px);
   box-shadow: var(--md-shadow-z2);
@@ -81,25 +81,23 @@
   backface-visibility: hidden;
   opacity: 0;
   transition:
-    transform    0ms 250ms,
-    opacity    250ms,
-    max-height   0ms 250ms,
-    z-index    250ms;
+    transform 0ms 250ms,
+    opacity 250ms,
+    z-index 250ms;
 
-  // Tooltip on parent focus
-  :focus-within > & {
-    max-height: 1000%;
+  // Active tooltip
+  &--active {
+    z-index: 2;
     transform: translateY(0);
     opacity: 1;
     transition:
-      transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
-      opacity    250ms,
-      max-height 250ms,
-      z-index      0ms;
+      transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   250ms,
+      z-index     0ms;
   }
 
-  // Show outline for keyboard devices
-  .focus-visible > & {
+  // Show outline on target and for keyboard devices
+  :is(.focus-visible > &, &:target) {
     outline: var(--md-accent-fg-color) auto;
   }
 
@@ -124,6 +122,7 @@
 
 // Annotation
 .md-annotation {
+  font-weight: 400;
   white-space: normal;
   outline: none;
 
@@ -140,32 +139,27 @@
     line-height: 1.325;
   }
 
-  // Promote children to top on focus
-  &:focus-within > * {
-    z-index: 2;
-  }
-
-  // Annotation wrapper (= tooltip)
-  &__inner {
-    top: calc(var(--md-tooltip-y) + 1.2ch);
-    font-family: var(--md-text-font-family);
-
-    // Annotation tooltip when not focused
-    :not(:focus-within) > & {
-      user-select: none;
-      pointer-events: none;
-    }
-  }
-
   // Annotation index
   &__index {
     position: relative;
     z-index: 0;
     margin: 0 1ch;
-    color: hsla(0, 0%, 100%, 1);
+    font-size: px2em(13.6px, 16px);
+    font-family: var(--md-code-font-family);
+    outline: none;
     cursor: pointer;
-    transition: z-index 250ms;
     user-select: none;
+
+    // Hack: increase specificity to override default for anchors
+    .md-annotation & {
+      color: hsla(0, 0%, 100%, 1);
+      transition: z-index 250ms;
+
+      // Text link on focus/hover
+      &:is(:focus, :hover) {
+        color: hsla(0, 0%, 100%, 1);
+      }
+    }
 
     // Annotation marker – the marker must be positioned absolutely behind
     // the index, because it shouldn't impact the rendering of a code block.
@@ -173,7 +167,8 @@
     // alignment of text following an annotation.
     &::after {
       position: absolute;
-      left: -0.126em;
+      top: 0;
+      left: px2em(-2px);
       z-index: -1;
       // Hack: the first property is used as a fallback for older browsers
       // which don't support the min/max/clamp math functions.
@@ -198,18 +193,36 @@
         }
       }
 
-      // Annotation marker on focus/hover
-      :is(:focus-within, :hover) > & {
-        background-color: var(--md-accent-fg-color);
-      }
-
-      // Annotation marker on focus
-      :focus-within > & {
+      // Annotation marker for active tooltip
+      .md-tooltip--active + & {
         transition:
           color            250ms,
           background-color 250ms;
         animation: none;
       }
+    }
+
+    // Annotation index in code block
+    code & {
+      font-size: inherit;
+      font-family: var(--md-code-font-family);
+    }
+
+    // Annotation index for active tooltip or on hover
+    :is(.md-tooltip--active + &, :hover > &) {
+      color: var(--md-accent-bg-color);
+
+      // Annotation marker
+      &::after {
+        background-color: var(--md-accent-fg-color);
+      }
+    }
+
+    // Annotation index for active tooltip
+    .md-tooltip--active + & {
+      z-index: 2;
+      transition: none;
+      animation: none;
     }
 
     // Annotation marker
@@ -237,17 +250,6 @@
           }
         }
       }
-    }
-
-    // Annotation index on focus/hover
-    :is(:focus-within, :hover) > & {
-      color: var(--md-accent-bg-color);
-    }
-
-    // Annotation index on focus
-    :focus-within > & {
-      transition: none;
-      animation: none;
     }
   }
 }

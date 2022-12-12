@@ -80,7 +80,7 @@ if (typeof Element !== "undefined") {
         /* Replace children and create text nodes */
         for (let i = nodes.length - 1; i >= 0; i--) {
           let node = nodes[i]
-          if (typeof node !== "object")
+          if (typeof node === "string")
             node = document.createTextNode(node)
           else if (node.parentNode)
             node.parentNode.removeChild(node)

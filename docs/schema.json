@@ -86,7 +86,7 @@
       "items": {
         "title": "Path to CSS file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-css",
-        "pattern": "\\.css$"
+        "pattern": "\\.css($|\\?)"
       },
       "uniqueItems": true,
       "minItems": 1
@@ -98,7 +98,19 @@
       "items": {
         "title": "Path to JavaScript file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
-        "pattern": "\\.js$"
+        "pattern": "\\.js($|\\?)"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "hooks": {
+      "title": "Hooks",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#hooks",
+      "type": "array",
+      "items": {
+        "title": "Path to Python file",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#hooks",
+        "pattern": "\\.py$"
       },
       "uniqueItems": true,
       "minItems": 1

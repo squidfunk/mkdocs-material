@@ -28,4 +28,22 @@
 <!-- Set up analytics provider -->
 {% if provider %}
   {% include "partials/integrations/analytics/" ~ provider ~ ".html" %}
+
+  <!-- Consent necessary -->
+  {% if config.extra.consent %}
+    <script>
+      if (typeof __md_analytics !== "undefined") {
+        var consent = __md_get("__consent")
+        if (consent && consent.analytics)
+          __md_analytics()
+      }
+    </script>
+
+  <!-- Consent unnecessary -->
+  {% else %}
+    <script>
+      if (typeof __md_analytics !== "undefined")
+        __md_analytics()
+    </script>
+  {% endif %}
 {% endif %}
