@@ -88,6 +88,15 @@
         },
         {
           "$ref": "https://raw.githubusercontent.com/mkdocstrings/mkdocstrings/master/docs/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-coverage/master/docs/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-spellcheck/master/docs/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/markdown-exec/master/docs/schema.json"
         }
       ]
     }
