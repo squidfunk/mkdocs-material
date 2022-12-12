@@ -29,9 +29,8 @@ import {
   defer,
   distinctUntilChanged,
   finalize,
+  first,
   map,
-  observeOn,
-  take,
   tap,
   withLatestFrom
 } from "rxjs"
@@ -154,44 +153,42 @@ export function mountSidebar(
   const { y } = getElementOffset(inner)
   return defer(() => {
     const push$ = new Subject<Sidebar>()
-    push$
+    const next$ = push$
       .pipe(
-        auditTime(0, animationFrameScheduler),
-        withLatestFrom(header$)
+        auditTime(0, animationFrameScheduler)
       )
-        .subscribe({
 
-          /* Handle emission */
-          next([{ height }, { height: offset }]) {
-            inner.style.height = `${height - 2 * y}px`
-            el.style.top       = `${offset}px`
-          },
+    /* Update sidebar height and offset */
+    next$.pipe(withLatestFrom(header$))
+      .subscribe({
 
-          /* Handle complete */
-          complete() {
-            inner.style.height = ""
-            el.style.top       = ""
-          }
-        })
+        /* Handle emission */
+        next([{ height }, { height: offset }]) {
+          inner.style.height = `${height - 2 * y}px`
+          el.style.top       = `${offset}px`
+        },
+
+        /* Handle complete */
+        complete() {
+          inner.style.height = ""
+          el.style.top       = ""
+        }
+      })
 
     /* Bring active item into view on initial load */
-    push$
-      .pipe(
-        observeOn(animationFrameScheduler),
-        take(1)
-      )
-        .subscribe(() => {
-          for (const item of getElements(".md-nav__link--active[href]", el)) {
-            const container = getElementContainer(item)
-            if (typeof container !== "undefined") {
-              const offset = item.offsetTop - container.offsetTop
-              const { height } = getElementSize(container)
-              container.scrollTo({
-                top: offset - height / 2
-              })
-            }
+    next$.pipe(first())
+      .subscribe(() => {
+        for (const item of getElements(".md-nav__link--active[href]", el)) {
+          const container = getElementContainer(item)
+          if (typeof container !== "undefined") {
+            const offset = item.offsetTop - container.offsetTop
+            const { height } = getElementSize(container)
+            container.scrollTo({
+              top: offset - height / 2
+            })
           }
-        })
+        }
+      })
 
     /* Create and return component */
     return watchSidebar(el, options)
