@@ -1,0 +1,80 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Dependencies
+// ----------------------------------------------------------------------------
+
+@import "material-color";
+@import "material-shadows";
+
+// ----------------------------------------------------------------------------
+// Local imports
+// ----------------------------------------------------------------------------
+
+@import "utilities/break";
+@import "utilities/convert";
+
+@import "config";
+
+@import "main/resets";
+@import "main/colors";
+@import "main/icons";
+@import "main/typeset";
+
+@import "main/layout/banner";
+@import "main/layout/base";
+@import "main/layout/clipboard";
+@import "main/layout/consent";
+@import "main/layout/content";
+@import "main/layout/dialog";
+@import "main/layout/feedback";
+@import "main/layout/footer";
+@import "main/layout/form";
+@import "main/layout/header";
+@import "main/layout/nav";
+@import "main/layout/search";
+@import "main/layout/select";
+@import "main/layout/sidebar";
+@import "main/layout/source";
+@import "main/layout/tabs";
+@import "main/layout/tag";
+@import "main/layout/tooltip";
+@import "main/layout/top";
+@import "main/layout/version";
+
+@import "main/extensions/markdown/admonition";
+@import "main/extensions/markdown/footnotes";
+@import "main/extensions/markdown/toc";
+
+@import "main/extensions/pymdownx/arithmatex";
+@import "main/extensions/pymdownx/critic";
+@import "main/extensions/pymdownx/details";
+@import "main/extensions/pymdownx/emoji";
+@import "main/extensions/pymdownx/highlight";
+@import "main/extensions/pymdownx/keys";
+@import "main/extensions/pymdownx/tabbed";
+@import "main/extensions/pymdownx/tasklist";
+
+@import "main/integrations/mermaid";
+
+@import "main/modifiers";

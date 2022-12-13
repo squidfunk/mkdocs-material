@@ -1,0 +1,115 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Keyboard key
+  .keys {
+
+    // Keyboard key icon
+    kbd:is(::before, ::after) {
+      position: relative;
+      margin: 0;
+      color: inherit;
+      -moz-osx-font-smoothing: initial;
+      -webkit-font-smoothing: initial;
+    }
+
+    // Surrounding text
+    span {
+      padding: 0 px2em(3.2px);
+      color: var(--md-default-fg-color--light);
+    }
+
+    // Define keyboard keys with left icon
+    @each $name, $code in (
+
+      // Modifiers
+      "alt":           "\2387",
+      "left-alt":      "\2387",
+      "right-alt":     "\2387",
+      "command":       "\2318",
+      "left-command":  "\2318",
+      "right-command": "\2318",
+      "control":       "\2303",
+      "left-control":  "\2303",
+      "right-control": "\2303",
+      "meta":          "\25C6",
+      "left-meta":     "\25C6",
+      "right-meta":    "\25C6",
+      "option":        "\2325",
+      "left-option":   "\2325",
+      "right-option":  "\2325",
+      "shift":         "\21E7",
+      "left-shift":    "\21E7",
+      "right-shift":   "\21E7",
+      "super":         "\2756",
+      "left-super":    "\2756",
+      "right-super":   "\2756",
+      "windows":       "\229E",
+      "left-windows":  "\229E",
+      "right-windows": "\229E",
+
+      // Other keys
+      "arrow-down":    "\2193",
+      "arrow-left":    "\2190",
+      "arrow-right":   "\2192",
+      "arrow-up":      "\2191",
+      "backspace":     "\232B",
+      "backtab":       "\21E4",
+      "caps-lock":     "\21EA",
+      "clear":         "\2327",
+      "context-menu":  "\2630",
+      "delete":        "\2326",
+      "eject":         "\23CF",
+      "end":           "\2913",
+      "escape":        "\238B",
+      "home":          "\2912",
+      "insert":        "\2380",
+      "page-down":     "\21DF",
+      "page-up":       "\21DE",
+      "print-screen":  "\2399"
+    ) {
+      .key-#{$name}::before {
+        padding-right: px2em(6.4px);
+        content: $code;
+      }
+    }
+
+    // Define keyboard keys with right icon
+    @each $name, $code in (
+      "tab":           "\21E5",
+      "num-enter":     "\2324",
+      "enter":         "\23CE"
+    ) {
+      .key-#{$name}::after {
+        padding-left: px2em(6.4px);
+        content: $code;
+      }
+    }
+  }
+}

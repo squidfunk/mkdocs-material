@@ -1,0 +1,24 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+      <div id="miitbeian"></div>
+    </a>
+  {% endif %}
+</div>
+{% set hash = config.extra.githash %}
+<div style="float:right" class="build_date_utc">
+  <a href="https://github.com/OI-wiki/OI-wiki">
+    最近更新：{{ hash }}, {{ build_date_utc.strftime('%Y-%m-%d') }}
+  </a>
+</div>
+<script>"oi-wiki.com"==window.location.hostname&&(document.getElementById("miitbeian").innerHTML='<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>'),console.log("%c OI Wiki %c {{ hash }} %c","background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent"),console.log("少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org")</script>

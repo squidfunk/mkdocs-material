@@ -1,0 +1,255 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// Continuous pulse animation
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--md-default-fg-color--lightest);
+    transform: scale(0.95);
+  }
+
+  75% {
+    box-shadow: 0 0 0 px2em(10px) transparent;
+    transform: scale(1);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    transform: scale(0.95);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Tooltip variables
+:root {
+  --md-tooltip-width: #{px2rem(400px)};
+}
+
+// ----------------------------------------------------------------------------
+
+// Tooltip
+.md-tooltip {
+  position: absolute;
+  top: var(--md-tooltip-y);
+  left:
+    clamp(
+      var(--md-tooltip-0, #{px2rem(0px)}) + #{px2rem(16px)},
+      var(--md-tooltip-x),
+      100vw +
+      var(--md-tooltip-0, #{px2rem(0px)}) + #{px2rem(16px)} -
+      var(--md-tooltip-width) -
+      2 * #{px2rem(16px)}
+    );
+  // Hack: set an explicit `z-index` so we can transition it to ensure that any
+  // following elements are not overlaying the tooltip during the transition.
+  z-index: 0;
+  width: var(--md-tooltip-width);
+  max-width: calc(100vw - 2 * #{px2rem(16px)});
+  color: var(--md-default-fg-color);
+  font-family: var(--md-text-font-family);
+  background-color: var(--md-default-bg-color);
+  border-radius: px2rem(2px);
+  box-shadow: var(--md-shadow-z2);
+  transform: translateY(px2rem(-8px));
+  // Hack: promote to own layer to reduce jitter
+  backface-visibility: hidden;
+  opacity: 0;
+  transition:
+    transform 0ms 250ms,
+    opacity 250ms,
+    z-index 250ms;
+
+  // Active tooltip
+  &--active {
+    z-index: 2;
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform 250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+      opacity   250ms,
+      z-index     0ms;
+  }
+
+  // Show outline on target and for keyboard devices
+  :is(.focus-visible > &, &:target) {
+    outline: var(--md-accent-fg-color) auto;
+  }
+
+  // Tooltip wrapper
+  &__inner {
+    padding: px2rem(16px);
+    font-size: px2rem(12.8px);
+
+    // Adjust spacing on first child
+    &.md-typeset > :first-child {
+      margin-top: 0;
+    }
+
+    // Adjust spacing on last child
+    &.md-typeset > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Annotation
+.md-annotation {
+  font-weight: 400;
+  white-space: normal;
+  outline: none;
+
+  // Adjust for right-to-left languages
+  [dir="rtl"] & {
+    direction: rtl;
+  }
+
+  // Annotation is not hidden (e.g. when copying)
+  &:not([hidden]) {
+    display: inline-block;
+    // Hack: ensure that the line height doesn't exceed the line height of the
+    // hosting line, because it will lead to dancing pixels.
+    line-height: 1.325;
+  }
+
+  // Annotation index
+  &__index {
+    position: relative;
+    z-index: 0;
+    margin: 0 1ch;
+    font-size: px2em(13.6px, 16px);
+    font-family: var(--md-code-font-family);
+    outline: none;
+    cursor: pointer;
+    user-select: none;
+
+    // Hack: increase specificity to override default for anchors
+    .md-annotation & {
+      color: hsla(0, 0%, 100%, 1);
+      transition: z-index 250ms;
+
+      // Text link on focus/hover
+      &:is(:focus, :hover) {
+        color: hsla(0, 0%, 100%, 1);
+      }
+    }
+
+    // Annotation marker – the marker must be positioned absolutely behind
+    // the index, because it shouldn't impact the rendering of a code block.
+    // Otherwise, small rounding differences in browsers can sometimes mess up
+    // alignment of text following an annotation.
+    &::after {
+      position: absolute;
+      top: 0;
+      left: px2em(-2px);
+      z-index: -1;
+      // Hack: the first property is used as a fallback for older browsers
+      // which don't support the min/max/clamp math functions.
+      width: calc(100% + 1.2ch);
+      width: max(2.2ch, 100% + 1.2ch);
+      height: 2.2ch;
+      margin: 0 -0.4ch;
+      padding: 0 0.4ch;
+      background-color: var(--md-default-fg-color--lighter);
+      border-radius: 2ch;
+      transition:
+        color            250ms,
+        background-color 250ms;
+      content: "";
+
+      // [reduced motion]: Disable animation
+      @media not all and (prefers-reduced-motion) {
+
+        // Annotation marker is visible
+        [data-md-visible] > & {
+          animation: pulse 2000ms infinite;
+        }
+      }
+
+      // Annotation marker for active tooltip
+      .md-tooltip--active + & {
+        transition:
+          color            250ms,
+          background-color 250ms;
+        animation: none;
+      }
+    }
+
+    // Annotation index in code block
+    code & {
+      font-size: inherit;
+      font-family: var(--md-code-font-family);
+    }
+
+    // Annotation index for active tooltip or on hover
+    :is(.md-tooltip--active + &, :hover > &) {
+      color: var(--md-accent-bg-color);
+
+      // Annotation marker
+      &::after {
+        background-color: var(--md-accent-fg-color);
+      }
+    }
+
+    // Annotation index for active tooltip
+    .md-tooltip--active + & {
+      z-index: 2;
+      transition: none;
+      animation: none;
+    }
+
+    // Annotation marker
+    [data-md-annotation-id] {
+      display: inline-block;
+      line-height: 90%;
+
+      // Annotation marker content
+      &::before {
+        display: inline-block;
+        padding-bottom: 0.1em;
+        vertical-align: 0.065em;
+        transform: scale(1.15);
+        transition: transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1);
+        content: attr(data-md-annotation-id);
+
+        // [not print]: if we're not in print mode, show a `+` sign instead of
+        // the original numbers, as context is already given by the position.
+        @media not print {
+          content: "+";
+
+          // Annotation marker content on focus
+          :focus-within > & {
+            transform: scale(1.25) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+}

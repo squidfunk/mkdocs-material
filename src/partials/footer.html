@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,16 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-{% import "partials/language.html" as lang with context %}
-<!-- InstantClick -->
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/instantclick@3/instantclick.min.js"
-  data-no-instant></script>
-<script data-no-instant>
-  InstantClick.init(true);
-</script> -->
-
 <!-- back to top -->
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/data-tip@0.0.52/dist/data-tip.min.css"> -->
 <script>
   // 当网页向下滑动 20px 出现"返回顶部" 按钮
   window.onscroll = function () { scrollFunction() };
@@ -54,104 +45,77 @@
   </svg>
 </button>
 
-
-<!-- Application footer -->
+<!-- Footer -->
 <footer class="md-footer">
 
   <!-- Link to previous and/or next page -->
   {% if page.previous_page or page.next_page %}
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "footer" in page.meta.hide %}
+    {% endif %}
+    <nav
+      class="md-footer__inner md-grid"
+      aria-label="{{ lang.t('footer.title') }}"
+      {{ hidden }}
+    >
 
-        <!-- Link to previous page -->
-        {% if page.previous_page %}
-          <a href="{{ page.previous_page.url | url }}"
-              title="{{ page.previous_page.title | striptags }}"
-              class="md-flex md-footer-nav__link md-footer-nav__link--prev"
-              rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back
-                    md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch
-                  md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.previous") }}
-                </span>
-                {{ page.previous_page.title }}
+      <!-- Link to previous page -->
+      {% if page.previous_page %}
+        {% set direction = lang.t("footer.previous") %}
+        <a
+          href="{{ page.previous_page.url | url }}"
+          class="md-footer__link md-footer__link--prev"
+          aria-label="{{ direction }}: {{ page.previous_page.title | e }}"
+          rel="prev"
+        >
+          <div class="md-footer__button md-icon">
+            {% include ".icons/material/arrow-left.svg" %}
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                {{ direction }}
               </span>
+              {{ page.previous_page.title }}
             </div>
-          </a>
-        {% endif %}
+          </div>
+        </a>
+      {% endif %}
 
-        <!-- Link to next page -->
-        {% if page.next_page %}
-          <a href="{{ page.next_page.url | url }}"
-              title="{{ page.next_page.title | striptags }}"
-              class="md-flex md-footer-nav__link md-footer-nav__link--next"
-              rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch
-                  md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  {{ lang.t("footer.next") }}
-                </span>
-                {{ page.next_page.title }}
+      <!-- Link to next page -->
+      {% if page.next_page %}
+        {% set direction = lang.t("footer.next") %}
+        <a
+          href="{{ page.next_page.url | url }}"
+          class="md-footer__link md-footer__link--next"
+          aria-label="{{ direction }}: {{ page.next_page.title | e }}"
+          rel="next"
+        >
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                {{ direction }}
               </span>
+              {{ page.next_page.title }}
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward
-                    md-footer-nav__button"></i>
-            </div>
-          </a>
-        {% endif %}
-      </nav>
-    </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            {% include ".icons/material/arrow-right.svg" %}
+          </div>
+        </a>
+      {% endif %}
+    </nav>
   {% endif %}
 
   <!-- Further information -->
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
+      {% include "partials/copyright.html" %}
 
-      <!-- Copyright and theme information -->
-      <div class="md-footer-copyright">
-        {% if config.copyright %}
-          <div class="md-footer-copyright__highlight">
-            {{ config.copyright }}
-          </div>
-        {% endif %}
-        powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-        <div id="miitbeian"></div>
-      </div>
-      {% set hash = config.extra.githash %}
-      <span style="float:right" class="build_date_utc"><a href="https://github.com/24OI/OI-wiki">最近更新：{{ hash }}, {{
-          build_date_utc.strftime('%Y-%m-%d') }}</a></span>
-      <script>
-        /* miitbeian */
-        if (window.location.hostname == "oi-wiki.com") {
-          document.getElementById("miitbeian").innerHTML = `<a href="http://beian.miit.gov.cn/">黑ICP备19005132号-2</a>`;
-        }
-        /* Easter Egg */
-        console.log(`%c OI Wiki %c {{ hash }} %c`,"background:#35495e ; padding: 1px; border-radius: 3px 0 0 3px;  color: #fff","background:#41b883 ; padding: 1px; border-radius: 0 3px 3px 0;  color: #fff","background:transparent");
-        console.log('少年，恭喜你囍提彩蛋，我们在做一些 OI 相关的有趣的事情，如果您对此感兴趣，欢迎访问 https://join-us.oi-wiki.org');
-      </script>
       <!-- Social links -->
-      {% include "partials/social.html" %}
+      {% if config.extra.social %}
+        {% include "partials/social.html" %}
+      {% endif %}
     </div>
-    <!-- <div class="sponsor" style="text-align: center;color: white;vertical-align: middle;"> -->
-      <!-- Supported by <span /> -->
-      <!-- <a href="/intro/hulu/">
-        <img src="https://cdn.jsdelivr.net/npm/oicdn@0.0.1/hulu-white.png" style="
-          vertical-align: -12px;
-          width: 125px;
-          margin-left:5px;
-        ">
-      </a> -->
-    <!-- </div> -->
   </div>
 </footer>

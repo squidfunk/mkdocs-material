@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Minify plugin",
+  "type": "object",
+  "properties": {
+    "minify": {
+      "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin",
+      "type": "object",
+      "dependencies": {
+        "minify_js": [
+          "js_files"
+        ],
+        "minify_css": [
+          "css_files"
+        ]
+      },
+      "properties": {
+        "minify_html": {
+          "title": "Minify HTML files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean",
+          "default": true
+        },
+        "minify_js": {
+          "title": "Minify JavaScript files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean"
+        },
+        "minify_css": {
+          "title": "Minify CSS files",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean"
+        },
+        "htmlmin_opts": {
+          "title": "Options for HTML minifier",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "object"
+        },
+        "js_files": {
+          "title": "JavaScript files to minify",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "array",
+          "items": {
+            "title": "Path to JavaScript file",
+            "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+            "pattern": "\\.js$"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "css_files": {
+          "title": "CSS files to minify",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "array",
+          "items": {
+            "title": "Path to CSS file",
+            "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+            "pattern": "\\.css$"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

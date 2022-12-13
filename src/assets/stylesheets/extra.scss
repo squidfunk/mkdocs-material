@@ -1,0 +1,105 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+/* stylelint-disable */
+
+// ----------------------------------------------------------------------------
+// Keyframes
+// ----------------------------------------------------------------------------
+
+// The actual magic
+@keyframes ᴴₒᴴₒᴴₒ {
+  0% {
+    transform: translate3d(var(--left-start), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--left-end), 110vh, 0);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Adapted from Alvaro Monotoro, https://codepen.io/alvaromontoro/pen/GRNmdzB
+.ᴴₒᴴₒᴴₒ {
+  --size: 1vw;
+
+  position: fixed;
+  top: -5vh;
+  z-index: 10;
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 1s;
+  opacity: 1;
+
+  // Generate instances
+  @for $i from 1 through 75 {
+    &:not(&--gotcha):nth-child(#{$i}) {
+      --size:       #{random(5) * 0.1}vw;
+      --left-start: #{random(20) - 10}vw;
+      --left-end:   #{random(20) - 10}vw;
+
+      left: #{random(100)}vw;
+      animation: ᴴₒᴴₒᴴₒ #{10 + random(10)}s linear infinite both;
+      animation-delay: -#{random(10)}s;
+    }
+  }
+
+  // Blur every 5th instances
+  &:nth-child(5n) {
+    filter: blur(2px);
+  }
+
+  // An instance was clicked
+  &--ᵍₒᵗ꜀ᴴₐ {
+    opacity: 0;
+  }
+
+  // Toggle button
+  &__button {
+    display: block;
+  }
+
+  // Toggle button enabled
+  &__button::after {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    background-color: currentcolor;
+    mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.79 13.95-2.33.62-2-1.13v-2.88l2-1.13 2.33.62.52-1.93-1.77-.47.46-1.77-1.93-.52-.62 2.33-2 1.13L13 7.38V5.12l1.71-1.71L13.29 2 12 3.29 10.71 2 9.29 3.41 11 5.12v2.26L8.5 8.82l-2-1.13-.58-2.33L4 5.88l.47 1.77-1.77.47.52 1.93 2.33-.62 2 1.13v2.89l-2 1.13-2.33-.62-.52 1.93 1.77.47L4 18.12l1.93.52.62-2.33 2-1.13L11 16.62v2.26l-1.71 1.71L10.71 22 12 20.71 13.29 22l1.41-1.41-1.7-1.71v-2.26l2.5-1.45 2 1.13.62 2.33 1.88-.51-.47-1.77 1.77-.47-.51-1.93M9.5 10.56 12 9.11l2.5 1.45v2.88L12 14.89l-2.5-1.45v-2.88Z"/></svg>');
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    content: "";
+  }
+
+  // Toggle button disabled
+  &__button[hidden]::after {
+    mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 5.12 9.29 3.41 10.71 2 12 3.29 13.29 2l1.42 1.41L13 5.12v2.26l2.45 1.44 2-1.13.62-2.33 1.93.52-.46 1.77 1.77.47-.52 1.93-2.33-.62-2 1.13v2.7L14.5 11.3v-.74l-1.76-1.02-2.01-2.01.27-.15V5.12m7.46 9.45-1.59-.9 2.68 2.68 1.75-.47-.51-1.93-2.33.62M13 16.62v2.26l1.7 1.71L13.29 22 12 20.71 10.71 22l-1.42-1.41L11 18.88v-2.26l-2.45-1.44-2 1.13-.62 2.33L4 18.12l.47-1.76-1.77-.47.52-1.93 2.33.62 2-1.13v-2.89l-2-1.13-2.33.62-.52-1.93 1.77-.47L4 5.89 1.11 3l1.28-1.27 19.72 19.73-1.27 1.27L14.1 16l-1.1.62m-1-1.73.63-.39-3.13-3.11v2.05l2.5 1.45Z"/></svg>');
+  }
+}

@@ -1,0 +1,88 @@
+# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+name: documentation
+on:
+  push:
+    branches:
+      - master
+
+env:
+  PYTHON_VERSION: 3.x
+
+permissions:
+  contents: write
+
+jobs:
+  documentation:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up build cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          path: .cache
+
+      - name: Install Python dependencies
+        run: |
+          pip install \
+            "cairosvg>=2.5" \
+            "mkdocs-git-committers-plugin-2>=1.1.1" \
+            "mkdocs-git-revision-date-localized-plugin>=1.0" \
+            "mkdocs-minify-plugin>=0.3" \
+            "mkdocs-rss-plugin>=1.2" \
+            "mkdocs-redirects>=1.0" \
+            "pillow<10"
+
+      - name: Install Insiders build
+        if: github.event.repository.fork == false
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: |
+          # Warning: please don't use this method when installing Insiders from
+          # CI! We have to do it this way in order to allow for overrides on our
+          # own documentation, but you should stick to the method we recommend
+          # in the publishing guide – see https://bit.ly/3zjdJtw
+          git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+          pip install -e mkdocs-material-insiders
+          cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
+          rm -rf material
+          cp -r mkdocs-material-insiders/material material
+
+      - name: Deploy documentation
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
+        run: |
+          mkdocs gh-deploy --force
+          mkdocs --version

@@ -1,0 +1,945 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Theme configuration",
+  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/",
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Theme name",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#name",
+      "oneOf": [
+        {
+          "enum": [
+            "material"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": "material"
+    },
+    "custom_dir": {
+      "title": "Directory with theme overrides",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#setup-and-theme-structure",
+      "type": "string",
+      "defaultSnippets": [
+        {
+          "body": "${1:overrides}"
+        }
+      ]
+    },
+    "static_templates": {
+      "title": "Static templates to render",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#static_templates",
+      "type": "array",
+      "items": {
+        "title": "Path to HTML file",
+        "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#static_templates",
+        "pattern": "\\.html$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "language": {
+      "title": "Site language",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/",
+      "oneOf": [
+        {
+          "title": "Site language: Custom",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#custom-translations",
+          "enum": [
+            "custom"
+          ]
+        },
+        {
+          "title": "Site language: Afrikaans",
+          "enum": [
+            "af"
+          ]
+        },
+        {
+          "title": "Site language: Arabic",
+          "enum": [
+            "ar"
+          ]
+        },
+        {
+          "title": "Site language: Bulgarian",
+          "enum": [
+            "bg"
+          ]
+        },
+        {
+          "title": "Site language: Bengali (Bangla)",
+          "enum": [
+            "bn"
+          ]
+        },
+        {
+          "title": "Site language: Catalan",
+          "enum": [
+            "ca"
+          ]
+        },
+        {
+          "title": "Site language: Czech",
+          "enum": [
+            "cs"
+          ]
+        },
+        {
+          "title": "Site language: Danish",
+          "enum": [
+            "da"
+          ]
+        },
+        {
+          "title": "Site language: German",
+          "enum": [
+            "de"
+          ]
+        },
+        {
+          "title": "Site language: Greek",
+          "enum": [
+            "el"
+          ]
+        },
+        {
+          "title": "Site language: English",
+          "enum": [
+            "en"
+          ]
+        },
+        {
+          "title": "Site language: Esperanto",
+          "enum": [
+            "eo"
+          ]
+        },
+        {
+          "title": "Site language: Spanish",
+          "enum": [
+            "es"
+          ]
+        },
+        {
+          "title": "Site language: Estonian",
+          "enum": [
+            "et"
+          ]
+        },
+        {
+          "title": "Site language: Persian (Farsi)",
+          "enum": [
+            "fa"
+          ]
+        },
+        {
+          "title": "Site language: Finnish",
+          "enum": [
+            "fi"
+          ]
+        },
+        {
+          "title": "Site language: French",
+          "enum": [
+            "fr"
+          ]
+        },
+        {
+          "title": "Site language: Galician",
+          "enum": [
+            "gl"
+          ]
+        },
+        {
+          "title": "Site language: Hebrew",
+          "enum": [
+            "he"
+          ]
+        },
+        {
+          "title": "Site language: Hindi",
+          "enum": [
+            "hi"
+          ]
+        },
+        {
+          "title": "Site language: Croatian",
+          "enum": [
+            "hr"
+          ]
+        },
+        {
+          "title": "Site language: Hungarian",
+          "enum": [
+            "hu"
+          ]
+        },
+        {
+          "title": "Site language: Armenian",
+          "enum": [
+            "hy"
+          ]
+        },
+        {
+          "title": "Site language: Indonesian",
+          "enum": [
+            "id"
+          ]
+        },
+        {
+          "title": "Site language: Icelandic",
+          "enum": [
+            "is"
+          ]
+        },
+        {
+          "title": "Site language: Italian",
+          "enum": [
+            "it"
+          ]
+        },
+        {
+          "title": "Site language: Japanese",
+          "enum": [
+            "ja"
+          ]
+        },
+        {
+          "title": "Site language: Georgian",
+          "enum": [
+            "ka"
+          ]
+        },
+        {
+          "title": "Site language: Korean",
+          "enum": [
+            "kr"
+          ]
+        },
+        {
+          "title": "Site language: Lithuanian",
+          "enum": [
+            "lt"
+          ]
+        },
+        {
+          "title": "Site language: Latvian",
+          "enum": [
+            "lv"
+          ]
+        },
+        {
+          "title": "Site language: Macedonian",
+          "enum": [
+            "mk"
+          ]
+        },
+        {
+          "title": "Site language: Mongolian",
+          "enum": [
+            "mn"
+          ]
+        },
+        {
+          "title": "Site language: Bahasa Malaysia",
+          "enum": [
+            "ms"
+          ]
+        },
+        {
+          "title": "Site language: Burmese",
+          "enum": [
+            "my"
+          ]
+        },
+        {
+          "title": "Site language: Dutch",
+          "enum": [
+            "nl"
+          ]
+        },
+        {
+          "title": "Site language: Norwegian (Nynorsk)",
+          "enum": [
+            "nn"
+          ]
+        },
+        {
+          "title": "Site language: Norwegian",
+          "enum": [
+            "no"
+          ]
+        },
+        {
+          "title": "Site language: Polish",
+          "enum": [
+            "pl"
+          ]
+        },
+        {
+          "title": "Site language: Portuguese",
+          "enum": [
+            "pt"
+          ]
+        },
+        {
+          "title": "Site language: Portuguese (Brasilian)",
+          "enum": [
+            "pt-BR"
+          ]
+        },
+        {
+          "title": "Site language: Romanian",
+          "enum": [
+            "ro"
+          ]
+        },
+        {
+          "title": "Site language: Russian",
+          "enum": [
+            "ru"
+          ]
+        },
+        {
+          "title": "Site language: Serbo-Croatian",
+          "enum": [
+            "sh"
+          ]
+        },
+        {
+          "title": "Site language: Sinhalese",
+          "enum": [
+            "si"
+          ]
+        },
+        {
+          "title": "Site language: Slovak",
+          "enum": [
+            "sk"
+          ]
+        },
+        {
+          "title": "Site language: Slovenian",
+          "enum": [
+            "sl"
+          ]
+        },
+        {
+          "title": "Site language: Serbian",
+          "enum": [
+            "sr"
+          ]
+        },
+        {
+          "title": "Site language: Swedish",
+          "enum": [
+            "sv"
+          ]
+        },
+        {
+          "title": "Site language: Thai",
+          "enum": [
+            "th"
+          ]
+        },
+        {
+          "title": "Site language: Tagalog",
+          "enum": [
+            "tl"
+          ]
+        },
+        {
+          "title": "Site language: Turkish",
+          "enum": [
+            "tr"
+          ]
+        },
+        {
+          "title": "Site language: Ukrainian",
+          "enum": [
+            "uk"
+          ]
+        },
+        {
+          "title": "Site language: Urdu",
+          "enum": [
+            "ur"
+          ]
+        },
+        {
+          "title": "Site language: Uzbek",
+          "enum": [
+            "uz"
+          ]
+        },
+        {
+          "title": "Site language: Vietnamese",
+          "enum": [
+            "vi"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Simplified)",
+          "enum": [
+            "zh"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Traditional)",
+          "enum": [
+            "zh-Hant"
+          ]
+        },
+        {
+          "title": "Site language: Chinese (Taiwanese)",
+          "enum": [
+            "zh-TW"
+          ]
+        }
+      ],
+      "default": "en"
+    },
+    "direction": {
+      "title": "Directionality",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#directionality",
+      "enum": [
+        "ltr",
+        "rtl"
+      ]
+    },
+    "favicon": {
+      "title": "Favicon",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon",
+      "pattern": "\\.(ico|png|svg|jpe?g)$",
+      "defaultSnippets": [
+        {
+          "body": "${1:path/to/file}.png"
+        }
+      ]
+    },
+    "logo": {
+      "title": "Logo",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
+      "pattern": "\\.(png|svg|jpe?g)$",
+      "defaultSnippets": [
+        {
+          "body": "${1:path/to/file}.png"
+        }
+      ]
+    },
+    "icon": {
+      "title": "Icons",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/",
+      "type": "object",
+      "properties": {
+        "edit": {
+          "$ref": "#/definitions/icon"
+        },
+        "logo": {
+          "$ref": "#/definitions/icon"
+        },
+        "repo": {
+          "$ref": "#/definitions/icon"
+        },
+        "admonition": {
+          "title": "Admonition icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
+          "type": "object",
+          "properties": {
+            "note": {
+              "$ref": "#/definitions/icon"
+            },
+            "abstract": {
+              "$ref": "#/definitions/icon"
+            },
+            "info": {
+              "$ref": "#/definitions/icon"
+            },
+            "tip": {
+              "$ref": "#/definitions/icon"
+            },
+            "success": {
+              "$ref": "#/definitions/icon"
+            },
+            "question": {
+              "$ref": "#/definitions/icon"
+            },
+            "warning": {
+              "$ref": "#/definitions/icon"
+            },
+            "failure": {
+              "$ref": "#/definitions/icon"
+            },
+            "danger": {
+              "$ref": "#/definitions/icon"
+            },
+            "bug": {
+              "$ref": "#/definitions/icon"
+            },
+            "example": {
+              "$ref": "#/definitions/icon"
+            },
+            "quote": {
+              "$ref": "#/definitions/icon"
+            }
+          },
+          "additionalProperties": false,
+          "defaultSnippets": [
+            {
+              "label": "note",
+              "body": "note: ${1:material/pencil-circle}"
+            },
+            {
+              "label": "abstract",
+              "body": "abstract: ${1:material/clipboard-text}"
+            },
+            {
+              "label": "info",
+              "body": "info: ${1:material/information}"
+            },
+            {
+              "label": "tip",
+              "body": "tip: ${1:material/fire}"
+            },
+            {
+              "label": "success",
+              "body": "success: ${1:material/check}"
+            },
+            {
+              "label": "question",
+              "body": "question: ${1:material/help-circle}"
+            },
+            {
+              "label": "warning",
+              "body": "warning: ${1:material/alert}"
+            },
+            {
+              "label": "failure",
+              "body": "failure: ${1:material/close}"
+            },
+            {
+              "label": "danger",
+              "body": "danger: ${1:material/lightning-bolt-circle}"
+            },
+            {
+              "label": "bug",
+              "body": "bug: ${1:material/shield-bug}"
+            },
+            {
+              "label": "example",
+              "body": "example: ${1:material/test-tube}"
+            },
+            {
+              "label": "quote",
+              "body": "quote: ${1:material/format-quote-close}"
+            }
+          ]
+        },
+        "tag": {
+          "title": "Tag icon",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#tag-icons-and-identifiers",
+          "type": "object",
+          "patternProperties": {
+            "^[\\w-]+$": {
+              "$ref": "#/definitions/icon"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "defaultSnippets": [
+        {
+          "label": "edit",
+          "body": "edit: ${1:material/pencil}"
+        },
+        {
+          "label": "logo",
+          "body": "logo: ${1:material/library}"
+        },
+        {
+          "label": "repo",
+          "body": "repo: ${1:fontawesome/brands/git-alt}"
+        }
+      ]
+    },
+    "features": {
+      "title": "Feature flags",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/",
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "title": "Mark as read",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read",
+            "enum": [
+              "announce.dismiss"
+            ]
+          },
+          {
+            "title": "Code annotations",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
+            "enum": [
+              "content.code.annotate"
+            ]
+          },
+          {
+            "title": "Linked content tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
+            "enum": [
+              "content.tabs.link"
+            ]
+          },
+          {
+            "title": "Improved tooltips",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/tooltips/#improved-tooltips",
+            "enum": [
+              "content.tooltips"
+            ]
+          },
+          {
+            "title": "Header hides automatically when scrolling",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#automatic-hiding",
+            "enum": [
+              "header.autohide"
+            ]
+          },
+          {
+            "title": "Navigation expansion",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion",
+            "enum": [
+              "navigation.expand"
+            ]
+          },
+          {
+            "title": "Section index pages",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages",
+            "enum": [
+              "navigation.indexes"
+            ]
+          },
+          {
+            "title": "Instant loading",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
+            "enum": [
+              "navigation.instant"
+            ]
+          },
+          {
+            "title": "Navigation pruning",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
+            "enum": [
+              "navigation.prune"
+            ]
+          },
+          {
+            "title": "Navigation sections",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections",
+            "enum": [
+              "navigation.sections"
+            ]
+          },
+          {
+            "title": "Navigation tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs",
+            "enum": [
+              "navigation.tabs"
+            ]
+          },
+          {
+            "title": "Sticky navigation tabs",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#sticky-navigation-tabs",
+            "enum": [
+              "navigation.tabs.sticky"
+            ]
+          },
+          {
+            "title": "Back-to-top button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#back-to-top-button",
+            "enum": [
+              "navigation.top"
+            ]
+          },
+          {
+            "title": "Anchor tracking",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-tracking",
+            "enum": [
+              "navigation.tracking"
+            ]
+          },
+          {
+            "title": "Search higlighting",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting",
+            "enum": [
+              "search.highlight"
+            ]
+          },
+          {
+            "title": "Search sharing",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-sharing",
+            "enum": [
+              "search.share"
+            ]
+          },
+          {
+            "title": "Search suggestions",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions",
+            "enum": [
+              "search.suggest"
+            ]
+          },
+          {
+            "title": "Integrated table of contents",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following",
+            "enum": [
+              "toc.follow"
+            ]
+          },
+          {
+            "title": "Integrated table of contents",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-integration",
+            "enum": [
+              "toc.integrate"
+            ]
+          }
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "palette": {
+      "oneOf": [
+        {
+          "title": "Color palette",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/",
+          "type": "object",
+          "properties": {
+            "scheme": {
+              "$ref": "#/definitions/scheme"
+            },
+            "primary": {
+              "$ref": "#/definitions/primary"
+            },
+            "accent": {
+              "$ref": "#/definitions/accent"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Color palette",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scheme": {
+                "$ref": "#/definitions/scheme"
+              },
+              "primary": {
+                "$ref": "#/definitions/primary"
+              },
+              "accent": {
+                "$ref": "#/definitions/accent"
+              },
+              "media": {
+                "oneOf": [
+                  {
+                    "title": "System preference",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#system-preference",
+                    "type": "string",
+                    "enum": [
+                      "\"(prefers-color-scheme: light)\"",
+                      "\"(prefers-color-scheme: dark)\""
+                    ]
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "defaultSnippets": [
+                  {
+                    "label": "\"(prefers-color-scheme: light)\"",
+                    "body": "\"(prefers-color-scheme: ${1:light})\""
+                  }
+                ]
+              },
+              "toggle": {
+                "title": "Color palette toggle",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
+                "properties": {
+                  "icon": {
+                    "$ref": "#/definitions/icon"
+                  },
+                  "name": {
+                    "title": "Color palette toggle name",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#toggle-name",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "icon",
+                  "name"
+                ]
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "toggle"
+            ]
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      ],
+      "default": {
+        "scheme": "default",
+        "primary": "indigo",
+        "accent": "indigo"
+      }
+    },
+    "font": {
+      "oneOf": [
+        {
+          "title": "Google Fonts",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/",
+          "properties": {
+            "text": {
+              "$ref": "assets/fonts.json"
+            },
+            "code": {
+              "$ref": "assets/fonts.json"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Disable Google Fonts",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/#autoloading",
+          "enum": [
+            false
+          ]
+        }
+      ],
+      "defaultSnippets": [
+        {
+          "body": {
+            "text": "${1:Roboto}",
+            "code": "${2:Roboto Mono}"
+          }
+        }
+      ]
+    },
+    "include_search_page": {
+      "title": "Only necessary when installing from git",
+      "markdownDescription": "Must be set to `false`",
+      "enum": [
+        false
+      ]
+    },
+    "search_index_only": {
+      "title": "Only necessary when installing from git",
+      "markdownDescription": "Must be set to `false`",
+      "enum": [
+        true
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "name"
+  ],
+  "definitions": {
+    "scheme": {
+      "title": "Color scheme",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme",
+      "oneOf": [
+        {
+          "enum": [
+            "default",
+            "slate"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "defaultSnippets": [
+        {
+          "label": "default",
+          "body": "${1:default}"
+        }
+      ]
+    },
+    "primary": {
+      "title": "Primary color",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#primary-color",
+      "enum": [
+        "red",
+        "pink",
+        "purple",
+        "deep purple",
+        "indigo",
+        "blue",
+        "light blue",
+        "cyan",
+        "teal",
+        "green",
+        "light green",
+        "lime",
+        "yellow",
+        "amber",
+        "orange",
+        "deep orange",
+        "brown",
+        "grey",
+        "blue grey",
+        "black",
+        "white"
+      ]
+    },
+    "accent": {
+      "title": "Accent color",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#accent-color",
+      "enum": [
+        "red",
+        "pink",
+        "purple",
+        "deep purple",
+        "indigo",
+        "blue",
+        "light blue",
+        "cyan",
+        "teal",
+        "green",
+        "light green",
+        "lime",
+        "yellow",
+        "amber",
+        "orange",
+        "deep orange",
+        "brown",
+        "grey",
+        "blue grey",
+        "black",
+        "white"
+      ]
+    },
+    "icon": {
+      "oneOf": [
+        {
+          "$ref": "assets/icons.json"
+        },
+        {
+          "title": "Unknown icon",
+          "type": "string"
+        }
+      ]
+    }
+  }
+}

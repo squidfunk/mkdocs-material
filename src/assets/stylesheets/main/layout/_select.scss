@@ -1,0 +1,115 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Selection
+.md-select {
+  position: relative;
+  z-index: 1;
+
+  // Selection tooltip
+  &__inner {
+    position: absolute;
+    top: calc(100% - #{px2rem(4px)});
+    left: 50%;
+    max-height: 0;
+    margin-top: px2rem(4px);
+    color: var(--md-default-fg-color);
+    background-color: var(--md-default-bg-color);
+    border-radius: px2rem(2px);
+    box-shadow: var(--md-shadow-z2);
+    transform: translate3d(-50%, px2rem(6px), 0);
+    opacity: 0;
+    transition:
+      transform  250ms 375ms,
+      opacity    250ms 250ms,
+      max-height   0ms 500ms;
+
+    // Selection bubble on parent focus/hover
+    .md-select:is(:focus-within, :hover) & {
+      max-height: px2rem(200px);
+      transform: translate3d(-50%, 0, 0);
+      opacity: 1;
+      transition:
+        transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+        opacity    250ms,
+        max-height   0ms;
+    }
+
+    // Selection bubble handle
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      margin-top: px2rem(-4px);
+      margin-left: px2rem(-4px);
+      border: px2rem(4px) solid transparent;
+      border-top: 0;
+      border-bottom-color: var(--md-default-bg-color);
+      content: "";
+    }
+  }
+
+  // Selection list
+  &__list {
+    max-height: inherit;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    font-size: px2rem(16px);
+    list-style-type: none;
+    border-radius: px2rem(2px);
+  }
+
+  // Selection item
+  &__item {
+    line-height: px2rem(36px);
+  }
+
+  // Selection link
+  &__link {
+    display: block;
+    width: 100%;
+    padding-inline: px2rem(12px) px2rem(24px);
+    outline: none;
+    cursor: pointer;
+    transition:
+      background-color 250ms,
+      color            250ms;
+    scroll-snap-align: start;
+
+    // Link on focus/hover
+    &:is(:focus, :hover) {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Link on focus
+    &:focus {
+      background-color: var(--md-default-fg-color--lightest);
+    }
+  }
+}

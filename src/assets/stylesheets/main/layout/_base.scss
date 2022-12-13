@@ -1,0 +1,183 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules: base grid and containers
+// ----------------------------------------------------------------------------
+
+// Stretch container to viewport and set base `font-size`
+html {
+  height: 100%;
+  overflow-x: hidden;
+  // Hack: normally, we would set the base `font-size` to `62.5%`, so we can
+  // base all calculations on `10px`, but Chromium and Chrome define a minimal
+  // `font-size` of `12px` if the system language is set to Chinese. For this
+  // reason we just double the `font-size` and set it to `20px`.
+  //
+  // See https://github.com/squidfunk/mkdocs-material/issues/911
+  font-size: 125%;
+
+  // [screen medium +]: Set base `font-size` to `11px`
+  @include break-from-device(screen medium) {
+    font-size: 137.5%;
+  }
+
+  // [screen large +]: Set base `font-size` to `12px`
+  @include break-from-device(screen large) {
+    font-size: 150%;
+  }
+}
+
+// Stretch body to container - flexbox is used, so the footer will always be
+// aligned to the bottom of the viewport
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  // Hack: reset `font-size` to `10px`, so the spacing for all inline elements
+  // is correct again. Otherwise the spacing would be based on `20px`.
+  font-size: px2rem(10px);
+  background-color: var(--md-default-bg-color);
+
+  // [print]: Omit flexbox layout due to a Firefox bug (https://mzl.la/39DgR3m)
+  @media print {
+    display: block;
+  }
+
+  // Body in locked state
+  &[data-md-scrolllock] {
+
+    // [tablet portrait -]: Omit scroll bubbling
+    @include break-to-device(tablet portrait) {
+      position: fixed;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Grid container - this class is applied to wrapper elements within the
+// header, content area and footer, and makes sure that their width is limited
+// to `1220px`, and they are rendered centered if the screen is larger.
+.md-grid {
+  max-width: px2rem(1220px);
+  margin-inline: auto;
+}
+
+// Main container
+.md-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  // [print]: Omit flexbox layout due to a Firefox bug (https://mzl.la/39DgR3m)
+  @media print {
+    display: block;
+  }
+}
+
+// Main area - stretch to remaining space of container
+.md-main {
+  flex-grow: 1;
+
+  // Main area wrapper
+  &__inner {
+    display: flex;
+    height: 100%;
+    margin-top: px2rem(24px + 6px);
+  }
+}
+
+// Add ellipsis in case of overflowing text
+.md-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// ----------------------------------------------------------------------------
+// Rules: navigational elements
+// ----------------------------------------------------------------------------
+
+// Toggle - this class is applied to checkbox elements, which are used to
+// implement the CSS-only drawer and navigation, as well as the search
+.md-toggle {
+  display: none;
+}
+
+// Option - this class is applied to radio elements, which are used to
+// implement the color palette toggle
+.md-option {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+
+  // Option label for checked radio button
+  &:checked + label:not([hidden]) {
+    display: block;
+  }
+
+  // Show outline for keyboard devices
+  &.focus-visible + label {
+    outline-style: auto;
+    outline-color: var(--md-accent-fg-color);
+  }
+}
+
+// Skip link
+.md-skip {
+  position: fixed;
+  // Hack: if we don't set the negative `z-index`, the skip link will force the
+  // creation of new layers when code blocks are near the header on scrolling
+  z-index: -1;
+  margin: px2rem(10px);
+  padding: px2rem(6px) px2rem(10px);
+  color: var(--md-default-bg-color);
+  font-size: px2rem(12.8px);
+  background-color: var(--md-default-fg-color);
+  border-radius: px2rem(2px);
+  outline-color: var(--md-accent-fg-color);
+  transform: translateY(px2rem(8px));
+  opacity: 0;
+
+  // Show skip link on focus
+  &:focus {
+    z-index: 10;
+    transform: translateY(0);
+    opacity: 1;
+    transition:
+      transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      opacity   175ms 75ms;
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: print styles
+// ----------------------------------------------------------------------------
+
+// Add margins to page
+@page {
+  margin: 25mm;
+}

@@ -1,3 +1,1629 @@
+mkdocs-material-8.5.11 (2022-11-30)
+
+  * Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+
+mkdocs-material-8.5.10+insiders-4.26.6 (2022-11-28)
+
+  * Fixed #4683: Tags plugin crashes when a tag is empty
+
+mkdocs-material-8.5.10+insiders-4.26.5 (2022-11-27)
+
+  * Fixed #4632: Post excerpt title link doesn't point to top of the page
+
+mkdocs-material-8.5.10+insiders-4.26.4 (2022-11-27)
+
+  * Fixed redundant file extension when using privacy plugin
+
+mkdocs-material-8.5.10+insiders-4.26.3 (2022-11-15)
+
+  * Fixed #4637: Attachments w/o titles in related links error in blog plugin
+  * Fixed #4631: Remote favicons not downloaded and inlined by privacy plugin
+
+mkdocs-material-8.5.10 (2022-11-11)
+
+  * Adjusted CSS to better allow for custom primary and accent colors
+  * Fixed #4620: Primary color is not applied (8.5.9 regression)
+
+mkdocs-material-8.5.9 (2022-11-08)
+
+  * Fixed #4600: Illegible link colors for black and white primary colors
+  * Fixed #4594: Need to set schema to change link color
+
+mkdocs-material-8.5.8+insiders-4.26.2 (2022-11-03)
+
+  * Updated MkDocs to 1.4.2
+  * Added support for tag compare functions when sorting on index pages
+  * Fixed footnotes being rendered in post excerpts without separators
+  * Fixed error in blog plugin when toc extension is not enabled
+  * Fixed issues with invalid asset paths and linked post titles
+  * Fixed #4572: Privacy plugin fails when symlinks cannot be created
+  * Fixed #4545: Blog plugin doesn't automatically link headline to post
+  * Fixed #4542: Blog plugin doesn't allow for multiple instances
+  * Fixed #4532: Blog plugin doesn't allow for mixed use of date and datetime
+
+mkdocs-material-8.5.8 (2022-11-03)
+
+  * Added support for always showing settings in cookie consent
+  * Fixed #4571: Buttons invisible if primary color is white or black
+  * Fixed #4517: Illegible note in sequence diagram when using slate scheme
+
+mkdocs-material-8.5.7+insiders-4.26.1 (2022-10-22)
+
+  * Improved reporting of configuration errors in tags plugin
+  * Fixed #4515: Privacy plugin fails when site URL is not defined
+  * Fixed #4514: Privacy plugin doesn't fetch Google fonts (4.26.0 regression)
+
+mkdocs-material-8.5.7 (2022-10-22)
+
+  * Deprecated additional admonition qualifiers to reduce size of CSS
+  * Fixed #4511: Search boost does not apply to sections
+
+mkdocs-material-8.5.6+insiders-4.26.0 (2022-10-18)
+
+  * Refactored privacy plugin to prepare for new features
+  * Added support for rel=noopener links in privacy plugin
+  * Resolve encoding issues with blog and privacy plugin
+
+mkdocs-material-8.5.6+insiders-4.25.5 (2022-10-16)
+
+  * Updated MkDocs to 1.4.1
+  * Added namespace prefix to built-in plugins
+  * Updated content and header partial
+
+mkdocs-material-8.5.6+insiders-4.25.4 (2022-10-09)
+
+  * Fixed other path issues for standalone blogs (4.24.2 regression)
+
+mkdocs-material-8.5.6+insiders-4.25.3 (2022-10-09)
+
+  * Fixed #4457: Posts not collected for standalone blog (4.24.2 regression)
+
+mkdocs-material-8.5.6+insiders-4.25.2 (2022-10-04)
+
+  * Fixed #4452: Blog and tags plugin crash when specifying slugify function
+
+mkdocs-material-8.5.6+insiders-4.25.1 (2022-10-03)
+
+  * Updated mkdocs-rss-plugin in Dockerfile to fix MkDocs compat errors
+
+mkdocs-material-8.5.6+insiders-4.25.0 (2022-10-02)
+
+  * Added support for navigation subtitles
+  * Added support for defining an allow list for built-in tags plugin
+  * Added support for custom slugify functions for built-in tags plugin
+  * Improved stability of search plugin when using --dirtyreload
+
+mkdocs-material-8.5.6 (2022-10-02)
+
+  * Modernized appearance of admonitions (with fallback, see docs)
+  * Improved appearance of inline code blocks in admonition titles
+
+mkdocs-material-8.5.5+insiders-4.24.2 (2022-10-01)
+
+  * Updated MkDocs to 1.4
+  * Fixed compatibility issues with MkDocs 1.4
+  * Fixed incorrectly generated paths in privacy plugin
+  * Fixed blog index page not showing navigation when using meta plugin
+
+mkdocs-material-8.5.5 (2022-10-01)
+
+  * Updated MkDocs to 1.4
+  * Fixed compatibility issues with MkDocs 1.4
+  * Fixed #4430: build error when enabling consent without repository URL
+
+mkdocs-material-8.5.4+insiders-4.24.1 (2022-09-30)
+
+  * Fixed #4430: build error when enabling consent without repository URL
+
+mkdocs-material-8.5.4 (2022-09-30)
+
+  * Fixed expand icons shift on sidebar overflow (using scrollbar-gutter)
+  * Fixed #4429: Text in sequence diagrams overflows in Firefox
+
+mkdocs-material-8.5.3+insiders-4.24.0 (2022-09-27)
+
+  * Added support for custom content on index pages (blog)
+  * Added support for keeping content on paginated index pages (blog)
+  * Added support for limiting categories in post excerpts (blog)
+  * Added support for simple override of templates via front matter (blog)
+  * Added icon in navigation for pages with encrypted content
+  * Fixed #4396: Front matter of index pages not inherited by pagination (blog)
+  * Improved performance by building post excerpts once (blog)
+
+mkdocs-material-8.5.3+insiders-4.23.6 (2022-09-22)
+
+  * Fixed #4389: Blog posts in first week of year in wrong archive
+  * Fixed (= switched) footer previous and next links for blog posts
+
+mkdocs-material-8.5.3 (2022-09-20)
+
+  * Fixed build error when enabling cookie consent without analytics
+  * Fixed #4381: Code blocks render ligatures for some fonts
+
+mkdocs-material-8.5.2+insiders-4.23.5 (2022-09-18)
+
+  * Fixed #4367: Improved blog plugin date handling for MultiMarkdown syntax
+  * Fixed #4374: Fixed invalid URLs of related links to other blog posts
+
+mkdocs-material-8.5.2 (2022-09-18)
+
+  * Updated Mermaid.js to version 9.1.7
+  * Fixed overly large headlines in search results (8.5.0 regression)
+  * Fixed #4358: Navigation sections appear as clickable (8.5.0 regression)
+  * Fixed #4356: GitHub repository statistics fetched before cookie consent
+
+mkdocs-material-8.5.1 (2022-09-15)
+
+  * Fixed #4366: Removed dependencies with native extensions
+
+mkdocs-material-8.5.0+insiders-4.23.4 (2022-09-14)
+
+  * Fixed #4365: Recursion error in blog plugin due to deepcopy
+  * Fixed path errors for blog plugin on Windows
+  * Fixed publishing workflow in forked repositories
+
+mkdocs-material-8.5.0+insiders-4.23.3 (2022-09-13)
+
+  * Fixed previous and next page links for drafts of blog posts
+
+mkdocs-material-8.5.0 (2022-09-13)
+
+  * Added support for social cards
+  * Added support for code annotation anchor links (deep linking)
+  * Added support for code annotation comment stripping (syntax modifier)
+  * Added support for sidebars scrolling automatically to active item
+  * Added support for anchor following table of contents (= auto scroll)
+  * Added support for tag icons
+
+mkdocs-material-8.4.4+insiders-4.23.2 (2022-09-13)
+
+  * Fixed #4348: Blog plugin crashes on custom nav title
+  * Fixed blog plugin crashing when category contained only drafts
+  * Fixed rendering of content from blog index file
+
+mkdocs-material-8.4.4+insiders-4.23.1 (2022-09-12)
+
+  * Fixed #4345: Blog plugin errors with default settings
+
+mkdocs-material-8.4.4+insiders-4.23.0 (2022-09-12)
+
+  * Added blogging support via built-in blog plugin
+
+mkdocs-material-8.4.4 (2022-09-12)
+
+  * Moved comments integration to separate partial (comments.html)
+
+mkdocs-material-8.4.3+insiders-4.22.1 (2022-09-07)
+
+  * Fixed #4217: Tooltips in data tables render in wrong position
+
+mkdocs-material-8.4.3 (2022-09-07)
+
+  * Added Simple Icons to bundled icons (+2,300 icons)
+  * Added support for changing edit icon
+  * Moved page actions to separate partial (actions.html)
+  * Fixed #4291: Version switching doesn't stay on page when anchors are used
+  * Fixed #4327: Links in data tables do not receive link styling
+
+mkdocs-material-8.4.2 (2022-08-27)
+
+  * Updated Slovenian translations
+  * Fixed #4277: Feedback widget hidden after navigation with instant loading
+  * Fixed numeric tags in front matter breaking search functionality
+
+mkdocs-material-8.4.1+insiders-4.22.0 (2022-08-21)
+
+  * Added support for navigation status
+
+mkdocs-material-8.4.1 (2022-08-21)
+
+  * Updated Croatian and Hebrew translations
+
+mkdocs-material-8.4.0+insiders-4.21.1 (2022-08-13)
+
+  * Fixed #4176: Broken image when avatar is served by Gravatar
+  * Fixed #4212: Deferred search initialization for file:// locations
+
+mkdocs-material-8.4.0 (2022-08-13)
+
+  * Added support for cookie consent
+  * Added support for feedback widget (Was this page helpful?)
+  * Added support for dismissable announcement bar
+  * Added Armenian, Lithuanian, Tagalog, and Urdu translations
+
+mkdocs-material-8.3.9+insiders-4.21.0 (2022-07-17)
+
+  * Added meta plugin: set front matter for all pages in a folder
+  * Fixed #4114: Tags plugin fails if only tags_extra_files is set
+
+mkdocs-material-8.3.9+insiders-4.20.1 (2022-07-11)
+
+  * Fixed #4105: Tags plugin fails if tags_file is not set (4.20.0 regression)
+
+mkdocs-material-8.3.9+insiders-4.20.0 (2022-07-07)
+
+  * Added support for additional tags indexes
+  * Fixed #4100: Tag icons not shown in tags index
+
+mkdocs-material-8.3.9+insiders-4.19.2 (2022-07-04)
+
+  * Fixed #4051: Privacy plugin fails if symlinking isn't allowed on Windows
+
+mkdocs-material-8.3.9 (2022-07-04)
+
+  * Updated Taiwanese translations for search
+  * Allow ids for content tabs with special characters (for mkdocstrings)
+  * Fixed #4083: home not clickable when using versioning (8.3.5 regression)
+
+mkdocs-material-8.3.8+insiders-4.19.1 (2022-06-25)
+
+  * Added mkdocs-git-committers-plugin to Dockerfile
+  * Added mkdocs-git-revision-date-localized-plugin to Dockerfile
+
+mkdocs-material-8.3.8+insiders-4.19.0 (2022-06-24)
+
+  * Added support for document contributors
+  * Updated French translations for cookie consent
+
+mkdocs-material-8.3.8 (2022-06-24)
+
+  * Fixed #4053: Limit width of videos to content area
+  * Fixed empty tags in front matter breaking search
+
+mkdocs-material-8.3.7 (2022-06-22)
+
+  * Fixed search being stuck initializing when using tags (8.3.4 regression)
+
+mkdocs-material-8.3.6+insiders-4.18.2 (2022-06-16)
+
+  * Fixed #4026: Fixed tooltips not mounted for nested navigation links
+
+mkdocs-material-8.3.6 (2022-06-16)
+
+  * Fixed #4028: Links not clickable when using versioning (8.3.5 regression)
+
+mkdocs-material-8.3.5+insiders-4.18.1 (2022-06-14)
+
+  * Fixed #3990: Chinese search highlighting not working on non-boundaries
+
+mkdocs-material-8.3.5 (2022-06-14)
+
+  * Fixed #4012: Stay on page not working for alias of active version
+
+mkdocs-material-8.3.4+insiders-4.18.0 (2022-06-11)
+
+  * Added support for automatic dark/light mode
+  * Fixed #4009: Privacy plugin uses invalid paths for file cache on Windows
+
+mkdocs-material-8.3.4 (2022-06-11)
+
+  * Fixed #4004: Tags with multiple words not searchable
+
+mkdocs-material-8.3.3 (2022-06-07)
+
+  * Fixed #4000: Mermaid diagrams too dark in dark mode (8.3.0 regression)
+
+mkdocs-material-8.3.2+insiders-4.17.2 (2022-06-05)
+
+  * Added support for custom jieba dictionaries (Chinese search)
+
+mkdocs-material-8.3.2+insiders-4.17.1 (2022-06-05)
+
+  * Added support for cookie consent reject button
+  * Added support for cookie consent custom button ordering
+  * Fixed #3988: Content tab not focused after alternating anchor links
+
+mkdocs-material-8.3.2 (2022-06-05)
+
+  * Fixed #3987: Custom admonition icons don't work when defining color palette
+
+mkdocs-material-8.3.1+insiders-4.17.0 (2022-06-04)
+
+  * Added support for content tabs anchor links (deep linking)
+  * Fixed #3975: Detect composition events in search interface (Chinese)
+  * Fixed #3980: Search plugin doesn't use title set via front matter
+
+mkdocs-material-8.3.1 (2022-06-04)
+
+  * Bump required Jinja version to 3.0.2
+  * Removed unnecessary conditions in templates
+  * Fixed scroll offset when content tabs are brought into view
+  * Fixed #3977: Content tabs snapping oddly in Firefox
+  * Fixed #3983: Missing condition in footer partial (8.3.0 regression)
+
+mkdocs-material-8.3.0 (2022-06-02)
+
+  * Added support for custom admonition icons
+  * Added support for linking of content tabs
+  * Added support for boosting pages in search
+  * Added support for hiding footer navigation
+  * Added previous/next indicators to content tabs
+  * Improved typeset link colors in light and dark modes
+
+mkdocs-material-8.2.16+insiders-4.16.2 (2022-05-28)
+
+  * Fixed #3961: Nested sections triggered build error for navigation tabs
+
+mkdocs-material-8.2.16+insiders-4.16.1 (2022-05-28)
+
+  * Switched feedback widget rating titles to tooltips
+  * Improved contrast of link colors for light/dark color schemes
+  * Fixed #3950: Sticky navigation tabs rendering broken (4.15.2 regression)
+  * Fixed #3958: Links invisible when using white primary color
+
+mkdocs-material-8.2.16 (2022-05-28)
+
+  * Fixed #3957: Only animate code annotations when visible (save CPU cycles)
+
+mkdocs-material-8.2.15+insiders-4.16.0 (2022-05-25)
+
+  * Added support for navigation pruning
+  * Fixed search results for non-segmented characters (4.15.2 regression)
+
+mkdocs-material-8.2.15+insiders-4.15.2 (2022-05-22)
+
+  * Removed workaround for abbr on touch devices (superseded by tooltips)
+  * Fixed #3915: Improved Chinese search query segmentation
+  * Fixed #3938: Fixed tooltips position for navigation titles with ellipsis
+
+mkdocs-material-8.2.15+insiders-4.15.1 (2022-05-14)
+
+  * Improved performance of element focus obervables
+  * Fixed #3531: Added prev/next buttons to content tabs
+  * Fixed tooltip positioning when host element is hidden
+
+mkdocs-material-8.2.15 (2022-05-14)
+
+  * Added Uzbek translations
+  * Fixed spacing for code block results in content tabs
+
+mkdocs-material-8.2.14+insiders-4.15.0 (2022-05-08)
+
+  * Added support for improved tooltips
+  * Fixed #3785: Show tooltip on hover for overflowing navigation link
+
+mkdocs-material-8.2.14 (2022-05-08)
+
+  * Fixed missing top right rounded border on admonition
+  * Fixed #3886: 4xx status codes not handled when using instant loading
+
+mkdocs-material-8.2.13+insiders-4.14.0 (2022-05-05)
+
+  * Added Chinese language support to built-in search plugin
+  * Fixed all-numeric page titles raising error in social plugin
+
+mkdocs-material-8.2.13 (2022-05-02)
+
+  * Fixed #3865: Tags index links to tagged pages 404 on Windows
+  * Fixed #3866: Bump required Python version from 3.6+ to 3.7+
+
+mkdocs-material-8.2.12+insiders-4.13.2 (2022-04-30)
+
+  * Improved caching of downloaded resources in privacy plugin
+  * Fixed #3851: External images not downloaded by privacy plugin
+
+mkdocs-material-8.2.12 (2022-04-30)
+
+  * Added support for GitHub-style hash fragments for dark/light images
+  * Improved rendering of nested code blocks in content tabs and annotations
+  * Fixed #3862: Upgraded to latest Pygments and Python Markdown Extensions
+
+mkdocs-material-8.2.11+insiders-4.13.1 (2022-04-25)
+
+  * Fixed #3839: Tags plugin breaks without icons (4.13.0 regression)
+
+mkdocs-material-8.2.11 (2022-04-25)
+
+  * Temporarily pinned Pygments to <2.12
+  * Temporarily pinned Python Markdown Extensions to <9.4
+  * Improved rendering of code annotation markers
+
+mkdocs-material-8.2.10+insiders-4.13.0 (2022-04-24)
+
+  * Added support for tag icons
+
+mkdocs-material-8.2.10 (2022-04-24)
+
+  * Added Macedonian translations
+  * Updated Mermaid.js to version 9.0.1
+  * Switched sidebar title in mobile navigation to bold font
+  * Fixed color of arrows in class and state diagrams for dark mode
+  * Fixed #3836: Inline admonitions overlayed by code block titles
+
+mkdocs-material-8.2.9 (2022-04-08)
+
+  * Mitigate flicker on color palette switch by disabling all transitions
+  * Fixed search suggestions not triggered when following deep link
+  * Fixed incorrectly computed header height when using instant loading
+  * Fixed #3782: Admonition titles have extra pixels on wide screens in Firefox
+  * Fixed #3802: Always render table of contents container (except when hidden)
+
+mkdocs-material-8.2.8+insiders-4.12.0 (2022-03-27)
+
+  * Added support for card grids and grid layouts
+  * Fixed #3685: Annotations sometimes broken when using instant loading
+  * Fixed #3742: Automatically add Mermaid.js when building for offline usage
+
+mkdocs-material-8.2.8 (2022-03-27)
+
+  * Bumped MkDocs version to 1.3.0 to mitigate breaking changes in Jinja
+  * Reverted Jinja version range limitation (added in 8.2.7)
+  * Improved styling of annotations and fixed borders of code blocks in tabs
+  * Added background color to code blocks in focused/hovered links
+  * Added check in tags plugin whether tags overview page exists
+  * Fixed #3744: Content tab indicator on wrong position when using back button
+
+mkdocs-material-8.2.7 (2022-03-24)
+
+  * Temporarily limit Jinja version range to < 3.1 due to breaking changes
+
+mkdocs-material-8.2.6 (2022-03-23)
+
+  * Fixed #3695: Deprecation warning for unescaped backslashes in templates
+  * Fixed #3696: Annotations not mounted in some Terraform code blocks
+  * Fixed #3698: Annotations not mounted in long code blocks (8.2.5 regression)
+
+mkdocs-material-8.2.5+insiders-4.11.0 (2022-03-06)
+
+  * Added support for excluding external assets from privacy plugin
+
+mkdocs-material-8.2.5 (2022-03-06)
+
+  * Fixed #3596: Mermaid not working when headline with name 'Mermaid' present
+  * Fixed #3643: Reduce time to render pages with thousands of code blocks
+  * Fixed #3665: Missing styles for Mermaid.js flowcharts cluster labels
+
+mkdocs-material-8.2.4+insiders-4.10.1 (2022-03-02)
+
+  * Added missing build dependencies to Dockerfile
+  * Fixed encoding issues in privacy plugin, now forcing UTF-8 encoding
+  * Fixed #3624: Scroll to active navigation item unreliable in Firefox
+  * Fixed #3642: Privacy plugin errors when font setting was omitted
+
+mkdocs-material-8.2.4 (2022-03-02)
+
+  * Fixed malformed Google Fonts URL when a font setting was omitted
+  * Fixed #3648: Fixed specificity issue with admonitions in lists
+  * Fixed #3653: Invalid outdated version banner URL when using instant loading
+
+mkdocs-material-8.2.3+insiders-4.10.0 (2022-02-27)
+
+  * Added support for offline plugin (supersedes offline search support)
+  * Improved built-in privacy plugin to download nested JavaScript assets
+  * Refactored configuration of built-in privacy plugin
+
+mkdocs-material-8.2.3 (2022-02-27)
+
+  * Fixed #3578: Active element in table of contents off-by-one on large screens
+
+mkdocs-material-8.2.2 (2022-02-26)
+
+  * Added automatic removal of query parameter when search is closed
+  * Fixed #3599: Anchors always overriden when using navigation tracking
+
+mkdocs-material-8.2.1+insiders-4.9.1 (2022-02-21)
+
+  * Fixed #3610: missing lxml dependency for privacy plugin
+  * Fixed error when charset is missing in content-type header
+
+mkdocs-material-8.2.1+insiders-4.9.0 (2022-02-20)
+
+  * Added privacy plugin: automatic downloading of external assets
+
+mkdocs-material-8.2.1 (2022-02-17)
+
+  * Fixed module 'material.plugins' not being found (8.2.0 regression)
+
+mkdocs-material-8.2.0 (2022-02-17)
+
+  * Added native support for Mermaid.js diagrams
+  * Added native support for tags (with search integration)
+  * Added support for staying on page when switching versions
+
+mkdocs-material-8.1.11+insiders-4.8.3 (2022-02-13)
+
+  * Fixed #3560: Mermaid diagrams don't render for file:// locations
+
+mkdocs-material-8.1.11+insiders-4.8.2 (2022-02-10)
+
+  * Fixed #3559: Mermaid diagrams don't render inside closed details
+
+mkdocs-material-8.1.11 (2022-02-10)
+
+  * Added Portuguese (Brasilian) translations
+  * Updated FontAwesome to v6 (might lead to missing icons)
+  * Fixed #3545: Color palette toggle and search overlaying version selector
+
+mkdocs-material-8.1.10+insiders-4.8.1 (2022-02-06)
+
+  * Fixed jump back to top on mobile when using anchor following
+
+mkdocs-material-8.1.10+insiders-4.8.0 (2022-02-06)
+
+  * Added support for anchor following table of contents (= auto scroll)
+
+mkdocs-material-8.1.10 (2022-02-06)
+
+  * Fixed cutoff of very wide logos in the sidebar on mobile
+
+mkdocs-material-8.1.9+insiders-4.7.2 (2022-02-02)
+
+  * Fixed #3526: Transparent sidebar title due to Safari bug
+  * Fixed #3528: Firefox sometimes clips text in flow chart diagrams
+
+mkdocs-material-8.1.9+insiders-4.7.1 (2022-01-30)
+
+  * Fixed #3506: Tags index not respecting title set via front matter
+
+mkdocs-material-8.1.9 (2022-01-30)
+
+  * Added support for mkdocs.yml validation and auto-complete
+  * Fixed errors in Latvian translations
+
+mkdocs-material-8.1.8+insiders-4.7.0 (2022-01-25)
+
+  * Added native support for offline search
+
+mkdocs-material-8.1.8 (2022-01-23)
+
+  * Added Latvian translations
+  * Updated Giscus example integration with dynamic theme change support
+  * Fixed #3479: Back-to-top button not hidden when using sticky navigation tabs
+  * Fixed #3491: Logo in header and drawer doesn't honor aspect ratio
+
+mkdocs-material-8.1.7+insiders-4.6.1 (2022-01-16)
+
+  * Fixed #3459: Section index pages picking up wrong title
+
+mkdocs-material-8.1.7 (2022-01-16)
+
+  * Improved back-to-top button behavior - now not shown on anchor jump
+
+mkdocs-material-8.1.6-insiders-4.6.0 (2022-01-11)
+
+  * Added support for annotations (outside of code blocks)
+
+mkdocs-material-8.1.6 (2022-01-11)
+
+  * Fixed spacing of blockquotes (8.1.5 regression)
+  * Fixed edge cases for rounded corners on code blocks (8.1.5 regression)
+  * Fixed rendering issues with code annotation line heights
+
+mkdocs-material-8.1.5 (2022-01-09)
+
+  * Improved browser support: Chrome 49+, Safari 10+, Firefox 53+, Edge 79+
+  * Improved rendering of inline code blocks in headlines
+  * Added Bahasa Malaysian translations
+  * Fixed #3354: MathJax formulas show vertical scrollbar
+
+mkdocs-material-8.1.4+insiders-4.5.2 (2022-01-08)
+
+  * Fixed #3440: Content tab indicator not moving when using linking
+  * Fixed #3445: Content tab switch flickers/jitters when using linking
+
+mkdocs-material-8.1.4+insiders-4.5.1 (2022-01-02)
+
+  * Added support for setting initial state of cookie consent
+  * Fixed #3396: Disappearing link in navigation due to Safari bug
+
+mkdocs-material-8.1.4 (2022-01-02)
+
+  * Added indicator to navigation expander icon
+  * Improved support for reduced motion preference
+  * Fixed jitter of active content tab indicator
+
+mkdocs-material-8.1.3 (2021-12-19)
+
+  * Added animation to active content tab indicator
+  * Fixed #3360: Highlighted lines add blank lines in copied text
+  * Fixed usage of subsequent index files when using section index pages
+
+mkdocs-material-8.1.2+insiders-4.5.0 (2021-12-16)
+
+  * Added support for navigation icons
+
+mkdocs-material-8.1.2 (2021-12-15)
+
+  * Switched CSS sources to logical properties
+  * Added transformation of logical properties to ltr/rtl equivalents
+  * Fixed spacing for admonitions inside lists (8.1.1 regression)
+
+mkdocs-material-8.1.1 (2021-12-13)
+
+  * Added support for #only-light and #only-dark image hash fragments
+  * Fixed copy-to-clipboard adding blank lines when using line anchors
+  * Fixed code annotation directionality for right-to-left languages
+  * Fixed header title positioning for right-to-left languages
+  * Fixed admonition borders for right-to-left languages (8.0.0 regression)
+  * Fixed footer navigation link positioning (8.0.0 regression)
+  * Fixed footer navigation title breaking out of container when too long
+  * Fixed shrinking arrow in navigation title when too long
+  * Fixed #3343: Filtered stopwords appear as missing search terms
+  * Fixed #3346: Site unusable due to usage of :not() (Firefox 78 ESR)
+
+mkdocs-material-8.1.0+insiders-4.4.0 (2021-12-10)
+
+  * Added support for code annotation anchor links (deep linking)
+  * Added new code annotation syntax modifier to strip comment
+  * Updated German translations for cookie consent
+
+mkdocs-material-8.1.0 (2021-12-10)
+
+  * Added basic support for code block line anchors
+  * Switched code annotation markers to + signs to improve usability
+  * Switched main site title to bold font
+  * Improved admonition icon positioning to align when font-size is increased
+  * Improved and simplified footnotes CSS
+  * Improved and simplified code annotation positioning
+  * Fixed syntax error in Russian translations
+
+mkdocs-material-8.0.5 (2021-12-04)
+
+  * Fixed #3302: Footer refactoring induced ellipsis in some browsers
+  * Fixed #3313: Details always rendered closed on load (8.0.4 regression)
+
+mkdocs-material-8.0.4+insiders-4.3.0 (2021-12-05)
+
+  * Added support for custom fonts in social cards
+  * Fixed #3300: Announcement bar reappearing when using instant loading
+
+mkdocs-material-8.0.4 (2021-12-04)
+
+  * Improved support for deeply nested code annotations
+  * Improved code annotation and copy-to-clipboard interop
+  * Improved styling for code annotations inside admonitions
+  * Fixed #3274: Invalid anchor positioning when using instant loading
+  * Fixed #3294: Lists after code blocks without code annotations disappearing
+  * Fixed several positioning issues for code annotations
+  * Fixed JavaScript source map roots
+
+mkdocs-material-8.0.3+insiders-4.2.0 (2021-12-02)
+
+  * Added support for dismissable announcement bar
+  * Added support for named placeholders in feedback widget
+
+mkdocs-material-8.0.3 (2021-12-02)
+
+  * Removed deprecated google_analytics setting (was forgotten in 8.0.0)
+  * Fixed syntax error in Swedish and Polish translations
+  * Fixed #3283: Invalid back-to-top button position with sticky navigation tabs
+  * Fixed #3285: Default details marker showing due to Safari bug
+
+mkdocs-material-8.0.2+insiders-4.1.0 (2021-11-30)
+
+  * Added support for passing page title to feedback forms
+
+mkdocs-material-8.0.2 (2021-11-30)
+
+  * Fixed #3275: Code annotations always disappear on click
+
+mkdocs-material-8.0.1 (2021-11-28)
+
+  * Improved rendering of code annotation markers
+  * Fixed #3265: Wrong margin on nested admonitions
+  * Fixed wrong box-sizing for code annotations in details
+
+mkdocs-material-8.0.0 (2021-11-28)
+
+  * Added support for code annotations
+  * Added support for anchor tracking
+  * Added support for version warning
+  * Added copyright partial for easier override
+  * Removed deprecated content tabs legacy implementation
+  * Removed deprecated seealso admonition type
+  * Removed deprecated site_keywords setting (unsupported by MkDocs)
+  * Removed deprecated prebuilt search index support
+  * Removed deprecated web app manifest – use customization
+  * Removed extracopyright variable – use new copyright partial
+  * Removed Disqus integation – use customization
+  * Switched to :is() selectors for simple selector lists
+  * Switched autoprefixer from last 4 years to last 2 years
+  * Improved CSS overall to match modern standards
+  * Improved CSS variable semantics for fonts
+  * Improved extensibility by restructuring partials
+  * Improved handling of details when printing
+  * Improved keyboard navigation for footnotes
+  * Fixed #3214: Search highlighting breaks site when empty
+
+mkdocs-material-7.3.6+insiders-3.2.3 (2021-11-20)
+
+  * Updated Swedish and French translations
+  * Removed support for .mermaid-experimental class (now .mermaid)
+  * Fixed #3202: Cookie consent not dismissable on file:// locations
+  * Fixed #3216: Cookie consent not dismissed when invoked via anchor
+  * Fixed #3232: Mermaid.js sometimes runs twice (race condition)
+
+mkdocs-material-7.3.6+insiders-3.2.2 (2021-11-06)
+
+  * Fixed always last feedback rating being sent
+  * Fixed #3145: Code annotations eat whole comment lines
+  * Fixed #3170: Feedback widget doesn't send data to GA4
+
+mkdocs-material-7.3.6+insiders-3.2.1 (2021-11-04)
+
+  * Added support for custom Mermaid.js version via additional JavaScript
+  * Fixed some configuration edge cases for tags plugin (3.1.5 regression)
+  * Fixed feedback widget title not being centered in Firefox
+  * Fixed #3179: Safari doesn't send request for feedback widget
+
+mkdocs-material-7.3.6+insiders-3.2.0 (2021-10-31)
+
+  * Added support for feedback widget (Was this page helpful?)
+
+mkdocs-material-7.3.6 (2021-10-30)
+
+  * Added support for adding titles to code blocks
+
+mkdocs-material-7.3.5+insiders-3.1.5 (2021-10-28)
+
+  * Fixed #3144: Rogue link when using tags with auto-populated navigation
+  * Fixed #3147: Code block line numbers appear in search results
+  * Fixed #3158: Social cards do not strip HTML tags from title
+
+mkdocs-material-7.3.5 (2021-10-27)
+
+  * Added support for setting table of contents title via mkdocs.yml
+  * Fixed back-to-top button position for right-to-left languages
+
+mkdocs-material-7.3.4+insiders-3.1.4 (2021-10-17)
+
+  * Fixed #2974: Text cropped with other fonts than Roboto in social plugin
+  * Fixed #3099: Encoding problems with non-latin character in social plugin
+  * Fixed #3112: Japanese segmenter not executed as part of new tokenizer
+  * Fixed tags (front matter) appearing in search with disabled tags plugin
+
+mkdocs-material-7.3.4 (2021-10-17)
+
+  * Bumped MkDocs version to 1.2.3 to mitigate CVE-2021-40978
+  * Fixed spacing issues when using integrate table of contents with tabs
+  * Fixed some spacings issues for right-to-left languages
+  * Fixed race condition in search initialization
+
+mkdocs-material-7.3.3+insiders-3.1.3 (2021-10-12)
+
+  * Added warnings to search plugin for unsupported options and syntax
+  * Fixed #3503: Search sometimes returns entire page
+  * Fixed #3089: Single-line code annotations disappear when printing
+
+mkdocs-material-7.3.3 (2021-10-11)
+
+  * Rewrite of entire documentation
+  * Adjusted height of new content tabs to match single line code blocks
+  * Fixed new content tabs missing right padding in some browsers on overflow
+  * Fixed new content tabs bleeding out of flex container on overflow
+  * Fixed new content tabs overflow scrolling bugs on some browsers
+  * Fixed new content tabs stealing keyboard access when active
+  * Fixed some spacings issues for right-to-left languages
+
+mkdocs-material-7.3.2+insiders-3.1.2 (2021-10-06)
+
+  * Fixed incorrect path separators for social cards on Windows
+
+mkdocs-material-7.3.2 (2021-10-06)
+
+  * Deprecated prebuilding of search index
+  * Improved graceful handling of broken search for file://
+  * Added minimum Jinja version to list of requirements
+  * Fixed #3071: Section index pages render empty directories
+  * Fixed margin issues when using navigation tabs (7.3.1 regression)
+  * Fixed search placeholder sometimes being shown too early
+
+mkdocs-material-7.3.1 (2021-10-02)
+
+  * Added new experimental content tabs implementation
+  * Fixed #3069: GitHub stats broken for users/orgs (7.1.0 regression)
+  * Fixed #3070: Sections not linking to index page
+  * Fixed title not linking to index page when using tabs
+  * Fixed Disqus integration when using instant loading
+  * Fixed some spacing issues for right-to-left languages
+  * Fixed syntax error in Serbian translations
+
+mkdocs-material-7.3.0+insiders-3.1.1 (2021-09-26)
+
+  * Fixed ordering bug in search exclusion logic
+
+mkdocs-material-7.3.0+insiders-3.1.0 (2021-09-26)
+
+  * Added support for excluding pages, sections, and elements from search
+  * Fixed #2803: Code block annotations not visible when printing
+
+mkdocs-material-7.3.0 (2021-09-23)
+
+  * Added support for sticky navigation tabs
+  * Added support for section index pages
+  * Added support for removing generator notice
+
+mkdocs-material-7.2.8 (2021-09-20)
+
+  * Fixed #3039: Search modal overlays menu on mobile (7.2.7 regression)
+
+mkdocs-material-7.2.7+insiders-3.0.1 (2021-09-19)
+
+  * Added support for using literal h1-6 tags for search plugin
+  * Fixed search plugin breaking on void elements without slashes
+  * Fixed search plugin filtering link contents from headlines
+  * Fixed search plugin handling of multiple h1 headlines
+  * Fixed search plugin handling of missing h1 headlines
+
+mkdocs-material-7.2.7 (2021-09-19)
+
+  * Updated Serbian and Serbo-Croatian translations
+  * Improved appearance of outline on details
+  * Fixed #2934: Scrollbar when header is hidden on some mobile browsers
+  * Fixed #3032: Anchor in details doesn't open on load (7.0.0 regression)
+  * Fixed back-to-top button being focusable when invisible
+  * Fixed broken admonition icons (removed in upstream)
+
+mkdocs-material-7.2.6+insiders-3.0.0 (2021-09-13)
+
+  * Rewrite of MkDocs' search plugin
+  * Added support for rich search previews
+  * Added support for tokenizer with lookahead
+  * Improved search indexing performance (twice as fast)
+  * Improved search highlighting
+
+mkdocs-material-7.2.6+insiders-2.13.3 (2021-09-01)
+
+  * Added support for disabling social card generation
+
+mkdocs-material-7.2.6 (2021-09-01)
+
+  * Fixed rendering of blockquote elements (7.0.0 regression)
+  * Fixed #2973: Custom search worker setting ignored
+
+mkdocs-material-7.2.5+insiders-2.13.2 (2021-08-25)
+
+  * Fixed #2965: Social plugin error when primary color is not defined
+
+mkdocs-material-7.2.5 (2021-08-25)
+
+  * Updated Portuguese translations
+  * Fixed execution of RxJS teardown logic (7.2.3 regression)
+  * Fixed #2970: Search results show escaped characters (7.2.2 regression)
+
+mkdocs-material-7.2.4+insiders-2.13.1 (2021-08-22)
+
+  * Fixed #2948: Social cards are not cached
+  * Fixed #2953: Mermaid.js diagrams can't be centered anymore
+
+mkdocs-material-7.2.4 (2021-08-11)
+
+  * Fixed #2926: Version selector not working (7.2.3 regression)
+  * Fixed #2929: Missing CSS class for banner (consistency with Insiders)
+
+mkdocs-material-7.2.3 (2021-08-09)
+
+  * Slight facelift of data tables, now closer to Material Design
+  * Fixed instant loading not respecting clicks on search results
+  * Fixed #2881: Invalid anchor offsets when using instant loading
+
+mkdocs-material-7.2.2+insiders-2.13.0 (2021-08-07)
+
+  * Added support for custom colors in social cards
+
+mkdocs-material-7.2.2+insiders-2.12.2 (2021-08-04)
+
+  * Fixed #2891: Division by zero error in social plugin
+
+mkdocs-material-7.2.2 (2021-07-31)
+
+  * Updated Korean translations
+  * Fixed #2879: Search highlighting does not properly escape HTML
+
+mkdocs-material-7.2.1+insiders-2.12.1 (2021-07-26)
+
+  * Fixed error in social plugin when site_description was not set
+  * Fixed error in social plugin for non-ASCII characters
+
+mkdocs-material-7.2.1+insiders-2.12.0 (2021-07-25)
+
+  * Added support for social cards
+
+mkdocs-material-7.2.1 (2021-07-25)
+
+  * Fixed #2862: Back-to-top button overlays active search bar
+
+mkdocs-material-7.2.0 (2021-07-21)
+
+  * Added support for search suggestions to save keystrokes
+  * Added support for search highlighting
+  * Added support for search sharing (i.e. deep linking)
+
+mkdocs-material-7.1.11+insiders-2.11.1 (2021-07-20)
+
+  * Fixed order of tags index, now sorted alphabetically
+
+mkdocs-material-7.1.11+insiders-2.11.0 (2021-07-18)
+
+  * Improved Mermaid.js integration, now stable
+  * Added support for sequence diagrams
+  * Added support for entity relationship diagrams
+  * Added support for cookie consent configuration
+  * Added feature flag to always enable annotations
+
+mkdocs-material-7.1.11 (2021-07-18)
+
+  * Updated Spanish and Galician translations
+
+mkdocs-material-7.1.10+insiders-2.10.0 (2021-07-10)
+
+  * Added support for cookie consent
+  * Fixed #2807: Back-to-top button not hidden when using sticky tabs
+
+mkdocs-material-7.1.10 (2021-07-10)
+
+  * Refactored appearance of back-to-top button
+  * Fixed graceful handling of search when browsing locally
+
+mkdocs-material-7.1.9 (2021-06-25)
+
+  * Improved search language support for Thai and Hindi
+  * Fixed #2761: License comments lined up at end of file
+
+mkdocs-material-7.1.8 (2021-06-12)
+
+  * Refactored analytics integration (because of MkDocs 1.2)
+  * Added support for Google Analytics 4 (gtag.js)
+  * Fixed missing escape for aria-label in footer links
+
+mkdocs-material-7.1.7 (2021-06-06)
+
+  * Improved screen reader support
+
+mkdocs-material-7.1.6+insiders-2.9.2 (2021-05-30)
+
+  * Moved tags to partial for easier customization
+  * Added support for hiding tags on any page
+
+mkdocs-material-7.1.6 (2021-05-30)
+
+  * Deprecated seealso admonition qualifier
+  * Added Mongolian and updated Chinese translations
+  * Fixed #2429: Version selector not touch-friendly on Android devices
+  * Fixed #2703: Printed 'Initializing search' albeit ready on mobile
+
+mkdocs-material-7.1.5+insiders-2.9.1 (2021-05-24)
+
+  * Added missing guard for linking of content tabs
+
+mkdocs-material-7.1.5+insiders-2.9.0 (2021-05-23)
+
+  * Added support for linking of content tabs
+
+mkdocs-material-7.1.5 (2021-05-19)
+
+  * Fixed #2655: Details breaking page margins on print
+
+mkdocs-material-7.1.4+insiders-2.8.0 (2021-05-12)
+
+  * Added support for boosting pages in search
+
+mkdocs-material-7.1.4+insiders-2.7.2 (2021-05-08)
+
+  * Fixed #2638: Warnings shown when using tags plugin without directory URLs
+
+mkdocs-material-7.1.4 (2021-05-06)
+
+  * Added support for git-revision-date-localized plugin creation date
+  * Improved footnote styles on :target and :focus
+
+mkdocs-material-7.1.3+insiders-2.7.1 (2021-05-03)
+
+  * Fixed git-revision-date-localized plugin integration (2.7.0 regression)
+
+mkdocs-material-7.1.3+insiders-2.7.0 (2021-05-01)
+
+  * Added support for tags (with search integration)
+
+mkdocs-material-7.1.3 (2021-04-24)
+
+  * Fixed #2586: Empty table of contents shown (7.1.2 regression)
+
+mkdocs-material-7.1.2 (2021-04-18)
+
+  * Fixed #2554: List markers sometimes overlap floated elements
+  * Fixed #2563: Adding a class to a h1 breaks the table of contents
+  * Fixed #2566: Back-to-top button clickable when invisible
+
+mkdocs-material-7.1.1+insiders-2.6.0 (2021-04-11)
+
+  * Stay on page when switching versions
+
+mkdocs-material-7.1.1 (2021-04-10)
+
+  * Fixed #2501: Nested definition lists compound bottom margin
+  * Fixed #2508: Switch extracopyright block to template variable
+  * Fixed #2533: Search (and other parts) not working in Safari <14
+  * Fixed #2538: Visual quirk when opening language selector
+
+mkdocs-material-7.1.0 (2021-03-29)
+
+  * Added support for color palette toggle
+  * Added support for back-to-top button
+  * Added latest release to repository info (GitHub)
+  * Slight facelift of repository info (lighter fonts, spacing and icons)
+
+mkdocs-material-7.0.7+insiders-2.5.0 (2021-03-28)
+
+  * Added support for version warning
+
+mkdocs-material-7.0.7 (2021-03-28)
+
+  * Updated Hungarian translations
+  * Fixed #2466: Docker image not based on latest Python and Alpine
+  * Fixed #2488: Inconsistent header shadow behavior
+  * Fixed #2492: Inline code blocks in admonition titles missing background
+
+mkdocs-material-7.0.6+insiders-2.4.0 (2021-03-20)
+
+  * Added support for custom admonition icons
+  * Fixed #2444: Code block annotations with extra comments have wrong index
+
+mkdocs-material-7.0.6+insiders-2.3.1 (2021-03-14)
+
+  * Fixed anchor offset for permalinks when using sticky navigation tabs
+
+mkdocs-material-7.0.6 (2021-03-14)
+
+  * Added trailing slash to version selector URL
+  * Added support for out-of-order anchors in table of contents
+  * Added extra.homepage option to link logo to arbitrary URL
+  * Improved security of Docker image (always update apk)
+  * Fixed horizontal spacing for nested inline admonitions
+  * Fixed text color of nested code blocks inside links
+  * Fixed version selector to always use version title
+  * Fixed logo link when using versioning with instant loading
+
+mkdocs-material-7.0.5+insiders-2.3.0 (2021-03-13)
+
+  * Added support for back-to-top button
+
+mkdocs-material-7.0.5 (2021-03-07)
+
+  * Added extracopyright block to allow for custom copyright info
+  * Fixed evaluation of third-party scripts when using instant loading
+  * Fixed edge cases when using instant loading without directory URLs
+  * Fixed handling of version selector when using instant loading
+  * Fixed regression with header title not being updated correctly
+  * Fixed expanded sections not opening on first click (7.0.4 regression)
+
+mkdocs-material-7.0.4+insiders-2.2.1 (2021-03-04)
+
+  * Fixed #2382: Repository stats failing when no release tag is present
+
+mkdocs-material-7.0.4 (2021-03-04)
+
+  * Added Icelandic translations
+  * Fixed #2386: Section close requires two clicks (navigation expansion)
+  * Fixed console error when search is disabled (7.0.0 regression)
+  * Fixed localsearch integration (7.0.0 regression)
+
+mkdocs-material-7.0.3+insiders-2.2.0 (2021-02-28)
+
+  * Added support for code block annotations
+
+mkdocs-material-7.0.3+insiders-2.1.0 (2021-02-26)
+
+  * Added support for anchor tracking
+
+mkdocs-material-7.0.3 (2021-02-26)
+
+  * Fixed JavaScript errors in older browsers (target ES2020 -> ES2015)
+
+mkdocs-material-7.0.2 (2021-02-25)
+
+  * Fixed #2343: Invalid source map URLs for JS and CSS files
+  * Fixed #2347: Version selector missing when using versioning
+
+mkdocs-material-7.0.1+insiders-2.0.0 (2021-02-24)
+
+  * Migrated Insiders to the new architecture
+  * Swapped color palette toggle configuration
+
+mkdocs-material-7.0.1 (2021-02-24)
+
+  * Fixed #2334: Google Analytics triggers page view twice (7.0.0 regression)
+  * Fixed #2336: Details bleed into inline admonitions
+  * Fixed #2337: Images don't align correctly (7.0.0 regression)
+
+mkdocs-material-7.0.0 (2021-02-22)
+
+  * Added support for deploying multiple versions
+  * Added support for integrating a language selector
+  * Added support for rendering admonitions as inline blocks
+  * Rewrite of the underlying reactive architecture
+  * Removed Webpack in favor of reactive build strategy (-480 dependencies)
+  * Fixed keyboard navigation for code blocks after content tabs switch
+
+mkdocs-material-6.2.8 (2021-02-04)
+
+  * Updated Japanese and Polish translations
+  * Fixed #2261: Print dialog auto-closing when using instant loading
+
+mkdocs-material-6.2.7+insiders-1.17.0 (2021-01-31)
+
+  * Added support for section index pages
+
+mkdocs-material-6.2.7 (2021-01-31)
+
+  * Fixed #2251: Updated Docker image to latest Alpine Linux
+
+mkdocs-material-6.2.6+insiders-1.16.1 (2021-01-26)
+
+  * Fixed #2249: Instant loading + sticky tabs result in invalid links
+  * Fixed #2248: Search highlighting URL parameter always added
+  * Fixed #2235: Version selector doesn't select current version for aliases
+
+mkdocs-material-6.2.6 (2021-01-26)
+
+  * Added Bulgarian translations
+  * Fixed #2233: Search not shown when using header autohiding
+
+mkdocs-material-6.2.5+insiders-1.16.0 (2021-01-17)
+
+  * Added latest release to repository info (GitHub)
+  * Slight facelift of repository info (lighter fonts, spacing and icons)
+
+mkdocs-material-6.2.5 (2021-01-17)
+
+  * Fixed syntax error in Swedish translations
+  * Optimized navigation partials to improve build speed for huge docs
+
+mkdocs-material-6.2.4 (2021-01-09)
+
+  * Fixed #2156: Missing syntax highlighting for binary numbers
+  * Fixed #2186: Disqus showing on 404 page
+
+mkdocs-material-6.2.3+insiders-1.15.0 (2021-01-02)
+
+  * Added support for native Mermaid.js integration
+
+mkdocs-material-6.2.3+insiders-1.14.0 (2020-12-30)
+
+  * Added support for sharing searches
+
+mkdocs-material-6.2.3 (2020-12-27)
+
+  * Added back hidden overflow on root container
+  * Fixed #2142: MathJax formulas sometimes have vertical scrollbars
+
+mkdocs-material-6.2.2+insiders-1.13.2 (2020-12-22)
+
+  * Fixed version selector + sticky tabs navigation rendering issues
+  * Fixed version selector wrapping
+
+mkdocs-material-6.2.2 (2020-12-22)
+
+  * Removed Markdown version range limit (6.2.0 regression)
+
+mkdocs-material-6.2.1 (2020-12-22)
+
+  * Fixed all import and asset paths in templates (6.2.0 regression)
+  * Downgraded webpack-asset-manifest-plugin - broke all asset paths
+
+mkdocs-material-6.2.0 (2020-12-22)
+
+  * Added support for navigation sections
+  * Added support for navigation expansion
+  * Added support for integrating table of contents into navigation
+  * Added support for autohiding header on scroll
+  * Added support for hiding navigation and table of contents per page
+  * Added support for arbitrary items in navigation tabs
+  * Refactored navigation tabs to simplify grouping behavior
+  * Fixed anchor offset for permalinks in Safari (partial revert)
+  * Fixed #2098: Active tab sometimes not highlighted correctly
+  * Improved appearance for horizontal rulers
+  * Improved Spanish and Swedish translations
+
+mkdocs-material-6.1.7+insiders-1.13.1 (2020-12-20)
+
+  * Fixed horizontal scrollbars for language and version selection
+  * Fixed type conversion in JavaScript config (#6)
+
+mkdocs-material-6.1.7+insiders-1.13.0 (2020-12-13)
+
+  * Added support for sticky navigation tabs
+  * Added support for arbitrary links in navigation tabs
+  * Refactored navigation tabs to simplify grouping behavior
+  * Fixed #2098: Subsequent active subsection not highlighted correctly
+
+mkdocs-material-6.1.7+insiders-1.12.1 (2020-12-08)
+
+  * Fixed empty language selector being shown
+
+mkdocs-material-6.1.7+insiders-1.12.0 (2020-12-06)
+
+  * Added support for adding a language selector
+
+mkdocs-material-6.1.7 (2020-12-06)
+
+  * Fixed #2081: Fixed stats for private GitHub repositories
+  * Fixed alignment for admonition icon alignment for right-to-left languages
+
+mkdocs-material-6.1.6+insiders-1.11.2 (2020-11-29)
+
+  * Fixed #2068: Search highlight interprets code blocks as JavaScript
+
+mkdocs-material-6.1.6+insiders-1.11.1 (2020-11-29)
+
+  * Refactored styling to be more stable and easier to adjust
+  * Fixed some styling regressions from latest features
+
+mkdocs-material-6.1.6+insiders-1.11.0 (2020-11-22)
+
+  * Added support for rendering admonitions as inline blocks
+
+mkdocs-material-6.1.6 (2020-11-22)
+
+  * Fixed #2048: Math formulas show scrollbars (Windows)
+
+mkdocs-material-6.1.5+insiders-1.10.0 (2020-11-15)
+
+  * Added support for integrating table of contents into navigation
+
+mkdocs-material-6.1.5 (2020-11-15)
+
+  * Fixed search reset button not showing/hiding correctly
+
+mkdocs-material-6.1.4+insiders-1.9.0 (2020-11-07)
+
+  * Added support for hiding navigation and table of contents on any page
+  * Removed autohiding table of contents when empty
+
+mkdocs-material-6.1.4 (2020-11-07)
+
+  * Fixed sidebar jitter when scrolling footer into view
+
+mkdocs-material-6.1.3 (2020-11-05)
+
+  * Added support for keywords meta tag
+  * Fixed #2027: Line numbers don't scale with smaller font size
+  * Fixed link colors for black and white on slate color scheme
+  * Removed focus outline on scrolling code blocks for pointer devices
+
+mkdocs-material-6.1.2+insiders-1.8.0 (2020-11-01)
+
+  * Added support for navigation sections
+  * Fixed appearance of inactive search suggestions
+
+mkdocs-material-6.1.2 (2020-10-31)
+
+  * Fixed sizing of icons in admonitions, task lists, etc. (6.1.1 regression)
+
+mkdocs-material-6.1.1 (2020-10-31)
+
+  * Fixed #2019: Page title not correctly updated when using instant loading
+
+mkdocs-material-6.1.0+insiders-1.7.0 (2020-10-25)
+
+  * Added support for deploying multiple versions
+  * Fixed alignment of sidebar when content area is too small
+
+mkdocs-material-6.1.0 (2020-10-17)
+
+  * Fixed #1973: Added support for printing in dark mode
+  * Fixed #1974: Added support for printing content tabs
+  * Fixed #1995: Improved customizability of details extension
+
+mkdocs-material-6.0.2+insiders-1.6.0 (2020-10-11)
+
+  * Added support for search suggestions to save keystrokes
+  * Added support for removing 'Made with Material for MkDocs' from footer
+  * Fixed #1915: search should go to first result by pressing Enter
+
+mkdocs-material-6.0.2 (2020-10-04)
+
+  * Added Georgian translations
+  * Added escaping for link title attributes where necessary
+  * Fixed #1956: Pages with whitespace in names have invalid links in search
+  * Removed unnecessary (duplicated) link title attributes
+
+mkdocs-material-6.0.1 (2020-09-26)
+
+  * Fixed stemmer support for file:// protocol through iframe-worker
+  * Fixed details marker showing for search result in Firefox
+  * Fixed tabbing behavior when search query is not empty
+  * Switched TypeScript compilation target to ES2015
+  * Reduced size of JavaScript by 30% (176kb → 124kb)
+  * Removed mkdocs and readthedocs themes from Docker image
+
+mkdocs-material-6.0.0 (2020-09-25)
+
+  * Improved search result look and feel
+  * Improved search result stability while typing
+  * Improved search result grouping (pages + headings)
+  * Improved search result relevance and scoring
+  * Added display of missing query terms to search results
+  * Reduced size of vendor bundle by 25% (84kb → 67kb)
+  * Reduced size of the Docker image to improve CI build performance
+  * Removed hero partial in favor of custom implementation
+  * Removed deprecated front matter features
+
+mkdocs-material-5.5.14 (2020-09-23)
+
+  * Improved spacing around image captions
+  * Fixed #1939: Long tables cause header overlap in print view
+
+mkdocs-material-5.5.13+insiders-1.5.1 (2020-09-21)
+
+  * Fixed content area stretching to whole width for long code blocks
+
+mkdocs-material-5.5.13+insiders-1.5.0 (2020-09-19)
+
+  * Added support for autohiding table of contents when empty
+
+mkdocs-material-5.5.13 (2020-09-19)
+
+  * Improved abbreviations on touch devices
+
+mkdocs-material-5.5.12+insiders-1.4.1 (2020-09-06)
+
+  * Improved typeahead and search result relevance and scoring
+
+mkdocs-material-5.5.12 (2020-08-31)
+
+  * Fixed #1638: occasional 404 for images when using instant loading
+
+mkdocs-material-5.5.11+insiders-1.4.0 (2020-08-30)
+
+  * Added support for autohiding header on scroll
+
+mkdocs-material-5.5.11 (2020-08-28)
+
+  * Fixed Disqus integration, as the minifier killed the config
+
+mkdocs-material-5.5.10 (2020-08-28)
+
+  * Improved rendering by moving Disqus integration after page load
+  * Fixed #1887: Moved navigation icons to CSS to reduce size of HTML
+
+mkdocs-material-5.5.9+insiders-1.3.0 (2020-08-26)
+
+  * Added support for user-selectable color palettes
+
+mkdocs-material-5.5.9 (2020-08-26)
+
+  * Added Esperanto translations
+  * Fixed #1884: External links not included in navigation tabs
+
+mkdocs-material-5.5.8 (2020-08-23)
+
+  * Removed focus outline on details and content tabs for pointer devices
+  * Improved accessibility of content tabs (now navigable via arrow keys)
+  * Fixed #1877: 404 on search index when search is disabled
+  * Fixed some memleaks in observable subscriptions
+  * Fixed color definitions for theme-color meta tag
+
+mkdocs-material-5.5.7 (2020-08-16)
+
+  * Improved contrast ratio to 4.5:1 for syntax highlighting
+  * Improved contrast ratio to 4.5:1 for table of contents
+
+mkdocs-material-5.5.6 (2020-08-12)
+
+  * Switched base template for 404.html to main.html
+  * Fixed #1864: GitHub organisation stats not loading
+
+mkdocs-material-5.5.5+insiders-1.2.0 (2020-08-11)
+
+  * Added feature to expand navigation by default
+
+mkdocs-material-5.5.5 (2020-08-11)
+
+  * Fixed missing vendor and worker distribution files
+
+mkdocs-material-5.5.4 (2020-08-11)
+
+  * Added support for sortable data tables
+
+mkdocs-material-5.5.3 (2020-08-04)
+
+  * Fixed search for languages other than English (5.5.1 regression)
+
+mkdocs-material-5.5.2+insiders-1.1.0 (2020-08-03)
+
+  * Added highlighting of search results
+
+mkdocs-material-5.5.2 (2020-08-03)
+
+  * Improved highlight colors and spacing for ins, del and mark
+  * Changed some keyboard symbols for better equivalents
+  * Removed focus outline for details and code blocks on touch devices
+  * Fixed margins for admonitions (5.5.1 regression)
+  * Fixed too small content tab labels (5.5.1 regression)
+  * Fixed icon repeating for custom admonition icons
+
+mkdocs-material-5.5.1 (2020-08-01)
+
+  * Improved typesetting by basing font-size and spacings on em
+  * Improved print view by slightly scaling down font-size
+  * Changed custom site title (metadata) to be suffixed with site name
+  * Fixed top- and bottom spacing of paragraphs inside table cells
+
+mkdocs-material-5.5.0 (2020-07-24)
+
+  * Rewrite of entire documentation
+  * Rewrite of syntax highlighting to be customizable with CSS variables
+  * Improved syntax highlighting to work with light and dark theme
+  * Improved slate color scheme to be more customizable and easier on the eyes
+  * Added licenses of icon sets to distribution files
+  * Fixed stale document titles in Google Analytics when using instant loading
+  * Fixed width of previous and next footer links for tablet and above
+  * Fixed issues with top scroll margin for footnotes
+  * Fixed top margin for tabbed content when using a JavaScript highlighter
+  * Deprecated metadata-based redirects, source links and heroes
+
+mkdocs-material-5.4.0+insiders-1.0.0 (2020-07-14)
+
+  * Added grouping of search results
+  * Added missing query terms to search result
+  * Improved search result relevance and scoring
+
+mkdocs-material-5.4.0 (2020-06-29)
+
+  * Added support to wrap searches in quotes to switch from OR to AND
+  * Fixed highlighting of numbers in search results
+
+mkdocs-material-5.3.3 (2020-06-24)
+
+  * Added Bengali translations
+  * Fixed #1773: Search for numbers does not return any result (regression)
+
+mkdocs-material-5.3.2 (2020-06-21)
+
+  * Improved search typeahead experience with non-Latin characters
+  * Fixed #1753: Japanese search doesn't work anymore
+
+mkdocs-material-5.3.1 (2020-06-20)
+
+  * Fixed #1761: Duplication of search worker when subscribing to observable
+
+mkdocs-material-5.3.0 (2020-06-15)
+
+  * Added support for color schemes based on user preference
+  * Fixed #1755: Tokenizer separator setting ignored
+
+mkdocs-material-5.2.3 (2020-06-07)
+
+  * Improved search typeahead behavior for some languages (de, fr, ...)
+  * Improved styles for scrollbars on Firefox
+  * Fixed #1741: Removed preconnect hint for Google Analytics
+
+mkdocs-material-5.2.2 (2020-05-26)
+
+  * Fixed #1728: Legacy Edge doesn't support deg values in hsla colors
+
+mkdocs-material-5.2.1 (2020-05-22)
+
+  * Fixed color of links in table headers, e.g. footnotes
+  * Fixed color scheme not being applied without primary or accent color
+  * Fixed hover delay for links inside code blocks
+
+mkdocs-material-5.2.0 (2020-05-18)
+
+  * Added color schemes implementation + dark mode
+  * Fixed #1583: Missing option for separate link colors
+
+mkdocs-material-5.1.7 (2020-05-16)
+
+  * Added keyboard focus support for overflowing code blocks
+  * Fixed #1696: Infinite loop in some cases when using instant loading
+
+mkdocs-material-5.1.6 (2020-05-09)
+
+  * Added Burmese translations
+  * Added general anchor offset solution using scroll-margin-top
+  * Fixed #1653: Instant loading shouldn't intercept links to *.html files
+
+mkdocs-material-5.1.5 (2020-05-03)
+
+  * Added name attribute for social links to set link title
+  * Fixed #1623: Allow arbitrary links in social links
+  * Fixed #1664: Height of iframe is not adjustable
+  * Fixed #1667: Sidebars are scrolled to bottom on load (bug in Chrome 81+)
+
+mkdocs-material-5.1.4 (2020-04-30)
+
+  * Switched to @mdi/svg Material Design icon package
+  * Fixed #1655: Navigation may disappear after switching viewports
+  * Fixed #1659: Unnecessary scrollbar for search results on Windows
+  * Fixed occasional distortions for images with explicit dimensions
+  * Fixed errors in German translations
+
+mkdocs-material-5.1.3 (2020-04-26)
+
+  * Fixed overflowing content area after switch to flexbox
+
+mkdocs-material-5.1.2 (2020-04-26)
+
+  * Added status information to search observable
+  * Added status information to search modal
+  * Removed announcement bar from print media
+  * Removed media query packing logic due to race conditions
+  * Fixed #1520: Gracefully disable search on file:// if Worker fails
+  * Fixed re-submission of query after search is initialized
+  * Fixed jitter of sidebars on all browsers by switching to sticky
+
+mkdocs-material-5.1.1 (2020-04-17)
+
+  * Added new FontAwesome icons
+  * Fixed #1609: Instant loading doesn't honor target=_blank
+  * Fixed GitHub stars count rounding errors
+  * Fixed GitLab stars count retrieval
+
+mkdocs-material-5.1.0 (2020-04-12)
+
+  * Added support for icons from Markdown through mkdocs-material-extensions
+
+mkdocs-material-5.0.2 (2020-04-10)
+
+  * Added CSS source maps to distribution files
+  * Fixed errors in Chinese (Traditional) translations
+  * Fixed creation of stale directory on installation from git
+  * Improved overflow scrolling behavior on iOS (reduced bundle size by 4kb)
+
+mkdocs-material-5.0.1 (2020-04-07)
+
+  * Fixed syntax error in Spanish translations
+
+mkdocs-material-5.0.0 (2020-04-07)
+
+  * Reactive architecture – try app.dialog$.next("Hi!") in the console
+  * Instant loading – make Material behave like a Single Page Application
+  * Improved CSS customization with CSS variables – set your brand's colors
+  * Improved CSS resilience, e.g. proper sidebar locking for customized headers
+  * Improved icon integration and configuration – now including over 5k icons
+  * Added possibility to use any icon for logo, repository and social links
+  * Search UI does not freeze anymore (moved to web worker)
+  * Search index built only once when using instant loading
+  * Improved extensible keyboard handling
+  * Support for prebuilt search indexes
+  * Support for displaying stars and forks for GitLab repositories
+  * Support for scroll snapping of sidebars and search results
+  * Reduced HTML and CSS footprint due to deprecation of IE support
+  * Slight facelifting of some UI elements (admonitions, tables, ...)
+
+mkdocs-material-4.6.3 (2020-02-14)
+
+  * Removed optional third-party plugins from requirements.txt
+  * Updated Docker image to contain all supported third-party plugins
+
+mkdocs-material-4.6.2 (2020-02-08)
+
+  * Added Romanian translations
+  * Fixed #1451: Inconsistent spacing for fenced code blocks
+
+mkdocs-material-4.6.1 (2020-02-08)
+
+  * Fixed #1324: Metadata author only rendering first character
+  * Fixed #1393: Set tabindex to 0 for skip to content link
+  * Fixed code blocks after Markdown 3.2 release
+  * Fixed errors in Japanese translations
+  * Improved Google Lighthouse score
+
+mkdocs-material-4.6.0 (2019-12-11)
+
+  * Added support for mkdocs-git-revision-date-localized-plugin
+  * Fixed invalid character in Google Fonts URL
+
+mkdocs-material-4.5.1 (2019-12-02)
+
+  * Added Thai translations
+  * Fixed missing assets in GitHub release .zip and .tar.gz
+
+mkdocs-material-4.5.0 (2019-11-16)
+
+  * Fixed #1330: Upgraded EmojiOne to Tweomji due to licensing issues
+  * Fixed #1339: Temporarily pinned PyMdown and Markdown due to
+  * Fixed errors in Greek translations
+  * Improved GitHub statistics retrieval
+
+mkdocs-material-4.4.3 (2019-10-03)
+
+  * Added Estonian translations
+  * Fixed removal of copyright banners in minified JavaScript
+  * Removed unnecessary title attributes from links in table of contents
+
 mkdocs-material-4.4.2 (2019-08-27)
 
   * Added Afrikaans translations
@@ -130,7 +1756,7 @@ mkdocs-material-2.9.2 (2018-06-29)
 mkdocs-material-2.9.1 (2018-06-18)
 
   * Added support for different spellings for theme color
-  * Fixed #799: Added support for web font minification in production
+  * Fixed #799: Added support for webfont minification in production
   * Fixed #800: Added .highlighttable as an alias for .codehilitetable
 
 mkdocs-material-2.9.0 (2018-06-13)
@@ -252,8 +1878,8 @@ mkdocs-material-2.4.0 (2018-01-11)
 
 mkdocs-material-2.3.0 (2018-01-09)
 
-  * Added example (synonym: snippet) style for Admonition
-  * Added synonym abstract for summary style for Admonition
+  * Added example (synonym: snippet) style for admonitions
+  * Added synonym abstract for summary style for admonitions
 
 mkdocs-material-2.2.6 (2017-12-27)
 
@@ -277,11 +1903,11 @@ mkdocs-material-2.2.2 (2017-12-08)
 
   * Added Dutch translations
   * Adjusted targeted link and footnote offsets
-  * Simplified Admonition styles and fixed padding bug
+  * Simplified admonition styles and fixed padding bug
 
 mkdocs-material-2.2.1 (2017-12-02)
 
-  * Fixed #616: Minor styling error with title-only admonition blocks
+  * Fixed #616: Minor styling error with title-only admonitions
   * Removed border for table of contents and improved spacing
 
 mkdocs-material-2.2.0 (2017-11-22)
@@ -393,10 +2019,10 @@ mkdocs-material-1.10.0 (2017-09-01)
 
 mkdocs-material-1.9.0 (2017-08-29)
 
-  * Added info (synonym: todo) style for Admonition
-  * Added question (synonym: help, faq) style for Admonition
+  * Added info (synonym: todo) style for admonitions
+  * Added question (synonym: help, faq) style for admonitions
   * Added support for Details from PyMdown Extensions package
-  * Improved Admonition styles to match Details
+  * Improved admonition styles to match details
   * Improved styles for social links in footer
   * Replaced ligatures with Unicode code points to avoid broken layout
   * Upgraded PyMdown Extensions package dependency to >= 3.4
@@ -499,7 +2125,7 @@ mkdocs-material-1.5.2 (2017-04-05)
 
 mkdocs-material-1.5.1 (2017-03-30)
 
-  * Fixed rendering and offset of targetted footnotes
+  * Fixed rendering and offset of targeted footnotes
   * Fixed #238: Link on logo is not set to site_url
 
 mkdocs-material-1.5.0 (2017-03-24)
@@ -543,7 +2169,7 @@ mkdocs-material-1.3.0 (2017-03-11)
 
 mkdocs-material-1.2.0 (2017-03-03)
 
-  * Added quote (synonym: cite) style for Admonition
+  * Added quote (synonym: cite) style for admonitions
   * Added help message to build pipeline
   * Fixed wrong navigation link colors when applying palette
   * Fixed #197: Link missing in tabs navigation on deeply nested items
@@ -610,7 +2236,7 @@ mkdocs-material-1.0.0 (2017-01-13)
   * Rewrite of the complete typographical system
   * Rewrite of Gulp asset pipeline in ES6 and separation of tasks
   * Removed Bower as a dependency in favor of NPM
-  * Removed custom icon build in favor of the Material Design iconset
+  * Removed custom icon build in favor of the Material Design icon set
   * Removed _blank targets on links due to vulnerability: http://bit.ly/1Mk2Rtw
   * Removed unversioned assets from build directory
   * Restructured templates into base templates and partials

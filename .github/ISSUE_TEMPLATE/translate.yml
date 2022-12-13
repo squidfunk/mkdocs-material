@@ -1,0 +1,65 @@
+name: Translate
+description: Add localization for a new language
+title: 'New language: {replace with language name}'
+body:
+  - type: checkboxes
+    attributes:
+      label: Contribution guidelines
+      description: Please read the contribution guidelines before proceeding.
+      options:
+        - label: I've read the [contribution guidelines](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md) and wholeheartedly agree
+          required: true
+  - type: checkboxes
+    attributes:
+      label: Language availability
+      description: Please ensure that the language you're adding isn't already available.
+      options:
+        - label: I've checked the [list of available languages](https://bit.ly/33vFDD0)
+          required: true
+  - type: textarea
+    attributes:
+      label: Translation
+      description: Please translate the labels on the right, e.g. "Copy to clipboard", etc.
+      value: |-
+        {% macro t(key) %}{{ {
+          "language": "en",
+          "direction": "ltr",
+          "announce.dismiss": "Don't show this again",
+          "clipboard.copy": "Copy to clipboard",
+          "clipboard.copied": "Copied to clipboard",
+          "consent.accept": "Accept",
+          "consent.manage": "Manage settings",
+          "consent.reject": "Reject",
+          "edit.link": "Edit this page",
+          "footer": "Footer",
+          "footer.next": "Next",
+          "footer.previous": "Previous",
+          "header": "Header",
+          "meta.comments": "Comments",
+          "meta.source": "Source",
+          "nav": "Navigation",
+          "search": "Search",
+          "search.placeholder": "Search",
+          "search.share": "Share",
+          "search.reset": "Clear",
+          "search.result.initializer": "Initializing search",
+          "search.result.placeholder": "Type to start searching",
+          "search.result.none": "No matching documents",
+          "search.result.one": "1 matching document",
+          "search.result.other": "# matching documents",
+          "search.result.more.one": "1 more on this page",
+          "search.result.more.other": "# more on this page",
+          "search.result.term.missing": "Missing",
+          "select.language": "Select language",
+          "select.version": "Select version",
+          "skip.link": "Skip to content",
+          "source.file.date.created": "Created",
+          "source.file.date.updated": "Last update",
+          "source.link": "Go to repository",
+          "tabs": "Tabs",
+          "toc": "Table of contents",
+          "top": "Back to top"
+        }[key] }}{% endmacro %}
+      render: jinja
+    validations:
+      required: true

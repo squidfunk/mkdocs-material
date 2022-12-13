@@ -1,0 +1,61 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- User-preference: consent -->
+<script>
+  var consent = __md_get("__consent")
+  if (consent) {
+    for (var input of document.forms.consent.elements)
+      if (input.name)
+        input.checked = consent[input.name] || false
+
+  /* Show consent with a small delay, but not if browsing locally */
+  } else if (location.protocol !== "file:") {
+    setTimeout(function() {
+      var el = document.querySelector("[data-md-component=consent]")
+      el.hidden = false
+    }, 250)
+  }
+
+  /* Intercept submission of consent form */
+  var form = document.forms.consent
+  for (var action of ["submit", "reset"])
+    form.addEventListener(action, function(ev) {
+      ev.preventDefault()
+
+      /* Reject all cookies */
+      if (ev.type === "reset")
+        for (var input of document.forms.consent.elements)
+          if (input.name)
+            input.checked = false
+
+      /* Grab and serialize form data */
+      __md_set("__consent", Object.fromEntries(
+        Array.from(new FormData(form).keys())
+          .map(function(key) { return [key, true] })
+      ))
+
+      /* Remove anchor to omit consent from reappearing and reload */
+      location.hash = '';
+      location.reload()
+    })
+</script>

@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,14 +20,15 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine class according to level -->
-{% set class = "md-tabs" %}
-{% if page.ancestors | length > 0 %}
-  {% set class = "md-tabs md-tabs--active" %}
-{% endif %}
+<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
+{% set class = "" %}
 
-<!-- Tabs with outline -->
-<nav class="{{ class }}" data-md-component="tabs">
+<!-- Navigation tabs -->
+<nav
+  class="md-tabs"
+  aria-label="{{ lang.t('tabs.title') }}"
+  data-md-component="tabs"
+>
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       {% for nav_item in nav %}

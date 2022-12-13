@@ -1,0 +1,202 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Footer
+.md-footer {
+  color: var(--md-footer-fg-color);
+  background-color: var(--md-footer-bg-color);
+
+  // [print]: Hide footer
+  @media print {
+    display: none;
+  }
+
+  // Footer wrapper
+  &__inner {
+    justify-content: space-between;
+    padding: px2rem(4px);
+    overflow: auto;
+
+    // Footer is visible
+    &:not([hidden]) {
+      display: flex;
+    }
+  }
+
+  // Footer link to previous and next page
+  &__link {
+    display: flex;
+    // Hack: some browsers induce ellipsis on flex children that are set to
+    // `overflow: hidden` and `text-overflow: ellipsis`. Enforcing growth by
+    // a tiny factor seems to get rid of the ellipsis and renders the text as
+    // it should - see https://bit.ly/2ZUCXQ8
+    flex-grow: 0.01;
+    padding-top: px2rem(28px);
+    padding-bottom: px2rem(8px);
+    overflow: hidden;
+    outline-color: var(--md-accent-fg-color);
+    transition: opacity 250ms;
+
+    // Footer link on focus/hover
+    &:is(:focus, :hover) {
+      opacity: 0.7;
+    }
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & svg {
+      transform: scaleX(-1);
+    }
+
+    // Footer link to previous page
+    &--prev {
+
+      // [mobile -]: Adjust width to 25/75 and hide title
+      @include break-to-device(mobile) {
+
+        // Hide footer title
+        .md-footer__title {
+          display: none;
+        }
+      }
+    }
+
+    // Footer link to next page
+    &--next {
+      margin-inline-start: auto;
+      text-align: right;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        text-align: left;
+      }
+    }
+  }
+
+  // Footer title
+  &__title {
+    position: relative;
+    flex-grow: 1;
+    max-width: calc(100% - #{px2rem(48px)});
+    padding: 0 px2rem(20px);
+    font-size: px2rem(18px);
+    line-height: px2rem(48px);
+    white-space: nowrap;
+  }
+
+  // Footer link button
+  &__button {
+    margin: px2rem(4px);
+    padding: px2rem(8px);
+  }
+
+  // Footer link direction (i.e. prev and next)
+  &__direction {
+    position: absolute;
+    inset-inline: 0;
+    margin-top: px2rem(-20px);
+    padding: 0 px2rem(20px);
+    font-size: px2rem(12.8px);
+    opacity: 0.7;
+  }
+}
+
+// Footer metadata
+.md-footer-meta {
+  background-color: var(--md-footer-bg-color--dark);
+
+  // Footer metadata wrapper
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: px2rem(4px);
+  }
+
+  // Lighten color for non-hovered text links
+  html &.md-typeset a {
+    color: var(--md-footer-fg-color--light);
+
+    // Text link on focus/hover
+    &:is(:focus, :hover) {
+      color: var(--md-footer-fg-color);
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Copyright and theme information
+.md-copyright {
+  width: 100%;
+  margin: auto px2rem(12px);
+  padding: px2rem(8px) 0;
+  color: var(--md-footer-fg-color--lighter);
+  font-size: px2rem(12.8px);
+
+  // [tablet portrait +]: Show copyright and social links in one line
+  @include break-from-device(tablet portrait) {
+    width: auto;
+  }
+
+  // Footer copyright highlight - this is the upper part of the copyright and
+  // theme information, which will include a darker color than the theme link
+  &__highlight {
+    color: var(--md-footer-fg-color--light);
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Social links
+.md-social {
+  margin: 0 px2rem(8px);
+  padding: px2rem(4px) 0 px2rem(12px);
+
+  // [tablet portrait +]: Show copyright and social links in one line
+  @include break-from-device(tablet portrait) {
+    padding: px2rem(12px) 0;
+  }
+
+  // Footer social link
+  &__link {
+    display: inline-block;
+    width: px2rem(32px);
+    height: px2rem(32px);
+    text-align: center;
+
+    // Adjust line-height to match height for correct alignment
+    &::before {
+      line-height: 1.9;
+    }
+
+    // Fill icon with current color
+    svg {
+      max-height: px2rem(16px);
+      vertical-align: -25%;
+      fill: currentcolor;
+    }
+  }
+}

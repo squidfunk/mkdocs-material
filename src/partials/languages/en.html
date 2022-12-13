@@ -1,0 +1,65 @@
+<!--
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Translations: English -->
+{% macro t(key) %}{{ {
+  "language": "en",
+  "direction": "ltr",
+  "announce.dismiss": "Don't show this again",
+  "clipboard.copy": "Copy to clipboard",
+  "clipboard.copied": "Copied to clipboard",
+  "consent.accept": "Accept",
+  "consent.manage": "Manage settings",
+  "consent.reject": "Reject",
+  "edit.link.title": "Edit this page",
+  "footer.previous": "Previous",
+  "footer.next": "Next",
+  "footer.title": "Footer",
+  "header.title": "Header",
+  "meta.comments": "Comments",
+  "meta.source": "Source",
+  "nav.title": "Navigation",
+  "search.config.lang": "en",
+  "search.config.pipeline": "trimmer, stopWordFilter",
+  "search.config.separator": "[\\s\\-]+",
+  "search.placeholder": "Search",
+  "search.share": "Share",
+  "search.reset": "Clear",
+  "search.result.initializer": "Initializing search",
+  "search.result.placeholder": "Type to start searching",
+  "search.result.none": "No matching documents",
+  "search.result.one": "1 matching document",
+  "search.result.other": "# matching documents",
+  "search.result.more.one": "1 more on this page",
+  "search.result.more.other": "# more on this page",
+  "search.result.term.missing": "Missing",
+  "search.title": "Search",
+  "select.language.title": "Select language",
+  "select.version.title": "Select version",
+  "skip.link.title": "Skip to content",
+  "source.link.title": "Go to repository",
+  "source.file.date.updated": "Last update",
+  "source.file.date.created": "Created",
+  "tabs.title": "Tabs",
+  "toc.title": "Table of contents",
+  "top.title": "Back to top"
+}[key] }}{% endmacro %}

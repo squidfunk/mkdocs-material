@@ -1,0 +1,152 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Only use dark mode on screens
+@media screen {
+
+  // Slate theme, i.e. dark mode
+  [data-md-color-scheme="slate"] {
+
+    // Slate's hue in the range [0,360] - change this variable to alter the tone
+    // of the theme, e.g. to make it more redish or greenish. This is a slate-
+    // specific variable, but the same approach may be adapted to custom themes.
+    --md-hue: 232;
+
+    // Default color shades
+    --md-default-fg-color:             hsla(var(--md-hue), 75%, 95%, 1);
+    --md-default-fg-color--light:      hsla(var(--md-hue), 75%, 90%, 0.62);
+    --md-default-fg-color--lighter:    hsla(var(--md-hue), 75%, 90%, 0.32);
+    --md-default-fg-color--lightest:   hsla(var(--md-hue), 75%, 90%, 0.12);
+    --md-default-bg-color:             hsla(var(--md-hue), 15%, 21%, 1);
+    --md-default-bg-color--light:      hsla(var(--md-hue), 15%, 21%, 0.54);
+    --md-default-bg-color--lighter:    hsla(var(--md-hue), 15%, 21%, 0.26);
+    --md-default-bg-color--lightest:   hsla(var(--md-hue), 15%, 21%, 0.07);
+
+    // Code color shades
+    --md-code-fg-color:                hsla(var(--md-hue), 18%, 86%, 1);
+    --md-code-bg-color:                hsla(var(--md-hue), 15%, 15%, 1);
+
+    // Code highlighting color shades
+    --md-code-hl-color:                hsla(#{hex2hsl($clr-blue-a200)}, 0.15);
+    --md-code-hl-number-color:         hsla(6, 74%, 63%, 1);
+    --md-code-hl-special-color:        hsla(340, 83%, 66%, 1);
+    --md-code-hl-function-color:       hsla(291, 57%, 65%, 1);
+    --md-code-hl-constant-color:       hsla(250, 62%, 70%, 1);
+    --md-code-hl-keyword-color:        hsla(219, 66%, 64%, 1);
+    --md-code-hl-string-color:         hsla(150, 58%, 44%, 1);
+    --md-code-hl-name-color:           var(--md-code-fg-color);
+    --md-code-hl-operator-color:       var(--md-default-fg-color--light);
+    --md-code-hl-punctuation-color:    var(--md-default-fg-color--light);
+    --md-code-hl-comment-color:        var(--md-default-fg-color--light);
+    --md-code-hl-generic-color:        var(--md-default-fg-color--light);
+    --md-code-hl-variable-color:       var(--md-default-fg-color--light);
+
+    // Typeset color shades
+    --md-typeset-color:                var(--md-default-fg-color);
+
+    // Typeset `a` color shades
+    --md-typeset-a-color:              var(--md-primary-fg-color);
+
+    // Typeset `mark` color shades
+    --md-typeset-mark-color:           hsla(#{hex2hsl($clr-blue-a200)}, 0.3);
+
+    // Typeset `kbd` color shades
+    --md-typeset-kbd-color:            hsla(var(--md-hue), 15%, 94%, 0.12);
+    --md-typeset-kbd-accent-color:     hsla(var(--md-hue), 15%, 94%, 0.2);
+    --md-typeset-kbd-border-color:     hsla(var(--md-hue), 15%, 14%, 1);
+
+    // Typeset `table` color shades
+    --md-typeset-table-color:          hsla(var(--md-hue), 75%, 95%, 0.12);
+
+    // Admonition color shades
+    --md-admonition-fg-color:          var(--md-default-fg-color);
+    --md-admonition-bg-color:          var(--md-default-bg-color);
+
+    // Footer color shades
+    --md-footer-bg-color:              hsla(var(--md-hue), 15%, 12%, 0.87);
+    --md-footer-bg-color--dark:        hsla(var(--md-hue), 15%, 10%, 1);
+
+    // Shadow depth 1
+    --md-shadow-z1:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.1);
+
+    // Shadow depth 2
+    --md-shadow-z2:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.3),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.25);
+
+    // Shadow depth 3
+    --md-shadow-z3:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.4),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
+
+    // Hide images for light mode
+    img[src$="#only-light"],
+    img[src$="#gh-light-mode-only"] {
+      display: none;
+    }
+
+    // Show images for dark mode
+    img[src$="#only-dark"],
+    img[src$="#gh-dark-mode-only"] {
+      display: initial;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+
+  // Adjust link colors for dark primary colors
+  @each $name, $color in (
+    "pink":                            hsl(340, 81%, 63%),
+    "purple":                          hsl(291, 43%, 63%),
+    "deep-purple":                     hsl(262, 63%, 70%),
+    "indigo":                          hsl(219, 56%, 63%),
+    "teal":                            hsl(174, 100%, 40%),
+    "green":                           hsl(122, 39%, 60%),
+    "deep-orange":                     hsl(14, 100%, 73%),
+    "brown":                           hsl(16, 45%, 60%),
+
+    // Set neutral colors to indigo
+    "grey":                            hsl(219, 56%, 63%),
+    "blue-grey":                       hsl(219, 56%, 63%),
+    "white":                           hsl(219, 56%, 63%),
+    "black":                           hsl(219, 56%, 63%)
+  ) {
+    [data-md-color-scheme="slate"][data-md-color-primary="#{$name}"] {
+      --md-typeset-a-color: #{$color};
+    }
+  }
+
+  // --------------------------------------------------------------------------
+
+  // Switching in progress - disable all transitions temporarily
+  [data-md-color-switching] *,
+  [data-md-color-switching] *::before,
+  [data-md-color-switching] *::after {
+    transition-duration: 0ms !important; // stylelint-disable-line
+  }
+}

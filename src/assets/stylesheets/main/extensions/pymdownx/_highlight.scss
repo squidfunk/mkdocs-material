@@ -1,0 +1,381 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules: syntax highlighting
+// ----------------------------------------------------------------------------
+
+// Code block
+.highlight {
+
+  // .o  = Operator
+  // .ow = Operator, word
+  :is(.o, .ow) {
+    color: var(--md-code-hl-operator-color);
+  }
+
+  .p {  // Punctuation
+    color: var(--md-code-hl-punctuation-color);
+  }
+
+  // .cpf = Comment, preprocessor file
+  // .l   = Literal
+  // .s   = Literal, string
+  // .sb  = Literal, string backticks
+  // .sc  = Literal, string char
+  // .s2  = Literal, string double
+  // .si  = Literal, string interpol
+  // .s1  = Literal, string single
+  // .ss  = Literal, string symbol
+  :is(.cpf, .l, .s, .sb, .sc, .s2, .si, .s1, .ss) {
+    color: var(--md-code-hl-string-color);
+  }
+
+  // .cp = Comment, pre-processor
+  // .se = Literal, string escape
+  // .sh = Literal, string heredoc
+  // .sr = Literal, string regex
+  // .sx = Literal, string other
+  :is(.cp, .se, .sh, .sr, .sx) {
+    color: var(--md-code-hl-special-color);
+  }
+
+  // .m  = Number
+  // .mb = Number, binary
+  // .mf = Number, float
+  // .mh = Number, hex
+  // .mi = Number, integer
+  // .il = Number, integer long
+  // .mo = Number, octal
+  :is(.m, .mb, .mf, .mh, .mi, .il, .mo) {
+    color: var(--md-code-hl-number-color);
+  }
+
+  // .k  = Keyword,
+  // .kd = Keyword, declaration
+  // .kn = Keyword, namespace
+  // .kp = Keyword, pseudo
+  // .kr = Keyword, reserved
+  // .kt = Keyword, type
+  :is(.k, .kd, .kn, .kp, .kr, .kt) {
+    color: var(--md-code-hl-keyword-color);
+  }
+
+  // .kc = Keyword, constant
+  // .n  = Name
+  :is(.kc, .n) {
+    color: var(--md-code-hl-name-color);
+  }
+
+  // .no = Name, constant
+  // .nb = Name, builtin
+  // .bp = Name, builtin pseudo
+  :is(.no, .nb, .bp) {
+    color: var(--md-code-hl-constant-color);
+  }
+
+  // .nc = Name, class
+  // .ne = Name, exception
+  // .nf = Name, function
+  // .nn = Name, namespace
+  :is(.nc, .ne, .nf, .nn) {
+    color: var(--md-code-hl-function-color);
+  }
+
+  // .nd = Name, decorator
+  // .ni = Name, entity
+  // .nl = Name, label
+  // .nt = Name, tag
+  :is(.nd, .ni, .nl, .nt) {
+    color: var(--md-code-hl-keyword-color);
+  }
+
+  // .c  = Comment
+  // .cm = Comment, multiline
+  // .c1 = Comment, single
+  // .ch = Comment, shebang
+  // .cs = Comment, special
+  // .sd = Literal, string doc
+  :is(.c, .cm, .c1, .ch, .cs, .sd) {
+    color: var(--md-code-hl-comment-color);
+  }
+
+  // .na = Name, attribute
+  // .nv = Variable,
+  // .vc = Variable, class
+  // .vg = Variable, global
+  // .vi = Variable, instance
+  :is(.na, .nv, .vc, .vg, .vi) {
+    color: var(--md-code-hl-variable-color);
+  }
+
+  // .ge = Generic, emph
+  // .gr = Generic, error
+  // .gh = Generic, heading
+  // .go = Generic, output
+  // .gp = Generic, prompt
+  // .gs = Generic, strong
+  // .gu = Generic, subheading
+  // .gt = Generic, traceback
+  :is(.ge, .gr, .gh, .go, .gp, .gs, .gu, .gt) {
+    color: var(--md-code-hl-generic-color);
+  }
+
+  // .gd = Diff, delete
+  // .gi = Diff, insert
+  :is(.gd, .gi) {
+    margin: 0 px2em(-2px);
+    padding: 0 px2em(2px);
+    border-radius: px2rem(2px);
+  }
+
+  .gd { // Diff, delete
+    background-color: var(--md-typeset-del-color);
+  }
+
+  .gi { // Diff, insert
+    background-color: var(--md-typeset-ins-color);
+  }
+
+  // Highlighted line
+  .hll {
+    display: block;
+    margin: 0 px2em(-16px, 13.6px);
+    padding: 0 px2em(16px, 13.6px);
+    background-color: var(--md-code-hl-color);
+  }
+
+  // Code block title
+  span.filename {
+    position: relative;
+    display: flow-root;
+    margin-top: 1em;
+    padding: px2em(9px, 13.6px) px2em(16px, 13.6px);
+    font-weight: 700;
+    font-size: px2em(13.6px);
+    background-color: var(--md-code-bg-color);
+    border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+    border-top-left-radius: px2rem(2px);
+    border-top-right-radius: px2rem(2px);
+
+    // Adjust spacing for code block
+    + pre {
+      margin-top: 0;
+
+      // Remove rounded border on top side
+      > code {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+    }
+  }
+
+  // Code block line numbers (pymdownx-inline)
+  [data-linenos]::before {
+    position: sticky;
+    left: px2em(-16px, 13.6px);
+    // A `z-index` of 3 is necessary for ensuring that code block annotations
+    // don't overlay line numbers, as active annotations have a `z-index` of 2.
+    z-index: 3;
+    float: left;
+    margin-right: px2em(16px, 13.6px);
+    margin-left: px2em(-16px, 13.6px);
+    padding-left: px2em(16px, 13.6px);
+    color: var(--md-default-fg-color--light);
+    background-color: var(--md-code-bg-color);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
+    content: attr(data-linenos);
+    user-select: none;
+  }
+
+  // Code block line anchors - Chrome and Safari seem to have a strange bug
+  // where scroll margin is not applied to anchors inside code blocks. Setting
+  // positioning to absolute seems to fix the problem. Interestingly, this does
+  // not happen in Firefox. Furthermore we must set `visibility: hidden` or
+  // the copy to clipboard functionality will include an empty line between
+  // each set of lines.
+  code a[id] {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  // Copying in progress - this class is set before the content is copied and
+  // removed after copying is done to mitigate whitespace-related issues.
+  code[data-md-copying] {
+
+    // Temporarily remove highlighted lines - see https://bit.ly/32iVGWh
+    .hll {
+      display: contents;
+    }
+
+    // Temporarily remove annotations
+    .md-annotation {
+      display: none;
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: layout
+// ----------------------------------------------------------------------------
+
+// Code block with line numbers
+.highlighttable {
+  display: flow-root;
+
+  // Set table elements to block layout, because otherwise the whole flexbox
+  // hacking won't work correctly
+  :is(tbody, td) {
+    display: block;
+    padding: 0;
+  }
+
+  // We need to use flexbox layout, because otherwise it's not possible to
+  // make the code container scroll while keeping the line numbers static
+  tr {
+    display: flex;
+  }
+
+  // The pre tags are nested inside a table, so we need to omit the margin
+  // because it collapses below all the overflows
+  pre {
+    margin: 0;
+  }
+
+  // Code block title container
+  th.filename {
+    flex-grow: 1;
+    padding: 0;
+    text-align: left;
+
+    // Adjust spacing
+    span.filename {
+      margin-top: 0;
+    }
+  }
+
+  // Code block line numbers - disable user selection, so code can be easily
+  // copied without accidentally also copying the line numbers
+  .linenos {
+    padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
+    padding-right: 0;
+    font-size: px2em(13.6px);
+    background-color: var(--md-code-bg-color);
+    border-top-left-radius: px2rem(2px);
+    border-bottom-left-radius: px2rem(2px);
+    user-select: none;
+  }
+
+  // Code block line numbers container
+  .linenodiv {
+    padding-right: px2em(8px, 13.6px);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
+
+    // Adjust colors and alignment
+    pre {
+      color: var(--md-default-fg-color--light);
+      text-align: right;
+    }
+  }
+
+  // Code block container - stretch to remaining space
+  .code {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+// Code block line numbers container
+.linenodiv a {
+  color: inherit;
+}
+
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Code block with line numbers - unfortunately, these selectors need to be
+  // overly specific so they don't bleed into code blocks in annotations.
+  .highlighttable {
+    margin: 1em 0;
+    direction: ltr;
+
+    // Remove rounded borders on code blocks
+    > tbody > tr > .code > div > pre > code {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  // Code block result container
+  .highlight + .result {
+    margin-top: calc(-1em + #{px2em(-2px)});
+    padding: 0 px2em(16px);
+    overflow: visible;
+    border: px2rem(1px) solid var(--md-code-bg-color);
+    border-top-width: px2rem(2px);
+    border-bottom-right-radius: px2rem(2px);
+    border-bottom-left-radius: px2rem(2px);
+
+    // Clearfix, because we can't use overflow: auto
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Rules: top-level
+// ----------------------------------------------------------------------------
+
+// [mobile -]: Align with body copy
+@include break-to-device(mobile) {
+
+  // Top-level code block
+  .md-content__inner > .highlight {
+    margin: 1em px2rem(-16px);
+
+    // Remove rounded borders
+    > .filename,
+    > pre > code {
+      border-radius: 0;
+    }
+
+    // Code block with line numbers - unfortunately, these selectors need to be
+    // overly specific so they don't bleed into code blocks in annotations.
+    > .highlighttable > tbody > tr > .filename span.filename,
+    > .highlighttable > tbody > tr > .linenos,
+    > .highlighttable > tbody > tr > .code > div > pre > code {
+      border-radius: 0;
+    }
+
+    // Code block result container
+    + .result {
+      margin-inline: px2rem(-16px);
+      border-inline-width: 0;
+      border-radius: 0;
+    }
+  }
+}

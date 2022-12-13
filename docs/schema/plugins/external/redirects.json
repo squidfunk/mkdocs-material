@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Redirects plugin",
+  "type": "object",
+  "properties": {
+    "redirects": {
+      "markdownDescription": "https://github.com/datarobot/mkdocs-redirects",
+      "type": "object",
+      "properties": {
+        "redirect_maps": {
+          "title": "Mapping of Markdown files",
+          "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+          "type": "object",
+          "patternProperties": {
+            "\\.md$": {
+              "oneOf": [
+                {
+                  "title": "Internal redirect",
+                  "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+                  "pattern": "\\.md(#\\S+)?$"
+                },
+                {
+                  "title": "External redirect",
+                  "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+                  "pattern": "^https?:"
+                }
+              ]
+            }
+          },
+          "defaultSnippets": [
+            {
+              "label": "Internal redirect",
+              "body": {
+                "${1:from}.md": "${2:to}.md"
+              }
+            },
+            {
+              "label": "External redirect",
+              "body": {
+                "${1:from}.md": "https://${2:to.url}"
+              }
+            }
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

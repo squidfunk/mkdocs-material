@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Git committers plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2",
+      "enum": [
+        "git-committers"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "git-committers": {
+          "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "repository": {
+              "title": "Repository slug",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.repository",
+              "type": "string"
+            },
+            "branch": {
+              "title": "Repository branch",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#+git-committers.branch",
+              "type": "string",
+              "default": "master"
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "repository"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

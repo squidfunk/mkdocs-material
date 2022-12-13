@@ -1,0 +1,97 @@
+////
+/// Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Content area
+.md-content {
+  flex-grow: 1;
+  // Hack: we must use `min-width: 0`, so the content area is capped by the
+  // dimensions of its parent. Otherwise, long code blocks might lead to a
+  // wider content area which will overflow. See https://bit.ly/3bP3f8k
+  min-width: 0;
+
+  // Content wrapper
+  &__inner {
+    margin: 0 px2rem(16px) px2rem(24px);
+    padding-top: px2rem(12px);
+
+    // [screen +]: Adjust spacing between content area and sidebars
+    @include break-from-device(screen) {
+
+      // Sidebar with navigation is visible
+      .md-sidebar--primary:not([hidden]) ~ .md-content > & {
+        margin-inline-start: px2rem(24px);
+      }
+
+      // Sidebar with table of contents is visible
+      .md-sidebar--secondary:not([hidden]) ~ .md-content > & {
+        margin-inline-end: px2rem(24px);
+      }
+    }
+
+    // Hack: add pseudo element for spacing, as the overflow of the content
+    // container may not be hidden due to an imminent offset error on targets
+    &::before {
+      display: block;
+      height: px2rem(8px);
+      content: "";
+    }
+
+    // Adjust spacing on last child
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // Button inside of the content area - these buttons are meant for actions on
+  // a document-level, i.e. linking to related source code files, printing etc.
+  &__button {
+    float: inline-end;
+    margin: px2rem(8px) 0;
+    margin-inline-start: px2rem(8px);
+    padding: 0;
+
+    // [print]: Hide buttons
+    @media print {
+      display: none;
+    }
+
+    // Adjust default link color for icons
+    .md-typeset & {
+      color: var(--md-default-fg-color--lighter);
+    }
+
+    // Align with body copy located next to icon
+    svg {
+      display: inline;
+      vertical-align: top;
+
+      // Adjust for right-to-left languages
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
+    }
+  }
+}

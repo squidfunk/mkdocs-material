@@ -1,0 +1,105 @@
+# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+# IN THE SOFTWARE.
+
+name: publish
+on:
+  release:
+    types:
+      - published
+
+env:
+  PYTHON_VERSION: 3.x
+
+permissions:
+  contents: read
+
+jobs:
+  publish_pypi:
+    name: Build and push Python package
+    if: github.event.repository.fork == false
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Python dependencies
+        run: pip install --upgrade build twine
+
+      - name: Build Python package
+        run: python -m build
+
+      - name: Publish Python package
+        env:
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+
+  publish_docker:
+    name: Build and push Docker image
+    if: github.event.repository.fork == false
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          # platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ github.event.repository.full_name }}:latest
+            ${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+            ghcr.io/${{ github.event.repository.full_name }}:latest
+            ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+
+      - name: Check Docker image
+        working-directory: /tmp
+        run: |
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} new .
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
+
+      - name: Publish Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker push --all-tags ${{ github.event.repository.full_name }}
+          docker push --all-tags ghcr.io/${{ github.event.repository.full_name }}

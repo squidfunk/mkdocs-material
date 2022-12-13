@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2019 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -20,43 +20,37 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Home page -->
-{% if nav_item.is_homepage %}
-  <li class="md-tabs__item">
-    {% if not page.ancestors | length and nav | selectattr("url", page.url) %}
-      <a href="{{ nav_item.url | url }}" class="md-tabs__link md-tabs__link--active">
-        {{ nav_item.title }}
-      </a>
-    {% else %}
-      <a href="{{ nav_item.url | url }}" class="md-tabs__link">
-        {{ nav_item.title }}
-      </a>
-    {% endif %}
-  </li>
+<!-- Determine class according to state -->
+{% if not class %}
+  {% set class = "md-tabs__link" %}
+  {% if nav_item.active %}
+    {% set class = class ~ " md-tabs__link--active" %}
+  {% endif %}
+{% endif %}
 
 <!-- Main navigation item with nested items -->
-{% elif nav_item.children and nav_item.children | length > 0 %}
-  {% set title = title | default(nav_item.title) %}
+{% if nav_item.children %}
+  {% set title = title | d(nav_item.title) %}
+  {% set nav_item = nav_item.children | first %}
 
-  <!-- Recurse, if the first item has nested items -->
-  {% if (nav_item.children | first).children %}
-    {% set nav_item = nav_item.children | first %}
+  <!-- Recurse, if the first item has further nested items -->
+  {% if nav_item.children %}
     {% include "partials/tabs-item.html" %}
 
   <!-- Render item -->
   {% else %}
     <li class="md-tabs__item">
-      {% if nav_item.active %}
-        <a href="{{ (nav_item.children | first).url | url }}"
-            class="md-tabs__link md-tabs__link--active">
-          {{ title }}
-        </a>
-      {% else %}
-        <a href="{{ (nav_item.children | first).url | url }}"
-            class="md-tabs__link">
-          {{ title }}
-        </a>
-      {% endif %}
+      <a href="{{ nav_item.url | url }}" class="{{ class }}">
+        {{ title }}
+      </a>
     </li>
   {% endif %}
+
+<!-- Main navigation item -->
+{% else %}
+  <li class="md-tabs__item">
+    <a href="{{ nav_item.url | url }}" class="{{ class }}">
+      {{ nav_item.title }}
+    </a>
+  </li>
 {% endif %}

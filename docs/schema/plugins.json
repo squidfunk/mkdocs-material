@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Plugins",
+  "markdownDescription": "https://www.mkdocs.org/dev-guide/plugins/",
+  "type": "array",
+  "items": {
+    "oneOf": [
+      {
+        "$ref": "#/definitions/built-in"
+      },
+      {
+        "$ref": "#/definitions/external"
+      },
+      {
+        "$ref": "#/definitions/external-community"
+      }
+    ]
+  },
+  "uniqueItems": true,
+  "minItems": 1,
+  "definitions": {
+    "built-in": {
+      "description": "Built-in plugins",
+      "oneOf": [
+        {
+          "$ref": "plugins/blog.json"
+        },
+        {
+          "$ref": "plugins/meta.json"
+        },
+        {
+          "$ref": "plugins/offline.json"
+        },
+        {
+          "$ref": "plugins/privacy.json"
+        },
+        {
+          "$ref": "plugins/search.json"
+        },
+        {
+          "$ref": "plugins/social.json"
+        },
+        {
+          "$ref": "plugins/tags.json"
+        }
+      ]
+    },
+    "external": {
+      "description": "External plugins, schema provided by us",
+      "oneOf": [
+        {
+          "$ref": "plugins/external/git-authors.json"
+        },
+        {
+          "$ref": "plugins/external/git-committers.json"
+        },
+        {
+          "$ref": "plugins/external/git-revision-date.json"
+        },
+        {
+          "$ref": "plugins/external/minify.json"
+        },
+        {
+          "$ref": "plugins/external/redirects.json"
+        }
+      ]
+    },
+    "external-community": {
+      "description": "External plugins, schema provided by the community",
+      "oneOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-material-relative-language-selector/master/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/Guts/mkdocs-rss-plugin/main/docs/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/docs/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/blueswen/mkdocs-glightbox/main/schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/prcr/mkdocs-meta-descriptions-plugin/main/schema.json"
+        }
+      ]
+    }
+  }
+}
