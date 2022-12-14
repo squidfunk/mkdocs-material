@@ -45,6 +45,7 @@ import {
   at,
   getOptionalElement,
   requestJSON,
+  setLocation,
   setToggle,
   watchDocument,
   watchKeyboard,
@@ -173,17 +174,17 @@ keyboard$
         /* Go to previous page */
         case "p":
         case ",":
-          const prev = getOptionalElement("[href][rel=prev]")
+          const prev = getOptionalElement<HTMLLinkElement>("link[rel=prev]")
           if (typeof prev !== "undefined")
-            prev.click()
+            setLocation(prev)
           break
 
         /* Go to next page */
         case "n":
         case ".":
-          const next = getOptionalElement("[href][rel=next]")
+          const next = getOptionalElement<HTMLLinkElement>("link[rel=next]")
           if (typeof next !== "undefined")
-            next.click()
+            setLocation(next)
           break
       }
     })

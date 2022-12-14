@@ -50,6 +50,16 @@
         <link rel="canonical" href="{{ page.canonical_url }}" />
       {% endif %}
 
+      <!-- Previous page -->
+      {% if page.previous_page %}
+        <link rel="prev" href="{{ page.previous_page.url | url }}" />
+      {% endif %}
+
+      <!-- Next page -->
+      {% if page.next_page %}
+        <link rel="next" href="{{ page.next_page.url | url }}" />
+      {% endif %}
+
       <!-- Favicon -->
       <link rel="icon" href="{{ config.theme.favicon | url }}" />
 

@@ -21,6 +21,12 @@
       {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
+      {% if page.previous_page %}
+        <link rel="prev" href="{{ page.previous_page.url | url }}">
+      {% endif %}
+      {% if page.next_page %}
+        <link rel="next" href="{{ page.next_page.url | url }}">
+      {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.0.0b4">
     {% endblock %}
@@ -234,13 +240,13 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.6d7e1051.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.94c06c99.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
     {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.e916454c.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.e437594a.min.css' | url }}">
       <script src="{{ 'assets/javascripts/extra/bundle.cfb3feee.min.js' | url }}" defer></script>
     {% endif %}
   </body>
