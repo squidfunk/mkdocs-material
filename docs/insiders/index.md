@@ -225,7 +225,7 @@ You can cancel your sponsorship anytime.[^5]
   </small>
 </div>
 
-  [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk
+  [squidfunk's sponsor profile]: https://github.com/sponsors/squidfunk?metadata_origin=docs
 
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 

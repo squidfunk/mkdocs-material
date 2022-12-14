@@ -58,7 +58,7 @@ export function renderPrivateSponsor(
 ): HTMLElement {
   return (
     <a
-      href="https://github.com/sponsors/squidfunk"
+      href="https://github.com/sponsors/squidfunk?metadata_origin=docs"
       class="mdx-sponsorship__item mdx-sponsorship__item--private"
     >
       +{count}
