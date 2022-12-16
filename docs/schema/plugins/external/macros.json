@@ -47,6 +47,12 @@
           "title": "Non-standard Jinja2 marker for end of variable",
           "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#solution-4-altering-the-syntax-of-jinja2-for-mkdocs-macros",
           "type": "string"
+        },
+        "on_error_fail": {
+          "title": "Stop build/serve when macro error happens",
+          "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#can-i-make-mkdocs-macros-build-process-to-fail-in-case-of-error-instead-of-displaying-the-error-on-the-page",
+          "type": "boolean",
+          "default": false
         }
       },
       "additionalProperties": false
