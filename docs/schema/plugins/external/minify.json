@@ -24,17 +24,25 @@
         "minify_js": {
           "title": "Minify JavaScript files",
           "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "minify_css": {
           "title": "Minify CSS files",
           "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
-          "type": "boolean"
+          "type": "boolean",
+          "default": false
         },
         "htmlmin_opts": {
           "title": "Options for HTML minifier",
           "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
           "type": "object"
+        },
+        "cache_safe": {
+          "title": "Add hash to Javascript and CSS file names",
+          "markdownDescription": "https://github.com/byrnereese/mkdocs-minify-plugin#options",
+          "type": "boolean",
+          "default": false
         },
         "js_files": {
           "title": "JavaScript files to minify",
