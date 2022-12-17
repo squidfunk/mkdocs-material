@@ -58,6 +58,12 @@
           "$ref": "plugins/external/git-revision-date.json"
         },
         {
+          "$ref": "plugins/external/literate-nav.json"
+        },
+        {
+          "$ref": "plugins/external/macros.json"
+        },
+        {
           "$ref": "plugins/external/minify.json"
         },
         {
