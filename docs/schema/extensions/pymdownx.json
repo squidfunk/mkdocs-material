@@ -461,7 +461,13 @@
               "properties": {
                 "base_path": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                    "type": "string"
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
                 },
                 "auto_append": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
