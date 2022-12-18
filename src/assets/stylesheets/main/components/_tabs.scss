@@ -60,10 +60,10 @@
     white-space: nowrap;
     list-style: none;
     contain: content;
-    // Hack: don't show scrollbar when tabs overflow, which they should onyl do
-    // in rate occasions, as adding too many top level sections is discouraged,
-    // since hiding content on horitontal axis doesn't lead to a good user
-    // experience. It's just harder to discover.
+    // Hack: don't show scrollbar when navigation tabs overflow, which should
+    // only happen in rare occasions, as adding too many top level sections is
+    // discouraged, since hiding content on horitontal axis doesn't lead to a
+    // good user experience. It's just harder to discover.
     scrollbar-width: none;
 
     // Hack: see above
