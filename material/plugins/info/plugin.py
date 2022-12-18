@@ -21,6 +21,7 @@
 import logging
 import os
 import platform
+import requests
 import sys
 import warnings
 
@@ -35,6 +36,7 @@ from mkdocs.config import config_options as opt
 from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
+from pkg_resources import get_distribution
 from zipfile import ZipFile, ZIP_DEFLATED
 
 try:
@@ -53,11 +55,12 @@ except ImportError:
 
 # Info plugin configuration scheme
 class InfoPluginConfig(Config):
-    enabled = opt.Type(bool, default = True),
+    enabled = opt.Type(bool, default = True)
 
     # Options for archive
-    archive = opt.Type(bool, default = True),
-    archive_name = opt.Type(str, default = "example"),
+    archive = opt.Type(bool, default = True)
+    archive_name = opt.Type(str, default = "example")
+    archive_stop_on_violation = opt.Type(bool, default = True)
 
 # -----------------------------------------------------------------------------
 
@@ -73,13 +76,24 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         # Check if required dependencies are installed
         if not dependencies:
             log.error("Required dependencies of \"info\" plugin not found.")
-            print(Fore.RED)
+            print(Style.NORMAL)
             print("  pip install \"mkdocs-material[info]\"")
-            print(Style.RESET_ALL)
+            print(Style.NORMAL)
             sys.exit(1)
 
-        # Print info that we're creating a bug report
-        log.info("Started creating archive for bug report")
+        # Resolve latest version
+        url = "https://github.com/squidfunk/mkdocs-material/releases/latest"
+        res = requests.get(url, allow_redirects = False)
+
+        # Check if we're running the latest version
+        _, version = res.headers.get("location").rsplit("/", 1)
+        package = get_distribution("mkdocs-material")
+        if package.version != version:
+            log.error("Please update to the latest version.")
+            self._help_on_versions_and_exit(package.version, version)
+
+        # Print message that we're creating a bug report
+        log.info("Started archive creation for bug report")
 
         # Check that there are no overrides in place - we need to use a little
         # hack to detect whether the custom_dir setting was used without parsing
@@ -88,12 +102,15 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         base = utils.get_theme_dir(config.theme.name)
         if config.theme.dirs.index(base):
             log.error("Please remove 'custom_dir' setting.")
-            self._help_and_exit()
+            self._help_on_customizations_and_exit()
 
-        # Check that there are no hooks in place
+        # Check that there are no hooks in place - hooks can alter the behavior
+        # of MkDocs in unpredictable ways, which is why they must be considered
+        # being customizations. Thus, we can't offer support for debugging and
+        # must abort here.
         if config.hooks:
             log.error("Please remove 'hooks' setting.")
-            self._help_and_exit()
+            self._help_on_customizations_and_exit()
 
         # Create in-memory archive
         archive = BytesIO()
@@ -123,7 +140,7 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
             for a in f.filelist:
                 files.append("".join([
                     Fore.LIGHTBLACK_EX, a.filename, " ",
-                    Fore.GREEN, _size(a.compress_size)
+                    _size(a.compress_size)
                 ]))
 
         # Finally, write archive to disk
@@ -131,33 +148,56 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         with open(f"{archive_name}.zip", "wb") as f:
             f.write(archive.getvalue())
 
-        # Print summary and archive name
+        # Print summary
         log.info("Archive successfully created:")
         print(Style.NORMAL)
-        print("".join([
-            "  ", f.name, " ",
-            Fore.GREEN, _size(buffer.nbytes)
-        ]))
-        print(Style.RESET_ALL)
 
-        # Print sorted list of archived files
+        # Print archive file names
         files.sort()
         for file in files:
             print(f"  {file}")
 
-        # Aaaaaand done.
+        # Print archive name
         print(Style.RESET_ALL)
+        print("".join([
+            "  ", f.name, " ",
+            _size(buffer.nbytes, 10)
+        ]))
+
+        # Print warning when file size is excessively large
+        print(Style.RESET_ALL)
+        if buffer.nbytes > 250000:
+            log.warning("Archive exceeds recommended maximum size of 1 MB")
+
+        # Aaaaaand done.
         sys.exit(1)
 
     # -------------------------------------------------------------------------
 
-    # Print explanation and exit
-    def _help_and_exit(self):
+    # Print help on versions and exit
+    def _help_on_versions_and_exit(self, have, need):
+        print(Fore.RED)
+        print("  When reporting issues, please first update to the latest")
+        print("  version of Material for MkDocs, as the problem might already")
+        print("  be fixed in the latest version. This helps reduce duplicate")
+        print("  efforts and saves the maintainers time.")
+        print(Style.NORMAL)
+        print(f"  Please update from {have} to {need}.")
+        print(Style.RESET_ALL)
+        print(f"  pip install \"mkdocs-material=={need}\"")
+        print(Style.NORMAL)
+
+        # Exit, unless explicitly told not to
+        if self.config.archive_stop_on_violation:
+            sys.exit(1)
+
+    # Print help on customizations and exit
+    def _help_on_customizations_and_exit(self):
         print(Fore.RED)
         print("  When reporting issues, you must remove all customizations")
         print("  and check if the problem persists. If not, the problem is")
         print("  caused by your overrides. Please understand that we can't")
-        print("  provide support for customizations. Please remove:")
+        print("  help you debug your customizations. Please remove:")
         print(Style.NORMAL)
         print("  - theme.custom_dir")
         print("  - hooks")
@@ -168,17 +208,23 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         print("  - extra_css")
         print("  - extra_javascript")
         print(Style.RESET_ALL)
-        sys.exit(1)
+
+        # Exit, unless explicitly told not to
+        if self.config.archive_stop_on_violation:
+            sys.exit(1)
 
 # -----------------------------------------------------------------------------
 # Helper functions
 # -----------------------------------------------------------------------------
 
 # Print human-readable size
-def _size(value):
+def _size(value, factor = 1):
+    color = Fore.GREEN
+    if   value > 100000 * factor: color = Fore.RED
+    elif value >  25000 * factor: color = Fore.YELLOW
     for unit in ["B", "kB", "MB", "GB", "TB", "PB", "EB", "ZB"]:
         if abs(value) < 1000.0:
-            return f"{value:3.1f} {unit}"
+            return f"{color}{value:3.1f} {unit}"
         value /= 1000.0
 
 # -----------------------------------------------------------------------------
