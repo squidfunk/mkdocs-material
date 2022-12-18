@@ -27,5 +27,6 @@ pygments>=2.12
 pymdown-extensions>=9.6
 
 # Requirements for plugins
+colorama>=0.4.6
 regex>=2022.4.24
 requests>=2.26

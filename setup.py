@@ -42,7 +42,11 @@ setup(
     version = package["version"],
     url = package["homepage"],
     project_urls = {
+        "Changelog": "https://squidfunk.github.io/mkdocs-material/changelog/",
+        "Documentation": "https://squidfunk.github.io/mkdocs-material/",
         "Source": "https://github.com/squidfunk/mkdocs-material",
+        "Issues": "https://github.com/squidfunk/mkdocs-material/issues",
+        "Funding": "https://github.com/sponsors/squidfunk"
     },
     license = package["license"],
     description = package["description"],
@@ -64,12 +68,18 @@ setup(
     packages = find_packages(exclude = ["src", "src.*"]),
     include_package_data = True,
     install_requires = install_requires,
+    extras_require = {
+        "info":  [
+			"pipdeptree>=2.3.3"
+        ]
+    },
     python_requires='>=3.7',
     entry_points = {
         "mkdocs.themes": [
             "material = material",
         ],
         "mkdocs.plugins": [
+            "material/info = material.plugins.info.plugin:InfoPlugin",
             "material/offline = material.plugins.offline.plugin:OfflinePlugin",
             "material/search = material.plugins.search.plugin:SearchPlugin",
             "material/social = material.plugins.social.plugin:SocialPlugin",
