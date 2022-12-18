@@ -130,10 +130,25 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
 
             # Add dependency tree as returned by pipdeptree
             f.writestr(
-                os.path.join(archive_name, "dependencies.json"),
+                os.path.join(archive_name, ".dependencies.json"),
                 render_json_tree(PackageDAG.from_pkgs(
                     get_installed_distributions(local_only = True)
                 ), 2)
+            )
+
+            # Add version information
+            mkdocs = get_distribution("mkdocs")
+            f.writestr(
+                os.path.join(archive_name, ".versions.log"),
+                "\n".join([
+                    f"-----------------------------------",
+                    f"  Material for MkDocs: {version}",
+                    f"  MkDocs: {mkdocs.version}",
+                    f"-----------------------------------",
+                    f"  Platform: {platform.system()}",
+                    f"  Python: {platform.python_version()}",
+                    f"-----------------------------------"
+                ])
             )
 
             # Retrieve list of processed files
