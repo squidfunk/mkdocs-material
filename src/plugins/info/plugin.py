@@ -181,7 +181,7 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
 
         # Print warning when file size is excessively large
         print(Style.RESET_ALL)
-        if buffer.nbytes > 250000:
+        if buffer.nbytes > 1000000:
             log.warning("Archive exceeds recommended maximum size of 1 MB")
 
         # Aaaaaand done.
