@@ -79,7 +79,7 @@ function extractor(table: Map<string, PositionTable>) {
       if (typeof doc[name] === "undefined")
         return undefined
 
-      /* Compute identifier and initiable table */
+      /* Compute identifier and initialize table */
       const id = [doc.location, name].join(":")
       table.set(id, lunr.tokenizer.table = [])
 
@@ -161,6 +161,11 @@ export class Search {
       /* Set up custom tokenizer (must be after language setup) */
       this.tokenizer = tokenize as typeof lunr.tokenizer
       lunr.tokenizer.separator = new RegExp(config.separator)
+
+      /* Set up custom segmenter, if loaded */
+      lunr.segmenter = "TinySegmenter" in lunr
+        ? new lunr.TinySegmenter()
+        : undefined
 
       /* Compute functions to be removed from the pipeline */
       const fns = difference([

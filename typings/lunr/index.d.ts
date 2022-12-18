@@ -79,6 +79,11 @@ declare global {
     }
 
     /**
+     * Segmenter
+     */
+    let segmenter: TinySegmenter | undefined
+
+    /**
      * Lexeme type
      */
     const enum LexemeType {

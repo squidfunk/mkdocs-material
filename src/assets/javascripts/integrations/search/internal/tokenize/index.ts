@@ -54,11 +54,6 @@ export function tokenize(
   if (typeof input === "undefined")
     return tokens
 
-  /* Initialize segmenter, if loaded */
-  const segmenter = "TinySegmenter" in lunr
-    ? new lunr.TinySegmenter()
-    : undefined
-
   /* Tokenize strings one after another */
   const inputs = Array.isArray(input) ? input : [input]
   for (let i = 0; i < inputs.length; i++) {
@@ -67,13 +62,12 @@ export function tokenize(
 
     /* Split string into sections and tokenize content blocks */
     extract(inputs[i], (block, type, start, end) => {
-      block += total
+      table[block += total] ||= []
       switch (type) {
 
         /* Handle markup */
         case Extract.TAG_OPEN:
         case Extract.TAG_CLOSE:
-          table[block] ||= []
           table[block].push(
             start       << 12 |
             end - start <<  2 |
@@ -91,10 +85,10 @@ export function tokenize(
              * also split words at word boundaries, which is not what we want,
              * so we need to check if we can somehow mitigate this behavior.
              */
-            if (typeof segmenter !== "undefined") {
+            if (typeof lunr.segmenter !== "undefined") {
               const subsection = section.slice(index, until)
-              if (/^[MHIK]$/.test(segmenter.ctype_(subsection))) {
-                const segments = segmenter.segment(subsection)
+              if (/^[MHIK]$/.test(lunr.segmenter.ctype_(subsection))) {
+                const segments = lunr.segmenter.segment(subsection)
                 for (let s = 0, l = 0; s < segments.length; s++) {
 
                   /* Add block to section */
@@ -120,7 +114,6 @@ export function tokenize(
             }
 
             /* Add block to section */
-            table[block] ||= []
             table[block].push(
               start + index << 12 |
               until - index <<  2 |
