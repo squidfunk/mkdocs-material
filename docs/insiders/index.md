@@ -78,6 +78,13 @@ a handful of them, [thanks to our awesome sponsors]!
   [completed funding goals]: #goals-completed
   [thanks to our awesome sponsors]: #how-to-become-a-sponsor
 
+<figure style="min-width:15.6rem">
+  <blockquote class="twitter-tweet" data-conversation="none" data-dnt="true">
+    <a href="https://twitter.com/WillingCarol/status/1603416470616088576?ref_src=twsrc%5Etfw"></a>
+  </blockquote>
+  <script async src="https://platform.twitter.com/widgets.js"></script>
+</figure>
+
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
