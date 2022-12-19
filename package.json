@@ -47,7 +47,7 @@
     "lunr": "^2.3.9",
     "lunr-languages": "^1.10.0",
     "resize-observer-polyfill": "^1.5.1",
-    "rxjs": "^7.6.0",
+    "rxjs": "^7.8.0",
     "unfetch": "^4.2.0",
     "url-polyfill": "^1.1.12"
   },
