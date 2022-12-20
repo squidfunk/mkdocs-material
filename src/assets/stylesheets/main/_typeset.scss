@@ -167,8 +167,7 @@ kbd {
     }
 
     // Text link on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
 
       // Inline code block

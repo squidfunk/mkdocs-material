@@ -140,8 +140,7 @@
     }
 
     // Sidebar scroll wrapper on focus/hover
-    &:focus-within,
-    &:hover {
+    &:is(:focus-within, :hover) {
       scrollbar-color: var(--md-accent-fg-color) transparent;
 
       // Webkit scrollbar thumb
