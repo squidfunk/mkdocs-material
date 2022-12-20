@@ -68,7 +68,9 @@
               "oneOf": [
                 {
                   "enum": [
+                    "\"{date}/{file}\"",
                     "\"{date}/{slug}\"",
+                    "\"{file}\"",
                     "\"{slug}\""
                   ]
                 },
@@ -76,6 +78,12 @@
                   "type": "string"
                 }
               ]
+            },
+            "post_url_max_categories": {
+              "title": "Number of categories in post URLs",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_url_max_categories",
+              "type": "number",
+              "default": 1
             },
             "post_slugify": {
               "title": "Post slugify function",
@@ -232,6 +240,12 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_slugify_separator",
               "type": "string",
               "default": "\"-\""
+            },
+            "categories_toc": {
+              "title": "Category index table of contents",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_toc",
+              "type": "boolean",
+              "default": false
             },
             "categories_allowed": {
               "title": "Categories allowed",

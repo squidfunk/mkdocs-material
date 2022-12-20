@@ -160,7 +160,7 @@ The following configuration options are available:
           tags_compare_reverse: true
     ```
 
-[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed } :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed }
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
     Default: _none_ – This option allows the author to define explicitly which
