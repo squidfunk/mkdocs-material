@@ -7,6 +7,28 @@ within Markdown files.
 
 ## Configuration
 
+### Built-in <u>typeset</u> plugin
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.27.0][Insiders] ·
+:octicons-cpu-24: Plugin ·
+:octicons-beaker-24: Experimental
+
+The built-in typeset plugin __preserves HTML formatting__ in the navigation and
+table of contents. This means that now, code blocks, icons, emojis and other
+inline formatting will be preserved, which allows for a richer editing
+experience. Add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - typeset
+```
+
+For a demo, just take a look at the table of contents of this page :material-arrow-right-circle: – code blocks and icons are preserved from the
+section headlines; even [highlighting inline code blocks] is supported :tada:
+
+  [highlighting inline code blocks]: code-blocks.md#highlighting-inline-code-blocks
+
 ### Built-in meta plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
@@ -49,7 +71,7 @@ The following configuration options are available:
 
 ## Usage
 
-### Setting the page title
+### Setting the page `title`
 
 Each page has a designated title, which is used in the navigation sidebar, for 
 [social cards] and in other places. While MkDocs attempts to automatically 
@@ -76,7 +98,7 @@ title: Lorem ipsum dolor sit amet # (1)!
   [head]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/head
   [site_name]: https://www.mkdocs.org/user-guide/configuration/#site_name
 
-### Setting the page description
+### Setting the page `description`
 
 A Markdown file can include a description that is added to the `meta` tags of
 a page, and is also used for [social cards]. It's a good idea to set a 
@@ -97,7 +119,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
   [site_description]: https://www.mkdocs.org/user-guide/configuration/#site_description
 
-### Setting the page icon
+### Setting the page `icon`
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.5.0][Insiders] ·
@@ -132,7 +154,7 @@ icon: material/emoticon-happy # (1)!
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 
-### Setting the page status
+### Setting the page `status`
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.22.0][Insiders] ·
@@ -176,7 +198,7 @@ The following status identifiers are currently supported:
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
 
-### Setting the page subtitle
+### Setting the page `subtitle`
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.25.0][Insiders] ·
@@ -195,7 +217,7 @@ subtitle: Nullam urna elit, malesuada eget finibus ut, ac tortor
 ...
 ```
 
-### Setting the page template
+### Setting the page `template`
 
 If you're using [theme extension] and created a new page template in the
 `overrides` directory, you can enable it for a specific page. Add the following 
@@ -227,7 +249,7 @@ template: custom.html
 
 ### Using metadata in templates
 
-#### on all pages
+#### :material-check-all: on all pages
 
 In order to add custom `meta` tags to your document, you can [extend the theme
 ][theme extension] and [override the `extrahead` block][overriding blocks],
@@ -243,7 +265,7 @@ e.g. to add indexing policies for search engines via the `robots` property:
 
   [overriding blocks]: ../customization.md#overriding-blocks
 
-#### on a single page
+#### :material-check: on a single page
 
 If you want to set a `meta` tag on a single page, or want to set different
 values for different pages, you can use the `page.meta` object inside your
