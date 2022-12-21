@@ -93,7 +93,7 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Typeset plugin]: :material-alert-decagram:{ .mdx-pulse title="Added on December 21, 2022" }
+- [x] [Typeset plugin]: :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
 - [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 - [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
 - [x] [Tags plugin: allow list] + [custom sorting]

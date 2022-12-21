@@ -2,7 +2,7 @@
 
 ## Material for MkDocs Insiders
 
-### 4.27.0 <small>_ December 21, 2022</small> { id="4.27.0" }
+### 4.27.0 <small>_ December 20, 2022</small> { id="4.27.0" }
 
 - Added built-in typeset plugin to preserve formatting in sidebars
 - Added URL and table of contents support for blog categories
