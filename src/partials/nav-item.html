@@ -74,7 +74,14 @@
 
       <!-- Render toggle to expand nested items -->
       {% if not indexes %}
-        <label class="md-nav__link" for="{{ path }}">
+        {% set aria_hidden = "false" if nav_item.checked else "true" %}
+        {% set aria_expanded = "true" if nav_item.checked else "false" %}
+        <label
+          class="md-nav__link"
+          for="{{ path }}"
+          tabindex="0"
+          aria-hidden="{{ aria_hidden }}"
+          aria-expanded="{{ aria_expanded }}">
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -138,7 +145,7 @@
 
       <!-- Render table of contents, if not empty -->
       {% if toc %}
-        <label class="md-nav__link md-nav__link--active" for="__toc">
+        <label class="md-nav__link md-nav__link--active" for="__toc" tabindex="0">
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
         </label>
