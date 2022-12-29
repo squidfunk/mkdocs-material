@@ -14,7 +14,7 @@ discusses the [conventions] used in this documentation.
   – let Material for MkDocs do the heavy lifting for you.
 
 - __Works on all devices__: Serve your documentation with confidence – the 
-  underling layout automatically adapts to perfectly fit the available screen 
+  underlying layout automatically adapts to perfectly fit the available screen 
   estate, no matter the type or size of the viewing device.
 
 - __Made to measure__: Change the colors, fonts, language, icons, logo and much
