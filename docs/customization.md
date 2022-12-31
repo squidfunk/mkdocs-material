@@ -19,7 +19,7 @@ If you want to tweak some colors or change the spacing of certain elements,
 you can do this in a separate style sheet. The easiest way is by creating a
 new style sheet file in the `docs` directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ stylesheets/
@@ -39,7 +39,7 @@ extra_css:
 If you want to integrate another syntax highlighter or add some custom logic to
 your theme, create a new JavaScript file in the `docs` directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ javascripts/
@@ -87,7 +87,7 @@ of the original theme, as any file in the `overrides` directory will replace the
 file with the same name which is part of the original theme. Besides, further
 assets may also be put in the `overrides` directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ .icons/                             # Bundled icon sets
 ├─ assets/
@@ -142,7 +142,7 @@ and location in the `overrides` directory. For example, to replace the original
 `footer.html` partial, create a new `footer.html` partial in the `overrides`
 directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ overrides/
 │  └─ partials/
@@ -160,7 +160,7 @@ template blocks, which are defined inside the templates and wrap specific
 features. In order to set up block overrides, create a `main.html` file inside
 the `overrides` directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ overrides/
 │  └─ main.html

@@ -64,7 +64,7 @@ mkdocs new .
 
 This will create the following structure:
 
-```
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ index.md
@@ -118,7 +118,7 @@ first post. All blog posts are written with the [exact same Markdown flavor] as
 already included with Material for MkDocs. First, create a folder called `posts`
 with a file called `hello-world.md`:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  ├─ posts/

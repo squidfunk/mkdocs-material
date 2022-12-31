@@ -82,7 +82,7 @@ Next, add your `*.svg` icons into a subfolder of the `.icons` folder. Let's say
 you downloaded and unpacked the [Bootstrap] icon set, and want to add it to
 your project documentation. The structure of your project should look like this:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ overrides/
 │  └─ .icons/
