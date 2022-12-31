@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.27.0 <small>_ December 20, 2022</small> { id="4.27.0" }
+
+- Added built-in typeset plugin to preserve formatting in sidebars
+- Added URL and table of contents support for blog categories
+
 ### 4.26.6 <small>_ November 28, 2022</small> { id="4.26.6" }
 
 - Fixed #4683: Tags plugin crashes when a tag is empty

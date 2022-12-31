@@ -1,3 +1,8 @@
+mkdocs-material-8.5.11+insiders-4.27.0 (2022-12-20)
+
+  * Added built-in typeset plugin to preserve formatting in sidebars
+  * Added URL and table of contents support for blog categories
+
 mkdocs-material-8.5.11 (2022-11-30)
 
   * Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352

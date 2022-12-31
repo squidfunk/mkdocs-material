@@ -88,14 +88,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 19 additional features__ that you can start using right away, and
+access to 20 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Typeset plugin]: :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
 - [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 - [x] [Navigation subtitles] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
-- [x] [Tags plugin: allow list] + [custom sorting] :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+- [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin]
@@ -188,6 +189,7 @@ You can cancel your sponsorship anytime.[^5]
 [![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
 [![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
+[![RackN]](https://rackn.com/){ target=_blank title="RackN" }
 
 </div>
 
@@ -218,6 +220,7 @@ You can cancel your sponsorship anytime.[^5]
   [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
   [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
   [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
+  [RackN]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png
 
 <hr />
 
@@ -295,10 +298,12 @@ are released for general availability.
 
 #### $ 20,000 – Jalapeño
 
+- [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [ ] [Instant previews]
 - ... more to be announced
 
+  [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
   [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
