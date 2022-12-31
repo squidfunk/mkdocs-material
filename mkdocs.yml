@@ -166,6 +166,9 @@ nav:
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
+    - Bug reporting:
+      - bug-report/index.md
+      - How to create a reproduction: bug-report/reproduction.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md
