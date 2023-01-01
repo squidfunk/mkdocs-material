@@ -82,7 +82,7 @@ body:
         If the bug only happens in __specific browsers__, please select them
         from the dropdown below. If your browser is not listed or the version
         is relevant, you may select _Other_ and provide more details in the
-        field above this field. [More](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#browser)
+        field above. [More](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#browser)
       multiple: true
       options:
         - Chrome
