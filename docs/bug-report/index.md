@@ -171,7 +171,16 @@ relevant. Don't write about the bug here.
 Now, to the bug you want to report. Provide a clear, focused, specific and
 concise summary of the bug you encountered. Explain why you think this is a bug
 that should be reported to Material for MkDocs, and not to one of its
-[dependencies]. Adhere to the following principles:
+dependencies.[^3] Adhere to the following principles:
+
+  [^3]:
+    Sometimes, users report bugs on our [issue tracker] that are caused by one
+    of our upstream dependencies, including [MkDocs], [Python Markdown],
+    [Python Markdown Extensions] or third-party plugins. A good rule of thumb is
+    to change the [`theme.name`][theme.name] to `mkdocs` or `readthedocs`, and
+    check if the problem persists. If it does, the problem is likely not
+    related to Material for MkDocs and should be reported upstream. When in
+    doubt, use our [discussion board] to ask for help.
 
 -   __Explain the <u>what</u>, not the <u>how</u>__ – don't explain
     [how to reproduce the bug][Steps to reproduce] here, we're getting there.
@@ -195,7 +204,10 @@ we maintainers can fix the bug in our code base.
 > need a clear description of the problem and its impact, which is essential
 > for triage and prioritization.
 
-  [dependencies]: #dependencies
+  [MkDocs]: https://www.mkdocs.org
+  [Python Markdown]: https://python-markdown.github.io/extensions/
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
+  [theme.name]: https://www.mkdocs.org/user-guide/configuration/#theme
 
 ### Related links
 
