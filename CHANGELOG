@@ -1,3 +1,46 @@
+mkdocs-material-9.0.0 (2023-01-02)
+
+  Additions and improvements
+
+  * Added support for rich search previews
+  * Added support for tokenizer lookahead
+  * Added support for better search highlighting
+  * Added support for excluding content from search
+  * Added support for configurable search pipeline
+  * Added support for offline search via offline plugin
+  * Added support for multiple instances of built-in tags plugin
+  * Added support for removing copy-to-clipboard button
+  * Added support for removing footer navigation
+  * Added support for button to view the source of a page
+  * Improved readability of query string for search sharing
+  * Improved stability of search plugin when using --dirtyreload
+  * Improved search result group button, now sticky and stable
+  * Updated Norwegian translations
+  * Updated MkDocs to 1.4.2
+
+  Removals
+
+  * Removed deprecated alternative admonition qualifiers
+  * Removed :is() selectors (in output) for easier overriding
+  * Removed .title suffix on translations
+  * Removed legacy method for providing page title in feedback URL
+  * Removed support for indexing only titles in search
+  * Removed support for custom search transforms
+  * Removed support for custom search workers
+  * Removed temporary snow feature (easter egg)
+
+  Fixes
+
+  * Fixed Norwegian and Korean language code
+  * Fixed detection of composition events in search interface
+  * Fixed search plugin not using title set via front matter
+  * Fixed search highlighting of tags
+  * Fixed search sharing URL using post transformed string
+  * Fixed theme-color meta tag getting out-of-sync with palette toggle
+  * Fixed prev/next page keyboard navigation when footer is not present
+  * Fixed overflowing navigation tabs not being scrollable
+  * Fixed inclusion of code block line numbers from search
+
 mkdocs-material-8.5.11+insiders-4.27.0 (2022-12-20)
 
   * Added built-in typeset plugin to preserve formatting in sidebars

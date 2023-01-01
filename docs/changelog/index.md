@@ -31,6 +31,7 @@ __Removals__
 - Removed support for indexing only titles in search
 - Removed support for custom search transforms
 - Removed support for custom search workers
+- Removed temporary snow feature (easter egg)
 
 __Fixes__
 
