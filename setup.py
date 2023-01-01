@@ -68,11 +68,7 @@ setup(
     packages = find_packages(exclude = ["src", "src.*"]),
     include_package_data = True,
     install_requires = install_requires,
-    extras_require = {
-        "info":  [
-			"pipdeptree>=2.3.3"
-        ]
-    },
+    extras_require = {},
     python_requires='>=3.7',
     entry_points = {
         "mkdocs.themes": [

@@ -37,17 +37,8 @@ from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
 from pkg_resources import get_distribution
+from pipdeptree import PackageDAG, get_installed_distributions, render_json_tree
 from zipfile import ZipFile, ZIP_DEFLATED
-
-try:
-    from pipdeptree import (
-        PackageDAG,
-        get_installed_distributions,
-        render_json_tree
-    )
-    dependencies = True
-except ImportError:
-    dependencies = False
 
 # -----------------------------------------------------------------------------
 # Class
@@ -73,14 +64,6 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         if not self.config.enabled:
             return
 
-        # Check if required dependencies are installed
-        if not dependencies:
-            log.error("Required dependencies of \"info\" plugin not found.")
-            print(Style.NORMAL)
-            print("  pip install \"mkdocs-material[info]\"")
-            print(Style.NORMAL)
-            sys.exit(1)
-
         # Resolve latest version
         url = "https://github.com/squidfunk/mkdocs-material/releases/latest"
         res = requests.get(url, allow_redirects = False)
@@ -89,7 +72,7 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         _, version = res.headers.get("location").rsplit("/", 1)
         package = get_distribution("mkdocs-material")
         if package.version != version:
-            log.error("Please update to the latest version.")
+            log.error("Please upgrade to the latest version.")
             self._help_on_versions_and_exit(package.version, version)
 
         # Print message that we're creating a bug report
@@ -192,10 +175,10 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
     # Print help on versions and exit
     def _help_on_versions_and_exit(self, have, need):
         print(Fore.RED)
-        print("  When reporting issues, please first update to the latest")
+        print("  When reporting issues, please first upgrade to the latest")
         print("  version of Material for MkDocs, as the problem might already")
         print("  be fixed in the latest version. This helps reduce duplicate")
-        print("  efforts and saves the maintainers time.")
+        print("  efforts and saves us maintainers time.")
         print(Style.NORMAL)
         print(f"  Please update from {have} to {need}.")
         print(Style.RESET_ALL)
