@@ -3,7 +3,7 @@
 Material for MkDocs is an actively maintained project that we constantly strive
 to improve. With a project of this size and complexity, bugs may occur. If you
 think you have discovered a bug, you can help us by submitting an issue in our
-public [issue tracker].
+public [issue tracker], following this guide.
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
 
@@ -311,5 +311,5 @@ __We'll take it from here.__
 
 Please understand, that we reserve us the right to close incomplete issues which
 do not contain minimal reproductions, or do not adhere to the quality standards
-and requirements mentioned in this document. We will try our best to help you
-improve your bug report in the comments.
+and requirements mentioned in this document. Issues can be reopened, when the
+missing information has been provided.
