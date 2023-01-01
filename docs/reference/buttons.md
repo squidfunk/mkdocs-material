@@ -1,5 +1,5 @@
 ---
-icon: material/gesture-tap-button
+icon: material/button-cursor
 ---
 
 # Buttons
