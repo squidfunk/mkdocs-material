@@ -34,8 +34,7 @@ dynamic = [
   "license",
   "description",
   "authors",
-  "keywords",
-  "urls",
+  "keywords"
 ]
 readme = "README.md"
 requires-python = ">=3.7"
