@@ -265,7 +265,7 @@ automatically upload it to GitHub.
     have trouble creating repositories.
 
   [Create reproduction]: reproduction.md
-  [built-in info plugin]: reproduction.md#built-in-info-plugin
+  [built-in info plugin]: reproduction.md#creating-a-zip-file
 
 ### Steps to reproduce
 

@@ -75,8 +75,7 @@ or to the [publishing guide for Insiders][tab_2].
 ### Linked content tabs
 
 [:octicons-tag-24: 8.3.0][Linked content tabs support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When enabled, all content tabs across the whole documentation site will be
 linked and switch to the same label when the user clicks on a tab. Add the 

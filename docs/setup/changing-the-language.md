@@ -105,8 +105,7 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 ### Site language selector
 
 [:octicons-tag-24: 7.0.0][Site language selector support] ·
-:octicons-milestone-24: Default: _none_ ·
-:octicons-beaker-24: Experimental
+:octicons-milestone-24: Default: _none_
 
 If your documentation is available in multiple languages, a language selector
 pointing to those languages can be added to the header. Alternate languages

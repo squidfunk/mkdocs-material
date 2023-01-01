@@ -154,8 +154,7 @@ browsers without support:
 
 ### Light and dark mode
 
-[:octicons-tag-24: 8.1.1][Light and dark mode support] ·
-:octicons-beaker-24: Experimental
+[:octicons-tag-24: 8.1.1][Light and dark mode support]
 
 If you added a [color palette toggle] and want to show different images for
 light and dark color schemes, you can append a `#only-light` or `#only-dark`

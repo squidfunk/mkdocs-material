@@ -3,7 +3,7 @@
   "title": "Built-in info plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#built-in-info-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#creating-a-zip-file",
       "enum": [
         "info"
       ]
@@ -12,12 +12,12 @@
       "type": "object",
       "properties": {
         "info": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#built-in-info-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#creating-a-zip-file",
           "type": "object",
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#+info.enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reporting-an-issue/#creating-a-zip-file",
               "type": "boolean",
               "default": true
             }

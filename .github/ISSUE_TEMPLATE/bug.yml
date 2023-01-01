@@ -50,7 +50,7 @@ body:
       description: >-
         Please create a __minimal reproduction__ for the bug. First, read our
         [reproduction guide](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/)
-        that explains the necessary steps, then use the [built-in info plugin](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#built-in-info-plugin) (mandatory) to create a self-contained
+        that explains the necessary steps, then use the [built-in info plugin](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#creating-a-zip-file) (mandatory) to create a self-contained
         .zip file with the reproduction. Without a reproduction, it can be
         challenging to fix the bug. [More](https://squidfunk.github.io/mkdocs-material/bug-report/#reproduction)
       placeholder: |-

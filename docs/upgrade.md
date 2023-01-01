@@ -3,7 +3,7 @@
 Upgrade to the latest version with:
 
 ```
-pip install --upgrade mkdocs-material
+pip install --upgrade --force-reinstall mkdocs-material
 ```
 
 Show the currently installed version with:

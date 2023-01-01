@@ -67,8 +67,7 @@ following lines to `mkdocs.yml`:
 ### Was this page helpful?
 
 [:octicons-tag-24: 8.4.0][Was this page helpful? support] ·
-:octicons-milestone-24: Default: _none_ ·
-:octicons-beaker-24: Experimental
+:octicons-milestone-24: Default: _none_
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.

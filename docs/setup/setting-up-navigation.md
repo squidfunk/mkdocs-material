@@ -37,8 +37,7 @@ especially useful for large documentation sites.
 ### Anchor tracking
 
 [:octicons-tag-24: 8.0.0][Anchor tracking support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When anchor tracking is enabled, the URL in the address bar is automatically
 updated with the active anchor as highlighted in the table of contents. Add the
