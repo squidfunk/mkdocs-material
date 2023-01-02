@@ -42,6 +42,45 @@ See additional configuration options:
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
 
+### Code copy button
+
+[:octicons-tag-24: 9.0.0][Code copy button support] ·
+:octicons-unlock-24: Feature flag
+
+Code blocks can automatically render a button on the right side to allow the
+user to copy a code block's contents to the clipboard. Add the following to
+`mkdocs.yml` to enable them globally:
+
+``` yaml
+theme:
+  features:
+    - content.code.copy
+```
+
+  [Code copy button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
+
+??? info "Enabling or disabling code copy buttons for a specific code block"
+
+    If you don't want to enable code copy buttons globally, you can enable them
+    for a specific code block by using a slightly different syntax based on the
+    [Attribute Lists] extension:
+
+    ```` yaml
+    ``` { .yaml .copy }
+    # Code block content
+    ```
+    ````
+
+    Note that the language shortcode which has to come first must now also be 
+    prefixed by a `.`. Similarily, the copy button can also be disabled for a
+    specific code block:
+
+    ```` { .yaml .no-copy }
+    ``` { .yaml .no-copy }
+    # Code block content
+    ```
+    ````
+
 ### Code annotations
 
 [:octicons-tag-24: 8.0.0][Code annotations support] ·

@@ -588,6 +588,13 @@
             ]
           },
           {
+            "title": "Code copy button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button",
+            "enum": [
+              "content.code.copy"
+            ]
+          },
+          {
             "title": "Linked content tabs",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
             "enum": [

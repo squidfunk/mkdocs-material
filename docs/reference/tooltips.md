@@ -51,7 +51,7 @@ theme:
 
 Now, tooltips will be rendered for the following elements:
 
-- __Content__ – elements with a `title`, permalinks and copy-to-clipboard button
+- __Content__ – elements with a `title`, permalinks and code copy button
 - __Header__ – home button, header title, color palette switch and repository link
 - __Navigation__ – links that are shortened with ellipsis, i.e. `...`
 
