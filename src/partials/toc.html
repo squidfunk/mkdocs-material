@@ -31,7 +31,7 @@
   {% set toc = page.toc %}
 
   <!--
-    Hack: check whether the content contains a h1 headline. If it does, the
+    Check whether the content starts with a level 1 headline. If it does, the
     top-level anchor must be skipped, since it would be redundant to the link
     to the current page that is located just above the anchor. Therefore we
     directly continue with the children of the anchor.

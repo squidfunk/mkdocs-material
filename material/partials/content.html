@@ -5,7 +5,8 @@
   {% include "partials/tags.html" %}
 {% endif %}
 {% include "partials/actions.html" %}
-{% if "\x3ch1" not in page.content %}
+{% set first = page.toc | first %}
+{% if first and first.level != 1 %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 {{ page.content }}
