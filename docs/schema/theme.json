@@ -217,7 +217,7 @@
         {
           "title": "Site language: Korean",
           "enum": [
-            "kr"
+            "ko"
           ]
         },
         {
@@ -263,15 +263,15 @@
           ]
         },
         {
-          "title": "Site language: Norwegian (Nynorsk)",
+          "title": "Site language: Norwegian (Bokmål)",
           "enum": [
-            "nn"
+            "nb"
           ]
         },
         {
-          "title": "Site language: Norwegian",
+          "title": "Site language: Norwegian (Nynorsk)",
           "enum": [
-            "no"
+            "nn"
           ]
         },
         {

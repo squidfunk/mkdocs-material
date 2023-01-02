@@ -66,8 +66,8 @@ The following languages are supported:
 - `ms` – Bahasa Malaysia
 - `my` – Burmese
 - `nl` – Dutch
+- `nb` – Norwegian (Bokmål)
 - `nn` – Norwegian (Nynorsk)
-- `no` – Norwegian
 - `pl` – Polish
 - `pt` – Portuguese
 - `pt-BR` – Portuguese (Brasilian)
