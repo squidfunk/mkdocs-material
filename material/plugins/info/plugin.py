@@ -24,10 +24,6 @@ import os
 import platform
 import requests
 import sys
-import warnings
-
-# Silence deprecation warnings coming from pip
-warnings.filterwarnings("ignore", category = DeprecationWarning)
 
 from colorama import Fore, Style
 from io import BytesIO
@@ -37,8 +33,7 @@ from mkdocs.config import config_options as opt
 from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
-from pkg_resources import get_distribution
-from pipdeptree import PackageDAG, get_installed_distributions, render_json_tree
+from pkg_resources import get_distribution, working_set
 from zipfile import ZipFile, ZIP_DEFLATED
 
 # -----------------------------------------------------------------------------
@@ -112,17 +107,17 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
                 path = os.path.relpath(file.abs_src_path, os.path.curdir)
                 f.write(path, os.path.join(archive_name, path))
 
-            # Add information on packages
+            # Add information on installed packages
             f.writestr(
-                os.path.join(archive_name, ".packages.json"),
-                render_json_tree(PackageDAG.from_pkgs(
-                    get_installed_distributions(local_only = True)
-                ), 2)
+                os.path.join(archive_name, "requirements.lock.txt"),
+                "\n".join(sorted([
+                    f"{dist.as_requirement()}" for dist in working_set
+                ]))
             )
 
             # Add information in platform
             f.writestr(
-                os.path.join(archive_name, ".platform.json"),
+                os.path.join(archive_name, "platform.json"),
                 json.dumps(
                     {
                         "system": platform.platform(),
