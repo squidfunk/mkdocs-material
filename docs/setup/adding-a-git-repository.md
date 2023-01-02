@@ -97,47 +97,54 @@ Some popular choices:
   [Repository icon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
   [icon search]: ../reference/icons-emojis.md#search
 
-#### Edit button
+#### Code actions
 
-[:octicons-tag-24: 0.1.0][Edit button support] ·
-:octicons-milestone-24: Default: _automatically set_
+[:octicons-tag-24: 9.0.0][Code actions support] ·
+:octicons-unlock-24: Feature flag
 
-If the repository URL points to a [GitHub], [GitLab] or [Bitbucket] repository,
-an edit button is displayed at the top of each document. This behavior can be
-changed by setting [`edit_uri`][edit_uri] in `mkdocs.yml`:
+If the [repository URL] points to a [GitHub], [GitLab] or [Bitbucket] repository,
+buttons for code actions can be added at the top of each document. Currently,
+two types of code actions are supported: `edit` and `view` (GitHub only). Add
+the following lines to `mkdocs.yml`:
 
-=== "Customize edit path"
-
-    ``` yaml
-    edit_uri: edit/master/docs/
-    ```
-
-=== "Hide edit button"
+=== ":material-file-edit-outline: Edit this page"
 
     ``` yaml
-    edit_uri: ""
+    theme:
+      features:
+        - code.action.edit
     ```
 
-The icon of the edit button can be changed with the following lines:
+=== ":material-file-eye-outline: View source of this page"
+
+    ``` yaml
+    theme:
+      features:
+        - code.action.view
+    ```
+
+The icon of the edit and view buttons can be changed with the following lines:
 
 ``` yaml
 theme:
   icon:
     edit: material/pencil # (1)!
+    view: material/eye
 ```
 
 1.  Enter a few keywords to find the perfect icon using our [icon search] and
     click on the shortcode to copy it to your clipboard:
 
     <div class="mdx-iconsearch" data-mdx-component="iconsearch">
-      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="material file edit" />
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="material pencil" />
       <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
         <div class="mdx-iconsearch-result__meta"></div>
         <ol class="mdx-iconsearch-result__list"></ol>
       </div>
     </div>
 
-  [Edit button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
+  [Code actions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
+  [repository URL]: #repository
   [edit_uri]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
   [GitHub]: https://github.com/
   [GitLab]: https://about.gitlab.com/

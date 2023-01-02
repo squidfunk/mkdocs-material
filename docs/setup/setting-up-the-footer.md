@@ -8,6 +8,22 @@ configure via `mkdocs.yml`.
 
 ## Configuration
 
+### Navigation
+
+[:octicons-tag-24: 9.0.0][Navigation footer support] ·
+:octicons-unlock-24: Feature flag
+
+The footer can include links to the previous and next page of the current page.
+If you wish to enable this behavior, add the following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - navigation.footer
+```
+
+  [Navigation footer support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
+
 ### Social links
 
 [:octicons-tag-24: 1.0.0][Social links support] ·
