@@ -3,7 +3,7 @@ icon: material/tooltip-plus
 status: new
 ---
 
-# Abbreviations
+# Tooltips
 
 Technical documentation often incurs the usage of many acronyms, which may
 need additional explanation, especially for new user of your project. For these
