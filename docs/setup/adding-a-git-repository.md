@@ -107,7 +107,7 @@ buttons for code actions can be added at the top of each document. Currently,
 two types of code actions are supported: `edit` and `view` (GitHub only). Add
 the following lines to `mkdocs.yml`:
 
-=== ":material-file-edit-outline: Edit this page"
+=== ":material-pencil: Edit this page"
 
     ``` yaml
     theme:
@@ -115,7 +115,7 @@ the following lines to `mkdocs.yml`:
         - code.action.edit
     ```
 
-=== ":material-file-eye-outline: View source of this page"
+=== ":material-eye: View source of this page"
 
     ``` yaml
     theme:
