@@ -96,7 +96,7 @@
     }
 
     // Linked tag on focus/hover
-    &:is(a:focus, a:hover)::before {
+    &[href]:is(:focus, :hover)::before {
       background-color: var(--md-accent-bg-color);
     }
   }
