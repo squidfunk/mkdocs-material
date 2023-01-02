@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import json
 import logging
 import os
 import platform
@@ -111,27 +112,25 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
                 path = os.path.relpath(file.abs_src_path, os.path.curdir)
                 f.write(path, os.path.join(archive_name, path))
 
-            # Add dependency tree as returned by pipdeptree
+            # Add information on packages
             f.writestr(
-                os.path.join(archive_name, ".dependencies.json"),
+                os.path.join(archive_name, ".packages.json"),
                 render_json_tree(PackageDAG.from_pkgs(
                     get_installed_distributions(local_only = True)
                 ), 2)
             )
 
-            # Add version information
-            mkdocs = get_distribution("mkdocs")
+            # Add information in platform
             f.writestr(
-                os.path.join(archive_name, ".versions.log"),
-                "\n".join([
-                    f"-----------------------------------",
-                    f"  Material for MkDocs: {version}",
-                    f"  MkDocs: {mkdocs.version}",
-                    f"-----------------------------------",
-                    f"  Platform: {platform.system()}",
-                    f"  Python: {platform.python_version()}",
-                    f"-----------------------------------"
-                ])
+                os.path.join(archive_name, ".platform.json"),
+                json.dumps(
+                    {
+                        "system": platform.platform(),
+                        "python": platform.python_version()
+                    },
+                    default = str,
+                    indent = 2
+                )
             )
 
             # Retrieve list of processed files
@@ -182,7 +181,7 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         print(Style.NORMAL)
         print(f"  Please update from {have} to {need}.")
         print(Style.RESET_ALL)
-        print(f"  pip install \"mkdocs-material=={need}\"")
+        print(f"  pip install --upgrade --force-reinstall mkdocs-material")
         print(Style.NORMAL)
 
         # Exit, unless explicitly told not to
