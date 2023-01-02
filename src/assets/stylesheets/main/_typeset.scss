@@ -294,16 +294,11 @@ kbd {
 
     // Show tooltip for touch devices
     @media (hover: none) {
-      position: relative;
 
       // Tooltip
       &[title]:is(:focus, :hover)::after {
         position: absolute;
-        inset-inline-start: 0;
-        display: inline-block;
-        width: auto;
-        min-width: max-content;
-        max-width: 80%;
+        inset-inline: px2rem(16px);
         margin-top: 2em;
         padding: px2rem(4px) px2rem(6px);
         color: var(--md-default-bg-color);
