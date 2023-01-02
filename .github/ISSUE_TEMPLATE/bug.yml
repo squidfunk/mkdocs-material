@@ -34,8 +34,9 @@ body:
         Please list all links to the sections of
         [our documentation](https://squidfunk.github.io/mkdocs-material) that
         are relevant to the bug, in order to show that you have consulted and
-        thoroughly read it. Additionally, list links to possibly related issues
-        or discussions you encountered when searching our issue tracker.
+        thoroughly read it. Additionally, list links to possibly related [issues](https://github.com/squidfunk/mkdocs-material/issues)
+        or [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
+        you encountered when searching our issue tracker.
         [More](https://squidfunk.github.io/mkdocs-material/bug-report/#related-links)
       value: |-
         - [Bug reporting](https://squidfunk.github.io/mkdocs-material/bug-report/)
