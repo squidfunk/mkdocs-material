@@ -19,15 +19,15 @@
 # IN THE SOFTWARE.
 
 # Requirements for core
-jinja2>=3.0.2
+jinja2>=3.0
 markdown>=3.2
 mkdocs>=1.4.2
 mkdocs-material-extensions>=1.1
-pygments>=2.12
-pymdown-extensions>=9.6
+pygments>=2.14
+pymdown-extensions>=9.9
 
 # Requirements for plugins
-colorama>=0.4.6
-pipdeptree>=2.3.3
+colorama>=0.4
+pipdeptree>=2.3
 regex>=2022.4.24
 requests>=2.26
