@@ -29,8 +29,10 @@ import {
   defer,
   distinctUntilChanged,
   distinctUntilKeyChanged,
+  endWith,
   filter,
   finalize,
+  ignoreElements,
   map,
   merge,
   of,
@@ -40,7 +42,6 @@ import {
   skip,
   startWith,
   switchMap,
-  takeLast,
   takeUntil,
   tap,
   withLatestFrom
@@ -273,7 +274,7 @@ export function mountTableOfContents(
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
-    const done$ = push$.pipe(takeLast(1))
+    const done$ = push$.pipe(ignoreElements(), endWith(true))
     push$.subscribe(({ prev, next }) => {
 
       /* Look forward */

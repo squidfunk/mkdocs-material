@@ -6,7 +6,7 @@
   {% set class = class ~ " md-header--lifted" %}
 {% endif %}
 <header class="{{ class }}" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
+  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
     <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
       {% include "partials/logo.html" %}
     </a>
@@ -34,10 +34,8 @@
     {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
         {% for option in config.theme.palette %}
-          {% set scheme  = option.scheme | d("default", true) %}
-          {% set primary = option.primary %}
-          {% set accent  = option.accent %}
-          <input class="md-option" data-md-color-media="{{ option.media }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ primary | replace(' ', '-') }}" data-md-color-accent="{{ accent | replace(' ', '-') }}" {% if option.toggle %} aria-label="{{ option.toggle.name }}" {% else %} aria-hidden="true" {% endif %} type="radio" name="__palette" id="__palette_{{ loop.index }}">
+          {% set scheme = option.scheme | d("default", true) %}
+          <input class="md-option" data-md-color-media="{{ option.media }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ option.primary | replace(' ', '-') }}" data-md-color-accent="{{ option.accent | replace(' ', '-') }}" {% if option.toggle %} aria-label="{{ option.toggle.name }}" {% else %} aria-hidden="true" {% endif %} type="radio" name="__palette" id="__palette_{{ loop.index }}">
           {% if option.toggle %}
             <label class="md-header__button md-icon" title="{{ option.toggle.name }}" for="__palette_{{ loop.index0 or loop.length }}" hidden>
               {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
@@ -50,7 +48,7 @@
       <div class="md-header__option">
         <div class="md-select">
           {% set icon = config.theme.icon.alternate or "material/translate" %}
-          <button class="md-header__button md-icon" aria-label="{{ lang.t('select.language.title') }}">
+          <button class="md-header__button md-icon" aria-label="{{ lang.t('select.language') }}">
             {% include ".icons/" ~ icon ~ ".svg" %}
           </button>
           <div class="md-select__inner">
@@ -67,7 +65,7 @@
         </div>
       </div>
     {% endif %}
-    {% if "search" in config.plugins %}
+    {% if "material/search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>

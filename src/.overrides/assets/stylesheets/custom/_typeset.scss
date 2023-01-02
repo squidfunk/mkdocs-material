@@ -91,8 +91,7 @@
     transition: opacity 250ms;
 
     // Button on focus/hover
-    &:focus,
-    &:hover {
+    &:is(:focus, :hover) {
       opacity: 0.75;
     }
 
@@ -110,8 +109,7 @@
     transition: opacity 250ms;
 
     // Deprecation on focus/hover
-    &:focus-within,
-    &:hover {
+    &:is(:focus-within, :hover) {
       opacity: 1;
     }
   }

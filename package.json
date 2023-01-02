@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "8.5.11",
+  "version": "9.0.0",
   "description": "Documentation that simply works",
   "keywords": [
     "mkdocs",
@@ -44,6 +44,7 @@
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
+    "iframe-worker": "^1.0.2",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.10.0",
     "resize-observer-polyfill": "^1.5.1",
@@ -86,6 +87,7 @@
     "postcss-dir-pseudo-class": "^6.0.5",
     "postcss-inline-svg": "^5.0.0",
     "postcss-logical": "^5.0.4",
+    "postcss-pseudo-is": "^0.3.0",
     "preact": "^10.11.3",
     "rimraf": "^3.0.2",
     "sass": "^1.57.1",

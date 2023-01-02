@@ -18,6 +18,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import concurrent.futures
+import functools
 import logging
 import os
 import posixpath
@@ -63,6 +65,9 @@ class SocialPluginConfig(Config):
 # Social plugin
 class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
+    def __init__(self):
+        self._executor = concurrent.futures.ThreadPoolExecutor(4)
+
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
@@ -75,7 +80,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 "Required dependencies of \"social\" plugin not found. "
                 "Install with: pip install pillow cairosvg"
             )
-            sys.exit()
+            sys.exit(1)
 
         # Check if site URL is defined
         if not config.site_url:
@@ -107,8 +112,10 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         self.color = { **self.color, **self.config.cards_color }
 
         # Retrieve logo and font
-        self.logo = self._load_logo(config)
+        self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
         self.font = self._load_font(config)
+
+        self._image_promises = []
 
     # Create social cards
     def on_page_markdown(self, markdown, page, config, files):
@@ -147,46 +154,61 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             description
         ]).encode("utf-8"))
         file = os.path.join(self.cache, f"{hash.hexdigest()}.png")
-        if not os.path.isfile(file):
-            image = self._render_card(site_name, title, description)
-            image.save(file)
-
-        # Copy file from cache
-        copyfile(file, path)
+        self._image_promises.append(self._executor.submit(
+            self._cache_image,
+            cache_path = file, dest_path = path,
+            render_function = lambda: self._render_card(site_name, title, description)
+        ))
 
         # Inject meta tags into page
         meta = page.meta.get("meta", [])
         page.meta["meta"] = meta + self._generate_meta(page, config)
 
+    def on_post_build(self, config):
+        # Check for exceptions
+        for promise in self._image_promises:
+            promise.result()
+
     # -------------------------------------------------------------------------
+
+    # Render image to cache (if not present), then copy from cache to site
+    def _cache_image(self, cache_path, dest_path, render_function):
+        if not os.path.isfile(cache_path):
+            image = render_function()
+            image.save(cache_path)
+
+        # Copy file from cache
+        copyfile(cache_path, dest_path)
+
+    @functools.lru_cache(maxsize=None)
+    def _get_font(self, kind, size):
+        return ImageFont.truetype(self.font[kind], size)
 
     # Render social card
     def _render_card(self, site_name, title, description):
-        logo = self.logo
-
         # Render background and logo
         image = self._render_card_background((1200, 630), self.color["fill"])
         image.alpha_composite(
-            logo.resize((144, int(144 * logo.height / logo.width))),
+            self._resized_logo_promise.result(),
             (1200 - 228, 64 - 4)
         )
 
         # Render site name
-        font = ImageFont.truetype(self.font["Bold"], 36)
+        font = self._get_font("Bold", 36)
         image.alpha_composite(
             self._render_text((826, 48), font, site_name, 1, 20),
             (64 + 4, 64)
         )
 
         # Render page title
-        font = ImageFont.truetype(self.font["Bold"], 92)
+        font = self._get_font("Bold", 92)
         image.alpha_composite(
             self._render_text((826, 328), font, title, 3, 30),
             (64, 160)
         )
 
         # Render page description
-        font = ImageFont.truetype(self.font["Regular"], 28)
+        font = self._get_font("Regular", 28)
         image.alpha_composite(
             self._render_text((826, 80), font, description, 2, 14),
             (64 + 4, 512)
@@ -199,26 +221,32 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
     def _render_card_background(self, size, fill):
         return Image.new(mode = "RGBA", size = size, color = fill)
 
+    @functools.lru_cache(maxsize=None)
+    def _tmp_context(self):
+        image = Image.new(mode = "RGBA", size = (50, 50))
+        return ImageDraw.Draw(image)
+
+    @functools.lru_cache(maxsize=None)
+    def _text_bounding_box(self, text, font):
+        return self._tmp_context().textbbox((0, 0), text, font = font)
+
     # Render social card text
     def _render_text(self, size, font, text, lmax, spacing = 0):
+        width = size[0]
         lines, words = [], []
 
         # Remove remnant HTML tags
         text = re.sub(r"(<[^>]+>)", "", text)
 
-        # Create temporary image
-        image = Image.new(mode = "RGBA", size = size)
-
         # Retrieve y-offset of textbox to correct for spacing
         yoffset = 0
 
         # Create drawing context and split text into lines
-        context = ImageDraw.Draw(image)
         for word in text.split(" "):
             combine = " ".join(words + [word])
-            textbox = context.textbbox((0, 0), combine, font = font)
+            textbox = self._text_bounding_box(combine, font = font)
             yoffset = textbox[1]
-            if not words or textbox[2] <= image.width:
+            if not words or textbox[2] <= width:
                 words.append(word)
             else:
                 lines.append(words)
@@ -298,6 +326,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             { "name": "twitter:description", "content": description },
             { "name": "twitter:image", "content": url }
         ]
+
+    def _load_resized_logo(self, config, width = 144):
+        logo = self._load_logo(config)
+        height = int(width * logo.height / logo.width)
+        return logo.resize((width, height))
 
     # Retrieve logo image or icon
     def _load_logo(self, config):
@@ -379,7 +412,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
         # Write archive to temporary file
         tmp = TemporaryFile()
-        for chunk in res.iter_content(chunk_size = 128):
+        for chunk in res.iter_content(chunk_size = 32768):
             tmp.write(chunk)
 
         # Unzip fonts from temporary file

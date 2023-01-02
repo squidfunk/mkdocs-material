@@ -37,8 +37,12 @@ import {
 } from "rxjs"
 
 import { getElements } from "~/browser"
+import { h } from "~/utilities"
 
-import { Component } from "../_"
+import {
+  Component,
+  getComponentElement
+} from "../_"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -112,6 +116,10 @@ export function watchPalette(
 export function mountPalette(
   el: HTMLElement
 ): Observable<Component<Palette>> {
+  const meta = h("meta", { name: "theme-color" })
+  document.head.appendChild(meta)
+
+  /* Mount component on subscription */
   return defer(() => {
     const push$ = new Subject<Palette>()
     push$.subscribe(palette => {
@@ -131,6 +139,21 @@ export function mountPalette(
       /* Persist preference in local storage */
       __md_set("__palette", palette)
     })
+
+    /* Update theme-color meta tag */
+    push$
+      .pipe(
+        map(() => {
+          const header = getComponentElement("header")
+          const { backgroundColor } = window.getComputedStyle(header)
+
+          /* Return color in hexadecimal format */
+          return backgroundColor.match(/\d+/g)!
+            .map(value => (+value).toString(16).padStart(2, "0"))
+            .join("")
+        })
+      )
+        .subscribe(color => meta.content = `#${color}`)
 
     /* Revert transition durations after color switch */
     push$.pipe(observeOn(asyncScheduler))

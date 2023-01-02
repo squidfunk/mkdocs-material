@@ -29,10 +29,10 @@ import {
   distinctUntilKeyChanged,
   endWith,
   finalize,
+  ignoreElements,
   map,
   repeat,
   skip,
-  takeLast,
   takeUntil,
   tap
 } from "rxjs"
@@ -134,7 +134,7 @@ export function mountBackToTop(
   el: HTMLElement, { viewport$, header$, main$, target$ }: MountOptions
 ): Observable<Component<BackToTop>> {
   const push$ = new Subject<BackToTop>()
-  const done$ = push$.pipe(takeLast(1))
+  const done$ = push$.pipe(ignoreElements(), endWith(true))
   push$.subscribe({
 
     /* Handle emission */

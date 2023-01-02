@@ -45,7 +45,7 @@ By default, the built-in blog plugin assumes that your blog is hosted inside
 the `blog` subfolder of your documentation ([this is configurable]). Next,
 you need to create the following structure:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ blog/
@@ -935,7 +935,7 @@ your first post. The plugin doesn't assume any specific directory structure, so
 you're completely free in how you organize your posts, as long as they are all
 located inside the `posts` directory:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ blog/
@@ -1213,7 +1213,7 @@ for each post. Luckily, the [built-in meta plugin] allows to set default front
 matter properties per folder. You can group your posts by categories, or
 authors, and add a `.meta.yml` file to set common properties:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ blog/
@@ -1278,7 +1278,7 @@ If you want to add custom content to automatically generated [archive] and
 posts, you can manually create the category page in the same location where
 the [built-in blog plugin] would create it:
 
-``` sh
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ blog/

@@ -40,7 +40,7 @@
 {% endif %}
 
 <!-- Determine initial settings state -->
-{% if not "manage" in actions %}
+{% if "manage" not in actions %}
   {% set checked = "checked" %}
 {% endif %}
 

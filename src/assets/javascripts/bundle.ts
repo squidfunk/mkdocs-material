@@ -28,6 +28,7 @@ import "url-polyfill"
 import {
   EMPTY,
   NEVER,
+  Observable,
   Subject,
   defer,
   delay,
@@ -44,6 +45,7 @@ import {
   at,
   getOptionalElement,
   requestJSON,
+  setLocation,
   setToggle,
   watchDocument,
   watchKeyboard,
@@ -51,6 +53,7 @@ import {
   watchLocationTarget,
   watchMedia,
   watchPrint,
+  watchScript,
   watchViewport
 } from "./browser"
 import {
@@ -87,6 +90,32 @@ import {
 import "./polyfills"
 
 /* ----------------------------------------------------------------------------
+ * Functions - @todo refactor
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Fetch search index
+ *
+ * @returns Search index observable
+ */
+function fetchSearchIndex(): Observable<SearchIndex> {
+  if (location.protocol === "file:") {
+    return watchScript(
+      `${new URL("search/search_index.js", config.base)}`
+    )
+      .pipe(
+        // @ts-ignore - @todo fix typings
+        map(() => __index),
+        shareReplay(1)
+      )
+  } else {
+    return requestJSON<SearchIndex>(
+      new URL("search/search_index.json", config.base)
+    )
+  }
+}
+
+/* ----------------------------------------------------------------------------
  * Application
  * ------------------------------------------------------------------------- */
 
@@ -109,9 +138,7 @@ const print$    = watchPrint()
 /* Retrieve search index, if search is enabled */
 const config = configuration()
 const index$ = document.forms.namedItem("search")
-  ? __search?.index || requestJSON<SearchIndex>(
-    new URL("search/search_index.json", config.base)
-  )
+  ? fetchSearchIndex()
   : NEVER
 
 /* Set up Clipboard.js integration */
@@ -147,17 +174,17 @@ keyboard$
         /* Go to previous page */
         case "p":
         case ",":
-          const prev = getOptionalElement("[href][rel=prev]")
+          const prev = getOptionalElement<HTMLLinkElement>("link[rel=prev]")
           if (typeof prev !== "undefined")
-            prev.click()
+            setLocation(prev)
           break
 
         /* Go to next page */
         case "n":
         case ".":
-          const next = getOptionalElement("[href][rel=next]")
+          const next = getOptionalElement<HTMLLinkElement>("link[rel=next]")
           if (typeof next !== "undefined")
-            next.click()
+            setLocation(next)
           break
       }
     })

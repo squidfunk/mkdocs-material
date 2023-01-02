@@ -11,8 +11,7 @@ support for many of its features.
 
 ### Built-in offline plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.10.0][Insiders] ·
+[:octicons-tag-24: 9.0.0][offline support] ·
 :octicons-cpu-24: Plugin
 
 The built-in offline plugin makes sure that the [site search] works when you
@@ -24,13 +23,9 @@ plugins:
   - offline
 ```
 
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
-
-The plugin will automatically disable [`use_directory_urls`][use_directory_urls]
-via `mkdocs.yml`, ensuring that users can open your documentation directly
-from the local file system.
+The plugin will automatically disable the [`use_directory_urls`][use_directory_urls]
+setting, ensuring that users can open your documentation directly from the local
+file system.
 
 The following configuration options are available:
 
@@ -52,14 +47,13 @@ hosted on a regular server.
 
 !!! tip "Automatically bundle all external assets"
 
-    The brand-new [built-in privacy plugin] makes it easy to use external assets
+    The [built-in privacy plugin] makes it easy to use external assets
     while building documentation for offline usage, as it will automatically
     download all external assets to distribute them with your documentation.
 
-  [Insiders]: ../insiders/index.md
+  [offline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin

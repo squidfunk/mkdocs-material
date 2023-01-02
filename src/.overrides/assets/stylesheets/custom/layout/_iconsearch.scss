@@ -36,8 +36,7 @@
     transition: box-shadow 125ms;
 
     // Icon search on focus/hover
-    &:focus-within,
-    &:hover {
+    &:is(:focus-within, :hover) {
       box-shadow: var(--md-shadow-z2);
     }
 

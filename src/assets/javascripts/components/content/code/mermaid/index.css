@@ -375,3 +375,13 @@ line {
   font-family: var(--md-mermaid-font-family);
   fill: var(--md-mermaid-node-fg-color);
 }
+
+/* Sequence number */
+.sequenceNumber {
+  fill: var(--md-accent-bg-color);
+}
+
+/* Sequence diagram markers */
+defs #sequencenumber {
+  fill: var(--md-mermaid-node-fg-color) !important;
+}

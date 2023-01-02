@@ -39,11 +39,15 @@ theme:
   custom_dir: material/.overrides
   features:
     # - announce.dismiss
+    - content.action.edit
+    - content.action.view
     - content.code.annotate
+    - content.code.copy
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
     # - navigation.expand
+    - navigation.footer
     - navigation.indexes
     # - navigation.instant
     # - navigation.prune
@@ -79,7 +83,8 @@ theme:
 
 # Plugins
 plugins:
-  - search
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - redirects:
       redirect_maps:
         changelog/insiders.md: insiders/changelog.md
@@ -161,6 +166,9 @@ nav:
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
+    - Bug reporting:
+      - bug-report/index.md
+      - Creating a reproduction: bug-report/reproduction.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md

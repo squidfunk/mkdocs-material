@@ -20,7 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine class according to configuration -->
+<!-- Determine base classes -->
 {% set class = "md-header" %}
 {% if "navigation.tabs.sticky" in features %}
   {% set class = class ~ " md-header--lifted" %}
@@ -30,7 +30,7 @@
 <header class="{{ class }}" data-md-component="header">
   <nav
     class="md-header__inner md-grid"
-    aria-label="{{ lang.t('header.title') }}"
+    aria-label="{{ lang.t('header') }}"
   >
 
     <!-- Link to home -->
@@ -73,15 +73,13 @@
     {% if not config.theme.palette is mapping %}
       <form class="md-header__option" data-md-component="palette">
         {% for option in config.theme.palette %}
-          {% set scheme  = option.scheme | d("default", true) %}
-          {% set primary = option.primary %}
-          {% set accent  = option.accent %}
+          {% set scheme = option.scheme | d("default", true) %}
           <input
             class="md-option"
             data-md-color-media="{{ option.media }}"
             data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
-            data-md-color-primary="{{ primary | replace(' ', '-') }}"
-            data-md-color-accent="{{ accent | replace(' ', '-') }}"
+            data-md-color-primary="{{ option.primary | replace(' ', '-') }}"
+            data-md-color-accent="{{ option.accent | replace(' ', '-') }}"
             {% if option.toggle %}
               aria-label="{{ option.toggle.name }}"
             {% else  %}
@@ -112,7 +110,7 @@
           {% set icon = config.theme.icon.alternate or "material/translate" %}
           <button
             class="md-header__button md-icon"
-            aria-label="{{ lang.t('select.language.title') }}"
+            aria-label="{{ lang.t('select.language') }}"
           >
             {% include ".icons/" ~ icon ~ ".svg" %}
           </button>
@@ -136,7 +134,7 @@
     {% endif %}
 
     <!-- Button to open search modal -->
-    {% if "search" in config.plugins %}
+    {% if "material/search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>

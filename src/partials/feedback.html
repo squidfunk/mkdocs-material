@@ -68,14 +68,8 @@
                 {% set title = page.title | urlencode %}
               {% endif %}
 
-              <!-- Legacy, deprecated, removed in next major version -->
-              {% if "{}" in rating.note %}
-                {{ rating.note.format(url, title) }}
-
               <!-- Replace {url} and {title} placeholders in note -->
-              {% else %}
-                {{ rating.note.format(url = url, title = title) }}
-              {% endif %}
+              {{ rating.note.format(url = url, title = title) }}
             </div>
           {% endfor %}
         </div>

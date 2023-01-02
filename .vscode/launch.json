@@ -10,7 +10,7 @@
         "--incognito"
       ],
       "url": "http://localhost:8000/mkdocs-material/",
-      "webRoot": ".",
+      "webRoot": "${workspaceFolder}",
       "smartStep": true
     }
   ]

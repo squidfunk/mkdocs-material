@@ -26,6 +26,9 @@
           "$ref": "plugins/blog.json"
         },
         {
+          "$ref": "plugins/info.json"
+        },
+        {
           "$ref": "plugins/meta.json"
         },
         {

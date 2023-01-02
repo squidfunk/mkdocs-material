@@ -20,7 +20,8 @@
  * IN THE SOFTWARE.
  */
 
-import { SearchIndex, SearchResult } from "../../_"
+import { SearchResult } from "../../_"
+import { SearchIndex } from "../../config"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -85,19 +86,6 @@ export type SearchMessage =
  * ------------------------------------------------------------------------- */
 
 /**
- * Type guard for search setup messages
- *
- * @param message - Search worker message
- *
- * @returns Test result
- */
-export function isSearchSetupMessage(
-  message: SearchMessage
-): message is SearchSetupMessage {
-  return message.type === SearchMessageType.SETUP
-}
-
-/**
  * Type guard for search ready messages
  *
  * @param message - Search worker message
@@ -108,19 +96,6 @@ export function isSearchReadyMessage(
   message: SearchMessage
 ): message is SearchReadyMessage {
   return message.type === SearchMessageType.READY
-}
-
-/**
- * Type guard for search query messages
- *
- * @param message - Search worker message
- *
- * @returns Test result
- */
-export function isSearchQueryMessage(
-  message: SearchMessage
-): message is SearchQueryMessage {
-  return message.type === SearchMessageType.QUERY
 }
 
 /**

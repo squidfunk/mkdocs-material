@@ -36,6 +36,19 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.separator",
               "type": "string"
             },
+            "pipeline": {
+              "title": "Text processing pipeline for indexing",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.pipeline",
+              "type": "array",
+              "items": {
+                "enum": [
+                  "stemmer",
+                  "stopWordFilter",
+                  "trimmer"
+                ]
+              },
+              "uniqueItems": true
+            },
             "jieba_dict": {
               "title": "Jieba dictionary replacement",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.jieba_dict",

@@ -24,32 +24,12 @@ import { Observable, Subject } from "rxjs"
 
 import { Keyboard, Viewport } from "~/browser"
 import { Component } from "~/components"
-import {
-  SearchIndex,
-  SearchTransformFn
-} from "~/integrations"
 
 /* ----------------------------------------------------------------------------
  * Global types
  * ------------------------------------------------------------------------- */
 
-/**
- * Global search configuration
- */
-export interface GlobalSearchConfig {
-  transform?: SearchTransformFn        /* Transformation function */
-  index?: Promise<SearchIndex>         /* Alternate index */
-  worker?: string                      /* Alternate worker URL */
-}
-
-/* ------------------------------------------------------------------------- */
-
 declare global {
-
-  /**
-   * Global search configuration
-   */
-  const __search: GlobalSearchConfig | undefined
 
   /**
    * Compute hash from the given string

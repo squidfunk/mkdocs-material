@@ -85,8 +85,7 @@
         transform 125ms;
 
       // Sponsor item on focus/hover
-      &:focus,
-      &:hover {
+      &:is(:focus, :hover) {
         transform: scale(1.1);
 
         // Sponsor avatar

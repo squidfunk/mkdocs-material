@@ -3,7 +3,7 @@
 Upgrade to the latest version with:
 
 ```
-pip install --upgrade mkdocs-material
+pip install --upgrade --force-reinstall mkdocs-material
 ```
 
 Show the currently installed version with:
@@ -11,6 +11,75 @@ Show the currently installed version with:
 ```
 pip show mkdocs-material
 ```
+
+## Upgrading from 8.x to 9.x
+
+This major release includes a brand new search implementation that is faster
+and allows for rich previews, advanced tokenization and better highlighting.
+It was available as part of Insiders for over a year, and now that the funding
+goal was hit, makes its way into the community edition.
+
+### Changes to `mkdocs.yml`
+
+#### `content.code.copy`
+
+The copy-to-clipboard buttons are now opt-in and can be enabled or disabled
+per block. If you wish to enable them for all code blocks, add the following
+lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - content.code.copy
+```
+
+#### `content.action.*`
+
+A "view source" button can be shown next to the "edit this page" button, both
+of which must now be explicitly enabled. Add the following lines to
+`mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - content.action.edit
+    - content.action.view
+```
+
+#### `navigation.footer`
+
+The _previous_ and _next_ buttons in the footer are now opt-in. If you wish to
+keep them for your documentation, add the following lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - navigation.footer
+```
+
+#### `theme.language`
+
+The Korean and Norwegian language codes were renamed, as they were non-standard:
+
+- `kr` to `ko`
+- `no` to `nb`
+
+#### `feedback.ratings`
+
+The old, nameless placeholders were removed (after being deprecated for several
+months). Make sure to switch to the new named placeholders `{title}` and `{url}`:
+
+```
+https://github.com/.../issues/new/?title=[Feedback]+{title}+-+{url}
+```
+
+### Changes to `*.html` files
+
+The templates have undergone a series of changes. If you have customized
+Material for MkDocs with theme extension, be sure to incorporate the latest
+changes into your templates. A good starting point is to [inspect the diff].
+
+  [inspect the diff]: https://github.com/squidfunk/mkdocs-material/pull/4628/files#diff-3ca112736b9164701b599f34780107abf14bb79fe110c478cac410be90899828
 
 ## Upgrading from 7.x to 8.x
 

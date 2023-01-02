@@ -80,7 +80,7 @@ export function renderVersionSelector(
     <div class="md-version">
       <button
         class="md-version__current"
-        aria-label={translation("select.version.title")}
+        aria-label={translation("select.version")}
       >
         {active.title}
       </button>

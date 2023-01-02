@@ -22,9 +22,11 @@
 
 import lunr from "lunr"
 
+import { getElement } from "~/browser/element/_"
 import "~/polyfills"
 
-import { Search, SearchIndexConfig } from "../../_"
+import { Search } from "../../_"
+import { SearchConfig } from "../../config"
 import {
   SearchMessage,
   SearchMessageType
@@ -35,14 +37,18 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Add support for usage with `iframe-worker` polyfill
+ * Add support for `iframe-worker` shim
  *
  * While `importScripts` is synchronous when executed inside of a web worker,
- * it's not possible to provide a synchronous polyfilled implementation. The
- * cool thing is that awaiting a non-Promise is a noop, so extending the type
- * definition to return a `Promise` shouldn't break anything.
+ * it's not possible to provide a synchronous shim implementation. The cool
+ * thing is that awaiting a non-Promise will convert it into a Promise, so
+ * extending the type definition to return a `Promise` shouldn't break anything.
  *
  * @see https://bit.ly/2PjDnXi - GitHub comment
+ *
+ * @param urls - Scripts to load
+ *
+ * @returns Promise resolving with no result
  */
 declare global {
   function importScripts(...urls: string[]): Promise<void> | void
@@ -65,25 +71,25 @@ let index: Search
  * Fetch (= import) multi-language support through `lunr-languages`
  *
  * This function automatically imports the stemmers necessary to process the
- * languages, which are defined through the search index configuration.
+ * languages which are defined as part of the search configuration.
  *
  * If the worker runs inside of an `iframe` (when using `iframe-worker` as
  * a shim), the base URL for the stemmers to be loaded must be determined by
  * searching for the first `script` element with a `src` attribute, which will
  * contain the contents of this script.
  *
- * @param config - Search index configuration
+ * @param config - Search configuration
  *
  * @returns Promise resolving with no result
  */
 async function setupSearchLanguages(
-  config: SearchIndexConfig
+  config: SearchConfig
 ): Promise<void> {
   let base = "../lunr"
 
   /* Detect `iframe-worker` and fix base URL */
   if (typeof parent !== "undefined" && "IFrameWorker" in parent) {
-    const worker = document.querySelector<HTMLScriptElement>("script[src]")!
+    const worker = getElement<HTMLScriptElement>("script[src]")!
     const [path] = worker.src.split("/worker")
 
     /* Prefix base with path */
@@ -150,9 +156,21 @@ export async function handler(
 
     /* Search query message */
     case SearchMessageType.QUERY:
-      return {
-        type: SearchMessageType.RESULT,
-        data: index ? index.search(message.data) : { items: [] }
+      const query = message.data
+      try {
+        return {
+          type: SearchMessageType.RESULT,
+          data: index.search(query)
+        }
+
+      /* Return empty result in case of error */
+      } catch (err) {
+        console.warn(`Invalid query: ${query} – see https://bit.ly/2s3ChXG`)
+        console.warn(err)
+        return {
+          type: SearchMessageType.RESULT,
+          data: { items: [] }
+        }
       }
 
     /* All other messages */
@@ -165,7 +183,7 @@ export async function handler(
  * Worker
  * ------------------------------------------------------------------------- */
 
-/* @ts-expect-error - expose Lunr.js in global scope, or stemmers won't work */
+/* Expose Lunr.js in global scope, or stemmers won't work */
 self.lunr = lunr
 
 /* Handle messages */

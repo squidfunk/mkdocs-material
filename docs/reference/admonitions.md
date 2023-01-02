@@ -34,8 +34,7 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-tag-24: 8.3.0][Admonition icons support] ·
-:octicons-beaker-24: Experimental
+[:octicons-tag-24: 8.3.0][Admonition icons support]
 
 Each of the supported admonition types has a distinct icon, which can be changed
 to any icon bundled with the theme, or even a [custom icon]. Add the following
@@ -230,9 +229,6 @@ Adding a `+` after the `???` token renders the block expanded:
 
 ### Inline blocks
 
-[:octicons-tag-24: 7.0.0][Inline blocks support] ·
-:octicons-beaker-24: Experimental
-
 Admonitions can also be rendered as inline blocks (i.e. for sidebars), placing
 them to the right using the `inline` + `end` modifiers, or to the left using
 only the `inline` modifier:
@@ -281,8 +277,6 @@ __Important__: admonitions that use the `inline` modifiers _must_ be declared
 prior to the content block you want to place them beside. If there's
 insufficient space to render the admonition next to the block, the admonition
 will stretch to the full width of the viewport, e.g. on mobile viewports.
-
-  [Inline blocks support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
 
 ### Supported types
 

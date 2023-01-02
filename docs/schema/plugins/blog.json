@@ -254,6 +254,7 @@
               "items": {
                 "type": "string"
               },
+              "uniqueItems": true,
               "default": []
             },
             "pagination": {

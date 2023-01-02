@@ -23,10 +23,10 @@ Material for MkDocs with:
     pip install mkdocs-material
     ```
 
-=== "8.x"
+=== "9.x"
 
     ``` sh
-    pip install mkdocs-material=="8.*" # (1)!
+    pip install mkdocs-material=="9.*" # (1)!
     ```
 
     1.  Material for MkDocs uses [semantic versioning][^1], which is why it's a
@@ -85,10 +85,10 @@ and pull the image with:
     docker pull squidfunk/mkdocs-material
     ```
 
-=== "8.x"
+=== "9.x"
 
     ```
-    docker pull squidfunk/mkdocs-material:8
+    docker pull squidfunk/mkdocs-material:9
     ```
 
 The `mkdocs` executable is provided as an entry point and `serve` is the 

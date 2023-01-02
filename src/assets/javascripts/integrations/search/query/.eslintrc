@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "no-control-regex": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  }
+}

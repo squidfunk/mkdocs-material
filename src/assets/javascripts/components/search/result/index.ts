@@ -21,17 +21,22 @@
  */
 
 import {
+  EMPTY,
   Observable,
   Subject,
   bufferCount,
   filter,
   finalize,
+  first,
+  fromEvent,
   map,
   merge,
+  mergeMap,
   of,
+  share,
   skipUntil,
   switchMap,
-  take,
+  takeUntil,
   tap,
   withLatestFrom,
   zipWith
@@ -40,11 +45,12 @@ import {
 import { translation } from "~/_"
 import {
   getElement,
+  getOptionalElement,
   watchElementBoundary
 } from "~/browser"
 import {
+  SearchMessage,
   SearchResult,
-  SearchWorker,
   isSearchReadyMessage,
   isSearchResultMessage
 } from "~/integrations"
@@ -63,6 +69,7 @@ import { SearchQuery } from "../query"
  */
 interface MountOptions {
   query$: Observable<SearchQuery>      /* Search query observable */
+  worker$: Subject<SearchMessage>      /* Search worker */
 }
 
 /* ----------------------------------------------------------------------------
@@ -76,13 +83,12 @@ interface MountOptions {
  * the vertical offset of the search result container.
  *
  * @param el - Search result list element
- * @param worker - Search worker
  * @param options - Options
  *
  * @returns Search result list component observable
  */
 export function mountSearchResult(
-  el: HTMLElement, { rx$ }: SearchWorker, { query$ }: MountOptions
+  el: HTMLElement, { worker$, query$ }: MountOptions
 ): Observable<Component<SearchResult>> {
   const push$ = new Subject<SearchResult>()
   const boundary$ = watchElementBoundary(el.parentElement!)
@@ -90,51 +96,43 @@ export function mountSearchResult(
       filter(Boolean)
     )
 
+  /* Retrieve container */
+  const container = el.parentElement!
+
   /* Retrieve nested components */
   const meta = getElement(":scope > :first-child", el)
   const list = getElement(":scope > :last-child", el)
-
-  /* Wait until search is ready */
-  const ready$ = rx$
-    .pipe(
-      filter(isSearchReadyMessage),
-      take(1)
-    )
 
   /* Update search result metadata */
   push$
     .pipe(
       withLatestFrom(query$),
-      skipUntil(ready$)
+      skipUntil(worker$.pipe(first(isSearchReadyMessage)))
     )
       .subscribe(([{ items }, { value }]) => {
-        if (value) {
-          switch (items.length) {
+        switch (items.length) {
 
-            /* No results */
-            case 0:
-              meta.textContent = translation("search.result.none")
-              break
+          /* No results */
+          case 0:
+            meta.textContent = value.length
+              ? translation("search.result.none")
+              : translation("search.result.placeholder")
+            break
 
-            /* One result */
-            case 1:
-              meta.textContent = translation("search.result.one")
-              break
+          /* One result */
+          case 1:
+            meta.textContent = translation("search.result.one")
+            break
 
-            /* Multiple result */
-            default:
-              meta.textContent = translation(
-                "search.result.other",
-                round(items.length)
-              )
-          }
-        } else {
-          meta.textContent = translation("search.result.placeholder")
+          /* Multiple result */
+          default:
+            const count = round(items.length)
+            meta.textContent = translation("search.result.other", count)
         }
       })
 
-  /* Update search result list */
-  push$
+  /* Render search result item */
+  const render$ = push$
     .pipe(
       tap(() => list.innerHTML = ""),
       switchMap(({ items }) => merge(
@@ -145,14 +143,38 @@ export function mountSearchResult(
             zipWith(boundary$),
             switchMap(([chunk]) => chunk)
           )
-      ))
+      )),
+      map(renderSearchResultItem),
+      share()
     )
-      .subscribe(result => list.appendChild(
-        renderSearchResultItem(result)
-      ))
+
+  /* Update search result list */
+  render$.subscribe(item => list.appendChild(item))
+  render$
+    .pipe(
+      mergeMap(item => {
+        const details = getOptionalElement("details", item)
+        if (typeof details === "undefined")
+          return EMPTY
+
+        /* Keep position of details element stable */
+        return fromEvent(details, "toggle")
+          .pipe(
+            takeUntil(push$),
+            map(() => details)
+          )
+      })
+    )
+      .subscribe(details => {
+        if (
+          details.open === false &&
+          details.offsetTop <= container.scrollTop
+        )
+          container.scrollTo({ top: details.offsetTop })
+      })
 
   /* Filter search result message */
-  const result$ = rx$
+  const result$ = worker$
     .pipe(
       filter(isSearchResultMessage),
       map(({ data }) => data)

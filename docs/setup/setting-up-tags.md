@@ -12,8 +12,7 @@ can help to discover relevant information faster.
 ### Built-in tags plugin
 
 [:octicons-tag-24: 8.2.0][Tags support] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+:octicons-cpu-24: Plugin
 
 The built-in tags plugin adds the ability to categorize any page with tags
 as part of the front matter of the page. In order to add support for tags, add

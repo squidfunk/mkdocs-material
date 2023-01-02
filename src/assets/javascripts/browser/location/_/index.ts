@@ -45,7 +45,7 @@ export function getLocation(): URL {
  *
  * @param url - URL to change to
  */
-export function setLocation(url: URL): void {
+export function setLocation(url: URL | HTMLLinkElement): void {
   location.href = url.href
 }
 

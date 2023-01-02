@@ -834,20 +834,6 @@
           }
         }
       ]
-    },
-    "include_search_page": {
-      "title": "Only necessary when installing from git",
-      "markdownDescription": "Must be set to `false`",
-      "enum": [
-        false
-      ]
-    },
-    "search_index_only": {
-      "title": "Only necessary when installing from git",
-      "markdownDescription": "Must be set to `false`",
-      "enum": [
-        true
-      ]
     }
   },
   "additionalProperties": false,

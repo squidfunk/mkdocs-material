@@ -44,7 +44,7 @@ The following configuration options are supported:
         ``` yaml
         plugins:
           - search:
-              lang: ru
+              lang: en
         ```
 
     === "Multiple languages"
@@ -54,7 +54,7 @@ The following configuration options are supported:
           - search:
               lang: # (1)!
                 - en
-                - ru
+                - de
         ```
 
         1.  Be aware that including support for other languages increases the
@@ -101,48 +101,85 @@ The following configuration options are supported:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-\.]' # (1)!
+          separator: '[\s\-\.]+'
     ```
 
-    1.  Tokenization itself is carried out by [lunr's default tokenizer], which 
-        doesn't allow for lookahead or multi-character separators. For more
-        finegrained control over the tokenization process, see the section on
-        [tokenizer lookahead].
-
-<div class="mdx-deprecated" markdown>
-
-[`prebuild_index`](#+search.prebuild_index){ #+search.prebuild_index }
-
-:   [:octicons-tag-24: 5.0.0][prebuilt index support] · :octicons-archive-24:
-    Deprecated · :octicons-trash-24: 8.0.0 · :octicons-milestone-24: Default:
-    `false` – MkDocs can generate a [prebuilt index] of all pages during
-    build time, which provides performance improvements at the cost of more
-    bandwidth, as it reduces the build time of the search index:
+    With :octicons-tag-24: 9.0.0, a faster and more flexible tokenizer method
+    is shipped, allowing for __tokenizing with lookahead__, which yields more
+    influence on the way documents are indexed. As a result, we use the
+    following separator setting for this site's search:
 
     ``` yaml
     plugins:
       - search:
-          prebuild_index: true
+          separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
     ```
 
-    Note that this configuration option was removed, as the [new search
-    plugin] generates up to [50% smaller] search indexes, doubling search
-    performance.
+    Broken into its parts, the separator induces the following behavior:
 
-    [:octicons-arrow-right-24: Read more on the new search plugin]
-    [new search plugin]
+    === "Special characters"
 
-</div>
+        ```
+        [\s\-,:!=\[\]()"/]+
+        ```
+
+        The first part of the expression inserts token boundaries for each
+        document before and after whitespace, hyphens, commas, brackets and
+        other special characters. If several of those special characters are
+        adjacent, they are treated as one.
+
+    === "Case changes"
+
+        ```
+        (?!\b)(?=[A-Z][a-z])
+        ```
+
+        Many programming languages have naming conventions like `PascalCase` or
+        `camelCase`. By adding this subexpression to the separator,
+        [words are split at case changes], tokenizing the word `PascalCase`
+        into `Pascal` and `Case`.
+
+        [:octicons-arrow-right-24: Read more on tokenizing case changes]
+        [tokenize case changes]
+
+    === "Version strings"
+
+        ```
+        \.(?!\d)
+        ```
+
+        When adding `.` to the separator, version strings like `1.2.3` are split
+        into `1`, `2` and `3`, which makes them undiscoverable via search. When
+        using this subexpression, a small lookahead is introduced which will
+        [preserve version strings] and keep them discoverable.
+
+        [:octicons-arrow-right-24: Read more on tokenizing version numbers]
+        [tokenize version numbers]
+
+    === "HTML/XML tags"
+
+        ```
+        &[lg]t;
+        ```
+
+        If your documentation includes HTML/XML code examples, you may want to allow
+        users to find specific tag names. Unfortunately, the `<` and `>` control
+        characters are encoded in code blocks as `&lt;` and `&gt;`. Adding this
+        subexpression to the separator allows for just that.
+
+        [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
+        [tokenize html-xml tags]
 
   [Search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [site language]: changing-the-language.md#site-language
-  [tokenizer lookahead]: #tokenizer-lookahead
-  [prebuilt index support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
-  [prebuilt index]: https://www.mkdocs.org/user-guide/configuration/#prebuild_index
-  [50% smaller]: ../blog/posts/search-better-faster-smaller.md#benchmarks
+  [words are split at case changes]: ?q=searchHighlight
+  [preserve version strings]: ?q=9.0.0
+  [tokenize case changes]: ../blog/posts/search-better-faster-smaller.md#case-changes
+  [tokenize version numbers]: ../blog/posts/search-better-faster-smaller.md#version-numbers
+  [tokenize html-xml tags]: ../blog/posts/search-better-faster-smaller.md#htmlxml-tags
 
 #### Chinese language support
 
@@ -195,6 +232,7 @@ configuration options are available:
     User dictionaries can be used for tuning the segmenter to preserve
     technical terms.
 
+  [Insiders]: ../insiders/index.md
   [chinese search]: ../blog/posts/chinese-search-support.md
   [jieba]: https://pypi.org/project/jieba/
   [built-in search plugin]: #built-in-search-plugin
@@ -202,96 +240,6 @@ configuration options are available:
   [dict.txt.small]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.small
   [dict.txt.big]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.big
   [user dictionary]: https://github.com/fxsjy/jieba#%E8%BD%BD%E5%85%A5%E8%AF%8D%E5%85%B8
-
-### Rich search previews
-
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-3.0.0][Insiders] ·
-:octicons-beaker-24: Experimental
-
-[Insiders] ships rich search previews as part of the [new search plugin], which
-will render code blocks directly in the search result, and highlight all
-occurrences inside those blocks:
-
-=== "Insiders"
-
-    ![search preview now]
-
-=== "Material for MkDocs"
-
-    ![search preview before]
-
-  [Insiders]: ../insiders/index.md
-  [new search plugin]: ../blog/posts/search-better-faster-smaller.md
-  [search preview now]: ../blog/posts/search-better-faster-smaller/search-preview-now.png
-  [search preview before]: ../blog/posts/search-better-faster-smaller/search-preview-before.png
-
-### Tokenizer lookahead
-
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-3.0.0][Insiders] ·
-:octicons-beaker-24: Experimental
-
-[Insiders] allows for more complex configurations of the [`separator`][separator] 
-setting as part of the [new search plugin], yielding more influence on the way 
-documents are tokenized:
-
-``` yaml
-plugins:
-  - search:
-      separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
-```
-
-The following section explains what can be achieved with tokenizer lookahead:
-
-=== "Case changes"
-
-    ```
-    (?!\b)(?=[A-Z][a-z])
-    ```
-
-    `PascalCase` and `camelCase` are used as naming conventions in many
-    programming languages. By adding this match group to the [`separator`]
-    [separator], [words are split at case changes], tokenizing the word
-    `PascalCase` into `Pascal` and `Case`, so both terms can be searched 
-    individually.
-
-    [:octicons-arrow-right-24: Read more on tokenizing case changes]
-    [tokenize case changes]
-
-=== "Version numbers"
-
-    ```
-    \.(?!\d)
-    ```
-
-    When `.` is added to the [`separator`][separator], version numbers would be
-    split into parts, rendering them undiscoverable via search. By adding
-    this match group, a small lookahead is introduced, so version numbers will
-    remain as they are, and can be found through search.
-
-    [:octicons-arrow-right-24: Read more on tokenizing version numbers]
-    [tokenize version numbers]
-
-=== "HTML/XML tags"
-
-    ```
-    &[lg]t;
-    ```
-
-    If your documentation includes HTML/XML code examples, you may want to allow
-    users to find specific tag names. Unfortunately, the `<` and `>` control
-    characters are encoded in code blocks as `&lt;` and `&gt;`. Adding this
-    expression to the separator allows for just that.
-
-    [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
-    [tokenize html-xml tags]
-
-  [separator]: #search-separator
-  [words are split at case changes]: ?q=searchHighlight
-  [tokenize case changes]: ../blog/posts/search-better-faster-smaller.md#case-changes
-  [tokenize version numbers]: ../blog/posts/search-better-faster-smaller.md#version-numbers
-  [tokenize html-xml tags]: ../blog/posts/search-better-faster-smaller.md#htmlxml-tags
 
 ### Search suggestions
 
@@ -340,8 +288,7 @@ highlights all occurrences of both terms.
 ### Search sharing
 
 [:octicons-tag-24: 7.2.0][Search sharing support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+:octicons-unlock-24: Feature flag
 
 When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -362,32 +309,44 @@ clipboard.
 
 ### Search boosting
 
-[:octicons-tag-24: 8.3.0][boost support] ·
-:octicons-beaker-24: Experimental
+[:octicons-tag-24: 8.3.0][boost support]
 
 Pages can be boosted in search with the front matter `search.boost` property,
 which will make them rank higher. Add the following lines at the top of a
 Markdown file:
 
-``` yaml
----
-search:
-  boost: 2 # (1)!
----
+=== ":material-arrow-up-circle: Rank up"
 
-# Document title
-...
-```
+    ``` yaml
+    ---
+    search:
+      boost: 2 # (1)!
+    ---
 
-1.  :woman_in_lotus_position: When boosting pages, be gentle and start with
-    __low values__.
+    # Document title
+    ...
+    ```
+
+    1.  :woman_in_lotus_position: When boosting pages, be gentle and start with
+        __low values__.
+
+=== ":material-arrow-down-circle: Rank down"
+
+    ``` yaml
+    ---
+    search:
+      boost: 0.5
+    ---
+
+    # Document title
+    ...
+    ```
 
   [boost support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
 
 ### Search exclusion
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-3.1.0][Insiders] ·
+[:octicons-tag-24: 9.0.0][exclusion support] ·
 :octicons-beaker-24: Experimental
 
 Pages can be excluded from search with the front matter `search.exclude`
@@ -404,10 +363,12 @@ search:
 ...
 ```
 
+  [exclusion support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
+
 #### Excluding sections
 
 When [Attribute Lists] is enabled, specific sections of pages can be excluded
-from search by adding the `{ data-search-exclude }` pragma after a Markdown
+from search by adding the `data-search-exclude` pragma after a Markdown
 heading:
 
 === ":octicons-file-code-16: `docs/page.md`"
@@ -449,7 +410,7 @@ heading:
 #### Excluding blocks
 
 When [Attribute Lists] is enabled, specific sections of pages can be excluded
-from search by adding the `{ data-search-exclude }` pragma after a Markdown
+from search by adding the `data-search-exclude` pragma after a Markdown
 inline- or block-level element:
 
 === ":octicons-file-code-16: `docs/page.md`"
@@ -477,112 +438,3 @@ inline- or block-level element:
       ]
     }
     ```
-
-## Customization
-
-The search implementation of Material for MkDocs is probably its most
-sophisticated feature, as it tries to balance a great typeahead experience,
-good performance, accessibility, and a result list that is easy to scan.
-This is where Material for MkDocs deviates from other themes.
-
-The following section explains how search can be customized to tailor it to
-your needs.
-
-### Query transformation
-
-When a user enters a query into the search box, the query is pre-processed
-before it is submitted to the search index. Material for MkDocs will apply the
-following transformations, which can be customized by [extending the theme]:
-
-``` ts
-export function defaultTransform(query: string): string {
-  return query
-    .split(/"([^"]+)"/g) /* (1)! */
-      .map((terms, index) => index & 1
-        ? terms.replace(/^\b|^(?![^\x00-\x7F]|$)|\s+/g, " +")
-        : terms
-      )
-      .join("")
-    .replace(/"|(?:^|\s+)[*+\-:^~]+(?=\s+|$)/g, "") /* (2)! */
-    .trim() /* (3)! */
-}
-```
-
-1.  Search for terms in quotation marks and prepend a `+` modifier to denote
-    that the resulting document must contain all terms, converting the query
-    to an `AND` query (as opposed to the default `OR` behavior). While users
-    may expect terms enclosed in quotation marks to map to span queries, i.e.
-    for which order is important, `lunr` doesn't support them, so the best
-    we can do is to convert the terms to an `AND` query.
-
-2.  Replace control characters which are not located at the beginning of the
-    query or preceded by white space, or are not followed by a non-whitespace
-    character or are at the end of the query string. Furthermore, filter
-    unmatched quotation marks.
-
-3.  Trim excess whitespace from left and right.
-
-If you want to switch to the default behavior of the `mkdocs` and `readthedocs`
-themes, both of which don't transform the query prior to submission, or
-customize the `transform` function, you can do this by [overriding the
-`config` block][overriding blocks]:
-
-``` html
-{% extends "base.html" %}
-
-{% block config %}
-  {{ super() }}
-  <script>
-    var __search = {
-      transform: function(query) {
-        return query
-      }
-    }
-  </script>
-{% endblock %}
-```
-
-The `transform` function will receive the query string as entered by the user
-and must return the processed query string to be submitted to the search index.
-
-  [extending the theme]: ../customization.md#extending-the-theme
-  [overriding blocks]: ../customization.md#overriding-blocks
-
-### Custom search
-
-Material for MkDocs implements search as part of a [web worker]. If you
-want to switch the web worker with your own implementation, e.g. to submit
-search to an external service, you can add a custom JavaScript file to the
-`docs` directory and [override the `config` block][overriding blocks]:
-
-``` html
-{% extends "base.html" %}
-
-{% block config %}
-  {{ super() }}
-  <script>
-    var __search = {
-      worker: "<url>"
-    }
-  </script>
-{% endblock %}
-```
-
-Communication with the search worker is implemented using a designated message
-format using discriminated unions, i.e. through the `type` property of the
-message. See the following interface definitions to learn about the message
-formats:
-
-- [:octicons-file-code-24: `SearchMessage`][SearchMessage]
-- [:octicons-file-code-24: `SearchIndex` and `SearchResult`][SearchIndex]
-
-The sequence and direction of messages is rather intuitive:
-
-- :octicons-arrow-right-24: `SearchSetupMessage`
-- :octicons-arrow-left-24: `SearchReadyMessage`
-- :octicons-arrow-right-24: `SearchQueryMessage`
-- :octicons-arrow-left-24: `SearchResultMessage`
-
-  [web worker]: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
-  [SearchMessage]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/worker/message/index.ts
-  [SearchIndex]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/javascripts/integrations/search/_/index.ts

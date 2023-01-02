@@ -37,8 +37,8 @@ import {
 
 import { Keyboard } from "~/browser"
 import {
+  SearchMessage,
   SearchResult,
-  SearchWorker,
   isSearchResultMessage
 } from "~/integrations"
 
@@ -62,6 +62,7 @@ export interface SearchSuggest {}
  */
 interface MountOptions {
   keyboard$: Observable<Keyboard>      /* Keyboard observable */
+  worker$: Subject<SearchMessage>      /* Search worker */
 }
 
 /* ----------------------------------------------------------------------------
@@ -75,13 +76,12 @@ interface MountOptions {
  * on the vertical offset of the search result container.
  *
  * @param el - Search result list element
- * @param worker - Search worker
  * @param options - Options
  *
  * @returns Search result list component observable
  */
 export function mountSearchSuggest(
-  el: HTMLElement, { rx$ }: SearchWorker, { keyboard$ }: MountOptions
+  el: HTMLElement, { worker$, keyboard$ }: MountOptions
 ): Observable<Component<SearchSuggest>> {
   const push$ = new Subject<SearchResult>()
 
@@ -101,10 +101,10 @@ export function mountSearchSuggest(
   push$
     .pipe(
       combineLatestWith(query$),
-      map(([{ suggestions }, value]) => {
+      map(([{ suggest }, value]) => {
         const words = value.split(/([\s-]+)/)
-        if (suggestions?.length && words[words.length - 1]) {
-          const last = suggestions[suggestions.length - 1]
+        if (suggest?.length && words[words.length - 1]) {
+          const last = suggest[suggest.length - 1]
           if (last.startsWith(words[words.length - 1]))
             words[words.length - 1] = last
         } else {
@@ -138,7 +138,7 @@ export function mountSearchSuggest(
       })
 
   /* Filter search result message */
-  const result$ = rx$
+  const result$ = worker$
     .pipe(
       filter(isSearchResultMessage),
       map(({ data }) => data)

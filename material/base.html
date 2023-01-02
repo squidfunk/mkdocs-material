@@ -21,8 +21,14 @@
       {% if page.canonical_url %}
         <link rel="canonical" href="{{ page.canonical_url }}">
       {% endif %}
+      {% if page.previous_page %}
+        <link rel="prev" href="{{ page.previous_page.url | url }}">
+      {% endif %}
+      {% if page.next_page %}
+        <link rel="next" href="{{ page.next_page.url | url }}">
+      {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.5.11">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.0.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -34,17 +40,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.975780f9.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.f79797b0.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.2505c338.min.css' | url }}">
-        {% if palette.primary %}
-          {% import "partials/palette.html" as map %}
-          {% set primary = map.primary(
-            palette.primary | replace(" ", "-") | lower
-          ) %}
-          <meta name="theme-color" content="{{ primary }}">
-        {% endif %}
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
@@ -75,15 +74,15 @@
     {% endif %}
     {% block extrahead %}{% endblock %}
   </head>
-  {% set direction = config.theme.direction or lang.t('direction') %}
+  {% set direction = config.theme.direction or lang.t("direction") %}
   {% if config.theme.palette %}
     {% set palette = config.theme.palette %}
     {% if not palette is mapping %}
       {% set palette = palette | first %}
     {% endif %}
-    {% set scheme  = palette.scheme | d("default", true) %}
-    {% set primary = palette.primary %}
-    {% set accent  = palette.accent %}
+    {% set scheme  = palette.scheme  | d("default", true) %}
+    {% set primary = palette.primary | d("", true) %}
+    {% set accent  = palette.accent  | d("", true) %}
     <body dir="{{ direction }}" data-md-color-scheme="{{ scheme | replace(' ', '-') }}" data-md-color-primary="{{ primary | replace(' ', '-') }}" data-md-color-accent="{{ accent | replace(' ', '-') }}">
   {% else %}
     <body dir="{{ direction }}">
@@ -99,7 +98,7 @@
       {% if page.toc | first is defined %}
         {% set skip = page.toc | first %}
         <a href="{{ skip.url | url }}" class="md-skip">
-          {{ lang.t('skip.link.title') }}
+          {{ lang.t("action.skip") }}
         </a>
       {% endif %}
     </div>
@@ -138,7 +137,7 @@
     <div class="md-container" data-md-component="container">
       {% block hero %}{% endblock %}
       {% block tabs %}
-        {% if not "navigation.tabs.sticky" in features %}
+        {% if "navigation.tabs.sticky" not in features %}
           {% if "navigation.tabs" in features %}
             {% include "partials/tabs.html" %}
           {% endif %}
@@ -159,7 +158,7 @@
                 </div>
               </div>
             {% endif %}
-            {% if not "toc.integrate" in features %}
+            {% if "toc.integrate" not in features %}
               {% if page.meta and page.meta.hide %}
                 {% set hidden = "hidden" if "toc" in page.meta.hide %}
               {% endif %}
@@ -186,7 +185,7 @@
         {% if "navigation.top" in features %}
           <a href="#" class="md-top md-icon" data-md-component="top" hidden>
             {% include ".icons/material/arrow-up.svg" %}
-            {{ lang.t('top.title') }}
+            {{ lang.t("top") }}
           </a>
         {% endif %}
       </main>
@@ -213,7 +212,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.c80a6608.min.js" | url
+        "search": "assets/javascripts/workers/search.125bc4b3.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
@@ -225,10 +224,6 @@
       {%- for key in [
         "clipboard.copy",
         "clipboard.copied",
-        "search.config.lang",
-        "search.config.pipeline",
-        "search.config.separator",
-        "search.placeholder",
         "search.result.placeholder",
         "search.result.none",
         "search.result.one",
@@ -236,7 +231,7 @@
         "search.result.more.one",
         "search.result.more.other",
         "search.result.term.missing",
-        "select.version.title"
+        "select.version"
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
@@ -245,14 +240,10 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.ffb53309.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.6ca897f9.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
     {% endblock %}
-    {% if page.meta and page.meta.ᴴₒᴴₒᴴₒ %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/extra.ae483297.min.css' | url }}">
-      <script src="{{ 'assets/javascripts/extra/bundle.84eb86ed.min.js' | url }}" defer></script>
-    {% endif %}
   </body>
 </html>

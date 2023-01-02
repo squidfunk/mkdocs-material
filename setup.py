@@ -33,7 +33,6 @@ Unsupported installation method
 ===============================
 This version of mkdocs-material no longer supports
 installation with `python setup.py install`.
-
 Please use `python -m pip install .` instead.
 """
 )

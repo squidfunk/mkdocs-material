@@ -29,18 +29,18 @@
 
 /// Admonition flavours
 $admonitions: (
-  note:                       pencil-circle $clr-blue-a200,
-  abstract summary tldr:      clipboard-text $clr-light-blue-a400,
-  info todo:                  information $clr-cyan-a700,
-  tip hint important:         fire $clr-teal-a700,
-  success check done:         check $clr-green-a700,
-  question help faq:          help-circle $clr-light-green-a700,
-  warning caution attention:  alert $clr-orange-a400,
-  failure fail missing:       close $clr-red-a200,
-  danger error:               lightning-bolt-circle $clr-red-a400,
-  bug:                        shield-bug $clr-pink-a400,
-  example:                    test-tube $clr-deep-purple-a200,
-  quote cite:                 format-quote-close $clr-grey
+  "note":     pencil-circle         $clr-blue-a200,
+  "abstract": clipboard-text        $clr-light-blue-a400,
+  "info":     information           $clr-cyan-a700,
+  "tip":      fire                  $clr-teal-a700,
+  "success":  check                 $clr-green-a700,
+  "question": help-circle           $clr-light-green-a700,
+  "warning":  alert                 $clr-orange-a400,
+  "failure":  close                 $clr-red-a200,
+  "danger":   lightning-bolt-circle $clr-red-a400,
+  "bug":      shield-bug            $clr-pink-a400,
+  "example":  test-tube             $clr-deep-purple-a200,
+  "quote":    format-quote-close    $clr-grey
 ) !default;
 
 // ----------------------------------------------------------------------------
@@ -49,9 +49,9 @@ $admonitions: (
 
 // Admonition variables
 :root {
-  @each $names, $props in $admonitions {
-    --md-admonition-icon--#{nth($names, 1)}:
-      svg-load("material/#{nth($props, 1)}.svg");
+  @each $name, $props in $admonitions {
+    --md-admonition-icon--#{$name}:
+      svg-load("material/#{list.nth($props, 1)}.svg");
   }
 }
 
@@ -62,8 +62,7 @@ $admonitions: (
 
   // Admonition - note that all styles also apply to details tags, which are
   // rendered as collapsible admonitions with summary elements as titles.
-  .admonition,
-  details {
+  .admonition {
     display: flow-root;
     margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
@@ -87,7 +86,7 @@ $admonitions: (
     }
 
     // Adjust vertical spacing for nested admonitions
-    :is(.admonition, details) {
+    .admonition {
       margin-top: 1em;
       margin-bottom: 1em;
     }
@@ -114,8 +113,7 @@ $admonitions: (
   }
 
   // Admonition title
-  .admonition-title,
-  summary {
+  .admonition-title {
     position: relative;
     margin-block: 0;
     margin-inline: px2rem(-12px);
@@ -160,23 +158,16 @@ $admonitions: (
 // ----------------------------------------------------------------------------
 
 // Define admonition flavors
-@each $names, $props in $admonitions {
-  $name: list.nth($names, 1);
+@each $name, $props in $admonitions {
   $tint: list.nth($props, 2);
 
-  // Admonition flavour selectors
-  $flavours: ();
-  @each $name in $names {
-    $flavours: list.join($flavours, ".#{$name}", $separator: comma);
-  }
-
   // Admonition flavour
-  .md-typeset :is(.admonition, details):is(#{$flavours}) {
+  .md-typeset .admonition.#{$name} {
     border-color: $tint;
   }
 
   // Admonition flavour title
-  .md-typeset :is(#{$flavours}) > :is(.admonition-title, summary) {
+  .md-typeset .#{$name} > .admonition-title {
     background-color: color.adjust($tint, $alpha: -0.9);
 
     // Admonition icon

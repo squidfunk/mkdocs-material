@@ -13,8 +13,7 @@ popular and flexible solution for drawing diagrams.
 
 ## Configuration
 
-[:octicons-tag-24: 8.2.0][Diagrams support] ·
-:octicons-beaker-24: Experimental
+[:octicons-tag-24: 8.2.0][Diagrams support]
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
 for MkDocs will automatically initialize the JavaScript runtime when a page 
@@ -91,6 +90,7 @@ between those actors:
 ```` markdown title="Sequence diagram"
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
@@ -106,6 +106,7 @@ sequenceDiagram
 
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
