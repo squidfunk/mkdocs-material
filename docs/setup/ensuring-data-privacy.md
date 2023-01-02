@@ -139,7 +139,7 @@ in `mkdocs.yml`:
 
 ``` yaml
 copyright: >
-  Copyright &copy; 2016 - 2022 Martin Donath –
+  Copyright &copy; 2016 - 2023 Martin Donath –
   <a href="#__consent">Change cookie settings</a>
 ```
 
