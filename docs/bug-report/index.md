@@ -18,7 +18,7 @@ __But first, please try the following things before creating an issue.__
 
 ### Upgrade to latest version
 
-Chances are, that the bug you discovered was already fixed in a subsequent
+Chances are that the bug you discovered was already fixed in a subsequent
 version. Thus, before reporting an issue, ensure that you're running the
 [latest version] of Material for MkDocs. Please consult our [upgrade guide] to
 learn how to upgrade to the latest version.
@@ -26,8 +26,8 @@ learn how to upgrade to the latest version.
 !!! warning "Bug fixes are not backported"
 
     Please understand that only bugs that occur in the latest version of
-    Material for MkDocs will be addressed. Also, in order to reduce duplicate
-    efforts, fixes cannot be backported to earlier versions.
+    Material for MkDocs will be addressed. Also, to reduce duplicate efforts,
+    fixes cannot be backported to earlier versions.
 
 ### Remove customizations
 
@@ -73,32 +73,31 @@ problems.__
 ### Search for solutions
 
 At this stage, we know that the problem persists in the latest version and is
-not caused by any of your customizations. However, it's possible that the issue
-might be the result of a small typo or a syntactical error in a configuration
-file, e.g. `mkdocs.yml`.
+not caused by any of your customizations. However, the problem might result from
+a small typo or a syntactical error in a configuration file, e.g. `mkdocs.yml`.
 
-Now, before you go through the trouble of creating a bug report, that we
-maintainers close right away with a link to the relevant documentation section
-or another already reported or closed issue or discussion, you can save time for
+Now, before you go through the trouble of creating a bug report that is answered
+and closed right away with a link to the relevant documentation section or
+another already reported or closed issue or discussion, you can save time for
 us and yourself by doing some research:
 
-1.  [Search our documentation] and look for the relevant sections that might
-    possibly be related to your problem. If found, make sure that you configured
+1.  [Search our documentation] and look for the relevant sections that could
+    be related to your problem. If found, make sure that you configured
     everything correctly.[^1]
 
   [^1]:
     When adding lines to `mkdocs.yml`, make sure you are preserving the
-    indentation as mentioned in the documentation, since YAML is a
+    indentation as mentioned in the documentation since YAML is a
     whitespace-sensitive language. Many reported issues turn out to be
     configuration errors.
 
-2.  [Search our issue tracker][issue tracker], as another user might already
+1.  [Search our issue tracker][issue tracker], as another user might already
     have reported the same problem, and there might even be a known workaround
     or fix for it. Thus, no need to create a new issue.
 
-3.  [Search our discussion board][discussion board] to learn if other users
-    are struggeling with similar problems, and work together with our
-    great community towards a solution. Many problems are solved here.
+2.  [Search our discussion board][discussion board] to learn if other users
+    are struggling with similar problems and work together with our great
+    community towards a solution. Many problems are solved here.
 
 __Keep track of all <u>search terms</u> and <u>relevant links</u>, you'll need
 them in the bug report.__[^2]
@@ -111,17 +110,17 @@ them in the bug report.__[^2]
 ---
 
 At this point, when you still haven't found a solution to your problem, we
-encourage you to create an issue, because it's now very likely that you
-stumbled over something we don't know yet. Read the next section to learn
+encourage you to create an issue because it's now very likely that you
+stumbled over something we don't know yet. Read the following section to learn
 how to create a complete and helpful bug report.
 
   [Search our documentation]: ?q=
 
 ## Issue template
 
-We have created a new issue template to make the bug reporting process as simple
-as possible and more efficient for the community and for us. It is the result of
-our experience answering and fixing more than 1,600 issues (and counting), and
+We have created a new issue template to make the bug-reporting process as simple
+as possible and more efficient for the community and us. It is the result of
+our experience answering and fixing more than 1,600 issues (and counting) and
 consists of the following parts:
 
 - [Title]
@@ -157,18 +156,18 @@ can be inferred from the title.
 
 ### Context <small>optional</small> { #context }
 
-Before describing the bug, you can provide additional context that can be
-helpful to understand what you were trying to achieve. Explain the circumstances
+Before describing the bug, you can provide additional context for us to
+understand what you were trying to achieve. Explain the circumstances
 in which you're using Material for MkDocs, and what you _think_ might be
 relevant. Don't write about the bug here.
 
 > __Why this might be helpful__: some errors only manifest in specific settings,
-> environments or edge cases, for example when your documentation contains
+> environments or edge cases, for example, when your documentation contains
 > thousands of documents.
 
 ### Bug description
 
-Now, to the bug you want to report. Provide a clear, focused, specific and
+Now, to the bug, you want to report. Provide a clear, focused, specific, and
 concise summary of the bug you encountered. Explain why you think this is a bug
 that should be reported to Material for MkDocs, and not to one of its
 dependencies.[^3] Adhere to the following principles:
@@ -177,7 +176,7 @@ dependencies.[^3] Adhere to the following principles:
     Sometimes, users report bugs on our [issue tracker] that are caused by one
     of our upstream dependencies, including [MkDocs], [Python Markdown],
     [Python Markdown Extensions] or third-party plugins. A good rule of thumb is
-    to change the [`theme.name`][theme.name] to `mkdocs` or `readthedocs`, and
+    to change the [`theme.name`][theme.name] to `mkdocs` or `readthedocs` and
     check if the problem persists. If it does, the problem is likely not
     related to Material for MkDocs and should be reported upstream. When in
     doubt, use our [discussion board] to ask for help.
@@ -188,7 +187,7 @@ dependencies.[^3] Adhere to the following principles:
 
 -   __Keep it short and concise__ – if the bug can be precisely explained in one
     or two sentences, perfect. Don't inflate it – maintainers and future users
-    will be grateful, having to read less.
+    will be grateful for having to read less.
 
 -   __One bug at a time__ – if you encountered several unrelated bugs, please
     create separate issues for them. Don't report them in the same issue, as
@@ -197,11 +196,11 @@ dependencies.[^3] Adhere to the following principles:
 ---
 
 :material-run-fast: __Stretch goal__ – if you found a workaround or a way to fix
-the bug, you can help other users to temporarily mitigate the problem before
+the bug, you can help other users temporarily mitigate the problem before
 we maintainers can fix the bug in our code base.
 
-> __Why we need this__: in order for us to understand the issue at hand, we
-> need a clear description of the problem and its impact, which is essential
+> __Why we need this__: in order for us to understand the problem, we
+> need a clear description of it and quantify its impact, which is essential
 > for triage and prioritization.
 
   [MkDocs]: https://www.mkdocs.org
@@ -229,7 +228,7 @@ make it easier for us maintainers to improve the documentation.
 
 > __Why we need this__: related links help us better understand what you were
 > trying to achieve and whether sections of our documentation need to be
-> adjusted, extended or overhauled.
+> adjusted, extended, or overhauled.
 
   [search for solutions]: #search-for-solutions
 
@@ -237,27 +236,27 @@ make it easier for us maintainers to improve the documentation.
 
 A minimal reproduction is at the heart of every well-written bug report, as
 it allows us maintainers to quickly recreate the necessary conditions to inspect
-the bug and quickly find its root cause. It's proven fact that issues with
+the bug and quickly find its root cause. It's a proven fact that issues with
 concise and small reproductions can be fixed much faster.
 
 [:material-bug: Create reproduction][Create reproduction]{ .md-button .md-button--primary }
 
 ---
 
-After you created the reproduction, you should have a .zip file, ideally not
+After you have created the reproduction, you should have a .zip file, ideally not
 larger than 1 MB. Just drag and drop the .zip file into this field, which will
 automatically upload it to GitHub.
 
 > __Why we need this__: if an issue contains no minimal reproduction, or just
-> a link to a repositority with thousands of files, the maintainers would need
-> to invest a lot of time into trying to recreate the right conditions to even
+> a link to a repository with thousands of files, the maintainers would need to
+> invest a lot of time into trying to recreate the right conditions to even
 > inspect the bug, let alone fix it.
 
 !!! warning "Don't share links to repositories"
 
-    While we know that it is good practice among developers to include a link
+    While we know that it is a good practice among developers to include a link
     to a repository with the bug report, we currently don't support those in our
-    process. The reason is that the reproduction that is automatically
+    process. The reason is that the reproduction which is automatically
     produced by the [built-in info plugin] contains all of the necessary
     environment information that is often forgotten to be included.
     
@@ -275,9 +274,9 @@ run your reproduction, it might not be immediately apparent how we can see
 the bug in action.
 
 Next, please list the specific steps we should follow when running your
-reproduction to observe the bug. Keep the steps short and concise and make sure
-to not leave anything out. Use simple language as you would explain it to a five
-year old and focus on continuity.
+reproduction to observe the bug. Keep the steps short and concise, and make sure
+not to leave anything out. Use simple language as you would explain it to a
+five-year-old and focus on continuity.
 
 > __Why we need this__: we must know how to navigate your reproduction in order
 > to observe the bug, as some bugs only occur at certain viewports or in
@@ -291,7 +290,7 @@ only relevant when the bug you are reporting does not involve a crash when
 [previewing] or [building] your site.
 
 > __Why we need this__: some bugs only occur in specific browsers or versions.
-> Since now, almost all browser are evergreen, we usually don't need to know the
+> Since now, almost all browsers are evergreen, we usually don't need to know the
 > version in which it occurs, but we might ask for it later. When in doubt, add
 > the browser version as the first step in the field above.
 
@@ -300,7 +299,7 @@ only relevant when the bug you are reporting does not involve a crash when
 
 ### Checklist
 
-Thanks for following the guide, and creating a high quality and complete bug
+Thanks for following the guide and creating a high-quality and complete bug
 report – you are almost done. This section ensures that you have read this guide
 and have worked to your best knowledge to provide us with everything we need to
 know to help you.
@@ -309,7 +308,7 @@ __We'll take it from here.__
 
 ## Incomplete issues
 
-Please understand, that we reserve us the right to close incomplete issues which
-do not contain minimal reproductions, or do not adhere to the quality standards
-and requirements mentioned in this document. Issues can be reopened, when the
+Please understand that we reserve the right to close incomplete issues which
+do not contain minimal reproductions or do not adhere to the quality standards
+and requirements mentioned in this document. Issues can be reopened when the
 missing information has been provided.
