@@ -1,3 +1,9 @@
+mkdocs-material-9.x.x
+
+  * Removed pipdeptree dependency for info plugin
+  * Fixed appearance of linked tags when hovered (9.0.0 regression)
+  * Fixed #4810: Abbreviations run out of screen on touch devices
+
 mkdocs-material-9.0.0 (2023-01-02)
 
   Additions and improvements
