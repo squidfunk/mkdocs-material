@@ -339,6 +339,7 @@ line {
 
 /* Sequence message, loop and note text */
 .messageText,
+.loopText,
 .loopText > tspan,
 .noteText > tspan {
   font-family: var(--md-mermaid-font-family) !important;
