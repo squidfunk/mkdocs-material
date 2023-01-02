@@ -66,7 +66,7 @@ body:
         Please provide a detailed list of instructions, guiding us maintainers
         through the required steps, helping us to recreate the problem using the
         minimal reproduction you provided. Be as specific as possible and as
-        verbose as necessary – try not to leave anything out. [More](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#steps-to-reproduce)
+        verbose as necessary – try not to leave anything out. [More](https://squidfunk.github.io/mkdocs-material/bug-report/#steps-to-reproduce)
       placeholder: |-
         1. ...
         2. ...
@@ -82,7 +82,7 @@ body:
         If the bug only happens in __specific browsers__, please select them
         from the dropdown below. If your browser is not listed or the version
         is relevant, you may select _Other_ and provide more details in the
-        field above. [More](https://squidfunk.github.io/mkdocs-material/bug-report/reproduction/#browser)
+        field above. [More](https://squidfunk.github.io/mkdocs-material/bug-report/#browser)
       multiple: true
       options:
         - Chrome
