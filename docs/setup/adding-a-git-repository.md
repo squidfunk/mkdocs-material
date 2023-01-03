@@ -104,8 +104,12 @@ Some popular choices:
 
 If the [repository URL] points to a [GitHub], [GitLab] or [Bitbucket] repository,
 buttons for code actions can be added at the top of each document. Currently,
-two types of code actions are supported: `edit` and `view` (GitHub only). Add
-the following lines to `mkdocs.yml`:
+two types of code actions are supported: `edit` and `view` (GitHub only); the URI
+for the `view` action is deduced from the value in the `edit_uri` setting by
+replacing the `edit` string with `raw`. The `edit` string in URI is strictly
+necessary in that case; the path without the `edit` string will remain unchanged
+during replacement and, as a result, both buttons will point to the same location.
+Add the following lines to `mkdocs.yml`:
 
 === ":material-pencil: Edit this page"
 
