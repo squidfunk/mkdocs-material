@@ -165,6 +165,9 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         page.meta["meta"] = meta + self._generate_meta(page, config)
 
     def on_post_build(self, config):
+        if not self.config.cards:
+            return
+
         # Check for exceptions
         for promise in self._image_promises:
             promise.result()
