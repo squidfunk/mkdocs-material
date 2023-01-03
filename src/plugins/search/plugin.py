@@ -161,7 +161,7 @@ class SearchIndex:
         # if a page title was set via front matter, use that even though a h1
         # might be given or the page name was specified in nav in mkdocs.yml
         if not section.title:
-            section.title = page.meta.get("title", page.title)
+            section.title = [str(page.meta.get("title", page.title))]
 
         # Compute title and text
         title = "".join(section.title).strip()
