@@ -9,7 +9,7 @@
     </a>
   {% endif %}
   {% if "content.action.view" in features %}
-    <a href="{{ page.edit_url | replace(edit, view) }}" title="{{ lang.t('action.view') }}" class="md-content__button md-icon">
+    <a href="{{ page.edit_url | replace('edit', 'raw') }}" title="{{ lang.t('action.view') }}" class="md-content__button md-icon">
       {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
     </a>
