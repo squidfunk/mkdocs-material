@@ -112,7 +112,7 @@ the following lines to `mkdocs.yml`:
     ``` yaml
     theme:
       features:
-        - code.action.edit
+        - content.action.edit
     ```
 
 === ":material-eye: View source of this page"
@@ -120,7 +120,7 @@ the following lines to `mkdocs.yml`:
     ``` yaml
     theme:
       features:
-        - code.action.view
+        - content.action.view
     ```
 
 The icon of the edit and view buttons can be changed with the following lines:
