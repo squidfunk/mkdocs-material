@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.0.1 <small>January 3, 2023</small> { id="9.0.1" }
+
+- Removed pipdeptree dependency for built-in info plugin
+- Fixed appearance of linked tags when hovered (9.0.0 regression)
+- Fixed #4810: Abbreviations run out of screen on touch devices
+- Fixed #4813: View source and edit button links are the same
+
 ### 9.0.0 <small>January 2, 2023</small> { id="9.0.0" }
 
 __Additions and improvements__
