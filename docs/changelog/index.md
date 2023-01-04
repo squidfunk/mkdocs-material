@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.0.2 <small>January 4, 2023</small> { id="9.0.2" }
+
+- Fixed #4823: Improved contrast ratio in footer to meet WCAG guidelines
+- Fixed #4819: Social plugin crashes when card generation is disabled
+- Fixed #4817: Search plugin crashes on numeric page titles in `nav`
+
 ### 9.0.1 <small>January 3, 2023</small> { id="9.0.1" }
 
 - Removed `pipdeptree` dependency for built-in info plugin
