@@ -3,9 +3,9 @@
   "title": "Macros plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://github.com/oprypin/mkdocs-literate-nav",
+      "markdownDescription": "https://github.com/fralau/mkdocs_macros_plugin",
       "enum": [
-        "literate-nav"
+        "macros"
       ]
     },
     {
