@@ -43,6 +43,7 @@
     display: block;
     padding: 0 px2rem(12px);
     overflow: hidden;
+    color: var(--md-default-fg-color--light);
     font-weight: 700;
     text-overflow: ellipsis;
 
@@ -100,6 +101,11 @@
     cursor: pointer;
     transition: color 125ms;
     scroll-snap-align: start;
+
+    // Navigation link that is a label
+    &[for] {
+      color: var(--md-default-fg-color--light);
+    }
 
     // Navigation link that was passed
     &--passed {
