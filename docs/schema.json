@@ -41,7 +41,7 @@
     },
     "edit_uri": {
       "title": "Path from repository root to directory containing Markdown",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#edit-button",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#edit_uri",
       "type": "string"
     },
     "copyright": {
