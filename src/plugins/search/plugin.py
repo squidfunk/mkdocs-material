@@ -444,8 +444,21 @@ class Parser(HTMLParser):
                 if self.section.el in self.context:
                     data = self.section.title
 
+                # Search for corresponding opening tag
+                index = data.index(f"<{tag}>")
+                for i in range(index + 1, len(data)):
+                    if not data[i].isspace():
+                        index = len(data)
+                        break
+
+                # Remove element if empty (or only whitespace)
+                if len(data) > index:
+                    while len(data) > index:
+                        data.pop()
+
                 # Append to section title or text
-                data.append(f"</{tag}>")
+                else:
+                    data.append(f"</{tag}>")
 
     # Called for the text contents of each tag
     def handle_data(self, data):
@@ -476,6 +489,11 @@ class Parser(HTMLParser):
                 self.section.title.append(
                     escape(data, quote = False)
                 )
+
+        # Collapse adjacent whitespace
+        elif data.isspace():
+            if not self.section.text or not self.section.text[-1].isspace():
+                self.section.text.append(data)
 
         # Handle everything else
         else:
