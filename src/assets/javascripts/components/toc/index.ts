@@ -176,6 +176,11 @@ export function watchTableOfContents(
             offset = target.offsetTop
           }
 
+          /* Fix anchor offsets in tables - see https://bit.ly/3CUFOcn */
+          let parent = target.offsetParent as HTMLElement
+          for (; parent; parent = parent.offsetParent as HTMLElement)
+            offset += parent.offsetTop
+
           /* Map reversed anchor path to vertical offset */
           return index.set(
             [...path = [...path, anchor]].reverse(),
