@@ -401,8 +401,10 @@ class Parser(HTMLParser):
         # Render opening tag if kept
         if not self.skip.intersection(self.context):
             if tag in self.keep:
+
+                # Check whether we're inside the section title
                 data = self.section.text
-                if self.section.el in reversed(self.context):
+                if self.section.el in self.context:
                     data = self.section.title
 
                 # Append to section title or text
