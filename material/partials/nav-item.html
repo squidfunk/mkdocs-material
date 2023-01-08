@@ -13,12 +13,13 @@
       {% set class = class ~ " md-nav__item--section" %}
     {% endif %}
     <li class="{{ class }} md-nav__item--nested">
+      {% set expanded = "navigation.expand" in features %}
+      {% set active = nav_item.active or expanded %}
       {% set checked = "checked" if nav_item.active %}
-      {% if "navigation.expand" in features and not checked %}
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" checked>
-      {% else %}
-        <input class="md-nav__toggle md-toggle" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
+      {% if expanded and not checked %}
+        {% set indeterminate = "md-toggle--indeterminate" %}
       {% endif %}
+      <input class="md-nav__toggle md-toggle {{ indeterminate }}" data-md-toggle="{{ path }}" type="checkbox" id="{{ path }}" {{ checked }}>
       {% set indexes = [] %}
       {% if "navigation.indexes" in features %}
         {% for nav_item in nav_item.children %}
@@ -28,7 +29,7 @@
         {% endfor %}
       {% endif %}
       {% if not indexes %}
-        <label class="md-nav__link" for="{{ path }}">
+        <label class="md-nav__link" for="{{ path }}" tabindex="0" aria-expanded="{{ nav_item.active | tojson }}">
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
         </label>

@@ -41,26 +41,23 @@
 
     <!-- Render item with nested items -->
     <li class="{{ class }} md-nav__item--nested">
+      {% set expanded = "navigation.expand" in features %}
+      {% set active = nav_item.active or expanded %}
+
+      <!-- Determine checked and indeterminate state -->
+      {% set checked = "checked" if nav_item.active %}
+      {% if expanded and not checked %}
+        {% set indeterminate = "md-toggle--indeterminate" %}
+      {% endif %}
 
       <!-- Active checkbox expands items contained within nested section -->
-      {% set checked = "checked" if nav_item.active %}
-      {% if "navigation.expand" in features and not checked %}
-        <input
-          class="md-nav__toggle md-toggle md-toggle--indeterminate"
-          data-md-toggle="{{ path }}"
-          type="checkbox"
-          id="{{ path }}"
-          checked
-        />
-      {% else %}
-        <input
-          class="md-nav__toggle md-toggle"
-          data-md-toggle="{{ path }}"
-          type="checkbox"
-          id="{{ path }}"
-          {{ checked }}
-        />
-      {% endif %}
+      <input
+        class="md-nav__toggle md-toggle {{ indeterminate }}"
+        data-md-toggle="{{ path }}"
+        type="checkbox"
+        id="{{ path }}"
+        {{ checked }}
+      />
 
       <!-- Determine all nested items that are index pages -->
       {% set indexes = [] %}
@@ -74,7 +71,12 @@
 
       <!-- Render toggle to expand nested items -->
       {% if not indexes %}
-        <label class="md-nav__link" for="{{ path }}">
+        <label
+          class="md-nav__link"
+          for="{{ path }}"
+          tabindex="0"
+          aria-expanded="{{ nav_item.active | tojson }}"
+        >
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
         </label>
