@@ -2,6 +2,18 @@
 
 ## Material for MkDocs
 
+### 9.0.3 <small>January 8, 2023</small> { id="9.0.3" }
+
+- Improved discernability of section index pages in navigation
+- Improved collapsing of adjacent whitespace in search plugin
+- Updated Indonesian translations
+- Fixed view source of this page button when edit URL points to blob
+- Fixed #4829: Search overlay does not close for active anchor result
+- Fixed #4824: Search plugin crashes for `h[1-6]` contained in other elements
+- Fixed #4804: Nested navigation items not expandable with keyboard
+- Fixed #4689: anchor tracking not working for anchors in tables
+- Upgraded to Mermaid 9.3.0
+
 ### 9.0.2 <small>January 4, 2023</small> { id="9.0.2" }
 
 - Fixed #4823: Improved contrast ratio in footer to meet WCAG guidelines

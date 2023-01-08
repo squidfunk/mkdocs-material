@@ -1,8 +1,20 @@
+mkdocs-material-9.0.3 (2022-01-08)
+
+  * Improved discernability of section index pages in navigation
+  * Improved collapsing of adjacent whitespace in search plugin
+  * Updated Indonesian translations
+  * Fixed view source of this page button when edit URL points to blob
+  * Fixed #4829: Search overlay does not close for active anchor result
+  * Fixed #4824: Search plugin crashes for h1-6 contained in other elements
+  * Fixed #4804: Nested navigation items not expandable with keyboard
+  * Fixed #4689: anchor tracking not working for anchors in tables
+  * Upgraded to Mermaid 9.3.0
+
 mkdocs-material-9.0.2 (2022-01-04)
 
   * Fixed #4823: Improved contrast ratio in footer to meet WCAG guidelines
   * Fixed #4819: Social plugin crashes when card generation is disabled
-  * Fixed #4817: Search plugin crashes on numeric page titles in `nav`
+  * Fixed #4817: Search plugin crashes on numeric page titles in nav
 
 mkdocs-material-9.0.1 (2022-01-03)
 
