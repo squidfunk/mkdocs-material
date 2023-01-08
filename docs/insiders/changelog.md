@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.27.1 <small>December 20, 2022</small> { id="4.27.1" }
+
+- Fixed rendering of succeeding navigation items in typeset plugin
+- Fixed #4795: Built-in typeset plugin changes MkDocs' title precedence
+- Fixed #4724: Blog plugin not rendering integrate table of contents
+
 ### 4.27.0 <small>December 20, 2022</small> { id="4.27.0" }
 
 - Added built-in typeset plugin to preserve formatting in sidebars
