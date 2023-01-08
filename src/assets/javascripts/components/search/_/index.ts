@@ -25,6 +25,7 @@ import {
   Observable,
   ObservableInput,
   filter,
+  fromEvent,
   merge,
   mergeWith
 } from "rxjs"
@@ -111,6 +112,15 @@ export function mountSearch(
     /* Retrieve query and result components */
     const query  = getComponentElement("search-query", el)
     const result = getComponentElement("search-result", el)
+
+    /* Always close search on result selection */
+    fromEvent<PointerEvent>(el, "click")
+      .pipe(
+        filter(({ target }) => (
+          target instanceof Element && !!target.closest("a")
+        ))
+      )
+        .subscribe(() => setToggle("search", false))
 
     /* Set up search keyboard handlers */
     keyboard$
