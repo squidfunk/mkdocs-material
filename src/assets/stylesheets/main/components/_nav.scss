@@ -102,11 +102,6 @@
     transition: color 125ms;
     scroll-snap-align: start;
 
-    // Navigation link that is a label
-    &[for] {
-      color: var(--md-default-fg-color--light);
-    }
-
     // Navigation link that was passed
     &--passed {
       color: var(--md-default-fg-color--light);
@@ -521,6 +516,11 @@
       > .md-nav__link {
         font-weight: 700;
         pointer-events: none;
+
+        // Make labels discernable from links
+        &[for] {
+          color: var(--md-default-fg-color--light);
+        }
 
         // Make navigation link clickable
         &--index [href] {
