@@ -624,6 +624,11 @@
             }
           }
         }
+
+        // Make labels discernable from links
+        > [for] {
+          color: var(--md-default-fg-color--light);
+        }
       }
 
       // Hack: Always show active navigation tab on breakpoint screen, despite
