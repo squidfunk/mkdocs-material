@@ -192,6 +192,10 @@ After applying the customization, add the CSS class to the icon shortcode:
   [colors]: #with-colors
   [animations]: https://developer.mozilla.org/en-US/docs/Web/CSS/animation
 
+#### in the navigation and table of contents
+
+Currently, to use emojis in sidebars you need to enable the [typeset plugin].
+
 ## Customization
 
 ### Using icons in templates
@@ -221,3 +225,4 @@ This is exactly what Material for MkDocs does in its templates.
 
   [extending the theme]: ../customization.md#extending-the-theme
   [include]: https://jinja.palletsprojects.com/en/2.11.x/templates/#include
+  [typeset plugin]: ./index.md#built-in-typeset-plugin
