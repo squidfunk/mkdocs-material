@@ -1,8 +1,15 @@
+mkdocs-material-9.0.4 (2022-01-12)
+
+  * Fixed #4823: Improved contrast ratio in footer (9.0.2 regression)
+  * Fixed #4832: Set navigation items back to black (9.0.3 regression)
+  * Fixed #4843: Emojis broken due to maxcdn.com shutting down
+  * Upgraded Python Markdown Extensions to 9.9.1
+
 mkdocs-material-9.0.3+insiders-4.27.1 (2022-01-08)
 
-- Fixed rendering of succeeding navigation items in typeset plugin
-- Fixed #4795: Built-in typeset plugin changes MkDocs' title precedence
-- Fixed #4724: Blog plugin not rendering integrate table of contents
+  * Fixed rendering of succeeding navigation items in typeset plugin
+  * Fixed #4795: Built-in typeset plugin changes MkDocs' title precedence
+  * Fixed #4724: Blog plugin not rendering integrate table of contents
 
 mkdocs-material-9.0.3 (2022-01-08)
 

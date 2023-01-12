@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.0.4 <small>January 12, 2023</small> { id="9.0.4" }
+
+- Fixed #4823: Improved contrast ratio in footer (9.0.2 regression)
+- Fixed #4832: Set navigation items back to black (9.0.3 regression)
+- Fixed #4843: Emojis broken due to maxcdn.com shutting down
+- Upgraded Python Markdown Extensions to 9.9.1
+
 ### 9.0.3 <small>January 8, 2023</small> { id="9.0.3" }
 
 - Improved discernability of section index pages in navigation
