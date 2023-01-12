@@ -23,18 +23,21 @@ updates:
 - package-ecosystem: npm
   open-pull-requests-limit: 10
   directory: "/"
+  labels: []
   schedule:
     interval: weekly
     time: "04:00"
 - package-ecosystem: pip
   open-pull-requests-limit: 10
   directory: "/"
+  labels: []
   schedule:
     interval: weekly
     time: "04:00"
 - package-ecosystem: github-actions
   open-pull-requests-limit: 10
   directory: "/"
+  labels: []
   schedule:
     interval: weekly
     time: "04:00"
