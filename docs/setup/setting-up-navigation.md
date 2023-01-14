@@ -173,6 +173,34 @@ theme:
   [Navigation expansion enabled]: ../assets/screenshots/navigation-expand.png
   [Navigation expansion disabled]: ../assets/screenshots/navigation.png
 
+### Navigation path <small>Breadcrumbs</small> { id=navigation-path }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.28.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+When navigation paths are activated, a breadcrumb navigation is rendered above
+the title of each page, which might make orientation easier for users visiting your
+documentation on devices with smaller screens. Add the following lines to
+`mkdocs.yml`:
+
+``` yaml
+theme:
+  features:
+    - navigation.path
+```
+
+=== "With navigation path"
+
+    [![Navigation path enabled]][Navigation path enabled]
+
+=== "Without"
+
+    [![Navigation path disabled]][Navigation path disabled]
+
+  [Navigation path enabled]: ../assets/screenshots/navigation-path-on.png
+  [Navigation path disabled]: ../assets/screenshots/navigation-path-off.png
+
 ### Navigation pruning
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·

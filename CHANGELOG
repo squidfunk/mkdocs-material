@@ -1,3 +1,11 @@
+mkdocs-material-9.0.5+insiders-4.28.0 (2022-01-14)
+
+  * Added support for navigation paths (breadcrumbs)
+
+mkdocs-material-9.0.5 (2022-01-14)
+
+  * Fixed #4842: Improve accessibility of search result list
+
 mkdocs-material-9.0.4 (2022-01-12)
 
   * Fixed #4823: Improved contrast ratio in footer (9.0.2 regression)

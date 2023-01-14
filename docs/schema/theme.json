@@ -661,6 +661,13 @@
             ]
           },
           {
+            "title": "Navigation path (Breadcrumbs)",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path",
+            "enum": [
+              "navigation.path"
+            ]
+          },
+          {
             "title": "Navigation pruning",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
             "enum": [

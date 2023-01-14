@@ -198,7 +198,7 @@ The following status identifiers are currently supported:
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
 
-### Setting the page `subtitle` :material-alert-decagram:{ .mdx-pulse title="Added on October 2, 2022" }
+### Setting the page `subtitle`
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.25.0][Insiders] ·

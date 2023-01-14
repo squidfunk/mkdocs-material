@@ -1,7 +1,3 @@
----
-status: new
----
-
 # Setting up a blog
 
 Material for MkDocs makes it very easy to build a blog, either as a sidecar to
