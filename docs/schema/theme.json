@@ -882,7 +882,7 @@
     "scheme": {
       "title": "Color scheme",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme",
-      "oneOf": [
+      "anyOf": [
         {
           "enum": [
             "default",
@@ -891,12 +891,6 @@
         },
         {
           "type": "string"
-        }
-      ],
-      "defaultSnippets": [
-        {
-          "label": "default",
-          "body": "${1:default}"
         }
       ]
     },
@@ -955,7 +949,7 @@
       ]
     },
     "icon": {
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "assets/icons.json"
         },

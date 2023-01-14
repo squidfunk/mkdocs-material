@@ -16,7 +16,7 @@
       "properties": {
         "provider": {
           "title": "Analytics provider",
-          "oneOf": [
+          "anyOf": [
             {
               "title": "Google Analytics",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
@@ -30,7 +30,7 @@
           ]
         },
         "property": {
-          "oneOf": [
+          "anyOf": [
             {
               "title": "Google Analytics 4",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
@@ -370,7 +370,7 @@
       ]
     },
     "icon": {
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "assets/icons.json"
         },

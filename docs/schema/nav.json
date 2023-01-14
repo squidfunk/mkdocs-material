@@ -4,7 +4,7 @@
   "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
   "type": "array",
   "items": {
-    "oneOf": [
+    "anyOf": [
       {
         "title": "Navigation item",
         "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#nav",
