@@ -46,7 +46,8 @@ import { translation } from "~/_"
 import {
   getElement,
   getOptionalElement,
-  watchElementBoundary
+  watchElementBoundary,
+  watchToggle
 } from "~/browser"
 import {
   SearchMessage,
@@ -102,6 +103,12 @@ export function mountSearchResult(
   /* Retrieve nested components */
   const meta = getElement(":scope > :first-child", el)
   const list = getElement(":scope > :last-child", el)
+
+  /* Reveal to accessibility tree – see https://bit.ly/3iAA7t8 */
+  watchToggle("search")
+    .subscribe(active => list.setAttribute(
+      "role", active ? "list" : "presentation"
+    ))
 
   /* Update search result metadata */
   push$
