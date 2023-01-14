@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.0.5 <small>January 14, 2023</small> { id="9.0.5" }
+
+- Fixed #4842: Improved accessibility of search result list
+
 ### 9.0.4 <small>January 12, 2023</small> { id="9.0.4" }
 
 - Fixed #4823: Improved contrast ratio in footer (9.0.2 regression)

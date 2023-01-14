@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.28.0 <small>January 14, 2022</small> { id="4.28.0" }
+
+- Added support for navigation path (breadcrumbs)
+
 ### 4.27.1 <small>December 20, 2022</small> { id="4.27.1" }
 
 - Fixed rendering of succeeding navigation items in typeset plugin
