@@ -67,7 +67,7 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
         # Check if we're running the latest version
         _, version = res.headers.get("location").rsplit("/", 1)
         package = get_distribution("mkdocs-material")
-        if package.version != version:
+        if not package.version.startswith(version):
             log.error("Please upgrade to the latest version.")
             self._help_on_versions_and_exit(package.version, version)
 
