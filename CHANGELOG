@@ -1,25 +1,25 @@
-mkdocs-material-9.0.5+insiders-4.28.0 (2022-01-14)
+mkdocs-material-9.0.5+insiders-4.28.0 (2023-01-14)
 
   * Added support for navigation path (breadcrumbs)
 
-mkdocs-material-9.0.5 (2022-01-14)
+mkdocs-material-9.0.5 (2023-01-14)
 
   * Fixed #4842: Improved accessibility of search result list
 
-mkdocs-material-9.0.4 (2022-01-12)
+mkdocs-material-9.0.4 (2023-01-12)
 
   * Fixed #4823: Improved contrast ratio in footer (9.0.2 regression)
   * Fixed #4832: Set navigation items back to black (9.0.3 regression)
   * Fixed #4843: Emojis broken due to maxcdn.com shutting down
   * Upgraded Python Markdown Extensions to 9.9.1
 
-mkdocs-material-9.0.3+insiders-4.27.1 (2022-01-08)
+mkdocs-material-9.0.3+insiders-4.27.1 (2023-01-08)
 
   * Fixed rendering of succeeding navigation items in typeset plugin
   * Fixed #4795: Built-in typeset plugin changes MkDocs' title precedence
   * Fixed #4724: Blog plugin not rendering integrate table of contents
 
-mkdocs-material-9.0.3 (2022-01-08)
+mkdocs-material-9.0.3 (2023-01-08)
 
   * Improved discernability of section index pages in navigation
   * Improved collapsing of adjacent whitespace in search plugin
@@ -31,13 +31,13 @@ mkdocs-material-9.0.3 (2022-01-08)
   * Fixed #4689: anchor tracking not working for anchors in tables
   * Upgraded to Mermaid 9.3.0
 
-mkdocs-material-9.0.2 (2022-01-04)
+mkdocs-material-9.0.2 (2023-01-04)
 
   * Fixed #4823: Improved contrast ratio in footer to meet WCAG guidelines
   * Fixed #4819: Social plugin crashes when card generation is disabled
   * Fixed #4817: Search plugin crashes on numeric page titles in nav
 
-mkdocs-material-9.0.1 (2022-01-03)
+mkdocs-material-9.0.1 (2023-01-03)
 
   * Removed pipdeptree dependency for built-in info plugin
   * Fixed appearance of linked tags when hovered (9.0.0 regression)
