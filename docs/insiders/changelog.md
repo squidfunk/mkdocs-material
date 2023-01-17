@@ -2,6 +2,13 @@
 
 ## Material for MkDocs Insiders
 
+### 4.28.1 <small>January 17, 2023</small> { id="4.28.1" }
+
+- Fixed built-in info plugin erroring for Insiders on version check
+- Fixed #4865: Navigation paths render bug when there's no top-level section
+- Fixed #4875: Added support for hiding navigation paths
+- Improved navigation path to not render for a single item
+
 ### 4.28.0 <small>January 14, 2023</small> { id="4.28.0" }
 
 - Added support for navigation path (breadcrumbs)

@@ -377,6 +377,24 @@ hide:
   [Hide table of contents enabled]: ../assets/screenshots/hide-toc.png
   [Hide both enabled]: ../assets/screenshots/hide-navigation-toc.png
 
+### Hiding the navigation path
+
+While the [navigation path] is rendered above the main headline, sometimes, it
+might be desirable to hide it for a specific page, which can be achieved with
+the front matter `hide` property:
+
+``` yaml
+---
+hide:
+  - path
+---
+
+# Document title
+...
+```
+
+  [navigation path]: #navigation-path
+
 ## Customization
 
 ### Keyboard shortcuts

@@ -1,3 +1,10 @@
+mkdocs-material-9.0.5+insiders-4.28.1 (2023-01-17)
+
+  * Fixed built-in info plugin erroring for Insiders on version check
+  * Fixed #4865: Navigation paths render bug when there's no top-level section
+  * Fixed #4875: Added support for hiding navigation paths
+  * Improved navigation path to not render for a single item
+
 mkdocs-material-9.0.5+insiders-4.28.0 (2023-01-14)
 
   * Added support for navigation path (breadcrumbs)
