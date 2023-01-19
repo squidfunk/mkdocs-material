@@ -421,11 +421,11 @@ class Parser(HTMLParser):
         # which could also be a nested section – see https://bit.ly/3IxxIJZ
         if self.section.depth > len(self.context):
             for section in reversed(self.data):
-                if section.depth and section.depth <= len(self.context):
+                if section.depth <= len(self.context):
 
-                    # Set depth to 0 in order to denote that the current section
-                    # is exited and must not be considered again.
-                    self.section.depth = 0
+                    # Set depth to infinity in order to denote that the current
+                    # section is exited and must never be considered again.
+                    self.section.depth = float("inf")
                     self.section = section
                     break
 
