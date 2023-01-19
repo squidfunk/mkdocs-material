@@ -1,3 +1,8 @@
+mkdocs-material-9.0.6 (2023-01-19)
+
+  * Fixed #4883: Automatically disable info plugin when serving
+  * Fixed #4885: Search plugin crashes in some exotic cases (9.0.3 regression)
+
 mkdocs-material-9.0.5+insiders-4.28.1 (2023-01-17)
 
   * Fixed built-in info plugin erroring for Insiders on version check
