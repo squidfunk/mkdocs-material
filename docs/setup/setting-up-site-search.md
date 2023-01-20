@@ -112,7 +112,7 @@ The following configuration options are supported:
     ``` yaml
     plugins:
       - search:
-          separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+          separator: '[\s\-,:!=\[\]\(\)"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
     ```
 
     Broken into its parts, the separator induces the following behavior:
