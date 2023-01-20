@@ -79,7 +79,24 @@ The templates have undergone a series of changes. If you have customized
 Material for MkDocs with theme extension, be sure to incorporate the latest
 changes into your templates. A good starting point is to [inspect the diff].
 
+!!! warning "Built-in plugins not working after upgrade?"
+
+    If one of the built-in plugins (search or tags) doesn't work anymore without
+    any apparent error or cause, it is very likely related to custom overrides.
+    [MkDocs 1.4.1] and above allow themes to namespace built-in plugins, which
+    Material for MkDocs 9 now does in order to allow authors to use third-party
+    plugins with the same name as built-in plugins. Search your overrides for
+    [`"in config.plugins"`][in config.plugins] and add the `material/` namespace.
+    Affected partials:
+
+    - [`content.html`][content.html]
+    - [`header.html`][header.html]
+
   [inspect the diff]: https://github.com/squidfunk/mkdocs-material/pull/4628/files#diff-3ca112736b9164701b599f34780107abf14bb79fe110c478cac410be90899828
+  [MkDocs 1.4.1]: https://github.com/mkdocs/mkdocs/releases/tag/1.4.1
+  [in config.plugins]: https://github.com/squidfunk/mkdocs-material/search?q=%22in+config.plugins%22
+  [content.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/content.html
+  [header.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
 
 ## Upgrading from 7.x to 8.x
 
