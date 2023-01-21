@@ -26,17 +26,17 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - optimize
+  - optimize # (1)!
 ```
+
+1.  Please ensure that all [dependencies for image processing] are installed,
+    or the plugin will not work properly.
 
 > If you need to be able to build your documentation with and without
 > [Insiders], please refer to the [built-in plugins] section to learn how
 > shared configurations help to achieve this.
 
 The following configuration options are available:
-
-  [Insiders]: ../insiders/index.md
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
 
 [`enabled`](#+optimize.enabled){ #+optimize.enabled }
 
@@ -62,8 +62,6 @@ The following configuration options are available:
       - optimize:
           concurrency: 1
     ```
-
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 
 #### Optimization
 
@@ -158,6 +156,10 @@ The following configuration options are available for optimization:
           optimize_jpg_progressive: false
     ```
 
+  [Insiders]: ../insiders/index.md
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+  [dependencies for image processing]: dependencies/image-processing.md
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [pngquant]: https://pngquant.org/
   [Pillow]: https://pillow.readthedocs.io/
   [progressive encoding]: https://medium.com/hd-pro/jpeg-formats-progressive-vs-baseline-73b3938c2339

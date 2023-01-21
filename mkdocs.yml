@@ -186,6 +186,8 @@ nav:
       - setup/extensions/index.md
       - Python Markdown: setup/extensions/python-markdown.md
       - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
+    - Dependencies:
+      - setup/dependencies/image-processing.md
   - Reference:
     - reference/index.md
     - Admonitions: reference/admonitions.md

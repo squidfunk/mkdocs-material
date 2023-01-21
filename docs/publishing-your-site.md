@@ -38,6 +38,10 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
+          - uses: actions/cache@v2
+            with:
+              key: ${{ github.ref }}
+              path: .cache
           - run: pip install mkdocs-material # (3)!
           - run: mkdocs gh-deploy --force
     ```
@@ -77,13 +81,21 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
+          - uses: actions/cache@v2
+            with:
+              key: ${{ github.ref }}
+              path: .cache
+          - run: apt-get install pngquant # (1)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (1)!
+      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (2)!
     ```
 
-    1.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    1.  This step is only necessary if you want to use the
+        [built-in optimize plugin] to automatically compress images.
+
+    2.  Remember to set the `GH_TOKEN` environment variable to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [GitHub secrets].
 
@@ -101,6 +113,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [MkDocs plugins]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
   [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
   [Insiders]: insiders/index.md
+  [built-in optimize plugin]: setup/building-an-optimized-site.md#built-in-optimize-plugin
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
