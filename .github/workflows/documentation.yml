@@ -53,6 +53,9 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
           path: .cache
 
+      - name: Install dependencies
+        run: sudo apt-get install pngquant
+
       - name: Install Python dependencies
         run: |
           pip install \
