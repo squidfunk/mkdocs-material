@@ -2,7 +2,7 @@
 
 If you want to ship your documentation together with your product, MkDocs has
 you covered – with support from themes, [MkDocs] allows for building
-offline-capable documentation. Luckily, Material for MkDocs offers offline
+offline-capable documentation. Notably, Material for MkDocs offers offline
 support for many of its features.
 
   [MkDocs]: https://www.mkdocs.org
