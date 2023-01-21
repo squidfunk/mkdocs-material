@@ -13,7 +13,7 @@ further useful automatic optimization techniques.
 
 ## Configuration
 
-### Built-in optimize plugin :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2022" }
+### Built-in optimize plugin :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.29.0][Insiders] ·
