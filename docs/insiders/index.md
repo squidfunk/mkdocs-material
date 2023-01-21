@@ -88,14 +88,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 21 additional features__ that you can start using right away, and
+access to 22 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Navigation path] (Breadcrumbs): :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
-- [x] [Typeset plugin]: :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
-- [x] [Privacy plugin: external links] :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
+- [x] [Optimize plugin] :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2022" }
+- [x] [Navigation path] (Breadcrumbs) :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
+- [x] [Typeset plugin] :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
+- [x] [Privacy plugin: external links]
 - [x] [Navigation subtitles]
 - [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Blog plugin: custom index pages]
@@ -299,12 +300,14 @@ are released for general availability.
 
 #### $ 20,000 – Jalapeño
 
+- [x] [Optimize plugin]
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
 - [ ] [Instant previews]
-- ... more to be announced
+- [ ] more to be announced
 
+  [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
   [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path

@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.29.0 <small>January 21, 2023</small> { id="4.29.0" }
+
+- Added built-in optimize plugin for automatically compressing images
+- Switched reporting in built-in privacy plugin to `info` level
+
 ### 4.28.1 <small>January 17, 2023</small> { id="4.28.1" }
 
 - Fixed built-in info plugin erroring for Insiders on version check

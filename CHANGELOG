@@ -1,3 +1,8 @@
+mkdocs-material-9.0.6+insiders-4.29.0 (2023-01-21)
+
+  * Added built-in optimize plugin for automatically compressing images
+  * Switched reporting in built-in privacy plugin to info level
+
 mkdocs-material-9.0.6 (2023-01-19)
 
   * Fixed #4883: Automatically disable info plugin when serving

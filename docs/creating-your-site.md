@@ -125,6 +125,7 @@ and much more:
 - [Setting up the footer]
 - [Adding a git repository]
 - [Adding a comment system]
+- [Building an optimized site]
 - [Building for offline usage]
 
 </div>
@@ -150,7 +151,7 @@ technical writing experience.
   [Adding a git repository]: setup/adding-a-git-repository.md
   [Adding a comment system]: setup/adding-a-comment-system.md
   [Building for offline usage]: setup/building-for-offline-usage.md
-  [Building an optimized site]: setup/building-building-an-optimized-site.md
+  [Building an optimized site]: setup/building-an-optimized-site.md
   [Markdown extensions]: setup/extensions/index.md
 
 ## Previewing as you write
