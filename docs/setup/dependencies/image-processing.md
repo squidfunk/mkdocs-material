@@ -1,7 +1,7 @@
 # Image processing
 
 Material for MkDocs depends on several libraries to allow for image processing
-as part of the build pipline, including [social cards] and [image optimization].
+as part of the build pipeline, including [social cards] and [image optimization].
 For this reason, a few external libraries must be installed on the host system.
 This section explains how to install them.
 
