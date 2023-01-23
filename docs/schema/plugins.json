@@ -52,6 +52,9 @@
       "description": "External plugins, schema provided by us",
       "oneOf": [
         {
+          "$ref": "plugins/external/gen-files.json"
+        },
+        {
           "$ref": "plugins/external/git-authors.json"
         },
         {
@@ -71,6 +74,9 @@
         },
         {
           "$ref": "plugins/external/redirects.json"
+        },
+        {
+          "$ref": "plugins/external/section-index.json"
         }
       ]
     },
