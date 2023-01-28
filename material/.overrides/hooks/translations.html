@@ -1,0 +1,32 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% macro render_language(language) %}
+  <div class="mdx-flags__item" markdown>
+    :flag_{{ language.flag }}:{ .lg .middle }
+    <span class="mdx-flags__content">
+      <span>
+        <strong>{{ language.name }}</strong>
+        <code>{{ language.code }}</code>
+      </span>
+      {% if language.miss %}
+        <span>
+          <a href="{{ language.link }}">
+            {{ language.miss | length }} translations missing
+          </a>
+        </span>
+      {% else %}
+        <small>Complete</small>
+      {% endif %}
+    </span>
+  </div>
+{% endmacro %}
+{% macro render(translations, start = 1) %}
+  <div class="mdx-columns mdx-flags" markdown>
+    <ol markdown>
+      {% for language in translations %}
+        <li markdown>{{ render_language(language) }}</li>
+      {% endfor %}
+    </ol>
+  </div>
+{% endmacro %}

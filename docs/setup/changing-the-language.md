@@ -29,78 +29,23 @@ theme:
 
 The following languages are supported:
 
-<div class="mdx-columns" markdown>
-
-- `af` – Afrikaans
-- `ar` – Arabic
-- `bg` – Bulgarian
-- `bn` – Bengali (Bangla)
-- `ca` – Catalan
-- `cs` – Czech
-- `da` – Danish
-- `de` – German
-- `el` – Greek
-- `en` – English
-- `eo` – Esperanto
-- `es` – Spanish
-- `et` – Estonian
-- `fa` – Persian (Farsi)
-- `fi` – Finnish
-- `fr` – French
-- `gl` – Galician
-- `he` – Hebrew
-- `hi` – Hindi
-- `hr` – Croatian
-- `hu` – Hungarian
-- `hy` – Armenian
-- `id` – Indonesian
-- `is` – Icelandic
-- `it` – Italian
-- `ja` – Japanese
-- `ka` – Georgian
-- `ko` – Korean
-- `lt` – Lithuanian
-- `lv` – Latvian
-- `mk` – Macedonian
-- `mn` – Mongolian
-- `ms` – Bahasa Malaysia
-- `my` – Burmese
-- `nl` – Dutch
-- `nb` – Norwegian (Bokmål)
-- `nn` – Norwegian (Nynorsk)
-- `pl` – Polish
-- `pt` – Portuguese
-- `pt-BR` – Portuguese (Brasilian)
-- `ro` – Romanian
-- `ru` – Russian
-- `sh` – Serbo-Croatian
-- `si` – Sinhalese
-- `sk` – Slovak
-- `sl` – Slovenian
-- `sr` – Serbian
-- `sv` – Swedish
-- `th` – Thai
-- `tl` – Tagalog
-- `tr` – Turkish
-- `uk` – Ukrainian
-- `ur` – Urdu
-- `uz` – Uzbek
-- `vi` – Vietnamese
-- `zh` – Chinese (Simplified)
-- `zh-Hant` – Chinese (Traditional)
-- `zh-TW` – Chinese (Taiwanese)
-- [Add language]
-
-</div>
+<!-- hooks/translations.py -->
 
 Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
+
+!!! tip "Translations missing? Help us out, it takes only 5 minutes"
+
+    Material for MkDocs relies on outside contributions for adding and updating
+    translations for the almost 60 languages it supports. If your language shows
+    that some translations are missing, click on the link to add them. If your
+    language is not in the list, click here to [add a new language].
 
   [Site language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
-  [Add language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.yml&title=New+language%3A+%7Breplace+with+language+name%7D
+  [add a new language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.yml&title=Add+translations+for+...
 
 ### Site language selector
 
