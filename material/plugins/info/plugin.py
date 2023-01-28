@@ -57,19 +57,18 @@ class InfoPlugin(BasePlugin[InfoPluginConfig]):
 
     # Determine whether we're serving
     def on_startup(self, *, command, dirty):
+        self.is_serve = (command == "serve")
+
+    # Initialize plugin (run earliest)
+    @event_priority(100)
+    def on_config(self, config):
         if not self.config.enabled:
             return
 
         # By default, the plugin is disabled when the documentation is served,
         # but not when it is built. This should nicely align with the expected
         # user experience when creating reproductions.
-        if not self.config.enabled_on_serve:
-            self.config.enabled = command != "serve"
-
-    # Initialize plugin (run earliest)
-    @event_priority(100)
-    def on_config(self, config):
-        if not self.config.enabled:
+        if not self.config.enabled_on_serve and self.is_serve:
             return
 
         # Resolve latest version
