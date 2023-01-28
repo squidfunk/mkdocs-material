@@ -28,6 +28,14 @@
       ]
     },
     {
+      "title": "Markdown extension: a classier syntax for admonitions",
+      "markdownDescription": "https://github.com/oprypin/markdown-callouts",
+      "enum": [
+        "markdown.extensions.callouts",
+        "callouts"
+      ]
+    },
+    {
       "title": "Definition Lists – Python Markdown",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#definition-lists",
       "enum": [

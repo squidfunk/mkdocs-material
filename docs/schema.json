@@ -153,6 +153,13 @@
     },
     "nav": {
       "$ref": "schema/nav.json"
+    },
+    "watch": {
+      "items": {
+        "title": "Path to watch for changes",
+        "type": "string"
+      },
+      "type": "array"
     }
   },
   "additionalProperties": false

@@ -324,18 +324,66 @@
               "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
               "type": "object",
               "properties": {
+                "hide_protocol":{
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "labels": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#labels",
+                  "type": "object",
+                  "default": {
+                    "commit": "Commit",
+                    "compare": "Compare",
+                    "issue": "Issue",
+                    "pull": "Pull Request",
+                    "mention": "User",
+                    "repository": "Repository"
+                  }
+                },
+                "normalize_issue_symbols": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": false
+                },
                 "user": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                  "type": "string"
+                  "type": "string",
+                  "default": ""
+                },
+                "provider": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "string",
+                  "default": "github"
                 },
                 "repo": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
-                  "type": "string"
+                  "type": "string",
+                  "repo": ""
                 },
                 "repo_url_shorthand": {
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
                   "type": "boolean",
                   "default": true
+                },
+                "repo_url_shortener": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "social_url_shorthand": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "social_url_shortener": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "shortener_user_exclude": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/#user-excludes",
+                  "type": "object"
                 }
               },
               "additionalProperties": false,
