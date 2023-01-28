@@ -1,3 +1,12 @@
+mkdocs-material-9.0.7 (2023-01-28)
+
+  * Improved accessibility of sidebar navigation
+  * Moved all translations into community edition
+  * Updated Polish and Portuguese (Brasilian) translations
+  * Fixed info plugin terminating on subsequent reload when serving
+  * Fixed #4910: Sidebar navigation labels have invalid ARIA roles
+  * Fixed #4884: Search query terms can't be separated by colons
+
 mkdocs-material-9.0.6+insiders-4.29.0 (2023-01-21)
 
   * Added built-in optimize plugin for automatically compressing images

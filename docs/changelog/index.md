@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.0.7 <small>January 28, 2023</small> { id="9.0.7" }
+
+- Improved accessibility of sidebar navigation
+- Moved all translations into community edition
+- Updated Polish and Portuguese (Brasilian) translations
+- Fixed info plugin terminating on subsequent reload when serving
+- Fixed #4910: Sidebar navigation labels have invalid ARIA roles
+- Fixed #4884: Search query terms can't be separated by colons
+
 ### 9.0.6 <small>January 19, 2023</small> { id="9.0.6" }
 
 - Fixed #4883: Automatically disable info plugin when serving
