@@ -17,8 +17,9 @@ body:
         - label: I've checked the [list of available languages](https://bit.ly/33vFDD0)
           required: true
   - type: textarea
+    id: translations
     attributes:
-      label: Translation
+      label: Translations
       description: Please translate the labels on the right, e.g. "Copy to clipboard", etc.
       value: |-
         {% macro t(key) %}{{ {
@@ -61,6 +62,6 @@ body:
           "toc": "Table of contents",
           "top": "Back to top"
         }[key] }}{% endmacro %}
-      render: jinja
+      render: Jinja
     validations:
       required: true
