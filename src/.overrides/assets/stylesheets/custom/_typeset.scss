@@ -134,6 +134,51 @@
     }
   }
 
+  // Language list
+  .mdx-flags {
+    margin: 2em auto;
+
+    // Language list
+    ol {
+      list-style: none;
+
+      // Language list item
+      li {
+        margin-bottom: 1em;
+      }
+    }
+
+    // Language item
+    &__item {
+      display: flex;
+      gap: px2rem(12px);
+    }
+
+    // Language content
+    &__content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+
+      // Language name
+      span {
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: space-between;
+      }
+
+      // Language link
+      > span:nth-child(2) {
+        font-size: 80%;
+      }
+
+      // Language code
+      code {
+        float: right;
+      }
+    }
+  }
+
   // Blog author
   .mdx-author {
     display: flex;

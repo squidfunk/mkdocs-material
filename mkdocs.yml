@@ -88,6 +88,10 @@ plugins:
   - minify:
       minify_html: true
 
+# Hooks
+hooks:
+  - material/.overrides/hooks/translations.py
+
 # Customization
 extra:
   analytics:
