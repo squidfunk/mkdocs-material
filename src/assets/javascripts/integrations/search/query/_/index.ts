@@ -70,14 +70,28 @@ export function transformSearchQuery(
 
     /* Extract and tokenize term from lexeme */
     for (const { type, str: term, start, end } of lexer.lexemes)
-      if (type === "TERM")
-        split(term, lunr.tokenizer.separator, (...range) => {
-          terms.push([
-            part.slice(0, start),
-            term.slice(...range),
-            part.slice(end)
-          ].join(""))
-        })
+      switch (type) {
+
+        /* Hack: remove colon - see https://bit.ly/3wD3T3I */
+        case "FIELD":
+          if (!["title", "text", "tags"].includes(term))
+            part = [
+              part.slice(0, end),
+              " ",
+              part.slice(end + 1)
+            ].join("")
+          break
+
+        /* Tokenize term */
+        case "TERM":
+          split(term, lunr.tokenizer.separator, (...range) => {
+            terms.push([
+              part.slice(0, start),
+              term.slice(...range),
+              part.slice(end)
+            ].join(""))
+          })
+      }
 
     /* Return terms */
     return terms
