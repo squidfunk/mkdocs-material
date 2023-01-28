@@ -44,7 +44,6 @@ import { configuration, feature } from "./_"
 import {
   at,
   getActiveElement,
-  getElement,
   getOptionalElement,
   requestJSON,
   setLocation,
