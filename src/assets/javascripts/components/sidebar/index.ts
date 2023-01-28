@@ -28,9 +28,15 @@ import {
   combineLatest,
   defer,
   distinctUntilChanged,
+  endWith,
   finalize,
   first,
+  from,
+  fromEvent,
+  ignoreElements,
   map,
+  mergeMap,
+  takeUntil,
   tap,
   withLatestFrom
 } from "rxjs"
@@ -153,6 +159,7 @@ export function mountSidebar(
   const { y } = getElementOffset(inner)
   return defer(() => {
     const push$ = new Subject<Sidebar>()
+    const done$ = push$.pipe(ignoreElements(), endWith(true))
     const next$ = push$
       .pipe(
         auditTime(0, animationFrameScheduler)
@@ -189,6 +196,22 @@ export function mountSidebar(
           }
         }
       })
+
+    /* Handle accessibility for expandable items, see https://bit.ly/3jaod9p */
+    from(getElements<HTMLLabelElement>("label[tabindex]", el))
+      .pipe(
+        mergeMap(label => fromEvent(label, "click")
+          .pipe(
+            map(() => label),
+            takeUntil(done$)
+          )
+        )
+      )
+        .subscribe(label => {
+          const input = getElement<HTMLInputElement>(`[id="${label.htmlFor}"]`)
+          const nav = getElement(`[aria-labelledby="${label.id}"]`)
+          nav.setAttribute("aria-expanded", `${input.checked}`)
+        })
 
     /* Create and return component */
     return watchSidebar(el, options)

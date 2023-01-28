@@ -53,7 +53,6 @@
       <!-- Active checkbox expands items contained within nested section -->
       <input
         class="md-nav__toggle md-toggle {{ indeterminate }}"
-        data-md-toggle="{{ path }}"
         type="checkbox"
         id="{{ path }}"
         {{ checked }}
@@ -74,8 +73,8 @@
         <label
           class="md-nav__link"
           for="{{ path }}"
+          id="{{ path }}_label"
           tabindex="0"
-          aria-expanded="{{ nav_item.active | tojson }}"
         >
           {{ nav_item.title }}
           <span class="md-nav__icon md-icon"></span>
@@ -100,8 +99,9 @@
       <!-- Render nested navigation -->
       <nav
         class="md-nav"
-        aria-label="{{ nav_item.title }}"
         data-md-level="{{ level }}"
+        aria-labelledby="{{ path }}_label"
+        aria-expanded="{{ nav_item.active | tojson }}"
       >
         <label class="md-nav__title" for="{{ path }}">
           <span class="md-nav__icon md-icon"></span>
@@ -127,7 +127,6 @@
       <!-- Active checkbox expands items contained within nested section -->
       <input
         class="md-nav__toggle md-toggle"
-        data-md-toggle="toc"
         type="checkbox"
         id="__toc"
       />
