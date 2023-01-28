@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "title": "MkDocs plugin to programmatically generate documentation pages during the build",
+  "title": "Generate pages during the build",
   "oneOf": [
     {
       "markdownDescription": "https://github.com/oprypin/mkdocs-gen-files",
@@ -24,5 +24,6 @@
           "type": ["object", "null"]
         }
       }
-    }]
+    }
+  ]
 }

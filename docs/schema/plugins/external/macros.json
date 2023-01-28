@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Macros plugin",
+  "title": "Use variables and macros in Markdown",
   "oneOf": [
     {
       "markdownDescription": "https://github.com/fralau/mkdocs_macros_plugin",

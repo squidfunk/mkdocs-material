@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "title": "Git authors plugin",
+  "title": "Add git authors to pages",
   "oneOf": [
     {
       "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/",
