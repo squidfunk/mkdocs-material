@@ -86,7 +86,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
         # Assemble GitHub issue URL
         link = urlparse(issue_url)
         link = link._replace(query = urlencode({
-            "template": "translate.yml",
+            "template": "04-add-a-translation.yml",
             "title": f"Update {name} translations",
             "translations": "\n".join([
                 "{% macro t(key) %}{{ {",
