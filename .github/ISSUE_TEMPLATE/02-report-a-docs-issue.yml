@@ -27,7 +27,7 @@ body:
         that are impacted by the issue you described above. If applicable,
         add screenshots. Additionally, list links to possibly related open
         and closed [issues](https://github.com/squidfunk/mkdocs-material/issues)
-        or [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
+        and [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
         you encountered when searching our issue tracker.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#related-links)
       value: |-

@@ -93,5 +93,5 @@ body:
         required: true
       - label: >-
             I have included relevant links to [the documentation](https://squidfunk.github.io/mkdocs-material), related [issues](https://github.com/squidfunk/mkdocs-material/issues)
-            or [discussions](https://github.com/squidfunk/mkdocs-material/discussions) to underline the need for my idea.
+            and [discussions](https://github.com/squidfunk/mkdocs-material/discussions) to underline the need for my idea.
         required: true
