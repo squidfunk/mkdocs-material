@@ -43,8 +43,7 @@ body:
       description: >-
         This field is optional. You may provide an improvement proposal for our
         documentation by describing your suggestion in the text field below or
-        creating a pull request after reporting this issue containing the issue
-        number.
+        creating a pull request after reporting this issue referencing the issue.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#proposed-change)
 
   - type: checkboxes
