@@ -3,7 +3,7 @@
 A clear and concise navigation structure is an important aspect of good project 
 documentation. Material for MkDocs provides a multitude of options to configure
 the behavior of navigational elements, including [tabs] and [sections], and one
-of its flag-ship feature: [instant loading].
+of its flagship features: [instant loading].
 
   [tabs]: #navigation-tabs
   [sections]: #navigation-sections
@@ -63,7 +63,7 @@ the following lines to `mkdocs.yml`:
   [^1]:
     Prior to :octicons-tag-24: 6.2.0, navigation tabs had a slightly different
     behavior. All top-level pages (i.e. all top-level entries directly
-    refefring to a `*.md` file) defined inside the `nav` entry of `mkdocs.yml`
+    referring to a `*.md` file) defined inside the `nav` entry of `mkdocs.yml`
     were grouped under the first tab which received the title of the first page.
     This made it impossible to include a top-level page (or external link) as a
     tab item, as was reported in #1884 and #2072. From :octicons-tag-24: 6.2.0
