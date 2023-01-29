@@ -1,5 +1,5 @@
 name: Report a docs issue
-description: Missing information in our docs? Create a documentation issue
+description: Missing information in our docs? Report a documentation issue
 labels:
   - documentation
 body:
@@ -58,7 +58,7 @@ body:
         valuable time.
       options:
         - label: >-
-            I have read and followed the [docs issue reporting guidelines](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/).
+            I have read and followed the [documentation issue reporting guidelines](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/).
           required: true
         - label: >-
             I have attached the links to the described sections of [the documentation](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#related-links)
