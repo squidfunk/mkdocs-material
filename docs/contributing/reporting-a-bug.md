@@ -1,15 +1,15 @@
-# Bug reporting
+# Reporting a bug
 
 Material for MkDocs is an actively maintained project that we constantly strive
 to improve. With a project of this size and complexity, bugs may occur. If you
 think you have discovered a bug, you can help us by submitting an issue in our
-public [issue tracker], following this guide.
+public [issue tracker] by following this guide.
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
 
 ## Before creating an issue
 
-With more than 20.000 users, issues are created every other day. The maintainers
+With more than 20,000 users, issues are created every other day. The maintainers
 of this project are trying very hard to keep the number of open issues down by
 fixing bugs as fast as possible. By following this guide, you will know exactly
 what information we need to help you quickly.
@@ -118,14 +118,14 @@ how to create a complete and helpful bug report.
 
 ## Issue template
 
-We have created a new issue template to make the bug-reporting process as simple
+We have created a new issue template to make the bug reporting process as simple
 as possible and more efficient for the community and us. It is the result of
 our experience answering and fixing more than 1,600 issues (and counting) and
 consists of the following parts:
 
 - [Title]
 - [Context] <small>optional</small>
-- [Bug description]
+- [Description]
 - [Related links]
 - [Reproduction]
 - [Steps to reproduce]
@@ -134,7 +134,7 @@ consists of the following parts:
 
   [Title]: #title
   [Context]: #context
-  [Bug description]: #bug-description
+  [Description]: #description
   [Related links]: #related-links
   [Reproduction]: #reproduction
   [Steps to reproduce]: #steps-to-reproduce
@@ -157,7 +157,7 @@ can be inferred from the title.
 ### Context <small>optional</small> { #context }
 
 Before describing the bug, you can provide additional context for us to
-understand what you were trying to achieve. Explain the circumstances
+understand what you are trying to achieve. Explain the circumstances
 in which you're using Material for MkDocs, and what you _think_ might be
 relevant. Don't write about the bug here.
 
@@ -165,7 +165,7 @@ relevant. Don't write about the bug here.
 > environments or edge cases, for example, when your documentation contains
 > thousands of documents.
 
-### Bug description
+### Description
 
 Now, to the bug, you want to report. Provide a clear, focused, specific, and
 concise summary of the bug you encountered. Explain why you think this is a bug
@@ -239,7 +239,7 @@ it allows us maintainers to quickly recreate the necessary conditions to inspect
 the bug and quickly find its root cause. It's a proven fact that issues with
 concise and small reproductions can be fixed much faster.
 
-[:material-bug: Create reproduction][Create reproduction]{ .md-button .md-button--primary }
+[:material-bug:&nbsp; Create a reproduction][Create reproduction]{ .md-button .md-button--primary }
 
 ---
 
@@ -263,8 +263,8 @@ automatically upload it to GitHub.
     Additionally, there are many non-technical users of Material for MkDocs that
     have trouble creating repositories.
 
-  [Create reproduction]: reproduction.md
-  [built-in info plugin]: reproduction.md#creating-a-zip-file
+  [Create reproduction]: ../guides/creating-a-reproduction.md
+  [built-in info plugin]: ../guides/creating-a-reproduction.md#creating-a-zip-file
 
 ### Steps to reproduce
 
