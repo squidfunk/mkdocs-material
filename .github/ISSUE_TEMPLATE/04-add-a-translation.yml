@@ -2,7 +2,7 @@ name: Add a translation
 description: Missing support for your language? Add a translation
 title: Add translations for ...
 labels:
-  - enhancement
+  - change request
 body:
 
   - type: markdown
@@ -71,7 +71,7 @@ body:
         Please ensure that your translation fulfills the following
         requirements.
       options:
-        - label: I've checked that the language is not included in the list of [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language).
+        - label: I've checked the list of [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language) for existing translations.
           required: true
         - label: I assure that the translations are accurate to my best knowledge.
           required: true
