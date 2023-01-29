@@ -2,8 +2,8 @@ name: Report a docs issue
 description: Missing information in our docs? Create a documentation issue
 labels:
   - documentation
-
 body:
+
   - type: textarea
     id: description
     attributes:

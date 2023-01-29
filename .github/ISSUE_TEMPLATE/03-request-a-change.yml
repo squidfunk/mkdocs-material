@@ -1,5 +1,7 @@
 name: Request a change
 description: Want to submit an idea? Propose a change or feature request
+labels:
+  - needs investigation
 body:
 
   - type: textarea
@@ -19,7 +21,8 @@ body:
       description: >-
         Please provide a detailed description of your idea in 2-3 sentences, so
         that we maintainers can fully understand what change, feature, or
-        improvement you are proposing.
+        improvement you are proposing. Don't yet explain the benefits of your
+        idea, we'll come to that. Focus on functionality.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#description)
     validations:
       required: true
@@ -29,13 +32,13 @@ body:
     attributes:
       label: Related links
       description: >-
-        Please list all links to [issues](https://github.com/squidfunk/mkdocs-material/issues),
+        Please list all links to open and closed [issues](https://github.com/squidfunk/mkdocs-material/issues),
         [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
         or to [documentation sections](https://squidfunk.github.io/mkdocs-material)
         that are relevant to your idea.
         If you discussed your idea with the community on our
-        [discussion board](https://github.com/squidfunk/mkdocs-material/discussions),
-        please link it here as well.
+        [discussion board](https://github.com/squidfunk/mkdocs-material/discussions)
+        prior to creating this change request, please link the discussion here as well.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#related-links)
       value: |-
         - [Requesting a change](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/)
@@ -48,8 +51,10 @@ body:
     attributes:
       label: Use Cases
       description: >-
-        Please explain how your idea will be used by yourself and the community,
-        as well as the benefits it brings.
+        Please explain how your idea will work from an author's and user's
+        perspective. Elaborate how the change would positively impact not only
+        you, but the community, and how it aligns with the goals and [philopsophy](https://squidfunk.github.io/mkdocs-material/philosophy/)
+        of the project.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#use-cases)
     validations:
       required: true
@@ -62,7 +67,7 @@ body:
         This field is optional. You may provide sketches, screenshots, mockups,
         or external assets to illustrate your idea. If you have seen this change,
         feature, or improvement used in other static site generators or themes,
-        please describe how it was used and incorporated.
+        please describe how it is implemented and advertised.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#visuals)
       placeholder: |-
         Drag and drop images here or link external assets.

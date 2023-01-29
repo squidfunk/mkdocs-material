@@ -1,6 +1,9 @@
-name: Translate
+name: Add a translation
 description: Add localization for a new language
 title: 'New language: {replace with language name}'
+labels:
+  - enhancement
+
 body:
   - type: checkboxes
     attributes:
