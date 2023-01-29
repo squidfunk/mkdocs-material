@@ -11,11 +11,9 @@ body:
         you want to report, helping us to understand what you are working on and
         what you are trying to achieve. If the context is not relevant, you can
         leave this field empty. [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#context)
-    validations:
-      required: false
 
   - type: textarea
-    id: bug-description
+    id: description
     attributes:
       label: Bug description
       description: >-

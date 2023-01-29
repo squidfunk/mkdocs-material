@@ -68,6 +68,7 @@ body:
         Drag and drop images here or link external assets.
 
   - type: checkboxes
+    id: checklist
     attributes:
       label: Before submitting
       description:
