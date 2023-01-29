@@ -20,6 +20,6 @@
 
 blank_issues_enabled: false
 contact_links:
-  - name: Question
+  - name: Ask a question
     url: https://github.com/squidfunk/mkdocs-material/discussions
-    about: Please ask your question here
+    about: Have a question or need help? Ask your question on our discussion board
