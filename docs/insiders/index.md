@@ -304,14 +304,18 @@ are released for general availability.
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
-- [ ] [Instant previews]
-- [ ] more to be announced
+- [ ] Privacy plugin: optimization support
+- [ ] Code block line wrapping
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
   [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+
+#### $ 24,000 – Blockpaprika
+
+- [ ] [Instant previews]
 
 ### Goals completed
 
