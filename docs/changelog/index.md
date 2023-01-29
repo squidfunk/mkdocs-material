@@ -2,6 +2,17 @@
 
 ## Material for MkDocs
 
+### 9.0.8 <small>January 29, 2023</small> { id="9.0.8" }
+
+- Updated Croatian translations
+- Updated French translations
+- Updated Hungarian translations
+- Updated Portuguese (Brasilian) translations
+- Updated Spanish translations
+- Updated Ukrainian translations
+- Updated Urdu translations
+- Updated Vietnamese translations
+
 ### 9.0.7 <small>January 28, 2023</small> { id="9.0.7" }
 
 - Improved accessibility of sidebar navigation
