@@ -7,7 +7,7 @@ body:
 
   - type: markdown
     attributes:
-      value: >
+      value: >-
         **Important**: Before creating a new translation, please make sure that
         Material for MkDocs does not already include support for your language.
         Please check the list of all [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language).
@@ -61,3 +61,16 @@ body:
       render: Jinja
     validations:
       required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before submitting
+      description: >-
+        Please ensure that your translation fulfills the following
+        requirements.
+      options:
+        - label: I've checked that the language is not included in the list of [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language).
+          required: true
+        - label: I assure that the translations are accurate to my best knowledge.
+          required: true
