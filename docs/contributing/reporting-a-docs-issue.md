@@ -35,7 +35,7 @@ the issue tracker.
 
 | <!-- --> | Example  |
 | -------- | -------- | 
-| :material-check:{ style="color: #4DB6AC" } __Clear__ | Clarify how to set up social cards on Windows
+| :material-check:{ style="color: #4DB6AC" } __Clear__ | Clarify social cards setup on Windows
 | :material-close:{ style="color: #EF5350" } __Unclear__ | Missing information in the docs
 | :material-close:{ style="color: #EF5350" } __Generic__ | Please help
 
