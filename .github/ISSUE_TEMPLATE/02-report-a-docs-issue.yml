@@ -9,10 +9,11 @@ body:
     attributes:
       label: Description
       description: >-
-        Please describe the inconsistency or issue you have found in the
-        [Material for MkDocs documentation](https://squidfunk.github.io/mkdocs-material)
+        Please describe the inconsistency or issue you have found in
+        [our documentation](https://squidfunk.github.io/mkdocs-material)
         or indicate where you feel there is a need for improvement. Furthermore,
-        explain the severity of the issue.
+        explain the severity of the issue, i.e., it's impact on you and potentially
+        other users.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#description)
     validations:
       required: true
@@ -22,9 +23,12 @@ body:
     attributes:
       label: Related links
       description: >-
-        Please link the specific sections of [our documentation](https://squidfunk.github.io/mkdocs-material)
-        you described above. If applicable, add screenshots of this specific
-        section.
+        Please list all links to the sections of [our documentation](https://squidfunk.github.io/mkdocs-material)
+        that are impacted by the issue you described above. If applicable,
+        add screenshots. Additionally, list links to possibly related open
+        and closed [issues](https://github.com/squidfunk/mkdocs-material/issues)
+        or [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
+        you encountered when searching our issue tracker.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#related-links)
       value: |-
         - [Reporting a docs issue](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/)
