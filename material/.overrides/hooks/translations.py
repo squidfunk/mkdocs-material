@@ -51,7 +51,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
             # Map names and available translations
             names[code] = name
             known[code] = dict(re.findall(
-                r"^  \"([^\"]+)\": \"([^\"]+)\"(?:,|$)?", data,
+                r"^  \"([^\"]+)\": \"([^\"]*)\"(?:,|$)?", data,
                 re.MULTILINE
             ))
 
