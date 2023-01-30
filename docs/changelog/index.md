@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.0.9 <small>January 30, 2023</small> { id="9.0.9" }
+
+- Updated Bulgarian translations
+- Updated Chinese (Simplified) translations
+- Updated Dutch translations
+- Updated Hindi translations
+- Updated Japanese translations
+- Updated Polish translations
+
 ### 9.0.8 <small>January 29, 2023</small> { id="9.0.8" }
 
 - Updated Croatian translations
