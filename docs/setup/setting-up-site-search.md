@@ -61,7 +61,7 @@ The following configuration options are supported:
             general JavaScript payload by around 20kb (before `gzip`) and by
             another 15-30kb per language.
 
-    The following languages are supported:
+    The following languages are supported by [lunr-languages]:
 
     <div class="mdx-columns" markdown>
 
