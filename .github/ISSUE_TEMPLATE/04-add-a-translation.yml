@@ -75,3 +75,7 @@ body:
           required: true
         - label: I assure that the translations are accurate to my best knowledge.
           required: true
+        - label: >-
+            __Optional__: I want to integrate this translation myself and create a
+            pull request following the [contribution guide](https://github.com/squidfunk/mkdocs-material/blob/master/CONTRIBUTING.md).
+
