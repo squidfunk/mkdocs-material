@@ -107,7 +107,7 @@ Make sure that this matches the [default version].
 ## Usage
 
 While this section outlines the basic workflow for publishing new versions, 
-it's best to check out [mike's documentation][mike] to make yourself familar
+it's best to check out [mike's documentation][mike] to make yourself familiar
 with its mechanics.
 
 ### Publishing a new version
