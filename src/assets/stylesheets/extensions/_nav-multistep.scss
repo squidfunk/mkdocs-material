@@ -1,0 +1,105 @@
+@import "../config";
+
+.nav-multistep {
+  ol {
+    display: flex;
+    margin: 2rem 0 1rem;
+
+    li {
+      background: $codacy-neutral-800;
+      display: flex;
+      flex: 0 0 33%;
+      height: 3rem;
+      margin: 0;
+      position:relative;
+
+      a {
+        align-items: center;
+        display: flex;
+        padding: 0 1rem;
+        width: 100%;
+        color: white;
+      }
+
+      &.nav-multistep__step--active {
+        background: $codacy-neutral-600;
+
+        a {
+          font-weight: bold;
+        }
+
+        &:first-child,
+        &:nth-child(2) {
+          &::after {
+            border-left-color: $codacy-neutral-600;
+          }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          &::before {
+            border-bottom-color: $codacy-neutral-600;
+            border-top-color: $codacy-neutral-600;
+          }
+        }
+      }
+
+      &:hover {
+        background: $codacy-neutral-700;
+
+        a {
+          color: $codacy-neutral-300;
+        }
+
+        &:first-child,
+        &:nth-child(2) {
+          &::after {
+            border-left-color: $codacy-neutral-700;
+          }
+        }
+
+        &:nth-child(2),
+        &:nth-child(3) {
+          &::before {
+            border-bottom-color: $codacy-neutral-700;
+            border-top-color: $codacy-neutral-700;
+          }
+        }
+      }
+
+      &:first-child,
+      &:nth-child(2) {
+        &::after {
+          border-bottom: 1.5rem solid transparent;
+          border-left: 1rem solid $codacy-neutral-800;
+          border-top: 1.5rem solid transparent;
+          content: '';
+          display: block;
+          position: absolute;
+          right: -1rem;
+          z-index: 10;
+        }
+      }
+
+      &:nth-child(2),
+      &:nth-child(3) {
+        margin-left: 0.25rem;
+
+        a {
+          padding-left: 2rem;
+        }
+
+        &::before {
+          background: white;
+          border-bottom: 1.5rem solid $codacy-neutral-800;
+          border-left: 1rem solid white;
+          border-top: 1.5rem solid $codacy-neutral-800;
+          content: '';
+          display: block;
+          left: 0;
+          position: absolute;
+        }
+      }
+    }
+  }
+}
