@@ -143,7 +143,7 @@ export function setupVersionSelector(
         )
       )
     )
-      .subscribe(url => setLocation(url))
+    .subscribe(url => setLocation(url))
 
   /* Render version selector and warning */
   combineLatest([versions$, current$])
@@ -159,8 +159,14 @@ export function setupVersionSelector(
       /* Check if version state was already determined */
       let outdated = __md_get("__outdated", sessionStorage)
       if (outdated === null) {
-        const latest = config.version?.default || "latest"
-        outdated = !current.aliases.includes(latest)
+        const ignoredAliasesConfig = config.version?.default || ["latest"]
+        const ignoredAliases = Array.isArray(ignoredAliasesConfig) ? ignoredAliasesConfig : [ignoredAliasesConfig]
+        outdated = true
+        for (const alias of current.aliases) {
+          if (ignoredAliases.includes(alias)) {
+            outdated = false
+          }
+        }
 
         /* Persist version state in session storage */
         __md_set("__outdated", outdated, sessionStorage)
