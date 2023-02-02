@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.0.10 <small>February 2, 2023</small> { id="9.0.10" }
+
+- Updated Arabic translations
+- Updated Korean translations
+- Updated Hungarian translations
+- Updated Russian translations
+- Fixed #4977: Improved accessibility for content tabs
+- Fixed #4960: Sometimes anchor following doesn't bring last item into view
+
 ### 9.0.9 <small>January 30, 2023</small> { id="9.0.9" }
 
 - Updated Bulgarian translations

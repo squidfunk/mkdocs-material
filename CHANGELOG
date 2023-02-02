@@ -1,3 +1,12 @@
+mkdocs-material-9.0.10 (2023-02-02)
+
+  * Updated Arabic translations
+  * Updated Korean translations
+  * Updated Hungarian translations
+  * Updated Russian translations
+  * Fixed #4977: Improved accessibility for content tabs
+  * Fixed #4960: Sometimes anchor following doesn't bring last item into view
+
 mkdocs-material-9.0.9 (2023-01-30)
 
   * Updated Bulgarian translations
