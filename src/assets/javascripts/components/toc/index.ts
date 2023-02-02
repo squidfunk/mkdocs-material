@@ -23,6 +23,7 @@
 import {
   Observable,
   Subject,
+  asyncScheduler,
   bufferCount,
   combineLatestWith,
   debounceTime,
@@ -35,6 +36,7 @@ import {
   ignoreElements,
   map,
   merge,
+  observeOn,
   of,
   repeat,
   scan,
@@ -64,6 +66,7 @@ import {
   getComponentElement
 } from "../_"
 import { Header } from "../header"
+import { Main } from "../main"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -95,6 +98,7 @@ interface WatchOptions {
 interface MountOptions {
   viewport$: Observable<Viewport>      /* Viewport observable */
   header$: Observable<Header>          /* Header observable */
+  main$: Observable<Main>              /* Main area observable */
   target$: Observable<HTMLElement>     /* Location target observable */
 }
 
@@ -275,7 +279,7 @@ export function watchTableOfContents(
  * @returns Table of contents component observable
  */
 export function mountTableOfContents(
-  el: HTMLElement, { viewport$, header$, target$ }: MountOptions
+  el: HTMLElement, { viewport$, header$, main$, target$ }: MountOptions
 ): Observable<Component<TableOfContents>> {
   return defer(() => {
     const push$ = new Subject<TableOfContents>()
@@ -307,13 +311,14 @@ export function mountTableOfContents(
         viewport$.pipe(debounceTime(250), map(() => "smooth" as const))
       )
 
-      /* Bring active anchor into view */
+      /* Bring active anchor into view */ // @todo: refactor
       push$
         .pipe(
           filter(({ prev }) => prev.length > 0),
+          combineLatestWith(main$.pipe(observeOn(asyncScheduler))),
           withLatestFrom(smooth$)
         )
-          .subscribe(([{ prev }, behavior]) => {
+          .subscribe(([[{ prev }], behavior]) => {
             const [anchor] = prev[prev.length - 1]
             if (anchor.offsetHeight) {
 

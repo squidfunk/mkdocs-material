@@ -273,7 +273,9 @@ const content$ = defer(() => merge(
 
   /* Table of contents */
   ...getComponentElements("toc")
-    .map(el => mountTableOfContents(el, { viewport$, header$, target$ })),
+    .map(el => mountTableOfContents(el, {
+      viewport$, header$, main$, target$
+    })),
 
   /* Back-to-top button */
   ...getComponentElements("top")
