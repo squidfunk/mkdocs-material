@@ -50,7 +50,7 @@ export function renderTabbedControl(
   const classes = `tabbed-control tabbed-control--${type}`
   return (
     <div class={classes} hidden>
-      <button class="tabbed-button" tabIndex={-1}></button>
+      <button class="tabbed-button" tabIndex={-1} aria-hidden="true"></button>
     </div>
   )
 }
