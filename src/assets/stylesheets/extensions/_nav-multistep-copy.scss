@@ -1,0 +1,173 @@
+@import "../config";
+
+.nav-multistep {
+  margin-top: 2rem;
+
+  ol {
+    display: flex;
+    margin-left: 0;
+    margin-bottom: 1rem;
+
+    li {
+      position:relative;
+      margin: 0;
+      list-style-type: none;
+      background: $codacy-neutral-800;
+      line-height: 1.25;
+
+      a,
+      p {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 0 1rem;
+        color: #FFFFFF;
+      }
+
+      &.nav-multistep__step--active {
+        background: $codacy-neutral-300;
+
+        p {
+          font-weight: 700;
+          color: $codacy-neutral-800;
+        }
+      }
+
+      &:not(.nav-multistep__step--active):hover {
+        background: $codacy-neutral-700;
+      }
+    }
+  }
+}
+
+@include break-to-device(mobile landscape) {
+  .nav-multistep {
+    ol {
+      flex-direction: column;
+
+      li {
+        margin-bottom: 0.125rem;
+
+        a,
+        p {
+          padding: 0.5rem 1rem;
+          margin: 0;
+        }
+
+        &::after {
+          border-top: 0.375rem solid #FFFFFF;
+          border-right: 0.375rem solid transparent;
+          border-left: 0.375rem solid transparent;
+          position: absolute;
+          display: block;
+          content: "";
+          bottom: -0.5rem;
+          left: 1.5rem;
+          z-index: 1;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+
+          &::after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include break-from-device(tablet portrait) {
+  .nav-multistep {
+    ol {
+      li {
+        display: flex;
+        flex: 0 0 33%;
+        height: 3rem;
+        margin-left: 0.125rem;
+
+        a,
+        p {
+          padding-left: 2rem;
+        }
+
+        &.nav-multistep__step--active {
+          &::before {
+            border-top-color: $codacy-neutral-300 !important;
+            border-bottom-color: $codacy-neutral-300 !important;
+          }
+
+          &::after {
+            border-left-color: $codacy-neutral-300 !important;
+          }
+
+          &:last-child {
+            &::after {
+              border-left-color: transparent !important;
+            }
+          }
+
+          &:first-child {
+            &::before {
+              border-top-color: transparent !important;
+              border-bottom-color: transparent !important;
+            }
+          }
+        }
+
+        &:hover {
+          &::before {
+            border-top-color: $codacy-neutral-700;
+            border-bottom-color: $codacy-neutral-700;
+          }
+
+          &::after {
+            border-left-color: $codacy-neutral-700;
+          }
+        }
+
+        &::before {
+          background: #FFFFFF;
+          border-bottom: 1.5rem solid $codacy-neutral-800;
+          border-top: 1.5rem solid $codacy-neutral-800;
+          border-left: 1rem solid #FFFFFF;
+          content: "";
+          left: 0;
+          display: block;
+          position: absolute;
+        }
+
+        &::after {
+          border-bottom: 1.5rem solid transparent;
+          border-top: 1.5rem solid transparent;
+          border-left: 1rem solid $codacy-neutral-800;
+          display: block;
+          content: "";
+          position: absolute;
+          right: -1rem;
+          z-index: 1;
+        }
+
+        &:last-child {
+          &::after {
+            display: none !important;
+          }
+        }
+
+        &:first-child {
+          margin-left: 0;
+
+          a,
+          p {
+            padding-left: 1rem;
+          }
+
+          &::before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
