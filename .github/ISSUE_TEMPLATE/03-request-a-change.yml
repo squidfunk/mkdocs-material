@@ -1,7 +1,5 @@
 name: Request a change
 description: Want to submit an idea? Propose a change or feature request
-labels:
-  - needs investigation
 body:
 
   - type: textarea
