@@ -1,3 +1,7 @@
+mkdocs-material-9.0.11 (2023-02-03)
+
+  * Added Mastodon verification for social links (rel=me)
+
 mkdocs-material-9.0.10 (2023-02-02)
 
   * Updated Arabic translations

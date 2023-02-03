@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.0.11 <small>February 3, 2023</small> { id="9.0.11" }
+
+- Added Mastodon verification for social links (rel=me)
+
 ### 9.0.10 <small>February 2, 2023</small> { id="9.0.10" }
 
 - Updated Arabic translations
