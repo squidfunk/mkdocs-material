@@ -51,6 +51,12 @@
     color: #00acee;
   }
 
+  // Mastodon icon - it's not the exact brand color, because that doesn't work
+  // well on dark backgrounds, so we lightened it up a bit.
+  .mastodon {
+    color: #897ff8;
+  }
+
   // Insiders video
   .mdx-video {
     width: auto;
