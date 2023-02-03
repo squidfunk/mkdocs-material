@@ -2,7 +2,7 @@
 
 The footer of your project documentation is a great place to add links to
 websites or platforms you or your company are using as additional marketing 
-channels, e.g. :fontawesome-brands-twitter:{ style="color: #1DA1F2" } or
+channels, e.g. :fontawesome-brands-mastodon:{ style="color: #5A4CE0" } or
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }, which you can easily
 configure via `mkdocs.yml`.
 
@@ -36,15 +36,15 @@ with:
 ``` yaml
 extra:
   social:
-    - icon: fontawesome/brands/twitter # (1)!
-      link: https://twitter.com/squidfunk
+    - icon: fontawesome/brands/mastodon # (1)!
+      link: https://fosstodon.org/@squidfunk
 ```
 
 1.  Enter a few keywords to find the perfect icon using our [icon search] and
     click on the shortcode to copy it to your clipboard:
 
     <div class="mdx-iconsearch" data-mdx-component="iconsearch">
-      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brands twitter" />
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="mastodon" />
       <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
         <div class="mdx-iconsearch-result__meta"></div>
         <ol class="mdx-iconsearch-result__list"></ol>
@@ -59,16 +59,17 @@ The following properties are available for each link:
     This property must contain a valid path to any icon bundled with the theme,
     or the build will not succeed. Some popular choices:
 
+    * :fontawesome-brands-mastodon: – `fontawesome/brands/mastodon`
+      <small>automatically adds [`rel=me`][rel=me]</small>
+    * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
+    * :fontawesome-brands-github: – `fontawesome/brands/github`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
     * :fontawesome-brands-facebook: – `fontawesome/brands/facebook`
-    * :fontawesome-brands-github: – `fontawesome/brands/github`
+    * :fontawesome-brands-medium: – `fontawesome/brands/medium`
     * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
-    * :fontawesome-brands-medium: – `fontawesome/brands/medium`
     * :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
-    * :fontawesome-brands-product-hunt: – `fontawesome/brands/product-hunt`
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
-    * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
 
 [`link`](#+social.link){ #+social.link }
 
@@ -76,13 +77,13 @@ The following properties are available for each link:
     This property must be set to a relative or absolute URL including the URI 
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
-    === ":fontawesome-brands-twitter: Twitter"
+    === ":fontawesome-brands-mastodon: Mastodon"
 
         ``` yaml
         extra:
           social:
-            - icon: fontawesome/brands/twitter
-              link: https://twitter.com/squidfunk
+            - icon: fontawesome/brands/mastodon
+              link: https://fosstodon.org/@squidfunk
         ```
 
     === ":octicons-mail-16: Email"
@@ -103,13 +104,14 @@ The following properties are available for each link:
     ``` yaml
     extra:
       social:
-        - icon: fontawesome/brands/twitter
-          link: https://twitter.com/squidfunk
-          name: squidfunk on Twitter
+        - icon: fontawesome/brands/mastodon
+          link: https://fosstodon.org/@squidfunk
+          name: squidfunk on Fosstodon
     ```
 
   [icon search]: ../reference/icons-emojis.md#search
   [Social links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
+  [rel=me]: https://docs.joinmastodon.org/user/profile/#verification
 
 ### Copyright notice
 
