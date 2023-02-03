@@ -169,7 +169,6 @@ You can cancel your sponsorship anytime.[^5]
 [![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
-[![Account technologies]](https://www.accounttechnologies.com/){ target=_blank title="Account technologies" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
 [![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
