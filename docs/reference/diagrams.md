@@ -38,8 +38,8 @@ No further configuration is necessary. Advantages over a custom integration:
   [^1]:
     While all [Mermaid.js] features should work out-of-the-box, Material for
     MkDocs will currently only adjust the fonts and colors for flowcharts,
-    sequence diagrams, class diagams, state diagrams and entity relationship 
-    diagrams. See the section on [other diagrams] for more informaton why this
+    sequence diagrams, class diagrams, state diagrams and entity relationship 
+    diagrams. See the section on [other diagrams] for more information why this
     is currently not implemented for all diagrams.
 
   [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0

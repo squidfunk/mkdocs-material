@@ -331,7 +331,7 @@ The following configuration options are available for external links:
 
 The [built-in privacy plugin] scans the resulting HTML for links to external
 resources, including external scripts, style sheets, images and web fonts, and
-downloads them to bundle them with your documentation site. Every URL refering
+downloads them to bundle them with your documentation site. Every URL referring
 to an external resource, no matter if part of a template or Markdown file, is
 then replaced with the URL to the local copy. An example:
 

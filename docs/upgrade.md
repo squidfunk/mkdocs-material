@@ -112,7 +112,7 @@ changes into your templates. A good starting point is to [inspect the diff].
 - Removed deprecated prebuilt search index support
 - Removed deprecated web app manifest – use customization
 - Removed `extracopyright` variable – use new `copyright` partial
-- Removed Disqus integation – use customization
+- Removed Disqus integration – use customization
 - Switched to `:is()` selectors for simple selector lists
 - Switched autoprefixer from `last 4 years` to `last 2 years`
 - Improved CSS overall to match modern standards
