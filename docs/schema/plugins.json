@@ -4,7 +4,7 @@
   "markdownDescription": "https://www.mkdocs.org/dev-guide/plugins/",
   "type": "array",
   "items": {
-    "oneOf": [
+    "anyOf": [
       {
         "$ref": "#/definitions/built-in"
       },
@@ -21,7 +21,7 @@
   "definitions": {
     "built-in": {
       "description": "Built-in plugins",
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "plugins/blog.json"
         },
@@ -50,7 +50,7 @@
     },
     "external": {
       "description": "External plugins, schema provided by us",
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "plugins/external/gen-files.json"
         },
@@ -82,7 +82,7 @@
     },
     "external-community": {
       "description": "External plugins, schema provided by the community",
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"
         },

@@ -24,8 +24,7 @@
             "concurrency": {
               "title": "Concurrency (number of CPUs)",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#+privacy.concurrency",
-              "type": "number",
-              "default": 1
+              "type": "number"
             },
             "external_assets": {
               "title": "External assets",
