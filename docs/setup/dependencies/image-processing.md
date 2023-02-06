@@ -10,6 +10,12 @@ This section explains how to install them.
 
 ## Dependencies
 
+Install the Python dependencies for image processing with:
+
+```
+pip install pillow cairosvg
+```
+
 ### Cairo Graphics
 
 [Cairo Graphics] is a graphics library and dependency of [Pillow], which
