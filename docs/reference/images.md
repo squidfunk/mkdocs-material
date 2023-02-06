@@ -72,7 +72,7 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 
     <div class="result" markdown>
 
-    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -88,7 +88,7 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 
     <div class="result" markdown>
 
-    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -131,7 +131,7 @@ but it's always possible to use the [Markdown in HTML] extension with literal
 
 <div class="result">
   <figure>
-    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
     <figcaption>Image caption</figcaption>
   </figure>
 </div>
@@ -147,7 +147,7 @@ browsers without support:
 ```
 
 <div class="result" markdown>
-  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
 </div>
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
