@@ -1,3 +1,9 @@
+mkdocs-material-9.0.11+insiders-4.30.0 (2023-02-06)
+
+  * Rewrite of privacy plugin for concurrency, now twice as fast
+  * Added support for explicit inclusion for privacy plugin
+  * Added optimization support for privacy plugin (+ optimize plugin)
+
 mkdocs-material-9.0.11 (2023-02-03)
 
   * Added Mastodon verification for social links (rel=me)

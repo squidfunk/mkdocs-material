@@ -88,14 +88,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 22 additional features__ that you can start using right away, and
+access to 23 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
 - [x] [Optimize plugin] :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
 - [x] [Navigation path] (Breadcrumbs) :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
-- [x] [Typeset plugin] :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
+- [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation subtitles]
 - [x] [Tags plugin: allow list] + [custom sorting]
@@ -305,12 +306,13 @@ are released for general availability.
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
-- [ ] Privacy plugin: optimization support
+- [x] [Privacy plugin: optimization support]
 - [ ] Code block line wrapping
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
   [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
+  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.external_assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 

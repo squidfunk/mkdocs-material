@@ -7,7 +7,7 @@ within Markdown files.
 
 ## Configuration
 
-### Built-in <u>typeset</u> plugin :material-alert-decagram:{ .mdx-pulse title="Added on December 20, 2022" }
+### Built-in <u>typeset</u> plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.27.0][Insiders] ·

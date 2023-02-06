@@ -179,6 +179,19 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
+[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+
+:   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
+    how many CPUs the plugin is allowed to use when downloading external assets.
+    With more CPUs, the plugin can do more work in the same time, thus complete
+    its work faster. Concurrent processing can be disabled with:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          concurrency: 1
+    ```
+
   [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
 
@@ -220,6 +233,37 @@ The following configuration options are available for external assets:
     ```
 
     The path must be defined relative to [`docs_dir`][docs_dir].
+
+[`external_assets_include`](#+privacy.external_assets_include){ #+privacy.external_assets_include } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+
+:   :octicons-milestone-24: Default: _none_ – This option allows to only include
+    certain external assets for processing by the privacy plugin, so they will
+    be downloaded and bundled during the build:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          external_assets_include:
+            - unsplash.com/*
+    ```
+
+    !!! tip "Hosting images externally and optimizing them automatically"
+
+        This option makes the [built-in privacy plugin] an excellent choice for
+        when you want to host assets like images outside of your git repository
+        in another location to keep them fresh and your repository lean.
+
+        Additionally, as of [:octicons-tag-24: insiders-4.30.0][Insiders], the
+        built-in privacy plugin was entirely rewritten and now works perfectly
+        with the [built-in optimize plugin], which means that external assets
+        can be passed through the same optimization pipeline as the rest of your
+        documentation. This means you can store and edit unoptimized files
+        outside of your repository, and let both plugins built a highly
+        optimized site for you.
+
+        If you want to implement separate pipelines, i.e., optimize some images
+        differently from others or exclude some images from downloading, you can
+        use multiple instances of the [built-in privacy plugin].
 
 [`external_assets_exclude`](#+privacy.external_assets_exclude){ #+privacy.external_assets_exclude }
 
@@ -279,6 +323,7 @@ The following configuration options are available for external assets:
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [technical limitations]: #limitations
+  [built-in optimize plugin]: building-an-optimized-site.md#built-in-optimize-plugin
 
 #### External links :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
 

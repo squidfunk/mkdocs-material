@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.30.0 <small>February 6, 2023</small> { id="4.30.0" }
+
+- Rewrite of privacy plugin for concurrency, now twice as fast
+- Added support for explicit inclusion for privacy plugin
+- Added optimization support for privacy plugin (+ optimize plugin)
+
 ### 4.29.0 <small>January 21, 2023</small> { id="4.29.0" }
 
 - Added built-in optimize plugin for automatically compressing images
