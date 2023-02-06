@@ -336,13 +336,13 @@ The following configuration options are available for external links:
 [`external_links`](#+privacy.external_links){ #+privacy.external_links }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
-    plugin should automatically annotate external links. By default,
-    [`rel="noopener"`][noopener] is added to all links with `target="_blank"`:
+    plugin should parse and process external links. If you want to speed up
+    local builds, you can use an [environment variable]:
 
     ``` yaml
     plugins:
       - privacy:
-          external_links: true
+          external_links: !ENV [CI, false]
     ```
 
 [`external_links_attr_map`](#+privacy.external_links_attr_map){ #+privacy.external_links_attr_map }
