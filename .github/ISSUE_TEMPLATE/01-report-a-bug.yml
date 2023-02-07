@@ -115,5 +115,5 @@ body:
             before submitting this bug report.
           required: true
         - label: >-
-            I have attached a __.zip file__ with a [minimal reproduction](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/reproduction/).
+            I have attached a __.zip file__ with a [minimal reproduction](https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/).
           required: true
