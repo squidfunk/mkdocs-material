@@ -262,7 +262,14 @@ defs #statediagram-barbEnd {
  * Rules: entity-relationship diagrams
  * ------------------------------------------------------------------------- */
 
- /* Entity node */
+/* Attribute box */
+.attributeBoxEven,
+.attributeBoxOdd {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
+/* Entity node */
 .entityBox {
   fill: var(--md-mermaid-label-bg-color);
   stroke: var(--md-mermaid-node-fg-color);

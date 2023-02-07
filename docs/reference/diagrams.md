@@ -246,6 +246,10 @@ a specific domain of knowledge:
 erDiagram
   CUSTOMER ||--o{ ORDER : places
   ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 ````
@@ -256,6 +260,10 @@ erDiagram
 erDiagram
   CUSTOMER ||--o{ ORDER : places
   ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
