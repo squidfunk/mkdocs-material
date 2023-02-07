@@ -49,8 +49,8 @@ body:
       label: Reproduction
       description: >-
         Please create a __.zip file__ with a __minimal reproduction__ for the
-        bug. First, read our [reproduction guide](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/reproduction/)
-        that explains the necessary steps, then use the [built-in info plugin](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/reproduction/#creating-a-zip-file) (mandatory) to create a self-contained
+        bug. First, read our [reproduction guide](https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/)
+        that explains the necessary steps, then use the [built-in info plugin](https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/#creating-a-zip-file) (mandatory) to create a self-contained
         .zip file with the reproduction. We reserve the right to close issues
         without .zip files. [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#reproduction)
       placeholder: |-
