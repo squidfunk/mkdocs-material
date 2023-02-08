@@ -128,6 +128,11 @@ export function mountPalette(
           label.hidden = palette.index !== index
       }
 
+      /* Spread theme to giscus */
+      const giscusTheme = palette.color?.scheme === 'slate' ? 'dark' : 'light';
+      const giscusEl = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
+      giscusEl?.contentWindow?.postMessage({ giscus: { setConfig: { theme: giscusTheme } } }, 'https://giscus.app');
+
       /* Persist preference in local storage */
       __md_set("__palette", palette)
     })
