@@ -115,8 +115,17 @@ export function mountHeaderTitle(
 ): Observable<Component<HeaderTitle>> {
   return defer(() => {
     const push$ = new Subject<HeaderTitle>()
-    push$.subscribe(({ active }) => {
-      el.classList.toggle("md-header__title--active", active)
+    push$.subscribe({
+
+      /* Handle emission */
+      next({ active }) {
+        el.classList.toggle("md-header__title--active", active)
+      },
+
+      /* Handle complete */
+      complete() {
+        el.classList.remove("md-header__title--active")
+      }
     })
 
     /* Obtain headline, if any */
