@@ -1,3 +1,9 @@
+mkdocs-material-9.0.12 (2023-02-09)
+
+  * Updated Catalan translations
+  * Fixed #4975: Mermaid entity relationship rendering diagrams bug
+  * Fixed #4924: Header title not reset when using instant loading
+
 mkdocs-material-9.0.11+insiders-4.30.0 (2023-02-06)
 
   * Rewrite of privacy plugin for concurrency, now twice as fast

@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.0.12 <small>February 9, 2023</small> { id="9.0.12" }
+
+- Updated Catalan translations
+- Fixed #4975: Mermaid entity relationship rendering diagrams bug
+- Fixed #4924: Header title not reset when using instant loading
+
 ### 9.0.11 <small>February 3, 2023</small> { id="9.0.11" }
 
 - Added Mastodon verification for social links (`rel=me`)
