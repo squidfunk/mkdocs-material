@@ -170,9 +170,10 @@ export function setupInstantLoading(
   /* Intercept history back and forward */
   const pop$ = fromEvent<PopStateEvent>(window, "popstate")
     .pipe(
+      filter(ev => ev.state !== null),
       map(ev => ({
         url: new URL(location.href),
-        offset: ev.state ?? {}
+        offset: ev.state
       })),
       share<HistoryState>()
     )
