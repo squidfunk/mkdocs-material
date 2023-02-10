@@ -40,7 +40,10 @@ import {
   share,
   skip,
   skipUntil,
-  switchMap
+  switchMap,
+  tap,
+  observeOn,
+  asyncScheduler
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
@@ -117,7 +120,11 @@ export function setupInstantLoading(
 
   /* Disable automatic scroll restoration */
   if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual"
+    document$.pipe(observeOn(asyncScheduler))
+      .subscribe(() => {
+        history.scrollRestoration = "manual"
+      })
+    // @todo: safari scrollrestoration bug
 
     /* Hack: ensure that reloads restore viewport offset */
     fromEvent(window, "beforeunload")
@@ -131,190 +138,189 @@ export function setupInstantLoading(
   if (typeof favicon !== "undefined")
     favicon.href = favicon.href
 
-  /* Intercept internal navigation */
-  const push$ = fetchSitemap()
-    .pipe(
-      map(paths => paths.map(path => `${new URL(path, config.base)}`)),
-      switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
-        .pipe(
-          filter(ev => !ev.metaKey && !ev.ctrlKey),
-          switchMap(ev => {
-            if (ev.target instanceof Element) {
-              const el = ev.target.closest("a")
-              if (el && !el.target) {
-                const url = new URL(el.href)
+  // /* Intercept internal navigation */
+  // const push$ = fetchSitemap()
+  //   .pipe(
+  //     tap(x => console.log(x)),
+  //     map(paths => paths.map(path => `${new URL(path, config.base)}`)),
+  //     switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
+  //       .pipe(
+  //         filter(ev => !ev.metaKey && !ev.ctrlKey),
+  //         switchMap(ev => {
+  //           if (ev.target instanceof Element) {
+  //             const el = ev.target.closest("a")
+  //             if (el && !el.target) {
+  //               const url = new URL(el.href)
 
-                /* Canonicalize URL */
-                url.search = ""
-                url.hash = ""
+  //               /* Canonicalize URL */
+  //               url.search = ""
+  //               url.hash = ""
 
-                /* Check if URL should be intercepted */
-                if (
-                  url.pathname !== location.pathname &&
-                  urls.includes(url.toString())
-                ) {
-                  ev.preventDefault()
-                  return of({
-                    url: new URL(el.href)
-                  })
-                }
-              }
-            }
-            return NEVER
-          })
-        )
-      ),
-      share<HistoryState>()
-    )
+  //               /* Check if URL should be intercepted */
+  //               if (urls.includes(url.toString())) {
+  //                 ev.preventDefault()
+  //                 return of({ url: new URL(el.href) })
+  //               }
+  //             }
+  //           }
+  //           return NEVER
+  //         })
+  //       )
+  //     ),
+  //     share<HistoryState>()
+  //   )
 
-  /* Intercept history back and forward */
-  const pop$ = fromEvent<PopStateEvent>(window, "popstate")
-    .pipe(
-      map(ev => ({
-        url: new URL(location.href),
-        offset: ev.state ?? {}
-      })),
-      share<HistoryState>()
-    )
+  // push$.subscribe(({ url }) => {
+  //   console.log(url.toString())
+  // })
 
-  /* Emit location change */
-  merge(push$, pop$)
-    .pipe(
-      distinctUntilChanged((a, b) => a.url.href === b.url.href),
-      map(({ url }) => url)
-    )
-      .subscribe(location$)
+  // /* Intercept history back and forward */
+  // const pop$ = fromEvent<PopStateEvent>(window, "popstate")
+  //   .pipe(
+  //     map(ev => ({
+  //       url: new URL(location.href),
+  //       offset: ev.state ?? {}
+  //     })),
+  //     share<HistoryState>()
+  //   )
 
-  /* Fetch document via `XMLHTTPRequest` */
-  const response$ = location$
-    .pipe(
-      distinctUntilKeyChanged("pathname"),
-      switchMap(url => request(url.href)
-        .pipe(
-          catchError(() => {
-            setLocation(url)
-            return NEVER
-          })
-        )
-      ),
-      share()
-    )
+  // /* Emit location change */
+  // merge(push$, pop$)
+  //   .pipe(
+  //     distinctUntilChanged((a, b) => a.url.href === b.url.href),
+  //     map(({ url }) => url)
+  //   )
+  //     .subscribe(location$)
 
-  /* Set new location via `history.pushState` */
-  push$
-    .pipe(
-      sample(response$)
-    )
-      .subscribe(({ url }) => {
-        console.log("history.pushState")
-        history.pushState({}, "", `${url}`)
-      })
+  // /* Fetch document via `XMLHTTPRequest` */
+  // const response$ = location$
+  //   .pipe(
+  //     distinctUntilKeyChanged("pathname"),
+  //     switchMap(url => request(url.href)
+  //       .pipe(
+  //         catchError(() => {
+  //           setLocation(url)
+  //           return NEVER
+  //         })
+  //       )
+  //     ),
+  //     share()
+  //   )
 
-  /* Parse and emit fetched document */
-  const dom = new DOMParser()
-  response$
-    .pipe(
-      switchMap(res => res.text()),
-      map(res => dom.parseFromString(res, "text/html"))
-    )
-      .subscribe(document$)
+  // /* Set new location via `history.pushState` */
+  // push$
+  //   .pipe(
+  //     sample(response$)
+  //   )
+  //     .subscribe(({ url }) => {
+  //       history.pushState({}, "", `${url}`)
+  //     })
 
-  /* Replace meta tags and components */
-  document$
-    .pipe(
-      skip(1)
-    )
-      .subscribe(replacement => {
-        for (const selector of [
+  // /* Parse and emit fetched document */
+  // const dom = new DOMParser()
+  // response$
+  //   .pipe(
+  //     switchMap(res => res.text()),
+  //     map(res => dom.parseFromString(res, "text/html"))
+  //   )
+  //     .subscribe(document$)
 
-          /* Meta tags */
-          "title",
-          "link[rel=canonical]",
-          "meta[name=author]",
-          "meta[name=description]",
+  // /* Replace meta tags and components */
+  // document$
+  //   .pipe(
+  //     skip(1)
+  //   )
+  //     .subscribe(replacement => {
+  //       for (const selector of [
 
-          /* Components */
-          "[data-md-component=announce]",
-          "[data-md-component=container]",
-          "[data-md-component=header-topic]",
-          "[data-md-component=outdated]",
-          "[data-md-component=logo]",
-          "[data-md-component=skip]",
-          ...feature("navigation.tabs.sticky")
-            ? ["[data-md-component=tabs]"]
-            : []
-        ]) {
-          const source = getOptionalElement(selector)
-          const target = getOptionalElement(selector, replacement)
-          if (
-            typeof source !== "undefined" &&
-            typeof target !== "undefined"
-          ) {
-            source.replaceWith(target)
-          }
-        }
-      })
+  //         /* Meta tags */
+  //         "title",
+  //         "link[rel=canonical]",
+  //         "meta[name=author]",
+  //         "meta[name=description]",
 
-  /* Re-evaluate scripts */
-  document$
-    .pipe(
-      skip(1),
-      map(() => getComponentElement("container")),
-      switchMap(el => getElements("script", el)),
-      concatMap(el => {
-        const script = h("script")
-        if (el.src) {
-          for (const name of el.getAttributeNames())
-            script.setAttribute(name, el.getAttribute(name)!)
-          el.replaceWith(script)
+  //         /* Components */
+  //         "[data-md-component=announce]",
+  //         "[data-md-component=container]",
+  //         "[data-md-component=header-topic]",
+  //         "[data-md-component=outdated]",
+  //         "[data-md-component=logo]",
+  //         "[data-md-component=skip]",
+  //         ...feature("navigation.tabs.sticky")
+  //           ? ["[data-md-component=tabs]"]
+  //           : []
+  //       ]) {
+  //         const source = getOptionalElement(selector)
+  //         const target = getOptionalElement(selector, replacement)
+  //         if (
+  //           typeof source !== "undefined" &&
+  //           typeof target !== "undefined"
+  //         ) {
+  //           source.replaceWith(target)
+  //         }
+  //       }
+  //     })
 
-          /* Complete when script is loaded */
-          return new Observable(observer => {
-            script.onload = () => observer.complete()
-          })
+  // /* Re-evaluate scripts */
+  // document$
+  //   .pipe(
+  //     skip(1),
+  //     map(() => getComponentElement("container")),
+  //     switchMap(el => getElements("script", el)),
+  //     concatMap(el => {
+  //       const script = h("script")
+  //       if (el.src) {
+  //         for (const name of el.getAttributeNames())
+  //           script.setAttribute(name, el.getAttribute(name)!)
+  //         el.replaceWith(script)
 
-        /* Complete immediately */
-        } else {
-          script.textContent = el.textContent
-          el.replaceWith(script)
-          return EMPTY
-        }
-      })
-    )
-      .subscribe()
+  //         /* Complete when script is loaded */
+  //         return new Observable(observer => {
+  //           script.onload = () => observer.complete()
+  //         })
 
-  /* Emit history state change */
-  merge(push$, pop$)
-    .pipe(
-      sample(document$)
-    )
-      .subscribe(({ url, offset }) => {
-        if (url.hash && !offset?.y) {
-          setLocationHash(url.hash)
-        } else {
-          window.scrollTo(0, offset?.y || 0)
-        }
-      })
+  //       /* Complete immediately */
+  //       } else {
+  //         script.textContent = el.textContent
+  //         el.replaceWith(script)
+  //         return EMPTY
+  //       }
+  //     })
+  //   )
+  //     .subscribe()
 
-  /* Debounce update of viewport offset */
-  viewport$
-    .pipe(
-      skipUntil(push$),
-      debounceTime(250),
-      distinctUntilKeyChanged("offset")
-    )
-      .subscribe(({ offset }) => {
-        history.replaceState(offset, "")
-      })
+  // /* Emit history state change */
+  // merge(push$, pop$)
+  //   .pipe(
+  //     sample(document$)
+  //   )
+  //     .subscribe(({ url, offset }) => {
+  //       if (url.hash && !offset?.y) {
+  //         setLocationHash(url.hash)
+  //       } else {
+  //         window.scrollTo(0, offset?.y || 0)
+  //       }
+  //     })
 
-  /* Set viewport offset from history */
-  merge(push$, pop$)
-    .pipe(
-      bufferCount(2, 1),
-      filter(([a, b]) => a.url.pathname === b.url.pathname),
-      map(([, state]) => state)
-    )
-      .subscribe(({ offset }) => {
-        window.scrollTo(0, offset?.y || 0)
-      })
+  // /* Debounce update of viewport offset */
+  // viewport$
+  //   .pipe(
+  //     skipUntil(push$),
+  //     debounceTime(250),
+  //     distinctUntilKeyChanged("offset")
+  //   )
+  //     .subscribe(({ offset }) => {
+  //       history.replaceState(offset, "")
+  //     })
+
+  // /* Set viewport offset from history */
+  // merge(push$, pop$)
+  //   .pipe(
+  //     bufferCount(2, 1),
+  //     filter(([a, b]) => a.url.pathname === b.url.pathname),
+  //     map(([, state]) => state)
+  //   )
+  //     .subscribe(({ offset }) => {
+  //       window.scrollTo(0, offset?.y || 0)
+  //     })
 }
