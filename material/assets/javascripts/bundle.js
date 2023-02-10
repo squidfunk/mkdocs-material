@@ -2249,14 +2249,14 @@
   // node_modules/rxjs/dist/esm5/internal/scheduler/animationFrameProvider.js
   var animationFrameProvider = {
     schedule: function(callback) {
-      var request3 = requestAnimationFrame;
+      var request2 = requestAnimationFrame;
       var cancel = cancelAnimationFrame;
       var delegate = animationFrameProvider.delegate;
       if (delegate) {
-        request3 = delegate.requestAnimationFrame;
+        request2 = delegate.requestAnimationFrame;
         cancel = delegate.cancelAnimationFrame;
       }
-      var handle = request3(function(timestamp) {
+      var handle = request2(function(timestamp) {
         cancel = void 0;
         callback(timestamp);
       });
@@ -6348,22 +6348,84 @@
     }
   }
 
+  // src/assets/javascripts/integrations/sitemap/index.ts
+  function preprocess(urls) {
+    if (urls.length < 2)
+      return [""];
+    const [root, next] = [...urls].sort((a, b) => a.length - b.length).map((url) => url.replace(/[^/]+$/, ""));
+    let index2 = 0;
+    if (root === next)
+      index2 = root.length;
+    else
+      while (root.charCodeAt(index2) === next.charCodeAt(index2))
+        index2++;
+    return urls.map((url) => url.replace(root.slice(0, index2), ""));
+  }
+  function fetchSitemap(base) {
+    const cached = __md_get("__sitemap", sessionStorage, base);
+    if (cached) {
+      return of(cached);
+    } else {
+      const config4 = configuration();
+      return requestXML(new URL("sitemap.xml", base || config4.base)).pipe(
+        map((sitemap) => preprocess(
+          getElements("loc", sitemap).map((node) => node.textContent)
+        )),
+        catchError(() => EMPTY),
+        // @todo refactor instant loading
+        defaultIfEmpty([]),
+        tap((sitemap) => __md_set("__sitemap", sitemap, sessionStorage, base))
+      );
+    }
+  }
+
   // src/assets/javascripts/integrations/instant/index.ts
   function setupInstantLoading({ document$: document$2, location$: location$2, viewport$: viewport$2 }) {
     const config4 = configuration();
     if (location.protocol === "file:")
       return;
+    const sitemap$ = fetchSitemap().pipe(
+      map((paths) => paths.map((path) => `${new URL(path, config4.base)}`))
+    );
+    const intercept$ = fromEvent(document.body, "click").pipe(
+      filter((ev) => !ev.metaKey && !ev.ctrlKey),
+      combineLatestWith(sitemap$),
+      switchMap(([ev, sitemap]) => {
+        if (!(ev.target instanceof Element))
+          return EMPTY;
+        const el = ev.target.closest("a");
+        if (!el || el.target)
+          return EMPTY;
+        const url = new URL(el.href);
+        url.search = "";
+        url.hash = "";
+        if (!sitemap.includes(url.toString()))
+          return EMPTY;
+        ev.preventDefault();
+        return of({ url: new URL(el.href) });
+      }),
+      share()
+    );
+    intercept$.pipe(
+      map(({ url }) => url),
+      startWith(getLocation()),
+      distinctUntilKeyChanged("pathname")
+    ).subscribe(location$2);
+    const response$ = location$2.pipe(
+      switchMap(
+        (url) => request(url.href).pipe(
+          catchError(() => {
+            setLocation(url);
+            return EMPTY;
+          })
+        )
+      ),
+      share()
+    );
+    document$2.subscribe(console.log);
+    response$.subscribe(console.log);
     if ("scrollRestoration" in history) {
-      document$2.pipe(observeOn(asyncScheduler)).subscribe(() => {
-        history.scrollRestoration = "manual";
-      });
-      fromEvent(window, "beforeunload").subscribe(() => {
-        history.scrollRestoration = "auto";
-      });
     }
-    const favicon = getOptionalElement("link[rel=icon]");
-    if (typeof favicon !== "undefined")
-      favicon.href = favicon.href;
   }
 
   // src/assets/javascripts/integrations/search/highlighter/index.ts
@@ -6412,37 +6474,6 @@
       }
     }));
     return worker$;
-  }
-
-  // src/assets/javascripts/integrations/sitemap/index.ts
-  function preprocess(urls) {
-    if (urls.length < 2)
-      return [""];
-    const [root, next] = [...urls].sort((a, b) => a.length - b.length).map((url) => url.replace(/[^/]+$/, ""));
-    let index2 = 0;
-    if (root === next)
-      index2 = root.length;
-    else
-      while (root.charCodeAt(index2) === next.charCodeAt(index2))
-        index2++;
-    return urls.map((url) => url.replace(root.slice(0, index2), ""));
-  }
-  function fetchSitemap(base) {
-    const cached = __md_get("__sitemap", sessionStorage, base);
-    if (cached) {
-      return of(cached);
-    } else {
-      const config4 = configuration();
-      return requestXML(new URL("sitemap.xml", base || config4.base)).pipe(
-        map((sitemap) => preprocess(
-          getElements("loc", sitemap).map((node) => node.textContent)
-        )),
-        catchError(() => EMPTY),
-        // @todo refactor instant loading
-        defaultIfEmpty([]),
-        tap((sitemap) => __md_set("__sitemap", sitemap, sessionStorage, base))
-      );
-    }
   }
 
   // src/assets/javascripts/integrations/version/index.ts

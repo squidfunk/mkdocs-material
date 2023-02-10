@@ -43,7 +43,11 @@ import {
   switchMap,
   tap,
   observeOn,
-  asyncScheduler
+  asyncScheduler,
+  asapScheduler,
+  combineLatestWith,
+  combineLatest,
+  startWith
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
@@ -54,7 +58,8 @@ import {
   getOptionalElement,
   request,
   setLocation,
-  setLocationHash
+  setLocationHash,
+  getLocation
 } from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
@@ -118,68 +123,100 @@ export function setupInstantLoading(
   if (location.protocol === "file:")
     return
 
+  /* Use sitemap to detect internal navigation */
+  const sitemap$ = fetchSitemap()
+    .pipe(
+      map(paths => paths.map(path => `${new URL(path, config.base)}`)),
+    )
+
+  /* Intercept internal navigation */
+  const intercept$ = fromEvent<MouseEvent>(document.body, "click")
+    .pipe(
+      filter(ev => !ev.metaKey && !ev.ctrlKey),
+      combineLatestWith(sitemap$),
+      switchMap(([ev, sitemap]) => {
+
+        /* Skip, as target is not an element */
+        if (!(ev.target instanceof Element))
+          return EMPTY
+
+        /* Skip, as target is not within a link or opens in new window */
+        const el = ev.target.closest("a")
+        if (!el || el.target)
+          return EMPTY
+
+        /* Canonicalize URL for comparison */
+        const url = new URL(el.href)
+        url.search = ""
+        url.hash = ""
+
+        /* Skip, as URL should not be intercepted */
+        if (!sitemap.includes(url.toString()))
+          return EMPTY
+
+        /* Return intercepted URL */
+        ev.preventDefault()
+        return of({ url: new URL(el.href) })
+      }),
+      share<HistoryState>()
+    )
+
+  /* Change location if  */
+  intercept$ // merge(push$, pop$)
+    .pipe(
+      map(({ url }) => url),
+      startWith(getLocation()),
+      distinctUntilKeyChanged("pathname")
+    )
+      .subscribe(location$)
+
+  /* Fetch document via `XMLHTTPRequest` */
+  const response$ = location$
+    .pipe(
+      switchMap(url => request(url.href)
+        .pipe(
+          catchError(() => {
+            setLocation(url)
+            return EMPTY
+          })
+        )
+      ),
+      share()
+    )
+
+  document$.subscribe(console.log)
+  response$.subscribe(console.log)
+
   /* Disable automatic scroll restoration */
   if ("scrollRestoration" in history) {
-    document$.pipe(observeOn(asyncScheduler))
-      .subscribe(() => {
-        history.scrollRestoration = "manual"
-      })
+    // document$.pipe(observeOn(asapScheduler))
+    //   .subscribe(() => {
+    //     history.scrollRestoration = "manual"
+    //   })
     // @todo: safari scrollrestoration bug
+    // fromEvent(window, "load")
+    //   .subscribe(() => {
+    //     history.scrollRestoration = "manual"
+    //   })
 
-    /* Hack: ensure that reloads restore viewport offset */
-    fromEvent(window, "beforeunload")
-      .subscribe(() => {
-        history.scrollRestoration = "auto"
-      })
+    // /* Hack: ensure that reloads restore viewport offset */
+    // fromEvent(window, "beforeunload")
+    //   .subscribe(() => {
+    //     history.scrollRestoration = "auto"
+    //   })
   }
 
-  /* Hack: ensure absolute favicon link to omit 404s when switching */
-  const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
-  if (typeof favicon !== "undefined")
-    favicon.href = favicon.href
-
-  // /* Intercept internal navigation */
-  // const push$ = fetchSitemap()
-  //   .pipe(
-  //     tap(x => console.log(x)),
-  //     map(paths => paths.map(path => `${new URL(path, config.base)}`)),
-  //     switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
-  //       .pipe(
-  //         filter(ev => !ev.metaKey && !ev.ctrlKey),
-  //         switchMap(ev => {
-  //           if (ev.target instanceof Element) {
-  //             const el = ev.target.closest("a")
-  //             if (el && !el.target) {
-  //               const url = new URL(el.href)
-
-  //               /* Canonicalize URL */
-  //               url.search = ""
-  //               url.hash = ""
-
-  //               /* Check if URL should be intercepted */
-  //               if (urls.includes(url.toString())) {
-  //                 ev.preventDefault()
-  //                 return of({ url: new URL(el.href) })
-  //               }
-  //             }
-  //           }
-  //           return NEVER
-  //         })
-  //       )
-  //     ),
-  //     share<HistoryState>()
-  //   )
-
-  // push$.subscribe(({ url }) => {
-  //   console.log(url.toString())
-  // })
+  // /* Hack: ensure absolute favicon link to omit 404s when switching */
+  // const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
+  // if (typeof favicon !== "undefined")
+  //   favicon.href = favicon.href
 
   // /* Intercept history back and forward */
   // const pop$ = fromEvent<PopStateEvent>(window, "popstate")
   //   .pipe(
   //     map(ev => ({
   //       url: new URL(location.href),
-  //       offset: ev.state ?? {}
+  //       ...ev.state && { offset: ev.state }
   //     })),
   //     share<HistoryState>()
   //   )
@@ -192,20 +229,8 @@ export function setupInstantLoading(
   //   )
   //     .subscribe(location$)
 
-  // /* Fetch document via `XMLHTTPRequest` */
-  // const response$ = location$
-  //   .pipe(
-  //     distinctUntilKeyChanged("pathname"),
-  //     switchMap(url => request(url.href)
-  //       .pipe(
-  //         catchError(() => {
-  //           setLocation(url)
-  //           return NEVER
-  //         })
-  //       )
-  //     ),
-  //     share()
-  //   )
+  // location$.subscribe(console.log)
+
 
   // /* Set new location via `history.pushState` */
   // push$
