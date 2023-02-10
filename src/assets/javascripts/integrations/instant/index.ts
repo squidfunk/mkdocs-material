@@ -206,7 +206,6 @@ export function setupInstantLoading(
       sample(response$)
     )
       .subscribe(({ url }) => {
-        console.log("history.pushState")
         history.pushState({}, "", `${url}`)
       })
 
@@ -289,7 +288,7 @@ export function setupInstantLoading(
       sample(document$)
     )
       .subscribe(({ url, offset }) => {
-        if (url.hash && !offset?.y) {
+        if (url.hash && !offset) {
           setLocationHash(url.hash)
         } else {
           window.scrollTo(0, offset?.y || 0)
