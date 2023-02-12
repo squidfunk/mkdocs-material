@@ -1,3 +1,7 @@
+mkdocs-material-9.0.12+insiders-4.30.1 (2023-02-12)
+
+  * Fixed privacy plugin not handling static templates e.g. 404.html
+
 mkdocs-material-9.0.12 (2023-02-09)
 
   * Updated Catalan translations

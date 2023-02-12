@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.30.1 <small>February 12, 2023</small> { id="4.30.1" }
+
+- Fixed privacy plugin not handling static templates (e.g. `404.html`)
+
 ### 4.30.0 <small>February 6, 2023</small> { id="4.30.0" }
 
 - Rewrite of privacy plugin for concurrency, now twice as fast
