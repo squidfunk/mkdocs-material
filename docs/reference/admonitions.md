@@ -235,14 +235,14 @@ only the `inline` modifier:
 
 === ":octicons-arrow-right-16: inline end"
 
-    !!! info inline end
+    !!! info inline end "Lorem ipsum"
 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
     ``` markdown
-    !!! info inline end
+    !!! info inline end "Lorem ipsum"
   
         Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Nulla et euismod nulla.
@@ -255,14 +255,14 @@ only the `inline` modifier:
 
 === ":octicons-arrow-left-16: inline"
 
-    !!! info inline
+    !!! info inline "Lorem ipsum"
 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
     ``` markdown
-    !!! info inline
+    !!! info inline "Lorem ipsum"
 
         Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Nulla et euismod nulla.
