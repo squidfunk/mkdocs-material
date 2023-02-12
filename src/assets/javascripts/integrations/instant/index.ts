@@ -47,8 +47,8 @@ import {
   getOptionalElement,
   request,
   setLocation,
-  setLocationHash,
-  getViewportOffset} from "~/browser"
+  setLocationHash
+} from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
 
