@@ -21,53 +21,34 @@
  */
 
 import {
+  BehaviorSubject,
   EMPTY,
-  NEVER,
   Observable,
   Subject,
-  bufferCount,
   catchError,
   concatMap,
-  debounceTime,
-  distinctUntilChanged,
   distinctUntilKeyChanged,
   filter,
   fromEvent,
   map,
-  merge,
   of,
-  sample,
   share,
   skip,
   skipUntil,
   switchMap,
   tap,
-  observeOn,
-  asyncScheduler,
-  asapScheduler,
-  combineLatestWith,
-  combineLatest,
-  startWith,
-  withLatestFrom,
-  race,
-  repeat,
-  from,
-  ReplaySubject,
-  animationFrameScheduler
+  withLatestFrom
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
 import {
-  Viewport,
   ViewportOffset,
   getElements,
   getOptionalElement,
   request,
   setLocation,
   setLocationHash,
-  getLocation,
-  watchLocationHash
-} from "~/browser"
+  getViewportOffset} from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
 
@@ -97,6 +78,9 @@ interface SetupOptions {
   location$: Subject<URL>              /* Location subject */
 }
 
+/**
+ * Navigation type
+ */
 enum NavigationType {
   URL,
   HISTORY
@@ -193,7 +177,7 @@ export function setupInstantLoading(
     )
 
   /* Track origin of action - not ideal, but it'll do for now */
-  const type$ = new ReplaySubject<NavigationType>(1)
+  const type$ = new BehaviorSubject(NavigationType.URL)
 
   /* Dispatch instant navigation on non-anchor click */
   instant$.subscribe(({ claim, url }) => {
@@ -201,6 +185,10 @@ export function setupInstantLoading(
       claim()
       type$.next(NavigationType.URL)
       location$.next(url)
+
+      /* Scroll to top when we stay on the same page */
+      if (!url.hash)
+        window.scrollTo({ top: 0 })
     }
   })
 
@@ -272,27 +260,42 @@ export function setupInstantLoading(
           }
         }
 
-        /* Potential */
+        /* Replace state */
         if (type === NavigationType.URL) {
           history.pushState({}, "", url.toString())
           window.scrollTo({ top: 0 })
         }
 
-        if (location.href.includes("#")) {
-          // scroll to target
-          // set location again
+        /* Update offset */
+        if (location.href.includes("#"))
           setLocationHash(url.hash)
-        }
-
-        // console.log(type)
-        // if (!type)
-        //   history.pushState({}, "", location.href)
       })
 
-  // document$.subscribe(() => {
-  //   console.log(location.href)
-  //   history.pushState({}, "", `${location.href}`)
-  // })
+  /* Re-evaluate scripts */
+  document$
+    .pipe(
+      skip(1),
+      map(() => getComponentElement("container")),
+      switchMap(el => getElements("script", el)),
+      concatMap(el => {
+        const script = h("script")
+        if (el.src) {
+          for (const name of el.getAttributeNames())
+            script.setAttribute(name, el.getAttribute(name)!)
+          el.replaceWith(script)
 
-  // on location change, always move to top, if no anchor is given...
+          /* Complete when script is loaded */
+          return new Observable(observer => {
+            script.onload = () => observer.complete()
+          })
+
+          /* Complete immediately */
+        } else {
+          script.textContent = el.textContent
+          el.replaceWith(script)
+          return EMPTY
+        }
+      })
+    )
+      .subscribe()
 }
