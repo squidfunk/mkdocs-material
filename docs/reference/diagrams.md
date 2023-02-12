@@ -45,7 +45,7 @@ No further configuration is necessary. Advantages over a custom integration:
   [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
-  [other diagrams]: #other-diagrams
+  [other diagrams]: #other-diagram-types
 
 ## Usage
 
