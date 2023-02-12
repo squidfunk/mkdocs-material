@@ -35,11 +35,11 @@
   var __commonJS = (cb, mod) => function __require() {
     return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
-  var __copyProps = (to, from2, except, desc) => {
-    if (from2 && typeof from2 === "object" || typeof from2 === "function") {
-      for (let key of __getOwnPropNames(from2))
+  var __copyProps = (to, from3, except, desc) => {
+    if (from3 && typeof from3 === "object" || typeof from3 === "function") {
+      for (let key of __getOwnPropNames(from3))
         if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from2[key], enumerable: !(desc = __getOwnPropDesc(from2, key)) || desc.enumerable });
+          __defProp(to, key, { get: () => from3[key], enumerable: !(desc = __getOwnPropDesc(from3, key)) || desc.enumerable });
     }
     return to;
   };
@@ -1555,16 +1555,16 @@
     }
     return ar;
   }
-  function __spreadArray(to, from2, pack) {
+  function __spreadArray(to, from3, pack) {
     if (pack || arguments.length === 2)
-      for (var i = 0, l = from2.length, ar; i < l; i++) {
-        if (ar || !(i in from2)) {
+      for (var i = 0, l = from3.length, ar; i < l; i++) {
+        if (ar || !(i in from3)) {
           if (!ar)
-            ar = Array.prototype.slice.call(from2, 0, i);
-          ar[i] = from2[i];
+            ar = Array.prototype.slice.call(from3, 0, i);
+          ar[i] = from3[i];
         }
       }
-    return to.concat(ar || Array.prototype.slice.call(from2));
+    return to.concat(ar || Array.prototype.slice.call(from3));
   }
   function __await(v) {
     return this instanceof __await ? (this.v = v, this) : new __await(v);
@@ -3027,23 +3027,23 @@
   }
 
   // node_modules/rxjs/dist/esm5/internal/util/executeSchedule.js
-  function executeSchedule(parentSubscription, scheduler, work, delay2, repeat2) {
+  function executeSchedule(parentSubscription, scheduler, work, delay2, repeat3) {
     if (delay2 === void 0) {
       delay2 = 0;
     }
-    if (repeat2 === void 0) {
-      repeat2 = false;
+    if (repeat3 === void 0) {
+      repeat3 = false;
     }
     var scheduleSubscription = scheduler.schedule(function() {
       work();
-      if (repeat2) {
+      if (repeat3) {
         parentSubscription.add(this.schedule(null, delay2));
       } else {
         this.unsubscribe();
       }
     }, delay2);
     parentSubscription.add(scheduleSubscription);
-    if (!repeat2) {
+    if (!repeat3) {
       return scheduleSubscription;
     }
   }
@@ -5237,6 +5237,11 @@
   function getLocationHash() {
     return location.hash.substring(1);
   }
+  function setLocationHash(hash) {
+    const el = h("a", { href: hash });
+    el.addEventListener("click", (ev) => ev.stopPropagation());
+    el.click();
+  }
   function watchLocationHash() {
     return fromEvent(window, "hashchange").pipe(
       map(getLocationHash),
@@ -6380,38 +6385,58 @@
   }
 
   // src/assets/javascripts/integrations/instant/index.ts
-  function setupInstantLoading({ document$: document$2, location$: location$2, viewport$: viewport$2 }) {
+  function setupInstantLoading({ document$: document$2, location$: location$2 }) {
     const config4 = configuration();
     if (location.protocol === "file:")
       return;
-    const sitemap$ = fetchSitemap().pipe(
-      map((paths) => paths.map((path) => `${new URL(path, config4.base)}`))
-    );
+    const favicon = getOptionalElement("link[rel=icon]");
+    if (typeof favicon !== "undefined")
+      favicon.href = favicon.href;
     const intercept$ = fromEvent(document.body, "click").pipe(
-      filter((ev) => !ev.metaKey && !ev.ctrlKey),
-      combineLatestWith(sitemap$),
-      switchMap(([ev, sitemap]) => {
+      filter((ev) => !(ev.metaKey || ev.ctrlKey)),
+      switchMap((ev) => {
         if (!(ev.target instanceof Element))
           return EMPTY;
         const el = ev.target.closest("a");
         if (!el || el.target)
           return EMPTY;
-        const url = new URL(el.href);
-        url.search = "";
-        url.hash = "";
-        if (!sitemap.includes(url.toString()))
-          return EMPTY;
-        ev.preventDefault();
-        return of({ url: new URL(el.href) });
+        return of({
+          url: new URL(el.href),
+          claim() {
+            ev.preventDefault();
+            ev.stopPropagation();
+          }
+        });
       }),
       share()
     );
-    intercept$.pipe(
-      map(({ url }) => url),
-      startWith(getLocation()),
-      distinctUntilKeyChanged("pathname")
+    const instant$ = fetchSitemap().pipe(
+      map((paths) => paths.map((path) => `${new URL(path, config4.base)}`)),
+      switchMap(
+        (sitemap) => intercept$.pipe(
+          filter(({ url }) => {
+            url = new URL(url);
+            url.hash = url.search = "";
+            return sitemap.includes(url.toString());
+          })
+        )
+      ),
+      share()
+    );
+    const type$ = new ReplaySubject(1);
+    instant$.subscribe(({ claim, url }) => {
+      if (url.pathname !== location.pathname || !url.hash) {
+        claim();
+        type$.next(0 /* URL */);
+        location$2.next(url);
+      }
+    });
+    fromEvent(window, "popstate").pipe(
+      map(() => new URL(location.href)),
+      tap(() => type$.next(1 /* HISTORY */))
     ).subscribe(location$2);
     const response$ = location$2.pipe(
+      distinctUntilKeyChanged("pathname"),
       switchMap(
         (url) => request(url.href).pipe(
           catchError(() => {
@@ -6422,10 +6447,44 @@
       ),
       share()
     );
-    document$2.subscribe(console.log);
-    response$.subscribe(console.log);
-    if ("scrollRestoration" in history) {
-    }
+    const dom = new DOMParser();
+    response$.pipe(
+      switchMap((res) => res.text()),
+      map((res) => dom.parseFromString(res, "text/html"))
+    ).subscribe(document$2);
+    document$2.pipe(
+      skipUntil(instant$),
+      withLatestFrom(location$2, type$)
+    ).subscribe(([document2, url, type]) => {
+      for (const selector of [
+        /* Meta tags */
+        "title",
+        "link[rel=canonical]",
+        "meta[name=author]",
+        "meta[name=description]",
+        /* Components */
+        "[data-md-component=announce]",
+        "[data-md-component=container]",
+        "[data-md-component=header-topic]",
+        "[data-md-component=outdated]",
+        "[data-md-component=logo]",
+        "[data-md-component=skip]",
+        ...feature("navigation.tabs.sticky") ? ["[data-md-component=tabs]"] : []
+      ]) {
+        const source = getOptionalElement(selector);
+        const target = getOptionalElement(selector, document2);
+        if (typeof source !== "undefined" && typeof target !== "undefined") {
+          source.replaceWith(target);
+        }
+      }
+      if (type === 0 /* URL */) {
+        history.pushState({}, "", url.toString());
+        window.scrollTo({ top: 0 });
+      }
+      if (location.href.includes("#")) {
+        setLocationHash(url.hash);
+      }
+    });
   }
 
   // src/assets/javascripts/integrations/search/highlighter/index.ts
@@ -7461,7 +7520,7 @@
   var alert$ = new Subject();
   setupClipboardJS({ alert$ });
   if (feature("navigation.instant"))
-    setupInstantLoading({ document$, location$, viewport$ });
+    setupInstantLoading({ document$, location$ });
   var _a;
   if (((_a = config3.version) == null ? void 0 : _a.provider) === "mike")
     setupVersionSelector({ document$ });

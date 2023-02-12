@@ -47,7 +47,13 @@ import {
   asapScheduler,
   combineLatestWith,
   combineLatest,
-  startWith
+  startWith,
+  withLatestFrom,
+  race,
+  repeat,
+  from,
+  ReplaySubject,
+  animationFrameScheduler
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
@@ -59,7 +65,8 @@ import {
   request,
   setLocation,
   setLocationHash,
-  getLocation
+  getLocation,
+  watchLocationHash
 } from "~/browser"
 import { getComponentElement } from "~/components"
 import { h } from "~/utilities"
@@ -88,7 +95,19 @@ export interface HistoryState {
 interface SetupOptions {
   document$: Subject<Document>         /* Document subject */
   location$: Subject<URL>              /* Location subject */
-  viewport$: Observable<Viewport>      /* Viewport observable */
+}
+
+enum NavigationType {
+  URL,
+  HISTORY
+}
+
+/**
+ * Navigation event
+ */
+interface Navigation {
+  url: URL                             /* Navigation URL */
+  claim(): void                        /* Navigation claim */
 }
 
 /* ----------------------------------------------------------------------------
@@ -117,24 +136,22 @@ interface SetupOptions {
  * @param options - Options
  */
 export function setupInstantLoading(
-  { document$, location$, viewport$ }: SetupOptions
+  { document$, location$ }: SetupOptions
 ): void {
   const config = configuration()
   if (location.protocol === "file:")
     return
 
-  /* Use sitemap to detect internal navigation */
-  const sitemap$ = fetchSitemap()
-    .pipe(
-      map(paths => paths.map(path => `${new URL(path, config.base)}`)),
-    )
+  /* Hack: ensure absolute favicon link to omit 404s when switching */
+  const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
+  if (typeof favicon !== "undefined")
+    favicon.href = favicon.href
 
-  /* Intercept internal navigation */
+  /* Intercept inter-page navigation */
   const intercept$ = fromEvent<MouseEvent>(document.body, "click")
     .pipe(
-      filter(ev => !ev.metaKey && !ev.ctrlKey),
-      combineLatestWith(sitemap$),
-      switchMap(([ev, sitemap]) => {
+      filter(ev => !(ev.metaKey || ev.ctrlKey)),
+      switchMap(ev => {
 
         /* Skip, as target is not an element */
         if (!(ev.target instanceof Element))
@@ -145,34 +162,60 @@ export function setupInstantLoading(
         if (!el || el.target)
           return EMPTY
 
-        /* Canonicalize URL for comparison */
-        const url = new URL(el.href)
-        url.search = ""
-        url.hash = ""
-
-        /* Skip, as URL should not be intercepted */
-        if (!sitemap.includes(url.toString()))
-          return EMPTY
-
-        /* Return intercepted URL */
-        ev.preventDefault()
-        return of({ url: new URL(el.href) })
+        /* Skip, as target is a different host or the same page */
+        return of({
+          url: new URL(el.href),
+          claim() {
+            ev.preventDefault()
+            ev.stopPropagation()
+          }
+        } as Navigation)
       }),
-      share<HistoryState>()
+      share()
     )
 
-  /* Change location if  */
-  intercept$ // merge(push$, pop$)
+  /* Filter URLs that should be instantly loaded */
+  const instant$ = fetchSitemap()
     .pipe(
-      map(({ url }) => url),
-      startWith(getLocation()),
-      distinctUntilKeyChanged("pathname")
+      map(paths => paths.map(path => `${new URL(path, config.base)}`)),
+      switchMap(sitemap => intercept$
+        .pipe(
+          filter(({ url }) => {
+            url = new URL(url)
+            url.hash = url.search = ""
+
+            /* Compare canonical URLs */
+            return sitemap.includes(url.toString())
+          })
+        )
+      ),
+      share()
+    )
+
+  /* Track origin of action - not ideal, but it'll do for now */
+  const type$ = new ReplaySubject<NavigationType>(1)
+
+  /* Dispatch instant navigation on non-anchor click */
+  instant$.subscribe(({ claim, url }) => {
+    if (url.pathname !== location.pathname || !url.hash) {
+      claim()
+      type$.next(NavigationType.URL)
+      location$.next(url)
+    }
+  })
+
+  /* Dispatch history changes (browser back button) */
+  fromEvent<PopStateEvent>(window, "popstate")
+    .pipe(
+      map(() => new URL(location.href)),
+      tap(() => type$.next(NavigationType.HISTORY))
     )
       .subscribe(location$)
 
   /* Fetch document via `XMLHTTPRequest` */
   const response$ = location$
     .pipe(
+      distinctUntilKeyChanged("pathname"),
       switchMap(url => request(url.href)
         .pipe(
           catchError(() => {
@@ -184,168 +227,72 @@ export function setupInstantLoading(
       share()
     )
 
-  document$.subscribe(console.log)
-  response$.subscribe(console.log)
+  /* Parse and emit fetched document */
+  const dom = new DOMParser()
+  response$
+    .pipe(
+      switchMap(res => res.text()),
+      map(res => dom.parseFromString(res, "text/html"))
+    )
+      .subscribe(document$)
 
-  /* Disable automatic scroll restoration */
-  if ("scrollRestoration" in history) {
-    // document$.pipe(observeOn(asapScheduler))
-    //   .subscribe(() => {
-    //     history.scrollRestoration = "manual"
-    //   })
-    // @todo: safari scrollrestoration bug
-    // fromEvent(window, "load")
-    //   .subscribe(() => {
-    //     history.scrollRestoration = "manual"
-    //   })
+  /* Replace meta tags and components */
+  document$
+    .pipe(
+      skipUntil(instant$),
+      withLatestFrom(location$, type$),
+    )
+      .subscribe(([document, url, type]) => {
+        for (const selector of [
 
-    // /* Hack: ensure that reloads restore viewport offset */
-    // fromEvent(window, "beforeunload")
-    //   .subscribe(() => {
-    //     history.scrollRestoration = "auto"
-    //   })
-  }
+          /* Meta tags */
+          "title",
+          "link[rel=canonical]",
+          "meta[name=author]",
+          "meta[name=description]",
 
-  // /* Hack: ensure absolute favicon link to omit 404s when switching */
-  // const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
-  // if (typeof favicon !== "undefined")
-  //   favicon.href = favicon.href
+          /* Components */
+          "[data-md-component=announce]",
+          "[data-md-component=container]",
+          "[data-md-component=header-topic]",
+          "[data-md-component=outdated]",
+          "[data-md-component=logo]",
+          "[data-md-component=skip]",
+          ...feature("navigation.tabs.sticky")
+            ? ["[data-md-component=tabs]"]
+            : []
+        ]) {
+          const source = getOptionalElement(selector)
+          const target = getOptionalElement(selector, document)
+          if (
+            typeof source !== "undefined" &&
+            typeof target !== "undefined"
+          ) {
+            source.replaceWith(target)
+          }
+        }
 
-  // /* Intercept history back and forward */
-  // const pop$ = fromEvent<PopStateEvent>(window, "popstate")
-  //   .pipe(
-  //     map(ev => ({
-  //       url: new URL(location.href),
-  //       ...ev.state && { offset: ev.state }
-  //     })),
-  //     share<HistoryState>()
-  //   )
+        /* Potential */
+        if (type === NavigationType.URL) {
+          history.pushState({}, "", url.toString())
+          window.scrollTo({ top: 0 })
+        }
 
-  // /* Emit location change */
-  // merge(push$, pop$)
-  //   .pipe(
-  //     distinctUntilChanged((a, b) => a.url.href === b.url.href),
-  //     map(({ url }) => url)
-  //   )
-  //     .subscribe(location$)
+        if (location.href.includes("#")) {
+          // scroll to target
+          // set location again
+          setLocationHash(url.hash)
+        }
 
-  // location$.subscribe(console.log)
+        // console.log(type)
+        // if (!type)
+        //   history.pushState({}, "", location.href)
+      })
 
+  // document$.subscribe(() => {
+  //   console.log(location.href)
+  //   history.pushState({}, "", `${location.href}`)
+  // })
 
-  // /* Set new location via `history.pushState` */
-  // push$
-  //   .pipe(
-  //     sample(response$)
-  //   )
-  //     .subscribe(({ url }) => {
-  //       history.pushState({}, "", `${url}`)
-  //     })
-
-  // /* Parse and emit fetched document */
-  // const dom = new DOMParser()
-  // response$
-  //   .pipe(
-  //     switchMap(res => res.text()),
-  //     map(res => dom.parseFromString(res, "text/html"))
-  //   )
-  //     .subscribe(document$)
-
-  // /* Replace meta tags and components */
-  // document$
-  //   .pipe(
-  //     skip(1)
-  //   )
-  //     .subscribe(replacement => {
-  //       for (const selector of [
-
-  //         /* Meta tags */
-  //         "title",
-  //         "link[rel=canonical]",
-  //         "meta[name=author]",
-  //         "meta[name=description]",
-
-  //         /* Components */
-  //         "[data-md-component=announce]",
-  //         "[data-md-component=container]",
-  //         "[data-md-component=header-topic]",
-  //         "[data-md-component=outdated]",
-  //         "[data-md-component=logo]",
-  //         "[data-md-component=skip]",
-  //         ...feature("navigation.tabs.sticky")
-  //           ? ["[data-md-component=tabs]"]
-  //           : []
-  //       ]) {
-  //         const source = getOptionalElement(selector)
-  //         const target = getOptionalElement(selector, replacement)
-  //         if (
-  //           typeof source !== "undefined" &&
-  //           typeof target !== "undefined"
-  //         ) {
-  //           source.replaceWith(target)
-  //         }
-  //       }
-  //     })
-
-  // /* Re-evaluate scripts */
-  // document$
-  //   .pipe(
-  //     skip(1),
-  //     map(() => getComponentElement("container")),
-  //     switchMap(el => getElements("script", el)),
-  //     concatMap(el => {
-  //       const script = h("script")
-  //       if (el.src) {
-  //         for (const name of el.getAttributeNames())
-  //           script.setAttribute(name, el.getAttribute(name)!)
-  //         el.replaceWith(script)
-
-  //         /* Complete when script is loaded */
-  //         return new Observable(observer => {
-  //           script.onload = () => observer.complete()
-  //         })
-
-  //       /* Complete immediately */
-  //       } else {
-  //         script.textContent = el.textContent
-  //         el.replaceWith(script)
-  //         return EMPTY
-  //       }
-  //     })
-  //   )
-  //     .subscribe()
-
-  // /* Emit history state change */
-  // merge(push$, pop$)
-  //   .pipe(
-  //     sample(document$)
-  //   )
-  //     .subscribe(({ url, offset }) => {
-  //       if (url.hash && !offset?.y) {
-  //         setLocationHash(url.hash)
-  //       } else {
-  //         window.scrollTo(0, offset?.y || 0)
-  //       }
-  //     })
-
-  // /* Debounce update of viewport offset */
-  // viewport$
-  //   .pipe(
-  //     skipUntil(push$),
-  //     debounceTime(250),
-  //     distinctUntilKeyChanged("offset")
-  //   )
-  //     .subscribe(({ offset }) => {
-  //       history.replaceState(offset, "")
-  //     })
-
-  // /* Set viewport offset from history */
-  // merge(push$, pop$)
-  //   .pipe(
-  //     bufferCount(2, 1),
-  //     filter(([a, b]) => a.url.pathname === b.url.pathname),
-  //     map(([, state]) => state)
-  //   )
-  //     .subscribe(({ offset }) => {
-  //       window.scrollTo(0, offset?.y || 0)
-  //     })
+  // on location change, always move to top, if no anchor is given...
 }
