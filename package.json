@@ -44,7 +44,7 @@
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
-    "iframe-worker": "^1.0.2",
+    "iframe-worker": "^1.0.3",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.10.0",
     "resize-observer-polyfill": "^1.5.1",
