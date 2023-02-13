@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.30.2 <small>February 13, 2023</small> { id="4.30.2" }
+
+- Fixed privacy plugin excludes not working (4.30.0 regression)
+
 ### 4.30.1 <small>February 12, 2023</small> { id="4.30.1" }
 
 - Fixed privacy plugin not handling static templates (e.g. `404.html`)
