@@ -37,11 +37,8 @@ contents:
           - uses: actions/checkout@v3
           - uses: actions/setup-python@v4
             with:
-              python-version: 3.x
-          - uses: actions/cache@v2
-            with:
-              key: ${{ github.ref }}
-              path: .cache
+              python-version: 3.9
+              cache: 'pip' # caching pip dependencies
           - run: pip install mkdocs-material # (3)!
           - run: mkdocs gh-deploy --force
     ```
