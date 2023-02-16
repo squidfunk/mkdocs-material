@@ -29,11 +29,10 @@
 {% include "partials/actions.html" %}
 
 <!--
-  Check whether the content starts with a level 1 headline. If it doesn't, the
+  Hack: check whether the content contains a h1 headline. If it doesn't, the
   page title (or respectively site name) is used as the main headline.
 -->
-{% set first = page.toc | first %}
-{% if first and first.level != 1 %}
+{% if "\x3ch1" not in page.content %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 
