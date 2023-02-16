@@ -5,7 +5,7 @@ title: Getting started with Insiders
 # Getting started with Insiders
 
 Material for MkDocs Insiders is a compatible drop-in replacement for Material
-for MkDocs, and can be installed similarily using [`pip`][pip],
+for MkDocs, and can be installed similarly using [`pip`][pip],
 [`docker`][docker] or [`git`][git]. Note that in order to access the Insiders 
 repository, you need to [become an eligible sponsor] of @squidfunk on GitHub.
 

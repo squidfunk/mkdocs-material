@@ -1143,7 +1143,7 @@ links:
 ```
 
 If you look closely, you'll realize that you can even use an anchor to link to
-a specific section of a document, extending the possiblities of the [`nav`][nav] 
+a specific section of a document, extending the possibilities of the [`nav`][nav] 
 syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets 
 the title of the anchor as a [subtitle] of the related link.
 
