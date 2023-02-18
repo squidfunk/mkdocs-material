@@ -69,7 +69,7 @@
 
 ### 9.0.3 <small>January 8, 2023</small> { id="9.0.3" }
 
-- Improved discernability of section index pages in navigation
+- Improved discernibility of section index pages in navigation
 - Improved collapsing of adjacent whitespace in search plugin
 - Updated Indonesian translations
 - Fixed view source of this page button when edit URL points to blob
@@ -229,7 +229,7 @@ __Fixes__
 
 - Added support for cookie consent
 - Added support for feedback widget (Was this page helpful?)
-- Added support for dismissable announcement bar
+- Added support for dismissible announcement bar
 - Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 ### 8.3.9 <small>July 4, 2022</small> { id="8.3.9" }
@@ -369,7 +369,7 @@ __Fixes__
 ### 8.2.2 <small>February 26, 2022</small> { id="8.2.2" }
 
 - Added automatic removal of query parameter when search is closed
-- Fixed #3599: Anchors always overriden when using navigation tracking
+- Fixed #3599: Anchors always overridden when using navigation tracking
 
 ### 8.2.1 <small>February 17, 2022</small> { id="8.2.1" }
 

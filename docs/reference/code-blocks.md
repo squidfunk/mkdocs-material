@@ -72,7 +72,7 @@ theme:
     ````
 
     Note that the language shortcode which has to come first must now also be 
-    prefixed by a `.`. Similarily, the copy button can also be disabled for a
+    prefixed by a `.`. Similarly, the copy button can also be disabled for a
     specific code block:
 
     ```` { .yaml .no-copy }
