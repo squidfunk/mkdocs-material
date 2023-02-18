@@ -40,7 +40,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.f1b09aa2.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.ffa9267a.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a0c5b2b5.min.css' | url }}">
@@ -120,7 +120,7 @@
       {% endif %}
     </div>
     {% if config.extra.version %}
-      <div data-md-component="outdated" hidden>
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
         {% if self.outdated() %}
           <aside class="md-banner md-banner--warning">
             <div class="md-banner__inner md-grid md-typeset">

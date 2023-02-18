@@ -111,6 +111,10 @@
   --md-admonition-fg-color:            var(--md-default-fg-color);
   --md-admonition-bg-color:            var(--md-default-bg-color);
 
+  // Warning color shades
+  --md-warning-fg-color:              hsla(0, 0%, 0%, 0.87);
+  --md-warning-bg-color:              hsla(60, 100%, 80%, 1);
+
   // Footer color shades
   --md-footer-fg-color:                hsla(0, 0%, 100%, 1);
   --md-footer-fg-color--light:         hsla(0, 0%, 100%, 0.7);

@@ -37,8 +37,8 @@
 
   // Banner with warning
   &--warning {
-    color: var(--md-default-fg-color);
-    background: var(--md-typeset-mark-color);
+    color: var(--md-warning-fg-color);
+    background-color: var(--md-warning-bg-color);
   }
 
   // Banner wrapper
