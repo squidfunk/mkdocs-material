@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.31.0 <small>February 18, 2023</small> { id="4.31.0" }
+
+- Added support for table of contents on blog index and archive pages
+- Fixed #4512: Allow custom search field boosts (experimental)
+
 ### 4.30.2 <small>February 13, 2023</small> { id="4.30.2" }
 
 - Fixed privacy plugin excludes not working (4.30.0 regression)
