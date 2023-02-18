@@ -1,3 +1,11 @@
+mkdocs-material-9.0.13 (2023-02-18)
+
+  * Updated Uzbek translations
+  * Fixed #5062: Version warning not readable when using slate scheme
+  * Fixed #5061: Improved discernibility of table row hover color
+  * Fixed #5034: Sequence actors in Mermaid diagrams not color-abiding
+  * Fixed #4919: Allow to hide version warning in multiple versions
+
 mkdocs-material-9.0.12+insiders-4.30.2 (2023-02-13)
 
   * Fixed privacy plugin excludes not working (4.30.0 regression)
@@ -101,7 +109,7 @@ mkdocs-material-9.0.3+insiders-4.27.1 (2023-01-08)
 
 mkdocs-material-9.0.3 (2023-01-08)
 
-  * Improved discernability of section index pages in navigation
+  * Improved discernibility of section index pages in navigation
   * Improved collapsing of adjacent whitespace in search plugin
   * Updated Indonesian translations
   * Fixed view source of this page button when edit URL points to blob
@@ -402,7 +410,7 @@ mkdocs-material-8.4.0 (2022-08-13)
 
   * Added support for cookie consent
   * Added support for feedback widget (Was this page helpful?)
-  * Added support for dismissable announcement bar
+  * Added support for dismissible announcement bar
   * Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 mkdocs-material-8.3.9+insiders-4.21.0 (2022-07-17)
@@ -853,7 +861,7 @@ mkdocs-material-8.0.4 (2021-12-04)
 
 mkdocs-material-8.0.3+insiders-4.2.0 (2021-12-02)
 
-  * Added support for dismissable announcement bar
+  * Added support for dismissible announcement bar
   * Added support for named placeholders in feedback widget
 
 mkdocs-material-8.0.3 (2021-12-02)
@@ -903,7 +911,7 @@ mkdocs-material-7.3.6+insiders-3.2.3 (2021-11-20)
 
   * Updated Swedish and French translations
   * Removed support for .mermaid-experimental class (now .mermaid)
-  * Fixed #3202: Cookie consent not dismissable on file:// locations
+  * Fixed #3202: Cookie consent not dismissible on file:// locations
   * Fixed #3216: Cookie consent not dismissed when invoked via anchor
   * Fixed #3232: Mermaid.js sometimes runs twice (race condition)
 
