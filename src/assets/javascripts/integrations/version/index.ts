@@ -159,8 +159,16 @@ export function setupVersionSelector(
       /* Check if version state was already determined */
       let outdated = __md_get("__outdated", sessionStorage)
       if (outdated === null) {
-        const latest = config.version?.default || "latest"
-        outdated = !current.aliases.includes(latest)
+        outdated = true
+
+        /* Check if version is considered a default */
+        const ignored = [config.version?.default || ["latest"]].flat()
+        main: for (const ignore of ignored)
+          for (const alias of current.aliases)
+            if (new RegExp(ignore, "i").test(alias)) {
+              outdated = false
+              break main
+            }
 
         /* Persist version state in session storage */
         __md_set("__outdated", outdated, sessionStorage)
