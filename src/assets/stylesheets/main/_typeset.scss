@@ -515,7 +515,7 @@ kbd {
 
       // Table row on hover
       &:hover {
-        background-color: rgba(0, 0, 0, 0.035);
+        background-color: var(--md-typeset-table-color--light);
         box-shadow: 0 px2rem(1px) 0 var(--md-default-bg-color) inset;
       }
     }
