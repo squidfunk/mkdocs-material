@@ -20,10 +20,7 @@
  * IN THE SOFTWARE.
  */
 
-import "array-flat-polyfill"
 import "focus-visible"
-import "unfetch/polyfill"
-import "url-polyfill"
 
 import {
   EMPTY,

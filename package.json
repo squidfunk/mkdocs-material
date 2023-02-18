@@ -39,7 +39,6 @@
     "upgrade:install": "npm install"
   },
   "dependencies": {
-    "array-flat-polyfill": "^1.0.1",
     "clipboard": "^2.0.11",
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
@@ -47,10 +46,7 @@
     "iframe-worker": "^1.0.3",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.10.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "rxjs": "^7.8.0",
-    "unfetch": "^5.0.0",
-    "url-polyfill": "^1.1.12"
+    "rxjs": "^7.8.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.3.0",

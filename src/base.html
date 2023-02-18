@@ -99,7 +99,11 @@
     {% endblock %}
 
     <!-- JavaScript libraries -->
-    {% block libs %}{% endblock %}
+    {% block libs %}
+      {% for path in config.extra.polyfills %}
+        <script src="{{ path | url }}"></script>
+      {% endfor %}
+    {% endblock %}
 
     <!-- Webfonts -->
     {% block fonts %}
