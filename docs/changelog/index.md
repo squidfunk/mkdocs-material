@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.0.13 <small>February 18, 2023</small> { id="9.0.13" }
+
+- Updated Uzbek translations
+- Switched back to pre-9.0.0 headline detection in `content` partial
+- Fixed #5062: Version warning not readable when using slate scheme
+- Fixed #5061: Improved discernibility of table row hover color
+- Fixed #5034: Sequence actors in Mermaid diagrams not color-abiding
+- Fixed #4919: Allow to hide version warning in multiple versions
+
 ### 9.0.12 <small>February 9, 2023</small> { id="9.0.12" }
 
 - Updated Catalan translations
