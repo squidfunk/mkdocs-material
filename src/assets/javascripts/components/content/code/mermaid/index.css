@@ -338,6 +338,13 @@ line {
   stroke: var(--md-default-fg-color--lighter);
 }
 
+/* Sequence actor */
+.actor-man circle,
+.actor-man line {
+  fill: var(--md-mermaid-label-bg-color);
+  stroke: var(--md-mermaid-node-fg-color);
+}
+
 /* Sequence message line */
 .messageLine0,
 .messageLine1 {
