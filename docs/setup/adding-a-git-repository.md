@@ -102,12 +102,21 @@ Some popular choices:
 [:octicons-tag-24: 9.0.0][Code actions support] ·
 :octicons-unlock-24: Feature flag
 
-If the [repository URL] points to a [GitHub], [GitLab] or [Bitbucket] repository,
-buttons for code actions can be added at the top of each document. Currently,
-two types of code actions are supported: `edit` and `view` (GitHub only). Add
-the following lines to `mkdocs.yml`:
+If the [repository URL] points to a valid [GitHub], [GitLab] or [Bitbucket]
+repository, [MkDocs] provides a setting called [`edit_uri`][edit_uri], which
+resolves to the subfolder where your documentation is hosted.
 
-=== ":material-pencil: Edit this page"
+If your default branch is called `main`, change the setting to:
+
+``` yaml
+edit_uri: blob/main/docs/
+```
+
+After making sure that `edit_uri` is correctly configured, buttons for code
+actions can be added. Two types of code actions are supported: `edit` and `view`
+(GitHub only):
+
+=== ":material-file-edit-outline: Edit this page"
 
     ``` yaml
     theme:
@@ -115,7 +124,7 @@ the following lines to `mkdocs.yml`:
         - content.action.edit
     ```
 
-=== ":material-eye: View source of this page"
+=== ":material-file-eye-outline: View source of this page"
 
     ``` yaml
     theme:
@@ -145,10 +154,11 @@ theme:
 
   [Code actions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [repository URL]: #repository
-  [edit_uri]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
   [GitHub]: https://github.com/
   [GitLab]: https://about.gitlab.com/
   [Bitbucket]: https://bitbucket.org/
+  [MkDocs]: https://www.mkdocs.org
+  [edit_uri]: https://www.mkdocs.org/user-guide/configuration/#edit_uri
 
 ### Revisioning
 

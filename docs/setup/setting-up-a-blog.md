@@ -1279,7 +1279,7 @@ the [built-in blog plugin] would create it:
 ├─ docs/
 │  └─ blog/
 │     ├─ category/
-│     │  └─ hello.md #(1)!
+│     │  └─ hello.md # (1)!
 │     ├─ posts/
 │     └─ index.md
 └─ mkdocs.yml
