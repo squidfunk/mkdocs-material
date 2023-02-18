@@ -46,6 +46,12 @@ class OfflinePlugin(BasePlugin[OfflinePluginConfig]):
         # Ensure correct resolution of links
         config.use_directory_urls = False
 
+        # Append iframe-worker to polyfills/shims
+        config.extra.polyfills = config.extra.get("polyfills", [])
+        if not any("iframe-worker" in url for url in config.extra.polyfills):
+            worker = "https://unpkg.com/iframe-worker/shim"
+            config.extra.polyfills.append(worker)
+
     # Support offline search (run latest)
     @event_priority(-100)
     def on_post_build(self, *, config):
