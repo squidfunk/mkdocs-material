@@ -106,6 +106,21 @@ The following configuration options are available:
 
     The path must be defined relative to [`docs_dir`][docs_dir].
 
+[`blog_toc`](#+blog.blog_toc){ #+blog.blog_toc }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether
+    indexes include a table of contents with all post titles on the
+    right side as an overview:
+
+    ``` yaml
+    plugins:
+      - blog:
+          blog_toc: true
+    ```
+
+    Note that this setting is also used as the default value for `archive_toc`
+    and `categories_toc`, unless those settings are explicitly defined.
+
 __The built-in blog plugin has dozens of options that allow for advanced
 configuration. It's a good idea to [start writing your first post], and come
 back here later for fine-tuning the output.__
@@ -493,6 +508,18 @@ The following configuration options are available for archive index generation:
               archive_url_format: "{date}"
         ```
 
+[`archive_toc`](#+blog.archive_toc){ #+blog.archive_toc }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether an
+    archive index includes a table of contents with all post titles on the
+    right side as an overview:
+
+    ``` yaml
+    plugins:
+      - blog:
+          archive_toc: true
+    ```
+
 #### Categories
 
 The following configuration options are available for category index generation:
@@ -582,18 +609,6 @@ The following configuration options are available for category index generation:
           categories_slugify_separator: "-"
     ```
 
-[`categories_toc`](#+blog.categories_toc){ #+blog.categories_toc }
-
-:   :octicons-milestone-24: Default: `false` – This option specifies whether a
-    category index includes a table of contents with all post titles on the
-    right side as an overview:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_toc: true
-    ```
-
 [`categories_allowed`](#+blog.categories_allowed){ #+blog.categories_allowed }
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies the
@@ -608,6 +623,18 @@ The following configuration options are available for category index generation:
             - General
             - Search
             - Performance
+    ```
+
+[`categories_toc`](#+blog.categories_toc){ #+blog.categories_toc }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether a
+    category index includes a table of contents with all post titles on the
+    right side as an overview:
+
+    ``` yaml
+    plugins:
+      - blog:
+          categories_toc: true
     ```
 
 #### Pagination
