@@ -21,6 +21,8 @@ following lines to `mkdocs.yml`:
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -81,6 +83,47 @@ theme:
     ```
     ````
 
+### Code selection button :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.32.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Code blocks can include a button to allow for the selection of line ranges by
+the user, which is perfect for linking to a specific subsection of a code block. This allows the user to apply [line highlighting] dynamically. Add the following
+to `mkdocs.yml` to enable it globally:
+
+``` yaml
+theme:
+  features:
+    - content.code.select
+```
+
+??? info "Enabling or disabling code selection buttons for a specific code block"
+
+    If you don't want to enable code selection buttons globally, you can enable 
+    them for a specific code block by using a slightly different syntax based on 
+    the [Attribute Lists] extension:
+
+    ```` yaml
+    ``` { .yaml .select }
+    # Code block content
+    ```
+    ````
+
+    Note that the language shortcode which has to come first must now also be 
+    prefixed by a `.`. Similarly, the selection button can also be disabled for
+    a specific code block:
+
+    ```` { .yaml .no-select }
+    ``` { .yaml .no-select }
+    # Code block content
+    ```
+    ````
+
+  [Insiders]: ../insiders/index.md
+  [line highlighting]: #highlighting-specific-lines
+
 ### Code annotations
 
 [:octicons-tag-24: 8.0.0][Code annotations support] ·
@@ -119,24 +162,45 @@ theme:
   [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
-#### Anchor links
+#### Custom selectors :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
 
-[:octicons-tag-24: 8.5.0][Anchor links support] ·
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.32.0][Insiders] ·
 :octicons-beaker-24: Experimental
 
-In order to be able to link to code annotations and share them more easily, an
-anchor link is automatically added to each annotation, which you can copy via
-right click or open in a new tab:
+Normally, code annotations can only be [placed in comments], as comments can be
+considered safe for placement. However, sometimes it might be necessary to place
+annotations in parts of the code block where comments are not allowed, e.g. in 
+strings.
+
+Additional selectors can be set per-language:
 
 ``` yaml
-# (1)!
+extra:
+  annotate:
+    json: [.s2] # (1)!
 ```
 
-1.  If you ++cmd++ :material-plus::material-cursor-default-outline: me, I'm
-    rendered open in a new tab. You can also right-click me to __copy link
-    address__ to share me with others.
+1.  [`.s2`][s2] is the name of the lexeme that [Pygments] generates for double-quoted
+    strings. If you want to use a code annotation in another lexeme than a
+    comment, inspect the code block and determine which lexeme needs to be added
+    to the list of additional selectors.
 
-  [Anchor links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+    __Important__: Code annotations cannot be split between lexemes.
+
+Now, code annotations can be used from within strings in JSON:
+
+``` json
+{
+  "key": "value (1)"
+}
+```
+
+1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
+
+  [placed in comments]: #adding-annotations
+  [s2]: https://github.com/squidfunk/mkdocs-material/blob/87d5ca487b9d9ab95c41ee72813149d214048693/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss#L45
 
 ## Usage
 

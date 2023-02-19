@@ -325,7 +325,7 @@ The following configuration options are available for external assets:
   [technical limitations]: #limitations
   [built-in optimize plugin]: building-an-optimized-site.md#built-in-optimize-plugin
 
-#### External links :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
+#### External links
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.26.0][Insiders] ·

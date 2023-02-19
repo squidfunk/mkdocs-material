@@ -94,6 +94,8 @@ hooks:
 
 # Customization
 extra:
+  annotate:
+    json: [.s2]
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
@@ -132,6 +134,8 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:

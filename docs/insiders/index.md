@@ -88,14 +88,16 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 23 additional features__ that you can start using right away, and
+access to 25 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Code range selection] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+- [x] [Code annotations: custom selectors] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
 - [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
-- [x] [Optimize plugin] :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
-- [x] [Navigation path] (Breadcrumbs) :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
+- [x] [Optimize plugin]
+- [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation subtitles]
@@ -287,7 +289,7 @@ are released for general availability.
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list] and [custom sorting]
+- [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
@@ -302,10 +304,10 @@ are released for general availability.
 
 - [x] [Optimize plugin]
 - [x] [Typeset plugin]
-- [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Privacy plugin: optimization support]
-- [ ] Code block line wrapping
+- [x] [Privacy plugin: external links]
+- [ ] Privacy plugin: external link validation
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
@@ -316,7 +318,12 @@ are released for general availability.
 
 #### $ 24,000 – Blockpaprika
 
-- [ ] [Instant previews]
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [ ] Code line wrap button
+
+  [Code range selection]: ../reference/code-blocks.md#code-selection-button
+  [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
 
 ### Goals completed
 
@@ -343,14 +350,13 @@ can be used by all users.
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
-- [x] [Code annotations: anchor links]
+- [x] Code annotations: anchor links
 - [x] [Code annotations: strip comments]
 - [x] [Tag icons]
 - [x] [Table of contents anchor following]
 - [x] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
-  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
   [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following
