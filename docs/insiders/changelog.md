@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.0 <small>February 19, 2023</small> { id="4.32.0" }
+
+- Added support for custom selectors for code annotations
+- Added support for code line range selection for better sharing
+
 ### 4.31.0 <small>February 18, 2023</small> { id="4.31.0" }
 
 - Added support for table of contents on blog index and archive pages

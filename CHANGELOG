@@ -1,3 +1,8 @@
+mkdocs-material-9.0.13+insiders-4.32.0 (2023-02-19)
+
+  * Added support for custom selectors for code annotations
+  * Added support for code line range selection for better sharing
+
 mkdocs-material-9.0.13+insiders-4.31.0 (2023-02-18)
 
   * Added support for table of contents on blog index and archive pages
