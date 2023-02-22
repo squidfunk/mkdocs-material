@@ -549,14 +549,7 @@
       width: px2rem(18px);
       height: px2rem(18px);
       border-radius: 100%;
-      transition:
-        background-color 250ms,
-        transform        250ms;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        transform: rotate(180deg);
-      }
+      transition: background-color 250ms;
 
       // Navigation icon on hover
       &:hover {
@@ -574,13 +567,20 @@
         mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
+        border-radius: 100%;
+        transition: transform 250ms;
         content: "";
-      }
 
-      // Navigation icon - rotate icon when toggle is active or indeterminate
-      .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link &,
-      .md-nav__item--nested .md-nav__toggle:indeterminate ~ .md-nav__link & {
-        transform: rotate(90deg);
+        // Adjust for right-to-left languages
+        [dir="rtl"] & {
+          transform: rotate(180deg);
+        }
+
+        // Navigation icon - rotate icon when toggle is active or indeterminate
+        .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link &,
+        .md-nav__item--nested .md-nav__toggle:indeterminate ~ .md-nav__link & {
+          transform: rotate(90deg);
+        }
       }
     }
 
