@@ -1,3 +1,13 @@
+mkdocs-material-9.0.14+insiders-4.32.1 (2023-02-23)
+
+  * Fixed code block spans interfering with copying
+  * Fixed #5077: Privacy plugin breaks image alt text encoding
+  * Fixed #5079: Privacy plugin removing rel=me on external links
+
+mkdocs-material-9.0.14 (2023-02-23)
+
+  * Fixed #5072: Rendering bug on navigation expand button in Firefox
+
 mkdocs-material-9.0.13+insiders-4.32.0 (2023-02-19)
 
   * Added support for custom selectors for code annotations

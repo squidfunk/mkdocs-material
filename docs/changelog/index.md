@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.0.14 <small>February 23, 2023</small> { id="9.0.14" }
+
+- Fixed #5072: Rendering bug on navigation expand button in Firefox
+
 ### 9.0.13 <small>February 18, 2023</small> { id="9.0.13" }
 
 - Updated Uzbek translations
