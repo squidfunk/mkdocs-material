@@ -204,107 +204,114 @@ plugins:
 
 Then, you can import the data like this:
 
-=== "CSV"
+#### Example 1: Import data from CSV file :fontawesome-solid-file-csv:
     
-    For this example, let's use a CSV in the local directory.
+Let's use a :fontawesome-solid-file-csv: CSV in the local directory.
 
-    === "Data"
+=== "Data :fontawesome-solid-file-csv:"
+    
+    The :fontawesome-solid-file-csv: CSV file may look like this:
+
+    ```csv title="./data.csv"
+    col1,col2,col3
+    r1c1,r1c2,r1c3
+    r2c1,r2c2,r2c3
+    r3c1,r3c2,r3c3
+    ```
+
+=== "Markdown :fontawesome-solid-file-arrow-down:"
+
+    You can add it to your :fontawesome-solid-file-arrow-down: Markdown page like this:
+
+    ```md title="./markdown.md"
+    ...
+    {{ read_csv('./data.csv') }}
+    ...
+    ```
+
+And it will then return a result like this:
+
+{{ read_csv('./data.csv') }}
+
+!!! warning "Note to @squidfunk, please remove the below manual table once the [`mkdocs-table-reader-plugin`][table-reader-docs] has been installed in the package docs"
+
+col1|col2|col3
+----|----|----
+r1c1|r1c2|r1c3
+r2c1|r2c2|r2c3
+r3c1|r3c2|r3c3
+
+#### Example 2: Import data from Excel file :fontawesome-solid-file-excel:
+
+Let's use an :fontawesome-solid-file-excel: Excel file in the local directory.
+
+=== "Data :fontawesome-solid-file-excel:"
+    
+    The :fontawesome-solid-file-excel: Excel file may look like this:
+
+    ![][excel-file]{width="300px"}
+
+    [excel-file]: https://i.stack.imgur.com/f32ks.png
+
+=== "Markdown :fontawesome-solid-file-arrow-down:"
+
+    And you can add it to your :fontawesome-solid-file-arrow-down: Markdown page like this:
+
+    ```md title="./markdown.md"
+    ...
+    {{ read_excel('./Book1.xlsx', engine='openpyxl') }}
+    ...
+    ```
+    
+    !!! warning "Warning"
         
-        The data file may look like this:
+        You may receive an error if you use `engine='openpyxl'`.
 
-        ```csv title="./data.csv"
-        col1,col2,col3
-        r1c1,r1c2,r1c3
-        r2c1,r2c2,r2c3
-        r3c1,r3c2,r3c3
+        If this happens, you can resolve it by installing it using `pip`:
+
+        ```sh
+        pip install poenpyxl
         ```
 
-    === "Markdown"
+        Read more here: [pandas.read_excel][pandas-read_excel-engine]
+        
+        [pandas-read_excel-engine]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html#:~:text=enginestr%2C%20default%20None
+    
+    !!! tip "Pro Tip: Multiple Sheets"
 
-        And you can add it to your Markdown page like this:
+        If your Excel file contains multiple sheets, you may want to extend the function by adding the `sheet_name` parameter.
+
+        It would look like this:
 
         ```md title="./markdown.md"
         ...
-        {{ read_csv('./data.csv') }}
+        {{ read_excel('./Book1.xlsx', engine='openpyxl', sheet_name="Sheet1") }}
         ...
         ```
 
-    === "Result"
+        By default, Pandas will grab the first sheet in the workbook.
 
-        And it will then return a result like this:
-
-        col1|col2|col3
-        ----|----|----
-        r1c1|r1c2|r1c3
-        r2c1|r2c2|r2c3
-        r3c1|r3c2|r3c3
-
-=== "Excel"
-
-    For this example, let's use an Excel file in the local directory.
-
-    === "Data"
+        Read more here: [pandas.read_excel][pandas-read_excel-sheet_name]
         
-        The data file may look like this:
+        [pandas-read_excel-sheet_name]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html#:~:text=sheet_namestr%2C%20int%2C%20list%2C%20or%20None%2C%20default%200
 
-        ![][excel-file]{width="300px"}
+It will then return a result like this:
 
-        [excel-file]: https://i.stack.imgur.com/f32ks.png
+{{ read_excel('./Book1.xlsx', engine='openpyxl', sheet_name="Sheet1") }}
 
-    === "Markdown"
+!!! warning "Note to @squidfunk, please remove the below manual table once the [`mkdocs-table-reader-plugin`][table-reader-docs] has been installed in the package docs"
 
-        And you can add it to your Markdown page like this:
+col1|col2|col3
+----|----|----
+r1c1|r1c2|r1c3
+r2c1|r2c2|r2c3
+r3c1|r3c2|r3c3
 
-        ```md title="./markdown.md"
-        ...
-        {{ read_excel('./Book1.xlsx', engine='openpyxl') }}
-        ...
-        ```
-        
-        !!! warning "Warning"
-            
-            You may receive an error if you use `engine='openpyxl'`.
+#### Import data from other file types
 
-            If this happens, you can resolve it by installing it using `pip`:
+The plugin [`mkdocs-table-reader-plugin`][table-reader-docs] also provides readers for other formats:
 
-            ```sh
-            pip install poenpyxl
-            ```
-
-            Read more here: [pandas.read_excel][pandas-read_excel-engine]
-            
-            [pandas-read_excel-engine]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html#:~:text=enginestr%2C%20default%20None
-        
-        !!! tip "Pro Tip: Multiple Sheets"
-
-            If your Excel file contains multiple sheets, you may want to extend the function by adding the `sheet_name` parameter.
-
-            It would look like this:
-
-            ```md title="./markdown.md"
-            ...
-            {{ read_excel('./Book1.xlsx', engine='openpyxl', sheet_name="Sheet1") }}
-            ...
-            ```
-
-            By default, it will grab the first sheet in the workbook.
-
-            Read more here: [pandas.read_excel][pandas-read_excel-sheet_name]
-            
-            [pandas-read_excel-sheet_name]: https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_excel.html#:~:text=sheet_namestr%2C%20int%2C%20list%2C%20or%20None%2C%20default%200
-
-
-    === "Result"
-
-        And it will then return a result like this:
-
-        col1|col2|col3
-        ----|----|----
-        r1c1|r1c2|r1c3
-        r2c1|r2c2|r2c3
-        r3c1|r3c2|r3c3
-    
-The plugin `mkdocs-table-reader-plugin` also provides readers for other formats:
+<div class="mdx-columns" markdown>
 
 - [`read_csv`][table-reader-read_csv]
 - [`read_fwf`][table-reader-read_fwf]
@@ -313,6 +320,8 @@ The plugin `mkdocs-table-reader-plugin` also provides readers for other formats:
 - [`read_json`][table-reader-read_json]
 - [`read_excel`][table-reader-read_excel]
 - [`read_raw`][table-reader-read_raw]
+
+</div>
 
 You can read more on their Docs website: [mkdocs-table-reader-plugin][table-reader-docs]
 
