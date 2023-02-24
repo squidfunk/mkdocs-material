@@ -111,22 +111,33 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GHCR_TOKEN }}
 
+      - name: Generate Docker tags and labels
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ github.event.repository.full_name }}
+            ghcr.io/${{ github.event.repository.full_name }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+          flavor: |
+            latest=${{ github.event.release.prerelease == false }}
+
       - name: Build Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
           # platforms: linux/amd64,linux/arm64
-          tags: |
-            ${{ github.event.repository.full_name }}:latest
-            ${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
-            ghcr.io/${{ github.event.repository.full_name }}:latest
-            ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Check Docker image
         working-directory: /tmp
         run: |
-          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} new .
-          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} new .
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} build
 
       - name: Publish Docker image
         env:
