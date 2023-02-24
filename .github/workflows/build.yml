@@ -20,18 +20,23 @@
 
 name: build
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - master
+  pull_request:
+  release:
+    types:
+      - published
 
 env:
   NODE_VERSION: 14.x
+  PYTHON_VERSION: 3.x
 
 permissions:
   contents: read
 
 jobs:
-  build:
-    name: Build project
+  npm:
     runs-on: ubuntu-latest
     steps:
 
@@ -61,3 +66,72 @@ jobs:
         run: |
           npm run build
           git diff --name-only
+
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Python dependencies
+        run: pip install --upgrade build twine
+
+      - name: Build Python package
+        run: python -m build
+
+      - name: Publish Python package
+        env:
+          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
+          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+        run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          # platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ github.event.repository.full_name }}:latest
+            ${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+            ghcr.io/${{ github.event.repository.full_name }}:latest
+            ghcr.io/${{ github.event.repository.full_name }}:${{ github.event.release.tag_name }}
+
+      - name: Check Docker image
+        working-directory: /tmp
+        run: |
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} new .
+          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }} build
+
+      - name: Publish Docker image
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          docker push --all-tags ${{ github.event.repository.full_name }}
+          docker push --all-tags ghcr.io/${{ github.event.repository.full_name }}
