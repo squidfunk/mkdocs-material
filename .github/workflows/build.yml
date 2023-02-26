@@ -161,3 +161,14 @@ jobs:
           push: ${{ github.event_name == 'release' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Check manifest
+        if: github.event_name == 'release'
+        run: |
+          docker buildx imagetools inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
+
+      - name: Inspect image
+        if: github.event_name == 'release'
+        run: |
+          docker pull ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
+          docker image inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
