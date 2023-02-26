@@ -132,7 +132,7 @@ jobs:
             latest=${{ github.event.release.prerelease == false }}
 
       - name: Build Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           load: true
@@ -146,7 +146,7 @@ jobs:
           docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} build
 
       - name: Publish Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: .
           push: ${{ github.event_name == 'release' }}
