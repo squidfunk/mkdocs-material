@@ -23,7 +23,9 @@
 <!-- Determine base classes -->
 {% set class = "md-header" %}
 {% if "navigation.tabs.sticky" in features %}
-  {% set class = class ~ " md-header--lifted" %}
+  {% set class = class ~ " md-header--shadow md-header--lifted" %}
+{% elif "navigation.tabs" not in features %}
+  {% set class = class ~ " md-header--shadow" %}
 {% endif %}
 
 <!-- Header -->

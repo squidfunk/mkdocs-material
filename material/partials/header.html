@@ -3,7 +3,9 @@
 -#}
 {% set class = "md-header" %}
 {% if "navigation.tabs.sticky" in features %}
-  {% set class = class ~ " md-header--lifted" %}
+  {% set class = class ~ " md-header--shadow md-header--lifted" %}
+{% elif "navigation.tabs" not in features %}
+  {% set class = class ~ " md-header--shadow" %}
 {% endif %}
 <header class="{{ class }}" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header') }}">
