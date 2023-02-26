@@ -1,3 +1,8 @@
+mkdocs-material-9.0.15 (2023-02-26)
+
+  * Updated Chinese (Traditional) translations
+  * Updated Hebrew translations
+
 mkdocs-material-9.0.14+insiders-4.32.1 (2023-02-23)
 
   * Fixed code block spans interfering with copying
