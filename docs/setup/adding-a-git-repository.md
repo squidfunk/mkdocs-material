@@ -109,7 +109,7 @@ resolves to the subfolder where your documentation is hosted.
 If your default branch is called `main`, change the setting to:
 
 ``` yaml
-edit_uri: blob/main/docs/
+edit_uri: edit/main/docs/
 ```
 
 After making sure that `edit_uri` is correctly configured, buttons for code
