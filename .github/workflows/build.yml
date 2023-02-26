@@ -99,6 +99,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -145,10 +148,27 @@ jobs:
           docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} new .
           docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} build
 
+      - name: Set platforms
+        if: github.event_name == 'release'
+        run: |
+          echo "PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7" >> $GITHUB_ENV
+
       - name: Publish Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: ${{ env.PLATFORMS }}
           push: ${{ github.event_name == 'release' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Check manifest
+        if: github.event_name == 'release'
+        run: |
+          docker buildx imagetools inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
+
+      - name: Inspect image
+        if: github.event_name == 'release'
+        run: |
+          docker pull ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
+          docker image inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
