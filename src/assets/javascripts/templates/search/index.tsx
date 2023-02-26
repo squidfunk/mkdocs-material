@@ -90,7 +90,7 @@ function renderSearchDocument(
         {document.tags && document.tags.map(tag => {
           const type = tags
             ? tag in tags
-              ? `md-tag-icon md-tag-icon--${tags[tag]}`
+              ? `md-tag-icon md-tag--${tags[tag]}`
               : "md-tag-icon"
             : ""
           return (

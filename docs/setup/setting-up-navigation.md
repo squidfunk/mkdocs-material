@@ -262,16 +262,19 @@ navigation section:
 ``` yaml
 nav:
   - Section:
-    - section/index.md
+    - section/index.md # (1)!
     - Page 1: section/page-1.md
     ...
     - Page n: section/page-n.md
 ```
 
+1.  MkDocs also considers files called `README.md` as [index pages].
+
   [Section index pages support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Section index pages enabled]: ../assets/screenshots/navigation-index-on.png
   [Section index pages disabled]: ../assets/screenshots/navigation-index-off.png
   [toc.integrate]: #navigation-integration
+  [index pages]: https://www.mkdocs.org/user-guide/writing-your-docs/#index-pages
 
 ### Table of contents
 
