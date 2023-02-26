@@ -27,6 +27,31 @@
       {% if page.next_page %}
         <link rel="next" href="{{ page.next_page.url | url }}">
       {% endif %}
+      <script type='application/ld+json'>
+        {
+          "@context": "http://www.schema.org",
+          "@type": "WebSite",
+          "name": "{{ config.site_name }}",
+          "url": "{{ config.site_url }}",
+          {% if config.extra.social %}
+          "sameAs": [
+          {% for social_link in config.extra.social %}
+            "{{ social_link.link }},"
+          {% endfor %}
+          ],
+          {% endif %}
+          {% if 'material/search' in config.plugins.keys() %}
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "{{ config.site_url }}?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string"
+          }
+          {% endif %}
+        }
+      </script>
       <link rel="icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.0.15">
     {% endblock %}
