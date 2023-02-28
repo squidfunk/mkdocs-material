@@ -28,7 +28,6 @@ import {
   finalize,
   fromEvent,
   map,
-  startWith,
   tap
 } from "rxjs"
 
@@ -86,18 +85,12 @@ export function mountAnnounce(
   /* Mount component on subscription */
   return defer(() => {
     const push$ = new Subject<Announce>()
-    push$
-      .pipe(
-        startWith({ hash: __md_get<number>("__announce") })
-      )
-        .subscribe(({ hash }) => {
-          if (hash && hash === (__md_get<number>("__announce") ?? hash)) {
-            el.hidden = true
+    push$.subscribe(({ hash }) => {
+      el.hidden = true
 
-            /* Persist preference in local storage */
-            __md_set<number>("__announce", hash)
-          }
-        })
+      /* Persist preference in local storage */
+      __md_set<number>("__announce", hash)
+    })
 
     /* Create and return component */
     return watchAnnounce(el)
