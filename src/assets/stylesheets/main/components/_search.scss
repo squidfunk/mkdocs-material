@@ -54,17 +54,17 @@
     @include break-to-device(tablet portrait) {
       position: absolute;
       top: px2rem(-20px);
-      inset-inline-start: px2rem(-44px);
       width: px2rem(40px);
       height: px2rem(40px);
       overflow: hidden;
+      pointer-events: none;
       background-color: var(--md-default-bg-color);
       border-radius: px2rem(20px);
-      transform-origin: center;
       transition:
         transform 300ms 100ms,
         opacity   200ms 200ms;
-      pointer-events: none;
+      transform-origin: center;
+      inset-inline-start: px2rem(-44px);
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -79,15 +79,15 @@
     @include break-from-device(tablet landscape) {
       position: fixed;
       top: 0;
-      inset-inline-start: 0;
       width: 0;
       height: 0;
-      background-color: hsla(0, 0%, 0%, 0.54);
       cursor: pointer;
+      background-color: hsla(0, 0%, 0%, 0.54);
       transition:
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
+      inset-inline-start: 0;
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -134,18 +134,18 @@
     @include break-to-device(tablet portrait) {
       position: fixed;
       top: 0;
-      inset-inline-start: 0;
       z-index: 2;
       width: 0;
       height: 0;
       overflow: hidden;
-      transform: translateX(5%);
       opacity: 0;
       transition:
         width       0ms 300ms,
         height      0ms 300ms,
         transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   150ms 150ms;
+      transform: translateX(5%);
+      inset-inline-start: 0;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -156,13 +156,13 @@
       [data-md-toggle="search"]:checked ~ .md-header & {
         width: 100%;
         height: 100%;
-        transform: translateX(0);
         opacity: 1;
         transition:
           width       0ms   0ms,
           height      0ms   0ms,
           transform 150ms 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
           opacity   150ms 150ms;
+        transform: translateX(0);
       }
     }
 
@@ -259,8 +259,8 @@
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       padding-inline-start: px2rem(44px);
-      color: inherit;
       font-size: px2rem(16px);
+      color: inherit;
 
       // Search placeholder
       &::placeholder {
@@ -357,11 +357,11 @@
     > .md-icon {
       margin-inline-start: px2rem(4px);
       color: var(--md-default-fg-color--light);
-      transform: scale(0.75);
       opacity: 0;
       transition:
         transform 150ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity   150ms;
+      transform: scale(0.75);
 
       // Hide outline for pointer devices
       &:not(.focus-visible) {
@@ -372,9 +372,9 @@
       // Show buttons when search is active and input non-empty
       [data-md-toggle="search"]:checked ~ .md-header
       .md-search__input:valid ~ & {
-        transform: scale(1);
-        opacity: 1;
         pointer-events: initial;
+        opacity: 1;
+        transform: scale(1);
 
         // Search focus icon
         &:hover {
@@ -393,8 +393,8 @@
     width: 100%;
     height: 100%;
     padding-inline: px2rem(72px) px2rem(44px);
-    color: var(--md-default-fg-color--lighter);
     font-size: px2rem(18px);
+    color: var(--md-default-fg-color--lighter);
     white-space: nowrap;
     opacity: 0;
     transition: opacity 50ms;
@@ -445,13 +445,13 @@
   &__scrollwrap {
     height: 100%;
     overflow-y: auto;
-    background-color: var(--md-default-bg-color);
-    // Hack: promote to own layer to reduce jitter
-    backface-visibility: hidden;
     // Hack: Chrome 88+ has weird overscroll behavior. Overall, scroll snapping
     // seems to be something that is not ready for prime time on some browsers.
     // scroll-snap-type: y mandatory;
     touch-action: pan-y;
+    background-color: var(--md-default-bg-color);
+    // Hack: promote to own layer to reduce jitter
+    backface-visibility: hidden;
 
     // Mitigiate excessive repaints on non-retina devices
     @media (max-resolution: 1dppx) {
@@ -511,9 +511,9 @@
   // Search result metadata
   &__meta {
     padding: 0 px2rem(16px);
-    color: var(--md-default-fg-color--light);
     font-size: px2rem(12.8px);
     line-height: px2rem(36px);
+    color: var(--md-default-fg-color--light);
     background-color: var(--md-default-fg-color--lightest);
     scroll-snap-align: start;
 
@@ -525,8 +525,8 @@
 
   // Search result list
   &__list {
-    margin: 0;
     padding: 0;
+    margin: 0;
     list-style: none;
     // Hack: omit accidental text selection on fast toggle of more button
     user-select: none;
@@ -566,8 +566,8 @@
     top: 0;
     z-index: 1;
     display: block;
-    outline: none;
     cursor: pointer;
+    outline: none;
     scroll-snap-align: start;
 
     // Hide native details marker
@@ -584,8 +584,8 @@
     // Search result more button
     > div {
       padding: px2em(12px) px2rem(16px);
-      color: var(--md-typeset-a-color);
       font-size: px2rem(12.8px);
+      color: var(--md-typeset-a-color);
       transition:
         color            250ms,
         background-color 250ms;
@@ -640,12 +640,12 @@
       display: inline-block;
       width: 100%;
       height: 100%;
+      content: "";
       background-color: currentcolor;
       mask-image: var(--md-search-result-icon);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
-      content: "";
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -656,17 +656,17 @@
 
   // Typesetted content
   .md-typeset {
-    color: var(--md-default-fg-color--light);
     font-size: px2rem(12.8px);
     line-height: 1.6;
+    color: var(--md-default-fg-color--light);
 
     // Search result article title
     h1 {
       margin: px2rem(11px) 0;
-      color: var(--md-default-fg-color);
-      font-weight: 400;
       font-size: px2rem(16px);
+      font-weight: 400;
       line-height: 1.4;
+      color: var(--md-default-fg-color);
 
       // Search term highlighting
       mark {
@@ -677,10 +677,10 @@
     // Search result section title
     h2 {
       margin: 0.5em 0;
-      color: var(--md-default-fg-color);
-      font-weight: 700;
       font-size: px2rem(12.8px);
+      font-weight: 700;
       line-height: 1.6;
+      color: var(--md-default-fg-color);
 
       // Search term highlighting
       mark {
@@ -693,9 +693,9 @@
   &__terms {
     display: block;
     margin: 0.5em 0;
-    color: var(--md-default-fg-color);
     font-size: px2rem(12.8px);
     font-style: italic;
+    color: var(--md-default-fg-color);
   }
 
   // Search term highlighting
