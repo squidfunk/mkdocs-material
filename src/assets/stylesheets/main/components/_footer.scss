@@ -108,16 +108,16 @@
 
   // Footer link button
   &__button {
-    margin: px2rem(4px);
     padding: px2rem(8px);
+    margin: px2rem(4px);
   }
 
   // Footer link direction (i.e. prev and next)
   &__direction {
     position: absolute;
     inset-inline: 0;
-    margin-top: px2rem(-20px);
     padding: 0 px2rem(20px);
+    margin-top: px2rem(-20px);
     font-size: px2rem(12.8px);
     opacity: 0.7;
   }
@@ -151,10 +151,10 @@
 // Copyright and theme information
 .md-copyright {
   width: 100%;
-  margin: auto px2rem(12px);
   padding: px2rem(8px) 0;
-  color: var(--md-footer-fg-color--lighter);
+  margin: auto px2rem(12px);
   font-size: px2rem(12.8px);
+  color: var(--md-footer-fg-color--lighter);
 
   // [tablet portrait +]: Show copyright and social links in one line
   @include break-from-device(tablet portrait) {
@@ -172,8 +172,8 @@
 
 // Social links
 .md-social {
-  margin: 0 px2rem(8px);
   padding: px2rem(4px) 0 px2rem(12px);
+  margin: 0 px2rem(8px);
 
   // [tablet portrait +]: Show copyright and social links in one line
   @include break-from-device(tablet portrait) {

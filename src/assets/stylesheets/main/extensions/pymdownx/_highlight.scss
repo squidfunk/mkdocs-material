@@ -143,8 +143,8 @@
   // .gd = Diff, delete
   // .gi = Diff, insert
   :is(.gd, .gi) {
-    margin: 0 px2em(-2px);
     padding: 0 px2em(2px);
+    margin: 0 px2em(-2px);
     border-radius: px2rem(2px);
   }
 
@@ -159,8 +159,8 @@
   // Highlighted line
   .hll {
     display: block;
-    margin: 0 px2em(-16px, 13.6px);
     padding: 0 px2em(16px, 13.6px);
+    margin: 0 px2em(-16px, 13.6px);
     background-color: var(--md-code-hl-color);
   }
 
@@ -168,10 +168,10 @@
   span.filename {
     position: relative;
     display: flow-root;
-    margin-top: 1em;
     padding: px2em(9px, 13.6px) px2em(16px, 13.6px);
-    font-weight: 700;
+    margin-top: 1em;
     font-size: px2em(13.6px);
+    font-weight: 700;
     background-color: var(--md-code-bg-color);
     border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
     border-top-left-radius: px2rem(2px);
@@ -197,14 +197,14 @@
     // don't overlay line numbers, as active annotations have a `z-index` of 2.
     z-index: 3;
     float: left;
+    padding-left: px2em(16px, 13.6px);
     margin-right: px2em(16px, 13.6px);
     margin-left: px2em(-16px, 13.6px);
-    padding-left: px2em(16px, 13.6px);
     color: var(--md-default-fg-color--light);
-    background-color: var(--md-code-bg-color);
-    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
     content: attr(data-linenos);
     user-select: none;
+    background-color: var(--md-code-bg-color);
+    box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
   }
 
   // Code block line anchors - Chrome and Safari seem to have a strange bug
@@ -279,10 +279,10 @@
     padding: px2em(10.5px, 13.6px) px2em(16px, 13.6px);
     padding-right: 0;
     font-size: px2em(13.6px);
+    user-select: none;
     background-color: var(--md-code-bg-color);
     border-top-left-radius: px2rem(2px);
     border-bottom-left-radius: px2rem(2px);
-    user-select: none;
   }
 
   // Code block line numbers container
@@ -329,8 +329,8 @@
 
   // Code block result container
   .highlight + .result {
-    margin-top: calc(-1em + #{px2em(-2px)});
     padding: 0 px2em(16px);
+    margin-top: calc(-1em + #{px2em(-2px)});
     overflow: visible;
     border: px2rem(1px) solid var(--md-code-bg-color);
     border-top-width: px2rem(2px);

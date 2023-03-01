@@ -61,15 +61,15 @@
   .task-list-indicator::before {
     position: absolute;
     top: 0.15em;
-    inset-inline-start: px2em(-24px);
     width: px2em(20px);
     height: px2em(20px);
+    content: "";
     background-color: var(--md-default-fg-color--lightest);
+    inset-inline-start: px2em(-24px);
     mask-image: var(--md-tasklist-icon);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
-    content: "";
   }
 
   // Tasklist indicator in checked state

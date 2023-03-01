@@ -32,8 +32,8 @@
   display: block;
   width: 100%;
   overflow: auto;
-  color: var(--md-primary-bg-color);
   line-height: 1.3;
+  color: var(--md-primary-bg-color);
   background-color: var(--md-primary-fg-color);
 
   // [print]: Hide tabs
@@ -53,9 +53,9 @@
 
   // Navigation tabs list
   &__list {
+    padding: 0;
     margin: 0;
     margin-inline-start: px2rem(4px);
-    padding: 0;
     overflow: auto;
     white-space: nowrap;
     list-style: none;
@@ -111,11 +111,11 @@
     // Hide tabs upon scrolling - disable transition to minimizes repaints
     // while scrolling down, while scrolling up seems to be okay
     .md-tabs[hidden] & {
-      transform: translateY(50%);
       opacity: 0;
       transition:
         transform 0ms 100ms,
         opacity 100ms;
+      transform: translateY(50%);
     }
   }
 }

@@ -58,8 +58,8 @@
     top: px2rem(1px);
     margin-inline: px2rem(28px) px2rem(8px);
     color: inherit;
-    outline: none;
     cursor: pointer;
+    outline: none;
 
     // Version selection icon
     &::after {
@@ -67,12 +67,12 @@
       width: px2rem(8px);
       height: px2rem(12px);
       margin-inline-start: px2rem(8px);
+      content: "";
       background-color: currentcolor;
       mask-image: var(--md-version-icon);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
-      content: "";
     }
   }
 
@@ -82,8 +82,8 @@
     top: px2rem(3px);
     z-index: 3;
     max-height: 0;
-    margin: px2rem(4px) px2rem(16px);
     padding: 0;
+    margin: px2rem(4px) px2rem(16px);
     overflow: auto;
     color: var(--md-default-fg-color);
     list-style-type: none;
@@ -131,8 +131,8 @@
     width: 100%;
     padding-inline: px2rem(12px) px2rem(24px);
     white-space: nowrap;
-    outline: none;
     cursor: pointer;
+    outline: none;
     transition:
       color            250ms,
       background-color 250ms;

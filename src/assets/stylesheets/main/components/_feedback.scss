@@ -31,8 +31,8 @@
 
   // Feedback fieldset
   fieldset {
-    margin: 0;
     padding: 0;
+    margin: 0;
     border: none;
   }
 
@@ -89,11 +89,11 @@
   // Feedback note
   &__note {
     position: relative;
-    transform: translateY(px2rem(8px));
     opacity: 0;
     transition:
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   150ms;
+    transform: translateY(px2rem(8px));
 
     // Feedback note value
     > * {
@@ -103,8 +103,8 @@
 
     // Show after submission
     :disabled & {
-      transform: translateY(0);
       opacity: 1;
+      transform: translateY(0);
     }
   }
 }

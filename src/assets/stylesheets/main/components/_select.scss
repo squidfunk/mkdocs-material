@@ -40,22 +40,22 @@
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z2);
-    transform: translate3d(-50%, px2rem(6px), 0);
     opacity: 0;
     transition:
       transform  250ms 375ms,
       opacity    250ms 250ms,
       max-height   0ms 500ms;
+    transform: translate3d(-50%, px2rem(6px), 0);
 
     // Selection bubble on parent focus/hover
     .md-select:is(:focus-within, :hover) & {
       max-height: px2rem(200px);
-      transform: translate3d(-50%, 0, 0);
       opacity: 1;
       transition:
         transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
         opacity    250ms,
         max-height   0ms;
+      transform: translate3d(-50%, 0, 0);
     }
 
     // Selection bubble handle
@@ -67,18 +67,18 @@
       height: 0;
       margin-top: px2rem(-4px);
       margin-left: px2rem(-4px);
+      content: "";
       border: px2rem(4px) solid transparent;
       border-top: 0;
       border-bottom-color: var(--md-default-bg-color);
-      content: "";
     }
   }
 
   // Selection list
   &__list {
     max-height: inherit;
-    margin: 0;
     padding: 0;
+    margin: 0;
     overflow: auto;
     font-size: px2rem(16px);
     list-style-type: none;
@@ -95,8 +95,8 @@
     display: block;
     width: 100%;
     padding-inline: px2rem(12px) px2rem(24px);
-    outline: none;
     cursor: pointer;
+    outline: none;
     transition:
       background-color 250ms,
       color            250ms;
