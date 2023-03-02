@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.2 <small>February 23, 2023</small> { id="4.32.2" }
+
+- Fixed #5127: Privacy plugin not handling large number of occurrences
+- Fixed #5126: Privacy plugin breaks when replacing specific emojis
+
 ### 4.32.1 <small>February 23, 2023</small> { id="4.32.1" }
 
 - Fixed code block spans interfering with copying

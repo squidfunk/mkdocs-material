@@ -1,3 +1,8 @@
+mkdocs-material-9.1.0+insiders-4.32.2 (2023-03-02)
+
+  * Fixed #5127: Privacy plugin not handling large number of occurrences
+  * Fixed #5126: Privacy plugin breaks when replacing specific emojis
+
 mkdocs-material-9.1.0 (2023-03-02)
 
   * Docker image now available for amd64, arm64 and arm/v7
