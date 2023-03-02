@@ -34,8 +34,8 @@
 
   // Content wrapper
   &__inner {
-    margin: 0 px2rem(16px) px2rem(24px);
     padding-top: px2rem(12px);
+    margin: 0 px2rem(16px) px2rem(24px);
 
     // [screen +]: Adjust spacing between content area and sidebars
     @include break-from-device(screen) {
@@ -69,9 +69,9 @@
   // a document-level, i.e. linking to related source code files, printing etc.
   &__button {
     float: inline-end;
+    padding: 0;
     margin: px2rem(8px) 0;
     margin-inline-start: px2rem(8px);
-    padding: 0;
 
     // [print]: Hide buttons
     @media print {

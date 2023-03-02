@@ -28,8 +28,8 @@
 // viewport. If this behavior is not desired, just set `position: static`.
 .md-header {
   position: sticky;
-  top: 0;
   inset-inline: 0;
+  top: 0;
   z-index: 4;
   display: block;
   color: var(--md-primary-bg-color);
@@ -47,10 +47,10 @@
 
   // Header is hidden
   &[hidden] {
-    transform: translateY(-100%);
     transition:
       transform  250ms cubic-bezier(0.8, 0, 0.6, 1),
       box-shadow 250ms;
+    transform: translateY(-100%);
   }
 
   // Header in shadow state, i.e. shadow is visible
@@ -74,12 +74,12 @@
   &__button {
     position: relative;
     z-index: 1;
-    margin: px2rem(4px);
     padding: px2rem(8px);
+    margin: px2rem(4px);
     color: currentcolor;
     vertical-align: middle;
-    outline-color: var(--md-accent-fg-color);
     cursor: pointer;
+    outline-color: var(--md-accent-fg-color);
     transition: opacity 250ms;
 
     // Button on hover
@@ -100,8 +100,8 @@
 
     // Button with logo, pointing to `config.site_url`
     &.md-logo {
-      margin: px2rem(4px);
       padding: px2rem(8px);
+      margin: px2rem(4px);
 
       // [tablet -]: Hide button
       @include break-to-device(tablet) {
@@ -159,12 +159,12 @@
     // Second header topic - title of the current page
     & + & {
       z-index: -1;
-      transform: translateX(px2rem(25px));
+      pointer-events: none;
       opacity: 0;
       transition:
         transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   150ms;
-      pointer-events: none;
+      transform: translateX(px2rem(25px));
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -182,20 +182,20 @@
   &__title {
     flex-grow: 1;
     height: px2rem(48px);
-    margin-inline-end: px2rem(8px);
     margin-inline-start: px2rem(20px);
+    margin-inline-end: px2rem(8px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
 
     // Header title in active state, i.e. page title is visible
     &--active .md-header__topic {
       z-index: -1;
-      transform: translateX(px2rem(-25px));
+      pointer-events: none;
       opacity: 0;
       transition:
         transform 400ms cubic-bezier(1, 0.7, 0.1, 0.1),
         opacity   150ms;
-      pointer-events: none;
+      transform: translateX(px2rem(-25px));
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -205,12 +205,12 @@
       // Second header topic - title of the current page
       + .md-header__topic {
         z-index: 0;
-        transform: translateX(0);
+        pointer-events: initial;
         opacity: 1;
         transition:
           transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
           opacity   150ms;
-        pointer-events: initial;
+        transform: translateX(0);
       }
     }
 

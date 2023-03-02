@@ -43,8 +43,8 @@
     display: block;
     padding: 0 px2rem(12px);
     overflow: hidden;
-    color: var(--md-default-fg-color--light);
     font-weight: 700;
+    color: var(--md-default-fg-color--light);
     text-overflow: ellipsis;
 
     // Navigaton button
@@ -75,8 +75,8 @@
 
   // Navigation list
   &__list {
-    margin: 0;
     padding: 0;
+    margin: 0;
     list-style: none;
   }
 
@@ -171,8 +171,8 @@
     &--primary,
     &--primary & {
       position: absolute;
-      top: 0;
       inset-inline: 0;
+      top: 0;
       z-index: 1;
       display: flex;
       flex-direction: column;
@@ -194,11 +194,11 @@
         position: relative;
         height: px2rem(112px);
         padding: px2rem(60px) px2rem(16px) px2rem(4px);
-        color: var(--md-default-fg-color--light);
         line-height: px2rem(48px);
+        color: var(--md-default-fg-color--light);
         white-space: nowrap;
-        background-color: var(--md-default-fg-color--lightest);
         cursor: pointer;
+        background-color: var(--md-default-fg-color--lightest);
 
         // Navigation icon
         .md-nav__icon {
@@ -215,23 +215,23 @@
             display: block;
             width: 100%;
             height: 100%;
+            content: "";
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--prev);
             mask-position: center;
             mask-repeat: no-repeat;
             mask-size: contain;
-            content: "";
           }
         }
 
         // Navigation list
         ~ .md-nav__list {
           overflow-y: auto;
+          touch-action: pan-y;
           background-color: var(--md-default-bg-color);
           box-shadow:
             0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
           scroll-snap-type: y mandatory;
-          touch-action: pan-y;
 
           // Omit border on first child
           > :first-child {
@@ -241,19 +241,19 @@
 
         // Top-level navigation title
         &[for="__drawer"] {
-          color: var(--md-primary-bg-color);
           font-weight: 700;
+          color: var(--md-primary-bg-color);
           background-color: var(--md-primary-fg-color);
         }
 
         // Button with logo, pointing to `config.site_url`
         .md-logo {
           position: absolute;
-          top: px2rem(4px);
           inset-inline: px2rem(4px);
+          top: px2rem(4px);
           display: block;
-          margin: px2rem(4px);
           padding: px2rem(8px);
+          margin: px2rem(4px);
         }
       }
 
@@ -280,8 +280,8 @@
 
       // Navigation link
       .md-nav__link {
-        margin-top: 0;
         padding: px2rem(12px) px2rem(16px);
+        margin-top: 0;
 
         // Navigation icon
         .md-nav__icon {
@@ -295,12 +295,12 @@
             display: block;
             width: 100%;
             height: 100%;
+            content: "";
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--next);
             mask-position: center;
             mask-repeat: no-repeat;
             mask-size: contain;
-            content: "";
           }
         }
       }
@@ -353,11 +353,11 @@
     // Toggle for nested navigation
     &__toggle ~ & {
       display: flex;
-      transform: translateX(100%);
       opacity: 0;
       transition:
         transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
         opacity   125ms 50ms;
+      transform: translateX(100%);
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -367,11 +367,11 @@
 
     // Show nested navigation when toggle is active
     &__toggle:checked ~ & {
-      transform: translateX(0);
       opacity: 1;
       transition:
         transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   125ms 125ms;
+      transform: translateX(0);
 
       // Navigation list
       > .md-nav__list {
@@ -562,14 +562,14 @@
         width: 100%;
         height: 100%;
         vertical-align: px2rem(-2px);
+        content: "";
         background-color: currentcolor;
+        border-radius: 100%;
+        transition: transform 250ms;
         mask-image: var(--md-nav-icon--next);
         mask-position: center;
         mask-repeat: no-repeat;
         mask-size: contain;
-        border-radius: 100%;
-        transition: transform 250ms;
-        content: "";
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {
@@ -607,8 +607,8 @@
             position: sticky;
             top: 0;
             z-index: 1;
-            margin-top: 0;
             padding: 0 px2rem(12px);
+            margin-top: 0;
             font-weight: 700;
             background: var(--md-default-bg-color);
             box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);

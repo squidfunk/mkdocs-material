@@ -45,16 +45,16 @@
     @include break-to-device(tablet) {
       position: fixed;
       top: 0;
-      inset-inline-start: px2rem(-242px);
       z-index: 5;
       display: block;
       width: px2rem(242px);
       height: 100%;
       background-color: var(--md-default-bg-color);
-      transform: translateX(0);
       transition:
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 250ms;
+      transform: translateX(0);
+      inset-inline-start: px2rem(-242px);
 
       // Show sidebar when drawer is active
       [data-md-toggle="drawer"]:checked ~ .md-container & {

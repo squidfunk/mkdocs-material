@@ -64,15 +64,15 @@ $admonitions: (
   // rendered as collapsible admonitions with summary elements as titles.
   .admonition {
     display: flow-root;
-    margin: px2em(20px, 12.8px) 0;
     padding: 0 px2rem(12px);
-    color: var(--md-admonition-fg-color);
+    margin: px2em(20px, 12.8px) 0;
     font-size: px2rem(12.8px);
-    page-break-inside: avoid;
+    color: var(--md-admonition-fg-color);
     background-color: var(--md-admonition-bg-color);
     border: px2rem(1px) solid $clr-blue-a200;
     border-radius: px2rem(4px);
     box-shadow: var(--md-shadow-z1);
+    page-break-inside: avoid;
 
     // [print]: Omit shadow as it may lead to rendering errors
     @media print {
@@ -115,10 +115,10 @@ $admonitions: (
   // Admonition title
   .admonition-title {
     position: relative;
-    margin-block: 0;
-    margin-inline: px2rem(-12px);
     padding-block: px2rem(8px);
     padding-inline: px2rem(40px) px2rem(12px);
+    margin-block: 0;
+    margin-inline: px2rem(-12px);
     font-weight: 700;
     background-color: color.adjust($clr-blue-a200, $alpha: -0.9);
     border: none;
@@ -135,15 +135,15 @@ $admonitions: (
     &::before {
       position: absolute;
       top: px2em(10px);
-      inset-inline-start: px2rem(12px);
       width: px2rem(20px);
       height: px2rem(20px);
+      content: "";
       background-color: $clr-blue-a200;
+      inset-inline-start: px2rem(12px);
       mask-image: var(--md-admonition-icon--note);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
-      content: "";
     }
 
     // Inline code block
