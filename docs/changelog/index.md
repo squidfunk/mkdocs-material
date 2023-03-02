@@ -2,6 +2,14 @@
 
 ## Material for MkDocs
 
+### 9.1.0 <small>March 2, 2023</small> { id="9.1.0" }
+
+- Docker image now available for `amd64`, `arm64` and `armv7`
+- Updated Chinese (Taiwanese) translations
+- Generalized tag identifier implementation
+- Fixed flickering of header shadow on load
+- Fixed occasional flickering of announcement bar
+
 ### 9.0.15 <small>February 26, 2023</small> { id="9.0.15" }
 
 - Updated Chinese (Traditional) translations
