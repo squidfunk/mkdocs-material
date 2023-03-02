@@ -22,7 +22,9 @@ The social preview image for the page on [setting up site analytics].
     Both types of logos, images (`theme.logo`) and icons (`theme.icon.logo`)
     are supported. While an image logo is used as-is, icons are filled with the
     color used in the header (white or black), which depends on the primary
-    color.
+    color. Note that custom logos and icons must reside in the `docs_dir` for
+    the plugin to find them. For guidance, see #4920. This limitation will be
+    lifted in the future when the social plugin will receive its next update.
 
   [colors]: changing-the-colors.md#primary-color
   [fonts]: changing-the-fonts.md#regular-font
