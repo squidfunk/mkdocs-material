@@ -4,7 +4,7 @@
 
 ### 9.1.0 <small>March 2, 2023</small> { id="9.1.0" }
 
-- Docker image now available for `amd64`, `arm64` and `armv7`
+- Docker image now available for `amd64`, `arm64` and `arm/v7`
 - Updated Chinese (Taiwanese) translations
 - Generalized tag identifier implementation
 - Fixed flickering of header shadow on load
