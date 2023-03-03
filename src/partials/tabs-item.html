@@ -23,8 +23,10 @@
 <!-- Determine class according to state -->
 {% if not class %}
   {% set class = "md-tabs__link" %}
+  {% set item_class = "md-tabs__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-tabs__link--active" %}
+    {% set item_class = item_class ~ " md-tabs__item--active" %}
   {% endif %}
 {% endif %}
 
@@ -39,7 +41,7 @@
 
   <!-- Render item -->
   {% else %}
-    <li class="md-tabs__item">
+    <li class="{{ item_class }}">
       <a href="{{ nav_item.url | url }}" class="{{ class }}">
         {{ title }}
       </a>
@@ -48,7 +50,7 @@
 
 <!-- Main navigation item -->
 {% else %}
-  <li class="md-tabs__item">
+  <li class="{{ item_class }}">
     <a href="{{ nav_item.url | url }}" class="{{ class }}">
       {{ nav_item.title }}
     </a>
