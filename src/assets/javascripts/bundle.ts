@@ -148,7 +148,8 @@ setupClipboardJS({ alert$ })
 
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
-  setupInstantLoading({ document$, location$, viewport$ })
+  setupInstantLoading({ location$, viewport$ })
+    .subscribe(document$)
 
 /* Set up version selector */
 if (config.version?.provider === "mike")
