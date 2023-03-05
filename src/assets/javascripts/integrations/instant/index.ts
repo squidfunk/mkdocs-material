@@ -21,50 +21,39 @@
  */
 
 import {
-  BehaviorSubject,
   EMPTY,
   Observable,
   Subject,
   catchError,
-  concatMap,
+  concat,
+  debounceTime,
   distinctUntilKeyChanged,
-  filter,
+  endWith,
   fromEvent,
+  ignoreElements,
   map,
   of,
   share,
-  skip,
-  skipUntil,
   switchMap,
-  tap,
-  withLatestFrom
+  take,
+  withLatestFrom,
+  switchScan,
+  filter
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
 import {
-  ViewportOffset,
+  Viewport,
   getElements,
+  getLocation,
   getOptionalElement,
   request,
   setLocation,
   setLocationHash
 } from "~/browser"
 import { getComponentElement } from "~/components"
-import { h } from "~/utilities"
 
 import { fetchSitemap } from "../sitemap"
-
-/* ----------------------------------------------------------------------------
- * Types
- * ------------------------------------------------------------------------- */
-
-/**
- * History state
- */
-export interface HistoryState {
-  url: URL                             /* State URL */
-  offset?: ViewportOffset              /* State viewport offset */
-}
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -74,24 +63,8 @@ export interface HistoryState {
  * Setup options
  */
 interface SetupOptions {
-  document$: Subject<Document>         /* Document subject */
   location$: Subject<URL>              /* Location subject */
-}
-
-/**
- * Navigation type
- */
-enum NavigationType {
-  URL,
-  HISTORY
-}
-
-/**
- * Navigation event
- */
-interface Navigation {
-  url: URL                             /* Navigation URL */
-  claim(): void                        /* Navigation claim */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -99,147 +72,147 @@ interface Navigation {
  * ------------------------------------------------------------------------- */
 
 /**
- * Set up instant loading
+ * Set up instant navigation
  *
- * When fetching, theoretically, we could use `responseType: "document"`, but
- * since all MkDocs links are relative, we need to make sure that the current
- * location matches the document we just loaded. Otherwise any relative links
- * in the document could use the old location.
- *
- * This is the reason why we need to synchronize history events and the process
- * of fetching the document for navigation changes (except `popstate` events):
- *
- * 1. Fetch document via `XMLHTTPRequest`
- * 2. Set new location via `history.pushState`
- * 3. Parse and emit fetched document
- *
- * For `popstate` events, we must not use `history.pushState`, or the forward
- * history will be irreversibly overwritten. In case the request fails, the
- * location change is dispatched regularly.
+ * This is a heavily orchestrated operation - see inline comments to learn how
+ * this works with Material for MkDocs, and how you can hook into it.
  *
  * @param options - Options
+ *
+ * @returns Document observable
  */
 export function setupInstantLoading(
-  { document$, location$ }: SetupOptions
-): void {
+  { location$, viewport$ }: SetupOptions
+): Observable<Document> {
   const config = configuration()
   if (location.protocol === "file:")
-    return
+    return EMPTY
 
-  /* Hack: ensure absolute favicon link to omit 404s when switching */
-  const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
-  if (typeof favicon !== "undefined")
-    favicon.href = favicon.href
-
-  /* Intercept inter-page navigation */
-  const intercept$ = fromEvent<MouseEvent>(document.body, "click")
+  // Load sitemap immediately, so we have it available when the user initiates
+  // the first instant navigation request, and canonicalize URLs to the current
+  // base URL. The base URL will remain stable in between loads, as it's only
+  // read at the first initialization of the application.
+  const sitemap$ = fetchSitemap()
     .pipe(
-      filter(ev => !(ev.metaKey || ev.ctrlKey)),
-      switchMap(ev => {
+      map(paths => paths.map(path => `${new URL(path, config.base)}`))
+    )
 
-        /* Skip, as target is not an element */
+  // Intercept inter-site navigation - to keep the number of event listeners
+  // low we use the fact that uncaptured events bubble up to the body. This also
+  // has the nice property that we don't need to detach and then again attach
+  // event listeners when instant navigation occurs.
+  const instant$ = fromEvent<MouseEvent>(document.body, "click")
+    .pipe(
+      withLatestFrom(sitemap$),
+      switchMap(([ev, sitemap]) => {
         if (!(ev.target instanceof Element))
           return EMPTY
 
-        /* Skip, as target is not within a link or opens in new window */
+        // Skip, as target is not within a link - clicks on non-link elements
+        // are also captured, which we need to exclude from processing.
         const el = ev.target.closest("a")
-        if (!el || el.target)
+        if (el === null)
           return EMPTY
 
-        /* Skip, as target is a different host or the same page */
-        return of({
-          url: new URL(el.href),
-          claim() {
-            ev.preventDefault()
-            ev.stopPropagation()
-          }
-        } as Navigation)
+        // Skip, as link opens in new window - we now know we have captured a
+        // click on a link, but the link either has a `target` property defined,
+        // or the user pressed the `meta` or `ctrl` key to open it in a new
+        // window. Thus, we need to filter those events, too.
+        if (el.target || ev.metaKey || ev.ctrlKey)
+          return EMPTY
+
+        // Next, we must check if the URL is relevant for us, i.e., if it's an
+        // internal link to a page that is managed by MkDocs. Only then we can
+        // be sure that the structure of the page to be loaded adheres to the
+        // current document structure and can subsequently be injected into it
+        // without doing a full reload. For this reason, we must canonicalize
+        // the URL by removing all search parameters and hash fragments.
+        const url = new URL(el.href)
+        url.search = url.hash = ""
+
+        // Skip, if URL is not included in the sitemap - this could be the case
+        // when linking between versions or languages, or to another page that
+        // the author included as part of the build, but that is not managed by
+        // MkDocs. In that case we must not continue with instant navigation.
+        if (!sitemap.includes(`${url}`))
+          return EMPTY
+
+        // We now know that we have a link to an internal page, so we prevent
+        // the browser from navigation and emit the URL for instant navigation.
+        ev.preventDefault()
+        return of(new URL(el.href))
       }),
       share()
     )
 
-  /* Filter URLs that should be instantly loaded */
-  const instant$ = fetchSitemap()
-    .pipe(
-      map(paths => paths.map(path => `${new URL(path, config.base)}`)),
-      switchMap(sitemap => intercept$
-        .pipe(
-          filter(({ url }) => {
-            url = new URL(url)
-            url.hash = url.search = ""
+  // Before fetching for the first time, resolve the absolute favicon position,
+  // as the browser will try to fetch the icon immediately.
+  instant$.pipe(take(1))
+    .subscribe(() => {
+      const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
+      if (typeof favicon !== "undefined")
+        favicon.href = favicon.href
+    })
 
-            /* Compare canonical URLs */
-            return sitemap.includes(url.toString())
-          })
-        )
-      ),
-      share()
-    )
+  // When an instant navigation event occurs, disable scroll restoration, since
+  // we must normalize and synchronize the behavior across all browsers. For
+  // instance, when the user clicks the back or forward button, the browser
+  // immediately jumps to the position of the previous document.
+  instant$.pipe(withLatestFrom(viewport$))
+    .subscribe(([url, { offset }]) => {
+      history.scrollRestoration = "manual"
 
-  /* Track origin of action - not ideal, but it'll do for now */
-  const type$ = new BehaviorSubject(NavigationType.URL)
+      // While it would be better UX to defer the history state change until the
+      // document was fully fetched and parsed, we must schedule it here, since
+      // popstate events are emitted when history state changes happen. Moreover
+      // we need to back up the current viewport offset, so we can restore it
+      // when popstate events occur, e.g., when the browser's back and forward
+      // buttons are used for navigation.
+      history.replaceState(offset, "")
+      history.pushState(null, "", url)
+    })
 
-  /* Dispatch instant navigation on non-anchor click */
-  instant$.subscribe(({ claim, url }) => {
-    if (url.pathname !== location.pathname || !url.hash) {
-      claim()
-      type$.next(NavigationType.URL)
-      location$.next(url)
+  // Emit URL that should be fetched via instant loading on location subject,
+  // which was passed into this function. The idea is that instant loading can
+  // be intercepted by other parts of the application, which can synchronously
+  // back up or restore state before instant loading happens.
+  instant$.subscribe(location$)
 
-      /* Scroll to top when we stay on the same page */
-      if (!url.hash)
-        window.scrollTo({ top: 0 })
-    }
-  })
-
-  /* Dispatch history changes (browser back button) */
-  fromEvent<PopStateEvent>(window, "popstate")
-    .pipe(
-      map(() => new URL(location.href)),
-      tap(() => type$.next(NavigationType.HISTORY))
-    )
-      .subscribe(location$)
-
-  /* Fetch document via `XMLHTTPRequest` */
+  // Fetch document - when fetching, we could use `responseType: document`, but
+  // since all MkDocs links are relative, we need to make sure that the current
+  // location matches the document we just loaded. Otherwise any relative links
+  // in the document might use the old location. If the request fails for some
+  // reason, we fall back to regular navigation, and set the location
+  // explicitly, which will force-load the page.
   const response$ = location$
     .pipe(
-      distinctUntilKeyChanged("pathname"),
-      switchMap(url => request(url.href)
+      switchMap(url => request(url)
         .pipe(
           catchError(() => {
             setLocation(url)
             return EMPTY
           })
         )
-      ),
-      share()
+      )
     )
 
-  /* Parse and emit fetched document */
+  // Initialize the DOM parser, parse the returned HTML, and replace selected
+  // meta tags and components before handing control down to the application.
   const dom = new DOMParser()
-  response$
+  const document$ = response$
     .pipe(
       switchMap(res => res.text()),
-      map(res => dom.parseFromString(res, "text/html"))
-    )
-      .subscribe(document$)
-
-  /* Replace meta tags and components */
-  document$
-    .pipe(
-      skipUntil(instant$),
-      withLatestFrom(location$, type$),
-    )
-      .subscribe(([document, url, type]) => {
+      switchMap(res => {
+        const document = dom.parseFromString(res, "text/html")
         for (const selector of [
 
-          /* Meta tags */
+          // Meta tags
           "title",
           "link[rel=canonical]",
           "meta[name=author]",
           "meta[name=description]",
 
-          /* Components */
+          // Components
           "[data-md-component=announce]",
           "[data-md-component=container]",
           "[data-md-component=header-topic]",
@@ -260,42 +233,71 @@ export function setupInstantLoading(
           }
         }
 
-        /* Replace state */
-        if (type === NavigationType.URL) {
-          history.pushState({}, "", url.toString())
-          window.scrollTo({ top: 0 })
-        }
+        // After meta tags and components were replaced, re-evaluate scripts
+        // that were provided by the author as part of Markdown files.
+        const container = getComponentElement("container")
+        return concat(getElements("script", container))
+          .pipe(
+            switchMap(el => {
+              const script = document.createElement("script")
+              if (el.src) {
+                for (const name of el.getAttributeNames())
+                  script.setAttribute(name, el.getAttribute(name)!)
+                el.replaceWith(script)
 
-        /* Update offset */
-        if (location.href.includes("#"))
-          setLocationHash(url.hash)
-      })
+                // Complete when script is loaded
+                return new Observable(observer => {
+                  script.onload = () => observer.complete()
+                })
 
-  /* Re-evaluate scripts */
+              // Complete immediately
+              } else {
+                script.textContent = el.textContent
+                el.replaceWith(script)
+                return EMPTY
+              }
+            }),
+            ignoreElements(),
+            endWith(document)
+          )
+      }),
+      share()
+    )
+
+  // Intercept popstate events, e.g. when using the browser's back and forward
+  // buttons, and emit new location for fetching and parsing.
+  const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
+  popstate$.subscribe(() => location$.next(getLocation()))
+
+  // After parsing the document, check if the current history entry has a state.
+  // This may happen when users press the back or forward button to visit a page
+  // that was already seen. If there's no state, it means a new page was visited
+  // and we should scroll to the top, unless an anchor is given.
+  document$.pipe(withLatestFrom(location$))
+    .subscribe(([, url]) => {
+      if (history.state !== null || !url.hash) {
+        window.scrollTo(0, history.state?.y ?? 0)
+      } else {
+        setLocationHash(url.hash)
+      }
+
+      // Restore scroll restoration after the document loaded - this is crucial
+      // to instruct the browser to manage anchor clicks and reloads on its own.
+      history.scrollRestoration = "auto"
+    })
+
+  // If the current history is not empty, register an event listener that
+  // updates the current history state whenever the scroll position changes.
   document$
     .pipe(
-      skip(1),
-      map(() => getComponentElement("container")),
-      switchMap(el => getElements("script", el)),
-      concatMap(el => {
-        const script = h("script")
-        if (el.src) {
-          for (const name of el.getAttributeNames())
-            script.setAttribute(name, el.getAttribute(name)!)
-          el.replaceWith(script)
-
-          /* Complete when script is loaded */
-          return new Observable(observer => {
-            script.onload = () => observer.complete()
-          })
-
-          /* Complete immediately */
-        } else {
-          script.textContent = el.textContent
-          el.replaceWith(script)
-          return EMPTY
-        }
-      })
+      switchMap(() => viewport$),
+      distinctUntilKeyChanged("offset"),
+      debounceTime(100)
     )
-      .subscribe()
+      .subscribe(({ offset }) => {
+        history.replaceState(offset, "")
+      })
+
+  // Return document
+  return document$
 }
