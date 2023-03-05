@@ -10,7 +10,7 @@
       {% if config.extra.tags %}
         {% set icon = " md-tag-icon" %}
         {% if tag.type %}
-          {% set icon = icon ~ " md-tag-icon--" ~ tag.type %}
+          {% set icon = icon ~ " md-tag--" ~ tag.type %}
         {% endif %}
       {% endif %}
       {% if tag.url %}

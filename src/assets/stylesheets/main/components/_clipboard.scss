@@ -40,10 +40,10 @@
   width: px2em(24px);
   height: px2em(24px);
   color: var(--md-default-fg-color--lightest);
+  cursor: pointer;
   border-radius: px2rem(2px);
   outline-color: var(--md-accent-fg-color);
   outline-offset: px2rem(2px);
-  cursor: pointer;
   transition: color 250ms;
 
   // [print]: Hide button
@@ -74,12 +74,12 @@
     width: px2em(18px);
     height: px2em(18px);
     margin: 0 auto;
+    content: "";
     background-color: currentcolor;
     mask-image: var(--md-clipboard-icon);
     mask-position: center;
     mask-repeat: no-repeat;
     mask-size: contain;
-    content: "";
   }
 
   // Inline clipboard button

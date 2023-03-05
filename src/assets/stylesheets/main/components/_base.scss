@@ -112,8 +112,8 @@ body {
 // Add ellipsis in case of overflowing text
 .md-ellipsis {
   overflow: hidden;
-  white-space: nowrap;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 // ----------------------------------------------------------------------------
@@ -152,24 +152,24 @@ body {
   // Hack: if we don't set the negative `z-index`, the skip link will force the
   // creation of new layers when code blocks are near the header on scrolling
   z-index: -1;
-  margin: px2rem(10px);
   padding: px2rem(6px) px2rem(10px);
-  color: var(--md-default-bg-color);
+  margin: px2rem(10px);
   font-size: px2rem(12.8px);
+  color: var(--md-default-bg-color);
   background-color: var(--md-default-fg-color);
   border-radius: px2rem(2px);
   outline-color: var(--md-accent-fg-color);
-  transform: translateY(px2rem(8px));
   opacity: 0;
+  transform: translateY(px2rem(8px));
 
   // Show skip link on focus
   &:focus {
     z-index: 10;
-    transform: translateY(0);
     opacity: 1;
     transition:
       transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
       opacity   175ms 75ms;
+    transform: translateY(0);
   }
 }
 

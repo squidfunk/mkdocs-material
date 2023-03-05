@@ -1,9 +1,6 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/#gh-light-mode-only">
+  <a href="https://squidfunk.github.io/mkdocs-material/">
     <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
-  </a>
-  <a href="https://squidfunk.github.io/mkdocs-material/#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo-dark.svg" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
@@ -71,9 +68,6 @@
   <a href="https://docs.baslerweb.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png" height="58"
   /></a>
-  <a href="https://hummingbot.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
-  /></a>
   <a href="https://kx.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="58"
   /></a>
@@ -109,9 +103,6 @@
   /></a>
   <a href="https://elastic.co" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png" height="58"
-  /></a>
-  <a href="https://consensys.net/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png" height="58"
   /></a>
   <a href="https://www.hyperledger.org/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png" height="58"

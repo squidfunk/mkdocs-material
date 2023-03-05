@@ -116,7 +116,7 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
             classes.append("md-tag-icon")
             type = self.tags_map.get(tag)
             if type:
-                classes.append(f"md-tag-icon--{type}")
+                classes.append(f"md-tag--{type}")
 
         # Render section for tag and a link to each page
         classes = " ".join(classes)

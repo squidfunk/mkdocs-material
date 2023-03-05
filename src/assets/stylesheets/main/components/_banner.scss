@@ -37,14 +37,14 @@
 
   // Banner with warning
   &--warning {
-    color: var(--md-default-fg-color);
-    background: var(--md-typeset-mark-color);
+    color: var(--md-warning-fg-color);
+    background-color: var(--md-warning-bg-color);
   }
 
   // Banner wrapper
   &__inner {
-    margin: px2rem(12px) auto;
     padding: 0 px2rem(16px);
+    margin: px2rem(12px) auto;
     font-size: px2rem(14px);
   }
 

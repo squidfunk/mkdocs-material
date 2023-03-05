@@ -1,3 +1,58 @@
+mkdocs-material-9.1.0+insiders-4.32.2 (2023-03-02)
+
+  * Fixed #5127: Privacy plugin not handling large number of occurrences
+  * Fixed #5126: Privacy plugin breaks when replacing specific emojis
+
+mkdocs-material-9.1.0 (2023-03-02)
+
+  * Docker image now available for amd64, arm64 and arm/v7
+  * Updated Chinese (Taiwanese) translations
+  * Generalized tag identifier implementation
+  * Fixed flickering of header shadow on load
+  * Fixed occasional flickering of announcement bar
+
+mkdocs-material-9.0.15 (2023-02-26)
+
+  * Updated Chinese (Traditional) translations
+  * Updated Hebrew translations
+
+mkdocs-material-9.0.14+insiders-4.32.1 (2023-02-23)
+
+  * Fixed code block spans interfering with copying
+  * Fixed #5077: Privacy plugin breaks image alt text encoding
+  * Fixed #5079: Privacy plugin removing rel=me on external links
+
+mkdocs-material-9.0.14 (2023-02-23)
+
+  * Fixed #5072: Rendering bug on navigation expand button in Firefox
+
+mkdocs-material-9.0.13+insiders-4.32.0 (2023-02-19)
+
+  * Added support for custom selectors for code annotations
+  * Added support for code line range selection for better sharing
+
+mkdocs-material-9.0.13+insiders-4.31.0 (2023-02-18)
+
+  * Added support for table of contents on blog index and archive pages
+  * Fixed #4512: Allow custom search field boosts (experimental)
+
+mkdocs-material-9.0.13 (2023-02-18)
+
+  * Updated Uzbek translations
+  * Switched back to pre-9.0.0 headline detection in content partial
+  * Fixed #5062: Version warning not readable when using slate scheme
+  * Fixed #5061: Improved discernibility of table row hover color
+  * Fixed #5034: Sequence actors in Mermaid diagrams not color-abiding
+  * Fixed #4919: Allow to hide version warning in multiple versions
+
+mkdocs-material-9.0.12+insiders-4.30.2 (2023-02-13)
+
+  * Fixed privacy plugin excludes not working (4.30.0 regression)
+
+mkdocs-material-9.0.12+insiders-4.30.1 (2023-02-12)
+
+  * Fixed privacy plugin not handling static templates e.g. 404.html
+
 mkdocs-material-9.0.12 (2023-02-09)
 
   * Updated Catalan translations
@@ -93,7 +148,7 @@ mkdocs-material-9.0.3+insiders-4.27.1 (2023-01-08)
 
 mkdocs-material-9.0.3 (2023-01-08)
 
-  * Improved discernability of section index pages in navigation
+  * Improved discernibility of section index pages in navigation
   * Improved collapsing of adjacent whitespace in search plugin
   * Updated Indonesian translations
   * Fixed view source of this page button when edit URL points to blob
@@ -394,7 +449,7 @@ mkdocs-material-8.4.0 (2022-08-13)
 
   * Added support for cookie consent
   * Added support for feedback widget (Was this page helpful?)
-  * Added support for dismissable announcement bar
+  * Added support for dismissible announcement bar
   * Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 mkdocs-material-8.3.9+insiders-4.21.0 (2022-07-17)
@@ -845,7 +900,7 @@ mkdocs-material-8.0.4 (2021-12-04)
 
 mkdocs-material-8.0.3+insiders-4.2.0 (2021-12-02)
 
-  * Added support for dismissable announcement bar
+  * Added support for dismissible announcement bar
   * Added support for named placeholders in feedback widget
 
 mkdocs-material-8.0.3 (2021-12-02)
@@ -895,7 +950,7 @@ mkdocs-material-7.3.6+insiders-3.2.3 (2021-11-20)
 
   * Updated Swedish and French translations
   * Removed support for .mermaid-experimental class (now .mermaid)
-  * Fixed #3202: Cookie consent not dismissable on file:// locations
+  * Fixed #3202: Cookie consent not dismissible on file:// locations
   * Fixed #3216: Cookie consent not dismissed when invoked via anchor
   * Fixed #3232: Mermaid.js sometimes runs twice (race condition)
 

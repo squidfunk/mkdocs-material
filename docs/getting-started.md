@@ -59,6 +59,15 @@ install those packages separately.
 
 ---
 
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }
+__[How to set up Material for MkDocs]__ by @james-willett – :octicons-clock-24:
+15m – Learn how to create and host a documentation site using Material for Docs
+on GitHub Pages in a step-by-step guide.
+
+  [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=Q-YA_dA8C20
+
+---
+
 __Tip__: If you don't have prior experience with Python, we recommend reading 
 [Using Python's pip to Manage Your Projects' Dependencies], which is a really
 good introduction on the mechanics of Python package management and helps you
@@ -122,19 +131,6 @@ The following plugins are bundled with the Docker image:
     ```
 
     The new image can be used exactly like the official image.
-
-!!! info ":material-apple: Apple Silicon (M1) and :fontawesome-brands-raspberry-pi: Raspberry Pi"
-
-    The official Docker image is only available for `linux/amd64`. We recommend
-    the [third-party image] by @afritzler if you want to run Material for MkDocs
-    via Docker on `arm64` or `armv7`, as it is automatically built on every
-    release:
-
-    ```
-    docker pull ghcr.io/afritzler/mkdocs-material
-    ```
-
-  [third-party image]: https://github.com/afritzler/mkdocs-material
 
 ### with git
 

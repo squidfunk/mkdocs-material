@@ -1,7 +1,7 @@
 # Browser support
 
 Material for MkDocs goes at great lengths to support the largest possible range
-of browsers while retaining the simplemost possibilities for customization via
+of browsers while retaining the simplest possibilities for customization via
 modern CSS features like [custom properties] and [mask images].
 
   [custom properties]: https://caniuse.com/css-variables

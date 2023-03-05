@@ -93,10 +93,25 @@ to `mkdocs.yml`:
 ``` yaml
 extra:
   version:
-    default: stable
+    default: stable # (1)!
 ```
 
-Make sure that this matches the [default version].
+1.  You can also define multiple aliases as the default version, e.g. `stable`
+    and `development`.
+
+    ``` yaml
+    extra:
+      version:
+        default:
+          - stable
+          - development
+    ```
+
+    Now every version that has the `stable` and `development` aliases will not
+    display the version warning.
+
+Make sure one alias matches the [default version], as this is where users are
+redirected to.
 
   [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [theme extension]: ../customization.md#extending-the-theme

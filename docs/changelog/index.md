@@ -2,6 +2,32 @@
 
 ## Material for MkDocs
 
+### 9.1.0 <small>March 2, 2023</small> { id="9.1.0" }
+
+- Docker image now available for `amd64`, `arm64` and `arm/v7`
+- Updated Chinese (Taiwanese) translations
+- Generalized tag identifier implementation
+- Fixed flickering of header shadow on load
+- Fixed occasional flickering of announcement bar
+
+### 9.0.15 <small>February 26, 2023</small> { id="9.0.15" }
+
+- Updated Chinese (Traditional) translations
+- Updated Hebrew translations
+
+### 9.0.14 <small>February 23, 2023</small> { id="9.0.14" }
+
+- Fixed #5072: Rendering bug on navigation expand button in Firefox
+
+### 9.0.13 <small>February 18, 2023</small> { id="9.0.13" }
+
+- Updated Uzbek translations
+- Switched back to pre-9.0.0 headline detection in `content` partial
+- Fixed #5062: Version warning not readable when using slate scheme
+- Fixed #5061: Improved discernibility of table row hover color
+- Fixed #5034: Sequence actors in Mermaid diagrams not color-abiding
+- Fixed #4919: Allow to hide version warning in multiple versions
+
 ### 9.0.12 <small>February 9, 2023</small> { id="9.0.12" }
 
 - Updated Catalan translations
@@ -69,7 +95,7 @@
 
 ### 9.0.3 <small>January 8, 2023</small> { id="9.0.3" }
 
-- Improved discernability of section index pages in navigation
+- Improved discernibility of section index pages in navigation
 - Improved collapsing of adjacent whitespace in search plugin
 - Updated Indonesian translations
 - Fixed view source of this page button when edit URL points to blob
@@ -229,7 +255,7 @@ __Fixes__
 
 - Added support for cookie consent
 - Added support for feedback widget (Was this page helpful?)
-- Added support for dismissable announcement bar
+- Added support for dismissible announcement bar
 - Added Armenian, Lithuanian, Tagalog, and Urdu translations
 
 ### 8.3.9 <small>July 4, 2022</small> { id="8.3.9" }
@@ -369,7 +395,7 @@ __Fixes__
 ### 8.2.2 <small>February 26, 2022</small> { id="8.2.2" }
 
 - Added automatic removal of query parameter when search is closed
-- Fixed #3599: Anchors always overriden when using navigation tracking
+- Fixed #3599: Anchors always overridden when using navigation tracking
 
 ### 8.2.1 <small>February 17, 2022</small> { id="8.2.1" }
 

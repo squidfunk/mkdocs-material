@@ -27,6 +27,12 @@
               "type": "string",
               "default": "blog"
             },
+            "blog_toc": {
+              "title": "Blog table of contents",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.blog_toc",
+              "type": "boolean",
+              "default": false
+            },
             "post_date_format": {
               "title": "Format string for post dates",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_date_format",
@@ -203,6 +209,12 @@
                 }
               ]
             },
+            "archive_toc": {
+              "title": "Archive table of contents",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_toc",
+              "type": "boolean",
+              "default": false
+            },
             "categories": {
               "title": "Categories",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories",
@@ -241,12 +253,6 @@
               "type": "string",
               "default": "\"-\""
             },
-            "categories_toc": {
-              "title": "Category index table of contents",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_toc",
-              "type": "boolean",
-              "default": false
-            },
             "categories_allowed": {
               "title": "Categories allowed",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_allowed",
@@ -256,6 +262,12 @@
               },
               "uniqueItems": true,
               "default": []
+            },
+            "categories_toc": {
+              "title": "Categories table of contents",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_toc",
+              "type": "boolean",
+              "default": false
             },
             "pagination": {
               "title": "Pagination",

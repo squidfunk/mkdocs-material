@@ -88,14 +88,16 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 23 additional features__ that you can start using right away, and
+access to 25 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Code range selection] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+- [x] [Code annotations: custom selectors] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
 - [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
-- [x] [Optimize plugin] :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
-- [x] [Navigation path] (Breadcrumbs) :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
+- [x] [Optimize plugin]
+- [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation subtitles]
@@ -167,7 +169,6 @@ You can cancel your sponsorship anytime.[^5]
 
 [![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
 [![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
-[![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
@@ -180,7 +181,6 @@ You can cancel your sponsorship anytime.[^5]
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
 [![Coda]](https://coda.io){ target=_blank title="Coda" }
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
-[![ConsenSys]](https://consensys.net){ target=_blank title="ConsenSys" }
 [![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 [![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
@@ -198,10 +198,8 @@ You can cancel your sponsorship anytime.[^5]
 
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
-  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
   [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
-  [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
   [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
@@ -212,7 +210,6 @@ You can cancel your sponsorship anytime.[^5]
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
   [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
-  [ConsenSys]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-consensys.png
   [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
   [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
@@ -289,7 +286,7 @@ are released for general availability.
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list] and [custom sorting]
+- [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
@@ -304,10 +301,10 @@ are released for general availability.
 
 - [x] [Optimize plugin]
 - [x] [Typeset plugin]
-- [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Privacy plugin: optimization support]
-- [ ] Code block line wrapping
+- [x] [Privacy plugin: external links]
+- [ ] Privacy plugin: external link validation
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
@@ -318,7 +315,12 @@ are released for general availability.
 
 #### $ 24,000 – Blockpaprika
 
-- [ ] [Instant previews]
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [ ] Code line wrap button
+
+  [Code range selection]: ../reference/code-blocks.md#code-selection-button
+  [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
 
 ### Goals completed
 
@@ -345,14 +347,13 @@ can be used by all users.
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
-- [x] [Code annotations: anchor links]
+- [x] Code annotations: anchor links
 - [x] [Code annotations: strip comments]
 - [x] [Tag icons]
 - [x] [Table of contents anchor following]
 - [x] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
-  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
   [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following

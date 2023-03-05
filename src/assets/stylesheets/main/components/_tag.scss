@@ -43,11 +43,11 @@
   // Tag
   .md-tag {
     display: inline-block;
+    padding: px2em(4px, 12.8px) px2em(12px, 12.8px);
     margin-inline-end: 0.5em;
     margin-bottom: 0.5em;
-    padding: px2em(4px, 12.8px) px2em(12px, 12.8px);
-    font-weight: 700;
     font-size: px2rem(12.8px);
+    font-weight: 700;
     line-height: 1.6;
     letter-spacing: initial;
     vertical-align: middle;
@@ -86,13 +86,13 @@
       height: 1.2em;
       margin-right: 0.4em;
       vertical-align: text-bottom;
+      content: "";
       background-color: var(--md-default-fg-color--lighter);
+      transition: background-color 125ms;
       mask-image: var(--md-tag-icon);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
-      transition: background-color 125ms;
-      content: "";
     }
 
     // Linked tag on focus/hover
