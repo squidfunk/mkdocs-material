@@ -24,6 +24,7 @@ import {
   EMPTY,
   Observable,
   Subject,
+  bufferCount,
   catchError,
   concat,
   debounceTime,
@@ -34,11 +35,11 @@ import {
   map,
   of,
   share,
+  skip,
+  startWith,
   switchMap,
   take,
-  withLatestFrom,
-  switchScan,
-  filter
+  withLatestFrom
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
@@ -139,6 +140,8 @@ export function setupInstantLoading(
 
         // We now know that we have a link to an internal page, so we prevent
         // the browser from navigation and emit the URL for instant navigation.
+        // Note that this also includes anchor links, which means we need to
+        // implement anchor positioning ourselves.
         ev.preventDefault()
         return of(new URL(el.href))
       }),
@@ -154,10 +157,19 @@ export function setupInstantLoading(
         favicon.href = favicon.href
     })
 
+  // Enable scroll restoration before window unloads - this is essential to
+  // ensure that full reloads (F5) restore the viewport offset correctly. If
+  // only popstate events wouldn't reset the scroll position prior to their
+  // emission, we could just reset this in popstate. Meh.
+  fromEvent(window, "beforeunload")
+    .subscribe(() => {
+      history.scrollRestoration = "auto"
+    })
+
   // When an instant navigation event occurs, disable scroll restoration, since
   // we must normalize and synchronize the behavior across all browsers. For
   // instance, when the user clicks the back or forward button, the browser
-  // immediately jumps to the position of the previous document.
+  // would immediately jump to the position of the previous document.
   instant$.pipe(withLatestFrom(viewport$))
     .subscribe(([url, { offset }]) => {
       history.scrollRestoration = "manual"
@@ -182,10 +194,15 @@ export function setupInstantLoading(
   // since all MkDocs links are relative, we need to make sure that the current
   // location matches the document we just loaded. Otherwise any relative links
   // in the document might use the old location. If the request fails for some
-  // reason, we fall back to regular navigation, and set the location
-  // explicitly, which will force-load the page.
+  // reason, we fall back to regular navigation and set the location explicitly,
+  // which will force-load the page. Furthermore, we must pre-warm the buffer
+  // for the duplicate check, or the first click on an anchor link will also
+  // trigger an instant loading event, which doesn't make sense.
   const response$ = location$
     .pipe(
+      startWith(getLocation()),
+      distinctUntilKeyChanged("pathname"),
+      skip(1),
       switchMap(url => request(url)
         .pipe(
           catchError(() => {
@@ -267,7 +284,32 @@ export function setupInstantLoading(
   // Intercept popstate events, e.g. when using the browser's back and forward
   // buttons, and emit new location for fetching and parsing.
   const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
-  popstate$.subscribe(() => location$.next(getLocation()))
+  popstate$.pipe(map(() => getLocation()))
+    .subscribe(location$)
+
+  // Intercept clicks on anchor links, and scroll document into position. As
+  // we disabled scroll restoration, we need to do this manually here.
+  location$
+    .pipe(
+      startWith(getLocation()),
+      bufferCount(2, 1),
+      switchMap(([prev, next]) => (
+        prev.pathname === next.pathname &&
+        prev.hash     !== next.hash
+      )
+        ? of(next)
+        : EMPTY
+      )
+    )
+      .subscribe(url => {
+        if (history.state !== null || !url.hash) {
+          window.scrollTo(0, history.state?.y ?? 0)
+        } else {
+          history.scrollRestoration = "auto"
+          setLocationHash(url.hash)
+          history.scrollRestoration = "manual"
+        }
+      })
 
   // After parsing the document, check if the current history entry has a state.
   // This may happen when users press the back or forward button to visit a page
@@ -280,14 +322,12 @@ export function setupInstantLoading(
       } else {
         setLocationHash(url.hash)
       }
-
-      // Restore scroll restoration after the document loaded - this is crucial
-      // to instruct the browser to manage anchor clicks and reloads on its own.
-      history.scrollRestoration = "auto"
     })
 
-  // If the current history is not empty, register an event listener that
-  // updates the current history state whenever the scroll position changes.
+  // If the current history is not empty, register an event listener updating
+  // the current history state whenever the scroll position changes. This must
+  // be debounced and cannot be done in popstate, as popstate has already
+  // removed the entry from the history.
   document$
     .pipe(
       switchMap(() => viewport$),
