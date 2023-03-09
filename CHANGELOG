@@ -1,3 +1,9 @@
+mkdocs-material-9.1.2 (2023-03-09)
+
+  * Updated Icelandic, Korean and Swedish translations
+  * Fixed #5168: Mermaid text boxes overflow (9.0.13 regression)
+  * Fixed #5155: table of contents not highlighting percent-encoded URLs
+
 mkdocs-material-9.1.1 (2023-03-05)
 
   * Updated Czech and Thai translations

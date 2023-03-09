@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.1.2 <small>March 9, 2023</small> { id="9.1.2" }
+
+- Updated Icelandic, Korean and Swedish translations
+- Fixed #5168: Mermaid text boxes overflow (9.0.13 regression)
+- Fixed #5155: table of contents not highlighting percent-encoded URLs
+
 ### 9.1.1 <small>March 5, 2023</small> { id="9.1.1" }
 
 - Updated Czech and Thai translations
