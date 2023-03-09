@@ -1,3 +1,8 @@
+mkdocs-material-9.1.2+insiders-4.32.3 (2023-03-09)
+
+  * Fixed Docker image release workflow (9.1.0 regression)
+  * Fixed #5159: Missing underline for abbreviations (9.1.0 regression)
+
 mkdocs-material-9.1.2 (2023-03-09)
 
   * Updated Icelandic, Korean and Swedish translations

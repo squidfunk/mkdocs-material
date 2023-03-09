@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.3 <small>March 9, 2023</small> { id="4.32.3" }
+
+- Fixed Docker image release workflow (9.1.0 regression)
+- Fixed #5159: Missing underline for abbreviations (9.1.0 regression)
+
 ### 4.32.2 <small>February 23, 2023</small> { id="4.32.2" }
 
 - Fixed #5127: Privacy plugin not handling large number of occurrences
