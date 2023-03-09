@@ -175,6 +175,27 @@ workflow in action.
 
 Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
 
+## Other
+
+Since we can't cover all possible platforms, we rely on community contributed
+guides that explain how to deploy websites built with Material for MkDocs to
+other providers:
+
+<div class="mdx-columns" markdown>
+
+- [:simple-azuredevops: Azure][Azure]
+- [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
+- [:simple-digitalocean: DigitalOcean][DigitalOcean]
+- [:simple-netlify: Netlify][Netlify]
+- [:simple-vercel: Vercel][Vercel]
+
+</div>
+
   [GitLab Pages]: https://gitlab.com/pages
   [GitLab CI]: https://docs.gitlab.com/ee/ci/
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
+  [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
+  [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
+  [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
+  [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
+  [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
