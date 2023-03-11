@@ -152,6 +152,7 @@ countries = dict({
     "ja": "jp",
     "ka": "ge",
     "ko": "kr",
+    "ku-IQ": "ir",
     "lt": "lt",
     "lv": "lv",
     "mk": "mk",
