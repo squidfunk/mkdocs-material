@@ -2,6 +2,14 @@
 
 ## Material for MkDocs
 
+### 9.1.3 <small>March 14, 2023</small> { id="9.1.3" }
+
+- Added Kurdish (Soranî) translations
+- Updated Norwegian (Bokmål), Portuguese and Romanian translations
+- Improved compatibility with `mkdocs-jupyter` plugin
+- Fixed #5198: Built-in search plugin not filtering `script` and `style` tags
+- Fixed #5176: Back-to-top + instant loading not working (9.1.1 regression)
+
 ### 9.1.2 <small>March 9, 2023</small> { id="9.1.2" }
 
 - Updated Icelandic, Korean and Swedish translations

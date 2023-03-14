@@ -1,3 +1,11 @@
+mkdocs-material-9.1.3 (2023-03-14)
+
+  * Added Kurdish (Soranî) translations
+  * Updated Norwegian (Bokmål), Portuguese and Romanian translations
+  * Improved compatibility with mkdocs-jupyter plugin
+  * Fixed #5198: Built-in search plugin not filtering script and style tags
+  * Fixed #5176: Back-to-top + instant loading not working (9.1.1 regression)
+
 mkdocs-material-9.1.2+insiders-4.32.3 (2023-03-09)
 
   * Fixed Docker image release workflow (9.1.0 regression)
