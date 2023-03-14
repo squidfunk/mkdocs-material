@@ -334,15 +334,15 @@
 
         <!-- Back-to-top button -->
         {% if "navigation.top" in features %}
-          <a
-            href="#"
+          <button
+            type="button"
             class="md-top md-icon"
             data-md-component="top"
             hidden
           >
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t("top") }}
-          </a>
+          </button>
         {% endif %}
       </main>
 

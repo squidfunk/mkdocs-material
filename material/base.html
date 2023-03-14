@@ -40,7 +40,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.7bf56d0a.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c4a75a56.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.a0c5b2b5.min.css' | url }}">
@@ -183,10 +183,10 @@
           {% include "partials/javascripts/content.html" %}
         </div>
         {% if "navigation.top" in features %}
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t("top") }}
-          </a>
+          </button>
         {% endif %}
       </main>
       {% block footer %}
@@ -240,7 +240,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.fc8c2696.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.efa0ade1.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
