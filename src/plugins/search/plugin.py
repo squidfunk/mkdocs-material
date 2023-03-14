@@ -432,7 +432,8 @@ class Parser(HTMLParser):
         # Remove element from skip list
         el = self.context.pop()
         if el in self.skip:
-            self.skip.remove(el)
+            if el.tag not in ["script", "style", "object"]:
+                self.skip.remove(el)
             return
 
         # Render closing tag if kept
