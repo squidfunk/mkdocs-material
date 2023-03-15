@@ -97,7 +97,8 @@ export function mountMermaid(
           actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
           messageFontSize: "16px",
           noteFontSize: "16px"
-        }
+        },
+        securityLevel:'loose'
       })),
       map(() => undefined),
       shareReplay(1)
