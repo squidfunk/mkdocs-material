@@ -177,7 +177,7 @@ export function mountCodeBlock(
         feature("content.code.copy") && !el.closest(".no-copy")
       )) {
         const parent = el.closest("pre")!
-        parent.id = `__code_${++sequence}`
+        parent.id = `__code_${sequence++}`
         parent.insertBefore(
           renderClipboardButton(parent.id),
           el

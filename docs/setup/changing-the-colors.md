@@ -40,7 +40,7 @@ Click on a tile to change the color scheme:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-color-scheme")
       document.body.setAttribute("data-md-color-scheme", attr)
-      var name = document.querySelector("#__code_1 code span.l")
+      var name = document.querySelector("#__code_0 code span.l")
       name.textContent = attr
     })
   })
@@ -95,7 +95,7 @@ Click on a tile to change the primary color:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-color-primary")
       document.body.setAttribute("data-md-color-primary", attr)
-      var name = document.querySelector("#__code_2 code span.l")
+      var name = document.querySelector("#__code_1 code span.l")
       name.textContent = attr.replace("-", " ")
     })
   })
@@ -152,7 +152,7 @@ Click on a tile to change the accent color:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-color-accent")
       document.body.setAttribute("data-md-color-accent", attr)
-      var name = document.querySelector("#__code_3 code span.l")
+      var name = document.querySelector("#__code_2 code span.l")
       name.textContent = attr.replace("-", " ")
     })
   })
