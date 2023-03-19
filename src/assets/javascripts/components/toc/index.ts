@@ -134,7 +134,7 @@ export function watchTableOfContents(
   /* Compute anchor-to-target mapping */
   const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
   for (const anchor of anchors) {
-    const id = anchor.hash.substring(1)
+    const id = decodeURIComponent(anchor.hash.substring(1))
     const target = getOptionalElement(`[id="${id}"]`)
     if (typeof target !== "undefined")
       table.set(anchor, target)
