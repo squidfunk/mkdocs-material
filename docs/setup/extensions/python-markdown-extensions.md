@@ -371,6 +371,18 @@ The following configuration options are supported:
     syntax highlighting using [Pygments], so they don't apply if `use_pygments`
     is set to `false`.
 
+[`pygments_lang_class`](#+pymdownx.highlight.pygments_lang_class){ #+pymdownx.highlight.pygments_lang_class }
+
+:   :octicons-milestone-24: Default: `false` – This option instructs [Pygments]
+    to add a CSS class to identify the language of the code block, which is
+    essential for custom annotation markers to function:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.highlight:
+      pygments_lang_class: true
+```
+
 [`auto_title`](#+pymdownx.highlight.auto_title){ #+pymdownx.highlight.auto_title }
 
 :   :octicons-milestone-24: Default: `false` – This option will automatically
@@ -426,6 +438,18 @@ The following configuration options are supported:
     markdown_extensions:
       - pymdownx.highlight:
           anchor_linenums: true
+    ```
+
+[`line_spans`](#+pymdownx.highlight.line_spans){ #+pymdownx.highlight.line_spans }
+
+:   :octicons-milestone-24: Default: _none_ – When this option is set, each
+    line of a code block is wrapped in a `span`, which is essential for features
+    like line highlighting to work correctly:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.highlight:
+          line_spans: __span
     ```
 
 The other configuration options of this extension are not officially supported
