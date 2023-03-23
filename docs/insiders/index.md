@@ -187,7 +187,6 @@ You can cancel your sponsorship anytime.[^5]
 [![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
 [![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
-[![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
 [![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 [![RackN]](https://rackn.com/){ target=_blank title="RackN" }
@@ -215,7 +214,6 @@ You can cancel your sponsorship anytime.[^5]
   [Sparkfun]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png
   [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
   [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
-  [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
   [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
   [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
   [RackN]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png
