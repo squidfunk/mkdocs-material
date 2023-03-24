@@ -78,6 +78,7 @@ marker {
 .edgePath .path,
 .flowchart-link {
   stroke: var(--md-mermaid-edge-color);
+  stroke-width: .05rem;
 }
 
 /* Flowchart arrow head */
@@ -99,12 +100,12 @@ marker {
 }
 
 /* Flowchart markers */
-defs #flowchart-circleStart,
-defs #flowchart-circleEnd,
-defs #flowchart-crossStart,
-defs #flowchart-crossEnd,
-defs #flowchart-pointStart,
-defs #flowchart-pointEnd {
+g #flowchart-circleStart,
+g #flowchart-circleEnd,
+g #flowchart-crossStart,
+g #flowchart-crossEnd,
+g #flowchart-pointStart,
+g #flowchart-pointEnd {
   stroke: none;
 }
 
