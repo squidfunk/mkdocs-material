@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.4 <small>March 24, 2023</small> { id="9.1.4" }
+
+- Fixed #5239: Instant loading breaks anchors in details (9.1.1 regression)
+- Fixed #5211: Anchor following not working for Chinese (9.1.2 regression)
+
 ### 9.1.3 <small>March 14, 2023</small> { id="9.1.3" }
 
 - Added Kurdish (Soranî) translations
@@ -14,7 +19,7 @@
 
 - Updated Icelandic, Korean and Swedish translations
 - Fixed #5168: Mermaid text boxes overflow (9.0.13 regression)
-- Fixed #5155: table of contents not highlighting percent-encoded URLs
+- Fixed #5155: Table of contents not highlighting percent-encoded URLs
 
 ### 9.1.1 <small>March 5, 2023</small> { id="9.1.1" }
 
