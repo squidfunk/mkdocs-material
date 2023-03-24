@@ -127,7 +127,7 @@ document.documentElement.classList.add("js")
 /* Set up navigation observables and subjects */
 const document$ = watchDocument()
 const location$ = watchLocation()
-const target$   = watchLocationTarget()
+const target$   = watchLocationTarget(location$)
 const keyboard$ = watchKeyboard()
 
 /* Set up media observables */

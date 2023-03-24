@@ -25,6 +25,7 @@ import {
   filter,
   fromEvent,
   map,
+  merge,
   shareReplay,
   startWith
 } from "rxjs"
@@ -66,10 +67,17 @@ export function setLocationHash(hash: string): void {
 /**
  * Watch location hash
  *
+ * @param location$ - Location observable
+ *
  * @returns Location hash observable
  */
-export function watchLocationHash(): Observable<string> {
-  return fromEvent<HashChangeEvent>(window, "hashchange")
+export function watchLocationHash(
+  location$: Observable<URL>
+): Observable<string> {
+  return merge(
+    fromEvent<HashChangeEvent>(window, "hashchange"),
+    location$
+  )
     .pipe(
       map(getLocationHash),
       startWith(getLocationHash()),
@@ -81,10 +89,14 @@ export function watchLocationHash(): Observable<string> {
 /**
  * Watch location target
  *
+ * @param location$ - Location observable
+ *
  * @returns Location target observable
  */
-export function watchLocationTarget(): Observable<HTMLElement> {
-  return watchLocationHash()
+export function watchLocationTarget(
+  location$: Observable<URL>
+): Observable<HTMLElement> {
+  return watchLocationHash(location$)
     .pipe(
       map(id => getOptionalElement(`[id="${id}"]`)!),
       filter(el => typeof el !== "undefined")

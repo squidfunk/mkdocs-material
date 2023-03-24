@@ -141,7 +141,9 @@ export function setupInstantLoading(
         // We now know that we have a link to an internal page, so we prevent
         // the browser from navigation and emit the URL for instant navigation.
         // Note that this also includes anchor links, which means we need to
-        // implement anchor positioning ourselves.
+        // implement anchor positioning ourselves. The reason for this is that
+        // if we wouldn't manage anchor links as well, scroll restoration will
+        // not work correctly (e.g. following an anchor link and scrolling).
         ev.preventDefault()
         return of(new URL(el.href))
       }),
@@ -284,7 +286,7 @@ export function setupInstantLoading(
   // Intercept popstate events, e.g. when using the browser's back and forward
   // buttons, and emit new location for fetching and parsing.
   const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
-  popstate$.pipe(map(() => getLocation()))
+  popstate$.pipe(map(getLocation))
     .subscribe(location$)
 
   // Intercept clicks on anchor links, and scroll document into position. As
