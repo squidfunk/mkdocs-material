@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.4 <small>March 24, 2023</small> { id="4.32.4" }
+
+- Fixed #5241: Built-in typeset plugin jams navigation for anchors in headings
+
 ### 4.32.3 <small>March 9, 2023</small> { id="4.32.3" }
 
 - Fixed Docker image release workflow (9.1.0 regression)
