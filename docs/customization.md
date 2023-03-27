@@ -27,7 +27,7 @@ new style sheet file in the `docs` directory:
 └─ mkdocs.yml
 ```
 
-Then, add the following lines to `mkdocs.yml`:
+Then, add the following lines to `mkdocs.yml` before your `theme` section:
 
 ``` yaml
 extra_css:
