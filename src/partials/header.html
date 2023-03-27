@@ -48,7 +48,8 @@
 
     <!-- Button to open drawer -->
     <label class="md-header__button md-icon" for="__drawer">
-      {% include ".icons/material/menu" ~ ".svg" %}
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
     </label>
 
     <!-- Header title -->
@@ -138,7 +139,8 @@
     <!-- Button to open search modal -->
     {% if "material/search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
       </label>
 
       <!-- Search interface -->

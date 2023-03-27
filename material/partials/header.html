@@ -13,7 +13,8 @@
       {% include "partials/logo.html" %}
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      {% include ".icons/material/menu" ~ ".svg" %}
+      {% set icon = config.theme.icon.menu or "material/menu" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -69,7 +70,8 @@
     {% endif %}
     {% if "material/search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
       </label>
       {% include "partials/search.html" %}
     {% endif %}
