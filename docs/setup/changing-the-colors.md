@@ -344,7 +344,7 @@ add:
       - stylesheets/extra.css
     ```
 
-Note that the `extra_css` value must be defined _before_ the `theme`.
+Note that the `extra_css` value must be defined _outside_ of the `theme` section.
 
 See the file containing the [color definitions] for a list of all CSS variables.
 
