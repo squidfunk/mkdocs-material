@@ -344,6 +344,8 @@ add:
       - stylesheets/extra.css
     ```
 
+Note that the `extra_css` value must be defined _before_ the `theme`.
+
 See the file containing the [color definitions] for a list of all CSS variables.
 
   [CSS variables]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
