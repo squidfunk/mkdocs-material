@@ -165,7 +165,11 @@ You can cancel your sponsorship anytime.[^5]
 
 <div class="mdx-premium" markdown>
 
-**Special thanks** to our **premium sponsors**:
+**Silver sponsors**:
+
+[![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
+
+**Bronze sponsors**:
 
 [![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
 [![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
@@ -194,6 +198,7 @@ You can cancel your sponsorship anytime.[^5]
 
 </div>
 
+  [FastAPI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
