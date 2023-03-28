@@ -58,7 +58,7 @@
 </p>
 
 <h2></h2>
-<p>&nbsp;</p>
+<p id="premium-sponsors">&nbsp;</p>
 <p align="center"><strong>Silver sponsors</strong></p>
 <p align="center">
   <a href="https://fastapi.tiangolo.com/" target=_blank><img
