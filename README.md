@@ -59,8 +59,14 @@
 
 <h2></h2>
 <p>&nbsp;</p>
-<p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
+<p align="center"><strong>Silver sponsors</strong></p>
+<p align="center">
+  <a href="https://fastapi.tiangolo.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="86"
+  /></a>
+</p>
 <p>&nbsp;</p>
+<p align="center"><strong>Bronze sponsors</strong></p>
 <p align="center">
   <a href="https://cirrus-ci.org/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png" height="58"
