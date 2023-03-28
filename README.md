@@ -62,7 +62,7 @@
 <p align="center"><strong>Silver sponsors</strong></p>
 <p align="center">
   <a href="https://fastapi.tiangolo.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="86"
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="120"
   /></a>
 </p>
 <p>&nbsp;</p>
