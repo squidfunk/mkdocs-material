@@ -48,10 +48,10 @@
               {% include ".icons/material/arrow-left.svg" %}
             </div>
             <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
               <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  {{ direction }}
-                </span>
                 {{ page.previous_page.title }}
               </div>
             </div>
@@ -68,10 +68,10 @@
             rel="next"
           >
             <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
               <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  {{ direction }}
-                </span>
                 {{ page.next_page.title }}
               </div>
             </div>

@@ -15,10 +15,10 @@
               {% include ".icons/material/arrow-left.svg" %}
             </div>
             <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
               <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  {{ direction }}
-                </span>
                 {{ page.previous_page.title }}
               </div>
             </div>
@@ -28,10 +28,10 @@
           {% set direction = lang.t("footer.next") %}
           <a href="{{ page.next_page.url | url }}" class="md-footer__link md-footer__link--next" aria-label="{{ direction }}: {{ page.next_page.title | e }}" rel="next">
             <div class="md-footer__title">
+              <span class="md-footer__direction">
+                {{ direction }}
+              </span>
               <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  {{ direction }}
-                </span>
                 {{ page.next_page.title }}
               </div>
             </div>
