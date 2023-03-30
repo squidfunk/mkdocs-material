@@ -245,6 +245,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
+[Trivy](https://github.com/aquasecurity/trivy)
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
 [WTF](https://wtfutil.com/)
