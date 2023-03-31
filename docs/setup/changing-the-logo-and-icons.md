@@ -72,6 +72,37 @@ theme:
   [Favicon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Favicon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/assets/images/favicon.png
 
+### Site icons
+
+Most icons you see on your site, such as navigation icons, can also be changed. For example,
+to change the navigation arrows in the footer, add the following lines to `mkdocs.yml`:
+
+```yaml
+theme:
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+```
+
+The following is a complete list of customizable icons used by the theme:
+
+| Icon name    | Purpose                                                                       |
+|:-------------|:------------------------------------------------------------------------------|
+| `logo`       | See [Logo](#logo)                                                             |
+| `menu`       | Open drawer                                                                   |
+| `alternate`  | Change language                                                               |
+| `search`     | Search icon                                                                   |
+| `share`      | Share search                                                                  |
+| `close`      | Reset search, dismiss announcements                                           |
+| `top`        | Back-to-top button                                                            |
+| `edit`       | Edit current page                                                             |
+| `view`       | View page source                                                              |
+| `repo`       | Repository icon                                                               |
+| `admonition` | See [Admonition icons](../reference/admonitions.md#admonition-icons)          |
+| `tag`        | See [Tag icons and identifiers](setting-up-tags.md#tag-icons-and-identifiers) |
+| `previous`   | Previous page in footer, hide search on mobile                                |
+| `next`       | Next page in footer                                                           |
+
 ## Customization
 
 ### Additional icons
