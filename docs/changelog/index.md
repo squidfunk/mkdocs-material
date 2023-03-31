@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.1.5 <small>March 31, 2023</small> { id="9.1.5" }
+
+- Updated Lithuanian and Japanese translations
+- Updated Mermaid.js to version 9.4.3
+- Fixed #5290: Footer previous/next labels cut-off for short page titles
+
 ### 9.1.4 <small>March 24, 2023</small> { id="9.1.4" }
 
 - Fixed #5239: Instant loading breaks anchors in details (9.1.1 regression)
