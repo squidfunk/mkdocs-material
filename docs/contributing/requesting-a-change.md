@@ -1,6 +1,6 @@
 # Requesting a change
 
-Material for MkDocs is a powerful tool to create beautiful and functional
+Material for MkDocs is a powerful tool for creating beautiful and functional
 project documentation. With more than 20,000 users, we understand that our
 project serves a wide range of use cases, which is why we have created the
 following guide.
@@ -12,7 +12,7 @@ to maintain existing functionality while constantly adding new features at the
 same time. We highly value every idea or contribution from our community, and
 we kindly ask you to take the time to read the following guidelines before 
 submitting your change request in our public [issue tracker]. This will help us 
-better understand the proposed change, and how it will benefit the community.
+better understand the proposed change and how it will benefit the community.
 
 This guide is our best effort to explain the criteria and reasoning behind our
 decisions when evaluating change requests and considering them for
@@ -22,7 +22,7 @@ implementation.
 
 ## Before creating an issue
 
-Before you invest your time to fill out and submit a change request, we kindly
+Before you invest your time in filling out and submit a change request, we kindly
 ask you to do some preliminary work by answering some questions to determine if
 your idea is a good fit for Material for MkDocs and matches the project's
 [philosophy] and tone.
@@ -33,7 +33,7 @@ __Please find answers to the following questions before creating an issue.__
 
 ### It's not a bug, it's a feature
 
-Change requests are intended for suggesting minor adjustments, ideas for new
+Change requests are intended to suggest minor adjustments, ideas for new
 features, or to influence the project's direction and vision. It is important
 to note that change requests are not intended for reporting bugs, as they're
 missing essential information for debugging.
@@ -58,15 +58,14 @@ that benefits a large number of users.
 
 [:octicons-comment-discussion-16:&nbsp; Start a discussion][Start a discussion]{ .md-button .md-button--primary }
 
-  [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
   [Start a discussion]: https://github.com/squidfunk/mkdocs-material/discussions
 
 ## Issue template
 
 Now that you have taken the time to do the necessary preliminary work and ensure 
 that your idea meets our requirements, you are invited to create a change
-request. The following guide will walk you through all necessary steps to help
-you submit a comprehensive and useful issue:
+request. The following guide will walk you through all the necessary steps to 
+help you submit a comprehensive and useful issue:
 
 - [Title]
 - [Context] <small>optional</small>
@@ -105,22 +104,15 @@ in which you're using Material for MkDocs, and what you _think_ might be
 relevant. Don't write about the change request here.
 
 > __Why this might be helpful__: some ideas might only benefit specific
-> settings, environments or edge cases, for example, when your documentation
+> settings, environments, or edge cases, for example, when your documentation
 > contains thousands of documents. With a little context, change requests
 > can be prioritized more accurately.
 
 ### Description
 
 Next, provide a detailed and clear description of your idea. Explain why your 
-idea is relevant to Material for MkDocs and must be implemented here, and not
-in one of its dependencies:[^1]
-
-  [^1]:
-    Sometimes, users suggest ideas on our [issue tracker] that concern one of
-    our upstream dependencies, including [MkDocs], [Python Markdown],
-    [Python Markdown Extensions] or third-party plugins. It's a good idea to
-    think about whether your idea is beneficial to other themes, upstreaming
-    change requests for bigger impact.
+idea is relevant to Material for MkDocs and must be implemented here and not
+in one of its dependencies:
 
 -   __Explain the <u>what</u>, not the <u>why</u>__ – don't explain
     [the benefits of your idea][Use cases] here, we're getting there.
@@ -131,23 +123,18 @@ in one of its dependencies:[^1]
     users will be grateful for having to read less.
 
 -   __One idea at a time__ – if you have multiple ideas that don't belong 
-together, please open separate change requests for each of those ideas.
+    together, please open separate change requests for each of those ideas.
 
 ---
 
 :material-run-fast: __Stretch goal__ – if you have a customization or another
 way to add the proposed change, you can help other users by sharing it here
-before we  maintainers can add it to our code base.
+before we maintainers can add it to our code base.
 
 > __Why we need this__: To understand and evaluate your proposed change, we
 > need to have a clear understanding of your idea. By providing a detailed and 
 > precise description, you can help save you and us time spent discussing
 > further clarification of your idea in the comments.
-
-  [MkDocs]: https://www.mkdocs.org
-  [Python Markdown]: https://python-markdown.github.io/extensions/
-  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
-  [theme.name]: https://www.mkdocs.org/user-guide/configuration/#theme
 
 ### Related links
 
@@ -164,7 +151,7 @@ the link to the discussion as well.
 ### Use cases
 
 Explain how your change request would work from an author's and user's
-perspective – what's the expected impact and why does it not only benefit you,
+perspective – what's the expected impact, and why does it not only benefit you,
 but other users? How many of them? Furthermore, would it potentially break
 existing functionality?
 
@@ -197,8 +184,66 @@ it and describing how it was implemented and incorporated.
 ### Checklist
 
 Thanks for following the change request guide and creating a high-quality 
-change request. This section ensures that you have read this guide and have
+change request. The checklist ensures that you have read this guide and have
 worked to your best knowledge to provide us with every piece of information to 
 review your idea for Material for MkDocs.
 
 __We'll take it from here.__
+
+---
+
+## Your change request was rejected?
+
+We're sorry that your change request didn't make the cut. We understand it can 
+be frustrating when your ideas don't get accepted. We want you to know that as 
+project maintainers, we have to weigh the community's needs as a whole, and 
+sometimes that means making tough decisions. We always try to consider many 
+factors when evaluating change requests, and we'll explain the reasoning behind 
+our decisions whenever we can. If you're unsure why your request was turned 
+down, please ask for clarification.
+
+### Common reasons
+
+To provide you with some insight as to why your idea may have been rejected, 
+it's possible that it didn't align with the project's goals and direction or 
+the available resources. Here are a few common reasons for rejections:
+
+> __Your idea may not...__
+
+> - match the overall tone or vision of this project
+> - be compatible with existing features, themes, or plugins
+> - be useful to the majority of users
+> - be user-friendly for authors
+> - be implemented in an accessible way
+> - be implemented with reasonable effort
+> - be implemented using the [principle of progressive enhancement]
+> - be implemented to work on all screen sizes
+> - be implemented to work on all modern browsers
+
+
+We highly value and appreciate every idea and contribution you bring to the 
+table, and we encourage you to keep sharing them with us. Some of these ideas 
+might even be implemented by us! However, we want to remind you that you also 
+have the power to implement your ideas on your own by customizing the theme. If 
+you're unsure about how to realize your ideas or want to know if someone has 
+already found a solution, feel free to visit our [discussion board] - it's the 
+perfect place for you!
+
+ [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
+ [principle of progressive enhancement]: https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement?retiredLocale=de
+
+### Dependencies
+
+Occasionally, users propose ideas on our [issue tracker] that concern one of our 
+upstream [dependencies], such as [MkDocs], [Python Markdown],
+[Python Markdown Extensions] or third-party plugins. In such cases, it's 
+worthwhile to consider whether your idea could benefit other themes as well. If 
+so, you might want to consider submitting a change request upstream to have a 
+greater impact.
+
+  [dependencies]: https://squidfunk.github.io/mkdocs-material/setup/dependencies/image-processing/
+  [MkDocs]: https://www.mkdocs.org
+  [Python Markdown]: https://python-markdown.github.io/extensions/
+  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
+  [theme.name]: https://www.mkdocs.org/user-guide/configuration/#theme
+  [dependencies]: #dependencies

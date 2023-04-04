@@ -175,6 +175,7 @@ nav:
       - Reporting a bug: contributing/reporting-a-bug.md
       - Reporting a docs issue: contributing/reporting-a-docs-issue.md
       - Requesting a change: contributing/requesting-a-change.md
+      - Adding a translation: contributing/adding-a-translation.md
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
