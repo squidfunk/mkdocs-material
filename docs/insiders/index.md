@@ -251,6 +251,10 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
+> [In February, we lost $1,3k in monthly funding because GitHub removed PayPal support][Twitter]
+
+  [Twitter]: https://twitter.com/squidfunk/status/1643539228574269443
+
 #### $ 12,000 – Piri Piri
 
 - [x] [Blog plugin]
