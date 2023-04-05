@@ -276,7 +276,7 @@ Then, it is a simple process to import the data in to the Markdown files.
         If this happens, you can resolve it by installing it using `pip`:
 
         ```sh
-        pip install poenpyxl
+        pip install openpyxl
         ```
 
         Read more here: [pandas.read_excel][pandas-read_excel-engine]
