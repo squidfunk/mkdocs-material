@@ -179,6 +179,7 @@ nav:
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
   - Setup:
+    - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
     - Changing the fonts: setup/changing-the-fonts.md
     - Changing the language: setup/changing-the-language.md
