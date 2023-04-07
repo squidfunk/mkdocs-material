@@ -397,6 +397,17 @@ line {
   fill: var(--md-accent-bg-color);
 }
 
+/* Sequence rectangle */
+rect.rect {
+  fill: var(--md-mermaid-node-bg-color);
+  stroke: none;
+}
+
+/* Sequence rectangle text */
+rect.rect + text.text {
+  fill: var(--md-mermaid-edge-color);
+}
+
 /* Sequence diagram markers */
 defs #sequencenumber {
   fill: var(--md-mermaid-node-fg-color) !important;
