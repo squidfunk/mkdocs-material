@@ -22,12 +22,23 @@ just delete and recreate the environment. It's trivial to set up:
 
 -   Activate the environment with:
 
-    ``` sh
-    . venv/bin/activate # (1)!
-    ```
+    === ":fontawesome-brands-windows: Windows"
 
-    1.  Your terminal should now print `(venv)` before the prompt, which is
-        how you know that you are inside an environment.
+        ``` sh
+        . venv/Scripts/activate # (1)!
+        ```
+
+        1. Your terminal should now print `(venv)` before the prompt, which is
+           how you know that you are inside an environment.
+
+    === ":material-linux: Linux, :material-apple: macOS"
+
+        ``` sh
+        . venv/bin/activate # (1)!
+        ```
+
+        1. Your terminal should now print `(venv)` before the prompt, which is
+           how you know that you are inside an environment.
 
 -   Exit the environment with:
 
