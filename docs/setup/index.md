@@ -1,117 +1,90 @@
 # Setup
 
-Material for MkDocs offers a wide range of options for customizing and adjusting 
-your documentation. In this section, we will explain how to make the most use of 
-Material for MkDocs to change the look of your documentation, add more content,
-improve its functionality, and work with extensions.
+Material for MkDocs offers a wide range of options for customizing your
+documentation. In this section, we will explain how you can create a meaningful
+structure for your site, change the look and feel, add a blog and comment system
+and build a highly optimized site.
 
-## Customizing the look
+## Site structure
 
-Make your documentation reflect your brand by changing its colors, fonts, icons, 
-logo, and more with just a few lines of configuration. Material for MkDocs makes 
-it easy to extend the basic configurations and provides many options to alter 
-the appearance.
+Set up and customize the structure of your documentation by configuring the
+header and footer to your taste, choosing among many modes of navigation,
+setting up site search and more.
 
 <div class="grid cards" markdown>
 
-- :material-brush-variant: __[Colors]__ – Change colors with an existing color palette or customize with CSS
-- :fontawesome-regular-file-word: __[Fonts]__ – Change fonts using Google Fonts or load self-hosted fonts
-- :material-google-downasaur: __[Logo & Icons]__ – Change the logo, use any of the +8,000 icons, or add new ones 
+- :fontawesome-solid-earth-americas: __[Language]__ – Choose out of the 50+ supported languages or add a new one
+- :material-page-layout-sidebar-left: __[Navigation]__ – Create a clear, concise, and comprehensive navigation structure
+- :material-page-layout-header: __[Header]__ – Customize the behavior of the header, add an announcement bar
+- :material-page-layout-footer: __[Footer]__ – Add links to your social media profiles or websites in the footer 
+- :material-tab-search: __[Search]__ – Set up and configure search, running entirely in the user's browser
+- :material-tag-plus-outline: __[Tags]__ – Categorize your pages with tags and group related pages
 
 </div>
 
-  [Colors]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/
-  [Fonts]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/
-  [Logo & Icons]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/
+  [Language]: changing-the-language.md
+  [Navigation]: setting-up-navigation.md
+  [Header]: setting-up-the-header.md
+  [Footer]: setting-up-the-footer.md
+  [Search]: setting-up-site-search.md
+  [Tags]: setting-up-tags.md
 
-## Adding additional content
 
-Easily extend the content of your documentation. Adjusting headers, including a 
-footer, creating a blog, implementing comment systems, and automatically creating 
-social media previews.
+## Appearance
+
+Match your brand's colors, fonts, icons, logo, and more with a few lines of
+configuration – Material for MkDocs makes it easy to extend the basic
+configuration or alter the appearance.
 
 <div class="grid cards" markdown>
 
-- :material-format-header-1: __[Header]__ – Customize the header using different configurations 
-- :material-format-font-size-decrease: __[Footer]__ – Add links to social media or other websites in the footer 
-- :material-cards-variant: __[Social Cards]__ – Create automated Social Media previews when sharing links
-- :material-book-open-outline: __[Blog]__ – Build a standalone blog or expand your documentation with one
+- :material-brush-variant: __[Colors]__ Change colors with an existing color palette or customize with CSS
+- :material-format-font: __[Fonts]__ – Choose among 1,000 Google Fonts or load self-hosted fonts
+- :material-google-downasaur: __[Logo & Icons]__ – Change the logo, use any of the 8,000+ icons, or add new ones
+- :material-cards-variant: __[Social Cards]__ – Automatically create social media previews when sharing links
+
+</div>
+
+  [Colors]: changing-the-colors.md
+  [Fonts]: changing-the-fonts.md
+  [Logo & Icons]: changing-the-logo-and-icons.md
+  [Social Cards]: setting-up-social-cards.md
+
+## Content
+
+Create a blog, integrate a comment system, connect a git repository and set up
+versioned documentation that matches your project's versioning metholodogy.
+
+<div class="grid cards" markdown>
+
+- :material-book-open-outline: __[Blog]__ – Set up a standalone blog or host it alongside your documentation
 - :material-comment-text-outline: __[Comment System]__ – Add a third-party comment system on any page or footer
-
-</div>
-
-  [Header]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/
-  [Footer]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/
-  [Social Cards]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/
-  [Blog]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/
-  [Comment System]: https://squidfunk.github.io/mkdocs-material/setup/adding-a-comment-system/
-
-## Enhancing functionality
-
-Improve the functionality of your documentation by integrating navigation and 
-site search, categorizing pages using tags, changing the language, or adding 
-multiple languages, and deploying multiple versions.
-
-<div class="grid cards" markdown>
-
-- :material-navigation-variant-outline: __[Navigation]__ – Create a clear, concise, and comprehensive navigation structure
-- :material-tab-search: __[Site Search]__ – Set up an excellent client-side search implementation
-- :fontawesome-solid-earth-americas: __[Language]__ – Change the language using one of the +50 existing translations
-- :octicons-tag-16: __[Tags]__ – Categorize your pages with tags and group related pages
 - :octicons-versions-16: __[Versioning]__ – Deploy multiple versions by integrating with external utilities
+- :octicons-repo-16: __[Repository]__ – Connect your documentation to your git repository
 
 </div>
 
-  [Navigation]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/
-  [Site Search]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/
-  [Language]: https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/
-  [Tags]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
-  [Versioning]: https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/
+  [Blog]: setting-up-a-blog.md
+  [Comment System]: adding-a-comment-system.md
+  [Versioning]: setting-up-versioning.md  
+  [Repository]: adding-a-git-repository.md
 
-## Optimizing your site
+## Optimization
 
-Optimize your site by displaying information from your Git repository, getting a 
-higher ranking on search engines, ensuring compliance with data privacy 
-regulations, and unlocking offline usage.
+Add site analytics and build an optimized site by adding automatic image
+compression, complying with GDPR data privacy regulations and make it
+offline-capable.
 
 <div class="grid cards" markdown>
 
-- :fontawesome-brands-git: __[Git Repository]__ – Display information to your project's repository on your static site
-- :material-screwdriver: __[Optimized site]__ – Create optimized sites that rank great on search engines, i.a.
+- :material-google-analytics: __[Site analytics]__ – Learn how your users experience your documentation
+- :material-screwdriver: __[Optimized site]__ – Create optimized sites that rank great on search engines
 - :octicons-lock-16: __[Data Privacy]__ – Ensure compliance with data privacy regulations
 - :octicons-cloud-offline-16: __[Offline usage]__ – Build an online and offline-capable documentation
 
 </div>
 
-  [Git Repository]: https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/
-  [Optimized site]: https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/
-  [Data Privacy]: https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/
-  [Offline usage]: https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/
-
-## Working with extensions
-
-Extend the range of available features and enhance your technical writing by 
-working with extensions in your documentation.
-
-<div class="grid cards" markdown>
-
-- :material-language-python: __[Python Markdown]__ – Unlock a large range of features that require Python Markdown
-- :material-plus-box: __[Python Markdown Extension]__ – Advance your technical writing with a collection of extensions
-
-</div>
-
-  [Python Markdown]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/
-  [Python Markdown Extension]: https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/
-
-## Dependencies
-
-Install external libraries to allow for image processing as part of the build 
-pipeline to make use of social cards and image optimization features.
-
-<div class="grid cards" markdown>
-
-- :fontawesome-regular-image: __[Image processing]__ – Install external libraries for image processing during the build pipeline
-
-</div>
-
-  [Image processing]: https://squidfunk.github.io/mkdocs-material/setup/dependencies/image-processing/
+  [Site analytics]: site-analytics.md
+  [Optimized site]: building-an-optimized-site.md
+  [Data Privacy]: ensuring-data-privacy.md
+  [Offline usage]: building-for-offline-usage.md
