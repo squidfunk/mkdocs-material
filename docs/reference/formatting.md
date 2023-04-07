@@ -106,7 +106,7 @@ When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and
 superscripted with a simple syntax, which is more convenient than directly
 using the corresponding [`sub`][sub] and [`sup`][sup] HTML tags:
 
-``` markdown title="Text with sub- und superscripts"
+``` markdown title="Text with sub- and superscripts"
 - H~2~O
 - A^T^A
 ```
