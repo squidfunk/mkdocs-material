@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.5 <small>April 7, 2023</small> { id="4.32.5" }
+
+- Fixed #5322: Navigation tabs hoist nested page icons
+
 ### 4.32.4 <small>March 24, 2023</small> { id="4.32.4" }
 
 - Fixed #5241: Built-in typeset plugin jams navigation for anchors in headings
