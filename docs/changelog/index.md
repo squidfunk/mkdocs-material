@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.6 <small>April 7, 2023</small> { id="9.1.6" }
+
+- Updated Persian (Farsi) translations
+- Fixed #5300: Boxes in Mermaid sequence diagrams not color-abiding
+
 ### 9.1.5 <small>March 31, 2023</small> { id="9.1.5" }
 
 - Updated Lithuanian and Japanese translations
