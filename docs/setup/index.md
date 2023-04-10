@@ -2,14 +2,14 @@
 
 Material for MkDocs offers a wide range of options for customizing your
 documentation. In this section, we will explain how you can create a meaningful
-structure for your site, change the look and feel, add a blog and comment system
+structure for your site, change the look and feel, add a blog and comment system,
 and build a highly optimized site.
 
 ## Site structure
 
 Set up and customize the structure of your documentation by configuring the
 header and footer to your taste, choosing among many modes of navigation,
-setting up site search and more.
+setting up site search, and more.
 
 <div class="grid cards" markdown>
 
@@ -52,8 +52,8 @@ configuration or alter the appearance.
 
 ## Content
 
-Create a blog, integrate a comment system, connect a git repository and set up
-versioned documentation that matches your project's versioning metholodogy.
+Create a blog, integrate a comment system, connect a git repository, and set up
+versioned documentation that matches your project's versioning methodology.
 
 <div class="grid cards" markdown>
 
@@ -72,7 +72,7 @@ versioned documentation that matches your project's versioning metholodogy.
 ## Optimization
 
 Add site analytics and build an optimized site by adding automatic image
-compression, complying with GDPR data privacy regulations and make it
+compression, complying with GDPR data privacy regulations, and making it
 offline-capable.
 
 <div class="grid cards" markdown>
@@ -84,7 +84,7 @@ offline-capable.
 
 </div>
 
-  [Site analytics]: site-analytics.md
+  [Site analytics]: setting-up-site-analytics.md
   [Optimized site]: building-an-optimized-site.md
   [Data Privacy]: ensuring-data-privacy.md
   [Offline usage]: building-for-offline-usage.md
