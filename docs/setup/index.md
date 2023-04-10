@@ -84,7 +84,7 @@ offline-capable.
 
 </div>
 
-  [Site analytics]: site-analytics.md
+  [Site analytics]: setting-up-site-analytics.md
   [Optimized site]: building-an-optimized-site.md
   [Data Privacy]: ensuring-data-privacy.md
   [Offline usage]: building-for-offline-usage.md
