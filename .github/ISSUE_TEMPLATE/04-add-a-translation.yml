@@ -17,7 +17,7 @@ body:
     id: translations
     attributes:
       label: Translations
-      description: Please translate the labels on the right, e.g. "Copy to clipboard", etc.
+      description: Please translate the labels on the right, e.g., "Copy to clipboard", etc.
       value: |-
         {% macro t(key) %}{{ {
           "language": "en",
@@ -73,7 +73,7 @@ body:
       options:
         - label: I've checked the list of [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language) for existing translations.
           required: true
-        - label: I assure that the translations are accurate to my best knowledge.
+        - label: I assure that the translations are accurate to the best of my knowledge.
           required: true
         - label: >-
             __Optional__: I want to integrate this translation myself and create a

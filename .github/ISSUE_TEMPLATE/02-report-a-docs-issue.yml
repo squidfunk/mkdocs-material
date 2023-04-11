@@ -12,7 +12,7 @@ body:
         Please describe the inconsistency or issue you have found in
         [our documentation](https://squidfunk.github.io/mkdocs-material)
         or indicate where you feel there is a need for improvement. Furthermore,
-        explain the severity of the issue, i.e., it's impact on you and potentially
+        explain the severity of the issue, i.e., its impact on you and potentially
         other users.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#description)
     validations:
