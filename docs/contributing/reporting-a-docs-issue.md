@@ -1,7 +1,7 @@
 # Reporting a docs issue
 
-In the past 7 years, our documentation has grown to more than 60 pages. With a
-site being this large, inconsistencies can occur. If you found an inconsistency
+In the past seven years, our documentation has grown to more than 60 pages. With
+a site being this large, inconsistencies can occur. If you find an inconsistency
 or see room for clarification or improvement, please submit an issue to
 our public [issue tracker] by following this guide.
 
@@ -50,7 +50,7 @@ describe the severity of the issue:
     precisely explained in one or two sentences, perfect. Maintainers and
     future users will be grateful for having to read less.
 
--   __One issue at a time__ – if you encountered several unrelated inconsistencies,
+-   __One issue at a time__ – if you encounter several unrelated inconsistencies,
     please create separate issues for them. Don't report them in the same issue – it makes attribution difficult.
 
 > __Why we need this__: in order for us to understand the problem, we need a
@@ -73,7 +73,7 @@ where possible, as it simplifies discovery.
 Now that you have provided us with the description and links to the
 documentation sections, you can help us, maintainers, and the community by
 proposing an improvement. You can sketch out rough ideas or write a concrete
-proposal. This field is optional, but very helpful.
+proposal. This field is optional but very helpful.
 
 > __Why we need this__: improvement proposal can be beneficial for other users 
 > who encounter the same issue, as they offer solutions before we maintainers
@@ -83,7 +83,7 @@ proposal. This field is optional, but very helpful.
 
 Thanks for following the guide and creating a high-quality and complete issue 
 report – you are almost done. This section ensures that you have read this guide
-and have worked to your best knowledge to provide us with every piece of
+and have worked to the best of your knowledge to provide us with every piece of
 information we need to improve our documentation.
 
 __We'll take it from here.__
