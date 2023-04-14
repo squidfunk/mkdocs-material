@@ -70,6 +70,7 @@ The following properties are available for each link:
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
     * :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
+    * :fontawesome-brands-discord: – `fontawesome/brands/discord`
 
 [`link`](#+social.link){ #+social.link }
 
