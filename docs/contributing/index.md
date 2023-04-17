@@ -9,8 +9,8 @@ bugs, a lot of work from us maintainers is required.
 
 We have invested quite a lot of time in creating better templates for our
 [issue tracker], optimizing the processes for our users to report bugs, request
-features or changes, contribute to the project or exchange with our community. This section of
-the documentation explains each process.
+features or changes, contribute to the project, or exchange with our community. 
+This section of the documentation explains each process.
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
 

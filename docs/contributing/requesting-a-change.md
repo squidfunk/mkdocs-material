@@ -1,6 +1,6 @@
 # Requesting a change
 
-Material for MkDocs is a powerful tool to create beautiful and functional
+Material for MkDocs is a powerful tool for creating beautiful and functional
 project documentation. With more than 20,000 users, we understand that our
 project serves a wide range of use cases, which is why we have created the
 following guide.
@@ -12,7 +12,7 @@ to maintain existing functionality while constantly adding new features at the
 same time. We highly value every idea or contribution from our community, and
 we kindly ask you to take the time to read the following guidelines before 
 submitting your change request in our public [issue tracker]. This will help us 
-better understand the proposed change, and how it will benefit the community.
+better understand the proposed change and how it will benefit the community.
 
 This guide is our best effort to explain the criteria and reasoning behind our
 decisions when evaluating change requests and considering them for
@@ -33,7 +33,7 @@ __Please find answers to the following questions before creating an issue.__
 
 ### It's not a bug, it's a feature
 
-Change requests are intended for suggesting minor adjustments, ideas for new
+Change requests are intended to suggest minor adjustments, ideas for new
 features, or to influence the project's direction and vision. It is important
 to note that change requests are not intended for reporting bugs, as they're
 missing essential information for debugging.
@@ -65,8 +65,8 @@ that benefits a large number of users.
 
 Now that you have taken the time to do the necessary preliminary work and ensure 
 that your idea meets our requirements, you are invited to create a change
-request. The following guide will walk you through all necessary steps to help
-you submit a comprehensive and useful issue:
+request. The following guide will walk you through all the necessary steps to 
+help you submit a comprehensive and useful issue:
 
 - [Title]
 - [Context] <small>optional</small>
@@ -105,7 +105,7 @@ in which you're using Material for MkDocs, and what you _think_ might be
 relevant. Don't write about the change request here.
 
 > __Why this might be helpful__: some ideas might only benefit specific
-> settings, environments or edge cases, for example, when your documentation
+> settings, environments, or edge cases, for example, when your documentation
 > contains thousands of documents. With a little context, change requests
 > can be prioritized more accurately.
 
@@ -120,7 +120,7 @@ in one of its dependencies:[^1]
     our upstream dependencies, including [MkDocs], [Python Markdown],
     [Python Markdown Extensions] or third-party plugins. It's a good idea to
     think about whether your idea is beneficial to other themes, upstreaming
-    change requests for bigger impact.
+    change requests for a bigger impact.
 
 -   __Explain the <u>what</u>, not the <u>why</u>__ – don't explain
     [the benefits of your idea][Use cases] here, we're getting there.
@@ -137,7 +137,7 @@ together, please open separate change requests for each of those ideas.
 
 :material-run-fast: __Stretch goal__ – if you have a customization or another
 way to add the proposed change, you can help other users by sharing it here
-before we  maintainers can add it to our code base.
+before we maintainers can add it to our code base.
 
 > __Why we need this__: To understand and evaluate your proposed change, we
 > need to have a clear understanding of your idea. By providing a detailed and 
@@ -164,7 +164,7 @@ the link to the discussion as well.
 ### Use cases
 
 Explain how your change request would work from an author's and user's
-perspective – what's the expected impact and why does it not only benefit you,
+perspective – what's the expected impact, and why does it benefit not only you
 but other users? How many of them? Furthermore, would it potentially break
 existing functionality?
 
@@ -198,7 +198,7 @@ it and describing how it was implemented and incorporated.
 
 Thanks for following the change request guide and creating a high-quality 
 change request. This section ensures that you have read this guide and have
-worked to your best knowledge to provide us with every piece of information to 
-review your idea for Material for MkDocs.
+worked to the best of your knowledge to provide us with every piece of 
+information to review your idea for Material for MkDocs.
 
 __We'll take it from here.__
