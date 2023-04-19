@@ -175,6 +175,89 @@ workflow in action.
 
 Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
 
+## Vercel
+
+Vercel is a cloud-based platform that provides hosting and deployment services for web applications and websites. It offers an intuitive user interface and supports a variety of programming languages and frameworks, including Next.js, React, Vue.js, and Angular. With Vercel, developers can quickly deploy and scale their applications in the cloud, and take advantage of advanced features such as instant global deployments, automatic SSL certificate provisioning, and serverless functions. Vercel also provides integrations with popular version control systems like Git, making it easy to connect to your existing code repositories and streamline your development workflow.
+
+We can utilize Vercel to deploy our customized MkDocs static websites. Here's how to do it.
+
+!!! warning "Create a Vercel Account"
+    If you don't already have a Vercel account, you'll need to create one. Go to the Vercel website [https://vercel.com](https://vercel.com) and sign up for a free account.
+    You'll be asked to verify your Git account in order to carry out the next several steps.
+
+!!! tip "Step 1: Install Vercel CLI"
+    To deploy your MkDocs static web app to Vercel, you'll need to install the Vercel CLI first. You can do this by running the following command in your terminal:
+
+    ``` 
+    npm install -g vercel
+
+    ```
+!!! tip "Step 2: Create your MkDocs project"
+    Create a new MkDocs project or navigate to an existing one. Make sure it is fully functional and has been tested locally.
+
+    Next, build your MkDocs project. To build your MkDocs project, run the following command:
+
+    ```
+    mkdocs build
+
+    ```
+    This will generate a ***site*** directory in your project root directory. Either isolate the directory or keep in mind that it alone will be used to deploy to Vercel. Make sure to change the directory to the ***site*** directory:
+
+    ```
+    cd site
+    ```
+
+!!! tip "Step 3: Initialize a new Git repository"
+    Initialize a new Git repository in your project root directory using the following command:
+
+    ```
+    git init
+
+    ```
+    Add the ***site*** directory to Git using the following command:
+
+    ```
+    git add site/
+
+    ```
+
+    Commit your changes using the following command:
+
+    ```
+    git commit -m "Initial commit"
+
+    ```
+
+    After you commit the addition of the site directory, you need to push the local repository by running two commands, one after the other:
+
+    > The below commands can be trieved when you create a repository online within [GitHub](https://github.com)
+    
+    ```
+    git remote add origin https://github.com/<your-username>/<repository-name>.git
+
+    git push -u origin main
+    ```
+
+!!! tip "Step 4: Deploy your app to Vercel"
+    To deploy your app to Vercel, run the following command inside the ***site*** directory:
+
+    ```
+    vercel deploy
+    ```
+
+
+!!! danger "Vercel CLI Prompts" 
+    After starting the deployment process, you'll be aken through a series of command prompts.
+    
+    > In which directory is your code located? Leave as is, i.e. your root folder ==./==
+    
+    > Want to modify these settings? Select ***N*** 
+
+
+Once you have configured your deployment settings, Vercel will start deploying your app. This may take a few minutes. Once the deployment process is complete, you will be given a URL where you can view your app.
+
+Congratulations! You have successfully deployed your MkDocs static web app to Vercel.
+
 ## Other
 
 Since we can't cover all possible platforms, we rely on community contributed
