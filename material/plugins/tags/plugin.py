@@ -19,7 +19,6 @@
 # IN THE SOFTWARE.
 
 import logging
-import os
 import sys
 
 from collections import defaultdict
@@ -36,6 +35,9 @@ from mkdocs.plugins import BasePlugin
 
 # Tags plugin configuration scheme
 class TagsPluginConfig(Config):
+    enabled = opt.Type(bool, default = True)
+
+    # Options for tags
     tags_file = opt.Optional(opt.Type(str))
 
 # -----------------------------------------------------------------------------
@@ -46,6 +48,10 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Initialize plugin
     def on_config(self, config):
+        if not self.config.enabled:
+            return
+
+        # Initialize tags
         self.tags = defaultdict(list)
         self.tags_file = None
 
@@ -64,12 +70,20 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Hack: 2nd pass for tags index page(s)
     def on_nav(self, nav, config, files):
+        if not self.config.enabled:
+            return
+
+        # Resolve tags index page
         file = self.config.tags_file
         if file:
             self.tags_file = self._get_tags_file(files, file)
 
     # Build and render tags index page
     def on_page_markdown(self, markdown, page, config, files):
+        if not self.config.enabled:
+            return
+
+        # Render tags index page
         if page.file == self.tags_file:
             return self._render_tag_index(markdown)
 
@@ -79,6 +93,10 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Inject tags into page (after search and before minification)
     def on_page_context(self, context, page, config, nav):
+        if not self.config.enabled:
+            return
+
+        # Provide tags for page
         if "tags" in page.meta:
             context["tags"] = [
                 self._render_tag(tag)
