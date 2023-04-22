@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.32.6 <small>April 22, 2023</small> { id="4.32.6" }
+
+- Fixed #5336: Interplay of blog plugin with git-revision-date-localized
+
 ### 4.32.5 <small>April 7, 2023</small> { id="4.32.5" }
 
 - Fixed #5322: Navigation tabs hoist nested page icons

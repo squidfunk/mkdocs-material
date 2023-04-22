@@ -1,3 +1,14 @@
+mkdocs-material-9.1.7+insiders-4.32.6 (2023-04-22)
+
+- Fixed #5336: Interplay of blog plugin with git-revision-date-localized
+
+mkdocs-material-9.1.7 (2023-04-22)
+
+- Updated Persian (Farsi) and Turkish translations
+- Fixed #5401: Added missing flag to disable built-in tags plugin
+- Fixed #5206: Ensure defaults are set for primary and accent colors
+- Fixed unnecessary inclusion of palette CSS when unused
+
 mkdocs-material-9.1.6+insiders-4.32.5 (2023-04-07)
 
   * Fixed #5322: Navigation tabs hoist nested page icons

@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.1.7 <small>April 22, 2023</small> { id="9.1.7" }
+
+- Updated Persian (Farsi) and Turkish translations
+- Fixed #5401: Added missing flag to disable built-in tags plugin
+- Fixed #5206: Ensure defaults are set for primary and accent colors
+- Fixed unnecessary inclusion of palette CSS when unused
+
 ### 9.1.6 <small>April 7, 2023</small> { id="9.1.6" }
 
 - Updated Persian (Farsi) translations
