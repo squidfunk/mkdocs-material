@@ -531,6 +531,11 @@
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
                   "type": "boolean",
                   "default": true
+                },
+                "url_download": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "boolean",
+                  "default": false
                 }
               },
               "additionalProperties": false
