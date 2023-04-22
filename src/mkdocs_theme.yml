@@ -28,16 +28,6 @@ direction:
 # may be a matter of taste
 features: []
 
-# Sets the primary and accent color palettes as defined in the Material Design
-# documentation - possible values can be looked up in the getting started guide
-palette:
-
-  # Primary color used for header, sidebar and links, default: indigo
-  primary:
-
-  # Accent color for highlighting user interaction, default: indigo
-  accent:
-
 # Fonts used by Material, automatically loaded from Google Fonts - see the site
 # for a list of available fonts
 font:
