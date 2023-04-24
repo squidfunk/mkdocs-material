@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.1.8 <small>April 24, 2023</small> { id="9.1.8" }
+
+- Fixed #5417: Theme breaks when `palette` is not defined (9.1.7 regression)
+
 ### 9.1.7 <small>April 22, 2023</small> { id="9.1.7" }
 
 - Updated Persian (Farsi) and Turkish translations
