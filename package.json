@@ -73,7 +73,7 @@
     "eslint": "^8.38.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^43.0.0",
+    "eslint-plugin-jsdoc": "^43.0.7",
     "eslint-plugin-no-null": "^1.0.2",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
