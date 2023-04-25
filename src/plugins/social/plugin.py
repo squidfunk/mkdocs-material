@@ -393,14 +393,22 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 name = "Roboto"
 
         # Retrieve font files, if not already done
-        files = os.listdir(self.cache)
-        files = [file for file in files if file.endswith(".ttf") or file.endswith(".otf")] or (
+        all_files=[]
+        # Check for cached files - note these may be in subfolders
+        for currentpath, folders, files in os.walk(self.cache):
+            for file in files:
+                all_files.append(os.path.join(currentpath, file))
+
+        # If none found, fetch from Google and try again
+        if len(all_files) == 0:
             self._load_font_from_google(name)
-        )
+            for currentpath, folders, files in os.walk(self.cache):
+                for file in files:
+                    all_files.append(os.path.join(currentpath, file))
 
         # Map available font weights to file paths
         font = dict()
-        for file in files:
+        for file in all_files:
             match = re.search(r"-(\w+)\.[ot]tf$", file)
             if match:
                 font[match.group(1)] = os.path.join(self.cache, file)
