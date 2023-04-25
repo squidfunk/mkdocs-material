@@ -392,26 +392,31 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             else:
                 name = "Roboto"
 
-        # Retrieve font files, if not already done
-        all_files=[]
+        # Google fonts can return varients like OpenSane_Condensed-Regulat.ttf so
+        # we only use the font requested e.g. OpenSans-Regular.ttf
+        font_filename_base = name.replace(' ', '')
+        filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
+
+        font = dict()
         # Check for cached files - note these may be in subfolders
-        for currentpath, folders, files in os.walk(self.cache):
+        for currentpath, folders, files in os.walk("./.cache/"):
             for file in files:
-                all_files.append(os.path.join(currentpath, file))
+                # Map available font weights to file paths
+                fname = os.path.join(currentpath, file)
+                match = re.search(filename_regex, fname)
+                if match:
+                    font[match.group(1)] = fname
 
         # If none found, fetch from Google and try again
-        if len(all_files) == 0:
+        if len(font) == 0:
             self._load_font_from_google(name)
-            for currentpath, folders, files in os.walk(self.cache):
+            for currentpath, folders, files in os.walk("./.cache/"):
                 for file in files:
-                    all_files.append(os.path.join(currentpath, file))
-
-        # Map available font weights to file paths
-        font = dict()
-        for file in all_files:
-            match = re.search(r"-(\w+)\.[ot]tf$", file)
-            if match:
-                font[match.group(1)] = os.path.join(self.cache, file)
+                    # Map available font weights to file paths
+                    fname = os.path.join(currentpath, file)
+                    match = re.search(filename_regex, fname)
+                    if match:
+                        font[match.group(1)] = fname
 
         # Return available font weights with fallback
         return defaultdict(lambda: font["Regular"], font)
