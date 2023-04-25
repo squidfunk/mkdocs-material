@@ -197,6 +197,7 @@ You can cancel your sponsorship anytime.[^5]
 [![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }
 [![GetScreen.me]](https://getscreen.me/){ target=_blank title="GetScreen.me" }
 [![BotCity]](https://botcity.dev/){ target=_blank title="BotCity" }
+[![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
 
 </div>
 
@@ -227,6 +228,8 @@ You can cancel your sponsorship anytime.[^5]
   [bitcrowd]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png
   [GetScreen.me]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png
   [BotCity]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png
+  [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
+
 
 <hr />
 
