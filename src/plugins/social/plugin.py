@@ -388,7 +388,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
             # Retrieve from theme (default: Roboto)
             theme = config.theme
-            if theme["font"]:
+            if isinstance(theme["font"], dict) and "text" in theme["font"]:
                 name = theme["font"]["text"]
             else:
                 name = "Roboto"
