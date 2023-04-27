@@ -31,7 +31,7 @@ are rebound automatically, i.e., __Material for MkDocs now behaves like a Single
 Page Application__. Now, the search index survives navigation, which is
 especially useful for large documentation sites.
 
-  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
 ### Anchor tracking
