@@ -918,7 +918,8 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "accent": {
@@ -945,7 +946,8 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "icon": {
