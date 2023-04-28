@@ -413,12 +413,6 @@ kbd {
     &[align]:only-child {
       margin-top: 0;
     }
-
-    // Hide images for dark mode
-    &[src$="#only-dark"],
-    &[src$="#gh-dark-mode-only"] {
-      display: none;
-    }
   }
 
   // Figure
