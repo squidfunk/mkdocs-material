@@ -28,6 +28,7 @@ import requests
 import sys
 
 from collections import defaultdict
+from glob import glob
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
@@ -393,7 +394,8 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 name = "Roboto"
 
         # Retrieve font files, if not already done
-        files = os.listdir(self.cache)
+        files = glob(f"{self.cache}/**/*.[ot]tf")
+        files = [os.path.relpath(file, self.cache) for file in files]
         files = [file for file in files if file.endswith(".ttf") or file.endswith(".otf")] or (
             self._load_font_from_google(name)
         )
