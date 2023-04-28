@@ -29,7 +29,7 @@ on:
       - published
 
 env:
-  NODE_VERSION: 14.x
+  NODE_VERSION: 18.x
   PYTHON_VERSION: 3.x
 
 permissions:
