@@ -83,6 +83,7 @@ The following configuration options are supported:
     - `pt` – Portuguese
     - `ro` – Romanian
     - `ru` – Russian
+    - `sa` – Sanskrit
     - `sv` – Swedish
     - `ta` – Tamil
     - `th` – Thai

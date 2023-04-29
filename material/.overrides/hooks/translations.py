@@ -167,6 +167,7 @@ countries = dict({
     "pt": "pt",
     "ro": "ro",
     "ru": "ru",
+    "sa": "in",
     "sh": "rs",
     "si": "lk",
     "sk": "sk",
