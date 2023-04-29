@@ -220,6 +220,7 @@ nav:
     - Images: reference/images.md
     - Lists: reference/lists.md
     - MathJax: reference/mathjax.md
+    - KaTeX: reference/katex.md
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
