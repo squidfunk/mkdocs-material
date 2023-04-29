@@ -87,6 +87,7 @@ The following configuration options are supported:
     - `sa` – Sanskrit
     - `sv` – Swedish
     - `ta` – Tamil
+    - `te` – Telugu
     - `th` – Thai
     - `tr` – Turkish
     - `vi` – Vietnamese
