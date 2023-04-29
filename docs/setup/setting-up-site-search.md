@@ -78,6 +78,7 @@ The following configuration options are supported:
     - `hy` – Armenian
     - `it` – Italian
     - `ja` – Japanese
+    - `kn` - Kannada
     - `ko` – Korean
     - `no` – Norwegian
     - `pt` – Portuguese
