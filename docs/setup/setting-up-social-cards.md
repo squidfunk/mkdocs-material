@@ -240,22 +240,22 @@ whether the social cards need to be regenerated. You might want to:
           branches:
             - master
             - main
-      jobs:
-        deploy:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-python@v4
-              with:
-                python-version: 3.x
-            - uses: actions/cache@v3
-              with:
-                key: mkdocs-material-${{ github.sha }}
-                path: .cache
-                restore-keys: |
-                  mkdocs-material-
-            - run: pip install mkdocs-material
-            - run: mkdocs gh-deploy --force
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
+            with:
+              python-version: 3.x
+          - uses: actions/cache@v3
+            with:
+              key: mkdocs-material-${{ github.sha }}
+              path: .cache
+              restore-keys: |
+                mkdocs-material-
+          - run: pip install mkdocs-material
+          - run: mkdocs gh-deploy --force
     ```
 
   [built-in social plugin]: #built-in-social-plugin
