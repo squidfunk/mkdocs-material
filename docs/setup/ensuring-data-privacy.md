@@ -495,11 +495,11 @@ carried out. You might want to:
         deploy:
           runs-on: ubuntu-latest
           steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-python@v2
+            - uses: actions/checkout@v3
+            - uses: actions/setup-python@v4
               with:
                 python-version: 3.x
-            - uses: actions/cache@v2
+            - uses: actions/cache@v3
               with:
                 key: ${{ github.ref }}
                 path: .cache

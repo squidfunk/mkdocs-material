@@ -38,7 +38,7 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - uses: actions/cache@v3
             with:
               key: ${{ github.ref }}
               path: .cache
@@ -81,7 +81,7 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - uses: actions/cache@v3
             with:
               key: ${{ github.ref }}
               path: .cache
