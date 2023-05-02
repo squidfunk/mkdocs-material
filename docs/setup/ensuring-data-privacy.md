@@ -501,7 +501,7 @@ carried out. You might want to:
               python-version: 3.x
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.sha }}
+              key: mkdocs-material-${{ github.ref }}
               path: .cache
               restore-keys: |
                 mkdocs-material-
