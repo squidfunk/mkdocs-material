@@ -78,13 +78,16 @@ The following configuration options are supported:
     - `hy` – Armenian
     - `it` – Italian
     - `ja` – Japanese
+    - `kn` - Kannada
     - `ko` – Korean
     - `no` – Norwegian
     - `pt` – Portuguese
     - `ro` – Romanian
     - `ru` – Russian
+    - `sa` – Sanskrit
     - `sv` – Swedish
     - `ta` – Tamil
+    - `te` – Telugu
     - `th` – Thai
     - `tr` – Turkish
     - `vi` – Vietnamese
