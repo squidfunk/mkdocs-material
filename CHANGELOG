@@ -1,17 +1,26 @@
+mkdocs-material-9.1.9 (2023-05-02)
+
+  * Added Telulugu, Kannada and Sanskrit translations
+  * Fixed #5428: Fixed margins for light/dark mode images in figures
+  * Fixed #5420: Social plugin crashing for some specific Google Fonts
+  * Fixed #5160: Instant loading makes code annotations jump (9.1.1 regression)
+  * Fixed #4920: Social plugin not loading logo from custom icon set
+  * Fixed social plugin crashing when only code font is specified
+
 mkdocs-material-9.1.8 (2023-04-24)
 
-- Fixed #5417: Theme breaks when palette is not defined (9.1.7 regression)
+  * Fixed #5417: Theme breaks when palette is not defined (9.1.7 regression)
 
 mkdocs-material-9.1.7+insiders-4.32.6 (2023-04-22)
 
-- Fixed #5336: Interplay of blog plugin with git-revision-date-localized
+  * Fixed #5336: Interplay of blog plugin with git-revision-date-localized
 
 mkdocs-material-9.1.7 (2023-04-22)
 
-- Updated Persian (Farsi) and Turkish translations
-- Fixed #5401: Added missing flag to disable built-in tags plugin
-- Fixed #5206: Ensure defaults are set for primary and accent colors
-- Fixed unnecessary inclusion of palette CSS when unused
+  * Updated Persian (Farsi) and Turkish translations
+  * Fixed #5401: Added missing flag to disable built-in tags plugin
+  * Fixed #5206: Ensure defaults are set for primary and accent colors
+  * Fixed unnecessary inclusion of palette CSS when unused
 
 mkdocs-material-9.1.6+insiders-4.32.5 (2023-04-07)
 

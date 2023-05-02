@@ -20,10 +20,10 @@ The social preview image for the page on [setting up site analytics].
 
   [^1]:
     Both types of logos, images ([`theme.logo`](changing-the-logo-and-icons.md#image)) 
-    and icons ([`theme.icon.logo`](changing-the-logo-and-icons.md#icon-bundled)) are supported. 
-    While an image logo is used as-is, icons are filled with the 
-    ([`social.cards_color.text`](#+social.cards_color)) color. Valid file paths inside the 
-    [`custom_dir`](../customization.md#setup-and-theme-structure) will take priority.  
+    and icons ([`theme.icon.logo`](changing-the-logo-and-icons.md#icon-bundled))
+    are supported.  While an image logo is used as-is, icons are filled with the 
+    ([`social.cards_color.text`](#+social.cards_color)) color. Valid file paths
+    inside the [`custom_dir`](../customization.md#setup-and-theme-structure) will take priority.  
 
   [colors]: changing-the-colors.md#primary-color
   [fonts]: changing-the-fonts.md#regular-font

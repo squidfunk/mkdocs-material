@@ -42,10 +42,10 @@ it is:
 
 ### Missing translations?
 
-Material for MkDocs supports 50+ languages with the help of community
+Material for MkDocs supports 60+ languages with the help of community
 contributions. When new features are added, sometimes, new translations are
 necessary as well. It's impossible for the maintainers of the project to update
-all translations (we just don't speak 50+ languages), so we have to rely on
+all translations (we just don't speak 60+ languages), so we have to rely on
 our contributors to update translations incrementally. This process is pretty
 simple, so if you find a translation missing in your language, follow these
 guidelines:

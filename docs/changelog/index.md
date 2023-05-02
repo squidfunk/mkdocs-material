@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.1.9 <small>May 2, 2023</small> { id="9.1.9" }
+
+- Added Telulugu, Kannada and Sanskrit translations
+- Fixed #5428: Fixed margins for light/dark mode images in figures
+- Fixed #5420: Social plugin crashing for some specific Google Fonts
+- Fixed #5160: Instant loading makes code annotations jump (9.1.1 regression)
+- Fixed #4920: Social plugin not loading logo from custom icon set
+- Fixed social plugin crashing when only code font is specified
+
 ### 9.1.8 <small>April 24, 2023</small> { id="9.1.8" }
 
 - Fixed #5417: Theme breaks when `palette` is not defined (9.1.7 regression)
