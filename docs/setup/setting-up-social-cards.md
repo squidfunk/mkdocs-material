@@ -232,27 +232,29 @@ whether the social cards need to be regenerated. You might want to:
     `.cache` directory in between builds. Taking the example from the
     [publishing guide], add the following lines:
 
-    ``` yaml hl_lines="15-18"
+    ``` yaml hl_lines="15-20"
     name: ci
       on:
         push:
           branches:
             - master
             - main
-      jobs:
-        deploy:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-python@v2
-              with:
-                python-version: 3.x
-            - uses: actions/cache@v2
-              with:
-                key: ${{ github.ref }}
-                path: .cache
-            - run: pip install mkdocs-material
-            - run: mkdocs gh-deploy --force
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
+            with:
+              python-version: 3.x
+          - uses: actions/cache@v3
+            with:
+              key: mkdocs-material-${{ github.sha }}
+              path: .cache
+              restore-keys: |
+                mkdocs-material-
+          - run: pip install mkdocs-material
+          - run: mkdocs gh-deploy --force
     ```
 
   [built-in social plugin]: #built-in-social-plugin

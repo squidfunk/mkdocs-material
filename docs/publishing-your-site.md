@@ -38,10 +38,12 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - uses: actions/cache@v3
             with:
-              key: ${{ github.ref }}
+              key: mkdocs-material-${{ github.sha }}
               path: .cache
+              restore-keys: |
+                mkdocs-material-
           - run: pip install mkdocs-material # (3)!
           - run: mkdocs gh-deploy --force
     ```
@@ -81,10 +83,12 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - uses: actions/cache@v3
             with:
-              key: ${{ github.ref }}
+              key: mkdocs-material-${{ github.sha }}
               path: .cache
+              restore-keys: |
+                mkdocs-material-
           - run: apt-get install pngquant # (1)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
