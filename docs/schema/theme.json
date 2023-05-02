@@ -215,6 +215,12 @@
           ]
         },
         {
+          "title": "Site language: Kannada",
+          "enum": [
+            "kn"
+          ]
+        },
+        {
           "title": "Site language: Korean",
           "enum": [
             "ko"
@@ -305,6 +311,12 @@
           ]
         },
         {
+          "title": "Site language: Sanskrit",
+          "enum": [
+            "sa"
+          ]
+        },
+        {
           "title": "Site language: Serbo-Croatian",
           "enum": [
             "sh"
@@ -338,6 +350,12 @@
           "title": "Site language: Swedish",
           "enum": [
             "sv"
+          ]
+        },
+        {
+          "title": "Site language: Telugu",
+          "enum": [
+            "te"
           ]
         },
         {
