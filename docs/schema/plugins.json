@@ -2,22 +2,42 @@
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Plugins",
   "markdownDescription": "https://www.mkdocs.org/dev-guide/plugins/",
-  "type": "array",
-  "items": {
-    "anyOf": [
-      {
-        "$ref": "#/definitions/built-in"
+  "oneOf": [
+    {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/built-in"
+          },
+          {
+            "$ref": "#/definitions/external"
+          },
+          {
+            "$ref": "#/definitions/external-community"
+          }
+        ]
       },
-      {
-        "$ref": "#/definitions/external"
-      },
-      {
-        "$ref": "#/definitions/external-community"
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/definitions/built-in-properties"
+          },
+          {
+            "$ref": "#/definitions/external-properties"
+          },
+          {
+            "$ref": "#/definitions/external-community-properties"
+          }
+        ]
       }
-    ]
-  },
-  "uniqueItems": true,
-  "minItems": 1,
+    }
+  ],
   "definitions": {
     "built-in": {
       "description": "Built-in plugins",
@@ -112,6 +132,102 @@
         },
         {
           "$ref": "https://raw.githubusercontent.com/pawamoy/markdown-exec/master/docs/schema.json"
+        }
+      ]
+    },
+    "built-in-properties": {
+      "description": "Built-in plugins' properties",
+      "anyOf": [
+        {
+          "$ref": "plugins/blog.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/info.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/meta.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/offline.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/privacy.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/search.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/social.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/tags.json#/oneOf/1/properties"
+        }
+      ]
+    },
+    "external-properties": {
+      "description": "External plugins' properties, schema provided by us",
+      "anyOf": [
+        {
+          "$ref": "plugins/external/gen-files.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/git-authors.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/git-committers.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/git-revision-date.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/literate-nav.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/macros.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "plugins/external/minify.json#/properties"
+        },
+        {
+          "$ref": "plugins/external/redirects.json#/properties"
+        },
+        {
+          "$ref": "plugins/external/section-index.json#/oneOf/1/properties"
+        }
+      ]
+    },
+    "external-community-properties": {
+      "description": "External plugins' properties, schema provided by the community",
+      "anyOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-material-relative-language-selector/master/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/Guts/mkdocs-rss-plugin/main/docs/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/timvink/mkdocs-git-revision-date-localized-plugin/master/docs/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/blueswen/mkdocs-glightbox/main/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/prcr/mkdocs-meta-descriptions-plugin/main/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mkdocstrings/mkdocstrings/master/docs/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-coverage/master/docs/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-spellcheck/master/docs/schema.json#/oneOf/1/properties"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/pawamoy/markdown-exec/master/docs/schema.json#/oneOf/1/properties"
         }
       ]
     }
