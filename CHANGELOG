@@ -1,6 +1,6 @@
 mkdocs-material-9.1.9 (2023-05-02)
 
-  * Added Telulugu, Kannada and Sanskrit translations
+  * Added Telugu, Kannada and Sanskrit translations
   * Fixed #5428: Fixed margins for light/dark mode images in figures
   * Fixed #5420: Social plugin crashing for some specific Google Fonts
   * Fixed #5160: Instant loading makes code annotations jump (9.1.1 regression)
