@@ -40,11 +40,11 @@ contents:
               python-version: 3.x
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.sha }}
+              key: mkdocs-material-${{ github.ref }} # (3)!
               path: .cache
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material # (3)!
+          - run: pip install mkdocs-material # (4)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -53,7 +53,10 @@ contents:
     2.  At some point, GitHub renamed `master` to `main`. If your default branch
         is named `master`, you can safely remove `main`, vice versa.
 
-    3.  This is the place to install further [MkDocs plugins] or Markdown
+    3.  The `github.ref` property assures that the cache will
+        update on each pull request merge.
+
+    4.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
 
         ``` sh
@@ -85,7 +88,7 @@ contents:
               python-version: 3.x
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.sha }}
+              key: mkdocs-material-${{ github.ref }}
               path: .cache
               restore-keys: |
                 mkdocs-material-

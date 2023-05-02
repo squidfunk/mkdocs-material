@@ -50,7 +50,7 @@ jobs:
         uses: actions/cache@v3
         id: cache
         with:
-          key: mkdocs-material-${{ github.sha }}
+          key: mkdocs-material-${{ github.ref }}
           path: .cache
           restore-keys: |
             mkdocs-material-
