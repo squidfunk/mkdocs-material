@@ -68,6 +68,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     def __init__(self):
         self._executor = concurrent.futures.ThreadPoolExecutor(4)
+        self.custom_dir = None
 
     # Retrieve configuration
     def on_config(self, config):
@@ -111,6 +112,13 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
         # Retrieve color overrides
         self.color = { **self.color, **self.config.cards_color }
+
+        # Retrieve custom_dir path
+        for user_config in config.user_configs:
+            custom_dir = user_config.get("theme", {}).get("custom_dir")
+            if custom_dir:
+                self.custom_dir = custom_dir
+                break
 
         # Retrieve logo and font
         self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
@@ -344,8 +352,15 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         if "logo" in theme:
             _, extension = os.path.splitext(theme["logo"])
 
-            # Load SVG and convert to PNG
             path = os.path.join(config.docs_dir, theme["logo"])
+
+            # Allow users to put the logo inside their custom_dir (theme["logo"] case)
+            if self.custom_dir:
+                custom_dir_logo = os.path.join(self.custom_dir, theme["logo"])
+                if os.path.exists(custom_dir_logo):
+                    path = custom_dir_logo
+
+            # Load SVG and convert to PNG
             if extension == ".svg":
                 return self._load_logo_svg(path)
 
@@ -353,10 +368,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             return Image.open(path).convert("RGBA")
 
         # Handle icons
-        logo = "material/library"
         icon = theme["icon"] or {}
         if "logo" in icon and icon["logo"]:
             logo = icon["logo"]
+        else:
+            logo = "material/library"
 
         # Resolve path of package
         base = os.path.abspath(os.path.join(
@@ -364,8 +380,15 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             "../.."
         ))
 
-        # Load icon data and fill with color
         path = f"{base}/.icons/{logo}.svg"
+
+        # Allow users to put the logo inside their custom_dir (theme["icon"]["logo"] case)
+        if self.custom_dir:
+            custom_dir_logo = os.path.join(self.custom_dir, ".icons", f"{logo}.svg")
+            if os.path.exists(custom_dir_logo):
+                path = custom_dir_logo
+
+        # Load icon data and fill with color
         return self._load_logo_svg(path, self.color["text"])
 
     # Load SVG file and convert to PNG
@@ -388,7 +411,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
             # Retrieve from theme (default: Roboto)
             theme = config.theme
-            if theme["font"]:
+            if isinstance(theme["font"], dict) and "text" in theme["font"]:
                 name = theme["font"]["text"]
             else:
                 name = "Roboto"
