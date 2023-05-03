@@ -494,7 +494,7 @@ carried out. You might want to:
     `.cache` directory in between builds. Taking the example from the
     [publishing guide], add the following lines:
 
-    ``` yaml hl_lines="15-20"
+    ``` yaml hl_lines="15-21"
     name: ci
       on:
         push:
@@ -509,9 +509,10 @@ carried out. You might want to:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.ref }}
+              key: mkdocs-material-${{ env.cache_id }}
               path: .cache
               restore-keys: |
                 mkdocs-material-

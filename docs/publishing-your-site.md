@@ -38,9 +38,10 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.ref }} # (3)!
+              key: mkdocs-material-${{ env.cache_id }}
               path: .cache
               restore-keys: |
                 mkdocs-material-
@@ -53,8 +54,14 @@ contents:
     2.  At some point, GitHub renamed `master` to `main`. If your default branch
         is named `master`, you can safely remove `main`, vice versa.
 
-    3.  The `github.ref` property assures that the cache will
-        update on each pull request merge.
+    3.  Store the `cache_id` environmental variable to access it later during cache
+        `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
+
+        - The `--utc` option makes sure that each workflow runner uses the same time zone.
+        - The `%V` format assures a cache update once a week. 
+        - You can change the format to `%F` to have daily cache updates. 
+
+        You can read the [manual page] to learn more about the formatting options of the `date` command.
 
     4.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
@@ -86,9 +93,10 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
           - uses: actions/cache@v3
             with:
-              key: mkdocs-material-${{ github.ref }}
+              key: mkdocs-material-${{ env.cache_id }}
               path: .cache
               restore-keys: |
                 mkdocs-material-
@@ -123,6 +131,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [built-in optimize plugin]: setup/building-an-optimized-site.md#built-in-optimize-plugin
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+  [manual page]: https://man7.org/linux/man-pages/man1/date.1.html
 
 ### with MkDocs
 
