@@ -2,7 +2,7 @@
 
 ## Material for MkDocs Insiders
 
-### 4.33.0 <small>April 22, 2023</small> { id="4.33.0" }
+### 4.33.0 <small>May 8, 2023</small> { id="4.33.0" }
 
 - Added support for custom layouts for social plugin
 - Added support for background images for social cards

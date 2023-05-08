@@ -1,7 +1,12 @@
+mkdocs-material-9.1.10+insiders-4.33.0 (2023-05-08)
+
+  * Added support for custom layouts for social plugin
+  * Added support for background images for social cards
+
 mkdocs-material-9.1.10 (2023-05-08)
 
-  * Added `cards_layout_options` setting for social cards
-  * Deprecated `cards_color` and `cards_font` setting for social cards
+  * Added cards_layout_options setting for social cards
+  * Deprecated cards_color and cards_font setting for social cards
 
 mkdocs-material-9.1.9 (2023-05-02)
 
