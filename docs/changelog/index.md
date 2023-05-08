@@ -4,7 +4,7 @@
 
 ### 9.1.11 <small>May 8, 2023</small> { id="9.1.11" }
 
-- Fixed #5487: Social plugin crashes without options (9.1.11 regression)
+- Fixed #5487: Social plugin crashes without options (9.1.10 regression)
 
 ### 9.1.10 <small>May 8, 2023</small> { id="9.1.10" }
 
