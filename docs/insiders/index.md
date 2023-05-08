@@ -331,7 +331,7 @@ are released for general availability.
 - [x] [Code annotations: custom selectors]
 - [ ] Code line wrap button
 
-  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#custom-layouts
+  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
