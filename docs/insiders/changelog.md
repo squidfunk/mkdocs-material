@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.33.0 <small>April 22, 2023</small> { id="4.33.0" }
+
+- Added support for custom layouts for social plugin
+- Added support for background images for social cards
+
 ### 4.32.6 <small>April 22, 2023</small> { id="4.32.6" }
 
 - Fixed #5336: Interplay of blog plugin with git-revision-date-localized

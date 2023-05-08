@@ -1,36 +1,27 @@
+---
+status: new
+---
+
 # Setting up social cards
 
-Social cards, also known as social previews, are images that are displayed when
-a link to your project documentation is shared on social media. Material for
-MkDocs can generate beautiful social cards automatically, using the [colors], 
-[fonts] and [logo][^1] defined in `mkdocs.yml`,
-e.g.:
+Material for MkDocs can automatically create beautiful social cards for your 
+documentation, which appear as link previews on social media platforms. You 
+can select from a variety of [pre-designed layouts][default layouts] or create
+[custom layouts] to match your unique style and branding.
 
 <figure markdown>
 
-[![Social cards preview]][Social cards preview]
+[![Layout default variant]][Layout default variant]
 
   <figcaption markdown>
 
-The social preview image for the page on [setting up site analytics].
-[Twitter's Card validator] shows how it will look when shared.
+Social card of [formatting] reference.
 
   </figcaption>
 </figure>
 
-  [^1]:
-    Both types of logos, images ([`theme.logo`](changing-the-logo-and-icons.md#image)) 
-    and icons ([`theme.icon.logo`](changing-the-logo-and-icons.md#icon-bundled))
-    are supported.  While an image logo is used as-is, icons are filled with the 
-    ([`social.cards_color.text`](#+social.cards_color)) color. Valid file paths
-    inside the [`custom_dir`](../customization.md#setup-and-theme-structure) will take priority.  
-
-  [colors]: changing-the-colors.md#primary-color
-  [fonts]: changing-the-fonts.md#regular-font
-  [logo]: changing-the-logo-and-icons.md#logo
-  [Social cards preview]: ../assets/screenshots/social-cards.png
-  [setting up site analytics]: setting-up-site-analytics.md
-  [Twitter's Card validator]: https://cards-dev.twitter.com/validator
+  [custom layouts]: #custom-layouts
+  [formatting]: ../reference/formatting.md
 
 ## Configuration
 
@@ -40,16 +31,71 @@ The social preview image for the page on [setting up site analytics].
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
-First, ensure you've installed all [dependencies] and have a valid [`site_url`]
-[site_url], as social preview images must be referenced via absolute URLs.
-Then, add the following lines to `mkdocs.yml`:
+The built-in social plugin automatically generate a custom preview image for 
+each page. Install all [dependencies for image processing][^1] and add the 
+following lines to `mkdocs.yml`:
+
+  [^1]:
+    The awesome thing about social cards is that they are generated during 
+    build time and directly distributed with your documentation, no external 
+    services involved. While it would technically be simpler to generate 
+    social cards using a web browser and an automation framework like 
+    [Puppeteer], it would add further liabilities to the toolchain, with the 
+    potential to make build pipelines more complex and resource intense.
+
+    For this reason, Material for MkDocs again follows its core principle of 
+    making it as simple and powerful as possible, providing an easy-to-use 
+    framework for building [custom layouts] using Python image processing 
+    libraries. Additionally, this means that there's no necessity for internet
+    access in CI environments.
 
 ``` yaml
 plugins:
   - social
 ```
 
+> Note that [Insiders] contains a ground up rewrite of the social plugin that 
+> generates images much more efficiently in parallel and allows to build 
+> entirely [custom layouts].
+
 The following configuration options are available:
+
+[`enabled`](#+social.enabled){ #+social.enabled }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - social:
+          enabled: !ENV [CI, false]
+    ```
+
+[`concurrency`](#+social.concurrency){ #+social.concurrency }
+
+:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24: 
+    Default: _number of CPUs_ – How many CPUs the plugin is allowed to use when
+    generating social cards. With more CPUs, the plugin can do more work in the
+    same time, thus complete generation faster. Concurrent processing can be
+    disabled with:
+
+    ``` yaml
+    plugins:
+      - social:
+          concurrency: 1
+    ```
+
+  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
+  [dependencies for image processing]: dependencies/image-processing.md
+  [Puppeteer]: https://github.com/puppeteer/puppeteer
+  [Insiders]: ../insiders/index.md
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
+
+#### Social cards
+
+The following configuration options are available for social card generation:
 
 [`cards`](#+social.cards){ #+social.cards }
 
@@ -60,255 +106,249 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - social:
-          cards: !ENV [CARDS, false]
+          cards: !ENV [CI, false]
+    ```
+
+[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
+
+:   :octicons-milestone-24: Default: `assets/images/social` – This option
+    specifies where the generated social cards will be stored. While it's
+    usually not necessary to change this option, change it with:
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_dir: assets/images/social
     ```
 
 [`cards_color`](#+social.cards_color){ #+social.cards_color }
 
-:   :octicons-milestone-24: Default: [`theme.palette.primary`][palette.primary]
-    – This option specifies the colors for the background `fill` and foreground 
+:   :octicons-milestone-24: Default: [`theme.palette.primary`][primary color] – 
+    This option specifies the colors for the background `fill` and foreground
     `text` when generating the social card:
 
     ``` yaml
     plugins:
       - social:
           cards_color:
-            fill: "#0FF1CE" # (1)!
+            fill: "#0FF1CE"
             text: "#FFFFFF"
     ```
 
-    1.  Colors can either be defined as HEX colors, or as [CSS color keywords].
-        Note that HEX colors must be enclosed in quotes.
+    !!! warning "If you're using [Insiders], use [`cards_layout_params`](#+social.cards_layout_params)"
 
 [`cards_font`](#+social.cards_font){ #+social.cards_font }
 
-:   :octicons-milestone-24: Default: [`theme.font.text`][font.text] – This
-    option specifies which font to use for rendering the social card, which can
-    be any font hosted on [Google Fonts]:
+:   :octicons-milestone-24: Default: [`theme.font.text`][font] – This option
+    specifies which font to use for rendering the social card, which can be
+    any font hosted on [Google Fonts]:
 
     ``` yaml
     plugins:
       - social:
-          cards_font: Roboto
+          cards_font: Ubuntu
     ```
 
-    !!! question "Why do social cards render boxes for CJK languages?"
+    !!! warning "If you're using [Insiders], use [`cards_layout_params`](#+social.cards_layout_params)"
 
-        Some fonts do not contain CJK characters, like for example the
-        [default font, `Roboto`][font.text]. In case your `site_name`,
-        `site_description`, or [page title] contain CJK characters, choose
-        another font from [Google Fonts] which comes with CJK characters, e.g.
-        one from the `Noto Sans` font family:
+[`cards_layout_dir`](#+social.cards_layout_dir){ #+social.cards_layout_dir }
 
-        === "Chinese (Simplified)"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans SC
-            ```
-
-        === "Chinese (Traditional)"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans TC
-            ```
-
-        === "Japanese"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans JP
-            ```
-
-        === "Korean"
-
-            ``` yaml
-            plugins:
-              - social:
-                  cards_font: Noto Sans KR
-            ```
-
-[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
-
-:   :octicons-milestone-24: Default: `assets/images/social` – This option
-    specifies where the generated social card images will be written to. It's
-    normally not necessary to change this option:
+:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+    Default: _project root_ – This option specifies where the social plugin
+    should try to resolve [custom layouts] from, taking precedence over the
+    included layouts:
 
     ``` yaml
     plugins:
       - social:
-          cards_dir: path/to/folder
+          cards_layout_dir: .overrides/social/layouts
     ```
 
-  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
-  [dependencies]: #dependencies
-  [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
-  [palette.primary]: changing-the-colors.md#primary-color
-  [font.text]: changing-the-fonts.md#regular-font
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-  [CSS color keywords]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
-  [Google Fonts]: https://fonts.google.com
-  [page title]: ../reference/index.md#setting-the-page-title
+[`cards_layout`](#+social.cards_layout){ #+social.cards_layout } :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
 
-#### Dependencies
+:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+    Default: `default` – Layout specification the social card should use. The
+    plugin includes the following layouts which make use of the [color palette]
+    and [font]:
 
-Two Python libraries must be installed alongside Material for MkDocs to generate
-the social preview images, both of which are based on [Cairo Graphics] – 
-[Pillow] and [CairoSVG]:
+    === "`default`"
 
-```
-pip install pillow cairosvg
-```
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout: default
+        ```
 
-Both libraries are built with native extensions which need to be installed as
-well. The [Docker image] comes with all dependencies pre-installed. If you don't
-want to use Docker, see the following section which explains how to install all
-dependencies on your system:
+        This layout uses the configured [primary color] as a background:
 
-=== ":material-apple: macOS"
+        [![Layout default]][Layout default]
 
-    Make sure [Homebrew] is installed, which is a modern package manager for
-    macOS. Next, use the following command to install all necessary
-    dependencies:
+    === "`default/variant`"
 
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout: default/variant
+        ```
+
+        This layout includes the [page icon] as a watermark, if defined:
+
+        [![Layout default variant]][Layout default variant]
+
+    === "`default/accent`"
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout: default/accent
+        ```
+
+        This layout uses the configured [accent color] as a background:
+
+        [![Layout default accent]][Layout default accent]
+
+    === "`default/invert`"
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout: default/invert
+        ```
+
+        This layout inverts the background and foreground colors:
+
+        [![Layout default invert]][Layout default invert]
+
+    All of the `default` layouts use the following variables:
+
+    - :material-page-layout-header: – `config.site_name`
+    - :material-page-layout-body: – `page.meta.title` or `page.title`
+    - :material-page-layout-footer: – `page.meta.description` or `config.site_description`
+    - :material-page-layout-sidebar-right: – `theme.logo` or `theme.icon.logo`
+
+[`cards_layout_params`](#+social.cards_layout_params){ #+social.cards_layout_params }
+
+:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+    Default: _none_ – This option allows to set [parameters] as provided by
+    the layout specification. For [custom layouts], this key can be used to
+    provide layout-specific options, making layouts entirels configurable.
+
+    ---
+
+    All [`default`][default layouts] layouts specify the following parameters:
+
+    [`background_color`](#+social.cards_layout_params.background_color){ #+social.cards_layout_params.background_color }
+
+    :   Set a background color, which can be a [CSS color keyword], a 3, 4, 6
+        or 8 letter HEX color code. Alpha channels are supported as well:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_params:
+                background_color: "#0FF1CE"
+        ```
+
+    [`background_image`](#+social.cards_layout_params.background_image){ #+social.cards_layout_params.background_image }
+
+    :   Set a background image. If a `background_color` is set, like for the
+        [`default`][default layouts] layouts, the image is tinted (overlayed)
+        with the color. Thus, the background color must be (partially)
+        transparent for the image to become visible:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_params:
+                background_color: "#00000000"
+                background_image: .overrides/social/background.png
+        ```
+
+        The path of the image must be defined relative to the project root.
+
+    [`color`](#+social.cards_layout_params.color){ #+social.cards_layout_params.color }
+
+    :   Set a foreground color, which can be a [CSS color keyword], a 3, 4, 6
+        or 8 letter HEX color code. The color is primarily used to tint text and
+        icons:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_params:
+                color: "#0FF1CE"
+        ```
+
+    [`font_family`](#+social.cards_layout_params.font_family){ #+social.cards_layout_params.font_family }
+
+    :   Set a font family. This overrides the [font] that is set as part of the
+        theme configuration. The [built-in social plugin] will automatically
+        download the font from [Google Fonts]:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_params:
+                font_family: Ubuntu
+        ```
+
+  [color palette]: ./changing-the-colors.md#color-palette
+  [primary color]: ./changing-the-colors.md#primary-color
+  [accent color]: ./changing-the-colors.md#accent-color
+  [font]: ./changing-the-fonts.md#regular-font
+  [Google Fonts]: https://fonts.google.com/
+  [page icon]: ../reference/index.md#setting-the-page-icon
+  [Layout default]: ../assets/screenshots/social-cards.png
+  [Layout default variant]: ../assets/screenshots/social-cards-variant.png
+  [Layout default accent]: ../assets/screenshots/social-cards-accent.png
+  [Layout default invert]: ../assets/screenshots/social-cards-invert.png
+  [parameters]: #parameters
+  [default layouts]: #+social.cards_layout
+  [CSS color keyword]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
+
+#### Caching
+
+The [built-in social plugin] implements an intelligent caching mechanism,
+ensuring that social cards are only re-generated when they're not contained in
+the cache or their contents change. If any of the variables used in a layout 
+changes, the plugin will detect it and re-generate the card.
+
+The following configuration options are available for caching:
+
+[`cache`](#+social.cache){ #+social.cache }
+
+:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+    Default: `true` – Whether the plugin queries its cache for an existing
+    artifact before starting a generation job. It's normally not necessary to
+    change this setting, except for when debugging the plugin itself. Caching
+    can be disabled with:
+
+    ``` yaml
+    plugins:
+      - social:
+          cache: false
     ```
-    brew install cairo freetype libffi libjpeg libpng zlib
+
+[`cache_dir`](#+social.cache_dir){ #+social.cache_dir }
+
+:   :octicons-milestone-24: Default: `.cache/plugins/social` – This option
+    specifies the file system location of the plugin's cache. It's normally not
+    necessary to change this setting, except for when debugging the plugin
+    itself. The cache directory can be changed with:
+
+    ``` yaml
+    plugins:
+      - social:
+          cache_dir: .cache/plugins/social
     ```
 
-=== ":fontawesome-brands-windows: Windows"
-
-    As stated in the [installation guide], the easiest way to get up and running
-    with the [Cairo Graphics] library on Windows is by installing [GTK+], since
-    it has Cairo as a dependency. You can also download and install a
-    precompiled [GTK runtime].
-
-=== ":material-linux: Linux"
-
-    There are several package managers for Linux with varying availability per
-    distribution. The [installation guide] explains how to install the [Cairo
-    Graphics] library for your distribution:
-
-    === ":material-ubuntu: Ubuntu"
-
-        ```
-        apt-get install libcairo2-dev libfreetype6-dev libffi-dev libjpeg-dev libpng-dev libz-dev
-        ```
-
-    === ":material-fedora: Fedora"
-
-        ```
-        yum install cairo-devel freetype-devel libffi-devel libjpeg-devel libpng-devel zlib-devel
-        ```
-
-    === ":fontawesome-brands-suse: openSUSE"
-
-        ```
-        zypper install cairo-devel freetype-devel libffi-devel libjpeg-devel libpng-devel zlib-devel
-        ```
-
-  [Cairo Graphics]: https://www.cairographics.org/
-  [Pillow]: https://pillow.readthedocs.io/
-  [CairoSVG]: https://cairosvg.org/
-  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
-  [Homebrew]: https://brew.sh/
-  [installation guide]: https://www.cairographics.org/download/
-  [GTK+]: https://www.gtk.org/docs/installations/windows/
-  [GTK runtime]: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
-
-#### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
-
-The [built-in social plugin] automatically fetches the fonts you define in
-`mkdocs.yml` from Google Fonts, and uses them to render the text that is
-displayed on the social card. The font files and generated cards are both
-written to the `.cache` directory, which is used in subsequent builds to detect
-whether the social cards need to be regenerated. You might want to:
-
-1.  Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
-2.  When building your site for publishing, use a build cache to save the
-    `.cache` directory in between builds. Taking the example from the
-    [publishing guide], add the following lines:
-
-    ``` yaml hl_lines="15-20"
-    name: ci
-      on:
-        push:
-          branches:
-            - master
-            - main
-    jobs:
-      deploy:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - uses: actions/setup-python@v4
-            with:
-              python-version: 3.x
-          - uses: actions/cache@v3
-            with:
-              key: mkdocs-material-${{ github.sha }}
-              path: .cache
-              restore-keys: |
-                mkdocs-material-
-          - run: pip install mkdocs-material
-          - run: mkdocs gh-deploy --force
-    ```
+    By default, all built-in plugins that implement caching will create a
+    `.cache` directory in the same folder your `mkdocs.yml` resides, and create
+    subfolders to not interfere with each other. If you use multiple instances
+    of this plugin, it could be necessary to change this setting.
 
   [built-in social plugin]: #built-in-social-plugin
   [publishing guide]: ../publishing-your-site.md#with-github-actions
-
-#### Meta tags
-
-The [built-in social plugin] automatically sets all necessary `meta` tags,
-equivalent to the following two customizations, which you can set manually when
-you don't want to use it:
-
-=== ":material-graph: Open Graph"
-
-    ``` html
-    {% extends "base.html" %}
-
-    {% block extrahead %}
-      {% set title = config.site_name %}
-      {% if page and page.meta and page.meta.title %}
-        {% set title = title ~ " - " ~ page.meta.title %}
-      {% elif page and page.title and not page.is_homepage %}
-        {% set title = title ~ " - " ~ page.title %}
-      {% endif %}
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content="{{ title }}" />
-      <meta property="og:description" content="{{ config.site_description }}" />
-      <meta property="og:url" content="{{ page.canonical_url }}" />
-      <meta property="og:image" content="<url>" />
-      <meta property="og:image:type" content="image/png" />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-    {% endblock %}
-    ```
-
-=== ":fontawesome-brands-twitter: Twitter Cards"
-
-    ``` html
-    {% extends "base.html" %}
-
-    {% block extrahead %}
-      {% set title = config.site_name %}
-      {% if page and page.meta and page.meta.title %}
-        {% set title = title ~ " - " ~ page.meta.title %}
-      {% elif page and page.title and not page.is_homepage %}
-        {% set title = title ~ " - " ~ page.title %}
-      {% endif %}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="{{ title }}" />
-      <meta name="twitter:description" content="{{ config.site_description }}" />
-      <meta name="twitter:image" content="<url>" />
-    {% endblock %}
-    ```
-
-  [Twitter Cards]: https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/abouts-cards
 
 ## Usage
 
@@ -321,3 +361,60 @@ precedence over the default values.
 
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description
+
+
+### Choosing a font
+
+Some fonts do not contain CJK characters, like for example the
+[default font, `Roboto`][font]. In case your `site_name`, `site_description`, or
+page title contain CJK characters, choose another font from [Google Fonts] which
+comes with CJK characters, e.g. one from the `Noto Sans` font family:
+
+=== "Chinese (Simplified)"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_font: Noto Sans SC
+    ```
+
+=== "Chinese (Traditional)"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_font: Noto Sans TC
+    ```
+
+=== "Japanese"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_font: Noto Sans JP
+    ```
+
+=== "Korean"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_font: Noto Sans KR
+    ```
+
+## Customization
+
+### Custom layouts
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.33.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+!!! info "Custom layout guide coming shortly"
+
+    We're working hard to explain in detail how to build custom layouts. If you
+    want to start to build a custom layout right away before we finish the guide,
+    check out the [source code of the `default` layout](https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/plugins/social/layouts/default.yml)
+    and watch the [demo on Twitter](https://twitter.com/squidfunk/status/1654832324272431104).
+
+#### Parameters

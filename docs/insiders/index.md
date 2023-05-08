@@ -88,14 +88,16 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 27 additional features__ that you can start using right away, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Social plugin: custom layouts] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Social plugin: background images] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
 - [x] [Code range selection] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
-- [x] [Code annotations: custom selectors] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
-- [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+- [x] [Code annotations: custom selectors]
+- [x] [Privacy plugin: optimization support]
 - [x] [Optimize plugin]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
@@ -256,10 +258,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-> [In February, we lost $1,3k in monthly funding because GitHub removed PayPal support][Twitter]
-
-  [Twitter]: https://twitter.com/squidfunk/status/1643539228574269443
-
 #### $ 12,000 – Piri Piri
 
 - [x] [Blog plugin]
@@ -327,10 +325,14 @@ are released for general availability.
 
 #### $ 24,000 – Blockpaprika
 
+- [x] [Social plugin: custom layouts]
+- [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
 - [ ] Code line wrap button
 
+  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#custom-layouts
+  [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
 
