@@ -62,11 +62,13 @@ class SocialPluginConfig(Config):
 
     # Deprecated options
     cards_color = opt.Deprecated(
+        option_type = opt.Type(dict, default = {}),
         message =
             "Deprecated, use 'cards_layout_options.background_color' "
             "and 'cards_layout_options.color' with 'default' layout"
-        )
+    )
     cards_font = opt.Deprecated(
+        option_type = opt.Type(str),
         message = "Deprecated, use 'cards_layout_options.font_family'"
     )
 
@@ -138,12 +140,10 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.color = colors.get(primary, self.color)
 
         # Retrieve color overrides
+        options = self.config.cards_layout_options
         self.color = {
-            **self.color,
-            **{
-                "fill": self.config.cards_layout_options.get("background_color"),
-                "text": self.config.cards_layout_options.get("color")
-            }
+            "fill": options.get("background_color", self.color["fill"]),
+            "text": options.get("color", self.color["text"])
         }
 
         # Retrieve custom_dir path
