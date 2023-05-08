@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.10 <small>May 8, 2023</small> { id="9.1.10" }
+
+- Added `cards_layout_options` setting for social cards
+- Deprecated `cards_color` and `cards_font` setting for social cards
+
 ### 9.1.9 <small>May 2, 2023</small> { id="9.1.9" }
 
 - Added Telugu, Kannada and Sanskrit translations
