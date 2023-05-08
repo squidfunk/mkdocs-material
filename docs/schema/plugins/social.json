@@ -15,51 +15,90 @@
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#built-in-social-plugin",
           "type": "object",
           "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "concurrency": {
+              "title": "Concurrency (number of CPUs)",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.concurrency",
+              "type": "number",
+              "default": 1
+            },
             "cards": {
-              "title": "Social card generation",
+              "title": "Social cards",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards",
               "type": "boolean",
               "default": true
             },
-            "cards_color": {
-              "title": "Social card color palette",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
-              "type": "object",
-              "properties": {
-                "fill": {
-                  "title": "Background fill color",
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
-                  "type": "string"
-                },
-                "text": {
-                  "title": "Foreground text color",
-                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_color",
-                  "type": "string"
-                }
-              },
-              "additionalProperties": false,
-              "required": [
-                "fill",
-                "text"
-              ]
-            },
-            "cards_font": {
-              "$ref": "../assets/fonts.json"
-            },
             "cards_dir": {
-              "title": "Social card directory",
+              "title": "Social cards directory",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_dir",
               "type": "string",
               "default": "assets/images/social"
+            },
+            "cards_layout_dir": {
+              "title": "Social cards layout directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_layout_dir",
+              "type": "string",
+              "default": "layouts"
+            },
+            "cards_layout": {
+              "title": "Social cards layout",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_layout",
+              "default": "default",
+              "enum": [
+                "default",
+                "default/accent",
+                "default/invert",
+                "default/variant"
+              ]
+            },
+            "cards_layout_options": {
+              "title": "Social cards layout options",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_layout_options",
+              "type": "object"
+            },
+            "debug": {
+              "title": "Debug mode",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug",
+              "type": "boolean",
+              "default": true
+            },
+            "debug_grid": {
+              "title": "Debug grid",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug_grid",
+              "type": "boolean",
+              "default": true
+            },
+            "debug_grid_step": {
+              "title": "Debug grid step size",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug_grid_step",
+              "type": "number",
+              "default": 32
+            },
+            "debug_color": {
+              "title": "Debug color",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug_color",
+              "type": "string",
+              "default": "yellow"
+            },
+            "cache": {
+              "title": "Enable caching",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cache",
+              "type": "boolean",
+              "default": true
+            },
+            "cache_dir": {
+              "title": "Cache directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cache_dir",
+              "type": "string",
+              "default": ".cache/plugins/social"
             }
           },
-          "additionalProperties": false,
-          "defaultSnippets": [
-            {
-              "label": "cards_font",
-              "body": "cards_font: ${1:Roboto}"
-            }
-          ]
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
