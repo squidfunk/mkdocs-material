@@ -58,8 +58,17 @@ class SocialPluginConfig(Config):
     # Options for social cards
     cards = opt.Type(bool, default = True)
     cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_color = opt.Type(dict, default = dict())
-    cards_font = opt.Optional(opt.Type(str))
+    cards_layout_options = opt.Type(dict, default = {})
+
+    # Deprecated options
+    cards_color = opt.Deprecated(
+        message =
+            "Deprecated, use 'cards_layout_options.background_color' "
+            "and 'cards_layout_options.color' with 'default' layout"
+        )
+    cards_font = opt.Deprecated(
+        message = "Deprecated, use 'cards_layout_options.font_family'"
+    )
 
 # -----------------------------------------------------------------------------
 
@@ -75,6 +84,24 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         self.color = colors.get("indigo")
         if not self.config.cards:
             return
+
+        # Move color options
+        if "cards_color" in self.config:
+
+            # Move background color to new option
+            value = self.config.cards_color.get("fill")
+            if value:
+                self.config.cards_layout_options["background_color"] = value
+
+            # Move color to new option
+            value = self.config.cards_color.get("text")
+            if value:
+                self.config.cards_layout_options["color"] = value
+
+        # Move font family to new option
+        if "cards_font" in self.config:
+            value = self.config.cards_font
+            self.config.cards_layout_options["font_family"] = value
 
         # Check if required dependencies are installed
         if not dependencies:
@@ -111,7 +138,13 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.color = colors.get(primary, self.color)
 
         # Retrieve color overrides
-        self.color = { **self.color, **self.config.cards_color }
+        self.color = {
+            **self.color,
+            **{
+                "fill": self.config.cards_layout_options.get("background_color"),
+                "text": self.config.cards_layout_options.get("color")
+            }
+        }
 
         # Retrieve custom_dir path
         for user_config in config.user_configs:
@@ -406,7 +439,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve font
     def _load_font(self, config):
-        name = self.config.cards_font
+        name = self.config.cards_layout_options.get("font_family")
         if not name:
 
             # Retrieve from theme (default: Roboto)
