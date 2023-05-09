@@ -244,7 +244,7 @@ The following configuration options are available for external assets:
 
     The path must be defined relative to [`docs_dir`][docs_dir].
 
-[`assets_include`](#+privacy.assets_include){ #+privacy.external_assets_include }
+[`assets_include`](#+privacy.assets_include){ #+privacy.assets_include }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to only include
     certain external assets for processing by the privacy plugin, so they will

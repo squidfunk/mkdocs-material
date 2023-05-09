@@ -318,8 +318,8 @@ are released for general availability.
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
-  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
-  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.external_assets_include
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
+  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
 
