@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.33.1 <small>May 9, 2023</small> { id="4.33.1" }
+
+- Added support for SVG background images in social plugin
+
 ### 4.33.0 <small>May 8, 2023</small> { id="4.33.0" }
 
 - Added support for custom layouts for social plugin
