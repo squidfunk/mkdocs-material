@@ -288,6 +288,19 @@
           <div class="md-content">
             <article class="md-content__inner md-typeset">
 
+              <!-- Pull request preview notice -->
+              {% if config.extra.pull_request_preview %}
+                <div class="admonition important" style="margin-top: 0">
+                  <div class="admonition-title">This documentation is a preview of the pull request
+                    <a href="{{ config.repo_url }}/pull/{{ config.extra.pull_request_preview }}">#{{ config.extra.pull_request_preview }}</a>
+                  </div>
+                  <p>
+                    For the latest updates and improvements in production,
+                    open <a href="https://docs.codacy.com/">docs.codacy.com</a> instead.
+                  </p>
+                </div>
+              {% endif %}
+
               <!-- Self-hosted notice -->
               {% if config.extra.self_hosted %}
                 <div class="admonition important" style="margin-top: 0">
