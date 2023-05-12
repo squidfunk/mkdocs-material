@@ -251,7 +251,8 @@ The following configuration options are available for card generation:
 
     [`background_image`](#+social.cards_layout_options.background_image){ #+social.cards_layout_options.background_image }
 
-    :   Set a background image. If a `background_color` is set, like for the
+    :   [:octicons-tag-24: insiders-4.33.0][Insiders] – Set a background image. 
+        If a `background_color` is set, like for the
         [`default`][default layouts] layouts, the image is tinted (overlayed)
         with the color. Thus, the background color must be (partially)
         transparent for the image to become visible:
