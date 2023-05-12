@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
+
+- Updated Bengali (Bengal) translations
+- Fixed #5503: Docker image publish errors on uppercase characters
+- Fixed #5407: Auto-pause media when in hidden content tabs
+
 ### 9.1.11 <small>May 8, 2023</small> { id="9.1.11" }
 
 - Fixed #5487: Social plugin crashes without options (9.1.10 regression)
