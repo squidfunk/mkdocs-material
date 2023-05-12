@@ -144,9 +144,11 @@ jobs:
 
       - name: Check Docker image
         working-directory: /tmp
+        env:
+          REPO_FULL_NAME: '${{ github.event.repository.full_name }}'
         run: |
-          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} new .
-          docker run --rm -i -v ${PWD}:/docs ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }} build
+          docker run --rm -i -v ${PWD}:/docs ${REPO_FULL_NAME,,}:${{ steps.meta.outputs.version }} new .
+          docker run --rm -i -v ${PWD}:/docs ${REPO_FULL_NAME,,}:${{ steps.meta.outputs.version }} build
 
       - name: Set platforms
         if: github.event_name == 'release'
