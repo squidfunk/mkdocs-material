@@ -4,7 +4,7 @@
 
 ### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
 
-- Updated Bengali (Bengal) translations
+- Updated Bengali (Bangla) translations
 - Fixed #5503: Docker image publish errors on uppercase characters
 - Fixed #5407: Auto-pause media when in hidden content tabs
 
