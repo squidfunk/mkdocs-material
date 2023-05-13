@@ -6,13 +6,14 @@ icon: material/alphabet-greek
 
 [MathJax] is a beautiful and accessible way to display mathematical content
 in the browser, adds support for mathematical typesetting in different notations
-(e.g. [LaTeX], [MathML], [AsciiMath]), and can be easily integrated with
+(e.g. [LaTeX], [MathML], [AsciiMath], [KaTeX]), and can be easily integrated with
 Material for MkDocs.
 
   [MathJax]: https://www.mathjax.org/
   [LaTeX]: https://en.wikibooks.org/wiki/LaTeX/Mathematics
   [MathML]: https://en.wikipedia.org/wiki/MathML
   [AsciiMath]: http://asciimath.org/
+  [KaTeX]: https://katex.org/
 
 ## Configuration
 
@@ -43,7 +44,24 @@ lines to `mkdocs.yml`:
 
     1. This integrates MathJax with [instant loading].
 
-=== ":octicons-file-code-16: `mkdocs.yml`"
+=== ":octicons-file-code-16: `docs/javascripts/katex.js`"
+
+    ``` js
+    document$.subscribe(() => { // (1)!
+      renderMathInElement(document.body, {
+        delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true},
+        ],
+      });
+    })
+    ```
+
+    1. This integrates KaTeX with [instant loading].
+
+=== ":octicons-file-code-16: `mkdocs.yml` for MathJax"
 
     ``` yaml
     markdown_extensions:
@@ -51,10 +69,25 @@ lines to `mkdocs.yml`:
           generic: true
 
     extra_javascript:
-      - javascripts/mathjax.js
+      - javascripts/mathjax.js 
       - https://polyfill.io/v3/polyfill.min.js?features=es6
       - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     ```
+
+=== ":octicons-file-code-16: `mkdocs.yml` for KaTeX"
+
+    ``` yaml
+    extra_javascript:
+      - javascripts/katex.js 
+      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  # (1)!
+      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+    
+    extra_css:
+      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+    ```
+
+    1.  Or you can adgitd these JS/CSS via `<script>` tag by overriding HTML files.
+
 
 See additional configuration options:
 
