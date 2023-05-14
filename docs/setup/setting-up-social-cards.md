@@ -691,16 +691,45 @@ descender.[^2] This renders:
 
 #### Overflow
 
-If the text overflows the layer, it is automatically truncated and an ellipsis
-is appended, e.g.:
+If the text overflows the layer, there are two possible behaviors: either the
+text is automatically truncated and shortened with an ellipsis, or the text is
+automatically scaled down to fit the layer:
 
 ``` { .markdown .no-copy }
 # If we use a very long headline, we can see how the text will be truncated
 ```
 
-![Layer typography ellipsis]
+=== ":octicons-ellipsis-16: Ellipsis"
+
+    ![Layer typography ellipsis]
+
+=== ":material-arrow-collapse: Shrink"
+
+    ![Layer typography shrink]
+
+While truncating with an ellipsis is the default, auto-shrinking can be enabled 
+by setting `overflow` to `shrink`:
+
+``` yaml hl_lines="7"
+size: { width: 1200, height: 630 }
+layers:
+  - size: { width: 832, height: 310 }
+    offset: { x: 62, y: 160 }
+    typography:
+      content: "{{ page.title }}"
+      overflow: shrink
+      align: start
+      color: white
+      line:
+        amount: 3
+        height: 1.25
+      font:
+        family: Roboto
+        style: Bold
+```
 
   [Layer typography ellipsis]: ../assets/screenshots/social-cards-layer-typography-ellipsis.png
+  [Layer typography shrink]: ../assets/screenshots/social-cards-layer-typography-shrink.png
 
 #### Alignment
 

@@ -1,3 +1,13 @@
+mkdocs-material-9.1.12+insiders-4.34.0 (2023-05-14)
+
+  * Added support for new overflow mode to auto-fit text in social plugin
+  * Reduced subtle rendering bugs in (code) annotations due to subpixel rounding
+  * Improved print styles for (code) annotation lists
+  * Improved performance of social plugin, now 3x as fast
+  * Improved interop of typeset plugin with MkDocstrings
+  * Fixed logo location for variants of default template in social plugin
+  * Fixed #5446: Built-in typeset plugin picks up headings in code blocks
+
 mkdocs-material-9.1.12+insiders-4.33.2 (2023-05-12)
 
   * Fixed #5508: Social plugin crashes trying to copy cards on Docker/Windows
