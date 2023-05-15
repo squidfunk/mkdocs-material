@@ -47,6 +47,12 @@
 // Allow to explicitly use color schemes in nested content
 [data-md-color-scheme="default"] {
   @extend %root;
+
+  // Hide images for dark mode
+  img[src$="#only-dark"],
+  img[src$="#gh-dark-mode-only"] {
+    display: none;
+  }
 }
 
 // ----------------------------------------------------------------------------

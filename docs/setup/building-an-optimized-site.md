@@ -1,7 +1,3 @@
----
-status: new
----
-
 # Building an optimized site
 
 Material for MkDocs, by default, allows to build optimized sites that rank great
@@ -196,7 +192,7 @@ The following configuration options are available for caching:
     ``` yaml
     plugins:
       - optimize:
-          cache_dir: path/to/folder
+          cache_dir: .cache/plugins/optimize
     ```
 
     By default, all built-in plugins that implement caching will create a

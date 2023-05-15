@@ -222,7 +222,10 @@ export function mountAnnotation(
         takeUntil(done$),
         filter(ev => !(ev.metaKey || ev.ctrlKey))
       )
-        .subscribe(ev => ev.preventDefault())
+        .subscribe(ev => {
+          ev.stopPropagation()
+          ev.preventDefault()
+        })
 
     /* Allow to open link in new tab or blur on close */
     fromEvent<MouseEvent>(index, "mousedown")

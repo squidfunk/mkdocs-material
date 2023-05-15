@@ -2,6 +2,33 @@
 
 ## Material for MkDocs Insiders
 
+### 4.34.0 <small>May 14, 2023</small> { id="4.34.0" }
+
+- Added support for new overflow mode to auto-fit text in social plugin
+- Reduced subtle rendering bugs in (code) annotations due to subpixel rounding
+- Improved print styles for (code) annotation lists
+- Improved performance of social plugin, now 3x as fast
+- Improved interop of typeset plugin with MkDocstrings
+- Fixed logo location for variants of default template in social plugin
+- Fixed #5446: Built-in typeset plugin picks up headings in code blocks
+
+### 4.33.2 <small>May 12, 2023</small> { id="4.33.2" }
+
+- Fixed #5508: Social plugin crashes trying to copy cards on Docker/Windows
+- Fixed #5507: Social plugin crashes on serve when layouts folder doesn't exist
+- Fixed #5505: Social plugin trying to resolve logo in wrong location
+- Fixed #5496: Annotations with nested lists incorrectly mounted
+- Fixed #5493: Social plugin crashes on Python 3.8
+
+### 4.33.1 <small>May 9, 2023</small> { id="4.33.1" }
+
+- Added support for SVG background images in social plugin
+
+### 4.33.0 <small>May 8, 2023</small> { id="4.33.0" }
+
+- Added support for custom layouts for social plugin
+- Added support for background images for social cards
+
 ### 4.32.6 <small>April 22, 2023</small> { id="4.32.6" }
 
 - Fixed #5336: Interplay of blog plugin with git-revision-date-localized

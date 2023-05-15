@@ -1,7 +1,7 @@
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for template variables and labels in 50+ languages. Additionally,
+translations for template variables and labels in 60+ languages. Additionally,
 the site search can be configured to use a language-specific stemmer, if
 available.
 

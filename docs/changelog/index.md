@@ -2,6 +2,30 @@
 
 ## Material for MkDocs
 
+### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
+
+- Updated Bengali (Bangla) translations
+- Fixed #5503: Docker image publish errors on uppercase characters
+- Fixed #5407: Auto-pause media when in hidden content tabs
+
+### 9.1.11 <small>May 8, 2023</small> { id="9.1.11" }
+
+- Fixed #5487: Social plugin crashes without options (9.1.10 regression)
+
+### 9.1.10 <small>May 8, 2023</small> { id="9.1.10" }
+
+- Added `cards_layout_options` setting for social cards
+- Deprecated `cards_color` and `cards_font` setting for social cards
+
+### 9.1.9 <small>May 2, 2023</small> { id="9.1.9" }
+
+- Added Telugu, Kannada and Sanskrit translations
+- Fixed #5428: Fixed margins for light/dark mode images in figures
+- Fixed #5420: Social plugin crashing for some specific Google Fonts
+- Fixed #5160: Instant loading makes code annotations jump (9.1.1 regression)
+- Fixed #4920: Social plugin not loading logo from custom icon set
+- Fixed social plugin crashing when only code font is specified
+
 ### 9.1.8 <small>April 24, 2023</small> { id="9.1.8" }
 
 - Fixed #5417: Theme breaks when `palette` is not defined (9.1.7 regression)

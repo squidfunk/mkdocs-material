@@ -73,17 +73,25 @@ The following configuration options are supported:
     - `es` – Spanish
     - `fi` – Finnish
     - `fr` – French
+    - `hi` – Hindi
     - `hu` – Hungarian
+    - `hy` – Armenian
     - `it` – Italian
     - `ja` – Japanese
+    - `kn` - Kannada
+    - `ko` – Korean
     - `no` – Norwegian
     - `pt` – Portuguese
     - `ro` – Romanian
     - `ru` – Russian
+    - `sa` – Sanskrit
     - `sv` – Swedish
+    - `ta` – Tamil
+    - `te` – Telugu
     - `th` – Thai
     - `tr` – Turkish
     - `vi` – Vietnamese
+    - `zh` – Chinese
 
     </div>
 
