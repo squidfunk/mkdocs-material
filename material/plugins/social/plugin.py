@@ -28,7 +28,6 @@ import requests
 import sys
 
 from collections import defaultdict
-from glob import glob
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
@@ -449,19 +448,31 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             else:
                 name = "Roboto"
 
-        # Retrieve font files, if not already done
-        files = glob(f"{self.cache}/**/*.[ot]tf")
-        files = [os.path.relpath(file, self.cache) for file in files]
-        files = [file for file in files if file.endswith(".ttf") or file.endswith(".otf")] or (
-            self._load_font_from_google(name)
-        )
+        # Google fonts can return varients like OpenSans_Condensed-Regular.ttf so
+        # we only use the font requested e.g. OpenSans-Regular.ttf
+        font_filename_base = name.replace(' ', '')
+        filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
 
-        # Map available font weights to file paths
         font = dict()
-        for file in files:
-            match = re.search(r"-(\w+)\.[ot]tf$", file)
-            if match:
-                font[match.group(1)] = os.path.join(self.cache, file)
+        # Check for cached files - note these may be in subfolders
+        for currentpath, folders, files in os.walk(self.cache):
+            for file in files:
+                # Map available font weights to file paths
+                fname = os.path.join(currentpath, file)
+                match = re.search(filename_regex, fname)
+                if match:
+                    font[match.group(1)] = fname
+
+        # If none found, fetch from Google and try again
+        if len(font) == 0:
+            self._load_font_from_google(name)
+            for currentpath, folders, files in os.walk(self.cache):
+                for file in files:
+                    # Map available font weights to file paths
+                    fname = os.path.join(currentpath, file)
+                    match = re.search(filename_regex, fname)
+                    if match:
+                        font[match.group(1)] = fname
 
         # Return available font weights with fallback
         return defaultdict(lambda: font["Regular"], font)
