@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.34.1 <small>May 16, 2023</small> { id="4.34.1" }
+
+- Disable social plugin debug mode by default on mkdocs build
+- Added warning in social plugin debug mode when font style couldn't be found
+- Set default concurrency of built-in multi-threaded plugins to CPUs - 1
+- Fixed #5521: Social plugin triggers race condition when downloading fonts
+- Fixed #5515: Social plugin crashes when concurrency is set to 1
+
 ### 4.34.0 <small>May 14, 2023</small> { id="4.34.0" }
 
 - Added support for new overflow mode to auto-fit text in social plugin

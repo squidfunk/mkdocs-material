@@ -1,3 +1,11 @@
+mkdocs-material-9.1.13+insiders-4.34.1 (2023-05-16)
+
+  * Disable social plugin debug mode by default on mkdocs build
+  * Added warning in social plugin debug mode when font style couldn't be found
+  * Set default concurrency of built-in multi-threaded plugins to CPUs - 1
+  * Fixed #5521: Social plugin triggers race condition when downloading fonts
+  * Fixed #5515: Social plugin crashes when concurrency is set to 1
+
 mkdocs-material-9.1.13 (2023-05-16)
 
   * Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
