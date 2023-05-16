@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.1.13 <small>May 16, 2023</small> { id="9.1.13" }
+
+- Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
+
 ### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
 
 - Updated Bengali (Bangla) translations

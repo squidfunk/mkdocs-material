@@ -1,3 +1,7 @@
+mkdocs-material-9.1.13 (2023-05-16)
+
+  * Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
+
 mkdocs-material-9.1.12+insiders-4.34.0 (2023-05-14)
 
   * Added support for new overflow mode to auto-fit text in social plugin
