@@ -127,10 +127,16 @@
         <div class="md-main__inner">
           <div class="md-content">
             <article class="md-content__inner md-typeset">
-              {% if config.extra.pull_request_preview %}
+              {% if config.extra.preview_pull_request or config.extra.preview_branch %}
                 <div class="admonition important" style="margin-top:0">
-                  <div class="admonition-title">This documentation is a preview of the pull request
-                    <a href="{{ config.repo_url }}/pull/{{ config.extra.pull_request_preview }}">#{{ config.extra.pull_request_preview }}</a>
+                  <div class="admonition-title">
+                    {% if config.extra.preview_pull_request %}
+                      This documentation is a preview of the pull request
+                      <a href="{{ config.repo_url }}/pull/{{ config.extra.preview_pull_request }}">#{{ config.extra.preview_pull_request }}</a>
+                    {% else %}
+                      This documentation is a preview of the branch
+                      <code><a href="{{ config.repo_url }}/tree/{{ config.extra.preview_branch }}">{{ config.extra.preview_branch }}</a></code>
+                    {% endif %}
                   </div>
                   <p>
                     For the latest updates and improvements in production,
