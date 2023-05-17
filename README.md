@@ -257,6 +257,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Trivy](https://github.com/aquasecurity/trivy)
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
+[WebKit](https://docs.webkit.org/),
 [WTF](https://wtfutil.com/)
 
 ## License
