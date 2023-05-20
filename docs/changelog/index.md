@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.1.14 <small>May 20, 2023</small> { id="9.1.14" }
+
+- Updated Armenian and Greek translations
+
 ### 9.1.13 <small>May 16, 2023</small> { id="9.1.13" }
 
 - Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
