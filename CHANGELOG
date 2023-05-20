@@ -1,3 +1,11 @@
+mkdocs-material-9.1.14+insiders-4.35.0 (2023-05-20)
+
+  * Improve editing experience and stability of social plugin
+  * Added support for custom layout syntax validation in social plugin
+  * Added support for layer origin for easier placement in social plugin
+  * Added support for in- and exclusion patterns in social plugin
+  * Catch and print syntax errors in custom layouts
+
 mkdocs-material-9.1.14 (2023-05-20)
 
   * Updated Armenian and Greek translations

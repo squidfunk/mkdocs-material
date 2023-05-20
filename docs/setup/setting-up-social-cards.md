@@ -228,10 +228,10 @@ The following configuration options are available for card generation:
 
 [`cards_layout_options`](#+social.cards_layout_options){ #+social.cards_layout_options }
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   [:octicons-tag-24: 9.1.10][Layout options support] · :octicons-milestone-24:
     Default: _none_ – This option allows to set [parameters] as provided by
     the layout specification. For [custom layouts], this key can be used to
-    provide layout-specific options, making layouts entirels configurable.
+    provide layout-specific options, making layouts entirely configurable.
 
     ---
 
@@ -293,6 +293,32 @@ The following configuration options are available for card generation:
                 font_family: Ubuntu
         ```
 
+[`cards_include`](#+privacy.cards_include){ #+privacy.cards_include }
+
+:   [:octicons-tag-24: insiders-4.35.0][Insiders] · :octicons-milestone-24:
+    Default: _none_ – This option allows to only generate social cards for
+    certain subsections of your documentation, e.g. to generate different
+    cards for different subfolders with multiple instances of the plugin:
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_include:
+            - blog/*
+    ```
+
+[`cards_exclude`](#+privacy.cards_exclude){ #+privacy.cards_exclude }
+
+:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
+    certain subsections of your documentation from generating social cards:
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_exclude:
+            - changelog/*.md
+    ```
+
   [color palette]: ./changing-the-colors.md#color-palette
   [primary color]: ./changing-the-colors.md#primary-color
   [accent color]: ./changing-the-colors.md#accent-color
@@ -308,6 +334,7 @@ The following configuration options are available for card generation:
   [parameters]: #parameters
   [default layouts]: #+social.cards_layout
   [CSS color keyword]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
+  [Layout options support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.1.10
 
 #### Debugging
 
@@ -594,8 +621,8 @@ layers:
 ```
 
 If the `size` is omitted, it defaults to the size of the layout. If the `offset`
-is omitted, it defaults to the top left corner, which is the origin for all
-layers. Saving the layout and reloading renders:
+is omitted, it defaults to the top left corner, which is the defaut `origin`.
+Saving the layout and reloading renders:
 
 ![Layer size]
 
@@ -604,6 +631,38 @@ mode in `mkdocs.yml`. The top left shows the layer index and offset, which is
 useful for alignment and composition.
 
   [Layer size]: ../assets/screenshots/social-cards-layer-size.png
+
+#### Origin
+
+[:octicons-tag-24: insiders-4.35.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+The `origin` for the `x` and `y` values can be changed, so that the layer is
+aligned to one of the edges or corners of the layout, e.g., to the bottom right
+corner of the layout:
+
+``` yaml hl_lines="5"
+size: { width: 1200, height: 630 }
+layers:
+  - size: { width: 1200, height: 630 }
+    offset: { x: 0, y: 0 }
+    origin: end bottom
+```
+
+The following table shows the supported values:
+
+<figure markdown>
+
+| Origin         |                 |              |
+| -------------- | --------------- | ------------ |
+| :material-arrow-top-left:    `start top`    | :material-arrow-up:     `center top`    | :material-arrow-top-right:    `end top`    |
+| :material-arrow-left:        `start center` | :material-circle-small: `center`        | :material-arrow-right:        `end center` |
+| :material-arrow-bottom-left: `start bottom` | :material-arrow-down:   `center bottom` | :material-arrow-bottom-right: `end bottom` |
+
+  <figcaption>
+    Supported values for origin
+  </figcaption>
+</figure>
 
 ### Backgrounds
 

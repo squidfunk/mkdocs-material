@@ -61,6 +61,30 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_layout_options",
               "type": "object"
             },
+            "cards_include": {
+              "title": "Pages or folders to include",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_include",
+              "type": "array",
+              "items": {
+                "title": "Pages or folders matching this pattern will be included",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_include",
+                "pattern": ".*"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
+            "cards_exclude": {
+              "title": "Pages or folders to exclude",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_exclude",
+              "type": "array",
+              "items": {
+                "title": "Pages or folders matching this pattern will be excluded",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.cards_exclude",
+                "pattern": ".*"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            },
             "debug": {
               "title": "Debug mode",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug",

@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.35.0 <small>May 20, 2023</small> { id="4.35.0" }
+
+- Improve editing experience and stability of social plugin
+- Added support for custom layout syntax validation in social plugin
+- Added support for layer origin for easier placement in social plugin
+- Added support for in- and exclusion patterns in social plugin
+- Catch and print syntax errors in custom layouts
+
 ### 4.34.1 <small>May 16, 2023</small> { id="4.34.1" }
 
 - Disable social plugin debug mode by default on mkdocs build
