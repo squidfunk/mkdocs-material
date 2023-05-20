@@ -1,3 +1,7 @@
+mkdocs-material-9.1.14+insiders-4.35.1 (2023-05-20)
+
+  * Fixed internal handling of errors in social plugin
+
 mkdocs-material-9.1.14+insiders-4.35.0 (2023-05-20)
 
   * Improve editing experience and stability of social plugin

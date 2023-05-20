@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.35.1 <small>May 20, 2023</small> { id="4.35.1" }
+
+- Fixed internal handling of errors in social plugin
+
 ### 4.35.0 <small>May 20, 2023</small> { id="4.35.0" }
 
 - Improve editing experience and stability of social plugin
