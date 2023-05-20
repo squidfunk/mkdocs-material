@@ -338,6 +338,22 @@ The following configuration options are available for debugging:
     [Debug mode enabled]: ../assets/screenshots/social-cards-debug.png
     [Debug mode disabled]: ../assets/screenshots/social-cards-variant.png
 
+[`debug_on_build`](#+social.debug_on_build){ #+social.debug_on_build }
+
+:   [:octicons-tag-24: insiders-4.34.1][Insiders] · :octicons-milestone-24:
+    Default: `false` – Whether debug mode should be automatically disabled
+    [when building your site] with `mkdocs build`. It can be changed with:
+
+    ``` yaml
+    plugins:
+      - social:
+          debug_on_build: true
+    ```
+
+    This setting is just intended to be a safety net, so that when building
+    your site social cards definitely won't contain the dot grid or layer
+    outlines by accident.
+
 [`debug_grid`](#+social.debug_grid){ #+social.debug_grid }
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
@@ -377,6 +393,7 @@ The following configuration options are available for debugging:
     ```
 
   [debug]: #+social.debug
+  [when building your site]: ../creating-your-site.md#building-your-site
 
 #### Caching
 
