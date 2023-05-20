@@ -67,6 +67,12 @@
               "type": "boolean",
               "default": true
             },
+            "debug_on_build": {
+              "title": "Always disable debug mode on build",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug_on_build",
+              "type": "boolean",
+              "default": false
+            },
             "debug_grid": {
               "title": "Debug grid",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-cards/#+social.debug_grid",
