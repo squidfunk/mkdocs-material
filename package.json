@@ -89,7 +89,7 @@
     "postcss-logical": "5.0.4",
     "postcss-pseudo-is": "^0.3.0",
     "preact": "^10.14.0",
-    "rimraf": "^5.0.0",
+    "rimraf": "^5.0.1",
     "sass": "^1.62.1",
     "simple-icons": "^8.13.0",
     "stylelint": "^15.6.1",
