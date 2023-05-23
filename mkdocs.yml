@@ -219,7 +219,7 @@ nav:
     - Icons, Emojis: reference/icons-emojis.md
     - Images: reference/images.md
     - Lists: reference/lists.md
-    - MathJax: reference/mathjax.md
+    - Math: reference/math.md
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
