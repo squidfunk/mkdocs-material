@@ -323,7 +323,7 @@ The following configuration options are available for external assets:
   [customization]: ../customization.md
   [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
-  [MathJax]: ../reference/mathjax.md
+  [MathJax]: ../reference/math.md
   [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
   [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
   [comment system]: adding-a-comment-system.md
