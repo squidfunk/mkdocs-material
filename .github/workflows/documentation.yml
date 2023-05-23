@@ -46,12 +46,17 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Set the date environmental variable
+        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+
       - name: Set up build cache
         uses: actions/cache@v3
         id: cache
         with:
-          key: ${{ runner.os }}-${{ hashFiles('.cache/**') }}
+          key: mkdocs-material-${{ env.cache_id }}
           path: .cache
+          restore-keys: |
+            mkdocs-material-
 
       - name: Install dependencies
         run: sudo apt-get install pngquant

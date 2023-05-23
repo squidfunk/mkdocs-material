@@ -39,7 +39,7 @@
 <p align="center">
   Write your documentation in Markdown and create a professional static site for
   your Open Source or commercial project in minutes – searchable, customizable,
-  more than 50 languages, for all devices.
+  more than 60 languages, for all devices.
 </p>
 
 <p align="center">
@@ -257,6 +257,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Trivy](https://github.com/aquasecurity/trivy)
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
+[WebKit](https://docs.webkit.org/),
 [WTF](https://wtfutil.com/)
 
 ## License

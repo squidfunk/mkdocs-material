@@ -93,7 +93,7 @@ The following configuration options are available:
         ``` yaml
         plugins:
           - blog:
-              blog_dir: path/to/folder
+              blog_dir: blog
         ```
 
     === "Standalone"
