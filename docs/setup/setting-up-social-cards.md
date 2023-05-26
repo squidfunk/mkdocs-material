@@ -9,6 +9,15 @@ documentation, which appear as link previews on social media platforms. You
 can select from several [pre-designed layouts][default layouts] or create
 [custom layouts] to match your unique style and branding.
 
+---
+
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }
+__[How to build custom social cards]__ by @james-willett – :octicons-clock-24:
+24m – Learn how to create entirely custom social cards perfectly matching your
+branding for each page automatically!
+
+  [How to build custom social cards]: https://www.youtube.com/watch?v=4OjnOc6ftJ8
+
 <figure markdown>
 
 [![Layout default variant]][Layout default variant]
