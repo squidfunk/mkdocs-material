@@ -321,6 +321,12 @@ Then, it is a simple process to import the data in to the Markdown files.
 
     You can read more on their Docs website: [mkdocs-table-reader-plugin][table-reader-docs]
 
+!!! warning "Using `mkdocs-table-reader-plugin` with Docker"
+
+    `mkdocs-table-reader-plugin` depends on `pandas`, which is not supported on the default `mkdocs-material` Docker image.
+    
+    See the [guide](https://timvink.github.io/mkdocs-table-reader-plugin/howto/docker/) on how to update the Docker image.
+
 [table-reader-docs]: https://timvink.github.io/mkdocs-table-reader-plugin/
 [table-reader-read_csv]: https://timvink.github.io/mkdocs-table-reader-plugin/readers/#read_csv
 [table-reader-read_fwf]: https://timvink.github.io/mkdocs-table-reader-plugin/readers/#read_fwf
