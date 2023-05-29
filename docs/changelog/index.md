@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.1.15 <small>May 29, 2023</small> { id="9.1.15" }
+
+- Fixed #5566: Indicate color scheme to operating system
+- Fixed #5565: Update `Dockerfile` to latest version of base image
+- Fixed #5554: Add additional version tags (`9`, `9.1`) to Docker image
+- Fixed #5536: Strip tags of ARIA labels in table of contents
+
 ### 9.1.14 <small>May 20, 2023</small> { id="9.1.14" }
 
 - Updated Armenian and Greek translations
