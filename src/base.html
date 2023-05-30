@@ -420,7 +420,11 @@
 
       <!-- Custom JavaScript -->
       {% for path in config.extra_javascript %}
-        <script src="{{ path | url }}"></script>
+        {% if path.endswith(".mjs") %}
+          <script type="module" src="{{ path | url }}"></script>
+        {% else %}
+          <script src="{{ path | url }}"></script>
+        {% endif %}
       {% endfor %}
     {% endblock %}
   </body>
