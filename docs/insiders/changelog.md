@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.35.3 <small>June 1, 2023</small> { id="4.35.3" }
+
+- Fixed #5579: Abbreviations in headlines filtered by typeset plugin
+
 ### 4.35.2 <small>May 29, 2023</small> { id="4.35.2" }
 
 - Fixed #5555: Blog plugin crashes when computing readtime for emojis
