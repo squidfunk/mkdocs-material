@@ -303,3 +303,10 @@ This triggers the production-level compilation and minification of all style
 sheets and JavaScript files. After the command exits, the compiled files are
 located in the `material` directory. When running `mkdocs build`, you should
 now see your changes to the original theme.
+
+!!! note "Enterprise support"
+
+    If you're using Material for MkDocs in your organization and need
+    assistance, e.g., to __reduce build times__, __improve performance__ or
+    ensure compliance, [__get in touch__](contact@squidfunk.com)
+    to discuss our __enterprise support__ offerings. We're happy to help!

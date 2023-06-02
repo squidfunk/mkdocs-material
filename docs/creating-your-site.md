@@ -223,5 +223,12 @@ need for operating a database or server, as it is completely self-contained.
 The site can be hosted on [GitHub Pages], [GitLab Pages], a CDN of your choice
 or your private web space.
 
+!!! note "Enterprise support"
+
+    If you're using Material for MkDocs in your organization and need
+    assistance, e.g., to __reduce build times__, __improve performance__ or
+    ensure compliance, [__get in touch__](contact@squidfunk.com)
+    to discuss our __enterprise support__ offerings. We're happy to help!
+
   [GitHub Pages]: publishing-your-site.md#github-pages
   [GitLab pages]: publishing-your-site.md#gitlab-pages
