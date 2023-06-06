@@ -153,7 +153,7 @@ pip install -e mkdocs-material
 
     If you're using Material for MkDocs in your organization and need
     assistance, e.g., to __reduce build times__, __improve performance__ or
-    ensure compliance, [__get in touch__](contact@squidfunk.com)
+    ensure compliance, [__get in touch__](mailto:contact@squidfunk.com)
     to discuss our __enterprise support__ offerings. We're happy to help!
 
   [GitHub]: https://github.com/squidfunk/mkdocs-material
