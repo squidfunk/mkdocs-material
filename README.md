@@ -149,6 +149,12 @@
   <a href="https://www.springernature.com/gp" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png" height="58"
   /></a>
+  <a href="https://kolena.io/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png" height="58"
+  /></a>
+  <a href="https://www.evergiving.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
