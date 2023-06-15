@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.36.0 <small>June 15, 2023</small> { id="4.36.0" }
+
+- Added support for instant prefetching to speed up slow connections
+- Improved stability of anchor link removal in built-in typeset plugin
+- Improved performance of regular expressions in typeset plugin
+- Removed unnecessary import test for `cairosvg` in optimize plugin
+- Fixed #5590: regular expression for anchor link removal too greedy
+
 ### 4.35.3 <small>June 1, 2023</small> { id="4.35.3" }
 
 - Fixed #5579: Abbreviations in headlines filtered by typeset plugin

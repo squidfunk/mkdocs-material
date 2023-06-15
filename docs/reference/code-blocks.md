@@ -83,7 +83,7 @@ theme:
     ```
     ````
 
-### Code selection button :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+### Code selection button
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.32.0][Insiders] ·

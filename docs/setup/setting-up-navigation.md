@@ -34,6 +34,24 @@ especially useful for large documentation sites.
   [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
+#### Instant prefetching :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.36.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Instant prefetching is a new experimental feature that will start to fetch a
+page once the user hovers over a link. This will reduce the perceived loading
+time for the user, especially on slow connections, as the page will be available
+immediately upon navigation. Enable it with:
+
+``` yaml
+theme:
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+```
+
 ### Anchor tracking
 
 [:octicons-tag-24: 8.0.0][Anchor tracking support] ·
