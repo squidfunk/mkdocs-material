@@ -331,9 +331,11 @@ them at your own risk.
 [:octicons-cpu-24: Plugin][git-authors] ·
 :octicons-beaker-24: Experimental
 
-The [git-authors] plugin extracts the authors of a document from git to display
-them at the bottom of each page. It's a lightweight alternative to the
-[git-committers] plugin. Install it with `pip`:
+The [git-authors] plugin is a lightweight alternative to the
+[git-committers] plugin and extracts the authors of a document from git to display
+them at the bottom of each page.
+
+[Insiders] offers deep integration for [git-authors]. This means the [customized overrides](https://timvink.github.io/mkdocs-git-authors-plugin/usage.html#mkdocs-material-theme) are not necessary, and additional styling (such as nice icons) are added. Simply install it with `pip`:
 
 ```
 pip install mkdocs-git-authors-plugin
