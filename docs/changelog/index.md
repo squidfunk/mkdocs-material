@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.16 <small>June 15, 2023</small> { id="9.1.16" }
+
+- Updated Indonesian translations
+- Ensure scroll bar follows color scheme of operating system
+
 ### 9.1.15 <small>May 29, 2023</small> { id="9.1.15" }
 
 - Fixed #5566: Indicate color scheme to operating system

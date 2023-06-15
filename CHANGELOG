@@ -1,3 +1,8 @@
+mkdocs-material-9.1.16 (2023-07-15)
+
+  * Updated Indonesian translations
+  * Ensure scroll bar follows color scheme of operating system
+
 mkdocs-material-9.1.15+insiders-4.35.3 (2023-06-01)
 
   * Fixed #5579: Abbreviations in headlines filtered by typeset plugin
