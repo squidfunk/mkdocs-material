@@ -203,6 +203,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
 [![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
 [![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
+[![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 
 </div>
 
@@ -236,6 +237,7 @@ You can cancel your sponsorship anytime.[^5]
   [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
   [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
   [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
+  [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
 
 <hr />
 
