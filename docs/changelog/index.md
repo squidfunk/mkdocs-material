@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.17 <small>June 23, 2023</small> { id="9.1.17" }
+
+- Fixed #5633: Code annotations with nested lists incorrectly mounted
+- Fixed #5628: Regression in new social plugin configuration scheme
+
 ### 9.1.16 <small>June 15, 2023</small> { id="9.1.16" }
 
 - Updated Indonesian translations

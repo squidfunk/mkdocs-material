@@ -1,4 +1,13 @@
-mkdocs-material-9.1.16+insiders-4.36.0 (2023-07-15)
+mkdocs-material-9.1.17+insiders-4.36.1 (2023-06-23)
+
+  * Fixed #5618: Date comparison breaking for drafts in blog plugin
+
+mkdocs-material-9.1.17 (2023-06-23)
+
+  * Fixed #5633: Code annotations with nested lists incorrectly mounted
+  * Fixed #5628: Regression in new social plugin configuration scheme
+
+mkdocs-material-9.1.16+insiders-4.36.0 (2023-06-15)
 
   * Added support for instant prefetching to speed up slow connections
   * Improved stability of anchor link removal in built-in typeset plugin
@@ -6,7 +15,7 @@ mkdocs-material-9.1.16+insiders-4.36.0 (2023-07-15)
   * Removed unnecessary import test for cairosvg in optimize plugin
   * Fixed #5590: regular expression for anchor link removal too greedy
 
-mkdocs-material-9.1.16 (2023-07-15)
+mkdocs-material-9.1.16 (2023-06-15)
 
   * Updated Indonesian translations
   * Ensure scroll bar follows color scheme of operating system
