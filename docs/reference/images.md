@@ -182,7 +182,7 @@ hash fragment to the image URL:
     === "Custom light scheme"
 
         ``` css
-        [data-md-color-scheme="custom-light"] img[src$="#only-dark"]
+        [data-md-color-scheme="custom-light"] img[src$="#only-dark"],
         [data-md-color-scheme="custom-light"] img[src$="#gh-dark-mode-only"] {
           display: none; /* Hide dark images in light mode */
         }
