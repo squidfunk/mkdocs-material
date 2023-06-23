@@ -87,7 +87,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             return
 
         # Move color options
-        if "cards_color" in self.config:
+        if self.config.cards_color:
 
             # Move background color to new option
             value = self.config.cards_color.get("fill")
@@ -100,7 +100,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.config.cards_layout_options["color"] = value
 
         # Move font family to new option
-        if "cards_font" in self.config:
+        if self.config.cards_font:
             value = self.config.cards_font
             self.config.cards_layout_options["font_family"] = value
 
