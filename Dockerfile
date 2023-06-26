@@ -67,7 +67,7 @@ RUN \
       "cairosvg>=2.5"; \
   fi \
 && \
-  [ -e user-requirements.txt ] && pip install -r user-requirements.txt \
+  [ -e user-requirements.txt ] && pip install -U -r user-requirements.txt \
 && \
   apk del .build \
 && \
