@@ -34,7 +34,7 @@ WORKDIR /tmp
 COPY material material
 COPY package.json package.json
 COPY README.md README.md
-COPY requirements.txt requirements.txt
+COPY *requirements.txt ./
 COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
@@ -66,6 +66,8 @@ RUN \
       "pillow>=9.0" \
       "cairosvg>=2.5"; \
   fi \
+&& \
+  [ -e user-requirements.txt ] && pip install -U -r user-requirements.txt \
 && \
   apk del .build \
 && \

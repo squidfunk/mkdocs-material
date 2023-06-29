@@ -79,6 +79,9 @@ docker login -u ${GH_USERNAME} -p ${GHCR_TOKEN} ghcr.io
 docker pull ghcr.io/${GH_USERNAME}/mkdocs-material-insiders
 ```
 
+Should you wish to add additional plugins to the insiders container image, follow the steps
+outlined in the [Getting Started guide](../getting-started.md#with-docker).
+
   [^2]:
     Earlier, Insiders provided a dedicated Docker image which was available to
     all sponsors. On March 21, 2021, the image was deprecated for the reasons
