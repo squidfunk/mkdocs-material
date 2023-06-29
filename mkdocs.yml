@@ -178,6 +178,8 @@ nav:
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
+    - FAQ:
+      - Sponsoring: faq/sponsoring.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
