@@ -179,8 +179,7 @@ nav:
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
     - FAQ:
-      - faq/index.md
-      - FAQ Sponsoring: faq/insiders-version.md
+      - Sponsoring: faq/sponsoring.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
