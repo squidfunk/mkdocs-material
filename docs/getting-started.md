@@ -117,12 +117,11 @@ The following plugins are bundled with the Docker image:
 
     Material for MkDocs only bundles selected plugins in order to keep the size
     of the official image small. If the plugin you want to use is not included, 
-    create a `user-requirements.txt` file in the repository root with the packages
-    you want to install additionally, e.g.:
+    create a new `Dockerfile` and extend the official Docker image:
 
-    ``` txt title="user-requirements.txt"
-    mkdocs-macros-plugin==0.7.0
-    mkdocs-glightbox>=0.3.1
+    ``` Dockerfile
+    FROM squidfunk/mkdocs-material
+    RUN pip install ...
     ```
 
     Next, you can build the image with the following command:
@@ -131,8 +130,7 @@ The following plugins are bundled with the Docker image:
     docker build -t squidfunk/mkdocs-material .
     ```
 
-    The new image will have additional packages installed and can be used
-    exactly like the official image.
+    The new image can be used exactly like the official image.
 
 ### with git
 
