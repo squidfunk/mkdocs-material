@@ -1,70 +1,81 @@
 # FAQs – Material for MkDocs Insiders
 
-Got any questions about our Material for MkDocs Insiders version? We do our best
-to answer all of your questions on this page. If you can't find your question 
-below, please feel free to address it on our [discussion board] or reach out to 
-us via mail at __sponsors@squidfunk.com__.
+Do you have questions about Material for MkDocs Insiders? We do our best to
+answer all of your questions on this page. If you can't find your question 
+below, ask it on our [discussion board]!
 
   [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions/new/chooses
 
-
 ## General	
 
-__Why is the Insiders version offered as a subscription model?__
-> We started Material for MkDocs years ago as an open-source project, available 
-for free to everyone. As the project grew over time, we found that maintaining 
-and managing the overhead became more challenging and time-consuming. To sustain 
-the project and create additional features more frequently, we decided to create 
-the Insiders edition, a paid and larger version of the community edition with 
-more features. This monthly-subscription-based model of the Insiders edition 
-allows us to dedicate more time and resources to the project – and benefits both 
-the community and the Insiders users. Once our funding goals based on monthly 
-subscriptions are met, the Insiders features of that funding goals are released 
-to the community edition, letting everyone benefit from them once again. 
+[__Why is the Insiders edition offered as a subscription model?__](#why-is-the-insiders-edition-offered-as-a-subscription-model){ #why-is-the-insiders-edition-offered-as-a-subscription-model }
+
+Material for MkDocs always was and will be Open Source, available for free to
+individuals and organizations. As the project grew over time, we found that
+maintaining and managing the overhead that comes with growth became more
+challenging and time-consuming.
+
+In order to sustain the project and add new and useful features more frequently,
+we decided to create the [Insiders] edition, with early access to the latest and
+greatest features of Material for MkDocs. The subscription-based model of the
+Insiders edition allows us to dedicate more time and resources to the project,
+which benefits all 
+users of Material for MkDocs. Once our funding goals based on monthly 
+subscriptions are hit, the Insiders features of those funding goals are released 
+to the community edition, letting everyone benefit from them. 
+
 Maintaining both the community and Insiders editions is an ongoing process, and 
 we rely on our sponsors to support us on a monthly basis, which makes this whole 
 project possible.
 
-__What features are included in the Insiders version?__
-> The Insiders version includes 20+ additional features. You can find an 
-overview of these features on our [Insiders page].
+[__What features are included in the Insiders edition?__](#what-features-are-included-in-the-insiders-edition){ #what-features-are-included-in-the-insiders-edition }
 
-[Insiders page]: ../insiders/index.md#whats-in-it-for-me
+The Insiders edition includes more than 20 additional features. You can find an 
+overview of these features on our [Insiders page], which is updated when new
+features are added and released.
 
-__How often is the Insiders version updated?__
-> Both our repositories, the community edition, and the Insiders edition, are 
-constantly updated, fixing bugs with high priority, and frequently adding new 
-features.
+  [Insiders]: ../insiders/index.md
+  [Insiders page]: ../insiders/index.md#whats-in-it-for-me
 
+[__How often is the Insiders edition updated?__](#how-often-is-the-insiders-edition-updated){ #how-often-is-the-insiders-edition-updated }
+
+We try to keep our open issue count low, fixing known bugs quickly. Both our
+repositories, the community and Insiders edition, are constantly updated with
+bug fixes and new features.
 
 ## Sponsorship	
 
-__Can I sponsor the project without a GitHub account?__
-> Absolutely! You can support Material for MkDocs by sponsoring us on [Ko-fi], 
-regardless of whether you have a GitHub account. However, please note that we 
-currently manage all access to the private Insiders repository through GitHub, 
-as it is hosted on this platform. If you'd like to gain access to the 
-repository, you'll need to have a GitHub individual or bot account that can be 
-added as a collaborator. If your organization doesn't use GitHub or/and host its 
-repositories on other platforms, you can mirror the Insiders repository in your 
-environment once you have access.
+[__Can I sponsor the project without a GitHub account?__](#can-i-sponsor-the-project-without-a-github-account){ #can-i-sponsor-the-project-without-a-github-account }
 
-__Which sponsoring tier should I choose?__
-> The sponsoring tiers are divided into non-commercial and commercial use. If 
-you are an individual using Material for MkDocs for private or surely 
-__non-commercial__ open-source projects, you have two tiers to choose from, 
+Yes. You can support Material for MkDocs by sponsoring us on [Ko-fi], regardless
+of whether you have a GitHub account or not. However, please note that Insiders
+is provided as a private repository on GitHub. If after sponoring, you'd like to
+gain access to the repository, you'll need to have a GitHub individual or bot
+account that can be added as a collaborator. If your organization doesn't use
+GitHub or/and host its repositories on other platforms, you can mirror the
+Insiders repository in your environment once you have access.
+
+[__Which sponsoring tier should I choose?__](#which-sponsoring-tier-should-i-choose){ #which-sponsoring-tier-should-i-choose }
+
+The sponsoring tiers are divided into non-commercial and commercial tiers. If 
+you are an individual using Material for MkDocs for private or
+__non-commercial__ Open Source projects, you have two tiers to choose from, 
 depending on the number of sites you want to build. For organizations using 
 Material for MkDocs, we offer three different __commercial__ tiers, from which 
 you can choose depending on your requirements.
 
-__If I sponsored with a one-time or custom amount, can I access the Insiders version?__
-> No, please note that a minimum of $15 for [The Individual] tier per month is 
-required to become eligible for Insiders. While [GitHub Sponsors] also allows 
-sponsoring with lower or one-time amounts, access to Insiders is only granted 
-through ongoing sponsorships, with the minimum monthly amount being 15$ or 
-higher due to technical reasons.
+!!! danger "TODO: Link to what is considered commercial use"
 
-  [The Individual]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210638
+[__Why are one-time sponsorships not granted access to Insiders?__](#why-are-one-time-sponsorships-not-granted-access-to-insiders){ #why-are-one-time-sponsorships-not-granted-access-to-insiders }
+
+Mainly due to technical reasons, that might be lifted in the future. We use
+GitHub webhooks to determine our current active sponsors. When you create or
+cancel your monthly subscription, GitHub sends events that we use to
+automatically add and remove collaborators.
+
+Note that [$15] is the minimum amount to be granted access to Insiders.
+
+  [$15]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210638
 
 __How is my sponsorship contribution used to support the project?__
 > Your sponsorship contribution directly supports the development and 
@@ -72,7 +83,7 @@ maintenance of the project. It allows us to dedicate more time and resources to
 enhance the project's features and functionality. The additional funding helps 
 us prioritize improvements and updates, benefiting Insiders users and the wider 
 community. We also actively contribute to other upstream projects, fostering 
-collaboration and giving back to the open-source ecosystem.
+collaboration and giving back to the Open Source ecosystem.
 
 __Are there any limitations on the number of sponsors for a particular tier?__
 > No, there are no limitations on the number of sponsors for any tier. You can 
@@ -108,14 +119,14 @@ MkDocs Insiders program. To ensure that everyone can afford the Insiders program
 and keep the barrier as low as possible, we have set prices as low as $15/month 
 for [The Individual] sponsoring tier for non-commercial use.
 
-__Do you offer free access to Insiders for open-source projects?__
+__Do you offer free access to Insiders for Open Source projects?__
 > No, we do not offer free access to our Material for MkDocs Insiders version. 
 We understand that non-profit organizations may have limited budgets and may 
 need to prioritize their spending on other projects or organizations. It's 
 important to note that Material for MkDocs is maintained by a small team, 
 investing a lot of time and resources into constantly improving this project. 
 Material for MkDocs and its core features are free to the community through our 
-open-source model. Therefore, Material for MkDocs itself is already free.
+Open Source model. Therefore, Material for MkDocs itself is already free.
 
 > However, we do offer an affordable [The Individual] tier starting at $15/month, 
 which is meant for individuals and non-profit organizations using Material for 
@@ -297,7 +308,7 @@ organization is also considered commercial use, as with all commercial software.
 __What constitutes non-commercial use of the Insiders version?__
 > Non-commercial use of our Material for MkDocs refers to any use private use. 
 This includes individuals using the Insiders version for private or purely 
-non-commercial open-source projects. We offer two different tiers for 
+non-commercial Open Source projects. We offer two different tiers for 
 non-commercial use, depending on the number of sites you want to build.  
 
 __What is your fair use policy?__
@@ -412,7 +423,7 @@ as a collaborator of the private Insiders repository. You can clone, fork, or
 mirror using this account. All information will be kept confidential; only the 
 bot account and us maintainers will have insights into his sponsorship. 
 
-  [private]: https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/managing-your-sponsorship#managing-the-privacy-setting-for-your-sponsorship
+  [private]: https://docs.github.com/en/sponsors/sponsoring-Open Source-contributors/managing-your-sponsorship#managing-the-privacy-setting-for-your-sponsorship
 
 __Are there any geographical restrictions on becoming a sponsor?__
 > No, there are no geographical restrictions for becoming a sponsor. We welcome 
