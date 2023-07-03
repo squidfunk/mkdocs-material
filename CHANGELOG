@@ -1,3 +1,9 @@
+mkdocs-material-9.1.18 (2023-07-03)
+
+  * Updated Danish translations
+  * Added support for installing user requirements in Docker image
+  * Fixed #5655: Search separator with lookbehind breaks highlighting
+
 mkdocs-material-9.1.17+insiders-4.36.1 (2023-06-23)
 
   * Fixed #5618: Date comparison breaking for drafts in blog plugin

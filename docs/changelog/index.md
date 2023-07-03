@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
+
+- Updated Danish translations
+- Added support for installing user requirements in Docker image
+- Fixed #5655: Search separator with lookbehind breaks highlighting
+
 ### 9.1.17 <small>June 23, 2023</small> { id="9.1.17" }
 
 - Fixed #5633: Code annotations with nested lists incorrectly mounted
