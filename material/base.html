@@ -27,6 +27,10 @@
       {% if page.next_page %}
         <link rel="next" href="{{ page.next_page.url | url }}">
       {% endif %}
+      {% if "rss" in config.plugins %}
+        <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.created') }}" href="{{ 'feed_rss_created.xml' | url }}">
+        <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
+      {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
       <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.1.18">
     {% endblock %}
@@ -40,7 +44,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.26e3688c.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.08fbbb04.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.ecc896b0.min.css' | url }}">
@@ -212,7 +216,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.74e28a9f.min.js" | url
+        "search": "assets/javascripts/workers/search.780af0f4.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
@@ -240,7 +244,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.220ee61c.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.202856ae.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         {% if path.endswith(".mjs") %}
           <script type="module" src="{{ path | url }}"></script>

@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import "iframe-worker/shim"
 import {
   Observable,
   Subject,

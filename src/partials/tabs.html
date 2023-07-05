@@ -20,8 +20,7 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Hack: unset variable, as we're using it recursively in tabs-item.html -->
-{% set class = "" %}
+{% import "partials/tabs-item.html" as item with context %}
 
 <!-- Navigation tabs -->
 <nav
@@ -32,7 +31,7 @@
   <div class="md-grid">
     <ul class="md-tabs__list">
       {% for nav_item in nav %}
-        {% include "partials/tabs-item.html" %}
+        {{ item.render(nav_item) }}
       {% endfor %}
     </ul>
   </div>

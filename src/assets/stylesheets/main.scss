@@ -41,6 +41,7 @@
 @import "main/icons";
 @import "main/typeset";
 
+@import "main/components/author";
 @import "main/components/banner";
 @import "main/components/base";
 @import "main/components/clipboard";
@@ -51,11 +52,15 @@
 @import "main/components/footer";
 @import "main/components/form";
 @import "main/components/header";
+@import "main/components/meta";
 @import "main/components/nav";
+@import "main/components/pagination";
+@import "main/components/post";
 @import "main/components/search";
 @import "main/components/select";
 @import "main/components/sidebar";
 @import "main/components/source";
+@import "main/components/status";
 @import "main/components/tabs";
 @import "main/components/tag";
 @import "main/components/tooltip";

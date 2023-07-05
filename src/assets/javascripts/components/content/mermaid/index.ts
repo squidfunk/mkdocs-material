@@ -31,7 +31,7 @@ import {
 import { watchScript } from "~/browser"
 import { h } from "~/utilities"
 
-import { Component } from "../../../_"
+import { Component } from "../../_"
 
 import themeCSS from "./index.css"
 

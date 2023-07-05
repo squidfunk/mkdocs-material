@@ -22,6 +22,7 @@
 
 import "array-flat-polyfill"
 import "focus-visible"
+import "iframe-worker/shim"
 import "unfetch/polyfill"
 import "url-polyfill"
 
