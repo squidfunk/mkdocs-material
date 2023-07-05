@@ -26,10 +26,9 @@ import regex as re
 from html import escape
 from html.parser import HTMLParser
 from mkdocs import utils
-from mkdocs.config.config_options import SubConfig
 from mkdocs.plugins import BasePlugin
 
-from material.plugins.search.config import SearchConfig, SearchFieldConfig
+from material.plugins.search.config import SearchConfig
 
 try:
     import jieba

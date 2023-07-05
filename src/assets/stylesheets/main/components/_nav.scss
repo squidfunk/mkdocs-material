@@ -105,7 +105,25 @@
 
     // Active link
     .md-nav__item &--active {
-      color: var(--md-typeset-a-color);
+
+      // Also enable color transitions on inline code blocks
+      &,
+      code {
+        color: var(--md-typeset-a-color);
+      }
+    }
+
+    // Navigation link title
+    .md-ellipsis {
+      // Hack: Safari exhibits a bug where the text will sometimes disappear
+      // and the element will become unclickable. Setting `position: relative`
+      // seems to fix the issue - see https://bit.ly/3HljM1T
+      position: relative;
+
+      // Always align navigation icons to the right
+      + .md-icon {
+        margin-left: auto;
+      }
     }
 
     // Navigation link icon
