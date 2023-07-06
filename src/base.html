@@ -243,7 +243,8 @@
                 class="md-banner__button md-icon"
                 aria-label="{{ lang.t('announce.dismiss') }}"
               >
-                {% include ".icons/material/close.svg" %}
+                {% set icon = config.theme.icon.close or "material/close" %}
+                {% include ".icons/" ~ icon ~ ".svg" %}
               </button>
             {% endif %}
 
@@ -360,7 +361,8 @@
             data-md-component="top"
             hidden
           >
-            {% include ".icons/material/arrow-up.svg" %}
+            {% set icon = config.theme.icon.top or "material/arrow-up" %}
+            {% include ".icons/" ~ icon ~ ".svg" %}
             {{ lang.t("top") }}
           </button>
         {% endif %}

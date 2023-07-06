@@ -7,17 +7,21 @@
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="{{ lang.t('search.placeholder') }}" placeholder="{{ lang.t('search.placeholder') }}" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-        {% include ".icons/material/arrow-left.svg" %}
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+        {% set icon = config.theme.icon.previous or "material/arrow-left" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
       </label>
       <nav class="md-search__options" aria-label="{{ lang.t('search') }}">
         {% if "search.share" in features %}
           <a href="javascript:void(0)" class="md-search__icon md-icon" title="{{ lang.t('search.share') }}" aria-label="{{ lang.t('search.share') }}" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            {% include ".icons/material/share-variant.svg" %}
+            {% set icon = config.theme.icon.share or "material/share-variant" %}
+            {% include ".icons/" ~ icon ~ ".svg" %}
           </a>
         {% endif %}
         <button type="reset" class="md-search__icon md-icon" title="{{ lang.t('search.reset') }}" aria-label="{{ lang.t('search.reset') }}" tabindex="-1">
-          {% include ".icons/material/close.svg" %}
+          {% set icon = config.theme.icon.close or "material/close" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
         </button>
       </nav>
       {% if "search.suggest" in features %}

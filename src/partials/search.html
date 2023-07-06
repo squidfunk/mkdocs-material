@@ -43,8 +43,10 @@
 
       <!-- Button to open search -->
       <label class="md-search__icon md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-        {% include ".icons/material/arrow-left.svg" %}
+        {% set icon = config.theme.icon.search or "material/magnify" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+        {% set icon = config.theme.icon.previous or "material/arrow-left" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
       </label>
 
       <!-- Search options -->
@@ -65,7 +67,8 @@
             data-md-component="search-share"
             tabindex="-1"
           >
-            {% include ".icons/material/share-variant.svg" %}
+            {% set icon = config.theme.icon.share or "material/share-variant" %}
+            {% include ".icons/" ~ icon ~ ".svg" %}
           </a>
         {% endif %}
 
@@ -77,7 +80,8 @@
           aria-label="{{ lang.t('search.reset') }}"
           tabindex="-1"
         >
-          {% include ".icons/material/close.svg" %}
+          {% set icon = config.theme.icon.close or "material/close" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
         </button>
       </nav>
 

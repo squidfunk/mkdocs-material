@@ -45,7 +45,8 @@
             rel="prev"
           >
             <div class="md-footer__button md-icon">
-              {% include ".icons/material/arrow-left.svg" %}
+              {% set icon = config.theme.icon.previous or "material/arrow-left" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -76,7 +77,8 @@
               </div>
             </div>
             <div class="md-footer__button md-icon">
-              {% include ".icons/material/arrow-right.svg" %}
+              {% set icon = config.theme.icon.next or "material/arrow-right" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
             </div>
           </a>
         {% endif %}
