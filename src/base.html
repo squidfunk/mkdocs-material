@@ -60,6 +60,22 @@
         <link rel="next" href="{{ page.next_page.url | url }}" />
       {% endif %}
 
+      <!-- RSS feed -->
+      {% if "rss" in config.plugins %}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="{{ lang.t('rss.created') }}"
+          href="{{ 'feed_rss_created.xml' | url }}"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="{{ lang.t('rss.updated') }}"
+          href="{{ 'feed_rss_updated.xml' | url }}"
+        />
+      {% endif %}
+
       <!-- Favicon -->
       <link rel="icon" href="{{ config.theme.favicon | url }}" />
 

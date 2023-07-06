@@ -21,22 +21,16 @@
 import os
 
 from mkdocs import utils
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin, event_priority
+
+from material.plugins.offline.config import OfflineConfig
 
 # -----------------------------------------------------------------------------
 # Class
 # -----------------------------------------------------------------------------
 
-# Offline plugin configuration scheme
-class OfflinePluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-
-# -----------------------------------------------------------------------------
-
 # Offline plugin
-class OfflinePlugin(BasePlugin[OfflinePluginConfig]):
+class OfflinePlugin(BasePlugin[OfflineConfig]):
 
     # Initialize plugin
     def on_config(self, config):

@@ -26,34 +26,21 @@ import regex as re
 from html import escape
 from html.parser import HTMLParser
 from mkdocs import utils
-from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
-from mkdocs.contrib.search import LangOption
 from mkdocs.plugins import BasePlugin
+
+from material.plugins.search.config import SearchConfig
+
+try:
+    import jieba
+except ImportError:
+    jieba = None
 
 # -----------------------------------------------------------------------------
 # Class
 # -----------------------------------------------------------------------------
 
-# Search plugin configuration scheme
-class SearchPluginConfig(Config):
-    lang = opt.Optional(LangOption())
-    separator = opt.Optional(opt.Type(str))
-    pipeline = opt.ListOfItems(
-        opt.Choice(("stemmer", "stopWordFilter", "trimmer")),
-        default = []
-    )
-
-    # Deprecated options
-    indexing = opt.Deprecated(message = "Unsupported option")
-    prebuild_index = opt.Deprecated(message = "Unsupported option")
-    min_search_length = opt.Deprecated(message = "Unsupported option")
-
-# -----------------------------------------------------------------------------
-
 # Search plugin
-class SearchPlugin(BasePlugin[SearchPluginConfig]):
+class SearchPlugin(BasePlugin[SearchConfig]):
 
     # Determine whether we're running under dirty reload
     def on_startup(self, *, command, dirty):
@@ -84,6 +71,30 @@ class SearchPlugin(BasePlugin[SearchPluginConfig]):
 
         # Initialize search index
         self.search_index = SearchIndex(**self.config)
+
+        # Set jieba dictionary, if given
+        if self.config.jieba_dict:
+            path = os.path.normpath(self.config.jieba_dict)
+            if os.path.exists(path):
+                jieba.set_dictionary(path)
+                log.debug(f"Loading jieba dictionary: {path}")
+            else:
+                log.warning(
+                    f"Configuration error for 'search.jieba_dict': "
+                    f"'{self.config.jieba_dict}' does not exist."
+                )
+
+        # Set jieba user dictionary, if given
+        if self.config.jieba_dict_user:
+            path = os.path.normpath(self.config.jieba_dict_user)
+            if os.path.exists(path):
+                jieba.load_userdict(path)
+                log.debug(f"Loading jieba user dictionary: {path}")
+            else:
+                log.warning(
+                    f"Configuration error for 'search.jieba_dict_user': "
+                    f"'{self.config.jieba_dict_user}' does not exist."
+                )
 
     # Add page to search index
     def on_page_context(self, context, *, page, config, nav):
@@ -167,9 +178,10 @@ class SearchIndex:
         title = "".join(section.title).strip()
         text  = "".join(section.text).strip()
 
-        # Reset text, if only titles should be indexed
-        if self.config["indexing"] == "titles":
-            text = ""
+        # Segment Chinese characters if jieba is available
+        if jieba:
+            title = self._segment_chinese(title)
+            text  = self._segment_chinese(text)
 
         # Create entry for section
         entry = {
@@ -251,6 +263,25 @@ class SearchIndex:
 
         # No item found
         return None
+
+    # Find and segment Chinese characters in string
+    def _segment_chinese(self, data):
+        expr = re.compile(r"(\p{IsHan}+)", re.UNICODE)
+
+        # Replace callback
+        def replace(match):
+            value = match.group(0)
+
+            # Replace occurrence in original string with segmented version and
+            # surround with zero-width whitespace for efficient indexing
+            return "".join([
+                "\u200b",
+                "\u200b".join(jieba.cut(value.encode("utf-8"))),
+                "\u200b",
+            ])
+
+        # Return string with segmented occurrences
+        return expr.sub(replace, data).strip("\u200b")
 
 # -----------------------------------------------------------------------------
 
@@ -341,7 +372,8 @@ class Parser(HTMLParser):
         self.keep = set([
             "p",                       # Paragraphs
             "code", "pre",             # Code blocks
-            "li", "ol", "ul"           # Lists
+            "li", "ol", "ul",          # Lists
+            "sub", "sup"               # Sub- and superscripts
         ])
 
         # Current context and section
@@ -362,7 +394,7 @@ class Parser(HTMLParser):
         else:
             return
 
-        # Handle headings
+        # Handle heading
         if tag in ([f"h{x}" for x in range(1, 7)]):
             depth = len(self.context)
             if "id" in attrs:
@@ -507,23 +539,22 @@ class Parser(HTMLParser):
 # -----------------------------------------------------------------------------
 
 # Set up logging
-log = logging.getLogger("mkdocs")
-log.addFilter(DuplicateFilter())
+log = logging.getLogger("mkdocs.material.search")
 
 # Tags that are self-closing
 void = set([
-    "area",                    # Image map areas
-    "base",                    # Document base
-    "br",                      # Line breaks
-    "col",                     # Table columns
-    "embed",                   # External content
-    "hr",                      # Horizontal rules
-    "img",                     # Images
-    "input",                   # Input fields
-    "link",                    # Links
-    "meta",                    # Metadata
-    "param",                   # External parameters
-    "source",                  # Image source sets
-    "track",                   # Text track
-    "wbr"                      # Line break opportunities
+    "area",                            # Image map areas
+    "base",                            # Document base
+    "br",                              # Line breaks
+    "col",                             # Table columns
+    "embed",                           # External content
+    "hr",                              # Horizontal rules
+    "img",                             # Images
+    "input",                           # Input fields
+    "link",                            # Links
+    "meta",                            # Metadata
+    "param",                           # External parameters
+    "source",                          # Image source sets
+    "track",                           # Text track
+    "wbr"                              # Line break opportunities
 ])

@@ -107,7 +107,7 @@ interface MountOptions {
 export function watchSidebar(
   el: HTMLElement, { viewport$, main$ }: WatchOptions
 ): Observable<Sidebar> {
-  const parent = el.parentElement!
+  const parent = el.closest<HTMLElement>(".md-grid")!
   const adjust =
     parent.offsetTop -
     parent.parentElement!.offsetTop

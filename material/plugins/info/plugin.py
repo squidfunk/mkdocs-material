@@ -28,32 +28,19 @@ import sys
 from colorama import Fore, Style
 from io import BytesIO
 from mkdocs import utils
-from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
 from pkg_resources import get_distribution, working_set
 from zipfile import ZipFile, ZIP_DEFLATED
 
+from material.plugins.info.config import InfoConfig
+
 # -----------------------------------------------------------------------------
 # Class
 # -----------------------------------------------------------------------------
 
-# Info plugin configuration scheme
-class InfoPluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-    enabled_on_serve = opt.Type(bool, default = False)
-
-    # Options for archive
-    archive = opt.Type(bool, default = True)
-    archive_name = opt.Type(str, default = "example")
-    archive_stop_on_violation = opt.Type(bool, default = True)
-
-# -----------------------------------------------------------------------------
-
 # Info plugin
-class InfoPlugin(BasePlugin[InfoPluginConfig]):
+class InfoPlugin(BasePlugin[InfoConfig]):
 
     # Determine whether we're serving
     def on_startup(self, *, command, dirty):
@@ -235,5 +222,4 @@ def _size(value, factor = 1):
 # -----------------------------------------------------------------------------
 
 # Set up logging
-log = logging.getLogger("mkdocs")
-log.addFilter(DuplicateFilter())
+log = logging.getLogger("mkdocs.material.info")
