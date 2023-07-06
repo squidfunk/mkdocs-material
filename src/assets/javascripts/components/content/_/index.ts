@@ -22,7 +22,6 @@
 
 import { Observable, merge } from "rxjs"
 
-import { feature } from "~/_"
 import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
