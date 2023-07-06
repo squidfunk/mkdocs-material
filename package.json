@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "9.1.18",
+  "version": "9.2.0-b0",
   "description": "Documentation that simply works",
   "keywords": [
     "mkdocs",
@@ -57,7 +57,6 @@
     "@types/html-minifier": "^4.0.2",
     "@types/lunr": "^2.3.4",
     "@types/node": "^20.3.3",
-    "@types/resize-observer-browser": "^0.1.7",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@typescript-eslint/parser": "^5.60.1",
