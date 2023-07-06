@@ -19,8 +19,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
 ### Built-in blog plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.23.0][Insiders] ·
+[:octicons-tag-24: 9.2.0b0][Blog plugin support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -127,6 +126,7 @@ back here later for fine-tuning the output.__
 
 ---
 
+  [Blog plugin support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
   [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [this is configurable]: #+blog.blog_dir
@@ -1133,6 +1133,10 @@ linked with their titles.
 
 #### Adding related links
 
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.23.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
 Related links offer the perfect way to prominently add a _further reading_ 
 section to your post that is included in the left sidebar, guiding the user to 
 other destinations of your documentation. Use the front matter `links` property 
@@ -1293,6 +1297,7 @@ nav:
 
 ### Custom index pages
 
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.24.0][Insiders] ·
 :octicons-beaker-24: Experimental
 

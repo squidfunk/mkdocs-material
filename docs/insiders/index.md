@@ -88,7 +88,7 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 28 additional features__ that you can __start using now__, and
+access to 22 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
@@ -107,20 +107,14 @@ which are currently exclusively available to sponsors:
 - [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
-- [x] [Blog plugin]
-- [x] [Navigation status]
 - [x] [Meta plugin]
 - [x] [Tags plugin: additional indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
-- [x] [Navigation pruning]
 - [x] [Tooltips]
-- [x] [Chinese search support]
 - [x] [Card grids]
 - [x] [Privacy plugin]
-- [x] [Annotations]
-- [x] [Navigation icons]
 
 </div>
 
@@ -264,22 +258,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 12,000 – Piri Piri
-
-- [x] [Blog plugin]
-- [x] [Chinese search support]
-- [x] [Annotations]
-- [x] [Navigation icons]
-- [x] [Navigation pruning]
-- [x] [Navigation status]
-
-  [Blog plugin]: ../setup/setting-up-a-blog.md
-  [Chinese search support]: ../blog/posts/chinese-search-support.md
-  [Annotations]: ../reference/annotations.md
-  [Navigation icons]: ../reference/index.md#setting-the-page-icon
-  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
-  [Navigation status]: ../reference/index.md#setting-the-page-status
-
 #### $ 14,000 – Goat's Horn
 
 - [x] [Privacy plugin]
@@ -347,6 +325,22 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 12,000 – Piri Piri
+
+- [x] [Blog plugin]
+- [x] [Chinese search support]
+- [x] [Annotations]
+- [x] [Navigation icons]
+- [x] [Navigation pruning]
+- [x] [Navigation status]
+
+  [Blog plugin]: ../setup/setting-up-a-blog.md
+  [Chinese search support]: ../blog/posts/chinese-search-support.md
+  [Annotations]: ../reference/annotations.md
+  [Navigation icons]: ../reference/index.md#setting-the-page-icon
+  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
+  [Navigation status]: ../reference/index.md#setting-the-page-status
 
 #### $ 10,000 – Carolina Reaper
 
