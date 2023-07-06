@@ -51,7 +51,11 @@
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
-    {% block libs %}{% endblock %}
+    {% block libs %}
+      {% for path in config.extra.polyfills %}
+        <script src="{{ path | url }}"></script>
+      {% endfor %}
+    {% endblock %}
     {% block fonts %}
       {% if config.theme.font != false %}
         {% set text = config.theme.font.text | d("Roboto", true) %}
@@ -244,7 +248,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.d7db711e.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.f11ae8b1.min.js' | url }}"></script>
       {% for path in config.extra_javascript %}
         {% if path.endswith(".mjs") %}
           <script type="module" src="{{ path | url }}"></script>

@@ -16,15 +16,15 @@ version range, please [open an issue]:
 
 <figure markdown>
 
-| Browser                              | Version | Release date |         |        |      Usage |
-| ------------------------------------ | ------: | -----------: | ------: | -----: | ---------: |
-|                                      |         |              | desktop | mobile |    overall |
-| :fontawesome-brands-chrome: Chrome   |     49+ |      03/2016 | 25.65%  | 38.33% |     63.98% |
-| :fontawesome-brands-safari: Safari   |     10+ |      09/2016 |  4.63%  | 14.96% |     19.59% |
-| :fontawesome-brands-edge: Edge       |     79+ |      01/2020 |  3.95%  |    n/a |      3.95% |
-| :fontawesome-brands-firefox: Firefox |     53+ |      04/2017 |  3.40%  |   .30% |      3.70% |
-| :fontawesome-brands-opera: Opera     |     36+ |      03/2016 |  1.44%  |   .01% |      1.45% |
-|                                      |         |              |         |        | __92.67%__ |
+| Browser                              | Version[^2] | Release date |         |        |      Usage |
+| ------------------------------------ | ----------: | -----------: | ------: | -----: | ---------: |
+|                                      |             |              | desktop | mobile |    overall |
+| :fontawesome-brands-chrome: Chrome   |         49+ |      03/2016 | 25.65%  | 38.33% |     63.98% |
+| :fontawesome-brands-safari: Safari   |         10+ |      09/2016 |  4.63%  | 14.96% |     19.59% |
+| :fontawesome-brands-edge: Edge       |         79+ |      01/2020 |  3.95%  |    n/a |      3.95% |
+| :fontawesome-brands-firefox: Firefox |         53+ |      04/2017 |  3.40%  |   .30% |      3.70% |
+| :fontawesome-brands-opera: Opera     |         36+ |      03/2016 |  1.44%  |   .01% |      1.45% |
+|                                      |             |              |         |        | __92.67%__ |
 
   <figcaption markdown>
 
@@ -40,6 +40,23 @@ Browser support matrix sourced from [caniuse.com].[^1]
     cumulated market share of less than 1% were not considered, but might still
     be fully or partially supported.
 
+  [^2]:
+      In Material for MkDocs 9.2.0, polyfills for ancient browsers were removed,
+      so make sure to add them back if you need to support the full version
+      range as mentioned in the [browser support] matrix. Add the following
+      lines to `mkdocs.yml`:
+
+      ``` yaml
+      config:
+        extra:
+          polyfills:
+            - https://unpkg.com/resize-observer-polyfill
+            - https://unpkg.com/array-flat-polyfill
+      ```
+
+      You can also download the files and self-host them, or use the
+      [built-in privacy plugin] to do it automatically.
+
 Note that the usage data is based on global browser market share, so it could
 in fact be entirely different for your target demographic. It's a good idea to
 check the distribution of browser types and versions among your users.
@@ -47,6 +64,8 @@ check the distribution of browser types and versions among your users.
   [open an issue]: https://github.com/squidfunk/mkdocs-material/issues/new/choose
   [caniuse.com]: https://caniuse.com/
   [:is pseudo selector]: https://caniuse.com/css-matches-pseudo
+  [browser support]: #supported-browsers
+  [built-in privacy plugin]: setup/ensuring-data-privacy.md#built-in-privacy-plugin
 
 ## Other browsers
 
