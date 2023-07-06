@@ -325,6 +325,17 @@
         "default": {
           "title": "Default version",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/#version-warning",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
           "default": "stable"
         }
       }

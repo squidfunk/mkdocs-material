@@ -31,8 +31,26 @@ are rebound automatically, i.e., __Material for MkDocs now behaves like a Single
 Page Application__. Now, the search index survives navigation, which is
 especially useful for large documentation sites.
 
-  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
+  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+
+#### Instant prefetching :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.36.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Instant prefetching is a new experimental feature that will start to fetch a
+page once the user hovers over a link. This will reduce the perceived loading
+time for the user, especially on slow connections, as the page will be available
+immediately upon navigation. Enable it with:
+
+``` yaml
+theme:
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+```
 
 ### Anchor tracking
 
@@ -262,16 +280,19 @@ navigation section:
 ``` yaml
 nav:
   - Section:
-    - section/index.md
+    - section/index.md # (1)!
     - Page 1: section/page-1.md
     ...
     - Page n: section/page-n.md
 ```
 
+1.  MkDocs also considers files called `README.md` as [index pages].
+
   [Section index pages support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Section index pages enabled]: ../assets/screenshots/navigation-index-on.png
   [Section index pages disabled]: ../assets/screenshots/navigation-index-off.png
   [toc.integrate]: #navigation-integration
+  [index pages]: https://www.mkdocs.org/user-guide/writing-your-docs/#index-pages
 
 ### Table of contents
 

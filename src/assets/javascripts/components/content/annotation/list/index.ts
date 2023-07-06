@@ -143,7 +143,7 @@ export function mountAnnotationList(
   const annotations = new Map<string, HTMLElement>()
   for (const marker of findAnnotationMarkers(container)) {
     const [, id] = marker.textContent!.match(/\((\d+)\)/)!
-    if (getOptionalElement(`li:nth-child(${id})`, el)) {
+    if (getOptionalElement(`:scope > li:nth-child(${id})`, el)) {
       annotations.set(id, renderAnnotation(id, prefix))
       marker.replaceWith(annotations.get(id)!)
     }
@@ -162,7 +162,7 @@ export function mountAnnotationList(
     for (const [id, annotation] of annotations)
       pairs.push([
         getElement(".md-typeset", annotation),
-        getElement(`li:nth-child(${id})`, el)
+        getElement(`:scope > li:nth-child(${id})`, el)
       ])
 
     /* Handle print mode - see https://bit.ly/3rgPdpt */

@@ -165,8 +165,8 @@
       {% set palette = palette | first %}
     {% endif %}
     {% set scheme  = palette.scheme  | d("default", true) %}
-    {% set primary = palette.primary | d("", true) %}
-    {% set accent  = palette.accent  | d("", true) %}
+    {% set primary = palette.primary | d("indigo", true) %}
+    {% set accent  = palette.accent  | d("indigo", true) %}
     <body
       dir="{{ direction }}"
       data-md-color-scheme="{{ scheme | replace(' ', '-') }}"
@@ -338,15 +338,15 @@
 
         <!-- Back-to-top button -->
         {% if "navigation.top" in features %}
-          <a
-            href="#"
+          <button
+            type="button"
             class="md-top md-icon"
             data-md-component="top"
             hidden
           >
             {% include ".icons/material/arrow-up.svg" %}
             {{ lang.t("top") }}
-          </a>
+          </button>
         {% endif %}
       </main>
 
@@ -424,7 +424,11 @@
 
       <!-- Custom JavaScript -->
       {% for path in config.extra_javascript %}
-        <script src="{{ path | url }}"></script>
+        {% if path.endswith(".mjs") %}
+          <script type="module" src="{{ path | url }}"></script>
+        {% else %}
+          <script src="{{ path | url }}"></script>
+        {% endif %}
       {% endfor %}
     {% endblock %}
   </body>

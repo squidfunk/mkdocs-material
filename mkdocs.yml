@@ -24,7 +24,7 @@ site_url: https://squidfunk.github.io/mkdocs-material/
 site_author: Martin Donath
 site_description: >-
   Write your documentation in Markdown and create a professional static site in
-  minutes – searchable, customizable, for all devices
+  minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
 repo_name: squidfunk/mkdocs-material
@@ -38,7 +38,7 @@ theme:
   name: material
   custom_dir: material/.overrides
   features:
-    # - announce.dismiss
+    - announce.dismiss
     - content.action.edit
     - content.action.view
     - content.code.annotate
@@ -94,6 +94,8 @@ hooks:
 
 # Customization
 extra:
+  annotate:
+    json: [.s2]
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
@@ -132,6 +134,8 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
@@ -174,7 +178,10 @@ nav:
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
+    - FAQ:
+      - Sponsoring: faq/sponsoring.md
   - Setup:
+    - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
     - Changing the fonts: setup/changing-the-fonts.md
     - Changing the language: setup/changing-the-language.md
@@ -214,7 +221,7 @@ nav:
     - Icons, Emojis: reference/icons-emojis.md
     - Images: reference/images.md
     - Lists: reference/lists.md
-    - MathJax: reference/mathjax.md
+    - Math: reference/math.md
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md

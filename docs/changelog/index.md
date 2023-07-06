@@ -2,6 +2,126 @@
 
 ## Material for MkDocs
 
+### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
+
+- Updated Danish translations
+- Added support for installing user requirements in Docker image
+- Fixed #5655: Search separator with lookbehind breaks highlighting
+
+### 9.1.17 <small>June 23, 2023</small> { id="9.1.17" }
+
+- Fixed #5633: Code annotations with nested lists incorrectly mounted
+- Fixed #5628: Regression in new social plugin configuration scheme
+
+### 9.1.16 <small>June 15, 2023</small> { id="9.1.16" }
+
+- Updated Indonesian translations
+- Ensure scroll bar follows color scheme of operating system
+
+### 9.1.15 <small>May 29, 2023</small> { id="9.1.15" }
+
+- Fixed #5566: Indicate color scheme to operating system
+- Fixed #5565: Update `Dockerfile` to latest version of base image
+- Fixed #5554: Add additional version tags (`9`, `9.1`) to Docker image
+- Fixed #5536: Strip tags of ARIA labels in table of contents
+
+### 9.1.14 <small>May 20, 2023</small> { id="9.1.14" }
+
+- Updated Armenian and Greek translations
+
+### 9.1.13 <small>May 16, 2023</small> { id="9.1.13" }
+
+- Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
+
+### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
+
+- Updated Bengali (Bangla) translations
+- Fixed #5503: Docker image publish errors on uppercase characters
+- Fixed #5407: Auto-pause media when in hidden content tabs
+
+### 9.1.11 <small>May 8, 2023</small> { id="9.1.11" }
+
+- Fixed #5487: Social plugin crashes without options (9.1.10 regression)
+
+### 9.1.10 <small>May 8, 2023</small> { id="9.1.10" }
+
+- Added `cards_layout_options` setting for social cards
+- Deprecated `cards_color` and `cards_font` setting for social cards
+
+### 9.1.9 <small>May 2, 2023</small> { id="9.1.9" }
+
+- Added Telugu, Kannada and Sanskrit translations
+- Fixed #5428: Fixed margins for light/dark mode images in figures
+- Fixed #5420: Social plugin crashing for some specific Google Fonts
+- Fixed #5160: Instant loading makes code annotations jump (9.1.1 regression)
+- Fixed #4920: Social plugin not loading logo from custom icon set
+- Fixed social plugin crashing when only code font is specified
+
+### 9.1.8 <small>April 24, 2023</small> { id="9.1.8" }
+
+- Fixed #5417: Theme breaks when `palette` is not defined (9.1.7 regression)
+
+### 9.1.7 <small>April 22, 2023</small> { id="9.1.7" }
+
+- Updated Persian (Farsi) and Turkish translations
+- Fixed #5401: Added missing flag to disable built-in tags plugin
+- Fixed #5206: Ensure defaults are set for primary and accent colors
+- Fixed unnecessary inclusion of palette CSS when unused
+
+### 9.1.6 <small>April 7, 2023</small> { id="9.1.6" }
+
+- Updated Persian (Farsi) translations
+- Fixed #5300: Boxes in Mermaid sequence diagrams not color-abiding
+
+### 9.1.5 <small>March 31, 2023</small> { id="9.1.5" }
+
+- Updated Lithuanian and Japanese translations
+- Updated Mermaid.js to version 9.4.3
+- Fixed #5290: Footer previous/next labels cut-off for short page titles
+
+### 9.1.4 <small>March 24, 2023</small> { id="9.1.4" }
+
+- Fixed #5239: Instant loading breaks anchors in details (9.1.1 regression)
+- Fixed #5211: Anchor following not working for Chinese (9.1.2 regression)
+
+### 9.1.3 <small>March 14, 2023</small> { id="9.1.3" }
+
+- Added Kurdish (Soranî) translations
+- Updated Norwegian (Bokmål), Portuguese and Romanian translations
+- Improved compatibility with `mkdocs-jupyter` plugin
+- Fixed #5198: Built-in search plugin not filtering `script` and `style` tags
+- Fixed #5176: Back-to-top + instant loading not working (9.1.1 regression)
+
+### 9.1.2 <small>March 9, 2023</small> { id="9.1.2" }
+
+- Updated Icelandic, Korean and Swedish translations
+- Fixed #5168: Mermaid text boxes overflow (9.0.13 regression)
+- Fixed #5155: Table of contents not highlighting percent-encoded URLs
+
+### 9.1.1 <small>March 5, 2023</small> { id="9.1.1" }
+
+- Updated Czech and Thai translations
+- Improved instant loading (scroll restoration, slow connections)
+- Fixed #5023: Instant loading not allowing to go back to initial page
+- Fixed #3797: Instant loading does not work with section anchors in Safari
+
+### 9.1.0 <small>March 2, 2023</small> { id="9.1.0" }
+
+- Docker image now available for `amd64`, `arm64` and `arm/v7`
+- Updated Chinese (Taiwanese) translations
+- Generalized tag identifier implementation
+- Fixed flickering of header shadow on load
+- Fixed occasional flickering of announcement bar
+
+### 9.0.15 <small>February 26, 2023</small> { id="9.0.15" }
+
+- Updated Chinese (Traditional) translations
+- Updated Hebrew translations
+
+### 9.0.14 <small>February 23, 2023</small> { id="9.0.14" }
+
+- Fixed #5072: Rendering bug on navigation expand button in Firefox
+
 ### 9.0.13 <small>February 18, 2023</small> { id="9.0.13" }
 
 - Updated Uzbek translations

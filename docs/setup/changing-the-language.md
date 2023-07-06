@@ -1,7 +1,7 @@
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for template variables and labels in 50+ languages. Additionally,
+translations for template variables and labels in 60+ languages. Additionally,
 the site search can be configured to use a language-specific stemmer, if
 available.
 
@@ -126,7 +126,7 @@ Click on a tile to change the directionality:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-dir")
       document.body.dir = attr
-      var name = document.querySelector("#__code_3 code span.l")
+      var name = document.querySelector("#__code_2 code span.l")
       name.textContent = attr
     })
   })

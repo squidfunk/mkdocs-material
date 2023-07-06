@@ -1,9 +1,6 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/#gh-light-mode-only">
+  <a href="https://squidfunk.github.io/mkdocs-material/">
     <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
-  </a>
-  <a href="https://squidfunk.github.io/mkdocs-material/#gh-dark-mode-only">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo-dark.svg" width="320" alt="Material for MkDocs">
   </a>
 </p>
 
@@ -42,7 +39,7 @@
 <p align="center">
   Write your documentation in Markdown and create a professional static site for
   your Open Source or commercial project in minutes – searchable, customizable,
-  more than 50 languages, for all devices.
+  more than 60 languages, for all devices.
 </p>
 
 <p align="center">
@@ -61,18 +58,21 @@
 </p>
 
 <h2></h2>
+<p id="premium-sponsors">&nbsp;</p>
+<p align="center"><strong>Silver sponsors</strong></p>
+<p align="center">
+  <a href="https://fastapi.tiangolo.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="120"
+  /></a>
+</p>
 <p>&nbsp;</p>
-<p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
-<p>&nbsp;</p>
+<p align="center"><strong>Bronze sponsors</strong></p>
 <p align="center">
   <a href="https://cirrus-ci.org/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png" height="58"
   /></a>
   <a href="https://docs.baslerweb.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png" height="58"
-  /></a>
-  <a href="https://hummingbot.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
   /></a>
   <a href="https://kx.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="58"
@@ -89,11 +89,8 @@
   <a href="https://www.zenoss.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png" height="58"
   /></a>
-  <a href="https://www.elli.eco/en/home" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png" height="58"
-  /></a>
-  <a href="https://solutions.rstudio.com" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png" height="58"
+  <a href="https://docs.posit.co" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png" height="58"
   /></a>
   <a href="https://n8n.io" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png" height="58"
@@ -125,14 +122,8 @@
   <a href="https://sparkfun.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png" height="58"
   /></a>
-  <a href="https://automationtechnology.de/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png" height="58"
-  /></a>
   <a href="https://eccenca.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png" height="58"
-  /></a>
-  <a href="https://sealvault.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png" height="58"
   /></a>
   <a href="https://neptune.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
@@ -145,6 +136,27 @@
   /></a>
   <a href="https://civicactions.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png" height="58"
+  /></a>
+  <a href="https://bitcrowd.net/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png" height="58"
+  /></a>
+  <a href="https://getscreen.me/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png" height="58"
+  /></a>
+  <a href="https://botcity.dev/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png" height="58"
+  /></a>
+  <a href="https://www.springernature.com/gp" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png" height="58"
+  /></a>
+  <a href="https://kolena.io/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png" height="58"
+  /></a>
+  <a href="https://www.evergiving.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png" height="58"
+  /></a>
+  <a href="https://koor.tech/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png" height="58"
   /></a>
 </p>
 <p>&nbsp;</p>
@@ -251,8 +263,10 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
+[Trivy](https://github.com/aquasecurity/trivy)
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
+[WebKit](https://docs.webkit.org/),
 [WTF](https://wtfutil.com/)
 
 ## License

@@ -88,14 +88,19 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 23 additional features__ that you can start using right away, and
+access to 28 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
-- [x] [Optimize plugin] :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
-- [x] [Navigation path] (Breadcrumbs) :material-alert-decagram:{ .mdx-pulse title="Added on January 14, 2023" }
+- [x] [Instant prefetching] :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+- [x] [Social plugin: custom layouts] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Social plugin: background images] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [x] [Privacy plugin: optimization support]
+- [x] [Optimize plugin]
+- [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
 - [x] [Navigation subtitles]
@@ -163,18 +168,20 @@ You can cancel your sponsorship anytime.[^5]
 
 <div class="mdx-premium" markdown>
 
-**Special thanks** to our **premium sponsors**:
+**Silver sponsors**:
+
+[![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
+
+**Bronze sponsors**:
 
 [![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
 [![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
-[![Hummingbot]](https://hummingbot.io/){ target=_blank title="Hummingbot" }
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
 [![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
 [![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
-[![Elli]](https://www.elli.eco/en/home){ target=_blank title="Elli - A Brand of the Volkswagen Group" }
-[![RStudio]](https://solutions.rstudio.com){ target=_blank title="RStudio" }
+[![Posit]](https://docs.posit.co){ target=_blank title="Posit" }
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
 [![Dogado]](https://www.dogado.de){ target=_blank title="Dogado" }
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
@@ -185,27 +192,30 @@ You can cancel your sponsorship anytime.[^5]
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 [![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
 [![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
-[![Automation Technology]](https://automationtechnology.de/){ target=_blank title="Automation Technology" }
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
-[![SealVault]](https://sealvault.org/){ target=_blank title="SealVault" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
 [![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 [![RackN]](https://rackn.com/){ target=_blank title="RackN" }
 [![CivicActions]](https://civicactions.com/){ target=_blank title="CivicActions" }
+[![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }
+[![GetScreen.me]](https://getscreen.me/){ target=_blank title="GetScreen.me" }
+[![BotCity]](https://botcity.dev/){ target=_blank title="BotCity" }
+[![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
+[![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
+[![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
+[![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 
 </div>
 
+  [FastAPI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
-  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
   [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
-  [Account technologies]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-account-technologies.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
   [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
-  [Elli]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elli.png
-  [RStudio]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rstudio.png
+  [Posit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
   [Dogado]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
@@ -216,13 +226,18 @@ You can cancel your sponsorship anytime.[^5]
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
   [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
   [Sparkfun]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png
-  [Automation Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-automation-technology.png
   [Eccenca]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png
-  [SealVault]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sealvault.png
   [Neptune]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png
   [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
   [RackN]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png
   [CivicActions]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png
+  [bitcrowd]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png
+  [GetScreen.me]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png
+  [BotCity]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png
+  [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
+  [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
+  [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
+  [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
 
 <hr />
 
@@ -287,7 +302,7 @@ are released for general availability.
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
 - [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list] and [custom sorting]
+- [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../reference/index.md#built-in-meta-plugin
@@ -302,21 +317,30 @@ are released for general availability.
 
 - [x] [Optimize plugin]
 - [x] [Typeset plugin]
-- [x] [Privacy plugin: external links]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Privacy plugin: optimization support]
-- [ ] Code block line wrapping
+- [x] [Privacy plugin: external links]
+- [x] [Instant prefetching]
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
-  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
-  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.external_assets_include
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
+  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
-  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
 
 #### $ 24,000 – Blockpaprika
 
-- [ ] [Instant previews]
+- [x] [Social plugin: custom layouts]
+- [x] [Social plugin: background images]
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [ ] Code line wrap button
+
+  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
+  [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
+  [Code range selection]: ../reference/code-blocks.md#code-selection-button
+  [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
 
 ### Goals completed
 
@@ -343,14 +367,13 @@ can be used by all users.
 #### $ 8,000 – Scotch Bonnet
 
 - [x] [Social cards]
-- [x] [Code annotations: anchor links]
+- [x] Code annotations: anchor links
 - [x] [Code annotations: strip comments]
 - [x] [Tag icons]
 - [x] [Table of contents anchor following]
 - [x] Sidebars automatically scroll to active item
 
   [Social cards]: ../setup/setting-up-social-cards.md
-  [Code annotations: anchor links]: ../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../reference/code-blocks.md#stripping-comments
   [Tag icons]: ../setup/setting-up-tags.md#tag-icons-and-identifiers
   [Table of contents anchor following]: ../setup/setting-up-navigation.md#anchor-following

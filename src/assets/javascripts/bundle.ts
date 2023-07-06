@@ -124,7 +124,7 @@ document.documentElement.classList.add("js")
 /* Set up navigation observables and subjects */
 const document$ = watchDocument()
 const location$ = watchLocation()
-const target$   = watchLocationTarget()
+const target$   = watchLocationTarget(location$)
 const keyboard$ = watchKeyboard()
 
 /* Set up media observables */
@@ -145,7 +145,8 @@ setupClipboardJS({ alert$ })
 
 /* Set up instant loading, if enabled */
 if (feature("navigation.instant"))
-  setupInstantLoading({ document$, location$, viewport$ })
+  setupInstantLoading({ location$, viewport$ })
+    .subscribe(document$)
 
 /* Set up version selector */
 if (config.version?.provider === "mike")

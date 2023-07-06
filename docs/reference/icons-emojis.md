@@ -63,7 +63,7 @@ See additional configuration options:
   [Simple Icons]: https://simpleicons.org/
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
-  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#custom-icons
+  [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.emoji.options.custom_icons
 
 ## Usage
 

@@ -38,11 +38,14 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
+          - uses: actions/cache@v3
             with:
-              key: ${{ github.ref }}
+              key: mkdocs-material-${{ env.cache_id }}
               path: .cache
-          - run: pip install mkdocs-material # (3)!
+              restore-keys: |
+                mkdocs-material-
+          - run: pip install mkdocs-material # (4)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -51,7 +54,16 @@ contents:
     2.  At some point, GitHub renamed `master` to `main`. If your default branch
         is named `master`, you can safely remove `main`, vice versa.
 
-    3.  This is the place to install further [MkDocs plugins] or Markdown
+    3.  Store the `cache_id` environmental variable to access it later during cache
+        `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
+
+        - The `--utc` option makes sure that each workflow runner uses the same time zone.
+        - The `%V` format assures a cache update once a week. 
+        - You can change the format to `%F` to have daily cache updates. 
+
+        You can read the [manual page] to learn more about the formatting options of the `date` command.
+
+    4.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
 
         ``` sh
@@ -81,10 +93,13 @@ contents:
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
-          - uses: actions/cache@v2
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+          - uses: actions/cache@v3
             with:
-              key: ${{ github.ref }}
+              key: mkdocs-material-${{ env.cache_id }}
               path: .cache
+              restore-keys: |
+                mkdocs-material-
           - run: apt-get install pngquant # (1)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
@@ -116,6 +131,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [built-in optimize plugin]: setup/building-an-optimized-site.md#built-in-optimize-plugin
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
+  [manual page]: https://man7.org/linux/man-pages/man1/date.1.html
 
 ### with MkDocs
 
@@ -175,6 +191,34 @@ workflow in action.
 
 Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
 
+## Other
+
+Since we can't cover all possible platforms, we rely on community contributed
+guides that explain how to deploy websites built with Material for MkDocs to
+other providers:
+
+<div class="mdx-columns" markdown>
+
+- [:simple-azuredevops: Azure][Azure]
+- [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
+- [:simple-digitalocean: DigitalOcean][DigitalOcean]
+- [:simple-netlify: Netlify][Netlify]
+- [:simple-vercel: Vercel][Vercel]
+
+</div>
+
+!!! note "Enterprise support"
+
+    If you're using Material for MkDocs in your organization and need
+    assistance, e.g., to __reduce build times__, __improve performance__ or
+    ensure compliance, [__get in touch__](mailto:contact@squidfunk.com)
+    to discuss our __enterprise support__ offerings. We're happy to help!
+
   [GitLab Pages]: https://gitlab.com/pages
   [GitLab CI]: https://docs.gitlab.com/ee/ci/
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
+  [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
+  [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
+  [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
+  [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
+  [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/

@@ -29,6 +29,7 @@ import {
   distinctUntilKeyChanged,
   endWith,
   finalize,
+  fromEvent,
   ignoreElements,
   map,
   repeat,
@@ -165,6 +166,13 @@ export function mountBackToTop(
       .subscribe(({ height }) => {
         el.style.top = `${height + 16}px`
       })
+
+  /* Go back to top */
+  fromEvent(el, "click")
+    .subscribe(ev => {
+      ev.preventDefault()
+      window.scrollTo({ top: 0 })
+    })
 
   /* Create and return component */
   return watchBackToTop(el, { viewport$, main$, target$ })

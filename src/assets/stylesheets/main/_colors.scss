@@ -47,6 +47,15 @@
 // Allow to explicitly use color schemes in nested content
 [data-md-color-scheme="default"] {
   @extend %root;
+
+  // Indicate that the site is rendered with a light color scheme
+  color-scheme: light;
+
+  // Hide images for dark mode
+  img[src$="#only-dark"],
+  img[src$="#gh-dark-mode-only"] {
+    display: none;
+  }
 }
 
 // ----------------------------------------------------------------------------

@@ -23,7 +23,7 @@
       {% set modifier = "--" ~ type %}
     {% endif %}
     {% set _ = style.append(
-      ".md-tag-icon" ~ modifier ~ "{" ~
+      ".md-tag" ~ modifier ~ "{" ~
         "--md-tag-icon:" ~
         "url('data:image/svg+xml;charset=utf-8," ~
           icon | replace("\n", "") ~

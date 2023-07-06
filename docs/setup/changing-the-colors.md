@@ -38,10 +38,14 @@ Click on a tile to change the color scheme:
   var buttons = document.querySelectorAll("button[data-md-color-scheme]")
   buttons.forEach(function(button) {
     button.addEventListener("click", function() {
+      document.body.setAttribute("data-md-color-switching", "")
       var attr = this.getAttribute("data-md-color-scheme")
       document.body.setAttribute("data-md-color-scheme", attr)
-      var name = document.querySelector("#__code_1 code span.l")
+      var name = document.querySelector("#__code_0 code span.l")
       name.textContent = attr
+      setTimeout(function() {
+        document.body.removeAttribute("data-md-color-switching")
+      })
     })
   })
 </script>
@@ -95,11 +99,13 @@ Click on a tile to change the primary color:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-color-primary")
       document.body.setAttribute("data-md-color-primary", attr)
-      var name = document.querySelector("#__code_2 code span.l")
+      var name = document.querySelector("#__code_1 code span.l")
       name.textContent = attr.replace("-", " ")
     })
   })
 </script>
+
+See our guide below to learn how to set [custom colors].
 
   [Primary color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
 
@@ -152,11 +158,13 @@ Click on a tile to change the accent color:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-color-accent")
       document.body.setAttribute("data-md-color-accent", attr)
-      var name = document.querySelector("#__code_3 code span.l")
+      var name = document.querySelector("#__code_2 code span.l")
       name.textContent = attr.replace("-", " ")
     })
   })
 </script>
+
+See our guide below to learn how to set [custom colors].
 
   [Accent color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
 
@@ -318,6 +326,16 @@ Material for MkDocs implements colors using [CSS variables] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to
 use your brand-specific colors), you can add an [additional style sheet] and
 tweak the values of the CSS variables.
+
+First, set the [`primary`][palette.primary] or [`accent`][palette.accent] values
+in `mkdocs.yml` to `custom`, to signal to the theme that you want to define
+custom colors, e.g., when you want to override the `primary` color:
+
+``` yaml
+theme:
+  palette:
+    primary: custom
+```
 
 Let's say you're :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __YouTube__, and want to set the primary color to your brand's palette. Just

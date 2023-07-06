@@ -59,6 +59,15 @@ install those packages separately.
 
 ---
 
+:fontawesome-brands-youtube:{ style="color: #EE0F0F" }
+__[How to set up Material for MkDocs]__ by @james-willett – :octicons-clock-24:
+15m – Learn how to create and host a documentation site using Material for 
+MkDocs on GitHub Pages in a step-by-step guide.
+
+  [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=Q-YA_dA8C20
+
+---
+
 __Tip__: If you don't have prior experience with Python, we recommend reading 
 [Using Python's pip to Manage Your Projects' Dependencies], which is a really
 good introduction on the mechanics of Python package management and helps you
@@ -108,11 +117,12 @@ The following plugins are bundled with the Docker image:
 
     Material for MkDocs only bundles selected plugins in order to keep the size
     of the official image small. If the plugin you want to use is not included, 
-    create a new `Dockerfile` and extend the official Docker image:
+    create a `user-requirements.txt` file in the repository root with the packages
+    you want to install additionally, e.g.:
 
-    ``` Dockerfile
-    FROM squidfunk/mkdocs-material
-    RUN pip install ...
+    ``` txt title="user-requirements.txt"
+    mkdocs-macros-plugin==0.7.0
+    mkdocs-glightbox>=0.3.1
     ```
 
     Next, you can build the image with the following command:
@@ -121,20 +131,8 @@ The following plugins are bundled with the Docker image:
     docker build -t squidfunk/mkdocs-material .
     ```
 
-    The new image can be used exactly like the official image.
-
-!!! info ":material-apple: Apple Silicon (M1) and :fontawesome-brands-raspberry-pi: Raspberry Pi"
-
-    The official Docker image is only available for `linux/amd64`. We recommend
-    the [third-party image] by @afritzler if you want to run Material for MkDocs
-    via Docker on `arm64` or `armv7`, as it is automatically built on every
-    release:
-
-    ```
-    docker pull ghcr.io/afritzler/mkdocs-material
-    ```
-
-  [third-party image]: https://github.com/afritzler/mkdocs-material
+    The new image will have additional packages installed and can be used
+    exactly like the official image.
 
 ### with git
 
@@ -152,5 +150,12 @@ from `git`, you must install all required dependencies with:
 ```
 pip install -e mkdocs-material
 ```
+
+!!! note "Enterprise support"
+
+    If you're using Material for MkDocs in your organization and need
+    assistance, e.g., to __reduce build times__, __improve performance__ or
+    ensure compliance, [__get in touch__](mailto:contact@squidfunk.com)
+    to discuss our __enterprise support__ offerings. We're happy to help!
 
   [GitHub]: https://github.com/squidfunk/mkdocs-material

@@ -141,7 +141,7 @@ The following configuration options are available:
     ``` yaml
     plugins:
       - tags:
-          tags_compare: !!python/name:material.plugins.tags.plugin.casefold
+          tags_compare: !!python/name:material.plugins.tags.casefold
     ```
 
     You can also define your own comparison function which must return a tag

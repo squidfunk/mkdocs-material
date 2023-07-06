@@ -17,8 +17,8 @@ body:
     attributes:
       label: Description
       description: >-
-        Please provide a detailed description of your idea in 2-3 sentences, so
-        that we maintainers can fully understand what change, feature, or
+        Please provide a detailed description of your idea in 2-3 sentences so
+        that we maintainers can fully understand what change, feature, or the
         improvement you are proposing. Don't yet explain the benefits of your
         idea, we'll come to that. Focus on functionality.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#description)
@@ -31,7 +31,7 @@ body:
       label: Related links
       description: >-
         Please list all links to open and closed [issues](https://github.com/squidfunk/mkdocs-material/issues),
-        [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
+        [discussions](https://github.com/squidfunk/mkdocs-material/discussions),
         or to [documentation sections](https://squidfunk.github.io/mkdocs-material)
         that are relevant to your idea.
         If you discussed your idea with the community on our
@@ -50,8 +50,8 @@ body:
       label: Use Cases
       description: >-
         Please explain how your idea will work from an author's and user's
-        perspective. Elaborate how the change would positively impact not only
-        you, but the community, and how it aligns with the goals and [philopsophy](https://squidfunk.github.io/mkdocs-material/philosophy/)
+        perspective. Elaborate on how the change would positively impact not only
+        you but the community and how it aligns with the goals and [philosophy](https://squidfunk.github.io/mkdocs-material/philosophy/)
         of the project.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#use-cases)
     validations:
@@ -87,9 +87,9 @@ body:
             I have verified that [my idea is a change request and not a bug report](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#its-not-a-bug-its-a-feature).
         required: true
       - label: >-
-            I have ensured that, to the best knowledge, [my idea will benefit the entire community](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#benefit-for-the-community).
+            I have ensured that, to the best of my knowledge, [my idea will benefit the entire community](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#benefit-for-the-community).
         required: true
       - label: >-
-            I have included relevant links to [the documentation](https://squidfunk.github.io/mkdocs-material), related [issues](https://github.com/squidfunk/mkdocs-material/issues)
+            I have included relevant links to [the documentation](https://squidfunk.github.io/mkdocs-material), related [issues](https://github.com/squidfunk/mkdocs-material/issues),
             and [discussions](https://github.com/squidfunk/mkdocs-material/discussions) to underline the need for my idea.
         required: true

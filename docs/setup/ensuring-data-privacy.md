@@ -199,28 +199,38 @@ The following configuration options are available:
 
 The following configuration options are available for external assets:
 
-[`external_assets`](#+privacy.external_assets){ #+privacy.external_assets }
+[`assets`](#+privacy.assets){ #+privacy.assets }
 
-:   :octicons-milestone-24: Default: `bundle` – This option specifies what the
-    plugin should do when encountering external assets. There are two options:
-    while `report` will issue warning messages during the build, `bundle` will
-    automatically download all external files and adjust all references:
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should scan the HTML output to detect and process external assets:
 
     ``` yaml
     plugins:
       - privacy:
-          external_assets: bundle
+          assets: true
     ```
 
     If you've removed all external assets from your project via [customization],
-    it's still a good idea to enable the plugin and set the mode to `report`,
-    as the plugin will make sure that there are no hidden external links in any
-    Markdown files that were unintentionally added.
+    it's still a good idea to enable the plugin, as the plugin will make sure
+    that there are no hidden external links in any Markdown files that were 
+    unintentionally added.
 
-    Using `report` in [strict mode] will make the build fail when external
+    Using `assets` in [strict mode] will make the build fail when external
     assets are detected.
 
-[`external_assets_dir`](#+privacy.external_assets_dir){ #+privacy.external_assets_dir }
+[`assets_fetch`](#+privacy.assets_fetch){ #+privacy.assets_fetch }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+    plugin should download external assets it encountered and bundle them with
+    your documentation:
+
+    ``` yaml
+    plugins:
+      - privacy:
+          assets_fetch: true
+    ```
+
+[`assets_fetch_dir`](#+privacy.assets_fetch_dir){ #+privacy.assets_fetch_dir }
 
 :   :octicons-milestone-24: Default: `assets/external` – This option
     specifies where the downloaded [external assets] will be stored. It's
@@ -229,12 +239,12 @@ The following configuration options are available for external assets:
     ``` yaml
     plugins:
       - privacy:
-          external_assets_dir: assets/external
+          assets_fetch_dir: assets/external
     ```
 
     The path must be defined relative to [`docs_dir`][docs_dir].
 
-[`external_assets_include`](#+privacy.external_assets_include){ #+privacy.external_assets_include } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+[`assets_include`](#+privacy.assets_include){ #+privacy.assets_include }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to only include
     certain external assets for processing by the privacy plugin, so they will
@@ -243,7 +253,7 @@ The following configuration options are available for external assets:
     ``` yaml
     plugins:
       - privacy:
-          external_assets_include:
+          assets_include:
             - unsplash.com/*
     ```
 
@@ -265,7 +275,7 @@ The following configuration options are available for external assets:
         differently from others or exclude some images from downloading, you can
         use multiple instances of the [built-in privacy plugin].
 
-[`external_assets_exclude`](#+privacy.external_assets_exclude){ #+privacy.external_assets_exclude }
+[`assets_exclude`](#+privacy.assets_exclude){ #+privacy.assets_exclude }
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
@@ -274,7 +284,7 @@ The following configuration options are available for external assets:
     ``` yaml
     plugins:
       - privacy:
-          external_assets_exclude: # (1)!
+          assets_exclude: # (1)!
             - cdn.jsdelivr.net/npm/mathjax@3/* 
             - giscus.app/*
     ```
@@ -313,7 +323,7 @@ The following configuration options are available for external assets:
   [customization]: ../customization.md
   [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
-  [MathJax]: ../reference/mathjax.md
+  [MathJax]: ../reference/math.md
   [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
   [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
   [comment system]: adding-a-comment-system.md
@@ -325,7 +335,7 @@ The following configuration options are available for external assets:
   [technical limitations]: #limitations
   [built-in optimize plugin]: building-an-optimized-site.md#built-in-optimize-plugin
 
-#### External links :material-alert-decagram:{ .mdx-pulse title="Added on October 18, 2022" }
+#### External links
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.26.0][Insiders] ·
@@ -333,7 +343,7 @@ The following configuration options are available for external assets:
 
 The following configuration options are available for external links:
 
-[`external_links`](#+privacy.external_links){ #+privacy.external_links }
+[`links`](#+privacy.links){ #+privacy.links }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should parse and process external links. If you want to speed up
@@ -342,10 +352,10 @@ The following configuration options are available for external links:
     ``` yaml
     plugins:
       - privacy:
-          external_links: !ENV [CI, false]
+          links: !ENV [CI, false]
     ```
 
-[`external_links_attr_map`](#+privacy.external_links_attr_map){ #+privacy.external_links_attr_map }
+[`links_attr_map`](#+privacy.links_attr_map){ #+privacy.links_attr_map }
 
 :   :octicons-milestone-24: Default: _None_ – This option specifies custom
     attributes that should be added to external links, like for example
@@ -354,11 +364,11 @@ The following configuration options are available for external links:
     ``` yaml
     plugins:
       - privacy:
-          external_links_attr_map:
+          links_attr_map:
             target: _blank
     ```
 
-[`external_links_noopener`](#+privacy.external_links_noopener){ #+privacy.external_links_noopener }
+[`links_noopener`](#+privacy.links_noopener){ #+privacy.links_noopener }
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should automatically add [`rel="noopener"`][noopener] to all links
@@ -367,7 +377,7 @@ The following configuration options are available for external links:
     ``` yaml
     plugins:
       - privacy:
-          external_links_noopener: true
+          links_noopener: true
     ```
 
   [noopener]: https://mathiasbynens.github.io/rel-noopener/
@@ -484,27 +494,30 @@ carried out. You might want to:
     `.cache` directory in between builds. Taking the example from the
     [publishing guide], add the following lines:
 
-    ``` yaml hl_lines="15-18"
+    ``` yaml hl_lines="15-21"
     name: ci
       on:
         push:
           branches:
             - master
             - main
-      jobs:
-        deploy:
-          runs-on: ubuntu-latest
-          steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-python@v2
-              with:
-                python-version: 3.x
-            - uses: actions/cache@v2
-              with:
-                key: ${{ github.ref }}
-                path: .cache
-            - run: pip install mkdocs-material
-            - run: mkdocs gh-deploy --force
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v3
+          - uses: actions/setup-python@v4
+            with:
+              python-version: 3.x
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+          - uses: actions/cache@v3
+            with:
+              key: mkdocs-material-${{ env.cache_id }}
+              path: .cache
+              restore-keys: |
+                mkdocs-material-
+          - run: pip install mkdocs-material
+          - run: mkdocs gh-deploy --force
     ```
 
   [publishing guide]: ../publishing-your-site.md#with-github-actions

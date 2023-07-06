@@ -259,7 +259,7 @@ e.g. to add indexing policies for search engines via the `robots` property:
 {% extends "base.html" %}
 
 {% block extrahead %}
-  <meta property="robots" content="noindex, nofollow" />
+  <meta name="robots" content="noindex, nofollow" />
 {% endblock %}
 ```
 
@@ -276,9 +276,9 @@ template override, e.g.:
 
 {% block extrahead %}
   {% if page and page.meta and page.meta.robots %}
-    <meta property="robots" content="{{ page.meta.robots }}" />
+    <meta name="robots" content="{{ page.meta.robots }}" />
   {% else %}
-    <meta property="robots" content="index, follow" />
+    <meta name="robots" content="index, follow" />
   {% endif %}
 {% endblock %}
 ```
