@@ -2,6 +2,21 @@
 
 ## Material for MkDocs
 
+### 9.2.0 <small>July 6, 2023</small> { id="9.2.0" }
+
+- Added blogging support via built-in blog plugin
+- Added Chinese language support to built-in search plugin
+- Added support for annotations (outside of code blocks)
+- Added support for navigation icons
+- Added support for navigation pruning
+- Added support for navigation status
+- Added support for customizing site icons
+- Improved rendering of (code) annotation markers
+- Improved print styles for (code) annotations
+- Improved customizability of navigation tabs
+- Removed Universal Analytics integration
+- Removed ancient polyfills to reduce size of bundled JavaScript by 20%
+
 ### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
 
 - Updated Danish translations

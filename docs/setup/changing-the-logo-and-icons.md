@@ -74,6 +74,8 @@ theme:
 
 ### Site icons
 
+[:octicons-tag-24: 9.2.0][Site icon support]
+
 Most icons you see on your site, such as navigation icons, can also be changed. For example,
 to change the navigation arrows in the footer, add the following lines to `mkdocs.yml`:
 
@@ -102,6 +104,8 @@ The following is a complete list of customizable icons used by the theme:
 | `tag`        | See [Tag icons and identifiers](setting-up-tags.md#tag-icons-and-identifiers) |
 | `previous`   | Previous page in footer, hide search on mobile                                |
 | `next`       | Next page in footer                                                           |
+
+  [Site icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
 
 ## Customization
 
