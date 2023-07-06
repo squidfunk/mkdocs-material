@@ -119,11 +119,11 @@
       // and the element will become unclickable. Setting `position: relative`
       // seems to fix the issue - see https://bit.ly/3HljM1T
       position: relative;
+    }
 
-      // Always align navigation icons to the right
-      + .md-icon {
-        margin-left: auto;
-      }
+    // Always align navigation icons to the right
+    .md-icon:last-child {
+      margin-left: auto;
     }
 
     // Navigation link icon

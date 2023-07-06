@@ -48,7 +48,7 @@
 
   <!-- Navigation link title -->
   <span class="md-ellipsis">
-    {{ nav_item.title }}
+    {{ ref.title }}
   </span>
 
   <!-- Navigation link status -->
@@ -68,10 +68,10 @@
   <!-- Navigation link -->
   {% else %}
     <a href="{{ first.url | url }}" class="md-nav__link">
-      {{ render_content(first, ref) }}
+      {{ render_content(ref) }}
 
-      <!-- Only render toggle if there's at least one more page -->
-      {% if nav_item.children | length > 1 %}
+      <!-- Only render toggle if there's at least one nested item -->
+      {% if nav_item.children | length > 0 %}
         <span class="md-nav__icon md-icon"></span>
       {% endif %}
     </a>

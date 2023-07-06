@@ -15,7 +15,7 @@
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
   <span class="md-ellipsis">
-    {{ nav_item.title }}
+    {{ ref.title }}
   </span>
   {% if nav_item.is_page and nav_item.meta.status %}
     {{ render_status(nav_item, nav_item.meta.status) }}
@@ -27,8 +27,8 @@
     {{ render_pruned(first, ref) }}
   {% else %}
     <a href="{{ first.url | url }}" class="md-nav__link">
-      {{ render_content(first, ref) }}
-      {% if nav_item.children | length > 1 %}
+      {{ render_content(ref) }}
+      {% if nav_item.children | length > 0 %}
         <span class="md-nav__icon md-icon"></span>
       {% endif %}
     </a>
