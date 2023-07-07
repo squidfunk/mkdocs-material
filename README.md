@@ -107,9 +107,6 @@
   <a href="https://elastic.co" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png" height="58"
   /></a>
-  <a href="https://www.hyperledger.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png" height="58"
-  /></a>
   <a href="https://ipfabric.io/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png" height="58"
   /></a>
@@ -157,6 +154,9 @@
   /></a>
   <a href="https://koor.tech/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png" height="58"
+  /></a>
+  <a href="https://astral.sh/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png" height="58"
   /></a>
 </p>
 <p>&nbsp;</p>

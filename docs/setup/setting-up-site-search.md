@@ -191,27 +191,24 @@ The following configuration options are supported:
 
 #### Chinese language support
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.14.0][Insiders] ·
+[:octicons-tag-24: 9.2.0b0][Chinese language support] ·
 :octicons-beaker-24: Experimental
 
-[Insiders] adds search support for the Chinese language (see our [blog article]
-[chinese search] from May 2022) by integrating with the text segmentation
-library [jieba], which can be installed with `pip`.
+In order to add support for Chinese languages to the [built-in search plugin],
+install the text segmentation library [jieba] via `pip`, and the plugin will
+run all text through the segmenter:
 
 ``` sh
 pip install jieba
 ```
 
-If [jieba] is installed, the [built-in search plugin] automatically detects
-Chinese characters and runs them through the segmenter. The following
-configuration options are available:
+The following configuration options are available:
 
 [`jieba_dict`](#+search.jieba_dict){ #+search.jieba_dict }
 
-:   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
-    Default: _none_ – This option allows for specifying a [custom dictionary]
-    to be used by [jieba] for segmenting text, replacing the default dictionary:
+:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
+    a [custom dictionary] to be used by [jieba] for segmenting text, replacing
+    the default dictionary:
 
     ``` yaml
     plugins:
@@ -226,10 +223,9 @@ configuration options are available:
 
 [`jieba_dict_user`](#+search.jieba_dict_user){ #+search.jieba_dict_user }
 
-:   [:octicons-tag-24: insiders-4.17.2][Insiders] · :octicons-milestone-24:
-    Default: _none_ – This option allows for specifying an additional
-    [user dictionary] to be used by [jieba] for segmenting text, augmenting the
-    default dictionary:
+:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
+    an additional [user dictionary] to be used by [jieba] for segmenting text, 
+    augmenting the default dictionary:
 
     ``` yaml
     plugins:
@@ -240,7 +236,7 @@ configuration options are available:
     User dictionaries can be used for tuning the segmenter to preserve
     technical terms.
 
-  [Insiders]: ../insiders/index.md
+  [Chinese language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
   [chinese search]: ../blog/posts/chinese-search-support.md
   [jieba]: https://pypi.org/project/jieba/
   [built-in search plugin]: #built-in-search-plugin
