@@ -1,3 +1,12 @@
+mkdocs-material-9.1.18+insiders-4.37.0 (2023-07-07)
+
+  * Added support for overriding social cards settings per page
+  * Added new social card default/only/image layout
+  * Improved resilience of optimize and social plugin
+  * Fixed rendering bugs for pruned navigation items
+  * Fixed jumping of content tabs anchor links when instant loading is enabled
+  * Fixed #5676: Optimize plugin doesn't check for pngquant
+
 mkdocs-material-9.1.18 (2023-07-03)
 
   * Updated Danish translations
