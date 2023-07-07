@@ -1005,6 +1005,49 @@ This will add two circles to the background:
 
 ![Layer icon circles]
 
+### Tags
+
+The new [built-in social plugin] gives full flexibility of the meta tags that
+are added to your site, which are necessary to instruct services like Twitter
+or Discord how to display your social card. All default layouts use the following
+set of tags, which you can copy to your layout and adapt:
+
+``` yaml
+definitions:
+
+  - &page_title_with_site_name >-
+    {%- if not page.is_homepage -%}
+      {{ page.meta.get("title", page.title) }} - {{ config.site_name }}
+    {%- else -%}
+      {{ page.meta.get("title", page.title) }}
+    {%- endif -%}
+
+  - &page_description >-
+    {{ page.meta.get("description", config.site_description) or "" }}
+
+tags:
+
+  og:type: website
+  og:title: *page_title_with_site_name
+  og:description: *page_description
+  og:image: "{{ image.url }}"
+  og:image:type: "{{ image.type }}"
+  og:image:width: "{{ image.width }}"
+  og:image:height: "{{ image.height }}"
+  og:url: "{{ page.canonical_url }}"
+
+  twitter:card: summary_large_image
+  twitter.title: *page_title_with_site_name
+  twitter:description: *page_description
+  twitter:image: "{{ image.url }}"
+```
+
+Note that this examples makes use of [YAML anchors] to minify repetition. The
+ `definitions` property is solely intended for the definition on aliases that
+ can then be referenced with anchors.
+
+  [YAML anchors]: https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/
+
 __Are you missing something? Please [open a discussion] and let us know!__
 
   [additional icons]: ./changing-the-logo-and-icons.md#additional-icons
