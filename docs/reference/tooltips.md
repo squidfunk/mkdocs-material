@@ -35,9 +35,9 @@ See additional configuration options:
 
 ### Improved tooltips
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.15.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.15.0 --> ·
+<!-- md:flag experimental -->
 
 When improved tooltips are enabled, Material for MkDocs replaces the browser's
 rendering logic for `title` attribute with beautiful little tooltips.
@@ -54,8 +54,6 @@ Now, tooltips will be rendered for the following elements:
 - __Content__ – elements with a `title`, permalinks and code copy button
 - __Header__ – home button, header title, color palette switch and repository link
 - __Navigation__ – links that are shortened with ellipsis, i.e. `...`
-
-[Insiders]: ../insiders/index.md
 
 ## Usage
 

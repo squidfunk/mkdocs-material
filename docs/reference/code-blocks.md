@@ -46,8 +46,8 @@ See additional configuration options:
 
 ### Code copy button
 
-[:octicons-tag-24: 9.0.0][Code copy button support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 9.0.0 --> ·
+<!-- md:flag feature -->
 
 Code blocks can automatically render a button on the right side to allow the
 user to copy a code block's contents to the clipboard. Add the following to
@@ -58,8 +58,6 @@ theme:
   features:
     - content.code.copy
 ```
-
-  [Code copy button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
 
 ??? info "Enabling or disabling code copy buttons for a specific code block"
 
@@ -85,9 +83,9 @@ theme:
 
 ### Code selection button
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.32.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.32.0 --> ·
+<!-- md:flag experimental -->
 
 Code blocks can include a button to allow for the selection of line ranges by
 the user, which is perfect for linking to a specific subsection of a code block. This allows the user to apply [line highlighting] dynamically. Add the following
@@ -126,8 +124,8 @@ theme:
 
 ### Code annotations
 
-[:octicons-tag-24: 8.0.0][Code annotations support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 8.0.0 --> ·
+<!-- md:flag feature -->
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -159,14 +157,13 @@ theme:
     Note that the language shortcode which has to come first must now also be 
     prefixed by a `.`.
 
-  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
 #### Custom selectors :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.32.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.32.0 --> ·
+<!-- md:flag experimental -->
 
 Normally, code annotations can only be [placed in comments], as comments can be
 considered safe for placement. However, sometimes it might be necessary to place
@@ -292,8 +289,8 @@ theme:
 
 #### Stripping comments
 
-[:octicons-tag-24: 8.5.0][Stripping comments support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 --> ·
+<!-- md:flag experimental -->
 
 If you wish to strip the comment characters surrounding a code annotation,
 simply add an `!` after the closing parenthesis of the code annotation:
@@ -526,12 +523,11 @@ This will render annotations with a larger width:
 
 ### Annotations with numbers
 
-Prior to [:octicons-tag-24: 8.1.0][code annotation markers], code annotations
-were rendered with markers showing the original number as used by the author.
-However, for technical reasons code annotation numbers restart each code block,
-which might lead to confusion. For this reason, code annotations now render as
-`+` signs which are rotated if they're open to denote that clicking them again
-will close them.
+Prior to <!-- md:version 8.1.0 -->, code annotations were rendered with markers
+showing the original number as used by the author. However, for technical
+reasons code annotation numbers restart each code block, which might lead to
+confusion. For this reason, code annotations now render as `+` signs which are
+rotated if they're open to denote that clicking them again will close them.
 
 If you wish to revert to the prior behavior and display code annotation numbers,
 you can add an [additional style sheet] and copy and paste the following CSS:
@@ -553,5 +549,3 @@ you can add an [additional style sheet] and copy and paste the following CSS:
     extra_css:
       - stylesheets/extra.css
     ```
-
-  [code annotation markers]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0

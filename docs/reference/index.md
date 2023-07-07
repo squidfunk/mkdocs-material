@@ -9,10 +9,10 @@ within Markdown files.
 
 ### Built-in <u>typeset</u> plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.27.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.27.0 --> ·
+<!-- md:flag plugin -->
+<!-- md:flag experimental -->
 
 The built-in typeset plugin __preserves HTML formatting__ in the navigation and
 table of contents. This means that now, code blocks, icons, emojis and other
@@ -31,10 +31,10 @@ section headlines; even [highlighting inline code blocks] is supported :tada:
 
 ### Built-in meta plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.21.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.21.0 --> ·
+<!-- md:flag plugin --> ·
+<!-- md:flag experimental -->
 
 The built-in meta plugin allows to __set front matter per folder__, which is
 especially handy to ensure that all pages in a folder use specific templates or 
@@ -121,8 +121,8 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
 ### Setting the page `icon`
 
-[:octicons-tag-24: 9.2.0b0][Page icon support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0b0 --> ·
+<!-- md:flag experimental -->
 
 An icon can be assigned to each page, which is then rendered as part of the
 navigation sidebar, as well as [navigation tabs], if enabled. Use the front
@@ -149,15 +149,14 @@ icon: material/emoticon-happy # (1)!
       </div>
     </div>
 
-  [Page icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
   [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 
 ### Setting the page `status`
 
-[:octicons-tag-24: 9.2.0b0][Page status support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0b0 --> ·
+<!-- md:flag experimental -->
 
 A status can be assigned to each page, which is then displayed as part of the
 navigation sidebar. First, associate a status identifier with a description by 
@@ -197,13 +196,11 @@ The following status identifiers are currently supported:
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
 
-  [Page status support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
-
 ### Setting the page `subtitle`
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.25.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.25.0 --> ·
+<!-- md:flag experimental -->
 
 Each page can define a subtitle, which is then rendered below the title as part
 of the navigation sidebar by using the front matter `subtitle` property, and

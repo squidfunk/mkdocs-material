@@ -31,7 +31,7 @@ See additional configuration options:
 
 ### Lightbox
 
-[:octicons-tag-24: 0.1.0][Lightbox support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-cpu-24: Plugin][glightbox]
 
 If you want to add image zoom functionality to your documentation, the 
@@ -52,7 +52,6 @@ plugins:
 We recommend checking out the available
 [configuration options][glightbox options].
 
-  [Lightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [glightbox]: https://github.com/blueswen/mkdocs-glightbox
   [glightbox options]: https://github.com/blueswen/mkdocs-glightbox#usage
 
@@ -154,7 +153,7 @@ browsers without support:
 
 ### Light and dark mode
 
-[:octicons-tag-24: 8.1.1][Light and dark mode support]
+<!-- md:version 8.1.1 -->
 
 If you added a [color palette toggle] and want to show different images for
 light and dark color schemes, you can append a `#only-light` or `#only-dark`
@@ -200,7 +199,6 @@ hash fragment to the image URL:
     Remember to change `#!css "custom-light"` and `#!css "custom-dark"` to the
     name of your scheme.
 
-  [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
   [Zelda light world]: ../assets/images/zelda-light-world.png#only-light
   [Zelda dark world]: ../assets/images/zelda-dark-world.png#only-dark

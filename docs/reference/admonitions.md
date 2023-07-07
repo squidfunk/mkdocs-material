@@ -34,7 +34,7 @@ See additional configuration options:
 
 ### Admonition icons
 
-[:octicons-tag-24: 8.3.0][Admonition icons support]
+<!-- md:version 8.3.0 -->
 
 Each of the supported admonition types has a distinct icon, which can be changed
 to any icon bundled with the theme, or even a [custom icon]. Add the following
@@ -101,7 +101,6 @@ theme:
               quote: fontawesome/solid/quote-left
         ```
 
-  [Admonition icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [supported types]: #supported-types
   [icon search]: icons-emojis.md#search
@@ -391,8 +390,8 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
 
 ### Classic admonitions
 
-Prior to version [:octicons-tag-24: 8.5.6][Admonition modern], admonitions had
-a slightly different appearance:
+Prior to version <!-- md:version 8.5.6 -->, admonitions had a slightly
+different appearance:
 
 !!! classic "Note"
 
@@ -426,8 +425,6 @@ If you want to restore this appearance, add the following CSS to an
     extra_css:
       - stylesheets/extra.css
     ```
-
-[Admonition modern]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.6
 
 ### Custom admonitions
 

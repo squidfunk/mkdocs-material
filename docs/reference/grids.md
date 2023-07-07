@@ -45,15 +45,14 @@ elements in a rectangular shape.
 
 ### Using card grids
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.12.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.12.0 --> ·
+<!-- md:flag experimental -->
 
 Card grids wrap each grid item with a beautiful hover card that levitates on
 hover. They come in two slightly different syntaxes: [list] and [block syntax],
 adding support for distinct use cases.
 
-  [Insiders]: ../insiders/index.md
   [list]: #list-syntax
   [block syntax]: #block-syntax
 
@@ -227,9 +226,9 @@ to the grid.
 
 ### Using generic grids
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.12.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.12.0 --> ·
+<!-- md:flag experimental -->
 
 Generic grids allow for arranging arbitrary block elements in a grid, including
 [admonitions], [code blocks], [content tabs] and more. Just wrap a set of blocks

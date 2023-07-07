@@ -9,7 +9,7 @@ static site, including stars and forks. Furthermore, the
 
 ### Repository
 
-[:octicons-tag-24: 0.1.0][Repository support] ·
+<!-- md:version 0.1.0 --> ·
 :octicons-milestone-24: Default: _none_
 
 In order to display a link to the repository of your project as part of your
@@ -33,14 +33,13 @@ GitHub repositories also include the tag of the latest release.[^1]
     pre-release) for the latest tag you want to display next to the number of
     stars and forks.
 
-  [Repository support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
   [latest release]: https://docs.github.com/en/rest/reference/releases#get-the-latest-release
   [create a release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
 
 #### Repository name
 
-[:octicons-tag-24: 0.1.0][Repository name support] ·
+<!-- md:version 0.1.0 --> ·
 :octicons-milestone-24: Default: _automatically set to_ `GitHub`, `GitLab` _or_
 `Bitbucket`
 
@@ -52,12 +51,11 @@ _repository name_ automatically. If you wish to customize the name, set
 repo_name: squidfunk/mkdocs-material
 ```
 
-  [Repository name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_name]: https://www.mkdocs.org/user-guide/configuration/#repo_name
 
 #### Repository icon
 
-[:octicons-tag-24: 5.0.0][Repository icon support] ·
+<!-- md:version 5.0.0 --> ·
 :octicons-milestone-24: Default:
 :fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
 
@@ -93,14 +91,12 @@ Some popular choices:
 - :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
 - :fontawesome-solid-trash: – `fontawesome/solid/trash`
 
-  [Repository icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
-  [Repository icon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
   [icon search]: ../reference/icons-emojis.md#search
 
 #### Code actions
 
-[:octicons-tag-24: 9.0.0][Code actions support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 9.0.0 --> ·
+<!-- md:flag feature -->
 
 If the [repository URL] points to a valid [GitHub], [GitLab] or [Bitbucket]
 repository, [MkDocs] provides a setting called [`edit_uri`][edit_uri], which
@@ -152,7 +148,6 @@ theme:
       </div>
     </div>
 
-  [Code actions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [repository URL]: #repository
   [GitHub]: https://github.com/
   [GitLab]: https://about.gitlab.com/
@@ -172,7 +167,7 @@ links to all [contributors] or [authors] involved.
 
 #### Document dates
 
-[:octicons-tag-24: 4.6.0][Document dates support] ·
+<!-- md:version 4.6.0 --> ·
 [:octicons-cpu-24: Plugin][git-revision-date-localized]
 
 The [git-revision-date-localized] plugin adds support for adding the date of
@@ -245,15 +240,14 @@ The other configuration options of this extension are not officially supported
 by Material for MkDocs, which is why they may yield unexpected results. Use
 them at your own risk.
 
-  [Document dates support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
   [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 #### Document contributors
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.19.0][Insiders] ·
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.19.0 --> ·
 [:octicons-cpu-24: Plugin][git-committers] ·
-:octicons-beaker-24: Experimental
+<!-- md:flag experimental -->
 
 The [git-committers][^2] plugin renders the GitHub avatars of all contributors,
 linking to their GitHub profiles at the bottom of each page. As always, it can
@@ -326,10 +320,10 @@ them at your own risk.
 
 #### Document authors
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.19.0][Insiders] ·
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.19.0 --> ·
 [:octicons-cpu-24: Plugin][git-authors] ·
-:octicons-beaker-24: Experimental
+<!-- md:flag experimental -->
 
 The [git-authors] plugin is a lightweight alternative to the
 [git-committers] plugin and extracts the authors of a document from git to display

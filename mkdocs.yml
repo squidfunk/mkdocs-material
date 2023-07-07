@@ -90,6 +90,7 @@ plugins:
 
 # Hooks
 hooks:
+  - material/.overrides/hooks/shortcodes.py
   - material/.overrides/hooks/translations.py
 
 # Customization
