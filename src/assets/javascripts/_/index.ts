@@ -80,7 +80,7 @@ export type Translations =
  */
 export interface Versioning {
   provider: "mike"                     /* Version provider */
-  default?: string                     /* Default version */
+  default?: string | string[]          /* Default version */
 }
 
 /**
