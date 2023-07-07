@@ -55,6 +55,11 @@
     cursor: pointer;
     transition: opacity 250ms;
 
+    // [no-js]: Hide button
+    .no-js & {
+      display: none;
+    }
+
     // Button on hover
     &:hover {
       opacity: 0.7;
