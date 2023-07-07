@@ -181,7 +181,6 @@ You can cancel your sponsorship anytime.[^5]
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
 [![Coda]](https://coda.io){ target=_blank title="Coda" }
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
-[![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 [![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 [![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
@@ -198,6 +197,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
 [![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
 [![Koor]](https://koor.tech/){ target=_blank title="Koor" }
+[![Astral]](https://astral.sh/){ target=_blank title="Astral" }
 
 </div>
 
@@ -215,7 +215,6 @@ You can cancel your sponsorship anytime.[^5]
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
   [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
-  [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
   [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
   [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
@@ -232,6 +231,7 @@ You can cancel your sponsorship anytime.[^5]
   [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
   [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
   [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
+  [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
 
 <hr />
 
