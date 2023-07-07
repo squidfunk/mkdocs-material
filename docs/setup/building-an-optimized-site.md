@@ -11,10 +11,10 @@ further useful automatic optimization techniques.
 
 ### Built-in optimize plugin :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.29.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.29.0 --> ·
+<!-- md:flag plugin --> ·
+<!-- md:flag experimental -->
 
 The built-in optimize plugin automatically identifies and optimizes all media
 files as part of the build using compression and conversion techniques. Add
@@ -34,7 +34,7 @@ plugins:
 
 The following configuration options are available:
 
-[`enabled`](#+optimize.enabled){ #+optimize.enabled }
+<!-- md:option optimize.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -46,7 +46,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`concurrency`](#+optimize.concurrency){ #+optimize.concurrency }
+<!-- md:option optimize.concurrency -->
 
 :   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
     how many CPUs the plugin is allowed to use when optimizing media files.
@@ -68,7 +68,7 @@ automatically compress images using [pngquant] (for PNGs), and [Pillow]
 
 The following configuration options are available for optimization:
 
-[`optimize_png`](#+optimize.optimize_png){ #+optimize.optimize_png }
+<!-- md:option optimize.optimize_png -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin should optimize PNG files using [pngquant], which must be
@@ -80,7 +80,7 @@ The following configuration options are available for optimization:
           optimize_png: false
     ```
 
-[`optimize_png_speed`](#+optimize.optimize_png_speed){ #+optimize.optimize_png_speed }
+<!-- md:option optimize.optimize_png_speed -->
 
 :   :octicons-milestone-24: Default: `4` of `[1,10]` – This option specifies the
     speed/quality tradeoff that [pngquant] applies when compressing. The lower
@@ -104,7 +104,7 @@ The following configuration options are available for optimization:
 
     A factor of `10` has 5% lower quality, but is 8x faster than the default `4`.
 
-[`optimize_png_strip`](#+optimize.optimize_png_strip){ #+optimize.optimize_png_strip }
+<!-- md:option optimize.optimize_png_strip -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     [pngquant] should remove all non-optional metadata that is not necessary
@@ -116,7 +116,7 @@ The following configuration options are available for optimization:
           optimize_png_strip: false
     ```
 
-[`optimize_jpg`](#+optimize.optimize_jpg){ #+optimize.optimize_jpg }
+<!-- md:option optimize.optimize_jpg -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin should optimize JPG files using [Pillow], a Python image
@@ -128,7 +128,7 @@ The following configuration options are available for optimization:
           optimize_jpg: false
     ```
 
-[`optimize_jpg_quality`](#+optimize.optimize_jpg_quality){ #+optimize.optimize_jpg_quality }
+<!-- md:option optimize.optimize_jpg_quality -->
 
 :   :octicons-milestone-24: Default: `60` of `[0,100]` – This option specifies
     the image quality that [Pillow] uses when compressing. If the images look
@@ -140,7 +140,7 @@ The following configuration options are available for optimization:
           optimize_jpg_quality: 75
     ```
 
-[`optimize_jpg_progressive`](#+optimize.optimize_jpg_progressive){ #+optimize.optimize_jpg_progressive }
+<!-- md:option optimize.optimize_jpg_progressive -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     [Pillow] should use [progressive encoding] (faster rendering) when
@@ -169,7 +169,7 @@ detect it and update the optimized version.
 
 The following configuration options are available for caching:
 
-[`cache`](#+optimize.cache){ #+optimize.cache }
+<!-- md:option optimize.cache -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin queries its cache for an existing artifact before starting an
@@ -182,7 +182,7 @@ The following configuration options are available for caching:
           cache: false
     ```
 
-[`cache_dir`](#+optimize.cache_dir){ #+optimize.cache_dir }
+<!-- md:option optimize.cache_dir -->
 
 :   :octicons-milestone-24: Default: `.cache/plugins/optimize` – This option
     specifies the file system location of the plugin's cache. It's normally not

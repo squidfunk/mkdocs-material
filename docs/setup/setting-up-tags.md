@@ -25,7 +25,7 @@ plugins:
 
 The following configuration options are available:
 
-[`enabled`](#+tags.enabled){ #+tags.enabled }
+<!-- md:option tags.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -37,7 +37,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`tags_file`](#+tags.tags_file){ #+tags.tags_file }
+<!-- md:option tags.tags_file -->
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which page
     should be used to render the tags index. See the section on [adding a tags 
@@ -54,7 +54,7 @@ The following configuration options are available:
     of `mkdocs.yml`. Note, however, that this options is not required – only use
     it if you want a tags index page.
 
-[`tags_extra_files`](#+tags.tags_extra_files){ #+tags.tags_extra_files }
+<!-- md:option tags.tags_extra_files -->
 
 :   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
     Default: _none_ – This option specifies additional pages, i.e. to render
@@ -93,7 +93,7 @@ The following configuration options are available:
     Note that the values listed under each tags extra file must be alphanumeric
     [tag identifiers], not tags themselves. See #3864 for more information.
 
-[`tags_slugify`](#+tags.tags_slugify){ #+tags.tags_slugify }
+<!-- md:option tags.tags_slugify -->
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
     Default: `headerid.slugify` – This option specifies which function to use for 
@@ -119,7 +119,7 @@ The following configuration options are available:
               tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
-[`tags_slugify_separator`](#+tags.tags_slugify_separator){ #+tags.tags_slugify_separator }
+<!-- md:option tags.tags_slugify_separator -->
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
     Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
@@ -131,7 +131,7 @@ The following configuration options are available:
           tags_slugify_separator: "-"
     ```
 
-[`tags_compare`](#+tags.tags_compare){ #+tags.tags_compare }
+<!-- md:option tags.tags_compare -->
 
 :   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
     Default: `None` – This option specifies which function to use when
@@ -147,7 +147,7 @@ The following configuration options are available:
     You can also define your own comparison function which must return a tag
     value (as a string) that is used for sorting, and reference it accordingly.
 
-[`tags_compare_reverse`](#+tags.tags_compare_reverse){ #+tags.tags_compare_reverse }
+<!-- md:option tags.tags_compare_reverse -->
 
 :   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
     Default: `false` – This option specifies whether tags are sorted in reverse
@@ -159,7 +159,7 @@ The following configuration options are available:
           tags_compare_reverse: true
     ```
 
-[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed }
+<!-- md:option tags.tags_allowed -->
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
     Default: _none_ – This option allows the author to define explicitly which

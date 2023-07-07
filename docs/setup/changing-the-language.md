@@ -73,19 +73,19 @@ extra:
 
 The following properties are available for each alternate language:
 
-[`name`](#+alternate.name){ #+alternate.name }
+<!-- md:option alternate.name -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This value of this property is used inside the language selector as the
     name of the language and must be set to a non-empty string.
 
-[`link`](#+alternate.link){ #+alternate.link }
+<!-- md:option alternate.link -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to an absolute link, which might also point to
     another domain or subdomain not necessarily generated with MkDocs.
 
-[`lang`](#+alternate.lang){ #+alternate.lang }
+<!-- md:option alternate.lang -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must contain an [ISO 639-1 language code] and is used for

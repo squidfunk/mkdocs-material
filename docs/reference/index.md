@@ -11,7 +11,7 @@ within Markdown files.
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.27.0 --> ·
-<!-- md:flag plugin -->
+<!-- md:flag plugin --> ·
 <!-- md:flag experimental -->
 
 The built-in typeset plugin __preserves HTML formatting__ in the navigation and
@@ -51,7 +51,7 @@ plugins:
 
 The following configuration options are available:
 
-[`meta_file`](#+meta.meta_file){ #+meta.meta_file }
+<!-- md:option meta.meta_file -->
 
 :   :octicons-milestone-24: Default: `**/.meta.yml` – This option specifies the
     name of the meta files that the plugin should look for. The default setting

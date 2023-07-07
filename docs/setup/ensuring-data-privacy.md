@@ -37,19 +37,19 @@ extra:
 
 The following properties are available:
 
-[`title`](#+consent.title){ #+consent.title }
+<!-- md:option consent.title -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the title of the cookie consent, which is rendered at the 
     top of the form and must be set to a non-empty string.
 
-[`description`](#+consent.description){ #+consent.description }
+<!-- md:option consent.description -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property sets the description of the cookie consent, is rendered below
     the title, and may include raw HTML (e.g. a links to the terms of service).
 
-[`cookies`](#+consent.cookies){ #+consent.cookies }
+<!-- md:option consent.cookies -->
 
 :   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
     cookies or change the initial `checked` state and name of built-in cookies.
@@ -100,7 +100,7 @@ The following properties are available:
     automatically include a setting for the user to disable it. [Custom cookies]
     can be used from JavaScript.
 
-[`actions`](#+consent.actions){ #+consent.actions }
+<!-- md:option consent.actions -->
 
 :   :octicons-milestone-24: Default: `[accept, manage]` – This property defines
     which buttons are shown and in which order, e.g. to allow the user to accept 
@@ -167,7 +167,7 @@ plugins:
 
 The following configuration options are available:
 
-[`enabled`](#+privacy.enabled){ #+privacy.enabled }
+<!-- md:option privacy.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -179,7 +179,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+<!-- md:option privacy.concurrency --> :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
 
 :   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
     how many CPUs the plugin is allowed to use when downloading external assets.
@@ -199,7 +199,7 @@ The following configuration options are available:
 
 The following configuration options are available for external assets:
 
-[`assets`](#+privacy.assets){ #+privacy.assets }
+<!-- md:option privacy.assets -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should scan the HTML output to detect and process external assets:
@@ -218,7 +218,7 @@ The following configuration options are available for external assets:
     Using `assets` in [strict mode] will make the build fail when external
     assets are detected.
 
-[`assets_fetch`](#+privacy.assets_fetch){ #+privacy.assets_fetch }
+<!-- md:option privacy.assets_fetch -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should download external assets it encountered and bundle them with
@@ -230,7 +230,7 @@ The following configuration options are available for external assets:
           assets_fetch: true
     ```
 
-[`assets_fetch_dir`](#+privacy.assets_fetch_dir){ #+privacy.assets_fetch_dir }
+<!-- md:option privacy.assets_fetch_dir -->
 
 :   :octicons-milestone-24: Default: `assets/external` – This option
     specifies where the downloaded [external assets] will be stored. It's
@@ -244,7 +244,7 @@ The following configuration options are available for external assets:
 
     The path must be defined relative to [`docs_dir`][docs_dir].
 
-[`assets_include`](#+privacy.assets_include){ #+privacy.assets_include }
+<!-- md:option privacy.assets_include -->
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to only include
     certain external assets for processing by the privacy plugin, so they will
@@ -275,7 +275,7 @@ The following configuration options are available for external assets:
         differently from others or exclude some images from downloading, you can
         use multiple instances of the [built-in privacy plugin].
 
-[`assets_exclude`](#+privacy.assets_exclude){ #+privacy.assets_exclude }
+<!-- md:option privacy.assets_exclude -->
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
@@ -343,7 +343,7 @@ The following configuration options are available for external assets:
 
 The following configuration options are available for external links:
 
-[`links`](#+privacy.links){ #+privacy.links }
+<!-- md:option privacy.links -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should parse and process external links. If you want to speed up
@@ -355,7 +355,7 @@ The following configuration options are available for external links:
           links: !ENV [CI, false]
     ```
 
-[`links_attr_map`](#+privacy.links_attr_map){ #+privacy.links_attr_map }
+<!-- md:option privacy.links_attr_map -->
 
 :   :octicons-milestone-24: Default: _None_ – This option specifies custom
     attributes that should be added to external links, like for example
@@ -368,7 +368,7 @@ The following configuration options are available for external links:
             target: _blank
     ```
 
-[`links_noopener`](#+privacy.links_noopener){ #+privacy.links_noopener }
+<!-- md:option privacy.links_noopener -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     plugin should automatically add [`rel="noopener"`][noopener] to all links

@@ -53,7 +53,7 @@ extra:
 
 The following properties are available for each link:
 
-[`icon`](#+social.icon){ #+social.icon }
+<!-- md:option social.icon -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must contain a valid path to any icon bundled with the theme,
@@ -72,7 +72,7 @@ The following properties are available for each link:
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-discord: – `fontawesome/brands/discord`
 
-[`link`](#+social.link){ #+social.link }
+<!-- md:option social.link -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to a relative or absolute URL including the URI 
@@ -96,7 +96,7 @@ The following properties are available for each link:
               link: mailto:<email-address>
         ```
 
-[`name`](#+social.name){ #+social.name }
+<!-- md:option social.name -->
 
 :   :octicons-milestone-24: Default: _domain name from_ `link`_, if available_ –
     This property is used as the link's `title` attribute and can be set to a 

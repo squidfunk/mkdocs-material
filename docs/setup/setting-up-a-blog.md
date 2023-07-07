@@ -68,7 +68,7 @@ nav:
 
 The following configuration options are available:
 
-[`enabled`](#+blog.enabled){ #+blog.enabled }
+<!-- md:option blog.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -80,7 +80,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`blog_dir`](#+blog.blog_dir){ #+blog.blog_dir }
+<!-- md:option blog.blog_dir -->
 
 :   :octicons-milestone-24: Default: `blog` – This option specifies the folder
     where your posts and metadata live. The name of the folder will also be
@@ -105,7 +105,7 @@ The following configuration options are available:
 
     The path must be defined relative to [`docs_dir`][docs_dir].
 
-[`blog_toc`](#+blog.blog_toc){ #+blog.blog_toc }
+<!-- md:option blog.blog_toc -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether
     indexes include a table of contents with all post titles on the
@@ -138,7 +138,7 @@ back here later for fine-tuning the output.__
 
 The following configuration options are available for posts:
 
-[`post_date_format`](#+blog.post_date_format){ #+blog.post_date_format }
+<!-- md:option blog.post_date_format -->
 
 :   :octicons-milestone-24: Default: `long` – This option specifies the date
     format that is used when posts are rendered. Under the hood, the
@@ -181,7 +181,7 @@ The following configuration options are available for posts:
     for other languages. Additionally, [Babel] supports a [pattern syntax]
     which allows for custom formats.
 
-[`post_url_date_format`](#+blog.post_url_date_format){ #+blog.post_url_date_format }
+<!-- md:option blog.post_url_date_format -->
 
 :   :octicons-milestone-24: Default: `yyyy/MM/dd` – This option specifies the
     date format that is used in the URL of the post. The format string must
@@ -215,7 +215,7 @@ The following configuration options are available for posts:
     mostly evergreen content, you can remove the `date` placeholder from
     the format string (see below).
 
-[`post_url_format`](#+blog.post_url_format){ #+blog.post_url_format }
+<!-- md:option blog.post_url_format -->
 
 :   :octicons-milestone-24: Default: `{date}/{slug}` – This option specifies the
     format string that is used for the URL of the post. The following
@@ -250,7 +250,7 @@ The following configuration options are available for posts:
     collide with other the URLs of other pages added to the blog section, as
     this leads to undefined behavior.
 
-[`post_url_max_categories`](#+blog.post_url_max_categories){ #+blog.post_url_max_categories }
+<!-- md:option blog.post_url_max_categories -->
 
 :   :octicons-milestone-24: Default: `1` – This option specifies the number of
     categories that are included in the URL if the `categories` placeholder is
@@ -264,7 +264,7 @@ The following configuration options are available for posts:
           post_url_max_categories: 2
     ```
 
-[`post_slugify`](#+blog.post_slugify){ #+blog.post_slugify }
+<!-- md:option blog.post_slugify -->
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option specifies
     which function to use for generating URL-compatible slugs from post titles. 
@@ -289,7 +289,7 @@ The following configuration options are available for posts:
               post_slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
-[`post_slugify_separator`](#+blog.post_slugify_separator){ #+blog.post_slugify_separator }
+<!-- md:option blog.post_slugify_separator -->
 
 :   :octicons-milestone-24: Default: `-` – This option specifies the separator
     which is used by the slug function. By default, a hyphen is used, but it can
@@ -301,7 +301,7 @@ The following configuration options are available for posts:
           post_slugify_separator: "-"
     ```
 
-[`post_excerpt`](#+blog.post_excerpt){ #+blog.post_excerpt }
+<!-- md:option blog.post_excerpt -->
 
 :   :octicons-milestone-24: Default: `optional` – This option specifies whether
     [post excerpts] should be considered being optional or required by the
@@ -324,7 +324,7 @@ The following configuration options are available for posts:
               post_excerpt: required
         ```
 
-[`post_excerpt_max_authors`](#+blog.post_excerpt_max_authors){ #+blog.post_excerpt_max_authors }
+<!-- md:option blog.post_excerpt_max_authors -->
 
 :   :octicons-milestone-24: Default: `1` – This option specifies the number of
     authors rendered in post excerpts. While each post may be written by
@@ -347,7 +347,7 @@ The following configuration options are available for posts:
               post_excerpt_max_authors: 0
         ```
 
-[`post_excerpt_max_categories`](#+blog.post_excerpt_max_categories){ #+blog.post_excerpt_max_categories }
+<!-- md:option blog.post_excerpt_max_categories -->
 
 :   :octicons-milestone-24: Default: `5` – This option specifies the number of
     categories rendered in post excerpts. While each post may be assigned to
@@ -370,14 +370,14 @@ The following configuration options are available for posts:
               post_excerpt_max_categories: 0
         ```
 
-[`post_excerpt_separator`](#+blog.post_excerpt_separator){ #+blog.post_excerpt_separator }
+<!-- md:option blog.post_excerpt_separator -->
 
 :   :octicons-milestone-24: Default: `<!-- more -->` – This option specifies
     the separator the [built-in blog plugin] will look for in a post's content
     when generating [post excerpts]. All content after the separator is not
     considered to be part of the excerpt.
 
-[`post_readtime`](#+blog.post_readtime){ #+blog.post_readtime }
+<!-- md:option blog.post_readtime -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     [built-in blog plugin] should compute the reading time of a post
@@ -390,7 +390,7 @@ The following configuration options are available for posts:
           post_readtime: false
     ```
 
-[`post_readtime_words_per_minute`](#+blog.post_readtime_words_per_minute){ #+blog.post_readtime_words_per_minute }
+<!-- md:option blog.post_readtime_words_per_minute -->
 
 :   :octicons-milestone-24: Default: `265` – This option specifies the number
     of words that a reader is expected to read per minute when computing the
@@ -415,7 +415,7 @@ The following configuration options are available for posts:
 
 The following configuration options are available for archive index generation:
 
-[`archive`](#+blog.archive){ #+blog.archive }
+<!-- md:option blog.archive -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     [built-in blog plugin] should generate archive indexes. An archive indexes
@@ -429,7 +429,7 @@ The following configuration options are available for archive index generation:
           archive: false
     ```
 
-[`archive_name`](#+blog.archive_name){ #+blog.archive_name }
+<!-- md:option blog.archive_name -->
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option specifies
     the title of the archive section which the [built-in blog plugin] will
@@ -442,7 +442,7 @@ The following configuration options are available for archive index generation:
           archive_name: Archive
     ```
 
-[`archive_date_format`](#+blog.archive_date_format){ #+blog.archive_date_format }
+<!-- md:option blog.archive_date_format -->
 
 :   :octicons-milestone-24: Default: `yyyy` – This option specifies the date
     format that is used when archive indexes are rendered. The format string
@@ -464,7 +464,7 @@ The following configuration options are available for archive index generation:
               archive_date_format: MMMM yyyy
         ```
 
-[`archive_url_date_format`](#+blog.archive_url_date_format){ #+blog.archive_url_date_format }
+<!-- md:option blog.archive_url_date_format -->
 
 :   :octicons-milestone-24: Default: `yyyy` – This option specifies the date
     format that is used in the archive index URL. The format string must adhere
@@ -486,7 +486,7 @@ The following configuration options are available for archive index generation:
               archive_url_date_format: yyyy/MM
         ```
 
-[`archive_url_format`](#+blog.archive_url_format){ #+blog.archive_url_format }
+<!-- md:option blog.archive_url_format -->
 
 :   :octicons-milestone-24: Default: `archive/{date}` – This option specifies
     the format string that is used for the URL of the archive index, and can
@@ -508,7 +508,7 @@ The following configuration options are available for archive index generation:
               archive_url_format: "{date}"
         ```
 
-[`archive_toc`](#+blog.archive_toc){ #+blog.archive_toc }
+<!-- md:option blog.archive_toc -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether an
     archive index includes a table of contents with all post titles on the
@@ -524,7 +524,7 @@ The following configuration options are available for archive index generation:
 
 The following configuration options are available for category index generation:
 
-[`categories`](#+blog.categories){ #+blog.categories }
+<!-- md:option blog.categories -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     [built-in blog plugin] should generate category indexes. A category index
@@ -537,7 +537,7 @@ The following configuration options are available for category index generation:
           categories: false
     ```
 
-[`categories_name`](#+blog.categories_name){ #+blog.categories_name }
+<!-- md:option blog.categories_name -->
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option specifies
     the title of the category section which the [built-in blog plugin] will
@@ -550,7 +550,7 @@ The following configuration options are available for category index generation:
           categories_name: Categories
     ```
 
-[`categories_url_format`](#+blog.categories_url_format){ #+blog.categories_url_format }
+<!-- md:option blog.categories_url_format -->
 
 :   :octicons-milestone-24: Default: `category/{slug}` – This option specifies
     the format string that is used for the URL of a category index, and can be
@@ -572,7 +572,7 @@ The following configuration options are available for category index generation:
               categories_url_format: "{slug}"
         ```
 
-[`categories_slugify`](#+blog.categories_slugify){ #+blog.categories_slugify }
+<!-- md:option blog.categories_slugify -->
 
 :   :octicons-milestone-24: Default: `headerid.slugify` – This option specifies
     which function to use for generating URL-compatible slugs from categories. 
@@ -597,7 +597,7 @@ The following configuration options are available for category index generation:
               categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
         ```
 
-[`categories_slugify_separator`](#+blog.categories_slugify_separator){ #+blog.categories_slugify_separator }
+<!-- md:option blog.categories_slugify_separator -->
 
 :   :octicons-milestone-24: Default: `-` – This option specifies the separator
     which is used by the slug function. By default, a hyphen is used, but it can
@@ -609,7 +609,7 @@ The following configuration options are available for category index generation:
           categories_slugify_separator: "-"
     ```
 
-[`categories_allowed`](#+blog.categories_allowed){ #+blog.categories_allowed }
+<!-- md:option blog.categories_allowed -->
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies the
     categories that are allowed to be used in posts. If this setting is omitted,
@@ -625,7 +625,7 @@ The following configuration options are available for category index generation:
             - Performance
     ```
 
-[`categories_toc`](#+blog.categories_toc){ #+blog.categories_toc }
+<!-- md:option blog.categories_toc -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether a
     category index includes a table of contents with all post titles on the
@@ -641,7 +641,7 @@ The following configuration options are available for category index generation:
 
 The following configuration options are available for index pagination:
 
-[`pagination`](#+blog.pagination){ #+blog.pagination }
+<!-- md:option blog.pagination -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     [built-in blog plugin] should paginate the index. The index shows all posts
@@ -654,7 +654,7 @@ The following configuration options are available for index pagination:
           pagination: false
     ```
 
-[`pagination_per_page`](#+blog.pagination_per_page){ #+blog.pagination_per_page }
+<!-- md:option blog.pagination_per_page -->
 
 :   :octicons-milestone-24: Default: `10` – This option specifies the number
     of posts rendered on a single index page. If more posts are found, they are
@@ -667,7 +667,7 @@ The following configuration options are available for index pagination:
           pagination_per_page: 5
     ```
 
-[`pagination_url_format`](#+blog.pagination_url_format){ #+blog.pagination_url_format }
+<!-- md:option blog.pagination_url_format -->
 
 :   :octicons-milestone-24: Default: `page/{page}` – This option specifies
     the format string that is used for the URL of the paginated index, and can
@@ -689,7 +689,7 @@ The following configuration options are available for index pagination:
               pagination_url_format: "{page}"
         ```
 
-[`pagination_template`](#+blog.pagination_template){ #+blog.pagination_template }
+<!-- md:option blog.pagination_template -->
 
 :   :octicons-milestone-24: Default: `~2~` – This option specifies the format
     string that is provided to the [paginate] module, which allows to customize
@@ -736,7 +736,7 @@ The following configuration options are available for index pagination:
 
   [paginate]: https://pypi.org/project/paginate/
 
-[`pagination_keep_content`](#+blog.pagination_keep_content){ #+blog.pagination_keep_content }
+<!-- md:option blog.pagination_keep_content -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether
     paginated index pages should inherit the custom content from the index
@@ -752,7 +752,7 @@ The following configuration options are available for index pagination:
 
 The following configuration options are available for author info:
 
-[`authors`](#+blog.authors){ #+blog.authors }
+<!-- md:option blog.authors -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether the
     [built-in blog plugin] should generate author info. If it is enabled, the
@@ -765,7 +765,7 @@ The following configuration options are available for author info:
           authors: false
     ```
 
-[`authors_file`](#+blog.authors_file){ #+blog.authors_file }
+<!-- md:option blog.authors_file -->
 
 :   :octicons-milestone-24: Default: `.authors.yml` – This option specifies the
     name of the file where the authors for your posts resides. The default
@@ -787,7 +787,7 @@ The following configuration options are available for author info:
 
 The following configuration options are available for drafts:
 
-[`draft`](#+blog.draft){ #+blog.draft }
+<!-- md:option blog.draft -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether the
     [built-in blog plugin] should also include posts marked as drafts when the
@@ -810,7 +810,7 @@ The following configuration options are available for drafts:
               draft: false
         ```
 
-[`draft_on_serve`](#+blog.draft_on_serve){ #+blog.draft_on_serve }
+<!-- md:option blog.draft_on_serve -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     posts marked as drafts should be included [when previewing your site] with
@@ -823,7 +823,7 @@ The following configuration options are available for drafts:
           draft_on_serve: true
     ```
 
-[`draft_if_future_date`](#+blog.draft_if_future_date){ #+blog.draft_if_future_date }
+<!-- md:option blog.draft_if_future_date -->
 
 :   :octicons-milestone-24: Default: `false` – This option specifies whether the
     [built-in blog plugin] should mark posts with a future date as drafts. When
@@ -873,7 +873,7 @@ plugins:
 
 The following configuration options are supported:
 
-[`enabled`](#+rss.enabled){ #+rss.enabled }
+<!-- md:option rss.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -885,7 +885,7 @@ The following configuration options are supported:
           enabled: !ENV [CI, false]
     ```
 
-[`match_path`](#+rss.match_path){ #+rss.match_path }
+<!-- md:option rss.match_path -->
 
 :   :octicons-milestone-24: Default: `.*` – This option specifies which
     pages should be included in the feed. For example, to only include blog
@@ -897,7 +897,7 @@ The following configuration options are supported:
           match_path: blog/posts/.*
     ```
 
-[`date_from_meta`](#+rss.date_from_meta){ #+rss.date_from_meta }
+<!-- md:option rss.date_from_meta -->
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which
     front matter property should be used as a creation date of a page in the 
@@ -910,7 +910,7 @@ The following configuration options are supported:
             as_creation: date
     ```
 
-[`categories`](#+rss.categories){ #+rss.categories }
+<!-- md:option rss.categories -->
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies which
     front matter properties are used as categories as part of the feed. If you
@@ -924,7 +924,7 @@ The following configuration options are supported:
             - tags
     ```
 
-[`comments_path`](#+rss.comments_path){ #+rss.comments_path }
+<!-- md:option rss.comments_path -->
 
 :   :octicons-milestone-24: Default: _none_ – This option specifies the anchor
     at which comments for a post or page can be found. If you've integrated a
@@ -1041,19 +1041,19 @@ The [`.authors.yml`][authors_file] file associates each author with an
 identifier (in this example `squidfunk`), which can then be used in posts.
 The following properties are available for each author:
 
-[`name`](#+blog.authors_file.name){ #+blog.authors_file.name }
+<!-- md:option blog.authors_file.name -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must define a name for the author. The name is displayed in
     the left sidebar of each post as part of the author info.
 
-[`description`](#+blog.authors_file.description){ #+blog.authors_file.description }
+<!-- md:option blog.authors_file.description -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property can be used to add a short description for the author, e.g.
     the role or profession of the author, or any other title.
 
-[`avatar`](#+blog.authors_file.avatar){ #+blog.authors_file.avatar }
+<!-- md:option blog.authors_file.avatar -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must point to a valid image URL, internal or external, and is

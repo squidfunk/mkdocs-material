@@ -164,7 +164,7 @@ integrated with the [cookie consent] feature[^1].
 
 The following properties are available for each rating:
 
-[`icon`](#+analytics.feedback.ratings.icon){ #+analytics.feedback.ratings.icon }
+<!-- md:option analytics.feedback.ratings.icon -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must point to a valid icon path referencing [any icon bundled
@@ -175,13 +175,13 @@ The following properties are available for each rating:
     * :material-thumb-up-outline: + :material-thumb-down-outline: – `material/thumb-up-outline` + `material/thumb-down-outline`
     * :material-heart: + :material-heart-broken: – `material/heart` + `material/heart-broken`
 
-[`name`](#+analytics.feedback.ratings.name){ #+analytics.feedback.ratings.name }
+<!-- md:option analytics.feedback.ratings.name -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is shown on user interaction (i.e. keyboard focus
     or mouse hover), explaining the meaning of the rating behind the icon.
 
-[`data`](#+analytics.feedback.ratings.data){ #+analytics.feedback.ratings.data }
+<!-- md:option analytics.feedback.ratings.data -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is sent as a data value with the custom event
@@ -190,7 +190,7 @@ The following properties are available for each rating:
   [^2]:
     Note that for Google Analytics, the data value must be an integer.
 
-[`note`](#+analytics.feedback.ratings.note){ #+analytics.feedback.ratings.note }
+<!-- md:option analytics.feedback.ratings.note -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     The value of this property is shown after the user selected the rating.

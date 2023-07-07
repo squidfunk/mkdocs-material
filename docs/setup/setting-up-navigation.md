@@ -433,7 +433,7 @@ to navigate your project documentation via keyboard. There are two modes:
     * ++esc++ , ++tab++ : close search dialog
     * ++enter++ : follow selected result
 
-[`global`](#mode:global){ #mode:global }
+<!-- md:option mode:global -->
 
 :   This mode is active when _search is not focussed_ and when there's no other
     focussed element that is susceptible to keyboard input. The following keys

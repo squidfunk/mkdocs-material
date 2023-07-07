@@ -31,7 +31,7 @@ plugins:
 
 The following configuration options are supported:
 
-[`lang`](#+search.lang){ #+search.lang }
+<!-- md:option search.lang -->
 
 :   :octicons-milestone-24: Default: _automatically set_ – This option allows
     to include the language-specific stemmers provided by [lunr-languages].
@@ -99,7 +99,7 @@ The following configuration options are supported:
     part of this list by automatically falling back to the stemmer yielding the
     best result.
 
-[`separator`](#+search.separator){ #+search.separator }
+<!-- md:option search.separator -->
 
 :   :octicons-milestone-24: Default: _automatically set_ – The separator for
     indexing and query tokenization can be customized, making it possible to
@@ -204,7 +204,7 @@ pip install jieba
 
 The following configuration options are available:
 
-[`jieba_dict`](#+search.jieba_dict){ #+search.jieba_dict }
+<!-- md:option search.jieba_dict -->
 
 :   :octicons-milestone-24: Default: _none_ – This option allows for specifying
     a [custom dictionary] to be used by [jieba] for segmenting text, replacing
@@ -221,7 +221,7 @@ The following configuration options are available:
         - [dict.txt.small] – 占用内存较小的词典文件
         - [dict.txt.big] – 支持繁体分词更好的词典文件
 
-[`jieba_dict_user`](#+search.jieba_dict_user){ #+search.jieba_dict_user }
+<!-- md:option search.jieba_dict_user -->
 
 :   :octicons-milestone-24: Default: _none_ – This option allows for specifying
     an additional [user dictionary] to be used by [jieba] for segmenting text, 

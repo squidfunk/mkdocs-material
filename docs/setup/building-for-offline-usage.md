@@ -29,7 +29,7 @@ file system.
 
 The following configuration options are available:
 
-[`enabled`](#+offline.enabled){ #+offline.enabled }
+<!-- md:option offline.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch

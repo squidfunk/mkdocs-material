@@ -68,7 +68,7 @@ plugins:
 
 The following configuration options are available:
 
-[`enabled`](#+social.enabled){ #+social.enabled }
+<!-- md:option social.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
@@ -80,7 +80,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`concurrency`](#+social.concurrency){ #+social.concurrency }
+<!-- md:option social.concurrency -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24: 
     Default: _number of CPUs_ – How many CPUs the plugin is allowed to use when
@@ -105,7 +105,7 @@ The following configuration options are available:
 
 The following configuration options are available for card generation:
 
-[`cards`](#+social.cards){ #+social.cards }
+<!-- md:option social.cards -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
@@ -117,7 +117,7 @@ The following configuration options are available for card generation:
           cards: !ENV [CI, false]
     ```
 
-[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
+<!-- md:option social.cards_dir -->
 
 :   :octicons-milestone-24: Default: `assets/images/social` – This option
     specifies where the generated social cards will be stored. While it's
@@ -131,7 +131,7 @@ The following configuration options are available for card generation:
 
 <div class="mdx-deprecated" markdown>
 
-[`cards_color`](#+social.cards_color){ #+social.cards_color } – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
+<!-- md:option social.cards_color --> – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
 
 :   :octicons-milestone-24: Default: [`theme.palette.primary`][primary color] – 
     This option specifies the colors for the background `fill` and foreground
@@ -145,7 +145,7 @@ The following configuration options are available for card generation:
             text: "#FFFFFF"
     ```
 
-[`cards_font`](#+social.cards_font){ #+social.cards_font } – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
+<!-- md:option social.cards_font --> – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
 
 :   :octicons-milestone-24: Default: [`theme.font.text`][font] – This option
     specifies which font to use for rendering the social card, which can be
@@ -159,7 +159,7 @@ The following configuration options are available for card generation:
 
 </div>
 
-[`cards_layout_dir`](#+social.cards_layout_dir){ #+social.cards_layout_dir }
+<!-- md:option social.cards_layout_dir -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: _none_ – This option specifies where the social plugin should try
@@ -172,7 +172,7 @@ The following configuration options are available for card generation:
           cards_layout_dir: layouts
     ```
 
-[`cards_layout`](#+social.cards_layout){ #+social.cards_layout } :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+<!-- md:option social.cards_layout --> :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `default` – Layout specification the social card should use. The
@@ -250,7 +250,7 @@ The following configuration options are available for card generation:
     - :material-page-layout-footer: – `page.meta.description` or `config.site_description`
     - :material-page-layout-sidebar-right: – `theme.logo` or `theme.icon.logo`
 
-[`cards_layout_options`](#+social.cards_layout_options){ #+social.cards_layout_options }
+<!-- md:option social.cards_layout_options -->
 
 :   [:octicons-tag-24: 9.1.10][Layout options support] · :octicons-milestone-24:
     Default: _none_ – This option allows to set [parameters] as provided by
@@ -317,7 +317,7 @@ The following configuration options are available for card generation:
                 font_family: Ubuntu
         ```
 
-[`cards_include`](#+privacy.cards_include){ #+privacy.cards_include }
+<!-- md:option privacy.cards_include -->
 
 :   [:octicons-tag-24: insiders-4.35.0][Insiders] · :octicons-milestone-24:
     Default: _none_ – This option allows to only generate social cards for
@@ -331,7 +331,7 @@ The following configuration options are available for card generation:
             - blog/*
     ```
 
-[`cards_exclude`](#+privacy.cards_exclude){ #+privacy.cards_exclude }
+<!-- md:option privacy.cards_exclude -->
 
 :   :octicons-milestone-24: Default: _none_ – This option allows to exclude
     certain subsections of your documentation from generating social cards:
@@ -364,7 +364,7 @@ The following configuration options are available for card generation:
 
 The following configuration options are available for debugging:
 
-[`debug`](#+social.debug){ #+social.debug }
+<!-- md:option social.debug -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `false` – This option enables a special debug mode, which renders
@@ -389,7 +389,7 @@ The following configuration options are available for debugging:
     [Debug mode enabled]: ../assets/screenshots/social-cards-debug.png
     [Debug mode disabled]: ../assets/screenshots/social-cards-variant.png
 
-[`debug_on_build`](#+social.debug_on_build){ #+social.debug_on_build }
+<!-- md:option social.debug_on_build -->
 
 :   [:octicons-tag-24: insiders-4.34.1][Insiders] · :octicons-milestone-24:
     Default: `false` – Whether debug mode should be automatically disabled
@@ -405,7 +405,7 @@ The following configuration options are available for debugging:
     your site social cards definitely won't contain the dot grid or layer
     outlines by accident.
 
-[`debug_grid`](#+social.debug_grid){ #+social.debug_grid }
+<!-- md:option social.debug_grid -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `true` – This option enables the rendering of a dot grid when
@@ -418,7 +418,7 @@ The following configuration options are available for debugging:
           debug_grid: false
     ```
 
-[`debug_grid_step`](#+social.debug_grid_step){ #+social.debug_grid_step }
+<!-- md:option social.debug_grid_step -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `32` – This option specifies the step size of the grid in pixels,
@@ -430,7 +430,7 @@ The following configuration options are available for debugging:
           debug_grid_step: 64
     ```
 
-[`debug_color`](#+social.debug_color){ #+social.debug_color }
+<!-- md:option social.debug_color -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `grey` – This option sets the color of the layer outlines and
@@ -455,7 +455,7 @@ changes, the plugin will detect it and re-generate the card.
 
 The following configuration options are available for caching:
 
-[`cache`](#+social.cache){ #+social.cache }
+<!-- md:option social.cache -->
 
 :   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
     Default: `true` – Whether the plugin queries its cache for an existing
@@ -469,7 +469,7 @@ The following configuration options are available for caching:
           cache: false
     ```
 
-[`cache_dir`](#+social.cache_dir){ #+social.cache_dir }
+<!-- md:option social.cache_dir -->
 
 :   :octicons-milestone-24: Default: `.cache/plugins/social` – This option
     specifies the file system location of the plugin's cache. It's normally not

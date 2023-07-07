@@ -188,7 +188,7 @@ plugins:
 
 The following configuration options are supported:
 
-[`enabled`](#+git-revision-date-localized.enabled){ #+git-revision-date-localized.enabled }
+<!-- md:option git-revision-date-localized.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch
@@ -200,7 +200,7 @@ The following configuration options are supported:
           enabled: !ENV [CI, false]
     ```
 
-[`type`](#+git-revision-date-localized.type){ #+git-revision-date-localized.type }
+<!-- md:option git-revision-date-localized.type -->
 
 :   :octicons-milestone-24: Default: `date` – The format of the date to be
     displayed. Valid values are `date`, `datetime`, `iso_date`, `iso_datetime`
@@ -212,7 +212,7 @@ The following configuration options are supported:
           type: date
     ```
 
-[`enable_creation_date`](#+git-revision-date-localized.enable_creation_date){ #+git-revision-date-localized.enable_creation_date }
+<!-- md:option git-revision-date-localized.enable_creation_date -->
 
 :   :octicons-milestone-24: Default: `false` – Enables the display of the
     creation date of the file associated with the page next to the last updated
@@ -224,7 +224,7 @@ The following configuration options are supported:
           enable_creation_date: true
     ```
 
-[`fallback_to_build_date`](#+git-revision-date-localized.fallback_to_build_date){ #+git-revision-date-localized.fallback_to_build_date }
+<!-- md:option git-revision-date-localized.fallback_to_build_date -->
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
@@ -274,7 +274,7 @@ plugins:
 
 The following configuration options are supported:
 
-[`enabled`](#+git-committers.enabled){ #+git-committers.enabled }
+<!-- md:option git-committers.enabled -->
 
 :   :octicons-milestone-24: Default: `true` – This option specifies whether
     the plugin is enabled when building your project. If you want to switch
@@ -286,7 +286,7 @@ The following configuration options are supported:
           enabled: !ENV [CI, false]
     ```
 
-[`repository`](#+git-committers.repository){ #+git-committers.repository }
+<!-- md:option git-committers.repository -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must be set to the slug of the repository that contains your
@@ -298,7 +298,7 @@ The following configuration options are supported:
           repository: squidfunk/mkdocs-material
     ```
 
-[`branch`](#+git-committers.branch){ #+git-committers.branch }
+<!-- md:option git-committers.branch -->
 
 :   :octicons-milestone-24: Default: `master` – This property should be set to
     the branch of the repository from which to retrieve the contributors. To use the `main` branch:

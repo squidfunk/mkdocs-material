@@ -213,7 +213,7 @@ and [`accent`][palette.accent] per color palette.
 
 The following properties must be set for each toggle:
 
-[`icon`](#+palette.toggle.icon){ #+palette.toggle.icon }
+<!-- md:option palette.toggle.icon -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property must point to a valid icon path referencing any icon bundled
@@ -225,7 +225,7 @@ The following properties must be set for each toggle:
     * :material-eye: + :material-eye-outline: – `material/eye` + `material/eye-outline`
     * :material-lightbulb: + :material-lightbulb-outline: – `material/lightbulb` + `material/lightbulb-outline`
 
-[`name`](#+palette.toggle.name){ #+palette.toggle.name }
+<!-- md:option palette.toggle.name -->
 
 :   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
     This property is used as the toggle's `title` attribute and should be set to

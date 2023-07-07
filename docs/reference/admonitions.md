@@ -290,7 +290,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
     type qualifiers are now all deprecated and will be removed in the next major
     version. This will also be mentioned in the upgrade guide.
 
-[`note`](#type:note){ #type:note }
+<!-- md:option type:note -->
 
 :   !!! note
 
@@ -306,7 +306,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`info`](#type:info){ #type:info }
+<!-- md:option type:info -->
 
 :   !!! info
 
@@ -314,7 +314,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`tip`](#type:tip){ #type:tip }
+<!-- md:option type:tip -->
 
 :   !!! tip
 
@@ -338,7 +338,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`warning`](#type:warning){ #type:warning }
+<!-- md:option type:warning -->
 
 :   !!! warning
 
@@ -346,7 +346,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`failure`](#type:failure){ #type:failure }
+<!-- md:option type:failure -->
 
 :   !!! failure
 
@@ -354,7 +354,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`danger`](#type:danger){ #type:danger }
+<!-- md:option type:danger -->
 
 :   !!! danger
 
@@ -362,7 +362,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`bug`](#type:bug){ #type:bug }
+<!-- md:option type:bug -->
 
 :   !!! bug
 
@@ -370,7 +370,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`example`](#type:example){ #type:example }
+<!-- md:option type:example -->
 
 :   !!! example
 
@@ -378,7 +378,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
         euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
         purus auctor massa, nec semper lorem quam in massa.
 
-[`quote`](#type:quote){ #type:quote }
+<!-- md:option type:quote -->
 
 :   !!! quote
 
