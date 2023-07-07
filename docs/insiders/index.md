@@ -198,6 +198,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
 [![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 [![Astral]](https://astral.sh/){ target=_blank title="Astral" }
+[![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
 
 </div>
 
@@ -232,6 +233,7 @@ You can cancel your sponsorship anytime.[^5]
   [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
   [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
   [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
+  [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
 
 <hr />
 
