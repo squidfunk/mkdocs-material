@@ -62,13 +62,15 @@ def on_page_markdown(
 # Create a link to the section of the given version in the changelog
 def version(spec: str, page: Page, files: Files):
     file = file = files.get_file_from_path("changelog/index.md")
+    icon = ":material-tag-outline:"
     if spec.startswith("insiders-"):
         file = files.get_file_from_path("insiders/changelog.md")
+        icon = ":material-tag-heart-outline:"
 
     # Return link
     anchor = spec.replace("insiders-", "")
     return (
-        f"[:octicons-tag-24: {spec}]"
+        f"[{icon} {spec}]"
         f"({file.url_relative_to(page.file)}#{anchor})"
     )
 
@@ -78,20 +80,20 @@ def sponsors(page: Page, files: Files):
 
     # Return link
     return (
-        f"[:octicons-heart-fill-24:{{ .mdx-heart }} Sponsors only]"
+        f"[:material-heart:{{ .mdx-heart }} Sponsors only]"
         f"({file.url_relative_to(page.file)}){{ .mdx-insiders }}"
     )
 
 # Create a flag of a specific type
 def flag(type: str):
-    if   type == "experimental": return ":octicons-beaker-24: Experimental"
-    elif type == "feature":      return ":octicons-unlock-24: Feature flag"
-    elif type == "plugin":       return ":octicons-cpu-24: Plugin"
-    elif type == "property":     return ":octicons-book-24: Property"
+    if   type == "experimental": return ":material-flask-outline:"
+    elif type == "feature":      return ":octicons-unlock-24:"
+    elif type == "plugin":       return ":material-floppy:"
+    elif type == "property":     return ":octicons-book-24:"
 
 # Create a default value
 def default(args: str):
-    return f":octicons-milestone-24: Default: {args}"
+    return f":material-water: {args}"
 
 # Create a linkable option
 def option(type: str):
