@@ -119,7 +119,6 @@ theme:
     ```
     ````
 
-  [Insiders]: ../insiders/index.md
   [line highlighting]: #highlighting-specific-lines
 
 ### Code annotations
@@ -316,8 +315,6 @@ simply add an `!` after the closing parenthesis of the code annotation:
 Note that this only allows for a single code annotation to be rendered per
 comment. If you want to add multiple code annotations, comments cannot be
 stripped for technical reasons.
-
-  [Stripping comments support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 ### Adding line numbers
 

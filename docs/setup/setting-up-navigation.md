@@ -52,8 +52,6 @@ theme:
     - navigation.instant.prefetch
 ```
 
-  [Insiders]: ../insiders/index.md
-
 ### Anchor tracking
 
 <!-- md:version 8.0.0 --> ·

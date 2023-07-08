@@ -288,8 +288,6 @@ by Material for MkDocs, which is why they may yield unexpected results. Use
 them at your own risk.
 
   [Table of Contents]: https://python-markdown.github.io/extensions/toc/
-  [Table of Contents support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
-  [title support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.5
   [site language]: ../changing-the-language.md#site-language
   [Slugs]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 

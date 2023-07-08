@@ -341,8 +341,6 @@ Markdown file:
     ...
     ```
 
-  [boost support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
-
 ### Search exclusion
 
 <!-- md:version 9.0.0 --> ·
@@ -362,8 +360,6 @@ search:
 # Document title
 ...
 ```
-
-  [exclusion support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
 
 #### Excluding sections
 
