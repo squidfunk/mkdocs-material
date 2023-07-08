@@ -176,10 +176,10 @@ which creates and manages the [lunr] search index. When search is initialized,
 the following steps are taken:
 
   [^1]:
-    Prior to :octicons-tag-24: 5.0.0, search was carried out in the main thread 
-    which locked up the browser, rendering it unusable. This problem was first
-    reported in #904 and, after some back and forth, fixed and released in
-    :octicons-tag-24: 5.0.0.
+    Prior to <!-- md:version 5.0.0 -->, search was carried out in the main
+    thread  which locked up the browser, rendering it unusable. This problem was
+    first reported in #904 and, after some back and forth, fixed and released in
+    <!-- md:version 5.0.0 -->.
 
 1.  __Linking sections with pages__: The search index is parsed, and each
     section is linked to its parent page. The parent page itself is _not
@@ -196,7 +196,7 @@ the following steps are taken:
     > can achieve with a tokenizer that is capable of separating strings with
     > lookahead.
 
-1.  __Indexing__: As a final step, each section is indexed. When querying the
+3.  __Indexing__: As a final step, each section is indexed. When querying the
     index, if a search query includes one of the tokens as returned by step 2.,
     the section is considered to be part of the search result and passed to the
     main thread.

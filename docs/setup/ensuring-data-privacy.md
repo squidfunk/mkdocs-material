@@ -13,9 +13,9 @@ automatically downloaded for [self-hosting].
 
 ### Cookie consent
 
-[:octicons-tag-24: 8.4.0][Cookie consent support] ·
-:octicons-milestone-24: Default: _none_ ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.4.0 --> ·
+<!-- md:default _none_ --> ·
+<!-- md:flag experimental -->
 
 Material for MkDocs ships a native and extensible cookie consent form which
 asks the user for consent prior to sending requests to third parties. Add the
@@ -39,19 +39,19 @@ The following properties are available:
 
 <!-- md:option consent.title -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     This property sets the title of the cookie consent, which is rendered at the 
     top of the form and must be set to a non-empty string.
 
 <!-- md:option consent.description -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     This property sets the description of the cookie consent, is rendered below
     the title, and may include raw HTML (e.g. a links to the terms of service).
 
 <!-- md:option consent.cookies -->
 
-:   :octicons-milestone-24: Default: _none_ – This property allows to add custom 
+:   <!-- md:default _none_ --> This property allows to add custom 
     cookies or change the initial `checked` state and name of built-in cookies.
     Currently, the following cookies are built-in:
 
@@ -102,7 +102,7 @@ The following properties are available:
 
 <!-- md:option consent.actions -->
 
-:   :octicons-milestone-24: Default: `[accept, manage]` – This property defines
+:   <!-- md:default `[accept, manage]` --> This property defines
     which buttons are shown and in which order, e.g. to allow the user to accept 
     cookies and manage settings:
 
@@ -147,10 +147,10 @@ copyright: >
 
 ### Built-in privacy plugin
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.9.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.9.0 --> ·
+<!-- md:flag plugin --> ·
+<!-- md:flag experimental -->
 
 The built-in privacy plugin automatically identifies [external assets] as part
 of the build process and downloads all assets for very simple self-hosting. Add
@@ -169,7 +169,7 @@ The following configuration options are available:
 
 <!-- md:option privacy.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
     local builds, you can use an [environment variable]:
 
@@ -181,7 +181,7 @@ The following configuration options are available:
 
 <!-- md:option privacy.concurrency --> :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
 
-:   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
+:   <!-- md:default _number of CPUs_ --> This option specifies
     how many CPUs the plugin is allowed to use when downloading external assets.
     With more CPUs, the plugin can do more work in the same time, thus complete
     its work faster. Concurrent processing can be disabled with:
@@ -201,8 +201,8 @@ The following configuration options are available for external assets:
 
 <!-- md:option privacy.assets -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether the
-    plugin should scan the HTML output to detect and process external assets:
+:   <!-- md:default `true` --> – This option specifies whether the plugin
+    should scan the HTML output to detect and process external assets:
 
     ``` yaml
     plugins:
@@ -220,7 +220,7 @@ The following configuration options are available for external assets:
 
 <!-- md:option privacy.assets_fetch -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+:   <!-- md:default `true` --> This option specifies whether the
     plugin should download external assets it encountered and bundle them with
     your documentation:
 
@@ -232,7 +232,7 @@ The following configuration options are available for external assets:
 
 <!-- md:option privacy.assets_fetch_dir -->
 
-:   :octicons-milestone-24: Default: `assets/external` – This option
+:   <!-- md:default `assets/external` --> This option
     specifies where the downloaded [external assets] will be stored. It's
     normally not necessary to change this option:
 
@@ -246,7 +246,7 @@ The following configuration options are available for external assets:
 
 <!-- md:option privacy.assets_include -->
 
-:   :octicons-milestone-24: Default: _none_ – This option allows to only include
+:   <!-- md:default _none_ --> This option allows to only include
     certain external assets for processing by the privacy plugin, so they will
     be downloaded and bundled during the build:
 
@@ -263,7 +263,7 @@ The following configuration options are available for external assets:
         when you want to host assets like images outside of your git repository
         in another location to keep them fresh and your repository lean.
 
-        Additionally, as of [:octicons-tag-24: insiders-4.30.0][Insiders], the
+        Additionally, as of <!-- md:version insiders-4.30.0 -->, the
         built-in privacy plugin was entirely rewritten and now works perfectly
         with the [built-in optimize plugin], which means that external assets
         can be passed through the same optimization pipeline as the rest of your
@@ -277,7 +277,7 @@ The following configuration options are available for external assets:
 
 <!-- md:option privacy.assets_exclude -->
 
-:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
+:   <!-- md:default _none_ --> This option allows to exclude
     certain external assets from processing by the privacy plugin, so they will
     not be downloaded and bundled during the build:
 
@@ -337,15 +337,15 @@ The following configuration options are available for external assets:
 
 #### External links
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.26.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.26.0 --> ·
+<!-- md:flag experimental -->
 
 The following configuration options are available for external links:
 
 <!-- md:option privacy.links -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+:   <!-- md:default `true` --> This option specifies whether the
     plugin should parse and process external links. If you want to speed up
     local builds, you can use an [environment variable]:
 
@@ -357,7 +357,7 @@ The following configuration options are available for external links:
 
 <!-- md:option privacy.links_attr_map -->
 
-:   :octicons-milestone-24: Default: _None_ – This option specifies custom
+:   <!-- md:default _None_ --> This option specifies custom
     attributes that should be added to external links, like for example
     `target="_blank"` so all external links open in a new window:
 
@@ -370,7 +370,7 @@ The following configuration options are available for external links:
 
 <!-- md:option privacy.links_noopener -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether the
+:   <!-- md:default `true` --> This option specifies whether the
     plugin should automatically add [`rel="noopener"`][noopener] to all links
     with `target="_blank"` for security reasons:
 

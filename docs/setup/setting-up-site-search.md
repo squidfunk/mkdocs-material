@@ -16,8 +16,8 @@ not be compliant with privacy regulations. Moreover, search even works
 
 ### Built-in search plugin
 
-[:octicons-tag-24: 0.1.0][Search support] ·
-:octicons-cpu-24: Plugin
+<!-- md:version 0.1.0 --> ·
+<!-- md:flag plugin -->
 
 The built-in search plugin integrates seamlessly with Material for MkDocs,
 adding multilingual client-side search with [lunr] and [lunr-languages]. It's 
@@ -33,7 +33,7 @@ The following configuration options are supported:
 
 <!-- md:option search.lang -->
 
-:   :octicons-milestone-24: Default: _automatically set_ – This option allows
+:   <!-- md:default _automatically set_ --> This option allows
     to include the language-specific stemmers provided by [lunr-languages].
     Note that Material for MkDocs will set this automatically based on the
     [site language], but it may be overridden, e.g. to support multiple
@@ -101,7 +101,7 @@ The following configuration options are supported:
 
 <!-- md:option search.separator -->
 
-:   :octicons-milestone-24: Default: _automatically set_ – The separator for
+:   <!-- md:default _automatically set_ --> The separator for
     indexing and query tokenization can be customized, making it possible to
     index parts of words separated by other characters than whitespace and `-`,
     e.g. by including `.`:
@@ -112,7 +112,7 @@ The following configuration options are supported:
           separator: '[\s\-\.]+'
     ```
 
-    With :octicons-tag-24: 9.0.0, a faster and more flexible tokenizer method
+    With <!-- md:version 9.0.0 -->, a faster and more flexible tokenizer method
     is shipped, allowing for __tokenizing with lookahead__, which yields more
     influence on the way documents are indexed. As a result, we use the
     following separator setting for this site's search:
@@ -178,7 +178,6 @@ The following configuration options are supported:
         [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
         [tokenize html-xml tags]
 
-  [Search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
   [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
@@ -191,8 +190,8 @@ The following configuration options are supported:
 
 #### Chinese language support
 
-[:octicons-tag-24: 9.2.0b0][Chinese language support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0b0 --> ·
+<!-- md:flag experimental -->
 
 In order to add support for Chinese languages to the [built-in search plugin],
 install the text segmentation library [jieba] via `pip`, and the plugin will
@@ -206,7 +205,7 @@ The following configuration options are available:
 
 <!-- md:option search.jieba_dict -->
 
-:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
+:   <!-- md:default _none_ --> This option allows for specifying
     a [custom dictionary] to be used by [jieba] for segmenting text, replacing
     the default dictionary:
 
@@ -223,7 +222,7 @@ The following configuration options are available:
 
 <!-- md:option search.jieba_dict_user -->
 
-:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
+:   <!-- md:default _none_ --> This option allows for specifying
     an additional [user dictionary] to be used by [jieba] for segmenting text, 
     augmenting the default dictionary:
 
@@ -236,7 +235,6 @@ The following configuration options are available:
     User dictionaries can be used for tuning the segmenter to preserve
     technical terms.
 
-  [Chinese language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
   [chinese search]: ../blog/posts/chinese-search-support.md
   [jieba]: https://pypi.org/project/jieba/
   [built-in search plugin]: #built-in-search-plugin
@@ -247,9 +245,9 @@ The following configuration options are available:
 
 ### Search suggestions
 
-[:octicons-tag-24: 7.2.0][Search suggestions support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+<!-- md:version 7.2.0 --> ·
+<!-- md:flag feature --> ·
+<!-- md:flag experimental -->
 
 When search suggestions are enabled, the search will display the likeliest
 completion for the last word which can be accepted with the ++arrow-right++ key.
@@ -264,14 +262,13 @@ theme:
 Searching for [:octicons-search-24: search su][Search suggestions example]
 yields ^^search suggestions^^ as a suggestion.
 
-  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [Search suggestions example]: ?q=search+su
 
 ### Search highlighting
 
-[:octicons-tag-24: 7.2.0][Search highlighting support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+<!-- md:version 7.2.0 --> ·
+<!-- md:flag feature --> ·
+<!-- md:flag experimental -->
 
 When search highlighting is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -286,13 +283,12 @@ theme:
 Searching for [:octicons-search-24: code blocks][Search highlighting example]
 highlights all occurrences of both terms.
 
-  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [Search highlighting example]: ../reference/code-blocks.md?h=code+blocks
 
 ### Search sharing
 
-[:octicons-tag-24: 7.2.0][Search sharing support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 7.2.0 --> ·
+<!-- md:flag feature -->
 
 When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -307,13 +303,12 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-
 ## Usage
 
 ### Search boosting
 
-[:octicons-tag-24: 8.3.0][boost support]
+<!-- md:version 8.3.0 --> ·
+<!-- md:flag property -->
 
 Pages can be boosted in search with the front matter `search.boost` property,
 which will make them rank higher. Add the following lines at the top of a
@@ -350,8 +345,9 @@ Markdown file:
 
 ### Search exclusion
 
-[:octicons-tag-24: 9.0.0][exclusion support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.0.0 --> ·
+<!-- md:flag property --> ·
+<!-- md:flag experimental -->
 
 Pages can be excluded from search with the front matter `search.exclude`
 property, removing them from the index. Add the following lines at the top of a 

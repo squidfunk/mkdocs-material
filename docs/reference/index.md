@@ -53,7 +53,7 @@ The following configuration options are available:
 
 <!-- md:option meta.meta_file -->
 
-:   :octicons-milestone-24: Default: `**/.meta.yml` – This option specifies the
+:   <!-- md:default `**/.meta.yml` --> This option specifies the
     name of the meta files that the plugin should look for. The default setting
     assumes that meta files are called `.meta.yml`:
 

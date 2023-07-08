@@ -11,8 +11,8 @@ support for many of its features.
 
 ### Built-in offline plugin
 
-[:octicons-tag-24: 9.0.0][offline support] ·
-:octicons-cpu-24: Plugin
+<!-- md:version 9.0.0 --> ·
+<!-- md:flag plugin -->
 
 The built-in offline plugin makes sure that the [site search] works when you
 distribute the contents of your [site directory] as a download. Simply add
@@ -31,7 +31,7 @@ The following configuration options are available:
 
 <!-- md:option offline.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to switch
     the plugin off, e.g. for local builds, use an [environment variable]:
 

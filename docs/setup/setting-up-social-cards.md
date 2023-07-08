@@ -36,9 +36,9 @@ Social card of our [formatting] reference
 
 ### Built-in social plugin
 
-[:octicons-tag-24: 8.5.0][Social cards support] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 --> ·
+<!-- md:flag plugin --> ·
+<!-- md:flag experimental -->
 
 The built-in social plugin automatically generate a custom preview image for 
 each page. Install all [dependencies for image processing][^1] and add the 
@@ -70,7 +70,7 @@ The following configuration options are available:
 
 <!-- md:option social.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
     local builds, you can use an [environment variable]:
 
@@ -82,7 +82,7 @@ The following configuration options are available:
 
 <!-- md:option social.concurrency -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24: 
     Default: _number of CPUs_ – How many CPUs the plugin is allowed to use when
     generating social cards. With more CPUs, the plugin can do more work in the
     same time, thus complete generation faster. Concurrent processing can be
@@ -94,7 +94,6 @@ The following configuration options are available:
           concurrency: 1
     ```
 
-  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [dependencies for image processing]: dependencies/image-processing.md
   [Puppeteer]: https://github.com/puppeteer/puppeteer
@@ -107,7 +106,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     to generate social card images. If you want to switch the plugin off, e.g.
     for local builds, you can use an [environment variable]:
 
@@ -119,7 +118,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_dir -->
 
-:   :octicons-milestone-24: Default: `assets/images/social` – This option
+:   <!-- md:default `assets/images/social` --> This option
     specifies where the generated social cards will be stored. While it's
     usually not necessary to change this option, change it with:
 
@@ -133,7 +132,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_color --> – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
 
-:   :octicons-milestone-24: Default: [`theme.palette.primary`][primary color] – 
+:   <!-- md:default [`theme.palette.primary`][primary color] --> 
     This option specifies the colors for the background `fill` and foreground
     `text` when generating the social card:
 
@@ -147,7 +146,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_font --> – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
 
-:   :octicons-milestone-24: Default: [`theme.font.text`][font] – This option
+:   <!-- md:default [`theme.font.text`][font] --> This option
     specifies which font to use for rendering the social card, which can be
     any font hosted on [Google Fonts]:
 
@@ -161,7 +160,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_layout_dir -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: _none_ – This option specifies where the social plugin should try
     to resolve [custom layouts] from, taking precedence over the included
     layouts:
@@ -174,7 +173,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_layout --> :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `default` – Layout specification the social card should use. The
     plugin includes the following layouts which make use of the [color palette]
     and [font]:
@@ -252,7 +251,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_layout_options -->
 
-:   [:octicons-tag-24: 9.1.10][Layout options support] · :octicons-milestone-24:
+:   <!-- md:version 9.1.10 --> · :octicons-milestone-24:
     Default: _none_ – This option allows to set [parameters] as provided by
     the layout specification. For [custom layouts], this key can be used to
     provide layout-specific options, making layouts entirely configurable.
@@ -261,7 +260,7 @@ The following configuration options are available for card generation:
 
     All [`default`][default layouts] layouts expose the following parameters:
 
-    [`background_color`](#+social.cards_layout_options.background_color){ #+social.cards_layout_options.background_color }
+    <!-- md:option social.cards_layout_options.background_color -->
 
     :   Set a background color, which can be a [CSS color keyword], or a 3, 4, 6
         or 8 letter HEX color code. Alpha channels are supported as well:
@@ -273,9 +272,9 @@ The following configuration options are available for card generation:
                 background_color: "#0FF1CE"
         ```
 
-    [`background_image`](#+social.cards_layout_options.background_image){ #+social.cards_layout_options.background_image }
+    <!-- md:option social.cards_layout_options.background_image -->
 
-    :   [:octicons-tag-24: insiders-4.33.0][Insiders] – Set a background image. 
+    :   <!-- md:version insiders-4.33.0 --> – Set a background image. 
         If a `background_color` is set, like for the
         [`default`][default layouts] layouts, the image is tinted (overlayed)
         with the color. Thus, the background color must be (partially)
@@ -291,7 +290,7 @@ The following configuration options are available for card generation:
 
         The path of the image must be defined relative to the project root.
 
-    [`color`](#+social.cards_layout_options.color){ #+social.cards_layout_options.color }
+    <!-- md:option social.cards_layout_options.color -->
 
     :   Set a foreground color, which can be a [CSS color keyword], or a 3, 4, 6
         or 8 letter HEX color code. The color is primarily used to tint text and
@@ -304,7 +303,7 @@ The following configuration options are available for card generation:
                 color: "#0FF1CE"
         ```
 
-    [`font_family`](#+social.cards_layout_options.font_family){ #+social.cards_layout_options.font_family }
+    <!-- md:option social.cards_layout_options.font_family -->
 
     :   Set a font family. This overrides the [font] that is set as part of the
         theme configuration. The [built-in social plugin] will automatically
@@ -319,7 +318,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option privacy.cards_include -->
 
-:   [:octicons-tag-24: insiders-4.35.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.35.0 --> · :octicons-milestone-24:
     Default: _none_ – This option allows to only generate social cards for
     certain subsections of your documentation, e.g. to generate different
     cards for different subfolders with multiple instances of the plugin:
@@ -333,7 +332,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option privacy.cards_exclude -->
 
-:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
+:   <!-- md:default _none_ --> This option allows to exclude
     certain subsections of your documentation from generating social cards:
 
     ``` yaml
@@ -358,7 +357,6 @@ The following configuration options are available for card generation:
   [parameters]: #parameters
   [default layouts]: #+social.cards_layout
   [CSS color keyword]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
-  [Layout options support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.1.10
 
 #### Debugging
 
@@ -366,7 +364,7 @@ The following configuration options are available for debugging:
 
 <!-- md:option social.debug -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `false` – This option enables a special debug mode, which renders
     each layer with an outline and its `x` and `y` offset in order to understand
     how the layout is composed, and optionally renders a grid for easier
@@ -391,7 +389,7 @@ The following configuration options are available for debugging:
 
 <!-- md:option social.debug_on_build -->
 
-:   [:octicons-tag-24: insiders-4.34.1][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.34.1 --> · :octicons-milestone-24:
     Default: `false` – Whether debug mode should be automatically disabled
     [when building your site] with `mkdocs build`. It can be changed with:
 
@@ -407,7 +405,7 @@ The following configuration options are available for debugging:
 
 <!-- md:option social.debug_grid -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `true` – This option enables the rendering of a dot grid when
     [`debug`][debug] is enabled (see screenshot above). The grid can be switched
     off with:
@@ -420,7 +418,7 @@ The following configuration options are available for debugging:
 
 <!-- md:option social.debug_grid_step -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `32` – This option specifies the step size of the grid in pixels,
     if enabled, which can be used to align elements. It can be changed with:
 
@@ -432,7 +430,7 @@ The following configuration options are available for debugging:
 
 <!-- md:option social.debug_color -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `grey` – This option sets the color of the layer outlines and
     the grid which are rendered when [`debug`][debug] is enabled. It can be
     changed with:
@@ -457,7 +455,7 @@ The following configuration options are available for caching:
 
 <!-- md:option social.cache -->
 
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: `true` – Whether the plugin queries its cache for an existing
     artifact before starting a generation job. It's normally not necessary to
     change this setting, except for when debugging the plugin itself. Caching
@@ -471,7 +469,7 @@ The following configuration options are available for caching:
 
 <!-- md:option social.cache_dir -->
 
-:   :octicons-milestone-24: Default: `.cache/plugins/social` – This option
+:   <!-- md:default `.cache/plugins/social` --> This option
     specifies the file system location of the plugin's cache. It's normally not
     necessary to change this setting, except for when debugging the plugin
     itself. The cache directory can be changed with:
@@ -548,8 +546,9 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
 
 ### Changing the layout
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag property --> ·
+<!-- md:flag experimental -->
 
 If you want to use a different layout for a single page (e.g. your landing
 page), you can use the `social` front matter property together with the
@@ -573,8 +572,9 @@ the [built-in meta plugin].
 
 ### Parametrizing the layout
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag property --> ·
+<!-- md:flag experimental -->
 
 Besides changing the entire layout, you can override all options that a layout
 exposes. This means you can parametrize social cards with custom front matter
@@ -599,8 +599,9 @@ the [built-in meta plugin].
 
 ### Disabling social cards
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag property --> ·
+<!-- md:flag experimental -->
 
 If you wish to disable social cards for a page, simply add the following to the
 front matter of the Markdown document:
@@ -617,9 +618,9 @@ social:
 
 ## Customization
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.33.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
+<!-- md:flag experimental -->
 
 [Insiders] ships a ground up rewrite of the [built-in social plugin] and
 introduces a brand new layout system based on a combination of YAML and
@@ -731,8 +732,8 @@ useful for alignment and composition.
 
 #### Origin
 
-[:octicons-tag-24: insiders-4.35.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.35.0 --> ·
+<!-- md:flag experimental -->
 
 The `origin` for the `x` and `y` values can be changed, so that the layer is
 aligned to one of the edges or corners of the layout, e.g., to the bottom right

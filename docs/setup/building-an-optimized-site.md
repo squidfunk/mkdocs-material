@@ -36,7 +36,7 @@ The following configuration options are available:
 
 <!-- md:option optimize.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
     local builds, you can use an [environment variable]:
 
@@ -48,7 +48,7 @@ The following configuration options are available:
 
 <!-- md:option optimize.concurrency -->
 
-:   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
+:   <!-- md:default _number of CPUs_ --> This option specifies
     how many CPUs the plugin is allowed to use when optimizing media files.
     With more CPUs, the plugin can do more work in the same time, thus complete
     optimization faster. Concurrent processing can be disabled with:
@@ -70,7 +70,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_png -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin should optimize PNG files using [pngquant], which must be
     installed on the system. PNG optimization can be disabled with:
 
@@ -82,7 +82,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_png_speed -->
 
-:   :octicons-milestone-24: Default: `4` of `[1,10]` – This option specifies the
+:   <!-- md:default `4` of `[1,10]` --> This option specifies the
     speed/quality tradeoff that [pngquant] applies when compressing. The lower
     the number, the more time will be spent optimizing:
 
@@ -106,7 +106,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_png_strip -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     [pngquant] should remove all non-optional metadata that is not necessary
     for rendering images in a browser:
 
@@ -118,7 +118,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_jpg -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin should optimize JPG files using [Pillow], a Python image
     processing library. JPG optimization can be disabled with:
 
@@ -130,7 +130,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_jpg_quality -->
 
-:   :octicons-milestone-24: Default: `60` of `[0,100]` – This option specifies
+:   <!-- md:default `60` of `[0,100]` --> This option specifies
     the image quality that [Pillow] uses when compressing. If the images look
     blurry, it's a good idea to tune and change this setting:
 
@@ -142,7 +142,7 @@ The following configuration options are available for optimization:
 
 <!-- md:option optimize.optimize_jpg_progressive -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     [Pillow] should use [progressive encoding] (faster rendering) when
     compressing JPGs. Progressive encoding can be disabled with:
 
@@ -171,7 +171,7 @@ The following configuration options are available for caching:
 
 <!-- md:option optimize.cache -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin queries its cache for an existing artifact before starting an
     optimization job. It's normally not necessary to change this setting,
     except for when debugging the plugin itself. Caching can be disabled with:
@@ -184,7 +184,7 @@ The following configuration options are available for caching:
 
 <!-- md:option optimize.cache_dir -->
 
-:   :octicons-milestone-24: Default: `.cache/plugins/optimize` – This option
+:   <!-- md:default `.cache/plugins/optimize` --> This option
     specifies the file system location of the plugin's cache. It's normally not
     necessary to change this setting, except for when debugging the plugin
     itself. The cache directory can be changed with:

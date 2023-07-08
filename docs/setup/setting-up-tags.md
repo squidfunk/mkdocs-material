@@ -11,8 +11,8 @@ can help to discover relevant information faster.
 
 ### Built-in tags plugin
 
-[:octicons-tag-24: 8.2.0][Tags support] ·
-:octicons-cpu-24: Plugin
+<!-- md:version 8.2.0 --> ·
+<!-- md:flag plugin -->
 
 The built-in tags plugin adds the ability to categorize any page with tags
 as part of the front matter of the page. In order to add support for tags, add
@@ -27,7 +27,7 @@ The following configuration options are available:
 
 <!-- md:option tags.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
     local builds, you can use an [environment variable]:
 
@@ -39,7 +39,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_file -->
 
-:   :octicons-milestone-24: Default: _none_ – This option specifies which page
+:   <!-- md:default _none_ --> This option specifies which page
     should be used to render the tags index. See the section on [adding a tags 
     index][tags index] for more information. If this option is specified, tags
     become clickable, pointing to the corresponding section in the tags index:
@@ -56,7 +56,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_extra_files -->
 
-:   [:octicons-tag-24: insiders-4.20.0][Insiders] · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.20.0 --> · :octicons-milestone-24: 
     Default: _none_ – This option specifies additional pages, i.e. to render
     subsets of the [tags index], in order to provide scoped tags indexes for 
     specific sections:
@@ -95,7 +95,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_slugify -->
 
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
     Default: `headerid.slugify` – This option specifies which function to use for 
     generating URL-compatible slugs from tags. [Python Markdown Extensions] 
     includes several Unicode-aware slug functions which are a good choice for 
@@ -121,7 +121,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_slugify_separator -->
 
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
     Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
     be changed to any string:
 
@@ -133,7 +133,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_compare -->
 
-:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.26.2 --> · :octicons-milestone-24:
     Default: `None` – This option specifies which function to use when
     comparing tag values for sorting. If you wish to compare tags irregardless
     of casing, use:
@@ -149,7 +149,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_compare_reverse -->
 
-:   [:octicons-tag-24: insiders-4.26.2][Insiders] · :octicons-milestone-24:
+:   <!-- md:version insiders-4.26.2 --> · :octicons-milestone-24:
     Default: `false` – This option specifies whether tags are sorted in reverse
     order. It is mainly provided for completeness. To change direction, use:
 
@@ -161,7 +161,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_allowed -->
 
-:   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
     Default: _none_ – This option allows the author to define explicitly which
     tags are allowed to be used on pages. If this setting is omitted, the
     [built-in tags plugin] won't check tag names. Use this option to define a
@@ -176,16 +176,14 @@ The following configuration options are available:
             - CSS
     ```
 
-  [Tags support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-  [Insiders]: ../insiders/index.md
   [tag identifiers]: #tag-icons-and-identifiers
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
 ### Tag icons and identifiers
 
-[:octicons-tag-24: 8.5.0][Tag icons support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 --> ·
+<!-- md:flag experimental -->
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
 Before assigning icons to tags, associate each tag with a unique identifier,
@@ -259,7 +257,6 @@ setting:
         CSS: css
     ```
 
-  [Tag icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
   [custom icon]: changing-the-logo-and-icons.md#additional-icons
   [icon search]: ../reference/icons-emojis.md#search
 

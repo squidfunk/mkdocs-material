@@ -11,7 +11,7 @@ reference for which features they need to be enabled.
 
 ### Abbreviations
 
-[:octicons-tag-24: 1.0.0][Abbreviations support] ·
+<!-- md:version 1.0.0 --> ·
 [:octicons-workflow-24: Extension][Abbreviations]
 
 The [Abbreviations] extension adds the ability to add a small tooltip to an
@@ -29,13 +29,12 @@ No configuration options are available. See reference for usage:
 - [Adding a glossary]
 
   [Abbreviations]: https://python-markdown.github.io/extensions/abbreviations/
-  [Abbreviations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [Adding abbreviations]: ../../reference/tooltips.md#adding-abbreviations
   [Adding a glossary]: ../../reference/tooltips.md#adding-a-glossary
 
 ### Admonition
 
-[:octicons-tag-24: 0.1.0][Admonition support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Admonition]
 
 The [Admonition] extension adds support for admonitions, more commonly known as 
@@ -55,7 +54,6 @@ No configuration options are available. See reference for usage:
 - [Supported types]
 
   [Admonition]: https://python-markdown.github.io/extensions/admonition/
-  [Admonition support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Adding admonitions]: ../../reference/admonitions.md#usage
   [Changing the title]: ../../reference/admonitions.md#changing-the-title
   [Removing the title]: ../../reference/admonitions.md#removing-the-title
@@ -63,7 +61,7 @@ No configuration options are available. See reference for usage:
 
 ### Attribute Lists
 
-[:octicons-tag-24: 0.1.0][Attribute Lists support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Attribute Lists]
 
 The [Attribute Lists] extension allows to add HTML attributes and CSS classes
@@ -87,7 +85,6 @@ No configuration options are available. See reference for usage:
 - [Image lazy-loading]
 
   [Attribute Lists]: https://python-markdown.github.io/extensions/attr_list/
-  [Attribute Lists support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Attribute Lists limitations]: https://python-markdown.github.io/extensions/attr_list/#limitations
   [Using grids]: ../../reference/grids.md#using-grids
   [Adding buttons]: ../../reference/buttons.md#adding-buttons
@@ -99,7 +96,7 @@ No configuration options are available. See reference for usage:
 
 ### Definition Lists
 
-[:octicons-tag-24: 1.1.0][Definition Lists support] ·
+<!-- md:version 1.1.0 --> ·
 [:octicons-workflow-24: Extension][Definition Lists]
 
 The [Definition Lists] extension adds the ability to add definition lists (more
@@ -116,13 +113,12 @@ No configuration options are available. See reference for usage:
 - [Using definition lists]
 
   [Definition Lists]: https://python-markdown.github.io/extensions/definition_lists/
-  [Definition Lists support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.1.0
   [description lists]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dl
   [Using definition lists]: ../../reference/lists.md#using-definition-lists
 
 ### Footnotes
 
-[:octicons-tag-24: 1.0.0][Footnotes support] ·
+<!-- md:version 1.0.0 --> ·
 [:octicons-workflow-24: Extension][Footnotes]
 
 The [Footnotes] extension allows to define inline footnotes, which are then
@@ -139,13 +135,12 @@ No configuration options are supported. See reference for usage:
 - [Adding footnote content]
 
   [Footnotes]: https://python-markdown.github.io/extensions/footnotes/
-  [Footnotes support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
   [Adding footnote references]: ../../reference/footnotes.md#adding-footnote-references
   [Adding footnote content]: ../../reference/footnotes.md#adding-footnote-content
 
 ### Markdown in HTML
 
-[:octicons-tag-24: 0.1.0][Markdown in HTML support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Markdown in HTML]
 
 The [Markdown in HTML] extension allows for writing Markdown inside of HTML,
@@ -170,14 +165,13 @@ No configuration options are available. See reference for usage:
 - [Image captions]
 
   [Markdown in HTML]: https://python-markdown.github.io/extensions/md_in_html/
-  [Markdown in HTML support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Using annotations]: ../../reference/annotations.md#usage
   [Using grids]: ../../reference/grids.md#usage
   [Image captions]: ../../reference/images.md#image-captions
 
 ### Table of Contents
 
-[:octicons-tag-24: 0.1.0][Table of Contents support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Table of Contents]
 
 The [Table of Contents] extension automatically generates a table of contents
@@ -194,11 +188,10 @@ The following configuration options are supported:
 
 <!-- md:option toc.title -->
 
-:   [:octicons-tag-24: 7.3.5][title support] ·
-    :octicons-milestone-24: Default: _automatically set_ – This option sets the
-    title of the table of contents in the right navigation sidebar, which is
-    normally automatically sourced from the translations for the [site language]
-    as set in `mkdocs.yml`:
+:   <!-- md:version 7.3.5 --> · · <!-- md:default _automatically set_ --> –
+    This option sets the title of the table of contents in the right navigation
+    sidebar, which is normally automatically sourced from the translations for
+    the [site language] as set in `mkdocs.yml`:
 
     ``` yaml
     markdown_extensions:
@@ -208,7 +201,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.permalink -->
 
-:   :octicons-milestone-24: Default: `false` – This option adds an anchor link
+:   <!-- md:default `false` --> This option adds an anchor link
     containing the paragraph symbol `¶` or another custom symbol at the end of
     each headline, exactly like on the page you're currently viewing, which
     Material for MkDocs will make appear on hover:
@@ -231,7 +224,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.permalink_title -->
 
-:   :octicons-milestone-24: Default: `Permanent link` – This option sets the
+:   <!-- md:default `Permanent link` --> This option sets the
     title of the anchor link which is shown on hover and read by screen readers.
     For accessibility reasons, it might be beneficial to change it to a more 
     discernable name, stating that the anchor links to the section itself:
@@ -244,7 +237,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.slugify -->
 
-:   :octicons-milestone-24: Default: `headerid.slugify` – This option allows for
+:   <!-- md:default `headerid.slugify` --> This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
     like for example those from [Python Markdown Extensions][Slugs]:
@@ -269,7 +262,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.toc_depth -->
 
-:   :octicons-milestone-24: Default: `6` – Define the range of levels to be
+:   <!-- md:default `6` --> Define the range of levels to be
     included in the table of contents. This may be useful for project
     documentation with deeply structured headings to decrease the length of the
     table of contents, or to remove the table of contents altogether:
@@ -302,7 +295,7 @@ them at your own risk.
 
 ### Tables
 
-[:octicons-tag-24: 0.1.0][Tables support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Tables]
 
 The [Tables] extension adds the ability to create tables in Markdown by using a 
@@ -320,7 +313,6 @@ No configuration options are available. See reference for usage:
 - [Column alignment]
 
   [Tables]: https://python-markdown.github.io/extensions/tables/
-  [Tables support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Using data tables]: ../../reference/data-tables.md#usage
   [Column alignment]: ../../reference/data-tables.md#column-alignment
 
@@ -332,7 +324,7 @@ should be considered.
 
 ### Fenced Code Blocks
 
-[:octicons-tag-24: 0.1.0][Fenced Code Blocks support] ·
+<!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Fenced Code Blocks]
 
 Superseded by [SuperFences]. This extension might still work, but the
@@ -340,7 +332,6 @@ Superseded by [SuperFences]. This extension might still work, but the
 nesting, and is therefore recommended.
 
   [Fenced Code Blocks]: https://python-markdown.github.io/extensions/fenced_code_blocks/
-  [Fenced Code Blocks support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [SuperFences]: https://facelessuser.github.io/pymdown-extensions/extensions/superfences/
 
 ### CodeHilite
@@ -349,7 +340,7 @@ nesting, and is therefore recommended.
 [:octicons-workflow-24: Extension][CodeHilite]
 
 Superseded by [Highlight]. Support for CodeHilite was dropped in
-:octicons-tag-24: 6.0.0, as [Highlight] has a better integration with other 
+<!-- md:version 6.0.0 -->, as [Highlight] has a better integration with other 
 essential extensions like [SuperFences] and [InlineHilite].
 
   [CodeHilite]: https://python-markdown.github.io/extensions/code_hilite/

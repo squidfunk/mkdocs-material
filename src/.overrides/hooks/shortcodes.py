@@ -44,6 +44,7 @@ def on_page_markdown(
         elif type == "sponsors":     return sponsors(page, files)
         elif type == "flag":         return flag(args)
         elif type == "option":       return option(args)
+        elif type == "default":      return default(args)
 
         # Otherwise, raise an error
         raise RuntimeError(f"Unknown shortcode: {type}")
@@ -86,8 +87,13 @@ def flag(type: str):
     if   type == "experimental": return ":octicons-beaker-24: Experimental"
     elif type == "feature":      return ":octicons-unlock-24: Feature flag"
     elif type == "plugin":       return ":octicons-cpu-24: Plugin"
+    elif type == "property":     return ":octicons-book-24: Property"
+
+# Create a default value
+def default(args: str):
+    return f":octicons-milestone-24: Default: {args}"
 
 # Create a linkable option
 def option(type: str):
-    _, name = re.split(r"[.:]", type, 1)
+    _, *_, name = re.split(r"[.:]", type)
     return f"[`{name}`](#+{type}){{ #+{type} }}"

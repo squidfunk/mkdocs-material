@@ -10,7 +10,7 @@ static site, including stars and forks. Furthermore, the
 ### Repository
 
 <!-- md:version 0.1.0 --> ·
-:octicons-milestone-24: Default: _none_
+<!-- md:default _none_ -->
 
 In order to display a link to the repository of your project as part of your
 documentation, set [`repo_url`][repo_url] in `mkdocs.yml` to the public URL of
@@ -40,8 +40,7 @@ GitHub repositories also include the tag of the latest release.[^1]
 #### Repository name
 
 <!-- md:version 0.1.0 --> ·
-:octicons-milestone-24: Default: _automatically set to_ `GitHub`, `GitLab` _or_
-`Bitbucket`
+<!-- md:default _automatically set to_ `GitHub`, `GitLab` _or_ `Bitbucket` -->
 
 MkDocs will infer the source provider by examining the URL and try to set the
 _repository name_ automatically. If you wish to customize the name, set
@@ -190,7 +189,7 @@ The following configuration options are supported:
 
 <!-- md:option git-revision-date-localized.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to switch
     the plugin off, e.g. for local builds, use an [environment variable]:
 
@@ -202,7 +201,7 @@ The following configuration options are supported:
 
 <!-- md:option git-revision-date-localized.type -->
 
-:   :octicons-milestone-24: Default: `date` – The format of the date to be
+:   <!-- md:default `date` --> The format of the date to be
     displayed. Valid values are `date`, `datetime`, `iso_date`, `iso_datetime`
     and `timeago`:
 
@@ -214,7 +213,7 @@ The following configuration options are supported:
 
 <!-- md:option git-revision-date-localized.enable_creation_date -->
 
-:   :octicons-milestone-24: Default: `false` – Enables the display of the
+:   <!-- md:default `false` --> Enables the display of the
     creation date of the file associated with the page next to the last updated
     date at the bottom of the page:
 
@@ -226,7 +225,7 @@ The following configuration options are supported:
 
 <!-- md:option git-revision-date-localized.fallback_to_build_date -->
 
-:   :octicons-milestone-24: Default: `false` – Enables falling back to
+:   <!-- md:default `false` --> Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
     the build is performed outside of a git repository:
 
@@ -276,7 +275,7 @@ The following configuration options are supported:
 
 <!-- md:option git-committers.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to switch
     the plugin off, e.g. for local builds, use an [environment variable]:
 
@@ -288,7 +287,7 @@ The following configuration options are supported:
 
 <!-- md:option git-committers.repository -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     This property must be set to the slug of the repository that contains your
     documentation. The slug must follow the pattern `<username>/<repository>`:
 
@@ -300,7 +299,7 @@ The following configuration options are supported:
 
 <!-- md:option git-committers.branch -->
 
-:   :octicons-milestone-24: Default: `master` – This property should be set to
+:   <!-- md:default `master` --> This property should be set to
     the branch of the repository from which to retrieve the contributors. To use the `main` branch:
 
     ``` yaml

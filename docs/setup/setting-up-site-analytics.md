@@ -13,8 +13,8 @@ MkDocs natively integrates with [Google Analytics] and offers a customizable
 
 ### Google Analytics
 
-[:octicons-tag-24: 7.1.8][Google Analytics support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 7.1.8 --> ·
+<!-- md:default _none_ -->
 
 Material for MkDocs integrates with both, Google Analytics 4 and the now phasing
 out Universal Analytics. Depending on the given property prefix, add the
@@ -37,8 +37,6 @@ following lines to `mkdocs.yml`:
         provider: google
         property: UA-XXXXXXXX-X
     ```
-
-  [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
 
 ??? question "How to measure site search usage?"
 
@@ -66,8 +64,8 @@ following lines to `mkdocs.yml`:
 
 ### Was this page helpful?
 
-[:octicons-tag-24: 8.4.0][Was this page helpful? support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 8.4.0 --> ·
+<!-- md:default _none_ -->
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.
@@ -166,7 +164,7 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.icon -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     This property must point to a valid icon path referencing [any icon bundled
     with the theme][custom icons], or the build will not succeed. Some popular
     combinations:
@@ -177,13 +175,13 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.name -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     The value of this property is shown on user interaction (i.e. keyboard focus
     or mouse hover), explaining the meaning of the rating behind the icon.
 
 <!-- md:option analytics.feedback.ratings.data -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     The value of this property is sent as a data value with the custom event
     that is transmitted to Google Analytics[^2] (or any custom integration).
 
@@ -192,7 +190,7 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.note -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
     The value of this property is shown after the user selected the rating.
     It may contain arbitrary HTML tags, which is especially useful to ask the
     user to provide more detailed feedback for the current page through a form.

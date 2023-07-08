@@ -11,7 +11,7 @@ documentation remain untouched.
 
 ### Versioning
 
-[:octicons-tag-24: 7.0.0][Versioning support] ·
+<!-- md:version 7.0.0 --> ·
 [:octicons-package-24: Utility][mike]
 
 [mike] makes it easy to deploy multiple versions of your project documentation.
@@ -51,14 +51,13 @@ Check out the versioning example to see it in action –
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-  [Versioning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [Version selector preview]: ../assets/screenshots/versioning.png
   [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
 ### Version warning
 
-[:octicons-tag-24: 8.0.0][Version warning support] ·
+<!-- md:version 8.0.0 --> ·
 :octicons-file-symlink-file-24: Customization
 
 If you're using versioning, you might want to display a warning when the user
@@ -113,7 +112,6 @@ extra:
 Make sure one alias matches the [default version], as this is where users are
 redirected to.
 
-  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
