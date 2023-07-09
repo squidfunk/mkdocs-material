@@ -227,6 +227,21 @@ The following configuration options are available for card generation:
 
         [![Layout default invert]][Layout default invert]
 
+    === "`default/only/image`"
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout: default/only/image
+              cards_layout_options:
+                background_image: layouts/background.png
+
+        ```
+
+        This layout will only show the given background image and scale to fit:
+
+        [![Layer background image]][Layer background image]
+
     All [`default`][default layouts] layouts make use of the following
     [template variables]:
 
@@ -500,7 +515,8 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
     ``` yaml
     plugins:
       - social:
-          cards_font: Noto Sans SC
+          cards_layout_options:
+            font_family: Noto Sans SC
     ```
 
 === "Chinese (Traditional)"
@@ -508,7 +524,8 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
     ``` yaml
     plugins:
       - social:
-          cards_font: Noto Sans TC
+          cards_layout_options:
+            font_family: Noto Sans TC
     ```
 
 === "Japanese"
@@ -516,7 +533,8 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
     ``` yaml
     plugins:
       - social:
-          cards_font: Noto Sans JP
+          cards_layout_options:
+            font_family: Noto Sans JP
     ```
 
 === "Korean"
@@ -524,8 +542,78 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
     ``` yaml
     plugins:
       - social:
-          cards_font: Noto Sans KR
+          cards_layout_options:
+            font_family: Noto Sans KR
     ```
+
+### Changing the layout
+
+[:octicons-tag-24: insiders-4.37.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+If you want to use a different layout for a single page (e.g. your landing
+page), you can use the `social` front matter property together with the
+[`cards_layout`](#+social.cards_layout) key, exactly as in `mkdocs.yml`:
+
+``` yaml
+---
+social:
+  cards_layout: custom
+---
+
+# Headline
+...
+```
+
+You can apply those changes for entire subtrees of your documentation, e.g.,
+to generate different social cards for your blog and API reference, by using
+the [built-in meta plugin].
+
+  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+
+### Parametrizing the layout
+
+[:octicons-tag-24: insiders-4.37.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+Besides changing the entire layout, you can override all options that a layout
+exposes. This means you can parametrize social cards with custom front matter
+properties, such as `tags`, `date`, `author` or anything you can think of.
+Simply define [`cards_layout_options`](#+social.cards_layout_options):
+
+``` yaml
+---
+social:
+  cards_layout_options:
+    background_color: blue # Change background color
+    background_image: null # Remove background image
+---
+
+# Headline
+...
+```
+
+You can apply those changes for entire subtrees of your documentation, e.g.,
+to generate different social cards for your blog and API reference, by using
+the [built-in meta plugin].
+
+### Disabling social cards
+
+[:octicons-tag-24: insiders-4.37.0][Insiders] ·
+:octicons-beaker-24: Experimental
+
+If you wish to disable social cards for a page, simply add the following to the
+front matter of the Markdown document:
+
+``` yaml
+---
+social:
+  cards: false
+---
+
+# Headline
+...
+```
 
 ## Customization
 
@@ -696,7 +784,7 @@ backgrounds:
     size: { width: 1200, height: 630 }
     layers:
       - background:
-          image: layouts/background.jpg
+          image: layouts/background.png
     ```
 
     ![Layer background image]
@@ -707,7 +795,7 @@ backgrounds:
     size: { width: 1200, height: 630 }
     layers:
       - background:
-          image: layouts/background.jpg
+          image: layouts/background.png
           color: "#4051b5ee" # (1)!
     ```
 
@@ -916,6 +1004,49 @@ layers:
 This will add two circles to the background:
 
 ![Layer icon circles]
+
+### Tags
+
+The new [built-in social plugin] gives full flexibility of the meta tags that
+are added to your site, which are necessary to instruct services like Twitter
+or Discord how to display your social card. All default layouts use the following
+set of tags, which you can copy to your layout and adapt:
+
+``` yaml
+definitions:
+
+  - &page_title_with_site_name >-
+    {%- if not page.is_homepage -%}
+      {{ page.meta.get("title", page.title) }} - {{ config.site_name }}
+    {%- else -%}
+      {{ page.meta.get("title", page.title) }}
+    {%- endif -%}
+
+  - &page_description >-
+    {{ page.meta.get("description", config.site_description) or "" }}
+
+tags:
+
+  og:type: website
+  og:title: *page_title_with_site_name
+  og:description: *page_description
+  og:image: "{{ image.url }}"
+  og:image:type: "{{ image.type }}"
+  og:image:width: "{{ image.width }}"
+  og:image:height: "{{ image.height }}"
+  og:url: "{{ page.canonical_url }}"
+
+  twitter:card: summary_large_image
+  twitter.title: *page_title_with_site_name
+  twitter:description: *page_description
+  twitter:image: "{{ image.url }}"
+```
+
+Note that this examples makes use of [YAML anchors] to minify repetition. The
+ `definitions` property is solely intended for the definition on aliases that
+ can then be referenced with anchors.
+
+  [YAML anchors]: https://support.atlassian.com/bitbucket-cloud/docs/yaml-anchors/
 
 __Are you missing something? Please [open a discussion] and let us know!__
 

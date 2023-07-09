@@ -2,6 +2,15 @@
 
 ## Material for MkDocs Insiders
 
+### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
+
+- Added support for overriding social cards settings per page
+- Added new social card `default/only/image` layout
+- Improved resilience of optimize and social plugin
+- Fixed rendering bugs for pruned navigation items
+- Fixed jumping of content tabs anchor links when instant loading is enabled
+- Fixed #5676: Optimize plugin doesn't check for `pngquant`
+
 ### 4.36.1 <small>June 23, 2023</small> { id="4.36.1" }
 
 - Fixed #5618: Date comparison breaking for drafts in blog plugin
