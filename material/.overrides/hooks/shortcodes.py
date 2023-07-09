@@ -44,7 +44,7 @@ def on_page_markdown(
         elif type == "sponsors":     return sponsors(page, files)
         elif type == "flag":         return flag(args)
         elif type == "option":       return option(args)
-        elif type == "default":      return default(args)
+        elif type == "default":      return default(args, page, files)
 
         # Otherwise, raise an error
         raise RuntimeError(f"Unknown shortcode: {type}")
@@ -63,14 +63,19 @@ def on_page_markdown(
 def version(spec: str, page: Page, files: Files):
     file = file = files.get_file_from_path("changelog/index.md")
     icon = ":material-tag-outline:"
+    legend_anchor = "version \"Minimum version\""
     if spec.startswith("insiders-"):
         file = files.get_file_from_path("insiders/changelog.md")
         icon = ":material-tag-heart-outline:"
+        legend_anchor = "version-insiders \"Minimum version\""
 
     # Return link
+    legend = files.get_file_from_path("philosophy.md")
     anchor = spec.replace("insiders-", "")
     return (
-        f"[{icon} {spec}]"
+        f"[{icon}]"
+        f"({legend.url_relative_to(page.file)}#{legend_anchor}) "
+        f"[{spec}]"
         f"({file.url_relative_to(page.file)}#{anchor})"
     )
 
@@ -86,14 +91,16 @@ def sponsors(page: Page, files: Files):
 
 # Create a flag of a specific type
 def flag(type: str):
-    if   type == "experimental": return ":material-flask-outline:"
-    elif type == "feature":      return ":octicons-unlock-24:"
-    elif type == "plugin":       return ":material-floppy:"
+    if   type == "experimental": return "[:material-flask-outline:](# \"Experimental\")"
+    elif type == "feature":      return "[:material-flag:](# \"Feature flag\")"
+    elif type == "plugin":       return "[:material-floppy:](# \"Plugin\")"
     elif type == "property":     return ":octicons-book-24:"
 
 # Create a default value
-def default(args: str):
-    return f":material-water: {args}"
+def default(args: str, page: Page, files: Files):
+    file = files.get_file_from_path("philosophy.md")
+    href = file.url_relative_to(page.file)
+    return f"[:material-water:]({href}#default \"Default value\") {args}"
 
 # Create a linkable option
 def option(type: str):

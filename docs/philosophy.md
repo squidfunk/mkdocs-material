@@ -36,23 +36,23 @@ discusses the [conventions] used in this documentation.
 
 ## Conventions
 
+### Versioning
+
 ### Symbols
 
 This documentation use some symbols for illustration purposes. Before you read
 on, please make sure you've made yourself familiar with the following list of
 conventions:
 
-[:octicons-heart-fill-24:{ .mdx-heart } &nbsp; Insiders][Insiders]{ .mdx-insiders }
+#### :material-tag-outline: Version
 
-:   Some features are not yet available in the community edition, but only as
-    part of the Insiders build of Material for MkDocs. Please consult the 
-    [Insiders] guide to learn how to get access.
+The tag icon in conjunction with a version number denotes when a specific 
+feature or behavior was added. Make sure you're at least on this version
+if you want to use it.
 
-:octicons-tag-24: &nbsp; __{x.x.x}__
+#### :material-tag-heart-outline: Version (Insiders)
 
-:   The tag icon in conjunction with a version number denotes when a specific 
-    feature or behavior was added. Make sure you're at least on this version
-    if you want to use it.
+TBD
 
 :octicons-file-code-24: &nbsp; __{file.ext}__
 
@@ -60,11 +60,10 @@ conventions:
     examples which span multiple files. The file name (or path) always starts
     from the location of `mkdocs.yml`.
 
-:octicons-milestone-24: &nbsp; __Default__: _value_
+#### :material-water: Default
 
-:   Some properties in `mkdocs.yml` have default values for when the author
-    does not explicitly define them. The default value of the property is always
-    included.
+Some properties in `mkdocs.yml` have default values for when the author does not 
+explicitly define them. The default value of the property is always included.
 
 :octicons-unlock-24: &nbsp; __Feature flag__
 
