@@ -86,7 +86,7 @@
     "postcss": "^8.4.25",
     "postcss-dir-pseudo-class": "^8.0.0",
     "postcss-inline-svg": "^6.0.0",
-    "postcss-logical": "5.0.4",
+    "postcss-logical": "7.0.0",
     "postcss-pseudo-is": "^0.3.0",
     "preact": "^10.16.0",
     "rimraf": "^5.0.1",
