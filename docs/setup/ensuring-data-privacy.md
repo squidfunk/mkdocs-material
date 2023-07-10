@@ -128,7 +128,6 @@ When a user first visits your site, a cookie consent form is rendered:
 [![Cookie consent enabled]][Cookie consent enabled]
 
   [Custom cookies]: #custom-cookies
-  [Cookie consent support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [Cookie consent enabled]: ../assets/screenshots/consent.png
 
 #### Change cookie settings

@@ -51,7 +51,6 @@ hosted on a regular server.
     while building documentation for offline usage, as it will automatically
     download all external assets to distribute them with your documentation.
 
-  [offline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
   [use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls

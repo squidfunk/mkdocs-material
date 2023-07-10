@@ -214,7 +214,6 @@ The following properties are available for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
-  [Was this page helpful? support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [feedback widget]: #feedback
   [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png
