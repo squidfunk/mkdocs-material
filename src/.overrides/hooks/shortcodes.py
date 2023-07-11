@@ -94,6 +94,7 @@ def flag(type: str):
     if   type == "experimental": return "[:material-flask-outline:](# \"Experimental\")"
     elif type == "feature":      return "[:material-flag:](# \"Feature flag\")"
     elif type == "plugin":       return "[:material-floppy:](# \"Plugin\")"
+    elif type == "required":     return "[:material-alert:](# \"Required value\")"
     elif type == "property":     return ":octicons-book-24:"
 
 # Create a default value
