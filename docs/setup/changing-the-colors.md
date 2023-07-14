@@ -308,6 +308,29 @@ theme:
         name: Switch to system preference
 ```
 
+??? Example "light / dark mode with primary and secondary colors"
+    Example of having light / dark mode available within your documentation and use your primary and secondary colors
+
+    ```yaml
+    theme:
+      palette:
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: deep purple
+          accent: deep purple
+          toggle:
+            icon: material/brightness-7
+            name: Switch to dark mode
+        # Palette toggle for dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: deep purple
+          accent: deep purple
+          toggle:
+            icon: material/brightness-4
+            name: Switch to light mode
+    ```
+
 1.  You can also define separate settings for [`primary`][palette.primary] and
     [`accent`][palette.accent] per color palette, i.e. different colors for
     light and dark mode.
