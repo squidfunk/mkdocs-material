@@ -380,6 +380,31 @@ def bubble_sort(items):
 
 </div>
 
+
+??? tip "Highlight Multiple Lines"
+    To highlight multiple lines, you can specify a range of line numbers using the format `hl_lines="start-end"`:
+
+    ```` markdown title="Code block with multiple highlighted lines"
+    ``` py linenums="1" hl_lines="3-5"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+    ````
+    <div class="result" markdown>
+      ```py linenums="1" hl_lines="3-5"
+          def bubble_sort(items):
+            for i in range(len(items)):
+                for j in range(len(items) - 1 - i):
+                    if items[j] > items[j + 1]:
+                        items[j], items[j + 1] = items[j + 1], items[j]
+      ```
+    </div>
+
+
+
   [Adding line numbers]: #adding-line-numbers
 
 ### Highlighting inline code blocks
