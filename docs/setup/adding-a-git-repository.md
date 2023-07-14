@@ -167,7 +167,7 @@ links to all [contributors] or [authors] involved.
 #### Document dates
 
 <!-- md:version 4.6.0 --> ·
-[:octicons-cpu-24: Plugin][git-revision-date-localized]
+<!-- md:flag plugin [git-revision-date-localized] -->
 
 The [git-revision-date-localized] plugin adds support for adding the date of
 last update and creation of a document at the bottom of each page. Install it
@@ -245,7 +245,7 @@ them at your own risk.
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.19.0 --> ·
-[:octicons-cpu-24: Plugin][git-committers] ·
+<!-- md:flag plugin [git-committers] --> ·
 <!-- md:flag experimental -->
 
 The [git-committers][^2] plugin renders the GitHub avatars of all contributors,
@@ -321,7 +321,7 @@ them at your own risk.
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.19.0 --> ·
-[:octicons-cpu-24: Plugin][git-authors] ·
+<!-- md:flag plugin [git-authors] --> ·
 <!-- md:flag experimental -->
 
 The [git-authors] plugin is a lightweight alternative to the

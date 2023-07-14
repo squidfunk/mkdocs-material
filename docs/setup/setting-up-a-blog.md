@@ -840,7 +840,7 @@ The following configuration options are available for drafts:
 ### RSS
 
 <!-- md:version 9.2.0b0 --> ·
-[:octicons-cpu-24: Plugin][rss]
+<!-- md:flag plugin [rss] -->
 
 The [built-in blog plugin] integrates seamlessly with the [RSS plugin][rss],
 which provides a simple way to add an RSS feed to your blog (or to your whole 

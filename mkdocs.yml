@@ -87,6 +87,7 @@ plugins:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
+  - typeset
 
 # Hooks
 hooks:
@@ -205,8 +206,20 @@ nav:
       - setup/extensions/index.md
       - Python Markdown: setup/extensions/python-markdown.md
       - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
+  - Plugins:
+    - plugins/index.md
+    - Blog: plugins/blog.md
+    - Info: plugins/info.md
+    - Meta: plugins/meta.md
+    - Offline: plugins/offline.md
+    - Optimize: plugins/optimize.md
+    - Privacy: plugins/privacy.md
+    - Search: plugins/search.md
+    - Social: plugins/social.md
+    - Tags: plugins/tags.md
+    - Typeset: plugins/typeset.md
     - Dependencies:
-      - setup/dependencies/image-processing.md
+      - plugins/dependencies/image-processing.md
   - Reference:
     - reference/index.md
     - Admonitions: reference/admonitions.md

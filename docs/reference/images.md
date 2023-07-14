@@ -32,7 +32,7 @@ See additional configuration options:
 ### Lightbox
 
 <!-- md:version 0.1.0 --> ·
-[:octicons-cpu-24: Plugin][glightbox]
+<!-- md:flag plugin [glightbox] --> ·
 
 If you want to add image zoom functionality to your documentation, the 
 [glightbox] plugin is an excellent choice, as it integrates perfectly

@@ -90,12 +90,16 @@ def sponsors(page: Page, files: Files):
     )
 
 # Create a flag of a specific type
-def flag(type: str):
-    if   type == "experimental": return "[:material-flask-outline:](# \"Experimental\")"
-    elif type == "feature":      return "[:material-flag:](# \"Feature flag\")"
-    elif type == "plugin":       return "[:material-floppy:](# \"Plugin\")"
-    elif type == "required":     return "[:material-alert:](# \"Required value\")"
-    elif type == "property":     return ":octicons-book-24:"
+def flag(args: str):
+    type, *rest = args.split(" ", 1)
+    if   type == "experimental": return f"[:material-flask-outline:](# \"Experimental\")"
+    elif type == "feature":      return f"[:material-flag:](# \"Feature flag\") {rest[0] if rest else ''}"
+    elif type == "plugin":       return f"[:material-floppy:](# \"Plugin\") {rest[0] if rest else ''}"
+    elif type == "required":     return f"[:material-alert:](# \"Required value\")"
+    elif type == "property":     return f":octicons-book-24:"
+    elif type == "deprecated":   return f"[:material-archive-outline:](# \"Deprecated\") {rest[0] if rest else ''}"
+    # elif type == "removed":      return f"[:material-trash-can-outline:](# \"Removed\") {rest[0] if rest else ''}"
+    # @todo: removed should carry a version
 
 # Create a default value
 def default(args: str, page: Page, files: Files):
