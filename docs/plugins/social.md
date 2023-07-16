@@ -5,12 +5,25 @@ icon: material/share-variant
 
 # Built-in social plugin
 
-Material for MkDocs can automatically create beautiful social cards for your 
-documentation, which appear as preview images on social media platforms. You 
+- Talk about the built in social plugin, more specific.
+
+Material for MkDocs can automatically create beautiful social cards for your
+documentation, which appear as preview images on social media platforms. You
 can select from several [pre-designed layouts][default layouts] or create
 custom layouts to match your project's style and branding.
 
   [default layouts]: #cards_layout
+
+## Features
+
+- :material-smart-card: Automatically generate social cards
+- :material-code-tags-check: Automatically add meta tags to pages
+- :material-image-edit-outline: Supports entirely custom layouts
+- :material-layers: Supports multiple instances
+- :material-multicast: Supports concurrency
+- ???
+
+@todo: each feature should be linked to a section in the setup docs.
 
 ## Installation
 
@@ -20,16 +33,16 @@ necessary to install the [dependencies for image processing][^1], if they're
 not already available on your system.
 
   [^1]:
-    The awesome thing about social cards is that they are generated during 
-    build time and directly distributed with your documentation, no external 
-    services involved. While it would technically be simpler to generate 
-    social cards using a web browser and an automation framework like 
-    [Puppeteer], it would add further liabilities to your toolchain, with the 
+    The awesome thing about social cards is that they are generated during
+    build time and directly distributed with your documentation, no external
+    services involved. While it would technically be simpler to generate
+    social cards using a web browser and an automation framework like
+    [Puppeteer], it would add further liabilities to your toolchain, with the
     potential to make build pipelines more complex and resource intense.
 
-    For this reason, Material for MkDocs again follows its core principle of 
-    making things as simple and powerful as possible, providing an easy-to-use 
-    framework for building [custom layouts] using Python image processing 
+    For this reason, Material for MkDocs again follows its core principle of
+    making things as simple and powerful as possible, providing an easy-to-use
+    framework for building [custom layouts] using Python image processing
     libraries.
 
   [dependencies for image processing]: dependencies/image-processing.md
@@ -77,7 +90,7 @@ The following settings are available:
 
 Use this setting to enable or disable the plugin when [building your project].
 If you want to disable the plugin, e.g., for local builds, you can use an
-[environment variable] in `mkdocs.yml`:
+[environment variable][mkdocs.env] in `mkdocs.yml`:
 
 ``` yaml
 plugins:
@@ -88,14 +101,13 @@ plugins:
 This configuration enables the plugin only during continuous integration (CI).
 
   [building your project]: ../creating-your-site.md#building-your-site
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
 
 ---
 
 #### `concurrency`
 
-<!-- md:sponsors --> · 
-<!-- md:version insiders-4.33.0 --> · 
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -123,8 +135,8 @@ The following settings are available for caching:
 
 #### `cache`
 
-<!-- md:sponsors --> · 
-<!-- md:version insiders-4.33.0 --> · 
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -142,7 +154,7 @@ plugins:
 
 #### `cache_dir`
 
-<!-- md:version 8.5.0 --> · 
+<!-- md:version 8.5.0 --> ·
 <!-- md:default `.cache/plugin/social` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -231,7 +243,7 @@ The provided path is resolved from the project directory.
 !!! tip "Where to store custom layouts?"
 
     Our recommendation is to locate the folder outside of the
-    [`docs` directory][docs_dir], to make sure that your [custom layouts] are
+    [`docs` directory][mkdocs.docs_dir], to make sure that your [custom layouts] are
     not copied to the [`site` directory][site_dir] when [building your project],
     e.g., by adhering to the following directory layout:
 
@@ -245,7 +257,6 @@ The provided path is resolved from the project directory.
     ```
 
   [custom layouts]: ../setup/setting-up-social-cards.md#customization
-  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
 
 ---
 
@@ -334,7 +345,7 @@ plugins:
 
 This configuration will enable social card generation for all pages that are
 contained in the `blog` folder and its subfolders inside your [`docs` directory]
-[docs_dir].
+[mkdocs.docs_dir].
 
 ---
 
@@ -356,7 +367,8 @@ plugins:
 ```
 
 This configuration will disable social card generation for all pages that are
-contained in the `changelog` folder inside your [`docs` directory][docs_dir].
+contained in the `changelog` folder inside your
+[`docs` directory][mkdocs.docs_dir].
 
   [primary color]: ../setup/changing-the-colors.md#primary-color
   [accent color]: ../setup/changing-the-colors.md#accent-color
@@ -390,6 +402,8 @@ plugins:
   - social:
       debug: true
 ```
+
+---
 
 #### `debug_on_build`
 

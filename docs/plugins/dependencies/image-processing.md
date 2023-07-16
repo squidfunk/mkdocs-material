@@ -1,3 +1,7 @@
+---
+icon: material/image-plus-outline
+---
+
 # Image processing
 
 Material for MkDocs depends on several libraries to allow for image processing
