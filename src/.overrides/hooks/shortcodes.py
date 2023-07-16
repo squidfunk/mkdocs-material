@@ -96,7 +96,7 @@ def flag(args: str):
     elif type == "feature":      return f"[:material-flag:](# \"Feature flag\") {rest[0] if rest else ''}"
     elif type == "plugin":       return f"[:material-floppy:](# \"Plugin\") {rest[0] if rest else ''}"
     elif type == "required":     return f"[:material-alert:](# \"Required value\")"
-    elif type == "property":     return f":octicons-book-24:"
+    elif type == "metadata":     return f"[:material-list-box-outline:](# \"Metadata\")"
     elif type == "deprecated":   return f"[:material-archive-outline:](# \"Deprecated\") {rest[0] if rest else ''}"
     # elif type == "removed":      return f"[:material-trash-can-outline:](# \"Removed\") {rest[0] if rest else ''}"
     # @todo: removed should carry a version

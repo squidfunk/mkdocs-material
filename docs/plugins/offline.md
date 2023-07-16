@@ -40,6 +40,7 @@ can open your documentation directly from the local file system.
 
   [building your project]: ../creating-your-site.md#building-your-site
   [Fetch API]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+  [iframe-worker]: https://github.com/squidfunk/iframe-worker
 
 ### When to use it
 

@@ -4,8 +4,8 @@ status: new
 
 # Setting up social cards
 
-Material for MkDocs can automatically create beautiful social cards for your 
-documentation, which appear as link previews on social media platforms. You 
+Material for MkDocs can automatically create beautiful social cards for your
+documentation, which appear as link previews on social media platforms. You
 can select from several [pre-designed layouts][default layouts] or create
 [custom layouts] to match your unique style and branding.
 
@@ -40,21 +40,21 @@ Social card of our [formatting] reference
 <!-- md:flag plugin --> ·
 <!-- md:flag experimental -->
 
-The built-in social plugin automatically generate a custom preview image for 
-each page. Install all [dependencies for image processing][^1] and add the 
+The built-in social plugin automatically generate a custom preview image for
+each page. Install all [dependencies for image processing][^1] and add the
 following lines to `mkdocs.yml`:
 
   [^1]:
-    The awesome thing about social cards is that they are generated during 
-    build time and directly distributed with your documentation, no external 
-    services involved. While it would technically be simpler to generate 
-    social cards using a web browser and an automation framework like 
-    [Puppeteer], it would add further liabilities to the toolchain, with the 
+    The awesome thing about social cards is that they are generated during
+    build time and directly distributed with your documentation, no external
+    services involved. While it would technically be simpler to generate
+    social cards using a web browser and an automation framework like
+    [Puppeteer], it would add further liabilities to the toolchain, with the
     potential to make build pipelines more complex and resource intense.
 
-    For this reason, Material for MkDocs again follows its core principle of 
-    making it as simple and powerful as possible, providing an easy-to-use 
-    framework for building [custom layouts] using Python image processing 
+    For this reason, Material for MkDocs again follows its core principle of
+    making it as simple and powerful as possible, providing an easy-to-use
+    framework for building [custom layouts] using Python image processing
     libraries.
 
 ``` yaml
@@ -62,8 +62,8 @@ plugins:
   - social
 ```
 
-> Note that [Insiders] contains a ground up rewrite of the social plugin that 
-> generates images much more efficiently in parallel and allows to build 
+> Note that [Insiders] contains a ground up rewrite of the social plugin that
+> generates images much more efficiently in parallel and allows to build
 > entirely [custom layouts].
 
 The following configuration options are available:
@@ -82,7 +82,7 @@ The following configuration options are available:
 
 <!-- md:option social.concurrency -->
 
-:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.33.0 --> · :octicons-milestone-24:
     Default: _number of CPUs_ – How many CPUs the plugin is allowed to use when
     generating social cards. With more CPUs, the plugin can do more work in the
     same time, thus complete generation faster. Concurrent processing can be
@@ -132,7 +132,7 @@ The following configuration options are available for card generation:
 
 <!-- md:option social.cards_color --> – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
 
-:   <!-- md:default [`theme.palette.primary`][primary color] --> 
+:   <!-- md:default [`theme.palette.primary`][primary color] -->
     This option specifies the colors for the background `fill` and foreground
     `text` when generating the social card:
 
@@ -274,7 +274,7 @@ The following configuration options are available for card generation:
 
     <!-- md:option social.cards_layout_options.background_image -->
 
-    :   <!-- md:version insiders-4.33.0 --> – Set a background image. 
+    :   <!-- md:version insiders-4.33.0 --> – Set a background image.
         If a `background_color` is set, like for the
         [`default`][default layouts] layouts, the image is tinted (overlayed)
         with the color. Thus, the background color must be (partially)
@@ -448,7 +448,7 @@ The following configuration options are available for debugging:
 
 The [built-in social plugin] implements an intelligent caching mechanism,
 ensuring that social cards are only re-generated when they're not contained in
-the cache or their contents change. If any of the variables used in a layout 
+the cache or their contents change. If any of the variables used in a layout
 changes, the plugin will detect it and re-generate the card.
 
 The following configuration options are available for caching:
@@ -491,7 +491,7 @@ The following configuration options are available for caching:
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
-you can set the front matter `title` and `description` properties, which take 
+you can set the front matter `title` and `description` properties, which take
 precedence over the default values.
 
 - [Changing the title]
@@ -547,7 +547,7 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
 ### Changing the layout
 
 <!-- md:version insiders-4.37.0 --> ·
-<!-- md:flag property --> ·
+<!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
 If you want to use a different layout for a single page (e.g. your landing
@@ -573,7 +573,7 @@ the [built-in meta plugin].
 ### Parametrizing the layout
 
 <!-- md:version insiders-4.37.0 --> ·
-<!-- md:flag property --> ·
+<!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
 Besides changing the entire layout, you can override all options that a layout
@@ -600,7 +600,7 @@ the [built-in meta plugin].
 ### Disabling social cards
 
 <!-- md:version insiders-4.37.0 --> ·
-<!-- md:flag property --> ·
+<!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
 If you wish to disable social cards for a page, simply add the following to the
@@ -881,7 +881,7 @@ automatically scaled down to fit the layer:
 
     ![Layer typography shrink]
 
-While truncating with an ellipsis is the default, auto-shrinking can be enabled 
+While truncating with an ellipsis is the default, auto-shrinking can be enabled
 by setting `overflow` to `shrink`:
 
 ``` yaml hl_lines="7"

@@ -33,7 +33,7 @@ markdown_extensions:
       generic: true
 ```
 
-Besides enabling the extension in `mkdocs.yml`, a MathJax configuration and 
+Besides enabling the extension in `mkdocs.yml`, a MathJax configuration and
 the JavaScript runtime need to be included, which can be done with a few lines
 of [additional JavaScript]:
 
@@ -99,7 +99,7 @@ markdown_extensions:
 ```
 
 The configuration options of this extension are not specific to Material for
-MkDocs, as they only impact the Markdown parsing stage. See the [BetterEm 
+MkDocs, as they only impact the Markdown parsing stage. See the [BetterEm
 documentation][BetterEm] for more information.
 
   [BetterEm]: https://facelessuser.github.io/pymdown-extensions/extensions/betterem/
@@ -153,7 +153,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.critic.mode -->
 
-:   <!-- md:default `view` --> This option defines how the markup 
+:   <!-- md:default `view` --> This option defines how the markup
     should be parsed, i.e. whether to just `view` all suggested changes, or
     alternatively `accept` or `reject` them:
 
@@ -259,7 +259,7 @@ The following configuration options are supported:
 <!-- md:option pymdownx.emoji.options.custom_icons -->
 
 :   <!-- md:default _none_ --> This option allows to list folders
-    with additional icon sets to be used in Markdown or `mkdocs.yml`, which is 
+    with additional icon sets to be used in Markdown or `mkdocs.yml`, which is
     explained in more detail in the [icon customization guide]:
 
     ``` yaml
@@ -336,7 +336,7 @@ The following configuration options are supported:
               use_pygments: false
         ```
 
-        As an example, [Highlight.js], a JavaScript syntax highlighter, can be 
+        As an example, [Highlight.js], a JavaScript syntax highlighter, can be
         integrated with some [additional JavaScript] and an [additional style
         sheet] in `mkdocs.yml`:
 
@@ -417,7 +417,7 @@ markdown_extensions:
     ```
 
     Note that `inline` will put line numbers next to the actual code, which
-    means that they will be included when selecting text with the cursor or 
+    means that they will be included when selecting text with the cursor or
     copying a code block to the clipboard. Thus, the usage of either `table`
     or `pymdownx-inline` is recommended.
 
@@ -477,7 +477,7 @@ See reference for usage:
 <!-- md:version 5.0.0 --> ·
 [:octicons-workflow-24: Extension][InlineHilite]
 
-The [InlineHilite] extension add support for syntax highlighting of inline code 
+The [InlineHilite] extension add support for syntax highlighting of inline code
 blocks. It's built on top of the [Highlight][pymdownx.highlight] extension, from
 which it sources its configuration. Enable it via `mkdocs.yml`:
 
@@ -489,7 +489,7 @@ markdown_extensions:
 
 The configuration options of this extension are not specific to Material for
 MkDocs, as they only impact the Markdown parsing stage. The only exception is
-the [`css_class`][InlineHilite options] option, which must not be changed. See the 
+the [`css_class`][InlineHilite options] option, which must not be changed. See the
 [InlineHilite documentation][InlineHilite] for guidance.
 
 See reference for usage:
@@ -506,7 +506,7 @@ See reference for usage:
 <!-- md:version 1.0.0 --> ·
 [:octicons-workflow-24: Extension][Keys]
 
-The [Keys] extension adds a simple syntax to allow for the rendering of keyboard 
+The [Keys] extension adds a simple syntax to allow for the rendering of keyboard
 keys and combinations, e.g. ++ctrl+alt+del++. Enable it via `mkdocs.yml`:
 
 ``` yaml
@@ -516,7 +516,7 @@ markdown_extensions:
 
 The configuration options of this extension are not specific to Material for
 MkDocs, as they only impact the Markdown parsing stage. The only exception is
-the [`class`][Keys options] option, which must not be changed. See the 
+the [`class`][Keys options] option, which must not be changed. See the
 [Keys documentation][Keys] for more information.
 
 See reference for usage:
@@ -532,7 +532,7 @@ See reference for usage:
 <!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][SmartSymbols]
 
-The [SmartSymbols] extension converts some sequences of characters into their 
+The [SmartSymbols] extension converts some sequences of characters into their
 corresponding symbols, e.h. copyright symbols or fractions. Enable it via
 `mkdocs.yml`:
 
@@ -542,7 +542,7 @@ markdown_extensions:
 ```
 
 The configuration options of this extension are not specific to Material for
-MkDocs, as they only impact the Markdown parsing stage. See the [SmartSymbols 
+MkDocs, as they only impact the Markdown parsing stage. See the [SmartSymbols
 documentation][SmartSymbols] for guidance.
 
   [SmartSymbols]: https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
@@ -562,7 +562,7 @@ markdown_extensions:
 ```
 
 The configuration options of this extension are not specific to Material for
-MkDocs, as they only impact the Markdown parsing stage. See the [Snippets 
+MkDocs, as they only impact the Markdown parsing stage. See the [Snippets
 documentation][Snippets] for more information.
 
 See reference for usage:
@@ -669,7 +669,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.slugify -->
 
-:   <!-- md:default `headerid.slugify` --> This option allows for
+:   <!-- md:default `toc.slugify` --> This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
     like for example those from [Python Markdown Extensions][Slugs]:
@@ -730,7 +730,7 @@ The following configuration options are supported:
 <!-- md:option pymdownx.tasklist.custom_checkbox -->
 
 :   <!-- md:default `false` --> This option toggles the rendering
-    style of checkboxes, replacing native checkbox styles with beautiful icons, 
+    style of checkboxes, replacing native checkbox styles with beautiful icons,
     and is therefore recommended:
 
     ``` yaml
@@ -742,7 +742,7 @@ The following configuration options are supported:
 <!-- md:option pymdownx.tasklist.clickable_checkbox -->
 
 :   <!-- md:default `false` --> This option toggles whether
-    checkboxes are clickable. As the state is not persisted, the use of this 
+    checkboxes are clickable. As the state is not persisted, the use of this
     option is _rather discouraged_ from a user experience perspective:
 
     ``` yaml

@@ -1,11 +1,21 @@
 ---
+title: Built-in social plugin
 icon: material/share-variant
 ---
 
 
 # Built-in social plugin
 
-- Talk about the built in social plugin, more specific.
+The social plugin automatically and intelligently generates beautiful and
+customizable social cards for each page of your project, rendering as preview
+images whenever you or somebody else shares a link to your project on social
+media.
+
+## Objective
+
+### How it works
+
+### When to use it
 
 Material for MkDocs can automatically create beautiful social cards for your
 documentation, which appear as preview images on social media platforms. You
@@ -538,3 +548,38 @@ plugins:
   - social:
       cards_font: Ubuntu
 ```
+
+## Usage
+
+### Metadata
+
+Blabla
+
+---
+
+#### `cards`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag metadata --> ·
+<!-- md:flag experimental -->
+
+---
+
+#### `cards_layout`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag metadata --> ·
+<!-- md:flag experimental -->
+
+---
+
+#### `cards_layout_options`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:flag metadata --> ·
+<!-- md:flag experimental -->
+
+HOLA

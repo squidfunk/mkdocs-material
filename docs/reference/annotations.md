@@ -35,7 +35,7 @@ See additional configuration options:
 
 ### Using annotations
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag experimental -->
 
 Annotations consist of two parts: a marker, which can be placed anywhere in
@@ -166,7 +166,7 @@ of a dedicated content tab (and not to the container, which is not supported):
 
 #### in everything else
 
-The [Attribute Lists] extension is the key ingredient for adding annotations to 
+The [Attribute Lists] extension is the key ingredient for adding annotations to
 most elements, but it has some [limitations]. However, it's always possible to
 leverage the [Markdown in HTML] extension to wrap arbitrary elements with a
 `div` with the `annotate` class:

@@ -1,6 +1,6 @@
 # Setting up navigation
 
-A clear and concise navigation structure is an important aspect of good project 
+A clear and concise navigation structure is an important aspect of good project
 documentation. Material for MkDocs provides a multitude of options to configure
 the behavior of navigational elements, including [tabs] and [sections], and one
 of its flagship features: [instant loading].
@@ -216,12 +216,12 @@ theme:
 
 ### Navigation pruning
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag feature --> ·
 <!-- md:flag experimental -->
 
-When pruning is enabled, only the visible navigation items are included in the 
-rendered HTML, __reducing the size of the built site by 33% or more__. Add the 
+When pruning is enabled, only the visible navigation items are included in the
+rendered HTML, __reducing the size of the built site by 33% or more__. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -357,10 +357,10 @@ theme:
 ### Hiding the sidebars
 
 <!-- md:version 6.2.0 --> ·
-<!-- md:flag property -->
+<!-- md:flag metadata -->
 
 The navigation and/or table of contents sidebars can be hidden for a document
-with the front matter `hide` property. Add the following lines at the top of a 
+with the front matter `hide` property. Add the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -394,7 +394,7 @@ hide:
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.28.0 --> ·
-<!-- md:flag property -->
+<!-- md:flag metadata -->
 
 While the [navigation path] is rendered above the main headline, sometimes, it
 might be desirable to hide it for a specific page, which can be achieved with

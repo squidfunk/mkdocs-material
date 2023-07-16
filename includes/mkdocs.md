@@ -5,5 +5,3 @@
   [mkdocs.docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [mkdocs.site_dir]: https://www.mkdocs.org/user-guide/configuration/#site_dir
   [mkdocs.use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls
-
-  [iframe-worker]: https://github.com/squidfunk/iframe-worker

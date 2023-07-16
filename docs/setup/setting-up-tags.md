@@ -40,7 +40,7 @@ The following configuration options are available:
 <!-- md:option tags.tags_file -->
 
 :   <!-- md:default _none_ --> This option specifies which page
-    should be used to render the tags index. See the section on [adding a tags 
+    should be used to render the tags index. See the section on [adding a tags
     index][tags index] for more information. If this option is specified, tags
     become clickable, pointing to the corresponding section in the tags index:
 
@@ -56,9 +56,9 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_extra_files -->
 
-:   <!-- md:version insiders-4.20.0 --> · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.20.0 --> · :octicons-milestone-24:
     Default: _none_ – This option specifies additional pages, i.e. to render
-    subsets of the [tags index], in order to provide scoped tags indexes for 
+    subsets of the [tags index], in order to provide scoped tags indexes for
     specific sections:
 
     ``` yaml
@@ -85,7 +85,7 @@ The following configuration options are available:
             CSS: css
         ```
 
-        In this example, all pages with the tag `Compatibility` will be included 
+        In this example, all pages with the tag `Compatibility` will be included
         in the additional tags index on `compatibility.md`, all pages defining
         at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
         in the additional tags index on `web.md`.
@@ -95,10 +95,10 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_slugify -->
 
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
-    Default: `headerid.slugify` – This option specifies which function to use for 
-    generating URL-compatible slugs from tags. [Python Markdown Extensions] 
-    includes several Unicode-aware slug functions which are a good choice for 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
+    Default: `toc.slugify` – This option specifies which function to use for
+    generating URL-compatible slugs from tags. [Python Markdown Extensions]
+    includes several Unicode-aware slug functions which are a good choice for
     non-ASCII languages:
 
     === "Unicode"
@@ -121,7 +121,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_slugify_separator -->
 
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
     Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
     be changed to any string:
 
@@ -161,7 +161,7 @@ The following configuration options are available:
 
 <!-- md:option tags.tags_allowed -->
 
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24: 
+:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
     Default: _none_ – This option allows the author to define explicitly which
     tags are allowed to be used on pages. If this setting is omitted, the
     [built-in tags plugin] won't check tag names. Use this option to define a
@@ -209,7 +209,7 @@ extra:
     associated will use the default tag icon which is :material-pound:
 
 Next, each identifier can be associated with an icon, even a [custom icon], by
-adding the following lines to `mkdocs.yml` under the `theme.icon` configuration 
+adding the following lines to `mkdocs.yml` under the `theme.icon` configuration
 setting:
 
 === "Tag icon"
@@ -265,7 +265,7 @@ setting:
 ### Adding tags
 
 When the [built-in tags plugin] is enabled, tags can be added for a document
-with the front matter `tags` property. Add the following lines at the top of a 
+with the front matter `tags` property. Add the following lines at the top of a
 Markdown file:
 
 ``` sh

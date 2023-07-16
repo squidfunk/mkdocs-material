@@ -19,7 +19,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
 ### Built-in blog plugin
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag plugin --> ·
 <!-- md:flag experimental -->
 
@@ -66,64 +66,6 @@ nav:
     # Blog
     ```
 
-The following configuration options are available:
-
-<!-- md:option blog.enabled -->
-
-:   <!-- md:default `true` --> This option specifies whether
-    the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - blog:
-          enabled: !ENV [CI, false]
-    ```
-
-<!-- md:option blog.blog_dir -->
-
-:   <!-- md:default `blog` --> This option specifies the folder
-    where your posts and metadata live. The name of the folder will also be
-    included in the generated URLs as a prefix to all blog-related pages. If
-    you want to build a standalone blog, change it to `.`:
-
-    === "Subdirectory"
-
-        ``` yaml
-        plugins:
-          - blog:
-              blog_dir: blog
-        ```
-
-    === "Standalone"
-
-        ``` yaml
-        plugins:
-          - blog:
-              blog_dir: .
-        ```
-
-    The path must be defined relative to [`docs_dir`][docs_dir].
-
-<!-- md:option blog.blog_toc -->
-
-:   <!-- md:default `false` --> This option specifies whether
-    indexes include a table of contents with all post titles on the
-    right side as an overview:
-
-    ``` yaml
-    plugins:
-      - blog:
-          blog_toc: true
-    ```
-
-    Note that this setting is also used as the default value for `archive_toc`
-    and `categories_toc`, unless those settings are explicitly defined.
-
-__The built-in blog plugin has dozens of options that allow for advanced
-configuration. It's a good idea to [start writing your first post], and come
-back here later for fine-tuning the output.__
-
 ---
 
   [Insiders]: ../insiders/index.md
@@ -133,717 +75,13 @@ back here later for fine-tuning the output.__
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [start writing your first post]: #writing-your-first-post
 
-#### Posts
-
-The following configuration options are available for posts:
-
-<!-- md:option blog.post_date_format -->
-
-:   <!-- md:default `long` --> This option specifies the date
-    format that is used when posts are rendered. Under the hood, the
-    [built-in blog plugin] leverages [Babel] to render dates locale-aware using
-    the configured [site language]. The following formats are supported:
-
-    === "Monday, January 31, 2022"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_date_format: full
-        ```
-
-    === "January 31, 2022"
-    
-        ``` yaml
-        plugins:
-          - blog:
-              post_date_format: long
-        ```
-
-    === "Jan 31, 2022"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_date_format: medium
-        ```
-
-    === "1/31/22"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_date_format: short
-        ```
-
-    Note that depending on the [site language], formats might look different
-    for other languages. Additionally, [Babel] supports a [pattern syntax]
-    which allows for custom formats.
-
-<!-- md:option blog.post_url_date_format -->
-
-:   <!-- md:default `yyyy/MM/dd` --> This option specifies the
-    date format that is used in the URL of the post. The format string must
-    adhere to [Babel]'s [pattern syntax]. Some examples:
-
-    === ":material-link: blog/2022/01/31/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_url_date_format: yyyy/MM/dd
-        ```
-
-    === ":material-link: blog/2022/01/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_url_date_format: yyyy/MM
-        ```
-
-    === ":material-link: blog/2022/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_url_date_format: yyyy
-        ```
-
-    If you want to exclude the date altogether, e.g. when your blog features
-    mostly evergreen content, you can remove the `date` placeholder from
-    the format string (see below).
-
-<!-- md:option blog.post_url_format -->
-
-:   <!-- md:default `{date}/{slug}` --> This option specifies the
-    format string that is used for the URL of the post. The following
-    placeholders are currently supported:
-
-    - `categories` – Replaced with the post's slugified [categories].
-
-    - `date` – Replaced with the post's date, as configured in
-      [`post_url_date_format`][post_url_date_format].
-
-    - `slug` – Replaced with a slug generated from the post's title.
-
-    - `file` – Replaced with the post's file name.
-
-    === ":material-link: blog/2022/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_url_format: "{date}/{slug}"
-        ```
-
-    === ":material-link: blog/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_url_format: "{slug}"
-        ```
-
-    If you remove the `date` placeholder, make sure that post URLs don't
-    collide with other the URLs of other pages added to the blog section, as
-    this leads to undefined behavior.
-
-<!-- md:option blog.post_url_max_categories -->
-
-:   <!-- md:default `1` --> This option specifies the number of
-    categories that are included in the URL if the `categories` placeholder is
-    part of [`post_url_format`][post slugs]. If a post is assigned to multiple
-    categories, they are joined with `/`:
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_url_format: "{categories}/{slug}"
-          post_url_max_categories: 2
-    ```
-
-<!-- md:option blog.post_slugify -->
-
-:   <!-- md:default `headerid.slugify` --> This option specifies
-    which function to use for generating URL-compatible slugs from post titles. 
-    [Python Markdown Extensions] comes with several Unicode-aware
-    slug functions which should be a good choice for non-ASCII languages:
-
-    === "Unicode"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-                kwds:
-                  case: lower
-        ```
-
-    === "Unicode, case-sensitive"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        ```
-
-<!-- md:option blog.post_slugify_separator -->
-
-:   <!-- md:default `-` --> This option specifies the separator
-    which is used by the slug function. By default, a hyphen is used, but it can
-    be changed to any string, including the empty string:
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_slugify_separator: "-"
-    ```
-
-<!-- md:option blog.post_excerpt -->
-
-:   <!-- md:default `optional` --> This option specifies whether
-    [post excerpts] should be considered being optional or required by the
-    [built-in blog plugin] when generating indexes. If excerpts are required,
-    the plugin terminates with an error if a post doesn't define an excerpt:
-
-    === "Optional"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt: optional
-        ```
-
-    === "Required"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt: required
-        ```
-
-<!-- md:option blog.post_excerpt_max_authors -->
-
-:   <!-- md:default `1` --> This option specifies the number of
-    authors rendered in post excerpts. While each post may be written by
-    multiple authors, this setting allows to limit the display to just a few or
-    even a single author, or disable authors in excerpts altogether:
-
-    === "Render up to 2 authors in excerpts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt_max_authors: 2
-        ```
-
-    === "Disable authors in excerpts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt_max_authors: 0
-        ```
-
-<!-- md:option blog.post_excerpt_max_categories -->
-
-:   <!-- md:default `5` --> This option specifies the number of
-    categories rendered in post excerpts. While each post may be assigned to
-    multiple categories, the [built-in blog plugin] can be instructed to only
-    show the first `n` categories to keep it short and concise:
-
-    === "Render up to 2 categories in excerpts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt_max_categories: 2
-        ```
-
-    === "Disable categories in excerpts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              post_excerpt_max_categories: 0
-        ```
-
-<!-- md:option blog.post_excerpt_separator -->
-
-:   <!-- md:default `<!-- more -->` --> This option specifies
-    the separator the [built-in blog plugin] will look for in a post's content
-    when generating [post excerpts]. All content after the separator is not
-    considered to be part of the excerpt.
-
-<!-- md:option blog.post_readtime -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    [built-in blog plugin] should compute the reading time of a post
-    automatically, which is then rendered in post excerpts, as well as in the
-    posts themselves. If you want to disable reading time computation, add:
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_readtime: false
-    ```
-
-<!-- md:option blog.post_readtime_words_per_minute -->
-
-:   <!-- md:default `265` --> This option specifies the number
-    of words that a reader is expected to read per minute when computing the
-    reading time of a post. If you feel that estimation is not quite right,
-    you can fine-tune reading time computation with the following setting:
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_readtime_words_per_minute: 265
-    ```
-
-  [built-in blog plugin]: #built-in-blog-plugin
-  [site language]: changing-the-language.md#site-language
-  [Babel]: https://pypi.org/project/Babel/
-  [pattern syntax]: https://babel.pocoo.org/en/latest/dates.html#pattern-syntax
-  [post_url_date_format]: #+blog.post_url_date_format
-  [post excerpts]: #adding-an-excerpt
-  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
-
-#### Archive
-
-The following configuration options are available for archive index generation:
-
-<!-- md:option blog.archive -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    [built-in blog plugin] should generate archive indexes. An archive indexes
-    shows all posts for a specific interval (e.g. year, month, etc.) in
-    reverse chronological order. If you want to disable archive index
-    generation, add:
-
-    ``` yaml
-    plugins:
-      - blog:
-          archive: false
-    ```
-
-<!-- md:option blog.archive_name -->
-
-:   <!-- md:default _automatically set_ --> This option specifies
-    the title of the archive section which the [built-in blog plugin] will
-    generate and add to the navigation. If this setting is omitted, it's
-    sourced from the translations, falling back to English. Change it with:
-
-    ``` yaml
-    plugins:
-      - blog:
-          archive_name: Archive
-    ```
-
-<!-- md:option blog.archive_date_format -->
-
-:   <!-- md:default `yyyy` --> This option specifies the date
-    format that is used when archive indexes are rendered. The format string
-    must adhere to [Babel]'s [pattern syntax]. Popular settings are:
-
-    === "2022"
-
-        ``` yaml
-        plugins:
-          - blog:
-              archive_date_format: yyyy
-        ```
-
-    === "January 2022"
-    
-        ``` yaml
-        plugins:
-          - blog:
-              archive_date_format: MMMM yyyy
-        ```
-
-<!-- md:option blog.archive_url_date_format -->
-
-:   <!-- md:default `yyyy` --> This option specifies the date
-    format that is used in the archive index URL. The format string must adhere
-    to [Babel]'s [pattern syntax]. Some examples:
-
-    === ":material-link: blog/archive/2022/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              archive_url_date_format: yyyy
-        ```
-
-    === ":material-link: blog/archive/2022/01/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              archive_url_date_format: yyyy/MM
-        ```
-
-<!-- md:option blog.archive_url_format -->
-
-:   <!-- md:default `archive/{date}` --> This option specifies
-    the format string that is used for the URL of the archive index, and can
-    be used to localize the URL:
-
-    === ":material-link: blog/archive/2022/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              archive_url_format: "archive/{date}"
-        ```
-
-    === ":material-link: blog/2022/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              archive_url_format: "{date}"
-        ```
-
-<!-- md:option blog.archive_toc -->
-
-:   <!-- md:default `false` --> This option specifies whether an
-    archive index includes a table of contents with all post titles on the
-    right side as an overview:
-
-    ``` yaml
-    plugins:
-      - blog:
-          archive_toc: true
-    ```
-
-#### Categories
-
-The following configuration options are available for category index generation:
-
-<!-- md:option blog.categories -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    [built-in blog plugin] should generate category indexes. A category index
-    shows all posts for a specific category in reverse chronological order. If
-    you want to disable category index generation, add:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories: false
-    ```
-
-<!-- md:option blog.categories_name -->
-
-:   <!-- md:default _automatically set_ --> This option specifies
-    the title of the category section which the [built-in blog plugin] will
-    generate and add to the navigation. If this setting is omitted, it's
-    sourced from the translations, falling back to English. Change it with:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_name: Categories
-    ```
-
-<!-- md:option blog.categories_url_format -->
-
-:   <!-- md:default `category/{slug}` --> This option specifies
-    the format string that is used for the URL of a category index, and can be
-    used to localize the URL:
-
-    === ":material-link: blog/category/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              categories_url_format: "category/{slug}"
-        ```
-
-    === ":material-link: blog/:material-dots-horizontal:/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              categories_url_format: "{slug}"
-        ```
-
-<!-- md:option blog.categories_slugify -->
-
-:   <!-- md:default `headerid.slugify` --> This option specifies
-    which function to use for generating URL-compatible slugs from categories. 
-    [Python Markdown Extensions] comes with several Unicode-aware
-    slug functions which should be a good choice for non-ASCII languages:
-
-    === "Unicode"
-
-        ``` yaml
-        plugins:
-          - blog:
-              categories_slugify: !!python/object/apply:pymdownx.slugs.slugify 
-                kwds:
-                  case: lower
-        ```
-
-    === "Unicode, case-sensitive"
-
-        ``` yaml
-        plugins:
-          - blog:
-              categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        ```
-
-<!-- md:option blog.categories_slugify_separator -->
-
-:   <!-- md:default `-` --> This option specifies the separator
-    which is used by the slug function. By default, a hyphen is used, but it can
-    be changed to any string, including the empty string:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_slugify_separator: "-"
-    ```
-
-<!-- md:option blog.categories_allowed -->
-
-:   <!-- md:default _none_ --> This option specifies the
-    categories that are allowed to be used in posts. If this setting is omitted,
-    the [built-in blog plugin] will not check category names. Use this option to
-    define a list of categories in order to catch typos:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_allowed:
-            - General
-            - Search
-            - Performance
-    ```
-
-<!-- md:option blog.categories_toc -->
-
-:   <!-- md:default `false` --> This option specifies whether a
-    category index includes a table of contents with all post titles on the
-    right side as an overview:
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_toc: true
-    ```
-
-#### Pagination
-
-The following configuration options are available for index pagination:
-
-<!-- md:option blog.pagination -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    [built-in blog plugin] should paginate the index. The index shows all posts
-    in reverse chronological order, which can be many. If you want to disable
-    index pagination, add:
-
-    ``` yaml
-    plugins:
-      - blog:
-          pagination: false
-    ```
-
-<!-- md:option blog.pagination_per_page -->
-
-:   <!-- md:default `10` --> This option specifies the number
-    of posts rendered on a single index page. If more posts are found, they are
-    assigned to a 2nd page, and so on. If you have large [post excerpts], it
-    might be a good idea to reduce the number of posts per page:
-
-    ``` yaml
-    plugins:
-      - blog:
-          pagination_per_page: 5
-    ```
-
-<!-- md:option blog.pagination_url_format -->
-
-:   <!-- md:default `page/{page}` --> This option specifies
-    the format string that is used for the URL of the paginated index, and can
-    be used to localize the URL:
-
-    === ":material-link: blog/page/n/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              pagination_url_format: "page/{page}"
-        ```
-
-    === ":material-link: blog/n/"
-
-        ``` yaml
-        plugins:
-          - blog:
-              pagination_url_format: "{page}"
-        ```
-
-<!-- md:option blog.pagination_template -->
-
-:   <!-- md:default `~2~` --> This option specifies the format
-    string that is provided to the [paginate] module, which allows to customize
-    how pagination is constructed. Popular choices:
-
-    === "1 2 3 .. n"
-
-        ``` yaml
-        plugins:
-          - blog:
-              pagination_template: "~2~"
-        ```
-
-    === "1 2 3 .. n :material-chevron-right: :material-chevron-double-right:"
-
-        ``` yaml
-        plugins:
-          - blog:
-              pagination_template: "$link_first $link_previous ~2~ $link_next $link_last"
-        ```
-
-    === "1 :material-chevron-right:"
-
-        ``` yaml
-        plugins:
-          - blog:
-              pagination_template: "$link_previous $page $link_next"
-        ```
-
-    The [paginate] module exposes the following placeholders:
-
-    - `$first_page` – number of first reachable page
-    - `$last_page` – number of last reachable page
-    - `$page` – number of currently selected page
-    - `$page_count` – number of reachable pages
-    - `$items_per_page` – maximal number of items per page
-    - `$first_item` – index of first item on the current page
-    - `$last_item` – index of last item on the current page
-    - `$item_count` – total number of items
-    - `$link_first` – link to first page (unless this is first page)
-    - `$link_last` – link to last page (unless this is last page)
-    - `$link_previous` – link to previous page (unless this is first page)
-    - `$link_next` – link to next page (unless this is last page)
-
-  [paginate]: https://pypi.org/project/paginate/
-
-<!-- md:option blog.pagination_keep_content -->
-
-:   <!-- md:default `false` --> This option specifies whether
-    paginated index pages should inherit the custom content from the index
-    page, i.e. the content of `blog/index.md`:
-
-    ``` yaml
-    plugins:
-      - blog:
-          pagination_keep_content: true
-    ```
-
-#### Authors
-
-The following configuration options are available for author info:
-
-<!-- md:option blog.authors -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    [built-in blog plugin] should generate author info. If it is enabled, the
-    plugin will look up authors in a file called `.authors.yml` and include
-    authors in indexes and in posts. If you want to disable this behavior, add:
-
-    ``` yaml
-    plugins:
-      - blog:
-          authors: false
-    ```
-
-<!-- md:option blog.authors_file -->
-
-:   <!-- md:default `.authors.yml` --> This option specifies the
-    name of the file where the authors for your posts resides. The default
-    settings assumes that the file is called `.authors.yml` (mind the `.` at
-    the beginning):
-
-    ``` yaml
-    plugins:
-      - blog:
-          authors_file: .authors.yml
-    ```
-
-    The path must be defined relative to [`blog_dir`][this is configurable].
-    Also see the section on [adding authors].
-
-  [adding authors]: #adding-authors
-
-#### Drafts
-
-The following configuration options are available for drafts:
-
-<!-- md:option blog.draft -->
-
-:   <!-- md:default `false` --> This option specifies whether the
-    [built-in blog plugin] should also include posts marked as drafts when the
-    site is being built. Including draft posts might be desired in deploy
-    previews, which is why it exists in the first place:
-
-    === "Render drafts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              draft: true
-        ```
-
-    === "Don't render drafts"
-
-        ``` yaml
-        plugins:
-          - blog:
-              draft: false
-        ```
-
-<!-- md:option blog.draft_on_serve -->
-
-:   <!-- md:default `true` --> This option specifies whether
-    posts marked as drafts should be included [when previewing your site] with
-    `mkdocs serve`. By default, drafts are rendered when previewing, but skipped
-    when the site is being built:
-
-    ``` yaml
-    plugins:
-      - blog:
-          draft_on_serve: true
-    ```
-
-<!-- md:option blog.draft_if_future_date -->
-
-:   <!-- md:default `false` --> This option specifies whether the
-    [built-in blog plugin] should mark posts with a future date as drafts. When
-    the date passed today, the post is automatically unmarked and included when
-    the site is being built:
-
-    ``` yaml
-    plugins:
-      - blog:
-          draft_if_future_date: true
-    ```
-
-  [when previewing your site]: ../creating-your-site.md#previewing-as-you-write
-
 ### RSS
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag plugin [rss] -->
 
 The [built-in blog plugin] integrates seamlessly with the [RSS plugin][rss],
-which provides a simple way to add an RSS feed to your blog (or to your whole 
+which provides a simple way to add an RSS feed to your blog (or to your whole
 documentation). Install it with `pip`:
 
 ```
@@ -898,7 +136,7 @@ The following configuration options are supported:
 <!-- md:option rss.date_from_meta -->
 
 :   <!-- md:default _none_ --> This option specifies which
-    front matter property should be used as a creation date of a page in the 
+    front matter property should be used as a creation date of a page in the
     feed. It's recommended to use the `date` property:
 
     ``` yaml
@@ -976,7 +214,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2022-01-31
+date: 2023-01-31
 categories:
   - Hello
   - World
@@ -986,9 +224,9 @@ categories:
 ...
 ```
 
-1.  If you mark a post as a [draft], a red marker appears next to the post date 
-    on index pages. When the site is built, drafts are not included in the 
-    output. [This behavior can be changed], e.g. for rendering drafts when 
+1.  If you mark a post as a [draft], a red marker appears next to the post date
+    on index pages. When the site is built, drafts are not included in the
+    output. [This behavior can be changed], e.g. for rendering drafts when
     building deploy previews.
 
 When you spin up the [live preview server], you should be greeted by your first
@@ -1064,7 +302,7 @@ each post, as well as in post excerpts on index pages:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 authors:
   - squidfunk
     ...
@@ -1086,7 +324,7 @@ add them to the front matter `categories` property:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 categories:
   - Hello
   - World
@@ -1112,7 +350,7 @@ part of a post, the post is linked from the [tags index]:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 tags:
   - Foo
   - Bar
@@ -1122,7 +360,7 @@ tags:
 ...
 ```
 
-As usual, the tags are rendered above the main headline and posts are linked 
+As usual, the tags are rendered above the main headline and posts are linked
 on the tags index page, if configured. Note that posts are, as pages, only
 linked with their titles.
 
@@ -1135,14 +373,14 @@ linked with their titles.
 <!-- md:version insiders-4.23.0 --> ·
 <!-- md:flag experimental -->
 
-Related links offer the perfect way to prominently add a _further reading_ 
-section to your post that is included in the left sidebar, guiding the user to 
-other destinations of your documentation. Use the front matter `links` property 
+Related links offer the perfect way to prominently add a _further reading_
+section to your post that is included in the left sidebar, guiding the user to
+other destinations of your documentation. Use the front matter `links` property
 to add related links to a post:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 links:
   - setup/setting-up-site-search.md#built-in-search-plugin
   - insiders/index.md#how-to-become-a-sponsor
@@ -1158,7 +396,7 @@ links and even use nesting:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 links:
   - setup/setting-up-site-search.md#built-in-search-plugin
   - insiders/index.md#how-to-become-a-sponsor
@@ -1172,8 +410,8 @@ links:
 ```
 
 If you look closely, you'll realize that you can even use an anchor to link to
-a specific section of a document, extending the possibilities of the [`nav`][nav] 
-syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets 
+a specific section of a document, extending the possibilities of the [`nav`][nav]
+syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets
 the title of the anchor as a [subtitle] of the related link.
 
 Note that all links must be relative to [`docs_dir`][docs_dir], as is also the
@@ -1184,9 +422,9 @@ case for the [`nav`][nav] setting.
 
 #### Linking from and to posts
 
-While [post URLs][post slugs] are dynamically computed, the [built-in blog 
-plugin] ensures that all links from and to posts and a post's assets are 
-correct. If you want to link to a post, just use the path to the Markdown file 
+While [post URLs][post slugs] are dynamically computed, the [built-in blog
+plugin] ensures that all links from and to posts and a post's assets are
+correct. If you want to link to a post, just use the path to the Markdown file
 as a link reference (links must be relative):
 
 ``` markdown
@@ -1199,7 +437,7 @@ Linking from a post to a page, e.g. the index, follows the same method:
 [Blog](../index.md)
 ```
 
-All assets inside the `posts` directory are copied to the `blog/assets` folder 
+All assets inside the `posts` directory are copied to the `blog/assets` folder
 when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
@@ -1208,17 +446,17 @@ all links are correct.
 
 When [enabled], the [readtime] package is used to compute the expected reading
 time of each post, which is rendered as part of the post and post excerpt.
-Nowadays, many blogs show reading times, which is why the [built-in blog plugin] 
+Nowadays, many blogs show reading times, which is why the [built-in blog plugin]
 offers this capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
-result in odd and unpleasant numbers. For this reason, reading time can be 
+result in odd and unpleasant numbers. For this reason, reading time can be
 overridden and explicitly set with the front matter `readtime` property for a
 post:
 
 ``` yaml
 ---
-date: 2022-01-31
+date: 2023-01-31
 readtime: 15
 ---
 
@@ -1280,7 +518,7 @@ values defined for a post, which means you can define common properties in
 
 Besides posts, it's also possible to add static pages to your blog by listing
 the pages in the [`nav`][nav] section of `mkdocs.yml`. All generated indexes
-are included after the last specified page. For example, to add a page on the 
+are included after the last specified page. For example, to add a page on the
 authors of the blog, add the following to `mkdocs.yml`:
 
 ``` yaml
@@ -1299,7 +537,7 @@ nav:
 <!-- md:version insiders-4.24.0 --> ·
 <!-- md:flag experimental -->
 
-If you want to add custom content to automatically generated [archive] and 
+If you want to add custom content to automatically generated [archive] and
 [category] indexes, e.g. to add a category description prior to the list of
 posts, you can manually create the category page in the same location where
 the [built-in blog plugin] would create it:

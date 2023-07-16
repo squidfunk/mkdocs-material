@@ -20,7 +20,7 @@ not be compliant with privacy regulations. Moreover, search even works
 <!-- md:flag plugin -->
 
 The built-in search plugin integrates seamlessly with Material for MkDocs,
-adding multilingual client-side search with [lunr] and [lunr-languages]. It's 
+adding multilingual client-side search with [lunr] and [lunr-languages]. It's
 enabled by default, but must be re-added to `mkdocs.yml` when other plugins
 are used:
 
@@ -190,7 +190,7 @@ The following configuration options are supported:
 
 #### Chinese language support
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag experimental -->
 
 In order to add support for Chinese languages to the [built-in search plugin],
@@ -223,7 +223,7 @@ The following configuration options are available:
 <!-- md:option search.jieba_dict_user -->
 
 :   <!-- md:default _none_ --> This option allows for specifying
-    an additional [user dictionary] to be used by [jieba] for segmenting text, 
+    an additional [user dictionary] to be used by [jieba] for segmenting text,
     augmenting the default dictionary:
 
     ``` yaml
@@ -308,7 +308,7 @@ clipboard.
 ### Search boosting
 
 <!-- md:version 8.3.0 --> ·
-<!-- md:flag property -->
+<!-- md:flag metadata -->
 
 Pages can be boosted in search with the front matter `search.boost` property,
 which will make them rank higher. Add the following lines at the top of a
@@ -344,11 +344,11 @@ Markdown file:
 ### Search exclusion
 
 <!-- md:version 9.0.0 --> ·
-<!-- md:flag property --> ·
+<!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
 Pages can be excluded from search with the front matter `search.exclude`
-property, removing them from the index. Add the following lines at the top of a 
+property, removing them from the index. Add the following lines at the top of a
 Markdown file:
 
 ``` yaml

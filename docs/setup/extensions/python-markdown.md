@@ -37,7 +37,7 @@ No configuration options are available. See reference for usage:
 <!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Admonition]
 
-The [Admonition] extension adds support for admonitions, more commonly known as 
+The [Admonition] extension adds support for admonitions, more commonly known as
 _call-outs_, which can be defined in Markdown by using a simple syntax. Enable
 it via `mkdocs.yml`:
 
@@ -175,7 +175,7 @@ No configuration options are available. See reference for usage:
 [:octicons-workflow-24: Extension][Table of Contents]
 
 The [Table of Contents] extension automatically generates a table of contents
-from a document, which Material for MkDocs will render as part of the resulting 
+from a document, which Material for MkDocs will render as part of the resulting
 page. Enable it via `mkdocs.yml`:
 
 ``` yaml
@@ -226,7 +226,7 @@ The following configuration options are supported:
 
 :   <!-- md:default `Permanent link` --> This option sets the
     title of the anchor link which is shown on hover and read by screen readers.
-    For accessibility reasons, it might be beneficial to change it to a more 
+    For accessibility reasons, it might be beneficial to change it to a more
     discernable name, stating that the anchor links to the section itself:
 
     ``` yaml
@@ -237,7 +237,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.slugify -->
 
-:   <!-- md:default `headerid.slugify` --> This option allows for
+:   <!-- md:default `toc.slugify` --> This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
     like for example those from [Python Markdown Extensions][Slugs]:
@@ -296,7 +296,7 @@ them at your own risk.
 <!-- md:version 0.1.0 --> ·
 [:octicons-workflow-24: Extension][Tables]
 
-The [Tables] extension adds the ability to create tables in Markdown by using a 
+The [Tables] extension adds the ability to create tables in Markdown by using a
 simple syntax. Enable it via `mkdocs.yml` (albeit it should be enabled by
 default):
 
@@ -316,7 +316,7 @@ No configuration options are available. See reference for usage:
 
 ## Superseded extensions
 
-The following [Python Markdown] extensions are not (or might not be) supported 
+The following [Python Markdown] extensions are not (or might not be) supported
 anymore, and are therefore not recommended for use. Instead, the alternatives
 should be considered.
 
@@ -326,7 +326,7 @@ should be considered.
 [:octicons-workflow-24: Extension][Fenced Code Blocks]
 
 Superseded by [SuperFences]. This extension might still work, but the
-[SuperFences] extension is superior in many ways, as it allows for arbitrary 
+[SuperFences] extension is superior in many ways, as it allows for arbitrary
 nesting, and is therefore recommended.
 
   [Fenced Code Blocks]: https://python-markdown.github.io/extensions/fenced_code_blocks/
@@ -338,7 +338,7 @@ nesting, and is therefore recommended.
 [:octicons-workflow-24: Extension][CodeHilite]
 
 Superseded by [Highlight]. Support for CodeHilite was dropped in
-<!-- md:version 6.0.0 -->, as [Highlight] has a better integration with other 
+<!-- md:version 6.0.0 -->, as [Highlight] has a better integration with other
 essential extensions like [SuperFences] and [InlineHilite].
 
   [CodeHilite]: https://python-markdown.github.io/extensions/code_hilite/

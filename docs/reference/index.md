@@ -37,7 +37,7 @@ section headlines; even [highlighting inline code blocks] is supported :tada:
 <!-- md:flag experimental -->
 
 The built-in meta plugin allows to __set front matter per folder__, which is
-especially handy to ensure that all pages in a folder use specific templates or 
+especially handy to ensure that all pages in a folder use specific templates or
 tags. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -73,9 +73,9 @@ The following configuration options are available:
 
 ### Setting the page `title`
 
-Each page has a designated title, which is used in the navigation sidebar, for 
-[social cards] and in other places. While MkDocs attempts to automatically 
-determine the title of a page in a [four step process], the title can also be 
+Each page has a designated title, which is used in the navigation sidebar, for
+[social cards] and in other places. While MkDocs attempts to automatically
+determine the title of a page in a [four step process], the title can also be
 explicitly set with the front matter `title` property:
 
 ``` yaml
@@ -101,7 +101,7 @@ title: Lorem ipsum dolor sit amet # (1)!
 ### Setting the page `description`
 
 A Markdown file can include a description that is added to the `meta` tags of
-a page, and is also used for [social cards]. It's a good idea to set a 
+a page, and is also used for [social cards]. It's a good idea to set a
 [`site_description`][site_description] in `mkdocs.yml` as a fallback value if
 the author does not explicitly define a description for a Markdown file:
 
@@ -121,7 +121,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
 ### Setting the page `icon`
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag experimental -->
 
 An icon can be assigned to each page, which is then rendered as part of the
@@ -155,11 +155,11 @@ icon: material/emoticon-happy # (1)!
 
 ### Setting the page `status`
 
-<!-- md:version 9.2.0b0 --> ·
+<!-- md:version 9.2.0 --> ·
 <!-- md:flag experimental -->
 
 A status can be assigned to each page, which is then displayed as part of the
-navigation sidebar. First, associate a status identifier with a description by 
+navigation sidebar. First, associate a status identifier with a description by
 adding the following to `mkdocs.yml`:
 
 ``` yaml
@@ -179,7 +179,7 @@ extra:
     ```
 
 The page status can now be set with the front matter `status` property. For
-example, you can mark a page as `new` with the following lines at the top of a 
+example, you can mark a page as `new` with the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -218,7 +218,7 @@ subtitle: Nullam urna elit, malesuada eget finibus ut, ac tortor
 ### Setting the page `template`
 
 If you're using [theme extension] and created a new page template in the
-`overrides` directory, you can enable it for a specific page. Add the following 
+`overrides` directory, you can enable it for a specific page. Add the following
 lines at the top of a Markdown file:
 
 ``` yaml
