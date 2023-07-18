@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
+
+- Added support for MkDocs 1.5+
+- Fixed #5699: Improve error reporting in social plugin
+
 ### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
 
 - Updated Danish translations
