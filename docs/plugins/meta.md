@@ -127,9 +127,9 @@ of the meta plugin and other built-in plugins are:
 <!-- md:version insiders-4.21.0 --> ·
 <!-- md:flag plugin [meta] (built-in) -->
 
-Getting started with the meta plugin is simple – just add the following
-lines to `mkdocs.yml`, and you can instantly start creating `.meta.yml` files
-in your [`docs` directory][mkdocs.docs_dir]:
+Getting started with the meta plugin is trivial. Just add the following lines to
+`mkdocs.yml`, and you can instantly start creating `.meta.yml` files in your
+[`docs` directory][mkdocs.docs_dir]:
 
 ``` yaml
 plugins:
@@ -151,7 +151,7 @@ The following settings are available:
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
-It's normally not necessary to specify this setting, but if you wish to disable
+It's normally not necessary to specify this setting, but if you want to disable
 the plugin, use:
 
 ``` yaml
@@ -176,8 +176,7 @@ The following settings are available for meta files:
 
 Use this setting to change the pattern of the file the plugin will look for when
 scanning your [`docs` directory][mkdocs.docs_dir]. It's normally not necessary
-to change this setting, but if you wish to change the pattern for meta files,
-use:
+to change this setting, but if you want to, use:
 
 ``` yaml
 plugins:

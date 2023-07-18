@@ -35,6 +35,9 @@ custom layouts to match your project's style and branding.
 
 @todo: each feature should be linked to a section in the setup docs.
 
+- Automatically fetches fonts from Google Fonts
+- Custom layouts
+
 ## Installation
 
 The built-in social plugin is included with Material for MkDocs and doesn't
@@ -181,8 +184,6 @@ If you're using [multiple instances] of the plugin, it can be a good idea to
 set different cache directories for both instances, so that they don't interfere
 with each other.
 
-  [built-in social plugin]: #built-in-social-plugin
-  [publishing guide]: ../publishing-your-site.md#with-github-actions
   [multiple instances]: #
 
 ### Social cards

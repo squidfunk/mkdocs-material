@@ -5,9 +5,20 @@ icon: material/newspaper-variant-outline
 
 # Built-in blog plugin
 
+The blog plugin makes it very easy to build a blog, either as a sidecar to
+your documentation or standalone. Focus on your content while the engine does
+all the heavy lifting, automatically generating [archive] and [category] pages,
+configurable [post URLs][post_url_format], [pagination] and more.
+
+  [archive]: #archive
+  [category]: #categories
+  [pagination]: #pagination
+
 ## Objective
 
 ### How it works
+
+[MkDocs] is a platform primarily targetted towards creating documentation, ...
 
 ### When to use it
 
@@ -16,14 +27,16 @@ icon: material/newspaper-variant-outline
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
 
-The blog plugin comes with sane defaults and conventions, and thus can be simply
-enabled with a single line. Add the following lines to `mkdocs.yml` to enable
-blogging capabilities:
+As with all [built-in plugins], enabling the blog plugin to do its work is
+straight-forward. Just add the following lines to `mkdocs.yml`, and start
+writing your first blog post immediately:
 
 ``` yaml
 plugins:
   - blog
 ```
+
+  [built-in plugins]: index.md
 
 ### General
 
@@ -37,7 +50,7 @@ The following settings are available:
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
-It's normally not necessary to specify this setting, but if you wish to disable
+It's normally not necessary to specify this setting, but if you want to disable
 the plugin, use:
 
 ``` yaml

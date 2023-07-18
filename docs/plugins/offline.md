@@ -98,8 +98,8 @@ create even better offline-capable documentation:
 <!-- md:flag plugin [offline] (built-in) -->
 
 As with all [built-in plugins], enabling the offline plugin to do its work is
-straight-forward. Just add the following lines to `mkdocs.yml`, to built
-offline-capable documentation:
+straight-forward. Just add the following lines to `mkdocs.yml`, and start
+building offline-capable documentation:
 
 ``` yaml
 plugins:
@@ -129,3 +129,5 @@ plugins:
   - offline:
       enabled: !ENV [OFFLINE, false]
 ```
+
+## Limitations

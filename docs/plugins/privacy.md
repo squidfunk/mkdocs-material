@@ -1,23 +1,210 @@
 ---
+title: Built-in privacy plugin
 icon: material/shield-account
 ---
 
 
 # Built-in privacy plugin
 
-## Installation
+TODO: add docs
+
+## Objective
+
+### How it works
+
+When [building your project], the plugin scans the output for links to external
+resources, including scripts, style sheets, images, and web fonts,  downloads
+them for self-hosting, stores them in your [`site` directory][mkdocs.site_dir]
+and updates all links to point to the local copies. For example, take:
+
+``` html
+<script src="https://example.com/script.js"></script>
+```
+
+The external script is downloaded, and the link is replaced with:
+
+``` html
+<script src="assets/external/example.com/script.js"></script>
+```
+
+Of course, scripts and style sheets can reference further external resources,
+which is why this process is repeated recursively until no further external
+resources are found:
+
+- Scripts are scanned for further scripts, style sheets, JSON files, and images
+- Style sheets are scanned for images and web fonts
+
+Additionally, hints like [`preconnect`][preconnect] used to reduce latency when
+requesting external resources are removed from the output, as they're not
+necessary when self-hosting. After the plugin has done it's work, your project
+will be free of requests to external services.
+
+All of this with a [single line of configuration]. There are some [limitations].
+
+  [building your project]: ../creating-your-site.md#building-your-site
+  [preconnect]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
+  [single line of configuration]: #configuration
+  [limitations]: #limitations
+
+### When to use it
+
+The plugin was developed to make compliance with the European
+"__General Data Protection Regulation__" (GDPR) as simple as possible, while
+retaining the flexibility and power that Material for MkDocs offers, like for
+example its tight integration with [Google Fonts].
+
+But, that's only the start. For example, if your project includes a lot of
+images, enabling the plugin allows to move them outside of your repository, as
+the plugin will automatically download and store them in your
+[`site` directory][mkdocs.site_dir] when [building your project].
+
+Lastly, the plugin can be combined with other built-in plugins that Material
+for MkDocs offers, to build sophisticated build pipelines for your project:
+
+<div class="grid cards" markdown>
+
+-   :material-image-size-select-small: &nbsp; __[Built-in optimize plugin]__
+
+    ---
+
+    The optimize plugin automatically identifies and optimizes all media files
+    that you reference in your project by using compression and conversion
+    techniques.
+
+    ---
+
+    - [x] All downloaded external resources are automatically optimized
+
+-   :material-wifi-strength-alert-outline: &nbsp; __[Built-in offline plugin]__
+
+    ---
+
+    The offline plugin adds support for building offline-capable documentation,
+    so you can distribute your [`site` directory][mkdocs.site_dir] as a
+    downloadable `*.zip` file.
+
+    ---
+
+    - [x] Your documentation can work without connectivity to the internet
+
+</div>
+
+  [Google Fonts]: changing-the-fonts.md
+  [Built-in optimize plugin]: optimize.md
+  [Built-in offline plugin]: offline.md
 
 ## Configuration
 
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.9.0 --> ·
+<!-- md:flag plugin [privacy] (built-in) -->
+
+In order to get started with the privacy plugin, add the following lines to
+`mkdocs.yml` to enable the plugin, and Material for MkDocs will start
+downloading external resources:
+
+``` yaml
+plugins:
+  - privacy
+```
+
+  [privacy]: privacy.md
+
 ### General
 
+The following settings are available:
+
+---
+
 #### `enabled`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.10.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to enable or disable the plugin when [building your project].
+If you want to disable the plugin, e.g., for local builds, you can use an
+[environment variable][mkdocs.env] in `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - privacy:
+      enabled: !ENV [CI, false]
+```
+
+This configuration enables the plugin only during continuous integration (CI).
+
+---
+
 #### `concurrency`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.30.0 --> ·
+<!-- md:default available CPUs - 1 -->
+
+With more CPUs available, the plugin can do more work in parallel, and thus
+complete media file optimization faster. If you want to disable concurrent
+processing completely, use:
+
+``` yaml
+plugins:
+  - privacy:
+      concurrency: 1
+```
+
+By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 
 ### Caching
 
+The plugin implements an intelligent caching mechanism, ensuring that external
+resources are only downloaded when they're not already contained in the cache.
+While the initial build might take some time, it's a good idea to use caching,
+as it will speed up consecutive builds.
+
+The following settings are available for caching:
+
+---
+
 #### `cache`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.30.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to instruct the plugin to bypass the cache, in order to
+trigger downloads for all external assets, even though the cache may not be
+stale. It's normally not necessary to specify this setting, except for when
+debugging the plugin itself. Caching can be disabled with:
+
+``` yaml
+plugins:
+  - privacy:
+      cache: false
+```
+
+---
+
 #### `cache_dir`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.30.0 --> ·
+<!-- md:default `.cache/plugin/privacy` -->
+
+It is normally not necessary to specify this setting, except for when you want
+to change the path within your project directory where social card images are
+cached. If you want to change it, use:
+
+``` yaml
+plugins:
+  - privacy:
+      cache_dir: path/to/folder
+```
+
+If you're using [multiple instances] of the plugin, it can be a good idea to
+set different cache directories for both instances, so that they don't interfere
+with each other.
+
+  [multiple instances]: #
 
 ### External assets
 
@@ -33,3 +220,5 @@ icon: material/shield-account
 #### `links`
 #### `links_attr_map`
 #### `links_noopener`
+
+## Limitations
