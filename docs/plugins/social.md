@@ -8,16 +8,23 @@ icon: material/share-variant
 
 The social plugin automatically and intelligently generates beautiful and
 customizable social cards for each page of your project, rendering as preview
-images whenever you or somebody else shares a link to your project on social
-media.
+images whenever you or somebody else shares a link to your documentation on
+social media.
 
 ## Objective
 
 ### How it works
 
-The awesome thing about social cards is that they are generated during
-build time and directly distributed with your documentation, no external
-services involved. While it would technically be simpler to generate
+What's particularly convenient about the plugin is that it automatically
+generates a social card for each page when [building your project], no external
+services involved. The generated cards are stored in the
+[`site` directory][mkdocs.site_dir] and served regularly like all other images.
+
+Social cards are defined in a custom syntax
+
+TODO
+
+While it would technically be simpler to generate
 social cards using a web browser and an automation framework like
 [Puppeteer], it would add further liabilities to your toolchain, with the
 potential to make build pipelines more complex and resource intense.
@@ -540,7 +547,15 @@ plugins:
 
 ### Metadata
 
-Blabla
+The social plugin supports overriding select settings on a page-by-page basis
+through metadata (front matter) in order to customize social card generation
+for a page or [for an entire subsection] of your project by leveraging the
+[meta] plugin.
+
+The following settings are available via metadata:
+
+  [for an entire subsection]: meta.md#how-it-works
+  [meta]: meta.md
 
 ---
 

@@ -43,9 +43,9 @@ outside of the folder remain unaffected:
 └─ mkdocs.yml
 ```
 
-In metadata, lists and dictionaries are recursively merged, which means you can
-append values to a list and add or set specific properties in a dictionary on
-arbitrary levels.
+When defining metadata, lists and dictionaries are recursively merged, which
+means you can append values to a list and add or set specific properties in a
+dictionary on arbitrary levels.
 
 ### When to use it
 
