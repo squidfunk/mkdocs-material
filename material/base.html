@@ -241,11 +241,11 @@
     {% endblock %}
     {% block scripts %}
       <script src="{{ 'assets/javascripts/bundle.220ee61c.min.js' | url }}"></script>
-      {% for path in config.extra_javascript %}
-        {% if path.endswith(".mjs") %}
-          <script type="module" src="{{ path | url }}"></script>
+      {% for script in config.extra_javascript %}
+        {% if script.path %}
+          {{ script | script_tag }}
         {% else %}
-          <script src="{{ path | url }}"></script>
+          <script src="{{ script | url }}"></script>
         {% endif %}
       {% endfor %}
     {% endblock %}
