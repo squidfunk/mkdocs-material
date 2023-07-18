@@ -7,6 +7,7 @@
 {% if tags %}
   <nav class="md-tags" {{ hidden }}>
     {% for tag in tags %}
+      {% set icon = "" %}
       {% if config.extra.tags %}
         {% set icon = " md-tag-icon" %}
         {% if tag.type %}
