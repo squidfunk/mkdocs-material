@@ -22,7 +22,7 @@ in the address bar. However, you'll realize that the site search is gone.
 
 Material for MkDocs offers many interactive features, some of which will not
 work from the local file system due to the restrictions of modern browsers. More
-specifically and technically, any usage of the [Fetch API] will error with a
+specifically and technically, all calls to the [Fetch API] will error with a
 message like:
 
 ```
@@ -38,9 +38,12 @@ Additionally, the plugin automatically disables the
 [`use_directory_urls`][mkdocs.use_directory_urls] setting, ensuring that users
 can open your documentation directly from the local file system.
 
+There are some [limitations].
+
   [building your project]: ../creating-your-site.md#building-your-site
   [Fetch API]: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
   [iframe-worker]: https://github.com/squidfunk/iframe-worker
+  [limitations]: #limitations
 
 ### When to use it
 
@@ -131,3 +134,18 @@ plugins:
 ```
 
 ## Limitations
+
+When enabling the offline plugin, make sure to disable the following settings,
+as they make use of the [Fetch API] which will error when invoked from the local
+file system:
+
+- [Instant loading]
+- [Site analytics]
+- [Versioning]
+- [Comment systems]
+
+  [Instant loading]: ../setup/setting-up-navigation.md#instant-loading
+  [Site analytics]: ../setup/setting-up-site-analytics.md
+  [Versioning]: ../setup/setting-up-versioning.md
+  [Git repository]: ../setup/adding-a-git-repository.md
+  [Comment systems]: ../setup/adding-a-comment-system.md

@@ -15,6 +15,20 @@ media.
 
 ### How it works
 
+The awesome thing about social cards is that they are generated during
+build time and directly distributed with your documentation, no external
+services involved. While it would technically be simpler to generate
+social cards using a web browser and an automation framework like
+[Puppeteer], it would add further liabilities to your toolchain, with the
+potential to make build pipelines more complex and resource intense.
+
+For this reason, Material for MkDocs again follows its core principle of
+making things as simple and powerful as possible, providing an easy-to-use
+framework for building [custom layouts] using Python image processing
+libraries.
+
+  [Puppeteer]: https://github.com/puppeteer/puppeteer
+
 ### When to use it
 
 Material for MkDocs can automatically create beautiful social cards for your
@@ -24,47 +38,19 @@ custom layouts to match your project's style and branding.
 
   [default layouts]: #cards_layout
 
-## Features
-
-- :material-smart-card: Automatically generate social cards
-- :material-code-tags-check: Automatically add meta tags to pages
-- :material-image-edit-outline: Supports entirely custom layouts
-- :material-layers: Supports multiple instances
-- :material-multicast: Supports concurrency
-- ???
-
-@todo: each feature should be linked to a section in the setup docs.
-
-- Automatically fetches fonts from Google Fonts
-- Custom layouts
-
-## Installation
+## Dependencies
 
 The built-in social plugin is included with Material for MkDocs and doesn't
 need to be installed. However, in order to automatically create images, it's
 necessary to install the [dependencies for image processing][^1], if they're
 not already available on your system.
 
-  [^1]:
-    The awesome thing about social cards is that they are generated during
-    build time and directly distributed with your documentation, no external
-    services involved. While it would technically be simpler to generate
-    social cards using a web browser and an automation framework like
-    [Puppeteer], it would add further liabilities to your toolchain, with the
-    potential to make build pipelines more complex and resource intense.
-
-    For this reason, Material for MkDocs again follows its core principle of
-    making things as simple and powerful as possible, providing an easy-to-use
-    framework for building [custom layouts] using Python image processing
-    libraries.
-
   [dependencies for image processing]: dependencies/image-processing.md
-  [Puppeteer]: https://github.com/puppeteer/puppeteer
 
 ## Configuration
 
 <!-- md:version 8.5.0 --> ·
-<!-- md:flag plugin built-in -->
+<!-- md:flag plugin [social] (built-in) -->
 
 In order to get started with the built-in social plugin, just add the following
 lines to `mkdocs.yml`, and observe how Material for MkDocs generates beautiful
@@ -88,6 +74,7 @@ The plugin comes with many options and the ability to create [custom layouts].
 - Pillow, the imaging library that is used to generate images, understands
 several formats for color, including...
 
+  [social]: social.md
   [Insiders]: ../insiders/index.md
 
 ### General
@@ -218,8 +205,8 @@ plugins:
 <!-- md:default `assets/images/social` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your [`site` directory][site_dir] from which social
-cards are served. If you want to change it, use:
+to change the path within your [`site` directory][mkdocs.site_dir] from which
+social cards are served. If you want to change it, use:
 
 ``` yaml
 plugins:
@@ -228,8 +215,6 @@ plugins:
 ```
 
 This configuration copies the generated images to `site/path/to/folder`.
-
-  [site_dir]: https://www.mkdocs.org/user-guide/configuration/#site_dir
 
 ---
 
@@ -254,9 +239,10 @@ The provided path is resolved from the project directory.
 !!! tip "Where to store custom layouts?"
 
     Our recommendation is to locate the folder outside of the
-    [`docs` directory][mkdocs.docs_dir], to make sure that your [custom layouts] are
-    not copied to the [`site` directory][site_dir] when [building your project],
-    e.g., by adhering to the following directory layout:
+    [`docs` directory][mkdocs.docs_dir], to make sure that your [custom layouts]
+    are not copied to the [`site` directory][mkdocs.site_dir] when
+    [building your project], e.g., by adhering to the following directory
+    layout:
 
     ``` { .sh .no-copy }
     .

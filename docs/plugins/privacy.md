@@ -13,9 +13,9 @@ TODO: add docs
 ### How it works
 
 When [building your project], the plugin scans the output for links to external
-resources, including scripts, style sheets, images, and web fonts,  downloads
-them for self-hosting, stores them in your [`site` directory][mkdocs.site_dir]
-and updates all links to point to the local copies. For example, take:
+assets, including scripts, style sheets, images, and web fonts,  downloads them
+for self-hosting, stores them in your [`site` directory][mkdocs.site_dir] and
+updates all links to point to the downloaded copies. For example:
 
 ``` html
 <script src="https://example.com/script.js"></script>
@@ -27,29 +27,28 @@ The external script is downloaded, and the link is replaced with:
 <script src="assets/external/example.com/script.js"></script>
 ```
 
-Of course, scripts and style sheets can reference further external resources,
+Of course, scripts and style sheets can reference further external assets,
 which is why this process is repeated recursively until no further external
-resources are found:
+assets are found:
 
-- Scripts are scanned for further scripts, style sheets, JSON files, and images
+- Scripts are scanned for further scripts, style sheets and JSON files
 - Style sheets are scanned for images and web fonts
 
 Additionally, hints like [`preconnect`][preconnect] used to reduce latency when
-requesting external resources are removed from the output, as they're not
+requesting external assets are removed from the output, as they're not
 necessary when self-hosting. After the plugin has done it's work, your project
 will be free of requests to external services.
 
-All of this with a [single line of configuration]. There are some [limitations].
+There are some [limitations].
 
   [building your project]: ../creating-your-site.md#building-your-site
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
-  [single line of configuration]: #configuration
   [limitations]: #limitations
 
 ### When to use it
 
-The plugin was developed to make compliance with the European
-"__General Data Protection Regulation__" (GDPR) as simple as possible, while
+The plugin was developed to make compliance with the 2018 European
+__General Data Protection Regulation__ (GDPR) as simple as possible, while
 retaining the flexibility and power that Material for MkDocs offers, like for
 example its tight integration with [Google Fonts].
 
@@ -58,8 +57,9 @@ images, enabling the plugin allows to move them outside of your repository, as
 the plugin will automatically download and store them in your
 [`site` directory][mkdocs.site_dir] when [building your project].
 
-Lastly, the plugin can be combined with other built-in plugins that Material
-for MkDocs offers, to build sophisticated build pipelines for your project:
+Even more interestingly, the plugin can be combined with other built-in plugins
+that Material for MkDocs offers, to build sophisticated build pipelines for your
+project:
 
 <div class="grid cards" markdown>
 
@@ -73,7 +73,7 @@ for MkDocs offers, to build sophisticated build pipelines for your project:
 
     ---
 
-    - [x] All downloaded external resources are automatically optimized
+    - [x] All downloaded external images are automatically optimized
 
 -   :material-wifi-strength-alert-outline: &nbsp; __[Built-in offline plugin]__
 
@@ -101,7 +101,7 @@ for MkDocs offers, to build sophisticated build pipelines for your project:
 
 In order to get started with the privacy plugin, add the following lines to
 `mkdocs.yml` to enable the plugin, and Material for MkDocs will start
-downloading external resources:
+downloading external assets:
 
 ``` yaml
 plugins:
@@ -157,7 +157,7 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 ### Caching
 
 The plugin implements an intelligent caching mechanism, ensuring that external
-resources are only downloaded when they're not already contained in the cache.
+assets are only downloaded when they're not already contained in the cache.
 While the initial build might take some time, it's a good idea to use caching,
 as it will speed up consecutive builds.
 
@@ -172,7 +172,7 @@ The following settings are available for caching:
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
-trigger downloads for all external assets, even though the cache may not be
+re-schedule downloads for all external assets, even though the cache may not be
 stale. It's normally not necessary to specify this setting, except for when
 debugging the plugin itself. Caching can be disabled with:
 
@@ -191,7 +191,7 @@ plugins:
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your project directory where social card images are
+to change the path within your project directory where downloaded copies are
 cached. If you want to change it, use:
 
 ``` yaml
@@ -208,17 +208,195 @@ with each other.
 
 ### External assets
 
+The following settings are available for external assets:
+
+---
+
 #### `assets`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to specify whether the plugin should download external
+assets. If you only want the plugin to process [external links], disable
+automatic downloading with:
+
+``` yaml
+plugins:
+  - privacy:
+      assets: false
+```
+
+  [external links]: #external-links
+
+---
+
 #### `assets_fetch`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to specify whether the plugin should downloads or only report
+external assets when they're encountered. If you already self-host all external
+assets, this setting can be used as a safety net to detect links to external
+assets placed by the author in pages:
+
+``` yaml
+plugins:
+  - privacy:
+      assets_fetch: true
+```
+
+---
+
 #### `assets_fetch_dir`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default `assets/external` -->
+
+It is normally not necessary to specify this setting, except for when you want
+to change the path within your [`site` directory][mkdocs.site_dir] from which
+external assets are served. If you want to change it, use:
+
+``` yaml
+plugins:
+  - privacy:
+      assets_fetch_dir: path/to/folder
+```
+
+This configuration stores the downloaded copies in `site/path/to/folder`.
+
+---
+
 #### `assets_include`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default none -->
+
+Use this setting to enable downloading of external assets for specific origins,
+e.g., when using [multiple instances] of the plugin to fine-tune processing of
+external assets for different origins:
+
+``` yaml
+plugins:
+  - privacy:
+      assets_include:
+        - unsplash.com/*
+```
+
+---
+
 #### `assets_exclude`
-#### `assets_expr_map`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default none -->
+
+``` yaml
+plugins:
+  - privacy:
+      assets_exclude: # (1)!
+        - cdn.jsdelivr.net/npm/mathjax@3/*
+        - giscus.app/*
+```
+
+1.  [MathJax] loads web fonts for typesetting of mathematical content
+    through relative URLs, and thus cannot be automatically bundled by the
+    privacy plugin. [MathJax can be self-hosted].
+
+    [Giscus], which we recommend to use as a [comment system], uses a technique
+    called code-splitting to load only the code that is necessary, which
+    is implemented via relative URLs. [Giscus can be self-hosted] as well.
+
+Use this setting to disable downloading of external assets for specific origins,
+e.g., when using [multiple instances] of the plugin to fine-tune processing of
+external assets for different origins:
+
+  [MathJax]: ../reference/math.md
+  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
+  [Giscus]: https://giscus.app/
+  [comment system]: ../setup/adding-a-comment-system.md
+  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
+
+---
 
 ### External links
 
+The following settings are available for external links:
+
+---
+
 #### `links`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to instruct the plugin to parse and process external links to
+annotate them for [improved security], or to automatically add additional
+attributes to external links:
+
+``` yaml
+plugins:
+  - privacy:
+      links: false
+```
+
+  [improved security]: https://developer.chrome.com/en/docs/lighthouse/best-practices/external-anchors-use-rel-noopener/
+
+---
+
 #### `links_attr_map`
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default none -->
+
+Use this setting to specify additional attributes that should be added to
+external links, for example, to add `target="_blank"` to all external links
+so they open in a new tab:
+
+``` yaml
+plugins:
+  - privacy:
+      links_attr_map:
+        target: _blank
+```
+
+---
+
 #### `links_noopener`
 
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.37.0 --> ·
+<!-- md:default `true` -->
+
+It is normally not recommended to change this setting, as enabling it will
+automatically annotate external links that open in a new window with
+`rel="noopener"` for [improved security]:
+
+``` yaml
+plugins:
+  - privacy:
+      links_noopener: true
+```
+
 ## Limitations
+
+Dynamically created URLs as part of scripts are not detected, and thus cannot be
+downloaded automatically, as the plugin does not execute scripts – it only detects fully qualified URLs for downloading and replacement. In short, don't do this:
+
+``` js
+const cdn = "https://polyfill.io"
+const url = `${cdn}/v3/polyfill.min.js`
+```
+
+Instead, always use fully qualified URLs:
+
+``` js
+const url ="https://polyfill.io/v3/polyfill.min.js"
+```
