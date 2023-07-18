@@ -1,6 +1,6 @@
 # Ensuring data privacy
 
-Material for MkDocs makes compliance with data privacy regulations very easy, 
+Material for MkDocs makes compliance with data privacy regulations very easy,
 as it offers a native [cookie consent] solution to seek explicit consent from
 users before setting up [analytics]. Additionally, external assets can be
 automatically downloaded for [self-hosting].
@@ -40,7 +40,7 @@ The following properties are available:
 <!-- md:option consent.title -->
 
 :   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
-    This property sets the title of the cookie consent, which is rendered at the 
+    This property sets the title of the cookie consent, which is rendered at the
     top of the form and must be set to a non-empty string.
 
 <!-- md:option consent.description -->
@@ -51,7 +51,7 @@ The following properties are available:
 
 <!-- md:option consent.cookies -->
 
-:   <!-- md:default _none_ --> This property allows to add custom 
+:   <!-- md:default _none_ --> This property allows to add custom
     cookies or change the initial `checked` state and name of built-in cookies.
     Currently, the following cookies are built-in:
 
@@ -103,7 +103,7 @@ The following properties are available:
 <!-- md:option consent.actions -->
 
 :   <!-- md:default `[accept, manage]` --> This property defines
-    which buttons are shown and in which order, e.g. to allow the user to accept 
+    which buttons are shown and in which order, e.g. to allow the user to accept
     cookies and manage settings:
 
     ``` yaml
@@ -133,7 +133,7 @@ When a user first visits your site, a cookie consent form is rendered:
 #### Change cookie settings
 
 In order to comply with GDPR, users must be able to change their cookie settings
-at any time. This can be done by adding a simple link to your [copyright notice] 
+at any time. This can be done by adding a simple link to your [copyright notice]
 in `mkdocs.yml`:
 
 ``` yaml
@@ -194,55 +194,6 @@ The following configuration options are available:
   [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
 
-#### External assets
-
-The following configuration options are available for external assets:
-
-<!-- md:option privacy.assets -->
-
-:   <!-- md:default `true` --> – This option specifies whether the plugin
-    should scan the HTML output to detect and process external assets:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          assets: true
-    ```
-
-    If you've removed all external assets from your project via [customization],
-    it's still a good idea to enable the plugin, as the plugin will make sure
-    that there are no hidden external links in any Markdown files that were 
-    unintentionally added.
-
-    Using `assets` in [strict mode] will make the build fail when external
-    assets are detected.
-
-<!-- md:option privacy.assets_fetch -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    plugin should download external assets it encountered and bundle them with
-    your documentation:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          assets_fetch: true
-    ```
-
-<!-- md:option privacy.assets_fetch_dir -->
-
-:   <!-- md:default `assets/external` --> This option
-    specifies where the downloaded [external assets] will be stored. It's
-    normally not necessary to change this option:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          assets_fetch_dir: assets/external
-    ```
-
-    The path must be defined relative to [`docs_dir`][docs_dir].
-
 <!-- md:option privacy.assets_include -->
 
 :   <!-- md:default _none_ --> This option allows to only include
@@ -284,7 +235,7 @@ The following configuration options are available for external assets:
     plugins:
       - privacy:
           assets_exclude: # (1)!
-            - cdn.jsdelivr.net/npm/mathjax@3/* 
+            - cdn.jsdelivr.net/npm/mathjax@3/*
             - giscus.app/*
     ```
 
@@ -305,16 +256,16 @@ The following configuration options are available for external assets:
     The primary reason why Material for MkDocs can't just bundle all of its own
     assets is the integration with [Google Fonts], which offers over a thousand
     different fonts that can be used to render your documentation. Most of the
-    fonts include several weights and are split up into different character sets 
+    fonts include several weights and are split up into different character sets
     to keep the download size small, so the browser only downloads what is
     really needed. For Roboto, our default [regular font], this results in [42
     `*.woff2` files in total][example].
-    
+
     If Material for MkDocs would bundle all font files, the download size would
-    be in the hundreds of megabytes, slowing down automated builds. Furthermore, 
-    authors might add external assets like third-party scripts or style sheets 
+    be in the hundreds of megabytes, slowing down automated builds. Furthermore,
+    authors might add external assets like third-party scripts or style sheets
     that would need to be remembered to be defined as further local assets.
-    
+
     This is the very reason the [built-in privacy plugin] exists — it automates
     the process of downloading all external assets manually to ensure compliance
     with GDPR with some some [technical limitations].
@@ -484,8 +435,8 @@ removed during the build process.
 
 #### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
 
-All downloaded files are written to the `.cache` directory, significantly 
-reducing the duration of subsequent builds as only replacements need to be 
+All downloaded files are written to the `.cache` directory, significantly
+reducing the duration of subsequent builds as only replacements need to be
 carried out. You might want to:
 
 1.  Ignore the `.cache` directory in your project, by adding it to `.gitignore`.

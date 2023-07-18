@@ -6,9 +6,9 @@ icon: material/newspaper-variant-outline
 # Built-in blog plugin
 
 The blog plugin makes it very easy to build a blog, either as a sidecar to
-your documentation or standalone. Focus on your content while the engine does
-all the heavy lifting, automatically generating [archive] and [category] pages,
-configurable [post URLs][post_url_format], [pagination] and more.
+your documentation or standalone. Focus on your content while the plugin does
+all the heavy lifting, automatically generating index pages, [archive] and
+[category] pages, configurable [pagination] and more.
 
   [archive]: #archive
   [category]: #categories
@@ -18,24 +18,128 @@ configurable [post URLs][post_url_format], [pagination] and more.
 
 ### How it works
 
-[MkDocs] is a platform primarily targetted towards creating documentation, ...
+The plugin scans a folder called `posts` in your [`blog` directory][blog_dir]
+for posts, from which it generates paginated index pages automatically. By
+default, the plugin expects that your project has the following directory
+layout, but as with all [built-in plugins], almost everything is configurable:
+
+``` { .sh .no-copy hl_lines="3-5" }
+.
+├─ docs/
+│  └─ blog/
+│     ├─ posts/
+│     └─ index.md
+└─ mkdocs.yml
+```
+
+The index page in your [`blog` directory][blog_dir] is the main entry point to
+your blog – a paginated page listing all posts in reverse chronological order.
+Besides that, the plugin supports automatically creating [archive] and
+[category] pages that list a subset of posts for a time interval or category.
+
+[Post URLs][post_url_format] are completely configurable, no matter if you want
+your URLs to include the post's date or not. Rendered dates always display in
+the locale of the [site language] of your project. As typical for static
+blogging frameworks, post can be annotated with a variety of [metadata],
+which allows for deep integration with other [built-in plugins], e.g., the
+[social] and [tags] plugin.
+
+Posts can be organized in nested folders with a directory layout that suits
+your needs, and can make use of all components and syntax that Material for
+MkDocs offers, including [admonitions], [annotations], [code blocks],
+[content tabs], [diagrams], [icons], [math], and more.
+
+  [metadata]: #metadata
+  [categories]: #categories
+  [built-in plugins]: index.md
+  [social]: social.md
+  [tags]: tags.md
+  [admonitions]: ../reference/admonitions.md
+  [annotations]: ../reference/annotations.md
+  [code blocks]: ../reference/code-blocks.md
+  [content tabs]: ../reference/content-tabs.md
+  [diagrams]: ../reference/diagrams.md
+  [icons]: ../reference/icons-emojis.md
+  [math]: ../reference/math.md
 
 ### When to use it
+
+If you want to add a blog to your project, or migrate from another blog
+framework to Material for MkDocs because of its excellent technical writing
+capabilities, this plugin can be a good choice, as it integrates perfectly with
+many other built-in plugins:
+
+<div class="grid cards" markdown>
+
+-   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+
+    ---
+
+    The meta plugin makes it easy to apply metadata to a subset of posts,
+    including authors, tags, categories, draft status, as well as social card
+    layouts.
+
+    ---
+
+    - [x] Simpler organization, categorization and management of posts
+
+-   :material-share-variant: &nbsp; __[Built-in social plugin]__
+
+    ---
+
+    The social plugin automatically generates beautiful and customizable
+    social cards for each post and page when links are shared on social media.
+
+    ---
+
+    - [x] Links to your blog render beautiful social cards on social media
+
+-   :material-image-size-select-small: &nbsp; __[Built-in optimize plugin]__
+
+    ---
+
+    The optimize plugin automatically identifies and optimizes all media files
+    that you reference in your project by using compression and conversion
+    techniques.
+
+    ---
+
+    - [x] Your blog loads faster as smaller images are shipped to your users
+
+-   :material-tag-multiple-outline: &nbsp; __[Built-in tags plugin]__
+
+    ---
+
+    The tags plugin allows to categorize posts alongside with pages in your
+    project, to improve their discoverability and connect posts to your
+    documentation.
+
+    ---
+
+    - [x] Your documentation's tag system integrates with your blog
+
+</div>
+
+  [Built-in meta plugin]: meta.md
+  [Built-in social plugin]: social.md
+  [Built-in optimize plugin]: optimize.md
+  [Built-in tags plugin]: tags.md
 
 ## Configuration
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default `true` -->
+<!-- md:flag plugin [blog] (built-in) -->
 
-As with all [built-in plugins], enabling the blog plugin to do its work is
+As with all [built-in plugins], enabling the blog plugin to get started is
 straight-forward. Just add the following lines to `mkdocs.yml`, and start
-writing your first blog post immediately:
+writing your first blog post:
 
 ``` yaml
 plugins:
   - blog
 ```
 
+  [blog]: blog.md
   [built-in plugins]: index.md
 
 ### General
@@ -200,7 +304,7 @@ Some popular choices:
           post_url_date_format: yyyy
     ```
 
-If you want to remove the date from post URLs, e.g. when your blog features
+If you want to remove the date from post URLs, e.g., when your blog features
 mostly evergreen content, you can remove the `date` placeholder from the
 [`post_url_format`][post_url_format] format string.
 
@@ -313,7 +417,7 @@ configuration.
 
 Use this setting to change the separator that is passed to the slugification
 function set as part of [`post_slugify`][post_slugify]. While the default is a
-hyphen, it can be set to any string:
+hyphen, it can be set to any string, e.g., `_`:
 
 ``` yaml
 plugins:
@@ -724,7 +828,7 @@ configuration.
 
 Use this setting to change the separator that is passed to the slugification
 function set as part of [`categories_slugify`][categories_slugify]. While the
-default is a hyphen, it can be set to any string:
+default is a hyphen, it can be set to any string, e.g., `_`:
 
 ``` yaml
 plugins:
@@ -877,18 +981,18 @@ popular choices:
 
 The following placeholders are supported by [paginate]:
 
-- `$first_page` – number of first reachable page
-- `$last_page` – number of last reachable page
-- `$page` – number of currently selected page
-- `$page_count` – number of reachable pages
-- `$items_per_page` – maximal number of items per page
-- `$first_item` – index of first item on the current page
-- `$last_item` – index of last item on the current page
-- `$item_count` – total number of items
-- `$link_first` – link to first page (unless on first page)
-- `$link_last` – link to last page (unless on last page)
-- `$link_previous` – link to previous page (unless on first page)
-- `$link_next` – link to next page (unless on last page)
+- `$first_page` – Number of first reachable page
+- `$last_page` – Number of last reachable page
+- `$page` – Number of currently selected page
+- `$page_count` – Number of reachable pages
+- `$items_per_page` – Maximal number of items per page
+- `$first_item` – Index of first item on the current page
+- `$last_item` – Index of last item on the current page
+- `$item_count` – Total number of items
+- `$link_first` – Link to first page (unless on first page)
+- `$link_last` – Link to last page (unless on last page)
+- `$link_previous` – Link to previous page (unless on first page)
+- `$link_next` – Link to next page (unless on last page)
 
   [paginate]: https://pypi.org/project/paginate/
 
@@ -956,7 +1060,7 @@ plugins:
 
 The provided path is resolved from the [`blog` directory][blog_dir].
 
-!!! info "Format of `.authors.yml` file"
+!!! info "Format of autor information"
 
     The `.authors.yml` file must follow the following format:
 
@@ -969,7 +1073,7 @@ The provided path is resolved from the [`blog` directory][blog_dir].
 
     Note that `<author>` must be set to an identifier for associating authors
     with posts, e.g., a GitHub username like `squidfunk`. This identifier can
-    then be used in the metadata of posts.
+    then be used in the metadata of posts. Multiple authors can be added.
 
     As an example, see [the `.authors.yml` file][.authors.yml] we're using for
     our blog.
@@ -1034,8 +1138,8 @@ plugins:
 <!-- md:default `false` -->
 
 The plugin can automatically mark posts with future dates as drafts. When the
-date passed today, the post is automatically unmarked and included when
-[building your project]:
+date is past today, the post is automatically included when
+[building your project], unless explicitly marked as draft:
 
 ``` yaml
 plugins:
@@ -1047,39 +1151,99 @@ plugins:
 
 ### Metadata
 
+---
+
 #### `date`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default none --> ·
 <!-- md:flag metadata -->
+
+Use this property to define the publishing date of a post. Note that this
+property is required, which means the build fails when it's not set. Set the
+post date with:
+
+``` yaml
+---
+date: 2023-01-31
+---
+
+# Post title
+...
+```
+
+The following date formats are supported:
+
+- `2023-01-31`
+- `2023-01-31T12:00:00`
+
+---
 
 #### `draft`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default `false` --> ·
 <!-- md:flag metadata -->
+
+Use this property to mark a post as draft. The plugin allows to include or
+exclude posts marked as drafts when [building your project]. Mark a post as
+draft with:
+
+``` yaml
+---
+draft: true
+---
+
+# Post title
+...
+```
+
+---
 
 #### `authors`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default none --> ·
 <!-- md:flag metadata -->
+
+---
 
 #### `categories`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default none --> ·
 <!-- md:flag metadata -->
+
+---
 
 #### `links`
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.23.0 --> ·
+<!-- md:default none --> ·
 <!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
+
+---
 
 #### `readtime`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default automatically set --> ·
 <!-- md:flag metadata -->
+
+---
+
+#### `slug`
+
+<!-- md:version 9.2.0 --> ·
+<!-- md:default automatically set --> ·
+<!-- md:flag metadata -->
+
+---
 
 #### `tags`
 
 <!-- md:version 9.2.0 --> ·
+<!-- md:default none --> ·
 <!-- md:flag metadata -->

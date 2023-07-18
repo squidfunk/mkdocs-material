@@ -547,10 +547,9 @@ plugins:
 
 ### Metadata
 
-The social plugin supports overriding select settings on a page-by-page basis
-through metadata (front matter) in order to customize social card generation
-for a page or [for an entire subsection] of your project by leveraging the
-[meta] plugin.
+The plugin allows to override a subset of settings through metadata (front
+matter) in order to customize social card generation for a single page or
+[for an entire subsection] of your project by leveraging the [meta] plugin.
 
 The following settings are available via metadata:
 
@@ -566,6 +565,20 @@ The following settings are available via metadata:
 <!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
+Override the [`cards`][cards] setting for the given page:
+
+``` yaml
+---
+social:
+  cards: false
+---
+
+# Page title
+...
+```
+
+  [cards]: #cards
+
 ---
 
 #### `cards_layout`
@@ -574,6 +587,18 @@ The following settings are available via metadata:
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
+
+Override the [`cards_layout`][cards_layout] setting for the given page:
+
+``` yaml
+---
+social:
+  cards_layout: my-custom-layout
+---
+
+# Page title
+...
+```
 
 ---
 
@@ -584,4 +609,18 @@ The following settings are available via metadata:
 <!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
-HOLA
+Override the [`cards_layout_options`][cards_layout_options] setting for the given page:
+
+``` yaml
+---
+social:
+  cards_layout_options:
+    background_color: blue             # Change background color
+    background_image: null             # Remove background image
+---
+
+# Page title
+...
+```
+
+Setting an option to `null` resets the option.

@@ -296,6 +296,10 @@ plugins:
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:default none -->
 
+Use this setting to disable downloading of external assets for specific origins,
+e.g., when using [multiple instances] of the plugin to fine-tune processing of
+external assets for different origins:
+
 ``` yaml
 plugins:
   - privacy:
@@ -311,10 +315,6 @@ plugins:
     [Giscus], which we recommend to use as a [comment system], uses a technique
     called code-splitting to load only the code that is necessary, which
     is implemented via relative URLs. [Giscus can be self-hosted] as well.
-
-Use this setting to disable downloading of external assets for specific origins,
-e.g., when using [multiple instances] of the plugin to fine-tune processing of
-external assets for different origins:
 
   [MathJax]: ../reference/math.md
   [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
@@ -338,7 +338,8 @@ The following settings are available for external links:
 
 Use this setting to instruct the plugin to parse and process external links to
 annotate them for [improved security], or to automatically add additional
-attributes to external links:
+attributes to external links. If you want to disable processing of external
+links, use:
 
 ``` yaml
 plugins:
