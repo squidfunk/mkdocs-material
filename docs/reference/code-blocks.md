@@ -358,27 +358,53 @@ argument placed right after the language shortcode. Note that line counts start
 at `1`, regardless of the starting line number specified as part of
 [`linenums`][Adding line numbers]:
 
-```` markdown title="Code block with highlighted lines"
-``` py hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
-````
+=== "Lines"
 
-<div class="result" markdown>
+    ```` markdown title="Code block with highlighted lines"
+    ``` py hl_lines="2 3"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+    ````
 
-``` py linenums="1" hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
+    <div class="result" markdown>
 
-</div>
+    ``` py linenums="1" hl_lines="2 3"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+
+    </div>
+
+=== "Line ranges"
+
+    ```` markdown title="Code block with highlighted line range"
+    ``` py hl_lines="3-5"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+    ````
+
+    <div class="result" markdown>
+
+    ``` py linenums="1" hl_lines="3-5"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+
+    </div>
 
   [Adding line numbers]: #adding-line-numbers
 
