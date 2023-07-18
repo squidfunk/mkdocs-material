@@ -35,6 +35,9 @@
           "$ref": "plugins/offline.json"
         },
         {
+          "$ref": "plugins/optimize.json"
+        },
+        {
           "$ref": "plugins/privacy.json"
         },
         {
@@ -45,6 +48,9 @@
         },
         {
           "$ref": "plugins/tags.json"
+        },
+        {
+          "$ref": "plugins/typeset.json"
         }
       ]
     },

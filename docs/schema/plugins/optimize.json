@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in optimize plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-optimize-plugin",
+      "enum": [
+        "optimize"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "optimize": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-optimize-plugin",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "concurrency": {
+              "title": "Concurrency (number of CPUs)",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.concurrency",
+              "type": "number",
+              "default": 1
+            },
+            "cache": {
+              "title": "Enable caching",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.cache",
+              "type": "boolean",
+              "default": true
+            },
+            "cache_dir": {
+              "title": "Cache directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.cache_dir",
+              "type": "string",
+              "default": ".cache/plugins/social"
+            },
+            "optimize_png": {
+              "title": "Optimization of PNGs",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_png",
+              "type": "boolean",
+              "default": true
+            },
+            "optimize_png_speed": {
+              "title": "Speed/quality tradeoff [1,10]",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_png_speed",
+              "type": "number",
+              "default": 4
+            },
+            "optimize_png_strip": {
+              "title": "Strip unnecessary metadata from PNGs",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_png_strip",
+              "type": "boolean",
+              "default": true
+            },
+            "optimize_jpg": {
+              "title": "Optimization of JPGs",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_jpg",
+              "type": "boolean",
+              "default": true
+            },
+            "optimize_jpg_quality": {
+              "title": "Speed/quality tradeoff for pngquant [0,10]",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_jpg_quality",
+              "type": "number",
+              "default": 60
+            },
+            "optimize_jpg_progressive": {
+              "title": "Progressive encoding (faster rendering)",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.optimize_jpg_progressive",
+              "type": "boolean",
+              "default": true
+            },
+            "print_gain": {
+              "title": "Print optimization gain",
+              "type": "boolean",
+              "default": true
+            },
+            "print_gain_summary": {
+              "title": "Print optimization gain summary",
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

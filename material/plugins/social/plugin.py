@@ -188,6 +188,22 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         if "description" in page.meta:
             description = page.meta["description"]
 
+        # Check type of meta title - see https://t.ly/m1Us
+        if not isinstance(title, str):
+            log.error(
+                f"Page meta title of page '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(title)}\"."
+            )
+            sys.exit(1)
+
+        # Check type of meta description - see https://t.ly/m1Us
+        if not isinstance(description, str):
+            log.error(
+                f"Page meta description of '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(description)}\"."
+            )
+            sys.exit(1)
+
         # Generate social card if not in cache - TODO: values from mkdocs.yml
         hash = md5("".join([
             site_name,
