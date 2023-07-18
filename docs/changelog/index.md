@@ -11,11 +11,16 @@
 - Added support for navigation pruning
 - Added support for navigation status
 - Added support for customizing site icons
+- Added support for customizing (code) annotation icons
+- Added focus outline to admonitions and details
 - Improved rendering of (code) annotation markers
 - Improved print styles for (code) annotations
 - Improved customizability of navigation tabs
 - Removed Universal Analytics integration
 - Removed ancient polyfills to reduce size of bundled JavaScript by 20%
+- Removed necessity for `Array.flat` and `Array.flatMap` polyfill
+- Removed announcement bar button when JavaScript is not available
+- Automatically download ResizeObserver polyfill when necessary
 
 ### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
 
