@@ -6,9 +6,7 @@
 
 <p align="center">
   <strong>
-    A 
-    <a href="https://material.io/">Material Design</a> 
-    theme for 
+    A powerful documentation framework on top of
     <a href="https://www.mkdocs.org/">MkDocs</a>
   </strong>
 </p>
