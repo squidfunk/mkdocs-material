@@ -1,9 +1,16 @@
 # Getting started
 
-Material for MkDocs is a theme for [MkDocs], a static site generator geared
-towards (technical) project documentation. If you're familiar with Python, you
-can install Material for MkDocs with [`pip`][pip], the Python package manager.
-If not, we recommend using [`docker`][docker].
+Material for MkDocs is a powerful documentation framework on top of [MkDocs],
+a static site generator for project documentation.[^1] If you're familiar with 
+Python, you can install Material for MkDocs with [`pip`][pip], the Python
+package manager. If not, we recommend using [`docker`][docker].
+
+  [^1]:
+    In 2016, Material for MkDocs started out as a simple theme for MkDocs, but
+    over the course of several years, it's now much more than that – with the
+    many built-in plugins, settings, and countless customization abilities,
+    Material for MkDocs is now one of the simplest and most powerful frameworks
+    for creating documentation for your project.
 
   [MkDocs]: https://www.mkdocs.org
   [pip]: #with-pip
@@ -29,7 +36,7 @@ Material for MkDocs with:
     pip install mkdocs-material=="9.*" # (1)!
     ```
 
-    1.  Material for MkDocs uses [semantic versioning][^1], which is why it's a
+    1.  Material for MkDocs uses [semantic versioning][^2], which is why it's a
         good idea to limit upgrades to the current major version.
 
         This will make sure that you don't accidentally [upgrade to the next
@@ -47,7 +54,7 @@ Material for MkDocs with:
         pip install -r requirements.txt
         ```
 
-  [^1]:
+  [^2]:
     Note that improvements of existing features are sometimes released as
     patch releases, like for example improved rendering of content tabs, as
     they're not considered to be new features.
