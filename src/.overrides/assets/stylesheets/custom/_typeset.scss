@@ -211,4 +211,74 @@
       }
     }
   }
+
+  // Social card
+  .mdx-social {
+    position: relative;
+    height: min(#{px2rem(540px)}, 80vw);
+
+    // Social card image on hover
+    &:hover .mdx-social__image {
+      background-color: rgba(228, 228, 228, 0.05);
+    }
+
+    // Social card layer
+    &__layer {
+      position: absolute;
+      margin-top: px2rem(80px);
+      transition: 250ms cubic-bezier(0.7, 0, 0.3, 1);
+      transform-style: preserve-3d;
+
+      // Social card layer on hover
+      &:hover {
+
+        // Social card label
+        .mdx-social__label {
+          opacity: 1;
+        }
+
+        // Social card image
+        .mdx-social__image {
+          background-color: rgba(127, 127, 127, 0.99);
+        }
+
+        // Hide top layers
+        ~ .mdx-social__layer {
+          opacity: 0;
+        }
+      }
+    }
+
+    // Social card image
+    &__image {
+      box-shadow:
+        px2rem(-5px) px2rem(5px) px2rem(10px)
+        rgba(0, 0, 0, 0.05);
+      transition: all 250ms;
+      transform: rotate(-40deg) skew(15deg, 15deg) scale(0.7);
+
+      // Actual image
+      img {
+        display: block;
+      }
+    }
+
+    // Social card label
+    &__label {
+      position: absolute;
+      display: block;
+      padding: px2rem(4px) px2rem(8px);
+      color: var(--md-default-bg-color);
+      background-color: var(--md-default-fg-color--light);
+      opacity: 0;
+      transition: all 250ms;
+    }
+
+    // Transform on hover
+    @for $i from 6 through 0 {
+      &:hover .mdx-social__layer:nth-child(#{$i}) {
+        transform: translateY(#{($i - 3) * -10}px);
+      }
+    }
+  }
 }

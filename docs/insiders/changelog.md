@@ -2,6 +2,82 @@
 
 ## Material for MkDocs Insiders
 
+### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
+
+- Added support for overriding social cards settings per page
+- Added new social card `default/only/image` layout
+- Improved resilience of optimize and social plugin
+- Fixed rendering bugs for pruned navigation items
+- Fixed jumping of content tabs anchor links when instant loading is enabled
+- Fixed #5676: Optimize plugin doesn't check for `pngquant`
+
+### 4.36.1 <small>June 23, 2023</small> { id="4.36.1" }
+
+- Fixed #5618: Date comparison breaking for drafts in blog plugin
+
+### 4.36.0 <small>June 15, 2023</small> { id="4.36.0" }
+
+- Added support for instant prefetching to speed up slow connections
+- Improved stability of anchor link removal in built-in typeset plugin
+- Improved performance of regular expressions in typeset plugin
+- Removed unnecessary import test for `cairosvg` in optimize plugin
+- Fixed #5590: Regular expression for anchor link removal too greedy
+
+### 4.35.3 <small>June 1, 2023</small> { id="4.35.3" }
+
+- Fixed #5579: Abbreviations in headlines filtered by typeset plugin
+
+### 4.35.2 <small>May 29, 2023</small> { id="4.35.2" }
+
+- Fixed #5555: Blog plugin crashes when computing readtime for emojis
+
+### 4.35.1 <small>May 20, 2023</small> { id="4.35.1" }
+
+- Fixed internal handling of errors in social plugin
+
+### 4.35.0 <small>May 20, 2023</small> { id="4.35.0" }
+
+- Improve editing experience and stability of social plugin
+- Added support for custom layout syntax validation in social plugin
+- Added support for layer origin for easier placement in social plugin
+- Added support for in- and exclusion patterns in social plugin
+- Catch and print syntax errors in custom layouts
+
+### 4.34.1 <small>May 16, 2023</small> { id="4.34.1" }
+
+- Disable social plugin debug mode by default on mkdocs build
+- Added warning in social plugin debug mode when font style couldn't be found
+- Set default concurrency of built-in multi-threaded plugins to CPUs - 1
+- Fixed #5521: Social plugin triggers race condition when downloading fonts
+- Fixed #5515: Social plugin crashes when concurrency is set to 1
+
+### 4.34.0 <small>May 14, 2023</small> { id="4.34.0" }
+
+- Added support for new overflow mode to auto-fit text in social plugin
+- Reduced subtle rendering bugs in (code) annotations due to subpixel rounding
+- Improved print styles for (code) annotation lists
+- Improved performance of social plugin, now 3x as fast
+- Improved interop of typeset plugin with MkDocstrings
+- Fixed logo location for variants of default template in social plugin
+- Fixed #5446: Built-in typeset plugin picks up headings in code blocks
+
+### 4.33.2 <small>May 12, 2023</small> { id="4.33.2" }
+
+- Fixed #5508: Social plugin crashes trying to copy cards on Docker/Windows
+- Fixed #5507: Social plugin crashes on serve when layouts folder doesn't exist
+- Fixed #5505: Social plugin trying to resolve logo in wrong location
+- Fixed #5496: Annotations with nested lists incorrectly mounted
+- Fixed #5493: Social plugin crashes on Python 3.8
+
+### 4.33.1 <small>May 9, 2023</small> { id="4.33.1" }
+
+- Added support for SVG background images in social plugin
+
+### 4.33.0 <small>May 8, 2023</small> { id="4.33.0" }
+
+- Added support for custom layouts for social plugin
+- Added support for background images for social cards
+
 ### 4.32.6 <small>April 22, 2023</small> { id="4.32.6" }
 
 - Fixed #5336: Interplay of blog plugin with git-revision-date-localized

@@ -244,6 +244,13 @@ export function mountContentTabs(
           }
         })
 
+    /* Pause media (audio, video) on switch - see https://bit.ly/3Bk6cel */
+    push$.pipe(takeUntil(done$))
+      .subscribe(() => {
+        for (const media of getElements<HTMLAudioElement>("audio, video", el))
+          media.pause()
+      })
+
     /* Create and return component */
     return watchContentTabs(el)
       .pipe(

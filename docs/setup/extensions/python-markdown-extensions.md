@@ -82,8 +82,8 @@ See reference for usage:
   [MathJax]: https://www.mathjax.org/
   [KaTeX]: https://github.com/Khan/KaTeX
   [additional JavaScript]: ../../customization.md#additional-javascript
-  [Using block syntax]: ../../reference/mathjax.md#using-block-syntax
-  [Using inline block syntax]: ../../reference/mathjax.md#using-inline-block-syntax
+  [Using block syntax]: ../../reference/math.md#using-block-syntax
+  [Using inline block syntax]: ../../reference/math.md#using-inline-block-syntax
 
 ### BetterEm
 

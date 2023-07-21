@@ -28,7 +28,6 @@ import requests
 import sys
 
 from collections import defaultdict
-from glob import glob
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
@@ -58,8 +57,19 @@ class SocialPluginConfig(Config):
     # Options for social cards
     cards = opt.Type(bool, default = True)
     cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_color = opt.Type(dict, default = dict())
-    cards_font = opt.Optional(opt.Type(str))
+    cards_layout_options = opt.Type(dict, default = {})
+
+    # Deprecated options
+    cards_color = opt.Deprecated(
+        option_type = opt.Type(dict, default = {}),
+        message =
+            "Deprecated, use 'cards_layout_options.background_color' "
+            "and 'cards_layout_options.color' with 'default' layout"
+    )
+    cards_font = opt.Deprecated(
+        option_type = opt.Type(str),
+        message = "Deprecated, use 'cards_layout_options.font_family'"
+    )
 
 # -----------------------------------------------------------------------------
 
@@ -75,6 +85,24 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         self.color = colors.get("indigo")
         if not self.config.cards:
             return
+
+        # Move color options
+        if self.config.cards_color:
+
+            # Move background color to new option
+            value = self.config.cards_color.get("fill")
+            if value:
+                self.config.cards_layout_options["background_color"] = value
+
+            # Move color to new option
+            value = self.config.cards_color.get("text")
+            if value:
+                self.config.cards_layout_options["color"] = value
+
+        # Move font family to new option
+        if self.config.cards_font:
+            value = self.config.cards_font
+            self.config.cards_layout_options["font_family"] = value
 
         # Check if required dependencies are installed
         if not dependencies:
@@ -111,7 +139,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.color = colors.get(primary, self.color)
 
         # Retrieve color overrides
-        self.color = { **self.color, **self.config.cards_color }
+        options = self.config.cards_layout_options
+        self.color = {
+            "fill": options.get("background_color", self.color["fill"]),
+            "text": options.get("color", self.color["text"])
+        }
 
         # Retrieve custom_dir path
         for user_config in config.user_configs:
@@ -155,6 +187,22 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         description = config.site_description or ""
         if "description" in page.meta:
             description = page.meta["description"]
+
+        # Check type of meta title - see https://t.ly/m1Us
+        if not isinstance(title, str):
+            log.error(
+                f"Page meta title of page '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(title)}\"."
+            )
+            sys.exit(1)
+
+        # Check type of meta description - see https://t.ly/m1Us
+        if not isinstance(description, str):
+            log.error(
+                f"Page meta description of '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(description)}\"."
+            )
+            sys.exit(1)
 
         # Generate social card if not in cache - TODO: values from mkdocs.yml
         hash = md5("".join([
@@ -406,7 +454,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve font
     def _load_font(self, config):
-        name = self.config.cards_font
+        name = self.config.cards_layout_options.get("font_family")
         if not name:
 
             # Retrieve from theme (default: Roboto)
@@ -416,19 +464,31 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             else:
                 name = "Roboto"
 
-        # Retrieve font files, if not already done
-        files = glob(f"{self.cache}/**/*.[ot]tf")
-        files = [os.path.relpath(file, self.cache) for file in files]
-        files = [file for file in files if file.endswith(".ttf") or file.endswith(".otf")] or (
-            self._load_font_from_google(name)
-        )
+        # Google fonts can return varients like OpenSans_Condensed-Regular.ttf so
+        # we only use the font requested e.g. OpenSans-Regular.ttf
+        font_filename_base = name.replace(' ', '')
+        filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
 
-        # Map available font weights to file paths
         font = dict()
-        for file in files:
-            match = re.search(r"-(\w+)\.[ot]tf$", file)
-            if match:
-                font[match.group(1)] = os.path.join(self.cache, file)
+        # Check for cached files - note these may be in subfolders
+        for currentpath, folders, files in os.walk(self.cache):
+            for file in files:
+                # Map available font weights to file paths
+                fname = os.path.join(currentpath, file)
+                match = re.search(filename_regex, fname)
+                if match:
+                    font[match.group(1)] = fname
+
+        # If none found, fetch from Google and try again
+        if len(font) == 0:
+            self._load_font_from_google(name)
+            for currentpath, folders, files in os.walk(self.cache):
+                for file in files:
+                    # Map available font weights to file paths
+                    fname = os.path.join(currentpath, file)
+                    match = re.search(filename_regex, fname)
+                    if match:
+                        font[match.group(1)] = fname
 
         # Return available font weights with fallback
         return defaultdict(lambda: font["Regular"], font)

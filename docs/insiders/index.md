@@ -88,14 +88,17 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can start using right away, and
+access to 22 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Code range selection] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
-- [x] [Code annotations: custom selectors] :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
-- [x] [Privacy plugin: optimization support] :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+- [x] [Instant prefetching] :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+- [x] [Social plugin: custom layouts] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Social plugin: background images] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [x] [Privacy plugin: optimization support]
 - [x] [Optimize plugin]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
@@ -104,20 +107,14 @@ which are currently exclusively available to sponsors:
 - [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
-- [x] [Blog plugin]
-- [x] [Navigation status]
 - [x] [Meta plugin]
 - [x] [Tags plugin: additional indexes]
 - [x] [Document contributors]
 - [x] [Automatic light / dark mode]
 - [x] [Content tabs: anchor links]
-- [x] [Navigation pruning]
 - [x] [Tooltips]
-- [x] [Chinese search support]
 - [x] [Card grids]
 - [x] [Privacy plugin]
-- [x] [Annotations]
-- [x] [Navigation icons]
 
 </div>
 
@@ -184,7 +181,6 @@ You can cancel your sponsorship anytime.[^5]
 [![World Wide Technology]](https://wwt.com){ target=_blank title="World Wide Technology" }
 [![Coda]](https://coda.io){ target=_blank title="Coda" }
 [![Elastic]](https://elastic.co){ target=_blank title="Elastic" }
-[![Hyperledger]](https://www.hyperledger.org){ target=_blank title="Hyperledger Foundation" }
 [![IP Fabric]](https://ipfabric.io/){ target=_blank title="IP Fabric" }
 [![Apex.AI]](https://www.apex.ai/){ target=_blank title="Apex.AI" }
 [![Jitterbit]](https://jitterbit.com/){ target=_blank title="Jitterbit" }
@@ -198,6 +194,11 @@ You can cancel your sponsorship anytime.[^5]
 [![GetScreen.me]](https://getscreen.me/){ target=_blank title="GetScreen.me" }
 [![BotCity]](https://botcity.dev/){ target=_blank title="BotCity" }
 [![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
+[![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
+[![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
+[![Koor]](https://koor.tech/){ target=_blank title="Koor" }
+[![Astral]](https://astral.sh/){ target=_blank title="Astral" }
+[![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
 
 </div>
 
@@ -215,7 +216,6 @@ You can cancel your sponsorship anytime.[^5]
   [World Wide Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png
   [Coda]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-coda.png
   [Elastic]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png
-  [Hyperledger]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hyperledger.png
   [IP Fabric]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png
   [Apex.AI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png
   [Jitterbit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png
@@ -229,7 +229,11 @@ You can cancel your sponsorship anytime.[^5]
   [GetScreen.me]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png
   [BotCity]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png
   [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
-
+  [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
+  [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
+  [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
+  [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
+  [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
 
 <hr />
 
@@ -255,26 +259,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
-
-> [In February, we lost $1,3k in monthly funding because GitHub removed PayPal support][Twitter]
-
-  [Twitter]: https://twitter.com/squidfunk/status/1643539228574269443
-
-#### $ 12,000 – Piri Piri
-
-- [x] [Blog plugin]
-- [x] [Chinese search support]
-- [x] [Annotations]
-- [x] [Navigation icons]
-- [x] [Navigation pruning]
-- [x] [Navigation status]
-
-  [Blog plugin]: ../setup/setting-up-a-blog.md
-  [Chinese search support]: ../blog/posts/chinese-search-support.md
-  [Annotations]: ../reference/annotations.md
-  [Navigation icons]: ../reference/index.md#setting-the-page-icon
-  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
-  [Navigation status]: ../reference/index.md#setting-the-page-status
 
 #### $ 14,000 – Goat's Horn
 
@@ -316,21 +300,25 @@ are released for general availability.
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Privacy plugin: optimization support]
 - [x] [Privacy plugin: external links]
-- [ ] Privacy plugin: external link validation
+- [x] [Instant prefetching]
 
   [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
-  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.external_links
-  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.external_assets_include
+  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
+  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
-  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
 
 #### $ 24,000 – Blockpaprika
 
+- [x] [Social plugin: custom layouts]
+- [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
 - [ ] Code line wrap button
 
+  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
+  [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
 
@@ -339,6 +327,22 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 12,000 – Piri Piri
+
+- [x] [Blog plugin]
+- [x] [Chinese search support]
+- [x] [Annotations]
+- [x] [Navigation icons]
+- [x] [Navigation pruning]
+- [x] [Navigation status]
+
+  [Blog plugin]: ../setup/setting-up-a-blog.md
+  [Chinese search support]: ../blog/posts/chinese-search-support.md
+  [Annotations]: ../reference/annotations.md
+  [Navigation icons]: ../reference/index.md#setting-the-page-icon
+  [Navigation pruning]: ../setup/setting-up-navigation.md#navigation-pruning
+  [Navigation status]: ../reference/index.md#setting-the-page-status
 
 #### $ 10,000 – Carolina Reaper
 

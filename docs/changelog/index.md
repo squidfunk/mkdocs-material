@@ -2,6 +2,57 @@
 
 ## Material for MkDocs
 
+### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
+
+- Added support for MkDocs 1.5+
+- Fixed #5699: Improve error reporting in social plugin
+
+### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
+
+- Updated Danish translations
+- Added support for installing user requirements in Docker image
+- Fixed #5655: Search separator with lookbehind breaks highlighting
+
+### 9.1.17 <small>June 23, 2023</small> { id="9.1.17" }
+
+- Fixed #5633: Code annotations with nested lists incorrectly mounted
+- Fixed #5628: Regression in new social plugin configuration scheme
+
+### 9.1.16 <small>June 15, 2023</small> { id="9.1.16" }
+
+- Updated Indonesian translations
+- Ensure scroll bar follows color scheme of operating system
+
+### 9.1.15 <small>May 29, 2023</small> { id="9.1.15" }
+
+- Fixed #5566: Indicate color scheme to operating system
+- Fixed #5565: Update `Dockerfile` to latest version of base image
+- Fixed #5554: Add additional version tags (`9`, `9.1`) to Docker image
+- Fixed #5536: Strip tags of ARIA labels in table of contents
+
+### 9.1.14 <small>May 20, 2023</small> { id="9.1.14" }
+
+- Updated Armenian and Greek translations
+
+### 9.1.13 <small>May 16, 2023</small> { id="9.1.13" }
+
+- Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
+
+### 9.1.12 <small>May 12, 2023</small> { id="9.1.12" }
+
+- Updated Bengali (Bangla) translations
+- Fixed #5503: Docker image publish errors on uppercase characters
+- Fixed #5407: Auto-pause media when in hidden content tabs
+
+### 9.1.11 <small>May 8, 2023</small> { id="9.1.11" }
+
+- Fixed #5487: Social plugin crashes without options (9.1.10 regression)
+
+### 9.1.10 <small>May 8, 2023</small> { id="9.1.10" }
+
+- Added `cards_layout_options` setting for social cards
+- Deprecated `cards_color` and `cards_font` setting for social cards
+
 ### 9.1.9 <small>May 2, 2023</small> { id="9.1.9" }
 
 - Added Telugu, Kannada and Sanskrit translations

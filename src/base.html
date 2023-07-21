@@ -419,8 +419,14 @@
       <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
 
       <!-- Custom JavaScript -->
-      {% for path in config.extra_javascript %}
-        <script src="{{ path | url }}"></script>
+      {% for script in config.extra_javascript %}
+
+        <!-- Detected MkDocs 1.5+ which has `script.path` and `script_tag` -->
+        {% if script.path %}
+          {{ script | script_tag }}
+        {% else %}
+          <script src="{{ script | url }}"></script>
+        {% endif %}
       {% endfor %}
     {% endblock %}
   </body>

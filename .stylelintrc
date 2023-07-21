@@ -74,6 +74,7 @@
     "linebreaks": "unix",
     "media-feature-name-no-unknown": null,
     "media-feature-range-notation": null,
+    "media-query-no-invalid": null,
     "no-descending-specificity": null,
     "no-empty-first-line": true,
     "no-unknown-animations": true,

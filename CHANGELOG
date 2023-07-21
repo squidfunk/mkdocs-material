@@ -1,3 +1,130 @@
+mkdocs-material-9.1.19 (2023-07-18)
+
+  * Added support for MkDocs 1.5+
+  * Fixed #5699: Improve error reporting in social plugin
+
+mkdocs-material-9.1.18+insiders-4.37.0 (2023-07-07)
+
+  * Added support for overriding social cards settings per page
+  * Added new social card default/only/image layout
+  * Improved resilience of optimize and social plugin
+  * Fixed rendering bugs for pruned navigation items
+  * Fixed jumping of content tabs anchor links when instant loading is enabled
+  * Fixed #5676: Optimize plugin doesn't check for pngquant
+
+mkdocs-material-9.1.18 (2023-07-03)
+
+  * Updated Danish translations
+  * Added support for installing user requirements in Docker image
+  * Fixed #5655: Search separator with lookbehind breaks highlighting
+
+mkdocs-material-9.1.17+insiders-4.36.1 (2023-06-23)
+
+  * Fixed #5618: Date comparison breaking for drafts in blog plugin
+
+mkdocs-material-9.1.17 (2023-06-23)
+
+  * Fixed #5633: Code annotations with nested lists incorrectly mounted
+  * Fixed #5628: Regression in new social plugin configuration scheme
+
+mkdocs-material-9.1.16+insiders-4.36.0 (2023-06-15)
+
+  * Added support for instant prefetching to speed up slow connections
+  * Improved stability of anchor link removal in built-in typeset plugin
+  * Improved performance of regular expressions in typeset plugin
+  * Removed unnecessary import test for cairosvg in optimize plugin
+  * Fixed #5590: regular expression for anchor link removal too greedy
+
+mkdocs-material-9.1.16 (2023-06-15)
+
+  * Updated Indonesian translations
+  * Ensure scroll bar follows color scheme of operating system
+
+mkdocs-material-9.1.15+insiders-4.35.3 (2023-06-01)
+
+  * Fixed #5579: Abbreviations in headlines filtered by typeset plugin
+
+mkdocs-material-9.1.15+insiders-4.35.2 (2023-05-29)
+
+  * Fixed #5555: Blog plugin crashes when computing readtime for emojis
+
+mkdocs-material-9.1.15 (2023-05-29)
+
+  * Fixed #5566: Indicate color scheme to operating system
+  * Fixed #5565: Update Dockerfile to latest version of base image
+  * Fixed #5554: Add additional version tags (9, 9.1) to Docker image
+  * Fixed #5536: Strip tags of ARIA labels in table of contents
+
+mkdocs-material-9.1.14+insiders-4.35.1 (2023-05-20)
+
+  * Fixed internal handling of errors in social plugin
+
+mkdocs-material-9.1.14+insiders-4.35.0 (2023-05-20)
+
+  * Improve editing experience and stability of social plugin
+  * Added support for custom layout syntax validation in social plugin
+  * Added support for layer origin for easier placement in social plugin
+  * Added support for in- and exclusion patterns in social plugin
+  * Catch and print syntax errors in custom layouts
+
+mkdocs-material-9.1.14 (2023-05-20)
+
+  * Updated Armenian and Greek translations
+
+mkdocs-material-9.1.13+insiders-4.34.1 (2023-05-16)
+
+  * Disable social plugin debug mode by default on mkdocs build
+  * Added warning in social plugin debug mode when font style couldn't be found
+  * Set default concurrency of built-in multi-threaded plugins to CPUs - 1
+  * Fixed #5521: Social plugin triggers race condition when downloading fonts
+  * Fixed #5515: Social plugin crashes when concurrency is set to 1
+
+mkdocs-material-9.1.13 (2023-05-16)
+
+  * Fixed #5517: Social plugin crashes for some fonts (e.g. Open Sans)
+
+mkdocs-material-9.1.12+insiders-4.34.0 (2023-05-14)
+
+  * Added support for new overflow mode to auto-fit text in social plugin
+  * Reduced subtle rendering bugs in (code) annotations due to subpixel rounding
+  * Improved print styles for (code) annotation lists
+  * Improved performance of social plugin, now 3x as fast
+  * Improved interop of typeset plugin with MkDocstrings
+  * Fixed logo location for variants of default template in social plugin
+  * Fixed #5446: Built-in typeset plugin picks up headings in code blocks
+
+mkdocs-material-9.1.12+insiders-4.33.2 (2023-05-12)
+
+  * Fixed #5508: Social plugin crashes trying to copy cards on Docker/Windows
+  * Fixed #5507: Social plugin crashes on serve when layouts folder doesn't exist
+  * Fixed #5505: Social plugin trying to resolve logo in wrong location
+  * Fixed #5496: Annotations with nested lists incorrectly mounted
+  * Fixed #5493: Social plugin crashes on Python 3.8
+
+mkdocs-material-9.1.12 (2023-05-12)
+
+  * Updated Bengali (Bangla) translations
+  * Fixed #5503: Docker image publish errors on uppercase characters
+  * Fixed #5407: Auto-pause media when in hidden content tabs
+
+mkdocs-material-9.1.11+insiders-4.33.1 (2023-05-09)
+
+  * Added support for SVG background images in social plugin
+
+mkdocs-material-9.1.11 (2023-05-08)
+
+  * Fixed #5487: Social plugin crashes without options (9.1.10 regression)
+
+mkdocs-material-9.1.10+insiders-4.33.0 (2023-05-08)
+
+  * Added support for custom layouts for social plugin
+  * Added support for background images for social cards
+
+mkdocs-material-9.1.10 (2023-05-08)
+
+  * Added cards_layout_options setting for social cards
+  * Deprecated cards_color and cards_font setting for social cards
+
 mkdocs-material-9.1.9 (2023-05-02)
 
   * Added Telugu, Kannada and Sanskrit translations

@@ -1,9 +1,16 @@
 # Getting started
 
-Material for MkDocs is a theme for [MkDocs], a static site generator geared
-towards (technical) project documentation. If you're familiar with Python, you
-can install Material for MkDocs with [`pip`][pip], the Python package manager.
-If not, we recommend using [`docker`][docker].
+Material for MkDocs is a powerful documentation framework on top of [MkDocs],
+a static site generator for project documentation.[^1] If you're familiar with 
+Python, you can install Material for MkDocs with [`pip`][pip], the Python
+package manager. If not, we recommend using [`docker`][docker].
+
+  [^1]:
+    In 2016, Material for MkDocs started out as a simple theme for MkDocs, but
+    over the course of several years, it's now much more than that – with the
+    many built-in plugins, settings, and countless customization abilities,
+    Material for MkDocs is now one of the simplest and most powerful frameworks
+    for creating documentation for your project.
 
   [MkDocs]: https://www.mkdocs.org
   [pip]: #with-pip
@@ -29,7 +36,7 @@ Material for MkDocs with:
     pip install mkdocs-material=="9.*" # (1)!
     ```
 
-    1.  Material for MkDocs uses [semantic versioning][^1], which is why it's a
+    1.  Material for MkDocs uses [semantic versioning][^2], which is why it's a
         good idea to limit upgrades to the current major version.
 
         This will make sure that you don't accidentally [upgrade to the next
@@ -47,7 +54,7 @@ Material for MkDocs with:
         pip install -r requirements.txt
         ```
 
-  [^1]:
+  [^2]:
     Note that improvements of existing features are sometimes released as
     patch releases, like for example improved rendering of content tabs, as
     they're not considered to be new features.
@@ -61,8 +68,8 @@ install those packages separately.
 
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __[How to set up Material for MkDocs]__ by @james-willett – :octicons-clock-24:
-15m – Learn how to create and host a documentation site using Material for Docs
-on GitHub Pages in a step-by-step guide.
+15m – Learn how to create and host a documentation site using Material for 
+MkDocs on GitHub Pages in a step-by-step guide.
 
   [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=Q-YA_dA8C20
 
@@ -117,11 +124,12 @@ The following plugins are bundled with the Docker image:
 
     Material for MkDocs only bundles selected plugins in order to keep the size
     of the official image small. If the plugin you want to use is not included, 
-    create a new `Dockerfile` and extend the official Docker image:
+    create a `user-requirements.txt` file in the repository root with the packages
+    you want to install additionally, e.g.:
 
-    ``` Dockerfile
-    FROM squidfunk/mkdocs-material
-    RUN pip install ...
+    ``` txt title="user-requirements.txt"
+    mkdocs-macros-plugin==0.7.0
+    mkdocs-glightbox>=0.3.1
     ```
 
     Next, you can build the image with the following command:
@@ -130,7 +138,8 @@ The following plugins are bundled with the Docker image:
     docker build -t squidfunk/mkdocs-material .
     ```
 
-    The new image can be used exactly like the official image.
+    The new image will have additional packages installed and can be used
+    exactly like the official image.
 
 ### with git
 
@@ -148,5 +157,12 @@ from `git`, you must install all required dependencies with:
 ```
 pip install -e mkdocs-material
 ```
+
+!!! note "Enterprise support"
+
+    If you're using Material for MkDocs in your organization and need
+    assistance, e.g., to __reduce build times__, __improve performance__ or
+    ensure compliance, [__get in touch__](mailto:contact@squidfunk.com)
+    to discuss our __enterprise support__ offerings. We're happy to help!
 
   [GitHub]: https://github.com/squidfunk/mkdocs-material

@@ -60,9 +60,9 @@ export type SearchHighlightFactoryFn = (query: string) => SearchHighlightFn
 export function setupSearchHighlighter(
   config: SearchConfig
 ): SearchHighlightFactoryFn {
-  // Hack: temporarily remove pure lookaheads
+  // Hack: temporarily remove pure lookaheads and lookbehinds
   const regex = config.separator.split("|").map(term => {
-    const temp = term.replace(/(\(\?[!=][^)]+\))/g, "")
+    const temp = term.replace(/(\(\?[!=<][^)]+\))/g, "")
     return temp.length === 0 ? "�" : term
   })
     .join("|")
