@@ -227,6 +227,8 @@ export function setupInstantLoading(
 
           // Meta tags
           "title",
+          "link[rel=prev]",
+          "link[rel=next]",
           "link[rel=canonical]",
           "meta[name=author]",
           "meta[name=description]",

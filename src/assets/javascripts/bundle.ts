@@ -178,7 +178,10 @@ keyboard$
         case ",":
           const prev = getOptionalElement<HTMLLinkElement>("link[rel=prev]")
           if (typeof prev !== "undefined")
-            setLocation(prev)
+            if (feature("navigation.instant"))
+              location$.next(new URL(prev.href))
+            else
+              setLocation(prev)
           break
 
         /* Go to next page */
@@ -186,7 +189,10 @@ keyboard$
         case ".":
           const next = getOptionalElement<HTMLLinkElement>("link[rel=next]")
           if (typeof next !== "undefined")
-            setLocation(next)
+            if (feature("navigation.instant"))
+              location$.next(new URL(next.href))
+            else
+              setLocation(next)
           break
 
         /* Expand navigation, see https://bit.ly/3ZjG5io */
