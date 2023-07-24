@@ -42,13 +42,19 @@ except ImportError:
 # Search plugin
 class SearchPlugin(BasePlugin[SearchConfig]):
 
-    # Determine whether we're running under dirty reload
-    def on_startup(self, *, command, dirty):
+    # Initialize plugin
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Initialize variables for incremental builds
         self.is_dirtyreload = False
-        self.is_dirty = dirty
 
         # Initialize search index cache
         self.search_index_prev = None
+
+    # Determine whether we're serving
+    def on_startup(self, *, command, dirty):
+        self.is_dirty = dirty
 
     # Initialize plugin
     def on_config(self, config):

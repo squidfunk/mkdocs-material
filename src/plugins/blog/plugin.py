@@ -52,10 +52,18 @@ from material.plugins.blog.config import BlogConfig
 class BlogPlugin(BasePlugin[BlogConfig]):
     supports_multiple_instances = True
 
+    # Initialize plugin
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Initialize variables for incremental builds
+        self.is_serve = False
+        self.is_dirtyreload = False
+        self.is_dirty = False
+
     # Determine whether we're running under dirty reload
     def on_startup(self, *, command, dirty):
         self.is_serve = (command == "serve")
-        self.is_dirtyreload = False
         self.is_dirty = dirty
 
     # Initialize plugin

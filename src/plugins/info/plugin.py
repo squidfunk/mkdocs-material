@@ -42,6 +42,13 @@ from material.plugins.info.config import InfoConfig
 # Info plugin
 class InfoPlugin(BasePlugin[InfoConfig]):
 
+    # Initialize plugin
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Initialize variables for incremental builds
+        self.is_serve = False
+
     # Determine whether we're serving
     def on_startup(self, *, command, dirty):
         self.is_serve = (command == "serve")
