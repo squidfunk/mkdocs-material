@@ -78,7 +78,6 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     def __init__(self):
         self._executor = concurrent.futures.ThreadPoolExecutor(4)
-        self.custom_dir = None
 
     # Retrieve configuration
     def on_config(self, config):
@@ -144,13 +143,6 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             "fill": options.get("background_color", self.color["fill"]),
             "text": options.get("color", self.color["text"])
         }
-
-        # Retrieve custom_dir path
-        for user_config in config.user_configs:
-            custom_dir = user_config.get("theme", {}).get("custom_dir")
-            if custom_dir:
-                self.custom_dir = custom_dir
-                break
 
         # Retrieve logo and font
         self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
@@ -403,8 +395,8 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             path = os.path.join(config.docs_dir, theme["logo"])
 
             # Allow users to put the logo inside their custom_dir (theme["logo"] case)
-            if self.custom_dir:
-                custom_dir_logo = os.path.join(self.custom_dir, theme["logo"])
+            if theme.custom_dir:
+                custom_dir_logo = os.path.join(theme.custom_dir, theme["logo"])
                 if os.path.exists(custom_dir_logo):
                     path = custom_dir_logo
 
@@ -431,8 +423,8 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         path = f"{base}/.icons/{logo}.svg"
 
         # Allow users to put the logo inside their custom_dir (theme["icon"]["logo"] case)
-        if self.custom_dir:
-            custom_dir_logo = os.path.join(self.custom_dir, ".icons", f"{logo}.svg")
+        if theme.custom_dir:
+            custom_dir_logo = os.path.join(theme.custom_dir, ".icons", f"{logo}.svg")
             if os.path.exists(custom_dir_logo):
                 path = custom_dir_logo
 
