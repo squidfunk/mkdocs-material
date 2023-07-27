@@ -1,3 +1,8 @@
+mkdocs-material-9.1.19 (2023-07-18)
+
+  * Added support for MkDocs 1.5+
+  * Fixed #5699: Improve error reporting in social plugin
+
 mkdocs-material-9.1.18+insiders-4.37.0 (2023-07-07)
 
   * Added support for overriding social cards settings per page
