@@ -1,3 +1,7 @@
+mkdocs-material-9.1.20 (2023-07-27)
+
+  * Fixed deprecation warnings for social plugin
+
 mkdocs-material-9.1.19 (2023-07-18)
 
   * Added support for MkDocs 1.5+

@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.1.20 <small>July 27, 2023</small> { id="9.1.20" }
+
+- Fixed deprecation warnings for social plugin
+
 ### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
 
 - Added support for MkDocs 1.5+
