@@ -4,6 +4,7 @@
 
 ### 9.1.20 <small>July 27, 2023</small> { id="9.1.20" }
 
+- Updated Sanskrit translations
 - Fixed deprecation warnings for social plugin
 
 ### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
