@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.1.21 <small>July 27, 2023</small> { id="9.1.20" }
+
+- Fixed MkDocs 1.4 compat issue in social plugin (9.1.20 regression)
+
 ### 9.1.20 <small>July 27, 2023</small> { id="9.1.20" }
 
 - Updated Sanskrit translations
