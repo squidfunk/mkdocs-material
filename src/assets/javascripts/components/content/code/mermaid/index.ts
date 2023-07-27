@@ -91,6 +91,7 @@ export function mountMermaid(
   mermaid$ ||= fetchScripts()
     .pipe(
       tap(() => mermaid.initialize({
+        securityLevel: "loose",
         startOnLoad: false,
         themeCSS,
         sequence: {
