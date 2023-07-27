@@ -21,6 +21,7 @@
 - Removed necessity for `Array.flat` and `Array.flatMap` polyfill
 - Removed announcement bar button when JavaScript is not available
 - Automatically download ResizeObserver polyfill when necessary
+- Updated MkDocs to 1.5.0
 
 ### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
 
