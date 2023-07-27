@@ -16,12 +16,14 @@
 - Improved rendering of (code) annotation markers
 - Improved print styles for (code) annotations
 - Improved customizability of navigation tabs
+- Improved plugin inter-op with external tools like mike
 - Removed Universal Analytics integration
 - Removed ancient polyfills to reduce size of bundled JavaScript by 20%
 - Removed necessity for `Array.flat` and `Array.flatMap` polyfill
 - Removed announcement bar button when JavaScript is not available
 - Automatically download ResizeObserver polyfill when necessary
 - Updated MkDocs to 1.5.0
+- Fixed rendering of tags when announcement bar is present
 
 ### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
 
