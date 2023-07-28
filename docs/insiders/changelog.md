@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.37.1 <small>July 28, 2023</small> { id="4.37.1" }
+
+- Updated MkDocs to 1.5.1
+- Fixed deprecation warning in social plugin due to MkDocs upgrade
+- Fixed #5772: Privacy plugin fails due to API change in MkDocs
+
 ### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
 
 - Added support for overriding social cards settings per page
