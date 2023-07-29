@@ -1,3 +1,8 @@
+mkdocs-material-9.1.21+insiders-4.38.0 (2023-07-29)
+
+  * Added projects plugin for building nested projects
+  * Updated privacy plugin to new MkDocs API
+
 mkdocs-material-9.1.21+insiders-4.37.1 (2023-07-28)
 
   * Updated MkDocs to 1.5.1

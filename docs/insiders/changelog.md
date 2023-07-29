@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.38.0 <small>July 29, 2023</small> { id="4.38.0" }
+
+- Added projects plugin for building nested projects
+- Updated privacy plugin to new MkDocs API
+
 ### 4.37.1 <small>July 28, 2023</small> { id="4.37.1" }
 
 - Updated MkDocs to 1.5.1
