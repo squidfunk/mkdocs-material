@@ -179,7 +179,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency }
 
 :   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
     how many CPUs the plugin is allowed to use when downloading external assets.
@@ -547,8 +547,16 @@ const url ="https://polyfill.io/v3/polyfill.min.js"
 ### Custom cookies
 
 If you've customized the [cookie consent] and added a `custom` cookie, the user
-will be prompted to accept your custom cookie. Use [additional JavaScript] to
-check whether the user accepted it:
+will be prompted to accept or reject your custom cookie. Once the user accepts
+or rejects the cookie consent, or [changes the settings], the page reloads[^1].
+Use [additional JavaScript] to query the result:
+
+  [^1]:
+    We reload the page to make interop with custom cookies simpler. If Material
+    for MkDocs would implement a callback-based approach, the author would need
+    to make sure to correctly update all scripts that use cookies. Additionally,
+    the cookie consent is only answered initially, which is why we consider this
+    to be a good trade-off of DX and UX.
 
 === ":octicons-file-code-16: `docs/javascripts/consent.js`"
 
@@ -556,6 +564,8 @@ check whether the user accepted it:
     var consent = __md_get("__consent")
     if (consent && consent.custom) {
       /* The user accepted the cookie */
+    } else {
+      /* The user rejected the cookie */
     }
     ```
 
@@ -567,3 +577,4 @@ check whether the user accepted it:
     ```
 
   [additional JavaScript]: ../customization.md#additional-javascript
+  [changes the settings]: #change-cookie-settings

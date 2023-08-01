@@ -88,11 +88,12 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 22 additional features__ that you can __start using now__, and
+access to 23 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Projects plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
 - [x] [Instant prefetching] :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
 - [x] [Social plugin: custom layouts] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
 - [x] [Social plugin: background images] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
@@ -311,12 +312,14 @@ are released for general availability.
 
 #### $ 24,000 – Blockpaprika
 
+- [x] [Projects plugin]
 - [x] [Social plugin: custom layouts]
 - [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
 - [ ] Code line wrap button
 
+  [Projects plugin]: ../setup/building-an-optimized-site.md#built-in-projects-plugin
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button

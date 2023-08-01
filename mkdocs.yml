@@ -43,6 +43,7 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
+    # - content.code.select
     # - content.tabs.link
     - content.tooltips
     # - header.autohide

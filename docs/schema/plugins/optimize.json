@@ -24,8 +24,7 @@
             "concurrency": {
               "title": "Concurrency (number of CPUs)",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+optimize.concurrency",
-              "type": "number",
-              "default": 1
+              "type": "number"
             },
             "cache": {
               "title": "Enable caching",

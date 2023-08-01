@@ -93,7 +93,7 @@ inside it. Next:
     non-essential lines and files.
 
   [bug reporting guide]: ../contributing/reporting-a-bug.md#upgrade-to-latest-version
-  [minimal configuration]: ../../creating-your-site/#minimal-configuration
+  [minimal configuration]: ../creating-your-site.md#minimal-configuration
 
 ### Creating a .zip file
 

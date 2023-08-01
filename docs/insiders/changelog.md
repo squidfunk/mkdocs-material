@@ -2,6 +2,25 @@
 
 ## Material for MkDocs Insiders
 
+### 4.38.1 <small>August 1, 2023</small> { id="4.38.1" }
+
+- Improved nested serve mode for projects plugin
+- Improved compat in privacy plugin with third-party plugins
+- Fixed #5790: Typeset plugin ignores data-toc-label attribute
+- Fixed #5778: Interplay of privacy plugin with git-revision-date-localized
+- Fixed #5773: Info plugin erroring when community edition is in beta
+
+### 4.38.0 <small>July 29, 2023</small> { id="4.38.0" }
+
+- Added projects plugin for building nested projects
+- Updated privacy plugin to new MkDocs API
+
+### 4.37.1 <small>July 28, 2023</small> { id="4.37.1" }
+
+- Updated MkDocs to 1.5.1
+- Fixed deprecation warning in social plugin due to MkDocs upgrade
+- Fixed #5772: Privacy plugin fails due to API change in MkDocs
+
 ### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
 
 - Added support for overriding social cards settings per page

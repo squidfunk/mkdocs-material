@@ -41,6 +41,9 @@
           "$ref": "plugins/privacy.json"
         },
         {
+          "$ref": "plugins/projects.json"
+        },
+        {
           "$ref": "plugins/search.json"
         },
         {
