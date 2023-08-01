@@ -1,3 +1,11 @@
+mkdocs-material-9.1.21+insiders-4.38.1 (2023-08-01)
+
+  * Improved nested serve mode for projects plugin
+  * Improved compat in privacy plugin with third-party plugins
+  * Fixed #5790: Typeset plugin ignores data-toc-label attribute
+  * Fixed #5778: Interplay of privacy plugin with git-revision-date-localized
+  * Fixed #5773: Info plugin erroring when community edition is in beta
+
 mkdocs-material-9.1.21+insiders-4.38.0 (2023-07-29)
 
   * Added projects plugin for building nested projects
