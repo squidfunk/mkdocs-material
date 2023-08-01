@@ -84,6 +84,7 @@ theme:
 
 # Plugins
 plugins:
+  - blog
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
@@ -231,10 +232,3 @@ nav:
       - Changelog: insiders/changelog.md
   - Blog:
     - blog/index.md
-    - 2022:
-      - blog/posts/blog-support-just-landed.md
-      - blog/posts/chinese-search-support.md
-    - 2021:
-      - blog/posts/the-past-present-and-future.md
-      - blog/posts/excluding-content-from-search.md
-      - blog/posts/search-better-faster-smaller.md

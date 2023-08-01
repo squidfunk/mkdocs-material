@@ -358,6 +358,12 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             page.meta["date"], date_format, config
         )
 
+        # Format date of last update for rendering
+        if "date_updated" in page.meta:
+            page.meta["date_updated_format"] = self._format_date(
+                page.meta["date_updated"], date_format, config
+            )
+
         # Compute readtime if desired and not explicitly set
         if self.config.post_readtime:
 

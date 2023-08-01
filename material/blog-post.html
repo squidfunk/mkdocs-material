@@ -50,6 +50,16 @@
                   </time>
                 </div>
               </li>
+              {% if page.meta.date_updated %}
+                <li class="md-nav__item">
+                  <div class="md-nav__link">
+                    {% include ".icons/material/calendar-clock.svg" %}
+                    <time datetime="{{ page.meta.date_updated }}" class="md-ellipsis">
+                      {{- page.meta.date_updated_format -}}
+                    </time>
+                  </div>
+                </li>
+              {% endif %}
               {% if page.categories %}
                 <li class="md-nav__item">
                   <div class="md-nav__link">
