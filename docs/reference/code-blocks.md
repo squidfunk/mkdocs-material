@@ -162,7 +162,7 @@ theme:
   [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
-#### Custom selectors :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+#### Custom selectors
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
 [:octicons-tag-24: insiders-4.32.0][Insiders] ·

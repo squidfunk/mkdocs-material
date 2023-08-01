@@ -179,7 +179,7 @@ The following configuration options are available:
           enabled: !ENV [CI, false]
     ```
 
-[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency } :material-alert-decagram:{ .mdx-pulse title="Added on February 6, 2023" }
+[`concurrency`](#+privacy.concurrency){ #+privacy.concurrency }
 
 :   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
     how many CPUs the plugin is allowed to use when downloading external assets.
