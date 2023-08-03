@@ -118,6 +118,28 @@ The following configuration options are available for projects:
           projects_dir: path/to/folder
     ```
 
+#### Hoisting
+
+The following configuration options are available for hoisting:
+
+[`hoisting`](#+projects.hoisting){ #+projects.hoisting }
+
+:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
+    Default: `true` – This option specifies whether the plugin should hoist all 
+    themes files to the top-level project. If you disable this setting, each
+    project will have a copy of the themes files, which in general, can be
+    considered redundant:
+
+    ``` yaml
+    plugins:
+      - projects:
+          hoisting: false
+    ```
+
+    It's generally advisable to enable hoisting, as it leads to faster
+    deployments and faster loading of your project's sites, because the files
+    are the same for all projects.
+
 ### Built-in optimize plugin
 
 [:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
