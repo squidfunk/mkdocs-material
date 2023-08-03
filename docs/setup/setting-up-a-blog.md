@@ -978,7 +978,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2022-01-31
+date: 2022-01-31 # (2)!
 categories:
   - Hello
   - World
@@ -992,6 +992,9 @@ categories:
     on index pages. When the site is built, drafts are not included in the 
     output. [This behavior can be changed], e.g. for rendering drafts when 
     building deploy previews.
+
+2.  You can use `date_updated` to signal when you updated a blog posts. The
+    date will be rendered as part of the sidebar.
 
 When you spin up the [live preview server], you should be greeted by your first
 post! You'll also realize, that [archive] and [category] indexes have been
