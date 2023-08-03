@@ -2,6 +2,21 @@
 
 ## Material for MkDocs Insiders
 
+### 4.39.0 <small>August 3, 2023</small> { id="4.39.0" }
+
+- Added support for hoisting theme media files when building projects
+- Added support for sorting pages on tags index for tags plugin
+- Added support for adding date of last update to blog posts
+- Fixed #5797: Parse error in typeset plugin (4.38.1 regression)
+
+### 4.38.1 <small>August 1, 2023</small> { id="4.38.1" }
+
+- Improved nested serve mode for projects plugin
+- Improved compat in privacy plugin with third-party plugins
+- Fixed #5790: Typeset plugin ignores data-toc-label attribute
+- Fixed #5778: Interplay of privacy plugin with git-revision-date-localized
+- Fixed #5773: Info plugin erroring when community edition is in beta
+
 ### 4.38.0 <small>July 29, 2023</small> { id="4.38.0" }
 
 - Added projects plugin for building nested projects

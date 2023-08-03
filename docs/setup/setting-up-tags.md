@@ -159,6 +159,43 @@ The following configuration options are available:
           tags_compare_reverse: true
     ```
 
+[`tags_pages_compare`](#+tags.tags_pages_compare){ #+tags.tags_pages_compare }
+
+:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
+    Default: `None` – This option specifies which function to use when
+    comparing pages for sorting. If you wish to sort pages, use:
+
+    === "Sort by page title"
+
+        ``` yaml
+        plugins:
+          - tags:
+              tags_pages_compare: !!python/name:material.plugins.tags.page_title
+        ```
+
+    === "Sort by page URL"
+
+        ``` yaml
+        plugins:
+          - tags:
+              tags_pages_compare: !!python/name:material.plugins.tags.page_url
+        ```
+
+    You can also define your own comparison function which must return a page
+    value (as a string) that is used for sorting, and reference it accordingly.
+
+[`tags_pages_compare_reverse`](#+tags.tags_pages_compare_reverse){ #+tags.tags_pages_compare_reverse }
+
+:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
+    Default: `false` – This option specifies whether pages are sorted in reverse
+    order. It is mainly provided for completeness. To change direction, use:
+
+    ``` yaml
+    plugins:
+      - tags:
+          tags_pages_compare_reverse: true
+    ```
+
 [`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed }
 
 :   [:octicons-tag-24: insiders-4.25.0][Insiders] · :octicons-milestone-24: 
