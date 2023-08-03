@@ -53,6 +53,26 @@
               "type": "string",
               "default": "\"-\""
             },
+            "tags_compare": {
+              "title": "Sort tags by this function",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_compare",
+              "default": "!!python/name:material.plugins.tags.casefold"
+            },
+            "tags_compare_reverse": {
+              "title": "Soft tags in reverse",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_compare_reverse",
+              "default": false
+            },
+            "tags_pages_compare": {
+              "title": "Sort tags pages by this function",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_pages_compare",
+              "default": "!!python/name:material.plugins.tags.page_title"
+            },
+            "tags_pages_compare_reverse": {
+              "title": "Soft tags pages in reverse",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_pages_compare_reverse",
+              "default": false
+            },
             "tags_allowed": {
               "title": "Tags allowed",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_allowed",
