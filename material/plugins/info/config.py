@@ -32,5 +32,4 @@ class InfoConfig(Config):
 
     # Options for archive
     archive = Type(bool, default = True)
-    archive_name = Type(str, default = "example")
     archive_stop_on_violation = Type(bool, default = True)

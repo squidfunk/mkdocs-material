@@ -28,6 +28,7 @@ import sys
 from colorama import Fore, Style
 from importlib.metadata import distributions, version
 from io import BytesIO
+from markdown.extensions.toc import slugify
 from mkdocs import utils
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
@@ -46,14 +47,17 @@ class InfoPlugin(BasePlugin[InfoConfig]):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Initialize variables for incremental builds
+        # Initialize incremental builds
         self.is_serve = False
 
-    # Determine whether we're serving
+    # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
-        self.is_serve = (command == "serve")
+        self.is_serve = command == "serve"
 
-    # Initialize plugin (run earliest)
+    # Create a self-contained example (run earliest) - determine all files that
+    # are visible to MkDocs and are used to build the site, create an archive
+    # that contains all of them, and print a summary of the archive contents.
+    # The user must attach this archive to the bug report.
     @event_priority(100)
     def on_config(self, config):
         if not self.config.enabled:
@@ -96,36 +100,39 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please remove 'hooks' setting.")
             self._help_on_customizations_and_exit()
 
-        # Create in-memory archive
+        # Create in-memory archive and prompt user to enter a short descriptive
+        # name for the archive, which is also used as the directory name. Note
+        # that the name is slugified for better readability and stripped of any
+        # file extension that the user might have entered.
         archive = BytesIO()
-        archive_name = self.config.archive_name
+        example = input("\nPlease name your bug report (2-4 words): ")
+        example, _ = os.path.splitext(example)
+        example = slugify(example, "-")
 
         # Create self-contained example from project
-        files = []
+        files: list[str] = []
         with ZipFile(archive, "a", ZIP_DEFLATED, False) as f:
             for path in ["mkdocs.yml", "requirements.txt"]:
                 if os.path.isfile(path):
-                    f.write(path, os.path.join(archive_name, path))
+                    f.write(path, os.path.join(example, path))
 
             # Append all files visible to MkDocs
             for file in get_files(config):
                 path = os.path.relpath(file.abs_src_path, os.path.curdir)
-                f.write(path, os.path.join(archive_name, path))
+                f.write(path, os.path.join(example, path))
 
             # Add information on installed packages
             f.writestr(
-                os.path.join(archive_name, "requirements.lock.txt"),
+                os.path.join(example, "requirements.lock.txt"),
                 "\n".join(sorted([
-                    "==".join([
-                        package.name,
-                        package.version
-                    ]) for package in distributions()
+                    "==".join([package.name, package.version])
+                        for package in distributions()
                 ]))
             )
 
             # Add information in platform
             f.writestr(
-                os.path.join(archive_name, "platform.json"),
+                os.path.join(example, "platform.json"),
                 json.dumps(
                     {
                         "system": platform.platform(),
@@ -145,7 +152,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
 
         # Finally, write archive to disk
         buffer = archive.getbuffer()
-        with open(f"{archive_name}.zip", "wb") as f:
+        with open(f"{example}.zip", "wb") as f:
             f.write(archive.getvalue())
 
         # Print summary
@@ -169,7 +176,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         if buffer.nbytes > 1000000:
             log.warning("Archive exceeds recommended maximum size of 1 MB")
 
-        # Aaaaaand done.
+        # Aaaaaand done
         sys.exit(1)
 
     # -------------------------------------------------------------------------
