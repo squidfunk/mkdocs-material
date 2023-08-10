@@ -224,6 +224,10 @@
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.use_pygments",
                   "type": "boolean"
                 },
+                "pygments_lang_class": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.pygments_lang_class",
+                  "type": "boolean"
+                },
                 "auto_title": {
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.auto_title",
                   "type": "boolean"
@@ -247,6 +251,10 @@
                 "anchor_linenums": {
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.anchor_linenums",
                   "type": "boolean"
+                },
+                "line_spans": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.line_spans",
+                  "type": "string"
                 }
               },
               "additionalProperties": false
