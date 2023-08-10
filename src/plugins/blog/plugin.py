@@ -34,9 +34,9 @@ from lxml.html import fragment_fromstring, tostring
 from mkdocs import utils
 from mkdocs.utils.meta import get_data
 from mkdocs.commands.build import _populate_page
-from mkdocs.contrib.search import SearchIndex
+from mkdocs.contrib.search.search_index import SearchIndex
 from mkdocs.plugins import BasePlugin
-from mkdocs.structure.files import File, Files
+from mkdocs.structure.files import File, Files, InclusionLevel
 from mkdocs.structure.nav import Link, Section
 from mkdocs.structure.pages import Page
 from tempfile import gettempdir
@@ -233,6 +233,10 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
                 # Add post metadata
                 self.post_meta_map[file.src_uri] = meta
+
+                # Mark page as excluded, so it's not picked up by other plugins
+                if not self.config.draft and self._is_draft(file.src_uri):
+                    file.inclusion = InclusionLevel.EXCLUDED
 
         # Sort post metadata by date (descending)
         self.post_meta_map = dict(sorted(

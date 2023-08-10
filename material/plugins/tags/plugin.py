@@ -76,6 +76,10 @@ class TagsPlugin(BasePlugin[TagsConfig]):
         if not self.config.enabled:
             return
 
+        # Skip, if page is excluded
+        if page.file.inclusion.is_excluded():
+            return
+
         # Render tags index page
         if page.file == self.tags_file:
             return self._render_tag_index(markdown)
