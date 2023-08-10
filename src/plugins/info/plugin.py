@@ -26,11 +26,11 @@ import requests
 import sys
 
 from colorama import Fore, Style
+from importlib.metadata import distributions, version
 from io import BytesIO
 from mkdocs import utils
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
-from pkg_resources import get_distribution, working_set
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from material.plugins.info.config import InfoConfig
@@ -70,11 +70,11 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         res = requests.get(url, allow_redirects = False)
 
         # Check if we're running the latest version
-        _, version = res.headers.get("location").rsplit("/", 1)
-        package = get_distribution("mkdocs-material")
-        if not package.version.startswith(version):
+        _, current = res.headers.get("location").rsplit("/", 1)
+        present = version("mkdocs-material")
+        if not present.startswith(current):
             log.error("Please upgrade to the latest version.")
-            self._help_on_versions_and_exit(package.version, version)
+            self._help_on_versions_and_exit(present, current)
 
         # Print message that we're creating a bug report
         log.info("Started archive creation for bug report")
@@ -116,7 +116,10 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             f.writestr(
                 os.path.join(archive_name, "requirements.lock.txt"),
                 "\n".join(sorted([
-                    f"{dist.as_requirement()}" for dist in working_set
+                    "==".join([
+                        package.name,
+                        package.version
+                    ]) for package in distributions()
                 ]))
             )
 
