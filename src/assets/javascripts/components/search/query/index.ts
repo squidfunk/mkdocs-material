@@ -39,6 +39,7 @@ import {
 } from "rxjs"
 
 import {
+  getElement,
   getLocation,
   setToggle,
   watchElementFocus,
@@ -185,6 +186,14 @@ export function mountSearchQuery(
       takeUntil(done$)
     )
       .subscribe(() => el.focus())
+
+  // Focus search query on label click - note that this is necessary to bring
+  // up the keyboard on iOS and other mobile platforms, as the search dialog is
+  // not visible at first, and programatically focusing an input element must
+  // be triggered by a user interaction - see https://t.ly/Cb30n
+  const label = getElement("header [for=__search]")
+  fromEvent(label, "click")
+    .subscribe(() => el.focus())
 
   /* Create and return component */
   return watchSearchQuery(el, { worker$ })
