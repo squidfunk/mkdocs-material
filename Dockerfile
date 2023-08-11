@@ -18,13 +18,13 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.11-alpine3.18
+FROM python:3.12-rc-alpine3.18
 
 # Build-time flags
 ARG WITH_PLUGINS=true
 
 # Environment variables
-ENV PACKAGES=/usr/local/lib/python3.11/site-packages
+ENV PACKAGES=/usr/local/lib/python3.12/site-packages
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # Set build directory
