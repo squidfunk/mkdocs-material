@@ -135,9 +135,11 @@ export function resolve(
 export function watch(
   pattern: string, options: WatchOptions
 ): Observable<string> {
-  return fromEvent(
+  return (fromEvent(
     chokidar.watch(pattern, options),
     "change"
+  ) as Observable<string|[string,{}]>).pipe(
+    map((event) => (typeof event === "string" ? event : event[0]))
   ) as Observable<string>
 }
 
