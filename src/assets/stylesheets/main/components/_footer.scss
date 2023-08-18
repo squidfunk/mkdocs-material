@@ -169,6 +169,8 @@
 
 // Social links
 .md-social {
+  display: inline-flex;
+  gap: px2rem(4px);
   padding: px2rem(4px) 0 px2rem(12px);
   margin: 0 px2rem(8px);
 
