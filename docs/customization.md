@@ -236,7 +236,7 @@ directly in the source of the theme and recompile it.
 ### Environment setup
 
 In order to start development on Material for MkDocs, a [Node.js] version of
-at least 14 is required. First, clone the repository:
+at least 18 is required. First, clone the repository:
 
 ```
 git clone https://github.com/squidfunk/mkdocs-material
