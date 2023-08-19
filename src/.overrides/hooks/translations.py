@@ -154,6 +154,7 @@ countries = dict({
     "kn": "in",
     "ko": "kr",
     "ku-IQ": "iq",
+    "lb": "lu",
     "lt": "lt",
     "lv": "lv",
     "mk": "mk",
