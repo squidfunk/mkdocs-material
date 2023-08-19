@@ -114,8 +114,8 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         # Check if site URL is defined
         if not config.site_url:
             log.warning(
-                "The \"social\" plugin needs the \"site_url\" configuration "
-                "option to be defined. It will likely not work correctly."
+                "The \"site_url\" option is not set. The cards are generated, "
+                "but not linked, so they won't be visible on social media."
             )
 
         # Ensure presence of cache directory
