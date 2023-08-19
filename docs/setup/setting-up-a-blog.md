@@ -775,10 +775,10 @@ The following configuration options are available for author info:
     ``` yaml
     plugins:
       - blog:
-          authors_file: .authors.yml
+          authors_file: blog/.authors.yml
     ```
 
-    The path must be defined relative to [`blog_dir`][this is configurable].
+    The path must be defined relative to [`docs_dir`][docs_dir].
     Also see the section on [adding authors].
 
   [adding authors]: #adding-authors
