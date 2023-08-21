@@ -2,7 +2,13 @@
 
 ## Material for MkDocs
 
-### 9.2.0 <small>July 6, 2023</small> { id="9.2.0" }
+### 9.2.1 <small>August 21, 2023</small> { id="9.2.1" }
+
+- Fixed #5879: Blog plugin failing when building a standalone blog
+- Fixed error in blog plugin when using draft tagging on future date
+- Fixed error in blog plugin when toc extension is not enabled
+
+### 9.2.0 <small>August 21, 2023</small> { id="9.2.0" }
 
 __Additions and improvements__
 

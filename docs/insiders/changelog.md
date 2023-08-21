@@ -2,7 +2,7 @@
 
 ## Material for MkDocs Insiders
 
-### 4.39.1 <small>August 32, 2023</small> { id="4.39.1" }
+### 4.39.1 <small>August 21, 2023</small> { id="4.39.1" }
 
 - Fixed git diff in tags plugin after merging back 9.2.0 changes
 
