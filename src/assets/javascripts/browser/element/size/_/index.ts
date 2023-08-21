@@ -78,7 +78,7 @@ const observer$ = defer(() => (
   typeof ResizeObserver === "undefined"
     ? watchScript("https://unpkg.com/resize-observer-polyfill")
     : of(undefined)
-  ))
+))
   .pipe(
     map(() => new ResizeObserver(entries => {
       for (const entry of entries)
