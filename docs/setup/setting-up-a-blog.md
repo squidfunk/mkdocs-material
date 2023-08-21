@@ -1076,10 +1076,11 @@ post with one or multiple [authors]. First, create the
 [`.authors.yml`][authors_file] file in your blog directory, and add an author:
 
 ``` yaml
-squidfunk:
-  name: Martin Donath
-  description: Creator
-  avatar: https://github.com/squidfunk.png
+authors:
+  squidfunk:
+    name: Martin Donath
+    description: Creator
+    avatar: https://github.com/squidfunk.png
 ```
 
 The [`.authors.yml`][authors_file] file associates each author with an
