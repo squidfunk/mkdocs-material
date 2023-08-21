@@ -770,12 +770,22 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     # either inside the temporary directory or the docs directory
     def _path_to_file(self, path: str, config: MkDocsConfig, *, temp = True):
         assert path.endswith(".md")
-        return File(
+        file = File(
             path,
             config.docs_dir if not temp else self.temp_dir,
             config.site_dir,
             config.use_directory_urls
         )
+
+        # Hack: mark file as generated, so other plugins don't think it's part
+        # of the file system. This is more or less a new quasi-standard that
+        # still needs to be adopted by MkDocs, and was introduced by the
+        # git-revision-date-localized-plugin - see https://bit.ly/3ZUmdBx
+        if temp:
+            file.generated_by = "material/blog"
+
+        # Return file
+        return file
 
     # Write the content to the file located at the given path
     def _save_to_file(self, path: str, content: str):
