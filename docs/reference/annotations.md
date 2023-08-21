@@ -75,7 +75,7 @@ Some popular choices:
 
 ### Using annotations
 
-[:octicons-tag-24: 9.2.0b0][Annotation support] ·
+[:octicons-tag-24: 9.2.0][Annotation support] ·
 :octicons-beaker-24: Experimental
 
 Annotations consist of two parts: a marker, which can be placed anywhere in
@@ -104,7 +104,7 @@ Note that the `annotate` class must only be added to the outermost block. All
 nested elements can use the same list to define annotations, except when
 annotations are nested themselves.
 
-  [Annotation support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Annotation support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
 
 #### in annotations
 

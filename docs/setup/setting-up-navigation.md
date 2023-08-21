@@ -223,7 +223,7 @@ theme:
 
 ### Navigation pruning
 
-[:octicons-tag-24: 9.2.0b0][Navigation pruning support] ·
+[:octicons-tag-24: 9.2.0][Navigation pruning support] ·
 :octicons-beaker-24: Experimental
 
 When pruning is enabled, only the visible navigation items are included in the 
@@ -245,7 +245,7 @@ This feature flag is especially useful for documentation sites with 100+ or even
 Navigation pruning will replace all expandable sections with links to the first
 page in that section (or the section index page).
 
-  [Navigation pruning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Navigation pruning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [navigation.expand]: #navigation-expansion
 
 ### Section index pages
