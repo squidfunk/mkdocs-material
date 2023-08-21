@@ -1,3 +1,7 @@
+mkdocs-material-9.2.0+insiders-4.39.1 (2023-08-21)
+
+- Fixed git diff in tags plugin after merging back 9.2.0 changes
+
 mkdocs-material-9.2.0 (2023-08-21)
 
   Additions and improvements
