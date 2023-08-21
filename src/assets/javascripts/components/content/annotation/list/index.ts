@@ -63,15 +63,28 @@ interface MountOptions {
  * ------------------------------------------------------------------------- */
 
 /**
- * Find all annotation markers in the given code block
+ * Find all annotation hosts in the containing element
+ *
+ * @param container - Containing element
+ *
+ * @returns Annotation hosts
+ */
+function findHosts(container: HTMLElement): HTMLElement[] {
+  return container.tagName === "CODE"
+    ? getElements(".c, .c1, .cm", container)
+    : [container]
+}
+
+/**
+ * Find all annotation markers in the containing element
  *
  * @param container - Containing element
  *
  * @returns Annotation markers
  */
-function findAnnotationMarkers(container: HTMLElement): Text[] {
+function findMarkers(container: HTMLElement): Text[] {
   const markers: Text[] = []
-  for (const el of getElements(".c, .c1, .cm", container)) {
+  for (const el of findHosts(container)) {
     const nodes: Text[] = []
 
     /* Find all text nodes in current element */
@@ -141,7 +154,7 @@ export function mountAnnotationList(
 
   /* Find and replace all markers with empty annotations */
   const annotations = new Map<string, HTMLElement>()
-  for (const marker of findAnnotationMarkers(container)) {
+  for (const marker of findMarkers(container)) {
     const [, id] = marker.textContent!.match(/\((\d+)\)/)!
     if (getOptionalElement(`:scope > li:nth-child(${id})`, el)) {
       annotations.set(id, renderAnnotation(id, prefix))
@@ -155,7 +168,8 @@ export function mountAnnotationList(
 
   /* Mount component on subscription */
   return defer(() => {
-    const done$ = new Subject()
+    const push$ = new Subject()
+    const done$ = push$.pipe(ignoreElements(), endWith(true))
 
     /* Retrieve container pairs for swapping */
     const pairs: [HTMLElement, HTMLElement][] = []
@@ -166,20 +180,20 @@ export function mountAnnotationList(
       ])
 
     /* Handle print mode - see https://bit.ly/3rgPdpt */
-    print$
-      .pipe(
-        takeUntil(done$.pipe(ignoreElements(), endWith(true)))
-      )
-        .subscribe(active => {
-          el.hidden = !active
+    print$.pipe(takeUntil(done$))
+      .subscribe(active => {
+        el.hidden = !active
 
-          /* Show annotations in code block or list (print) */
-          for (const [inner, child] of pairs)
-            if (!active)
-              swap(child, inner)
-            else
-              swap(inner, child)
-        })
+        /* Add class to discern list element */
+        el.classList.toggle("md-annotation-list", active)
+
+        /* Show annotations in code block or list (print) */
+        for (const [inner, child] of pairs)
+          if (!active)
+            swap(child, inner)
+          else
+            swap(inner, child)
+      })
 
     /* Create and return component */
     return merge(...[...annotations]
@@ -188,7 +202,7 @@ export function mountAnnotationList(
       ))
     )
       .pipe(
-        finalize(() => done$.complete()),
+        finalize(() => push$.complete()),
         share()
       )
   })

@@ -19,7 +19,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
 ### Built-in blog plugin
 
-[:octicons-tag-24: 9.2.0b0][Blog plugin support] ·
+[:octicons-tag-24: 9.2.0][Blog plugin support] ·
 :octicons-cpu-24: Plugin ·
 :octicons-beaker-24: Experimental
 
@@ -126,7 +126,7 @@ back here later for fine-tuning the output.__
 
 ---
 
-  [Blog plugin support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Blog plugin support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [this is configurable]: #+blog.blog_dir
@@ -137,6 +137,22 @@ back here later for fine-tuning the output.__
 #### Posts
 
 The following configuration options are available for posts:
+
+[`post_dir`](#+blog.post_dir){ #+blog.post_dir }
+
+:   :octicons-milestone-24: Default: `{blog}/posts` – This option specifies
+    the name of the folder in which the blog plugin should look for posts.
+    The default settings assumes that the folder is called `posts`:
+
+    ``` yaml
+    plugins:
+      - blog:
+          post_dir: blog/posts
+    ```
+
+    The path must be defined relative to [`docs_dir`][docs_dir]. Note that the
+    `{blog}` placeholder is replaced with the value specified in
+    [`blog_dir`][this is configurable].
 
 [`post_date_format`](#+blog.post_date_format){ #+blog.post_date_format }
 
@@ -689,7 +705,7 @@ The following configuration options are available for index pagination:
               pagination_url_format: "{page}"
         ```
 
-[`pagination_template`](#+blog.pagination_template){ #+blog.pagination_template }
+[`pagination_format`](#+blog.pagination_format){ #+blog.pagination_format }
 
 :   :octicons-milestone-24: Default: `~2~` – This option specifies the format
     string that is provided to the [paginate] module, which allows to customize
@@ -700,7 +716,7 @@ The following configuration options are available for index pagination:
         ``` yaml
         plugins:
           - blog:
-              pagination_template: "~2~"
+              pagination_format: "~2~"
         ```
 
     === "1 2 3 .. n :material-chevron-right: :material-chevron-double-right:"
@@ -708,7 +724,7 @@ The following configuration options are available for index pagination:
         ``` yaml
         plugins:
           - blog:
-              pagination_template: "$link_first $link_previous ~2~ $link_next $link_last"
+              pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
         ```
 
     === "1 :material-chevron-right:"
@@ -716,7 +732,7 @@ The following configuration options are available for index pagination:
         ``` yaml
         plugins:
           - blog:
-              pagination_template: "$link_previous $page $link_next"
+              pagination_format: "$link_previous $page $link_next"
         ```
 
     The [paginate] module exposes the following placeholders:
@@ -735,6 +751,18 @@ The following configuration options are available for index pagination:
     - `$link_next` – link to next page (unless this is last page)
 
   [paginate]: https://pypi.org/project/paginate/
+
+[`pagination_if_single_page`](#+blog.pagination_if_single_page){ #+blog.pagination_if_single_page }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether
+    the pagination should also be rendered if all posts fit into a single page.
+    If you wish to always render pagination, add:
+
+    ``` yaml
+    plugins:
+      - blog:
+          pagination_if_single_page: true
+    ```
 
 [`pagination_keep_content`](#+blog.pagination_keep_content){ #+blog.pagination_keep_content }
 
@@ -767,10 +795,10 @@ The following configuration options are available for author info:
 
 [`authors_file`](#+blog.authors_file){ #+blog.authors_file }
 
-:   :octicons-milestone-24: Default: `.authors.yml` – This option specifies the
-    name of the file where the authors for your posts resides. The default
-    settings assumes that the file is called `.authors.yml` (mind the `.` at
-    the beginning):
+:   :octicons-milestone-24: Default: `{blog}/.authors.yml` – This option
+    specifies the name of the file where the authors for your posts resides.
+    The default settings assumes that the file is called `.authors.yml`
+    (mind the `.` at the beginning):
 
     ``` yaml
     plugins:
@@ -778,8 +806,9 @@ The following configuration options are available for author info:
           authors_file: blog/.authors.yml
     ```
 
-    The path must be defined relative to [`docs_dir`][docs_dir].
-    Also see the section on [adding authors].
+    The path must be defined relative to [`docs_dir`][docs_dir]. Note that the
+    `{blog}` placeholder is replaced with the value specified in
+    [`blog_dir`][this is configurable]. Also see the section on [adding authors].
 
   [adding authors]: #adding-authors
 
@@ -840,8 +869,7 @@ The following configuration options are available for drafts:
 
 ### RSS
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.23.0][Insiders] ·
+[:octicons-tag-24: 9.2.0][Blog plugin support] ·
 [:octicons-cpu-24: Plugin][rss]
 
 The [built-in blog plugin] integrates seamlessly with the [RSS plugin][rss],
@@ -993,8 +1021,22 @@ categories:
     output. [This behavior can be changed], e.g. for rendering drafts when 
     building deploy previews.
 
-2.  You can use `date_updated` to signal when you updated a blog posts. The
-    date will be rendered as part of the sidebar.
+2.  If you wish to provide multiple dates, you can use the following syntax,
+    allowing you to define a date when you last updated the blog post +
+    further custom dates you can add to the template:
+
+    ``` yaml
+    ---
+    date:
+      created: 2022-01-31
+      updated: 2022-02-02
+    ---
+
+    # Hello world!
+    ```
+
+    Note that the creation date __must__ be set under `date.created`, as each
+    blog post must have a creation date set.
 
 When you spin up the [live preview server], you should be greeted by your first
 post! You'll also realize, that [archive] and [category] indexes have been
@@ -1359,14 +1401,10 @@ which means you can override all templates used for the blog by using
 
 The following templates are added by the [built-in blog plugin]:
 
-- [`blog.html`][blog.html] – Template for blog index
+- [`blog.html`][blog.html] – Template for blog, archive and category index
 - [`blog-post.html`][blog-post.html] – Template for blog post
-- [`blog-archive.html`][blog-archive.html] – Template for blog archive index
-- [`blog-category.html`][blog-category.html] – Template for blog category index
 
   [theme extension]: ../customization.md#extending-the-theme
 
   [blog.html]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/blog.html
-  [blog-post.html]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/blog-post.html
-  [blog-archive.html]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/blog-archive.html
-  [blog-category.html]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/blog-category.html
+  [blog-post.html]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/src/blog-post.htmlhtml

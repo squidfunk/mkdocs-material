@@ -60,6 +60,22 @@
         <link rel="next" href="{{ page.next_page.url | url }}" />
       {% endif %}
 
+      <!-- RSS feed -->
+      {% if "rss" in config.plugins %}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="{{ lang.t('rss.created') }}"
+          href="{{ 'feed_rss_created.xml' | url }}"
+        />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="{{ lang.t('rss.updated') }}"
+          href="{{ 'feed_rss_updated.xml' | url }}"
+        />
+      {% endif %}
+
       <!-- Favicon -->
       <link rel="icon" href="{{ config.theme.favicon | url }}" />
 
@@ -99,15 +115,19 @@
     {% endblock %}
 
     <!-- JavaScript libraries -->
-    {% block libs %}{% endblock %}
+    {% block libs %}
+      {% for script in config.extra.polyfills %}
+        {{ script | script_tag }}
+      {% endfor %}
+    {% endblock %}
 
     <!-- Webfonts -->
     {% block fonts %}
 
       <!-- Load fonts from Google -->
       {% if config.theme.font != false %}
-        {% set text = config.theme.font.text | d("Roboto", true) %}
-        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
+        {% set text = config.theme.font.get("text", "Roboto") %}
+        {% set code = config.theme.font.get("code", "Roboto Mono") %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           rel="stylesheet"
@@ -223,7 +243,8 @@
                 class="md-banner__button md-icon"
                 aria-label="{{ lang.t('announce.dismiss') }}"
               >
-                {% include ".icons/material/close.svg" %}
+                {% set icon = config.theme.icon.close or "material/close" %}
+                {% include ".icons/" ~ icon ~ ".svg" %}
               </button>
             {% endif %}
 
@@ -340,7 +361,8 @@
             data-md-component="top"
             hidden
           >
-            {% include ".icons/material/arrow-up.svg" %}
+            {% set icon = config.theme.icon.top or "material/arrow-up" %}
+            {% include ".icons/" ~ icon ~ ".svg" %}
             {{ lang.t("top") }}
           </button>
         {% endif %}
@@ -420,13 +442,7 @@
 
       <!-- Custom JavaScript -->
       {% for script in config.extra_javascript %}
-
-        <!-- Detected MkDocs 1.5+ which has `script.path` and `script_tag` -->
-        {% if script.path %}
-          {{ script | script_tag }}
-        {% else %}
-          <script src="{{ script | url }}"></script>
-        {% endif %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
   </body>

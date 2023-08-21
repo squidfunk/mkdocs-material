@@ -57,6 +57,7 @@ Issues = "https://github.com/squidfunk/mkdocs-material/issues"
 Funding = "https://github.com/sponsors/squidfunk"
 
 [project.entry-points."mkdocs.plugins"]
+"material/blog" = "material.plugins.blog.plugin:BlogPlugin"
 "material/info" = "material.plugins.info.plugin:InfoPlugin"
 "material/offline" = "material.plugins.offline.plugin:OfflinePlugin"
 "material/search" = "material.plugins.search.plugin:SearchPlugin"

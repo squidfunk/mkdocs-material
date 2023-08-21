@@ -20,37 +20,52 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Determine class according to state -->
-{% if not class %}
-  {% set class = "md-tabs__link" %}
-  {% if nav_item.active %}
-    {% set class = class ~ " md-tabs__link--active" %}
+<!-- Render navigation link content -->
+{% macro render_content(nav_item, ref = nav_item) %}
+
+  <!-- Navigation link icon -->
+  {% if nav_item == ref or "navigation.indexes" in features %}
+    {% if nav_item.is_index and nav_item.meta.icon %}
+      {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
+    {% endif %}
   {% endif %}
-{% endif %}
 
-<!-- Main navigation item with nested items -->
-{% if nav_item.children %}
-  {% set title = title | d(nav_item.title) %}
-  {% set nav_item = nav_item.children | first %}
+  <!-- Navigation link title -->
+  {{ ref.title }}
+{% endmacro %}
 
-  <!-- Recurse, if the first item has further nested items -->
+<!-- Render navigation item -->
+{% macro render(nav_item, ref = nav_item) %}
+
+  <!-- Determine classes -->
+  {% set class = "md-tabs__item" %}
+  {% if ref.active %}
+    {% set class = class ~ " md-tabs__item--active" %}
+  {% endif %}
+
+  <!-- Navigation item with nested items -->
   {% if nav_item.children %}
-    {% include "partials/tabs-item.html" %}
+    {% set first = nav_item.children | first %}
 
-  <!-- Render item -->
+    <!-- Recurse, if the first item has further nested items -->
+    {% if first.children %}
+      {{ render(first, ref) }}
+
+    <!-- Nested navigation item -->
+    {% else %}
+      <li class="{{ class }}">
+        <a href="{{ first.url | url }}" class="md-tabs__link">
+          {{ render_content(first, ref) }}
+        </a>
+      </li>
+    {% endif %}
+
+  <!-- Navigation item -->
   {% else %}
-    <li class="md-tabs__item">
-      <a href="{{ nav_item.url | url }}" class="{{ class }}">
-        {{ title }}
+    <li class="{{ class }}">
+      <a href="{{ nav_item.url | url }}" class="md-tabs__link">
+        {{ render_content(nav_item) }}
       </a>
     </li>
   {% endif %}
-
-<!-- Main navigation item -->
-{% else %}
-  <li class="md-tabs__item">
-    <a href="{{ nav_item.url | url }}" class="{{ class }}">
-      {{ nav_item.title }}
-    </a>
-  </li>
-{% endif %}
+{% endmacro %}

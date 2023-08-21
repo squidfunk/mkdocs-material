@@ -100,6 +100,7 @@ assets may also be put in the `overrides` directory:
 │  │  └─ analytics.html                # Analytics setup
 │  ├─ languages/                       # Translation languages
 │  ├─ actions.html                     # Actions
+│  ├─ alternate.html                   # Site language selector
 │  ├─ comments.html                    # Comment system (empty by default)
 │  ├─ consent.html                     # Consent
 │  ├─ content.html                     # Page content
@@ -113,6 +114,7 @@ assets may also be put in the `overrides` directory:
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ pagination.html                  # Pagination (used for blog)
+│  ├─ palette.html                     # Color palette toggle
 │  ├─ post.html                        # Blog post excerpt
 │  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links

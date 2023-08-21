@@ -89,7 +89,10 @@ export function transform(
 
     /* => 4 */
     .split(/\s+/g)
-      .flatMap(fn)
+      .reduce((prev, term) => {
+        const next = fn(term)
+        return [...prev, ...Array.isArray(next) ? next : [next]]
+      }, [] as string[])
       .map(term => /([~^]$)/.test(term) ? `${term}1` : term)
       .map(term => /(^[+-]|[~^]\d+$)/.test(term) ? term : `${term}*`)
       .join(" ")

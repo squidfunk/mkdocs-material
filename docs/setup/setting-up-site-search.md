@@ -191,7 +191,7 @@ The following configuration options are supported:
 
 #### Chinese language support
 
-[:octicons-tag-24: 9.2.0b0][Chinese language support] ·
+[:octicons-tag-24: 9.2.0][Chinese language support] ·
 :octicons-beaker-24: Experimental
 
 In order to add support for Chinese languages to the [built-in search plugin],
@@ -236,7 +236,7 @@ The following configuration options are available:
     User dictionaries can be used for tuning the segmenter to preserve
     technical terms.
 
-  [Chinese language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Chinese language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [chinese search]: ../blog/posts/chinese-search-support.md
   [jieba]: https://pypi.org/project/jieba/
   [built-in search plugin]: #built-in-search-plugin

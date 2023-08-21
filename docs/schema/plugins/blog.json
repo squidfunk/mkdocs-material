@@ -33,6 +33,12 @@
               "type": "boolean",
               "default": false
             },
+            "post_dir": {
+              "title": "Blog posts directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_dir",
+              "type": "string",
+              "default": "\"{blog}/posts\""
+            },
             "post_date_format": {
               "title": "Format string for post dates",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_date_format",
@@ -329,7 +335,7 @@
               "title": "Authors file",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.authors_file",
               "type": "string",
-              "default": ".authors.yml"
+              "default": "\"{blog}/.authors.yml\""
             },
             "draft": {
               "title": "Render posts marked as drafts",

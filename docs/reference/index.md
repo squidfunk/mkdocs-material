@@ -121,7 +121,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
 ### Setting the page `icon`
 
-[:octicons-tag-24: 9.2.0b0][Page icon support] ·
+[:octicons-tag-24: 9.2.0][Page icon support] ·
 :octicons-beaker-24: Experimental
 
 An icon can be assigned to each page, which is then rendered as part of the
@@ -149,14 +149,14 @@ icon: material/emoticon-happy # (1)!
       </div>
     </div>
 
-  [Page icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Page icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 
 ### Setting the page `status`
 
-[:octicons-tag-24: 9.2.0b0][Page status support] ·
+[:octicons-tag-24: 9.2.0][Page status support] ·
 :octicons-beaker-24: Experimental
 
 A status can be assigned to each page, which is then displayed as part of the
@@ -197,7 +197,7 @@ The following status identifiers are currently supported:
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
 
-  [Page status support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
+  [Page status support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
 
 ### Setting the page `subtitle`
 

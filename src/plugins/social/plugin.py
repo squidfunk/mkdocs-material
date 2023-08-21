@@ -27,54 +27,25 @@ import re
 import requests
 import sys
 
+from cairosvg import svg2png
 from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
 from mkdocs.plugins import BasePlugin
+from PIL import Image, ImageDraw, ImageFont
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
 
-try:
-    from cairosvg import svg2png
-    from PIL import Image, ImageDraw, ImageFont
-    dependencies = True
-except ImportError:
-    dependencies = False
+from .config import SocialConfig
 
 # -----------------------------------------------------------------------------
-# Class
-# -----------------------------------------------------------------------------
-
-# Social plugin configuration scheme
-class SocialPluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-    cache_dir = opt.Type(str, default = ".cache/plugin/social")
-
-    # Options for social cards
-    cards = opt.Type(bool, default = True)
-    cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_layout_options = opt.Type(dict, default = {})
-
-    # Deprecated options
-    cards_color = opt.Deprecated(
-        option_type = opt.Type(dict, default = {}),
-        message =
-            "Deprecated, use 'cards_layout_options.background_color' "
-            "and 'cards_layout_options.color' with 'default' layout"
-    )
-    cards_font = opt.Deprecated(
-        option_type = opt.Type(str),
-        message = "Deprecated, use 'cards_layout_options.font_family'"
-    )
-
+# Classes
 # -----------------------------------------------------------------------------
 
 # Social plugin
-class SocialPlugin(BasePlugin[SocialPluginConfig]):
+class SocialPlugin(BasePlugin[SocialConfig]):
 
     def __init__(self):
         self._executor = concurrent.futures.ThreadPoolExecutor(4)
@@ -102,14 +73,6 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         if self.config.cards_font:
             value = self.config.cards_font
             self.config.cards_layout_options["font_family"] = value
-
-        # Check if required dependencies are installed
-        if not dependencies:
-            log.error(
-                "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install pillow cairosvg"
-            )
-            sys.exit(1)
 
         # Check if site URL is defined
         if not config.site_url:

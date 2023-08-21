@@ -136,6 +136,21 @@ but it's always possible to use the [Markdown in HTML] extension with literal
   </figure>
 </div>
 
+
+Another option is to use [Markdown captions](https://github.com/Evidlo/markdown_captions) extension 
+which converts images with alt text to \<figure\> with \<figcaption\>.
+
+``` html title="Image with caption"
+  ![Image caption](https://dummyimage.com/600x400/){ width="300" }
+```
+
+<div class="result">
+  <figure>
+    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
+    <figcaption>Image caption</figcaption>
+  </figure>
+</div>
+
 ### Image lazy-loading
 
 Modern browsers provide [native support for lazy-loading images][lazy-loading]

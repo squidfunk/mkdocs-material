@@ -53,6 +53,7 @@
 
   // Navigation tabs list
   &__list {
+    display: flex;
     padding: 0;
     margin: 0;
     margin-inline-start: px2rem(4px);
@@ -74,15 +75,20 @@
 
   // Navigation tabs item
   &__item {
-    display: inline-block;
     height: px2rem(48px);
     padding-inline: px2rem(12px);
+
+    // Navigation tabs link in active navigation
+    &--active .md-tabs__link {
+      color: inherit;
+      opacity: 1;
+    }
   }
 
   // Navigation tabs link - could be defined as block elements and aligned via
   // line height, but this would imply more repaints when scrolling
   &__link {
-    display: block;
+    display: flex;
     margin-top: px2rem(16px);
     font-size: px2rem(14px);
     outline-color: var(--md-accent-fg-color);
@@ -94,11 +100,17 @@
       transform 400ms cubic-bezier(0.1, 0.7, 0.1, 1),
       opacity   250ms;
 
-    // Active link and link on focus/hover
-    &--active,
+    // Navigation tabs link on focus/hover
     &:is(:focus, :hover) {
       color: inherit;
       opacity: 1;
+    }
+
+    // Navigation tabs link icon
+    svg {
+      height: 1.3em;
+      margin-inline-end: px2rem(8px);
+      fill: currentcolor;
     }
 
     // Delay transitions by a small amount

@@ -161,8 +161,12 @@ export function setupVersionSelector(
       if (outdated === null) {
         outdated = true
 
+        /* Obtain and normalize default versions */
+        let ignored = config.version?.default || "latest"
+        if (!Array.isArray(ignored))
+          ignored = [ignored]
+
         /* Check if version is considered a default */
-        const ignored = [config.version?.default || ["latest"]].flat()
         main: for (const ignore of ignored)
           for (const alias of current.aliases)
             if (new RegExp(ignore, "i").test(alias)) {

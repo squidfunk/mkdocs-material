@@ -106,8 +106,7 @@
     }
 
     // Fix hover on touch devices
-    @media (pointer: coarse) {
-
+    @media (pointer: coarse), (hover: none) {
       // Switch off on hover
       .md-version:hover & {
         animation: hoverfix 250ms forwards;

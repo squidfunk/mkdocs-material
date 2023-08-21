@@ -27,8 +27,12 @@
       {% if page.next_page %}
         <link rel="next" href="{{ page.next_page.url | url }}">
       {% endif %}
+      {% if "rss" in config.plugins %}
+        <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.created') }}" href="{{ 'feed_rss_created.xml' | url }}">
+        <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
+      {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.1.21">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.2.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -40,18 +44,22 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.c439c5a1.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.0e669242.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.ecc896b0.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.85d0ee34.min.css' | url }}">
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
-    {% block libs %}{% endblock %}
+    {% block libs %}
+      {% for script in config.extra.polyfills %}
+        {{ script | script_tag }}
+      {% endfor %}
+    {% endblock %}
     {% block fonts %}
       {% if config.theme.font != false %}
-        {% set text = config.theme.font.text | d("Roboto", true) %}
-        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
+        {% set text = config.theme.font.get("text", "Roboto") %}
+        {% set code = config.theme.font.get("code", "Roboto Mono") %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
             text | replace(' ', '+') + ':300,300i,400,400i,700,700i%7C' +
@@ -108,7 +116,8 @@
           <div class="md-banner__inner md-grid md-typeset">
             {% if "announce.dismiss" in features %}
               <button class="md-banner__button md-icon" aria-label="{{ lang.t('announce.dismiss') }}">
-                {% include ".icons/material/close.svg" %}
+                {% set icon = config.theme.icon.close or "material/close" %}
+                {% include ".icons/" ~ icon ~ ".svg" %}
               </button>
             {% endif %}
             {% block announce %}{% endblock %}
@@ -184,7 +193,8 @@
         </div>
         {% if "navigation.top" in features %}
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
-            {% include ".icons/material/arrow-up.svg" %}
+            {% set icon = config.theme.icon.top or "material/arrow-up" %}
+            {% include ".icons/" ~ icon ~ ".svg" %}
             {{ lang.t("top") }}
           </button>
         {% endif %}
@@ -212,7 +222,7 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.74e28a9f.min.js" | url
+        "search": "assets/javascripts/workers/search.dfff1995.min.js" | url
       } -%}
       {%- if config.extra.version -%}
         {%- set _ = app.update({ "version": config.extra.version }) -%}
@@ -240,13 +250,9 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.220ee61c.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.78eede0e.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
-        {% if script.path %}
-          {{ script | script_tag }}
-        {% else %}
-          <script src="{{ script | url }}"></script>
-        {% endif %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
   </body>

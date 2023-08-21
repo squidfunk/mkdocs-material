@@ -93,12 +93,8 @@
   // Navigation link
   &__link {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
     margin-top: 0.625em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    cursor: pointer;
     transition: color 125ms;
     scroll-snap-align: start;
 
@@ -109,17 +105,43 @@
 
     // Active link
     .md-nav__item &--active {
-      color: var(--md-typeset-a-color);
+
+      // Also enable color transitions on inline code blocks
+      &,
+      code {
+        color: var(--md-typeset-a-color);
+      }
     }
 
-    // Stretch section index link to full width
-    .md-nav__item &--index [href] {
-      width: 100%;
+    // Navigation link title
+    .md-ellipsis {
+      // Hack: Safari exhibits a bug where the text will sometimes disappear
+      // and the element will become unclickable. Setting `position: relative`
+      // seems to fix the issue - see https://bit.ly/3HljM1T
+      position: relative;
+    }
+
+    // Always align navigation icons to the right
+    .md-icon:last-child {
+      margin-left: auto;
+    }
+
+    // Navigation link icon
+    svg {
+      flex-shrink: 0;
+      height: 1.3em;
+      fill: currentcolor;
+
+      // Adjust spacing of next child
+      + * {
+        margin-inline-start: px2rem(8px);
+      }
     }
 
     // Navigation link on focus/hover
-    &:is(:focus, :hover) {
+    &:not(.md-nav__container):is(:focus, :hover) {
       color: var(--md-accent-fg-color);
+      cursor: pointer;
     }
 
     // Show outline for keyboard devices
@@ -146,11 +168,15 @@
         display: none;
       }
     }
+  }
 
-    // Navigation link children (for section indexes)
-    > * {
-      display: flex;
-      cursor: pointer;
+  // Navigation container (for section index pages)
+  &__container > .md-nav__link {
+    margin-top: 0;
+
+    // Stretch first child
+    &:first-child {
+      flex-grow: 1;
     }
   }
 
@@ -282,6 +308,16 @@
       .md-nav__link {
         padding: px2rem(12px) px2rem(16px);
         margin-top: 0;
+
+        // Navigation link icon
+        svg {
+          margin-top: 0.1em;
+        }
+
+        // Adjust spacing on nested link
+        > .md-nav__link {
+          padding: 0;
+        }
 
         // Navigation icon
         .md-nav__icon {
@@ -515,16 +551,15 @@
       // Show navigation link as title
       > .md-nav__link {
         font-weight: 700;
-        pointer-events: none;
 
         // Make labels discernable from links
         &[for] {
           color: var(--md-default-fg-color--light);
         }
 
-        // Make navigation link clickable
-        &--index [href] {
-          pointer-events: initial;
+        // Omit clicks if not a section index page
+        &:not(.md-nav__container) {
+          pointer-events: none;
         }
 
         // Hide naviation icon
@@ -613,8 +648,8 @@
             background: var(--md-default-bg-color);
             box-shadow: 0 0 px2rem(8px) px2rem(8px) var(--md-default-bg-color);
 
-            // Non-index section should not be clickable
-            &:not(.md-nav__link--index) {
+            // Omit clicks if not a section index page
+            &:not(.md-nav__container) {
               pointer-events: none;
             }
 

@@ -102,7 +102,7 @@ export function watchAnnotation(
       map(([{ x, y }, scroll]): ElementOffset => {
         const { width, height } = getElementSize(el)
         return ({
-          x: x - scroll.x + width / 2,
+          x: x - scroll.x + width  / 2,
           y: y - scroll.y + height / 2
         })
       })

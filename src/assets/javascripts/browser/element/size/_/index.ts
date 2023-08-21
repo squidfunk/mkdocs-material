@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import ResizeObserver from "resize-observer-polyfill"
 import {
   NEVER,
   Observable,
@@ -36,6 +35,8 @@ import {
   switchMap,
   tap
 } from "rxjs"
+
+import { watchScript } from "../../../script"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -66,15 +67,23 @@ const entry$ = new Subject<ResizeObserverEntry>()
  * It's quite important to centralize observation in a single `ResizeObserver`,
  * as the performance difference can be quite dramatic, as the link shows.
  *
+ * If the browser doesn't have a `ResizeObserver` implementation available, a
+ * polyfill is automatically downloaded from unpkg.com. This is also compatible
+ * with the built-in privacy plugin, which will download the polyfill and put
+ * it alongside the built site for self-hosting.
+ *
  * @see https://bit.ly/3iIYfEm - Google Groups on performance
  */
-const observer$ = defer(() => of(
-  new ResizeObserver(entries => {
-    for (const entry of entries)
-      entry$.next(entry)
-  })
+const observer$ = defer(() => (
+  typeof ResizeObserver === "undefined"
+    ? watchScript("https://unpkg.com/resize-observer-polyfill")
+    : of(undefined)
 ))
   .pipe(
+    map(() => new ResizeObserver(entries => {
+      for (const entry of entries)
+        entry$.next(entry)
+    })),
     switchMap(observer => merge(NEVER, of(observer))
       .pipe(
         finalize(() => observer.disconnect())
