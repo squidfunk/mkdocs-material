@@ -23,13 +23,13 @@ from markdown.extensions.toc import slugify
 from mkdocs.config.config_options import Optional, Type
 from mkdocs.config.base import Config
 
-from material.plugins.tags import casefold
+from . import casefold
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
-# Tags plugin configuration scheme
+# Tags plugin configuration
 class TagsConfig(Config):
     enabled = Type(bool, default = True)
 

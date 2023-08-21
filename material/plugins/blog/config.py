@@ -24,10 +24,10 @@ from mkdocs.config.config_options import Choice, Deprecated, Optional, Type
 from mkdocs.config.base import Config
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
-# Blog plugin configuration scheme
+# Blog plugin configuration
 class BlogConfig(Config):
     enabled = Type(bool, default = True)
 
@@ -36,6 +36,7 @@ class BlogConfig(Config):
     blog_toc = Type(bool, default = False)
 
     # Options for posts
+    post_dir = Type(str, default = "{blog}/posts")
     post_date_format = Type(str, default = "long")
     post_url_date_format = Type(str, default = "yyyy/MM/dd")
     post_url_format = Type(str, default = "{date}/{slug}")
@@ -70,7 +71,9 @@ class BlogConfig(Config):
     pagination = Type(bool, default = True)
     pagination_per_page = Type(int, default = 10)
     pagination_url_format = Type(str, default = "page/{page}")
-    pagination_template = Type(str, default = "~2~")
+    pagination_format = Type(str, default = "~2~")
+    pagination_if_single_page = Type(bool, default = False)
+    pagination_keep_content = Type(bool, default = False)
 
     # Options for authors
     authors = Type(bool, default = True)
@@ -80,3 +83,6 @@ class BlogConfig(Config):
     draft = Type(bool, default = False)
     draft_on_serve = Type(bool, default = True)
     draft_if_future_date = Type(bool, default = False)
+
+    # Deprecated options
+    pagination_template = Deprecated(moved_to = "pagination_format")

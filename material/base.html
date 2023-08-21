@@ -52,14 +52,14 @@
       {% include "partials/icons.html" %}
     {% endblock %}
     {% block libs %}
-      {% for path in config.extra.polyfills %}
-        <script src="{{ path | url }}"></script>
+      {% for script in config.extra.polyfills %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
     {% block fonts %}
       {% if config.theme.font != false %}
-        {% set text = config.theme.font.text | d("Roboto", true) %}
-        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
+        {% set text = config.theme.font.get("text", "Roboto") %}
+        {% set code = config.theme.font.get("code", "Roboto Mono") %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
             text | replace(' ', '+') + ':300,300i,400,400i,700,700i%7C' +
@@ -252,11 +252,7 @@
     {% block scripts %}
       <script src="{{ 'assets/javascripts/bundle.9e673e97.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
-        {% if script.path %}
-          {{ script | script_tag }}
-        {% else %}
-          <script src="{{ script | url }}"></script>
-        {% endif %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
   </body>

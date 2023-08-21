@@ -28,11 +28,11 @@ from mkdocs.plugins import BasePlugin
 
 # deprecated, but kept for downward compatibility. Use 'material.plugins.tags'
 # as an import source instead. This import is removed in the next major version.
-from material.plugins.tags import casefold
-from material.plugins.tags.config import TagsConfig
+from . import casefold
+from .config import TagsConfig
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Tags plugin

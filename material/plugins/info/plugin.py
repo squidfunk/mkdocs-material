@@ -29,15 +29,15 @@ from colorama import Fore, Style
 from importlib.metadata import distributions, version
 from io import BytesIO
 from markdown.extensions.toc import slugify
-from mkdocs import utils
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import get_files
+from mkdocs.utils import get_theme_dir
 from zipfile import ZipFile, ZIP_DEFLATED
 
-from material.plugins.info.config import InfoConfig
+from .config import InfoConfig
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Info plugin
@@ -87,8 +87,8 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         # hack to detect whether the custom_dir setting was used without parsing
         # mkdocs.yml again - we check at which position the directory provided
         # by the theme resides, and if it's not the first one, abort.
-        base = utils.get_theme_dir(config.theme.name)
-        if config.theme.dirs.index(base):
+        path = get_theme_dir(config.theme.name)
+        if config.theme.dirs.index(path):
             log.error("Please remove 'custom_dir' setting.")
             self._help_on_customizations_and_exit()
 

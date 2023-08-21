@@ -11,9 +11,11 @@
       {% for post in posts %}
         {% include "partials/post.html" %}
       {% endfor %}
-      {% block pagination %}
-        {% include "partials/pagination.html" %}
-      {% endblock %}
+      {% if pagination %}
+        {% block pagination %}
+          {% include "partials/pagination.html" %}
+        {% endblock %}
+      {% endif %}
     </div>
   </div>
 {% endblock %}

@@ -28,7 +28,7 @@ from html.parser import HTMLParser
 from mkdocs import utils
 from mkdocs.plugins import BasePlugin
 
-from material.plugins.search.config import SearchConfig
+from .config import SearchConfig
 
 try:
     import jieba
@@ -36,7 +36,7 @@ except ImportError:
     jieba = None
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Search plugin
@@ -46,13 +46,13 @@ class SearchPlugin(BasePlugin[SearchConfig]):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Initialize variables for incremental builds
+        # Initialize incremental builds
         self.is_dirtyreload = False
 
         # Initialize search index cache
         self.search_index_prev = None
 
-    # Determine whether we're serving
+    # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
         self.is_dirty = dirty
 
@@ -81,7 +81,7 @@ class SearchPlugin(BasePlugin[SearchConfig]):
         # Set jieba dictionary, if given
         if self.config.jieba_dict:
             path = os.path.normpath(self.config.jieba_dict)
-            if os.path.exists(path):
+            if os.path.isfile(path):
                 jieba.set_dictionary(path)
                 log.debug(f"Loading jieba dictionary: {path}")
             else:
@@ -93,7 +93,7 @@ class SearchPlugin(BasePlugin[SearchConfig]):
         # Set jieba user dictionary, if given
         if self.config.jieba_dict_user:
             path = os.path.normpath(self.config.jieba_dict_user)
-            if os.path.exists(path):
+            if os.path.isfile(path):
                 jieba.load_userdict(path)
                 log.debug(f"Loading jieba user dictionary: {path}")
             else:

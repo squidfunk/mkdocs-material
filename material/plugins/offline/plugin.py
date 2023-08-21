@@ -20,13 +20,13 @@
 
 import os
 
-from mkdocs import utils
 from mkdocs.plugins import BasePlugin, event_priority
+from mkdocs.utils import write_file
 
-from material.plugins.offline.config import OfflineConfig
+from .config import OfflineConfig
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Offline plugin
@@ -55,14 +55,13 @@ class OfflinePlugin(BasePlugin[OfflineConfig]):
             return
 
         # Check for existence of search index
-        base = os.path.join(config.site_dir, "search")
-        path = os.path.join(base, "search_index.json")
+        path = os.path.join(config.site_dir, "search", "search_index.json")
         if not os.path.isfile(path):
             return
 
         # Create script with inlined search index
-        with open(path, "r") as f:
-            utils.write_file(
+        with open(path, encoding = "utf-8") as f:
+            write_file(
                 f"var __index = {f.read()}".encode("utf-8"),
                 path.replace(".json", ".js"),
             )

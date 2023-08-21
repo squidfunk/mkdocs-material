@@ -25,6 +25,7 @@ import os
 import posixpath
 import re
 import requests
+import sys
 
 from cairosvg import svg2png
 from collections import defaultdict
@@ -37,10 +38,10 @@ from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
 
-from material.plugins.social.config import SocialConfig
+from .config import SocialConfig
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Social plugin

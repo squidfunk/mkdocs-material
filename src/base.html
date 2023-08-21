@@ -116,8 +116,8 @@
 
     <!-- JavaScript libraries -->
     {% block libs %}
-      {% for path in config.extra.polyfills %}
-        <script src="{{ path | url }}"></script>
+      {% for script in config.extra.polyfills %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
 
@@ -126,8 +126,8 @@
 
       <!-- Load fonts from Google -->
       {% if config.theme.font != false %}
-        {% set text = config.theme.font.text | d("Roboto", true) %}
-        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
+        {% set text = config.theme.font.get("text", "Roboto") %}
+        {% set code = config.theme.font.get("code", "Roboto Mono") %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           rel="stylesheet"
@@ -442,13 +442,7 @@
 
       <!-- Custom JavaScript -->
       {% for script in config.extra_javascript %}
-
-        <!-- Detected MkDocs 1.5+ which has `script.path` and `script_tag` -->
-        {% if script.path %}
-          {{ script | script_tag }}
-        {% else %}
-          <script src="{{ script | url }}"></script>
-        {% endif %}
+        {{ script | script_tag }}
       {% endfor %}
     {% endblock %}
   </body>

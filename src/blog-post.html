@@ -81,19 +81,19 @@
               <li class="md-nav__item">
                 <div class="md-nav__link">
                   {% include ".icons/material/calendar.svg" %}
-                  <time datetime="{{ page.meta.date }}" class="md-ellipsis">
-                    {{- page.meta.date_format -}}
+                  <time datetime="{{ page.config.date.created }}" class="md-ellipsis">
+                    {{- page.config.date.created | date -}}
                   </time>
                 </div>
               </li>
 
               <!-- Page date updated -->
-              {% if page.meta.date_updated %}
+              {% if page.config.date.updated %}
                 <li class="md-nav__item">
                   <div class="md-nav__link">
                     {% include ".icons/material/calendar-clock.svg" %}
-                    <time datetime="{{ page.meta.date_updated }}" class="md-ellipsis">
-                      {{- page.meta.date_updated_format -}}
+                    <time datetime="{{ page.config.date.updated }}" class="md-ellipsis">
+                      {{- page.config.date.updated | date -}}
                     </time>
                   </div>
                 </li>
@@ -118,8 +118,8 @@
               {% endif %}
 
               <!-- Page readtime -->
-              {% if page.meta.readtime %}
-                {% set time = page.meta.readtime %}
+              {% if page.config.readtime %}
+                {% set time = page.config.readtime %}
                 <li class="md-nav__item">
                   <div class="md-nav__link">
                     {% include ".icons/material/clock-outline.svg" %}

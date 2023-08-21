@@ -41,8 +41,8 @@
 
         <!-- Post date -->
         <li class="md-meta__item">
-          <time datetime="{{ post.meta.date }}">
-            {{- post.meta.date_format -}}
+          <time datetime="{{ post.config.date.created }}">
+            {{- post.config.date.created | date -}}
           </time>
           {#- Collapse whitespace -#}
         </li>
@@ -64,8 +64,8 @@
         {% endif %}
 
         <!-- Post readtime -->
-        {% if post.meta.readtime %}
-          {% set time = post.meta.readtime %}
+        {% if post.config.readtime %}
+          {% set time = post.config.readtime %}
           <li class="md-meta__item">
             {% if time == 1 %}
               {{ lang.t("readtime.one") }}
@@ -77,7 +77,7 @@
       </ul>
 
       <!-- Draft marker -->
-      {% if post.meta.draft %}
+      {% if post.config.draft %}
         <span class="md-draft">
           {{ lang.t("blog.draft") }}
         </span>

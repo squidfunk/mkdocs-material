@@ -20,32 +20,32 @@
 
 import logging
 import os
-import paginate
 import posixpath
-import re
 import readtime
-import sys
+import yaml
 
 from babel.dates import format_date
-from copy import copy
-from datetime import date, datetime, time
-from hashlib import sha1
-from lxml.html import fragment_fromstring, tostring
-from mkdocs import utils
-from mkdocs.utils.meta import get_data
-from mkdocs.commands.build import _populate_page
-from mkdocs.contrib.search.search_index import SearchIndex
-from mkdocs.plugins import BasePlugin
+from datetime import datetime
+from mkdocs.config.defaults import MkDocsConfig
+from mkdocs.exceptions import PluginError
+from mkdocs.plugins import BasePlugin, event_priority
+from mkdocs.structure import StructureItem
 from mkdocs.structure.files import File, Files, InclusionLevel
-from mkdocs.structure.nav import Link, Section
+from mkdocs.structure.nav import Navigation, Section
 from mkdocs.structure.pages import Page
-from tempfile import gettempdir
-from yaml import SafeLoader, load
+from mkdocs.utils import get_relative_url
+from paginate import Page as Pagination
+from shutil import rmtree
+from tempfile import mkdtemp
+from yaml import SafeLoader
 
-from material.plugins.blog.config import BlogConfig
+from .author import Author, Authors
+from .config import BlogConfig
+from .structure import Archive, Category, Excerpt, Post, View
+from .templates import url_filter
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
 # Blog plugin
@@ -56,846 +56,744 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        # Initialize variables for incremental builds
+        # Initialize incremental builds
         self.is_serve = False
-        self.is_dirtyreload = False
         self.is_dirty = False
 
-    # Determine whether we're serving
+        # Initialize a temporary directory
+        self.temp_dir = mkdtemp()
+
+    # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
-        self.is_serve = (command == "serve")
+        self.is_serve = command == "serve"
         self.is_dirty = dirty
 
-    # Initialize plugin
+    # Initialize authors and set defaults
     def on_config(self, config):
         if not self.config.enabled:
             return
 
-        # Resolve source directory for posts and generated files
-        self.post_dir = self._resolve("posts")
-        self.temp_dir = gettempdir()
+        # Initialize entrypoint
+        self.blog: View
 
-        # Initialize posts
-        self.post_map = dict()
-        self.post_meta_map = dict()
-        self.post_pages = []
-        self.post_pager_pages = []
-
-        # Initialize archive
-        if self.config.archive:
-            self.archive_map = dict()
-            self.archive_post_map = dict()
-
-        # Initialize categories
-        if self.config.categories:
-            self.category_map = dict()
-            self.category_name_map = dict()
-            self.category_post_map = dict()
-
-        # Initialize authors
+        # Initialize and resolve authors, if enabled
         if self.config.authors:
-            self.authors_map = dict()
+            self.authors = self._resolve_authors(config)
 
-            # Resolve authors file
-            path = os.path.normpath(os.path.join(
-                config.docs_dir,
-                self.config.authors_file.format(
-                    blog = self.config.blog_dir
-                )
-            ))
-
-            # Load authors map, if it exists
-            if os.path.isfile(path):
-                with open(path, encoding = "utf-8") as f:
-                    self.authors_map = load(f, SafeLoader) or {}
-
-        # Ensure that format strings have no trailing slashes
-        for option in [
-            "post_url_format",
-            "archive_url_format",
-            "categories_url_format",
-            "pagination_url_format"
-        ]:
-            if self.config[option].endswith("/"):
-                log.error(f"Option '{option}' must not contain trailing slash.")
-                sys.exit(1)
-
-        # Inherit global table of contents setting
+        # Initialize table of contents settings
         if not isinstance(self.config.archive_toc, bool):
             self.config.archive_toc = self.config.blog_toc
         if not isinstance(self.config.categories_toc, bool):
             self.config.categories_toc = self.config.blog_toc
 
-        # If pagination should not be used, set to large value
-        if not self.config.pagination:
-            self.config.pagination_per_page = 1e7
-
         # By default, drafts are rendered when the documentation is served,
-        # but not when it is built. This should nicely align with the expected
-        # user experience when authoring documentation.
+        # but not when it is built, for a better authoring experience
         if self.is_serve and self.config.draft_on_serve:
             self.config.draft = True
 
-    # Adjust paths to assets in the posts directory and preprocess posts
+    # Remove posts before constructing navigation (run later) - allow other
+    # plugins to alter the list of files and navigation prior to this plugin
+    @event_priority(-50)
     def on_files(self, files, *, config):
         if not self.config.enabled:
             return
 
-        # Adjust destination paths for assets
-        path = self._resolve("assets")
-        for file in files.media_files():
-            if self.post_dir not in file.src_uri:
+        # Resolve path to entrypoint and site directory
+        root = posixpath.normpath(self.config.blog_dir)
+        site = config.site_dir
+
+        # Compute path to posts directory
+        path = self.config.post_dir.format(blog = root)
+        path = posixpath.normpath(path)
+
+        # Temporarily remove posts and adjust destination paths for assets
+        for file in files:
+            if not file.src_uri.startswith(path):
                 continue
 
-            # Compute destination URL
-            file.url = file.url.replace(self.post_dir, path)
+            # We must exclude all files related to posts from here on, so MkDocs
+            # will not attach the posts to the navigation when auto-populating.
+            # We add them back in `on_nav`, so MkDocs processes them, unless
+            # excluded by being tagged as a draft or through other means.
+            if file.is_documentation_page():
+                file.inclusion = InclusionLevel.EXCLUDED
 
-            # Compute destination file system path
-            file.dest_uri = file.dest_uri.replace(self.post_dir, path)
-            file.abs_dest_path = os.path.join(config.site_dir, file.dest_path)
+            # We also need to adjust destination paths for assets to remove the
+            # purely functional posts directory prefix when building
+            if file.is_media_file():
+                file.dest_uri      = file.dest_uri.replace(path, root)
+                file.abs_dest_path = os.path.join(site, file.dest_path)
+                file.url           = file.url.replace(path, root)
 
-        # Hack: as post URLs are dynamically computed and can be configured by
-        # the author, we need to compute them before we process the contents of
-        # any other page or post. If we wouldn't do that, URLs would be invalid
-        # and we would need to patch them afterwards. The only way to do this
-        # correctly is to first extract the metadata of all posts. Additionally,
-        # while we're at it, generate all archive and category pages as we have
-        # the post metadata on our hands. This ensures that we can safely link
-        # from anywhere to all pages that are generated as part of the blog.
-        for file in files.documentation_pages():
-            if self.post_dir not in file.src_uri:
-                continue
-
-            # Read and preprocess post
-            with open(file.abs_src_path, encoding = "utf-8") as f:
-                markdown, meta = get_data(f.read())
-
-                # Ensure post has a date set
-                if not meta.get("date"):
-                    log.error(f"Blog post '{file.src_uri}' has no date set.")
-                    sys.exit(1)
-
-                # Compute slug from metadata, content or file name
-                headline = utils.get_markdown_title(markdown)
-                slug = meta.get("title", headline or file.name)
-
-                # Front matter can be defind in YAML, guarded by two lines with
-                # `---` markers, or MultiMarkdown, separated by an empty line.
-                # If the author chooses to use MultiMarkdown syntax, date is
-                # returned as a string, which is different from YAML behavior,
-                # which returns a date. Thus, we must check for its type, and
-                # parse the date for normalization purposes.
-                if isinstance(meta["date"], str):
-                    meta["date"] = date.fromisoformat(meta["date"])
-
-                # Normalize date to datetime for proper sorting
-                if not isinstance(meta["date"], datetime):
-                    meta["date"] = datetime.combine(meta["date"], time())
-
-                # Compute category slugs
-                categories = []
-                for name in meta.get("categories", []):
-                    categories.append(self.config.categories_slugify(
-                        name, self.config.categories_slugify_separator
-                    ))
-
-                    # Check if maximum number of categories is reached
-                    max_categories = self.config.post_url_max_categories
-                    if len(categories) == max_categories:
-                        break
-
-                # Compute path from format string
-                date_format = self.config.post_url_date_format
-                path = self.config.post_url_format.format(
-                    categories = "/".join(categories),
-                    date = self._format_date(meta["date"], date_format, config),
-                    file = file.name,
-                    slug = meta.get("slug", self.config.post_slugify(
-                        slug, self.config.post_slugify_separator
-                    ))
-                )
-
-                # Normalize path, as it may begin with a slash
-                path = posixpath.normpath("/".join([".", path]))
-
-                # Compute destination URL according to settings
-                file.url = self._resolve(path)
-                if not config.use_directory_urls:
-                    file.url += ".html"
-                else:
-                    file.url += "/"
-
-                # Compute destination file system path
-                file.dest_uri = re.sub(r"(?<=\/)$", "index.html", file.url)
-                file.abs_dest_path = os.path.join(
-                    config.site_dir, file.dest_path
-                )
-
-                # Add post metadata
-                self.post_meta_map[file.src_uri] = meta
-
-                # Mark page as excluded, so it's not picked up by other plugins
-                if not self.config.draft and self._is_draft(file.src_uri):
-                    file.inclusion = InclusionLevel.EXCLUDED
-
-        # Sort post metadata by date (descending)
-        self.post_meta_map = dict(sorted(
-            self.post_meta_map.items(),
-            key = lambda item: item[1]["date"], reverse = True
-        ))
-
-        # Find and extract the section hosting the blog
-        path = self._resolve("index.md")
-        root = _host(config.nav, path)
-
-        # Ensure blog root exists
-        file = files.get_file_from_path(path)
-        if not file:
-            log.error(f"Blog root '{path}' does not exist.")
-            sys.exit(1)
-
-        # Ensure blog root is part of navigation
-        if not root:
-            log.error(f"Blog root '{path}' not in navigation.")
-            sys.exit(1)
-
-        # Generate and register files for archive
-        if self.config.archive:
-            name = self._translate(config, self.config.archive_name)
-            data = self._generate_files_for_archive(config, files)
-            if data:
-                root.append({ name: data })
-
-        # Generate and register files for categories
-        if self.config.categories:
-            name = self._translate(config, self.config.categories_name)
-            data = self._generate_files_for_categories(config, files)
-            if data:
-                root.append({ name: data })
-
-        # Hack: add posts temporarily, so MkDocs doesn't complain
-        name = sha1(path.encode("utf-8")).hexdigest()
-        root.append({
-            f"__posts_${name}": list(self.post_meta_map.keys())
-        })
-
-    # Cleanup navigation before proceeding
+    # Resolve and load posts and generate indexes (run later) - we resolve all
+    # posts after the navigation is constructed in order to allow other plugins
+    # to alter the navigation (e.g. awesome-pages) before we start to add pages
+    # generated by this plugin. Post URLs must be computed before any Markdown
+    # processing, so that when linking to and from posts, MkDocs behaves exactly
+    # the same as with regular documentation pages. We create all pages related
+    # to posts as part of this plugin, so we control the entire process.
+    @event_priority(-50)
     def on_nav(self, nav, *, config, files):
         if not self.config.enabled:
             return
 
-        # Find and resolve index for cleanup
-        path = self._resolve("index.md")
-        file = files.get_file_from_path(path)
+        # Resolve entrypoint and posts sorted by descending date - if the posts
+        # directory or entrypoint do not exist, they are automatically created
+        self.blog = self._resolve(files, config, nav)
+        self.blog.posts = sorted(
+            self._resolve_posts(files, config),
+            key = lambda post: post.config.date.created,
+            reverse = True
+        )
 
-        # Determine blog root section
-        self.main = file.page
-        if self.main.parent:
-            root = self.main.parent.children
-        else:
-            root = nav.items
+        # Attach posts to entrypoint without adding them to the navigation, so
+        # that the entrypoint is considered to be the active page for each post.
+        # Hack: MkDocs has a bug where pages that are marked to be not in the
+        # navigation are auto-populated nonetheless - see https://t.ly/7aYnO
+        self._attach(self.blog, [None, *reversed(self.blog.posts), None])
+        for post in self.blog.posts:
+            post.file.inclusion = InclusionLevel.NOT_IN_NAV
 
-        # Hack: remove temporarily added posts from the navigation
-        name = sha1(path.encode("utf-8")).hexdigest()
-        for item in root:
-            if not item.is_section or item.title != f"__posts_${name}":
-                continue
+        # Generate and attach views for archive
+        if self.config.archive:
+            views = [*self._generate_archive(config, files)]
+            self.blog.views.extend(views)
 
-            # Detach previous and next links of posts
-            if item.children:
-                head = item.children[+0]
-                tail = item.children[-1]
+            # Attach and link views for archive
+            title = self._translate(self.config.archive_name, config)
+            self._attach_to(self.blog.parent, Section(title, views), nav)
 
-                # Link page prior to posts to page after posts
-                if head.previous_page:
-                    head.previous_page.next_page = tail.next_page
+        # Generate and attach views for categories
+        if self.config.categories:
+            views = [*self._generate_categories(config, files)]
+            self.blog.views.extend(views)
 
-                # Link page after posts to page prior to posts
-                if tail.next_page:
-                    tail.next_page.previous_page = head.previous_page
+            # Attach and link views for categories
+            title = self._translate(self.config.categories_name, config)
+            self._attach_to(self.blog.parent, Section(title, views), nav)
 
-                # Contain previous and next links inside posts
-                head.previous_page = None
-                tail.next_page     = None
+        # Paginate generated views, if enabled
+        if self.config.pagination:
+            for view in [*self._resolve_views(self.blog)]:
+                for page in self._generate_pages(view, config, files):
+                    view.pages.append(page)
 
-            # Set blog as parent page
-            for page in item.children:
-                page.parent = self.main
-                next = page.next_page
-
-                # Switch previous and next links
-                page.next_page = page.previous_page
-                page.previous_page = next
-
-            # Remove posts from navigation
-            root.remove(item)
-            break
-
-    # Prepare post for rendering
+    # Prepare post for rendering (run later) - allow other plugins to alter
+    # the contents or metadata of a post before it is rendered and make sure
+    # that the post includes a separator, which is essential for rendering
+    # excerpts that should be included in views
+    @event_priority(-50)
     def on_page_markdown(self, markdown, *, page, config, files):
         if not self.config.enabled:
             return
 
-        # Only process posts
-        if self.post_dir not in page.file.src_uri:
+        # Skip if page is not a post managed by this instance - this plugin has
+        # support for multiple instances, which is why this check is necessary
+        if page not in self.blog.posts:
+            if not self.config.pagination:
+                return
+
+            # We set the contents of the view to its title if pagination should
+            # not keep the content of the original view on paginaged views
+            if not self.config.pagination_keep_content:
+                if page in self._resolve_views(self.blog):
+                    assert isinstance(page, View)
+                    if 0 < page.pages.index(page):
+                        return f"# {page.title}"
+
+            # Nothing more to be done for views
             return
 
-        # Skip processing of drafts
-        if self._is_draft(page.file.src_uri):
-            return
-
-        # Ensure template is set or use default
-        if "template" not in page.meta:
-            page.meta["template"] = "blog-post.html"
-
-        # Use previously normalized date
-        page.meta["date"] = self.post_meta_map[page.file.src_uri]["date"]
-
-        # Ensure navigation is hidden
-        page.meta["hide"] = page.meta.get("hide", [])
-        if "navigation" not in page.meta["hide"]:
-            page.meta["hide"].append("navigation")
-
-        # Format date for rendering
-        date_format = self.config.post_date_format
-        page.meta["date_format"] = self._format_date(
-            page.meta["date"], date_format, config
-        )
-
-        # Format date of last update for rendering
-        if "date_updated" in page.meta:
-            page.meta["date_updated_format"] = self._format_date(
-                page.meta["date_updated"], date_format, config
-            )
-
-        # Compute readtime if desired and not explicitly set
-        if self.config.post_readtime:
-
-            # There's a bug in the readtime library, which causes it to fail
-            # when the input string contains emojis (reported in #5555)
-            encoded = markdown.encode("unicode_escape")
-            if "readtime" not in page.meta:
-                rate = self.config.post_readtime_words_per_minute
-                read = readtime.of_markdown(encoded, rate)
-                page.meta["readtime"] = read.minutes
-
-        # Compute post categories
-        page.categories = []
-        if self.config.categories:
-            for name in page.meta.get("categories", []):
-                file = files.get_file_from_path(self.category_name_map[name])
-                page.categories.append(file.page)
-
-        # Compute post authors
-        page.authors = []
+        # Extract and assign authors to post, if enabled
         if self.config.authors:
-            for name in page.meta.get("authors", []):
-                if name not in self.authors_map:
-                    log.error(
-                        f"Blog post '{page.file.src_uri}' author '{name}' "
-                        f"unknown, not listed in .authors.yml"
-                    )
-                    sys.exit(1)
+            for name in page.config.authors:
+                if name not in self.authors:
+                    raise PluginError(f"Couldn't find author '{name}'")
 
-                # Add author to page
-                page.authors.append(self.authors_map[name])
+                # Append to list of authors
+                page.authors.append(self.authors[name])
 
-        # Fix stale link if previous post is a draft
-        prev = page.previous_page
-        while prev and self._is_draft(prev.file.src_uri):
-            page.previous_page = prev.previous_page
-            prev = prev.previous_page
+        # Compute readtime of post, if enabled and not explicitly set
+        if self.config.post_readtime:
+            rate = self.config.post_readtime_words_per_minute
 
-        # Fix stale link if next post is a draft
-        next = page.next_page
-        while next and self._is_draft(next.file.src_uri):
-            page.next_page = next.next_page
-            next = next.next_page
+            # There's a bug in the readtime library which causes it to fail if
+            # the input string contains emojis - see https://t.ly/qEoHq
+            if not page.config.readtime:
+                data = markdown.encode("unicode_escape")
+                read = readtime.of_markdown(data, rate)
+                page.config.readtime = read.minutes
 
-    # Filter posts and generate excerpts for generated pages
+        # Extract settings for excerpts
+        separator      = self.config.post_excerpt_separator
+        max_authors    = self.config.post_excerpt_max_authors
+        max_categories = self.config.post_excerpt_max_categories
+
+        # Ensure presence of separator and throw, if its absent and required -
+        # we append the separator to the end of the contents of the post, if it
+        # is not already present, so we can remove footnotes or other content
+        # from the excerpt without affecting the content of the excerpt
+        if separator not in page.markdown:
+            path = page.file.src_uri
+            if self.config.post_excerpt == "required":
+                raise PluginError(
+                    f"Couldn't find '{separator}' separator in '{path}'"
+                )
+            else:
+                page.markdown += f"\n\n{separator}"
+
+        # Create excerpt for post and inherit authors and categories - excerpts
+        # can contain a subset of the authors and categories of the post
+        page.excerpt            = Excerpt(page, config, files)
+        page.excerpt.authors    = page.authors[:max_authors]
+        page.excerpt.categories = page.categories[:max_categories]
+
+    # Register template filters for plugin
     def on_env(self, env, *, config, files):
         if not self.config.enabled:
             return
 
-        # Skip post excerpts on dirty reload to save time
-        if self.is_dirtyreload:
-            return
+        # Filter for formatting dates related to posts
+        def date_filter(date: datetime):
+            return self._format_date_for_post(date, config)
 
-        # Copy configuration and enable 'toc' extension
-        config                    = copy(config)
-        config.mdx_configs["toc"] = copy(config.mdx_configs.get("toc", {}))
+        # Register custom template filters
+        env.filters["date"] = date_filter
+        env.filters["url"]  = url_filter
 
-        # Ensure that post titles are links
-        config.mdx_configs["toc"]["anchorlink"] = True
-        config.mdx_configs["toc"]["permalink"]  = False
-
-        # Filter posts that should not be published
-        for file in files.documentation_pages():
-            if self.post_dir in file.src_uri:
-                if self._is_draft(file.src_uri):
-                    files.remove(file)
-
-        # Ensure template is set
-        if "template" not in self.main.meta:
-            self.main.meta["template"] = "blog.html"
-
-        # Populate archive
-        if self.config.archive:
-            for path in self.archive_map:
-                self.archive_post_map[path] = []
-
-                # Generate post excerpts for archive
-                base = files.get_file_from_path(path)
-                for file in self.archive_map[path]:
-                    self.archive_post_map[path].append(
-                        self._generate_excerpt(file, base, config, files)
-                    )
-
-                # Ensure template is set
-                page = base.page
-                if "template" not in page.meta:
-                    page.meta["template"] = "blog-archive.html"
-
-        # Populate categories
-        if self.config.categories:
-            for path in self.category_map:
-                self.category_post_map[path] = []
-
-                # Generate post excerpts for categories
-                base = files.get_file_from_path(path)
-                for file in self.category_map[path]:
-                    self.category_post_map[path].append(
-                        self._generate_excerpt(file, base, config, files)
-                    )
-
-                # Ensure template is set
-                page = base.page
-                if "template" not in page.meta:
-                    page.meta["template"] = "blog-category.html"
-
-        # Resolve path of initial index
-        curr = self._resolve("index.md")
-        base = self.main.file
-
-        # Initialize index
-        self.post_map[curr] = []
-        self.post_pager_pages.append(self.main)
-
-        # Generate indexes by paginating through posts
-        for path in self.post_meta_map.keys():
-            file = files.get_file_from_path(path)
-            if not self._is_draft(path):
-                self.post_pages.append(file.page)
-            else:
-                continue
-
-            # Generate new index when the current is full
-            per_page = self.config.pagination_per_page
-            if len(self.post_map[curr]) == per_page:
-                offset = 1 + len(self.post_map)
-
-                # Resolve path of new index
-                curr = self.config.pagination_url_format.format(page = offset)
-                curr = self._resolve(curr + ".md")
-
-                # Generate file
-                self._generate_file(curr, f"# {self.main.title}")
-
-                # Register file and page
-                base = self._register_file(curr, config, files)
-                page = self._register_page(base, config, files)
-
-                # Inherit page metadata, title and position
-                page.meta          = self.main.meta
-                page.title         = self.main.title
-                page.parent        = self.main
-                page.previous_page = self.main.previous_page
-                page.next_page     = self.main.next_page
-
-                # Initialize next index
-                self.post_map[curr] = []
-                self.post_pager_pages.append(page)
-
-            # Assign post excerpt to current index
-            self.post_map[curr].append(
-                self._generate_excerpt(file, base, config, files)
-            )
-
-    # Populate generated pages
+    # Prepare view for rendering (run latest) - views are rendered last, as we
+    # need to mutate the navigation to account for pagination. The main problem
+    # is that we need to replace the view in the navigation, because otherwise
+    # the view would not be considered active.
+    @event_priority(-100)
     def on_page_context(self, context, *, page, config, nav):
         if not self.config.enabled:
             return
 
-        # Provide post excerpts for index
-        path = page.file.src_uri
-        if path in self.post_map:
-            context["posts"] = self.post_map[path]
-            if self.config.blog_toc:
-                self._populate_toc(page, context["posts"])
+        # Skip if page is not a view managed by this instance - this plugin has
+        # support for multiple instances, which is why this check is necessary
+        if page not in self._resolve_views(self.blog):
+            return
 
-            # Create pagination
-            pagination = paginate.Page(
-                self.post_pages,
-                page = list(self.post_map.keys()).index(path) + 1,
-                items_per_page = self.config.pagination_per_page,
-                url_maker = lambda n: utils.get_relative_url(
-                    self.post_pager_pages[n - 1].url,
-                    page.url
-                )
-            )
+        # Retrieve parent view or section
+        assert isinstance(page, View)
+        main = page.parent
 
-            # Create pagination pager
-            context["pagination"] = lambda args: pagination.pager(
-                format = self.config.pagination_template,
-                show_if_single_page = False,
+        # If this page is a view, and the parent page is a view as well, we got
+        # a paginated view and need to update the parent view in the navigation.
+        # Paginated views are always rendered last, which is why we can safely
+        # mutate the navigation at this point
+        if isinstance(main, View):
+            assert isinstance(main.parent, Section)
+
+            # Replace view in navigation and rewire view - the current view in
+            # the navigation becomes the main view, thus the entire chain moves
+            # one level up. It's essential that the rendering order is linear,
+            # or else we might end up with a broken navigation.
+            at = main.parent.children.index(main)
+            main.parent.children[at] = page
+            page.parent = main.parent
+
+        # Render excerpts and perpare pagination
+        posts, pagination = self._render(page)
+
+        # Render pagination links
+        def pager(args: object):
+            return pagination.pager(
+                format = self.config.pagination_format,
+                show_if_single_page = self.config.pagination_if_single_page,
                 **args
             )
 
-        # Provide post excerpts for archive
-        if self.config.archive:
-            if path in self.archive_post_map:
-                context["posts"] = self.archive_post_map[path]
-                if self.config.archive_toc:
-                    self._populate_toc(page, context["posts"])
+        # Assign posts and pagination to context
+        context["posts"]      = posts
+        context["pagination"] = pager if pagination else None
 
-        # Provide post excerpts for categories
-        if self.config.categories:
-            if path in self.category_post_map:
-                context["posts"] = self.category_post_map[path]
-                if self.config.categories_toc:
-                    self._populate_toc(page, context["posts"])
-
-    # Determine whether we're running under dirty reload
-    def on_serve(self, server, *, config, builder):
-        self.is_dirtyreload = self.is_dirty
+    # Remove temporary directory on shutdown
+    def on_shutdown(self):
+        rmtree(self.temp_dir)
 
     # -------------------------------------------------------------------------
 
-    # Generate and register files for archive
-    def _generate_files_for_archive(self, config, files):
-        for path, meta in self.post_meta_map.items():
-            file = files.get_file_from_path(path)
-            if self._is_draft(path):
-                continue
+    # Check if the given post is excluded
+    def _is_excluded(self, post: Post):
+        if self.config.draft:
+            return False
 
-            # Compute name from format string
-            date_format = self.config.archive_date_format
-            name = self._format_date(meta["date"], date_format, config)
-
-            # Compute path from format string
-            date_format = self.config.archive_url_date_format
-            path = self.config.archive_url_format.format(
-                date = self._format_date(meta["date"], date_format, config)
-            )
-
-            # Create file for archive if it doesn't exist
-            path = self._resolve(path + ".md")
-            if path not in self.archive_map:
-                self.archive_map[path] = []
-
-                # Generate and register file for archive
-                self._generate_file(path, f"# {name}")
-                self._register_file(path, config, files)
-
-            # Assign current post to archive
-            self.archive_map[path].append(file)
-
-        # Return generated archive files
-        return list(self.archive_map.keys())
-
-    # Generate and register files for categories
-    def _generate_files_for_categories(self, config, files):
-        allowed = set(self.config.categories_allowed)
-        for path, meta in self.post_meta_map.items():
-            file = files.get_file_from_path(path)
-            if self._is_draft(path):
-                continue
-
-            # Ensure category is in (non-empty) allow list
-            categories = set(meta.get("categories", []))
-            if allowed:
-                for name in categories - allowed:
-                    log.error(
-                        f"Blog post '{file.src_uri}' uses a category "
-                        f"which is not in allow list: {name}"
-                    )
-                    sys.exit(1)
-
-            # Traverse all categories of the post
-            for name in categories:
-                path = self.config.categories_url_format.format(
-                    slug = self.config.categories_slugify(
-                        name, self.config.categories_slugify_separator
-                    )
-                )
-
-                # Create file for category if it doesn't exist
-                path = self._resolve(path + ".md")
-                if path not in self.category_map:
-                    self.category_map[path] = []
-
-                    # Generate and register file for category
-                    self._generate_file(path, f"# {name}")
-                    self._register_file(path, config, files)
-
-                    # Link category path to name
-                    self.category_name_map[name] = path
-
-                # Assign current post to category
-                self.category_map[path].append(file)
-
-        # Sort categories alphabetically (ascending)
-        self.category_map = dict(sorted(self.category_map.items()))
-
-        # Return generated category files
-        return list(self.category_map.keys())
-
-    # -------------------------------------------------------------------------
-
-    # Check if a post is a draft
-    def _is_draft(self, path):
-        meta = self.post_meta_map[path]
-        if not self.config.draft:
-
-            # Check if post date is in the future
-            future = False
+        # If a post was not explicitly marked or unmarked as draft, and the
+        # date should be taken into account, we automatically mark it as draft
+        # if the publishing date is in the future. This, of course, is opt-in
+        # and must be explicitly enabled by the author.
+        if not isinstance(post.config.draft, bool):
             if self.config.draft_if_future_date:
-                future = meta["date"] > datetime.now()
+                return post.config.date > datetime.now()
 
-            # Check if post is marked as draft
-            return meta.get("draft", future)
+        # Post might be a draft
+        return bool(post.config.draft)
 
-        # Post is not a draft
-        return False
+    # -------------------------------------------------------------------------
 
-    # Generate a post excerpt relative to base
-    def _generate_excerpt(self, file, base, config, files):
+    # Resolve entrypoint - the entrypoint of the blog hosts all posts, sorted
+    # by descending date. The entrypoint must always be present, even if there
+    # are no posts, and is automatically created if it does not exist yet. Note
+    # that posts might be paginated, but this is configurable by the author.
+    def _resolve(self, files: Files, config: MkDocsConfig, nav: Navigation):
+        path = os.path.join(self.config.blog_dir, "index.md")
+        path = os.path.normpath(path)
+
+        # Create entrypoint, if it does not exist
+        docs = os.path.relpath(config.docs_dir)
+        file = os.path.join(docs, path)
+        if not os.path.isfile(file):
+            self._save_to_file(file, "# Blog\n\n")
+
+            # Append entrypoint to files - note that the entrypoint is added to
+            # the docs directory, so we need to set the temporary flag to false
+            files.append(self._path_to_file(path, config, temp = False))
+
+        # Obtain entrypoint page
+        file = files.get_file_from_path(path)
         page = file.page
 
-        # Generate temporary file and page for post excerpt
-        temp = self._register_file(file.src_uri, config)
-        excerpt = Page(page.title, temp, config)
+        # Create entrypoint view and attach to parent
+        view = View(page.title, file, config)
+        self._attach(page.parent, [
+            page.previous_page,
+            view,
+            page.next_page
+        ])
 
-        # Check for separator, if post excerpt is required
-        separator = self.config.post_excerpt_separator
-        if self.config.post_excerpt == "required":
-            if separator not in page.markdown:
-                log.error(f"Blog post '{temp.src_uri}' has no excerpt.")
-                sys.exit(1)
+        # Update entrypoint in navigation
+        for items in [view.parent.children, nav.pages]:
+            items[items.index(page)] = view
 
-        # Ensure separator at the end to strip footnotes and patch h1-h5
-        markdown = "\n\n".join([page.markdown, separator])
-        markdown = re.sub(r"(^#{1,5})", "#\\1", markdown, flags = re.MULTILINE)
+        # Return view
+        return view
 
-        # Extract content and metadata from original post
-        excerpt.file.url = base.url
-        excerpt.markdown = markdown
-        excerpt.meta     = page.meta
+    # Resolve post - the caller must make sure that the given file points to an
+    # actual post (and not a page), or behavior might be unpredictable
+    def _resolve_post(self, file: File, config: MkDocsConfig):
+        post = Post(file, config)
 
-        # Render post and revert page URL
-        excerpt.render(config, files)
-        excerpt.file.url = page.url
+        # Compute path and create a temporary file for path resolution
+        path = self._format_path_for_post(post, config)
+        temp = self._path_to_file(path, config, temp = False)
 
-        # Find all anchor links
-        expr = re.compile(
-            r"<a[^>]+href=['\"]?#[^>]+>",
-            re.IGNORECASE | re.MULTILINE
-        )
+        # Replace post destination file system path and URL
+        file.dest_uri      = temp.dest_uri
+        file.abs_dest_path = temp.abs_dest_path
+        file.url           = temp.url
 
-        # Replace callback
-        first = True
-        def replace(match):
-            value = match.group()
+        # Replace canonical URL and return post
+        post._set_canonical_url(config.site_url)
+        return post
 
-            # Handle anchor link
-            el = fragment_fromstring(value.encode("utf-8"))
-            if el.tag == "a":
-                nonlocal first
+    # Resolve posts from directory - traverse all documentation pages and filter
+    # and yield those that are located in the posts directory
+    def _resolve_posts(self, files: Files, config: MkDocsConfig):
+        path = self.config.post_dir.format(blog = self.config.blog_dir)
+        path = os.path.normpath(path)
 
-                # Fix up each anchor link of the excerpt with a link to the
-                # anchor of the actual post, except for the first one – that
-                # one needs to go to the top of the post. A better way might
-                # be a Markdown extension, but for now this should be fine.
-                url = utils.get_relative_url(excerpt.file.url, base.url)
-                if first:
-                    el.set("href", url)
-                else:
-                    el.set("href", url + el.get("href"))
+        # Create posts directory, if it does not exist
+        docs = os.path.relpath(config.docs_dir)
+        name = os.path.join(docs, path)
+        if not os.path.isdir(name):
+            os.makedirs(name, exist_ok = True)
 
-                # From now on reference anchors
-                first = False
+        # Filter posts from pages - prior to calling this function, the caller
+        # should've excluded all posts, so they're not listed in the navigation
+        inclusion = InclusionLevel.is_excluded
+        for file in files.documentation_pages(inclusion = inclusion):
+            if not file.src_path.startswith(path):
+                continue
 
-            # Replace link opening tag (without closing tag)
-            return tostring(el, encoding = "unicode")[:-4]
+            # Resolve post - in order to determine whether a post should be
+            # excluded, we must load it and analyze its metadata. All posts
+            # marked as drafts are excluded, except for when the author has
+            # configured drafts to be included in the navigation.
+            post = self._resolve_post(file, config)
+            if not self._is_excluded(post):
+                yield post
 
-        # Extract excerpt from post and replace anchor links
-        excerpt.content = expr.sub(
-            replace,
-            excerpt.content.split(separator)[0]
-        )
+    # Resolve authors - check if there's an authors file at the configured
+    # location, and if one was found, load and validate it
+    def _resolve_authors(self, config: MkDocsConfig):
+        path = self.config.authors_file.format(blog = self.config.blog_dir)
+        path = os.path.normpath(path)
 
-        # Determine maximum number of authors and categories
-        max_authors    = self.config.post_excerpt_max_authors
-        max_categories = self.config.post_excerpt_max_categories
+        # If the authors file does not exist, return an empty dictionary
+        docs = os.path.relpath(config.docs_dir)
+        file = os.path.join(docs, path)
+        if not os.path.isfile(file):
+            authors: dict[str, Author] = dict()
+            return authors
 
-        # Obtain computed metadata from original post
-        excerpt.authors    = page.authors[:max_authors]
-        excerpt.categories = page.categories[:max_categories]
+        # Open file and parse as YAML
+        with open(file, encoding = "utf-8") as f:
+            config: Authors = Authors(os.path.abspath(file))
+            try:
+                config.load_dict(yaml.load(f, SafeLoader) or {})
 
-        # Return post excerpt
-        return excerpt
+            # The authors file could not be loaded because of a syntax error,
+            # which we display to the user with a nice error message
+            except Exception as e:
+                raise PluginError(
+                    f"Error reading authors file '{path}' in '{docs}':\n"
+                    f"{e}"
+                )
 
-    # Generate a file with the given template and content
-    def _generate_file(self, path, content):
-        content = f"---\nsearch:\n  exclude: true\n---\n\n{content}"
-        utils.write_file(
-            bytes(content, "utf-8"),
-            os.path.join(self.temp_dir, path)
-        )
+        # Validate authors and throw if errors occurred
+        errors, warnings = config.validate()
+        if not config.authors and warnings:
+            log.warning(
+                f"Action required: the format of the authors file changed.\n"
+                f"All authors must now be located under the 'authors' key.\n"
+                f"Please adjust '{file}' to match:\n"
+                f"\n"
+                f"authors:\n"
+                f"  squidfunk:\n"
+                f"    avatar: https://avatars.githubusercontent.com/u/932156\n"
+                f"    description: Creator\n"
+                f"    name: Martin Donath\n"
+                f"\n"
+            )
+        for _, w in warnings:
+            log.warning(w)
+        for _, e in errors:
+            raise PluginError(
+                f"Error reading authors file '{path}' in '{docs}':\n"
+                f"{e}"
+            )
 
-    # Register a file
-    def _register_file(self, path, config, files = Files([])):
-        file = files.get_file_from_path(path)
-        if not file:
-            urls = config.use_directory_urls
-            file = File(path, self.temp_dir, config.site_dir, urls)
+        # Return authors
+        return config.authors
+
+    # Resolve views and pages of the given view that were generated by this
+    # plugin when building the site and yield them in pre-order
+    def _resolve_views(self, view: View):
+        yield view
+
+        # Resolve views recursively
+        for page in view.views:
+            for next in self._resolve_views(page):
+                assert isinstance(next, View)
+                yield next
+
+        # Resolve pages
+        for page in view.pages:
+            assert isinstance(page, View)
+            yield page
+
+    # -------------------------------------------------------------------------
+
+    # Attach a list of pages to each other and to the given parent item without
+    # explicitly adding them to the navigation, which can be done by the caller
+    def _attach(self, parent: StructureItem, pages: list[Page]):
+        for tail, page, head in zip(pages, pages[1:], pages[2:]):
+
+            # Link page to parent and siblings
+            page.parent        = parent
+            page.previous_page = tail
+            page.next_page     = head
+
+    # Attach a section to the given parent section, make sure it's pages are
+    # part of the navigation, and ensure all pages are linked correctly
+    def _attach_to(self, parent: Section, section: Section, nav: Navigation):
+        section.parent = parent
+
+        # Determine the parent section to attach the section to, which might be
+        # the top-level navigation, if no parent section was given. Note, that
+        # it's currently not possible to chose the position of a section, but
+        # we might add support for this in the future.
+        items = parent.children if parent else nav.items
+        items.append(section)
+
+        # Find last sibling that is a page, skipping sections, as we need to
+        # append the given section after all other pages
+        tail = next(item for item in reversed(items) if isinstance(item, Page))
+        head = tail.next_page
+
+        # Attach section to navigation and pages to each other
+        nav.pages.extend(section.children)
+        self._attach(section, [tail, *section.children, head])
+
+    # -------------------------------------------------------------------------
+
+    # Generate views for archive - analyze posts and generate the necessary
+    # views, taking the date format provided by the author into account
+    def _generate_archive(self, config: MkDocsConfig, files: Files):
+        for post in self.blog.posts:
+            date = post.config.date.created
+
+            # Compute name and path of archive view
+            name = self._format_date_for_archive(date, config)
+            path = self._format_path_for_archive(post, config)
+
+            # Create view for archive if it doesn't exist
+            file = files.get_file_from_path(path)
+            if not file:
+                file = self._path_to_file(path, config)
+                files.append(file)
+
+                # Create and yield archive view
+                self._save_to_file(file.abs_src_path, f"# {name}")
+                yield Archive(name, file, config)
+
+            # Assign post to archive
+            assert isinstance(file.page, Archive)
+            file.page.posts.append(post)
+
+    # Generate views for categories - analyze posts and generate the necessary
+    # views, taking the allowed categories as set by the author into account
+    def _generate_categories(self, config: MkDocsConfig, files: Files):
+        for post in self.blog.posts:
+            for name in post.config.categories:
+                path = self._format_path_for_category(name)
+
+                # Ensure category is in non-empty allow list
+                categories = self.config.categories_allowed or [name]
+                if name not in categories:
+                    docs = os.path.relpath(config.docs_dir)
+                    path = os.path.relpath(post.file.abs_src_path, docs)
+                    raise PluginError(
+                        f"Error reading categories of post '{path}' in "
+                        f"'{docs}': category '{name}' not in allow list"
+                    )
+
+                # Create view for category if it doesn't exist
+                file = files.get_file_from_path(path)
+                if not file:
+                    file = self._path_to_file(path, config)
+                    files.append(file)
+
+                    # Create and yield archive view
+                    self._save_to_file(file.abs_src_path, f"# {name}")
+                    yield Category(name, file, config)
+
+                # Assign post to category and vice versa
+                assert isinstance(file.page, Category)
+                file.page.posts.append(post)
+                post.categories.append(file.page)
+
+    # Generate pages for pagination - analyze view and generate the necessary
+    # pages, creating a chain of views for simple rendering and replacement
+    def _generate_pages(self, view: View, config: MkDocsConfig, files: Files):
+        yield view
+
+        # Extract settings for pagination
+        step = self.config.pagination_per_page
+        prev = view
+
+        # Compute pagination boundaries and create pages
+        for at in range(step, len(view.posts), step):
+            path = self._format_path_for_pagination(view.url, 1 + at // step)
+            file = self._path_to_file(path, config)
+
+            # Replace post source file system path and apend to files
+            file.src_uri      = view.file.src_uri
+            file.abs_src_path = view.file.abs_src_path
             files.append(file)
 
-            # Mark file as generated, so other plugins don't think it's part
-            # of the file system. This is more or less a new quasi-standard
-            # for plugins that generate files which was introduced by the
-            # git-revision-date-localized-plugin - see https://bit.ly/3ZUmdBx
-            file.generated_by = "material/blog"
+            # Create view and attach to previous page
+            next = View(view.title, file, config)
+            self._attach(prev, [
+                view.previous_page,
+                next,
+                view.next_page
+            ])
 
-        # Return file
-        return file
+            # Assign posts and pages to view
+            next.posts = view.posts
+            next.pages = view.pages
 
-    # Register and populate a page
-    def _register_page(self, file, config, files):
-        page = Page(None, file, config)
-        _populate_page(page, config, files)
-        return page
+            # Continue with next page
+            prev = next
+            yield next
 
-    # Populate table of contents of given page
-    def _populate_toc(self, page, posts):
-        toc = page.toc.items[0]
-        for post in posts:
-            toc.children.append(post.toc.items[0])
+    # -------------------------------------------------------------------------
 
-            # Remove anchors below the second level
-            post.toc.items[0].children = []
+    # Render excerpts and pagination for the given view
+    def _render(self, view: View):
+        posts, pagination = view.posts, None
 
-    # Translate the given placeholder value
-    def _translate(self, config, value):
-        env = config.theme.get_env()
+        # Create pagination, if enabled
+        if self.config.pagination:
+            at = view.pages.index(view)
 
-        # Load language template and return translation for placeholder
-        language = "partials/language.html"
-        template = env.get_template(language, None, { "config": config })
-        return template.module.t(value)
+            # Compute pagination boundaries
+            step = self.config.pagination_per_page
+            p, q = at * step, at * step + step
 
-    # Resolve path relative to blog root
-    def _resolve(self, *args):
-        path = posixpath.join(self.config.blog_dir, *args)
-        return posixpath.normpath(path)
+            # Extract posts in pagination boundaries
+            posts = view.posts[p:q]
+            pagination = self._render_pagination(view, (p, q))
 
-    # Format date according to locale
-    def _format_date(self, date, format, config):
-        return format_date(
-            date,
-            format = format,
-            locale = config.theme["language"]
+        # Render excerpts for selected posts
+        posts = [
+            self._render_post(post.excerpt, view)
+                for post in posts
+        ]
+
+        # Return posts and pagination
+        return posts, pagination
+
+    # Render excerpt in the context of the given view
+    def _render_post(self, excerpt: Excerpt, view: View):
+        excerpt.render(view, self.config.post_excerpt_separator)
+
+        # Determine whether to add posts to the table of contents of the view -
+        # note that those settings can be changed individually for each type of
+        # view, which is why we need to check the type of view and the table of
+        # contents setting for that type of view
+        toc = self.config.blog_toc
+        if isinstance(view, Archive):
+            toc = self.config.archive_toc
+        if isinstance(view, Category):
+            toc = self.config.categories_toc
+
+        # Attach top-level table of contents item to view if it should be added
+        # and both, the view and excerpt contain table of contents items
+        if toc and excerpt.toc.items and view.toc.items:
+            view.toc.items[0].children.append(excerpt.toc.items[0])
+
+        # Return excerpt
+        return excerpt
+
+    # Create pagination for the given view and range
+    def _render_pagination(self, view: View, range: tuple[int, int]):
+        p, q = range
+
+        # Create URL from the given page to another page
+        def url_maker(n: int):
+            return get_relative_url(view.pages[n - 1].url, view.url)
+
+        # Return pagination
+        return Pagination(
+            view.posts, page = q // (q - p),
+            items_per_page = q - p,
+            url_maker = url_maker
         )
 
-# -----------------------------------------------------------------------------
-# Helper functions
-# -----------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
 
-# Search the given navigation section (from the configuration) recursively to
-# find the section to host all generated pages (archive, categories, etc.)
-def _host(nav, path):
+    # Format path for post
+    def _format_path_for_post(self, post: Post, config: MkDocsConfig):
+        categories = post.config.categories[:self.config.post_url_max_categories]
+        categories = [self._slugify_category(name) for name in categories]
 
-    # Search navigation dictionary
-    if isinstance(nav, dict):
-        for _, item in nav.items():
-            result = _host(item, path)
-            if result:
-                return result
+        # Replace placeholders in format string
+        date = post.config.date.created
+        path = self.config.post_url_format.format(
+            categories = "/".join(categories),
+            date = self._format_date_for_post_url(date, config),
+            file = post.file.name,
+            slug = post.config.slug or self._slugify_post(post)
+        )
 
-    # Search navigation list
-    elif isinstance(nav, list):
-        if path in nav:
-            return nav
+        # Normalize path and strip slashes at the beginning and end
+        path = posixpath.normpath(path.strip("/"))
+        return posixpath.join(self.config.blog_dir, f"{path}.md")
 
-        # Search each list item
-        for item in nav:
-            if isinstance(item, dict) and path in item.values():
-                if path in item.values():
-                    return nav
-            else:
-                result = _host(item, path)
-                if result:
-                    return result
+    # Format path for archive
+    def _format_path_for_archive(self, post: Post, config: MkDocsConfig):
+        date = post.config.date.created
+        path = self.config.archive_url_format.format(
+            date = self._format_date_for_archive_url(date, config)
+        )
 
-# Copied and adapted from MkDocs, because we need to return existing pages and
-# support anchor names as subtitles, which is pretty fucking cool.
-def _data_to_navigation(nav, config, files):
+        # Normalize path and strip slashes at the beginning and end
+        path = posixpath.normpath(path.strip("/"))
+        return posixpath.join(self.config.blog_dir, f"{path}.md")
 
-    # Search navigation dictionary
-    if isinstance(nav, dict):
-        return [
-            _data_to_navigation((key, value), config, files)
-            if isinstance(value, str) else
-            Section(
-                title = key,
-                children = _data_to_navigation(value, config, files)
-            )
-                for key, value in nav.items()
-        ]
+    # Format path for category
+    def _format_path_for_category(self, name: str):
+        path = self.config.categories_url_format.format(
+            slug = self._slugify_category(name)
+        )
 
-    # Search navigation list
-    elif isinstance(nav, list):
-        return [
-            _data_to_navigation(item, config, files)[0]
-            if isinstance(item, dict) and len(item) == 1 else
-            _data_to_navigation(item, config, files)
-                for item in nav
-        ]
+        # Normalize path and strip slashes at the beginning and end
+        path = posixpath.normpath(path.strip("/"))
+        return posixpath.join(self.config.blog_dir, f"{path}.md")
 
-    # Extract navigation title and path and split anchors
-    title, path = nav if isinstance(nav, tuple) else (None, nav)
-    path, _, anchor = path.partition("#")
+    # Format path for pagination
+    def _format_path_for_pagination(self, base: str, page: int):
+        path = self.config.pagination_url_format.format(
+            page = page
+        )
 
-    # Try to retrieve existing file
-    file = files.get_file_from_path(path)
-    if not file:
-        return Link(title, path)
+        # Normalize path and strip slashes at the beginning and end
+        path = posixpath.normpath(path.strip("/"))
+        return posixpath.join(base, f"{path}.md")
 
-    # Use resolved assets destination path
-    if not path.endswith(".md"):
-        return Link(title or os.path.basename(path), file.url)
+    # -------------------------------------------------------------------------
 
-    # Generate temporary file as for post excerpts
-    else:
-        urls = config.use_directory_urls
-        link = File(path, config.docs_dir, config.site_dir, urls)
-        page = Page(title or file.page.title, link, config)
+    # Format date
+    def _format_date(self, date: datetime, format: str, config: MkDocsConfig):
+        locale = config.theme["language"]
+        return format_date(date, format = format, locale = locale)
 
-        # Set destination file system path and URL from original file
-        link.dest_uri      = file.dest_uri
-        link.abs_dest_path = file.abs_dest_path
-        link.url           = file.url
+    # Format date for post
+    def _format_date_for_post(self, date: datetime, config: MkDocsConfig):
+        format = self.config.post_date_format
+        return self._format_date(date, format, config)
 
-        # Retrieve name of anchor by misusing the search index
-        if anchor:
-            item = SearchIndex()._find_toc_by_id(file.page.toc, anchor)
+    # Format date for post URL
+    def _format_date_for_post_url(self, date: datetime, config: MkDocsConfig):
+        format = self.config.post_url_date_format
+        return self._format_date(date, format, config)
 
-            # Set anchor name as subtitle
-            page.meta["subtitle"] = item.title
-            link.url += f"#{anchor}"
+    # Format date for archive
+    def _format_date_for_archive(self, date: datetime, config: MkDocsConfig):
+        format = self.config.archive_date_format
+        return self._format_date(date, format, config)
 
-        # Return navigation item
-        return page
+    # Format date for archive URL
+    def _format_date_for_archive_url(self, date: datetime, config: MkDocsConfig):
+        format = self.config.archive_url_date_format
+        return self._format_date(date, format, config)
+
+    # -------------------------------------------------------------------------
+
+    # Slugify post title
+    def _slugify_post(self, post: Post):
+        separator = self.config.post_slugify_separator
+        return self.config.post_slugify(post.title, separator)
+
+    # Slugify category
+    def _slugify_category(self, name: str):
+        separator = self.config.categories_slugify_separator
+        return self.config.categories_slugify(name, separator)
+
+    # -------------------------------------------------------------------------
+
+    # Create a file for the given path, which must point to a valid source file,
+    # either inside the temporary directory or the docs directory
+    def _path_to_file(self, path: str, config: MkDocsConfig, *, temp = True):
+        assert path.endswith(".md")
+        return File(
+            path,
+            config.docs_dir if not temp else self.temp_dir,
+            config.site_dir,
+            config.use_directory_urls
+        )
+
+    # Write the content to the file located at the given path
+    def _save_to_file(self, path: str, content: str):
+        os.makedirs(os.path.dirname(path), exist_ok = True)
+        with open(path, "w") as f:
+            f.write(content)
+
+    # -------------------------------------------------------------------------
+
+    # Translate the placeholder referenced by the given key
+    def _translate(self, key: str, config: MkDocsConfig) -> str:
+        env = config.theme.get_env()
+        template = env.get_template(
+            "partials/language.html", globals = { "config": config }
+        )
+
+        # Translate placeholder
+        return template.module.t(key)
 
 # -----------------------------------------------------------------------------
 # Data

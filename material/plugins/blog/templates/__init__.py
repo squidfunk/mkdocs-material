@@ -18,31 +18,25 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from mkdocs.config.base import Config
-from mkdocs.config.config_options import Deprecated, Type
+from jinja2 import pass_context
+from jinja2.runtime import Context
+from material.plugins.blog.structure import View
+from mkdocs.utils.templates import url_filter as _url_filter
 
 # -----------------------------------------------------------------------------
-# Classes
+# Functions
 # -----------------------------------------------------------------------------
 
-# Social plugin configuration
-class SocialConfig(Config):
-    enabled = Type(bool, default = True)
-    cache_dir = Type(str, default = ".cache/plugin/social")
+# Filter for normalizing URLs with support for paginated views
+@pass_context
+def url_filter(context: Context, url: str | None):
+    page = context["page"]
 
-    # Options for social cards
-    cards = Type(bool, default = True)
-    cards_dir = Type(str, default = "assets/images/social")
-    cards_layout_options = Type(dict, default = {})
+    # If the current page is a view, check if the URL links to the page
+    # itself, and replace it with the URL of the main view
+    if isinstance(page, View):
+        if page.url == url:
+            url = page.pages[0].url
 
-    # Deprecated options
-    cards_color = Deprecated(
-        option_type = Type(dict, default = {}),
-        message =
-            "Deprecated, use 'cards_layout_options.background_color' "
-            "and 'cards_layout_options.color' with 'default' layout"
-    )
-    cards_font = Deprecated(
-        option_type = Type(str),
-        message = "Deprecated, use 'cards_layout_options.font_family'"
-    )
+    # Forward to original template filter
+    return _url_filter(context, url)

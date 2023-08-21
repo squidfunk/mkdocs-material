@@ -21,6 +21,11 @@
 import logging
 import sys
 
+# -----------------------------------------------------------------------------
+# Checks
+# -----------------------------------------------------------------------------
+
+# Check for pillow and cairosvg
 try:
     import cairosvg as _
     import PIL as _

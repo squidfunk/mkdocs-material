@@ -22,10 +22,10 @@ from mkdocs.config.base import Config
 from mkdocs.config.config_options import Deprecated, Type
 
 # -----------------------------------------------------------------------------
-# Class
+# Classes
 # -----------------------------------------------------------------------------
 
-# Social plugin configuration scheme
+# Social plugin configuration
 class SocialConfig(Config):
     enabled = Type(bool, default = True)
     cache_dir = Type(str, default = ".cache/plugin/social")

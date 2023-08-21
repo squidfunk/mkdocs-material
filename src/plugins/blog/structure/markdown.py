@@ -18,31 +18,41 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from mkdocs.config.base import Config
-from mkdocs.config.config_options import Deprecated, Type
+from markdown.treeprocessors import Treeprocessor
+from mkdocs.structure.pages import Page
+from mkdocs.utils import get_relative_url
+from xml.etree.ElementTree import Element
 
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
 
-# Social plugin configuration
-class SocialConfig(Config):
-    enabled = Type(bool, default = True)
-    cache_dir = Type(str, default = ".cache/plugin/social")
+# Excerpt tree processor
+class ExcerptTreeprocessor(Treeprocessor):
 
-    # Options for social cards
-    cards = Type(bool, default = True)
-    cards_dir = Type(str, default = "assets/images/social")
-    cards_layout_options = Type(dict, default = {})
+    # Initialize excerpt tree processor
+    def __init__(self, page: Page, base: Page = None):
+        self.page = page
+        self.base = base
 
-    # Deprecated options
-    cards_color = Deprecated(
-        option_type = Type(dict, default = {}),
-        message =
-            "Deprecated, use 'cards_layout_options.background_color' "
-            "and 'cards_layout_options.color' with 'default' layout"
-    )
-    cards_font = Deprecated(
-        option_type = Type(str),
-        message = "Deprecated, use 'cards_layout_options.font_family'"
-    )
+    # Transform HTML after Markdown processing
+    def run(self, root: Element):
+        main = True
+
+        # We're only interested in anchors, which is why we continue when the
+        # link does not start with an anchor tag
+        for el in root.iter("a"):
+            anchor = el.get("href")
+            if not anchor.startswith("#"):
+                continue
+
+            # The main headline should link to the post page, not to a specific
+            # anchor, which is why we remove the anchor in that case
+            path = get_relative_url(self.page.url, self.base.url)
+            if main:
+                el.set("href", path)
+            else:
+                el.set("href", path + anchor)
+
+            # Main headline has been seen
+            main = False
