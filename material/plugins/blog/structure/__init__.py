@@ -106,7 +106,7 @@ class Post(Page):
                 f"{e}"
             )
 
-        # Excerpts are subsets of posts that are used in views like archive and
+        # Excerpts are subsets of posts that are used in pages like archive and
         # category views. They are not rendered as standalone pages, but are
         # included in the context of the parent post. Each post has a dedicated
         # excerpt instance which is reused when rendering views.
