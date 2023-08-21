@@ -4,8 +4,12 @@
 
 ### 9.2.0 <small>July 6, 2023</small> { id="9.2.0" }
 
+__Additions and improvements__
+
 - Added blogging support via built-in blog plugin
-- Added Chinese language support to built-in search plugin
+- Added support for Chinese language segmentaiton in search plugin
+- Added support for adding custom dates to blog posts
+- Added support for paginating archive and category pages
 - Added support for annotations (outside of code blocks)
 - Added support for navigation icons
 - Added support for navigation pruning
@@ -13,17 +17,39 @@
 - Added support for customizing site icons
 - Added support for customizing (code) annotation icons
 - Added focus outline to admonitions and details
+- Added prompt for bug report name to info plugin
+- Added Luxembourgish translations
 - Improved rendering of (code) annotation markers
 - Improved print styles for (code) annotations
 - Improved customizability of navigation tabs
-- Improved plugin inter-op with external tools like mike
+- Improved interop of plugins with external tools like mike
+- Improved interop of blog plugin with awesome pages plugin
+- Improved header partial by moving buttons into separate partials
+- Improved clarity of `site_url` warning in social plugin
+- Improved blog plugin to automatically setup directory structure
+- Switched info plugin to `importlib` to mitigate deprecations 
+- Automatically download ResizeObserver polyfill when necessary
+- Automatically add iframe-worker polyfill when necessary in offline plugin
+- Automatically focus and bring up keyboard on touch devices
+- Updated Serbo-Croatian translations
+- Updated MkDocs to 1.5.2
+
+__Removals__
+
 - Removed Universal Analytics integration
 - Removed ancient polyfills to reduce size of bundled JavaScript by 20%
 - Removed necessity for `Array.flat` and `Array.flatMap` polyfill
 - Removed announcement bar button when JavaScript is not available
-- Automatically download ResizeObserver polyfill when necessary
-- Updated MkDocs to 1.5.0
+
+__Fixes__
+
 - Fixed rendering of tags when announcement bar is present
+- Fixed tags plugin rendering pages excluded by other plugins
+- Fixed #5132: Blog plugin requires `nav` entry in `mkdocs.yml`
+- Fixed #5599: Insufficient contrast for default link color
+- Fixed #5715: Blog plugin missing integrated table of contents in pagination
+- Fixed #5806: Version selector not hoverable on some Android devices
+- Fixed #5826: Blog post drafts with tags show up in tags index
 
 ### 9.1.21 <small>July 27, 2023</small> { id="9.1.20" }
 

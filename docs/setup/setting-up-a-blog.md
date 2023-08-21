@@ -1021,8 +1021,22 @@ categories:
     output. [This behavior can be changed], e.g. for rendering drafts when 
     building deploy previews.
 
-2.  You can use `date_updated` to signal when you updated a blog posts. The
-    date will be rendered as part of the sidebar.
+2.  If you wish to provide multiple dates, you can use the following syntax,
+    allowing you to define a date when you last updated the blog post +
+    further custom dates you can add to the template:
+
+    ``` yaml
+    ---
+    date:
+      created: 2022-01-31
+      updated: 2022-02-02
+    ---
+
+    # Hello world!
+    ```
+
+    Note that the creation date __must__ be set under `date.created`, as each
+    blog post must have a creation date set.
 
 When you spin up the [live preview server], you should be greeted by your first
 post! You'll also realize, that [archive] and [category] indexes have been
