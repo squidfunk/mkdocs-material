@@ -47,12 +47,16 @@ RUN \
     git \
     git-fast-import \
     jpeg-dev \
+    libxml2 \
+    libxslt \
     openssh \
     zlib-dev \
 && \
   apk add --no-cache --virtual .build \
     gcc \
     libffi-dev \
+    libxml2-dev \
+    libxslt-dev \
     musl-dev \
 && \
   pip install --no-cache-dir --upgrade pip \

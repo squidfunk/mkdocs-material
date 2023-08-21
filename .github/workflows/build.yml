@@ -23,6 +23,7 @@ on:
   push:
     branches:
       - master
+      - fix/docker-build
   pull_request:
   release:
     types:
@@ -106,14 +107,14 @@ jobs:
         uses: docker/setup-buildx-action@v2
 
       - name: Login to DockerHub
-        if: github.event_name == 'release'
+        #if: github.event_name == 'release'
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
-        if: github.event_name == 'release'
+        #if: github.event_name == 'release'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -153,7 +154,7 @@ jobs:
           docker run --rm -i -v ${PWD}:/docs ${REPO_FULL_NAME,,}:${{ steps.meta.outputs.version }} build
 
       - name: Set platforms
-        if: github.event_name == 'release'
+        #if: github.event_name == 'release'
         run: |
           echo "PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7" >> $GITHUB_ENV
 
@@ -167,12 +168,12 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Check manifest
-        if: github.event_name == 'release'
+        #if: github.event_name == 'release'
         run: |
           docker buildx imagetools inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
 
       - name: Inspect image
-        if: github.event_name == 'release'
+        #if: github.event_name == 'release'
         run: |
           docker pull ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
           docker image inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
