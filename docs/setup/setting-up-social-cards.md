@@ -66,6 +66,20 @@ plugins:
 > generates images much more efficiently in parallel and allows to build 
 > entirely [custom layouts].
 
+!!! info "The [`site_url`][site_url] setting must be set"
+
+    Note that you must set [`site_url`][site_url] when using the social plugin,
+    or the generated cards will not be correctly linked. Social media services
+    like Twitter and Facebook demand that social previews point to an absolute
+    URL, which the plugin can only compute when [`site_url`][site_url] is set.
+    Example:
+
+    ``` yaml
+    site_url: https://example.com
+    ```
+
+  [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
+
 The following configuration options are available:
 
 [`enabled`](#+social.enabled){ #+social.enabled }
