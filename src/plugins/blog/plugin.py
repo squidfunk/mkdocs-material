@@ -364,7 +364,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         ])
 
         # Update entrypoint in navigation
-        for items in [self._resolve_siblings(view.parent, nav), nav.pages]:
+        for items in [self._resolve_items(view.parent, nav), nav.pages]:
             items[items.index(page)] = view
 
         # Return view
@@ -484,8 +484,8 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             assert isinstance(page, View)
             yield page
 
-    # Resolve siblings of a navigation item
-    def _resolve_siblings(self, item: StructureItem, nav: Navigation):
+    # Resolve children of a navigation item
+    def _resolve_items(self, item: StructureItem, nav: Navigation):
         if isinstance(item, Section):
             return item.children
         else:
@@ -512,7 +512,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # the top-level navigation, if no parent section was given. Note, that
         # it's currently not possible to chose the position of a section, but
         # we might add support for this in the future.
-        items = self._resolve_siblings(parent, nav)
+        items = self._resolve_items(parent, nav)
         items.append(section)
 
         # Find last sibling that is a page, skipping sections, as we need to
