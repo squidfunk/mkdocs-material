@@ -57,7 +57,7 @@ __Fixes__
 - Fixed #5806: Version selector not hoverable on some Android devices
 - Fixed #5826: Blog post drafts with tags show up in tags index
 
-### 9.1.21 <small>July 27, 2023</small> { id="9.1.20" }
+### 9.1.21 <small>July 27, 2023</small> { id="9.1.21" }
 
 - Fixed MkDocs 1.4 compat issue in social plugin (9.1.20 regression)
 
