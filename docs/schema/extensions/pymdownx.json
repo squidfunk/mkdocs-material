@@ -544,6 +544,21 @@
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
                   "type": "boolean",
                   "default": false
+                },
+                "url_max_size": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "integer",
+                  "default": 33554432
+                },
+                "url_timeout": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "number",
+                  "default": 10.0
+                },
+                "url_request_headers": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "object",
+                  "default": {}
                 }
               },
               "additionalProperties": false
