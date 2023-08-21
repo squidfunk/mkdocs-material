@@ -245,7 +245,7 @@ def _patch(config: MkDocsConfig):
     config.validation         = copy(config.validation)
     config.validation.links   = copy(config.validation.links)
     config.mdx_configs        = copy(config.mdx_configs)
-    config.mdx_configs["toc"] = copy(config.mdx_configs["toc"])
+    config.mdx_configs["toc"] = copy(config.mdx_configs.get("toc", {}))
 
     # In order to render excerpts for posts, we need to make sure that the
     # table of contents extension is appropriately configured

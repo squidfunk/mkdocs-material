@@ -60,11 +60,13 @@ class PostDate(BaseConfigOption[DateDict]):
         if not isinstance(config[key_name], dict):
             config[key_name] = { "created": config[key_name] }
 
-        # Initialize date dictionary and convert all date values to datetime
-        config[key_name] = DateDict(config[key_name])
+        # Convert all date values to datetime
         for key, value in config[key_name].items():
             if isinstance(value, date):
                 config[key_name][key] = datetime.combine(value, time())
+
+        # Initialize date dictionary
+        config[key_name] = DateDict(config[key_name])
 
     # Ensure each date value is of type datetime
     def run_validation(self, value: DateDict):

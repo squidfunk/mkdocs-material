@@ -326,7 +326,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # and must be explicitly enabled by the author.
         if not isinstance(post.config.draft, bool):
             if self.config.draft_if_future_date:
-                return post.config.date > datetime.now()
+                return post.config.date.created > datetime.now()
 
         # Post might be a draft
         return bool(post.config.draft)
@@ -364,7 +364,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         ])
 
         # Update entrypoint in navigation
-        for items in [view.parent.children, nav.pages]:
+        for items in [self._resolve_siblings(view.parent, nav), nav.pages]:
             items[items.index(page)] = view
 
         # Return view
@@ -484,6 +484,13 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             assert isinstance(page, View)
             yield page
 
+    # Resolve siblings of a navigation item
+    def _resolve_siblings(self, item: StructureItem, nav: Navigation):
+        if isinstance(item, Section):
+            return item.children
+        else:
+            return nav.items
+
     # -------------------------------------------------------------------------
 
     # Attach a list of pages to each other and to the given parent item without
@@ -505,7 +512,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # the top-level navigation, if no parent section was given. Note, that
         # it's currently not possible to chose the position of a section, but
         # we might add support for this in the future.
-        items = parent.children if parent else nav.items
+        items = self._resolve_siblings(parent, nav)
         items.append(section)
 
         # Find last sibling that is a page, skipping sections, as we need to
