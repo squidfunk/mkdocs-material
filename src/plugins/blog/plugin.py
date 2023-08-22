@@ -502,7 +502,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             page.previous_page = tail
             page.next_page     = head
 
-    # Attach a section to the given parent section, make sure it's pages are
+    # Attach a section as a sibling to the given view, make sure it's pages are
     # part of the navigation, and ensure all pages are linked correctly
     def _attach_to(self, view: View, section: Section, nav: Navigation):
         section.parent = view.parent
