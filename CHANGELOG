@@ -1,3 +1,8 @@
+mkdocs-material-9.2.2 (2023-08-22)
+
+  * Fixed #5880: Blog plugin failing when building a standalone blog
+  * Fixed #5881: Blog plugin not compatible with Python < 3.10
+
 mkdocs-material-9.2.1 (2023-08-21)
 
   * Fixed #5879: Blog plugin failing when building a standalone blog

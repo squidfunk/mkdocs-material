@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.2.2 <small>August 22, 2023</small> { id="9.2.2" }
+
+- Fixed #5880: Blog plugin failing when building a standalone blog
+- Fixed #5881: Blog plugin not compatible with Python < 3.10
+
 ### 9.2.1 <small>August 21, 2023</small> { id="9.2.1" }
 
 - Fixed #5879: Blog plugin failing when building a standalone blog
