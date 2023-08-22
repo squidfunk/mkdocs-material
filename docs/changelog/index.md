@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.2.3 <small>August 22, 2023</small> { id="9.2.3" }
+
+- Fixed blog plugin rendering wrongly with markdown.extensions.toc
+- Fixed blog plugin entrypoint generation
+
 ### 9.2.2 <small>August 22, 2023</small> { id="9.2.2" }
 
 - Fixed #5880: Blog plugin failing when building a standalone blog
