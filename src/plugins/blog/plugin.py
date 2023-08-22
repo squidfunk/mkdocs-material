@@ -125,6 +125,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file.abs_dest_path = os.path.join(site, file.dest_path)
                 file.url           = file.url.replace(path, root)
 
+        # Generate entrypoint, if it does not exist yet
+        self._generate(files, config)
+
     # Resolve and load posts and generate indexes (run later) - we resolve all
     # posts after the navigation is constructed in order to allow other plugins
     # to alter the navigation (e.g. awesome-pages) before we start to add pages
@@ -332,23 +335,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # -------------------------------------------------------------------------
 
-    # Resolve entrypoint - the entrypoint of the blog hosts all posts, sorted
-    # by descending date. The entrypoint must always be present, even if there
-    # are no posts, and is automatically created if it does not exist yet. Note
-    # that posts might be paginated, but this is configurable by the author.
+    # Resolve entrypoint - the entrypoint of the blog must have been created
+    # if it did not exist before, and hosts all posts sorted by descending date
     def _resolve(self, files: Files, config: MkDocsConfig, nav: Navigation):
         path = os.path.join(self.config.blog_dir, "index.md")
         path = os.path.normpath(path)
-
-        # Create entrypoint, if it does not exist
-        docs = os.path.relpath(config.docs_dir)
-        file = os.path.join(docs, path)
-        if not os.path.isfile(file):
-            self._save_to_file(file, "# Blog\n\n")
-
-            # Append entrypoint to files - note that the entrypoint is added to
-            # the docs directory, so we need to set the temporary flag to false
-            files.append(self._path_to_file(path, config, temp = False))
 
         # Obtain entrypoint page
         file = files.get_file_from_path(path)
@@ -525,6 +516,23 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # -------------------------------------------------------------------------
 
+    # Generate entrypoint - the entrypoint must always be present, and thus is
+    # created before the navigation is constructed if it does not exist yet
+    def _generate(self, files: Files, config: MkDocsConfig):
+        path = os.path.join(self.config.blog_dir, "index.md")
+        path = os.path.normpath(path)
+
+        # Create entrypoint, if it does not exist - note that the entrypoint is
+        # added to the docs directory, not to the temporary directory
+        docs = os.path.relpath(config.docs_dir)
+        file = os.path.join(docs, path)
+        if not os.path.isfile(file):
+            file = self._path_to_file(path, config, temp = False)
+            self._save_to_file(file.abs_src_path, "# Blog\n\n")
+
+            # Append entrypoint to files
+            files.append(file)
+
     # Generate views for archive - analyze posts and generate the necessary
     # views, taking the date format provided by the author into account
     def _generate_archive(self, config: MkDocsConfig, files: Files):
@@ -539,11 +547,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             file = files.get_file_from_path(path)
             if not file:
                 file = self._path_to_file(path, config)
-                files.append(file)
+                self._save_to_file(file.abs_src_path, f"# {name}")
 
                 # Create and yield archive view
-                self._save_to_file(file.abs_src_path, f"# {name}")
                 yield Archive(name, file, config)
+                files.append(file)
 
             # Assign post to archive
             assert isinstance(file.page, Archive)
@@ -570,11 +578,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file = files.get_file_from_path(path)
                 if not file:
                     file = self._path_to_file(path, config)
-                    files.append(file)
+                    self._save_to_file(file.abs_src_path, f"# {name}")
 
                     # Create and yield category view
-                    self._save_to_file(file.abs_src_path, f"# {name}")
                     yield Category(name, file, config)
+                    files.append(file)
 
                 # Assign post to category and vice versa
                 assert isinstance(file.page, Category)
