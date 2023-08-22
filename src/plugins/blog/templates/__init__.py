@@ -29,7 +29,7 @@ from mkdocs.utils.templates import url_filter as _url_filter
 
 # Filter for normalizing URLs with support for paginated views
 @pass_context
-def url_filter(context: Context, url: str | None):
+def url_filter(context: Context, url: str):
     page = context["page"]
 
     # If the current page is a view, check if the URL links to the page

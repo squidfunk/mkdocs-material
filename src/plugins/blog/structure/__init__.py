@@ -18,6 +18,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+from __future__ import annotations
+
 import logging
 import os
 import yaml
@@ -33,7 +35,6 @@ from mkdocs.structure.pages import Page, _RelativePathTreeprocessor
 from mkdocs.structure.toc import get_toc
 from mkdocs.utils.meta import YAML_RE
 from re import Match
-from typing import Union
 from yaml import SafeLoader
 
 from .config import PostConfig
@@ -205,7 +206,7 @@ class View(Page):
     # Initialize view
     def __init__(self, title: str | None, file: File, config: MkDocsConfig):
         super().__init__(title, file, config)
-        self.parent: Union[View, Section]
+        self.parent: View | Section
 
         # Initialize posts and views
         self.posts: list[Post] = []
