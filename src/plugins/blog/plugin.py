@@ -572,7 +572,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                     file = self._path_to_file(path, config)
                     files.append(file)
 
-                    # Create and yield archive view
+                    # Create and yield category view
                     self._save_to_file(file.abs_src_path, f"# {name}")
                     yield Category(name, file, config)
 
