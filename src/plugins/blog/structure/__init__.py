@@ -242,21 +242,26 @@ class Category(View):
 def _patch(config: MkDocsConfig):
     config = copy(config)
 
-    # Copy configuration that needs to be patched
-    config.validation         = copy(config.validation)
-    config.validation.links   = copy(config.validation.links)
-    config.mdx_configs        = copy(config.mdx_configs)
-    config.mdx_configs["toc"] = copy(config.mdx_configs.get("toc", {}))
+    # Copy parts of configuration that needs to be patched
+    config.validation          = copy(config.validation)
+    config.validation.links    = copy(config.validation.links)
+    config.markdown_extensions = copy(config.markdown_extensions)
+    config.mdx_configs         = copy(config.mdx_configs)
+
+    # Make sure that the author did not add another instance of the table of
+    # contents extension to the configuration, as this leads to weird behavior
+    if "markdown.extensions.toc" in config.markdown_extensions:
+        config.markdown_extensions.remove("markdown.extensions.toc")
 
     # In order to render excerpts for posts, we need to make sure that the
     # table of contents extension is appropriately configured
     config.mdx_configs["toc"] = {
-        **config.mdx_configs["toc"],
+        **config.mdx_configs.get("toc", {}),
         **{
-            "anchorlink": True,    # Render headline as clickable
-            "baselevel": 2,        # Render h1 as h2 and so forth
-            "permalink": False,    # Remove permalinks
-            "toc_depth": 2         # Remove everything below h2
+            "anchorlink": True,        # Render headline as clickable
+            "baselevel": 2,            # Render h1 as h2 and so forth
+            "permalink": False,        # Remove permalinks
+            "toc_depth": 2             # Remove everything below h2
         }
     }
 
