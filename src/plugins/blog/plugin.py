@@ -161,7 +161,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
             # Attach and link views for archive
             title = self._translate(self.config.archive_name, config)
-            self._attach_to(self.blog.parent, Section(title, views), nav)
+            self._attach_to(self.blog, Section(title, views), nav)
 
         # Generate and attach views for categories
         if self.config.categories:
@@ -170,7 +170,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
             # Attach and link views for categories
             title = self._translate(self.config.categories_name, config)
-            self._attach_to(self.blog.parent, Section(title, views), nav)
+            self._attach_to(self.blog, Section(title, views), nav)
 
         # Paginate generated views, if enabled
         if self.config.pagination:
@@ -280,19 +280,18 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         main = page.parent
 
         # If this page is a view, and the parent page is a view as well, we got
-        # a paginated view and need to update the parent view in the navigation.
-        # Paginated views are always rendered last, which is why we can safely
-        # mutate the navigation at this point
+        # a paginated view and need to replace the parent with the current view.
+        # Paginated views are always rendered at the end of the build, which is
+        # why we can safely mutate the navigation at this point
         if isinstance(main, View):
-            assert isinstance(main.parent, Section)
-
-            # Replace view in navigation and rewire view - the current view in
-            # the navigation becomes the main view, thus the entire chain moves
-            # one level up. It's essential that the rendering order is linear,
-            # or else we might end up with a broken navigation.
-            at = main.parent.children.index(main)
-            main.parent.children[at] = page
             page.parent = main.parent
+
+            # Replace view in navigation and rewire it - the current view in the
+            # navigation becomes the main view, thus the entire chain moves one
+            # level up. It's essential that the rendering order is linear, or
+            # else we might end up with a broken navigation.
+            items = self._resolve_siblings(main, nav)
+            items[items.index(main)] = page
 
         # Render excerpts and perpare pagination
         posts, pagination = self._render(page)
@@ -364,7 +363,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         ])
 
         # Update entrypoint in navigation
-        for items in [self._resolve_items(view.parent, nav), nav.pages]:
+        for items in [self._resolve_siblings(view, nav), nav.pages]:
             items[items.index(page)] = view
 
         # Return view
@@ -484,10 +483,10 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             assert isinstance(page, View)
             yield page
 
-    # Resolve children of a navigation item
-    def _resolve_items(self, item: StructureItem, nav: Navigation):
-        if isinstance(item, Section):
-            return item.children
+    # Resolve siblings of a navigation item
+    def _resolve_siblings(self, item: StructureItem, nav: Navigation):
+        if isinstance(item.parent, Section):
+            return item.parent.children
         else:
             return nav.items
 
@@ -505,14 +504,14 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # Attach a section to the given parent section, make sure it's pages are
     # part of the navigation, and ensure all pages are linked correctly
-    def _attach_to(self, parent: Section, section: Section, nav: Navigation):
-        section.parent = parent
+    def _attach_to(self, view: View, section: Section, nav: Navigation):
+        section.parent = view.parent
 
-        # Determine the parent section to attach the section to, which might be
-        # the top-level navigation, if no parent section was given. Note, that
-        # it's currently not possible to chose the position of a section, but
-        # we might add support for this in the future.
-        items = self._resolve_items(parent, nav)
+        # Resolve siblings, which are the children of the parent section, or
+        # the top-level list of navigation items if the view is at the root of
+        # the project, and append the given section to it. It's currently not
+        # possible to chose the position of a section.
+        items = self._resolve_siblings(view, nav)
         items.append(section)
 
         # Find last sibling that is a page, skipping sections, as we need to
