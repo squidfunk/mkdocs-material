@@ -31,11 +31,11 @@ from mkdocs.config.base import Config
 class BlogConfig(Config):
     enabled = Type(bool, default = True)
 
-    # Options for blog
+    # Settings for blog
     blog_dir = Type(str, default = "blog")
     blog_toc = Type(bool, default = False)
 
-    # Options for posts
+    # Settings for posts
     post_dir = Type(str, default = "{blog}/posts")
     post_date_format = Type(str, default = "long")
     post_url_date_format = Type(str, default = "yyyy/MM/dd")
@@ -50,7 +50,7 @@ class BlogConfig(Config):
     post_readtime = Type(bool, default = True)
     post_readtime_words_per_minute = Type(int, default = 265)
 
-    # Options for archive
+    # Settings for archive
     archive = Type(bool, default = True)
     archive_name = Type(str, default = "blog.archive")
     archive_date_format = Type(str, default = "yyyy")
@@ -58,7 +58,7 @@ class BlogConfig(Config):
     archive_url_format = Type(str, default = "archive/{date}")
     archive_toc = Optional(Type(bool))
 
-    # Options for categories
+    # Settings for categories
     categories = Type(bool, default = True)
     categories_name = Type(str, default = "blog.categories")
     categories_url_format = Type(str, default = "category/{slug}")
@@ -67,7 +67,7 @@ class BlogConfig(Config):
     categories_allowed = Type(list, default = [])
     categories_toc = Optional(Type(bool))
 
-    # Options for pagination
+    # Settings for pagination
     pagination = Type(bool, default = True)
     pagination_per_page = Type(int, default = 10)
     pagination_url_format = Type(str, default = "page/{page}")
@@ -75,14 +75,14 @@ class BlogConfig(Config):
     pagination_if_single_page = Type(bool, default = False)
     pagination_keep_content = Type(bool, default = False)
 
-    # Options for authors
+    # Settings for authors
     authors = Type(bool, default = True)
     authors_file = Type(str, default = "{blog}/.authors.yml")
 
-    # Options for drafts
+    # Settings for drafts
     draft = Type(bool, default = False)
     draft_on_serve = Type(bool, default = True)
     draft_if_future_date = Type(bool, default = False)
 
-    # Deprecated options
+    # Deprecated settings
     pagination_template = Deprecated(moved_to = "pagination_format")

@@ -33,7 +33,7 @@ from . import casefold
 class TagsConfig(Config):
     enabled = Type(bool, default = True)
 
-    # Options for tags
+    # Settings for tags
     tags_file = Optional(Type(str))
     tags_extra_files = Type(dict, default = {})
     tags_slugify = Type((type(slugify), partial), default = slugify)

@@ -30,6 +30,6 @@ class InfoConfig(Config):
     enabled = Type(bool, default = True)
     enabled_on_serve = Type(bool, default = False)
 
-    # Options for archive
+    # Settings for archive
     archive = Type(bool, default = True)
     archive_stop_on_violation = Type(bool, default = True)

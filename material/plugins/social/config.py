@@ -30,12 +30,12 @@ class SocialConfig(Config):
     enabled = Type(bool, default = True)
     cache_dir = Type(str, default = ".cache/plugin/social")
 
-    # Options for social cards
+    # Settings for social cards
     cards = Type(bool, default = True)
     cards_dir = Type(str, default = "assets/images/social")
     cards_layout_options = Type(dict, default = {})
 
-    # Deprecated options
+    # Deprecated settings
     cards_color = Deprecated(
         option_type = Type(dict, default = {}),
         message =
