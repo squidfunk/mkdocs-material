@@ -411,16 +411,18 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         path = self.config.authors_file.format(blog = self.config.blog_dir)
         path = os.path.normpath(path)
 
-        # If the authors file does not exist, return an empty dictionary
+        # Resolve path relative to docs directory
         docs = os.path.relpath(config.docs_dir)
         file = os.path.join(docs, path)
+
+        # If the authors file does not exist, return here
+        config: Authors = Authors()
         if not os.path.isfile(file):
-            authors: dict[str, Author] = {}
-            return authors
+            return config.authors
 
         # Open file and parse as YAML
         with open(file, encoding = "utf-8") as f:
-            config: Authors = Authors(os.path.abspath(file))
+            config.config_file_path = os.path.abspath(file)
             try:
                 config.load_dict(yaml.load(f, SafeLoader) or {})
 

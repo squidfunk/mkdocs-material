@@ -52,7 +52,7 @@ class Post(Page):
     def __init__(self, file: File, config: MkDocsConfig):
         super().__init__(None, file, config)
 
-        # Resolve path relative to docs directory for error reporting
+        # Resolve path relative to docs directory
         docs = os.path.relpath(config.docs_dir)
         path = os.path.relpath(file.abs_src_path, docs)
 
