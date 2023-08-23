@@ -21,7 +21,6 @@
 import os
 
 from mkdocs.plugins import BasePlugin, event_priority
-from mkdocs.utils import write_file
 
 from .config import OfflineConfig
 
@@ -42,10 +41,10 @@ class OfflinePlugin(BasePlugin[OfflineConfig]):
         config.use_directory_urls = False
 
         # Append iframe-worker to polyfills/shims
-        config.extra.polyfills = config.extra.get("polyfills", [])
-        if not any("iframe-worker" in url for url in config.extra.polyfills):
-            worker = "https://unpkg.com/iframe-worker/shim"
-            config.extra.polyfills.append(worker)
+        config.extra["polyfills"] = config.extra.get("polyfills", [])
+        if not any("iframe-worker" in url for url in config.extra["polyfills"]):
+            script = "https://unpkg.com/iframe-worker/shim"
+            config.extra["polyfills"].append(script)
 
     # Add support for offline search (run latest) - the search index is copied
     # and inlined into a script, so that it can be used without a server
@@ -54,14 +53,17 @@ class OfflinePlugin(BasePlugin[OfflineConfig]):
         if not self.config.enabled:
             return
 
-        # Check for existence of search index
-        path = os.path.join(config.site_dir, "search", "search_index.json")
-        if not os.path.isfile(path):
+        # Ensure presence of search index
+        path = os.path.join(config.site_dir, "search")
+        file = os.path.join(path, "search_index.json")
+        if not os.path.isfile(file):
             return
 
-        # Create script with inlined search index
-        with open(path, encoding = "utf-8") as f:
-            write_file(
-                f"var __index = {f.read()}".encode("utf-8"),
-                path.replace(".json", ".js"),
-            )
+        # Obtain search index contents
+        with open(file, encoding = "utf-8") as f:
+            data = f.read()
+
+        # Inline search index contents into script
+        file = os.path.join(path, "search_index.js")
+        with open(file, "w", encoding = "utf-8") as f:
+            f.write(f"var __index = {data}")
