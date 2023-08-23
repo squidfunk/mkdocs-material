@@ -35,7 +35,7 @@ class TagsConfig(Config):
 
     # Options for tags
     tags_file = Optional(Type(str))
-    tags_extra_files = Type(dict, default = dict())
+    tags_extra_files = Type(dict, default = {})
     tags_slugify = Type((type(slugify), partial), default = slugify)
     tags_slugify_separator = Type(str, default = "-")
     tags_compare = Optional(Type(type(casefold)))

@@ -237,7 +237,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # is not already present, so we can remove footnotes or other content
         # from the excerpt without affecting the content of the excerpt
         if separator not in page.markdown:
-            path = page.file.src_uri
+            path = page.file.src_path
             if self.config.post_excerpt == "required":
                 raise PluginError(
                     f"Couldn't find '{separator}' separator in '{path}'"
@@ -415,7 +415,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         docs = os.path.relpath(config.docs_dir)
         file = os.path.join(docs, path)
         if not os.path.isfile(file):
-            authors: dict[str, Author] = dict()
+            authors: dict[str, Author] = {}
             return authors
 
         # Open file and parse as YAML

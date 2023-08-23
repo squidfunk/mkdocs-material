@@ -18,6 +18,19 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# -----------------------------------------------------------------------------
+# Disclaimer
+# -----------------------------------------------------------------------------
+# Please note: this version of the social plugin is not actively development
+# anymore. Instead, Material for MkDocs Insiders ships a complete rewrite of
+# the plugin which is much more powerful and addresses all shortcomings of
+# this implementation. Additionally, the new social plugin allows to create
+# entirely custom social cards. You can probably imagine, that this was a lot
+# of work to pull off. If you run into problems, or want to have additional
+# functionality, please consider sponsoring the project. You can then use the
+# new version of the plugin immediately.
+# -----------------------------------------------------------------------------
+
 import concurrent.futures
 import functools
 import logging
@@ -159,7 +172,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             )
             sys.exit(1)
 
-        # Generate social card if not in cache - TODO: values from mkdocs.yml
+        # Generate social card if not in cache
         hash = md5("".join([
             site_name,
             str(title),
@@ -266,17 +279,6 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             else:
                 lines.append(words)
                 words = [word]
-
-        # # Balance words on last line - TODO: overflows when broken word is too long
-        # if len(lines) > 0:
-        #     prev = len(" ".join(lines[-1]))
-        #     last = len(" ".join(words))#
-
-        #     print(last, prev)
-
-        #     # Heuristic: try to find a good ratio
-        #     if last / prev < 0.6:
-        #         words.insert(0, lines[-1].pop())
 
         # Join words for each line and create image
         lines.append(words)
@@ -424,7 +426,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         font_filename_base = name.replace(' ', '')
         filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
 
-        font = dict()
+        font = {}
         # Check for cached files - note these may be in subfolders
         for currentpath, folders, files in os.walk(self.cache):
             for file in files:

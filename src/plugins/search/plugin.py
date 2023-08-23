@@ -299,7 +299,7 @@ class Element:
     """
 
     # Initialize HTML element
-    def __init__(self, tag, attrs = dict()):
+    def __init__(self, tag, attrs = {}):
         self.tag   = tag
         self.attrs = attrs
 

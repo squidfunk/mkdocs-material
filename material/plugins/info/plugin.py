@@ -87,8 +87,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         # hack to detect whether the custom_dir setting was used without parsing
         # mkdocs.yml again - we check at which position the directory provided
         # by the theme resides, and if it's not the first one, abort.
-        path = get_theme_dir(config.theme.name)
-        if config.theme.dirs.index(path):
+        if config.theme.dirs.index(get_theme_dir(config.theme.name)):
             log.error("Please remove 'custom_dir' setting.")
             self._help_on_customizations_and_exit()
 
@@ -130,7 +129,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                 ]))
             )
 
-            # Add information in platform
+            # Add information on platform
             f.writestr(
                 os.path.join(example, "platform.json"),
                 json.dumps(
