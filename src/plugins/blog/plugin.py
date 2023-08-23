@@ -126,7 +126,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file.url           = file.url.replace(path, root)
 
         # Generate entrypoint, if it does not exist yet
-        self._generate(files, config)
+        self._generate(config, files)
 
     # Resolve and load posts and generate indexes (run later) - we resolve all
     # posts after the navigation is constructed in order to allow other plugins
@@ -296,7 +296,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             items = self._resolve_siblings(main, nav)
             items[items.index(main)] = page
 
-        # Render excerpts and perpare pagination
+        # Render excerpts and prepare pagination
         posts, pagination = self._render(page)
 
         # Render pagination links
@@ -518,7 +518,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # Generate entrypoint - the entrypoint must always be present, and thus is
     # created before the navigation is constructed if it does not exist yet
-    def _generate(self, files: Files, config: MkDocsConfig):
+    def _generate(self, config: MkDocsConfig, files: Files):
         path = os.path.join(self.config.blog_dir, "index.md")
         path = os.path.normpath(path)
 
