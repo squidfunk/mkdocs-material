@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.39.3 <small>August 24, 2023</small> { id="4.39.3" }
+
+- Fixed lxml dependency missing in Docker container (4.39.2 regression)
+
 ### 4.39.2 <small>August 23, 2023</small> { id="4.39.2" }
 
 - Fixed color palette toggle being reversed (9.2.0 regression)
