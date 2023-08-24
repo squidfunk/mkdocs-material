@@ -29,6 +29,7 @@ pymdown-extensions>=9.9.1
 # Requirements for plugins
 babel>=2.10.3
 colorama>=0.4
+lxml>=4.6
 paginate>=0.5.6
 readtime>=2.0
 regex>=2022.4.24
