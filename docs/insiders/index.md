@@ -188,7 +188,6 @@ You can cancel your sponsorship anytime.[^5]
 [![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
-[![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 [![RackN]](https://rackn.com/){ target=_blank title="RackN" }
 [![CivicActions]](https://civicactions.com/){ target=_blank title="CivicActions" }
 [![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }

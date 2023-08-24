@@ -123,9 +123,9 @@
   <a href="https://neptune.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
   /></a>
-  <a href="https://cash.app/" target=_blank><img
+  <!-- <a href="https://cash.app/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png" height="58"
-  /></a>
+  /></a> -->
   <a href="https://rackn.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png" height="58"
   /></a>
