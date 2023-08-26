@@ -35,6 +35,8 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v3
+            with:
+              fetch-depth: 0
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
