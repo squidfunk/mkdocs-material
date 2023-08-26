@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.0 <small>August 26, 2023</small> { id="4.39.3" }
+
+- Added logo, title and description options to social plugin default layouts
+- Fixed privacy plugin compatibility issue with Python < 3.10
+- Fixed #5896: Blog plugin errors when using custom index pages
+
 ### 4.39.3 <small>August 24, 2023</small> { id="4.39.3" }
 
 - Fixed lxml dependency missing in Docker container (4.39.2 regression)

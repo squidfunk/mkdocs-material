@@ -1,5 +1,12 @@
-mkdocs-material-9.2.4 (2023-xx-xx)
+mkdocs-material-9.2.4+insiders-4.40.0 (2023-08-26)
 
+  * Added logo, title and description options to social plugin default layouts
+  * Fixed privacy plugin compatibility issue with Python < 3.10
+  * Fixed #5896: Blog plugin errors when using custom index pages
+
+mkdocs-material-9.2.4 (2023-08-26)
+
+  * Added version to bug report name in info plugin
   * Updated Afrikaans translations
 
 mkdocs-material-9.2.3+insiders-4.39.3 (2023-08-24)

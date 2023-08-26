@@ -331,6 +331,46 @@ The following configuration options are available for card generation:
                 font_family: Ubuntu
         ```
 
+    [`title`](#+social.cards_layout_options.title){ #+social.cards_layout_options.title }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
+        title, which takes precedence over `page.title` and `page.meta.title`:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                title: Social card title
+        ```
+
+    [`description`](#+social.cards_layout_options.description){ #+social.cards_layout_options.description }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
+        description, which takes precedence over `site_description` and
+        `page.meta.description`:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                description: Social card description
+        ```
+
+    [`logo`](#+social.cards_layout_options.logo){ #+social.cards_layout_options.logo }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the logo used as
+        part of the social card, overriding the `theme.logo` or
+        `theme.icon.logo` settings which are used as defaults:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                logo: layouts/logo.png
+        ```
+
+        The path of the image must be defined relative to the project root.
+
 [`cards_include`](#+privacy.cards_include){ #+privacy.cards_include }
 
 :   [:octicons-tag-24: insiders-4.35.0][Insiders] · :octicons-milestone-24:
@@ -507,15 +547,15 @@ The following configuration options are available for caching:
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
-you can set the front matter `title` and `description` properties, which take 
-precedence over the default values.
+you can set the front matter [`title`][Changing the title] and
+[`description`][Changing the description] properties, which take precedence over 
+the defaults, or use:
 
-- [Changing the title]
-- [Changing the description]
+- [`cards_layout_options.title`](#+social.cards_layout_options.title)
+- [`cards_layout_options.description`](#+social.cards_layout_options.description)
 
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description
-
 
 ### Choosing a font
 

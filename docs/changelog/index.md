@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.2.4 <small>August 26, 2023</small> { id="9.2.4" }
+
+- Added version to bug report name in info plugin
+- Updated Afrikaans translations
+
 ### 9.2.3 <small>August 22, 2023</small> { id="9.2.3" }
 
 - Fixed blog plugin rendering wrongly with `markdown.extensions.toc`
