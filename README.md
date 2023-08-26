@@ -159,6 +159,9 @@
   <a href="https://oikolab.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png" height="58"
   /></a>
+  <a href="https://www.buhlergroup.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
