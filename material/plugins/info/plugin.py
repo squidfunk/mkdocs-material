@@ -106,7 +106,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         archive = BytesIO()
         example = input("\nPlease name your bug report (2-4 words): ")
         example, _ = os.path.splitext(example)
-        example = slugify(example, "-")
+        example = "-".join([present, slugify(example, "-")])
 
         # Create self-contained example from project
         files: list[str] = []
