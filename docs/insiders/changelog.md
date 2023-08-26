@@ -2,7 +2,7 @@
 
 ## Material for MkDocs Insiders
 
-### 4.40.0 <small>August 26, 2023</small> { id="4.39.3" }
+### 4.40.0 <small>August 26, 2023</small> { id="4.40.0" }
 
 - Added logo, title and description options to social plugin default layouts
 - Fixed privacy plugin compatibility issue with Python < 3.10
