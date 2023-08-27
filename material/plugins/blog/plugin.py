@@ -605,7 +605,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         for at in range(step, len(view.posts), step):
             base, _ = posixpath.splitext(view.file.src_uri)
 
-            # Compute path and create a file for path resolution
+            # Compute path and create a file for pagination
             path = self._format_path_for_pagination(base, 1 + at // step)
             file = self._path_to_file(path, config)
 
