@@ -658,7 +658,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Render excerpts for selected posts
         posts = [
             self._render_post(post.excerpt, view)
-                for post in posts
+                for post in posts if post.excerpt
         ]
 
         # Return posts and pagination
