@@ -369,7 +369,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         path = self._format_path_for_post(post, config)
         temp = self._path_to_file(path, config, temp = False)
 
-        # Replace post destination file system path and URL
+        # Replace destination file system path and URL
         file.dest_uri      = temp.dest_uri
         file.abs_dest_path = temp.abs_dest_path
         file.url           = temp.url
@@ -600,18 +600,23 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         step = self.config.pagination_per_page
         prev = view
 
-        # Compute pagination boundaries and create pages
+        # Compute pagination boundaries and create pages - pages are internally
+        # handled as copies of a view, as they map to the same source location
         for at in range(step, len(view.posts), step):
-            path = self._format_path_for_pagination(view.url, 1 + at // step)
+            base, _ = posixpath.splitext(view.file.src_uri)
+
+            # Compute path and create a file for path resolution
+            path = self._format_path_for_pagination(base, 1 + at // step)
             file = self._path_to_file(path, config)
 
-            # Replace post source file system path and apend to files
+            # Replace source file system path and append to files
             file.src_uri      = view.file.src_uri
             file.abs_src_path = view.file.abs_src_path
             files.append(file)
 
-            # Create view and attach to previous page
-            next = View(view.title, file, config)
+            # Create view and attach to parent - we don't set the title of the
+            # view, so authors can override them in the page's content
+            next = View(None, file, config)
             self._attach(prev, [
                 view.previous_page,
                 next,
