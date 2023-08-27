@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.1 <small>August 27, 2023</small> { id="4.40.1" }
+
+- Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
+- Fixed empty category pages in blog plugin (4.40.0 regression)
+
 ### 4.40.0 <small>August 26, 2023</small> { id="4.40.0" }
 
 - Added logo, title and description options to social plugin default layouts

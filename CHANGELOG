@@ -1,3 +1,14 @@
+mkdocs-material-9-2.5+insiders-4.40.1 (2023-08-27)
+
+  * Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
+  * Fixed empty category pages in blog plugin (4.40.0 regression)
+
+mkdocs-material-9-2.5 (2023-08-27)
+
+  * Fixed error in dirty serve mode when using blog plugin
+  * Fixed page title not being consistent in blog plugin pagination
+  * Fixed #5899: Blog plugin pagination breaks when disabling directory URLs
+
 mkdocs-material-9.2.4+insiders-4.40.0 (2023-08-26)
 
   * Added logo, title and description options to social plugin default layouts

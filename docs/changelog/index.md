@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.2.5 <small>August 27, 2023</small> { id="9.2.5" }
+
+- Fixed error in dirty serve mode when using blog plugin
+- Fixed page title not being consistent in blog plugin pagination
+- Fixed #5899: Blog plugin pagination breaks when disabling directory URLs
+
 ### 9.2.4 <small>August 26, 2023</small> { id="9.2.4" }
 
 - Added version to bug report name in info plugin
