@@ -202,7 +202,14 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 if page in self._resolve_views(self.blog):
                     assert isinstance(page, View)
                     if 0 < page.pages.index(page):
-                        return f"# {page.title}"
+                        main = page.parent
+
+                        # We need to use the rendered title of the original view
+                        # if the author set the title in the page's contents, or
+                        # it would be overridden with the one set in mkdocs.yml,
+                        # which would result in inconsistent headings
+                        name = main._title_from_render or main.title
+                        return f"# {name}"
 
             # Nothing more to be done for views
             return
@@ -614,9 +621,8 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             file.abs_src_path = view.file.abs_src_path
             files.append(file)
 
-            # Create view and attach to parent - we don't set the title of the
-            # view, so authors can override them in the page's content
-            next = View(None, file, config)
+            # Create view and attach to previous page
+            next = View(view.title, file, config)
             self._attach(prev, [
                 view.previous_page,
                 next,
