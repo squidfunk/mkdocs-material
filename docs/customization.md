@@ -310,7 +310,7 @@ npm run build # (1)!
 1.  While this command will build all theme files, it will skip the overrides
     used in Material for MkDocs' own documentation which are not distributed
     with the theme. If you forked the theme and want to build the overrides
-    as well, use:
+    as well, e.g. before submitting a PR with changes, use:
 
     ```
     npm run build:all
