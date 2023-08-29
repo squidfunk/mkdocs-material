@@ -268,7 +268,7 @@ Finally, install the [Node.js] LTS version into the Python virtual environment
 and install all Node.js dependencies:
 
 ```
-python -m nodeenv -p -n lts
+nodeenv -p -n lts
 npm install
 ```
 
