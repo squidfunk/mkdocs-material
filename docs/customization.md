@@ -248,8 +248,8 @@ Next, create a new [Python virtual environment][venv] and
 [activate][venv-activate] it:
 
 ```
-python -m venv .venv
-source .venv/bin/activate
+python -m venv venv
+source venv/bin/activate
 ```
 
   [venv]: https://docs.python.org/3/library/venv.html
