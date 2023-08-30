@@ -40,18 +40,23 @@ import re
 import requests
 import sys
 
-from cairosvg import svg2png
 from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
+from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
-from PIL import Image, ImageDraw, ImageFont
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
+try:
+    from cairosvg import svg2png
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    pass
 
 from .config import SocialConfig
+
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -66,8 +71,16 @@ class SocialPlugin(BasePlugin[SocialConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
+        self.config.cards = self.config.enabled
         if not self.config.cards:
             return
+
+        # Check dependencies
+        if "Image" not in globals():
+            raise PluginError(
+                "Required dependencies of \"social\" plugin not found. "
+                "Install with: pip install pillow cairosvg"
+            )
 
         # Move color options
         if self.config.cards_color:

@@ -17,22 +17,3 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
-
-import logging
-import sys
-
-# -----------------------------------------------------------------------------
-# Checks
-# -----------------------------------------------------------------------------
-
-# Check for pillow and cairosvg
-try:
-    import cairosvg as _
-    import PIL as _
-except ImportError:
-    log = logging.getLogger("mkdocs.material.social")
-    log.error(
-        "Required dependencies of \"social\" plugin not found. "
-        "Install with: pip install pillow cairosvg"
-    )
-    sys.exit(1)
