@@ -18,28 +18,28 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from collections import UserDict
 from datetime import date, datetime, time
 from mkdocs.config.base import BaseConfigOption, Config, ValidationError
+from typing import Dict
 
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
 
 # Date dictionary
-class DateDict(UserDict[str, datetime]):
+class DateDict(Dict[str, datetime]):
 
     # Initialize date dictionary
     def __init__(self, data: dict):
         super().__init__(data)
 
-        # Initialize date of creation
-        if "created" in data:
-            self.created: datetime = data["created"]
+        # Ensure presence of `date.created`
+        self.created: datetime = data["created"]
 
+    # Allow attribute access
     def __getattr__(self, name: str):
-        if name in self.data:
-            return self.data[name]
+        if name in self:
+            return self[name]
 
 # -----------------------------------------------------------------------------
 
