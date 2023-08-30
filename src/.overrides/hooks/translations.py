@@ -137,6 +137,7 @@ countries = dict({
     "eo": "eu",
     "es": "es",
     "et": "ee",
+    "eu": "es",
     "fa": "ir",
     "fi": "fi",
     "fr": "fr",
