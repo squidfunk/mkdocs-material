@@ -227,6 +227,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 
 ### ... industry leaders
 
+[ArXiv](https://info.arxiv.org),
 [Atlassian](https://atlassian.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
 [Bloomberg](https://bloomberg.github.io/selekt/),
