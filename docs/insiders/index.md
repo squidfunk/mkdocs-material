@@ -489,7 +489,7 @@ and configuration options are either backward-compatible or implemented behind
 feature flags. When working with outside collaborators, it should be rarely
 necessary to change the general appearance of your site. Most Insiders features
 enhance the overall experience, e.g. by adding icons to pages or providing a
-feedback widget. While this features add value for the user of your site, they
+feedback widget. While these features add value for the user of your site, they
 shouldn't be necessary for previewing when making changes to content. Currently,
 the only content-related features in Insiders that can't be properly previewed
 by non-Insiders users are:

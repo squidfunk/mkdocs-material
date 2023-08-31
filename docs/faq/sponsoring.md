@@ -128,7 +128,7 @@ We manage all our transactions and sponsorships through [GitHub Sponsors] and
 [our sponsors' page]. On there, you can choose from five different sponsorship 
 tiers and pay by credit card. Please note that as of the beginning of 2023, 
 [GitHub no longer supports PayPal] payments. If you wish to pay with PayPal, 
-ou can find a selection of our sponsorship tiers on [Ko-fi]. Both platforms
+you can find a selection of our sponsorship tiers on [Ko-fi]. Both platforms
 provide you with a payment receipt once your purchase is successful.
 
 If you're a company and need assistance choosing the right payment method,

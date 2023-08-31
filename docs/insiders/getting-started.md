@@ -88,7 +88,7 @@ outlined in the [Getting Started guide](../getting-started.md#with-docker).
     outlined and discussed in #2442. It was removed on June 1, 2021.
 
   [^3]:
-    When forking a repository, GitHub will disables all workflows. While this
+    When forking a repository, GitHub will disable all workflows. While this
     is a reasonable default setting, you need to enable GitHub Actions to be
     able to automatically build and publish a Docker image on
     [GitHub Container Registry].
