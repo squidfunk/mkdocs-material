@@ -23,7 +23,6 @@ from __future__ import annotations
 import logging
 import os
 import posixpath
-import readtime
 import yaml
 
 from babel.dates import format_date
@@ -43,6 +42,7 @@ from yaml import SafeLoader
 
 from .author import Authors
 from .config import BlogConfig
+from .readtime import readtime
 from .structure import Archive, Category, Excerpt, Post, View
 from .templates import url_filter
 
@@ -260,17 +260,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 # Append to list of authors
                 page.authors.append(self.authors[name])
 
-        # Compute readtime of post, if enabled and not explicitly set
-        if self.config.post_readtime:
-            rate = self.config.post_readtime_words_per_minute
-
-            # There's a bug in the readtime library which causes it to fail if
-            # the input string contains emojis - see https://t.ly/qEoHq
-            if not page.config.readtime:
-                data = markdown.encode("unicode_escape")
-                read = readtime.of_markdown(data, rate)
-                page.config.readtime = read.minutes
-
         # Extract settings for excerpts
         separator      = self.config.post_excerpt_separator
         max_authors    = self.config.post_excerpt_max_authors
@@ -294,6 +283,22 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         page.excerpt            = Excerpt(page, config, files)
         page.excerpt.authors    = page.authors[:max_authors]
         page.excerpt.categories = page.categories[:max_categories]
+
+    # Process posts
+    def on_page_content(self, html, *, page, config, files):
+        if not self.config.enabled:
+            return
+
+        # Skip if page is not a post managed by this instance - this plugin has
+        # support for multiple instances, which is why this check is necessary
+        if page not in self.blog.posts:
+            return
+
+        # Compute readtime of post, if enabled and not explicitly set
+        if self.config.post_readtime:
+            words_per_minute = self.config.post_readtime_words_per_minute
+            if not page.config.readtime:
+                page.config.readtime = readtime(html, words_per_minute)
 
     # Register template filters for plugin
     def on_env(self, env, *, config, files):
