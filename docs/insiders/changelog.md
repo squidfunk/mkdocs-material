@@ -2,6 +2,13 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.2 <small>August 31, 2023</small> { id="4.40.2" }
+
+- Added configurable error handling capabilities for social plugin
+- Fixed #5922: Blog plugin shows no posts when building a standalone blog
+- Fixed #5914: Tags plugin tags_extra_files errors (4.39.3 regression)
+- Fixed #5904: Blog plugin sometimes excludes files (4.40.1 regression)
+
 ### 4.40.1 <small>August 27, 2023</small> { id="4.40.1" }
 
 - Fixed #5902: ResizeObserver polyfill not detected by privacy plugin

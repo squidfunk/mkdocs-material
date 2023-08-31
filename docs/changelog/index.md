@@ -2,6 +2,14 @@
 
 ## Material for MkDocs
 
+### 9.2.6 <small>August 31, 2023</small> { id="9.2.6" }
+
+- Added Basque translations
+- Added template for simple redirects
+- Improved blog plugin interop by moving view generation to `on_files`
+- Fixed #5924: Social plugin still checks dependencies when disabled
+- Fixed #5916: Blog plugin crashes on Python 3.8 (9.2.0 regression)
+
 ### 9.2.5 <small>August 27, 2023</small> { id="9.2.5" }
 
 - Fixed error in dirty serve mode when using blog plugin

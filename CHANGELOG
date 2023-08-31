@@ -1,3 +1,18 @@
+mkdocs-material-9-2.6+insiders-4.40.2 (2023-08-31)
+
+  * Added configurable error handling capabilities for social plugin
+  * Fixed #5922: Blog plugin shows no posts when building a standalone blog
+  * Fixed #5914: Tags plugin tags_extra_files errors (4.39.3 regression)
+  * Fixed #5904: Blog plugin sometimes excludes files (4.40.1 regression)
+
+mkdocs-material-9-2.6 (2023-08-31)
+
+  * Added Basque translations
+  * Added template for simple redirects
+  * Improved blog plugin interop by moving view generation to on_files
+  * Fixed #5924: Social plugin still checks dependencies when disabled
+  * Fixed #5916: Blog plugin crashes on Python 3.8 (9.2.0 regression)
+
 mkdocs-material-9-2.5+insiders-4.40.1 (2023-08-27)
 
   * Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
