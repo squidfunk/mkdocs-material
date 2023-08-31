@@ -133,6 +133,12 @@ integrated with the [cookie consent] feature[^2].
     average rating per page. This should help you identify pages that need to
     be improved:
 
+    !!! danger "Google Analytics 4 does not support average values"
+
+        To our knowledge, Google Analytics 4 has currently no feature that
+        allows to define a custom calculated metric to compute the average
+        rating of a page. See #5740.
+
     [![feedback report]][feedback report]
 
 The following properties are available for each rating:
