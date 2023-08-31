@@ -20,8 +20,9 @@
 
 import re
 
-from html.parser import HTMLParser
 from math import ceil
+
+from .parser import ReadtimeParser
 
 # -----------------------------------------------------------------------------
 # Functions
@@ -48,27 +49,3 @@ def readtime(html: str, words_per_minute: int):
 
     # Return readtime in minutes
     return ceil(seconds / 60)
-
-# -----------------------------------------------------------------------------
-# Classes
-# -----------------------------------------------------------------------------
-
-# Readtime parser
-class ReadtimeParser(HTMLParser):
-
-    # Initialize parser
-    def __init__(self):
-        super().__init__(convert_charrefs = True)
-
-        # Keep track of text and images
-        self.text   = []
-        self.images = 0
-
-    # Collect images
-    def handle_starttag(self, tag, attrs):
-        if tag == "img":
-            self.images += 1
-
-    # Collect text
-    def handle_data(self, data):
-        self.text.append(data)
