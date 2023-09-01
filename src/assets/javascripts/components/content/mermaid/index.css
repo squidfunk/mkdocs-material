@@ -349,7 +349,7 @@ line {
 /* Sequence message line */
 .messageLine0,
 .messageLine1 {
-  stroke: var(--md-mermaid-edge-color);
+  stroke: var(--md-mermaid-sequence-message-line-color);
 }
 
 /* Sequence note */
@@ -368,6 +368,11 @@ line {
   stroke: none;
 }
 
+/* Sequence message text */
+.messageText {
+  fill: var(--md-mermaid-sequence-message-fg-color);
+}
+
 /* Sequence note text */
 .noteText > tspan {
   fill: var(--md-mermaid-sequence-note-fg-color);
@@ -375,7 +380,7 @@ line {
 
 /* Sequence arrow head */
 #arrowhead path {
-  fill: var(--md-mermaid-edge-color);
+  fill: var(--md-mermaid-sequence-message-line-color);
   stroke: none;
 }
 
