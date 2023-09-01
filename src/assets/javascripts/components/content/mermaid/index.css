@@ -364,13 +364,18 @@ line {
 .loopText > tspan,
 .noteText > tspan {
   font-family: var(--md-mermaid-font-family) !important;
-  fill: var(--md-mermaid-edge-color);
   stroke: none;
 }
 
 /* Sequence message text */
 .messageText {
   fill: var(--md-mermaid-sequence-message-fg-color);
+}
+
+/* Sequence loop text */
+.loopText,
+.loopText > tspan {
+  fill: var(--md-mermaid-sequence-loop-fg-color);
 }
 
 /* Sequence note text */
@@ -386,13 +391,13 @@ line {
 
 /* Sequence loop line */
 .loopLine {
-  fill: var(--md-mermaid-node-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-loop-bg-color);
+  stroke: var(--md-mermaid-sequence-loop-border-color);
 }
 
 /* Sequence label box */
 .labelBox {
-  fill: var(--md-mermaid-node-bg-color);
+  fill: var(--md-mermaid-sequence-label-bg-color);
   stroke: none;
 }
 
@@ -400,7 +405,7 @@ line {
 .labelText,
 .labelText > span {
   font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-label-fg-color);
 }
 
 /* Sequence number */
