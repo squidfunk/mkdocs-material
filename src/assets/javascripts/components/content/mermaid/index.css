@@ -415,13 +415,13 @@ line {
 
 /* Sequence rectangle */
 rect.rect {
-  fill: var(--md-mermaid-node-bg-color);
+  fill: var(--md-mermaid-sequence-box-bg-color);
   stroke: none;
 }
 
 /* Sequence rectangle text */
 rect.rect + text.text {
-  fill: var(--md-mermaid-edge-color);
+  fill: var(--md-mermaid-sequence-box-fg-color);
 }
 
 /* Sequence diagram markers */
