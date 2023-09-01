@@ -342,8 +342,8 @@ line {
 /* Sequence actor */
 .actor-man circle,
 .actor-man line {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-actorman-bg-color);
+  stroke: var(--md-mermaid-sequence-actorman-line-color);
 }
 
 /* Sequence message line */
