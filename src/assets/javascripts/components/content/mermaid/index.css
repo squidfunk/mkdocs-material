@@ -352,6 +352,12 @@ line {
   stroke: var(--md-mermaid-edge-color);
 }
 
+/* Sequence note */
+.note {
+  fill: var(--md-mermaid-sequence-note-bg-color);
+  stroke: var(--md-mermaid-sequence-note-border-color);
+}
+
 /* Sequence message, loop and note text */
 .messageText,
 .loopText,
@@ -364,7 +370,7 @@ line {
 
 /* Sequence note text */
 .noteText > tspan {
-  fill: hsl(0, 0%, 0%);
+  fill: var(--md-mermaid-sequence-note-fg-color);
 }
 
 /* Sequence arrow head */

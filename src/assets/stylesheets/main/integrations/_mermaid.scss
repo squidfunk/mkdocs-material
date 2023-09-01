@@ -28,12 +28,17 @@
 :root > * {
   --md-mermaid-font-family:            var(--md-text-font-family), sans-serif;
 
-  // Colors
+  // General colors
   --md-mermaid-edge-color:             var(--md-code-fg-color);
   --md-mermaid-node-bg-color:          var(--md-accent-fg-color--transparent);
   --md-mermaid-node-fg-color:          var(--md-accent-fg-color);
   --md-mermaid-label-bg-color:         var(--md-default-bg-color);
   --md-mermaid-label-fg-color:         var(--md-code-fg-color);
+
+  // Sequence diagram colors
+  --md-mermaid-sequence-note-bg-color:     var(--md-mermaid-label-bg-color);
+  --md-mermaid-sequence-note-fg-color:     var(--md-mermaid-edge-color);
+  --md-mermaid-sequence-note-border-color: var(--md-mermaid-label-fg-color);
 }
 
 // ----------------------------------------------------------------------------
