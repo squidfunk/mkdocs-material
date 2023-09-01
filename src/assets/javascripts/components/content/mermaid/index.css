@@ -410,7 +410,7 @@ line {
 
 /* Sequence number */
 .sequenceNumber {
-  fill: var(--md-accent-bg-color);
+  fill: var(--md-mermaid-sequence-number-fg-color);
 }
 
 /* Sequence rectangle */
@@ -426,5 +426,5 @@ rect.rect + text.text {
 
 /* Sequence diagram markers */
 defs #sequencenumber {
-  fill: var(--md-mermaid-node-fg-color) !important;
+  fill: var(--md-mermaid-sequence-number-bg-color) !important;
 }
