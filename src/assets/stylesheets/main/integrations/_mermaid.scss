@@ -36,9 +36,13 @@
   --md-mermaid-label-fg-color:         var(--md-code-fg-color);
 
   // Sequence diagram colors
-  --md-mermaid-sequence-note-bg-color:     var(--md-mermaid-label-bg-color);
-  --md-mermaid-sequence-note-fg-color:     var(--md-mermaid-edge-color);
-  --md-mermaid-sequence-note-border-color: var(--md-mermaid-label-fg-color);
+  --md-mermaid-sequence-actor-bg-color:     var(--md-mermaid-label-bg-color);
+  --md-mermaid-sequence-actor-fg-color:     var(--md-mermaid-label-fg-color);
+  --md-mermaid-sequence-actor-border-color: var(--md-mermaid-node-fg-color);
+  --md-mermaid-sequence-actor-line-color:   var(--md-default-fg-color--lighter);
+  --md-mermaid-sequence-note-bg-color:      var(--md-mermaid-label-bg-color);
+  --md-mermaid-sequence-note-fg-color:      var(--md-mermaid-edge-color);
+  --md-mermaid-sequence-note-border-color:  var(--md-mermaid-label-fg-color);
 }
 
 // ----------------------------------------------------------------------------

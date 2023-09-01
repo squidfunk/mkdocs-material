@@ -324,19 +324,19 @@ defs #ZERO_OR_MORE_END circle {
 
 /* Sequence actor */
 .actor {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-actor-bg-color);
+  stroke: var(--md-mermaid-sequence-actor-border-color);
 }
 
 /* Sequence actor text */
 text.actor > tspan {
   font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-label-fg-color);
+  fill: var(--md-mermaid-sequence-actor-fg-color);
 }
 
 /* Sequence actor line */
 line {
-  stroke: var(--md-default-fg-color--lighter);
+  stroke: var(--md-mermaid-sequence-actor-line-color);
 }
 
 /* Sequence actor */
