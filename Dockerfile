@@ -61,10 +61,10 @@ RUN \
 && \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
     pip install --no-cache-dir \
-      "mkdocs-minify-plugin>=0.3" \
-      "mkdocs-redirects>=1.0" \
-      "pillow>=9.0" \
-      "cairosvg>=2.5"; \
+      "mkdocs-minify-plugin~=0.7" \
+      "mkdocs-redirects~=1.2" \
+      "pillow~=9.4" \
+      "cairosvg~=2.6"; \
   fi \
 && \
   if [ -e user-requirements.txt ]; then \
