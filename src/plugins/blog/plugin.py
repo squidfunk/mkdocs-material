@@ -235,7 +235,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             # We set the contents of the view to its title if pagination should
             # not keep the content of the original view on paginaged views
             if not self.config.pagination_keep_content:
-                view = self._resolve_canonical(page)
+                view = self._resolve_original(page)
                 if view in self._resolve_views(self.blog):
                     assert isinstance(page, View)
                     if page.pages.index(page):
@@ -324,7 +324,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Skip if page is not a view managed by this instance - this plugin has
         # support for multiple instances, which is why this check is necessary
-        view = self._resolve_canonical(page)
+        view = self._resolve_original(page)
         if view not in self._resolve_views(self.blog):
             return
 
@@ -514,19 +514,19 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 assert isinstance(next, View)
                 yield next
 
-    # Resolve canonical page of a page, which might be a view
-    def _resolve_canonical(self, page: Page):
-        if isinstance(page, View):
-            return page.pages[0]
-        else:
-            return page
-
     # Resolve siblings of a navigation item
     def _resolve_siblings(self, item: StructureItem, nav: Navigation):
         if isinstance(item.parent, Section):
             return item.parent.children
         else:
             return nav.items
+
+    # Resolve original page or view (e.g. for paginated views)
+    def _resolve_original(self, page: Page):
+        if isinstance(page, View):
+            return page.pages[0]
+        else:
+            return page
 
     # -------------------------------------------------------------------------
 
@@ -641,7 +641,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             # If the page is a view, we know that we generated it and need to
             # link its siblings back to the view
             if isinstance(page, View):
-                view = self._resolve_canonical(page)
+                view = self._resolve_original(page)
                 if tail: tail.next_page     = view
                 if head: head.previous_page = view
 
