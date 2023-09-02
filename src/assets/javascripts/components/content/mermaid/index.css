@@ -324,32 +324,38 @@ defs #ZERO_OR_MORE_END circle {
 
 /* Sequence actor */
 .actor {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-actor-bg-color);
+  stroke: var(--md-mermaid-sequence-actor-border-color);
 }
 
 /* Sequence actor text */
 text.actor > tspan {
   font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-label-fg-color);
+  fill: var(--md-mermaid-sequence-actor-fg-color);
 }
 
 /* Sequence actor line */
 line {
-  stroke: var(--md-default-fg-color--lighter);
+  stroke: var(--md-mermaid-sequence-actor-line-color);
 }
 
 /* Sequence actor */
 .actor-man circle,
 .actor-man line {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-actorman-bg-color);
+  stroke: var(--md-mermaid-sequence-actorman-line-color);
 }
 
 /* Sequence message line */
 .messageLine0,
 .messageLine1 {
-  stroke: var(--md-mermaid-edge-color);
+  stroke: var(--md-mermaid-sequence-message-line-color);
+}
+
+/* Sequence note */
+.note {
+  fill: var(--md-mermaid-sequence-note-bg-color);
+  stroke: var(--md-mermaid-sequence-note-border-color);
 }
 
 /* Sequence message, loop and note text */
@@ -358,30 +364,40 @@ line {
 .loopText > tspan,
 .noteText > tspan {
   font-family: var(--md-mermaid-font-family) !important;
-  fill: var(--md-mermaid-edge-color);
   stroke: none;
+}
+
+/* Sequence message text */
+.messageText {
+  fill: var(--md-mermaid-sequence-message-fg-color);
+}
+
+/* Sequence loop text */
+.loopText,
+.loopText > tspan {
+  fill: var(--md-mermaid-sequence-loop-fg-color);
 }
 
 /* Sequence note text */
 .noteText > tspan {
-  fill: hsl(0, 0%, 0%);
+  fill: var(--md-mermaid-sequence-note-fg-color);
 }
 
 /* Sequence arrow head */
 #arrowhead path {
-  fill: var(--md-mermaid-edge-color);
+  fill: var(--md-mermaid-sequence-message-line-color);
   stroke: none;
 }
 
 /* Sequence loop line */
 .loopLine {
-  fill: var(--md-mermaid-node-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-loop-bg-color);
+  stroke: var(--md-mermaid-sequence-loop-border-color);
 }
 
 /* Sequence label box */
 .labelBox {
-  fill: var(--md-mermaid-node-bg-color);
+  fill: var(--md-mermaid-sequence-label-bg-color);
   stroke: none;
 }
 
@@ -389,26 +405,26 @@ line {
 .labelText,
 .labelText > span {
   font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-node-fg-color);
+  fill: var(--md-mermaid-sequence-label-fg-color);
 }
 
 /* Sequence number */
 .sequenceNumber {
-  fill: var(--md-accent-bg-color);
+  fill: var(--md-mermaid-sequence-number-fg-color);
 }
 
 /* Sequence rectangle */
 rect.rect {
-  fill: var(--md-mermaid-node-bg-color);
+  fill: var(--md-mermaid-sequence-box-bg-color);
   stroke: none;
 }
 
 /* Sequence rectangle text */
 rect.rect + text.text {
-  fill: var(--md-mermaid-edge-color);
+  fill: var(--md-mermaid-sequence-box-fg-color);
 }
 
 /* Sequence diagram markers */
 defs #sequencenumber {
-  fill: var(--md-mermaid-node-fg-color) !important;
+  fill: var(--md-mermaid-sequence-number-bg-color) !important;
 }
