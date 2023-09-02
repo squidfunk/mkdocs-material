@@ -162,6 +162,12 @@
       transition: z-index 250ms;
     }
 
+    // Hack: Work around Firefox bug that renders a subpixel outline when
+    // rotating a mask image element.
+    // https://bugzilla.mozilla.org/show_bug.cgi?id=1671784
+    overflow: hidden; // stylelint-disable-line order/properties-order
+    border-radius: 0.01px;
+
     // [screen]: Render annotation markers as icons
     @media screen {
       width: 2.2ch;
