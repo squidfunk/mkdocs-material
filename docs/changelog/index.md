@@ -2,6 +2,16 @@
 
 ## Material for MkDocs
 
+### 9.2.7 <small>September 2, 2023</small> { id="9.2.7" }
+
+- Switched dependencies to compatible release clauses
+- Removed `readtime` and `lxml` dependencies for blog plugin
+- Reduced size of Docker image to improve CI build performance
+- Fixed #5945: Incorrect footer navigation for sibling pages of blog
+- Fixed #5939: Page jumps when changing color palette (Firefox 117)
+- Fixed #5901: Announcement bar reappears when using instant loading
+- Fixed #5824: Allow to customize styles of sequence diagrams
+
 ### 9.2.6 <small>August 31, 2023</small> { id="9.2.6" }
 
 - Added Basque translations

@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.3 <small>September 2, 2023</small> { id="4.40.3" }
+
+- Fixed #5946: Docker image missing pngquant for optimize plugin
+
 ### 4.40.2 <small>August 31, 2023</small> { id="4.40.2" }
 
 - Added configurable error handling capabilities for social plugin

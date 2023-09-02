@@ -1,3 +1,17 @@
+mkdocs-material-9-2.7+insiders-4.40.3 (2023-09-02)
+
+  * Fixed #5946: Docker image missing pngquant for optimize plugin
+
+mkdocs-material-9.2.7 (2023-09-02)
+
+  * Switched dependencies to compatible release clauses
+  * Removed readtime and lxml dependencies for blog plugin
+  * Reduced size of Docker image to improve CI build performance
+  * Fixed #5945: Incorrect footer navigation for sibling pages of blog
+  * Fixed #5939: Page jumps when changing color palette (Firefox 117)
+  * Fixed #5901: Announcement bar reappears when using instant loading
+  * Fixed #5824: Allow to customize styles of sequence diagrams
+
 mkdocs-material-9-2.6+insiders-4.40.2 (2023-08-31)
 
   * Added configurable error handling capabilities for social plugin
@@ -159,24 +173,6 @@ mkdocs-material-9.1.18+insiders-4.37.0 (2023-07-07)
   * Fixed rendering bugs for pruned navigation items
   * Fixed jumping of content tabs anchor links when instant loading is enabled
   * Fixed #5676: Optimize plugin doesn't check for pngquant
-
-mkdocs-material-9.2.0 (2023-07-06)
-
-  * Added blogging support via built-in blog plugin
-  * Added Chinese language support to built-in search plugin
-  * Added support for annotations (outside of code blocks)
-  * Added support for navigation icons
-  * Added support for navigation pruning
-  * Added support for navigation status
-  * Added support for customizing site icons
-  * Improved rendering of (code) annotation markers
-  * Improved print styles for (code) annotations
-  * Improved customizability of navigation tabs
-  * Removed Universal Analytics integration
-  * Removed ancient polyfills to reduce size of bundled JavaScript by 20%
-  * Removed necessity for Array.flat and Array.flatMap polyfill
-  * Removed announcement bar button when JavaScript is not available
-  * Automatically download ResizeObserver polyfill when necessary
 
 mkdocs-material-9.1.18 (2023-07-03)
 
