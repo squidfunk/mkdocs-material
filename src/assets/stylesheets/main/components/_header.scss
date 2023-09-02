@@ -240,6 +240,14 @@
         max-width 0ms,
         opacity   0ms;
     }
+
+    // Hack: Firefox 117 introduces a bug where the browser scrolls the page by
+    // a small amount to the top every time the header button is focused. After
+    // investigating, we're confident that it seems to be caused by the input
+    // field being too close to the border - see https://t.ly/APO8l
+    > input {
+      bottom: 0;
+    }
   }
 
   // Repository information container
