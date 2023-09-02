@@ -10,7 +10,7 @@ documentation with practically zero additional effort. Moreover, [custom icons
 can be added] and used in `mkdocs.yml`, documents and templates.
 
   [icon search]: #search
-  [custom icons can be added]: ../../setup/changing-the-logo-and-icons/#additional-icons
+  [custom icons can be added]: ../setup/changing-the-logo-and-icons.md#additional-icons
 
 ## Search
 
