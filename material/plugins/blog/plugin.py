@@ -174,10 +174,22 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         page = self.blog.file.page
         self._attach_at(page.parent, page, self.blog)
 
-        # Update entrypoint in navigation (also part of the hack above)
-        self.blog.file.page = self.blog
-        for items in [self._resolve_siblings(self.blog, nav), nav.pages]:
-            items[items.index(page)] = self.blog
+        # Hack: update pages instances in navigation - this can also be removed
+        # once an already open pull request is merged - see https://t.ly/9C_Kz
+        for page in [self.blog, *self.blog.posts, *self.blog.views]:
+            assert isinstance(page, Page)
+
+            # Check if the page that we generated is identical to the page that
+            # is associated with the file - if it is, we're good
+            temp = page.file.page
+            if not temp or temp == page:
+                continue
+
+            # If not, MkDocs overwrote our page with a new instance, which we
+            # need to replace with the one we generated
+            page.file.page = page
+            for items in [self._resolve_siblings(page, nav), nav.pages]:
+                items[items.index(temp)] = page
 
         # Attach posts to entrypoint without adding them to the navigation, so
         # that the entrypoint is considered to be the active page for each post
