@@ -1,12 +1,14 @@
 ---
-title: Built-in privacy plugin
 icon: material/shield-account
 ---
 
 
 # Built-in privacy plugin
 
-TODO: add docs
+The privacy plugin offers a streamlined solution for automatically self-hosting
+external assets. With just a single line of configuration, the plugin can
+automatically identify and download external assets, making GDPR compliance
+as effortless as it can possibly be.
 
 ## Objective
 
@@ -15,7 +17,7 @@ TODO: add docs
 When [building your project], the plugin scans the output for links to external
 assets, including scripts, style sheets, images, and web fonts,  downloads them
 for self-hosting, stores them in your [`site` directory][mkdocs.site_dir] and
-updates all links to point to the downloaded copies. For example:
+replaces all links to point to the downloaded copies. For example:
 
 ``` html
 <script src="https://example.com/script.js"></script>
@@ -116,7 +118,7 @@ The following settings are available:
 
 ---
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.10.0 --> ·
@@ -136,7 +138,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 ---
 
-#### `concurrency`
+#### <!-- md:setting config.concurrency -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.30.0 --> ·
@@ -165,7 +167,7 @@ The following settings are available for caching:
 
 ---
 
-#### `cache`
+#### <!-- md:setting config.cache -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.30.0 --> ·
@@ -184,7 +186,7 @@ plugins:
 
 ---
 
-#### `cache_dir`
+#### <!-- md:setting config.cache_dir -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.30.0 --> ·
@@ -212,7 +214,7 @@ The following settings are available for external assets:
 
 ---
 
-#### `assets`
+#### <!-- md:setting config.assets -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -232,7 +234,7 @@ plugins:
 
 ---
 
-#### `assets_fetch`
+#### <!-- md:setting config.assets_fetch -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -251,7 +253,7 @@ plugins:
 
 ---
 
-#### `assets_fetch_dir`
+#### <!-- md:setting config.assets_fetch_dir -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -267,11 +269,12 @@ plugins:
       assets_fetch_dir: path/to/folder
 ```
 
-This configuration stores the downloaded copies in `site/path/to/folder`.
+This configuration stores the downloaded copies in `path/to/folder` in the
+[`site` directory][mkdocs.site_dir].
 
 ---
 
-#### `assets_include`
+#### <!-- md:setting config.assets_include -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -290,7 +293,7 @@ plugins:
 
 ---
 
-#### `assets_exclude`
+#### <!-- md:setting config.assets_exclude -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -330,7 +333,7 @@ The following settings are available for external links:
 
 ---
 
-#### `links`
+#### <!-- md:setting config.links -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -351,7 +354,7 @@ plugins:
 
 ---
 
-#### `links_attr_map`
+#### <!-- md:setting config.links_attr_map -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
@@ -370,7 +373,7 @@ plugins:
 
 ---
 
-#### `links_noopener`
+#### <!-- md:setting config.links_noopener -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·

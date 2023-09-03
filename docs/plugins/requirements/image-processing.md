@@ -1,5 +1,5 @@
 ---
-icon: material/image-plus-outline
+icon: material/image-sync-outline
 ---
 
 # Image processing
@@ -86,7 +86,7 @@ The following environments come with a preinstalled version of [Cairo Graphics]:
 ### pngquant
 
 [pngquant] is an excellent library for lossy PNG compression, and a direct
-dependency of the [built-in optimize plugin]. See the following section which 
+dependency of the [built-in optimize plugin]. See the following section which
 explains how to install [pngquant] system:
 
 === ":material-apple: macOS"
@@ -101,8 +101,8 @@ explains how to install [pngquant] system:
 
 === ":fontawesome-brands-windows: Windows"
 
-    Installing [pngquant] on Windows is a little more involved. The 
-    [pngquant-winbuild] repository contains a guide on how to set up an 
+    Installing [pngquant] on Windows is a little more involved. The
+    [pngquant-winbuild] repository contains a guide on how to set up an
     environment for building [pngquant] on Windows.
 
 === ":material-linux: Linux"
@@ -116,6 +116,10 @@ explains how to install [pngquant] system:
     ```
 
     The same is true for `yum` and `zypper`.
+
+The following environments come with a preinstalled version of [pngquant]:
+
+- [x] No installation needed in [Docker image]
 
   [pngquant]: https://pngquant.org/
   [built-in optimize plugin]: ../building-an-optimized-site.md#built-in-optimize-plugin

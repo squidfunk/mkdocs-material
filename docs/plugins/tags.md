@@ -1,24 +1,28 @@
 ---
-icon: material/tag-multiple-outline
+icon: material/tag-plus-outline
 ---
-
 
 # Built-in tags plugin
 
-## Installation
+## Objective
+
+### How it works
+### When to use it
 
 ## Configuration
 
 ### General
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 ### Tags
 
-#### `tags_file`
-#### `tags_extra_files`
-#### `tags_slugify`
-#### `tags_slugify_separator`
-#### `tags_compare`
-#### `tags_compare_reverse`
-#### `tags_allowed`
+#### <!-- md:setting config.tags_file -->
+#### <!-- md:setting config.tags_extra_files -->
+#### <!-- md:setting config.tags_slugify -->
+#### <!-- md:setting config.tags_slugify_separator -->
+#### <!-- md:setting config.tags_compare -->
+#### <!-- md:setting config.tags_compare_reverse -->
+#### <!-- md:setting config.tags_pages_compare -->
+#### <!-- md:setting config.tags_pages_compare_reverse -->
+#### <!-- md:setting config.tags_allowed -->

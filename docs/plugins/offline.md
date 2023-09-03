@@ -1,5 +1,4 @@
 ---
-title: Built-in offline plugin
 icon: material/wifi-strength-alert-outline
 ---
 
@@ -82,10 +81,10 @@ create even better offline-capable documentation:
 
   [^1]:
     You might wonder why the [privacy plugin][Built-in privacy plugin] is
-    necessary to built truly offline-capable documentation with the offline
+    necessary to build truly offline-capable documentation with the offline
     plugin. While it's certainly possible to also add support for downloading
     external assets to the offline plugin, this functionality is already
-    fully implemented in the privacy plugin and it's very raison d'être.
+    fully implemented in the privacy plugin and is its very raison d'être.
 
     Material for MkDocs follows a modular approach for its plugin system – many
     of the plugins work perfectly together and enhance each others
@@ -100,7 +99,7 @@ create even better offline-capable documentation:
 <!-- md:version 9.0.0 --> ·
 <!-- md:flag plugin [offline] (built-in) -->
 
-As with all [built-in plugins], enabling the offline plugin to do its work is
+As with all [built-in plugins], getting started with the offline plugin is
 straight-forward. Just add the following lines to `mkdocs.yml`, and start
 building offline-capable documentation:
 
@@ -118,7 +117,7 @@ The following settings are available:
 
 ---
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 <!-- md:version 9.0.0 --> ·
 <!-- md:default `true` -->
@@ -147,5 +146,4 @@ file system:
   [Instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [Site analytics]: ../setup/setting-up-site-analytics.md
   [Versioning]: ../setup/setting-up-versioning.md
-  [Git repository]: ../setup/adding-a-git-repository.md
   [Comment systems]: ../setup/adding-a-comment-system.md

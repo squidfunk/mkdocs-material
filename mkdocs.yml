@@ -220,12 +220,14 @@ nav:
     - Offline: plugins/offline.md
     - Optimize: plugins/optimize.md
     - Privacy: plugins/privacy.md
+    - Projects: plugins/projects.md
     - Search: plugins/search.md
     - Social: plugins/social.md
     - Tags: plugins/tags.md
     - Typeset: plugins/typeset.md
-    - Dependencies:
-      - plugins/dependencies/image-processing.md
+    - Requirements:
+      - Image processing: plugins/requirements/image-processing.md
+      - Caching: plugins/requirements/caching.md
   - Reference:
     - reference/index.md
     - Admonitions: reference/admonitions.md

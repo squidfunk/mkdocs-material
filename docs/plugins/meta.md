@@ -1,8 +1,6 @@
 ---
-title: Built-in meta plugin
 icon: material/file-tree
 ---
-
 
 # Built-in meta plugin
 
@@ -43,7 +41,7 @@ outside of the folder remain unaffected:
 └─ mkdocs.yml
 ```
 
-When defining metadata, lists and dictionaries are recursively merged, which
+When combining metadata, lists and dictionaries are recursively merged, which
 means you can append values to a list and add or set specific properties in a
 dictionary on arbitrary levels.
 
@@ -82,13 +80,13 @@ of the meta plugin and other built-in plugins are:
       - squidfunk
     ```
 
--   :material-tag-multiple-outline: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-plus-outline: &nbsp; __[Built-in tags plugin]__
 
     ---
 
     The meta plugin makes it possible to ensure that entire subtrees of your
-    project are annotated with specific tags, so they aren't forgotten when
-    adding new pages.
+    project are annotated with specific tags, so they can't be forgotten when
+    adding pages.
 
     ``` yaml title=".meta.yml"
     tags:
@@ -127,9 +125,9 @@ of the meta plugin and other built-in plugins are:
 <!-- md:version insiders-4.21.0 --> ·
 <!-- md:flag plugin [meta] (built-in) -->
 
-Getting started with the meta plugin is trivial. Just add the following lines to
-`mkdocs.yml`, and you can instantly start creating `.meta.yml` files in your
-[`docs` directory][mkdocs.docs_dir]:
+As with all [built-in plugins], getting started with the meta plugin is
+straight-forward. Just add the following lines to `mkdocs.yml`, and start
+applying metadata for multiple pages at once:
 
 ``` yaml
 plugins:
@@ -137,6 +135,7 @@ plugins:
 ```
 
   [meta]: meta.md
+  [built-in plugins]: index.md
 
 ### General
 
@@ -144,7 +143,7 @@ The following settings are available:
 
 ---
 
-#### `enabled`
+#### <!-- md:setting meta.enabled -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.38.0 --> ·
@@ -168,7 +167,7 @@ The following settings are available for meta files:
 
 ---
 
-#### `meta_file`
+#### <!-- md:setting config.meta_file -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.21.0 --> ·

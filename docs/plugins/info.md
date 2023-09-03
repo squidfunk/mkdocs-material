@@ -1,11 +1,13 @@
 ---
-icon: material/information
+icon: material/information-outline
 ---
-
 
 # Built-in info plugin
 
-## Installation
+## Objective
+
+### How it works
+### When to use it
 
 ## Configuration
 
@@ -17,5 +19,4 @@ icon: material/information
 ### Archive
 
 #### `archive`
-#### `archive_name`
 #### `archive_stop_on_violation`

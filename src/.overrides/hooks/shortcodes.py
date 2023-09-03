@@ -44,6 +44,7 @@ def on_page_markdown(
         elif type == "sponsors":     return sponsors(page, files)
         elif type == "flag":         return flag(args)
         elif type == "option":       return option(args)
+        elif type == "setting":      return setting(args)
         elif type == "default":      return default(args, page, files)
 
         # Otherwise, raise an error
@@ -110,4 +111,9 @@ def default(args: str, page: Page, files: Files):
 # Create a linkable option
 def option(type: str):
     _, *_, name = re.split(r"[.:]", type)
-    return f"[`{name}`](#+{type}){{ #+{type} }}"
+    return f"[`{name}`](#+{type}){{ #+{type} }}\n\n"
+
+# Create a linkable setting - @todo append them to the bottom of the page!
+def setting(type: str):
+    _, *_, name = re.split(r"[.*]", type)
+    return f"`{name}` {{ #{type} }}\n\n[{type}]: #{type}\n\n"

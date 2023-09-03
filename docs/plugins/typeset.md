@@ -2,13 +2,15 @@
 icon: material/format-title
 ---
 
-
 # Built-in typeset plugin
 
-## Installation
+## Objective
+
+### How it works
+### When to use it
 
 ## Configuration
 
 ### General
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->

@@ -1,12 +1,13 @@
 ---
-title: Built-in optimize plugin
 icon: material/image-size-select-small
 ---
 
-
 # Built-in optimize plugin
 
-## Installation
+## Objective
+
+### How it works
+### When to use it
 
 ## Configuration
 

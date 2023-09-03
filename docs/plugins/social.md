@@ -1,8 +1,6 @@
 ---
-title: Built-in social plugin
 icon: material/share-variant
 ---
-
 
 # Built-in social plugin
 
@@ -18,7 +16,8 @@ social media.
 What's particularly convenient about the plugin is that it automatically
 generates a social card for each page when [building your project], no external
 services involved. The generated cards are stored in the
-[`site` directory][mkdocs.site_dir] and served regularly like all other images.
+[`site` directory][mkdocs.site_dir] and can be self-hosted like all other
+images.
 
 Social cards are defined in a custom syntax
 
@@ -49,10 +48,10 @@ custom layouts to match your project's style and branding.
 
 The built-in social plugin is included with Material for MkDocs and doesn't
 need to be installed. However, in order to automatically create images, it's
-necessary to install the [dependencies for image processing][^1], if they're
+necessary to install the dependencies for [image processing][^1], if they're
 not already available on your system.
 
-  [dependencies for image processing]: dependencies/image-processing.md
+  [image processing]: requirements/image-processing.md
 
 ## Configuration
 
@@ -180,6 +179,11 @@ with each other.
 
   [multiple instances]: #
 
+### Logging
+
+#### `log`
+#### `log_level`
+
 ### Social cards
 
 The following settings are available for social card generation:
@@ -212,8 +216,8 @@ plugins:
 <!-- md:default `assets/images/social` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your [`site` directory][mkdocs.site_dir] from which
-social cards are served. If you want to change it, use:
+to change the path within your [`site` directory][mkdocs.site_dir] where
+social cards are stored. If you want to change it, use:
 
 ``` yaml
 plugins:
@@ -221,7 +225,8 @@ plugins:
       cards_dir: path/to/folder
 ```
 
-This configuration copies the generated images to `site/path/to/folder`.
+This configuration copies the generated images to `path/to/folder` in the
+[`site` directory][mkdocs.site_dir].
 
 ---
 
@@ -233,7 +238,7 @@ This configuration copies the generated images to `site/path/to/folder`.
 
 If you want to build a [custom social card layout][custom layouts], use this
 setting to change the folder where you store your custom layouts, the default
-being a foldercalled `layouts` in your project directory:
+being a folder called `layouts` in your project directory:
 
 ``` yaml
 plugins:

@@ -133,9 +133,9 @@ many other built-in plugins:
 <!-- md:version 9.2.0 --> ·
 <!-- md:flag plugin [blog] (built-in) -->
 
-Enabling the blog plugin to get started is straight-forward, as it defines sane
-defaults for all settings. Just add the following lines to `mkdocs.yml`, and
-start writing your first post:
+As with all [built-in plugins], getting started with the blog plugin is
+straight-forward. Just add the following lines to `mkdocs.yml`, and start
+writing your first post immediately:
 
 ``` yaml
 plugins:
@@ -865,7 +865,7 @@ plugins:
 
 The plugin stops the build if a post references a category that is not part of
 this list. Posts can be assigned to categories by using the
-[`categories`][post.config.categories] metadata property.
+[`categories`][meta.categories] metadata property.
 
 ---
 
@@ -1102,7 +1102,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
     Note that `<author>` must be set to an identifier for associating authors
     with posts, e.g., a GitHub username like `squidfunk`. This identifier can
-    then be used in the [`authors`][post.config.authors] metadata property of
+    then be used in the [`authors`][meta.authors] metadata property of
     a post. Multiple authors are supported.
 
     As an example, see [the `.authors.yml` file][.authors.yml] we're using for
@@ -1121,9 +1121,9 @@ The following settings are available for drafts:
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
-Including [draft posts][post.config.draft] can be useful in deploy previews.
-Use this setting to specify whether the plugin should include posts marked as
-drafts when [building your project]:
+Including [draft posts][meta.draft] can be useful in deploy previews. Use this
+setting to specify whether the plugin should include posts marked as drafts when
+[building your project]:
 
 === "Render drafts"
 
@@ -1190,7 +1190,7 @@ The following properties are available:
 
 ---
 
-#### <!-- md:setting post.config.authors -->
+#### <!-- md:setting meta.authors -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default none --> ·
@@ -1217,7 +1217,7 @@ authors:
 
 ---
 
-#### <!-- md:setting post.config.categories -->
+#### <!-- md:setting meta.categories -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default none --> ·
@@ -1244,7 +1244,7 @@ the [`categories_allowed`][config.categories_allowed] setting.
 
 ---
 
-#### <!-- md:setting post.config.date -->
+#### <!-- md:setting meta.date -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:flag required --> ·
@@ -1270,7 +1270,7 @@ The following date formats are supported:
 
 ---
 
-#### <!-- md:setting post.config.draft -->
+#### <!-- md:setting meta.draft -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` --> ·
@@ -1291,7 +1291,7 @@ draft: true
 
 ---
 
-#### <!-- md:setting post.config.links -->
+#### <!-- md:setting meta.links -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.23.0 --> ·
@@ -1355,7 +1355,7 @@ All relative links are resolved from the [`docs` directory][mkdocs.docs_dir].
 
 ---
 
-#### <!-- md:setting post.config.readtime -->
+#### <!-- md:setting meta.readtime -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default computed --> ·
@@ -1376,7 +1376,7 @@ readtime: 15
 
 ---
 
-#### <!-- md:setting post.config.slug -->
+#### <!-- md:setting meta.slug -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default computed --> ·
