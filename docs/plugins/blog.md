@@ -1,14 +1,13 @@
 ---
-title: Built-in blog plugin
 icon: material/newspaper-variant-outline
 ---
 
 # Built-in blog plugin
 
 The blog plugin makes it very easy to build a blog, either as a sidecar to
-your documentation or standalone. Focus on your content while the plugin does
-all the heavy lifting, automatically generating index pages, [archive] and
-[category] pages, configurable [pagination] and more.
+your documentation or as the main thing. Focus on your content while the plugin
+does all the heavy lifting, generating a view of all latest posts, [archive] and
+[category] pages, configurable [pagination] and much more.
 
   [archive]: #archive
   [category]: #categories
@@ -18,12 +17,17 @@ all the heavy lifting, automatically generating index pages, [archive] and
 
 ### How it works
 
-The plugin scans a folder called `posts` in your [`blog` directory][blog_dir]
-for posts, from which it generates paginated index pages automatically. By
-default, the plugin expects that your project has the following directory
-layout, but as with all [built-in plugins], almost everything is configurable:
+The plugin scans the configured [`posts` directory][config.post_dir] for
+`*.md` files from which paginated views[^1] are automatically generated. If not
+configured otherwise, the plugin expects that your project has the following
+directory layout, and will create any missing directories or files for you:
 
-``` { .sh .no-copy hl_lines="3-5" }
+  [^1]:
+    The plugin defines views as pages that are automatically generated,
+    i.e., [archive] and [category] pages that list all posts associated
+    with them through [metadata] in chronological order.
+
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ blog/
@@ -32,16 +36,16 @@ layout, but as with all [built-in plugins], almost everything is configurable:
 └─ mkdocs.yml
 ```
 
-The index page in your [`blog` directory][blog_dir] is the main entry point to
-your blog – a paginated page listing all posts in reverse chronological order.
-Besides that, the plugin supports automatically creating [archive] and
+The `index.md` file in the [`blog` directory][config.blog_dir] is the entry
+point to your blog – a paginated view listing all posts in reverse chronological
+order. Besides that, the plugin supports automatically creating [archive] and
 [category] pages that list a subset of posts for a time interval or category.
 
-[Post URLs][post_url_format] are completely configurable, no matter if you want
-your URLs to include the post's date or not. Rendered dates always display in
-the locale of the [site language] of your project. As typical for static
-blogging frameworks, post can be annotated with a variety of [metadata],
-which allows for deep integration with other [built-in plugins], e.g., the
+[Post URLs][config.post_url_format] are completely configurable, no matter if
+you want your URLs to include the post's date or not. Rendered dates always
+display in the locale of the [site language] of your project. Like in other
+static blog frameworks, posts can be annotated with a variety of [metadata],
+allowing for easy integration with other [built-in plugins], e.g., the
 [social] and [tags] plugin.
 
 Posts can be organized in nested folders with a directory layout that suits
@@ -49,9 +53,8 @@ your needs, and can make use of all components and syntax that Material for
 MkDocs offers, including [admonitions], [annotations], [code blocks],
 [content tabs], [diagrams], [icons], [math], and more.
 
-  [metadata]: #metadata
-  [categories]: #categories
   [built-in plugins]: index.md
+  [metadata]: #metadata
   [social]: social.md
   [tags]: tags.md
   [admonitions]: ../reference/admonitions.md
@@ -106,7 +109,7 @@ many other built-in plugins:
 
     - [x] Your blog loads faster as smaller images are shipped to your users
 
--   :material-tag-multiple-outline: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-plus-outline: &nbsp; __[Built-in tags plugin]__
 
     ---
 
@@ -130,9 +133,9 @@ many other built-in plugins:
 <!-- md:version 9.2.0 --> ·
 <!-- md:flag plugin [blog] (built-in) -->
 
-As with all [built-in plugins], enabling the blog plugin to get started is
-straight-forward. Just add the following lines to `mkdocs.yml`, and start
-writing your first blog post:
+Enabling the blog plugin to get started is straight-forward, as it defines sane
+defaults for all settings. Just add the following lines to `mkdocs.yml`, and
+start writing your first post:
 
 ``` yaml
 plugins:
@@ -148,7 +151,7 @@ The following settings are available:
 
 ---
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
@@ -167,14 +170,14 @@ plugins:
 
 ---
 
-#### `blog_dir`
+#### <!-- md:setting config.blog_dir -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `blog` -->
 
-Use this setting to change the folder where you store your posts. The name of
-the folder is included in the generated URLs as a prefix for all posts and index
-pages. Change it with:
+Use this setting to change the folder where your blog is stored. The name of
+the folder is also included in the generated URLs as a prefix for all posts and
+views. Change it with:
 
 === "Documentation + Blog"
 
@@ -196,14 +199,15 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 ---
 
-#### `blog_toc`
+#### <!-- md:setting config.blog_toc -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
-Use this setting to instruct the table of contents to display post titles on
-index pages. Enabling this setting also enables [`archive_toc`][archive_toc]
-and [`categories_toc`][categories_toc], unless they are explicitly defined:
+Use this setting to instruct the table of contents to display post titles in
+views. Enabling this setting also enables [`archive_toc`][config.archive_toc]
+and [`categories_toc`][config.categories_toc], unless they are explicitly
+defined:
 
 ``` yaml
 plugins:
@@ -211,23 +215,43 @@ plugins:
       blog_toc: true
 ```
 
-  [archive_toc]: #archive_toc
-  [categories_toc]: #categories_toc
-
 ### Posts
 
 The following settings are available for posts:
 
 ---
 
-#### `post_date_format`
+#### <!-- md:setting config.post_dir -->
+
+<!-- md:version 9.2.0 --> ·
+<!-- md:default `{blog}/posts` -->
+
+Use this setting to change the folder where to store your posts. It's normally
+not necessary to change this setting, but if you want to rename the folder or
+change its location, use:
+
+``` yaml
+plugins:
+  - blog:
+      post_dir: "{blog}/articles"
+```
+
+The following placeholders are available:
+
+- `blog` – [`blog` directory][config.blog_dir]
+
+The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
+
+---
+
+#### <!-- md:setting config.post_date_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `long` -->
 
-Use this setting to change the date format of posts. The plugin uses [babel] to
-render dates locale-aware using the configured [site language]. The following
-formats are supported:
+Use this setting to change the date format of posts. This plugin uses [babel] to
+render dates in the configured [site language]. You can use [babel]'s
+[pattern syntax] or the following shortcodes:
 
 === "Monday, January 31, 2023"
 
@@ -261,9 +285,8 @@ formats are supported:
           post_date_format: short
     ```
 
-Note that depending on the [site language], those formats might look different
-for other languages. Additionally, [babel] supports a [pattern syntax]
-which allows for custom formats.
+Note that depending on the [site language], results might look different for
+other languages.
 
   [babel]: https://pypi.org/project/Babel/
   [site language]: ../setup/changing-the-language.md#site-language
@@ -271,7 +294,7 @@ which allows for custom formats.
 
 ---
 
-#### `post_url_date_format`
+#### <!-- md:setting config.post_url_date_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `yyyy/MM/dd` -->
@@ -306,13 +329,11 @@ Some popular choices:
 
 If you want to remove the date from post URLs, e.g., when your blog features
 mostly evergreen content, you can remove the `date` placeholder from the
-[`post_url_format`][post_url_format] format string.
-
-  [post_url_format]: #post_url_format
+[`post_url_format`][config.post_url_format] format string.
 
 ---
 
-#### `post_url_format`
+#### <!-- md:setting config.post_url_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `{date}/{slug}` -->
@@ -339,30 +360,25 @@ characters:
 
 The following placeholders are available:
 
-- `categories` – Post categories, slugified with [`categories_slugify`][categories_slugify]
-- `date` – Post date, formatted with [`post_url_date_format`][post_url_date_format]
-- `slug` – Post title, slugified with [`post_slugify`][post_slugify]
+- `categories` – Post categories, slugified with [`categories_slugify`][config.categories_slugify]
+- `date` – Post date, formatted with [`post_url_date_format`][config.post_url_date_format]
+- `slug` – Post title, slugified with [`post_slugify`][config.post_slugify]
 - `file` – Post filename without `*.md` extension
 
 If you remove the `date` placeholder, make sure that post URLs don't collide
-with URLs of other pages hosted under the [`blog` directory][blog_dir], as this
-leads to undefined behavior.
-
-  [categories_slugify]: #categories_slugify
-  [post_url_date_format]: #post_url_date_format
-  [post_slugify]: #post_slugify
-  [blog_dir]: #blog_dir
+with URLs of other pages hosted under the [`blog` directory][config.blog_dir],
+as this leads to undefined behavior.
 
 ---
 
-#### `post_url_max_categories`
+#### <!-- md:setting config.post_url_max_categories -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `1` -->
 
 Use this setting to control the number of categories that are included in the
 post URL if the `categories` placeholder is part of
-[`post_url_format`][post_url_format] and the post defines categories:
+[`post_url_format`][config.post_url_format] and the post defines categories:
 
 ``` yaml
 plugins:
@@ -375,7 +391,7 @@ If more than one category is given, they are joined with `/` after slugifying.
 
 ---
 
-#### `post_slugify`
+#### <!-- md:setting config.post_slugify -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default [`toc.slugify`][toc.slugify] -->
@@ -410,14 +426,14 @@ configuration.
 
 ---
 
-#### `post_slugify_separator`
+#### <!-- md:setting config.post_slugify_separator -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
-function set as part of [`post_slugify`][post_slugify]. While the default is a
-hyphen, it can be set to any string, e.g., `_`:
+function set as part of [`post_slugify`][config.post_slugify]. While the default
+is a hyphen, it can be set to any string, e.g., `_`:
 
 ``` yaml
 plugins:
@@ -427,14 +443,14 @@ plugins:
 
 ---
 
-#### `post_excerpt`
+#### <!-- md:setting config.post_excerpt -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `optional` -->
 
 By default, the plugin makes post excerpts optional. When a post doesn't define
-an excerpt, index pages render the entire post. This setting can be used to
-make post excerpts required:
+an excerpt, views include the entire post. This setting can be used to make
+post excerpts required:
 
 === "Optional"
 
@@ -452,18 +468,18 @@ make post excerpts required:
           post_excerpt: required
     ```
 
-When post excerpts are required, posts without excerpts raise an error.
+When post excerpts are required, posts without excerpt separators raise an error.
 
 ---
 
-#### `post_excerpt_max_authors`
+#### <!-- md:setting config.post_excerpt_max_authors -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `1` -->
 
-Use this setting to specify the number of authors rendered in post excerpts. While
-each post may be written by multiple authors, this setting allows to limit the
-display to just a few or even a single author, or disable authors in post
+Use this setting to specify the number of authors rendered in post excerpts.
+While each post may be written by multiple authors, this setting allows to limit
+the display to just a few or even a single author, or disable authors in post
 excerpts entirely:
 
 === "Render up to 2 authors"
@@ -482,20 +498,19 @@ excerpts entirely:
           post_excerpt_max_authors: 0
     ```
 
-This only applies to post excerpts on index pages. Posts always render all
-authors.
+This only applies to post excerpts in views. Posts always render all authors.
 
 ---
 
-#### `post_excerpt_max_categories`
+#### <!-- md:setting config.post_excerpt_max_categories -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `5` -->
 
-Use this setting to set the number of categories rendered in post excerpts. While
-each post may be assigned to multiple categories, this setting allows to limit the
-display to just a few or even a single category, or disable categories in post
-excerpts entirely:
+Use this setting to set the number of categories rendered in post excerpts.
+While each post may be assigned to multiple categories, this setting allows to
+limit the display to just a few or even a single category, or disable categories
+in post excerpts entirely:
 
 === "Render up to 2 categories"
 
@@ -513,12 +528,11 @@ excerpts entirely:
           post_excerpt_max_categories: 0
     ```
 
-This only applies to post excerpts on index pages. Posts always render all
-categories.
+This only applies to post excerpts in views. Posts always render all categories.
 
 ---
 
-#### `post_excerpt_separator`
+#### <!-- md:setting config.post_excerpt_separator -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `<!-- more -​->` -->
@@ -537,14 +551,14 @@ It is common practice to use an HTML comment as a separator.
 
 ---
 
-#### `post_readtime`
+#### <!-- md:setting config.post_readtime -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should automatically compute the
-reading time of a post using [readtime], which is then rendered in post excerpts,
-as well as in posts themselves:
+reading time of a post, which is then rendered in post excerpts, as well as in
+posts themselves:
 
 ``` yaml
 plugins:
@@ -552,11 +566,9 @@ plugins:
       post_readtime: false
 ```
 
-  [readtime]: https://pypi.org/project/readtime/
-
 ---
 
-#### `post_readtime_words_per_minute`
+#### <!-- md:setting config.post_readtime_words_per_minute -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `265` -->
@@ -582,7 +594,7 @@ The following settings are available for archive pages:
 
 ---
 
-#### `archive`
+#### <!-- md:setting config.archive -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
@@ -599,10 +611,10 @@ plugins:
 
 ---
 
-#### `archive_name`
+#### <!-- md:setting config.archive_name -->
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default automatically set -->
+<!-- md:default computed -->
 
 Use this setting to change the title of the archive section the plugin adds to
 the navigation. If this setting is omitted, it's sourced from the translations.
@@ -616,7 +628,7 @@ plugins:
 
 ---
 
-#### `archive_date_format`
+#### <!-- md:setting config.archive_date_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `yyyy` -->
@@ -642,7 +654,7 @@ format string must adhere to [babel]'s [pattern syntax]. Some popular choices:
 
 ---
 
-#### `archive_url_date_format`
+#### <!-- md:setting config.archive_url_date_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `yyyy` -->
@@ -669,7 +681,7 @@ whitespace. Some popular choices:
 
 ---
 
-#### `archive_url_format`
+#### <!-- md:setting config.archive_url_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `archive/{date}` -->
@@ -696,20 +708,18 @@ slashes or other characters:
 
 The following placeholders are available:
 
-- `date` – Archive page date, formatted with [`archive_url_date_format`][archive_url_date_format]
-
-  [archive_url_date_format]: #archive_url_date_format
+- `date` – Archive page date, formatted with [`archive_url_date_format`][config.archive_url_date_format]
 
 ---
 
-#### `archive_toc`
+#### <!-- md:setting config.archive_toc -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
 Use this setting to instruct the table of contents to display post titles on all
-archive pages. This setting is automatically enabled when [`blog_toc`][blog_toc]
-is enabled, unless explicitly defined:
+archive pages. This setting is automatically enabled when
+[`blog_toc`][config.blog_toc] is enabled, unless explicitly defined:
 
 ``` yaml
 plugins:
@@ -717,15 +727,13 @@ plugins:
       archive_toc: true
 ```
 
-  [blog_toc]: #blog_toc
-
 ### Categories
 
 The following settings are available for category pages:
 
 ---
 
-#### `categories`
+#### <!-- md:setting config.categories -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
@@ -742,10 +750,10 @@ plugins:
 
 ---
 
-#### `categories_name`
+#### <!-- md:setting config.categories_name -->
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default automatically set -->
+<!-- md:default computed -->
 
 Use this setting to change the title of the category section the plugin adds to
 the navigation. If this setting is omitted, it's sourced from the translations.
@@ -759,7 +767,7 @@ plugins:
 
 ---
 
-#### `categories_url_format`
+#### <!-- md:setting config.categories_url_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `category/{slug}` -->
@@ -786,11 +794,11 @@ slashes or other characters:
 
 The following placeholders are available:
 
-- `slug` – Category, slugified with [`categories_slugify`][categories_slugify]
+- `slug` – Category, slugified with [`categories_slugify`][config.categories_slugify]
 
 ---
 
-#### `categories_slugify`
+#### <!-- md:setting config.categories_slugify -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default [`toc.slugify`][toc.slugify] -->
@@ -821,14 +829,14 @@ configuration.
 
 ---
 
-#### `categories_slugify_separator`
+#### <!-- md:setting config.categories_slugify_separator -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
-function set as part of [`categories_slugify`][categories_slugify]. While the
-default is a hyphen, it can be set to any string, e.g., `_`:
+function set as part of [`categories_slugify`][config.categories_slugify]. While
+the default is a hyphen, it can be set to any string, e.g., `_`:
 
 ``` yaml
 plugins:
@@ -838,34 +846,37 @@ plugins:
 
 ---
 
-#### `categories_allowed`
+#### <!-- md:setting config.categories_allowed -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default none -->
 
-The plugin allows to check categories against an allow list, in order to catch
-typos or make sure that categories are not arbitrarily added. Define the allow
-list with:
+The plugin allows to check categories against a predefined list, in order to
+catch typos or make sure that categories are not arbitrarily added. Specify the
+categories you want to allow with:
 
 ``` yaml
 plugins:
   - blog:
       categories_allowed:
-        - General
         - Search
         - Performance
 ```
 
+The plugin stops the build if a post references a category that is not part of
+this list. Posts can be assigned to categories by using the
+[`categories`][post.config.categories] metadata property.
+
 ---
 
-#### `categories_toc`
+#### <!-- md:setting config.categories_toc -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
 Use this setting to instruct the table of contents to display post titles on all
-category pages. This setting is automatically enabled when [`blog_toc`][blog_toc]
-is enabled, unless explicitly defined:
+category pages. This setting is automatically enabled when
+[`blog_toc`][config.blog_toc] is enabled, unless explicitly defined:
 
 ``` yaml
 plugins:
@@ -873,22 +884,20 @@ plugins:
       categories_toc: true
 ```
 
-  [blog_toc]: #blog_toc
-
 ### Pagination
 
 The following settings are available for pagination:
 
 ---
 
-#### `pagination`
+#### <!-- md:setting config.pagination -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
 
-Use this setting to enable or disable pagination on index pages – generated
-pages that show posts or subsets of posts in reverse chronological order. If
-you want to disable pagination, use:
+Use this setting to enable or disable pagination in views – generated pages
+that show posts or subsets of posts in reverse chronological order. If you want
+to disable pagination, use:
 
 ``` yaml
 plugins:
@@ -898,13 +907,13 @@ plugins:
 
 ---
 
-#### `pagination_per_page`
+#### <!-- md:setting config.pagination_per_page -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `10` -->
 
-Use this setting to change the number of posts rendered per index page. If you
-have large post excerpts, it can be a good idea to reduce the number of posts
+Use this setting to change the number of posts rendered per page. If you have
+rather long post excerpts, it can be a good idea to reduce the number of posts
 per page:
 
 ``` yaml
@@ -915,14 +924,14 @@ plugins:
 
 ---
 
-#### `pagination_url_format`
+#### <!-- md:setting config.pagination_url_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `{date}/{slug}` -->
 
 Use this setting to change the format string that is used when generating
-paginated index page URLs. You can freely combine placeholders, and join them
-with slashes or other characters:
+paginated view URLs. You can freely combine placeholders, and join them with
+slashes or other characters:
 
 === ":material-link: blog/page/n/"
 
@@ -946,21 +955,21 @@ The following placeholders are available:
 
 ---
 
-#### `pagination_template`
+#### <!-- md:setting config.pagination_format -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `~2~` -->
 
-The plugin uses [paginate] to generate the pagination markup using a special
-syntax. Use this setting to customize how pagination is constructed. Some
-popular choices:
+The plugin uses the [paginate] module to generate the pagination markup using a
+special syntax. Use this setting to customize how pagination is constructed.
+Some popular choices:
 
 === "1 2 3 .. n"
 
     ``` yaml
     plugins:
       - blog:
-          pagination_template: "~2~"
+          pagination_format: "~2~"
     ```
 
 === "1 2 3 .. n :material-chevron-right: :material-chevron-double-right:"
@@ -968,7 +977,7 @@ popular choices:
     ``` yaml
     plugins:
       - blog:
-          pagination_template: "$link_first $link_previous ~2~ $link_next $link_last"
+          pagination_format: "$link_first $link_previous ~2~ $link_next $link_last"
     ```
 
 === "1 :material-chevron-right:"
@@ -976,7 +985,7 @@ popular choices:
     ``` yaml
     plugins:
       - blog:
-          pagination_template: "$link_previous $page $link_next"
+          pagination_format: "$link_previous $page $link_next"
     ```
 
 The following placeholders are supported by [paginate]:
@@ -998,14 +1007,31 @@ The following placeholders are supported by [paginate]:
 
 ---
 
-#### `pagination_keep_content`
+#### <!-- md:setting config.pagination_if_single_page -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
-Use this setting to enable or disable inheritance of content, i.e., if paginated
-index pages should also display the content of their parent index page. If you
-want to enable this behavior, use:
+Use this setting to control whether pagination should be automatically disabled
+when the view only consists of a single page. If you want to always render
+pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      pagination_if_single_page: true
+```
+
+---
+
+#### <!-- md:setting config.pagination_keep_content -->
+
+<!-- md:version 9.2.0 --> ·
+<!-- md:default `false` -->
+
+Use this setting to enable or disable persistence of content, i.e., if paginated
+views should also display the content of their parent view. If you want to
+enable this behavior, use:
 
 ``` yaml
 plugins:
@@ -1019,14 +1045,14 @@ The following settings are available for authors:
 
 ---
 
-#### `authors`
+#### <!-- md:setting config.authors -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
 
 Use this setting to enable or disable post authors. If this setting is enabled,
-the plugin will look for a file named [`.authors.yml`][authors_file] and render
-authors in index pages and posts. To disable this, use:
+the plugin will look for a file named [`.authors.yml`][config.authors_file] and
+render authors in posts and views. Disable this behavior with:
 
 ``` yaml
 plugins:
@@ -1034,14 +1060,12 @@ plugins:
       authors: false
 ```
 
-  [authors_file]: #authors_file
-
 ---
 
-#### `authors_file`
+#### <!-- md:setting config.authors_file -->
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default `.authors.yml` -->
+<!-- md:default `{blog}/.authors.yml` -->
 
 Use this setting to change the path of the file where the author information for
 your posts resides. It's normally not necessary to change this setting, but if
@@ -1053,27 +1077,33 @@ plugins:
       authors_file: .authors.yml # (1)!
 ```
 
-1.  Note that it's strongly recommended to prefix author files with a `.` to
-    instruct MkDocs to [not treat them as documentation content][mkdocs.dotfiles].
+1.  Note that it's recommended to prefix author files with a `.` to instruct
+    MkDocs to [not treat them as documentation content][mkdocs.dotfiles].
     Otherwise, they'd be copied to the [`site` directory][mkdocs.site_dir] when
     you're [building your project].
 
-The provided path is resolved from the [`blog` directory][blog_dir].
+The following placeholders are available:
 
-!!! info "Format of autor information"
+- `blog` – [`blog` directory][config.blog_dir]
+
+The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
+
+!!! info "Format of author information"
 
     The `.authors.yml` file must follow the following format:
 
     ``` yaml title=".authors.yml"
-    <author>:
-      name: string                         # Author name
-      description: string                  # Author description
-      avatar: url                          # Author avatar
+    authors:
+      <author>:
+        name: string        # Author name
+        description: string # Author description
+        avatar: url         # Author avatar
     ```
 
     Note that `<author>` must be set to an identifier for associating authors
     with posts, e.g., a GitHub username like `squidfunk`. This identifier can
-    then be used in the metadata of posts. Multiple authors can be added.
+    then be used in the [`authors`][post.config.authors] metadata property of
+    a post. Multiple authors are supported.
 
     As an example, see [the `.authors.yml` file][.authors.yml] we're using for
     our blog.
@@ -1086,14 +1116,14 @@ The following settings are available for drafts:
 
 ---
 
-#### `draft`
+#### <!-- md:setting config.draft -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
-Including draft posts might be desired in deploy previews. Use this setting to
-specify whether the plugin should include posts marked as drafts when
-[building your project]:
+Including [draft posts][post.config.draft] can be useful in deploy previews.
+Use this setting to specify whether the plugin should include posts marked as
+drafts when [building your project]:
 
 === "Render drafts"
 
@@ -1113,7 +1143,7 @@ specify whether the plugin should include posts marked as drafts when
 
 ---
 
-#### `draft_on_serve`
+#### <!-- md:setting config.draft_on_serve -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `true` -->
@@ -1132,7 +1162,7 @@ plugins:
 
 ---
 
-#### `draft_if_future_date`
+#### <!-- md:setting config.draft_if_future_date -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
@@ -1151,12 +1181,73 @@ plugins:
 
 ### Metadata
 
+Posts can define a handful of metadata properties that specify how the plugi
+renders them, in which views they are integrated, and how they are linked to
+each other. The metadata of each post is validated against a schema for a
+quicker discovery of syntax errors.
+
+The following properties are available:
+
 ---
 
-#### `date`
+#### <!-- md:setting post.config.authors -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default none --> ·
+<!-- md:flag metadata -->
+
+Use this property to associate a post with [authors] by providing a list of
+identifiers as defined in the [`.authors.yml`][config.authors_file]. If an
+authors can't be resolved, the plugin will terminate with an error:
+
+``` yaml
+---
+authors:
+  - squidfunk # (1)!
+---
+
+# Post title
+...
+```
+
+1.  Authors are linked by using their identifiers. As an example, see
+    [the `.authors.yml` file][.authors.yml] we're using for our blog.
+
+  [authors]: #authors
+
+---
+
+#### <!-- md:setting post.config.categories -->
+
+<!-- md:version 9.2.0 --> ·
+<!-- md:default none --> ·
+<!-- md:flag metadata -->
+
+Use this property to associate a post with one or more [categories][category],
+making the post a part of the generated category page. Categories are defined
+as a list of strings (whitespaces are allowed):
+
+``` yaml
+---
+categories:
+  - Search
+  - Performance
+---
+
+# Post title
+...
+```
+
+If you want to mitigiate accidental typos assigning categories to posts, you
+can set a predefined list of allowed categories in `mkdocs.yml` by using
+the [`categories_allowed`][config.categories_allowed] setting.
+
+---
+
+#### <!-- md:setting post.config.date -->
+
+<!-- md:version 9.2.0 --> ·
+<!-- md:flag required --> ·
 <!-- md:flag metadata -->
 
 Use this property to define the publishing date of a post. Note that this
@@ -1179,15 +1270,15 @@ The following date formats are supported:
 
 ---
 
-#### `draft`
+#### <!-- md:setting post.config.draft -->
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` --> ·
 <!-- md:flag metadata -->
 
 Use this property to mark a post as draft. The plugin allows to include or
-exclude posts marked as drafts when [building your project]. Mark a post as
-draft with:
+exclude posts marked as drafts when [building your project] using
+[`draft`][config.draft]. Mark a post as draft with:
 
 ``` yaml
 ---
@@ -1200,23 +1291,7 @@ draft: true
 
 ---
 
-#### `authors`
-
-<!-- md:version 9.2.0 --> ·
-<!-- md:default none --> ·
-<!-- md:flag metadata -->
-
----
-
-#### `categories`
-
-<!-- md:version 9.2.0 --> ·
-<!-- md:default none --> ·
-<!-- md:flag metadata -->
-
----
-
-#### `links`
+#### <!-- md:setting post.config.links -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.23.0 --> ·
@@ -1224,26 +1299,98 @@ draft: true
 <!-- md:flag metadata --> ·
 <!-- md:flag experimental -->
 
+Use this property to define a list of links that are rendered in the sidebar of
+a post. The property follows the same syntax as [`nav`][mkdocs.nav] in
+`mkdocs.yml`, also supporting sections and even anchors:
+
+=== "Links"
+
+    ``` yaml
+    ---
+    links:
+      - setup/setting-up-site-search.md
+      - insiders/index.md
+    ---
+
+    # Post title
+    ...
+    ```
+
+=== "Links with sections"
+
+    ``` yaml
+    ---
+    links:
+      - setup/setting-up-site-search.md
+      - Insiders:
+        - insiders/index.md
+        - insiders/getting-started.md
+    ---
+
+    # Post title
+    ...
+    ```
+
+=== "Links with anchors"
+
+    ``` yaml
+    ---
+    links:
+      - setup/setting-up-site-search.md#built-in-search-plugin # (1)!
+      - Insiders:
+        - insiders/index.md#how-to-become-a-sponsor
+        - insiders/getting-started.md#requirements
+    ---
+
+    # Post title
+    ...
+    ```
+
+    1.  If a links defines an anchor, the plugin resolves the anchor from the
+        linked page and sets the anchor title as a [subtitle].
+
+All relative links are resolved from the [`docs` directory][mkdocs.docs_dir].
+
+  [subtitle]: ../reference/index.md#setting-the-page-subtitle
+
 ---
 
-#### `readtime`
+#### <!-- md:setting post.config.readtime -->
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default automatically set --> ·
+<!-- md:default computed --> ·
 <!-- md:flag metadata -->
+
+Use this property to explicitly set the reading time of a post in minutes. When
+[`post_readtime`][config.post_readtime] is enabled, the plugin computes the
+reading time of a post, which you can override with:
+
+``` yaml
+---
+readtime: 15
+---
+
+# Post title
+...
+```
 
 ---
 
-#### `slug`
+#### <!-- md:setting post.config.slug -->
 
 <!-- md:version 9.2.0 --> ·
-<!-- md:default automatically set --> ·
+<!-- md:default computed --> ·
 <!-- md:flag metadata -->
 
+Use this property to explicitly set the slug of a post. By default, the slug of
+a post is automatically computed from the configured
+[`post_slugify`][config.post_slugify] function, which you can override with:
+
+``` yaml
+---
+slug: help-im-trapped-in-a-universe-factory
 ---
 
-#### `tags`
-
-<!-- md:version 9.2.0 --> ·
-<!-- md:default none --> ·
-<!-- md:flag metadata -->
+# Post title
+...
+```
