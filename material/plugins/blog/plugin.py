@@ -174,7 +174,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         page = self.blog.file.page
         self._attach_at(page.parent, page, self.blog)
 
-        # Hack: update pages instances in navigation - this can also be removed
+        # Hack: update page instances in navigation - this can also be removed
         # once an already open pull request is merged - see https://t.ly/9C_Kz
         for page in [self.blog, *self.blog.posts, *self.blog.views]:
             assert isinstance(page, Page)
