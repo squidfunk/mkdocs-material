@@ -70,6 +70,7 @@ jobs:
             "mkdocs-minify-plugin>=0.3" \
             "mkdocs-rss-plugin>=1.2" \
             "mkdocs-redirects>=1.0" \
+            "lxml" \
             "pillow<10"
 
       - name: Install Insiders build

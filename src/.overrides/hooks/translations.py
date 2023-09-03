@@ -38,8 +38,8 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
         return
 
     # Collect all existing languages
-    names: dict[str, str] = dict()
-    known: dict[str, dict[str, str]] = dict()
+    names: dict[str, str] = {}
+    known: dict[str, dict[str, str]] = {}
     for path in glob("src/partials/languages/*.html"):
         with open(path, "r", encoding = "utf-8") as f:
             data = f.read()
@@ -137,6 +137,7 @@ countries = dict({
     "eo": "eu",
     "es": "es",
     "et": "ee",
+    "eu": "es",
     "fa": "ir",
     "fi": "fi",
     "fr": "fr",
@@ -154,6 +155,7 @@ countries = dict({
     "kn": "in",
     "ko": "kr",
     "ku-IQ": "iq",
+    "lb": "lu",
     "lt": "lt",
     "lv": "lv",
     "mk": "mk",

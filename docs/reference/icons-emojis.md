@@ -6,10 +6,11 @@ icon: material/emoticon-happy-outline
 
 One of the best features of Material for MkDocs is the possibility to use [more
 than 10,000 icons][icon search] and thousands of emojis in your project 
-documentation with practically zero additional effort. Moreover, custom icons 
-can be added and used in `mkdocs.yml`, documents and templates.
+documentation with practically zero additional effort. Moreover, [custom icons 
+can be added] and used in `mkdocs.yml`, documents and templates.
 
   [icon search]: #search
+  [custom icons can be added]: ../setup/changing-the-logo-and-icons.md#additional-icons
 
 ## Search
 

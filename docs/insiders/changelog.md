@@ -2,6 +2,66 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.3 <small>September 2, 2023</small> { id="4.40.3" }
+
+- Fixed #5946: Docker image missing pngquant for optimize plugin
+
+### 4.40.2 <small>August 31, 2023</small> { id="4.40.2" }
+
+- Added configurable error handling capabilities for social plugin
+- Fixed #5922: Blog plugin shows no posts when building a standalone blog
+- Fixed #5914: Tags plugin tags_extra_files errors (4.39.3 regression)
+- Fixed #5904: Blog plugin sometimes excludes files (4.40.1 regression)
+
+### 4.40.1 <small>August 27, 2023</small> { id="4.40.1" }
+
+- Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
+- Fixed empty category pages in blog plugin (4.40.0 regression)
+
+### 4.40.0 <small>August 26, 2023</small> { id="4.40.0" }
+
+- Added logo, title and description options to social plugin default layouts
+- Fixed privacy plugin compatibility issue with Python < 3.10
+- Fixed #5896: Blog plugin errors when using custom index pages
+
+### 4.39.3 <small>August 24, 2023</small> { id="4.39.3" }
+
+- Fixed lxml dependency missing in Docker container (4.39.2 regression)
+
+### 4.39.2 <small>August 23, 2023</small> { id="4.39.2" }
+
+- Fixed color palette toggle being reversed (9.2.0 regression)
+
+### 4.39.1 <small>August 21, 2023</small> { id="4.39.1" }
+
+- Fixed git diff in tags plugin after merging back 9.2.0 changes
+
+### 4.39.0 <small>August 3, 2023</small> { id="4.39.0" }
+
+- Added support for hoisting theme media files when building projects
+- Added support for sorting pages on tags index for tags plugin
+- Added support for adding date of last update to blog posts
+- Fixed #5797: Parse error in typeset plugin (4.38.1 regression)
+
+### 4.38.1 <small>August 1, 2023</small> { id="4.38.1" }
+
+- Improved nested serve mode for projects plugin
+- Improved compat in privacy plugin with third-party plugins
+- Fixed #5790: Typeset plugin ignores data-toc-label attribute
+- Fixed #5778: Interplay of privacy plugin with git-revision-date-localized
+- Fixed #5773: Info plugin erroring when community edition is in beta
+
+### 4.38.0 <small>July 29, 2023</small> { id="4.38.0" }
+
+- Added projects plugin for building nested projects
+- Updated privacy plugin to new MkDocs API
+
+### 4.37.1 <small>July 28, 2023</small> { id="4.37.1" }
+
+- Updated MkDocs to 1.5.1
+- Fixed deprecation warning in social plugin due to MkDocs upgrade
+- Fixed #5772: Privacy plugin fails due to API change in MkDocs
+
 ### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
 
 - Added support for overriding social cards settings per page

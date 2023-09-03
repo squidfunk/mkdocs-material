@@ -24,26 +24,19 @@ import sys
 from collections import defaultdict
 from markdown.extensions.toc import slugify
 from mkdocs import utils
-from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config.base import Config
-from mkdocs.config import config_options as opt
 from mkdocs.plugins import BasePlugin
 
+# deprecated, but kept for downward compatibility. Use 'material.plugins.tags'
+# as an import source instead. This import is removed in the next major version.
+from . import casefold
+from .config import TagsConfig
+
 # -----------------------------------------------------------------------------
-# Class
-# -----------------------------------------------------------------------------
-
-# Tags plugin configuration scheme
-class TagsPluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-
-    # Options for tags
-    tags_file = opt.Optional(opt.Type(str))
-
+# Classes
 # -----------------------------------------------------------------------------
 
 # Tags plugin
-class TagsPlugin(BasePlugin[TagsPluginConfig]):
+class TagsPlugin(BasePlugin[TagsConfig]):
     supports_multiple_instances = True
 
     # Initialize plugin
@@ -81,6 +74,10 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
     # Build and render tags index page
     def on_page_markdown(self, markdown, page, config, files):
         if not self.config.enabled:
+            return
+
+        # Skip, if page is excluded
+        if page.file.inclusion.is_excluded():
             return
 
         # Render tags index page
@@ -166,5 +163,4 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 # -----------------------------------------------------------------------------
 
 # Set up logging
-log = logging.getLogger("mkdocs")
-log.addFilter(DuplicateFilter())
+log = logging.getLogger("mkdocs.material.tags")

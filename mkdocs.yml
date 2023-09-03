@@ -43,6 +43,7 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
+    # - content.code.select
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
@@ -83,6 +84,7 @@ theme:
 
 # Plugins
 plugins:
+  - blog
   - search:
       separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
@@ -169,6 +171,7 @@ nav:
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
     - Browser support: browser-support.md
+    - Enterprise support: enterprise-support.md
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
@@ -247,10 +250,3 @@ nav:
       - Changelog: insiders/changelog.md
   - Blog:
     - blog/index.md
-    - 2022:
-      - blog/posts/blog-support-just-landed.md
-      - blog/posts/chinese-search-support.md
-    - 2021:
-      - blog/posts/the-past-present-and-future.md
-      - blog/posts/excluding-content-from-search.md
-      - blog/posts/search-better-faster-smaller.md

@@ -129,7 +129,7 @@ export function mountHeaderTitle(
     })
 
     /* Obtain headline, if any */
-    const heading = getOptionalElement("article h1")
+    const heading = getOptionalElement(".md-content h1")
     if (typeof heading === "undefined")
       return EMPTY
 

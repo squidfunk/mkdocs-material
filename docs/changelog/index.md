@@ -2,6 +2,109 @@
 
 ## Material for MkDocs
 
+### 9.2.7 <small>September 2, 2023</small> { id="9.2.7" }
+
+- Switched dependencies to compatible release clauses
+- Removed `readtime` and `lxml` dependencies for blog plugin
+- Reduced size of Docker image to improve CI build performance
+- Fixed #5945: Incorrect footer navigation for sibling pages of blog
+- Fixed #5939: Page jumps when changing color palette (Firefox 117)
+- Fixed #5901: Announcement bar reappears when using instant loading
+- Fixed #5824: Allow to customize styles of sequence diagrams
+
+### 9.2.6 <small>August 31, 2023</small> { id="9.2.6" }
+
+- Added Basque translations
+- Added template for simple redirects
+- Improved blog plugin interop by moving view generation to `on_files`
+- Fixed #5924: Social plugin still checks dependencies when disabled
+- Fixed #5916: Blog plugin crashes on Python 3.8 (9.2.0 regression)
+
+### 9.2.5 <small>August 27, 2023</small> { id="9.2.5" }
+
+- Fixed error in dirty serve mode when using blog plugin
+- Fixed page title not being consistent in blog plugin pagination
+- Fixed #5899: Blog plugin pagination breaks when disabling directory URLs
+
+### 9.2.4 <small>August 26, 2023</small> { id="9.2.4" }
+
+- Added version to bug report name in info plugin
+- Updated Afrikaans translations
+
+### 9.2.3 <small>August 22, 2023</small> { id="9.2.3" }
+
+- Fixed blog plugin rendering wrongly with `markdown.extensions.toc`
+- Fixed blog plugin entrypoint generation
+
+### 9.2.2 <small>August 22, 2023</small> { id="9.2.2" }
+
+- Fixed #5880: Blog plugin failing when building a standalone blog
+- Fixed #5881: Blog plugin not compatible with Python < 3.10
+
+### 9.2.1 <small>August 21, 2023</small> { id="9.2.1" }
+
+- Fixed #5879: Blog plugin failing when building a standalone blog
+- Fixed error in blog plugin when using draft tagging on future date
+- Fixed error in blog plugin when toc extension is not enabled
+
+### 9.2.0 <small>August 21, 2023</small> { id="9.2.0" }
+
+__Additions and improvements__
+
+- Added blogging support via built-in blog plugin
+- Added support for Chinese language segmentaiton in search plugin
+- Added support for adding custom dates to blog posts
+- Added support for paginating archive and category pages
+- Added support for annotations (outside of code blocks)
+- Added support for navigation icons
+- Added support for navigation pruning
+- Added support for navigation status
+- Added support for customizing site icons
+- Added support for customizing (code) annotation icons
+- Added focus outline to admonitions and details
+- Added prompt for bug report name to info plugin
+- Added Luxembourgish translations
+- Improved rendering of (code) annotation markers
+- Improved print styles for (code) annotations
+- Improved customizability of navigation tabs
+- Improved interop of plugins with external tools like mike
+- Improved interop of blog plugin with awesome pages plugin
+- Improved header partial by moving buttons into separate partials
+- Improved clarity of `site_url` warning in social plugin
+- Improved blog plugin to automatically setup directory structure
+- Switched info plugin to `importlib` to mitigate deprecations 
+- Automatically download ResizeObserver polyfill when necessary
+- Automatically add iframe-worker polyfill when necessary in offline plugin
+- Automatically focus and bring up keyboard on touch devices
+- Updated Serbo-Croatian translations
+- Updated MkDocs to 1.5.2
+
+__Removals__
+
+- Removed Universal Analytics integration
+- Removed ancient polyfills to reduce size of bundled JavaScript by 20%
+- Removed necessity for `Array.flat` and `Array.flatMap` polyfill
+- Removed announcement bar button when JavaScript is not available
+
+__Fixes__
+
+- Fixed rendering of tags when announcement bar is present
+- Fixed tags plugin rendering pages excluded by other plugins
+- Fixed #5132: Blog plugin requires `nav` entry in `mkdocs.yml`
+- Fixed #5599: Insufficient contrast for default link color
+- Fixed #5715: Blog plugin missing integrated table of contents in pagination
+- Fixed #5806: Version selector not hoverable on some Android devices
+- Fixed #5826: Blog post drafts with tags show up in tags index
+
+### 9.1.21 <small>July 27, 2023</small> { id="9.1.21" }
+
+- Fixed MkDocs 1.4 compat issue in social plugin (9.1.20 regression)
+
+### 9.1.20 <small>July 27, 2023</small> { id="9.1.20" }
+
+- Updated Sanskrit translations
+- Fixed deprecation warnings for social plugin
+
 ### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
 
 - Added support for MkDocs 1.5+

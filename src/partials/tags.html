@@ -26,28 +26,27 @@
 {% endif %}
 
 <!-- Tags -->
-{% if tags %}
-  <nav class="md-tags" {{ hidden }}>
-    {% for tag in tags %}
-      {% if config.extra.tags %}
-        {% set icon = " md-tag-icon" %}
-        {% if tag.type %}
-          {% set icon = icon ~ " md-tag--" ~ tag.type %}
-        {% endif %}
+<nav class="md-tags" {{ hidden }}>
+  {% for tag in tags %}
+    {% set icon = "" %}
+    {% if config.extra.tags %}
+      {% set icon = " md-tag-icon" %}
+      {% if tag.type %}
+        {% set icon = icon ~ " md-tag--" ~ tag.type %}
       {% endif %}
+    {% endif %}
 
-      <!-- Render tag with link -->
-      {% if tag.url %}
-        <a href="{{ tag.url | url }}" class="md-tag{{ icon }}">
-          {{- tag.name -}}
-        </a>
+    <!-- Render tag with link -->
+    {% if tag.url %}
+      <a href="{{ tag.url | url }}" class="md-tag{{ icon }}">
+        {{- tag.name -}}
+      </a>
 
-      <!-- Render tag without link -->
-      {% else %}
-        <span class="md-tag{{ icon }}">
-          {{- tag.name -}}
-        </span>
-      {% endif %}
-    {% endfor %}
-  </nav>
-{% endif %}
+    <!-- Render tag without link -->
+    {% else %}
+      <span class="md-tag{{ icon }}">
+        {{- tag.name -}}
+      </span>
+    {% endif %}
+  {% endfor %}
+</nav>

@@ -72,11 +72,17 @@ $admonitions: (
     border: px2rem(1px) solid $clr-blue-a200;
     border-radius: px2rem(4px);
     box-shadow: var(--md-shadow-z1);
+    transition: box-shadow 125ms;
     page-break-inside: avoid;
 
     // [print]: Omit shadow as it may lead to rendering errors
     @media print {
       box-shadow: none;
+    }
+
+    // Admonition on focus
+    &:focus-within {
+      box-shadow: 0 0 0 px2rem(4px) color.adjust($clr-blue-a200, $alpha: -0.9);
     }
 
     // Hack: Chrome exhibits a weird issue where it will set nested elements to
@@ -164,6 +170,11 @@ $admonitions: (
   // Admonition flavour
   .md-typeset .admonition.#{$name} {
     border-color: $tint;
+
+    // Admonition on focus
+    &:focus-within {
+      box-shadow: 0 0 0 px2rem(4px) color.adjust($tint, $alpha: -0.9);
+    }
   }
 
   // Admonition flavour title

@@ -56,7 +56,7 @@ just delete and recreate the environment. It's trivial to set up:
 
 Following the instructions below, you will set up a skeleton project to create
 a reproduction. As mentioned above, we recommend using a [virtual environment],
-so create a new folder in your working directory and a a new virtual environment
+so create a new folder in your working directory and a new virtual environment
 inside it. Next:
 
 1.  As mentioned in our [bug reporting guide], ensure that you're running the
@@ -93,7 +93,7 @@ inside it. Next:
     non-essential lines and files.
 
   [bug reporting guide]: ../contributing/reporting-a-bug.md#upgrade-to-latest-version
-  [minimal configuration]: ../../creating-your-site/#minimal-configuration
+  [minimal configuration]: ../creating-your-site.md#minimal-configuration
 
 ### Creating a .zip file
 

@@ -9,7 +9,138 @@ further useful automatic optimization techniques.
 
 ## Configuration
 
-### Built-in optimize plugin :material-alert-decagram:{ .mdx-pulse title="Added on January 21, 2023" }
+### Built-in projects plugin :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
+
+[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
+[:octicons-tag-24: insiders-4.38.0][Insiders] ·
+:octicons-cpu-24: Plugin ·
+:octicons-beaker-24: Experimental
+
+The built-in projects plugin allows to split your documentation into multiple
+distinct MkDocs projects, __build them concurrently__ and
+__serve them together__. Add the following to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - projects
+```
+
+Next, create a folder called `projects` in your root directory which will
+contain all projects. For example, if we want to build a project with two
+additional languages, we can use:
+
+``` { .sh .no-copy }
+.
+├─ projects/
+│  ├─ de/
+│  │  ├─ docs/
+│  │  └─ mkdocs.yml
+│  └─ fr/
+│     ├─ docs/
+│     └─ mkdocs.yml
+└─ mkdocs.yml
+```
+
+If you now invoke `mkdocs serve` and change a file in one of the projects,
+the projects plugin makes sure that MkDocs will also reload those files. Note
+that the projects are currently entirely separate, which means they will have
+separate search indexes and sitemaps. We're happy to receive feedback on this
+plugin and learn about your requirements to make it better, as we plan to add
+support for merging and hoisting files.
+[Create a discussion to share your thoughts!][discussion]
+
+  [discussion]: https://github.com/squidfunk/mkdocs-material/discussions
+
+??? info "Use cases for the projects plugin"
+
+    Ideal use cases for the projects plugin are:
+
+    - Building a multi-language site
+    - Building a blog alongside your documentation
+    - Splitting large code bases for better performance
+
+    Note that the plugin is currently experimental. We're releasing it early,
+    so that we can improve it together with our users and make it even more
+    powerful as we discover new use cases.
+
+The following configuration options are available:
+
+[`enabled`](#+projects.enabled){ #+projects.enabled }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    the plugin is enabled when building your project. If you want to speed up
+    local builds, you can use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - projects:
+          enabled: !ENV [CI, false]
+    ```
+
+[`concurrency`](#+projects.concurrency){ #+projects.concurrency }
+
+:   :octicons-milestone-24: Default: _number of CPUs_ – This option specifies
+    how many CPUs the plugin is allowed to use when building projects.
+    With more CPUs, the plugin can do more work in the same time, thus complete
+    optimization faster. Concurrent processing can be disabled with:
+
+    ``` yaml
+    plugins:
+      - projects:
+          concurrency: 1
+    ```
+
+#### Projects
+
+The following configuration options are available for projects:
+
+[`projects`](#+projects.projects){ #+projects.projects }
+
+:   :octicons-milestone-24: Default: `true` – This option specifies whether
+    to build nested projects. If you want to switch the plugin off, e.g.
+    for local builds, you can use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - projects:
+          projects: !ENV [CI, false]
+    ```
+
+[`projects_dir`](#+projects.projects_dir){ #+projects.projects_dir }
+
+:   :octicons-milestone-24: Default: `projects` – This option specifies the
+    name of the folder the plugin expects your projects to be stored. While it's
+    usually not necessary to change this option, change it with:
+
+    ``` yaml
+    plugins:
+      - projects:
+          projects_dir: path/to/folder
+    ```
+
+#### Hoisting
+
+The following configuration options are available for hoisting:
+
+[`hoisting`](#+projects.hoisting){ #+projects.hoisting }
+
+:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
+    Default: `true` – This option specifies whether the plugin should hoist all 
+    themes files to the top-level project. If you disable this setting, each
+    project will have a copy of the themes files, which in general, can be
+    considered redundant:
+
+    ``` yaml
+    plugins:
+      - projects:
+          hoisting: false
+    ```
+
+    It's generally advisable to enable hoisting, as it leads to faster
+    deployments and faster loading of your project's sites, because the files
+    are the same for all projects.
+
+### Built-in optimize plugin
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.29.0 --> ·

@@ -66,6 +66,20 @@ plugins:
 > generates images much more efficiently in parallel and allows to build
 > entirely [custom layouts].
 
+!!! info "The [`site_url`][site_url] setting must be set"
+
+    Note that you must set [`site_url`][site_url] when using the social plugin,
+    or the generated cards will not be correctly linked. Social media services
+    like Twitter and Facebook demand that social previews point to an absolute
+    URL, which the plugin can only compute when [`site_url`][site_url] is set.
+    Example:
+
+    ``` yaml
+    site_url: https://example.com
+    ```
+
+  [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
+
 The following configuration options are available:
 
 <!-- md:option social.enabled -->
@@ -316,7 +330,47 @@ The following configuration options are available for card generation:
                 font_family: Ubuntu
         ```
 
-<!-- md:option privacy.cards_include -->
+    [`title`](#+social.cards_layout_options.title){ #+social.cards_layout_options.title }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
+        title, which takes precedence over `page.title` and `page.meta.title`:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                title: Social card title
+        ```
+
+    [`description`](#+social.cards_layout_options.description){ #+social.cards_layout_options.description }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
+        description, which takes precedence over `site_description` and
+        `page.meta.description`:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                description: Social card description
+        ```
+
+    [`logo`](#+social.cards_layout_options.logo){ #+social.cards_layout_options.logo }
+
+    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the logo used as
+        part of the social card, overriding the `theme.logo` or
+        `theme.icon.logo` settings which are used as defaults:
+
+        ``` yaml
+        plugins:
+          - social:
+              cards_layout_options:
+                logo: layouts/logo.png
+        ```
+
+        The path of the image must be defined relative to the project root.
+
+[`cards_include`](#+privacy.cards_include){ #+privacy.cards_include }
 
 :   <!-- md:version insiders-4.35.0 --> · :octicons-milestone-24:
     Default: _none_ – This option allows to only generate social cards for
@@ -330,7 +384,7 @@ The following configuration options are available for card generation:
             - blog/*
     ```
 
-<!-- md:option privacy.cards_exclude -->
+<!-- md:option social.cards_exclude -->
 
 :   <!-- md:default _none_ --> This option allows to exclude
     certain subsections of your documentation from generating social cards:
@@ -491,15 +545,20 @@ The following configuration options are available for caching:
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
+<<<<<<< HEAD
 you can set the front matter `title` and `description` properties, which take
 precedence over the default values.
+=======
+you can set the front matter [`title`][Changing the title] and
+[`description`][Changing the description] properties, which take precedence over
+the defaults, or use:
+>>>>>>> @{-1}
 
-- [Changing the title]
-- [Changing the description]
+- [`cards_layout_options.title`](#+social.cards_layout_options.title)
+- [`cards_layout_options.description`](#+social.cards_layout_options.description)
 
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description
-
 
 ### Choosing a font
 

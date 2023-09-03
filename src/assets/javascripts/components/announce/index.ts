@@ -82,6 +82,13 @@ export function mountAnnounce(
   if (!feature("announce.dismiss") || !el.childElementCount)
     return EMPTY
 
+  /* Support instant loading - see https://t.ly/3FTme */
+  if (!el.hidden) {
+    const content = getElement(".md-typeset", el)
+    if (__md_hash(content.innerHTML) === __md_get("__announce"))
+      el.hidden = true
+  }
+
   /* Mount component on subscription */
   return defer(() => {
     const push$ = new Subject<Announce>()

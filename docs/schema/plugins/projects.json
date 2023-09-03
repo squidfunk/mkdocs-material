@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in projects plugin",
+  "oneOf": [
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-projects-plugin",
+      "enum": [
+        "projects"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "projects": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-projects-plugin",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "concurrency": {
+              "title": "Concurrency (number of CPUs)",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.concurrency",
+              "type": "number"
+            },
+            "projects": {
+              "title": "Enable projects",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.projects",
+              "type": "boolean",
+              "default": true
+            },
+            "projects_dir": {
+              "title": "Projects directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.projects_dir",
+              "type": "string",
+              "default": "projects"
+            },
+            "hosting": {
+              "title": "Enable hoisting",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.hoisting",
+              "type": "boolean",
+              "default": true
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

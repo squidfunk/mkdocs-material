@@ -158,7 +158,7 @@ theme:
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
-#### Custom selectors :material-alert-decagram:{ .mdx-pulse title="Added on February 19, 2023" }
+#### Custom selectors
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.32.0 --> ·
