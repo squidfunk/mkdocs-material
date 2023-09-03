@@ -143,9 +143,12 @@ class Excerpt(Page):
         self.file = copy(post.file)
         self.post = post
 
-        # Initialize configuration, contents and metadata
+        # Set canonical URL, or we can't print excerpts when debugging the
+        # blog plugin, as the `abs_url` property would be missing
+        self._set_canonical_url(config.site_url)
+
+        # Initialize configuration and metadata
         self.config   = post.config
-        self.markdown = post.markdown
         self.meta     = post.meta
 
         # Initialize authors and categories - note that views usually contain
@@ -188,6 +191,12 @@ class Excerpt(Page):
         at = self.md.treeprocessors.get_index_for_name("excerpt")
         processor: ExcerptTreeprocessor = self.md.treeprocessors[at]
         processor.base = page
+
+        # Ensure that the excerpt includes a title in its content, since the
+        # title is linked to the post when rendering - see https://t.ly/5Gg2F
+        self.markdown = self.post.markdown
+        if not self.post._title_from_render:
+            self.markdown = "\n\n".join([f"# {self.post.title}", self.markdown])
 
         # Convert Markdown to HTML and extract excerpt
         self.content = self.md.convert(self.markdown)
