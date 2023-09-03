@@ -223,7 +223,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if self.config.pagination:
             for view in self._resolve_views(self.blog):
                 for at in range(1, len(view.pages)):
-                    self._attach_at(view.pages[at - 1], view, view.pages[at])
+                    self._attach_at(view.parent, view, view.pages[at])
 
                     # Replace source file system path
                     view.pages[at].file.src_uri      = view.file.src_uri
@@ -245,19 +245,18 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 return
 
             # We set the contents of the view to its title if pagination should
-            # not keep the content of the original view on paginaged views
+            # not keep the content of the original view on paginated views
             if not self.config.pagination_keep_content:
                 view = self._resolve_original(page)
                 if view in self._resolve_views(self.blog):
-                    assert isinstance(page, View)
-                    if page.pages.index(page):
-                        main = page.parent
 
-                        # We need to use the rendered title of the original view
-                        # if the author set the title in the page's contents, or
-                        # it would be overridden with the one set in mkdocs.yml,
-                        # which would result in inconsistent headings
-                        name = main._title_from_render or main.title
+                    # If the current view is paginated, use the rendered title
+                    # of the original view in case the author set the title in
+                    # the page's contents, or it would be overridden with the
+                    # one set in mkdocs.yml, leading to inconsistent headings
+                    assert isinstance(view, View)
+                    if view != page:
+                        name = view._title_from_render or view.title
                         return f"# {name}"
 
             # Nothing more to be done for views
@@ -340,23 +339,12 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if view not in self._resolve_views(self.blog):
             return
 
-        # Retrieve parent view or section
-        assert isinstance(page, View)
-        main = page.parent
-
-        # If this page is a view, and the parent page is a view as well, we got
-        # a paginated view and need to replace the parent with the current view.
-        # Paginated views are always rendered at the end of the build, which is
-        # why we can safely mutate the navigation at this point
-        if isinstance(main, View):
-            page.parent = main.parent
-
-            # Replace view in navigation and rewire it - the current view in the
-            # navigation becomes the main view, thus the entire chain moves one
-            # level up. It's essential that the rendering order is linear, or
-            # else we might end up with a broken navigation.
-            items = self._resolve_siblings(main, nav)
-            items[items.index(main)] = page
+        # If the current view is paginated, replace and rewire it - the current
+        # view temporarily becomes the main view, and is reset after rendering
+        assert isinstance(view, View)
+        if view != page:
+            items = self._resolve_siblings(view, nav)
+            items[items.index(view)] = page
 
         # Render excerpts and prepare pagination
         posts, pagination = self._render(page)
@@ -372,6 +360,26 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Assign posts and pagination to context
         context["posts"]      = posts
         context["pagination"] = pager if pagination else None
+
+    # After rendering a paginated view, replace the URL of the paginated view
+    # with the URL of the original view - since we need to replace the original
+    # view with a paginated view in `on_page_context` for correct resolution of
+    # the active state, we must fix the paginated view URLs after rendering
+    def on_post_page(self, output, *, page, config):
+        if not self.config.enabled:
+            return
+
+        # Skip if page is not a view managed by this instance - this plugin has
+        # support for multiple instances, which is why this check is necessary
+        view = self._resolve_original(page)
+        if view not in self._resolve_views(self.blog):
+            return
+
+        # If the current view is paginated, replace the URL of the paginated
+        # view with the URL of the original view - see https://t.ly/Yeh-P
+        assert isinstance(view, View)
+        if view != page:
+            page.file.url = view.file.url
 
     # Remove temporary directory on shutdown
     def on_shutdown(self):
