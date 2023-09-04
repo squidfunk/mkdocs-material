@@ -1383,8 +1383,8 @@ readtime: 15
 <!-- md:flag metadata -->
 
 Use this property to explicitly set the slug of a post. By default, the slug of
-a post is automatically computed from the configured
-[`post_slugify`][config.post_slugify] function, which you can override with:
+a post is automatically computed by the [`post_slugify`][config.post_slugify]
+function from the post's title, which you can override with:
 
 ``` yaml
 ---
