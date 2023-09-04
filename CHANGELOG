@@ -1,3 +1,16 @@
+mkdocs-material-9.2.8+insiders-4.40.4 (2023-09-04)
+
+  * Fixed privacy plugin choking on boolean HTML5 attributes
+  * Fixed wrapping of inline code blocks in typeset table of contents
+  * Fixed blog plugin error when running under dirty reload
+
+mkdocs-material-9.2.8 (2023-09-04)
+
+  * Updated Italian and Russian translations
+  * Fixed #5952: Combining blog and tags plugin leads to wrong links
+  * Fixed #5951: Blog plugin ignores post title in metadata
+  * Fixed #5949: Blog plugin ignores post linked in nav
+
 mkdocs-material-9-2.7+insiders-4.40.3 (2023-09-02)
 
   * Fixed #5946: Docker image missing pngquant for optimize plugin
