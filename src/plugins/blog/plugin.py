@@ -34,7 +34,7 @@ from mkdocs.structure import StructureItem
 from mkdocs.structure.files import File, Files, InclusionLevel
 from mkdocs.structure.nav import Navigation, Section
 from mkdocs.structure.pages import Page
-from mkdocs.utils import get_relative_url
+from mkdocs.utils import copy_file, get_relative_url
 from paginate import Page as Pagination
 from shutil import rmtree
 from tempfile import mkdtemp
@@ -224,10 +224,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             for view in self._resolve_views(self.blog):
                 for at in range(1, len(view.pages)):
                     self._attach_at(view.parent, view, view.pages[at])
-
-                    # Replace source file system path
-                    view.pages[at].file.src_uri      = view.file.src_uri
-                    view.pages[at].file.abs_src_path = view.file.abs_src_path
 
     # Prepare post for rendering (run later) - allow other plugins to alter
     # the contents or metadata of a post before it is rendered and make sure
@@ -639,6 +635,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             if not file or self.temp_dir not in file.abs_src_path:
                 file = self._path_to_file(path, config)
                 files.append(file)
+
+                # Copy file to temporary directory
+                copy_file(view.file.abs_src_path, file.abs_src_path)
 
             # Create view and attach to previous page
             if not isinstance(file.page, View):
