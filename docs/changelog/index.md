@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.2.8 <small>September 4, 2023</small> { id="9.2.8" }
+
+- Updated Italian and Russian translations
+- Fixed #5952: Combining blog and tags plugin leads to wrong links
+- Fixed #5951: Blog plugin ignores post title in metadata
+- Fixed #5949: Blog plugin ignores post linked in nav
+
 ### 9.2.7 <small>September 2, 2023</small> { id="9.2.7" }
 
 - Switched dependencies to compatible release clauses
