@@ -27,7 +27,7 @@ pygments~=2.16
 pymdown-extensions~=10.2
 
 # Requirements for plugins
-babel~=2.10
+babel~=2.12
 colorama~=0.4
 paginate~=0.5
 regex~=2022.4
