@@ -343,8 +343,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # view temporarily becomes the main view, and is reset after rendering
         assert isinstance(view, View)
         if view != page:
+            prev = view.pages[view.pages.index(page) - 1]
+
+            # Replace previous page with current page
             items = self._resolve_siblings(view, nav)
-            items[items.index(view)] = page
+            items[items.index(prev)] = page
 
         # Render excerpts and prepare pagination
         posts, pagination = self._render(page)
