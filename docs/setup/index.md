@@ -19,6 +19,7 @@ setting up site search, and more.
 - :material-page-layout-footer: __[Footer]__ – Add links to your social media profiles or websites in the footer 
 - :material-tab-search: __[Search]__ – Set up and configure search, running entirely in the user's browser
 - :material-tag-plus-outline: __[Tags]__ – Categorize your pages with tags and group related pages
+- :material-view-module-outline: __[Scope]__ – Set up preferences scope for multi-site project
 
 </div>
 
@@ -28,6 +29,7 @@ setting up site search, and more.
   [Footer]: setting-up-the-footer.md
   [Search]: setting-up-site-search.md
   [Tags]: setting-up-tags.md
+  [Scope]: setting-up-site-scope.md
 
 
 ## Appearance
