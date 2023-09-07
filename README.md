@@ -251,6 +251,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 ### ... and successful Open Source projects
 
 [Arduino](https://arduino.github.io/arduino-cli/),
+[Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [CentOS](https://docs.infra.centos.org/),
