@@ -270,7 +270,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
-[Trivy](https://aquasecurity.github.io/trivy/)
+[Trivy](https://aquasecurity.github.io/trivy/),
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
 [WebKit](https://docs.webkit.org/),
