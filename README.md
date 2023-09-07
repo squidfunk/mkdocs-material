@@ -262,7 +262,6 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
-[MindsDB](https://docs.mindsdb.com/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
