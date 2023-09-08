@@ -267,6 +267,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
+[PyPI](https://docs.pypi.org/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
 [Trivy](https://aquasecurity.github.io/trivy/),
