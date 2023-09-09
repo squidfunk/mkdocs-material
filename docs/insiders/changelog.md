@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.40.4 <small>September 4, 2023</small> { id="4.40.4" }
+
+- Fixed privacy plugin choking on boolean HTML5 attributes
+- Fixed wrapping of inline code blocks in typeset table of contents
+- Fixed blog plugin error when running under dirty reload
+
 ### 4.40.3 <small>September 2, 2023</small> { id="4.40.3" }
 
 - Fixed #5946: Docker image missing pngquant for optimize plugin

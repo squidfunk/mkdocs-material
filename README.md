@@ -251,6 +251,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 ### ... and successful Open Source projects
 
 [Arduino](https://arduino.github.io/arduino-cli/),
+[Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [CentOS](https://docs.infra.centos.org/),
@@ -261,15 +262,15 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
-[MindsDB](https://docs.mindsdb.com/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
+[PyPI](https://docs.pypi.org/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
-[Trivy](https://github.com/aquasecurity/trivy)
+[Trivy](https://aquasecurity.github.io/trivy/),
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
 [WebKit](https://docs.webkit.org/),

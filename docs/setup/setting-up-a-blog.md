@@ -385,6 +385,19 @@ linked with their titles.
   [built-in tags plugin]: setting-up-tags.md#built-in-tags-plugin
   [tags index]: setting-up-tags.md#adding-a-tags-index
 
+#### Changing the slug
+
+Slugs are the shortened description of your post used in the URL. They are automatically generated, but you can specify a custom slug for a page:
+
+``` yaml
+---
+slug: hello-world
+---
+
+# Hello there world!
+...
+```
+
 #### Adding related links
 
 <!-- md:sponsors --> ·
