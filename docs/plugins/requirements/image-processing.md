@@ -40,9 +40,8 @@ Material for MkDocs makes use of for generating [social cards] and performing
 === ":fontawesome-brands-windows: Windows"
 
     As stated in the [installation guide], the easiest way to get up and running
-    with the [Cairo Graphics] library on Windows is by installing [GTK+], since
-    it has Cairo as a dependency. You can also download and install a
-    precompiled [GTK runtime].
+    with the [Cairo Graphics] library on Windows is by installing [GTK+]. You
+    can also download a precompiled [GTK runtime].
 
 === ":material-linux: Linux"
 

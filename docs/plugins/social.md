@@ -6,52 +6,50 @@ icon: material/share-variant
 
 The social plugin automatically and intelligently generates beautiful and
 customizable social cards for each page of your project, rendering as preview
-images whenever you or somebody else shares a link to your documentation on
-social media.
+images in different [layouts][default layouts] whenever you or somebody else
+share a link to your project on social media.
 
 ## Objective
 
 ### How it works
 
-What's particularly convenient about the plugin is that it automatically
-generates a social card for each page when [building your project], no external
-services involved. The generated cards are stored in the
-[`site` directory][mkdocs.site_dir] and can be self-hosted like all other
-images.
+This plugin automatically generates a customizable social card for each page
+of your project, which appears as a preview image when sharing a link to your
+project on social media, without the use of external services and just
+[a single line of configuration][configuration].
 
-Social cards are defined in a custom syntax
+With the use of an efficient [image processing] library, the plugin allows to
+define [custom layouts] for social cards, which can be adapted to match your
+project's style and branding. While it would technically be much simpler to
+generate social cards by using a web browser and an automation framework like
+[Puppeteer][^1], it would add further liabilities to your toolchain, with the
+potential to make build pipelines more complex, much more resource intense,
+and significantly slower.
 
-TODO
+  [^1]:
+    [GitHub wrote in their blog] that they use [Puppeteer] to generate social
+    card images for repositories, issues, commits, discussions, and basically
+    everything else that appear as preview images when shared on social media.
 
-While it would technically be simpler to generate
-social cards using a web browser and an automation framework like
-[Puppeteer], it would add further liabilities to your toolchain, with the
-potential to make build pipelines more complex and resource intense.
+The generated social cards are [cached] and stored in the
+[`site` directory][mkdocs.site_dir], and thus self-hosted, ensuring that your
+project doesn't depend on external services. In order to generate social cards
+images, a few [dependencies] need to be available on your system.
 
-For this reason, Material for MkDocs again follows its core principle of
-making things as simple and powerful as possible, providing an easy-to-use
-framework for building [custom layouts] using Python image processing
-libraries.
-
+  [configuration]: #configuration
+  [Image processing]: requirements/image-processing.md
+  [custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Puppeteer]: https://github.com/puppeteer/puppeteer
+  [GitHub wrote in their blog]: https://github.blog/2021-06-22-framework-building-open-graph-images/
+  [cached]: #caching
+  [dependencies]: #configuration
 
 ### When to use it
 
-Material for MkDocs can automatically create beautiful social cards for your
-documentation, which appear as preview images on social media platforms. You
-can select from several [pre-designed layouts][default layouts] or create
-custom layouts to match your project's style and branding.
-
-  [default layouts]: #cards_layout
-
-## Dependencies
-
-The built-in social plugin is included with Material for MkDocs and doesn't
-need to be installed. However, in order to automatically create images, it's
-necessary to install the dependencies for [image processing][^1], if they're
-not already available on your system.
-
-  [image processing]: requirements/image-processing.md
+There's one canonical case when we don't recommend to use the plugin: when you
+build offline-capable documentation to offer it as a download. Otherwise, it
+always makes sense to enable the plugin, as links to your documentation shared
+on social media will appear much more appealing.
 
 ## Configuration
 
@@ -67,18 +65,11 @@ plugins:
   - social
 ```
 
-The plugin comes with many options and the ability to create [custom layouts].
-
-!!! info "Differences between [Insiders] and Community Edition"
-
-    <!-- md:version insiders-4.33.0 --> ships an entire rewrite of the built-in
-    social plugin, adding support for [custom layouts].
-
-- supports multi instance
-- insiders has new features
-- explain what a layout is
-- Pillow, the imaging library that is used to generate images, understands
-several formats for color, including...
+The built-in social plugin is included with Material for MkDocs and doesn't
+need to be installed. However, in order to generate social card images, it's
+necessary to install the dependencies for [image processing], if they're
+not already available on your system. The linked guide includes instructions
+for several operating systems and mentions some alternative environments.
 
   [social]: social.md
   [Insiders]: ../insiders/index.md
@@ -89,7 +80,7 @@ The following settings are available:
 
 ---
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 <!-- md:version 8.5.0 --> ·
 <!-- md:default `true` -->
@@ -110,7 +101,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 ---
 
-#### `concurrency`
+#### <!-- md:setting config.concurrency -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -131,15 +122,15 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 ### Caching
 
 The plugin implements an intelligent caching mechanism, ensuring that social
-cards are only re-generated when they're not already contained in the cache or
-their contents change. If any of the variables used in a layout changes, the
+cards are only re-generated when their contents change or they're not already
+contained in the cache. If any of the variables used in a layout changes, the
 plugin detects it and re-generates the social card.
 
 The following settings are available for caching:
 
 ---
 
-#### `cache`
+#### <!-- md:setting config.cache -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -158,7 +149,7 @@ plugins:
 
 ---
 
-#### `cache_dir`
+#### <!-- md:setting config.cache_dir -->
 
 <!-- md:version 8.5.0 --> ·
 <!-- md:default `.cache/plugin/social` -->
@@ -170,19 +161,78 @@ cached. If you want to change it, use:
 ``` yaml
 plugins:
   - social:
-      cache_dir: path/to/folder
+      cache_dir: my/custom/dir
 ```
 
-If you're using [multiple instances] of the plugin, it can be a good idea to
+If you're using multiple instances of the plugin, it can be a good idea to
 set different cache directories for both instances, so that they don't interfere
 with each other.
 
-  [multiple instances]: #
-
 ### Logging
 
-#### `log`
-#### `log_level`
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.40.2 --> ·
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should only log errors when
+generating social cards without terminating the build, e.g., invalid references
+to icons. To terminate the build, use:
+
+``` yaml
+plugins:
+  - social:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.40.2 --> ·
+<!-- md:default `warn` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - social:
+          log_level: warn
+    ```
+
+    Errors are reported as warnings, terminating the build in
+    [`strict`][mkdocs.strict] mode.
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - social:
+          log_level: info
+    ```
+
+    Errors are only reported as informational messages.
+
+=== "`ignore`"
+
+    ``` yaml
+    plugins:
+      - social:
+          log_level: ignore
+    ```
+
+    Errors are only reported when using the `--verbose` flag.
+
 
 ### Social cards
 
@@ -190,15 +240,15 @@ The following settings are available for social card generation:
 
 ---
 
-#### `cards`
+#### <!-- md:setting config.cards -->
 
 <!-- md:version 8.5.0 --> ·
 <!-- md:default `true` -->
 
 Use this setting to enable or disable social card generation. Currently, the
 plugin's sole purpose is to generate social cards, so it's equivalent to the
-[`enabled`][enabled] setting, but in the future, other features might be added.
-If you want to disable social card generation, use:
+[`enabled`][config.enabled] setting, but in the future, other features might be
+added. If you want to disable social card generation, use:
 
 ``` yaml
 plugins:
@@ -206,11 +256,9 @@ plugins:
       cards: false
 ```
 
-  [enabled]: #enabled
-
 ---
 
-#### `cards_dir`
+#### <!-- md:setting config.cards_dir -->
 
 <!-- md:version 8.5.0 --> ·
 <!-- md:default `assets/images/social` -->
@@ -222,15 +270,15 @@ social cards are stored. If you want to change it, use:
 ``` yaml
 plugins:
   - social:
-      cards_dir: path/to/folder
+      cards_dir: my/custom/dir
 ```
 
-This configuration copies the generated images to `path/to/folder` in the
+This configuration stores the generated images at `my/custom/dir` in the
 [`site` directory][mkdocs.site_dir].
 
 ---
 
-#### `cards_layout_dir`
+#### <!-- md:setting config.cards_layout_dir -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -248,7 +296,7 @@ plugins:
 
 The provided path is resolved from the project directory.
 
-!!! tip "Where to store custom layouts?"
+!!! tip "Where to store custom layouts"
 
     Our recommendation is to locate the folder outside of the
     [`docs` directory][mkdocs.docs_dir], to make sure that your [custom layouts]
@@ -265,19 +313,17 @@ The provided path is resolved from the project directory.
     └─ mkdocs.yml
     ```
 
-  [custom layouts]: ../setup/setting-up-social-cards.md#customization
-
 ---
 
-#### `cards_layout`
+#### <!-- md:setting config.cards_layout -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
 <!-- md:default `default` -->
 
-The plugin includes several layouts for social cards, all of which are prefixed
-with `default`. If you've created a [custom social card layout][custom layouts],
-you can instruct the plugin to use it with:
+The plugin ships a growing list of [`default` layouts][default layouts] for
+social cards. If you've created a [custom social card layout][custom layouts],
+you can instruct the plugin to use it exactly as one of the included layouts:
 
 ``` yaml
 plugins:
@@ -285,64 +331,72 @@ plugins:
       cards_layout: my-custom-layout
 ```
 
-By default, the plugin will load your [custom layouts] from a folder named
-`layouts` in your project directory. If your layout is called `my-custom-layout`,
-the directory layout should be like:
+The provided path is resolved from the[
+`layouts` directory][config.cards_layout_dir].
 
-``` { .sh .no-copy }
-.
-├─ docs/
-│  └─ *.md
-├─ layouts/
-│  └─ my-custom-layout.yml
-└─ mkdocs.yml
-```
+!!! tip "How custom layouts are resolved"
 
-The folder can be changed via [`cards_layout_dir`][cards_layout_dir] to any
-folder or subfolder.
+    By default, the plugin will load your [custom layouts] from a folder named
+    `layouts` in your project directory. If your layout is called
+    `my-custom-layout`, the directory structure must adhere to:
 
-  [cards_layout_dir]: #cards_layout_dir
+    ``` { .sh .no-copy }
+    .
+    ├─ docs/
+    │  └─ *.md
+    ├─ layouts/
+    │  └─ my-custom-layout.yml
+    └─ mkdocs.yml
+    ```
 
 ---
 
-#### `cards_layout_options`
+#### <!-- md:setting config.cards_layout_options -->
 
 <!-- md:version 9.1.10 --> ·
 <!-- md:default none -->
 
 Use this setting to set options for the layout specified via
-[`cards_layout`][cards_layout] (if the layout supports it), which allows for
-making layouts easily and entirely configurable:
+[`cards_layout`][config.cards_layout] (if the layout supports it), which allows
+for making layouts easily and entirely configurable:
 
 ``` yaml
 plugins:
   - social:
       cards_layout_options:
-        <key>: <value>
+        <option>: <value>
 ```
 
 When creating a [custom layout][custom layouts], you are completely free in
-defining which parts of your layout can be configured. All
-[`default`][default layouts] layouts included with the plugin support the
+defining which parts of your layout can be configured. The
+[`default` layouts][default layouts] included with the plugin support the
 following options:
 
-- `background_color`
-- `background_image`
-- `color`
-- `font_family`
+<div class="mdx-columns" markdown>
 
-  [cards_layout]: #cards_layout
+- [`background_color`][option.background_color]
+- [`background_image`][option.background_image]
+- [`color`][option.color]
+- [`font_family`][option.font_family]
+- [`logo`][option.logo]
+- [`title`][option.title]
+- [`description`][option.description]
+
+</div>
+
+
+  [default layouts]: #layouts
 
 ---
 
-#### `cards_include`
+#### <!-- md:setting config.cards_include -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.35.0 --> ·
 <!-- md:default none -->
 
 Use this setting to enable social card generation for subsections of your
-project, e.g., when using [multiple instances] of the plugin to generate
+project, e.g., when using multiple instances of the plugin to generate
 different social cards for different subsections:
 
 ``` yaml
@@ -358,32 +412,26 @@ contained in the `blog` folder and its subfolders inside your [`docs` directory]
 
 ---
 
-#### `cards_exclude`
+#### <!-- md:setting config.cards_exclude -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.35.0 --> ·
 <!-- md:default none -->
 
 Use this setting to disable social card generation for subsections of your
-project, e.g., when using [multiple instances] of the plugin to generate
+project, e.g., when using multiple instances of the plugin to generate
 different social cards for different subsections:
 
 ``` yaml
 plugins:
   - social:
-      cards_include:
+      cards_exclude:
         - changelog/*.md
 ```
 
 This configuration will disable social card generation for all pages that are
 contained in the `changelog` folder inside your
 [`docs` directory][mkdocs.docs_dir].
-
-  [primary color]: ../setup/changing-the-colors.md#primary-color
-  [accent color]: ../setup/changing-the-colors.md#accent-color
-  [font]: ../setup/changing-the-fonts.md#regular-font
-  [Google Fonts]: https://fonts.google.com/
-  [CSS color keyword]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
 
 ### Debugging
 
@@ -395,7 +443,7 @@ The following settings are available for debugging:
 
 ---
 
-#### `debug`
+#### <!-- md:setting config.debug -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -414,15 +462,15 @@ plugins:
 
 ---
 
-#### `debug_on_build`
+#### <!-- md:setting config.debug_on_build -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.34.1 --> ·
 <!-- md:default `false` -->
 
-By default, the plugin automatically disables [`debug`][debug] mode when
+By default, the plugin automatically disables [`debug`][config.debug] mode when
 [building your project], so you can be sure that debug overlays are never
-deployed to production. If you want to change it, use:
+deployed to production. If you want to change that, use:
 
 ``` yaml
 plugins:
@@ -433,19 +481,17 @@ plugins:
 It's normally not necessary to change this setting, as it's just intended to
 be a safety net.
 
-  [debug]: #debug
-
 ---
 
-#### `debug_grid`
+#### <!-- md:setting config.debug_grid -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
 <!-- md:default `true` -->
 
-When [`debug`][debug] mode is enabled, this setting specifies whether a dot grid
-is rendered on top of all layers, to allow for better alignment. If you want to
-switch the grid off, use:
+When [`debug`][config.debug] mode is enabled, this setting specifies whether a
+dot grid is rendered on top of all layers, to allow for better alignment. If you
+want to switch the grid off, use:
 
 ``` yaml
 plugins:
@@ -455,7 +501,7 @@ plugins:
 
 ---
 
-#### `debug_grid_step`
+#### <!-- md:setting config.debug_grid_step -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -473,7 +519,7 @@ plugins:
 
 ---
 
-#### `debug_color`
+#### <!-- md:setting config.debug_color -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.33.0 --> ·
@@ -489,88 +535,34 @@ plugins:
       debug_color: yellow
 ```
 
-It might be necessary to change this setting if the dot grid or the outlines
-are hard to distinguish.
-
-### Deprecations
-
-The following settings have been available, but are now deprecated:
-
----
-
-#### `cards_color`
-
-<!-- md:version 8.5.0 --> ·
-<!-- md:flag deprecated use [`cards_layout_options`][cards_layout_options] --> ·
-<!-- md:default [`theme.palette.primary`][primary color] -->
-
-Use this setting to change the background `fill` and foreground `text` colors
-for the [`default`][default layouts] layouts (doesn't apply to
-[custom layouts]) that are included with the plugin:
-
-=== "Old configuration"
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_color:
-            fill: "#0FF1CE"
-            text: "#FFFFFF"
-    ```
-
-=== "New configuration"
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_layout_options:
-            background_color: "#0FF1CE"
-            color: "#FFFFFF"
-    ```
-
-  [cards_layout_options]: #cards_layout_options
-
----
-
-#### `cards_font`
-
-<!-- md:version 8.5.0 --> ·
-<!-- md:flag deprecated use [`cards_layout_options`][cards_layout_options] --> ·
-<!-- md:default [`theme.font.text`][font] -->
-
-Use this setting to change the font (automatically fetched from [Google Fonts])
-for the [`default`][default layouts] layouts (doesn't apply to
-[custom layouts][custom social card layout]) that are included with the plugin:
-
-``` yaml
-plugins:
-  - social:
-      cards_font: Ubuntu
-```
+In rare cases, it might be necessary to change this setting if the dot grid or
+the outlines are hard to distinguish, as the plugin will automatically adjust
+the color if not explicitly set.
 
 ## Usage
 
 ### Metadata
 
 The plugin allows to override a subset of settings through metadata (front
-matter) in order to customize social card generation for a single page or
+matter) in order to customize social card generation, e.g., to set [options for
+the included default layouts][default layouts] for a single page, or even
 [for an entire subsection] of your project by leveraging the [meta] plugin.
 
-The following settings are available via metadata:
+The following properties are available:
 
   [for an entire subsection]: meta.md#how-it-works
   [meta]: meta.md
 
 ---
 
-#### `cards`
+#### <!-- md:setting meta.social.cards -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:flag metadata --> ·
-<!-- md:flag experimental -->
+<!-- md:default none -->
 
-Override the [`cards`][cards] setting for the given page:
+Override the [`cards`][config.cards] setting for the given page:
 
 ``` yaml
 ---
@@ -582,18 +574,17 @@ social:
 ...
 ```
 
-  [cards]: #cards
-
 ---
 
-#### `cards_layout`
+#### <!-- md:setting meta.social.cards_layout -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:flag metadata --> ·
+<!-- md:default none --> ·
 <!-- md:flag experimental -->
 
-Override the [`cards_layout`][cards_layout] setting for the given page:
+Override the [`cards_layout`][config.cards_layout] setting for the given page:
 
 ``` yaml
 ---
@@ -607,14 +598,15 @@ social:
 
 ---
 
-#### `cards_layout_options`
+#### <!-- md:setting meta.social.cards_layout_options -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:flag metadata --> ·
-<!-- md:flag experimental -->
+<!-- md:default none -->
 
-Override the [`cards_layout_options`][cards_layout_options] setting for the given page:
+Override the [`cards_layout_options`][config.cards_layout_options] setting for
+the given page:
 
 ``` yaml
 ---
@@ -628,4 +620,400 @@ social:
 ...
 ```
 
-Setting an option to `null` resets the option.
+Setting an option to `#!yaml null` resets the option.
+
+### Layouts
+
+While it is possible and simple to build [custom layouts], the plugin ships
+several predefined layouts, all of which are prefixed with `default`. The
+following layouts are included:
+
+=== "`default`"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout: default
+    ```
+
+    <div class="result" markdown>
+
+    ![Layout default]
+
+    This layout sets the following defaults:
+
+    - [`background_color`][option.background_color]
+      – <!-- md:default [`theme.palette.primary`][primary color] -->
+
+    - [`font_family`][option.font_family]
+      – <!-- md:default [`theme.font.text`][font] -->
+
+    </div>
+
+=== "`default/variant`"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout: default/variant
+    ```
+
+    <div class="result" markdown>
+
+    ![Layout default variant]
+
+    This layout includes the [page icon] and sets the following defaults:
+
+    - [`background_color`][option.background_color]
+      – <!-- md:default [`theme.palette.primary`][primary color] -->
+
+    - [`font_family`][option.font_family]
+      – <!-- md:default [`theme.font.text`][font] -->
+
+    </div>
+
+=== "`default/accent`"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout: default/accent
+    ```
+
+    <div class="result" markdown>
+
+    ![Layout default accent]
+
+    This layout sets the following defaults:
+
+    - [`background_color`][option.background_color]
+      – <!-- md:default [`theme.palette.accent`][accent color] -->
+
+    - [`font_family`][option.font_family]
+      – <!-- md:default [`theme.font.text`][font] -->
+
+    </div>
+
+=== "`default/invert`"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout: default/invert
+    ```
+
+    <div class="result" markdown>
+
+    ![Layout default invert]
+
+    This layout sets the following defaults:
+
+    - [`color`][option.background_color]
+      – <!-- md:default [`theme.palette.primary`][primary color] -->
+
+    - [`font_family`][option.font_family]
+      – <!-- md:default [`theme.font.text`][font] -->
+
+    </div>
+
+=== "`default/only/image`"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout: default/only/image
+          cards_layout_options:
+            background_image: layouts/background.png
+
+    ```
+
+    <div class="result" markdown>
+
+    This layout only shows the given background image and scales it to cover.
+
+    </div>
+
+The [`default` layouts][default layouts] are very flexible and comfortable to
+use, as they replicate the original behavior of the plugin, sourcing default
+values for all options from other `theme` settings.
+
+The following options are available:
+
+  [Layout default]: ../assets/screenshots/social-cards.png
+  [Layout default variant]: ../assets/screenshots/social-cards-variant.png
+  [Layout default accent]: ../assets/screenshots/social-cards-accent.png
+  [Layout default invert]: ../assets/screenshots/social-cards-invert.png
+
+  [primary color]: ../setup/changing-the-colors.md#primary-color
+  [page icon]: ../reference/index.md#setting-the-page-icon
+  [accent color]: ../setup/changing-the-colors.md#accent-color
+  [font]: ../setup/changing-the-fonts.md#regular-font
+
+---
+
+#### <!-- md:setting option.background_color -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the background color of the generated social card.
+The value can be set to a valid color value [supported by pillow], the imaging
+library used for card generation:
+
+=== "Hexadecimal"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            background_color: "#ff1493" # (1)!
+    ```
+
+    1.  The following notations are supported, whereas each character after the
+        `#` must be a valid hexadecimal in the range `#!css 0-F`:
+
+        - `#!css #rgb` – Color (short)
+        - `#!css #rgba` – Color + alpha (short)
+        - `#!css #rrggbb` – Color
+        - `#!css #rrggbbaa` – Color + alpha
+
+=== "Color function"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            background_color: rgb(255, 20, 147) # (1)!
+    ```
+
+    1.  The following functions are supported, listing the allowed maximum
+        values with the minimum values all being `#!css 0` or `#!css 0%`:
+
+        - `#!css rgb(255, 255, 255)` – Red, green and blue
+        - `#!css hsl(360, 100%, 100%)` – Hue, saturation and lightness
+        - `#!css hsv(360, 100%, 100%)` – Hue, saturation and value
+
+=== "Color name"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            background_color: deeppink # (1)!
+    ```
+
+    1.  See the [`<named-color>`][named-color] CSS data type for a list of
+        supported color names. Note that some might not be available.
+
+If this options is used together with
+[`background_image`][option.background_image], the color is rendered on top of
+the image which allows for tinting images. If you want to remove the background
+color, use:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        background_color: transparent
+```
+
+  [supported by pillow]: https://pillow.readthedocs.io/en/stable/reference/ImageColor.html#color-names
+  [named-color]: https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+
+---
+
+#### <!-- md:setting option.background_image -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
+<!-- md:default none -->
+
+Use this option to define a background image for the generated social card. Note
+that the image is tinted with the [`background_color`][option.background_color],
+which can also be set to `transparent`:
+
+=== "Image"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            background_image: layouts/background.png
+            background_color: transparent
+    ```
+
+=== "Image with tint"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            background_image: layouts/background.png
+            background_color: "#ff149366"
+    ```
+
+The provided path is resolved from the project directory.
+
+---
+
+#### <!-- md:setting option.color -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the foreground color of the generated social card.
+The value can be set to a valid color value [supported by pillow], the imaging
+library used for card generation:
+
+=== "Hexadecimal"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            color: "#ffffff" # (1)!
+    ```
+
+    1.  The following notations are supported, whereas each character after the
+        `#` must be a valid hexadecimal in the range `#!css 0-F`:
+
+        - `#!css #rgb` – Color (short)
+        - `#!css #rgba` – Color + alpha (short)
+        - `#!css #rrggbb` – Color
+        - `#!css #rrggbbaa` – Color + alpha
+
+=== "Color function"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            color: rgb(255, 255, 255) # (1)!
+    ```
+
+    1.  The following functions are supported, listing the allowed maximum
+        values with the minimum values all being `#!css 0` or `#!css 0%`:
+
+        - `#!css rgb(255, 255, 255)` – Red, green and blue
+        - `#!css hsl(360, 100%, 100%)` – Hue, saturation and lightness
+        - `#!css hsv(360, 100%, 100%)` – Hue, saturation and value
+
+=== "Color name"
+
+    ``` yaml
+    plugins:
+      - social:
+          cards_layout_options:
+            color: white # (1)!
+    ```
+
+    1.  See the [`<named-color>`][named-color] CSS data type for a list of
+        supported color names. Note that some might not be available.
+
+---
+
+#### <!-- md:setting option.font_family -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.33.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the font family of the generated social card. The
+plugin automatically downloads the font from [Google Fonts], so the font must
+point to an existing Google Font:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        font_family: Ubuntu
+```
+
+When you've found a font that you like on [Google Fonts], you can just copy the
+name from the font's specimen page and use it as the value for this option –
+no further configuration needed.
+
+  [Google Fonts]: https://fonts.google.com/
+
+---
+
+#### <!-- md:setting option.logo -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.40.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the logo that is used in the generated social card.
+By default, the plugin uses the [`theme.logo`][theme.logo] or
+[`theme.icon.logo`][theme.icon.logo] setting from `mkdocs.yml`. You can change
+it with:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        logo: layouts/logo.png
+```
+
+The provided path is resolved from the project directory.
+
+  [theme.logo]: ../setup/changing-the-logo-and-icons.md#logo-image
+  [theme.icon.logo]: ../setup/changing-the-logo-and-icons.md#logo-icon-bundled
+
+---
+
+#### <!-- md:setting option.title -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.40.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the title of the generated social card. This overrides
+the computed page title as assigned by MkDocs, and
+[the `title` property][meta.title] set through metadata:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        title: My custom title
+```
+
+  [meta.title]: ../reference.md#setting-the-page-title
+
+---
+
+#### <!-- md:setting option.description -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.40.0 --> ·
+<!-- md:default computed -->
+
+Use this option to change the description of the generated social card. This
+overrides the set [`site_description`][mkdocs.site_description], and
+[the `description` property][meta.description] set through metadata:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        description: My custom description
+```
+
+  [meta.description]: ../reference.md#setting-the-page-description
+
+---
+
+!!! question "Missing something?"
+
+    When setting up social cards, you might discover that you're missing
+    specific functionality – we're happy to consider adding it to the plugin!
+    You can [open a discussion] to ask a question, or create a [change request]
+    on our [issue tracker], so we can find out if it might be a good fit for
+    the plugin.
+
+  [open a discussion]: https://github.com/squidfunk/mkdocs-material/discussions
+  [change request]: ../contributing/requesting-a-change.md
+  [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues

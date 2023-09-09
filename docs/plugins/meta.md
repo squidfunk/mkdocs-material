@@ -71,7 +71,7 @@ of the meta plugin and other built-in plugins are:
 
     ---
 
-    The meta plugin allows to automatically attribute blog posts to specific
+    The meta plugin allows to automatically associate blog posts with specific
     [authors] and [categories], ensuring that blog posts are always correctly
     annotated.
 
@@ -80,7 +80,7 @@ of the meta plugin and other built-in plugins are:
       - squidfunk
     ```
 
--   :material-tag-plus-outline: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-text-outline: &nbsp; __[Built-in tags plugin]__
 
     ---
 
@@ -126,7 +126,7 @@ of the meta plugin and other built-in plugins are:
 <!-- md:flag plugin [meta] (built-in) -->
 
 As with all [built-in plugins], getting started with the meta plugin is
-straight-forward. Just add the following lines to `mkdocs.yml`, and start
+straightforward. Just add the following lines to `mkdocs.yml`, and start
 applying metadata for multiple pages at once:
 
 ``` yaml
@@ -180,10 +180,5 @@ to change this setting, but if you want to, use:
 ``` yaml
 plugins:
   - meta:
-      meta_file: "**/.meta.yml" # (1)!
+      meta_file: "**/.meta.yml"
 ```
-
-1.  Note that it's strongly recommended to prefix meta files with a `.` to
-    instruct MkDocs to [not treat them as documentation content][mkdocs.dotfiles].
-    Otherwise, they'd be copied to the [`site` directory][mkdocs.site_dir] when
-    you're [building your project].

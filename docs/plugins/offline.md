@@ -28,10 +28,10 @@ message like:
 Cross origin requests are only supported for protocol schemes: http, [...]
 ```
 
-Those restrictions are essential to preserve the security of the user, but
-reduce the interactivity of your project. The offline plugin makes sure that
-site search keeps working by moving the search index to a JavaScript file,
-and leveraging @squidfunk's [iframe-worker] shim.
+While browsers impose those restriction for security reasons, it reduces the
+interactivity of your project. The offline plugin makes sure that site search
+keeps working by moving the search index to a JavaScript file, and leveraging
+@squidfunk's [iframe-worker] shim.
 
 Additionally, the plugin automatically disables the
 [`use_directory_urls`][mkdocs.use_directory_urls] setting, ensuring that users
@@ -100,7 +100,7 @@ create even better offline-capable documentation:
 <!-- md:flag plugin [offline] (built-in) -->
 
 As with all [built-in plugins], getting started with the offline plugin is
-straight-forward. Just add the following lines to `mkdocs.yml`, and start
+straightforward. Just add the following lines to `mkdocs.yml`, and start
 building offline-capable documentation:
 
 ``` yaml

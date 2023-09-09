@@ -4,5 +4,7 @@
   [mkdocs.env]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [mkdocs.docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [mkdocs.site_dir]: https://www.mkdocs.org/user-guide/configuration/#site_dir
+  [mkdocs.site_description]: https://www.mkdocs.org/user-guide/configuration/#site_description
   [mkdocs.nav]: https://www.mkdocs.org/user-guide/configuration/#nav
+  [mkdocs.strict]: https://www.mkdocs.org/user-guide/configuration/#strict
   [mkdocs.use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls

@@ -14,16 +14,16 @@ as effortless as it can possibly be.
 
 ### How it works
 
-When [building your project], the plugin scans the output for links to external
-assets, including scripts, style sheets, images, and web fonts,  downloads them
-for self-hosting, stores them in your [`site` directory][mkdocs.site_dir] and
-replaces all links to point to the downloaded copies. For example:
+The plugin scans the generated HTML for external assets, i.e., scripts, style
+sheets, images, and web fonts, downloads them, stores them in your
+[`site` directory][mkdocs.site_dir] and replaces all references with links to
+the downloaded copies for effortless self-hosting. For example:
 
 ``` html
 <script src="https://example.com/script.js"></script>
 ```
 
-The external script is downloaded, and the link is replaced with:
+This external script is downloaded, and the link is replaced with:
 
 ``` html
 <script src="assets/external/example.com/script.js"></script>
@@ -31,19 +31,18 @@ The external script is downloaded, and the link is replaced with:
 
 Of course, scripts and style sheets can reference further external assets,
 which is why this process is repeated recursively until no further external
-assets are found:
+assets are detected:
 
 - Scripts are scanned for further scripts, style sheets and JSON files
 - Style sheets are scanned for images and web fonts
 
-Additionally, hints like [`preconnect`][preconnect] used to reduce latency when
-requesting external assets are removed from the output, as they're not
+Additionally, hints like [`preconnect`][preconnect], used to reduce latency when
+requesting external assets, are removed from the output, as they're not
 necessary when self-hosting. After the plugin has done it's work, your project
 will be free of requests to external services.
 
 There are some [limitations].
 
-  [building your project]: ../creating-your-site.md#building-your-site
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel/preconnect
   [limitations]: #limitations
 
@@ -60,8 +59,8 @@ the plugin will automatically download and store them in your
 [`site` directory][mkdocs.site_dir] when [building your project].
 
 Even more interestingly, the plugin can be combined with other built-in plugins
-that Material for MkDocs offers, to build sophisticated build pipelines for your
-project:
+that Material for MkDocs offers, in order to build sophisticated build pipelines
+tailored to your project:
 
 <div class="grid cards" markdown>
 
@@ -69,8 +68,8 @@ project:
 
     ---
 
-    The optimize plugin automatically identifies and optimizes all media files
-    that you reference in your project by using compression and conversion
+    The optimize plugin allows to optimize all downloaded external assets
+    detected by the privacy plugin by using compression and conversion
     techniques.
 
     ---
@@ -92,6 +91,7 @@ project:
 </div>
 
   [Google Fonts]: changing-the-fonts.md
+  [building your project]: ../creating-your-site.md#building-your-site
   [Built-in optimize plugin]: optimize.md
   [Built-in offline plugin]: offline.md
 
@@ -101,9 +101,9 @@ project:
 <!-- md:version insiders-4.9.0 --> ·
 <!-- md:flag plugin [privacy] (built-in) -->
 
-In order to get started with the privacy plugin, add the following lines to
-`mkdocs.yml` to enable the plugin, and Material for MkDocs will start
-downloading external assets:
+As with all [built-in plugins], getting started with the privacy plugin is
+straightforward. Just add the following lines to `mkdocs.yml`, and start
+effortlessly self-hosting external assets:
 
 ``` yaml
 plugins:
@@ -111,6 +111,7 @@ plugins:
 ```
 
   [privacy]: privacy.md
+  [built-in plugins]: index.md
 
 ### General
 
@@ -145,7 +146,7 @@ This configuration enables the plugin only during continuous integration (CI).
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
-complete media file optimization faster. If you want to disable concurrent
+complete handling of external assets faster. If you want to disable concurrent
 processing completely, use:
 
 ``` yaml
@@ -199,7 +200,7 @@ cached. If you want to change it, use:
 ``` yaml
 plugins:
   - privacy:
-      cache_dir: path/to/folder
+      cache_dir: my/custom/dir
 ```
 
 If you're using [multiple instances] of the plugin, it can be a good idea to
@@ -220,9 +221,9 @@ The following settings are available for external assets:
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:default `true` -->
 
-Use this setting to specify whether the plugin should download external
-assets. If you only want the plugin to process [external links], disable
-automatic downloading with:
+Use this setting to control whether the plugin should download external
+assets. If you only want the plugin to process [external links], you can disable
+handling of external assets with:
 
 ``` yaml
 plugins:
@@ -240,7 +241,7 @@ plugins:
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:default `true` -->
 
-Use this setting to specify whether the plugin should downloads or only report
+Use this setting to control whether the plugin should downloads or only report
 external assets when they're encountered. If you already self-host all external
 assets, this setting can be used as a safety net to detect links to external
 assets placed by the author in pages:
@@ -260,16 +261,16 @@ plugins:
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your [`site` directory][mkdocs.site_dir] from which
-external assets are served. If you want to change it, use:
+to change the path within your [`site` directory][mkdocs.site_dir] where
+external assets are stored. If you want to change it, use:
 
 ``` yaml
 plugins:
   - privacy:
-      assets_fetch_dir: path/to/folder
+      assets_fetch_dir: my/custom/dir
 ```
 
-This configuration stores the downloaded copies in `path/to/folder` in the
+This configuration stores the downloaded copies at `my/custom/dir` in the
 [`site` directory][mkdocs.site_dir].
 
 ---
@@ -379,9 +380,9 @@ plugins:
 <!-- md:version insiders-4.37.0 --> ·
 <!-- md:default `true` -->
 
-It is normally not recommended to change this setting, as enabling it will
-automatically annotate external links that open in a new window with
-`rel="noopener"` for [improved security]:
+It is normally not recommended to change this setting, as it will automatically
+annotate external links that open in a new window with `rel="noopener"` for
+[improved security]:
 
 ``` yaml
 plugins:

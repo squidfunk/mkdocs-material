@@ -100,7 +100,7 @@ If you want to change it, use:
 ``` yaml
 plugins:
   - optimize:
-      cache_dir: path/to/folder
+      cache_dir: my/custom/dir
 ```
 
 If you're using [multiple instances] of the plugin, it can be a good idea to
