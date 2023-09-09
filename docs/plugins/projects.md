@@ -1,5 +1,5 @@
 ---
-icon: material/folder-open-outline
+icon: material/folder-open
 ---
 
 # Built-in projects plugin

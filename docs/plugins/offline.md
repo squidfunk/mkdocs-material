@@ -1,5 +1,5 @@
 ---
-icon: material/wifi-strength-alert-outline
+icon: material/connection
 ---
 
 
@@ -63,9 +63,9 @@ create even better offline-capable documentation:
 
     ---
 
-    - [x] Your documentation can work without connectivity to the internet[^1]
+    __Your documentation can work without connectivity to the internet[^1]__
 
--   :material-image-size-select-small: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
 
     ---
 
@@ -75,7 +75,7 @@ create even better offline-capable documentation:
 
     ---
 
-    - [x] Your documentation can be distributed as a smaller `*.zip` download
+    __Your documentation can be distributed as a smaller `*.zip` download__
 
 </div>
 

@@ -54,7 +54,7 @@ of the meta plugin and other built-in plugins are:
 
 <div class="grid cards" markdown>
 
--   :material-share-variant: &nbsp; __[Built-in social plugin]__
+-   :material-share-circle: &nbsp; __[Built-in social plugin]__
 
     ---
 
@@ -80,7 +80,7 @@ of the meta plugin and other built-in plugins are:
       - squidfunk
     ```
 
--   :material-tag-text-outline: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-text: &nbsp; __[Built-in tags plugin]__
 
     ---
 

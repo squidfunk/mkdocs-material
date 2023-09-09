@@ -1,5 +1,5 @@
 ---
-icon: material/tag-text-outline
+icon: material/tag-text
 ---
 
 # Built-in tags plugin

@@ -85,9 +85,9 @@ many other built-in plugins:
 
     ---
 
-    - [x] Simpler organization, categorization and management of posts
+    __Simpler organization, categorization and management of posts__
 
--   :material-share-variant: &nbsp; __[Built-in social plugin]__
+-   :material-share-circle: &nbsp; __[Built-in social plugin]__
 
     ---
 
@@ -96,9 +96,9 @@ many other built-in plugins:
 
     ---
 
-    - [x] Links to your blog render beautiful social cards on social media
+    __Links to your blog render beautiful social cards on social media__
 
--   :material-image-size-select-small: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
 
     ---
 
@@ -108,9 +108,9 @@ many other built-in plugins:
 
     ---
 
-    - [x] Your blog loads faster as smaller images are shipped to your users
+    __Your blog loads faster as smaller images are shipped to your users__
 
--   :material-tag-text-outline: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-text: &nbsp; __[Built-in tags plugin]__
 
     ---
 
@@ -120,7 +120,7 @@ many other built-in plugins:
 
     ---
 
-    - [x] Your documentation's tag system integrates with your blog
+    __Your documentation's tag system integrates with your blog__
 
 </div>
 

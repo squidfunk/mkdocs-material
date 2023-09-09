@@ -64,7 +64,7 @@ tailored to your project:
 
 <div class="grid cards" markdown>
 
--   :material-image-size-select-small: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
 
     ---
 
@@ -74,9 +74,9 @@ tailored to your project:
 
     ---
 
-    - [x] All downloaded external images are automatically optimized
+    __All downloaded external images are automatically optimized__
 
--   :material-wifi-strength-alert-outline: &nbsp; __[Built-in offline plugin]__
+-   :material-connection: &nbsp; __[Built-in offline plugin]__
 
     ---
 
@@ -86,7 +86,7 @@ tailored to your project:
 
     ---
 
-    - [x] Your documentation can work without connectivity to the internet
+    __Your documentation can work without connectivity to the internet__
 
 </div>
 

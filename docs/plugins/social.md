@@ -1,5 +1,5 @@
 ---
-icon: material/share-variant
+icon: material/share-circle
 ---
 
 # Built-in social plugin
@@ -753,8 +753,7 @@ The following options are available:
 
 #### <!-- md:setting option.background_color -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.33.0 --> ·
+<!-- md:version 9.1.10 --> ·
 <!-- md:default computed -->
 
 Use this option to change the background color of the generated social card.
@@ -859,8 +858,7 @@ The provided path is resolved from the project directory.
 
 #### <!-- md:setting option.color -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.33.0 --> ·
+<!-- md:version 9.1.10 --> ·
 <!-- md:default computed -->
 
 Use this option to change the foreground color of the generated social card.
@@ -916,8 +914,7 @@ library used for card generation:
 
 #### <!-- md:setting option.font_family -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.33.0 --> ·
+<!-- md:version 9.1.10 --> ·
 <!-- md:default computed -->
 
 Use this option to change the font family of the generated social card. The

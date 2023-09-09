@@ -1,5 +1,5 @@
 ---
-icon: material/image-size-select-small
+icon: material/rabbit
 ---
 
 # Built-in optimize plugin
