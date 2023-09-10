@@ -14,7 +14,7 @@ share a link to your project on social media.
 
 ### How it works
 
-This plugin automatically generates a customizable social card for each page
+The plugin automatically generates a customizable social card for each page
 of your project, which appears as a preview image when sharing a link to your
 project on social media, without the use of external services and just
 [a single line of configuration][configuration].
@@ -58,21 +58,22 @@ on social media will appear much more appealing.
 <!-- md:flag plugin [social] (built-in) --> ·
 <!-- md:flag multiple -->
 
-
-In order to get started with the built-in social plugin, just add the following
-lines to `mkdocs.yml`, and observe how Material for MkDocs generates beautiful
-social cards for you:
+In order to get started with the social plugin, just add the following lines to
+`mkdocs.yml`, and observe how Material for MkDocs generates beautiful social
+cards for you:
 
 ``` yaml
 plugins:
   - social
 ```
 
-The built-in social plugin is included with Material for MkDocs and doesn't
-need to be installed. However, in order to generate social card images, it's
-necessary to install the dependencies for [image processing], if they're
-not already available on your system. The linked guide includes instructions
-for several operating systems and mentions some alternative environments.
+The social plugin is built into Material for MkDocs and doesn't need to be
+installed.
+
+However, in order to generate social card images, it's necessary to install the
+dependencies for [image processing], if they're not already available on your
+system. The linked guide includes instructions for several operating systems
+and mentions some alternative environments.
 
   [social]: social.md
 
@@ -124,9 +125,9 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 ### Caching
 
 The plugin implements an [intelligent caching] mechanism, ensuring that social
-cards are only re-generated when their contents change or they're not already
+cards are only regenerated when their contents change or they're not already
 contained in the cache. If any of the variables used in a layout changes, the
-plugin detects it and re-generates the social card.
+plugin detects it and regenerates the social card.
 
 The following settings are available for caching:
 
@@ -159,7 +160,7 @@ plugins:
 <!-- md:default `.cache/plugin/social` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your project directory where social card images are
+to change the path within your root directory where social card images are
 cached. If you want to change it, use:
 
 ``` yaml
@@ -292,7 +293,7 @@ This configuration stores the generated images at `my/custom/dir` in the
 
 If you want to build a [custom social card layout][custom layouts], use this
 setting to change the folder where you store your custom layouts, the default
-being a folder called `layouts` in your project directory:
+being a folder called `layouts` in your root directory:
 
 ``` yaml
 plugins:
@@ -300,7 +301,7 @@ plugins:
       cards_layout_dir: layouts
 ```
 
-The provided path is resolved from the project directory.
+The provided path is resolved from the root directory.
 
 !!! tip "Where to store custom layouts"
 
@@ -343,8 +344,8 @@ The provided path is resolved from the[
 !!! tip "How custom layouts are resolved"
 
     By default, the plugin will load your [custom layouts] from a folder named
-    `layouts` in your project directory. If your layout is called
-    `my-custom-layout`, the directory structure must adhere to:
+    `layouts` in your root directory. If your layout is called
+    `my-custom-layout`, the directory layout must adhere to:
 
     ``` { .sh .no-copy }
     .
@@ -858,7 +859,7 @@ which can also be set to `transparent`:
             background_color: "#ff149366"
     ```
 
-The provided path is resolved from the project directory.
+The provided path is resolved from the root directory.
 
 ---
 
@@ -960,7 +961,7 @@ plugins:
         logo: layouts/logo.png
 ```
 
-The provided path is resolved from the project directory.
+The provided path is resolved from the root directory.
 
   [theme.logo]: ../setup/changing-the-logo-and-icons.md#logo-image
   [theme.icon.logo]: ../setup/changing-the-logo-and-icons.md#logo-icon-bundled

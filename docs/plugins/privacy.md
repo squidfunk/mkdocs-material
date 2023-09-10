@@ -112,6 +112,9 @@ plugins:
   - privacy
 ```
 
+The privacy plugin is built into Material for MkDocs and doesn't need to be
+installed.
+
   [privacy]: privacy.md
   [built-in plugins]: index.md
 
@@ -198,7 +201,7 @@ plugins:
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your project directory where downloaded copies are
+to change the path within your root directory where downloaded copies are
 cached. If you want to change it, use:
 
 ``` yaml

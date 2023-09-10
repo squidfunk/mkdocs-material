@@ -5,7 +5,7 @@ icon: material/rabbit
 
 # Built-in optimize plugin
 
-The optimize plugin automatically identifiers and optimizes all media files when
+The optimize plugin automatically identifies and optimizes all media files when
 [building your project] by using common compression and conversion techniques.
 As a result, your site loads significantly faster and yields better rankings in
 search engines.
@@ -19,7 +19,7 @@ search engines.
 The plugin scans your [`docs` directory][mkdocs.docs_dir] for media files and
 assets, optimizing them automatically in order to reduce the final size of your
 [`site` directory][mkdocs.site_dir]. This leads to faster loading times as you
-ship less bytes to your users, as well as a smaller download of
+ship less bytes to your users, as well as a smaller download for
 [offline-capable documentation].
 
 Optimized images are [intelligently cached][intelligent caching], which is why
@@ -36,9 +36,9 @@ your system.
 ### When to use it
 
 It's generally recommended to use the plugin, as media files are optimized
-automatically without the need for configuration, ensuring that your site loads
+automatically without the need for intervention, ensuring that your site loads
 as fast as possible. Optimized media files are one of the key components for a
-good and consistent ranking in search engines.
+high and consistent ranking in search engines.
 
 Additionally, the plugin can be combined with other built-in plugins
 that Material for MkDocs offers, in order to create sophisticated
@@ -92,11 +92,13 @@ plugins:
   - optimize
 ```
 
-The built-in optimize plugin is included with Material for MkDocs and doesn't
-need to be installed. However, in order to optimize all media files, it's
-necessary to install the dependencies for [image processing], if they're
-not already available on your system. The linked guide includes instructions
-for several operating systems and mentions some alternative environments.
+The optimize plugin is built into Material for MkDocs and doesn't need to be
+installed.
+
+However, in order to optimize all media files, it's necessary to install the
+dependencies for [image processing], if they're not already available on your
+system. The linked guide includes instructions for several operating systems
+and mentions some alternative environments.
 
   [optimize]: optimize.md
   [built-in plugins]: index.md
@@ -185,7 +187,7 @@ plugins:
 <!-- md:default `.cache/plugin/optimize` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your project directory where media files are cached.
+to change the path within your root directory where media files are cached.
 If you want to change it, use:
 
 ``` yaml

@@ -50,6 +50,9 @@ plugins:
   - typeset
 ```
 
+The typeset plugin is built into Material for MkDocs and doesn't need to be
+installed.
+
   [typeset]: typeset.md
   [built-in plugins]: index.md
 

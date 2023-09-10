@@ -109,6 +109,9 @@ plugins:
   - offline
 ```
 
+The offline plugin is built into Material for MkDocs and doesn't need to be
+installed.
+
   [offline]: offline.md
   [built-in plugins]: index.md
 

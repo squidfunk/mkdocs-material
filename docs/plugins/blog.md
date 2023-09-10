@@ -19,7 +19,7 @@ does all the heavy lifting, generating a view of all latest posts, [archive] and
 ### How it works
 
 The plugin scans the configured [`posts` directory][config.post_dir] for
-.md files from which paginated views[^1] are automatically generated. If not
+`.md` files from which paginated views[^1] are automatically generated. If not
 configured otherwise, the plugin expects that your project has the following
 directory layout, and will create any missing directories or files for you:
 
@@ -145,6 +145,9 @@ start writing your first post:
 plugins:
   - blog
 ```
+
+The blog plugin is built into Material for MkDocs and doesn't need to be
+installed.
 
   [blog]: blog.md
   [built-in plugins]: index.md
@@ -1257,18 +1260,54 @@ the [`categories_allowed`][config.categories_allowed] setting.
 <!-- md:flag metadata --> ·
 <!-- md:flag required -->
 
-Use this property to define the publishing date of a post. Note that this
-property is required, which means the build fails when it's not set. Set the
-post date with:
+Use this property to specify a post's date. Note that this property is required,
+which means the build fails when it's not set. Additional dates can be set by
+using a slightly different syntax:
 
-``` yaml
----
-date: 2023-01-31
----
+=== "Date"
 
-# Post title
-...
-```
+    ``` yaml
+    ---
+    date: 2023-01-31
+    ---
+
+    # Post title
+    ...
+    ```
+
+=== "Update date"
+
+    ``` yaml
+    ---
+    date:
+      created: 2023-01-31 # (1)!
+      updated: 2023-02-01
+    ---
+
+    # Post title
+    ...
+    ```
+
+    1.  Each post must have a creation date set.
+
+=== "Custom date"
+
+    ``` yaml
+    ---
+    date:
+      created: 2023-01-31
+      my_custom_date: 2023-02-01 # (1)!
+    ---
+
+    # Post title
+    ...
+    ```
+
+    1.  The blog plugin validates all dates and allows to format them with
+        [babel]'s [pattern syntax] in templates. When using theme extension,
+        authors can add custom dates to templates.
+
+        This was first requested in #5733.
 
 The following date formats are supported:
 

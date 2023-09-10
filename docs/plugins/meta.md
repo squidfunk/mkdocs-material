@@ -135,6 +135,9 @@ plugins:
   - meta
 ```
 
+The meta plugin is included with Material for MkDocs and doesn't need to be
+installed.
+
   [meta]: meta.md
   [built-in plugins]: index.md
 
