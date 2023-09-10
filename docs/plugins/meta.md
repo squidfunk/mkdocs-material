@@ -6,9 +6,9 @@ icon: material/file-tree
 # Built-in meta plugin
 
 The meta plugin solves the problem of setting metadata (front matter) for all
-pages in a folder, i.e., a subtree of your project, which is particularly useful
-to ensure that a certain subset of pages features specific tags, uses a custom
-template, or is attributed to an author.
+pages in a folder, i.e., a subsection of your project, which is particularly
+useful to ensure that a certain subset of pages features specific tags, uses a
+custom template, or is attributed to an author.
 
 ## Objective
 
@@ -60,8 +60,8 @@ of the meta plugin and other built-in plugins are:
     ---
 
     The meta plugin can be used to [change the layout] for social cards or
-    [change specific layout options], e.g. background, colors or icons, for a
-    subset of pages.
+    [change specific layout options] like [background] or [color]
+    for a subset of pages.
 
     ``` yaml title=".meta.yml"
     social:
@@ -85,8 +85,8 @@ of the meta plugin and other built-in plugins are:
 
     ---
 
-    The meta plugin makes it possible to ensure that entire subtrees of your
-    project are annotated with specific tags, so they can't be forgotten when
+    The meta plugin makes it possible to ensure that subsections of your
+    project are annotated with [specific tags], so they can't be forgotten when
     adding pages.
 
     ``` yaml title=".meta.yml"
@@ -98,9 +98,9 @@ of the meta plugin and other built-in plugins are:
 
     ---
 
-    The meta plugin makes it easy to boost specific sections in search results
-    or to exclude them entirely from being indexed, giving more granular control
-    over search.
+    The meta plugin makes it easy to [boost] specific sections in search results
+    or to [exclude] them entirely from being indexed, giving more granular
+    control over search.
 
     ``` yaml title=".meta.yml"
     search:
@@ -110,15 +110,18 @@ of the meta plugin and other built-in plugins are:
 </div>
 
   [Built-in social plugin]: social.md
-  [change the layout]: ../setup/setting-up-social-cards.md#changing-the-layout
-  [change specific layout options]: ../setup/setting-up-social-cards.md#parametrizing-the-layout
-
+  [change the layout]: social.md#meta.social.cards_layout
+  [change specific layout options]: social.md#meta.social.cards_layout_options
+  [background]: social.md#option.background_color
+  [color]: social.md#option.color
   [Built-in blog plugin]: blog.md
-  [authors]: ../setup/setting-up-a-blog.md#adding-authors
-  [categories]: ../setup/setting-up-a-blog.md#adding-categories
-
+  [authors]: blog.md#meta.authors
+  [categories]: blog.md#meta.categories
   [Built-in tags plugin]: tags.md
+  [specific tags]: tags.md#meta.tags
   [Built-in search plugin]: search.md
+  [exclude]: search.md#meta.search.exclude
+  [boost]: search.md#meta.search.boost
 
 ## Configuration
 
@@ -147,7 +150,7 @@ The following settings are available:
 
 ---
 
-#### <!-- md:setting meta.enabled -->
+#### <!-- md:setting config.enabled -->
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.38.0 --> ·

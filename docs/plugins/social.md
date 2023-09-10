@@ -5,10 +5,10 @@ icon: material/share-circle
 
 # Built-in social plugin
 
-The social plugin automatically and intelligently generates beautiful and
-customizable social cards for each page of your project, rendering as preview
-images in different [layouts][default layouts] whenever you or somebody else
-share a link to your project on social media.
+The social plugin automatically and intelligently generates beautiful and highly
+customizable social cards in different [layouts][default layouts] for each page
+of your project, rendering as preview images whenever you or somebody else share
+a link to your project on social media.
 
 ## Objective
 
@@ -48,9 +48,45 @@ images, a few [dependencies] need to be available on your system.
 ### When to use it
 
 There's one canonical case when we don't recommend to use the plugin: when you
-build offline-capable documentation to offer it as a download. Otherwise, it
+build [offline-capable documentation] to offer it as a download. Otherwise, it
 always makes sense to enable the plugin, as links to your documentation shared
 on social media will appear much more appealing.
+
+Even more interestingly, the plugin can be combined with other built-in plugins
+that Material for MkDocs offers, in order to create sophisticated build
+pipelines tailored to your project:
+
+<div class="grid cards" markdown>
+
+-   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin]__
+
+    ---
+
+    The social plugin automatically generates beautiful and customizable
+    social cards for each post and page when links are shared on social media.
+
+    ---
+
+    __Links to your blog render beautiful social cards on social media__
+
+-   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+
+    ---
+
+    The meta plugin can be used to [change the layout][meta.social.cards_layout]
+    for social cards or [change specific layout options][meta.social.cards_layout_options]
+    like [background][option.background_color] or [color][option.color] for a
+    subset of pages.
+
+    ---
+
+    __Your documentation can use completely different social cards per section__
+
+</div>
+
+  [offline-capable documentation]: offline.md
+  [Built-in blog plugin]: blog.md
+  [Built-in meta plugin]: meta.md
 
 ## Configuration
 

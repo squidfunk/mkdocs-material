@@ -55,8 +55,8 @@ your specific needs, and can make use of all components and syntax that Material
 for MkDocs offers, including [admonitions], [annotations], [code blocks],
 [content tabs], [diagrams], [icons], [math], and more.
 
-  [built-in plugins]: index.md
   [metadata]: #metadata
+  [built-in plugins]: index.md
   [social]: social.md
   [tags]: tags.md
   [admonitions]: ../reference/admonitions.md
