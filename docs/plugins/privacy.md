@@ -75,7 +75,7 @@ pipelines tailored to your project:
 
     ---
 
-    __External media files can be automatically downloaded and optimized__
+    __External media files are automatically downloaded and optimized__
 
 -   :material-connection: &nbsp; __[Built-in offline plugin]__
 

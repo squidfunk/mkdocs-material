@@ -58,6 +58,10 @@ class SearchPlugin(BasePlugin[SearchConfig]):
 
     # Initialize plugin
     def on_config(self, config):
+        if not self.config.enabled:
+            return
+
+        # Retrieve default value for language
         if not self.config.lang:
             self.config.lang = [self._translate(
                 config, "search.config.lang"
@@ -104,6 +108,10 @@ class SearchPlugin(BasePlugin[SearchConfig]):
 
     # Add page to search index
     def on_page_context(self, context, *, page, config, nav):
+        if not self.config.enabled:
+            return
+
+        # Index page
         self.search_index.add_entry_from_context(page)
         page.content = re.sub(
             r"\s?data-search-\w+=\"[^\"]+\"",
@@ -113,6 +121,10 @@ class SearchPlugin(BasePlugin[SearchConfig]):
 
     # Generate search index
     def on_post_build(self, *, config):
+        if not self.config.enabled:
+            return
+
+        # Write search index
         base = os.path.join(config.site_dir, "search")
         path = os.path.join(base, "search_index.json")
 

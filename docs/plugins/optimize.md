@@ -206,8 +206,8 @@ with each other.
 
 Documentation often makes use of screenshots or diagrams for better
 visualization of things, both of which are prime candidates for optimization.
-The plugin automatically optimizes images using [pngquant] (for `.png` files),
-and [Pillow] (for `.jpg` files).
+The plugin automatically optimizes images using [pngquant] for `.png` files,
+and [Pillow] for `.jpg` files.
 
 The following settings are available for optimization:
 
