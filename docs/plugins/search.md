@@ -3,7 +3,6 @@ title: Built-in search plugin
 icon: material/magnify
 ---
 
-
 # Built-in search plugin
 
 ## Installation
@@ -12,16 +11,15 @@ icon: material/magnify
 
 ### General
 
-#### `enabled`
+#### <!-- md:setting config.enabled -->
 
 ### Search
 
-#### `lang`
-#### `separator`
-#### `pipeline`
-#### `fields`
+#### <!-- md:setting config.lang -->
+#### <!-- md:setting config.separator -->
+#### <!-- md:setting config.pipeline -->
 
 ### Segmentation
 
-#### `jieba_dict`
-#### `jieba_dict_user`
+#### <!-- md:setting config.jieba_dict -->
+#### <!-- md:setting config.jieba_dict_user -->

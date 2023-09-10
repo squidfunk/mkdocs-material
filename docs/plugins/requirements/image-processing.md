@@ -4,21 +4,34 @@ icon: material/image-sync-outline
 
 # Image processing
 
-Material for MkDocs depends on several libraries to allow for image processing
-as part of the build pipeline, including [social cards] and [image optimization].
-For this reason, a few external libraries must be installed on the host system.
-This section explains how to install them.
+Some of the [built-in plugins] depend on external libraries for efficient image
+processing, most notably the [social] plugin to generate [social cards], and the
+[optimize] plugin for applying [image optimization]. This guide explains how to
+install those libraries in different environments.
 
-  [social cards]: ../setting-up-social-cards.md
-  [image optimization]: ../building-an-optimized-site.md
+  [built-in plugins]: ../index.md
+  [social]: ../social.md
+  [social cards]: ../../setup/setting-up-social-cards.md
+  [optimize]: ../optimize.md
+  [image optimization]: ../../setup/building-an-optimized-site.md
 
 ## Dependencies
 
-Install the Python dependencies for image processing with:
+The libraries for image processing are entirely optional, and only need to be
+installed if you want to use the [social] plugin or the [optimize] plugin. The
+libraries are listed under the `imaging` extra:
 
 ```
-pip install pillow cairosvg
+pip install "mkdocs-material[imaging]"
 ```
+
+This will install compatible versions of the following packages:
+
+- [Pillow]
+- [CairoSVG]
+
+  [Pillow]: https://pillow.readthedocs.io/
+  [CairoSVG]: https://cairosvg.org/
 
 ### Cairo Graphics
 
@@ -73,8 +86,6 @@ The following environments come with a preinstalled version of [Cairo Graphics]:
 - [x] No installation needed in [GitHub Actions] (Ubuntu)
 
   [Cairo Graphics]: https://www.cairographics.org/
-  [Pillow]: https://pillow.readthedocs.io/
-  [CairoSVG]: https://cairosvg.org/
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/

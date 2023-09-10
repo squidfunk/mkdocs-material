@@ -60,11 +60,8 @@ RUN \
   pip install --no-cache-dir . \
 && \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
-    pip install --no-cache-dir \
-      "mkdocs-minify-plugin~=0.7" \
-      "mkdocs-redirects~=1.2" \
-      "pillow~=9.4" \
-      "cairosvg~=2.6"; \
+    pip install --no-cache-dir mkdocs-material[recommended] \
+    pip install --no-cache-dir mkdocs-material[imaging]; \
   fi \
 && \
   if [ -e user-requirements.txt ]; then \
