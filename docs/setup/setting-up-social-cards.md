@@ -677,7 +677,7 @@ social:
 
 ## Customization
 
-<!-- md:sponsors --> ·
+<!-- md:sponsors -->
 <!-- md:version insiders-4.33.0 --> ·
 <!-- md:flag experimental -->
 

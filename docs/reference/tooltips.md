@@ -60,7 +60,7 @@ Now, tooltips will be rendered for the following elements:
 ### Adding tooltips
 
 The [Markdown syntax] allows to specify a `title` for each link, which will
-render as a beautiful tooltip when [improved tooltips] are enabled. Add a 
+render as a beautiful tooltip when [improved tooltips] are enabled. Add a
 tooltip to a link with the following lines:
 
 ``` markdown title="Link with tooltip, inline syntax"
@@ -105,7 +105,7 @@ extension:
 
 ### Adding abbreviations
 
-Abbreviations can be defined by using a special syntax similar to URLs and 
+Abbreviations can be defined by using a special syntax similar to URLs and
 [footnotes], starting with a `*` and immediately followed by the term or
 acronym to be associated in square brackets:
 
@@ -135,7 +135,7 @@ pages with the following configuration:
 
   [^1]:
     It's highly recommended to put the Markdown file containing the
-    abbreviations outside of the `docs` folder (here, a folder with the name 
+    abbreviations outside of the `docs` folder (here, a folder with the name
     `includes` is used), as MkDocs might otherwise complain about an
     unreferenced file.
 

@@ -54,7 +54,9 @@ on social media will appear much more appealing.
 ## Configuration
 
 <!-- md:version 8.5.0 --> ·
-<!-- md:flag plugin [social] (built-in) -->
+<!-- md:flag plugin [social] (built-in) --> ·
+<!-- md:flag multiple -->
+
 
 In order to get started with the built-in social plugin, just add the following
 lines to `mkdocs.yml`, and observe how Material for MkDocs generates beautiful
@@ -121,12 +123,14 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 
 ### Caching
 
-The plugin implements an intelligent caching mechanism, ensuring that social
+The plugin implements an [intelligent caching] mechanism, ensuring that social
 cards are only re-generated when their contents change or they're not already
 contained in the cache. If any of the variables used in a layout changes, the
 plugin detects it and re-generates the social card.
 
 The following settings are available for caching:
+
+  [intelligent caching]: requirements/caching.md
 
 ---
 
@@ -164,9 +168,11 @@ plugins:
       cache_dir: my/custom/dir
 ```
 
-If you're using multiple instances of the plugin, it can be a good idea to
+If you're using [multiple instances] of the plugin, it can be a good idea to
 set different cache directories for both instances, so that they don't interfere
 with each other.
+
+  [multiple instances]: index.md#multiple-instances
 
 ### Logging
 
@@ -396,7 +402,7 @@ following options:
 <!-- md:default none -->
 
 Use this setting to enable social card generation for subsections of your
-project, e.g., when using multiple instances of the plugin to generate
+project, e.g., when using [multiple instances] of the plugin to generate
 different social cards for different subsections:
 
 ``` yaml
@@ -419,7 +425,7 @@ contained in the `blog` folder and its subfolders inside your [`docs` directory]
 <!-- md:default none -->
 
 Use this setting to disable social card generation for subsections of your
-project, e.g., when using multiple instances of the plugin to generate
+project, e.g., when using [multiple instances] of the plugin to generate
 different social cards for different subsections:
 
 ``` yaml

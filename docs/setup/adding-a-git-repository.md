@@ -29,7 +29,7 @@ GitHub repositories also include the tag of the latest release.[^1]
 
   [^1]:
     Unfortunately, GitHub only provides an API endpoint to obtain the [latest
-    release] - not the latest tag. Thus, make sure to [create a release] (not 
+    release] - not the latest tag. Thus, make sure to [create a release] (not
     pre-release) for the latest tag you want to display next to the number of
     stars and forks.
 

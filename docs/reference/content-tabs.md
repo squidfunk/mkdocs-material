@@ -12,14 +12,14 @@ grouping code blocks and other content.
 ## Configuration
 
 This configuration enables content tabs, and allows to nest arbitrary content
-inside content tabs, including code blocks and ... more content tabs! Add the 
+inside content tabs, including code blocks and ... more content tabs! Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
 ```
 
 See additional configuration options:
@@ -77,7 +77,7 @@ or to the [publishing guide for Insiders][tab_2].
 <!-- md:flag feature -->
 
 When enabled, all content tabs across the whole documentation site will be
-linked and switch to the same label when the user clicks on a tab. Add the 
+linked and switch to the same label when the user clicks on a tab. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml

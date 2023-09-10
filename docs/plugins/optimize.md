@@ -59,12 +59,14 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 
 ### Caching
 
-The plugin implements an intelligent caching mechanism, ensuring that a media
+The plugin implements an [intelligent caching] mechanism, ensuring that a media
 file or asset is only passed through the optimization pipeline when its contents
 change. If you swap out or update an image, the plugin detects it and updates
 the optimized version of the media file.
 
 The following settings are available for caching:
+
+  [intelligent caching]: requirements/caching.md
 
 ---
 

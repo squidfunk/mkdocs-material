@@ -86,8 +86,8 @@ def sponsors(page: Page, files: Files):
 
     # Return link
     return (
-        f"[:material-heart:{{ .mdx-heart }} Sponsors only]"
-        f"({file.url_relative_to(page.file)}){{ .mdx-insiders }}"
+        f"[:material-heart:{{ .mdx-heart }}]"
+        f"({file.url_relative_to(page.file)} \"Sponsors only\"){{ .mdx-insiders }}"
     )
 
 # Create a flag of a specific type
@@ -99,6 +99,7 @@ def flag(args: str):
     elif type == "required":     return f"[:material-alert:](# \"Required value\")"
     elif type == "metadata":     return f"[:material-list-box-outline:](# \"Metadata\")"
     elif type == "deprecated":   return f"[:material-archive-outline:](# \"Deprecated\") {rest[0] if rest else ''}"
+    elif type == "multiple":     return f"[:material-inbox-multiple:](# \"Multiple instances\") {rest[0] if rest else ''}"
     # elif type == "removed":      return f"[:material-trash-can-outline:](# \"Removed\") {rest[0] if rest else ''}"
     # @todo: removed should carry a version
 

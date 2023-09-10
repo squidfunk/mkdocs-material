@@ -133,6 +133,7 @@ many other built-in plugins:
 
 <!-- md:version 9.2.0 --> ·
 <!-- md:flag plugin [blog] (built-in) --> ·
+<!-- md:flag multiple --> ·
 <!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the blog plugin is
@@ -1097,7 +1098,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 !!! info "Format of author information"
 
-    The `.authors.yml` file must follow the following format:
+    The `.authors.yml` file must adhere to the following format:
 
     ``` yaml title=".authors.yml"
     authors:

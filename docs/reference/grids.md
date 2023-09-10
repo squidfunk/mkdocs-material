@@ -97,7 +97,7 @@ includes icons and links:
 
     Install [`mkdocs-material`](#) with [`pip`](#) and get up
     and running in minutes
-    
+
     [:octicons-arrow-right-24: Getting started](#)
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
@@ -105,7 +105,7 @@ includes icons and links:
     ---
 
     Focus on your content and generate a responsive and searchable static site
-    
+
     [:octicons-arrow-right-24: Reference](#)
 
 -   :material-format-font:{ .lg .middle } __Made to measure__
@@ -113,7 +113,7 @@ includes icons and links:
     ---
 
     Change the colors, fonts, language, icons, logo and more with a few lines
-    
+
     [:octicons-arrow-right-24: Customization](#)
 
 -   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
@@ -136,7 +136,7 @@ includes icons and links:
 
     Install [`mkdocs-material`][mkdocs-material] with [`pip`][pip] and get up
     and running in minutes
-    
+
     [:octicons-arrow-right-24: Getting started][getting started]
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
@@ -144,7 +144,7 @@ includes icons and links:
     ---
 
     Focus on your content and generate a responsive and searchable static site
-    
+
     [:octicons-arrow-right-24: Reference][reference]
 
 -   :material-format-font:{ .lg .middle } __Made to measure__
@@ -152,7 +152,7 @@ includes icons and links:
     ---
 
     Change the colors, fonts, language, icons, logo and more with a few lines
-    
+
     [:octicons-arrow-right-24: Customization][customization]
 
 -   :material-scale-balance:{ .lg .middle } __Open Source, MIT__

@@ -82,7 +82,7 @@ tailored to your project:
 
     The offline plugin adds support for building offline-capable documentation,
     so you can distribute your [`site` directory][mkdocs.site_dir] as a
-    downloadable `*.zip` file.
+    downloadable .zip file.
 
     ---
 
@@ -99,7 +99,8 @@ tailored to your project:
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.9.0 --> ·
-<!-- md:flag plugin [privacy] (built-in) -->
+<!-- md:flag plugin [privacy] (built-in) --> ·
+<!-- md:flag multiple -->
 
 As with all [built-in plugins], getting started with the privacy plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and start
@@ -159,12 +160,14 @@ By default, the plugin uses all available CPUs - 1 with a minimum of 1.
 
 ### Caching
 
-The plugin implements an intelligent caching mechanism, ensuring that external
+The plugin implements an [intelligent caching] mechanism, ensuring that external
 assets are only downloaded when they're not already contained in the cache.
 While the initial build might take some time, it's a good idea to use caching,
 as it will speed up consecutive builds.
 
 The following settings are available for caching:
+
+  [intelligent caching]: requirements/caching.md
 
 ---
 
@@ -207,7 +210,7 @@ If you're using [multiple instances] of the plugin, it can be a good idea to
 set different cache directories for both instances, so that they don't interfere
 with each other.
 
-  [multiple instances]: #
+  [multiple instances]: index.md#multiple-instances
 
 ### External assets
 

@@ -125,7 +125,7 @@ The following configuration options are available for hoisting:
 [`hoisting`](#+projects.hoisting){ #+projects.hoisting }
 
 :   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
-    Default: `true` – This option specifies whether the plugin should hoist all 
+    Default: `true` – This option specifies whether the plugin should hoist all
     themes files to the top-level project. If you disable this setting, each
     project will have a copy of the themes files, which in general, can be
     considered redundant:

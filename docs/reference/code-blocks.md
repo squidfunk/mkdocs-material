@@ -13,8 +13,8 @@ during runtime using a JavaScript syntax highlighter.
 
 ## Configuration
 
-This configuration enables syntax highlighting on code blocks and inline code 
-blocks, and allows to include source code directly from other files. Add the 
+This configuration enables syntax highlighting on code blocks and inline code
+blocks, and allows to include source code directly from other files. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -71,7 +71,7 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be 
+    Note that the language shortcode which has to come first must now also be
     prefixed by a `.`. Similarly, the copy button can also be disabled for a
     specific code block:
 
@@ -99,8 +99,8 @@ theme:
 
 ??? info "Enabling or disabling code selection buttons for a specific code block"
 
-    If you don't want to enable code selection buttons globally, you can enable 
-    them for a specific code block by using a slightly different syntax based on 
+    If you don't want to enable code selection buttons globally, you can enable
+    them for a specific code block by using a slightly different syntax based on
     the [Attribute Lists] extension:
 
     ```` yaml
@@ -109,7 +109,7 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be 
+    Note that the language shortcode which has to come first must now also be
     prefixed by a `.`. Similarly, the selection button can also be disabled for
     a specific code block:
 
@@ -153,7 +153,7 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be 
+    Note that the language shortcode which has to come first must now also be
     prefixed by a `.`.
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
@@ -166,7 +166,7 @@ theme:
 
 Normally, code annotations can only be [placed in comments], as comments can be
 considered safe for placement. However, sometimes it might be necessary to place
-annotations in parts of the code block where comments are not allowed, e.g. in 
+annotations in parts of the code block where comments are not allowed, e.g. in
 strings.
 
 Additional selectors can be set per-language:
