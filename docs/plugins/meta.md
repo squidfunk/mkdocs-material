@@ -1,4 +1,5 @@
 ---
+title: Built-in meta plugin
 icon: material/file-tree
 ---
 

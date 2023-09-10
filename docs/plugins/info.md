@@ -1,11 +1,12 @@
 ---
+title: Built-in info plugin
 icon: material/information
 ---
 
 # Built-in info plugin
 
 The info plugin is a utility that is solely intended to create self-contained
-[minimal reproductions] as .zip files when [reporting bugs] or proposing
+[minimal reproductions] as `.zip` files when [reporting bugs] or proposing
 [change requests], making communication between us maintainers and you much
 easier, as we have a common ground to work on.
 
@@ -27,7 +28,7 @@ bug that has already been fixed in a subsequent release, or which is caused by
 one of your customizations. Even more importantly, you actively help
 us to fix the bug as quickly as possible.
 
-The output of the plugin is a .zip file that you can share with us maintainers.
+The output of the plugin is a `.zip` file that you can share with us maintainers.
 
   [Upgrade to the latest version]: ../../contributing/reporting-a-bug/#upgrade-to-latest-version
   [Remove your customizations]: ../../contributing/reporting-a-bug/#remove-customizations
@@ -114,7 +115,7 @@ having to disable the plugin first.
 <!-- md:version 9.0.0 --> ·
 <!-- md:default `true` -->
 
-Use this setting to control whether the plugin should create a .zip file
+Use this setting to control whether the plugin should create a `.zip` file
 from the project or exit after the version check. This setting is solely
 intended for debugging the plugin itself:
 
@@ -131,7 +132,7 @@ plugins:
 <!-- md:version 9.0.0 --> ·
 <!-- md:default `true` -->
 
-Use this setting to control whether the plugin should stop creating the .zip
+Use this setting to control whether the plugin should stop creating the `.zip`
 file when one of the [requirements] is not satisfied. This setting must only be
 used when reporting a bug that is related to a customization
 [explicitly mentioned in our documentation]. You can change it with:

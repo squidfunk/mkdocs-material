@@ -1,4 +1,5 @@
 ---
+title: Built-in search plugin
 icon: material/magnify
 ---
 

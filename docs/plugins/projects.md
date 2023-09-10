@@ -1,4 +1,5 @@
 ---
+title: Built-in projects plugin
 icon: material/folder-open
 ---
 

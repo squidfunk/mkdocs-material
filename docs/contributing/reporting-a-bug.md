@@ -243,9 +243,9 @@ with concise and small reproductions can be fixed much faster.
 
 ---
 
-After you have created the reproduction, you should have a .zip file, ideally not
-larger than 1 MB. Just drag and drop the .zip file into this field, which will
-automatically upload it to GitHub.
+After you have created the reproduction, you should have a `.zip` file, ideally
+not larger than 1 MB. Just drag and drop the `.zip` file into this field, which
+will automatically upload it to GitHub.
 
 > __Why we need this__: if an issue contains no minimal reproduction or just
 > a link to a repository with thousands of files, the maintainers would need to

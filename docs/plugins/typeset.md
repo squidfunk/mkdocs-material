@@ -1,4 +1,5 @@
 ---
+title: Built-in typeset plugin
 icon: material/format-title
 ---
 

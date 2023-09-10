@@ -1,4 +1,5 @@
 ---
+title: Built-in social plugin
 icon: material/share-circle
 ---
 
@@ -37,7 +38,7 @@ project doesn't depend on external services. In order to generate social cards
 images, a few [dependencies] need to be available on your system.
 
   [configuration]: #configuration
-  [Image processing]: requirements/image-processing.md
+  [image processing]: requirements/image-processing.md
   [custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Puppeteer]: https://github.com/puppeteer/puppeteer
   [GitHub wrote in their blog]: https://github.blog/2021-06-22-framework-building-open-graph-images/
@@ -74,7 +75,6 @@ not already available on your system. The linked guide includes instructions
 for several operating systems and mentions some alternative environments.
 
   [social]: social.md
-  [Insiders]: ../insiders/index.md
 
 ### General
 

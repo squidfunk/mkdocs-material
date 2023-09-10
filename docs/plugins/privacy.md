@@ -1,4 +1,5 @@
 ---
+title: Built-in privacy plugin
 icon: material/shield-account
 ---
 
@@ -59,8 +60,8 @@ the plugin will automatically download and store them in your
 [`site` directory][mkdocs.site_dir] when [building your project].
 
 Even more interestingly, the plugin can be combined with other built-in plugins
-that Material for MkDocs offers, in order to build sophisticated build pipelines
-tailored to your project:
+that Material for MkDocs offers, in order to create sophisticated build
+pipelines tailored to your project:
 
 <div class="grid cards" markdown>
 
@@ -74,7 +75,7 @@ tailored to your project:
 
     ---
 
-    __All downloaded external images are automatically optimized__
+    __External media files can be automatically downloaded and optimized__
 
 -   :material-connection: &nbsp; __[Built-in offline plugin]__
 
@@ -82,7 +83,7 @@ tailored to your project:
 
     The offline plugin adds support for building offline-capable documentation,
     so you can distribute your [`site` directory][mkdocs.site_dir] as a
-    downloadable .zip file.
+    downloadable `.zip` file.
 
     ---
 

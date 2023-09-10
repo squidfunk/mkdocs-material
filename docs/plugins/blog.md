@@ -1,4 +1,5 @@
 ---
+title: Built-in blog plugin
 icon: material/newspaper-variant-outline
 ---
 
@@ -18,7 +19,7 @@ does all the heavy lifting, generating a view of all latest posts, [archive] and
 ### How it works
 
 The plugin scans the configured [`posts` directory][config.post_dir] for
-`*.md` files from which paginated views[^1] are automatically generated. If not
+.md files from which paginated views[^1] are automatically generated. If not
 configured otherwise, the plugin expects that your project has the following
 directory layout, and will create any missing directories or files for you:
 
@@ -370,7 +371,7 @@ The following placeholders are available:
 - `categories` – Post categories, slugified with [`categories_slugify`][config.categories_slugify]
 - `date` – Post date, formatted with [`post_url_date_format`][config.post_url_date_format]
 - `slug` – Post title, slugified with [`post_slugify`][config.post_slugify]
-- `file` – Post filename without `*.md` extension
+- `file` – Post filename without `.md` file extension
 
 If you remove the `date` placeholder, make sure that post URLs don't collide
 with URLs of other pages hosted under the [`blog` directory][config.blog_dir],

@@ -1,4 +1,5 @@
 ---
+title: Built-in tags plugin
 icon: material/tag-text
 ---
 
