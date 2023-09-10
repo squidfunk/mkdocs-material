@@ -137,7 +137,7 @@ plugins:
 
 Use this setting to control whether the plugin should stop creating the `.zip`
 file when one of the [requirements] is not satisfied. This setting must only be
-used when reporting a bug that is related to a customization
+used when [reporting a bug][reporting bugs] that is related to a customization
 [explicitly mentioned in our documentation]. You can change it with:
 
 ``` yaml
@@ -146,7 +146,10 @@ plugins:
       archive_stop_on_violation: false
 ```
 
-If you're using this setting, please explain why you think it is necessary.
+If you're using this setting when [reporting a bug][reporting bugs], please
+explain why you think it is necessary to include customizations. If you're
+unsure, please ask us first by [creating a discussion].
 
   [requirements]: #how-it-works
   [explicitly mentioned in our documentation]: ?q=%22extends+base%22
+  [creating a discussion]: https://github.com/squidfunk/mkdocs-material/discussions

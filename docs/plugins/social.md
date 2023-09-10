@@ -67,7 +67,7 @@ pipelines tailored to your project:
 
     ---
 
-    __Links to your blog render beautiful social cards on social media__
+    __Links to your blog render beautiful social cards when shared on social media__
 
 -   :material-file-tree: &nbsp; __[Built-in meta plugin]__
 

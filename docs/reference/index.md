@@ -83,7 +83,7 @@ explicitly set with the front matter `title` property:
 title: Lorem ipsum dolor sit amet # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -110,7 +110,7 @@ the author does not explicitly define a description for a Markdown file:
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -134,7 +134,7 @@ top of a Markdown file:
 icon: material/emoticon-happy # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -187,7 +187,7 @@ Markdown file:
 status: new
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -211,7 +211,7 @@ adding the following lines:
 subtitle: Nullam urna elit, malesuada eget finibus ut, ac tortor
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -226,7 +226,7 @@ lines at the top of a Markdown file:
 template: custom.html
 ---
 
-# Document title
+# Page title
 ...
 ```
 

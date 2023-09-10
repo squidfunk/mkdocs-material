@@ -83,7 +83,7 @@ extra:
 
 Both properties, `title` and `ratings`, are required. Note that it's allowed to
 define more than two ratings, e.g. to implement a 1-5 star rating. Since the
-feedback widget sends data to a third-party service, it is, of course, natively 
+feedback widget sends data to a third-party service, it is, of course, natively
 integrated with the [cookie consent] feature[^2].
 
   [^2]:
@@ -101,7 +101,7 @@ integrated with the [cookie consent] feature[^2].
     2.  Go to the __configure__ page on the left hand menu, then select
         __custom definitions__
 
-    3.  Click the __custom metrics__ tab and then __create custom metrics__, 
+    3.  Click the __custom metrics__ tab and then __create custom metrics__,
         enter the following values:
 
         * Metric name: Page helpful
@@ -119,7 +119,7 @@ integrated with the [cookie consent] feature[^2].
           (the custom metric created in step 3)
         * Rows: `Page location`
         * Values: Drag in both `Event count` and `Page helpful`
-        * Filters: Add a new filter for 
+        * Filters: Add a new filter for
           `Event name / exactly matches / feedback`
 
     !!! warning "Delay in data availability"
@@ -183,7 +183,7 @@ The following properties are available for each rating:
     https://github.com/.../issues/new/?title=[Feedback]+{title}+-+{url}
     ```
 
-    In this example, when clicking the link, the user is redirected to the "new 
+    In this example, when clicking the link, the user is redirected to the "new
     issue" form of your repository, with a pre-filled title including the path
     of the current document, e.g.:
 
@@ -213,7 +213,7 @@ hide:
   - feedback
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -221,7 +221,7 @@ hide:
 
 ### Custom site analytics
 
-In order to integrate another analytics service provider offering a 
+In order to integrate another analytics service provider offering a
 JavaScript-based tracking solution, just follow the guide on [theme extension]
 and create a new partial in the `overrides` folder. The name of the partial is
 used to configure the custom integration via `mkdocs.yml`:

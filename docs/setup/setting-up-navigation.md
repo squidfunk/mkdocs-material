@@ -374,7 +374,7 @@ hide:
   - toc
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -410,7 +410,7 @@ hide:
   - path
 ---
 
-# Document title
+# Page title
 ...
 ```
 

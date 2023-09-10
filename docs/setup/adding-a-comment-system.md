@@ -93,7 +93,7 @@ property to `true`:
 comments: true
 ---
 
-# Document title
+# Page title
 ...
 ```
 

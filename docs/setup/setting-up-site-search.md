@@ -322,7 +322,7 @@ Markdown file:
       boost: 2 # (1)!
     ---
 
-    # Document title
+    # Page title
     ...
     ```
 
@@ -337,7 +337,7 @@ Markdown file:
       boost: 0.5
     ---
 
-    # Document title
+    # Page title
     ...
     ```
 
@@ -357,7 +357,7 @@ search:
   exclude: true
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -370,7 +370,7 @@ heading:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     ## Section 1
 
@@ -412,7 +412,7 @@ inline- or block-level element:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     The content of this block is included
 

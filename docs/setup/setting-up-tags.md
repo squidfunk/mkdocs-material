@@ -375,6 +375,6 @@ hide:
   - tags
 ---
 
-# Document title
+# Page title
 ...
 ```

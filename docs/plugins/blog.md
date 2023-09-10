@@ -97,7 +97,7 @@ many other built-in plugins:
 
     ---
 
-    __Links to your blog render beautiful social cards on social media__
+    __Links to your blog render beautiful social cards when shared on social media__
 
 -   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
 
@@ -373,7 +373,7 @@ The following placeholders are available:
 
 - `categories` – Post categories, slugified with [`categories_slugify`][config.categories_slugify]
 - `date` – Post date, formatted with [`post_url_date_format`][config.post_url_date_format]
-- `slug` – Post title, slugified with [`post_slugify`][config.post_slugify]
+- `slug` – Post title, slugified with [`post_slugify`][config.post_slugify] or set via [`slug`][meta.slug] metadata property
 - `file` – Post filename without `.md` file extension
 
 If you remove the `date` placeholder, make sure that post URLs don't collide
@@ -1441,6 +1441,8 @@ slug: help-im-trapped-in-a-universe-factory
 # Post title
 ...
 ```
+
+Slugs are passed to [`post_url_format`][config.post_url_format].
 
 ---
 

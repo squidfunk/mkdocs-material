@@ -1,7 +1,7 @@
 # Setting up the footer
 
 The footer of your project documentation is a great place to add links to
-websites or platforms you or your company are using as additional marketing 
+websites or platforms you or your company are using as additional marketing
 channels, e.g. :fontawesome-brands-mastodon:{ style="color: #5A4CE0" } or
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }, which you can easily
 configure via `mkdocs.yml`.
@@ -27,8 +27,8 @@ theme:
 <!-- md:version 1.0.0 --> ·
 <!-- md:default _none_ -->
 
-Social links are rendered next to the copyright notice as part of the 
-footer of your project documentation. Add a list of social links in `mkdocs.yml` 
+Social links are rendered next to the copyright notice as part of the
+footer of your project documentation. Add a list of social links in `mkdocs.yml`
 with:
 
 ``` yaml
@@ -73,7 +73,7 @@ The following properties are available for each link:
 <!-- md:option social.link -->
 
 :   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
-    This property must be set to a relative or absolute URL including the URI 
+    This property must be set to a relative or absolute URL including the URI
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
     === ":fontawesome-brands-mastodon: Mastodon"
@@ -97,7 +97,7 @@ The following properties are available for each link:
 <!-- md:option social.name -->
 
 :   <!-- md:default _domain name from_ `link`_, if available_ -->
-    This property is used as the link's `title` attribute and can be set to a 
+    This property is used as the link's `title` attribute and can be set to a
     discernable name to improve accessibility:
 
     ``` yaml
@@ -157,7 +157,7 @@ extra:
 ### Hiding prev/next links
 
 The footer navigation showing links to the previous and next page can be hidden
-with the front matter `hide` property. Add the following lines at the top of a 
+with the front matter `hide` property. Add the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -166,7 +166,7 @@ hide:
   - footer
 ---
 
-# Document title
+# Page title
 ...
 ```
 
