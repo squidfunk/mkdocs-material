@@ -428,6 +428,7 @@ slugs from post titles. [Python Markdown Extensions] comes with a Unicode-aware
       - blog:
           post_slugify: !!python/object/apply:pymdownx.slugs.slugify
     ```
+
 When your project features non-European languages, it's advisable to use this
 configuration. Of course, you can also provide a custom slugification function
 for more granular control.
