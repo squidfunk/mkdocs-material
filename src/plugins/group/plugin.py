@@ -82,10 +82,17 @@ class GroupPlugin(BasePlugin[GroupConfig]):
         # Invoke `on_startup` event for plugins in group
         command = "serve" if self.is_serve else "build"
         for method in option.plugins.events["startup"]:
-            if method.__self__ in self.plugins.values():
+            plugin = self._get_plugin(method)
+
+            # Ensure that we have a method bound to a plugin (and not a hook)
+            if plugin and plugin in self.plugins.values():
                 method(command = command, dirty = self.is_dirty)
 
     # -------------------------------------------------------------------------
+
+    # Retrieve plugin instance for bound method or nothing
+    def _get_plugin(self, method: Callable):
+        return getattr(method, "__self__", None)
 
     # Retrieve priority of plugin method
     def _get_priority(self, method: Callable):
@@ -117,7 +124,8 @@ class GroupPlugin(BasePlugin[GroupConfig]):
             head = methods[at]
 
             # Skip if the plugin is not part of the group
-            if not head.__self__ in self.plugins.values():
+            plugin = self._get_plugin(head)
+            if not plugin or plugin not in self.plugins.values():
                 continue
 
             # Skip if the previous method has a higher priority than the current
@@ -125,9 +133,14 @@ class GroupPlugin(BasePlugin[GroupConfig]):
             if self._get_priority(tail) > self._get_priority(head):
                 continue
 
+            # Ensure that we have a method bound to a plugin (and not a hook)
+            plugin = self._get_plugin(tail)
+            if not plugin:
+                continue
+
             # Both methods have the same priority, so we check if the ordering
             # of both methods is violated, and if it is, swap them
-            if (position < self._get_position(tail.__self__, config)):
+            if (position < self._get_position(plugin, config)):
                 methods[at], methods[at - 1] = tail, head
 
 # -----------------------------------------------------------------------------
