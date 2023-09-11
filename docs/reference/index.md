@@ -53,14 +53,14 @@ The following configuration options are available:
 
 [`meta_file`](#+meta.meta_file){ #+meta.meta_file }
 
-:   :octicons-milestone-24: Default: `**/.meta.yml` – This option specifies the
+:   :octicons-milestone-24: Default: `.meta.yml` – This option specifies the
     name of the meta files that the plugin should look for. The default setting
     assumes that meta files are called `.meta.yml`:
 
     ``` yaml
     plugins:
       - meta:
-          meta_file: '**/.meta.yml' # (1)!
+          meta_file: .meta.yml # (1)!
     ```
 
     1.  Note that it's strongly recommended to prefix meta files with a `.`,
