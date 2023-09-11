@@ -23,6 +23,7 @@ import logging
 from collections.abc import Callable
 from mkdocs.config.config_options import Plugins
 from mkdocs.config.defaults import MkDocsConfig
+from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin, event_priority
 
 from .config import GroupConfig
@@ -65,8 +66,14 @@ class GroupPlugin(BasePlugin[GroupConfig]):
 
         # Load all plugins in group
         self.plugins: dict[str, BasePlugin] = {}
-        for name, plugin in self._load(option):
-            self.plugins[name] = plugin
+        try:
+            for name, plugin in self._load(option):
+                self.plugins[name] = plugin
+
+        # The plugin could not be loaded, likely because it's not installed or
+        # misconfigured, so we raise a plugin error for a nicer error message
+        except Exception as e:
+            raise PluginError(str(e))
 
         # Patch order of plugin methods
         for events in option.plugins.events.values():
@@ -99,9 +106,9 @@ class GroupPlugin(BasePlugin[GroupConfig]):
 
     # -------------------------------------------------------------------------
 
-    # Patch order of plugin events - all other plugin methods are already in the
-    # right order, so we only need to check those that are part of the group and
-    # bubble them up into the right location. Some plugin methods may define
+    # Patch order of plugin methods - all other plugin methods are already in
+    # the right order, so we only need to check those that are part of the group
+    # and bubble them up into the right location. Some plugin methods may define
     # priorities, so we need to make sure to order correctly within those.
     def _patch(self, methods: list[Callable], config: MkDocsConfig):
         position = self._get_position(self, config)
