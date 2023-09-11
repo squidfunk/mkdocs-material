@@ -78,8 +78,12 @@
     img {
       width: 100%;
       min-width: px2rem(80px);
-      max-width: px2rem(200px);
-      margin-right: px2rem(24px);
+      max-width: px2rem(160px);
+      margin-right: px2rem(60px);
+
+      @include break-to-device(mobile landscape) {
+        margin-right: 0;
+      }
     }
 
     @include break-to-device(mobile landscape) {
