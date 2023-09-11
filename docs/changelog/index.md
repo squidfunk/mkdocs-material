@@ -5,7 +5,7 @@
 ### 9.3.0 <small>September 11, 2023</small> { id="9.3.0" }
 
 - Improved configuration sharing between community and Insiders edition
-- Added built-in group plugin for enabling plugins conditionally
+- Added experimental built-in group plugin for enabling plugins conditionally
 - Added new settings in tags plugin for enabling/disabling
 - Dropped support for Python 3.7 (EOL)
 
