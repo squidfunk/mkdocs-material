@@ -1,3 +1,22 @@
+mkdocs-material-9.3.1+insiders-4.41.0 (2023-09-11)
+
+  * Improved multi-instance support for optimize plugin
+  * Added inclusion and exclusion patterns for optimize plugin
+  * Added transparent keyword for color handling in social plugin
+  * Changed default quality of PNGs to 3 in optimize plugin
+  * Fixed #5979: meta file not detected in root of docs directory
+
+mkdocs-material-9.3.1 (2023-09-11)
+
+  * Fixed crash of group plugin when used together with hooks
+
+mkdocs-material-9.3.0 (2023-09-11)
+
+  * Improved configuration sharing between community and Insiders edition
+  * Added experimental built-in group plugin for enabling plugins conditionally
+  * Added new settings in tags plugin for enabling/disabling
+  * Dropped support for Python 3.7 (EOL)
+
 mkdocs-material-9.2.8+insiders-4.40.4 (2023-09-04)
 
   * Fixed privacy plugin choking on boolean HTML5 attributes
