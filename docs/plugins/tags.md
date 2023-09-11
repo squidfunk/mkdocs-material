@@ -16,7 +16,7 @@ large, tags can help to discover relevant information faster.
 
 The plugin scans all pages for the [`tags`][meta.tags] metadata property and
 generates a tags index, which is an inverted list of tags and the pages they
-appear on. The tags index can be linked anywhere in the [`nav`][mkdocs.nav],
+appear on. The tags index can be located anywhere in the [`nav`][mkdocs.nav],
 allowing for maximum flexibility when adding tags to your project.
 
 ### When to use it
@@ -344,6 +344,10 @@ metadata property.
 ## Usage
 
 ### Metadata
+
+The following properties are available:
+
+---
 
 #### <!-- md:setting meta.tags -->
 

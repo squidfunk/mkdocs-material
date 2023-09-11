@@ -373,7 +373,7 @@ The following placeholders are available:
 
 - `categories` – Post categories, slugified with [`categories_slugify`][config.categories_slugify]
 - `date` – Post date, formatted with [`post_url_date_format`][config.post_url_date_format]
-- `slug` – Post title, slugified with [`post_slugify`][config.post_slugify] or set via [`slug`][meta.slug] metadata property
+- `slug` – Post title, slugified with [`post_slugify`][config.post_slugify], or explicitly set via [`slug`][meta.slug] metadata property
 - `file` – Post filename without `.md` file extension
 
 If you remove the `date` placeholder, make sure that post URLs don't collide
@@ -1132,7 +1132,7 @@ The following settings are available for drafts:
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `false` -->
 
-Including [draft posts][meta.draft] can be useful in deploy previews. Use this
+Rendering [draft posts][meta.draft] can be useful in deploy previews. Use this
 setting to specify whether the plugin should include posts marked as drafts when
 [building your project]:
 

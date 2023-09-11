@@ -5,19 +5,66 @@ icon: material/magnify
 
 # Built-in search plugin
 
-tbd
+The search plugin adds a search bar to the header, allowing users to search your
+documentation. It's powered by [lunr.js], a lightweight full-text search engine
+for the browser, elimininating the need for external services, and even works
+when building [offline-capable documentation].
+
+  [lunr.js]: https://lunrjs.com/
+  [offline-capable documentation]: offline.md
 
 ## Objective
 
 ### How it works
 
-tbd
+The plugin scans the generated HTML and builds a search index from all pages and
+sections by extracting the section titles and contents. It preserves some inline
+formatting like code blocks and lists, but removes all other formatting, so the
+search index is as small as possible.
 
-  [lunr.js]: https://lunrjs.com/
+When a user visits your site, the search index is shipped to the browser,
+indexed with [lunr.js] and made available for fast and simple querying – no
+server needed. This ensures that the search index is always up to date with
+your documentation, yielding accurate results.
 
 ### When to use it
 
-tbd
+It's generally recommended to use the plugin, as interactive search functionality
+is a vital part of every good documentation. Additionally, the plugin integrates
+perfectly with several of the other [built-in plugins] that Material for MkDocs
+offers:
+
+<div class="grid cards" markdown>
+
+-   :material-connection: &nbsp; __[Built-in offline plugin]__
+
+    ---
+
+    The offline plugin adds support for building offline-capable documentation,
+    so you can distribute your [`site` directory][mkdocs.site_dir] as a
+    downloadable `.zip` file.
+
+    ---
+
+    __Your documentation can work without connectivity to the internet__
+
+-   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+
+    ---
+
+    The meta plugin makes it easy to [boost][meta.search.boost] specific
+    sections in search results or to [exclude][meta.search.exclude] them
+    entirely from being indexed, giving more granular control over search.
+
+    ---
+
+    __Simpler organization and management of search in different subsections__
+
+</div>
+
+  [Built-in offline plugin]: offline.md
+  [Built-in meta plugin]: meta.md
+  [built-in plugins]: index.md
 
 ## Configuration
 
@@ -255,8 +302,8 @@ The following pipeline functions can be used:
 
 The plugin supports text segmentation of Chinese via [jieba], a popular
 Chinese text segmentation library. Other languages like Japanese and Korean are
-currently segmented on the client side, but we're evaluating to move this
-functionality into the plugin.
+currently segmented on the client side, but we're considering to move this
+functionality into the plugin in the future.
 
 The following settings are available for segmentation:
 
@@ -312,3 +359,69 @@ plugins:
 The provided path is resolved from the root directory.
 
   [user dictionary]: https://github.com/fxsjy/jieba#%E8%BD%BD%E5%85%A5%E8%AF%8D%E5%85%B8
+
+## Usage
+
+### Metadata
+
+The following properties are available:
+
+---
+
+#### <!-- md:setting meta.search.boost -->
+
+<!-- md:version 8.3.0 --> ·
+<!-- md:flag metadata --> ·
+<!-- md:default none -->
+
+Use this property to increase or decrease the relevance of a page in the search
+results, giving more weight to them. Use values above `1` to rank up and values
+below `1` to rank down:
+
+=== ":material-arrow-up-circle: Rank up"
+
+    ``` yaml
+    ---
+    search:
+      boost: 2 # (1)!
+    ---
+
+    # Page title
+    ...
+    ```
+
+    1.  When boosting pages, always start with low values.
+
+=== ":material-arrow-down-circle: Rank down"
+
+    ``` yaml
+    ---
+    search:
+      boost: 0.5
+    ---
+
+    # Page title
+    ...
+    ```
+
+---
+
+#### <!-- md:setting meta.search.exclude -->
+
+<!-- md:version 9.0.0 --> ·
+<!-- md:flag metadata --> ·
+<!-- md:default none -->
+
+Use this property to exclude a page from the search results. Note that this will
+not only remove the page, but also all subsections of the page from the search
+results:
+
+``` yaml
+---
+search:
+  exclude: true
+---
+
+# Page title
+...
+```

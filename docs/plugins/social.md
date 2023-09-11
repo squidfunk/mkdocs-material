@@ -411,7 +411,7 @@ plugins:
 ```
 
 When creating a [custom layout][custom layouts], you are completely free in
-defining which parts of your layout can be configured. The
+defining which parts of your layout can be parametrized. The
 [`default` layouts][default layouts] included with the plugin support the
 following options:
 
@@ -605,7 +605,8 @@ The following properties are available:
 <!-- md:flag metadata --> ·
 <!-- md:default none -->
 
-Override the [`cards`][config.cards] setting for the given page:
+Use this property to override the [`cards`][config.cards] setting for the given
+page:
 
 ``` yaml
 ---
@@ -627,7 +628,8 @@ social:
 <!-- md:default none --> ·
 <!-- md:flag experimental -->
 
-Override the [`cards_layout`][config.cards_layout] setting for the given page:
+Use this property to override the [`cards_layout`][config.cards_layout] setting
+for the given page:
 
 ``` yaml
 ---
@@ -648,8 +650,9 @@ social:
 <!-- md:flag metadata --> ·
 <!-- md:default none -->
 
-Override the [`cards_layout_options`][config.cards_layout_options] setting for
-the given page:
+Use this property to override the
+[`cards_layout_options`][config.cards_layout_options] setting for the given
+page:
 
 ``` yaml
 ---
@@ -1011,8 +1014,8 @@ The provided path is resolved from the root directory.
 <!-- md:default computed -->
 
 Use this option to change the title of the generated social card. This overrides
-the computed page title as assigned by MkDocs, and
-[the `title` property][meta.title] set through metadata:
+the computed page title as assigned by MkDocs, as well as the
+[`title`][meta.title] metadata property:
 
 ``` yaml
 plugins:
@@ -1032,8 +1035,8 @@ plugins:
 <!-- md:default computed -->
 
 Use this option to change the description of the generated social card. This
-overrides the set [`site_description`][mkdocs.site_description], and
-[the `description` property][meta.description] set through metadata:
+overrides the set [`site_description`][mkdocs.site_description], if defined, as
+well as the [`description`][meta.description] metadata property:
 
 ``` yaml
 plugins:
