@@ -219,6 +219,7 @@ nav:
   - Plugins:
     - plugins/index.md
     - Blog: plugins/blog.md
+    - Group: plugins/group.md
     - Info: plugins/info.md
     - Meta: plugins/meta.md
     - Offline: plugins/offline.md
