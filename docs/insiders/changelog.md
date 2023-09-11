@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.41.0 <small>September 11, 2023</small> { id="4.41.0" }
+
+- Improved multi-instance support for optimize plugin
+- Added inclusion and exclusion patterns for optimize plugin
+- Added transparent keyword for color handling in social plugin
+- Changed default quality of PNGs to 3 in optimize plugin
+- Fixed #5979: meta file not detected in root of docs directory
+
 ### 4.40.4 <small>September 4, 2023</small> { id="4.40.4" }
 
 - Fixed privacy plugin choking on boolean HTML5 attributes
