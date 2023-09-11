@@ -307,7 +307,7 @@ plugins:
 <!-- md:default `assets/images/social` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your [`site` directory][mkdocs.site_dir] where
+to change the path within the [`site` directory][mkdocs.site_dir] where
 social cards are stored. If you want to change it, use:
 
 ``` yaml
@@ -449,9 +449,9 @@ plugins:
         - blog/*
 ```
 
-This configuration will enable social card generation for all pages that are
-contained in the `blog` folder and its subfolders inside your [`docs` directory]
-[mkdocs.docs_dir].
+This configuration enables social card generation for all pages that are
+contained in the `blog` folder and its subfolders inside the
+[`docs` directory][mkdocs.docs_dir].
 
 ---
 
@@ -469,11 +469,11 @@ different social cards for different subsections:
 plugins:
   - social:
       cards_exclude:
-        - changelog/*.md
+        - changelog/*
 ```
 
-This configuration will disable social card generation for all pages that are
-contained in the `changelog` folder inside your
+This configuration disables social card generation for all pages that are
+contained in the `changelog` folder and its subfolders inside the
 [`docs` directory][mkdocs.docs_dir].
 
 ### Debugging

@@ -16,7 +16,7 @@ as effortless as it can possibly be.
 ### How it works
 
 The plugin scans the generated HTML for external assets, i.e., scripts, style
-sheets, images, and web fonts, downloads them, stores them in your
+sheets, images, and web fonts, downloads them, stores them in the
 [`site` directory][mkdocs.site_dir] and replaces all references with links to
 the downloaded copies for effortless self-hosting. For example:
 
@@ -56,7 +56,7 @@ example its tight integration with [Google Fonts].
 
 But, that's only the start. For example, if your project includes a lot of
 images, enabling the plugin allows to move them outside of your repository, as
-the plugin will automatically download and store them in your
+the plugin will automatically download and store them in the
 [`site` directory][mkdocs.site_dir] when [building your project].
 
 Even more interestingly, the plugin can be combined with other built-in plugins
@@ -82,8 +82,8 @@ pipelines tailored to your project:
     ---
 
     The offline plugin adds support for building offline-capable documentation,
-    so you can distribute your [`site` directory][mkdocs.site_dir] as a
-    downloadable `.zip` file.
+    so you can distribute the [`site` directory][mkdocs.site_dir] as a `.zip`
+    file that can be downloaded.
 
     ---
 
@@ -268,7 +268,7 @@ plugins:
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want
-to change the path within your [`site` directory][mkdocs.site_dir] where
+to change the path within the [`site` directory][mkdocs.site_dir] where
 external assets are stored. If you want to change it, use:
 
 ``` yaml

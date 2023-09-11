@@ -14,7 +14,7 @@ custom template, or is attributed to an author.
 
 ### How it works
 
-The plugin scans your [`docs` directory][mkdocs.docs_dir] for `.meta.yml` files,
+The plugin scans the [`docs` directory][mkdocs.docs_dir] for `.meta.yml` files,
 and recursively merges the contents of those files with the metadata (front
 matter) of all pages that are contained in the same folder and all subfolders.
 For example, if you want to add the tag <span class="md-tag">Example</span> to
@@ -180,8 +180,8 @@ The following settings are available for meta files:
 <!-- md:version insiders-4.21.0 --> ·
 <!-- md:default `.meta.yml` -->
 
-Use this setting to change the file the plugin will look for when scanning
-your [`docs` directory][mkdocs.docs_dir]. It's normally not necessary to change
+Use this setting to change the file  the plugin will look for when scanning
+the [`docs` directory][mkdocs.docs_dir]. It's normally not necessary to change
 this setting, but if you want to change it, use:
 
 ``` yaml

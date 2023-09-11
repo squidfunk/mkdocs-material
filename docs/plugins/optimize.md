@@ -16,8 +16,8 @@ search engines.
 
 ### How it works
 
-The plugin scans your [`docs` directory][mkdocs.docs_dir] for media files and
-assets, optimizing them automatically in order to reduce the final size of your
+The plugin scans the [`docs` directory][mkdocs.docs_dir] for media files and
+assets, optimizing them automatically in order to reduce the final size of the
 [`site` directory][mkdocs.site_dir]. This leads to faster loading times as you
 ship less bytes to your users, as well as a smaller download for
 [offline-capable documentation].
@@ -63,8 +63,8 @@ build pipelines tailored to your project:
     ---
 
     The offline plugin adds support for building offline-capable documentation,
-    so you can distribute your [`site` directory][mkdocs.site_dir] as a
-    downloadable `.zip` file.
+    so you can distribute the [`site` directory][mkdocs.site_dir] as a `.zip`
+    file that can be downloaded.
 
     ---
 
@@ -216,6 +216,25 @@ The following settings are available for optimization:
 
 ---
 
+#### <!-- md:setting config.optimize -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.41.0 --> ·
+<!-- md:default `true` -->
+
+Use this setting to enable or disable media file optimization. Currently,
+the plugin's sole purpose is to optimize media files, so it's equivalent to the
+[`enabled`][config.enabled] setting, but in the near future, other features
+might be added. If you want to disable optimization, use:
+
+``` yaml
+plugins:
+  - optimize:
+      optimize: false
+```
+
+---
+
 #### <!-- md:setting config.optimize_png -->
 
 <!-- md:sponsors --> ·
@@ -337,6 +356,52 @@ plugins:
 ```
 
   [progressive encoding]: https://medium.com/hd-pro/jpeg-formats-progressive-vs-baseline-73b3938c2339
+
+---
+
+#### <!-- md:setting config.optimize_include -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.41.0 --> ·
+<!-- md:default none -->
+
+Use this setting to enable media file optimization for specific directories
+of your project, e.g., when using [multiple instances] of the plugin to optimize
+media files differently:
+
+``` yaml
+plugins:
+  - optimize:
+      optimize_include:
+        - screenshots/*
+```
+
+This configuration enables optimization for all media files that are contained
+in the `screenshots` folder and its subfolders inside the
+[`docs` directory] [mkdocs.docs_dir].
+
+---
+
+#### <!-- md:setting config.optimize_exclude -->
+
+<!-- md:sponsors --> ·
+<!-- md:version insiders-4.41.0 --> ·
+<!-- md:default none -->
+
+Use this setting to disable media file optimization for specific directories
+of your project, e.g., when using [multiple instances] of the plugin to optimize
+media files differently:
+
+``` yaml
+plugins:
+  - social:
+      optimize_exclude:
+        - vendor/*
+```
+
+This configuration disables optimization for all media files that are contained
+in the `vendor` folder and its subfolders inside the
+[`docs` directory][mkdocs.docs_dir].
 
 ### Reporting
 

@@ -41,8 +41,8 @@ offers:
     ---
 
     The offline plugin adds support for building offline-capable documentation,
-    so you can distribute your [`site` directory][mkdocs.site_dir] as a
-    downloadable `.zip` file.
+    so you can distribute the [`site` directory][mkdocs.site_dir] as a `.zip`
+    file that can be downloaded.
 
     ---
 
