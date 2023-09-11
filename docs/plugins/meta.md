@@ -178,16 +178,17 @@ The following settings are available for meta files:
 
 <!-- md:sponsors --> ·
 <!-- md:version insiders-4.21.0 --> ·
-<!-- md:default `**/.meta.yml` -->
+<!-- md:default `.meta.yml` -->
 
-Use this setting to change the pattern the plugin will look for when scanning
-your [`docs` directory][mkdocs.docs_dir]. It's normally not necessary
-to change this setting, but if you want to change the pattern, use:
+Use this setting to change the file the plugin will look for when scanning
+your [`docs` directory][mkdocs.docs_dir]. It's normally not necessary to change
+this setting, but if you want to change it, use:
 
 ``` yaml
 plugins:
   - meta:
-      meta_file: "**/.meta.yml"
+      meta_file: .meta.yml
 ```
 
-The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
+The provided path is resolved from the [`docs` directory][mkdocs.docs_dir]
+recursively.
