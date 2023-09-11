@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.3.0 <small>September 11, 2023</small> { id="9.3.0" }
+
+- Improved configuration sharing between community and Insiders edition
+- Added built-in group plugin for enabling plugins conditionally
+- Added new settings in tags plugin for enabling/disabling
+- Dropped support for Python 3.7 (EOL)
+
 ### 9.2.8 <small>September 4, 2023</small> { id="9.2.8" }
 
 - Updated Italian and Russian translations

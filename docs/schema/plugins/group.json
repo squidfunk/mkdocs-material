@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Built-in group plugin",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "group": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#built-in-group-plugin",
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/insiders/getting-started/#+group.enabled",
+              "type": "boolean",
+              "default": true
+            },
+            "plugins": {
+              "$ref": "../plugins.json"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

@@ -150,65 +150,77 @@ pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-materi
 
   [upgrade guide]: ../upgrade.md
 
-## Caveats
+## Built-in plugins
 
-This section describes some aspects to consider when using Insiders together
-with Material for MkDocs to ensure that users without access to Insiders can
-still build your documentation.
+When you're using built-in plugins that are solely available via Insiders,
+outside contributors won't be able to build your documentation project on their
+local machine. This is the reason why we developed the [built-in group plugin]
+that allows to conditionally load plugins.
 
-### Built-in plugins
+  [^1]:
+    Previously we recommended to use [configuration inheritance] to work around
+    this limitations, but the brand new [built-in group plugin] is a much better
+    approach, as it allows you to use a single configuration file for building
+    your project with the community edition and Insiders version of Material
+    for MkDocs.
 
-When using built-in plugins that are solely available via Insiders, it might be 
-necessary to split the `mkdocs.yml` configuration into a base configuration, and
-one with plugin overrides. Note that this is a limitation of MkDocs, which can
-be mitigated by using [configuration inheritance]:
-
-=== ":octicons-file-code-16: `mkdocs.insiders.yml`"
-
-    ``` yaml
-    INHERIT: mkdocs.yml
-    plugins:
-      - search
-      - social
-      - tags
-    ```
-
-=== ":octicons-file-code-16: `mkdocs.yml`"
-
-    ``` yaml
-    # Configuration with everything except Insiders plugins
-    ```
-
-Now, when you're in an environment with access to Insiders (e.g. in your CI
-pipeline), you can build your documentation project with the following lines:
-
-```
-mkdocs build --config-file mkdocs.insiders.yml
-```
-
-!!! tip "Sharing plugin and extension configuration"
-
-    If you want to share `plugins` or `markdown_extensions` between both
-    configuration files `mkdocs.insiders.yml` and `mkdocs.yml`, you can use
-    the alternative key-value syntax in both files. The above example would
-    then look like:
-
-    === ":octicons-file-code-16: `mkdocs.insiders.yml`"
-
-        ``` yaml
-        INHERIT: mkdocs.yml
-        plugins:
-          social: {}
-        ```
-
-    === ":octicons-file-code-16: `mkdocs.yml`"
-
-        ``` yaml
-        # Additional configuration above
-        plugins:
-          search: {}
-          tags: {}
-        ```
-
-
+  [built-in group plugin]: #built-in-group-plugin
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
+
+### Built-in group plugin
+
+[:octicons-tag-24: 9.3.0][Group plugin support] ·
+:octicons-cpu-24: Plugin ·
+:octicons-beaker-24: Experimental
+
+The built-in group plugin adds support for conditionally loading plugins based
+on environments. This makes enabling and disabling of multiple plugins much
+simpler, as you can group them into logical units and enable or disable them
+with an [environment variable]:
+
+``` yaml
+plugins:
+  - group:
+      enabled: !ENV CI
+      plugins:
+        - optimize
+        - minify
+```
+
+[`enabled`](#+group.enabled){ #+group.enabled }
+
+:   :octicons-milestone-24: Default: `false` – This option specifies whether
+    the plugin is enabled when building your project. By default, the plugin is
+    disabled, so you can use an [environment variable]:
+
+    ``` yaml
+    plugins:
+      - group:
+          enabled: !ENV CI
+    ```
+
+    Now, If you invoke MkDocs with that environment variable (or export the
+    environment variable before invoking MkDocs), the plugin will be enabled:
+
+    ``` sh
+    CI=true mkdocs build
+    ```
+
+[`plugins`](#+group.plugins){ #+group.plugins }
+
+:   :octicons-milestone-24: Default: _none_ – This option specifies the plugins
+    that the group plugin should load when enabled. Note that the plugins must
+    be specified as a list, even if there's only one plugin:
+
+    ``` yaml
+    plugins:
+      - group:
+          plugins:
+            - optimize
+            - minify
+    ```
+
+    The syntax is exactly the same as for all other plugins.
+
+  [Group plugin support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.3.0
+  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
