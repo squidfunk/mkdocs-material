@@ -11,7 +11,7 @@ for the browser, elimininating the need for external services, and even works
 when building [offline-capable documentation].
 
   [lunr.js]: https://lunrjs.com/
-  [offline-capable documentation]: offline.md
+  [offline-capable documentation]: ../setup/building-for-offline-usage.md
 
 ## Objective
 
@@ -36,7 +36,7 @@ offers:
 
 <div class="grid cards" markdown>
 
--   :material-connection: &nbsp; __[Built-in offline plugin]__
+-   :material-connection: &nbsp; __[Built-in offline plugin][offline]__
 
     ---
 
@@ -48,7 +48,7 @@ offers:
 
     __Your documentation can work without connectivity to the internet__
 
--   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+-   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
@@ -62,8 +62,8 @@ offers:
 
 </div>
 
-  [Built-in offline plugin]: offline.md
-  [Built-in meta plugin]: meta.md
+  [offline]: offline.md
+  [meta]: meta.md
   [built-in plugins]: index.md
 
 ## Configuration

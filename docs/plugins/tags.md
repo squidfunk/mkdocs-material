@@ -28,7 +28,7 @@ Additionally, it integrates perfectly with several of the other
 
 <div class="grid cards" markdown>
 
--   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+-   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
@@ -40,7 +40,7 @@ Additionally, it integrates perfectly with several of the other
 
     __Simpler organization and management of tags in different subsections__
 
--   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin]__
+-   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin][blog]__
 
     ---
 
@@ -54,8 +54,8 @@ Additionally, it integrates perfectly with several of the other
 
 </div>
 
-  [Built-in meta plugin]: meta.md
-  [Built-in blog plugin]: blog.md
+  [meta]: meta.md
+  [blog]: blog.md
   [built-in plugins]: index.md
 
 ## Configuration

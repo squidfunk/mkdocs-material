@@ -47,7 +47,7 @@ images, a few [dependencies] need to be available on your system.
 
 ### When to use it
 
-There's one canonical case when we don't recommend to use the plugin: when you
+There's one particular case when we don't recommend to use the plugin: when you
 build [offline-capable documentation] to offer it as a download. Otherwise, it
 always makes sense to enable the plugin, as links to your documentation shared
 on social media will appear much more appealing.
@@ -58,7 +58,7 @@ pipelines tailored to your project:
 
 <div class="grid cards" markdown>
 
--   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin]__
+-   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin][blog]__
 
     ---
 
@@ -69,7 +69,7 @@ pipelines tailored to your project:
 
     __Links to your blog render beautiful social cards when shared on social media__
 
--   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+-   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
@@ -84,9 +84,9 @@ pipelines tailored to your project:
 
 </div>
 
-  [offline-capable documentation]: offline.md
-  [Built-in blog plugin]: blog.md
-  [Built-in meta plugin]: meta.md
+  [offline-capable documentation]: ../setup/building-for-offline-usage.md
+  [blog]: blog.md
+  [meta]: meta.md
 
 ## Configuration
 

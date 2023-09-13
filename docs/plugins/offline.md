@@ -54,7 +54,7 @@ create even better offline-capable documentation:
 
 <div class="grid cards" markdown>
 
--   :material-shield-account: &nbsp; __[Built-in privacy plugin]__
+-   :material-shield-account: &nbsp; __[Built-in privacy plugin][privacy]__
 
     ---
 
@@ -66,7 +66,7 @@ create even better offline-capable documentation:
 
     __Your documentation can work without connectivity to the internet[^1]__
 
--   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin][optimize]__
 
     ---
 
@@ -81,19 +81,19 @@ create even better offline-capable documentation:
 </div>
 
   [^1]:
-    You might wonder why the [privacy plugin][Built-in privacy plugin] is
-    necessary to build truly offline-capable documentation with the offline
-    plugin. While it's certainly possible to also add support for downloading
-    external assets to the offline plugin, this functionality is already
-    fully implemented in the privacy plugin and is its very raison d'être.
+    You might wonder why the [privacy plugin][privacy] is necessary to build
+    truly offline-capable documentation with the offline plugin. While it's
+    certainly possible to also add support for downloading external assets to
+    the offline plugin, this functionality is already fully implemented in the
+    privacy plugin and is its very raison d'être.
 
     Material for MkDocs follows a modular approach for its plugin system – many
     of the plugins work perfectly together and enhance each others
     functionalities, allowing to solve complex problems with a few lines
     of configuration.
 
-  [Built-in privacy plugin]: privacy.md
-  [Built-in optimize plugin]: optimize.md
+  [privacy]: privacy.md
+  [optimize]: optimize.md
 
 ## Configuration
 

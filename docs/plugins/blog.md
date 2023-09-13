@@ -76,7 +76,7 @@ many other built-in plugins:
 
 <div class="grid cards" markdown>
 
--   :material-file-tree: &nbsp; __[Built-in meta plugin]__
+-   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
@@ -88,7 +88,7 @@ many other built-in plugins:
 
     __Simpler organization, categorization and management of posts__
 
--   :material-share-circle: &nbsp; __[Built-in social plugin]__
+-   :material-share-circle: &nbsp; __[Built-in social plugin][social]__
 
     ---
 
@@ -99,7 +99,7 @@ many other built-in plugins:
 
     __Links to your blog render beautiful social cards when shared on social media__
 
--   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin][optimize]__
 
     ---
 
@@ -111,7 +111,7 @@ many other built-in plugins:
 
     __Your blog loads faster as smaller images are shipped to your users__
 
--   :material-tag-text: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-text: &nbsp; __[Built-in tags plugin][tags]__
 
     ---
 
@@ -125,10 +125,10 @@ many other built-in plugins:
 
 </div>
 
-  [Built-in meta plugin]: meta.md
-  [Built-in social plugin]: social.md
-  [Built-in optimize plugin]: optimize.md
-  [Built-in tags plugin]: tags.md
+  [meta]: meta.md
+  [social]: social.md
+  [optimize]: optimize.md
+  [tags]: tags.md
 
 ## Configuration
 

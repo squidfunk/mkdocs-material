@@ -30,7 +30,7 @@ about optimizing them, or even worse, forgetting to do so.
 In order to optimize media files, a few [dependencies] need to be available on
 your system.
 
-  [offline-capable documentation]: offline.md
+  [offline-capable documentation]: ../setup/building-for-offline-usage.md
   [dependencies]: #configuration
 
 ### When to use it
@@ -46,7 +46,7 @@ build pipelines tailored to your project:
 
 <div class="grid cards" markdown>
 
--   :material-shield-account: &nbsp; __[Built-in privacy plugin]__
+-   :material-shield-account: &nbsp; __[Built-in privacy plugin][privacy]__
 
     ---
 
@@ -58,7 +58,7 @@ build pipelines tailored to your project:
 
     __External media files can be automatically downloaded and optimized__
 
--   :material-connection: &nbsp; __[Built-in offline plugin]__
+-   :material-connection: &nbsp; __[Built-in offline plugin][offline]__
 
     ---
 
@@ -72,8 +72,8 @@ build pipelines tailored to your project:
 
 </div>
 
-  [Built-in privacy plugin]: privacy.md
-  [Built-in offline plugin]: offline.md
+  [privacy]: privacy.md
+  [offline]: offline.md
 
 ## Configuration
 

@@ -55,7 +55,7 @@ of the meta plugin and other built-in plugins are:
 
 <div class="grid cards" markdown>
 
--   :material-share-circle: &nbsp; __[Built-in social plugin]__
+-   :material-share-circle: &nbsp; __[Built-in social plugin][social]__
 
     ---
 
@@ -68,7 +68,7 @@ of the meta plugin and other built-in plugins are:
       cards_layout: default/variant
     ```
 
--   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin]__
+-   :material-newspaper-variant-outline: &nbsp; __[Built-in blog plugin][blog]__
 
     ---
 
@@ -81,7 +81,7 @@ of the meta plugin and other built-in plugins are:
       - squidfunk
     ```
 
--   :material-tag-text: &nbsp; __[Built-in tags plugin]__
+-   :material-tag-text: &nbsp; __[Built-in tags plugin][tags]__
 
     ---
 
@@ -94,7 +94,7 @@ of the meta plugin and other built-in plugins are:
       - Example
     ```
 
--   :material-magnify: &nbsp; __[Built-in search plugin]__
+-   :material-magnify: &nbsp; __[Built-in search plugin][search]__
 
     ---
 
@@ -109,17 +109,17 @@ of the meta plugin and other built-in plugins are:
 
 </div>
 
-  [Built-in social plugin]: social.md
+  [social]: social.md
   [change the layout]: social.md#meta.social.cards_layout
   [change specific layout options]: social.md#meta.social.cards_layout_options
   [background]: social.md#option.background_color
   [color]: social.md#option.color
-  [Built-in blog plugin]: blog.md
+  [blog]: blog.md
   [authors]: blog.md#meta.authors
   [categories]: blog.md#meta.categories
-  [Built-in tags plugin]: tags.md
+  [tags]: tags.md
   [specific tags]: tags.md#meta.tags
-  [Built-in search plugin]: search.md
+  [search]: search.md
   [exclude]: search.md#meta.search.exclude
   [boost]: search.md#meta.search.boost
 

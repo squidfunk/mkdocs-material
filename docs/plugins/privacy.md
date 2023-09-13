@@ -65,7 +65,7 @@ pipelines tailored to your project:
 
 <div class="grid cards" markdown>
 
--   :material-rabbit: &nbsp; __[Built-in optimize plugin]__
+-   :material-rabbit: &nbsp; __[Built-in optimize plugin][optimize]__
 
     ---
 
@@ -77,11 +77,11 @@ pipelines tailored to your project:
 
     __External media files are automatically downloaded and optimized__
 
--   :material-connection: &nbsp; __[Built-in offline plugin]__
+-   :material-connection: &nbsp; __[Built-in offline plugin][offline]__
 
     ---
 
-    The offline plugin adds support for building offline-capable documentation,
+    The offline plugin adds support for building [offline-capable documentation],
     so you can distribute the [`site` directory][mkdocs.site_dir] as a `.zip`
     file that can be downloaded.
 
@@ -93,8 +93,9 @@ pipelines tailored to your project:
 
   [Google Fonts]: changing-the-fonts.md
   [building your project]: ../creating-your-site.md#building-your-site
-  [Built-in optimize plugin]: optimize.md
-  [Built-in offline plugin]: offline.md
+  [optimize]: optimize.md
+  [offline]: offline.md
+  [offline-capable documentation]: ../setup/building-for-offline-usage.md
 
 ## Configuration
 
