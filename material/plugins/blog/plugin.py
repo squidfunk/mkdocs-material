@@ -134,10 +134,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             reverse = True
         )
 
-        # Temporarily remove posts from navigation
-        for post in self.blog.posts:
-            post.file.inclusion = InclusionLevel.EXCLUDED
-
         # Generate views for archive
         if self.config.archive:
             views = self._generate_archive(config, files)
@@ -459,6 +455,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         for file in files.documentation_pages():
             if not file.src_path.startswith(path):
                 continue
+
+            # Temporarily remove post from navigation
+            file.inclusion = InclusionLevel.EXCLUDED
 
             # Resolve post - in order to determine whether a post should be
             # excluded, we must load it and analyze its metadata. All posts
