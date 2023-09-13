@@ -34,47 +34,60 @@ developing built-in plugins, we adhere to the following design principles:
 
 ### Management
 
+The following plugins make working with large documentation projects easier by
+providing better management capabilities, most notable management of plugins,
+multiple projects, metadata. Additionally we provide a plugin that makes it
+simple to report bugs:
+
 <div class="grid cards" markdown>
 
 -   :material-format-list-group: &nbsp; __[Built-in group plugin][group]__
 
     ---
 
-    tbd
+    The group plugin allows to group plugins into logical units to conditionally
+    enable or disable them for specific environments with the use of
+    [environment variables][mkdocs.env].
 
     ---
 
-    __tbd__
+    __Better management of plugins when building in different environments__
 
 -   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
-    tbd
+    The meta plugin makes it easy to manage metadata (front matter) for all
+    pages in a folder and all of its subfolders, i.e., a subsection of your
+    project.
 
     ---
 
-    __tbd__
+    __Simpler organization, categorization and management of pages__
 
 -   :material-folder-open: &nbsp; __[Built-in projects plugin][projects]__
 
     ---
 
-    tbd
+    The projects plugin allows to split your main project into multiple distinct
+    projects, build them concurrently and preview them together as one.
 
     ---
 
-    __tbd__
+    __Connect multiple projects together, and build them separately and as one__
 
 -   :material-information: &nbsp; __[Built-in info plugin][info]__
 
     ---
 
-    tbd
+    The info plugin is a small and useful utility that helps to create
+    self-contained minimal reproductions, so we maintainers can fix bugs more
+    quickly.
 
     ---
 
-    __tbd__
+    __Your bug reports include all necessary information to fix them as fast as
+    possible__
 
 
 </div>
@@ -86,17 +99,25 @@ developing built-in plugins, we adhere to the following design principles:
 
 ### Optimization
 
+The following plugins are designed to help you build optimized documentation,
+make it more accessible to your users, yield faster loading times and better
+search engine rankings, beautiful preview images on social media and
+make it GDPR compliant with a few lines of configuration:
+
 <div class="grid cards" markdown>
 
 -   :material-share-circle: &nbsp; __[Built-in social plugin][social]__
 
     ---
 
-    tbd
+    The social plugin automatically generates beautiful and customizable
+    social cards for each page of your documentation when links are shared on
+    social media.
 
     ---
 
-    __tbd__
+    __Links to your site render beautiful social cards when shared on social
+    media__
 
 -   :material-rabbit: &nbsp; __[Built-in optimize plugin][optimize]__
 
@@ -108,17 +129,19 @@ developing built-in plugins, we adhere to the following design principles:
 
     ---
 
-    __Your site loads faster as smaller images are shipped to your users__
+    __Your site loads faster as smaller images are served to your users__
 
 -   :material-shield-account: &nbsp; __[Built-in privacy plugin][privacy]__
 
     ---
 
-    tbd
+    The privacy plugin downloads external assets automatically for easy
+    self-hosting, allowing for GDPR compliance with a single line of
+    configuration.
 
     ---
 
-    __tbd__
+    __Your documentation can be made GDPR compliant with minimal effort__
 
 -   :material-connection: &nbsp; __[Built-in offline plugin][offline]__
 
@@ -139,7 +162,11 @@ developing built-in plugins, we adhere to the following design principles:
   [privacy]: privacy.md
   [social]: social.md
 
-### Functionality
+### Content
+
+The following plugins are designed to help you set up a blog, provide search
+functionality to your users, add tags to your pages and use the same typesetting
+capabilities in specific parts of the documentation as in the main content:
 
 <div class="grid cards" markdown>
 
@@ -147,41 +174,47 @@ developing built-in plugins, we adhere to the following design principles:
 
     ---
 
-    tbd
+    The blog plugin adds first-class support for blogging to Material for
+    MkDocs, either as a sidecar to your documentation or as a standalone
+    installation.
 
     ---
 
-    __tbd__
+    __Your blog is built with the same powerful engine as your documentation__
 
 -   :material-magnify: &nbsp; __[Built-in search plugin][search]__
 
     ---
 
-    tbd
+    The search plugin adds a search bar to the header, allowing users to search
+    your documentation, so it's easier to find what they're looking for.
 
     ---
 
-    __tbd__
+    __Your documentation is searchable without any external services, even
+    offline__
 
 -   :material-tag-text: &nbsp; __[Built-in tags plugin][tags]__
 
     ---
 
-    tbd
+    The tags plugin adds first-class support for categorizing pages with the use
+    of tags, adding the possibility to group related pages, improving discovery.
 
     ---
 
-    __tbd__
+    __Your pages are categorized with tags, yielding additional context__
 
 -   :material-format-title: &nbsp; __[Built-in typeset plugin][typeset]__
 
     ---
 
-    tbd
+    The typeset plugin allows to preserve the enriched presentation of titles
+    and headlines within the navigation and table of contents.
 
     ---
 
-    __tbd__
+    __Sidebars preserve the same formatting as the headlines in your pages__
 
 </div>
 
@@ -191,8 +224,6 @@ developing built-in plugins, we adhere to the following design principles:
   [typeset]: typeset.md
 
 ## Architecture
-
-- Explain how to use plugins in community edition and Insiders
 
 ### Multiple instances
 

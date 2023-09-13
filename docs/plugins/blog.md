@@ -109,7 +109,7 @@ many other built-in plugins:
 
     ---
 
-    __Your blog loads faster as smaller images are shipped to your users__
+    __Your blog loads faster as smaller images are served to your users__
 
 -   :material-tag-text: &nbsp; __[Built-in tags plugin][tags]__
 
