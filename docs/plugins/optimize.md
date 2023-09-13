@@ -200,7 +200,7 @@ If you're using [multiple instances] of the plugin, it can be a good idea to
 set different cache directories for both instances, so that they don't interfere
 with each other.
 
-  [multiple instances]: #
+  [multiple instances]: index.md#multiple-instances
 
 ### Optimization
 

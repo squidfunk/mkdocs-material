@@ -86,18 +86,19 @@ many other built-in plugins:
 
     ---
 
-    __Simpler organization, categorization and management of posts__
+    __Simpler organization, categorization and management of post metadata__
 
 -   :material-share-circle: &nbsp; __[Built-in social plugin][social]__
 
     ---
 
     The social plugin automatically generates beautiful and customizable
-    social cards for each post and page when links are shared on social media.
+    social cards for each post and page, showing as previews on social media.
 
     ---
 
-    __Links to your blog render beautiful social cards when shared on social media__
+    __Links to your blog render beautiful social cards when shared on social
+    media__
 
 -   :material-rabbit: &nbsp; __[Built-in optimize plugin][optimize]__
 

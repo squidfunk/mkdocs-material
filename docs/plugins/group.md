@@ -22,8 +22,8 @@ overhead when the group is disabled. It also means that the grouped plugins
 only need to be installed when the group is enabled.
 
 The plugins that are part of the group are executed in the same order as if
-they were defined at the top-level in the list of [`plugins`][mkdocs.plugins] –
-order is preserved and deterministic.
+they were defined at the top-level in the list of [`plugins`][mkdocs.plugins].
+Thus, order is preserved and deterministic.
 
 ### When to use it
 

@@ -8,18 +8,18 @@ growing number of complementary built-in plugins.
 We strive to make those plugins as modular and generic as possible, so that they
 can be used in a wide variety of projects and use cases. By providing useful
 default settings, we also try to make them as easy to use as possible, so that
-you can get started quickly and then adjust them to your needs later on. When
-developing built-in plugins, we adhere to the following design principles:
+you can get started quickly, tweaking their settings later on. When
+developing built-in plugins, we always adhere to the following design principles:
 
 - **Modularity:** Built-in plugins are designed to be modular, so that they can
   be easily combined to implement sophisticated pipelines. For example, the
-  [offline], [optimize] and [privacy] plugin are meant to be used together to
-  build truly [offline-capable documentation].
+  [offline], [optimize] and [privacy] plugins can be used together to build
+  truly [offline-capable documentation].
 
 - **Interoperability:** Built-in plugins are designed to be as compatible as
-  possible, so they can be used in combination with other built-in and
-  third-party plugins. This is not always possible, as there are some use cases
-  that are mutually exclusive, but we try to keep those to a minimum.
+  possible, so they can be used in combination with other plugins, including
+  third-party plugins. We strive to make it simple to integrate with the vast
+  ecosystem that has evolved around [MkDocs][mkdocs].
 
 - **Performance:** Built-in plugins are designed to be as fast and
   memory-efficient as possible, so that they don't unnecessarily slow down
@@ -34,10 +34,10 @@ developing built-in plugins, we adhere to the following design principles:
 
 ### Management
 
-The following plugins make working with large documentation projects easier by
-providing better management capabilities, most notable management of plugins,
-multiple projects, metadata. Additionally we provide a plugin that makes it
-simple to report bugs:
+The following plugins greatly improve the authoring experience when working on
+documentation projects by providing better management capabilities, from the
+management of plugins, multiple projects, and metadata, to the creation of
+minimal reproductions for bug reports:
 
 <div class="grid cards" markdown>
 
@@ -51,19 +51,19 @@ simple to report bugs:
 
     ---
 
-    __Better management of plugins when building in different environments__
+    __Optimal management of plugins when building in different environments__
 
 -   :material-file-tree: &nbsp; __[Built-in meta plugin][meta]__
 
     ---
 
     The meta plugin makes it easy to manage metadata (front matter) for all
-    pages in a folder and all of its subfolders, i.e., a subsection of your
-    project.
+    pages in a folder, so a certain subset of pages uses specific tags or a
+    custom template.
 
     ---
 
-    __Simpler organization, categorization and management of pages__
+    __Simpler organization, categorization and management of metadata__
 
 -   :material-folder-open: &nbsp; __[Built-in projects plugin][projects]__
 
@@ -74,19 +74,19 @@ simple to report bugs:
 
     ---
 
-    __Connect multiple projects together, and build them separately and as one__
+    __Connect multiple projects together, and build them separately or as one__
 
 -   :material-information: &nbsp; __[Built-in info plugin][info]__
 
     ---
 
     The info plugin is a small and useful utility that helps to create
-    self-contained minimal reproductions, so we maintainers can fix bugs more
-    quickly.
+    self-contained minimal reproductions, so we maintainers can fix reported
+    bugs more quickly.
 
     ---
 
-    __Your bug reports include all necessary information to fix them as fast as
+    __Your bug reports are of the highest quality, so we can fix them as fast as
     possible__
 
 
@@ -100,9 +100,9 @@ simple to report bugs:
 ### Optimization
 
 The following plugins are designed to help you build optimized documentation,
-make it more accessible to your users, yield faster loading times and better
-search engine rankings, beautiful preview images on social media and
-make it GDPR compliant with a few lines of configuration:
+making it more accessible to your users through faster loading times, better
+search engine rankings, beautiful preview images on social media, and GDPR
+compliance with a few lines of configuration:
 
 <div class="grid cards" markdown>
 
@@ -111,7 +111,7 @@ make it GDPR compliant with a few lines of configuration:
     ---
 
     The social plugin automatically generates beautiful and customizable
-    social cards for each page of your documentation when links are shared on
+    social cards for each page of your documentation, showing as previews on
     social media.
 
     ---
@@ -147,7 +147,7 @@ make it GDPR compliant with a few lines of configuration:
 
     ---
 
-    The offline plugin adds support for building offline-capable documentation,
+    The offline plugin adds support for building [offline-capable documentation],
     so you can distribute the [`site` directory][mkdocs.site_dir] as a `.zip`
     file that can be downloaded.
 
@@ -165,8 +165,9 @@ make it GDPR compliant with a few lines of configuration:
 ### Content
 
 The following plugins are designed to help you set up a blog, provide search
-functionality to your users, add tags to your pages and use the same typesetting
-capabilities in specific parts of the documentation as in the main content:
+functionality to your users, add tags to pages and posts, and use the same
+typesetting capabilities in specific parts of the documentation exactly as in
+the main content:
 
 <div class="grid cards" markdown>
 
@@ -187,7 +188,8 @@ capabilities in specific parts of the documentation as in the main content:
     ---
 
     The search plugin adds a search bar to the header, allowing users to search
-    your documentation, so it's easier to find what they're looking for.
+    the entire documentation, so it's easier for them to find what they're
+    looking for.
 
     ---
 
@@ -198,8 +200,9 @@ capabilities in specific parts of the documentation as in the main content:
 
     ---
 
-    The tags plugin adds first-class support for categorizing pages with the use
-    of tags, adding the possibility to group related pages, improving discovery.
+    The tags plugin adds first-class support for categorizing pages with tags,
+    adding the ability to group related pages to improve the discovery of
+    related content.
 
     ---
 
@@ -214,7 +217,7 @@ capabilities in specific parts of the documentation as in the main content:
 
     ---
 
-    __Sidebars preserve the same formatting as the headlines in your pages__
+    __Sidebars preserve the same formatting as section titles in pages__
 
 </div>
 

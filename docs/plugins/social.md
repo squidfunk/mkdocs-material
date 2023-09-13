@@ -63,7 +63,7 @@ pipelines tailored to your project:
     ---
 
     The social plugin automatically generates beautiful and customizable
-    social cards for each post and page when links are shared on social media.
+    social cards for each post and page, showing as previews on social media.
 
     ---
 
