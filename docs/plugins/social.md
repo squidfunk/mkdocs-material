@@ -1020,7 +1020,7 @@ plugins:
         title: My custom title
 ```
 
-  [meta.title]: ../reference.md#setting-the-page-title
+  [meta.title]: ../reference/index.md#setting-the-page-title
 
 ---
 
@@ -1041,7 +1041,7 @@ plugins:
         description: My custom description
 ```
 
-  [meta.description]: ../reference.md#setting-the-page-description
+  [meta.description]: ../reference/index.md#setting-the-page-description
 
 ---
 

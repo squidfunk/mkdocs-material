@@ -91,7 +91,7 @@ pipelines tailored to your project:
 
 </div>
 
-  [Google Fonts]: changing-the-fonts.md
+  [Google Fonts]: ../setup/changing-the-fonts.md
   [building your project]: ../creating-your-site.md#building-your-site
   [optimize]: optimize.md
   [offline]: offline.md
