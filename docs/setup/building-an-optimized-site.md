@@ -285,7 +285,7 @@ The following configuration options are available for optimization:
 
   [Insiders]: ../insiders/index.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [dependencies for image processing]: dependencies/image-processing.md
+  [dependencies for image processing]: ../plugins/requirements/image-processing.md
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [pngquant]: https://pngquant.org/
   [Pillow]: https://pillow.readthedocs.io/

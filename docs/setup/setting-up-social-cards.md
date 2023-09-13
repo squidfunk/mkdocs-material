@@ -109,7 +109,7 @@ The following configuration options are available:
     ```
 
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [dependencies for image processing]: dependencies/image-processing.md
+  [dependencies for image processing]: ../plugins/requirements/image-processing.md
   [Puppeteer]: https://github.com/puppeteer/puppeteer
   [Insiders]: ../insiders/index.md
   [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables

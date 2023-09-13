@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import posixpath
 import re
 
 from mkdocs.config.defaults import MkDocsConfig
@@ -51,7 +52,13 @@ def on_page_markdown(
         raise RuntimeError(f"Unknown shortcode: {type}")
 
     # Find and replace all external asset URLs in current page
-    return re.sub(
+    markdown = re.sub(
+        r"<!-- md:(\w+)(.*?) -->",
+        replace, markdown, flags = re.I | re.M
+    )
+
+    # Legacy
+    markdown = re.sub(
         r"<!-- md:(\w+)(.*?) -->",
         replace, markdown, flags = re.I | re.M
     )
@@ -62,9 +69,11 @@ def on_page_markdown(
 
 # Create a link to the section of the given version in the changelog
 def version(spec: str, page: Page, files: Files):
-    file = file = files.get_file_from_path("changelog/index.md")
+
+    file = files.get_file_from_path("changelog/index.md")
     icon = ":material-tag-outline:"
     legend_anchor = "version \"Minimum version\""
+
     if spec.startswith("insiders-"):
         file = files.get_file_from_path("insiders/changelog.md")
         icon = ":material-tag-heart-outline:"
@@ -72,12 +81,20 @@ def version(spec: str, page: Page, files: Files):
 
     # Return link
     legend = files.get_file_from_path("philosophy.md")
+
+    # posixpath.relative
+
+    # print(legend.src_uri, page.file.src_uri, )
+
+    legend_path = posixpath.relpath(legend.src_uri, page.file.src_uri)
+    file_path = posixpath.relpath(file.src_uri, page.file.src_uri)
+
     anchor = spec.replace("insiders-", "")
     return (
         f"[{icon}]"
-        f"({legend.url_relative_to(page.file)}#{legend_anchor}) "
+        f"({legend_path}#{legend_anchor}) "
         f"[{spec}]"
-        f"({file.url_relative_to(page.file)}#{anchor})"
+        f"({file_path}#{anchor})"
     )
 
  # Create a link to the Insiders page

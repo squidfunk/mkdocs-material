@@ -30,8 +30,8 @@ us to fix the bug as quickly as possible.
 
 The output of the plugin is a `.zip` file that you can share with us maintainers.
 
-  [Upgrade to the latest version]: ../../contributing/reporting-a-bug/#upgrade-to-latest-version
-  [Remove your customizations]: ../../contributing/reporting-a-bug/#remove-customizations
+  [Upgrade to the latest version]: ../contributing/reporting-a-bug.md#upgrade-to-latest-version
+  [Remove your customizations]: ../contributing/reporting-a-bug.md#remove-customizations
 
 
 ### When to use it
