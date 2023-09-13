@@ -45,8 +45,8 @@ for bug reports.
 
 ## Configuration
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag plugin [info] (built-in) -->
+<!-- md:version 9.0.0 -->
+<!-- md:flag plugin [info] – built-in -->
 
 In order to get started with the built-in info plugin, just add the following
 lines to `mkdocs.yml`, and quickly [create a minimal reproduction] to share
@@ -71,7 +71,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.0.0 --> ·
+<!-- md:version 9.0.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -90,7 +90,7 @@ plugins:
 
 #### <!-- md:setting config.enabled_on_serve -->
 
-<!-- md:version 9.0.6 --> ·
+<!-- md:version 9.0.6 -->
 <!-- md:default `false` -->
 
 Use this setting to control whether the plugin should be enabled when
@@ -115,7 +115,7 @@ having to disable the plugin first.
 
 #### <!-- md:setting config.archive -->
 
-<!-- md:version 9.0.0 --> ·
+<!-- md:version 9.0.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should create a `.zip` file
@@ -132,7 +132,7 @@ plugins:
 
 #### <!-- md:setting config.archive_stop_on_violation -->
 
-<!-- md:version 9.0.0 --> ·
+<!-- md:version 9.0.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should stop creating the `.zip`

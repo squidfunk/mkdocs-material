@@ -36,9 +36,9 @@ It can be used with any built-in or third-party plugin.
 
 ## Configuration
 
-<!-- md:version 9.3.0 --> ·
-<!-- md:flag plugin [group] (built-in) --> ·
-<!-- md:flag multiple --> ·
+<!-- md:version 9.3.0 -->
+<!-- md:flag plugin [group] – built-in -->
+<!-- md:flag multiple -->
 <!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the group plugin is
@@ -64,7 +64,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to enable or disable the plugin when [building your project].

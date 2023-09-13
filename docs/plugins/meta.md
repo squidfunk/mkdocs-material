@@ -125,9 +125,9 @@ of the meta plugin and other built-in plugins are:
 
 ## Configuration
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.21.0 --> ·
-<!-- md:flag plugin [meta] (built-in) -->
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:flag plugin [meta] – built-in -->
 
 As with all [built-in plugins], getting started with the meta plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and start
@@ -152,8 +152,8 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -176,8 +176,8 @@ The following settings are available for meta files:
 
 #### <!-- md:setting config.meta_file -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.21.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
 <!-- md:default `.meta.yml` -->
 
 Use this setting to change the file  the plugin will look for when scanning

@@ -99,9 +99,9 @@ pipelines tailored to your project:
 
 ## Configuration
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.9.0 --> ·
-<!-- md:flag plugin [privacy] (built-in) --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.9.0 -->
+<!-- md:flag plugin [privacy] – built-in -->
 <!-- md:flag multiple -->
 
 As with all [built-in plugins], getting started with the privacy plugin is
@@ -127,8 +127,8 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.10.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.10.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -147,8 +147,8 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.30.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.30.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -178,8 +178,8 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.30.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.30.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -197,8 +197,8 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.30.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.30.0 -->
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -225,8 +225,8 @@ The following settings are available for external assets:
 
 #### <!-- md:setting config.assets -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should download external
@@ -245,8 +245,8 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should downloads or only report
@@ -264,8 +264,8 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch_dir -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -285,8 +285,8 @@ This configuration stores the downloaded copies at `my/custom/dir` in the
 
 #### <!-- md:setting config.assets_include -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default none -->
 
 Use this setting to enable downloading of external assets for specific origins,
@@ -304,8 +304,8 @@ plugins:
 
 #### <!-- md:setting config.assets_exclude -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default none -->
 
 Use this setting to disable downloading of external assets for specific origins,
@@ -344,8 +344,8 @@ The following settings are available for external links:
 
 #### <!-- md:setting config.links -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to parse and process external links to
@@ -365,8 +365,8 @@ plugins:
 
 #### <!-- md:setting config.links_attr_map -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default none -->
 
 Use this setting to specify additional attributes that should be added to
@@ -384,8 +384,8 @@ plugins:
 
 #### <!-- md:setting config.links_noopener -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.37.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.37.0 -->
 <!-- md:default `true` -->
 
 It is normally not recommended to change this setting, as it will automatically

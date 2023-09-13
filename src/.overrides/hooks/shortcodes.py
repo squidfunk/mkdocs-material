@@ -58,10 +58,12 @@ def on_page_markdown(
     )
 
     # Legacy
-    markdown = re.sub(
-        r"<!-- md:(\w+)(.*?) -->",
-        replace, markdown, flags = re.I | re.M
-    )
+    # markdown = re.sub(
+    #     r"<!-- md:(\w+)(.*?) -->",
+    #     replace, markdown, flags = re.I | re.M
+    # )
+
+    return markdown
 
 # -----------------------------------------------------------------------------
 # Helper functions
@@ -82,19 +84,10 @@ def version(spec: str, page: Page, files: Files):
     # Return link
     legend = files.get_file_from_path("philosophy.md")
 
-    # posixpath.relative
-
-    # print(legend.src_uri, page.file.src_uri, )
-
-    legend_path = posixpath.relpath(legend.src_uri, page.file.src_uri)
-    file_path = posixpath.relpath(file.src_uri, page.file.src_uri)
-
     anchor = spec.replace("insiders-", "")
-    return (
-        f"[{icon}]"
-        f"({legend_path}#{legend_anchor}) "
-        f"[{spec}]"
-        f"({file_path}#{anchor})"
+    return _badge(
+        f"[{icon}]({_resolve(legend, page)}#{legend_anchor})",
+        f"[{spec}]({_resolve(file, page)}#{anchor})"
     )
 
  # Create a link to the Insiders page
@@ -102,29 +95,50 @@ def sponsors(page: Page, files: Files):
     file = files.get_file_from_path("insiders/index.md")
 
     # Return link
-    return (
+    return _badge(
         f"[:material-heart:{{ .mdx-heart }}]"
-        f"({file.url_relative_to(page.file)} \"Sponsors only\"){{ .mdx-insiders }}"
+        f"({_resolve(file, page)} \"Sponsors only\"){{ .mdx-insiders }}",
+        type = "mdx-badge__item--sponsors"
     )
 
 # Create a flag of a specific type
 def flag(args: str):
     type, *rest = args.split(" ", 1)
-    if   type == "experimental": return f"[:material-flask-outline:](# \"Experimental\")"
-    elif type == "feature":      return f"[:material-flag:](# \"Feature flag\") {rest[0] if rest else ''}"
-    elif type == "plugin":       return f"[:material-floppy:](# \"Plugin\") {rest[0] if rest else ''}"
-    elif type == "required":     return f"[:material-alert:](# \"Required value\")"
-    elif type == "metadata":     return f"[:material-list-box-outline:](# \"Metadata\")"
-    elif type == "deprecated":   return f"[:material-archive-outline:](# \"Deprecated\") {rest[0] if rest else ''}"
-    elif type == "multiple":     return f"[:material-inbox-multiple:](# \"Multiple instances\") {rest[0] if rest else ''}"
+    if   type == "experimental": return _badge(f"[:material-flask-outline:](# \"Experimental\")")
+    elif type == "feature":      return _badge(f"[:material-flag:](# \"Feature flag\")", rest[0] if rest else '')
+    elif type == "plugin":       return _badge(f"[:material-floppy:](# \"Plugin\")", rest[0] if rest else '')
+    elif type == "required":     return _badge(f"[:material-alert:](# \"Required value\")")
+    elif type == "metadata":     return _badge(f"[:material-list-box-outline:](# \"Metadata\")")
+    elif type == "deprecated":   return _badge(f"[:material-archive-outline:](# \"Deprecated\")", rest[0] if rest else '')
+    elif type == "multiple":     return _badge(f"[:material-inbox-multiple:](# \"Multiple instances\")")
     # elif type == "removed":      return f"[:material-trash-can-outline:](# \"Removed\") {rest[0] if rest else ''}"
     # @todo: removed should carry a version
 
 # Create a default value
 def default(args: str, page: Page, files: Files):
     file = files.get_file_from_path("philosophy.md")
-    href = file.url_relative_to(page.file)
-    return f"[:material-water:]({href}#default \"Default value\") {args}"
+    href = _resolve(file, page)
+    if args == "none":
+        return (
+            f"<span class=\"mdx-badge\">"
+                f"<span class=\"mdx-badge__item\">"
+                    f"[:material-water-outline:]"
+                    f"({href}#default \"No default value\")"
+                f"</span>"
+            f"</span>"
+        )
+    return (
+        f"<span class=\"mdx-badge\">"
+            f"<span class=\"mdx-badge__item\">"
+                f"[:material-water:]"
+                f"({href}#default \"Default value\")"
+            f"</span>"
+            f"<span class=\"mdx-badge__item\">"
+                f"{args}"
+            f"</span>"
+        f"</span>"
+    )
+    # return f"[:material-water:]({href}#default \"Default value\") {args}"
 
 # Create a linkable option
 def option(type: str):
@@ -135,3 +149,23 @@ def option(type: str):
 def setting(type: str):
     _, *_, name = re.split(r"[.*]", type)
     return f"`{name}` {{ #{type} }}\n\n[{type}]: #{type}\n\n"
+
+# -----------------------------------------------------------------------------
+
+# Resolve path of file relative to given page - the posixpath always includes
+# one additional level of `..` which we need to remove
+def _resolve(file: File, page: Page):
+    path = posixpath.relpath(file.src_uri, page.file.src_uri)
+    return posixpath.sep.join(path.split(posixpath.sep)[1:])
+
+def _badge(*args: str, type = ""):
+    items = "".join([(
+        f"<span class=\"mdx-badge__item {type}\">"
+            f"{item}"
+        "</span>"
+    ) for item in args])
+    return (
+        f"<span class=\"mdx-badge\">"
+            f"{items}"
+        f"</span>"
+    )

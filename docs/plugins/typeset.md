@@ -37,9 +37,9 @@ interfere with other plugins.
 
 ## Configuration
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.27.0 --> ·
-<!-- md:flag plugin [typeset] (built-in) -->
+<!-- md:sponsors -->
+<!-- md:version insiders-4.27.0 -->
+<!-- md:flag plugin [typeset] – built-in -->
 
 As with all [built-in plugins], getting started with the typeset plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and observe the
@@ -64,8 +64,8 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.27.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.27.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].

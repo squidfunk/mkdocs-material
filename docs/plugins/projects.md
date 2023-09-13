@@ -63,9 +63,9 @@ and building more comfortable.
 
 ## Configuration
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
-<!-- md:flag plugin [projects] (built-in) --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
+<!-- md:flag plugin [projects] – built-in -->
 <!-- md:flag experimental -->
 
 In order to get started with the projects plugin, just add the following lines
@@ -90,8 +90,8 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -112,8 +112,8 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -143,8 +143,8 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -162,8 +162,8 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `.cache/plugin/projects` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -184,8 +184,8 @@ The following settings are available for projects:
 
 #### <!-- md:setting config.projects -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable building of projects. Currently, the
@@ -203,8 +203,8 @@ plugins:
 
 #### <!-- md:setting config.projects_dir -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.38.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.38.0 -->
 <!-- md:default `projects` -->
 
 Use this setting to change the folder where your projects are located. It's
@@ -231,8 +231,8 @@ The following settings are available for hoisting:
 
 #### <!-- md:setting config.hoisting -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.39.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.39.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable hoisting of themes files to the main

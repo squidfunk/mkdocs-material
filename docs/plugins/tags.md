@@ -60,8 +60,8 @@ Additionally, it integrates perfectly with several of the other
 
 ## Configuration
 
-<!-- md:version 8.2.0 --> ·
-<!-- md:flag plugin [tags] (built-in) --> ·
+<!-- md:version 8.2.0 -->
+<!-- md:flag plugin [tags] – built-in -->
 <!-- md:flag multiple -->
 
 As with all [built-in plugins], getting started with the tags plugin is
@@ -86,7 +86,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.1.7 --> ·
+<!-- md:version 9.1.7 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -109,7 +109,7 @@ The following settings are available for tags:
 
 #### <!-- md:setting config.tags -->
 
-<!-- md:version 9.2.9 --> ·
+<!-- md:version 9.2.9 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable handling of tags. Currently, the plugin's
@@ -127,7 +127,7 @@ plugins:
 
 #### <!-- md:setting config.tags_file -->
 
-<!-- md:version 8.2.0 --> ·
+<!-- md:version 8.2.0 -->
 <!-- md:default none -->
 
 Use this setting to specify the location of the tags index, which is the page
@@ -151,8 +151,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.tags_extra_files -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.20.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.20.0 -->
 <!-- md:default none -->
 
 Use this setting to specify the locations of additional tags indexes, which are
@@ -174,8 +174,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.tags_slugify -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.25.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.25.0 -->
 <!-- md:default [`toc.slugify`][toc.slugify] -->
 
 Use this setting to change the function to use for generating URL-compatible
@@ -212,8 +212,8 @@ for more granular control.
 
 #### <!-- md:setting config.tags_slugify_separator -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.25.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.25.0 -->
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
@@ -230,8 +230,8 @@ plugins:
 
 #### <!-- md:setting config.tags_compare -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.26.2 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.26.2 -->
 <!-- md:default none -->
 
 Use this setting to specify a custom function for comparing tags. By default,
@@ -252,8 +252,8 @@ representing the tag, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.tags_compare_reverse -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.26.2 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.26.2 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which tags are sorted when comparing
@@ -270,8 +270,8 @@ plugins:
 
 #### <!-- md:setting config.tags_pages_compare -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.39.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.39.0 -->
 <!-- md:default none -->
 
 Use this setting to specify a custom function for comparing pages. By default,
@@ -302,8 +302,8 @@ representing the page, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.tags_pages_compare_reverse -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.39.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.39.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which pages are sorted when comparing
@@ -320,8 +320,8 @@ plugins:
 
 #### <!-- md:setting config.tags_allowed -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.25.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.25.0 -->
 <!-- md:default none -->
 
 The plugin allows to check tags against a predefined list, in order to catch
@@ -351,8 +351,8 @@ The following properties are available:
 
 #### <!-- md:setting meta.tags -->
 
-<!-- md:version 8.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 8.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to associate a page with one or more tags, making the page

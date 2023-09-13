@@ -68,8 +68,8 @@ offers:
 
 ## Configuration
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag plugin [search] (built-in) -->
+<!-- md:version 9.0.0 -->
+<!-- md:flag plugin [search] – built-in -->
 
 As with all [built-in plugins], getting started with the search plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and your users
@@ -94,7 +94,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.2.9 --> ·
+<!-- md:version 9.2.9 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -117,7 +117,7 @@ The following settings are available for search:
 
 #### <!-- md:setting config.lang -->
 
-<!-- md:version 9.0.0 --> ·
+<!-- md:version 9.0.0 -->
 <!-- md:default computed -->
 
 Use this setting to specify the language of the search index, enabling [stemming]
@@ -200,7 +200,7 @@ to [lunr languages] by adding support for your language.
 
 #### <!-- md:setting config.separator -->
 
-<!-- md:version 9.0.0 --> ·
+<!-- md:version 9.0.0 -->
 <!-- md:default computed -->
 
 Use this setting to specify the separator used to split words when building the
@@ -272,8 +272,8 @@ Broken into its parts, this separator induces the following behavior:
 
 #### <!-- md:setting config.pipeline -->
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:default computed --> ·
+<!-- md:version 9.0.0 -->
+<!-- md:default computed -->
 <!-- md:flag experimental -->
 
 Use this setting to specify the [pipeline functions] that are used to filter and
@@ -313,8 +313,8 @@ The following settings are available for segmentation:
 
 #### <!-- md:setting config.jieba_dict -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:default none --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:default none -->
 <!-- md:flag experimental -->
 
 Use this setting to specify a [custom dictionary] to be used by [jieba] for
@@ -342,8 +342,8 @@ The provided path is resolved from the root directory.
 
 #### <!-- md:setting config.jieba_dict_user -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:default none --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:default none -->
 <!-- md:flag experimental -->
 
 Use this setting to specify an additional [user dictionary] to be used by
@@ -370,8 +370,8 @@ The following properties are available:
 
 #### <!-- md:setting meta.search.boost -->
 
-<!-- md:version 8.3.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 8.3.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to increase or decrease the relevance of a page in the search
@@ -408,8 +408,8 @@ below `1` to rank down:
 
 #### <!-- md:setting meta.search.exclude -->
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.0.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to exclude a page from the search results. Note that this will

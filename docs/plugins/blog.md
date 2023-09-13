@@ -133,9 +133,9 @@ many other built-in plugins:
 
 ## Configuration
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag plugin [blog] (built-in) --> ·
-<!-- md:flag multiple --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag plugin [blog] – built-in -->
+<!-- md:flag multiple -->
 <!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the blog plugin is
@@ -161,7 +161,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -180,7 +180,7 @@ plugins:
 
 #### <!-- md:setting config.blog_dir -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `blog` -->
 
 Use this setting to change the path where your blog is located in the
@@ -209,7 +209,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.blog_toc -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles in
@@ -231,7 +231,7 @@ The following settings are available for posts:
 
 #### <!-- md:setting config.post_dir -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `{blog}/posts` -->
 
 Use this setting to change the folder where your posts are located. It's
@@ -258,7 +258,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.post_date_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `long` -->
 
 Use this setting to change the date format of posts. This plugin uses [babel]
@@ -308,7 +308,7 @@ other languages.
 
 #### <!-- md:setting config.post_url_date_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `yyyy/MM/dd` -->
 
 Use this setting to change the date format used in post URLs. The format string
@@ -347,7 +347,7 @@ mostly evergreen content, you can remove the `date` placeholder from the
 
 #### <!-- md:setting config.post_url_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `{date}/{slug}` -->
 
 Use this setting to change the format string that is used when generating post
@@ -385,7 +385,7 @@ as this leads to undefined behavior.
 
 #### <!-- md:setting config.post_url_max_categories -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `1` -->
 
 Use this setting to set an upper bound for the number of categories included in
@@ -405,7 +405,7 @@ If more than one category is given, they are joined with `/` after slugifying.
 
 #### <!-- md:setting config.post_slugify -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default [`toc.slugify`][toc.slugify] -->
 
 Use this setting to change the function to use for generating URL-compatible
@@ -442,7 +442,7 @@ for more granular control.
 
 #### <!-- md:setting config.post_slugify_separator -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
@@ -459,7 +459,7 @@ plugins:
 
 #### <!-- md:setting config.post_excerpt -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `optional` -->
 
 By default, the plugin makes post excerpts optional. When a post doesn't define
@@ -490,7 +490,7 @@ have excerpts defined.
 
 #### <!-- md:setting config.post_excerpt_max_authors -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `1` -->
 
 Use this setting to set an upper bound for the number of authors rendered in
@@ -520,7 +520,7 @@ This only applies to post excerpts in views. Posts always render all authors.
 
 #### <!-- md:setting config.post_excerpt_max_categories -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `5` -->
 
 Use this setting to set an upper bound for the number of categories rendered in
@@ -550,7 +550,7 @@ This only applies to post excerpts in views. Posts always render all categories.
 
 #### <!-- md:setting config.post_excerpt_separator -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `<!-- more -​->` -->
 
 Use this setting to set the separator the plugin will look for in a post's
@@ -569,7 +569,7 @@ It is common practice to use an HTML comment as a separator.
 
 #### <!-- md:setting config.post_readtime -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should automatically compute the
@@ -586,7 +586,7 @@ plugins:
 
 #### <!-- md:setting config.post_readtime_words_per_minute -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `265` -->
 
 Use this setting to change the number of words that a reader is expected to read
@@ -612,7 +612,7 @@ The following settings are available for archive pages:
 
 #### <!-- md:setting config.archive -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable archive pages. An archive page shows all
@@ -629,7 +629,7 @@ plugins:
 
 #### <!-- md:setting config.archive_name -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default computed -->
 
 Use this setting to change the title of the archive section the plugin adds to
@@ -646,7 +646,7 @@ plugins:
 
 #### <!-- md:setting config.archive_date_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `yyyy` -->
 
 Use this setting to change the date format used for archive page titles. The
@@ -675,7 +675,7 @@ other languages.
 
 #### <!-- md:setting config.archive_url_date_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `yyyy` -->
 
 Use this setting to change the date format used for archive page URLs. The
@@ -702,7 +702,7 @@ whitespace. Some popular choices:
 
 #### <!-- md:setting config.archive_url_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `archive/{date}` -->
 
 Use this setting to change the format string that is used when generating
@@ -733,7 +733,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.archive_toc -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles on all
@@ -754,7 +754,7 @@ The following settings are available for category pages:
 
 #### <!-- md:setting config.categories -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable category pages. A category page shows all
@@ -771,7 +771,7 @@ plugins:
 
 #### <!-- md:setting config.categories_name -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default computed -->
 
 Use this setting to change the title of the category section the plugin adds to
@@ -788,7 +788,7 @@ plugins:
 
 #### <!-- md:setting config.categories_url_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `category/{slug}` -->
 
 Use this setting to change the format string that is used when generating
@@ -819,7 +819,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.categories_slugify -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default [`toc.slugify`][toc.slugify] -->
 
 Use this setting to change the function to use for generating URL-compatible
@@ -850,7 +850,7 @@ configuration.
 
 #### <!-- md:setting config.categories_slugify_separator -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
@@ -867,7 +867,7 @@ plugins:
 
 #### <!-- md:setting config.categories_allowed -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default none -->
 
 The plugin allows to check categories against a predefined list, in order to
@@ -890,7 +890,7 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 #### <!-- md:setting config.categories_toc -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles on all
@@ -911,7 +911,7 @@ The following settings are available for pagination:
 
 #### <!-- md:setting config.pagination -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable pagination in views – generated pages
@@ -928,7 +928,7 @@ plugins:
 
 #### <!-- md:setting config.pagination_per_page -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `10` -->
 
 Use this setting to change the number of posts rendered per page. If you have
@@ -945,7 +945,7 @@ plugins:
 
 #### <!-- md:setting config.pagination_url_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `{date}/{slug}` -->
 
 Use this setting to change the format string that is used when generating
@@ -976,7 +976,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.pagination_format -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `~2~` -->
 
 The plugin uses the [paginate] module to generate the pagination markup using a
@@ -1028,7 +1028,7 @@ The following placeholders are supported by [paginate]:
 
 #### <!-- md:setting config.pagination_if_single_page -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to control whether pagination should be automatically disabled
@@ -1045,7 +1045,7 @@ plugins:
 
 #### <!-- md:setting config.pagination_keep_content -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Use this setting to enable or disable persistence of content, i.e., if paginated
@@ -1066,7 +1066,7 @@ The following settings are available for authors:
 
 #### <!-- md:setting config.authors -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable post authors. If this setting is enabled,
@@ -1083,7 +1083,7 @@ plugins:
 
 #### <!-- md:setting config.authors_file -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `{blog}/.authors.yml` -->
 
 Use this setting to change the path of the file where the author information for
@@ -1130,7 +1130,7 @@ The following settings are available for drafts:
 
 #### <!-- md:setting config.draft -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 Rendering [draft posts][meta.draft] can be useful in deploy previews. Use this
@@ -1157,7 +1157,7 @@ setting to specify whether the plugin should include posts marked as drafts when
 
 #### <!-- md:setting config.draft_on_serve -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should include posts marked as
@@ -1176,7 +1176,7 @@ plugins:
 
 #### <!-- md:setting config.draft_if_future_date -->
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:default `false` -->
 
 The plugin can automatically mark posts with future dates as drafts. When the
@@ -1204,8 +1204,8 @@ The following properties are available:
 
 #### <!-- md:setting meta.authors -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to associate a post with [authors] by providing a list of
@@ -1231,8 +1231,8 @@ authors:
 
 #### <!-- md:setting meta.categories -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to associate a post with one or more [categories][category],
@@ -1258,8 +1258,8 @@ the [`categories_allowed`][config.categories_allowed] setting.
 
 #### <!-- md:setting meta.date -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:flag required -->
 
 Use this property to specify a post's date. Note that this property is required,
@@ -1320,8 +1320,8 @@ The following date formats are supported:
 
 #### <!-- md:setting meta.draft -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default none -->
 
 Use this property to mark a post as draft. The plugin allows to include or
@@ -1341,10 +1341,10 @@ draft: true
 
 #### <!-- md:setting meta.links -->
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.23.0 --> ·
-<!-- md:flag metadata --> ·
-<!-- md:default none --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.23.0 -->
+<!-- md:flag metadata -->
+<!-- md:default none -->
 <!-- md:flag experimental -->
 
 Use this property to define a list of links that are rendered in the sidebar of
@@ -1405,8 +1405,8 @@ All relative links are resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting meta.readtime -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default computed -->
 
 Use this property to explicitly set the reading time of a post in minutes. When
@@ -1426,8 +1426,8 @@ readtime: 15
 
 #### <!-- md:setting meta.slug -->
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:flag metadata -->
 <!-- md:default computed -->
 
 Use this property to explicitly set the slug of a post. By default, the slug of
