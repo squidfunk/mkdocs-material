@@ -74,9 +74,9 @@ pipelines tailored to your project:
     ---
 
     The meta plugin can be used to [change the layout][meta.social.cards_layout]
-    for social cards or [change specific layout options][meta.social.cards_layout_options]
-    like [background][option.background_color] or [color][option.color] for a
-    subset of pages.
+    for social cards or [change specific layout options]
+    [meta.social.cards_layout_options] like [background][option.background_color]
+    or [color][option.color] for a subset of pages.
 
     ---
 
@@ -399,9 +399,9 @@ The provided path is resolved from the[
 <!-- md:version 9.1.10 --> ·
 <!-- md:default none -->
 
-Use this setting to set options for the layout specified via
-[`cards_layout`][config.cards_layout] (if the layout supports it), which allows
-for making layouts easily and entirely configurable:
+Use this setting to set options for the layout specified via [`cards_layout`]
+[config.cards_layout] (if the layout supports it), which allows for making
+layouts easily and entirely configurable:
 
 ``` yaml
 plugins:
@@ -411,9 +411,8 @@ plugins:
 ```
 
 When creating a [custom layout][custom layouts], you are completely free in
-defining which parts of your layout can be parametrized. The
-[`default` layouts][default layouts] included with the plugin support the
-following options:
+defining which parts of your layout can be parametrized. The [`default` layouts]
+[default layouts] included with the plugin support the following options:
 
 <div class="mdx-columns" markdown>
 
@@ -450,8 +449,8 @@ plugins:
 ```
 
 This configuration enables social card generation for all pages that are
-contained in the `blog` folder and its subfolders inside the
-[`docs` directory][mkdocs.docs_dir].
+contained in the `blog` folder and its subfolders inside the [`docs` directory]
+[mkdocs.docs_dir].
 
 ---
 
@@ -650,9 +649,8 @@ social:
 <!-- md:flag metadata --> ·
 <!-- md:default none -->
 
-Use this property to override the
-[`cards_layout_options`][config.cards_layout_options] setting for the given
-page:
+Use this property to override the [`cards_layout_options`]
+[config.cards_layout_options] setting for the given page:
 
 ``` yaml
 ---
@@ -851,10 +849,9 @@ library used for card generation:
     1.  See the [`<named-color>`][named-color] CSS data type for a list of
         supported color names. Note that some might not be available.
 
-If this options is used together with
-[`background_image`][option.background_image], the color is rendered on top of
-the image which allows for tinting images. If you want to remove the background
-color, use:
+If this options is used together with [`background_image`]
+[option.background_image], the color is rendered on top of the image which
+allows for tinting images. If you want to remove the background color, use:
 
 ``` yaml
 plugins:
@@ -989,9 +986,8 @@ no further configuration needed.
 <!-- md:default computed -->
 
 Use this option to change the logo that is used in the generated social card.
-By default, the plugin uses the [`theme.logo`][theme.logo] or
-[`theme.icon.logo`][theme.icon.logo] setting from `mkdocs.yml`. You can change
-it with:
+By default, the plugin uses the [`theme.logo`][theme.logo] or [`theme.icon.logo`]
+[theme.icon.logo] setting from `mkdocs.yml`. You can change it with:
 
 ``` yaml
 plugins:
@@ -1014,8 +1010,8 @@ The provided path is resolved from the root directory.
 <!-- md:default computed -->
 
 Use this option to change the title of the generated social card. This overrides
-the computed page title as assigned by MkDocs, as well as the
-[`title`][meta.title] metadata property:
+the computed page title as assigned by MkDocs, as well as the [`title`]
+[meta.title] metadata property:
 
 ``` yaml
 plugins:

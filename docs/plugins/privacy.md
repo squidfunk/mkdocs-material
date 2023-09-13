@@ -56,8 +56,8 @@ example its tight integration with [Google Fonts].
 
 But, that's only the start. For example, if your project includes a lot of
 images, enabling the plugin allows to move them outside of your repository, as
-the plugin will automatically download and store them in the
-[`site` directory][mkdocs.site_dir] when [building your project].
+the plugin will automatically download and store them in the [`site` directory]
+[mkdocs.site_dir] when [building your project].
 
 Even more interestingly, the plugin can be combined with other built-in plugins
 that Material for MkDocs offers, in order to create sophisticated build

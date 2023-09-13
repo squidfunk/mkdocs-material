@@ -51,8 +51,8 @@ build pipelines tailored to your project:
     ---
 
     The privacy plugin makes it easy to use unoptimized external assets, passing
-    them to the optimize plugin before copying them to the
-    [`site` directory][mkdocs.site_dir].
+    them to the optimize plugin before copying them to the [`site` directory]
+    [mkdocs.site_dir].
 
     ---
 
@@ -377,8 +377,8 @@ plugins:
 ```
 
 This configuration enables optimization for all media files that are contained
-in the `screenshots` folder and its subfolders inside the
-[`docs` directory] [mkdocs.docs_dir].
+in the `screenshots` folder and its subfolders inside the [`docs` directory]
+[mkdocs.docs_dir].
 
 ---
 
@@ -400,8 +400,8 @@ plugins:
 ```
 
 This configuration disables optimization for all media files that are contained
-in the `vendor` folder and its subfolders inside the
-[`docs` directory][mkdocs.docs_dir].
+in the `vendor` folder and its subfolders inside the [`docs` directory]
+[mkdocs.docs_dir].
 
 ### Reporting
 

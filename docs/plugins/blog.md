@@ -50,9 +50,9 @@ static blog frameworks, posts can be annotated with a variety of [metadata],
 allowing for easy integration with other [built-in plugins], e.g., the
 [social] and [tags] plugin.
 
-Posts can be organized in nested folders with a directory layout that suits
-your specific needs, and can make use of all components and syntax that Material
-for MkDocs offers, including [admonitions], [annotations], [code blocks],
+Posts can be organized in nested folders with a directory layout that suits your
+specific needs, and can make use of all components and syntax that Material for
+MkDocs offers, including [admonitions], [annotations], [code blocks],
 [content tabs], [diagrams], [icons], [math], and more.
 
   [metadata]: #metadata
@@ -212,8 +212,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles in
-views. The value of this setting is inherited by
-[`archive_toc`][config.archive_toc] and [`categories_toc`][config.categories_toc],
+views. The value of this setting is inherited by [`archive_toc`]
+[config.archive_toc] and [`categories_toc`][config.categories_toc],
 unless they are explicitly set:
 
 ``` yaml
@@ -260,8 +260,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 <!-- md:version 9.2.0 --> ·
 <!-- md:default `long` -->
 
-Use this setting to change the date format of posts. This plugin uses [babel] to
-render dates in the configured [site language]. You can use [babel]'s
+Use this setting to change the date format of posts. This plugin uses [babel]
+to render dates in the configured [site language]. You can use [babel]'s
 [pattern syntax] or the following shortcodes:
 
 === "Monday, January 31, 2023"
@@ -388,8 +388,8 @@ as this leads to undefined behavior.
 <!-- md:default `1` -->
 
 Use this setting to set an upper bound for the number of categories included in
-post URLs if the `categories` placeholder is part of
-[`post_url_format`][config.post_url_format] and the post defines categories:
+post URLs if the `categories` placeholder is part of [`post_url_format`]
+[config.post_url_format] and the post defines categories:
 
 ``` yaml
 plugins:
@@ -736,8 +736,8 @@ The following placeholders are available:
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles on all
-archive pages. The value of this setting is inherited from
-[`blog_toc`][config.blog_toc], unless its explicitly set:
+archive pages. The value of this setting is inherited from [`blog_toc`]
+[config.blog_toc], unless its explicitly set:
 
 ``` yaml
 plugins:
@@ -882,8 +882,8 @@ plugins:
 ```
 
 The plugin stops the build if a post references a category that is not part of
-this list. Posts can be assigned to categories by using the
-[`categories`][meta.categories] metadata property.
+this list. Posts can be assigned to categories by using the [`categories`]
+[meta.categories] metadata property.
 
 ---
 
@@ -893,8 +893,8 @@ this list. Posts can be assigned to categories by using the
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles on all
-category pages. The value of this setting is inherited from
-[`blog_toc`][config.blog_toc], unless its explicitly set:
+category pages. The value of this setting is inherited from [`blog_toc`]
+[config.blog_toc], unless its explicitly set:
 
 ``` yaml
 plugins:

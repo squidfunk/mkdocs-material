@@ -113,9 +113,9 @@ The following settings are available for tags:
 <!-- md:default `true` -->
 
 Use this setting to enable or disable handling of tags. Currently, the plugin's
-sole purpose is to process tags, so it's equivalent to the
-[`enabled`][config.enabled] setting, but in the future, other features might be
-added. If you want to disable handling of tags, use:
+sole purpose is to process tags, so it's equivalent to the [`enabled`]
+[config.enabled] setting, but in the future, other features might be added.
+If you want to disable handling of tags, use:
 
 ``` yaml
 plugins:
