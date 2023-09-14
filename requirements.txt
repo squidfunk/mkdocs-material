@@ -19,16 +19,16 @@
 # IN THE SOFTWARE.
 
 # Requirements for core
-jinja2~=3.1
-markdown~=3.4
+jinja2~=3.0
+markdown~=3.2
 mkdocs~=1.5
 mkdocs-material-extensions~=1.1
 pygments~=2.16
-pymdown-extensions~=10.3
+pymdown-extensions~=10.2
 
 # Requirements for plugins
-babel~=2.12
+babel~=2.10
 colorama~=0.4
 paginate~=0.5
-regex~=2023.8
-requests~=2.31
+regex~=2022.4
+requests~=2.26
