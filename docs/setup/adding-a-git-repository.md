@@ -230,7 +230,7 @@ The following configuration options are supported:
     ```
 
     !!! note
-        To make this configuration work properly on your documentation site, you also need to do the CI configuration as described in the [git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin#note-when-using-build-environments) documentation.
+        If you are deploying through a CI system, please do the CI configuration as described in the [git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin#note-when-using-build-environments) documentation.
 
         [With Github Actions](../publishing-your-site.md#with-github-actions):
 
