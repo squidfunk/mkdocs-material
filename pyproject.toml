@@ -55,6 +55,10 @@ recommended = [
   "mkdocs-redirects~=1.2",
   "mkdocs-rss-plugin~=1.6"
 ]
+git = [
+  "mkdocs-git-committers-plugin-2~=1.1",
+  "mkdocs-git-revision-date-localized-plugin~=1.2"
+]
 imaging = [
   "pillow~=9.4",
   "cairosvg~=2.6"
