@@ -41,6 +41,11 @@ like the site language, repository provider, or other settings.
 Some properties do not contain default values. This means that the functionality
 that is associated with them is not available unless explicitly enabled.
 
+### <!-- md:flag metadata --> – Metadata property { #metadata data-toc-label="Metadata property" }
+
+This symbol denotes that the thing described is a metadata property, which can
+be used in Markdown documents as part of the front matter definition.
+
 ### <!-- md:feature --> – Optional feature { #feature data-toc-label="Optional feature" }
 
 Most of the features are hidden behind feature flags, which means they must
@@ -58,6 +63,22 @@ hasn't happened yet).
 Several features are implemented through MkDocs excellent plugin architecture,
 some of which are built-in and distributed with Material for MkDocs, so no
 installation is required.
+
+### <!-- md:extension --> – Markdown extension { data-toc-label="Markdown extension" }
+
+This symbol denotes that the thing described is a Markdown extension, which can
+be enabled in `mkdocs.yml` and adds additional functionality to the Markdown
+parser.
+
+### <!-- md:flag required --> – Required value { #required data-toc-label="Required value" }
+
+Some (very few in fact) properties or settings are required, which means the
+authors must explicitly define them.
+
+### <!-- md:flag customization --> – Customization { #customization data-toc-label="Customization" }
+
+This symbol denotes that the thing described is a customization that must be
+added by the author.
 
 ### <!-- md:utility --> – Utility { data-toc-label="Utility" }
 
