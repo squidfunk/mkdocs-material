@@ -1,8 +1,8 @@
 # Creating a reproduction
 
-A reproduction is a simplified version of a bug that demonstrates the specific 
-scenario in which the bug occurred. It includes all necessary minimal settings 
-and instructions and should be as simple as possible while still demonstrating 
+A reproduction is a simplified version of a bug that demonstrates the specific
+scenario in which the bug occurred. It includes all necessary minimal settings
+and instructions and should be as simple as possible while still demonstrating
 the issue.
 
 ## Guide
@@ -87,7 +87,7 @@ inside it. Next:
     bug, create only the necessary amount of Markdown documents. __Repeat this
     step until the bug you want to report can be observed.__
 
-4.  As a last step, before packing everything into a .zip file, double-check
+4.  As a last step, before packing everything into a `.zip` file, double-check
     all settings and documents if they are essential to the reproduction, which
     means that the bug does not occur when they are omitted. Remove all
     non-essential lines and files.
@@ -95,11 +95,11 @@ inside it. Next:
   [bug reporting guide]: ../contributing/reporting-a-bug.md#upgrade-to-latest-version
   [minimal configuration]: ../creating-your-site.md#minimal-configuration
 
-### Creating a .zip file
+### Creating a `.zip` file
 
 Material for MkDocs 9.0.0 includes a new plugin solely intended to create
 reproductions for bug reports. When the built-in info plugin is enabled, MkDocs
-will add all relevant files to a .zip, print a summary to the terminal and
+will add all relevant files to a `.zip`, print a summary to the terminal and
 exit. Add the following lines to `mkdocs.yml`:
 
 ``` yaml

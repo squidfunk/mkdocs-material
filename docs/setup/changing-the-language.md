@@ -9,8 +9,8 @@ available.
 
 ### Site language
 
-[:octicons-tag-24: 1.12.0][Site language support] ·
-:octicons-milestone-24: Default: `en`
+<!-- md:version 1.12.0 -->
+<!-- md:default `en` -->
 
 You can set the site language in `mkdocs.yml` with:
 
@@ -41,7 +41,6 @@ the default slug function works. Consider using a [Unicode-aware slug function].
     that some translations are missing, click on the link to add them. If your
     language is not in the list, click here to [add a new language].
 
-  [Site language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
@@ -49,8 +48,8 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
 ### Site language selector
 
-[:octicons-tag-24: 7.0.0][Site language selector support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 7.0.0 -->
+<!-- md:default none -->
 
 If your documentation is available in multiple languages, a language selector
 pointing to those languages can be added to the header. Alternate languages
@@ -73,36 +72,35 @@ extra:
 
 The following properties are available for each alternate language:
 
-[`name`](#+alternate.name){ #+alternate.name }
+<!-- md:option alternate.name -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This value of this property is used inside the language selector as the
     name of the language and must be set to a non-empty string.
 
-[`link`](#+alternate.link){ #+alternate.link }
+<!-- md:option alternate.link -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to an absolute link, which might also point to
     another domain or subdomain not necessarily generated with MkDocs.
 
-[`lang`](#+alternate.lang){ #+alternate.lang }
+<!-- md:option alternate.lang -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must contain an [ISO 639-1 language code] and is used for
     the `hreflang` attribute of the link, improving discoverability via search
     engines.
 
 [![Language selector preview]][Language selector preview]
 
-  [Site language selector support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
 
 ### Directionality
 
-[:octicons-tag-24: 2.5.0][Directionality support] ·
-:octicons-milestone-24: Default: _automatically set_
+<!-- md:version 2.5.0 -->
+<!-- md:default computed -->
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
 supports `rtl` (right-to-left) directionality which is deduced from the
@@ -131,8 +129,6 @@ Click on a tile to change the directionality:
     })
   })
 </script>
-
-  [Directionality support]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.5.0
 
 ## Customization
 

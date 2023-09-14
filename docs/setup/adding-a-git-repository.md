@@ -9,8 +9,8 @@ static site, including stars and forks. Furthermore, the
 
 ### Repository
 
-[:octicons-tag-24: 0.1.0][Repository support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 0.1.0 -->
+<!-- md:default none -->
 
 In order to display a link to the repository of your project as part of your
 documentation, set [`repo_url`][repo_url] in `mkdocs.yml` to the public URL of
@@ -29,20 +29,18 @@ GitHub repositories also include the tag of the latest release.[^1]
 
   [^1]:
     Unfortunately, GitHub only provides an API endpoint to obtain the [latest
-    release] - not the latest tag. Thus, make sure to [create a release] (not 
+    release] - not the latest tag. Thus, make sure to [create a release] (not
     pre-release) for the latest tag you want to display next to the number of
     stars and forks.
 
-  [Repository support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
   [latest release]: https://docs.github.com/en/rest/reference/releases#get-the-latest-release
   [create a release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
 
 #### Repository name
 
-[:octicons-tag-24: 0.1.0][Repository name support] ·
-:octicons-milestone-24: Default: _automatically set to_ `GitHub`, `GitLab` _or_
-`Bitbucket`
+<!-- md:version 0.1.0 -->
+<!-- md:default _automatically set to_ `GitHub`, `GitLab` _or_ `Bitbucket` -->
 
 MkDocs will infer the source provider by examining the URL and try to set the
 _repository name_ automatically. If you wish to customize the name, set
@@ -52,14 +50,12 @@ _repository name_ automatically. If you wish to customize the name, set
 repo_name: squidfunk/mkdocs-material
 ```
 
-  [Repository name support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [repo_name]: https://www.mkdocs.org/user-guide/configuration/#repo_name
 
 #### Repository icon
 
-[:octicons-tag-24: 5.0.0][Repository icon support] ·
-:octicons-milestone-24: Default:
-:fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
+<!-- md:version 5.0.0 -->
+<!-- md:default computed -->
 
 While the default repository icon is a generic git icon, it can be set to
 any icon bundled with the theme by referencing a valid icon path in
@@ -93,14 +89,12 @@ Some popular choices:
 - :fontawesome-brands-bitbucket: – `fontawesome/brands/bitbucket`
 - :fontawesome-solid-trash: – `fontawesome/solid/trash`
 
-  [Repository icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
-  [Repository icon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/.icons/fontawesome/brands/git-alt.svg
   [icon search]: ../reference/icons-emojis.md#search
 
 #### Code actions
 
-[:octicons-tag-24: 9.0.0][Code actions support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 9.0.0 -->
+<!-- md:feature -->
 
 If the [repository URL] points to a valid [GitHub], [GitLab] or [Bitbucket]
 repository, [MkDocs] provides a setting called [`edit_uri`][edit_uri], which
@@ -152,7 +146,6 @@ theme:
       </div>
     </div>
 
-  [Code actions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [repository URL]: #repository
   [GitHub]: https://github.com/
   [GitLab]: https://about.gitlab.com/
@@ -172,8 +165,8 @@ links to all [contributors] or [authors] involved.
 
 #### Document dates
 
-[:octicons-tag-24: 4.6.0][Document dates support] ·
-[:octicons-cpu-24: Plugin][git-revision-date-localized]
+<!-- md:version 4.6.0 -->
+<!-- md:plugin [git-revision-date-localized] -->
 
 The [git-revision-date-localized] plugin adds support for adding the date of
 last update and creation of a document at the bottom of each page. Install it
@@ -193,9 +186,9 @@ plugins:
 
 The following configuration options are supported:
 
-[`enabled`](#+git-revision-date-localized.enabled){ #+git-revision-date-localized.enabled }
+<!-- md:option git-revision-date-localized.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to switch
     the plugin off, e.g. for local builds, use an [environment variable]:
 
@@ -205,9 +198,9 @@ The following configuration options are supported:
           enabled: !ENV [CI, false]
     ```
 
-[`type`](#+git-revision-date-localized.type){ #+git-revision-date-localized.type }
+<!-- md:option git-revision-date-localized.type -->
 
-:   :octicons-milestone-24: Default: `date` – The format of the date to be
+:   <!-- md:default `date` --> The format of the date to be
     displayed. Valid values are `date`, `datetime`, `iso_date`, `iso_datetime`
     and `timeago`:
 
@@ -217,9 +210,9 @@ The following configuration options are supported:
           type: date
     ```
 
-[`enable_creation_date`](#+git-revision-date-localized.enable_creation_date){ #+git-revision-date-localized.enable_creation_date }
+<!-- md:option git-revision-date-localized.enable_creation_date -->
 
-:   :octicons-milestone-24: Default: `false` – Enables the display of the
+:   <!-- md:default `false` --> Enables the display of the
     creation date of the file associated with the page next to the last updated
     date at the bottom of the page:
 
@@ -229,9 +222,9 @@ The following configuration options are supported:
           enable_creation_date: true
     ```
 
-[`fallback_to_build_date`](#+git-revision-date-localized.fallback_to_build_date){ #+git-revision-date-localized.fallback_to_build_date }
+<!-- md:option git-revision-date-localized.fallback_to_build_date -->
 
-:   :octicons-milestone-24: Default: `false` – Enables falling back to
+:   <!-- md:default `false` --> Enables falling back to
     the time when `mkdocs build` was executed. Can be used as a fallback when
     the build is performed outside of a git repository:
 
@@ -245,15 +238,14 @@ The other configuration options of this extension are not officially supported
 by Material for MkDocs, which is why they may yield unexpected results. Use
 them at your own risk.
 
-  [Document dates support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.0
   [git-revision-date-localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
 
 #### Document contributors
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.19.0][Insiders] ·
-[:octicons-cpu-24: Plugin][git-committers] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.19.0 -->
+<!-- md:plugin [git-committers] -->
+<!-- md:flag experimental -->
 
 The [git-committers][^2] plugin renders the GitHub avatars of all contributors,
 linking to their GitHub profiles at the bottom of each page. As always, it can
@@ -280,9 +272,9 @@ plugins:
 
 The following configuration options are supported:
 
-[`enabled`](#+git-committers.enabled){ #+git-committers.enabled }
+<!-- md:option git-committers.enabled -->
 
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
+:   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to switch
     the plugin off, e.g. for local builds, use an [environment variable]:
 
@@ -292,9 +284,9 @@ The following configuration options are supported:
           enabled: !ENV [CI, false]
     ```
 
-[`repository`](#+git-committers.repository){ #+git-committers.repository }
+<!-- md:option git-committers.repository -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to the slug of the repository that contains your
     documentation. The slug must follow the pattern `<username>/<repository>`:
 
@@ -304,9 +296,9 @@ The following configuration options are supported:
           repository: squidfunk/mkdocs-material
     ```
 
-[`branch`](#+git-committers.branch){ #+git-committers.branch }
+<!-- md:option git-committers.branch -->
 
-:   :octicons-milestone-24: Default: `master` – This property should be set to
+:   <!-- md:default `master` --> This property should be set to
     the branch of the repository from which to retrieve the contributors. To use the `main` branch:
 
     ``` yaml
@@ -326,10 +318,10 @@ them at your own risk.
 
 #### Document authors
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.19.0][Insiders] ·
-[:octicons-cpu-24: Plugin][git-authors] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.19.0 -->
+<!-- md:plugin [git-authors] -->
+<!-- md:flag experimental -->
 
 The [git-authors] plugin is a lightweight alternative to the
 [git-committers] plugin and extracts the authors of a document from git to display

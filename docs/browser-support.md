@@ -64,6 +64,4 @@ the following older browser versions might work with some additional effort:
 - :fontawesome-brands-internet-explorer: __Internet Explorer__ - no support,
   mainly due to missing support for [custom properties]. The last version of
   Material for MkDocs to support Internet Explorer is
-  [:octicons-tag-24: 4.6.3][IE support].
-
-  [IE support]: https://github.com/squidfunk/mkdocs-material/releases/tag/4.6.3
+  <!-- md:version 4.6.3 -->.

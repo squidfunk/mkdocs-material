@@ -86,12 +86,13 @@ theme:
 plugins:
   - blog
   - search:
-      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - minify:
       minify_html: true
 
 # Hooks
 hooks:
+  - material/.overrides/hooks/shortcodes.py
   - material/.overrides/hooks/translations.py
 
 # Customization
@@ -141,11 +142,15 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.keys
   - pymdownx.magiclink:
+      normalize_issue_symbols: true
       repo_url_shorthand: true
       user: squidfunk
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.md
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -153,6 +158,10 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.tasklist:
       custom_checkbox: true
   - pymdownx.tilde
@@ -165,6 +174,7 @@ nav:
     - Creating your site: creating-your-site.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
+    - Conventions: conventions.md
     - Browser support: browser-support.md
     - Enterprise feedback: enterprise-support.md
     - Philosophy: philosophy.md
@@ -207,8 +217,23 @@ nav:
       - setup/extensions/index.md
       - Python Markdown: setup/extensions/python-markdown.md
       - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
-    - Dependencies:
-      - setup/dependencies/image-processing.md
+  - Plugins:
+    - plugins/index.md
+    - Blog: plugins/blog.md
+    - Group: plugins/group.md
+    - Info: plugins/info.md
+    - Meta: plugins/meta.md
+    - Offline: plugins/offline.md
+    - Optimize: plugins/optimize.md
+    - Privacy: plugins/privacy.md
+    - Projects: plugins/projects.md
+    - Search: plugins/search.md
+    - Social: plugins/social.md
+    - Tags: plugins/tags.md
+    - Typeset: plugins/typeset.md
+    - Requirements:
+      - Image processing: plugins/requirements/image-processing.md
+      - Caching: plugins/requirements/caching.md
   - Reference:
     - reference/index.md
     - Admonitions: reference/admonitions.md

@@ -79,7 +79,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         if "Image" not in globals():
             raise PluginError(
                 "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install pillow cairosvg"
+                "Install with: pip install \"mkdocs-material[imaging]\""
             )
 
         # Move color options

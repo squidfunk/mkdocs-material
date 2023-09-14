@@ -1,6 +1,6 @@
 # Setting up navigation
 
-A clear and concise navigation structure is an important aspect of good project 
+A clear and concise navigation structure is an important aspect of good project
 documentation. Material for MkDocs provides a multitude of options to configure
 the behavior of navigational elements, including [tabs] and [sections], and one
 of its flagship features: [instant loading].
@@ -13,8 +13,8 @@ of its flagship features: [instant loading].
 
 ### Instant loading
 
-[:octicons-tag-24: 5.0.0][Instant loading support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 5.0.0 -->
+<!-- md:feature -->
 
 When instant loading is enabled, clicks on all internal links will be
 intercepted and dispatched via [XHR] without fully reloading the page. Add
@@ -31,14 +31,14 @@ are rebound automatically, i.e., __Material for MkDocs now behaves like a Single
 Page Application__. Now, the search index survives navigation, which is
 especially useful for large documentation sites.
 
-  [Instant loading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
 #### Instant prefetching :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.36.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.36.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 Instant prefetching is a new experimental feature that will start to fetch a
 page once the user hovers over a link. This will reduce the perceived loading
@@ -52,12 +52,10 @@ theme:
     - navigation.instant.prefetch
 ```
 
-  [Insiders]: ../insiders/index.md
-
 ### Anchor tracking
 
-[:octicons-tag-24: 8.0.0][Anchor tracking support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 8.0.0 -->
+<!-- md:feature -->
 
 When anchor tracking is enabled, the URL in the address bar is automatically
 updated with the active anchor as highlighted in the table of contents. Add the
@@ -69,24 +67,22 @@ theme:
     - navigation.tracking
 ```
 
-  [Anchor tracking support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
-
 ### Navigation tabs
 
-[:octicons-tag-24: 1.1.0][Navigation tabs support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 1.1.0 -->
+<!-- md:feature -->
 
 When tabs are enabled, top-level sections are rendered in a menu layer below
 the header for viewports above `1220px`, but remain as-is on mobile.[^1] Add
 the following lines to `mkdocs.yml`:
 
   [^1]:
-    Prior to :octicons-tag-24: 6.2.0, navigation tabs had a slightly different
+    Prior to <!-- md:version 6.2.0 -->, navigation tabs had a slightly different
     behavior. All top-level pages (i.e. all top-level entries directly
     referring to a `*.md` file) defined inside the `nav` entry of `mkdocs.yml`
     were grouped under the first tab which received the title of the first page.
     This made it impossible to include a top-level page (or external link) as a
-    tab item, as was reported in #1884 and #2072. From :octicons-tag-24: 6.2.0
+    tab item, as was reported in #1884 and #2072. From <!-- md:version 6.2.0 -->
     on, navigation tabs include all top-level pages and sections.
 
 ``` yaml
@@ -103,14 +99,13 @@ theme:
 
     [![Navigation tabs disabled]][Navigation tabs disabled]
 
-  [Navigation tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.1.0
   [Navigation tabs enabled]: ../assets/screenshots/navigation-tabs.png
   [Navigation tabs disabled]: ../assets/screenshots/navigation.png
 
 #### Sticky navigation tabs
 
-[:octicons-tag-24: 7.3.0][Sticky navigation tabs support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 7.3.0 -->
+<!-- md:feature -->
 
 When sticky tabs are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -131,14 +126,13 @@ theme:
 
     [![Sticky navigation tabs disabled]][Sticky navigation tabs disabled]
 
-  [Sticky navigation tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Sticky navigation tabs enabled]: ../assets/screenshots/navigation-tabs-sticky.png
   [Sticky navigation tabs disabled]: ../assets/screenshots/navigation-tabs-collapsed.png
 
 ### Navigation sections
 
-[:octicons-tag-24: 6.2.0][Navigation sections support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When sections are enabled, top-level sections are rendered as groups in the
 sidebar for viewports above `1220px`, but remain as-is on mobile. Add the
@@ -158,7 +152,6 @@ theme:
 
     [![Navigation sections disabled]][Navigation sections disabled]
 
-  [Navigation sections support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
   [Navigation sections enabled]: ../assets/screenshots/navigation-sections.png
   [Navigation sections disabled]: ../assets/screenshots/navigation.png
 
@@ -168,8 +161,8 @@ feature flags are enabled, sections are rendered for level 2 navigation items.
 
 ### Navigation expansion
 
-[:octicons-tag-24: 6.2.0][Navigation expansion support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When expansion is enabled, the left sidebar will expand all collapsible
 subsections by default, so the user doesn't have to open subsections manually.
@@ -189,15 +182,15 @@ theme:
 
     [![Navigation expansion disabled]][Navigation expansion disabled]
 
-  [Navigation expansion support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
   [Navigation expansion enabled]: ../assets/screenshots/navigation-expand.png
   [Navigation expansion disabled]: ../assets/screenshots/navigation.png
 
 ### Navigation path <small>Breadcrumbs</small> { id=navigation-path }
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.28.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.28.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 When navigation paths are activated, a breadcrumb navigation is rendered above
 the title of each page, which might make orientation easier for users visiting your
@@ -223,11 +216,12 @@ theme:
 
 ### Navigation pruning
 
-[:octicons-tag-24: 9.2.0][Navigation pruning support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
-When pruning is enabled, only the visible navigation items are included in the 
-rendered HTML, __reducing the size of the built site by 33% or more__. Add the 
+When pruning is enabled, only the visible navigation items are included in the
+rendered HTML, __reducing the size of the built site by 33% or more__. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -245,13 +239,12 @@ This feature flag is especially useful for documentation sites with 100+ or even
 Navigation pruning will replace all expandable sections with links to the first
 page in that section (or the section index page).
 
-  [Navigation pruning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [navigation.expand]: #navigation-expansion
 
 ### Section index pages
 
-[:octicons-tag-24: 7.3.0][Section index pages support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 7.3.0 -->
+<!-- md:feature -->
 
 When section index pages are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the
@@ -289,7 +282,6 @@ nav:
 
 1.  MkDocs also considers files called `README.md` as [index pages].
 
-  [Section index pages support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Section index pages enabled]: ../assets/screenshots/navigation-index-on.png
   [Section index pages disabled]: ../assets/screenshots/navigation-index-off.png
   [toc.integrate]: #navigation-integration
@@ -299,8 +291,9 @@ nav:
 
 #### Anchor following
 
-[:octicons-tag-24: 8.5.0][Anchor following support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 When anchor following for the [table of contents] is enabled, the sidebar is
 automatically scrolled so that the active anchor is always visible. Add the
@@ -312,12 +305,10 @@ theme:
     - toc.follow
 ```
 
-  [Anchor following support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
-
 #### Navigation integration
 
-[:octicons-tag-24: 6.2.0][Navigation integration support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When navigation integration for the [table of contents] is enabled, it is always
 rendered as part of the navigation sidebar on the left. Add the following lines
@@ -342,15 +333,14 @@ theme:
     [![Navigation integration disabled]][Navigation integration disabled]
 
   [table of contents]: extensions/python-markdown.md#table-of-contents
-  [Navigation integration support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.3.0
   [Navigation integration enabled]: ../assets/screenshots/toc-integrate.png
   [Navigation integration disabled]: ../assets/screenshots/navigation-tabs.png
   [navigation.indexes]: #section-index-pages
 
 ### Back-to-top button
 
-[:octicons-tag-24: 7.1.0][Back-to-top button support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 7.1.0 -->
+<!-- md:feature -->
 
 A back-to-top button can be shown when the user, after scrolling down, starts
 to scroll up again. It's rendered centered and just below the header. Add the
@@ -362,14 +352,15 @@ theme:
     - navigation.top
 ```
 
-  [Back-to-top button support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
-
 ## Usage
 
 ### Hiding the sidebars
 
+<!-- md:version 6.2.0 -->
+<!-- md:flag metadata -->
+
 The navigation and/or table of contents sidebars can be hidden for a document
-with the front matter `hide` property. Add the following lines at the top of a 
+with the front matter `hide` property. Add the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -379,7 +370,7 @@ hide:
   - toc
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -401,6 +392,10 @@ hide:
 
 ### Hiding the navigation path
 
+<!-- md:sponsors -->
+<!-- md:version insiders-4.28.0 -->
+<!-- md:flag metadata -->
+
 While the [navigation path] is rendered above the main headline, sometimes, it
 might be desirable to hide it for a specific page, which can be achieved with
 the front matter `hide` property:
@@ -411,7 +406,7 @@ hide:
   - path
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -424,7 +419,7 @@ hide:
 Material for MkDocs includes several keyboard shortcuts that make it possible
 to navigate your project documentation via keyboard. There are two modes:
 
-[`search`](#mode:search){ #mode:search }
+<!-- md:option mode:search -->
 
 :   This mode is active when the _search is focused_. It provides several key
     bindings to make search accessible and navigable via keyboard:
@@ -433,7 +428,7 @@ to navigate your project documentation via keyboard. There are two modes:
     * ++esc++ , ++tab++ : close search dialog
     * ++enter++ : follow selected result
 
-[`global`](#mode:global){ #mode:global }
+<!-- md:option mode:global -->
 
 :   This mode is active when _search is not focussed_ and when there's no other
     focussed element that is susceptible to keyboard input. The following keys

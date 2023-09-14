@@ -1,7 +1,7 @@
 # Changing the colors
 
 As any proper Material Design implementation, Material for MkDocs supports
-Google's original [color palette], which can be easily configured through 
+Google's original [color palette], which can be easily configured through
 `mkdocs.yml`. Furthermore, colors can be customized with a few lines of CSS to
 fit your brand's identity by using [CSS variables][custom colors].
 
@@ -14,8 +14,8 @@ fit your brand's identity by using [CSS variables][custom colors].
 
 #### Color scheme
 
-[:octicons-tag-24: 5.2.0][Color scheme support] ·
-:octicons-milestone-24: Default: `default`
+<!-- md:version 5.2.0 -->
+<!-- md:default `default` -->
 
 Material for MkDocs supports two color schemes: a __light mode__, which is just
 called `default`, and a __dark mode__, which is called `slate`. The color scheme
@@ -50,12 +50,10 @@ Click on a tile to change the color scheme:
   })
 </script>
 
-  [Color scheme support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.2.0
-
 #### Primary color
 
-[:octicons-tag-24: 0.2.0][Primary color support] ·
-:octicons-milestone-24: Default: `indigo`
+<!-- md:version 0.2.0 -->
+<!-- md:default `indigo` -->
 
 The primary color is used for the header, the sidebar, text links and several
 other components. In order to change the primary color, set the following value
@@ -107,12 +105,10 @@ Click on a tile to change the primary color:
 
 See our guide below to learn how to set [custom colors].
 
-  [Primary color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
-
 #### Accent color
 
-[:octicons-tag-24: 0.2.0][Accent color support] ·
-:octicons-milestone-24: Default: `indigo`
+<!-- md:version 0.2.0 -->
+<!-- md:default `indigo` -->
 
 The accent color is used to denote elements that can be interacted with, e.g.
 hovered links, buttons and scrollbars. It can be changed in `mkdocs.yml` by
@@ -166,12 +162,10 @@ Click on a tile to change the accent color:
 
 See our guide below to learn how to set [custom colors].
 
-  [Accent color support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.2.0
-
 ### Color palette toggle
 
-[:octicons-tag-24: 7.1.0][Color palette toggle support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 7.1.0 -->
+<!-- md:default none -->
 
 Offering a light _and_ dark color palette makes your documentation pleasant to
 read at different times of the day, so the user can choose accordingly. Add the
@@ -213,9 +207,9 @@ and [`accent`][palette.accent] per color palette.
 
 The following properties must be set for each toggle:
 
-[`icon`](#+palette.toggle.icon){ #+palette.toggle.icon }
+<!-- md:option palette.toggle.icon -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must point to a valid icon path referencing any icon bundled
     with the theme, or the build will not succeed. Some popular combinations:
 
@@ -225,13 +219,12 @@ The following properties must be set for each toggle:
     * :material-eye: + :material-eye-outline: – `material/eye` + `material/eye-outline`
     * :material-lightbulb: + :material-lightbulb-outline: – `material/lightbulb` + `material/lightbulb-outline`
 
-[`name`](#+palette.toggle.name){ #+palette.toggle.name }
+<!-- md:option palette.toggle.name -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property is used as the toggle's `title` attribute and should be set to
     a discernable name to improve accessibility. It's rendered as a [tooltip].
 
-  [Color palette toggle support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
   [palette.scheme]: #color-scheme
   [palette.primary]: #primary-color
   [palette.accent]: #accent-color
@@ -240,8 +233,8 @@ The following properties must be set for each toggle:
 
 ### System preference
 
-[:octicons-tag-24: 7.1.0][System preference support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 7.1.0 -->
+<!-- md:default none -->
 
 Each color palette can be linked to the user's system preference for light and
 dark appearance by using a media query. Simply add a `media` property next to
@@ -270,13 +263,11 @@ When the user first visits your site, the media queries are evaluated in the
 order of their definition. The first media query that matches selects the
 default color palette.
 
-  [System preference support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.0
-
 #### Automatic light / dark mode
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.18.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.18.0 -->
+<!-- md:flag experimental -->
 
 Newer operating system allow to automatically switch between light and dark
 appearance during day and night times. [Insiders] adds support for automatic

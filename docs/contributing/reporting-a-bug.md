@@ -148,7 +148,7 @@ summary of the issue, so the impact and severity of the bug you want to report
 can be inferred from the title.
 
 | <!-- --> | Example  |
-| -------- | -------- | 
+| -------- | -------- |
 | :material-check:{ style="color: #4DB6AC" } __Clear__ | Built-in `typeset` plugin changes precedence of nav title over `h1`
 | :material-close:{ style="color: #EF5350" } __Wordy__ | The built-in `typeset` plugin changes the precedence of the nav title over the document headline
 | :material-close:{ style="color: #EF5350" } __Unclear__ | Title does not work
@@ -235,17 +235,17 @@ make it easier for us maintainers to improve the documentation.
 ### Reproduction
 
 A minimal reproduction is at the heart of every well-written bug report, as
-it allows us maintainers to quickly recreate the necessary conditions to inspect
-the bug and quickly find its root cause. It's a proven fact that issues with
-concise and small reproductions can be fixed much faster.
+it allows us maintainers to instantly recreate the necessary conditions to
+inspect the bug to quickly find its root cause. It's a proven fact that issues
+with concise and small reproductions can be fixed much faster.
 
 [:material-bug:&nbsp; Create a reproduction][Create reproduction]{ .md-button .md-button--primary }
 
 ---
 
-After you have created the reproduction, you should have a .zip file, ideally not
-larger than 1 MB. Just drag and drop the .zip file into this field, which will
-automatically upload it to GitHub.
+After you have created the reproduction, you should have a `.zip` file, ideally
+not larger than 1 MB. Just drag and drop the `.zip` file into this field, which
+will automatically upload it to GitHub.
 
 > __Why we need this__: if an issue contains no minimal reproduction or just
 > a link to a repository with thousands of files, the maintainers would need to
@@ -259,7 +259,7 @@ automatically upload it to GitHub.
     process. The reason is that the reproduction which is automatically
     produced by the [built-in info plugin] contains all of the necessary
     environment information that is often forgotten to be included.
-    
+
     Additionally, there are many non-technical users of Material for MkDocs that
     have trouble creating repositories.
 
@@ -301,7 +301,7 @@ only relevant when the bug you are reporting does not involve a crash when
 
 Thanks for following the guide and creating a high-quality and complete bug
 report – you are almost done. This section ensures that you have read this guide
-and have worked to the best of your knowledge to provide us with everything we 
+and have worked to the best of your knowledge to provide us with everything we
 need to know to help you.
 
 __We'll take it from here.__

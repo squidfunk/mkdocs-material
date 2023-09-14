@@ -6,7 +6,7 @@ title: Getting started with Insiders
 
 Material for MkDocs Insiders is a compatible drop-in replacement for Material
 for MkDocs, and can be installed similarly using [`pip`][pip],
-[`docker`][docker] or [`git`][git]. Note that in order to access the Insiders 
+[`docker`][docker] or [`git`][git]. Note that in order to access the Insiders
 repository, you need to [become an eligible sponsor] of @squidfunk on GitHub.
 
   [pip]: #with-pip
@@ -18,7 +18,7 @@ repository, you need to [become an eligible sponsor] of @squidfunk on GitHub.
 
 After you've been added to the list of collaborators and accepted the
 repository invitation, the next step is to create a [personal access token] for
-your GitHub account in order to access the Insiders repository programmatically 
+your GitHub account in order to access the Insiders repository programmatically
 (from the command line or GitHub Actions workflows):
 
 1.  Go to https://github.com/settings/tokens
@@ -66,7 +66,7 @@ comfortable self-hosting:
 6.  Install [Pull App] on your fork to stay in-sync with upstream
 
 The [`publish`][publish] workflow[^5] is automatically run when a new tag
-(release) is created. When a new Insiders version is released on the upstream 
+(release) is created. When a new Insiders version is released on the upstream
 repository, the [Pull App] will create a pull request with the changes and
 pull in the new tag, which is picked up by the [`publish`][publish] workflow
 that builds and publishes the Docker image automatically to your private
@@ -155,7 +155,33 @@ pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-materi
 When you're using built-in plugins that are solely available via Insiders,
 outside contributors won't be able to build your documentation project on their
 local machine. This is the reason why we developed the [built-in group plugin]
-that allows to conditionally load plugins.
+that allows to conditionally load plugins:
+
+``` yaml
+plugins:
+  - search
+  - social
+
+  # CI=1 mkdocs build
+  - group:
+      enabled: !ENV CI
+      plugins:
+        - git-revision-date-localized
+        - git-committers
+
+  # INSIDERS=1 mkdocs build
+  - group:
+      enabled: !ENV INSIDERS
+      plugins:
+        - optimize
+        - privacy
+```
+
+Of course, you can also enable both groups with:
+
+```
+CI=1 INSIDERS=1 mkdocs build
+```
 
   [^1]:
     Previously we recommended to use [configuration inheritance] to work around
@@ -164,63 +190,5 @@ that allows to conditionally load plugins.
     your project with the community edition and Insiders version of Material
     for MkDocs.
 
-  [built-in group plugin]: #built-in-group-plugin
+  [built-in group plugin]: ../plugins/group.md
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
-
-### Built-in group plugin
-
-[:octicons-tag-24: 9.3.0][Group plugin support] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
-
-The built-in group plugin adds support for conditionally loading plugins based
-on environments. This makes enabling and disabling of multiple plugins much
-simpler, as you can group them into logical units and enable or disable them
-with an [environment variable]:
-
-``` yaml
-plugins:
-  - group:
-      enabled: !ENV CI
-      plugins:
-        - optimize
-        - minify
-```
-
-[`enabled`](#+group.enabled){ #+group.enabled }
-
-:   :octicons-milestone-24: Default: `false` – This option specifies whether
-    the plugin is enabled when building your project. By default, the plugin is
-    disabled, so you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - group:
-          enabled: !ENV CI
-    ```
-
-    Now, If you invoke MkDocs with that environment variable (or export the
-    environment variable before invoking MkDocs), the plugin will be enabled:
-
-    ``` sh
-    CI=true mkdocs build
-    ```
-
-[`plugins`](#+group.plugins){ #+group.plugins }
-
-:   :octicons-milestone-24: Default: _none_ – This option specifies the plugins
-    that the group plugin should load when enabled. Note that the plugins must
-    be specified as a list, even if there's only one plugin:
-
-    ``` yaml
-    plugins:
-      - group:
-          plugins:
-            - optimize
-            - minify
-    ```
-
-    The syntax is exactly the same as for all other plugins.
-
-  [Group plugin support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.3.0
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables

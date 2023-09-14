@@ -49,6 +49,17 @@ classifiers = [
   "Topic :: Text Processing :: Markup :: HTML",
 ]
 
+[project.optional-dependencies]
+recommended = [
+  "mkdocs-minify-plugin~=0.7",
+  "mkdocs-redirects~=1.2",
+  "mkdocs-rss-plugin~=1.6"
+]
+imaging = [
+  "pillow~=9.4",
+  "cairosvg~=2.6"
+]
+
 [project.urls]
 Documentation = "https://squidfunk.github.io/mkdocs-material/"
 Source = "https://github.com/squidfunk/mkdocs-material"
