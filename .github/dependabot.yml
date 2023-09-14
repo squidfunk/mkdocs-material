@@ -28,7 +28,9 @@ updates:
     interval: weekly
     time: "04:00"
 - package-ecosystem: pip
-  open-pull-requests-limit: 10
+  # We only want to bump versions of packages in case of security updates, as
+  # we want to keep maximum compatibility - see https://t.ly/INSR_
+  open-pull-requests-limit: 0
   directory: "/"
   labels: []
   schedule:
