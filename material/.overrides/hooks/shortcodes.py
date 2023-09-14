@@ -138,7 +138,7 @@ def _badge_for_version(text: str, page: Page, files: Files):
     href = _resolve_path("conventions.md#version", page, files)
     return _badge(
         icon = f"[:{icon}:]({href} 'Minimum version')",
-        text = f"[{text}]({_resolve_path(path, page, files)})"
+        text = f"[{text}]({_resolve_path(path, page, files)})" if spec else ""
     )
 
 # Create badge for version of Insiders
@@ -151,7 +151,7 @@ def _badge_for_version_insiders(text: str, page: Page, files: Files):
     href = _resolve_path("conventions.md#version-insiders", page, files)
     return _badge(
         icon = f"[:{icon}:]({href} 'Minimum version')",
-        text = f"[{text}]({_resolve_path(path, page, files)})"
+        text = f"[{text}]({_resolve_path(path, page, files)})" if spec else ""
     )
 
 # Create badge for feature
