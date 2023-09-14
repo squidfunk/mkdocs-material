@@ -232,6 +232,107 @@ The following configuration options are supported:
     !!! note
         To make this configuration work properly on your documentation site, you also need to do the CI configuration as described in the [git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin#note-when-using-build-environments) documentation.
 
+        [With Github Actions](../publishing-your-site.md#with-github-actions):
+
+        === "Material for MkDocs"
+
+            ``` yaml hl_lines="14 15"
+            name: ci # (1)!
+            on:
+              push:
+                branches:
+                  - master # (2)!
+                  - main
+            permissions:
+              contents: write
+            jobs:
+              deploy:
+                runs-on: ubuntu-latest
+                steps:
+                  - uses: actions/checkout@v3
+                    with:
+                      fetch-depth: 0
+                  - uses: actions/setup-python@v4
+                    with:
+                      python-version: 3.x
+                  - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
+                  - uses: actions/cache@v3
+                    with:
+                      key: mkdocs-material-${{ env.cache_id }}
+                      path: .cache
+                      restore-keys: |
+                        mkdocs-material-
+                  - run: pip install mkdocs-material # (4)!
+                  - run: mkdocs gh-deploy --force
+            ```
+
+            1.  You can change the name to your liking. 
+
+            2.  At some point, GitHub renamed `master` to `main`. If your default branch
+                is named `master`, you can safely remove `main`, vice versa.
+
+            3.  Store the `cache_id` environmental variable to access it later during cache
+                `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
+
+                - The `--utc` option makes sure that each workflow runner uses the same time zone.
+                - The `%V` format assures a cache update once a week. 
+                - You can change the format to `%F` to have daily cache updates. 
+
+                You can read the [manual page] to learn more about the formatting options of the `date` command.
+
+            4.  This is the place to install further [MkDocs plugins] or Markdown
+                extensions with `pip` to be used during the build:
+
+                ``` sh
+                pip install \
+                  mkdocs-material \
+                  mkdocs-awesome-pages-plugin \
+                  ...
+                ```
+
+        === "Insiders"
+
+            ``` yaml hl_lines="15 16"
+            name: ci
+            on:
+              push:
+                branches:
+                  - master
+                  - main
+            permissions:
+              contents: write
+            jobs:
+              deploy:
+                runs-on: ubuntu-latest
+                if: github.event.repository.fork == false
+                steps:
+                  - uses: actions/checkout@v3
+                    with:
+                      fetch-depth: 0
+                  - uses: actions/setup-python@v4
+                    with:
+                      python-version: 3.x
+                  - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+                  - uses: actions/cache@v3
+                    with:
+                      key: mkdocs-material-${{ env.cache_id }}
+                      path: .cache
+                      restore-keys: |
+                        mkdocs-material-
+                  - run: apt-get install pngquant # (1)!
+                  - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+                  - run: mkdocs gh-deploy --force
+            env:
+              GH_TOKEN: ${{ secrets.GH_TOKEN }} # (2)!
+            ```
+
+            1.  This step is only necessary if you want to use the
+                [built-in optimize plugin] to automatically compress images.
+
+            2.  Remember to set the `GH_TOKEN` environment variable to the value of your
+                [personal access token] when deploying [Insiders], which can be done
+                using [GitHub secrets].
+
 [`fallback_to_build_date`](#+git-revision-date-localized.fallback_to_build_date){ #+git-revision-date-localized.fallback_to_build_date }
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
