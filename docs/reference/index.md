@@ -7,68 +7,6 @@ within Markdown files.
 
 ## Configuration
 
-### Built-in <u>typeset</u> plugin
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.27.0 -->
-<!-- md:plugin -->
-<!-- md:flag experimental -->
-
-The built-in typeset plugin __preserves HTML formatting__ in the navigation and
-table of contents. This means that now, code blocks, icons, emojis and other
-inline formatting will be preserved, which allows for a richer editing
-experience. Add the following lines to `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - typeset
-```
-
-For a demo, just take a look at the table of contents of this page :material-arrow-right-circle: – code blocks and icons are preserved from the
-section headlines; even [highlighting inline code blocks] is supported :tada:
-
-  [highlighting inline code blocks]: code-blocks.md#highlighting-inline-code-blocks
-
-### Built-in meta plugin
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
-<!-- md:plugin -->
-<!-- md:flag experimental -->
-
-The built-in meta plugin allows to __set front matter per folder__, which is
-especially handy to ensure that all pages in a folder use specific templates or
-tags. Add the following lines to `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - meta
-```
-
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
-
-The following configuration options are available:
-
-<!-- md:option meta.meta_file -->
-
-:   <!-- md:default `.meta.yml` --> This option specifies the
-    name of the meta files that the plugin should look for. The default setting
-    assumes that meta files are called `.meta.yml`:
-
-    ``` yaml
-    plugins:
-      - meta:
-          meta_file: .meta.yml # (1)!
-    ```
-
-    1.  Note that it's strongly recommended to prefix meta files with a `.`,
-        since otherwise they would be included in the build output.
-
-  [built-in blog plugin]: ../setup/setting-up-a-blog.md#built-in-blog-plugin
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-
 ## Usage
 
 ### Setting the page `title`
@@ -241,7 +179,7 @@ template: custom.html
     ```
 
   [theme extension]: ../customization.md#extending-the-theme
-  [built-in meta plugin]: #built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md
 
 ## Customization
 
