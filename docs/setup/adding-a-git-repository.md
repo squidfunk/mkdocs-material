@@ -229,6 +229,9 @@ The following configuration options are supported:
           enable_creation_date: true
     ```
 
+    !!! note
+        To make this configuration work properly on your documentation site, you also need to do the CI configuration as described in the [git-revision-date-localized](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin#note-when-using-build-environments) documentation.
+
 [`fallback_to_build_date`](#+git-revision-date-localized.fallback_to_build_date){ #+git-revision-date-localized.fallback_to_build_date }
 
 :   :octicons-milestone-24: Default: `false` – Enables falling back to
