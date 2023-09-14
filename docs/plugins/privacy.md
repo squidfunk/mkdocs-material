@@ -101,8 +101,9 @@ pipelines tailored to your project:
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.9.0 -->
-<!-- md:flag plugin [privacy] – built-in -->
+<!-- md:plugin [privacy] – built-in -->
 <!-- md:flag multiple -->
+<!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the privacy plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and start

@@ -14,7 +14,7 @@ fit your brand's identity by using [CSS variables][custom colors].
 
 #### Color scheme
 
-<!-- md:version 5.2.0 --> ·
+<!-- md:version 5.2.0 -->
 <!-- md:default `default` -->
 
 Material for MkDocs supports two color schemes: a __light mode__, which is just
@@ -52,7 +52,7 @@ Click on a tile to change the color scheme:
 
 #### Primary color
 
-<!-- md:version 0.2.0 --> ·
+<!-- md:version 0.2.0 -->
 <!-- md:default `indigo` -->
 
 The primary color is used for the header, the sidebar, text links and several
@@ -107,7 +107,7 @@ See our guide below to learn how to set [custom colors].
 
 #### Accent color
 
-<!-- md:version 0.2.0 --> ·
+<!-- md:version 0.2.0 -->
 <!-- md:default `indigo` -->
 
 The accent color is used to denote elements that can be interacted with, e.g.
@@ -164,8 +164,8 @@ See our guide below to learn how to set [custom colors].
 
 ### Color palette toggle
 
-<!-- md:version 7.1.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 7.1.0 -->
+<!-- md:default none -->
 
 Offering a light _and_ dark color palette makes your documentation pleasant to
 read at different times of the day, so the user can choose accordingly. Add the
@@ -209,7 +209,7 @@ The following properties must be set for each toggle:
 
 <!-- md:option palette.toggle.icon -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must point to a valid icon path referencing any icon bundled
     with the theme, or the build will not succeed. Some popular combinations:
 
@@ -221,7 +221,7 @@ The following properties must be set for each toggle:
 
 <!-- md:option palette.toggle.name -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property is used as the toggle's `title` attribute and should be set to
     a discernable name to improve accessibility. It's rendered as a [tooltip].
 
@@ -233,8 +233,8 @@ The following properties must be set for each toggle:
 
 ### System preference
 
-<!-- md:version 7.1.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 7.1.0 -->
+<!-- md:default none -->
 
 Each color palette can be linked to the user's system preference for light and
 dark appearance by using a media query. Simply add a `media` property next to
@@ -265,8 +265,8 @@ default color palette.
 
 #### Automatic light / dark mode
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.18.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.18.0 -->
 <!-- md:flag experimental -->
 
 Newer operating system allow to automatically switch between light and dark

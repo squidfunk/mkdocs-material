@@ -10,8 +10,8 @@ configure via `mkdocs.yml`.
 
 ### Navigation
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 9.0.0 -->
+<!-- md:feature -->
 
 The footer can include links to the previous and next page of the current page.
 If you wish to enable this behavior, add the following lines to `mkdocs.yml`:
@@ -24,8 +24,8 @@ theme:
 
 ### Social links
 
-<!-- md:version 1.0.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 1.0.0 -->
+<!-- md:default none -->
 
 Social links are rendered next to the copyright notice as part of the
 footer of your project documentation. Add a list of social links in `mkdocs.yml`
@@ -53,7 +53,7 @@ The following properties are available for each link:
 
 <!-- md:option social.icon -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must contain a valid path to any icon bundled with the theme,
     or the build will not succeed. Some popular choices:
 
@@ -72,7 +72,7 @@ The following properties are available for each link:
 
 <!-- md:option social.link -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to a relative or absolute URL including the URI
     scheme. All URI schemes are supported, including `mailto` and `bitcoin`:
 
@@ -113,8 +113,8 @@ The following properties are available for each link:
 
 ### Copyright notice
 
-<!-- md:version 0.1.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 0.1.0 -->
+<!-- md:default none -->
 
 A custom copyright banner can be rendered as part of the footer, which is
 displayed next to the social links. It can be defined as part of `mkdocs.yml`:
@@ -125,7 +125,7 @@ copyright: Copyright &copy; 2016 - 2020 Martin Donath
 
 ### Generator notice
 
-<!-- md:version 7.3.0 --> ·
+<!-- md:version 7.3.0 -->
 <!-- md:default `true` -->
 
 The footer displays a _Made with Material for MkDocs_ notice to denote how
@@ -174,8 +174,8 @@ hide:
 
 ### Custom copyright
 
-<!-- md:version 8.0.0 --> ·
-:octicons-file-symlink-file-24: Customization
+<!-- md:version 8.0.0 -->
+<!-- md:flag customization -->
 
 In order to customize and override the [copyright notice], [extend the theme]
 and [override the `copyright.html` partial][overriding partials], which normally

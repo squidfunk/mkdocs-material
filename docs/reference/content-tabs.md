@@ -32,8 +32,8 @@ See additional configuration options:
 
 ### Anchor links
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.17.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.17.0 -->
 <!-- md:flag experimental -->
 
 In order to link to content tabs and share them more easily, [Insiders] adds
@@ -73,8 +73,8 @@ or to the [publishing guide for Insiders][tab_2].
 
 ### Linked content tabs
 
-<!-- md:version 8.3.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 8.3.0 -->
+<!-- md:feature -->
 
 When enabled, all content tabs across the whole documentation site will be
 linked and switch to the same label when the user clicks on a tab. Add the

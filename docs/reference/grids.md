@@ -45,8 +45,8 @@ elements in a rectangular shape.
 
 ### Using card grids
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.12.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.12.0 -->
 <!-- md:flag experimental -->
 
 Card grids wrap each grid item with a beautiful hover card that levitates on
@@ -226,8 +226,8 @@ to the grid.
 
 ### Using generic grids
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.12.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.12.0 -->
 <!-- md:flag experimental -->
 
 Generic grids allow for arranging arbitrary block elements in a grid, including

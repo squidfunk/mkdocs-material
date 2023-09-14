@@ -15,8 +15,8 @@ are natively supported, meaning they work without any further adjustments.
 
 ### Arithmatex
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Arithmatex]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.arithmatex][Arithmatex] -->
 
 The [Arithmatex] extension allows for rendering of block and inline block
 equations and integrates seamlessly with [MathJax][^1] – a library for
@@ -86,8 +86,8 @@ See reference for usage:
 
 ### BetterEm
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][BetterEm]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [pymdownx.betterem][BetterEm] -->
 
 The [BetterEm] extension improves the detection of Markup to emphasize text
 in Markdown using special characters, i.e. for `**bold**` and `_italic_`
@@ -106,8 +106,8 @@ documentation][BetterEm] for more information.
 
 ### Caret, Mark & Tilde
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Caret]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.caret][Caret] -->
 
 The [Caret], [Mark] and [Tilde] extensions add the ability to highlight text
 and define sub- and superscript using a simple syntax. Enable them together
@@ -137,8 +137,8 @@ See reference for usage:
 
 ### Critic
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Critic]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.critic][Critic] -->
 
 The [Critic] extension allows for the usage of [Critic Markup] to highlight
 added, deleted or updated sections in a document, i.e. for tracking changes in
@@ -191,8 +191,8 @@ See reference for usage:
 
 ### Details
 
-<!-- md:version 1.9.0 --> ·
-[:octicons-workflow-24: Extension][Details]
+<!-- md:version 1.9.0 -->
+<!-- md:extension [pymdownx.details][Details] -->
 
 The [Details] extension supercharges the [Admonition] extension, making the
 resulting _call-outs_ collapsible, allowing them to be opened and closed by the
@@ -213,8 +213,8 @@ No configuration options are available. See reference for usage:
 
 ### Emoji
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Emoji]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.emoji][Emoji] -->
 
 The [Emoji] extension automatically inlines bundled and custom icons and emojis
 in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
@@ -258,7 +258,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.emoji.options.custom_icons -->
 
-:   <!-- md:default _none_ --> This option allows to list folders
+:   <!-- md:default none --> This option allows to list folders
     with additional icon sets to be used in Markdown or `mkdocs.yml`, which is
     explained in more detail in the [icon customization guide]:
 
@@ -291,9 +291,8 @@ See reference for usage:
 
 ### Highlight
 
-<!-- md:version 5.0.0 --> ·
-[:octicons-workflow-24: Extension][Highlight] ·
-:octicons-zap-24: Supersedes [CodeHilite]
+<!-- md:version 5.0.0 -->
+<!-- md:extension [pymdownx.highlight][Highlight] -->
 
 The [Highlight] extension adds support for syntax highlighting of code blocks
 (with the help of [SuperFences][pymdownx.superfences]) and inline code blocks
@@ -423,7 +422,7 @@ markdown_extensions:
 
 <!-- md:option pymdownx.highlight.anchor_linenums -->
 
-:   <!-- md:version 8.1.0 --> · :octicons-milestone-24:
+:   <!-- md:version 8.1.0 --> :octicons-milestone-24:
     Default: `false` – If a code blocks contains line numbers, enabling this
     setting will wrap them with anchor links, so they can be hyperlinked and
     shared more easily:
@@ -436,7 +435,7 @@ markdown_extensions:
 
 <!-- md:option pymdownx.highlight.line_spans -->
 
-:   <!-- md:default _none_ --> When this option is set, each
+:   <!-- md:default none --> When this option is set, each
     line of a code block is wrapped in a `span`, which is essential for features
     like line highlighting to work correctly:
 
@@ -474,8 +473,8 @@ See reference for usage:
 
 ### InlineHilite
 
-<!-- md:version 5.0.0 --> ·
-[:octicons-workflow-24: Extension][InlineHilite]
+<!-- md:version 5.0.0 -->
+<!-- md:extension [pymdownx.inlinehilite][InlineHilite] -->
 
 The [InlineHilite] extension add support for syntax highlighting of inline code
 blocks. It's built on top of the [Highlight][pymdownx.highlight] extension, from
@@ -503,8 +502,8 @@ See reference for usage:
 
 ### Keys
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Keys]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.keys][Keys] -->
 
 The [Keys] extension adds a simple syntax to allow for the rendering of keyboard
 keys and combinations, e.g. ++ctrl+alt+del++. Enable it via `mkdocs.yml`:
@@ -529,8 +528,8 @@ See reference for usage:
 
 ### SmartSymbols
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][SmartSymbols]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [pymdownx.smartsymbols][SmartSymbols] -->
 
 The [SmartSymbols] extension converts some sequences of characters into their
 corresponding symbols, e.h. copyright symbols or fractions. Enable it via
@@ -549,8 +548,8 @@ documentation][SmartSymbols] for guidance.
 
 ### Snippets
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Snippets]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [pymdownx.snippets][Snippets] -->
 
 The [Snippets] extension adds the ability to embed content from arbitrary files
 into a document, including other documents or source files, by using a simple
@@ -576,9 +575,8 @@ See reference for usage:
 
 ### SuperFences
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][SuperFences] ·
-:octicons-zap-24: Supersedes [Fenced Code Blocks]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [pymdownx.superfences][SuperFences] -->
 
 The [SuperFences] extension allows for arbitrary nesting of code and content
 blocks inside each other, including admonitions, tabs, lists and all other
@@ -593,7 +591,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.superfences.custom_fences -->
 
-:   <!-- md:default _none_ --> This option allows to define a
+:   <!-- md:default none --> This option allows to define a
     handler for custom fences, e.g. to preserve the definitions of [Mermaid.js]
     diagrams to be interpreted in the browser:
 
@@ -639,8 +637,8 @@ See reference for usage:
 
 ### Tabbed
 
-<!-- md:version 5.0.0 --> ·
-[:octicons-workflow-24: Extension][Tabbed]
+<!-- md:version 5.0.0 -->
+<!-- md:extension [pymdownx.tabbed][Tabbed] -->
 
 The [Tabbed] extension allows the usage of content tabs, a simple way to group
 related content and code blocks under accessible tabs. Enable it via
@@ -656,8 +654,8 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.alternate_style -->
 
-:   <!-- md:version 7.3.1 --> · <!-- md:default `false` -->
-    :octicons-alert-24: __Required__ –  This option enables the content tabs
+:   <!-- md:version 7.3.1 --> <!-- md:default `false` -->
+    <!-- md:flag required -->  This option enables the content tabs
     [alternate style], which has [better behavior on mobile viewports], and is
     the only supported style:
 
@@ -712,8 +710,8 @@ See reference for usage:
 
 ### Tasklist
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Tasklist]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.tasklist][Tasklist] -->
 
 The [Tasklist] extension allows for the usage of [GitHub Flavored Markdown]
 inspired [task lists][Tasklist specification], following the same syntactical

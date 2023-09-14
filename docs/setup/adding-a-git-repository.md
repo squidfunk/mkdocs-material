@@ -9,8 +9,8 @@ static site, including stars and forks. Furthermore, the
 
 ### Repository
 
-<!-- md:version 0.1.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 0.1.0 -->
+<!-- md:default none -->
 
 In order to display a link to the repository of your project as part of your
 documentation, set [`repo_url`][repo_url] in `mkdocs.yml` to the public URL of
@@ -39,7 +39,7 @@ GitHub repositories also include the tag of the latest release.[^1]
 
 #### Repository name
 
-<!-- md:version 0.1.0 --> ·
+<!-- md:version 0.1.0 -->
 <!-- md:default _automatically set to_ `GitHub`, `GitLab` _or_ `Bitbucket` -->
 
 MkDocs will infer the source provider by examining the URL and try to set the
@@ -54,9 +54,8 @@ repo_name: squidfunk/mkdocs-material
 
 #### Repository icon
 
-<!-- md:version 5.0.0 --> ·
-:octicons-milestone-24: Default:
-:fontawesome-brands-git-alt: – `fontawesome/brands/git-alt`
+<!-- md:version 5.0.0 -->
+<!-- md:default computed -->
 
 While the default repository icon is a generic git icon, it can be set to
 any icon bundled with the theme by referencing a valid icon path in
@@ -94,8 +93,8 @@ Some popular choices:
 
 #### Code actions
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 9.0.0 -->
+<!-- md:feature -->
 
 If the [repository URL] points to a valid [GitHub], [GitLab] or [Bitbucket]
 repository, [MkDocs] provides a setting called [`edit_uri`][edit_uri], which
@@ -166,8 +165,8 @@ links to all [contributors] or [authors] involved.
 
 #### Document dates
 
-<!-- md:version 4.6.0 --> ·
-<!-- md:flag plugin [git-revision-date-localized] -->
+<!-- md:version 4.6.0 -->
+<!-- md:plugin [git-revision-date-localized] -->
 
 The [git-revision-date-localized] plugin adds support for adding the date of
 last update and creation of a document at the bottom of each page. Install it
@@ -243,9 +242,9 @@ them at your own risk.
 
 #### Document contributors
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.19.0 --> ·
-<!-- md:flag plugin [git-committers] --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.19.0 -->
+<!-- md:plugin [git-committers] -->
 <!-- md:flag experimental -->
 
 The [git-committers][^2] plugin renders the GitHub avatars of all contributors,
@@ -287,7 +286,7 @@ The following configuration options are supported:
 
 <!-- md:option git-committers.repository -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to the slug of the repository that contains your
     documentation. The slug must follow the pattern `<username>/<repository>`:
 
@@ -319,9 +318,9 @@ them at your own risk.
 
 #### Document authors
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.19.0 --> ·
-<!-- md:flag plugin [git-authors] --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.19.0 -->
+<!-- md:plugin [git-authors] -->
 <!-- md:flag experimental -->
 
 The [git-authors] plugin is a lightweight alternative to the

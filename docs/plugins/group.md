@@ -37,7 +37,7 @@ It can be used with any built-in or third-party plugin.
 ## Configuration
 
 <!-- md:version 9.3.0 -->
-<!-- md:flag plugin [group] – built-in -->
+<!-- md:plugin [group] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
 
@@ -102,6 +102,9 @@ CI=true mkdocs build
 ---
 
 #### <!-- md:setting config.plugins -->
+
+<!-- md:version 9.2.0 -->
+<!-- md:default none -->
 
 Use this setting to list the plugins that are part of the group. The syntax is
 exactly the same as for the [`plugins`][mkdocs.plugins] setting, so you can

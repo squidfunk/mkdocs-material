@@ -16,8 +16,8 @@ not be compliant with privacy regulations. Moreover, search even works
 
 ### Built-in search plugin
 
-<!-- md:version 0.1.0 --> ·
-<!-- md:flag plugin -->
+<!-- md:version 0.1.0 -->
+<!-- md:plugin -->
 
 The built-in search plugin integrates seamlessly with Material for MkDocs,
 adding multilingual client-side search with [lunr] and [lunr-languages]. It's
@@ -29,224 +29,17 @@ plugins:
   - search
 ```
 
-The following configuration options are supported:
+For a list of all settings, please consult the [plugin documentation].
 
-<!-- md:option search.lang -->
-
-:   <!-- md:default _automatically set_ --> This option allows
-    to include the language-specific stemmers provided by [lunr-languages].
-    Note that Material for MkDocs will set this automatically based on the
-    [site language], but it may be overridden, e.g. to support multiple
-    languages:
-
-    === "A single language"
-
-        ``` yaml
-        plugins:
-          - search:
-              lang: en
-        ```
-
-    === "Multiple languages"
-
-        ``` yaml
-        plugins:
-          - search:
-              lang: # (1)!
-                - en
-                - de
-        ```
-
-        1.  Be aware that including support for other languages increases the
-            general JavaScript payload by around 20kb (before `gzip`) and by
-            another 15-30kb per language.
-
-    The following languages are supported by [lunr-languages]:
-
-    <div class="mdx-columns" markdown>
-
-    - `ar` – Arabic
-    - `da` – Danish
-    - `de` – German
-    - `du` – Dutch
-    - `en` – English
-    - `es` – Spanish
-    - `fi` – Finnish
-    - `fr` – French
-    - `hi` – Hindi
-    - `hu` – Hungarian
-    - `hy` – Armenian
-    - `it` – Italian
-    - `ja` – Japanese
-    - `kn` - Kannada
-    - `ko` – Korean
-    - `no` – Norwegian
-    - `pt` – Portuguese
-    - `ro` – Romanian
-    - `ru` – Russian
-    - `sa` – Sanskrit
-    - `sv` – Swedish
-    - `ta` – Tamil
-    - `te` – Telugu
-    - `th` – Thai
-    - `tr` – Turkish
-    - `vi` – Vietnamese
-    - `zh` – Chinese
-
-    </div>
-
-    Material for MkDocs goes to great lengths to support languages that are not
-    part of this list by automatically falling back to the stemmer yielding the
-    best result.
-
-<!-- md:option search.separator -->
-
-:   <!-- md:default _automatically set_ --> The separator for
-    indexing and query tokenization can be customized, making it possible to
-    index parts of words separated by other characters than whitespace and `-`,
-    e.g. by including `.`:
-
-    ``` yaml
-    plugins:
-      - search:
-          separator: '[\s\-\.]+'
-    ```
-
-    With <!-- md:version 9.0.0 -->, a faster and more flexible tokenizer method
-    is shipped, allowing for __tokenizing with lookahead__, which yields more
-    influence on the way documents are indexed. As a result, we use the
-    following separator setting for this site's search:
-
-    ``` yaml
-    plugins:
-      - search:
-          separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-    ```
-
-    Broken into its parts, the separator induces the following behavior:
-
-    === "Special characters"
-
-        ```
-        [\s\-,:!=\[\]()"/]+
-        ```
-
-        The first part of the expression inserts token boundaries for each
-        document before and after whitespace, hyphens, commas, brackets and
-        other special characters. If several of those special characters are
-        adjacent, they are treated as one.
-
-    === "Case changes"
-
-        ```
-        (?!\b)(?=[A-Z][a-z])
-        ```
-
-        Many programming languages have naming conventions like `PascalCase` or
-        `camelCase`. By adding this subexpression to the separator,
-        [words are split at case changes], tokenizing the word `PascalCase`
-        into `Pascal` and `Case`.
-
-        [:octicons-arrow-right-24: Read more on tokenizing case changes]
-        [tokenize case changes]
-
-    === "Version strings"
-
-        ```
-        \.(?!\d)
-        ```
-
-        When adding `.` to the separator, version strings like `1.2.3` are split
-        into `1`, `2` and `3`, which makes them undiscoverable via search. When
-        using this subexpression, a small lookahead is introduced which will
-        [preserve version strings] and keep them discoverable.
-
-        [:octicons-arrow-right-24: Read more on tokenizing version numbers]
-        [tokenize version numbers]
-
-    === "HTML/XML tags"
-
-        ```
-        &[lg]t;
-        ```
-
-        If your documentation includes HTML/XML code examples, you may want to allow
-        users to find specific tag names. Unfortunately, the `<` and `>` control
-        characters are encoded in code blocks as `&lt;` and `&gt;`. Adding this
-        subexpression to the separator allows for just that.
-
-        [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
-        [tokenize html-xml tags]
+  [plugin documentation]: ../plugins/search.md
 
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
-  [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
-  [site language]: changing-the-language.md#site-language
-  [words are split at case changes]: ?q=searchHighlight
-  [preserve version strings]: ?q=9.0.0
-  [tokenize case changes]: ../blog/posts/search-better-faster-smaller.md#case-changes
-  [tokenize version numbers]: ../blog/posts/search-better-faster-smaller.md#version-numbers
-  [tokenize html-xml tags]: ../blog/posts/search-better-faster-smaller.md#htmlxml-tags
-
-#### Chinese language support
-
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag experimental -->
-
-In order to add support for Chinese languages to the [built-in search plugin],
-install the text segmentation library [jieba] via `pip`, and the plugin will
-run all text through the segmenter:
-
-``` sh
-pip install jieba
-```
-
-The following configuration options are available:
-
-<!-- md:option search.jieba_dict -->
-
-:   <!-- md:default _none_ --> This option allows for specifying
-    a [custom dictionary] to be used by [jieba] for segmenting text, replacing
-    the default dictionary:
-
-    ``` yaml
-    plugins:
-      - search:
-          jieba_dict: dict.txt # (1)!
-    ```
-
-    1.  The following alternative dictionaries are provided by [jieba]:
-
-        - [dict.txt.small] – 占用内存较小的词典文件
-        - [dict.txt.big] – 支持繁体分词更好的词典文件
-
-<!-- md:option search.jieba_dict_user -->
-
-:   <!-- md:default _none_ --> This option allows for specifying
-    an additional [user dictionary] to be used by [jieba] for segmenting text,
-    augmenting the default dictionary:
-
-    ``` yaml
-    plugins:
-      - search:
-          jieba_dict_user: user_dict.txt
-    ```
-
-    User dictionaries can be used for tuning the segmenter to preserve
-    technical terms.
-
-  [chinese search]: ../blog/posts/chinese-search-support.md
-  [jieba]: https://pypi.org/project/jieba/
-  [built-in search plugin]: #built-in-search-plugin
-  [custom dictionary]: https://github.com/fxsjy/jieba#%E5%85%B6%E4%BB%96%E8%AF%8D%E5%85%B8
-  [dict.txt.small]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.small
-  [dict.txt.big]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.big
-  [user dictionary]: https://github.com/fxsjy/jieba#%E8%BD%BD%E5%85%A5%E8%AF%8D%E5%85%B8
 
 ### Search suggestions
 
-<!-- md:version 7.2.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 When search suggestions are enabled, the search will display the likeliest
@@ -266,8 +59,8 @@ yields ^^search suggestions^^ as a suggestion.
 
 ### Search highlighting
 
-<!-- md:version 7.2.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 When search highlighting is enabled and a user clicks on a search result,
@@ -287,8 +80,8 @@ highlights all occurrences of both terms.
 
 ### Search sharing
 
-<!-- md:version 7.2.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
 
 When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -307,7 +100,7 @@ clipboard.
 
 ### Search boosting
 
-<!-- md:version 8.3.0 --> ·
+<!-- md:version 8.3.0 -->
 <!-- md:flag metadata -->
 
 Pages can be boosted in search with the front matter `search.boost` property,
@@ -343,8 +136,8 @@ Markdown file:
 
 ### Search exclusion
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag metadata --> ·
+<!-- md:version 9.0.0 -->
+<!-- md:flag metadata -->
 <!-- md:flag experimental -->
 
 Pages can be excluded from search with the front matter `search.exclude`

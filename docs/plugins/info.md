@@ -46,7 +46,7 @@ for bug reports.
 ## Configuration
 
 <!-- md:version 9.0.0 -->
-<!-- md:flag plugin [info] – built-in -->
+<!-- md:plugin [info] – built-in -->
 
 In order to get started with the built-in info plugin, just add the following
 lines to `mkdocs.yml`, and quickly [create a minimal reproduction] to share

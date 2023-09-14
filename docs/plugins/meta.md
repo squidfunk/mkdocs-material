@@ -127,7 +127,8 @@ of the meta plugin and other built-in plugins are:
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.21.0 -->
-<!-- md:flag plugin [meta] – built-in -->
+<!-- md:plugin [meta] – built-in -->
+<!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the meta plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and start

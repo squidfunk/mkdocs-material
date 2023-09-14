@@ -134,7 +134,7 @@ many other built-in plugins:
 ## Configuration
 
 <!-- md:version 9.2.0 -->
-<!-- md:flag plugin [blog] – built-in -->
+<!-- md:plugin [blog] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
 
@@ -551,7 +551,7 @@ This only applies to post excerpts in views. Posts always render all categories.
 #### <!-- md:setting config.post_excerpt_separator -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default `<!-- more -​->` -->
+<!-- md:default <code>&lt;!-- more --&gt;</code> -->
 
 Use this setting to set the separator the plugin will look for in a post's
 content when generating post excerpts. All content __before__ the separator is

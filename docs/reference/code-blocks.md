@@ -46,8 +46,8 @@ See additional configuration options:
 
 ### Code copy button
 
-<!-- md:version 9.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 9.0.0 -->
+<!-- md:feature -->
 
 Code blocks can automatically render a button on the right side to allow the
 user to copy a code block's contents to the clipboard. Add the following to
@@ -83,8 +83,8 @@ theme:
 
 ### Code selection button
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.32.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.32.0 -->
 <!-- md:flag experimental -->
 
 Code blocks can include a button to allow for the selection of line ranges by
@@ -123,8 +123,8 @@ theme:
 
 ### Code annotations
 
-<!-- md:version 8.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 8.0.0 -->
+<!-- md:feature -->
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -160,8 +160,8 @@ theme:
 
 #### Custom selectors
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.32.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.32.0 -->
 <!-- md:flag experimental -->
 
 Normally, code annotations can only be [placed in comments], as comments can be
@@ -288,7 +288,7 @@ theme:
 
 #### Stripping comments
 
-<!-- md:version 8.5.0 --> ·
+<!-- md:version 8.5.0 -->
 <!-- md:flag experimental -->
 
 If you wish to strip the comment characters surrounding a code annotation,

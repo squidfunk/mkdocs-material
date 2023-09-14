@@ -91,8 +91,9 @@ pipelines tailored to your project:
 ## Configuration
 
 <!-- md:version 8.5.0 -->
-<!-- md:flag plugin [social] – built-in -->
+<!-- md:plugin [social] – built-in -->
 <!-- md:flag multiple -->
+<!-- md:flag experimental -->
 
 In order to get started with the social plugin, just add the following lines to
 `mkdocs.yml`, and observe how Material for MkDocs generates beautiful social

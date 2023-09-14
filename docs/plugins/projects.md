@@ -65,7 +65,7 @@ and building more comfortable.
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.38.0 -->
-<!-- md:flag plugin [projects] – built-in -->
+<!-- md:plugin [projects] – built-in -->
 <!-- md:flag experimental -->
 
 In order to get started with the projects plugin, just add the following lines

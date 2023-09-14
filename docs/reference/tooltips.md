@@ -35,8 +35,8 @@ See additional configuration options:
 
 ### Improved tooltips
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.15.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.15.0 -->
 <!-- md:flag experimental -->
 
 When improved tooltips are enabled, Material for MkDocs replaces the browser's

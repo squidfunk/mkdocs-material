@@ -13,8 +13,8 @@ MkDocs natively integrates with [Google Analytics] and offers a customizable
 
 ### Google Analytics
 
-<!-- md:version 7.1.8 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 7.1.8 -->
+<!-- md:default none -->
 
 Material for MkDocs integrates natively with Google Analytics 4[^1]. If you
 already set up Google Analytics and have a property, enable it by adding the
@@ -48,8 +48,8 @@ extra:
 
 ### Was this page helpful?
 
-<!-- md:version 8.4.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 8.4.0 -->
+<!-- md:default none -->
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.
@@ -143,7 +143,7 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.icon -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must point to a valid icon path referencing [any icon bundled
     with the theme][custom icons], or the build will not succeed. Some popular
     combinations:
@@ -154,13 +154,13 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.name -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is shown on user interaction (i.e. keyboard focus
     or mouse hover), explaining the meaning of the rating behind the icon.
 
 <!-- md:option analytics.feedback.ratings.data -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is sent as a data value with the custom event
     that is transmitted to Google Analytics[^3] (or any custom integration).
 
@@ -169,7 +169,7 @@ The following properties are available for each rating:
 
 <!-- md:option analytics.feedback.ratings.note -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is shown after the user selected the rating.
     It may contain arbitrary HTML tags, which is especially useful to ask the
     user to provide more detailed feedback for the current page through a form.

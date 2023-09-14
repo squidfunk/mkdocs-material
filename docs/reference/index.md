@@ -9,9 +9,9 @@ within Markdown files.
 
 ### Built-in <u>typeset</u> plugin
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.27.0 --> ·
-<!-- md:flag plugin --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.27.0 -->
+<!-- md:plugin -->
 <!-- md:flag experimental -->
 
 The built-in typeset plugin __preserves HTML formatting__ in the navigation and
@@ -31,9 +31,9 @@ section headlines; even [highlighting inline code blocks] is supported :tada:
 
 ### Built-in meta plugin
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.21.0 --> ·
-<!-- md:flag plugin --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:plugin -->
 <!-- md:flag experimental -->
 
 The built-in meta plugin allows to __set front matter per folder__, which is
@@ -121,7 +121,7 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
 ### Setting the page `icon`
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:flag experimental -->
 
 An icon can be assigned to each page, which is then rendered as part of the
@@ -155,7 +155,7 @@ icon: material/emoticon-happy # (1)!
 
 ### Setting the page `status`
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:flag experimental -->
 
 A status can be assigned to each page, which is then displayed as part of the
@@ -198,8 +198,8 @@ The following status identifiers are currently supported:
 
 ### Setting the page `subtitle`
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.25.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.25.0 -->
 <!-- md:flag experimental -->
 
 Each page can define a subtitle, which is then rendered below the title as part

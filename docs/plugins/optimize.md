@@ -79,7 +79,7 @@ build pipelines tailored to your project:
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.29.0 -->
-<!-- md:flag plugin [optimize] – built-in -->
+<!-- md:plugin [optimize] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
 

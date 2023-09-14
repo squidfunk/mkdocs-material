@@ -11,7 +11,7 @@ or another destination should be used.
 
 ### Regular font
 
-<!-- md:version 0.1.2 --> ·
+<!-- md:version 0.1.2 -->
 <!-- md:default [`Roboto`][Roboto] -->
 
 The regular font is used for all body copy, headlines, and essentially
@@ -30,7 +30,7 @@ The typeface will be loaded in 300, 400, _400i_ and __700__.
 
 ### Monospaced font
 
-<!-- md:version 0.1.2 --> ·
+<!-- md:version 0.1.2 -->
 <!-- md:default [`Roboto Mono`][Roboto Mono] -->
 
 The _monospaced font_ is used for code blocks and can be configured separately.
@@ -49,8 +49,8 @@ The typeface will be loaded in 400.
 
 ### Autoloading
 
-<!-- md:version 1.0.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 1.0.0 -->
+<!-- md:default none -->
 
 If you want to prevent typefaces from being loaded from [Google Fonts], e.g.
 to adhere to [data privacy] regulations, and fall back to system fonts, add the
@@ -94,7 +94,7 @@ corresponding `@font-face` definition:
       - stylesheets/extra.css
     ```
 
-The font can then be applied to specific elements, e.g. only headlines, or 
+The font can then be applied to specific elements, e.g. only headlines, or
 globally to be used as the site-wide regular or monospaced font:
 
 === "Regular font"

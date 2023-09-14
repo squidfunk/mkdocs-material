@@ -9,7 +9,7 @@ available.
 
 ### Site language
 
-<!-- md:version 1.12.0 --> ·
+<!-- md:version 1.12.0 -->
 <!-- md:default `en` -->
 
 You can set the site language in `mkdocs.yml` with:
@@ -48,8 +48,8 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
 ### Site language selector
 
-<!-- md:version 7.0.0 --> ·
-<!-- md:default _none_ -->
+<!-- md:version 7.0.0 -->
+<!-- md:default none -->
 
 If your documentation is available in multiple languages, a language selector
 pointing to those languages can be added to the header. Alternate languages
@@ -74,19 +74,19 @@ The following properties are available for each alternate language:
 
 <!-- md:option alternate.name -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This value of this property is used inside the language selector as the
     name of the language and must be set to a non-empty string.
 
 <!-- md:option alternate.link -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to an absolute link, which might also point to
     another domain or subdomain not necessarily generated with MkDocs.
 
 <!-- md:option alternate.lang -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must contain an [ISO 639-1 language code] and is used for
     the `hreflang` attribute of the link, improving discoverability via search
     engines.
@@ -99,8 +99,8 @@ The following properties are available for each alternate language:
 
 ### Directionality
 
-<!-- md:version 2.5.0 --> ·
-<!-- md:default _automatically set_ -->
+<!-- md:version 2.5.0 -->
+<!-- md:default computed -->
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
 supports `rtl` (right-to-left) directionality which is deduced from the

@@ -11,8 +11,8 @@ can help to discover relevant information faster.
 
 ### Built-in tags plugin
 
-<!-- md:version 8.2.0 --> ·
-<!-- md:flag plugin -->
+<!-- md:version 8.2.0 -->
+<!-- md:plugin -->
 
 The built-in tags plugin adds the ability to categorize any page with tags
 as part of the front matter of the page. In order to add support for tags, add
@@ -23,203 +23,13 @@ plugins:
   - tags
 ```
 
-The following configuration options are available:
+For a list of all settings, please consult the [plugin documentation].
 
-<!-- md:option tags.enabled -->
-
-:   <!-- md:default `true` --> This option specifies whether
-    the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - tags:
-          enabled: !ENV [CI, false]
-    ```
-
-<!-- md:option tags.tags_file -->
-
-:   <!-- md:default _none_ --> This option specifies which page
-    should be used to render the tags index. See the section on [adding a tags
-    index][tags index] for more information. If this option is specified, tags
-    become clickable, pointing to the corresponding section in the tags index:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_file: tags.md
-    ```
-
-    The page holding the tags index can be linked anywhere in the `nav` section
-    of `mkdocs.yml`. Note, however, that this options is not required – only use
-    it if you want a tags index page.
-
-<!-- md:option tags.tags_extra_files -->
-
-:   <!-- md:version insiders-4.20.0 --> · :octicons-milestone-24:
-    Default: _none_ – This option specifies additional pages, i.e. to render
-    subsets of the [tags index], in order to provide scoped tags indexes for
-    specific sections:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_extra_files:
-            compatibility.md:
-              - compat # (1)!
-            web.md:
-              - html
-              - js
-              - css
-    ```
-
-    1.  Each page can be assigned a list of [tag identifiers], which must be
-        defined as part of `extra.tags` in `mkdocs.yml`:
-
-        ``` yaml
-        extra:
-          tags:
-            Compatibility: compat
-            HTML5: html
-            JavaScript: js
-            CSS: css
-        ```
-
-        In this example, all pages with the tag `Compatibility` will be included
-        in the additional tags index on `compatibility.md`, all pages defining
-        at least one of the tags `HTML5`, `JavaScript` or `CSS` will be included
-        in the additional tags index on `web.md`.
-
-    Note that the values listed under each tags extra file must be alphanumeric
-    [tag identifiers], not tags themselves. See #3864 for more information.
-
-<!-- md:option tags.tags_slugify -->
-
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
-    Default: `toc.slugify` – This option specifies which function to use for
-    generating URL-compatible slugs from tags. [Python Markdown Extensions]
-    includes several Unicode-aware slug functions which are a good choice for
-    non-ASCII languages:
-
-    === "Unicode"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-                kwds:
-                  case: lower
-        ```
-
-    === "Unicode, case-sensitive"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        ```
-
-<!-- md:option tags.tags_slugify_separator -->
-
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
-    Default: `-` – This option specifies the separator which is used by the slug function. By default, a hyphen is used, but it can
-    be changed to any string:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_slugify_separator: "-"
-    ```
-
-<!-- md:option tags.tags_compare -->
-
-:   <!-- md:version insiders-4.26.2 --> · :octicons-milestone-24:
-    Default: `None` – This option specifies which function to use when
-    comparing tag values for sorting. If you wish to compare tags irregardless
-    of casing, use:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_compare: !!python/name:material.plugins.tags.casefold
-    ```
-
-    You can also define your own comparison function which must return a tag
-    value (as a string) that is used for sorting, and reference it accordingly.
-
-<!-- md:option tags.tags_compare_reverse -->
-
-:   <!-- md:version insiders-4.26.2 --> · :octicons-milestone-24:
-    Default: `false` – This option specifies whether tags are sorted in reverse
-    order. It is mainly provided for completeness. To change direction, use:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_compare_reverse: true
-    ```
-
-[`tags_pages_compare`](#+tags.tags_pages_compare){ #+tags.tags_pages_compare }
-
-:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
-    Default: `None` – This option specifies which function to use when
-    comparing pages for sorting. If you wish to sort pages, use:
-
-    === "Sort by page title"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_pages_compare: !!python/name:material.plugins.tags.page_title
-        ```
-
-    === "Sort by page URL"
-
-        ``` yaml
-        plugins:
-          - tags:
-              tags_pages_compare: !!python/name:material.plugins.tags.page_url
-        ```
-
-    You can also define your own comparison function which must return a page
-    value (as a string) that is used for sorting, and reference it accordingly.
-
-[`tags_pages_compare_reverse`](#+tags.tags_pages_compare_reverse){ #+tags.tags_pages_compare_reverse }
-
-:   [:octicons-tag-24: insiders-4.39.0][Insiders] · :octicons-milestone-24:
-    Default: `false` – This option specifies whether pages are sorted in reverse
-    order. It is mainly provided for completeness. To change direction, use:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_pages_compare_reverse: true
-    ```
-
-[`tags_allowed`](#+tags.tags_allowed){ #+tags.tags_allowed }
-
-:   <!-- md:version insiders-4.25.0 --> · :octicons-milestone-24:
-    Default: _none_ – This option allows the author to define explicitly which
-    tags are allowed to be used on pages. If this setting is omitted, the
-    [built-in tags plugin] won't check tag names. Use this option to define a
-    list of tags in order to catch typos:
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_allowed:
-            - HTML5
-            - JavaScript
-            - CSS
-    ```
-
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-  [tag identifiers]: #tag-icons-and-identifiers
-  [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
+  [plugin documentation]: ../plugins/tags.md
 
 ### Tag icons and identifiers
 
-<!-- md:version 8.5.0 --> ·
+<!-- md:version 8.5.0 -->
 <!-- md:flag experimental -->
 
 Each tag can be associated with an icon, which is then rendered inside the tag.

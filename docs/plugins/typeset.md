@@ -39,7 +39,8 @@ interfere with other plugins.
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.27.0 -->
-<!-- md:flag plugin [typeset] – built-in -->
+<!-- md:plugin [typeset] – built-in -->
+<!-- md:flag experimental -->
 
 As with all [built-in plugins], getting started with the typeset plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and observe the

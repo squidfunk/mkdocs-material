@@ -13,8 +13,8 @@ of its flagship features: [instant loading].
 
 ### Instant loading
 
-<!-- md:version 5.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 5.0.0 -->
+<!-- md:feature -->
 
 When instant loading is enabled, clicks on all internal links will be
 intercepted and dispatched via [XHR] without fully reloading the page. Add
@@ -35,9 +35,9 @@ especially useful for large documentation sites.
 
 #### Instant prefetching :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.36.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.36.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 Instant prefetching is a new experimental feature that will start to fetch a
@@ -54,8 +54,8 @@ theme:
 
 ### Anchor tracking
 
-<!-- md:version 8.0.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 8.0.0 -->
+<!-- md:feature -->
 
 When anchor tracking is enabled, the URL in the address bar is automatically
 updated with the active anchor as highlighted in the table of contents. Add the
@@ -69,8 +69,8 @@ theme:
 
 ### Navigation tabs
 
-<!-- md:version 1.1.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 1.1.0 -->
+<!-- md:feature -->
 
 When tabs are enabled, top-level sections are rendered in a menu layer below
 the header for viewports above `1220px`, but remain as-is on mobile.[^1] Add
@@ -104,8 +104,8 @@ theme:
 
 #### Sticky navigation tabs
 
-<!-- md:version 7.3.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 7.3.0 -->
+<!-- md:feature -->
 
 When sticky tabs are enabled, navigation tabs will lock below the header and
 always remain visible when scrolling down. Just add the following two feature
@@ -131,8 +131,8 @@ theme:
 
 ### Navigation sections
 
-<!-- md:version 6.2.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When sections are enabled, top-level sections are rendered as groups in the
 sidebar for viewports above `1220px`, but remain as-is on mobile. Add the
@@ -161,8 +161,8 @@ feature flags are enabled, sections are rendered for level 2 navigation items.
 
 ### Navigation expansion
 
-<!-- md:version 6.2.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When expansion is enabled, the left sidebar will expand all collapsible
 subsections by default, so the user doesn't have to open subsections manually.
@@ -187,9 +187,9 @@ theme:
 
 ### Navigation path <small>Breadcrumbs</small> { id=navigation-path }
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.28.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.28.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 When navigation paths are activated, a breadcrumb navigation is rendered above
@@ -216,8 +216,8 @@ theme:
 
 ### Navigation pruning
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 When pruning is enabled, only the visible navigation items are included in the
@@ -239,16 +239,12 @@ This feature flag is especially useful for documentation sites with 100+ or even
 Navigation pruning will replace all expandable sections with links to the first
 page in that section (or the section index page).
 
-<<<<<<< HEAD
-=======
-  [Navigation pruning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
->>>>>>> @{-1}
   [navigation.expand]: #navigation-expansion
 
 ### Section index pages
 
-<!-- md:version 7.3.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 7.3.0 -->
+<!-- md:feature -->
 
 When section index pages are enabled, documents can be directly attached to
 sections, which is particularly useful for providing overview pages. Add the
@@ -295,8 +291,8 @@ nav:
 
 #### Anchor following
 
-<!-- md:version 8.5.0 --> ·
-<!-- md:flag feature --> ·
+<!-- md:version 8.5.0 -->
+<!-- md:feature -->
 <!-- md:flag experimental -->
 
 When anchor following for the [table of contents] is enabled, the sidebar is
@@ -311,8 +307,8 @@ theme:
 
 #### Navigation integration
 
-<!-- md:version 6.2.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When navigation integration for the [table of contents] is enabled, it is always
 rendered as part of the navigation sidebar on the left. Add the following lines
@@ -343,8 +339,8 @@ theme:
 
 ### Back-to-top button
 
-<!-- md:version 7.1.0 --> ·
-<!-- md:flag feature -->
+<!-- md:version 7.1.0 -->
+<!-- md:feature -->
 
 A back-to-top button can be shown when the user, after scrolling down, starts
 to scroll up again. It's rendered centered and just below the header. Add the
@@ -360,7 +356,7 @@ theme:
 
 ### Hiding the sidebars
 
-<!-- md:version 6.2.0 --> ·
+<!-- md:version 6.2.0 -->
 <!-- md:flag metadata -->
 
 The navigation and/or table of contents sidebars can be hidden for a document
@@ -396,8 +392,8 @@ hide:
 
 ### Hiding the navigation path
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.28.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.28.0 -->
 <!-- md:flag metadata -->
 
 While the [navigation path] is rendered above the main headline, sometimes, it

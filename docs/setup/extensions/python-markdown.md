@@ -11,8 +11,8 @@ reference for which features they need to be enabled.
 
 ### Abbreviations
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Abbreviations]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [abbr][Abbreviations] -->
 
 The [Abbreviations] extension adds the ability to add a small tooltip to an
 element, by wrapping it with an `abbr` tag. Only plain text (no markup) is
@@ -34,8 +34,8 @@ No configuration options are available. See reference for usage:
 
 ### Admonition
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Admonition]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [admonition][Admonition] -->
 
 The [Admonition] extension adds support for admonitions, more commonly known as
 _call-outs_, which can be defined in Markdown by using a simple syntax. Enable
@@ -61,8 +61,8 @@ No configuration options are available. See reference for usage:
 
 ### Attribute Lists
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Attribute Lists]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [attr_list][Attribute Lists] -->
 
 The [Attribute Lists] extension allows to add HTML attributes and CSS classes
 to [almost every][Attribute Lists limitations] Markdown inline- and block-level
@@ -96,8 +96,8 @@ No configuration options are available. See reference for usage:
 
 ### Definition Lists
 
-<!-- md:version 1.1.0 --> ·
-[:octicons-workflow-24: Extension][Definition Lists]
+<!-- md:version 1.1.0 -->
+<!-- md:extension [def_list][Definition Lists] -->
 
 The [Definition Lists] extension adds the ability to add definition lists (more
 commonly known as [description lists] – `dl` in HTML) via Markdown to a
@@ -118,8 +118,8 @@ No configuration options are available. See reference for usage:
 
 ### Footnotes
 
-<!-- md:version 1.0.0 --> ·
-[:octicons-workflow-24: Extension][Footnotes]
+<!-- md:version 1.0.0 -->
+<!-- md:extension [footnotes][Footnotes] -->
 
 The [Footnotes] extension allows to define inline footnotes, which are then
 rendered below all Markdown content of a document. Enable it via `mkdocs.yml`:
@@ -140,8 +140,8 @@ No configuration options are supported. See reference for usage:
 
 ### Markdown in HTML
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Markdown in HTML]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [md_in_html][Markdown in HTML] -->
 
 The [Markdown in HTML] extension allows for writing Markdown inside of HTML,
 which is useful for wrapping Markdown content with custom elements. Enable it
@@ -171,8 +171,8 @@ No configuration options are available. See reference for usage:
 
 ### Table of Contents
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Table of Contents]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [toc][Table of Contents] -->
 
 The [Table of Contents] extension automatically generates a table of contents
 from a document, which Material for MkDocs will render as part of the resulting
@@ -188,7 +188,7 @@ The following configuration options are supported:
 
 <!-- md:option toc.title -->
 
-:   <!-- md:version 7.3.5 --> · · <!-- md:default _automatically set_ --> –
+:   <!-- md:version 7.3.5 --> <!-- md:default computed --> –
     This option sets the title of the table of contents in the right navigation
     sidebar, which is normally automatically sourced from the translations for
     the [site language] as set in `mkdocs.yml`:
@@ -293,8 +293,8 @@ them at your own risk.
 
 ### Tables
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Tables]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [tables][Tables] -->
 
 The [Tables] extension adds the ability to create tables in Markdown by using a
 simple syntax. Enable it via `mkdocs.yml` (albeit it should be enabled by
@@ -322,8 +322,8 @@ should be considered.
 
 ### Fenced Code Blocks
 
-<!-- md:version 0.1.0 --> ·
-[:octicons-workflow-24: Extension][Fenced Code Blocks]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [fenced_code_blocks][Fenced Code Blocks] -->
 
 Superseded by [SuperFences]. This extension might still work, but the
 [SuperFences] extension is superior in many ways, as it allows for arbitrary
@@ -334,8 +334,8 @@ nesting, and is therefore recommended.
 
 ### CodeHilite
 
-[:octicons-tag-24: 0.1.0 ... 5.5.14][CodeHilite support] ·
-[:octicons-workflow-24: Extension][CodeHilite]
+<!-- md:version 0.1.0 -->
+<!-- md:extension [codehilite][CodeHilite] -->
 
 Superseded by [Highlight]. Support for CodeHilite was dropped in
 <!-- md:version 6.0.0 -->, as [Highlight] has a better integration with other

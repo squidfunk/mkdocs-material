@@ -9,18 +9,18 @@ indexes, [post slugs], configurable [pagination] and more.
 
 __Check out our [blog], which is created with the new [built-in blog plugin]!__
 
-  [archive]: #archive
-  [category]: #categories
-  [post slugs]: #+blog.post_url_format
-  [pagination]: #pagination
+  [archive]: ../plugins/blog.md#archive
+  [category]: ../plugins/blog.md#categories
+  [post slugs]: ../plugins/blog.md#config.post_url_format
+  [pagination]: ../plugins/blog.md#pagination
   [blog]: ../blog/index.md
 
 ## Configuration
 
 ### Built-in blog plugin
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag plugin --> ·
+<!-- md:version 9.2.0 -->
+<!-- md:plugin -->
 <!-- md:flag experimental -->
 
 The built-in blog plugin adds support for building a blog from a folder of
@@ -32,53 +32,20 @@ plugins:
   - blog
 ```
 
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
+For a list of all settings, please consult the [plugin documentation].
 
-By default, the built-in blog plugin assumes that your blog is hosted inside
-the `blog` subfolder of your documentation ([this is configurable]). Next,
-you need to create the following structure:
-
-``` { .sh .no-copy }
-.
-├─ docs/
-│  └─ blog/
-│     ├─ posts/
-│     └─ index.md
-└─ mkdocs.yml
-```
-
-Since the built-in blog plugin auto-generates [archive] and [category] indexes,
-it must know where to add those to the navigation. Thus, make sure to add a
-`blog/index.md` file in `mkdocs.yml`:
-
-``` yaml
-nav:
-  - Blog:
-    - blog/index.md # (1)!
-```
-
-1.  Within this file, you can specify the title of your blog, which is then
-    picked up and used by the built-in blog plugin:
-
-    ``` markdown
-    # Blog
-    ```
-
----
+  [plugin documentation]: ../plugins/blog.md
 
   [Insiders]: ../insiders/index.md
+  [built-in blog plugin]: ../plugins/blog.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [this is configurable]: #+blog.blog_dir
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [start writing your first post]: #writing-your-first-post
 
 ### RSS
 
-<!-- md:version 9.2.0 --> ·
-<!-- md:flag plugin [rss] -->
+<!-- md:version 9.2.0 -->
+<!-- md:plugin [rss] -->
 
 The [built-in blog plugin] integrates seamlessly with the [RSS plugin][rss],
 which provides a simple way to add an RSS feed to your blog (or to your whole
@@ -135,7 +102,7 @@ The following configuration options are supported:
 
 <!-- md:option rss.date_from_meta -->
 
-:   <!-- md:default _none_ --> This option specifies which
+:   <!-- md:default none --> This option specifies which
     front matter property should be used as a creation date of a page in the
     feed. It's recommended to use the `date` property:
 
@@ -148,7 +115,7 @@ The following configuration options are supported:
 
 <!-- md:option rss.categories -->
 
-:   <!-- md:default _none_ --> This option specifies which
+:   <!-- md:default none --> This option specifies which
     front matter properties are used as categories as part of the feed. If you
     use [categories] and [tags], add both with the following lines:
 
@@ -162,7 +129,7 @@ The following configuration options are supported:
 
 <!-- md:option rss.comments_path -->
 
-:   <!-- md:default _none_ --> This option specifies the anchor
+:   <!-- md:default none --> This option specifies the anchor
     at which comments for a post or page can be found. If you've integrated a
     [comment system], add the following lines:
 
@@ -178,7 +145,7 @@ that the [RSS plugin][rss] comes with several other configuration options.
 For further information, see the [documentation].
 
   [rss]: https://guts.github.io/mkdocs-rss-plugin/
-  [categories]: #categories
+  [categories]: ../plugins/blog.md#categories
   [tags]: setting-up-tags.md#built-in-tags-plugin
   [comment system]: adding-a-comment-system.md
   [necessary metadata]: https://guts.github.io/mkdocs-rss-plugin/configuration/#integration
@@ -250,8 +217,8 @@ When you spin up the [live preview server], you should be greeted by your first
 post! You'll also realize, that [archive] and [category] indexes have been
 automatically generated for you.
 
-  [draft]: #drafts
-  [This behavior can be changed]: #+blog.draft
+  [draft]: ../plugins/blog.md#drafts
+  [This behavior can be changed]: ../plugins/blog.md#config.draft
   [live preview server]: ../creating-your-site.md#previewing-as-you-write
 
 #### Adding an excerpt
@@ -275,7 +242,7 @@ When the [built-in blog plugin] generates all indexes, the content before the
 [excerpt separator] is automatically extracted, allowing the user to start
 reading a post before deciding to jump in.
 
-  [excerpt separator]: #+blog.post_excerpt_separator
+  [excerpt separator]: ../plugins/blog.md#config.post_excerpt_separator
 
 #### Adding authors
 
@@ -297,19 +264,19 @@ The following properties are available for each author:
 
 <!-- md:option blog.authors_file.name -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must define a name for the author. The name is displayed in
     the left sidebar of each post as part of the author info.
 
 <!-- md:option blog.authors_file.description -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property can be used to add a short description for the author, e.g.
     the role or profession of the author, or any other title.
 
 <!-- md:option blog.authors_file.avatar -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must point to a valid image URL, internal or external, and is
     used as part of posts and excerpts as the author's avatar.
 
@@ -330,8 +297,8 @@ authors:
 ...
 ```
 
-  [authors]: #authors
-  [authors_file]: #+blog.authors_file
+  [authors]: ../plugins/blog.md#authors
+  [authors_file]: ../plugins/blog.md#config.authors_file
 
 #### Adding categories
 
@@ -358,7 +325,7 @@ define your desired categories in `mkdocs.yml` as part of the
 [built-in blog plugin] will stop the build if a category is not found within
 the list.
 
-  [categories_allowed]: #+blog.categories_allowed
+  [categories_allowed]: ../plugins/blog.md#config.categories_allowed
 
 #### Adding tags
 
@@ -400,8 +367,8 @@ slug: hello-world
 
 #### Adding related links
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.23.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.23.0 -->
 <!-- md:flag experimental -->
 
 Related links offer the perfect way to prominently add a _further reading_
@@ -498,7 +465,7 @@ readtime: 15
 This will disable automatic reading time computation.
 
   [readtime]: https://pypi.org/project/readtime/
-  [enabled]: #+blog.post_readtime
+  [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
 
@@ -564,8 +531,8 @@ nav:
 
 ### Custom index pages
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.24.0 --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.24.0 -->
 <!-- md:flag experimental -->
 
 If you want to add custom content to automatically generated [archive] and
@@ -612,8 +579,8 @@ All post excerpts belonging to the category are automatically appended.
 
   [add the category]: #adding-categories
   [page description]: ../reference/index.md#setting-the-page-description
-  [categories_url_format]: #+blog.categories_url_format
-  [categories_slugify]: #+blog.categories_slugify
+  [categories_url_format]: ../plugins/blog.md#config.categories_url_format
+  [categories_slugify]: ../plugins/blog.md#config.categories_slugify
 
 ### Overriding templates
 

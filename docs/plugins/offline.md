@@ -98,7 +98,7 @@ create even better offline-capable documentation:
 ## Configuration
 
 <!-- md:version 9.0.0 -->
-<!-- md:flag plugin [offline] – built-in -->
+<!-- md:plugin [offline] – built-in -->
 
 As with all [built-in plugins], getting started with the offline plugin is
 straightforward. Just add the following lines to `mkdocs.yml`, and start

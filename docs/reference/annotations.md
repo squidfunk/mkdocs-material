@@ -33,7 +33,7 @@ See additional configuration options:
 
 ### Annotation icons
 
-[:octicons-tag-24: 9.2.0][Annotation icons support]
+<!-- md:version 9.2.0 -->
 
 The annotation icon can be changed to any icon bundled with the theme, or even
 a [custom icon], e.g. to material/arrow-right-circle:. Simply add the following
@@ -67,7 +67,6 @@ Some popular choices:
 - :material-star-four-points-circle: - `material/star-four-points-circle`
 - :material-plus-circle-outline: - `material/plus-circle-outline`
 
-  [Annotation icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [icon search]: icons-emojis.md#search
 
@@ -75,7 +74,7 @@ Some popular choices:
 
 ### Using annotations
 
-<!-- md:version 9.2.0 --> ·
+<!-- md:version 9.2.0 -->
 <!-- md:flag experimental -->
 
 Annotations consist of two parts: a marker, which can be placed anywhere in

@@ -13,8 +13,8 @@ automatically downloaded for [self-hosting].
 
 ### Cookie consent
 
-<!-- md:version 8.4.0 --> ·
-<!-- md:default _none_ --> ·
+<!-- md:version 8.4.0 -->
+<!-- md:default none -->
 <!-- md:flag experimental -->
 
 Material for MkDocs ships a native and extensible cookie consent form which
@@ -39,19 +39,19 @@ The following properties are available:
 
 <!-- md:option consent.title -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property sets the title of the cookie consent, which is rendered at the
     top of the form and must be set to a non-empty string.
 
 <!-- md:option consent.description -->
 
-:   <!-- md:default _none_ --> :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property sets the description of the cookie consent, is rendered below
     the title, and may include raw HTML (e.g. a links to the terms of service).
 
 <!-- md:option consent.cookies -->
 
-:   <!-- md:default _none_ --> This property allows to add custom
+:   <!-- md:default none --> This property allows to add custom
     cookies or change the initial `checked` state and name of built-in cookies.
     Currently, the following cookies are built-in:
 
@@ -146,12 +146,12 @@ copyright: >
 
 ### Built-in privacy plugin
 
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.9.0 --> ·
-<!-- md:flag plugin --> ·
+<!-- md:sponsors -->
+<!-- md:version insiders-4.9.0 -->
+<!-- md:plugin [privacy][built-in privacy plugin] -->
 <!-- md:flag experimental -->
 
-The built-in privacy plugin automatically identifies [external assets] as part
+The built-in privacy plugin automatically identifies external assets as part
 of the build process and downloads all assets for very simple self-hosting. Add
 the following lines to `mkdocs.yml`:
 
@@ -160,96 +160,27 @@ plugins:
   - privacy
 ```
 
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
+For a list of all settings, please consult the [plugin documentation].
 
-The following configuration options are available:
+  [plugin documentation]: ../plugins/privacy.md
 
-<!-- md:option privacy.enabled -->
+!!! tip "Hosting images externally and optimizing them automatically"
 
-:   <!-- md:default `true` --> This option specifies whether
-    the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variable]:
+    This option makes the [built-in privacy plugin] an excellent choice for
+    when you want to host assets like images outside of your git repository
+    in another location to keep them fresh and your repository lean.
 
-    ``` yaml
-    plugins:
-      - privacy:
-          enabled: !ENV [CI, false]
-    ```
+    Additionally, as of <!-- md:version insiders-4.30.0 -->, the
+    built-in privacy plugin was entirely rewritten and now works perfectly
+    with the [built-in optimize plugin], which means that external assets
+    can be passed through the same optimization pipeline as the rest of your
+    documentation. This means you can store and edit unoptimized files
+    outside of your repository, and let both plugins built a highly
+    optimized site for you.
 
-<!-- md:option privacy.concurrency -->
-
-:   <!-- md:default _number of CPUs_ --> This option specifies
-    how many CPUs the plugin is allowed to use when downloading external assets.
-    With more CPUs, the plugin can do more work in the same time, thus complete
-    its work faster. Concurrent processing can be disabled with:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          concurrency: 1
-    ```
-
-  [Insiders]: ../insiders/index.md
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-
-<!-- md:option privacy.assets_include -->
-
-:   <!-- md:default _none_ --> This option allows to only include
-    certain external assets for processing by the privacy plugin, so they will
-    be downloaded and bundled during the build:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          assets_include:
-            - unsplash.com/*
-    ```
-
-    !!! tip "Hosting images externally and optimizing them automatically"
-
-        This option makes the [built-in privacy plugin] an excellent choice for
-        when you want to host assets like images outside of your git repository
-        in another location to keep them fresh and your repository lean.
-
-        Additionally, as of <!-- md:version insiders-4.30.0 -->, the
-        built-in privacy plugin was entirely rewritten and now works perfectly
-        with the [built-in optimize plugin], which means that external assets
-        can be passed through the same optimization pipeline as the rest of your
-        documentation. This means you can store and edit unoptimized files
-        outside of your repository, and let both plugins built a highly
-        optimized site for you.
-
-        If you want to implement separate pipelines, i.e., optimize some images
-        differently from others or exclude some images from downloading, you can
-        use multiple instances of the [built-in privacy plugin].
-
-<!-- md:option privacy.assets_exclude -->
-
-:   <!-- md:default _none_ --> This option allows to exclude
-    certain external assets from processing by the privacy plugin, so they will
-    not be downloaded and bundled during the build:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          assets_exclude: # (1)!
-            - cdn.jsdelivr.net/npm/mathjax@3/*
-            - giscus.app/*
-    ```
-
-    1.  [MathJax] loads web fonts for typesetting of mathematical content
-        through relative URLs, and thus cannot be automatically bundled by the
-        privacy plugin. [MathJax can be self-hosted].
-
-        Giscus, which we recommend to use as a [comment system], uses a technique
-        called code-splitting to load only the code that is necessary, which
-        is implemented via relative URLs. [Giscus can be self-hosted] as well.
-
-    Excluding specific external assets can be necessary if they contain
-    dynamically created or relative URLs, which can't be resolved by the privacy
-    plugin due to [technical limitations].
+    If you want to implement separate pipelines, i.e., optimize some images
+    differently from others or exclude some images from downloading, you can
+    use multiple instances of the [built-in privacy plugin].
 
 !!! question "Why can't Material for MkDocs bundle all assets by design?"
 
@@ -270,95 +201,11 @@ The following configuration options are available:
     the process of downloading all external assets manually to ensure compliance
     with GDPR with some some [technical limitations].
 
-  [customization]: ../customization.md
-  [strict mode]: https://www.mkdocs.org/user-guide/configuration/#strict
-  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
-  [MathJax]: ../reference/math.md
-  [MathJax can be self-hosted]: https://docs.mathjax.org/en/latest/web/hosting.html
-  [Giscus can be self-hosted]: https://github.com/giscus/giscus/blob/main/SELF-HOSTING.md
-  [comment system]: adding-a-comment-system.md
-  [external assets]: #how-it-works
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [Google Fonts]: changing-the-fonts.md
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
-  [technical limitations]: #limitations
-  [built-in optimize plugin]: building-an-optimized-site.md#built-in-optimize-plugin
+  [built-in optimize plugin]: ../plugins/optimize.md
 
-#### External links
-
-<!-- md:sponsors --> ·
-<!-- md:version insiders-4.26.0 --> ·
-<!-- md:flag experimental -->
-
-The following configuration options are available for external links:
-
-<!-- md:option privacy.links -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    plugin should parse and process external links. If you want to speed up
-    local builds, you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          links: !ENV [CI, false]
-    ```
-
-<!-- md:option privacy.links_attr_map -->
-
-:   <!-- md:default _None_ --> This option specifies custom
-    attributes that should be added to external links, like for example
-    `target="_blank"` so all external links open in a new window:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          links_attr_map:
-            target: _blank
-    ```
-
-<!-- md:option privacy.links_noopener -->
-
-:   <!-- md:default `true` --> This option specifies whether the
-    plugin should automatically add [`rel="noopener"`][noopener] to all links
-    with `target="_blank"` for security reasons:
-
-    ``` yaml
-    plugins:
-      - privacy:
-          links_noopener: true
-    ```
-
-  [noopener]: https://mathiasbynens.github.io/rel-noopener/
-
-#### How it works
-
-The [built-in privacy plugin] scans the resulting HTML for links to external
-resources, including external scripts, style sheets, images and web fonts, and
-downloads them to bundle them with your documentation site. Every URL referring
-to an external resource, no matter if part of a template or Markdown file, is
-then replaced with the URL to the local copy. An example:
-
-``` html
-<script src="https://example.com/script.js"></script>
-```
-
-The external script is downloaded, and the link is replaced with:
-
-``` html
-<script src="assets/external/example.com/script.js"></script>
-```
-
-Style sheets are scanned for external `url(...)` references, e.g. images and
-web fonts, which are then also downloaded and bundled with your documentation
-site. This means that [Google Fonts] can be configured in `mkdocs.yml` as usual,
-as the [built-in privacy plugin] automatically downloads and bundles all
-dependent resources.
-
-As a third measure, [`preconnect`][preconnect] hints used for DNS pre-fetching
-which might also leak the visitors IP address to a third party are automatically
-removed during the build process.
 
 ??? example "Expand to inspect example"
 
@@ -430,67 +277,8 @@ removed during the build process.
        └─ polyfill.io/v3/polyfill.min.js
     ```
 
-  [built-in privacy plugin]: #built-in-privacy-plugin
+  [built-in privacy plugin]: ../plugins/privacy.md
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch
-
-#### Caching <small>recommended</small> { #caching data-toc-label="Caching" }
-
-All downloaded files are written to the `.cache` directory, significantly
-reducing the duration of subsequent builds as only replacements need to be
-carried out. You might want to:
-
-1.  Ignore the `.cache` directory in your project, by adding it to `.gitignore`.
-2.  When building your site for publishing, use a build cache to save the
-    `.cache` directory in between builds. Taking the example from the
-    [publishing guide], add the following lines:
-
-    ``` yaml hl_lines="15-21"
-    name: ci
-      on:
-        push:
-          branches:
-            - master
-            - main
-    jobs:
-      deploy:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v3
-          - uses: actions/setup-python@v4
-            with:
-              python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-          - uses: actions/cache@v3
-            with:
-              key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
-              restore-keys: |
-                mkdocs-material-
-          - run: pip install mkdocs-material
-          - run: mkdocs gh-deploy --force
-    ```
-
-  [publishing guide]: ../publishing-your-site.md#with-github-actions
-
-#### Limitations
-
-Note that dynamically created URLs as part of scripts are not detected, and thus
-cannot be automatically downloaded. The [built-in privacy plugin] does not
-execute scripts – it can only detect fully qualified URLs to download and
-replace.
-
-In short, don't do this:
-
-``` js
-const cdn = "https://polyfill.io"
-const url = `${cdn}/v3/polyfill.min.js`
-```
-
-Instead, always use fully qualified URLs:
-
-``` js
-const url ="https://polyfill.io/v3/polyfill.min.js"
-```
 
 ## Customization
 

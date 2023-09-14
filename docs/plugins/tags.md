@@ -61,7 +61,7 @@ Additionally, it integrates perfectly with several of the other
 ## Configuration
 
 <!-- md:version 8.2.0 -->
-<!-- md:flag plugin [tags] – built-in -->
+<!-- md:plugin [tags] – built-in -->
 <!-- md:flag multiple -->
 
 As with all [built-in plugins], getting started with the tags plugin is

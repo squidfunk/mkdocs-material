@@ -4,8 +4,8 @@ icon: material/image-frame
 
 # Images
 
-While images are first-class citizens of Markdown and part of the core syntax, 
-it can be difficult to work with them. Material for MkDocs makes working with 
+While images are first-class citizens of Markdown and part of the core syntax,
+it can be difficult to work with them. Material for MkDocs makes working with
 images more comfortable, providing styles for image alignment and image
 captions.
 
@@ -31,10 +31,10 @@ See additional configuration options:
 
 ### Lightbox
 
-<!-- md:version 0.1.0 --> ·
-<!-- md:flag plugin [glightbox] --> ·
+<!-- md:version 0.1.0 -->
+<!-- md:plugin [glightbox] -->
 
-If you want to add image zoom functionality to your documentation, the 
+If you want to add image zoom functionality to your documentation, the
 [glightbox] plugin is an excellent choice, as it integrates perfectly
 with Material for MkDocs. Install it with `pip`:
 
