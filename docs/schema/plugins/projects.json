@@ -3,7 +3,7 @@
   "title": "Built-in projects plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-projects-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
       "enum": [
         "projects"
       ]
@@ -12,35 +12,47 @@
       "type": "object",
       "properties": {
         "projects": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#built-in-projects-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
           "type": "object",
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.enabled",
               "type": "boolean",
               "default": true
             },
             "concurrency": {
               "title": "Concurrency (number of CPUs)",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.concurrency",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.concurrency",
               "type": "number"
+            },
+            "cache": {
+              "title": "Enable caching",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.cache",
+              "type": "boolean",
+              "default": true
+            },
+            "cache_dir": {
+              "title": "Cache directory",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.cache_dir",
+              "type": "string",
+              "default": ".cache/plugins/projects"
             },
             "projects": {
               "title": "Enable projects",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.projects",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.projects",
               "type": "boolean",
               "default": true
             },
             "projects_dir": {
               "title": "Projects directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.projects_dir",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.projects_dir",
               "type": "string",
               "default": "projects"
             },
             "hosting": {
               "title": "Enable hoisting",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-an-optimized-site/#+projects.hoisting",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.hoisting",
               "type": "boolean",
               "default": true
             }

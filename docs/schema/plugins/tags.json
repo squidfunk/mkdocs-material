@@ -3,7 +3,7 @@
   "title": "Built-in tags plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
       "enum": [
         "tags"
       ]
@@ -12,24 +12,24 @@
       "type": "object",
       "properties": {
         "tags": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#built-in-tags-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
           "type": "object",
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.enabled",
               "type": "boolean",
               "default": true
             },
             "tags_file": {
               "title": "Markdown file to render tags index",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_file",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_file",
               "pattern": "\\.md$",
               "default": "tags.md"
             },
             "tags_extra_files": {
               "title": "Markdown files to render additional tags indexes",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_extra_files",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_extra_files",
               "type": "object",
               "patternProperties": {
                 "\\.md$": {
@@ -44,38 +44,38 @@
             },
             "tags_slugify": {
               "title": "Tags slugify function",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_slugify",
               "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             },
             "tags_slugify_separator": {
               "title": "Tags slugify separator",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_slugify_separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_slugify_separator",
               "type": "string",
               "default": "\"-\""
             },
             "tags_compare": {
               "title": "Sort tags by this function",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_compare",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_compare",
               "default": "!!python/name:material.plugins.tags.casefold"
             },
             "tags_compare_reverse": {
               "title": "Soft tags in reverse",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_compare_reverse",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_compare_reverse",
               "default": false
             },
             "tags_pages_compare": {
               "title": "Sort tags pages by this function",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_pages_compare",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_pages_compare",
               "default": "!!python/name:material.plugins.tags.page_title"
             },
             "tags_pages_compare_reverse": {
               "title": "Soft tags pages in reverse",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_pages_compare_reverse",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_pages_compare_reverse",
               "default": false
             },
             "tags_allowed": {
               "title": "Tags allowed",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/#+tags.tags_allowed",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/#config.tags_allowed",
               "type": "array",
               "items": {
                 "type": "string"

@@ -3,7 +3,7 @@
   "title": "Built-in blog plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#built-in-blog-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/",
       "enum": [
         "blog"
       ]
@@ -12,36 +12,37 @@
       "type": "object",
       "properties": {
         "blog": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#built-in-blog-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/",
           "type": "object",
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.enabled",
               "type": "boolean",
               "default": true
             },
             "blog_dir": {
               "title": "Blog directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.blog_dir",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.blog_dir",
               "type": "string",
               "default": "blog"
             },
             "blog_toc": {
               "title": "Blog table of contents",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.blog_toc",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.blog_toc",
               "type": "boolean",
               "default": false
             },
             "post_dir": {
               "title": "Blog posts directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_dir",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_dir",
               "type": "string",
-              "default": "\"{blog}/posts\""
+              "default": "\"{blog\\}/posts\""
             },
             "post_date_format": {
               "title": "Format string for post dates",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_date_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_date_format",
+              "default": "long",
               "oneOf": [
                 {
                   "enum": [
@@ -54,12 +55,11 @@
                 {
                   "type": "string"
                 }
-              ],
-              "default": "long"
+              ]
             },
             "post_url_date_format": {
               "title": "Format string for post dates in URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_url_date_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_url_date_format",
               "oneOf": [
                 {
                   "enum": [
@@ -76,7 +76,7 @@
             },
             "post_url_format": {
               "title": "Format string for post URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_url_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_url_format",
               "oneOf": [
                 {
                   "enum": [
@@ -93,24 +93,24 @@
             },
             "post_url_max_categories": {
               "title": "Number of categories in post URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_url_max_categories",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_url_max_categories",
               "type": "number",
               "default": 1
             },
             "post_slugify": {
               "title": "Post slugify function",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_slugify",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_slugify",
               "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             },
             "post_slugify_separator": {
               "title": "Post slugify separator",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_slugify_separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_slugify_separator",
               "type": "string",
               "default": "\"-\""
             },
             "post_excerpt": {
               "title": "Post excerpts",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_excerpt",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_excerpt",
               "oneOf": [
                 {
                   "title": "Post excerpts are optional",
@@ -129,49 +129,49 @@
             },
             "post_excerpt_max_authors": {
               "title": "Number of authors to render in post excerpts",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_excerpt_max_authors",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_excerpt_max_authors",
               "type": "number",
               "default": 1
             },
             "post_excerpt_max_categories": {
               "title": "Number of categories to render in post excerpts",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_excerpt_max_categories",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_excerpt_max_categories",
               "type": "number",
               "default": 5
             },
             "post_excerpt_separator": {
               "title": "Post excerpt separator",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_excerpt_separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_excerpt_separator",
               "type": "string",
               "default": "<!-- more -->"
             },
             "post_readtime": {
               "title": "Post reading time computation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_readtime",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_readtime",
               "type": "boolean",
               "default": true
             },
             "post_readtime_words_per_minute": {
               "title": "Post reading time words per minute",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.post_readtime_words_per_minute",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.post_readtime_words_per_minute",
               "type": "number",
               "default": 265
             },
             "archive": {
               "title": "Archive",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive",
               "type": "boolean",
               "default": true
             },
             "archive_name": {
               "title": "Archive name",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_name",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_name",
               "type": "string",
               "default": "Archive"
             },
             "archive_date_format": {
               "title": "Format string for archive dates",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_date_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_date_format",
               "oneOf": [
                 {
                   "enum": [
@@ -187,7 +187,7 @@
             },
             "archive_url_date_format": {
               "title": "Format string for archive dates in URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_url_date_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_url_date_format",
               "oneOf": [
                 {
                   "enum": [
@@ -203,7 +203,7 @@
             },
             "archive_url_format": {
               "title": "Format string for archive URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_url_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_url_format",
               "oneOf": [
                 {
                   "enum": [
@@ -217,25 +217,25 @@
             },
             "archive_toc": {
               "title": "Archive table of contents",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.archive_toc",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_toc",
               "type": "boolean",
               "default": false
             },
             "categories": {
               "title": "Categories",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories",
               "type": "boolean",
               "default": true
             },
             "categories_name": {
               "title": "Categories name",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_name",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_name",
               "type": "string",
               "default": "Categories"
             },
             "categories_url_format": {
               "title": "Format string for category URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_url_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_url_format",
               "oneOf": [
                 {
                   "enum": [
@@ -250,18 +250,18 @@
             },
             "categories_slugify": {
               "title": "Categories slugify function",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_slugify",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_slugify",
               "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
             },
             "categories_slugify_separator": {
               "title": "Categories slugify separator",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_slugify_separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_slugify_separator",
               "type": "string",
               "default": "\"-\""
             },
             "categories_allowed": {
               "title": "Categories allowed",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_allowed",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_allowed",
               "type": "array",
               "items": {
                 "type": "string"
@@ -271,25 +271,25 @@
             },
             "categories_toc": {
               "title": "Categories table of contents",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.categories_toc",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_toc",
               "type": "boolean",
               "default": false
             },
             "pagination": {
               "title": "Pagination",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.pagination",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.pagination",
               "type": "boolean",
               "default": true
             },
             "pagination_per_page": {
               "title": "Posts per page",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.pagination_per_page",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.pagination_per_page",
               "type": "number",
               "default": 10
             },
             "pagination_url_format": {
               "title": "Format string for pagination URLs",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.pagination_url_format",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.pagination_url_format",
               "oneOf": [
                 {
                   "enum": [
@@ -304,7 +304,7 @@
             },
             "pagination_template": {
               "title": "Template string for pagination",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.pagination_template",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.pagination_template",
               "oneOf": [
                 {
                   "enum": [
@@ -321,37 +321,37 @@
             },
             "pagination_keep_content": {
               "title": "Paginated indexes inherit content",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.pagination_keep_content",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.pagination_keep_content",
               "type": "boolean",
               "default": false
             },
             "authors": {
               "title": "Author info",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.authors",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.authors",
               "type": "boolean",
               "default": true
             },
             "authors_file": {
               "title": "Authors file",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.authors_file",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.authors_file",
               "type": "string",
-              "default": "\"{blog}/.authors.yml\""
+              "default": "\"{blog\\}/.authors.yml\""
             },
             "draft": {
               "title": "Render posts marked as drafts",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.draft",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.draft",
               "type": "boolean",
               "default": false
             },
             "draft_on_serve": {
               "title": "Render posts marked as drafts when previewing",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.draft_on_serve",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.draft_on_serve",
               "type": "boolean",
               "default": true
             },
             "draft_if_future_date": {
               "title": "Automatically mark posts with future dates as drafts",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-a-blog/#+blog.draft_if_future_date",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.draft_if_future_date",
               "type": "boolean",
               "default": false
             }

@@ -3,7 +3,7 @@
   "title": "Built-in search plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#built-in-search-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "enum": [
         "search"
       ]
@@ -12,7 +12,7 @@
       "type": "object",
       "properties": {
         "search": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#built-in-search-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
           "type": "object",
           "properties": {
             "lang": {
@@ -33,12 +33,12 @@
             },
             "separator": {
               "title": "Separator for indexing and query tokenization",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.separator",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.separator",
               "type": "string"
             },
             "pipeline": {
               "title": "Text processing pipeline for indexing",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.pipeline",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.pipeline",
               "type": "array",
               "items": {
                 "enum": [
@@ -51,12 +51,12 @@
             },
             "jieba_dict": {
               "title": "Jieba dictionary replacement",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.jieba_dict",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict",
               "type": "string"
             },
             "jieba_dict_user": {
               "title": "Jieba dictionary augmentation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.jieba_dict_user",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict_user",
               "type": "string"
             }
           },
@@ -69,7 +69,7 @@
   "definitions": {
     "lang": {
       "title": "Site search language",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#+search.lang",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.lang",
       "oneOf": [
         {
           "title": "Site search language: Arabic",
