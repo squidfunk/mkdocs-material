@@ -132,5 +132,5 @@ The following environments come with a preinstalled version of [pngquant]:
 - [x] No installation needed in [Docker image]
 
   [pngquant]: https://pngquant.org/
-  [built-in optimize plugin]: ../../setup/building-an-optimized-site.md#built-in-optimize-plugin
+  [built-in optimize plugin]: ../../plugins/optimize.md
   [pngquant-winbuild]: https://github.com/jibsen/pngquant-winbuild

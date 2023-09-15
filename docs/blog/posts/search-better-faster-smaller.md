@@ -9,7 +9,7 @@ categories:
   - Search
   - Performance
 links:
-  - setup/setting-up-site-search.md#built-in-search-plugin
+  - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
 ---
 
@@ -58,7 +58,7 @@ const index$ = document.forms.namedItem("search")
 
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
-  [built-in search plugin]: ../../setup/setting-up-site-search.md#built-in-search-plugin
+  [built-in search plugin]: ../../plugins/search.md
 
 ### Search index
 
@@ -244,7 +244,7 @@ carefully considered:
    stopping at a whitespace character when enough words have been consumed. A
    preview might look like this:
 
-    ``` 
+    ```
     … channels, e.g., or which can be configured via mkdocs.yml …
     ```
 
@@ -286,7 +286,7 @@ it brings:
 
 - __Better__: support for [rich search previews], preserving the structural
   information of code blocks, inline code, and lists, so they are rendered
-  as-is, as well as [lookahead tokenization], [more accurate highlighting], and 
+  as-is, as well as [lookahead tokenization], [more accurate highlighting], and
   improved stability of typeahead. Also, a [slightly better UX].
 - __Faster__ and __smaller__: significant decrease in search index size of up
   to 48% due to improved extraction and construction techniques, resulting in a
@@ -463,7 +463,7 @@ also demonstrates that this now even works properly for search queries.[^5]
 
   [^5]:
     Previously, the search query was not correctly tokenized due to the way
-    [lunr] treats wildcards, as it disables the pipeline for search terms that 
+    [lunr] treats wildcards, as it disables the pipeline for search terms that
     contain wildcards. In order to provide a good typeahead experience,
     Material for MkDocs adds wildcards to the end of each search term not
     explicitly preceded with `+` or `-`, effectively disabling tokenization.
@@ -499,7 +499,7 @@ following expression to the separator allows for just that:
 &[lg]t;
 ```
 
-Searching for [:octicons-search-24: custom search worker script][q=script] 
+Searching for [:octicons-search-24: custom search worker script][q=script]
 brings up the section on [custom search] and matches the `script` tag among the
 other search terms discovered.
 
@@ -548,7 +548,7 @@ powerful as tokenization:
     Now, only the content blocks that actually contain occurrences of one of
     the search terms are considered for inclusion into the search preview. If a
     term only occurs in a code block, it's the code block that gets rendered,
-    see, for example, the results of 
+    see, for example, the results of
     [:octicons-search-24: twitter][q=twitter].
 
   [regular expressions]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/highlighter/index.ts#L61-L91

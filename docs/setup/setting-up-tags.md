@@ -147,8 +147,8 @@ search preview, which now allows to __find pages by tags__.
     and then add specific tags for each page. The tags in `.meta.yml` are
     appended.
 
-  [built-in tags plugin]: #built-in-tags-plugin
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [built-in tags plugin]: ../plugins/tags.md
+  [built-in meta plugin]: ../plugins/meta.md
 
 ### Adding a tags index
 

@@ -35,7 +35,7 @@ _This article explains how to set up Chinese language support for the built-in
 search plugin in a few minutes._
 { style="display: inline" }
 
-  [built-in search plugin]: ../../setup/setting-up-site-search.md#built-in-search-plugin
+  [built-in search plugin]: ../../plugins/search.md
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
 
 ## Configuration

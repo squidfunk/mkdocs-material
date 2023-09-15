@@ -1384,7 +1384,7 @@ a post. The property follows the same syntax as [`nav`][mkdocs.nav] in
     ``` yaml
     ---
     links:
-      - setup/setting-up-site-search.md#built-in-search-plugin # (1)!
+      - plugins/search.md # (1)!
       - Insiders:
         - insiders/index.md#how-to-become-a-sponsor
         - insiders/getting-started.md#requirements

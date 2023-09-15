@@ -36,7 +36,7 @@ For a list of all settings, please consult the [plugin documentation].
 
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
-  [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin
+  [built-in privacy plugin]:../plugins/privacy.md
 
 #### Limitations
 

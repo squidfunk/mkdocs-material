@@ -104,4 +104,4 @@ If you wish to enable comments for an entire folder, you can use the
   [theme extension]: ../customization.md#extending-the-theme
   [comments]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/comments.html
   [overriding partials]: ../customization.md#overriding-partials
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md

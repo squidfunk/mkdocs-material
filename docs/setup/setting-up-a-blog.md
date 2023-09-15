@@ -349,7 +349,7 @@ As usual, the tags are rendered above the main headline and posts are linked
 on the tags index page, if configured. Note that posts are, as pages, only
 linked with their titles.
 
-  [built-in tags plugin]: setting-up-tags.md#built-in-tags-plugin
+  [built-in tags plugin]: ../plugins/tags.md
   [tags index]: setting-up-tags.md#adding-a-tags-index
 
 #### Changing the slug
@@ -380,7 +380,7 @@ to add related links to a post:
 ---
 date: 2023-01-31
 links:
-  - setup/setting-up-site-search.md#built-in-search-plugin
+  - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
 ---
 
@@ -396,7 +396,7 @@ links and even use nesting:
 ---
 date: 2023-01-31
 links:
-  - setup/setting-up-site-search.md#built-in-search-plugin
+  - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
   - Nested section:
     - External link: https://example.com
@@ -510,7 +510,7 @@ Lists and dictionaries in `.meta.yml` files are merged and deduplicated with the
 values defined for a post, which means you can define common properties in
 `.meta.yml` and then add specific properties or overrides for each post.
 
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md
 
 ### Adding pages
 

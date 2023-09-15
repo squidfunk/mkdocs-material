@@ -8,7 +8,7 @@ categories:
   - Blog
 links:
   - Getting started with Insiders: insiders/getting-started.md#requirements
-  - setup/setting-up-a-blog.md#built-in-blog-plugin
+  - plugins/blog.md
 ---
 
 # Blog support just landed
@@ -31,7 +31,7 @@ _This article explains how to build a standalone blog with Material for MkDocs.
 If you want to build a blog alongside your documentation, please refer to
 [the plugin's documentation][built-in blog plugin]._
 
-  [built-in blog plugin]: ../../setup/setting-up-a-blog.md#built-in-blog-plugin
+  [built-in blog plugin]: ../../plugins/blog.md
   [Jekyll]: https://jekyllrb.com/
 
 ## Quick start

@@ -5,8 +5,8 @@ icon: material/emoticon-happy-outline
 # Icons, Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 10,000 icons][icon search] and thousands of emojis in your project 
-documentation with practically zero additional effort. Moreover, [custom icons 
+than 10,000 icons][icon search] and thousands of emojis in your project
+documentation with practically zero additional effort. Moreover, [custom icons
 can be added] and used in `mkdocs.yml`, documents and templates.
 
   [icon search]: #search
@@ -75,7 +75,7 @@ between two colons. If you're using [Twemoji] (recommended), you can look up
 the shortcodes at [Emojipedia]:
 
 ``` title="Emoji"
-:smile: 
+:smile:
 ```
 
 <div class="result" markdown>
@@ -199,7 +199,7 @@ With the help of the [built-in typeset plugin], you can use icons and emojis
 in headings, which will then be rendered in the sidebars. The plugin preserves
 Markdown and HTML formatting.
 
-  [built-in typeset plugin]: ./index.md#built-in-typeset-plugin
+  [built-in typeset plugin]: ../plugins/typeset.md
 
 ## Customization
 

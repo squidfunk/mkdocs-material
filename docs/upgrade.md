@@ -127,7 +127,7 @@ changes into your templates. A good starting point is to [inspect the diff].
 #### `pymdownx.tabbed`
 
 Support for the legacy style of the [Tabbed] extension was dropped in favor
-of the new, alternate implementation which has [better behavior on mobile 
+of the new, alternate implementation which has [better behavior on mobile
 viewports]:
 
 === "8.x"
@@ -135,7 +135,7 @@ viewports]:
     ``` yaml
     markdown_extensions:
       - pymdownx.tabbed:
-          alternate_style: true 
+          alternate_style: true
     ```
 
 === "7.x"
@@ -1119,7 +1119,7 @@ matches the new structure:
 
   [CSS variables]: setup/changing-the-colors.md#custom-colors
   [icon integration]: reference/icons-emojis.md#search
-  [prebuilt search indexes]: setup/setting-up-site-search.md#built-in-search-plugin
+  [prebuilt search indexes]: plugins/search.md
 
 ### Changes to `mkdocs.yml`
 
@@ -1217,7 +1217,7 @@ was renamed to `separator`:
         tokenizer: '[\s\-\.]+'
     ```
 
-  [plugin options]: setup/setting-up-site-search.md#built-in-search-plugin
+  [plugin options]: plugins/search.md
 
 #### `extra.social.*`
 
@@ -1245,7 +1245,7 @@ in order to match the new way of specifying which icon to be used:
 ### Changes to `*.html` files { data-search-exclude }
 
 The templates have undergone a set of changes to make them future-proof. If
-you've used theme extension to override a block or template, make sure that it 
+you've used theme extension to override a block or template, make sure that it
 matches the new structure:
 
 - If you've overridden a __block__, check `base.html` for potential changes
@@ -1947,7 +1947,7 @@ matches the new structure:
 
 Material for MkDocs 4 fixes incorrect layout on Chinese systems. The fix
 includes a mandatory change of the base font-size from `10px` to `20px` which
-means all `rem` values needed to be updated. Within the theme, `px` to `rem` 
+means all `rem` values needed to be updated. Within the theme, `px` to `rem`
 calculation is now encapsulated in a new function called `px2rem` which is part
 of the SASS code base.
 

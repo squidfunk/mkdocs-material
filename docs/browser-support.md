@@ -48,7 +48,7 @@ check the distribution of browser types and versions among your users.
   [caniuse.com]: https://caniuse.com/
   [:is pseudo selector]: https://caniuse.com/css-matches-pseudo
   [browser support]: #supported-browsers
-  [built-in privacy plugin]: setup/ensuring-data-privacy.md#built-in-privacy-plugin
+  [built-in privacy plugin]: plugins/privacy.md
 
 ## Other browsers
 
