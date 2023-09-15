@@ -55,7 +55,7 @@ the following lines to `mkdocs.yml`:
 
 ``` yaml
 plugins:
-  - optimize # (1)!
+  - optimize
 ```
 
 For a list of all settings, please consult the [plugin documentation][optimize].
