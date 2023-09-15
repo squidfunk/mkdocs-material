@@ -46,6 +46,11 @@ that is associated with them is not available unless explicitly enabled.
 This symbol denotes that the thing described is a metadata property, which can
 be used in Markdown documents as part of the front matter definition.
 
+### <!-- md:flag multiple --> – Metadata property { #metadata data-toc-label="Multiple instances" }
+
+This symbol denotes that the plugin supports multiple instances, i.e, that it
+can be used multiple times in the `plugins` setting in `mkdocs.yml`.
+
 ### <!-- md:feature --> – Optional feature { #feature data-toc-label="Optional feature" }
 
 Most of the features are hidden behind feature flags, which means they must
