@@ -119,7 +119,7 @@ search:
   exclude: true
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -133,7 +133,7 @@ filtered by the search plugin before the page is rendered:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     ## Section 1
 
@@ -173,7 +173,7 @@ supported by the [Attribute Lists] extension:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     The content of this block is included
 

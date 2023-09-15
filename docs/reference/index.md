@@ -7,75 +7,13 @@ within Markdown files.
 
 ## Configuration
 
-### Built-in <u>typeset</u> plugin
-
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.27.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
-
-The built-in typeset plugin __preserves HTML formatting__ in the navigation and
-table of contents. This means that now, code blocks, icons, emojis and other
-inline formatting will be preserved, which allows for a richer editing
-experience. Add the following lines to `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - typeset
-```
-
-For a demo, just take a look at the table of contents of this page :material-arrow-right-circle: – code blocks and icons are preserved from the
-section headlines; even [highlighting inline code blocks] is supported :tada:
-
-  [highlighting inline code blocks]: code-blocks.md#highlighting-inline-code-blocks
-
-### Built-in meta plugin
-
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.21.0][Insiders] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
-
-The built-in meta plugin allows to __set front matter per folder__, which is
-especially handy to ensure that all pages in a folder use specific templates or 
-tags. Add the following lines to `mkdocs.yml`:
-
-``` yaml
-plugins:
-  - meta
-```
-
-> If you need to be able to build your documentation with and without
-> [Insiders], please refer to the [built-in plugins] section to learn how
-> shared configurations help to achieve this.
-
-The following configuration options are available:
-
-[`meta_file`](#+meta.meta_file){ #+meta.meta_file }
-
-:   :octicons-milestone-24: Default: `.meta.yml` – This option specifies the
-    name of the meta files that the plugin should look for. The default setting
-    assumes that meta files are called `.meta.yml`:
-
-    ``` yaml
-    plugins:
-      - meta:
-          meta_file: .meta.yml # (1)!
-    ```
-
-    1.  Note that it's strongly recommended to prefix meta files with a `.`,
-        since otherwise they would be included in the build output.
-
-  [built-in blog plugin]: ../setup/setting-up-a-blog.md#built-in-blog-plugin
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-
 ## Usage
 
 ### Setting the page `title`
 
-Each page has a designated title, which is used in the navigation sidebar, for 
-[social cards] and in other places. While MkDocs attempts to automatically 
-determine the title of a page in a [four step process], the title can also be 
+Each page has a designated title, which is used in the navigation sidebar, for
+[social cards] and in other places. While MkDocs attempts to automatically
+determine the title of a page in a [four step process], the title can also be
 explicitly set with the front matter `title` property:
 
 ``` yaml
@@ -83,7 +21,7 @@ explicitly set with the front matter `title` property:
 title: Lorem ipsum dolor sit amet # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -101,7 +39,7 @@ title: Lorem ipsum dolor sit amet # (1)!
 ### Setting the page `description`
 
 A Markdown file can include a description that is added to the `meta` tags of
-a page, and is also used for [social cards]. It's a good idea to set a 
+a page, and is also used for [social cards]. It's a good idea to set a
 [`site_description`][site_description] in `mkdocs.yml` as a fallback value if
 the author does not explicitly define a description for a Markdown file:
 
@@ -110,7 +48,7 @@ the author does not explicitly define a description for a Markdown file:
 description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -121,8 +59,8 @@ description: Nullam urna elit, malesuada eget finibus ut, ac tortor. # (1)!
 
 ### Setting the page `icon`
 
-[:octicons-tag-24: 9.2.0][Page icon support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0 -->
+<!-- md:flag experimental -->
 
 An icon can be assigned to each page, which is then rendered as part of the
 navigation sidebar, as well as [navigation tabs], if enabled. Use the front
@@ -134,7 +72,7 @@ top of a Markdown file:
 icon: material/emoticon-happy # (1)!
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -149,18 +87,17 @@ icon: material/emoticon-happy # (1)!
       </div>
     </div>
 
-  [Page icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 
 ### Setting the page `status`
 
-[:octicons-tag-24: 9.2.0][Page status support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0 -->
+<!-- md:flag experimental -->
 
 A status can be assigned to each page, which is then displayed as part of the
-navigation sidebar. First, associate a status identifier with a description by 
+navigation sidebar. First, associate a status identifier with a description by
 adding the following to `mkdocs.yml`:
 
 ``` yaml
@@ -180,7 +117,7 @@ extra:
     ```
 
 The page status can now be set with the front matter `status` property. For
-example, you can mark a page as `new` with the following lines at the top of a 
+example, you can mark a page as `new` with the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -188,7 +125,7 @@ Markdown file:
 status: new
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -197,13 +134,11 @@ The following status identifiers are currently supported:
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
 
-  [Page status support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
-
 ### Setting the page `subtitle`
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.25.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.25.0 -->
+<!-- md:flag experimental -->
 
 Each page can define a subtitle, which is then rendered below the title as part
 of the navigation sidebar by using the front matter `subtitle` property, and
@@ -214,14 +149,14 @@ adding the following lines:
 subtitle: Nullam urna elit, malesuada eget finibus ut, ac tortor
 ---
 
-# Document title
+# Page title
 ...
 ```
 
 ### Setting the page `template`
 
 If you're using [theme extension] and created a new page template in the
-`overrides` directory, you can enable it for a specific page. Add the following 
+`overrides` directory, you can enable it for a specific page. Add the following
 lines at the top of a Markdown file:
 
 ``` yaml
@@ -229,7 +164,7 @@ lines at the top of a Markdown file:
 template: custom.html
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -244,7 +179,7 @@ template: custom.html
     ```
 
   [theme extension]: ../customization.md#extending-the-theme
-  [built-in meta plugin]: #built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md
 
 ## Customization
 

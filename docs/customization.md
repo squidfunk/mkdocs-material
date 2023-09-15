@@ -225,7 +225,7 @@ to make more fundamental changes, it may be necessary to make the adjustments
 directly in the source of the theme and recompile it.
 
   [^1]:
-    Prior to :octicons-tag-24: 7.0.0 the build was based on Webpack, resulting
+    Prior to <!-- md:version 7.0.0 --> the build was based on Webpack, resulting
     in occasional broken builds due to incompatibilities with loaders and
     plugins. Therefore, we decided to swap Webpack for a leaner solution which
     is now based on [RxJS] as the application itself. This allowed for the

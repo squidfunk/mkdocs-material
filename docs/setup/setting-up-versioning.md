@@ -11,8 +11,8 @@ documentation remain untouched.
 
 ### Versioning
 
-[:octicons-tag-24: 7.0.0][Versioning support] ·
-[:octicons-package-24: Utility][mike]
+<!-- md:version 7.0.0 -->
+<!-- md:utility [mike] -->
 
 [mike] makes it easy to deploy multiple versions of your project documentation.
 It integrates natively with Material for MkDocs and can be enabled via
@@ -51,15 +51,14 @@ Check out the versioning example to see it in action –
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-  [Versioning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [Version selector preview]: ../assets/screenshots/versioning.png
   [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
 ### Version warning
 
-[:octicons-tag-24: 8.0.0][Version warning support] ·
-:octicons-file-symlink-file-24: Customization
+<!-- md:version 8.0.0 -->
+<!-- md:flag customization -->
 
 If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension],
@@ -76,7 +75,7 @@ you can [override the `outdated` block][overriding blocks]:
 {% endblock %}
 ```
 
-1.  Given this value for the `href` attribute, the link will always redirect to 
+1.  Given this value for the `href` attribute, the link will always redirect to
     the root of your site, which will then redirect to the latest version. This
     ensures that older versions of your site do not depend on a specific alias,
     e.g. `latest`, to allow for changing the alias later on without breaking
@@ -113,7 +112,6 @@ extra:
 Make sure one alias matches the [default version], as this is where users are
 redirected to.
 
-  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
@@ -121,7 +119,7 @@ redirected to.
 
 ## Usage
 
-While this section outlines the basic workflow for publishing new versions, 
+While this section outlines the basic workflow for publishing new versions,
 it's best to check out [mike's documentation][mike] to make yourself familiar
 with its mechanics.
 

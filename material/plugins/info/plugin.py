@@ -80,6 +80,10 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please upgrade to the latest version.")
             self._help_on_versions_and_exit(present, current)
 
+        # Exit if archive creation is disabled
+        if not self.config.archive:
+            sys.exit(1)
+
         # Print message that we're creating a bug report
         log.info("Started archive creation for bug report")
 

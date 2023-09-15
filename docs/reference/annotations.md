@@ -33,7 +33,7 @@ See additional configuration options:
 
 ### Annotation icons
 
-[:octicons-tag-24: 9.2.0][Annotation icons support]
+<!-- md:version 9.2.0 -->
 
 The annotation icon can be changed to any icon bundled with the theme, or even
 a [custom icon], e.g. to material/arrow-right-circle:. Simply add the following
@@ -67,7 +67,6 @@ Some popular choices:
 - :material-star-four-points-circle: - `material/star-four-points-circle`
 - :material-plus-circle-outline: - `material/plus-circle-outline`
 
-  [Annotation icons support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
   [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
   [icon search]: icons-emojis.md#search
 
@@ -75,8 +74,8 @@ Some popular choices:
 
 ### Using annotations
 
-[:octicons-tag-24: 9.2.0][Annotation support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0 -->
+<!-- md:flag experimental -->
 
 Annotations consist of two parts: a marker, which can be placed anywhere in
 a block marked with the `annotate` class, and content located in a list below
@@ -103,8 +102,6 @@ Lorem ipsum dolor sit amet, (1) consectetur adipiscing elit.
 Note that the `annotate` class must only be added to the outermost block. All
 nested elements can use the same list to define annotations, except when
 annotations are nested themselves.
-
-  [Annotation support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
 
 #### in annotations
 
@@ -208,7 +205,7 @@ of a dedicated content tab (and not to the container, which is not supported):
 
 #### in everything else
 
-The [Attribute Lists] extension is the key ingredient for adding annotations to 
+The [Attribute Lists] extension is the key ingredient for adding annotations to
 most elements, but it has some [limitations]. However, it's always possible to
 leverage the [Markdown in HTML] extension to wrap arbitrary elements with a
 `div` with the `annotate` class:

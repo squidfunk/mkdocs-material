@@ -13,8 +13,8 @@ MkDocs natively integrates with [Google Analytics] and offers a customizable
 
 ### Google Analytics
 
-[:octicons-tag-24: 7.1.8][Google Analytics support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 7.1.8 -->
+<!-- md:default none -->
 
 Material for MkDocs integrates natively with Google Analytics 4[^1]. If you
 already set up Google Analytics and have a property, enable it by adding the
@@ -32,8 +32,6 @@ extra:
     property: G-XXXXXXXXXX
 ```
 
-  [Google Analytics support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.1.8
-
 ??? question "How to measure site search usage?"
 
     Besides page views and events, [site search] can be tracked to better
@@ -50,8 +48,8 @@ extra:
 
 ### Was this page helpful?
 
-[:octicons-tag-24: 8.4.0][Was this page helpful? support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 8.4.0 -->
+<!-- md:default none -->
 
 A simple [feedback widget] can be included at the bottom of each page,
 encouraging users to give instant feedback whether a page was helpful or not.
@@ -85,7 +83,7 @@ extra:
 
 Both properties, `title` and `ratings`, are required. Note that it's allowed to
 define more than two ratings, e.g. to implement a 1-5 star rating. Since the
-feedback widget sends data to a third-party service, it is, of course, natively 
+feedback widget sends data to a third-party service, it is, of course, natively
 integrated with the [cookie consent] feature[^2].
 
   [^2]:
@@ -103,7 +101,7 @@ integrated with the [cookie consent] feature[^2].
     2.  Go to the __configure__ page on the left hand menu, then select
         __custom definitions__
 
-    3.  Click the __custom metrics__ tab and then __create custom metrics__, 
+    3.  Click the __custom metrics__ tab and then __create custom metrics__,
         enter the following values:
 
         * Metric name: Page helpful
@@ -121,7 +119,7 @@ integrated with the [cookie consent] feature[^2].
           (the custom metric created in step 3)
         * Rows: `Page location`
         * Values: Drag in both `Event count` and `Page helpful`
-        * Filters: Add a new filter for 
+        * Filters: Add a new filter for
           `Event name / exactly matches / feedback`
 
     !!! warning "Delay in data availability"
@@ -143,9 +141,9 @@ integrated with the [cookie consent] feature[^2].
 
 The following properties are available for each rating:
 
-[`icon`](#+analytics.feedback.ratings.icon){ #+analytics.feedback.ratings.icon }
+<!-- md:option analytics.feedback.ratings.icon -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must point to a valid icon path referencing [any icon bundled
     with the theme][custom icons], or the build will not succeed. Some popular
     combinations:
@@ -154,24 +152,24 @@ The following properties are available for each rating:
     * :material-thumb-up-outline: + :material-thumb-down-outline: – `material/thumb-up-outline` + `material/thumb-down-outline`
     * :material-heart: + :material-heart-broken: – `material/heart` + `material/heart-broken`
 
-[`name`](#+analytics.feedback.ratings.name){ #+analytics.feedback.ratings.name }
+<!-- md:option analytics.feedback.ratings.name -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is shown on user interaction (i.e. keyboard focus
     or mouse hover), explaining the meaning of the rating behind the icon.
 
-[`data`](#+analytics.feedback.ratings.data){ #+analytics.feedback.ratings.data }
+<!-- md:option analytics.feedback.ratings.data -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is sent as a data value with the custom event
     that is transmitted to Google Analytics[^3] (or any custom integration).
 
   [^3]:
     Note that for Google Analytics, the data value must be an integer.
 
-[`note`](#+analytics.feedback.ratings.note){ #+analytics.feedback.ratings.note }
+<!-- md:option analytics.feedback.ratings.note -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     The value of this property is shown after the user selected the rating.
     It may contain arbitrary HTML tags, which is especially useful to ask the
     user to provide more detailed feedback for the current page through a form.
@@ -185,7 +183,7 @@ The following properties are available for each rating:
     https://github.com/.../issues/new/?title=[Feedback]+{title}+-+{url}
     ```
 
-    In this example, when clicking the link, the user is redirected to the "new 
+    In this example, when clicking the link, the user is redirected to the "new
     issue" form of your repository, with a pre-filled title including the path
     of the current document, e.g.:
 
@@ -195,7 +193,6 @@ The following properties are available for each rating:
 
     An alternative to GitHub issues is [Google Forms].
 
-  [Was this page helpful? support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [feedback widget]: #feedback
   [analytics]: #google-analytics
   [feedback report]: ../assets/screenshots/feedback-report.png
@@ -216,7 +213,7 @@ hide:
   - feedback
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -224,7 +221,7 @@ hide:
 
 ### Custom site analytics
 
-In order to integrate another analytics service provider offering a 
+In order to integrate another analytics service provider offering a
 JavaScript-based tracking solution, just follow the guide on [theme extension]
 and create a new partial in the `overrides` folder. The name of the partial is
 used to configure the custom integration via `mkdocs.yml`:

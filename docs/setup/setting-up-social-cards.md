@@ -4,8 +4,8 @@ status: new
 
 # Setting up social cards
 
-Material for MkDocs can automatically create beautiful social cards for your 
-documentation, which appear as link previews on social media platforms. You 
+Material for MkDocs can automatically create beautiful social cards for your
+documentation, which appear as link previews on social media platforms. You
 can select from several [pre-designed layouts][default layouts] or create
 [custom layouts] to match your unique style and branding.
 
@@ -36,35 +36,22 @@ Social card of our [formatting] reference
 
 ### Built-in social plugin
 
-[:octicons-tag-24: 8.5.0][Social cards support] ·
-:octicons-cpu-24: Plugin ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 -->
+<!-- md:plugin -->
+<!-- md:flag experimental -->
 
-The built-in social plugin automatically generate a custom preview image for 
-each page. Install all [dependencies for image processing][^1] and add the 
+The built-in social plugin automatically generate a custom preview image for
+each page. Install all [dependencies for image processing] and add the
 following lines to `mkdocs.yml`:
-
-  [^1]:
-    The awesome thing about social cards is that they are generated during 
-    build time and directly distributed with your documentation, no external 
-    services involved. While it would technically be simpler to generate 
-    social cards using a web browser and an automation framework like 
-    [Puppeteer], it would add further liabilities to the toolchain, with the 
-    potential to make build pipelines more complex and resource intense.
-
-    For this reason, Material for MkDocs again follows its core principle of 
-    making it as simple and powerful as possible, providing an easy-to-use 
-    framework for building [custom layouts] using Python image processing 
-    libraries.
 
 ``` yaml
 plugins:
   - social
 ```
 
-> Note that [Insiders] contains a ground up rewrite of the social plugin that 
-> generates images much more efficiently in parallel and allows to build 
-> entirely [custom layouts].
+For a list of all settings, please consult the [plugin documentation].
+
+  [plugin documentation]: ../plugins/blog.md
 
 !!! info "The [`site_url`][site_url] setting must be set"
 
@@ -78,481 +65,18 @@ plugins:
     site_url: https://example.com
     ```
 
+  [dependencies for image processing]: ../plugins/requirements/image-processing.md
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
-
-The following configuration options are available:
-
-[`enabled`](#+social.enabled){ #+social.enabled }
-
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - social:
-          enabled: !ENV [CI, false]
-    ```
-
-[`concurrency`](#+social.concurrency){ #+social.concurrency }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24: 
-    Default: _number of CPUs_ – How many CPUs the plugin is allowed to use when
-    generating social cards. With more CPUs, the plugin can do more work in the
-    same time, thus complete generation faster. Concurrent processing can be
-    disabled with:
-
-    ``` yaml
-    plugins:
-      - social:
-          concurrency: 1
-    ```
-
-  [Social cards support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [dependencies for image processing]: dependencies/image-processing.md
-  [Puppeteer]: https://github.com/puppeteer/puppeteer
-  [Insiders]: ../insiders/index.md
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-
-#### Social cards
-
-The following configuration options are available for card generation:
-
-[`cards`](#+social.cards){ #+social.cards }
-
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
-    to generate social card images. If you want to switch the plugin off, e.g.
-    for local builds, you can use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards: !ENV [CI, false]
-    ```
-
-[`cards_dir`](#+social.cards_dir){ #+social.cards_dir }
-
-:   :octicons-milestone-24: Default: `assets/images/social` – This option
-    specifies where the generated social cards will be stored. While it's
-    usually not necessary to change this option, change it with:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_dir: assets/images/social
-    ```
-
-<div class="mdx-deprecated" markdown>
-
-[`cards_color`](#+social.cards_color){ #+social.cards_color } – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
-
-:   :octicons-milestone-24: Default: [`theme.palette.primary`][primary color] – 
-    This option specifies the colors for the background `fill` and foreground
-    `text` when generating the social card:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_color:
-            fill: "#0FF1CE"
-            text: "#FFFFFF"
-    ```
-
-[`cards_font`](#+social.cards_font){ #+social.cards_font } – <small>:material-trash-can: Deprecated, use [`cards_layout_options`][layout options]</small>
-
-:   :octicons-milestone-24: Default: [`theme.font.text`][font] – This option
-    specifies which font to use for rendering the social card, which can be
-    any font hosted on [Google Fonts]:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_font: Ubuntu
-    ```
-
-</div>
-
-[`cards_layout_dir`](#+social.cards_layout_dir){ #+social.cards_layout_dir }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: _none_ – This option specifies where the social plugin should try
-    to resolve [custom layouts] from, taking precedence over the included
-    layouts:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_layout_dir: layouts
-    ```
-
-[`cards_layout`](#+social.cards_layout){ #+social.cards_layout } :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `default` – Layout specification the social card should use. The
-    plugin includes the following layouts which make use of the [color palette]
-    and [font]:
-
-    === "`default`"
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout: default
-        ```
-
-        This layout uses the configured [primary color] as a background:
-
-        [![Layout default]][Layout default]
-
-    === "`default/variant`"
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout: default/variant
-        ```
-
-        This layout includes the [page icon] as a watermark, if defined:
-
-        [![Layout default variant]][Layout default variant]
-
-    === "`default/accent`"
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout: default/accent
-        ```
-
-        This layout uses the configured [accent color] as a background:
-
-        [![Layout default accent]][Layout default accent]
-
-    === "`default/invert`"
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout: default/invert
-        ```
-
-        This layout inverts the background and foreground colors:
-
-        [![Layout default invert]][Layout default invert]
-
-    === "`default/only/image`"
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout: default/only/image
-              cards_layout_options:
-                background_image: layouts/background.png
-
-        ```
-
-        This layout will only show the given background image and scale to fit:
-
-        [![Layer background image]][Layer background image]
-
-    All [`default`][default layouts] layouts make use of the following
-    [template variables]:
-
-    - :material-page-layout-header: – `config.site_name`
-    - :material-page-layout-body: – `page.meta.title` or `page.title`
-    - :material-page-layout-footer: – `page.meta.description` or `config.site_description`
-    - :material-page-layout-sidebar-right: – `theme.logo` or `theme.icon.logo`
-
-[`cards_layout_options`](#+social.cards_layout_options){ #+social.cards_layout_options }
-
-:   [:octicons-tag-24: 9.1.10][Layout options support] · :octicons-milestone-24:
-    Default: _none_ – This option allows to set [parameters] as provided by
-    the layout specification. For [custom layouts], this key can be used to
-    provide layout-specific options, making layouts entirely configurable.
-
-    ---
-
-    All [`default`][default layouts] layouts expose the following parameters:
-
-    [`background_color`](#+social.cards_layout_options.background_color){ #+social.cards_layout_options.background_color }
-
-    :   Set a background color, which can be a [CSS color keyword], or a 3, 4, 6
-        or 8 letter HEX color code. Alpha channels are supported as well:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                background_color: "#0FF1CE"
-        ```
-
-    [`background_image`](#+social.cards_layout_options.background_image){ #+social.cards_layout_options.background_image }
-
-    :   [:octicons-tag-24: insiders-4.33.0][Insiders] – Set a background image. 
-        If a `background_color` is set, like for the
-        [`default`][default layouts] layouts, the image is tinted (overlayed)
-        with the color. Thus, the background color must be (partially)
-        transparent for the image to become visible:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                background_color: "#00000000"
-                background_image: layouts/background.png
-        ```
-
-        The path of the image must be defined relative to the project root.
-
-    [`color`](#+social.cards_layout_options.color){ #+social.cards_layout_options.color }
-
-    :   Set a foreground color, which can be a [CSS color keyword], or a 3, 4, 6
-        or 8 letter HEX color code. The color is primarily used to tint text and
-        icons:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                color: "#0FF1CE"
-        ```
-
-    [`font_family`](#+social.cards_layout_options.font_family){ #+social.cards_layout_options.font_family }
-
-    :   Set a font family. This overrides the [font] that is set as part of the
-        theme configuration. The [built-in social plugin] will automatically
-        download the font from [Google Fonts]:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                font_family: Ubuntu
-        ```
-
-    [`title`](#+social.cards_layout_options.title){ #+social.cards_layout_options.title }
-
-    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
-        title, which takes precedence over `page.title` and `page.meta.title`:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                title: Social card title
-        ```
-
-    [`description`](#+social.cards_layout_options.description){ #+social.cards_layout_options.description }
-
-    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the social card
-        description, which takes precedence over `site_description` and
-        `page.meta.description`:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                description: Social card description
-        ```
-
-    [`logo`](#+social.cards_layout_options.logo){ #+social.cards_layout_options.logo }
-
-    :   [:octicons-tag-24: insiders-4.40.0][Insiders] – Set the logo used as
-        part of the social card, overriding the `theme.logo` or
-        `theme.icon.logo` settings which are used as defaults:
-
-        ``` yaml
-        plugins:
-          - social:
-              cards_layout_options:
-                logo: layouts/logo.png
-        ```
-
-        The path of the image must be defined relative to the project root.
-
-[`cards_include`](#+privacy.cards_include){ #+privacy.cards_include }
-
-:   [:octicons-tag-24: insiders-4.35.0][Insiders] · :octicons-milestone-24:
-    Default: _none_ – This option allows to only generate social cards for
-    certain subsections of your documentation, e.g. to generate different
-    cards for different subfolders with multiple instances of the plugin:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_include:
-            - blog/*
-    ```
-
-[`cards_exclude`](#+privacy.cards_exclude){ #+privacy.cards_exclude }
-
-:   :octicons-milestone-24: Default: _none_ – This option allows to exclude
-    certain subsections of your documentation from generating social cards:
-
-    ``` yaml
-    plugins:
-      - social:
-          cards_exclude:
-            - changelog/*.md
-    ```
-
-  [color palette]: ./changing-the-colors.md#color-palette
-  [primary color]: ./changing-the-colors.md#primary-color
-  [accent color]: ./changing-the-colors.md#accent-color
-  [font]: ./changing-the-fonts.md#regular-font
-  [Google Fonts]: https://fonts.google.com/
-  [layout options]: #+social.cards_layout_options
-  [page icon]: ../reference/index.md#setting-the-page-icon
-  [Layout default]: ../assets/screenshots/social-cards.png
-  [Layout default variant]: ../assets/screenshots/social-cards-variant.png
-  [Layout default accent]: ../assets/screenshots/social-cards-accent.png
-  [Layout default invert]: ../assets/screenshots/social-cards-invert.png
-  [template variables]: https://www.mkdocs.org/dev-guide/themes/#template-variables
-  [parameters]: #parameters
-  [default layouts]: #+social.cards_layout
-  [CSS color keyword]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#color_keywords
-  [Layout options support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.1.10
-
-#### Debugging
-
-The following configuration options are available for debugging:
-
-[`debug`](#+social.debug){ #+social.debug }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `false` – This option enables a special debug mode, which renders
-    each layer with an outline and its `x` and `y` offset in order to understand
-    how the layout is composed, and optionally renders a grid for easier
-    alignment:
-
-    ``` yaml
-    plugins:
-      - social:
-          debug: true
-    ```
-
-    === "With debug mode"
-
-        [![Debug mode enabled]][Debug mode enabled]
-
-    === "Without"
-
-        [![Debug mode disabled]][Debug mode disabled]
-
-    [Debug mode enabled]: ../assets/screenshots/social-cards-debug.png
-    [Debug mode disabled]: ../assets/screenshots/social-cards-variant.png
-
-[`debug_on_build`](#+social.debug_on_build){ #+social.debug_on_build }
-
-:   [:octicons-tag-24: insiders-4.34.1][Insiders] · :octicons-milestone-24:
-    Default: `false` – Whether debug mode should be automatically disabled
-    [when building your site] with `mkdocs build`. It can be changed with:
-
-    ``` yaml
-    plugins:
-      - social:
-          debug_on_build: true
-    ```
-
-    This setting is just intended to be a safety net, so that when building
-    your site social cards definitely won't contain the dot grid or layer
-    outlines by accident.
-
-[`debug_grid`](#+social.debug_grid){ #+social.debug_grid }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `true` – This option enables the rendering of a dot grid when
-    [`debug`][debug] is enabled (see screenshot above). The grid can be switched
-    off with:
-
-    ``` yaml
-    plugins:
-      - social:
-          debug_grid: false
-    ```
-
-[`debug_grid_step`](#+social.debug_grid_step){ #+social.debug_grid_step }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `32` – This option specifies the step size of the grid in pixels,
-    if enabled, which can be used to align elements. It can be changed with:
-
-    ``` yaml
-    plugins:
-      - social:
-          debug_grid_step: 64
-    ```
-
-[`debug_color`](#+social.debug_color){ #+social.debug_color }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `grey` – This option sets the color of the layer outlines and
-    the grid which are rendered when [`debug`][debug] is enabled. It can be
-    changed with:
-
-    ``` yaml
-    plugins:
-      - social:
-          debug_color: yellow
-    ```
-
-  [debug]: #+social.debug
-  [when building your site]: ../creating-your-site.md#building-your-site
-
-#### Caching
-
-The [built-in social plugin] implements an intelligent caching mechanism,
-ensuring that social cards are only re-generated when they're not contained in
-the cache or their contents change. If any of the variables used in a layout 
-changes, the plugin will detect it and re-generate the card.
-
-The following configuration options are available for caching:
-
-[`cache`](#+social.cache){ #+social.cache }
-
-:   [:octicons-tag-24: insiders-4.33.0][Insiders] · :octicons-milestone-24:
-    Default: `true` – Whether the plugin queries its cache for an existing
-    artifact before starting a generation job. It's normally not necessary to
-    change this setting, except for when debugging the plugin itself. Caching
-    can be disabled with:
-
-    ``` yaml
-    plugins:
-      - social:
-          cache: false
-    ```
-
-[`cache_dir`](#+social.cache_dir){ #+social.cache_dir }
-
-:   :octicons-milestone-24: Default: `.cache/plugins/social` – This option
-    specifies the file system location of the plugin's cache. It's normally not
-    necessary to change this setting, except for when debugging the plugin
-    itself. The cache directory can be changed with:
-
-    ``` yaml
-    plugins:
-      - social:
-          cache_dir: .cache/plugins/social
-    ```
-
-    By default, all built-in plugins that implement caching will create a
-    `.cache` directory in the same folder your `mkdocs.yml` resides, and create
-    subfolders to not interfere with each other. If you use multiple instances
-    of this plugin, it could be necessary to change this setting.
-
-  [built-in social plugin]: #built-in-social-plugin
-  [publishing guide]: ../publishing-your-site.md#with-github-actions
 
 ## Usage
 
 If you want to adjust the title or set a custom description for the social card,
 you can set the front matter [`title`][Changing the title] and
-[`description`][Changing the description] properties, which take precedence over 
+[`description`][Changing the description] properties, which take precedence over
 the defaults, or use:
 
-- [`cards_layout_options.title`](#+social.cards_layout_options.title)
-- [`cards_layout_options.description`](#+social.cards_layout_options.description)
+- [`cards_layout_options.title`](../plugins/social.md#option.title)
+- [`cards_layout_options.description`](../plugins/social.md#option.description)
 
   [Changing the title]: ../reference/index.md#setting-the-page-title
   [Changing the description]: ../reference/index.md#setting-the-page-description
@@ -602,12 +126,14 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
 
 ### Changing the layout
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 -->
+<!-- md:flag metadata -->
+<!-- md:flag experimental -->
 
 If you want to use a different layout for a single page (e.g. your landing
 page), you can use the `social` front matter property together with the
-[`cards_layout`](#+social.cards_layout) key, exactly as in `mkdocs.yml`:
+[`cards_layout`](../plugins/social.md#meta.social.cards_layout) key, exactly as
+in `mkdocs.yml`:
 
 ``` yaml
 ---
@@ -615,7 +141,7 @@ social:
   cards_layout: custom
 ---
 
-# Headline
+# Page title
 ...
 ```
 
@@ -623,17 +149,18 @@ You can apply those changes for entire subtrees of your documentation, e.g.,
 to generate different social cards for your blog and API reference, by using
 the [built-in meta plugin].
 
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md
 
 ### Parametrizing the layout
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 -->
+<!-- md:flag metadata -->
+<!-- md:flag experimental -->
 
 Besides changing the entire layout, you can override all options that a layout
 exposes. This means you can parametrize social cards with custom front matter
 properties, such as `tags`, `date`, `author` or anything you can think of.
-Simply define [`cards_layout_options`](#+social.cards_layout_options):
+Simply define [`cards_layout_options`](../plugins/social.md#meta.social.cards_layout_options):
 
 ``` yaml
 ---
@@ -643,7 +170,7 @@ social:
     background_image: null # Remove background image
 ---
 
-# Headline
+# Page title
 ...
 ```
 
@@ -653,8 +180,9 @@ the [built-in meta plugin].
 
 ### Disabling social cards
 
-[:octicons-tag-24: insiders-4.37.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.37.0 -->
+<!-- md:flag metadata -->
+<!-- md:flag experimental -->
 
 If you wish to disable social cards for a page, simply add the following to the
 front matter of the Markdown document:
@@ -665,15 +193,15 @@ social:
   cards: false
 ---
 
-# Headline
+# Page title
 ...
 ```
 
 ## Customization
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.33.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.33.0 -->
+<!-- md:flag experimental -->
 
 [Insiders] ships a ground up rewrite of the [built-in social plugin] and
 introduces a brand new layout system based on a combination of YAML and
@@ -755,6 +283,9 @@ haven't defined any layers, the cards are transparent.
 
 The following sections explain how to create custom layouts.
 
+  [Insiders]: ../insiders/index.md
+  [built-in social plugin]: ../plugins/social.md
+  [Google Fonts]: https://fonts.google.com/
   [Jinja templates]: https://jinja.palletsprojects.com/en/3.1.x/
   [study the pre-designed layouts]: https://github.com/squidfunk/mkdocs-material-insiders/tree/master/src/plugins/social/layouts
 
@@ -785,8 +316,8 @@ useful for alignment and composition.
 
 #### Origin
 
-[:octicons-tag-24: insiders-4.35.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:version insiders-4.35.0 -->
+<!-- md:flag experimental -->
 
 The `origin` for the `x` and `y` values can be changed, so that the layer is
 aligned to one of the edges or corners of the layout, e.g., to the bottom right
@@ -934,7 +465,7 @@ automatically scaled down to fit the layer:
 
     ![Layer typography shrink]
 
-While truncating with an ellipsis is the default, auto-shrinking can be enabled 
+While truncating with an ellipsis is the default, auto-shrinking can be enabled
 by setting `overflow` to `shrink`:
 
 ``` yaml hl_lines="7"

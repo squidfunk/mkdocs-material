@@ -1,20 +1,37 @@
+---
+icon: material/image-sync-outline
+---
+
 # Image processing
 
-Material for MkDocs depends on several libraries to allow for image processing
-as part of the build pipeline, including [social cards] and [image optimization].
-For this reason, a few external libraries must be installed on the host system.
-This section explains how to install them.
+Some of the [built-in plugins] depend on external libraries for efficient image
+processing, most notably the [social] plugin to generate [social cards], and the
+[optimize] plugin for applying [image optimization]. This guide explains how to
+install those libraries in different environments.
 
-  [social cards]: ../setting-up-social-cards.md
-  [image optimization]: ../building-an-optimized-site.md
+  [built-in plugins]: ../index.md
+  [social]: ../social.md
+  [social cards]: ../../setup/setting-up-social-cards.md
+  [optimize]: ../optimize.md
+  [image optimization]: ../../setup/building-an-optimized-site.md
 
 ## Dependencies
 
-Install the Python dependencies for image processing with:
+The libraries for image processing are entirely optional, and only need to be
+installed if you want to use the [social] plugin or the [optimize] plugin. The
+libraries are listed under the `imaging` extra:
 
 ```
-pip install pillow cairosvg
+pip install "mkdocs-material[imaging]"
 ```
+
+This will install compatible versions of the following packages:
+
+- [Pillow]
+- [CairoSVG]
+
+  [Pillow]: https://pillow.readthedocs.io/
+  [CairoSVG]: https://cairosvg.org/
 
 ### Cairo Graphics
 
@@ -36,9 +53,8 @@ Material for MkDocs makes use of for generating [social cards] and performing
 === ":fontawesome-brands-windows: Windows"
 
     As stated in the [installation guide], the easiest way to get up and running
-    with the [Cairo Graphics] library on Windows is by installing [GTK+], since
-    it has Cairo as a dependency. You can also download and install a
-    precompiled [GTK runtime].
+    with the [Cairo Graphics] library on Windows is by installing [GTK+]. You
+    can also download a precompiled [GTK runtime].
 
 === ":material-linux: Linux"
 
@@ -70,8 +86,6 @@ The following environments come with a preinstalled version of [Cairo Graphics]:
 - [x] No installation needed in [GitHub Actions] (Ubuntu)
 
   [Cairo Graphics]: https://www.cairographics.org/
-  [Pillow]: https://pillow.readthedocs.io/
-  [CairoSVG]: https://cairosvg.org/
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
   [GTK+]: https://www.gtk.org/docs/installations/windows/
@@ -82,7 +96,7 @@ The following environments come with a preinstalled version of [Cairo Graphics]:
 ### pngquant
 
 [pngquant] is an excellent library for lossy PNG compression, and a direct
-dependency of the [built-in optimize plugin]. See the following section which 
+dependency of the [built-in optimize plugin]. See the following section which
 explains how to install [pngquant] system:
 
 === ":material-apple: macOS"
@@ -97,8 +111,8 @@ explains how to install [pngquant] system:
 
 === ":fontawesome-brands-windows: Windows"
 
-    Installing [pngquant] on Windows is a little more involved. The 
-    [pngquant-winbuild] repository contains a guide on how to set up an 
+    Installing [pngquant] on Windows is a little more involved. The
+    [pngquant-winbuild] repository contains a guide on how to set up an
     environment for building [pngquant] on Windows.
 
 === ":material-linux: Linux"
@@ -113,6 +127,10 @@ explains how to install [pngquant] system:
 
     The same is true for `yum` and `zypper`.
 
+The following environments come with a preinstalled version of [pngquant]:
+
+- [x] No installation needed in [Docker image]
+
   [pngquant]: https://pngquant.org/
-  [built-in optimize plugin]: ../building-an-optimized-site.md#built-in-optimize-plugin
+  [built-in optimize plugin]: ../../setup/building-an-optimized-site.md#built-in-optimize-plugin
   [pngquant-winbuild]: https://github.com/jibsen/pngquant-winbuild

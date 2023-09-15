@@ -13,7 +13,7 @@ popular and flexible solution for drawing diagrams.
 
 ## Configuration
 
-[:octicons-tag-24: 8.2.0][Diagrams support]
+<!-- md:version 8.2.0 -->
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
 for MkDocs will automatically initialize the JavaScript runtime when a page 
@@ -42,7 +42,6 @@ No further configuration is necessary. Advantages over a custom integration:
     diagrams. See the section on [other diagrams] for more information why this
     is currently not implemented for all diagrams.
 
-  [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
   [other diagrams]: #other-diagram-types

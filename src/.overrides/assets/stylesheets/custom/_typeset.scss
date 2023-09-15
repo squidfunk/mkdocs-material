@@ -86,10 +86,52 @@
     animation: heart 1000ms infinite;
   }
 
-  // Insiders color (for links, etc.)
+  // Insiders color (for links, etc.) // remove
   .mdx-insiders {
     color: $clr-pink-500;
   }
+
+  // BETA #####################################################################
+
+  // Badge
+  .mdx-badge {
+    font-size: .85em;
+
+    // Badge with heart
+    &--heart {
+      --md-typeset-a-color:              hsla(#{hex2hsl($clr-pink-500)}, 1);
+      --md-accent-fg-color:              hsla(#{hex2hsl($clr-pink-a200)}, 1);
+      --md-accent-fg-color--transparent: hsla(#{hex2hsl($clr-pink-500)}, 0.1);
+
+      // Animate icon
+      .twemoji {
+        animation: heart 1000ms infinite;
+      }
+    }
+
+    // Badge icon
+    &__icon {
+      padding: px2rem(4px);
+      background: var(--md-accent-fg-color--transparent);
+      border-start-start-radius: px2rem(2px);
+      border-end-start-radius: px2rem(2px);
+
+      // If icon is alone, round corners
+      &:last-child {
+        border-radius: px2rem(2px);
+      }
+    }
+
+    // Badge text
+    &__text {
+      padding: px2rem(4px) px2rem(6px);
+      border-start-end-radius: px2rem(2px);
+      border-end-end-radius: px2rem(2px);
+      box-shadow: 0 0 0 1px inset var(--md-accent-fg-color--transparent);
+    }
+  }
+
+  // BETA #####################################################################
 
   // Switch buttons
   .mdx-switch button {
@@ -106,17 +148,6 @@
       display: block;
       color: var(--md-primary-bg-color);
       background-color: var(--md-primary-fg-color);
-    }
-  }
-
-  // Deprecation
-  .mdx-deprecated {
-    opacity: 0.5;
-    transition: opacity 250ms;
-
-    // Deprecation on focus/hover
-    &:is(:focus-within, :hover) {
-      opacity: 1;
     }
   }
 
@@ -181,33 +212,6 @@
       // Language code
       code {
         float: right;
-      }
-    }
-  }
-
-  // Blog author
-  .mdx-author {
-    display: flex;
-    font-size: px2rem(13.6px);
-
-    // Blog author image
-    img {
-      height: px2rem(40px);
-      border-radius: 100%;
-    }
-
-    // Blog author content
-    p {
-
-      // TODO: refactor, use dedicated classes
-      &:first-child {
-        flex-shrink: 0;
-        margin-right: px2rem(16px);
-      }
-
-      // Blog metadata
-      > span {
-        display: block;
       }
     }
   }

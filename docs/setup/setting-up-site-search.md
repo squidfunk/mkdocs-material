@@ -16,11 +16,11 @@ not be compliant with privacy regulations. Moreover, search even works
 
 ### Built-in search plugin
 
-[:octicons-tag-24: 0.1.0][Search support] ·
-:octicons-cpu-24: Plugin
+<!-- md:version 0.1.0 -->
+<!-- md:plugin -->
 
 The built-in search plugin integrates seamlessly with Material for MkDocs,
-adding multilingual client-side search with [lunr] and [lunr-languages]. It's 
+adding multilingual client-side search with [lunr] and [lunr-languages]. It's
 enabled by default, but must be re-added to `mkdocs.yml` when other plugins
 are used:
 
@@ -29,227 +29,18 @@ plugins:
   - search
 ```
 
-The following configuration options are supported:
+For a list of all settings, please consult the [plugin documentation].
 
-[`lang`](#+search.lang){ #+search.lang }
+  [plugin documentation]: ../plugins/search.md
 
-:   :octicons-milestone-24: Default: _automatically set_ – This option allows
-    to include the language-specific stemmers provided by [lunr-languages].
-    Note that Material for MkDocs will set this automatically based on the
-    [site language], but it may be overridden, e.g. to support multiple
-    languages:
-
-    === "A single language"
-
-        ``` yaml
-        plugins:
-          - search:
-              lang: en
-        ```
-
-    === "Multiple languages"
-
-        ``` yaml
-        plugins:
-          - search:
-              lang: # (1)!
-                - en
-                - de
-        ```
-
-        1.  Be aware that including support for other languages increases the
-            general JavaScript payload by around 20kb (before `gzip`) and by
-            another 15-30kb per language.
-
-    The following languages are supported by [lunr-languages]:
-
-    <div class="mdx-columns" markdown>
-
-    - `ar` – Arabic
-    - `da` – Danish
-    - `de` – German
-    - `du` – Dutch
-    - `en` – English
-    - `es` – Spanish
-    - `fi` – Finnish
-    - `fr` – French
-    - `hi` – Hindi
-    - `hu` – Hungarian
-    - `hy` – Armenian
-    - `it` – Italian
-    - `ja` – Japanese
-    - `kn` - Kannada
-    - `ko` – Korean
-    - `no` – Norwegian
-    - `pt` – Portuguese
-    - `ro` – Romanian
-    - `ru` – Russian
-    - `sa` – Sanskrit
-    - `sv` – Swedish
-    - `ta` – Tamil
-    - `te` – Telugu
-    - `th` – Thai
-    - `tr` – Turkish
-    - `vi` – Vietnamese
-    - `zh` – Chinese
-
-    </div>
-
-    Material for MkDocs goes to great lengths to support languages that are not
-    part of this list by automatically falling back to the stemmer yielding the
-    best result.
-
-[`separator`](#+search.separator){ #+search.separator }
-
-:   :octicons-milestone-24: Default: _automatically set_ – The separator for
-    indexing and query tokenization can be customized, making it possible to
-    index parts of words separated by other characters than whitespace and `-`,
-    e.g. by including `.`:
-
-    ``` yaml
-    plugins:
-      - search:
-          separator: '[\s\-\.]+'
-    ```
-
-    With :octicons-tag-24: 9.0.0, a faster and more flexible tokenizer method
-    is shipped, allowing for __tokenizing with lookahead__, which yields more
-    influence on the way documents are indexed. As a result, we use the
-    following separator setting for this site's search:
-
-    ``` yaml
-    plugins:
-      - search:
-          separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
-    ```
-
-    Broken into its parts, the separator induces the following behavior:
-
-    === "Special characters"
-
-        ```
-        [\s\-,:!=\[\]()"/]+
-        ```
-
-        The first part of the expression inserts token boundaries for each
-        document before and after whitespace, hyphens, commas, brackets and
-        other special characters. If several of those special characters are
-        adjacent, they are treated as one.
-
-    === "Case changes"
-
-        ```
-        (?!\b)(?=[A-Z][a-z])
-        ```
-
-        Many programming languages have naming conventions like `PascalCase` or
-        `camelCase`. By adding this subexpression to the separator,
-        [words are split at case changes], tokenizing the word `PascalCase`
-        into `Pascal` and `Case`.
-
-        [:octicons-arrow-right-24: Read more on tokenizing case changes]
-        [tokenize case changes]
-
-    === "Version strings"
-
-        ```
-        \.(?!\d)
-        ```
-
-        When adding `.` to the separator, version strings like `1.2.3` are split
-        into `1`, `2` and `3`, which makes them undiscoverable via search. When
-        using this subexpression, a small lookahead is introduced which will
-        [preserve version strings] and keep them discoverable.
-
-        [:octicons-arrow-right-24: Read more on tokenizing version numbers]
-        [tokenize version numbers]
-
-    === "HTML/XML tags"
-
-        ```
-        &[lg]t;
-        ```
-
-        If your documentation includes HTML/XML code examples, you may want to allow
-        users to find specific tag names. Unfortunately, the `<` and `>` control
-        characters are encoded in code blocks as `&lt;` and `&gt;`. Adding this
-        subexpression to the separator allows for just that.
-
-        [:octicons-arrow-right-24: Read more on tokenizing HTML/XML tags]
-        [tokenize html-xml tags]
-
-  [Search support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [lunr]: https://lunrjs.com
   [lunr-languages]: https://github.com/MihaiValentin/lunr-languages
-  [lunr's default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
-  [site language]: changing-the-language.md#site-language
-  [words are split at case changes]: ?q=searchHighlight
-  [preserve version strings]: ?q=9.0.0
-  [tokenize case changes]: ../blog/posts/search-better-faster-smaller.md#case-changes
-  [tokenize version numbers]: ../blog/posts/search-better-faster-smaller.md#version-numbers
-  [tokenize html-xml tags]: ../blog/posts/search-better-faster-smaller.md#htmlxml-tags
-
-#### Chinese language support
-
-[:octicons-tag-24: 9.2.0][Chinese language support] ·
-:octicons-beaker-24: Experimental
-
-In order to add support for Chinese languages to the [built-in search plugin],
-install the text segmentation library [jieba] via `pip`, and the plugin will
-run all text through the segmenter:
-
-``` sh
-pip install jieba
-```
-
-The following configuration options are available:
-
-[`jieba_dict`](#+search.jieba_dict){ #+search.jieba_dict }
-
-:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
-    a [custom dictionary] to be used by [jieba] for segmenting text, replacing
-    the default dictionary:
-
-    ``` yaml
-    plugins:
-      - search:
-          jieba_dict: dict.txt # (1)!
-    ```
-
-    1.  The following alternative dictionaries are provided by [jieba]:
-
-        - [dict.txt.small] – 占用内存较小的词典文件
-        - [dict.txt.big] – 支持繁体分词更好的词典文件
-
-[`jieba_dict_user`](#+search.jieba_dict_user){ #+search.jieba_dict_user }
-
-:   :octicons-milestone-24: Default: _none_ – This option allows for specifying
-    an additional [user dictionary] to be used by [jieba] for segmenting text, 
-    augmenting the default dictionary:
-
-    ``` yaml
-    plugins:
-      - search:
-          jieba_dict_user: user_dict.txt
-    ```
-
-    User dictionaries can be used for tuning the segmenter to preserve
-    technical terms.
-
-  [Chinese language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
-  [chinese search]: ../blog/posts/chinese-search-support.md
-  [jieba]: https://pypi.org/project/jieba/
-  [built-in search plugin]: #built-in-search-plugin
-  [custom dictionary]: https://github.com/fxsjy/jieba#%E5%85%B6%E4%BB%96%E8%AF%8D%E5%85%B8
-  [dict.txt.small]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.small
-  [dict.txt.big]: https://github.com/fxsjy/jieba/raw/master/extra_dict/dict.txt.big
-  [user dictionary]: https://github.com/fxsjy/jieba#%E8%BD%BD%E5%85%A5%E8%AF%8D%E5%85%B8
 
 ### Search suggestions
 
-[:octicons-tag-24: 7.2.0][Search suggestions support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 When search suggestions are enabled, the search will display the likeliest
 completion for the last word which can be accepted with the ++arrow-right++ key.
@@ -264,14 +55,13 @@ theme:
 Searching for [:octicons-search-24: search su][Search suggestions example]
 yields ^^search suggestions^^ as a suggestion.
 
-  [Search suggestions support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [Search suggestions example]: ?q=search+su
 
 ### Search highlighting
 
-[:octicons-tag-24: 7.2.0][Search highlighting support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 When search highlighting is enabled and a user clicks on a search result,
 Material for MkDocs will highlight all occurrences after following the link.
@@ -286,13 +76,12 @@ theme:
 Searching for [:octicons-search-24: code blocks][Search highlighting example]
 highlights all occurrences of both terms.
 
-  [Search highlighting support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
   [Search highlighting example]: ../reference/code-blocks.md?h=code+blocks
 
 ### Search sharing
 
-[:octicons-tag-24: 7.2.0][Search sharing support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 7.2.0 -->
+<!-- md:feature -->
 
 When search sharing is activated, a :material-share-variant: share button is
 rendered next to the reset button, which allows to deep link to the current
@@ -307,13 +96,12 @@ theme:
 When a user clicks the share button, the URL is automatically copied to the
 clipboard.
 
-  [Search sharing support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.2.0
-
 ## Usage
 
 ### Search boosting
 
-[:octicons-tag-24: 8.3.0][boost support]
+<!-- md:version 8.3.0 -->
+<!-- md:flag metadata -->
 
 Pages can be boosted in search with the front matter `search.boost` property,
 which will make them rank higher. Add the following lines at the top of a
@@ -327,7 +115,7 @@ Markdown file:
       boost: 2 # (1)!
     ---
 
-    # Document title
+    # Page title
     ...
     ```
 
@@ -342,19 +130,18 @@ Markdown file:
       boost: 0.5
     ---
 
-    # Document title
+    # Page title
     ...
     ```
 
-  [boost support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
-
 ### Search exclusion
 
-[:octicons-tag-24: 9.0.0][exclusion support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.0.0 -->
+<!-- md:flag metadata -->
+<!-- md:flag experimental -->
 
 Pages can be excluded from search with the front matter `search.exclude`
-property, removing them from the index. Add the following lines at the top of a 
+property, removing them from the index. Add the following lines at the top of a
 Markdown file:
 
 ``` yaml
@@ -363,11 +150,9 @@ search:
   exclude: true
 ---
 
-# Document title
+# Page title
 ...
 ```
-
-  [exclusion support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
 
 #### Excluding sections
 
@@ -378,7 +163,7 @@ heading:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     ## Section 1
 
@@ -420,7 +205,7 @@ inline- or block-level element:
 === ":octicons-file-code-16: `docs/page.md`"
 
     ``` markdown
-    # Document title
+    # Page title
 
     The content of this block is included
 
