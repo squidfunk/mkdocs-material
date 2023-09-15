@@ -161,7 +161,8 @@
     display: block;
     padding: 0 px2em(16px, 13.6px);
     margin: 0 px2em(-16px, 13.6px);
-    background-color: var(--md-code-hl-color);
+    background-color: var(--md-code-hl-color--light);
+    box-shadow: 2px 0 0 0 var(--md-code-hl-color) inset;
   }
 
   // Code block title
