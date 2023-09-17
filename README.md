@@ -246,6 +246,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Netflix](https://netflix.github.io/titus/),
+[Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
 [Slack](https://slackhq.github.io/circuit/),
 [Square](https://square.github.io/okhttp/),
