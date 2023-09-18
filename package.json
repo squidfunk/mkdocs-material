@@ -54,7 +54,7 @@
     "@types/css-modules": "^1.0.3",
     "@types/escape-html": "^1.0.2",
     "@types/fuzzaldrin-plus": "^0.6.2",
-    "@types/html-minifier": "^4.0.2",
+    "@types/html-minifier": "^4.0.3",
     "@types/lunr": "^2.3.5",
     "@types/node": "^20.6.0",
     "@types/resize-observer-browser": "^0.1.7",
