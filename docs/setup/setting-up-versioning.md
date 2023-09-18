@@ -55,6 +55,20 @@ Check out the versioning example to see it in action –
   [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
+### Stay on the same page when switching versions
+
+When the user chooses a version in the version selector, they usually want to go
+to the page corresponding to the page they were previously viewing. Material for
+MkDocs implements this behavior by default, but there are a few caveats:
+
+- the [`site_url`] must be set correctly in `mkdocs.yml`. See the ["Publishing a
+  new version"](#publishing-a-new-version) section for an example.
+- you must be viewing the site at that URL (and not locally, for example).
+- the redirect happens via JavaScript and there is no way to know which page you
+  will be redirected to ahead of time.
+
+[`site_url`]: https://www.mkdocs.org/user-guide/configuration/#site_url
+
 ### Version warning
 
 <!-- md:version 8.0.0 -->
@@ -133,7 +147,13 @@ mike deploy --push --update-aliases 0.1 latest
 ```
 
 Note that every version will be deployed as a subdirectory of your `site_url`,
-e.g.:
+which you should set explicitly. For example, if your `mkdocs.yml` contains:
+
+``` yaml
+site_url: 'https://docs.example.com/'  # Trailing slash is recommended
+```
+
+the documentation will be published to URLs such as:
 
 - _docs.example.com/0.1/_
 - _docs.example.com/0.2/_
