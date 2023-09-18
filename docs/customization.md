@@ -248,8 +248,8 @@ Next, create a new [Python virtual environment][venv] and
 [activate][venv-activate] it:
 
 ```
-python -m venv .venv
-source .venv/bin/activate
+python -m venv venv
+source venv/bin/activate
 ```
 
   [venv]: https://docs.python.org/3/library/venv.html
@@ -268,7 +268,7 @@ Finally, install the [Node.js] LTS version into the Python virtual environment
 and install all Node.js dependencies:
 
 ```
-python -m nodeenv -p -n lts
+nodeenv -p -n lts
 npm install
 ```
 
@@ -310,7 +310,7 @@ npm run build # (1)!
 1.  While this command will build all theme files, it will skip the overrides
     used in Material for MkDocs' own documentation which are not distributed
     with the theme. If you forked the theme and want to build the overrides
-    as well, use:
+    as well, e.g. before submitting a PR with changes, use:
 
     ```
     npm run build:all
