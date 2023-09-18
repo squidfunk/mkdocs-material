@@ -54,6 +54,7 @@ def on_page_markdown(
         elif type == "plugin":       return _badge_for_plugin(args, page, files)
         elif type == "extension":    return _badge_for_extension(args, page, files)
         elif type == "utility":      return _badge_for_utility(args, page, files)
+        elif type == "download":     return _badge_for_download(args, page, files)
         elif type == "default":
             if   args == "none":     return _badge_for_default_none(page, files)
             elif args == "computed": return _badge_for_default_computed(page, files)
@@ -188,6 +189,14 @@ def _badge_for_utility(text: str, page: Page, files: Files):
     return _badge(
         icon = f"[:{icon}:]({href} 'Third-party utility')",
         text = text
+    )
+
+# Create badge for download
+def _badge_for_download(text: str, page: Page, files: Files):
+    icon = "material-folder-download"
+    href = f"https://mkdocs-material.github.io/examples/{text}/"
+    return _badge(
+        icon = f"[:{icon}:]({href} 'View example and download as .zip')"
     )
 
 # Create badge for default value
