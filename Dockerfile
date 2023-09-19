@@ -60,8 +60,9 @@ RUN \
   pip install --no-cache-dir . \
 && \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
-    pip install --no-cache-dir mkdocs-material[recommended] \
-    pip install --no-cache-dir mkdocs-material[imaging]; \
+    pip install --no-cache-dir \
+      mkdocs-material[recommended] \
+      mkdocs-material[imaging]; \
   fi \
 && \
   if [ -e user-requirements.txt ]; then \
