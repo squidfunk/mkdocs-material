@@ -126,6 +126,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
 countries = dict({
     "af": "za",
     "ar": "ae",
+    "be": "by",
     "bg": "bg",
     "bn": "bd",
     "ca": "es",
