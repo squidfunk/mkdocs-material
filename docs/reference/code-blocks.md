@@ -543,32 +543,3 @@ This will render annotations with a larger width:
 1. Muuuuuuuuuuuuuuuch more space for content
 
 </div>
-
-### Annotations with numbers
-
-Prior to <!-- md:version 8.1.0 -->, code annotations were rendered with markers
-showing the original number as used by the author. However, for technical
-reasons code annotation numbers restart each code block, which might lead to
-confusion. For this reason, code annotations now render as `+` signs which are
-rotated if they're open to denote that clicking them again will close them.
-
-If you wish to revert to the prior behavior and display code annotation numbers,
-you can add an [additional style sheet] and copy and paste the following CSS:
-
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
-
-    ``` css
-    .md-typeset .md-annotation__index > ::before {
-      content: attr(data-md-annotation-id);
-    }
-    .md-typeset :focus-within > .md-annotation__index > ::before {
-      transform: none;
-    }
-    ```
-
-=== ":octicons-file-code-16: `mkdocs.yml`"
-
-    ``` yaml
-    extra_css:
-      - stylesheets/extra.css
-    ```
