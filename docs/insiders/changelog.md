@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.0 <small>September 19, 2023</small> { id="4.42.0" }
+
+- Added support for using git submodules in projects plugin
+- Added support for transforming project configurations
+- Improved resilience of optimize and blog plugin
+- Fixed optimize plugin crashing on `.jpeg` extension
+- Fixed project URLs not using site URLs in projects plugin
+
 ### 4.41.0 <small>September 11, 2023</small> { id="4.41.0" }
 
 - Improved multi-instance support for optimize plugin
@@ -480,7 +488,7 @@
 ### 4.12.0 <small>March 27, 2022</small> { id="4.12.0" }
 
 - Added support for card grids and grid layouts
-- Fixed #3685: Annotations sometimes broken when using instant loading 
+- Fixed #3685: Annotations sometimes broken when using instant loading
 - Fixed #3742: Automatically add Mermaid.js when building for offline usage
 
 ### 4.11.0 <small>March 6, 2022</small> { id="4.11.0" }

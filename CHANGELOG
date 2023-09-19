@@ -1,3 +1,11 @@
+mkdocs-material-9.3.2+insiders-4.42.0 (2023-09-19)
+
+  * Added support for using git submodules in projects plugin
+  * Added support for transforming project configurations
+  * Improved resilience of optimize and blog plugin
+  * Fixed optimize plugin crashing on .jpeg extension
+  * Fixed project URLs not using site URLs in projects plugin
+
 mkdocs-material-9.3.2 (2023-09-19)
 
   * Updated Slovenian translations

@@ -34,9 +34,9 @@ interactivity of your project. The offline plugin makes sure that site search
 keeps working by moving the search index to a JavaScript file, and leveraging
 @squidfunk's [iframe-worker] shim.
 
-Additionally, the plugin automatically disables the
-[`use_directory_urls`][mkdocs.use_directory_urls] setting, ensuring that users
-can open your documentation directly from the local file system.
+Additionally, the plugin automatically disables the [`use_directory_urls`]
+[mkdocs.use_directory_urls] setting, ensuring that users can open your
+documentation directly from the local file system.
 
 There are some [limitations].
 
