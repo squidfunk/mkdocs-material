@@ -6,7 +6,7 @@
 
 - Updated Slovenian translations
 - Updated Python dependencies in requirements to use minimum versions
-- Fixed #6017: Code highlighting inconsist in Community and Insiders edition
+- Fixed #6017: Code highlighting inconsistent in Community and Insiders edition
 - Fixed #6001: Contributor avatars display incorrectly in Firefox
 - Fixed #6000: Blog post drafts are included in navigation
 
