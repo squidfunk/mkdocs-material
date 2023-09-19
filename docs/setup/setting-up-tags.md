@@ -31,7 +31,7 @@ For a list of all settings, please consult the [plugin documentation].
 
 <!-- md:version 8.5.0 -->
 <!-- md:flag experimental -->
-<!-- md:download tags-with-icons -->
+<!-- md:example tags-with-icons -->
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
 Before assigning icons to tags, associate each tag with a unique identifier,

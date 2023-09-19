@@ -54,7 +54,7 @@ def on_page_markdown(
         elif type == "plugin":       return _badge_for_plugin(args, page, files)
         elif type == "extension":    return _badge_for_extension(args, page, files)
         elif type == "utility":      return _badge_for_utility(args, page, files)
-        elif type == "download":     return _badge_for_download(args, page, files)
+        elif type == "example":      return _badge_for_example(args, page, files)
         elif type == "default":
             if   args == "none":     return _badge_for_default_none(page, files)
             elif args == "computed": return _badge_for_default_computed(page, files)
@@ -191,12 +191,30 @@ def _badge_for_utility(text: str, page: Page, files: Files):
         text = text
     )
 
-# Create badge for download
-def _badge_for_download(text: str, page: Page, files: Files):
-    icon = "material-folder-download"
+# Create badge for example
+def _badge_for_example(text: str, page: Page, files: Files):
+    return "\n".join([
+        _badge_for_example_download(text, page, files),
+        _badge_for_example_view(text, page, files)
+    ])
+
+# Create badge for example view
+def _badge_for_example_view(text: str, page: Page, files: Files):
+    icon = "material-folder-eye"
     href = f"https://mkdocs-material.github.io/examples/{text}/"
     return _badge(
-        icon = f"[:{icon}:]({href} 'View example and download as .zip')"
+        icon = f"[:{icon}:]({href} 'View example')",
+        type = "right"
+    )
+
+# Create badge for example download
+def _badge_for_example_download(text: str, page: Page, files: Files):
+    icon = "material-folder-download"
+    href = f"https://mkdocs-material.github.io/examples/download/{text}.zip"
+    return _badge(
+        icon = f"[:{icon}:]({href} 'Download example')",
+        text = f"[`.zip`]({href})",
+        type = "right"
     )
 
 # Create badge for default value
