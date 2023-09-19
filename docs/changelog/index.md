@@ -2,13 +2,21 @@
 
 ## Material for MkDocs
 
+### 9.3.2 <small>September 19, 2023</small> { id="9.3.2" }
+
+- Updated Slovenian translations
+- Updated Python dependencies in requirements to use minimum versions
+- Fixed #6017: Code highlighting inconsist in Community and Insiders edition
+- Fixed #6001: Contributor avatars display incorrectly in Firefox
+- Fixed #6000: Blog post drafts are included in navigation
+
 ### 9.3.1 <small>September 11, 2023</small> { id="9.3.1" }
 
 - Fixed crash of group plugin when used together with hooks
 
 ### 9.3.0 <small>September 11, 2023</small> { id="9.3.0" }
 
-- Improved configuration sharing between community and Insiders edition
+- Improved configuration sharing between Community and Insiders edition
 - Added experimental built-in group plugin for enabling plugins conditionally
 - Added new settings in tags plugin for enabling/disabling
 - Dropped support for Python 3.7 (EOL)
@@ -90,7 +98,7 @@ __Additions and improvements__
 - Improved header partial by moving buttons into separate partials
 - Improved clarity of `site_url` warning in social plugin
 - Improved blog plugin to automatically setup directory structure
-- Switched info plugin to `importlib` to mitigate deprecations 
+- Switched info plugin to `importlib` to mitigate deprecations
 - Automatically download ResizeObserver polyfill when necessary
 - Automatically add iframe-worker polyfill when necessary in offline plugin
 - Automatically focus and bring up keyboard on touch devices
@@ -300,7 +308,7 @@ __Fixes__
 ### 9.0.7 <small>January 28, 2023</small> { id="9.0.7" }
 
 - Improved accessibility of sidebar navigation
-- Moved all translations into community edition
+- Moved all translations into Community edition
 - Updated Polish and Portuguese (Brasilian) translations
 - Fixed info plugin terminating on subsequent reload when serving
 - Fixed #4910: Sidebar navigation labels have invalid ARIA roles

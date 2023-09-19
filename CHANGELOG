@@ -1,3 +1,11 @@
+mkdocs-material-9.3.2 (2023-09-19)
+
+  * Updated Slovenian translations
+  * Updated Python dependencies in requirements to use minimum versions
+  * Fixed #6017: Code highlighting inconsist in Community and Insiders edition
+  * Fixed #6001: Contributor avatars display incorrectly in Firefox
+  * Fixed #6000: Blog post drafts are included in navigation
+
 mkdocs-material-9.3.1+insiders-4.41.0 (2023-09-11)
 
   * Improved multi-instance support for optimize plugin
@@ -12,7 +20,7 @@ mkdocs-material-9.3.1 (2023-09-11)
 
 mkdocs-material-9.3.0 (2023-09-11)
 
-  * Improved configuration sharing between community and Insiders edition
+  * Improved configuration sharing between Community and Insiders edition
   * Added experimental built-in group plugin for enabling plugins conditionally
   * Added new settings in tags plugin for enabling/disabling
   * Dropped support for Python 3.7 (EOL)
@@ -497,7 +505,7 @@ mkdocs-material-9.0.8 (2023-01-29)
 mkdocs-material-9.0.7 (2023-01-28)
 
   * Improved accessibility of sidebar navigation
-  * Moved all translations into community edition
+  * Moved all translations into Community edition
   * Updated Polish and Portuguese (Brasilian) translations
   * Fixed info plugin terminating on subsequent reload when serving
   * Fixed #4910: Sidebar navigation labels have invalid ARIA roles
