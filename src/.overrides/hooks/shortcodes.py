@@ -210,7 +210,7 @@ def _badge_for_example_view(text: str, page: Page, files: Files):
 # Create badge for example download
 def _badge_for_example_download(text: str, page: Page, files: Files):
     icon = "material-folder-download"
-    href = f"https://mkdocs-material.github.io/examples/download/{text}.zip"
+    href = f"https://mkdocs-material.github.io/examples/{text}.zip"
     return _badge(
         icon = f"[:{icon}:]({href} 'Download example')",
         text = f"[`.zip`]({href})",
