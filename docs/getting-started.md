@@ -1,7 +1,7 @@
 # Getting started
 
 Material for MkDocs is a powerful documentation framework on top of [MkDocs],
-a static site generator for project documentation.[^1] If you're familiar with 
+a static site generator for project documentation.[^1] If you're familiar with
 Python, you can install Material for MkDocs with [`pip`][pip], the Python
 package manager. If not, we recommend using [`docker`][docker].
 
@@ -68,14 +68,14 @@ install those packages separately.
 
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __[How to set up Material for MkDocs]__ by @james-willett – :octicons-clock-24:
-15m – Learn how to create and host a documentation site using Material for 
+15m – Learn how to create and host a documentation site using Material for
 MkDocs on GitHub Pages in a step-by-step guide.
 
   [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=Q-YA_dA8C20
 
 ---
 
-__Tip__: If you don't have prior experience with Python, we recommend reading 
+__Tip__: If you don't have prior experience with Python, we recommend reading
 [Using Python's pip to Manage Your Projects' Dependencies], which is a really
 good introduction on the mechanics of Python package management and helps you
 troubleshoot if you run into errors.
@@ -107,7 +107,7 @@ and pull the image with:
     docker pull squidfunk/mkdocs-material:9
     ```
 
-The `mkdocs` executable is provided as an entry point and `serve` is the 
+The `mkdocs` executable is provided as an entry point and `serve` is the
 default command. If you're not familiar with Docker don't worry, we have you
 covered in the following sections.
 
@@ -126,7 +126,7 @@ The following plugins are bundled with the Docker image:
     of the official image small. If the plugin you want to use is not included,
     you can add them easily:
 
-    === "Material for MkDocs" 
+    === "Material for MkDocs"
 
         Create a `Dockerfile` and extend the official image:
 
@@ -166,8 +166,7 @@ want to use the very latest version:
 git clone https://github.com/squidfunk/mkdocs-material.git
 ```
 
-The theme will reside in the folder `mkdocs-material/material`. After cloning
-from `git`, you must install all required dependencies with:
+Next, install the theme and its dependencies with:
 
 ```
 pip install -e mkdocs-material
