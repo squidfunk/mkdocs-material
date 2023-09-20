@@ -149,7 +149,7 @@ const assets$ = concat(
     })),
 
   /* Copy images and configurations */
-  ...["**/*.{png,svg,yml}"]
+  ...["**/*.{jpg,png,svg,yml}"]
     .map(pattern => copyAll(pattern, {
       from: "src",
       to: base
@@ -160,7 +160,15 @@ const assets$ = concat(
 const sources$ = copyAll("**/*.py", {
   from: "src",
   to: base,
-  watch: process.argv.includes("--watch")
+  watch: process.argv.includes("--watch"),
+  transform: async (data, name) => {
+    if (path.basename(name) === "__init__.py") {
+      const metadata = require("../../package.json")
+      return data.replace("$md-version$", metadata.version)
+    } else {
+      return data
+    }
+  }
 })
 
 /* ------------------------------------------------------------------------- */
