@@ -112,6 +112,9 @@ setting:
 
 ### Adding tags
 
+<!-- md:version 8.2.0 -->
+<!-- md:example tags -->
+
 When the [built-in tags plugin] is enabled, tags can be added for a document
 with the front matter `tags` property. Add the following lines at the top of a
 Markdown file:
@@ -152,6 +155,9 @@ search preview, which now allows to __find pages by tags__.
   [built-in meta plugin]: ../plugins/meta.md
 
 ### Adding a tags index
+
+<!-- md:version 8.2.0 -->
+<!-- md:example tags -->
 
 The [built-in tags plugin] allows to define a file to render a [tags index]
 [tags.tags_file], which can be any page that is part of the `nav` section. To
