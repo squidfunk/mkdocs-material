@@ -665,6 +665,18 @@ The following configuration options are supported:
           alternate_style: true
     ```
 
+<!-- md:option pymdownx.tabbed.combine_header_slug -->
+
+:   <!-- md:default `false` --> This option enables the content tabs
+    [combine_header_slug style] flag, which prepends the id of the header to
+    the id of the tab:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          combine_header_slug: true
+    ```
+
 <!-- md:option pymdownx.tabbed.slugify -->
 
 :   <!-- md:default `toc.slugify` --> This option allows for
@@ -702,6 +714,7 @@ See reference for usage:
 
   [Tabbed]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
+  [combine_header_slug style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#tab-ids
   [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
   [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
   [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content

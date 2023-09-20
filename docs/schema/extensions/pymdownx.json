@@ -640,6 +640,11 @@
               ],
               "default": true
             },
+            "combine_header_slug": {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.combine_header_slug",
+              "type": "boolean",
+              "default": true
+            },
             "slugify": {
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.slugify",
               "default": "!!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}"
