@@ -172,5 +172,5 @@ adjust the ones you want to override:
     ```
 
   [theme extension]: ../customization.md#extending-the-theme
-  [translations]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/languages/
-  [list of available languages]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/languages/
+  [translations]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/languages/
+  [list of available languages]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/languages/

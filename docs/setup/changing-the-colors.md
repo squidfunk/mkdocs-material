@@ -352,7 +352,7 @@ add:
 See the file containing the [color definitions] for a list of all CSS variables.
 
   [CSS variables]: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
-  [color definitions]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
+  [color definitions]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/_colors.scss
   [additional style sheet]: ../customization.md#additional-css
 
 

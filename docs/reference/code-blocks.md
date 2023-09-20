@@ -505,11 +505,11 @@ override it as part of your [additional style sheet]:
       - stylesheets/extra.css
     ```
 
-  [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
+  [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/_colors.scss
   [color schemes]: ../setup/changing-the-colors.md#color-scheme
   [types of string tokens]: https://pygments.org/docs/tokens/#literals
   [additional style sheet]: ../customization.md#additional-css
-  [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
+  [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
 
 ### Annotation tooltip width
 
