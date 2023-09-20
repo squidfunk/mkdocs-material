@@ -33,8 +33,8 @@
     "target": "es2015"
   },
   "include": [
-    "src/templates/assets/javascripts",
     "src/overrides/assets/javascripts",
+    "src/templates/assets/javascripts",
     "tools",
     "typings"
   ]
