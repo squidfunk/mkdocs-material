@@ -295,7 +295,7 @@ const index$ = zip(icons$, emojis$)
       const cdn = "https://raw.githubusercontent.com"
       return {
         icons: {
-          base: `${cdn}/squidfunk/mkdocs-material/master/material/.icons/`,
+          base: `${cdn}/squidfunk/mkdocs-material/master/material/templates/.icons/`,
           data: Object.fromEntries(icons)
         },
         emojis: {

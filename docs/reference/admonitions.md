@@ -242,7 +242,7 @@ only the `inline` modifier:
 
     ``` markdown
     !!! info inline end "Lorem ipsum"
-  
+
         Lorem ipsum dolor sit amet, consectetur
         adipiscing elit. Nulla et euismod nulla.
         Curabitur feugiat, tortor non consequat
@@ -501,5 +501,5 @@ After applying the customization, you can use the custom admonition type:
 
 </div>
 
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/templates/.icons
   [additional style sheet]: ../customization.md#additional-css
