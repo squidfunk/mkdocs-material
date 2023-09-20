@@ -398,7 +398,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             "../.."
         ))
 
-        path = f"{base}/.icons/{logo}.svg"
+        path = f"{base}/templates/.icons/{logo}.svg"
 
         # Allow users to put the logo inside their custom_dir (theme["icon"]["logo"] case)
         if theme.custom_dir:
