@@ -169,7 +169,7 @@ const sources$ = copyAll("**/*.py", {
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".css").replace("overrides/", "")),
+      of(ext(file, ".css").replace(/(overrides|templates)\//, "")),
       transformStyle({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".css")
@@ -181,7 +181,7 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
 const javascripts$ = resolve("**/{custom,bundle,search}.ts", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".js").replace("overrides/", "")),
+      of(ext(file, ".js").replace(/(overrides|templates)\//, "")),
       transformScript({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".js")
@@ -210,7 +210,7 @@ const manifest$ = merge(
     scan((prev, mapping) => (
       mapping.reduce((next, [key, value]) => (
         next.set(key, value.replace(
-          new RegExp(`${base}\\/(overrides\\/)?`),
+          new RegExp(`${base}\\/(overrides|templates)\\/`),
           ""
         ))
       ), prev)
