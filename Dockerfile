@@ -74,7 +74,7 @@ RUN \
   for theme in mkdocs readthedocs; do \
     rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
     ln -s \
-      ${PACKAGES}/material \
+      ${PACKAGES}/material/templates \
       ${PACKAGES}/mkdocs/themes/$theme; \
   done \
 && \
