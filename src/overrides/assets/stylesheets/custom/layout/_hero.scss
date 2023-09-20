@@ -57,8 +57,8 @@
   // Hero headline
   h1 {
     margin-bottom: px2rem(20px);
-    color: currentcolor;
     font-weight: 700;
+    color: currentcolor;
 
     // [mobile portrait -]: Larger hero headline
     @include break-to-device(mobile portrait) {
@@ -79,8 +79,8 @@
     // Adjust spacing and set dimensions
     &__content {
       max-width: px2rem(380px);
-      margin-top: px2rem(70px);
       padding-bottom: 14vw;
+      margin-top: px2rem(70px);
     }
 
     // Hero image

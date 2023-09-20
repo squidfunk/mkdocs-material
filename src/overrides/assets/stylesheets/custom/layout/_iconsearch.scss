@@ -88,27 +88,27 @@
       position: absolute;
       top: px2rem(8px);
       right: px2rem(12px);
-      color: var(--md-default-fg-color--lighter);
       font-size: px2rem(12.8px);
+      color: var(--md-default-fg-color--lighter);
     }
 
     // Icon search result list
     &__list {
+      padding: 0;
       margin: 0;
       // Hack: necessary because of increased specificity due to the PostCSS
       // plugin which prefixes this with `[dir=...]` selectors.
       margin-inline-start: 0;
-      padding: 0;
       list-style: none;
     }
 
     // Icon search result item
     &__item {
+      padding: px2rem(4px) px2rem(12px);
       margin: 0;
       // Hack: necessary because of increased specificity due to the PostCSS
       // plugin which prefixes this with `[dir=...]` selectors.
       margin-inline-start: 0;
-      padding: px2rem(4px) px2rem(12px);
       border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
       // Omit border on last child

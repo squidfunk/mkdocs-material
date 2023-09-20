@@ -79,10 +79,10 @@
       margin: px2rem(4px);
       overflow: hidden;
       border-radius: 100%;
-      transform: scale(1);
       transition:
         color     125ms,
         transform 125ms;
+      transform: scale(1);
 
       // Sponsor item on focus/hover
       &:is(:focus, :hover) {
@@ -96,10 +96,10 @@
 
       // Private sponsor
       &--private {
-        color: var(--md-default-fg-color--lighter);
-        font-weight: 700;
         font-size: px2rem(12px);
+        font-weight: 700;
         line-height: px2rem(32px);
+        color: var(--md-default-fg-color--lighter);
         text-align: center;
         background: var(--md-default-fg-color--lightest);
       }
