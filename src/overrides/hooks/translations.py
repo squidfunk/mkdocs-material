@@ -40,7 +40,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
     # Collect all existing languages
     names: dict[str, str] = {}
     known: dict[str, dict[str, str]] = {}
-    for path in glob("src/partials/languages/*.html"):
+    for path in glob("src/templates/partials/languages/*.html"):
         with open(path, "r", encoding = "utf-8") as f:
             data = f.read()
 

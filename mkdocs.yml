@@ -36,7 +36,7 @@ copyright: Copyright &copy; 2016 - 2023 Martin Donath
 # Configuration
 theme:
   name: material
-  custom_dir: material/.overrides
+  custom_dir: material/overrides
   features:
     - announce.dismiss
     - content.action.edit
@@ -92,8 +92,8 @@ plugins:
 
 # Hooks
 hooks:
-  - material/.overrides/hooks/shortcodes.py
-  - material/.overrides/hooks/translations.py
+  - material/overrides/hooks/shortcodes.py
+  - material/overrides/hooks/translations.py
 
 # Customization
 extra:

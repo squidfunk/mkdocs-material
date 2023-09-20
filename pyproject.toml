@@ -81,7 +81,7 @@ Funding = "https://github.com/sponsors/squidfunk"
 "material/tags" = "material.plugins.tags.plugin:TagsPlugin"
 
 [project.entry-points."mkdocs.themes"]
-material = "material"
+material = "material.templates"
 
 [tool.hatch.version]
 source = "nodejs"
@@ -97,4 +97,4 @@ include = ["/material"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
-exclude = ["/material/.overrides"]
+exclude = ["/material/overrides"]
