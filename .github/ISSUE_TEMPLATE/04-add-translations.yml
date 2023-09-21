@@ -85,9 +85,9 @@ body:
     attributes:
       label: Country flag
       description: >-
-        Please add the flag of the country when adding a new language. Go to our
-        [emoji search](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search)
-        and enter `flag`` to find all available shortcodes. If your flag is not
+        This field is optional. Please add the flag of the country when adding a
+        new language. Go to our [emoji search](https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search)
+        and enter `flag` to find all available shortcodes. If your flag is not
         included, please choose the most appropriate available flag.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/adding-translations/#country-flag)
       placeholder: |-

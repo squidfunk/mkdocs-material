@@ -83,10 +83,10 @@ body:
     attributes:
       label: Browser
       description: >-
-        If the bug only happens in __specific browsers__, please select them
-        from the dropdown below. If your browser is not listed or the version
-        is relevant, you may select _Other_ and provide more details in the
-        field above.
+        This field is optional. If the bug only happens in __specific browsers__,
+        please select them from the dropdown below. If your browser is not
+        listed or the version is relevant, you may select _Other_ and provide
+        more details in the field above.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#browser)
       multiple: true
       options:
