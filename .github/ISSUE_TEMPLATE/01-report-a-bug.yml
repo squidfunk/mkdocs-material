@@ -20,7 +20,7 @@ body:
         Please give a detailed description of the bug. Explain where Material
         for MkDocs does not behave as you would expect it to. Be as specific as
         possible. If you have found a workaround or a fix for the problem,
-        please let us maintainers (and all other users) know. [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#description)
+        please let us maintainers (and all other users) know. [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#bug-description)
     validations:
       required: true
 
