@@ -57,5 +57,5 @@ and brings value to both new and experienced users of Material for MkDocs.
   [Report a docs issue]: reporting-a-docs-issue.md
   [Request a change]: requesting-a-change.md
   [Ask a question]: https://github.com/squidfunk/mkdocs-material/discussions
-  [Add a translation]: https://github.com/squidfunk/mkdocs-material/adding-a-translation
+  [Add translations]: https://github.com/squidfunk/mkdocs-material/adding-translations
   [Create a pull request]: https://github.com/squidfunk/mkdocs-material/pulls

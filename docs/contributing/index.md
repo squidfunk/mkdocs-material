@@ -95,7 +95,7 @@ In this section, we guide your through our processes.
 
     ---
 
-    [:octicons-arrow-right-24: Add a translation][add a translation]
+    [:octicons-arrow-right-24: Add translations][add translations]
 
 -   :material-source-pull: &nbsp;
     __Want to create a pull request?__
@@ -113,7 +113,7 @@ In this section, we guide your through our processes.
   [report a bug]: reporting-a-bug.md
   [report a docs issue]: reporting-a-docs-issue.md
   [request a change]: requesting-a-change.md
-  [add a translation]: https://github.com/squidfunk/mkdocs-material/adding-a-translation
+  [add translations]: https://github.com/squidfunk/mkdocs-material/adding-translations
   [create a pull request]: https://github.com/squidfunk/mkdocs-material/pulls
 
 ## Checklist
