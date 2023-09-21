@@ -182,6 +182,11 @@ kbd {
       transition: background-color 125ms;
     }
 
+    // Strong text
+    strong {
+      color: currentcolor;
+    }
+
     // Show outline for keyboard devices
     &.focus-visible {
       outline-color: var(--md-accent-fg-color);

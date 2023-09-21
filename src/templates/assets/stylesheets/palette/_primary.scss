@@ -92,11 +92,11 @@
 
 // Define primary colors for white
 [data-md-color-primary="white"] {
-  --md-primary-fg-color:               hsla(0, 0%, 100%, 1);
-  --md-primary-fg-color--light:        hsla(0, 0%, 100%, 0.7);
-  --md-primary-fg-color--dark:         hsla(0, 0%, 0%, 0.07);
-  --md-primary-bg-color:               hsla(0, 0%, 0%, 0.87);
-  --md-primary-bg-color--light:        hsla(0, 0%, 0%, 0.54);
+  --md-primary-fg-color:               hsla(var(--md-hue), 0%, 100%, 1);
+  --md-primary-fg-color--light:        hsla(var(--md-hue), 0%, 100%, 0.7);
+  --md-primary-fg-color--dark:         hsla(var(--md-hue), 0%, 0%, 0.07);
+  --md-primary-bg-color:               hsla(var(--md-hue), 0%, 0%, 0.87);
+  --md-primary-bg-color--light:        hsla(var(--md-hue), 0%, 0%, 0.54);
 
   // Typeset `a` color shades
   --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
@@ -107,7 +107,7 @@
 
     // Primary button
     &--primary {
-      color: hsla(0, 0%, 100%, 1);
+      color: hsla(var(--md-hue), 0%, 100%, 1);
       background-color: var(--md-typeset-a-color);
       border-color: var(--md-typeset-a-color);
     }
@@ -118,17 +118,17 @@
 
     // Search form
     .md-search__form {
-      background-color: hsla(0, 0%, 0%, 0.07);
+      background-color: hsla(var(--md-hue), 0%, 0%, 0.07);
 
       // Search form on hover
       &:hover {
-        background-color: hsla(0, 0%, 0%, 0.32);
+        background-color: hsla(var(--md-hue), 0%, 0%, 0.32);
       }
     }
 
     // Search icon
     .md-search__input + .md-search__icon {
-      color: hsla(0, 0%, 0%, 0.87);
+      color: hsla(var(--md-hue), 0%, 0%, 0.87);
     }
   }
 
@@ -148,11 +148,11 @@
 
 // Define primary colors for black
 [data-md-color-primary="black"] {
-  --md-primary-fg-color:               hsla(0, 0%, 0%, 1);
-  --md-primary-fg-color--light:        hsla(0, 0%, 0%, 0.54);
-  --md-primary-fg-color--dark:         hsla(0, 0%, 0%, 1);
-  --md-primary-bg-color:               hsla(0, 0%, 100%, 1);
-  --md-primary-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+  --md-primary-fg-color:               hsla(var(--md-hue), 15%, 9%, 1);
+  --md-primary-fg-color--light:        hsla(var(--md-hue), 15%, 9%, 0.54);
+  --md-primary-fg-color--dark:         hsla(var(--md-hue), 15%, 9%, 1);
+  --md-primary-bg-color:               hsla(var(--md-hue), 15%, 100%, 1);
+  --md-primary-bg-color--light:        hsla(var(--md-hue), 15%, 100%, 0.7);
 
   // Typeset `a` color shades
   --md-typeset-a-color:                hsl(#{hex2hsl($clr-indigo-500)});
@@ -163,7 +163,7 @@
 
     // Primary button
     &--primary {
-      color: hsla(0, 0%, 100%, 1);
+      color: hsla(var(--md-hue), 0%, 100%, 1);
       background-color: var(--md-typeset-a-color);
       border-color: var(--md-typeset-a-color);
     }
@@ -171,7 +171,7 @@
 
   // Header
   .md-header {
-    background-color: hsla(0, 0%, 0%, 1);
+    background-color: hsla(var(--md-hue), 15%, 9%, 1);
   }
 
   // [tablet portrait -]: Layered navigation
@@ -179,21 +179,7 @@
 
     // Repository information container
     .md-nav__source {
-      background-color: hsla(0, 0%, 0%, 0.87);
-    }
-  }
-
-  // [tablet landscape +]: Header-embedded search
-  @include break-from-device(tablet landscape) {
-
-    // Search form
-    .md-search__form {
-      background-color: hsla(0, 0%, 100%, 0.12);
-
-      // Search form on hover
-      &:hover {
-        background-color: hsla(0, 0%, 100%, 0.3);
-      }
+      background-color: hsla(var(--md-hue), 15%, 11%, 0.87);
     }
   }
 
@@ -202,7 +188,7 @@
 
     // Site title in main navigation
     html & .md-nav--primary .md-nav__title[for="__drawer"] {
-      background-color: hsla(0, 0%, 0%, 1);
+      background-color: hsla(var(--md-hue), 15%, 9%, 1);
     }
   }
 
@@ -211,7 +197,7 @@
 
     // Navigation tabs
     .md-tabs {
-      background-color: hsla(0, 0%, 0%, 1);
+      background-color: hsla(var(--md-hue), 15%, 9%, 1);
     }
   }
 }

@@ -65,6 +65,10 @@
 // Default theme, i.e. light mode
 %root {
 
+  // Color hue in the range [0,360] - change this variable to alter the tone
+  // of the theme, e.g. to make it more redish or greenish
+  --md-hue: 230;
+
   // Default color shades
   --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
   --md-default-fg-color--light:        hsla(0, 0%, 0%, 0.54);
