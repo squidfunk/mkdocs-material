@@ -51,10 +51,10 @@ body:
     attributes:
       label: Before submitting
       description: >-
-        Please ensure your documentation issue fulfills all of the following
-        requirements. If you need clarification on a specific requirement,
-        follow the link to learn about it and understand why it is necessary
-        before ticking the box. This will save the maintainers and you
+        Please ensure your documentation issue report fulfills all of the
+        following requirements. If you need clarification on a specific
+        requirement, follow the link to learn about it and understand why it is
+        necessary before ticking the box. This will save the maintainers and you
         valuable time.
       options:
         - label: >-
