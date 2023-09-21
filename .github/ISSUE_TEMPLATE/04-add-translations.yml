@@ -7,7 +7,7 @@ body:
 
   - type: markdown
     attributes:
-      value: |-
+      value: >-
         **Important**: Before creating a new translation, please check if
         Material for MkDocs already supports your language. Review the list of
         [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language),
@@ -103,7 +103,7 @@ body:
         - label: >-
             I've checked the list of [available languages](https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#site-language) for existing translations.
           required: true
-        - label: >_
+        - label: >-
             I assure that the translations are accurate to the best of my knowledge.
           required: true
         - label: >-
