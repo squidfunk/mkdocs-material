@@ -66,8 +66,8 @@ theme:
               "yaml.customTags": [ // (1)!
                 "!ENV scalar",
                 "!ENV sequence",
-                "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
-                "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
                 "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
               ]
             }

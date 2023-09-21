@@ -222,8 +222,8 @@ in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji # (1)!
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji # (1)!
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 ```
 
 1.  [Python Markdown Extensions] uses the `pymdownx` namespace, but in order to
@@ -241,7 +241,7 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_index: !!python/name:materialx.emoji.twemoji
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
     ```
 
 <!-- md:option pymdownx.emoji.emoji_generator -->
@@ -253,7 +253,7 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_generator: !!python/name:materialx.emoji.to_svg
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
     ```
 
 <!-- md:option pymdownx.emoji.options.custom_icons -->
@@ -265,8 +265,8 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_index: !!python/name:materialx.emoji.twemoji
-          emoji_generator: !!python/name:materialx.emoji.to_svg
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
           options:
             custom_icons:
               - overrides/.icons

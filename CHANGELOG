@@ -1,3 +1,13 @@
+mkdocs-material-9.4.0 (2023-09-21)
+
+  * Added Belarusian translations
+  * Added version info to entrypoint of package
+  * Added emoji extension as a replacement for materialx
+  * Improved slate color scheme (dark mode) - now even darker
+  * Restructured project to improve development experience
+  * Updated MkDocs to 1.5.3
+  * Fixed #3890: Development mode crashes on Linux
+
 mkdocs-material-9.3.2+insiders-4.42.0 (2023-09-19)
 
   * Added support for using git submodules in projects plugin

@@ -2,6 +2,16 @@
 
 ## Material for MkDocs
 
+### 9.4.0 <small>September 21, 2023</small> { id="9.4.0" }
+
+- Added Belarusian translations
+- Added version info to entrypoint of package
+- Added emoji extension as a replacement for materialx
+- Improved slate color scheme (dark mode) - now even darker
+- Restructured project to improve development experience
+- Updated MkDocs to 1.5.3
+- Fixed #3890: Development mode crash on Linux
+
 ### 9.3.2 <small>September 19, 2023</small> { id="9.3.2" }
 
 - Updated Slovenian translations
