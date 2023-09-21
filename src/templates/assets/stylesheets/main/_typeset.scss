@@ -322,6 +322,11 @@ kbd {
     margin-inline-start: px2em(1px, 12.8px);
   }
 
+  // Strong text
+  strong {
+    color: var(--md-typeset-strong-color);
+  }
+
   // Blockquotes, possibly nested
   blockquote {
     padding-inline-start: px2rem(12px);

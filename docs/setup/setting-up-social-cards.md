@@ -31,6 +31,7 @@ Social card of our [formatting] reference
 
   [custom layouts]: #customization
   [formatting]: ../reference/formatting.md
+  [Layout default variant]: ../assets/screenshots/social-cards-variant.png
 
 ## Configuration
 

@@ -101,9 +101,6 @@
   // Typeset `a` color shades
   --md-typeset-a-color:                var(--md-primary-fg-color);
 
-  // Typeset `mark` color shades
-  --md-typeset-mark-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
-
   // Typeset `del` and `ins` color shades
   --md-typeset-del-color:              hsla(6, 90%, 60%, 0.15);
   --md-typeset-ins-color:              hsla(150, 90%, 44%, 0.15);
@@ -112,6 +109,12 @@
   --md-typeset-kbd-color:              hsla(0, 0%, 98%, 1);
   --md-typeset-kbd-accent-color:       hsla(0, 100%, 100%, 1);
   --md-typeset-kbd-border-color:       hsla(0, 0%, 72%, 1);
+
+  // Typeset `mark` color shades
+  --md-typeset-mark-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
+
+  // Typeset `strong` color shades
+  --md-typeset-strong-color:           var(--md-default-fg-color);
 
   // Typeset `table` color shades
   --md-typeset-table-color:            hsla(0, 0%, 0%, 0.12);

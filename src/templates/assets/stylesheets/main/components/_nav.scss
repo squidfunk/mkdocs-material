@@ -173,6 +173,7 @@
   // Navigation container (for section index pages)
   &__container > .md-nav__link {
     margin-top: 0;
+    color: var(--md-typeset-strong-color);
 
     // Stretch first child
     &:first-child {
