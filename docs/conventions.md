@@ -59,7 +59,7 @@ potentially orthogonal features.
 
 ### <!-- md:flag experimental --> – Experimental { data-toc-label="Experimental" }
 
-Some newer features are still considered experimental, which means the ymight
+Some newer features are still considered experimental, which means they might
 (although rarely) change at any time, including their complete removal (which
 hasn't happened yet).
 
