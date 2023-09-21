@@ -86,13 +86,14 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
         # Assemble GitHub issue URL
         link = urlparse(issue_url)
         link = link._replace(query = urlencode({
-            "template": "04-add-a-translation.yml",
+            "template": "04-add-translations.yml",
             "title": f"Update {name} translations",
             "translations": "\n".join([
                 "{% macro t(key) %}{{ {",
                     ",\n".join(translations),
                 "}[key] }}{% endmacro %}"
-            ])
+            ]),
+            "country-flag": f":flag_{countries[code]}:"
         }))
 
         # Add translation
