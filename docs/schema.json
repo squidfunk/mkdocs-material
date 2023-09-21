@@ -98,7 +98,7 @@
       "items": {
         "title": "Path to JavaScript file",
         "markdownDescription": "https://squidfunk.github.io/mkdocs-material/customization/#additional-javascript",
-        "pattern": "\\.js($|\\?)"
+        "pattern": "\\.m?js($|\\?)"
       },
       "uniqueItems": true,
       "minItems": 1

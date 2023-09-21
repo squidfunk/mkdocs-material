@@ -215,6 +215,12 @@
           ]
         },
         {
+          "title": "Site language: Kannada",
+          "enum": [
+            "kn"
+          ]
+        },
+        {
           "title": "Site language: Korean",
           "enum": [
             "ko"
@@ -305,6 +311,12 @@
           ]
         },
         {
+          "title": "Site language: Sanskrit",
+          "enum": [
+            "sa"
+          ]
+        },
+        {
           "title": "Site language: Serbo-Croatian",
           "enum": [
             "sh"
@@ -338,6 +350,12 @@
           "title": "Site language: Swedish",
           "enum": [
             "sv"
+          ]
+        },
+        {
+          "title": "Site language: Telugu",
+          "enum": [
+            "te"
           ]
         },
         {
@@ -609,6 +627,13 @@
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button",
             "enum": [
               "content.code.copy"
+            ]
+          },
+          {
+            "title": "Code selection button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button",
+            "enum": [
+              "content.code.select"
             ]
           },
           {
@@ -918,7 +943,8 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "accent": {
@@ -945,7 +971,8 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "icon": {

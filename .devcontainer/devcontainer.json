@@ -1,0 +1,11 @@
+{
+	"name": "Material for MkDocs - VS Code dev container",
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:0-18",
+	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"version": "3.11"
+	  }
+	},
+	"postCreateCommand": "pip install -e . && pip install mkdocs-minify-plugin mkdocs-redirects && npm install && npm run build"
+}

@@ -19,8 +19,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "paths": {
-      "~/*": ["./assets/javascripts/*"],
-      "_/*": ["./.overrides/assets/javascripts/*"]
+      "~/*": ["./templates/assets/javascripts/*"],
+      "_/*": ["./overrides/assets/javascripts/*"]
     },
     "removeComments": false,
     "sourceMap": true,
@@ -33,8 +33,8 @@
     "target": "es2015"
   },
   "include": [
-    "src/assets/javascripts",
-    "src/.overrides/assets/javascripts",
+    "src/overrides/assets/javascripts",
+    "src/templates/assets/javascripts",
     "tools",
     "typings"
   ]

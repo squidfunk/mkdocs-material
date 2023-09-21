@@ -1,7 +1,7 @@
 # Changing the logo and icons
 
-When installing Material for MkDocs, you immediately get access to _over 8,000 
-icons_ ready to be used for customization of specific parts of the theme and/or 
+When installing Material for MkDocs, you immediately get access to _over 8,000
+icons_ ready to be used for customization of specific parts of the theme and/or
 when writing your documentation in Markdown. Not enough? You can also add
 [additional icons] with minimal effort.
 
@@ -11,8 +11,8 @@ when writing your documentation in Markdown. Not enough? You can also add
 
 ### Logo
 
-[:octicons-tag-24: 0.1.0][Logo support] ·
-:octicons-milestone-24: Default: :material-library: – `material/library`
+<!-- md:version 0.1.0 -->
+<!-- md:default `material/library` -->
 
 The logo can be changed to a user-provided image (any type, incl. `*.png` and
 `*.svg`) located in the `docs` folder, or to any icon bundled with the theme.
@@ -44,7 +44,6 @@ Add the following lines to `mkdocs.yml`:
           </div>
         </div>
 
-  [Logo support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [icon search]: ../reference/icons-emojis.md#search
 
 Normally, the logo in the header and sidebar links to the homepage of the
@@ -58,10 +57,10 @@ extra:
 
 ### Favicon
 
-[:octicons-tag-24: 0.1.0][Favicon support] ·
-:octicons-milestone-24: Default: [`assets/images/favicon.png`][Favicon default]
+<!-- md:version 0.1.0 -->
+<!-- md:default [`assets/images/favicon.png`][Favicon default] -->
 
-The favicon can be changed to a path pointing to a user-provided image, which 
+The favicon can be changed to a path pointing to a user-provided image, which
 must be located in the `docs` folder. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -69,8 +68,42 @@ theme:
   favicon: images/favicon.png
 ```
 
-  [Favicon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [Favicon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/assets/images/favicon.png
+
+### Site icons
+
+[:octicons-tag-24: 9.2.0][Site icon support]
+
+Most icons you see on your site, such as navigation icons, can also be changed. For example,
+to change the navigation arrows in the footer, add the following lines to `mkdocs.yml`:
+
+```yaml
+theme:
+  icon:
+    previous: fontawesome/solid/angle-left
+    next: fontawesome/solid/angle-right
+```
+
+The following is a complete list of customizable icons used by the theme:
+
+| Icon name    | Purpose                                                                       |
+|:-------------|:------------------------------------------------------------------------------|
+| `logo`       | See [Logo](#logo)                                                             |
+| `menu`       | Open drawer                                                                   |
+| `alternate`  | Change language                                                               |
+| `search`     | Search icon                                                                   |
+| `share`      | Share search                                                                  |
+| `close`      | Reset search, dismiss announcements                                           |
+| `top`        | Back-to-top button                                                            |
+| `edit`       | Edit current page                                                             |
+| `view`       | View page source                                                              |
+| `repo`       | Repository icon                                                               |
+| `admonition` | See [Admonition icons](../reference/admonitions.md#admonition-icons)          |
+| `tag`        | See [Tag icons and identifiers](setting-up-tags.md#tag-icons-and-identifiers) |
+| `previous`   | Previous page in footer, hide search on mobile                                |
+| `next`       | Next page in footer                                                           |
+
+  [Site icon support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0
 
 ## Customization
 

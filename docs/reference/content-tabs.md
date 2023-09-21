@@ -12,14 +12,14 @@ grouping code blocks and other content.
 ## Configuration
 
 This configuration enables content tabs, and allows to nest arbitrary content
-inside content tabs, including code blocks and ... more content tabs! Add the 
+inside content tabs, including code blocks and ... more content tabs! Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
 ```
 
 See additional configuration options:
@@ -32,9 +32,9 @@ See additional configuration options:
 
 ### Anchor links
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.17.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.17.0 -->
+<!-- md:flag experimental -->
 
 In order to link to content tabs and share them more easily, [Insiders] adds
 an anchor link to each content tab automatically, which you can copy via right
@@ -66,7 +66,6 @@ or to the [publishing guide for Insiders][tab_2].
 
     Fore more information, please [see the extension guide][slugification].
 
-  [Insiders]: ../insiders/index.md
   [tab_1]: #-or-even-me
   [tab_2]: ../publishing-your-site.md#insiders
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
@@ -74,11 +73,11 @@ or to the [publishing guide for Insiders][tab_2].
 
 ### Linked content tabs
 
-[:octicons-tag-24: 8.3.0][Linked content tabs support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 8.3.0 -->
+<!-- md:feature -->
 
 When enabled, all content tabs across the whole documentation site will be
-linked and switch to the same label when the user clicks on a tab. Add the 
+linked and switch to the same label when the user clicks on a tab. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -100,7 +99,6 @@ integrated with [instant loading] and persisted across page loads.
 
     [![Linked content tabs disabled]][Linked content tabs disabled]
 
-  [Linked content tabs support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.3.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [Linked content tabs enabled]: ../assets/screenshots/content-tabs-link.png
   [Linked content tabs disabled]: ../assets/screenshots/content-tabs.png

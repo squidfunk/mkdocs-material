@@ -224,6 +224,10 @@
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.use_pygments",
                   "type": "boolean"
                 },
+                "pygments_lang_class": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.pygments_lang_class",
+                  "type": "boolean"
+                },
                 "auto_title": {
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.auto_title",
                   "type": "boolean"
@@ -247,6 +251,10 @@
                 "anchor_linenums": {
                   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.anchor_linenums",
                   "type": "boolean"
+                },
+                "line_spans": {
+                  "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.highlight.line_spans",
+                  "type": "string"
                 }
               },
               "additionalProperties": false
@@ -531,6 +539,26 @@
                   "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
                   "type": "boolean",
                   "default": true
+                },
+                "url_download": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "url_max_size": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "integer",
+                  "default": 33554432
+                },
+                "url_timeout": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "number",
+                  "default": 10.0
+                },
+                "url_request_headers": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#options",
+                  "type": "object",
+                  "default": {}
                 }
               },
               "additionalProperties": false
@@ -610,6 +638,11 @@
               "enum": [
                 true
               ],
+              "default": true
+            },
+            "combine_header_slug": {
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#+pymdownx.tabbed.combine_header_slug",
+              "type": "boolean",
               "default": true
             },
             "slugify": {

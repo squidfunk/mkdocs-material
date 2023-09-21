@@ -31,7 +31,7 @@ body:
       description: >-
         Please list all links to the sections of
         [our documentation](https://squidfunk.github.io/mkdocs-material) that
-        are relevant to the bug, in order to show that you have consulted and
+        are relevant to the bug in order to show that you have consulted and
         thoroughly read it. Additionally, list links to possibly related open
         and closed [issues](https://github.com/squidfunk/mkdocs-material/issues)
         and [discussions](https://github.com/squidfunk/mkdocs-material/discussions)
@@ -54,7 +54,7 @@ body:
         .zip file with the reproduction. We reserve the right to close issues
         without .zip files. [More](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-bug/#reproduction)
       placeholder: |-
-        Drag and drop .zip file with minimal reproduction here.
+        Drag and drop the .zip file with minimal reproduction here.
     validations:
       required: true
 

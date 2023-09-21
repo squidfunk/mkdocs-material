@@ -1,4 +1,4 @@
-# Bug reporting
+# Bug reports
 
 Material for MkDocs is an actively maintained project that we constantly strive
 to improve. With a project of this size and complexity, bugs may occur. If you
@@ -9,12 +9,12 @@ public [issue tracker], following this guide.
 
 ## Before creating an issue
 
-With more than 20.000 users, issues are created every other day. The maintainers
+With more than 20,000 users, issues are created every other day. The maintainers
 of this project are trying very hard to keep the number of open issues down by
 fixing bugs as fast as possible. By following this guide, you will know exactly
 what information we need to help you quickly.
 
-__But first, please try the following things before creating an issue.__
+__But first, please do the following things before creating an issue.__
 
 ### Upgrade to latest version
 
@@ -37,7 +37,7 @@ We can't offer official support for bugs that might hide in your overrides, so
 make sure to omit the following settings from `mkdocs.yml`:
 
   - [`theme.custom_dir`][theme.custom_dir]
-  - [`theme.hooks`][theme.hooks]
+  - [`hooks`][hooks]
   - [`extra_css`][extra_css]
   - [`extra_javascript`][extra_javascript]
 
@@ -63,7 +63,7 @@ problems.__
   [JavaScript]: ../customization.md#additional-javascript
   [theme extension]: ../customization.md#extending-the-theme
   [theme.custom_dir]: https://www.mkdocs.org/user-guide/configuration/#custom_dir
-  [theme.hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
+  [hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
   [extra_css]: https://www.mkdocs.org/user-guide/configuration/#extra_css
   [extra_javascript]: https://www.mkdocs.org/user-guide/configuration/#extra_javascript
   [discussion board]: https://github.com/squidfunk/mkdocs-material/issues
@@ -118,8 +118,8 @@ how to create a complete and helpful bug report.
 
 ## Issue template
 
-We have created a new issue template to make the bug-reporting process as simple
-as possible and more efficient for the community and us. It is the result of
+We have created a new issue template to make the bug reporting process as simple
+as possible and more efficient for our community and us. It is the result of
 our experience answering and fixing more than 1,600 issues (and counting) and
 consists of the following parts:
 
@@ -148,11 +148,11 @@ summary of the issue, so the impact and severity of the bug you want to report
 can be inferred from the title.
 
 | <!-- --> | Example  |
-| -------- | -------- | 
+| -------- | -------- |
 | :material-check:{ style="color: #4DB6AC" } __Clear__ | Built-in `typeset` plugin changes precedence of nav title over `h1`
 | :material-close:{ style="color: #EF5350" } __Wordy__ | The built-in `typeset` plugin changes the precedence of the nav title over the document headline
 | :material-close:{ style="color: #EF5350" } __Unclear__ | Title does not work
-| :material-close:{ style="color: #EF5350" } __Generic__ | Please help
+| :material-close:{ style="color: #EF5350" } __Useless__ | Help
 
 ### Context <small>optional</small> { #context }
 
@@ -235,17 +235,17 @@ make it easier for us maintainers to improve the documentation.
 ### Reproduction
 
 A minimal reproduction is at the heart of every well-written bug report, as
-it allows us maintainers to quickly recreate the necessary conditions to inspect
-the bug and quickly find its root cause. It's a proven fact that issues with
-concise and small reproductions can be fixed much faster.
+it allows us maintainers to instantly recreate the necessary conditions to
+inspect the bug to quickly find its root cause. It's a proven fact that issues
+with concise and small reproductions can be fixed much faster.
 
 [:material-bug: Create reproduction][Create reproduction]{ .md-button .md-button--primary }
 
 ---
 
-After you have created the reproduction, you should have a .zip file, ideally not
-larger than 1 MB. Just drag and drop the .zip file into this field, which will
-automatically upload it to GitHub.
+After you have created the reproduction, you should have a `.zip` file, ideally
+not larger than 1 MB. Just drag and drop the `.zip` file into this field, which
+will automatically upload it to GitHub.
 
 > __Why we need this__: if an issue contains no minimal reproduction or just
 > a link to a repository with thousands of files, the maintainers would need to
@@ -259,21 +259,21 @@ automatically upload it to GitHub.
     process. The reason is that the reproduction, which is automatically
     produced by the [built-in info plugin] contains all of the necessary
     environment information that is often forgotten to be included.
-    
+
     Additionally, there are many non-technical users of Material for MkDocs that
     have trouble creating repositories.
 
-  [Create reproduction]: reproduction.md
-  [built-in info plugin]: reproduction.md#creating-a-zip-file
+  [Create reproduction]: ../guides/creating-a-reproduction.md
+  [built-in info plugin]: ../plugins/info.md
 
 ### Steps to reproduce
 
 At this point, you provided us with enough information to understand the bug
-and gave us a reproduction that we could run and inspect. However, when we
-run your reproduction, it might not be immediately apparent how we can see
+and provided us with a reproduction that we could run and inspect. However, when
+we run your reproduction, it might not be immediately apparent how we can see
 the bug in action.
 
-Next, please list the specific steps we should follow when running your
+Thus, please list the specific steps we should follow when running your
 reproduction to observe the bug. Keep the steps short and concise, and make sure
 not to leave anything out. Use simple language as you would explain it to a
 five-year-old, and focus on continuity.
@@ -287,9 +287,13 @@ five-year-old, and focus on continuity.
 If you're reporting a bug that only occurs in one or more _specific_ browsers,
 we need to know which browsers are affected. This field is optional, as it is
 only relevant when the bug you are reporting does not involve a crash when
-[previewing] or [building] your site. Moreover, to verify that a browser 
-extension is not the source of the bug, test if the issue persists when 
-switching to incognito mode.
+[previewing] or [building] your site.
+
+---
+
+:material-incognito: __Incognito mode__ – Please verify that a the bug is
+not caused by a browser extension. Switch to incognito mode and try to reproduce
+the bug. If it's gone, it's caused by an extension.
 
 > __Why we need this__: some bugs only occur in specific browsers or versions.
 > Since now, almost all browsers are evergreen, we usually don't need to know the

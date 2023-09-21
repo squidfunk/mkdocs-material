@@ -26,6 +26,9 @@
           "$ref": "plugins/blog.json"
         },
         {
+          "$ref": "plugins/group.json"
+        },
+        {
           "$ref": "plugins/info.json"
         },
         {
@@ -35,7 +38,13 @@
           "$ref": "plugins/offline.json"
         },
         {
+          "$ref": "plugins/optimize.json"
+        },
+        {
           "$ref": "plugins/privacy.json"
+        },
+        {
+          "$ref": "plugins/projects.json"
         },
         {
           "$ref": "plugins/search.json"
@@ -45,6 +54,9 @@
         },
         {
           "$ref": "plugins/tags.json"
+        },
+        {
+          "$ref": "plugins/typeset.json"
         }
       ]
     },
@@ -81,7 +93,7 @@
       ]
     },
     "external-community": {
-      "description": "External plugins, schema provided by the community",
+      "description": "External plugins, schema provided by our community",
       "anyOf": [
         {
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"

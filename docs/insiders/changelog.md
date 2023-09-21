@@ -2,6 +2,172 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.0 <small>September 19, 2023</small> { id="4.42.0" }
+
+- Added support for using git submodules in projects plugin
+- Added support for transforming project configurations
+- Improved resilience of optimize and blog plugin
+- Fixed optimize plugin crashing on `.jpeg` extension
+- Fixed project URLs not using site URLs in projects plugin
+
+### 4.41.0 <small>September 11, 2023</small> { id="4.41.0" }
+
+- Improved multi-instance support for optimize plugin
+- Added inclusion and exclusion patterns for optimize plugin
+- Added transparent keyword for color handling in social plugin
+- Changed default quality of PNGs to 3 in optimize plugin
+- Fixed #5979: meta file not detected in root of docs directory
+
+### 4.40.4 <small>September 4, 2023</small> { id="4.40.4" }
+
+- Fixed privacy plugin choking on boolean HTML5 attributes
+- Fixed wrapping of inline code blocks in typeset table of contents
+- Fixed blog plugin error when running under dirty reload
+
+### 4.40.3 <small>September 2, 2023</small> { id="4.40.3" }
+
+- Fixed #5946: Docker image missing pngquant for optimize plugin
+
+### 4.40.2 <small>August 31, 2023</small> { id="4.40.2" }
+
+- Added configurable error handling capabilities for social plugin
+- Fixed #5922: Blog plugin shows no posts when building a standalone blog
+- Fixed #5914: Tags plugin tags_extra_files errors (4.39.3 regression)
+- Fixed #5904: Blog plugin sometimes excludes files (4.40.1 regression)
+
+### 4.40.1 <small>August 27, 2023</small> { id="4.40.1" }
+
+- Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
+- Fixed empty category pages in blog plugin (4.40.0 regression)
+
+### 4.40.0 <small>August 26, 2023</small> { id="4.40.0" }
+
+- Added logo, title and description options to social plugin default layouts
+- Fixed privacy plugin compatibility issue with Python < 3.10
+- Fixed #5896: Blog plugin errors when using custom index pages
+
+### 4.39.3 <small>August 24, 2023</small> { id="4.39.3" }
+
+- Fixed lxml dependency missing in Docker container (4.39.2 regression)
+
+### 4.39.2 <small>August 23, 2023</small> { id="4.39.2" }
+
+- Fixed color palette toggle being reversed (9.2.0 regression)
+
+### 4.39.1 <small>August 21, 2023</small> { id="4.39.1" }
+
+- Fixed git diff in tags plugin after merging back 9.2.0 changes
+
+### 4.39.0 <small>August 3, 2023</small> { id="4.39.0" }
+
+- Added support for hoisting theme media files when building projects
+- Added support for sorting pages on tags index for tags plugin
+- Added support for adding date of last update to blog posts
+- Fixed #5797: Parse error in typeset plugin (4.38.1 regression)
+
+### 4.38.1 <small>August 1, 2023</small> { id="4.38.1" }
+
+- Improved nested serve mode for projects plugin
+- Improved compat in privacy plugin with third-party plugins
+- Fixed #5790: Typeset plugin ignores data-toc-label attribute
+- Fixed #5778: Interplay of privacy plugin with git-revision-date-localized
+- Fixed #5773: Info plugin erroring when community edition is in beta
+
+### 4.38.0 <small>July 29, 2023</small> { id="4.38.0" }
+
+- Added projects plugin for building nested projects
+- Updated privacy plugin to new MkDocs API
+
+### 4.37.1 <small>July 28, 2023</small> { id="4.37.1" }
+
+- Updated MkDocs to 1.5.1
+- Fixed deprecation warning in social plugin due to MkDocs upgrade
+- Fixed #5772: Privacy plugin fails due to API change in MkDocs
+
+### 4.37.0 <small>July 7, 2023</small> { id="4.37.0" }
+
+- Added support for overriding social cards settings per page
+- Added new social card `default/only/image` layout
+- Improved resilience of optimize and social plugin
+- Fixed rendering bugs for pruned navigation items
+- Fixed jumping of content tabs anchor links when instant loading is enabled
+- Fixed #5676: Optimize plugin doesn't check for `pngquant`
+
+### 4.36.1 <small>June 23, 2023</small> { id="4.36.1" }
+
+- Fixed #5618: Date comparison breaking for drafts in blog plugin
+
+### 4.36.0 <small>June 15, 2023</small> { id="4.36.0" }
+
+- Added support for instant prefetching to speed up slow connections
+- Improved stability of anchor link removal in built-in typeset plugin
+- Improved performance of regular expressions in typeset plugin
+- Removed unnecessary import test for `cairosvg` in optimize plugin
+- Fixed #5590: Regular expression for anchor link removal too greedy
+
+### 4.35.3 <small>June 1, 2023</small> { id="4.35.3" }
+
+- Fixed #5579: Abbreviations in headlines filtered by typeset plugin
+
+### 4.35.2 <small>May 29, 2023</small> { id="4.35.2" }
+
+- Fixed #5555: Blog plugin crashes when computing readtime for emojis
+
+### 4.35.1 <small>May 20, 2023</small> { id="4.35.1" }
+
+- Fixed internal handling of errors in social plugin
+
+### 4.35.0 <small>May 20, 2023</small> { id="4.35.0" }
+
+- Improve editing experience and stability of social plugin
+- Added support for custom layout syntax validation in social plugin
+- Added support for layer origin for easier placement in social plugin
+- Added support for in- and exclusion patterns in social plugin
+- Catch and print syntax errors in custom layouts
+
+### 4.34.1 <small>May 16, 2023</small> { id="4.34.1" }
+
+- Disable social plugin debug mode by default on mkdocs build
+- Added warning in social plugin debug mode when font style couldn't be found
+- Set default concurrency of built-in multi-threaded plugins to CPUs - 1
+- Fixed #5521: Social plugin triggers race condition when downloading fonts
+- Fixed #5515: Social plugin crashes when concurrency is set to 1
+
+### 4.34.0 <small>May 14, 2023</small> { id="4.34.0" }
+
+- Added support for new overflow mode to auto-fit text in social plugin
+- Reduced subtle rendering bugs in (code) annotations due to subpixel rounding
+- Improved print styles for (code) annotation lists
+- Improved performance of social plugin, now 3x as fast
+- Improved interop of typeset plugin with MkDocstrings
+- Fixed logo location for variants of default template in social plugin
+- Fixed #5446: Built-in typeset plugin picks up headings in code blocks
+
+### 4.33.2 <small>May 12, 2023</small> { id="4.33.2" }
+
+- Fixed #5508: Social plugin crashes trying to copy cards on Docker/Windows
+- Fixed #5507: Social plugin crashes on serve when layouts folder doesn't exist
+- Fixed #5505: Social plugin trying to resolve logo in wrong location
+- Fixed #5496: Annotations with nested lists incorrectly mounted
+- Fixed #5493: Social plugin crashes on Python 3.8
+
+### 4.33.1 <small>May 9, 2023</small> { id="4.33.1" }
+
+- Added support for SVG background images in social plugin
+
+### 4.33.0 <small>May 8, 2023</small> { id="4.33.0" }
+
+- Added support for custom layouts for social plugin
+- Added support for background images for social cards
+
+### 4.32.6 <small>April 22, 2023</small> { id="4.32.6" }
+
+- Fixed #5336: Interplay of blog plugin with git-revision-date-localized
+
+### 4.32.5 <small>April 7, 2023</small> { id="4.32.5" }
+
+- Fixed #5322: Navigation tabs hoist nested page icons
+
 ### 4.32.4 <small>March 24, 2023</small> { id="4.32.4" }
 
 - Fixed #5241: Built-in typeset plugin jams navigation for anchors in headings
@@ -322,7 +488,7 @@
 ### 4.12.0 <small>March 27, 2022</small> { id="4.12.0" }
 
 - Added support for card grids and grid layouts
-- Fixed #3685: Annotations sometimes broken when using instant loading 
+- Fixed #3685: Annotations sometimes broken when using instant loading
 - Fixed #3742: Automatically add Mermaid.js when building for offline usage
 
 ### 4.11.0 <small>March 6, 2022</small> { id="4.11.0" }

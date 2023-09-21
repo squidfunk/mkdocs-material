@@ -100,6 +100,7 @@ assets may also be put in the `overrides` directory:
 │  │  └─ analytics.html                # Analytics setup
 │  ├─ languages/                       # Translation languages
 │  ├─ actions.html                     # Actions
+│  ├─ alternate.html                   # Site language selector
 │  ├─ comments.html                    # Comment system (empty by default)
 │  ├─ consent.html                     # Consent
 │  ├─ content.html                     # Page content
@@ -113,6 +114,7 @@ assets may also be put in the `overrides` directory:
 │  ├─ nav.html                         # Main navigation
 │  ├─ nav-item.html                    # Main navigation item
 │  ├─ pagination.html                  # Pagination (used for blog)
+│  ├─ palette.html                     # Color palette toggle
 │  ├─ post.html                        # Blog post excerpt
 │  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
@@ -223,7 +225,7 @@ to make more fundamental changes, it may be necessary to make the adjustments
 directly in the source of the theme and recompile it.
 
   [^1]:
-    Prior to :octicons-tag-24: 7.0.0 the build was based on Webpack, resulting
+    Prior to <!-- md:version 7.0.0 --> the build was based on Webpack, resulting
     in occasional broken builds due to incompatibilities with loaders and
     plugins. Therefore, we decided to swap Webpack for a leaner solution which
     is now based on [RxJS] as the application itself. This allowed for the
@@ -235,20 +237,38 @@ directly in the source of the theme and recompile it.
 
 ### Environment setup
 
-In order to start development on Material for MkDocs, a [Node.js] version of
-at least 14 is required. First, clone the repository:
+First, clone the repository:
 
 ```
 git clone https://github.com/squidfunk/mkdocs-material
-```
-
-Next, all dependencies need to be installed, which is done with:
-
-```
 cd mkdocs-material
+```
+
+Next, create a new [Python virtual environment][venv] and
+[activate][venv-activate] it:
+
+```
+python -m venv venv
+source venv/bin/activate
+```
+
+  [venv]: https://docs.python.org/3/library/venv.html
+  [venv-activate]: https://docs.python.org/3/library/venv.html#how-venvs-work
+
+Then, install all Python dependencies:
+
+```
 pip install -e .
 pip install mkdocs-minify-plugin
 pip install mkdocs-redirects
+pip install nodeenv
+```
+
+Finally, install the [Node.js] LTS version into the Python virtual environment
+and install all Node.js dependencies:
+
+```
+nodeenv -p -n lts
 npm install
 ```
 
@@ -290,7 +310,7 @@ npm run build # (1)!
 1.  While this command will build all theme files, it will skip the overrides
     used in Material for MkDocs' own documentation which are not distributed
     with the theme. If you forked the theme and want to build the overrides
-    as well, use:
+    as well, e.g. before submitting a PR with changes, use:
 
     ```
     npm run build:all

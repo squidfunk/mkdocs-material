@@ -18,6 +18,19 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# -----------------------------------------------------------------------------
+# Disclaimer
+# -----------------------------------------------------------------------------
+# Please note: this version of the social plugin is not actively development
+# anymore. Instead, Material for MkDocs Insiders ships a complete rewrite of
+# the plugin which is much more powerful and addresses all shortcomings of
+# this implementation. Additionally, the new social plugin allows to create
+# entirely custom social cards. You can probably imagine, that this was a lot
+# of work to pull off. If you run into problems, or want to have additional
+# functionality, please consider sponsoring the project. You can then use the
+# new version of the plugin immediately.
+# -----------------------------------------------------------------------------
+
 import concurrent.futures
 import functools
 import logging
@@ -31,39 +44,26 @@ from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
+from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
-
 try:
     from cairosvg import svg2png
     from PIL import Image, ImageDraw, ImageFont
-    dependencies = True
 except ImportError:
-    dependencies = False
+    pass
+
+from .config import SocialConfig
+
 
 # -----------------------------------------------------------------------------
-# Class
-# -----------------------------------------------------------------------------
-
-# Social plugin configuration scheme
-class SocialPluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-    cache_dir = opt.Type(str, default = ".cache/plugin/social")
-
-    # Options for social cards
-    cards = opt.Type(bool, default = True)
-    cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_color = opt.Type(dict, default = dict())
-    cards_font = opt.Optional(opt.Type(str))
-
+# Classes
 # -----------------------------------------------------------------------------
 
 # Social plugin
-class SocialPlugin(BasePlugin[SocialPluginConfig]):
+class SocialPlugin(BasePlugin[SocialConfig]):
 
     def __init__(self):
         self._executor = concurrent.futures.ThreadPoolExecutor(4)
@@ -71,22 +71,40 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
+        self.config.cards = self.config.enabled
         if not self.config.cards:
             return
 
-        # Check if required dependencies are installed
-        if not dependencies:
-            log.error(
+        # Check dependencies
+        if "Image" not in globals():
+            raise PluginError(
                 "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install pillow cairosvg"
+                "Install with: pip install \"mkdocs-material[imaging]\""
             )
-            sys.exit(1)
+
+        # Move color options
+        if self.config.cards_color:
+
+            # Move background color to new option
+            value = self.config.cards_color.get("fill")
+            if value:
+                self.config.cards_layout_options["background_color"] = value
+
+            # Move color to new option
+            value = self.config.cards_color.get("text")
+            if value:
+                self.config.cards_layout_options["color"] = value
+
+        # Move font family to new option
+        if self.config.cards_font:
+            value = self.config.cards_font
+            self.config.cards_layout_options["font_family"] = value
 
         # Check if site URL is defined
         if not config.site_url:
             log.warning(
-                "The \"social\" plugin needs the \"site_url\" configuration "
-                "option to be defined. It will likely not work correctly."
+                "The \"site_url\" option is not set. The cards are generated, "
+                "but not linked, so they won't be visible on social media."
             )
 
         # Ensure presence of cache directory
@@ -109,7 +127,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 self.color = colors.get(primary, self.color)
 
         # Retrieve color overrides
-        self.color = { **self.color, **self.config.cards_color }
+        options = self.config.cards_layout_options
+        self.color = {
+            "fill": options.get("background_color", self.color["fill"]),
+            "text": options.get("color", self.color["text"])
+        }
 
         # Retrieve logo and font
         self._resized_logo_promise = self._executor.submit(self._load_resized_logo, config)
@@ -147,7 +169,23 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         if "description" in page.meta:
             description = page.meta["description"]
 
-        # Generate social card if not in cache - TODO: values from mkdocs.yml
+        # Check type of meta title - see https://t.ly/m1Us
+        if not isinstance(title, str):
+            log.error(
+                f"Page meta title of page '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(title)}\"."
+            )
+            sys.exit(1)
+
+        # Check type of meta description - see https://t.ly/m1Us
+        if not isinstance(description, str):
+            log.error(
+                f"Page meta description of '{page.file.src_uri}' must be a "
+                f"string, but is of type \"{type(description)}\"."
+            )
+            sys.exit(1)
+
+        # Generate social card if not in cache
         hash = md5("".join([
             site_name,
             str(title),
@@ -255,17 +293,6 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 lines.append(words)
                 words = [word]
 
-        # # Balance words on last line - TODO: overflows when broken word is too long
-        # if len(lines) > 0:
-        #     prev = len(" ".join(lines[-1]))
-        #     last = len(" ".join(words))#
-
-        #     print(last, prev)
-
-        #     # Heuristic: try to find a good ratio
-        #     if last / prev < 0.6:
-        #         words.insert(0, lines[-1].pop())
-
         # Join words for each line and create image
         lines.append(words)
         lines = [" ".join(line) for line in lines]
@@ -343,8 +370,15 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         if "logo" in theme:
             _, extension = os.path.splitext(theme["logo"])
 
-            # Load SVG and convert to PNG
             path = os.path.join(config.docs_dir, theme["logo"])
+
+            # Allow users to put the logo inside their custom_dir (theme["logo"] case)
+            if theme.custom_dir:
+                custom_dir_logo = os.path.join(theme.custom_dir, theme["logo"])
+                if os.path.exists(custom_dir_logo):
+                    path = custom_dir_logo
+
+            # Load SVG and convert to PNG
             if extension == ".svg":
                 return self._load_logo_svg(path)
 
@@ -352,10 +386,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             return Image.open(path).convert("RGBA")
 
         # Handle icons
-        logo = "material/library"
         icon = theme["icon"] or {}
         if "logo" in icon and icon["logo"]:
             logo = icon["logo"]
+        else:
+            logo = "material/library"
 
         # Resolve path of package
         base = os.path.abspath(os.path.join(
@@ -363,8 +398,15 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             "../.."
         ))
 
+        path = f"{base}/templates/.icons/{logo}.svg"
+
+        # Allow users to put the logo inside their custom_dir (theme["icon"]["logo"] case)
+        if theme.custom_dir:
+            custom_dir_logo = os.path.join(theme.custom_dir, ".icons", f"{logo}.svg")
+            if os.path.exists(custom_dir_logo):
+                path = custom_dir_logo
+
         # Load icon data and fill with color
-        path = f"{base}/.icons/{logo}.svg"
         return self._load_logo_svg(path, self.color["text"])
 
     # Load SVG file and convert to PNG
@@ -382,28 +424,41 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
 
     # Retrieve font
     def _load_font(self, config):
-        name = self.config.cards_font
+        name = self.config.cards_layout_options.get("font_family")
         if not name:
 
             # Retrieve from theme (default: Roboto)
             theme = config.theme
-            if theme["font"]:
+            if isinstance(theme["font"], dict) and "text" in theme["font"]:
                 name = theme["font"]["text"]
             else:
                 name = "Roboto"
 
-        # Retrieve font files, if not already done
-        files = os.listdir(self.cache)
-        files = [file for file in files if file.endswith(".ttf") or file.endswith(".otf")] or (
-            self._load_font_from_google(name)
-        )
+        # Google fonts can return varients like OpenSans_Condensed-Regular.ttf so
+        # we only use the font requested e.g. OpenSans-Regular.ttf
+        font_filename_base = name.replace(' ', '')
+        filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
 
-        # Map available font weights to file paths
-        font = dict()
-        for file in files:
-            match = re.search(r"-(\w+)\.[ot]tf$", file)
-            if match:
-                font[match.group(1)] = os.path.join(self.cache, file)
+        font = {}
+        # Check for cached files - note these may be in subfolders
+        for currentpath, folders, files in os.walk(self.cache):
+            for file in files:
+                # Map available font weights to file paths
+                fname = os.path.join(currentpath, file)
+                match = re.search(filename_regex, fname)
+                if match:
+                    font[match.group(1)] = fname
+
+        # If none found, fetch from Google and try again
+        if len(font) == 0:
+            self._load_font_from_google(name)
+            for currentpath, folders, files in os.walk(self.cache):
+                for file in files:
+                    # Map available font weights to file paths
+                    fname = os.path.join(currentpath, file)
+                    match = re.search(filename_regex, fname)
+                    if match:
+                        font[match.group(1)] = fname
 
         # Return available font weights with fallback
         return defaultdict(lambda: font["Regular"], font)
