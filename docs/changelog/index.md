@@ -6,7 +6,7 @@
 
 - Added Belarusian translations
 - Added version info to entrypoint of package
-- Added emoji extension as a replacement for materialx
+- Added emoji extension as a replacement for `materialx`
 - Improved slate color scheme (dark mode) - now even darker
 - Restructured project to improve development experience
 - Updated MkDocs to 1.5.3
