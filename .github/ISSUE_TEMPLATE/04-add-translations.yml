@@ -80,7 +80,7 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: country-flag
     attributes:
       label: Country flag icon
