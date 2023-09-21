@@ -95,7 +95,7 @@ hooks:
   - material/overrides/hooks/shortcodes.py
   - material/overrides/hooks/translations.py
 
-# Customization
+# Additional configuration
 extra:
   annotate:
     json: [.s2]
@@ -105,8 +105,6 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/squidfunk
-    - icon: fontawesome/brands/gitter
-      link: https://gitter.im/squidfunk/mkdocs-material
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/r/squidfunk/mkdocs-material/
     - icon: fontawesome/brands/python
@@ -188,6 +186,7 @@ nav:
       - Reporting a bug: contributing/reporting-a-bug.md
       - Reporting a docs issue: contributing/reporting-a-docs-issue.md
       - Requesting a change: contributing/requesting-a-change.md
+      - Adding translations: contributing/adding-translations.md
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md

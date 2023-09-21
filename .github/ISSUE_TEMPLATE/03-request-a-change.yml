@@ -51,7 +51,7 @@ body:
       description: >-
         Please explain how your idea will work from an author's and user's
         perspective. Elaborate on how the change would positively impact not only
-        you but the community and how it aligns with the goals and [philosophy](https://squidfunk.github.io/mkdocs-material/philosophy/)
+        you but our community and how it aligns with the goals and [philosophy](https://squidfunk.github.io/mkdocs-material/philosophy/)
         of the project.
         [More](https://squidfunk.github.io/mkdocs-material/contributing/requesting-a-change/#use-cases)
     validations:

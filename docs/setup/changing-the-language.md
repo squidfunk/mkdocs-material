@@ -37,9 +37,9 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 !!! tip "Translations missing? Help us out, it takes only 5 minutes"
 
     Material for MkDocs relies on outside contributions for adding and updating
-    translations for the almost 60 languages it supports. If your language shows
-    that some translations are missing, click on the link to add them. If your
-    language is not in the list, click here to [add a new language].
+    translations for the more than 60 languages it supports. If your language
+    shows that some translations are missing, click on the link to add them. If
+    your language is not in the list, click here to [add a new language].
 
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
