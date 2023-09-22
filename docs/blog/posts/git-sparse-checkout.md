@@ -24,7 +24,7 @@ wonderful [`git-committers`][git-committers] and [`git-revision-date-localized`]
 [dates] at the bottom of each page, we are required to set `fetch-depth: 0`,
 which resulted in checkout times of 20 to 30 seconds on our repository. By
 leveraging [`git sparse-checkout`][git sparse-checkout] within [GitHub Actions],
-we were able to bring down checkout time to 2 seconds.
+check out time was brought down to 2 seconds.
 
   [git sparse-checkout]: https://git-scm.com/docs/git-sparse-checkout
   [GitHub Actions]: ../../publishing-your-site.md#with-github-actions
