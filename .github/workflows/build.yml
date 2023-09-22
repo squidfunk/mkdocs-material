@@ -37,7 +37,6 @@ permissions:
 
 jobs:
   npm-build:
-    name: Build sources
     runs-on: ubuntu-latest
     steps:
 
@@ -66,7 +65,6 @@ jobs:
           git diff --name-only
 
   npm-check:
-    name: Check sources
     runs-on: ubuntu-latest
     steps:
 
@@ -92,8 +90,7 @@ jobs:
       - name: Check project
         run: npm run check
 
-  pypi:
-    name: Publish Python package
+  python:
     runs-on: ubuntu-latest
     steps:
 
@@ -120,7 +117,6 @@ jobs:
         run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
 
   docker:
-    name: Publish Docker image
     runs-on: ubuntu-latest
     steps:
 
