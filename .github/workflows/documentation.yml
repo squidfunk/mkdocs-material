@@ -46,6 +46,7 @@ jobs:
             docs
             includes
             material/overrides
+            src/templates/partials/languages
 
       - name: Set up Python runtime
         uses: actions/setup-python@v4
