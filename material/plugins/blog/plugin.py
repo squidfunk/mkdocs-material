@@ -603,17 +603,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     def _generate_pages(self, view: View, config: MkDocsConfig, files: Files):
         yield view
 
-        # Compute base path for pagination - if the given view is an index file,
-        # we need to pop the file name from the base so it's not part of the URL
-        base, _ = posixpath.splitext(view.file.src_uri)
-        if view.file.name == "index":
-            base = posixpath.dirname(base)
-
         # Compute pagination boundaries and create pages - pages are internally
         # handled as copies of a view, as they map to the same source location
         step = self.config.pagination_per_page
         for at in range(step, len(view.posts), step):
-            path = self._format_path_for_pagination(base, 1 + at // step)
+            path = self._format_path_for_pagination(view, 1 + at // step)
 
             # Create file for view, if it does not exist
             file = files.get_file_from_path(path)
@@ -784,10 +778,19 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         return posixpath.join(self.config.blog_dir, f"{path}.md")
 
     # Format path for pagination
-    def _format_path_for_pagination(self, base: str, page: int):
+    def _format_path_for_pagination(self, view: View, page: int):
         path = self.config.pagination_url_format.format(
             page = page
         )
+
+        # Compute base path for pagination - if the given view is an index file,
+        # we need to pop the file name from the base so it's not part of the URL
+        # and we need to append `index` to the path, so the paginated view is
+        # also an index page - see https://t.ly/71MKF
+        base, _ = posixpath.splitext(view.file.src_uri)
+        if view.is_index:
+            base = posixpath.dirname(base)
+            path = posixpath.join(path, "index")
 
         # Normalize path and strip slashes at the beginning and end
         path = posixpath.normpath(path.strip("/"))
