@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.4.1 <small>September 22, 2023</small> { id="9.4.1" }
+
+- Improved colors and contrast in dark mode
+- Improved admonition borders to match font weight
+- Switched content tabs to neutral color
+
 ### 9.4.0 <small>September 21, 2023</small> { id="9.4.0" }
 
 - Added Belarusian translations

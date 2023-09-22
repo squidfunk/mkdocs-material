@@ -1,3 +1,9 @@
+mkdocs-material-9.4.1 (2023-09-22)
+
+  * Improved colors and contrast in dark mode
+  * Improved admonition borders to match font weight
+  * Switched content tabs to neutral color
+
 mkdocs-material-9.4.0 (2023-09-21)
 
   * Added Belarusian translations
