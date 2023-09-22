@@ -108,9 +108,7 @@ jobs:
           path: site
 
       - name: Deploy to GitHub Pages
-        # uses: actions/deploy-pages@v2
-        # https://github.com/orgs/community/discussions/67961
-        uses: Bluefissure/deploy-pages@d929e03378611c913632ff3608164b9d1adc4a3f
+        uses: actions/deploy-pages@v2
 
       - name: Save build cache
         uses: actions/cache/save@v3
