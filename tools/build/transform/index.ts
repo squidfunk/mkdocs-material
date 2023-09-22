@@ -99,7 +99,7 @@ export function transformStyle(
 ): Observable<string> {
   return defer(() => of(compile(options.from, {
     loadPaths: [
-      "src/assets/stylesheets",
+      "src/templates/assets/stylesheets",
       "node_modules/modularscale-sass/stylesheets",
       "node_modules/material-design-color",
       "node_modules/material-shadows"
@@ -114,7 +114,7 @@ export function transformStyle(
         require("postcss-pseudo-is"),
         require("postcss-inline-svg")({
           paths: [
-            `${base}/.icons`
+            `${base}/templates/.icons`
           ],
           encode: false
         }),

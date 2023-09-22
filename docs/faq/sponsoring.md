@@ -79,15 +79,28 @@ Note that [$15] is the minimum amount to be granted access to Insiders.
 
   [$15]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210638
 
-[__How is my sponsorship contribution used to support the project?__](#sponsorship-support){ #sponsorship-support }
+[__How are sponsorship contributions used?__](#sponsorship-support){ #sponsorship-support }
 
-Your sponsorship contribution directly supports the development and 
-maintenance of the project, by buying us maintainers time. It allows us to
-dedicate more time and resources to enhance the project's features and
-functionality. The additional funding helps us prioritize improvements and
-updates, benefiting Insiders users and the wider community. We also actively
-contribute to other upstream projects, fostering collaboration and giving
-back to the Open Source ecosystem.
+It's vital to recognize that the total sponsorship amount doesn't directly
+translate into the funds we have available for use. The way we allocate
+sponsorship amounts is detailed as follows:
+
+1.  __Taxes__: Since we provide a service to our sponsors, we're of course
+    legally obligated to pay sales tax. This requirement applies to all
+    sponsorship contributions, aligning us with standard business practices
+    as for the rest of the world.
+
+2.  __Sponsorships__: A significant portion of our funding is redirected to
+    upstream projects. This cultivates collaboration and supports the broader
+    Open Source ecosystem. Those projects and their maintainers are essential
+    for the ongoing development of Material for MkDocs.
+
+    [Explore our sponsorships](https://github.com/squidfunk?tab=sponsoring).
+
+3.  __Funds__: We are in the process of forming a team devoted to Material for
+    MkDocs and are proactively compensating critical contributors. These
+    funds cover various aspects of the project, like the creation of new
+    features, bug resolution, support, and sponsor relations.
 
 [__Are there any limitations on the number of sponsors for a particular tier?__](#sponsorship-limitations){ #sponsorship-limitations }
 
@@ -115,7 +128,7 @@ We manage all our transactions and sponsorships through [GitHub Sponsors] and
 [our sponsors' page]. On there, you can choose from five different sponsorship 
 tiers and pay by credit card. Please note that as of the beginning of 2023, 
 [GitHub no longer supports PayPal] payments. If you wish to pay with PayPal, 
-ou can find a selection of our sponsorship tiers on [Ko-fi]. Both platforms
+you can find a selection of our sponsorship tiers on [Ko-fi]. Both platforms
 provide you with a payment receipt once your purchase is successful.
 
 If you're a company and need assistance choosing the right payment method,
@@ -371,8 +384,8 @@ appearance of your site should be optional. Most Insiders features enhance the
 overall experience, e.g., by adding icons to pages or providing a feedback 
 widget. While these features add value for your site's users, they should be 
 optional for previewing when making changes to content. Currently, the only 
-content-related features in Insiders that non-Insiders users can't properly 
-preview are [Annotations] and [Card grids].
+content-related feature in Insiders that non-Insiders users can't properly 
+preview are [Card grids].
 
 This means that outside collaborators can build the documentation locally with 
 Material for MkDocs, and when they push their changes, your CI pipeline will 
@@ -384,9 +397,7 @@ See the [getting started guide] for more information.
 
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
   [getting started guide]: ../insiders/getting-started.md#caveats
-  [Annotations]: ../reference/annotations.md?h=anno#annotations
   [Card grids]: ../reference/grids.md?h=grids#using-card-grids
-
 
 ## Support	
 

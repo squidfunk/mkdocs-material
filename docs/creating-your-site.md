@@ -1,6 +1,6 @@
 # Creating your site
 
-After you've [installed] Material for MkDocs, you can bootstrap your project 
+After you've [installed] Material for MkDocs, you can bootstrap your project
 documentation using the `mkdocs` executable. Go to the directory where you want
 your project to be located and enter:
 
@@ -48,7 +48,7 @@ theme:
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
-    In order to minimize friction and maximize productivity, Material for MkDocs 
+    In order to minimize friction and maximize productivity, Material for MkDocs
     provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
     YAML schema validation, it's definitely recommended to set it up:
 
@@ -66,8 +66,8 @@ theme:
               "yaml.customTags": [ // (1)!
                 "!ENV scalar",
                 "!ENV sequence",
-                "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
-                "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
                 "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
               ]
             }
@@ -222,13 +222,6 @@ The contents of this directory make up your project documentation. There's no
 need for operating a database or server, as it is completely self-contained.
 The site can be hosted on [GitHub Pages], [GitLab Pages], a CDN of your choice
 or your private web space.
-
-!!! note "Enterprise support"
-
-    If you're using Material for MkDocs in your organization and need
-    assistance, e.g., to __reduce build times__, __improve performance__ or
-    ensure compliance, [__get in touch__](mailto:contact@squidfunk.com)
-    to discuss our __enterprise support__ offerings. We're happy to help!
 
   [GitHub Pages]: publishing-your-site.md#github-pages
   [GitLab pages]: publishing-your-site.md#gitlab-pages

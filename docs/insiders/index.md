@@ -130,7 +130,7 @@ organization GitHub account for sponsoring.
 
 __Important__: If you're sponsoring @squidfunk through a GitHub organization,
 please send a short email to sponsors@squidfunk.com with the name of your
-organization and the GitHub account of the individual that should be added as a 
+organization and the GitHub account of the individual that should be added as a
 collaborator.[^4]
 
 You can cancel your sponsorship anytime.[^5]
@@ -188,7 +188,6 @@ You can cancel your sponsorship anytime.[^5]
 [![Sparkfun]](https://sparkfun.com/){ target=_blank title="Sparkfun Electronics" }
 [![Eccenca]](https://eccenca.com/){ target=_blank title="Eccenca" }
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
-[![Cash App]](https://cash.app/){ target=_blank title="Cash App" }
 [![RackN]](https://rackn.com/){ target=_blank title="RackN" }
 [![CivicActions]](https://civicactions.com/){ target=_blank title="CivicActions" }
 [![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }
@@ -200,6 +199,8 @@ You can cancel your sponsorship anytime.[^5]
 [![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 [![Astral]](https://astral.sh/){ target=_blank title="Astral" }
 [![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
+[![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
+[![Transformation Flow]](https://transformationflow.io/){ target=_blank title="Transformation Flow" }
 
 </div>
 
@@ -235,6 +236,8 @@ You can cancel your sponsorship anytime.[^5]
   [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
   [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
   [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
+  [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
+  [Transformation Flow]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png
 
 <hr />
 
@@ -257,7 +260,7 @@ You can cancel your sponsorship anytime.[^5]
 
 The following section lists all funding goals. Each goal contains a list of
 features prefixed with a checkmark symbol, denoting whether a feature is
-:octicons-check-circle-fill-24:{ style="color: #00e676" } already available or 
+:octicons-check-circle-fill-24:{ style="color: #00e676" } already available or
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
@@ -286,7 +289,7 @@ are released for general availability.
 - [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Navigation subtitles]
 
-  [Meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [Meta plugin]: ../plugins/meta.md
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
   [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
   [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
@@ -303,8 +306,8 @@ are released for general availability.
 - [x] [Privacy plugin: external links]
 - [x] [Instant prefetching]
 
-  [Optimize plugin]: ../setup/building-an-optimized-site.md#built-in-optimize-plugin
-  [Typeset plugin]: ../reference/index.md#built-in-typeset-plugin
+  [Optimize plugin]: ../plugins/optimize.md
+  [Typeset plugin]: ../plugins/typeset.md
   [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
   [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
@@ -319,7 +322,7 @@ are released for general availability.
 - [x] [Code annotations: custom selectors]
 - [ ] Code line wrap button
 
-  [Projects plugin]: ../setup/building-an-optimized-site.md#built-in-projects-plugin
+  [Projects plugin]: ../plugins/projects.md
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
@@ -488,7 +491,7 @@ and configuration options are either backward-compatible or implemented behind
 feature flags. When working with outside collaborators, it should be rarely
 necessary to change the general appearance of your site. Most Insiders features
 enhance the overall experience, e.g. by adding icons to pages or providing a
-feedback widget. While this features add value for the user of your site, they
+feedback widget. While these features add value for the user of your site, they
 shouldn't be necessary for previewing when making changes to content. Currently,
 the only content-related features in Insiders that can't be properly previewed
 by non-Insiders users are:
@@ -533,7 +536,7 @@ __fair use policy__:
 
 - Please __don't distribute the source code__ of Insiders. You may freely use
   it for public, private or commercial projects, privately fork or mirror it,
-  but please don't make the source code public, as it would counteract the 
+  but please don't make the source code public, as it would counteract the
   sponsorware strategy.
 
 - If you cancel your subscription, you're automatically removed as a

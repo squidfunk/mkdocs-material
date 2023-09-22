@@ -31,12 +31,51 @@ See additional configuration options:
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
 
+### Annotation icons
+
+<!-- md:version 9.2.0 -->
+
+The annotation icon can be changed to any icon bundled with the theme, or even
+a [custom icon], e.g. to material/arrow-right-circle:. Simply add the following
+lines to `mkdocs.yml`:
+
+``` yaml
+theme:
+  icon:
+    annotation: material/arrow-right-circle # (1)!
+```
+
+1.  Enter a few keywords to find the perfect icon using our [icon search] and
+    click on the shortcode to copy it to your clipboard:
+
+    <div class="mdx-iconsearch" data-mdx-component="iconsearch">
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="material circle" />
+      <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
+        <div class="mdx-iconsearch-result__meta"></div>
+        <ol class="mdx-iconsearch-result__list"></ol>
+      </div>
+    </div>
+
+Some popular choices:
+
+- :material-plus-circle: - `material/plus-circle`
+- :material-circle-medium: - `material/circle-medium`
+- :material-record-circle: - `material/record-circle`
+- :material-arrow-right-circle: - `material/arrow-right-circle`
+- :material-arrow-right-circle-outline: - `material/arrow-right-circle-outline`
+- :material-chevron-right-circle: - `material/chevron-right-circle`
+- :material-star-four-points-circle: - `material/star-four-points-circle`
+- :material-plus-circle-outline: - `material/plus-circle-outline`
+
+  [custom icon]: ../setup/changing-the-logo-and-icons.md#additional-icons
+  [icon search]: icons-emojis.md#search
+
 ## Usage
 
 ### Using annotations
 
-[:octicons-tag-24: 9.2.0b0][Annotation support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 9.2.0 -->
+<!-- md:flag experimental -->
 
 Annotations consist of two parts: a marker, which can be placed anywhere in
 a block marked with the `annotate` class, and content located in a list below
@@ -63,8 +102,6 @@ Lorem ipsum dolor sit amet, (1) consectetur adipiscing elit.
 Note that the `annotate` class must only be added to the outermost block. All
 nested elements can use the same list to define annotations, except when
 annotations are nested themselves.
-
-  [Annotation support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.2.0b0
 
 #### in annotations
 
@@ -168,7 +205,7 @@ of a dedicated content tab (and not to the container, which is not supported):
 
 #### in everything else
 
-The [Attribute Lists] extension is the key ingredient for adding annotations to 
+The [Attribute Lists] extension is the key ingredient for adding annotations to
 most elements, but it has some [limitations]. However, it's always possible to
 leverage the [Markdown in HTML] extension to wrap arbitrary elements with a
 `div` with the `annotate` class:

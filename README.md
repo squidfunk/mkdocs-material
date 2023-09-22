@@ -17,19 +17,15 @@
     alt="Build"
   /></a>
   <a href="https://pypistats.org/packages/mkdocs-material"><img
-    src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
+    src="https://img.shields.io/pypi/dm/mkdocs-material.svg"
     alt="Downloads"
   /></a>
-  <a href="https://gitter.im/squidfunk/mkdocs-material"><img 
-    src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
-    alt="Chat on Gitter"
-  /></a>
-  <a href="https://pypi.org/project/mkdocs-material"><img 
-    src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
+  <a href="https://pypi.org/project/mkdocs-material"><img
+    src="https://img.shields.io/pypi/v/mkdocs-material.svg"
     alt="Python Package Index"
   /></a>
-  <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img 
-    src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material" 
+  <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img
+    src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material"
     alt="Docker Pulls"
   /></a>
 </p>
@@ -48,7 +44,7 @@
 
 <p align="center">
   <em>
-    Check out the demo – 
+    Check out the demo –
     <a
       href="https://squidfunk.github.io/mkdocs-material/"
     >squidfunk.github.io/mkdocs-material</a>.
@@ -123,9 +119,9 @@
   <a href="https://neptune.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
   /></a>
-  <a href="https://cash.app/" target=_blank><img
+  <!-- <a href="https://cash.app/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png" height="58"
-  /></a>
+  /></a> -->
   <a href="https://rackn.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png" height="58"
   /></a>
@@ -158,6 +154,12 @@
   /></a>
   <a href="https://oikolab.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png" height="58"
+  /></a>
+  <a href="https://www.buhlergroup.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png" height="58"
+  /></a>
+  <a href="https://transformationflow.io/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png" height="58"
   /></a>
 </p>
 <p>&nbsp;</p>
@@ -224,10 +226,12 @@ For detailed installation instructions, configuration options, and a demo, visit
 
 ### ... industry leaders
 
+[ArXiv](https://info.arxiv.org),
 [Atlassian](https://atlassian.github.io/data-center-helm-charts/),
 [AWS](https://aws.github.io/copilot-cli/),
 [Bloomberg](https://bloomberg.github.io/selekt/),
 [CERN](http://abpcomputing.web.cern.ch/),
+[CloudFlare](https://cloudflare.github.io/itty-router-openapi/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
 [Hewlett Packard](https://hewlettpackard.github.io/squest/),
@@ -238,14 +242,16 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Netflix](https://netflix.github.io/titus/),
+[Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
-[SoundCloud](https://intervene.dev/),
+[Slack](https://slackhq.github.io/circuit/),
 [Square](https://square.github.io/okhttp/),
 [Zalando](https://opensource.zalando.com/skipper/)
 
 ### ... and successful Open Source projects
 
 [Arduino](https://arduino.github.io/arduino-cli/),
+[Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [CentOS](https://docs.infra.centos.org/),
@@ -256,15 +262,15 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
-[MindsDB](https://docs.mindsdb.com/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
+[PyPI](https://docs.pypi.org/),
 [Renovate](https://docs.renovatebot.com/),
 [Traefik](https://docs.traefik.io/),
-[Trivy](https://github.com/aquasecurity/trivy)
+[Trivy](https://aquasecurity.github.io/trivy/),
 [Vapor](https://docs.vapor.codes/),
 [ZeroNet](https://zeronet.io/docs/),
 [WebKit](https://docs.webkit.org/),

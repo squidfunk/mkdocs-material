@@ -37,7 +37,7 @@ dynamic = [
   "keywords"
 ]
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
@@ -49,6 +49,21 @@ classifiers = [
   "Topic :: Text Processing :: Markup :: HTML",
 ]
 
+[project.optional-dependencies]
+recommended = [
+  "mkdocs-minify-plugin~=0.7",
+  "mkdocs-redirects~=1.2",
+  "mkdocs-rss-plugin~=1.6"
+]
+git = [
+  "mkdocs-git-committers-plugin-2~=1.1",
+  "mkdocs-git-revision-date-localized-plugin~=1.2"
+]
+imaging = [
+  "pillow~=9.4",
+  "cairosvg~=2.6"
+]
+
 [project.urls]
 Documentation = "https://squidfunk.github.io/mkdocs-material/"
 Source = "https://github.com/squidfunk/mkdocs-material"
@@ -57,6 +72,8 @@ Issues = "https://github.com/squidfunk/mkdocs-material/issues"
 Funding = "https://github.com/sponsors/squidfunk"
 
 [project.entry-points."mkdocs.plugins"]
+"material/blog" = "material.plugins.blog.plugin:BlogPlugin"
+"material/group" = "material.plugins.group.plugin:GroupPlugin"
 "material/info" = "material.plugins.info.plugin:InfoPlugin"
 "material/offline" = "material.plugins.offline.plugin:OfflinePlugin"
 "material/search" = "material.plugins.search.plugin:SearchPlugin"
@@ -64,7 +81,7 @@ Funding = "https://github.com/sponsors/squidfunk"
 "material/tags" = "material.plugins.tags.plugin:TagsPlugin"
 
 [project.entry-points."mkdocs.themes"]
-material = "material"
+material = "material.templates"
 
 [tool.hatch.version]
 source = "nodejs"
@@ -80,4 +97,4 @@ include = ["/material"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
-exclude = ["/material/.overrides"]
+exclude = ["/material/overrides"]

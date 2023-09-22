@@ -11,8 +11,8 @@ support for many of its features.
 
 ### Built-in offline plugin
 
-[:octicons-tag-24: 9.0.0][offline support] ·
-:octicons-cpu-24: Plugin
+<!-- md:version 9.0.0 -->
+<!-- md:plugin [offline] – built-in -->
 
 The built-in offline plugin makes sure that the [site search] works when you
 distribute the contents of your [site directory] as a download. Simply add
@@ -23,27 +23,10 @@ plugins:
   - offline
 ```
 
-The plugin will automatically disable the [`use_directory_urls`][use_directory_urls]
-setting, ensuring that users can open your documentation directly from the local
-file system.
+For a list of all settings, please consult the [plugin documentation].
 
-The following configuration options are available:
-
-[`enabled`](#+offline.enabled){ #+offline.enabled }
-
-:   :octicons-milestone-24: Default: `true` – This option specifies whether
-    the plugin is enabled when building your project. If you want to switch
-    the plugin off, e.g. for local builds, use an [environment variable]:
-
-    ``` yaml
-    plugins:
-      - offline:
-          enabled: !ENV [OFFLINE, false]
-    ```
-
-Now, after invoking `mkdocs build`, you can open `site/index.html` directly
-in your browser and the [site search] will work as if the documentation was
-hosted on a regular server.
+  [offline]: ../plugins/offline.md
+  [plugin documentation]: ../plugins/offline.md
 
 !!! tip "Automatically bundle all external assets"
 
@@ -51,12 +34,9 @@ hosted on a regular server.
     while building documentation for offline usage, as it will automatically
     download all external assets to distribute them with your documentation.
 
-  [offline support]: https://github.com/squidfunk/mkdocs-material/releases/tag/9.0.0
   [site search]: setting-up-site-search.md
   [site directory]: https://www.mkdocs.org/user-guide/configuration/#site_dir
-  [use_directory_urls]: https://www.mkdocs.org/user-guide/configuration/#use_directory_urls
-  [environment variable]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
-  [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin
+  [built-in privacy plugin]:../plugins/privacy.md
 
 #### Limitations
 

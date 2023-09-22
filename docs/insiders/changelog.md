@@ -2,6 +2,69 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.0 <small>September 19, 2023</small> { id="4.42.0" }
+
+- Added support for using git submodules in projects plugin
+- Added support for transforming project configurations
+- Improved resilience of optimize and blog plugin
+- Fixed optimize plugin crashing on `.jpeg` extension
+- Fixed project URLs not using site URLs in projects plugin
+
+### 4.41.0 <small>September 11, 2023</small> { id="4.41.0" }
+
+- Improved multi-instance support for optimize plugin
+- Added inclusion and exclusion patterns for optimize plugin
+- Added transparent keyword for color handling in social plugin
+- Changed default quality of PNGs to 3 in optimize plugin
+- Fixed #5979: meta file not detected in root of docs directory
+
+### 4.40.4 <small>September 4, 2023</small> { id="4.40.4" }
+
+- Fixed privacy plugin choking on boolean HTML5 attributes
+- Fixed wrapping of inline code blocks in typeset table of contents
+- Fixed blog plugin error when running under dirty reload
+
+### 4.40.3 <small>September 2, 2023</small> { id="4.40.3" }
+
+- Fixed #5946: Docker image missing pngquant for optimize plugin
+
+### 4.40.2 <small>August 31, 2023</small> { id="4.40.2" }
+
+- Added configurable error handling capabilities for social plugin
+- Fixed #5922: Blog plugin shows no posts when building a standalone blog
+- Fixed #5914: Tags plugin tags_extra_files errors (4.39.3 regression)
+- Fixed #5904: Blog plugin sometimes excludes files (4.40.1 regression)
+
+### 4.40.1 <small>August 27, 2023</small> { id="4.40.1" }
+
+- Fixed #5902: ResizeObserver polyfill not detected by privacy plugin
+- Fixed empty category pages in blog plugin (4.40.0 regression)
+
+### 4.40.0 <small>August 26, 2023</small> { id="4.40.0" }
+
+- Added logo, title and description options to social plugin default layouts
+- Fixed privacy plugin compatibility issue with Python < 3.10
+- Fixed #5896: Blog plugin errors when using custom index pages
+
+### 4.39.3 <small>August 24, 2023</small> { id="4.39.3" }
+
+- Fixed lxml dependency missing in Docker container (4.39.2 regression)
+
+### 4.39.2 <small>August 23, 2023</small> { id="4.39.2" }
+
+- Fixed color palette toggle being reversed (9.2.0 regression)
+
+### 4.39.1 <small>August 21, 2023</small> { id="4.39.1" }
+
+- Fixed git diff in tags plugin after merging back 9.2.0 changes
+
+### 4.39.0 <small>August 3, 2023</small> { id="4.39.0" }
+
+- Added support for hoisting theme media files when building projects
+- Added support for sorting pages on tags index for tags plugin
+- Added support for adding date of last update to blog posts
+- Fixed #5797: Parse error in typeset plugin (4.38.1 regression)
+
 ### 4.38.1 <small>August 1, 2023</small> { id="4.38.1" }
 
 - Improved nested serve mode for projects plugin
@@ -425,7 +488,7 @@
 ### 4.12.0 <small>March 27, 2022</small> { id="4.12.0" }
 
 - Added support for card grids and grid layouts
-- Fixed #3685: Annotations sometimes broken when using instant loading 
+- Fixed #3685: Annotations sometimes broken when using instant loading
 - Fixed #3742: Automatically add Mermaid.js when building for offline usage
 
 ### 4.11.0 <small>March 6, 2022</small> { id="4.11.0" }

@@ -5,11 +5,12 @@ icon: material/emoticon-happy-outline
 # Icons, Emojis
 
 One of the best features of Material for MkDocs is the possibility to use [more
-than 10,000 icons][icon search] and thousands of emojis in your project 
-documentation with practically zero additional effort. Moreover, custom icons 
-can be added and used in `mkdocs.yml`, documents and templates.
+than 10,000 icons][icon search] and thousands of emojis in your project
+documentation with practically zero additional effort. Moreover, [custom icons
+can be added] and used in `mkdocs.yml`, documents and templates.
 
   [icon search]: #search
+  [custom icons can be added]: ../setup/changing-the-logo-and-icons.md#additional-icons
 
 ## Search
 
@@ -40,8 +41,8 @@ lines to `mkdocs.yml`:
 markdown_extensions:
   - attr_list
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 ```
 
 The following icon sets are bundled with Material for MkDocs:
@@ -74,7 +75,7 @@ between two colons. If you're using [Twemoji] (recommended), you can look up
 the shortcodes at [Emojipedia]:
 
 ``` title="Emoji"
-:smile: 
+:smile:
 ```
 
 <div class="result" markdown>
@@ -102,7 +103,7 @@ a valid path to any icon bundled with the theme, which are located in the
 
 </div>
 
-  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/.icons
+  [custom icons]: https://github.com/squidfunk/mkdocs-material/tree/master/material/templates/.icons
 
 #### with colors
 
@@ -198,7 +199,7 @@ With the help of the [built-in typeset plugin], you can use icons and emojis
 in headings, which will then be rendered in the sidebars. The plugin preserves
 Markdown and HTML formatting.
 
-  [built-in typeset plugin]: ./index.md#built-in-typeset-plugin
+  [built-in typeset plugin]: ../plugins/typeset.md
 
 ## Customization
 

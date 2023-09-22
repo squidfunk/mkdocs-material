@@ -18,6 +18,19 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+# -----------------------------------------------------------------------------
+# Disclaimer
+# -----------------------------------------------------------------------------
+# Please note: this version of the social plugin is not actively development
+# anymore. Instead, Material for MkDocs Insiders ships a complete rewrite of
+# the plugin which is much more powerful and addresses all shortcomings of
+# this implementation. Additionally, the new social plugin allows to create
+# entirely custom social cards. You can probably imagine, that this was a lot
+# of work to pull off. If you run into problems, or want to have additional
+# functionality, please consider sponsoring the project. You can then use the
+# new version of the plugin immediately.
+# -----------------------------------------------------------------------------
+
 import concurrent.futures
 import functools
 import logging
@@ -31,50 +44,26 @@ from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config import config_options as opt
-from mkdocs.config.base import Config
+from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 from shutil import copyfile
 from tempfile import TemporaryFile
 from zipfile import ZipFile
-
 try:
     from cairosvg import svg2png
     from PIL import Image, ImageDraw, ImageFont
-    dependencies = True
 except ImportError:
-    dependencies = False
+    pass
+
+from .config import SocialConfig
+
 
 # -----------------------------------------------------------------------------
-# Class
-# -----------------------------------------------------------------------------
-
-# Social plugin configuration scheme
-class SocialPluginConfig(Config):
-    enabled = opt.Type(bool, default = True)
-    cache_dir = opt.Type(str, default = ".cache/plugin/social")
-
-    # Options for social cards
-    cards = opt.Type(bool, default = True)
-    cards_dir = opt.Type(str, default = "assets/images/social")
-    cards_layout_options = opt.Type(dict, default = {})
-
-    # Deprecated options
-    cards_color = opt.Deprecated(
-        option_type = opt.Type(dict, default = {}),
-        message =
-            "Deprecated, use 'cards_layout_options.background_color' "
-            "and 'cards_layout_options.color' with 'default' layout"
-    )
-    cards_font = opt.Deprecated(
-        option_type = opt.Type(str),
-        message = "Deprecated, use 'cards_layout_options.font_family'"
-    )
-
+# Classes
 # -----------------------------------------------------------------------------
 
 # Social plugin
-class SocialPlugin(BasePlugin[SocialPluginConfig]):
+class SocialPlugin(BasePlugin[SocialConfig]):
 
     def __init__(self):
         self._executor = concurrent.futures.ThreadPoolExecutor(4)
@@ -82,8 +71,16 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
+        self.config.cards = self.config.enabled
         if not self.config.cards:
             return
+
+        # Check dependencies
+        if "Image" not in globals():
+            raise PluginError(
+                "Required dependencies of \"social\" plugin not found. "
+                "Install with: pip install \"mkdocs-material[imaging]\""
+            )
 
         # Move color options
         if self.config.cards_color:
@@ -103,19 +100,11 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             value = self.config.cards_font
             self.config.cards_layout_options["font_family"] = value
 
-        # Check if required dependencies are installed
-        if not dependencies:
-            log.error(
-                "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install pillow cairosvg"
-            )
-            sys.exit(1)
-
         # Check if site URL is defined
         if not config.site_url:
             log.warning(
-                "The \"social\" plugin needs the \"site_url\" configuration "
-                "option to be defined. It will likely not work correctly."
+                "The \"site_url\" option is not set. The cards are generated, "
+                "but not linked, so they won't be visible on social media."
             )
 
         # Ensure presence of cache directory
@@ -196,7 +185,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             )
             sys.exit(1)
 
-        # Generate social card if not in cache - TODO: values from mkdocs.yml
+        # Generate social card if not in cache
         hash = md5("".join([
             site_name,
             str(title),
@@ -304,17 +293,6 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
                 lines.append(words)
                 words = [word]
 
-        # # Balance words on last line - TODO: overflows when broken word is too long
-        # if len(lines) > 0:
-        #     prev = len(" ".join(lines[-1]))
-        #     last = len(" ".join(words))#
-
-        #     print(last, prev)
-
-        #     # Heuristic: try to find a good ratio
-        #     if last / prev < 0.6:
-        #         words.insert(0, lines[-1].pop())
-
         # Join words for each line and create image
         lines.append(words)
         lines = [" ".join(line) for line in lines]
@@ -420,7 +398,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
             "../.."
         ))
 
-        path = f"{base}/.icons/{logo}.svg"
+        path = f"{base}/templates/.icons/{logo}.svg"
 
         # Allow users to put the logo inside their custom_dir (theme["icon"]["logo"] case)
         if theme.custom_dir:
@@ -461,7 +439,7 @@ class SocialPlugin(BasePlugin[SocialPluginConfig]):
         font_filename_base = name.replace(' ', '')
         filename_regex = re.escape(font_filename_base)+r"-(\w+)\.[ot]tf$"
 
-        font = dict()
+        font = {}
         # Check for cached files - note these may be in subfolders
         for currentpath, folders, files in os.walk(self.cache):
             for file in files:

@@ -132,6 +132,22 @@
         }
       ]
     },
+    "annotate": {
+      "title": "Custom selectors for annotations",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#custom-selectors",
+      "type": "object",
+      "patternProperties": {
+        ".*": {
+          "title": "Custom selector",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#custom-selectors",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^\\.\\w+"
+          }
+        }
+      }
+    },
     "consent": {
       "title": "Cookie consent",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",

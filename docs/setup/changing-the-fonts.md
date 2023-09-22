@@ -11,8 +11,8 @@ or another destination should be used.
 
 ### Regular font
 
-[:octicons-tag-24: 0.1.2][Font support] ·
-:octicons-milestone-24: Default: [`Roboto`][Roboto]
+<!-- md:version 0.1.2 -->
+<!-- md:default [`Roboto`][Roboto] -->
 
 The regular font is used for all body copy, headlines, and essentially
 everything that does not need to be monospaced. It can be set to any
@@ -27,12 +27,11 @@ theme:
 The typeface will be loaded in 300, 400, _400i_ and __700__.
 
   [Roboto]: https://fonts.google.com/specimen/Roboto
-  [Font support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.2
 
 ### Monospaced font
 
-[:octicons-tag-24: 0.1.2][Font support] ·
-:octicons-milestone-24: Default: [`Roboto Mono`][Roboto Mono]
+<!-- md:version 0.1.2 -->
+<!-- md:default [`Roboto Mono`][Roboto Mono] -->
 
 The _monospaced font_ is used for code blocks and can be configured separately.
 Just like the regular font, it can be set to any valid [Google Font]
@@ -50,8 +49,8 @@ The typeface will be loaded in 400.
 
 ### Autoloading
 
-[:octicons-tag-24: 1.0.0][Autoloading support] ·
-:octicons-milestone-24: Default: _none_
+<!-- md:version 1.0.0 -->
+<!-- md:default none -->
 
 If you want to prevent typefaces from being loaded from [Google Fonts], e.g.
 to adhere to [data privacy] regulations, and fall back to system fonts, add the
@@ -69,8 +68,7 @@ theme:
     by automatically downloading and self-hosting the web font files.
 
   [data privacy]: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
-  [Autoloading support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.0.0
-  [built-in privacy plugin]: ensuring-data-privacy.md#built-in-privacy-plugin
+  [built-in privacy plugin]:../plugins/privacy.md
 
 ## Customization
 
@@ -96,7 +94,7 @@ corresponding `@font-face` definition:
       - stylesheets/extra.css
     ```
 
-The font can then be applied to specific elements, e.g. only headlines, or 
+The font can then be applied to specific elements, e.g. only headlines, or
 globally to be used as the site-wide regular or monospaced font:
 
 === "Regular font"

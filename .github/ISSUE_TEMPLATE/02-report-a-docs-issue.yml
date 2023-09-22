@@ -1,4 +1,4 @@
-name: Report a docs issue
+name: Report a documentation issue
 description: Missing information in our docs? Report a documentation issue
 labels:
   - documentation
@@ -10,7 +10,7 @@ body:
       label: Description
       description: >-
         Please describe the inconsistency or issue you have found in
-        [our documentation](https://squidfunk.github.io/mkdocs-material)
+        [our documentation](https://squidfunk.github.io/mkdocs-material/)
         or indicate where you feel there is a need for improvement. Furthermore,
         explain the severity of the issue, i.e., its impact on you and potentially
         other users.
@@ -23,7 +23,7 @@ body:
     attributes:
       label: Related links
       description: >-
-        Please list all links to the sections of [our documentation](https://squidfunk.github.io/mkdocs-material)
+        Please list all links to the sections of [our documentation](https://squidfunk.github.io/mkdocs-material/)
         that are impacted by the issue you described above. If applicable,
         add screenshots. Additionally, list links to possibly related open
         and closed [issues](https://github.com/squidfunk/mkdocs-material/issues)
@@ -58,8 +58,8 @@ body:
         valuable time.
       options:
         - label: >-
-            I have read and followed the [documentation issue reporting guidelines](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/).
+            I have read and followed the [documentation issue guidelines](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/).
           required: true
         - label: >-
-            I have attached the links to the described sections of [the documentation](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#related-links)
+            I have attached the links to the affected sections of [the documentation](https://squidfunk.github.io/mkdocs-material/contributing/reporting-a-docs-issue/#related-links)
           required: true
