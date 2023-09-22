@@ -101,7 +101,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         # uses: actions/deploy-pages@v2
-        uses: Bluefissure/deploy-pages@d929e03
+        uses: Bluefissure/deploy-pages@d929e03378611c913632ff3608164b9d1adc4a3f
 
       - name: Save build cache
         uses: actions/cache/save@v3
