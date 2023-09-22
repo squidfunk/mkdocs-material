@@ -54,7 +54,7 @@ and [override the `comments.html` partial][overriding partials] with:
     /* Set palette on initial load */
     var palette = __md_get("__palette")
     if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
       giscus.setAttribute("data-theme", theme) // (1)!
     }
 
@@ -64,7 +64,7 @@ and [override the `comments.html` partial][overriding partials] with:
       ref.addEventListener("change", function() {
         var palette = __md_get("__palette")
         if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+          var theme = palette.color.scheme === "slate" ? "dark_dimmed" : "light"
 
           /* Instruct Giscus to change theme */
           var frame = document.querySelector(".giscus-frame")
