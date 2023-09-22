@@ -45,15 +45,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Set the date environmental variable
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+          cache: pip
 
       - name: Set up build cache
-        uses: actions/cache@v3
-        id: cache
+        uses: actions/cache/restore@v3
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-
           path: .cache
           restore-keys: |
             mkdocs-material-
@@ -63,15 +60,8 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install \
-            "cairosvg>=2.5" \
-            "mkdocs-git-committers-plugin-2>=1.1.1" \
-            "mkdocs-git-revision-date-localized-plugin>=1.0" \
-            "mkdocs-minify-plugin>=0.3" \
-            "mkdocs-rss-plugin>=1.2" \
-            "mkdocs-redirects>=1.0" \
-            "lxml" \
-            "pillow<10"
+          pip install mkdocs-material
+          pip install mkdocs-material[recommended,git,imaging]
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
@@ -95,3 +85,9 @@ jobs:
         run: |
           mkdocs gh-deploy --force
           mkdocs --version
+
+      - name: Save build cache
+        uses: actions/cache/save@v3
+        with:
+          key: mkdocs-material-${{ hashfiles('.cache/**') }}
+          path: .cache
