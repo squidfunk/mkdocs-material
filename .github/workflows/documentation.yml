@@ -50,7 +50,7 @@ jobs:
       - name: Set up build cache
         uses: actions/cache/restore@v3
         with:
-          key: mkdocs-material-
+          key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: .cache
           restore-keys: |
             mkdocs-material-
@@ -78,13 +78,25 @@ jobs:
           rm -rf material
           cp -r mkdocs-material-insiders/material material
 
-      - name: Deploy documentation
+      - name: Build documentation
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
         run: |
-          mkdocs gh-deploy --force
+          mkdocs build --clean
           mkdocs --version
+
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX site/ | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
 
       - name: Save build cache
         uses: actions/cache/save@v3
