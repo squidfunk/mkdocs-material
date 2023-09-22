@@ -187,6 +187,15 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             for items in [self._resolve_siblings(page, nav), nav.pages]:
                 items[items.index(temp)] = page
 
+        # If we're not building a standalone blog, the entrypoint will always
+        # have a parent when it is included in the navigation. The parent is
+        # essential to correctly resolve the location where the archive and
+        # category views are attached. If the entrypoint doesn't have a parent,
+        # we know that the author did not include it in the navigation, so we
+        # explicitly mark it as not included.
+        if not self.blog.parent and self.config.blog_dir != ".":
+            self.blog.file.inclusion = InclusionLevel.NOT_IN_NAV
+
         # Attach posts to entrypoint without adding them to the navigation, so
         # that the entrypoint is considered to be the active page for each post
         self._attach(self.blog, [None, *reversed(self.blog.posts), None])
@@ -196,7 +205,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Revert temporary exclusion of views from navigation
         for view in self._resolve_views(self.blog):
             for page in view.pages:
-                page.file.inclusion = InclusionLevel.INCLUDED
+                page.file.inclusion = self.blog.file.inclusion
 
         # Attach views for archive
         if self.config.archive:
@@ -204,7 +213,8 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             views = [_ for _ in self.blog.views if isinstance(_, Archive)]
 
             # Attach and link views for archive
-            self._attach_to(self.blog, Section(title, views), nav)
+            if self.blog.file.inclusion.is_in_nav():
+                self._attach_to(self.blog, Section(title, views), nav)
 
         # Attach views for categories
         if self.config.categories:
@@ -212,7 +222,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             views = [_ for _ in self.blog.views if isinstance(_, Category)]
 
             # Attach and link views for categories, if any
-            if views:
+            if self.blog.file.inclusion.is_in_nav() and views:
                 self._attach_to(self.blog, Section(title, views), nav)
 
         # Attach pages for views
@@ -671,7 +681,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     def _attach_at(self, parent: StructureItem, host: Page, page: Page):
         self._attach(parent, [host.previous_page, page, host.next_page])
 
-    # Attach a section as a sibling to the given view, make sure it's pages are
+    # Attach a section as a sibling to the given view, make sure its pages are
     # part of the navigation, and ensure all pages are linked correctly
     def _attach_to(self, view: View, section: Section, nav: Navigation):
         section.parent = view.parent
