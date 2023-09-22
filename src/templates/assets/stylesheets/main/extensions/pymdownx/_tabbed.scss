@@ -82,6 +82,11 @@
           }
         }
       }
+
+      // Tab indicator on keyboard focus
+      &.focus-visible ~ .tabbed-labels::before {
+        background-color: var(--md-accent-fg-color);
+      }
     }
   }
 
@@ -115,10 +120,11 @@
           width: var(--md-indicator-width);
           height: 2px;
           content: "";
-          background: var(--md-accent-fg-color);
+          background: var(--md-default-fg-color);
           transition:
-            width     225ms,
-            transform 250ms;
+            width            225ms,
+            background-color 250ms,
+            transform        250ms;
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
           transform: translateX(var(--md-indicator-x));
         }
@@ -160,7 +166,7 @@
 
       // Tab label on hover
       &:hover {
-        color: var(--md-accent-fg-color);
+        color: var(--md-default-fg-color);
       }
     }
   }
@@ -374,18 +380,18 @@
 
   // [screen]: Show active state
   @media screen {
-    color: var(--md-accent-fg-color);
+    color: var(--md-default-fg-color);
 
     // [no-js]: Show border (indicator is animated with JavaScript)
     .no-js & {
-      border-color: var(--md-accent-fg-color);
+      border-color: var(--md-default-fg-color);
     }
   }
 }
 
 // Tab label on keyboard focus placeholder
 %tabbed-label-focus-visible {
-  background-color: var(--md-accent-fg-color--transparent);
+  color: var(--md-accent-fg-color);
 }
 
 // Tab content placeholder
