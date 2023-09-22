@@ -51,22 +51,28 @@ and [override the `comments.html` partial][overriding partials] with:
   <script>
     var giscus = document.querySelector("script[src*=giscus]")
 
-    /* Set palette on initial load */
+    // Set palette on initial load
     var palette = __md_get("__palette")
     if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
       giscus.setAttribute("data-theme", theme) // (1)!
     }
 
-    /* Register event handlers after documented loaded */
+    // Register event handlers after documented loaded
     document.addEventListener("DOMContentLoaded", function() {
       var ref = document.querySelector("[data-md-component=palette]")
       ref.addEventListener("change", function() {
         var palette = __md_get("__palette")
         if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
 
-          /* Instruct Giscus to change theme */
+          // Instruct Giscus to change theme
           var frame = document.querySelector(".giscus-frame")
           frame.contentWindow.postMessage(
             { giscus: { setConfig: { theme } } },
