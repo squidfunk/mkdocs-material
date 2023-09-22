@@ -182,11 +182,6 @@ kbd {
       transition: background-color 125ms;
     }
 
-    // Strong text
-    strong {
-      color: currentcolor;
-    }
-
     // Show outline for keyboard devices
     &.focus-visible {
       outline-color: var(--md-accent-fg-color);
@@ -325,11 +320,6 @@ kbd {
   sup,
   sub {
     margin-inline-start: px2em(1px, 12.8px);
-  }
-
-  // Strong text
-  strong {
-    color: var(--md-typeset-strong-color);
   }
 
   // Blockquotes, possibly nested

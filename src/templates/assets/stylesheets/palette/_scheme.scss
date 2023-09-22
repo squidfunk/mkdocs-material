@@ -34,7 +34,7 @@
     color-scheme: dark;
 
     // Default color shades
-    --md-default-fg-color:             hsla(var(--md-hue), 15%, 90%, 0.75);
+    --md-default-fg-color:             hsla(var(--md-hue), 15%, 90%, 0.82);
     --md-default-fg-color--light:      hsla(var(--md-hue), 15%, 90%, 0.56);
     --md-default-fg-color--lighter:    hsla(var(--md-hue), 15%, 90%, 0.32);
     --md-default-fg-color--lightest:   hsla(var(--md-hue), 15%, 90%, 0.12);
@@ -44,8 +44,8 @@
     --md-default-bg-color--lightest:   hsla(var(--md-hue), 15%, 14%, 0.07);
 
     // Code color shades
-    --md-code-fg-color:                hsla(var(--md-hue), 18%, 86%, 1);
-    --md-code-bg-color:                hsla(var(--md-hue), 15%, 17%, 1);
+    --md-code-fg-color:                hsla(var(--md-hue), 18%, 86%, 0.82);
+    --md-code-bg-color:                hsla(var(--md-hue), 15%, 18%, 1);
 
     // Code highlighting color shades
     --md-code-hl-color--light:         hsla(#{hex2hsl($clr-blue-a200)}, 0.15);
@@ -69,15 +69,12 @@
     --md-typeset-a-color:              var(--md-primary-fg-color);
 
     // Typeset `kbd` color shades
-    --md-typeset-kbd-color:            hsla(var(--md-hue), 15%, 95%, 0.12);
-    --md-typeset-kbd-accent-color:     hsla(var(--md-hue), 15%, 95%, 0.2);
+    --md-typeset-kbd-color:            hsla(var(--md-hue), 15%, 90%, 0.12);
+    --md-typeset-kbd-accent-color:     hsla(var(--md-hue), 15%, 90%, 0.2);
     --md-typeset-kbd-border-color:     hsla(var(--md-hue), 15%, 14%, 1);
 
     // Typeset `mark` color shades
     --md-typeset-mark-color:           hsla(#{hex2hsl($clr-blue-a200)}, 0.3);
-
-    // Typeset `strong` color shades
-    --md-typeset-strong-color:         hsla(0, 100%, 100%, 1);
 
     // Typeset `table` color shades
     --md-typeset-table-color:          hsla(var(--md-hue), 15%, 95%, 0.12);
@@ -98,7 +95,7 @@
 
     // Shadow depth 2
     --md-shadow-z2:
-      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.1),
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.25),
       0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.25);
 
     // Shadow depth 3
@@ -118,19 +115,19 @@
   // Adjust link colors for dark primary colors
   @each $name, $color in (
     "pink":                            hsl(340, 81%, 63%),
-    "purple":                          hsl(291, 43%, 63%),
-    "deep-purple":                     hsl(262, 63%, 70%),
-    "indigo":                          hsl(219, 66%, 67%),
+    "purple":                          hsl(291, 53%, 63%),
+    "deep-purple":                     hsl(262, 73%, 70%),
+    "indigo":                          hsl(219, 76%, 62%),
     "teal":                            hsl(174, 100%, 40%),
     "green":                           hsl(122, 39%, 60%),
-    "deep-orange":                     hsl(14, 100%, 73%),
-    "brown":                           hsl(16, 45%, 60%),
+    "deep-orange":                     hsl(14, 100%, 65%),
+    "brown":                           hsl(16, 45%, 56%),
 
     // Set neutral colors to indigo
-    "grey":                            hsl(219, 56%, 63%),
-    "blue-grey":                       hsl(219, 56%, 63%),
-    "white":                           hsl(219, 56%, 63%),
-    "black":                           hsl(219, 56%, 63%)
+    "grey":                            hsl(219, 66%, 62%),
+    "blue-grey":                       hsl(219, 66%, 62%),
+    "white":                           hsl(219, 66%, 62%),
+    "black":                           hsl(219, 66%, 62%)
   ) {
     [data-md-color-scheme="slate"][data-md-color-primary="#{$name}"] {
       --md-typeset-a-color: #{$color};

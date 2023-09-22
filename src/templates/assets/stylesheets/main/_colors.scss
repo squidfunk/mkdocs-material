@@ -67,7 +67,7 @@
 
   // Color hue in the range [0,360] - change this variable to alter the tone
   // of the theme, e.g. to make it more redish or greenish
-  --md-hue: 230;
+  --md-hue: 225deg;
 
   // Default color shades
   --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
@@ -81,7 +81,7 @@
 
   // Code color shades
   --md-code-fg-color:                  hsla(200, 18%, 26%, 1);
-  --md-code-bg-color:                  hsla(0, 0%, 96%, 1);
+  --md-code-bg-color:                  hsla(200, 0%, 96%, 1);
 
   // Code highlighting color shades
   --md-code-hl-color:                  hsla(#{hex2hsl($clr-blue-a200)}, 1);
@@ -116,9 +116,6 @@
 
   // Typeset `mark` color shades
   --md-typeset-mark-color:             hsla(#{hex2hsl($clr-yellow-a200)}, 0.5);
-
-  // Typeset `strong` color shades
-  --md-typeset-strong-color:           var(--md-default-fg-color);
 
   // Typeset `table` color shades
   --md-typeset-table-color:            hsla(0, 0%, 0%, 0.12);
