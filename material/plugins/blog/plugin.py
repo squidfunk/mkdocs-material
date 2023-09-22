@@ -163,30 +163,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if not self.config.enabled:
             return
 
-        # Hack: since MkDocs will always create a page for the entrypoint even
-        # though we already created it in `on_files`, we must replace the page
-        # that MkDocs created with the entrypoint we already have on our hands.
-        # Hopefully, this hack can be removed soon - see https://t.ly/9nehI
-        page = self.blog.file.page
-        self._attach_at(page.parent, page, self.blog)
-
-        # Hack: update page instances in navigation - this can also be removed
-        # once an already open pull request is merged - see https://t.ly/9C_Kz
-        for page in [self.blog, *self.blog.posts, *self.blog.views]:
-            assert isinstance(page, Page)
-
-            # Check if the page that we generated is identical to the page that
-            # is associated with the file - if it is, we're good
-            temp = page.file.page
-            if not temp or temp == page:
-                continue
-
-            # If not, MkDocs overwrote our page with a new instance, which we
-            # need to replace with the one we generated
-            page.file.page = page
-            for items in [self._resolve_siblings(page, nav), nav.pages]:
-                items[items.index(temp)] = page
-
         # If we're not building a standalone blog, the entrypoint will always
         # have a parent when it is included in the navigation. The parent is
         # essential to correctly resolve the location where the archive and
