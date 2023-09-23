@@ -8,7 +8,7 @@
     <div class="md-sidebar md-sidebar--post" data-md-component="sidebar" data-md-type="navigation">
       <div class="md-sidebar__scrollwrap">
         <div class="md-sidebar__inner md-post">
-          <nav class="md-nav">
+          <nav class="md-nav md-nav--primary">
             <div class="md-post__back">
               <div class="md-nav__title md-nav__container">
                 <a href="{{ page.parent.url | url }}" class="md-nav__link">
@@ -35,62 +35,66 @@
               </div>
             {% endif %}
             <ul class="md-post__meta md-nav__list">
-              <li class="md-nav__item md-nav__title">
-                <div class="md-nav__link">
+              <li class="md-nav__item md-nav__item--section">
+                <div class="md-post__title">
                   <span class="md-ellipsis">
                     {{ lang.t("blog.meta") }}
                   </span>
                 </div>
+                <nav class="md-nav">
+                  <ul class="md-nav__list">
+                    <li class="md-nav__item">
+                      <div class="md-nav__link">
+                        {% include ".icons/material/calendar.svg" %}
+                        <time datetime="{{ page.config.date.created }}" class="md-ellipsis">
+                          {{- page.config.date.created | date -}}
+                        </time>
+                      </div>
+                    </li>
+                    {% if page.config.date.updated %}
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          {% include ".icons/material/calendar-clock.svg" %}
+                          <time datetime="{{ page.config.date.updated }}" class="md-ellipsis">
+                            {{- page.config.date.updated | date -}}
+                          </time>
+                        </div>
+                      </li>
+                    {% endif %}
+                    {% if page.categories %}
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          {% include ".icons/material/bookshelf.svg" %}
+                          <span class="md-ellipsis">
+                            {{ lang.t("blog.categories.in") }}
+                            {% for category in page.categories %}
+                              <a href="{{ category.url | url }}">
+                                {{- category.title -}}
+                              </a>
+                              {%- if loop.revindex > 1 %}, {% endif -%}
+                            {% endfor -%}
+                          </span>
+                        </div>
+                      </li>
+                    {% endif %}
+                    {% if page.config.readtime %}
+                      {% set time = page.config.readtime %}
+                      <li class="md-nav__item">
+                        <div class="md-nav__link">
+                          {% include ".icons/material/clock-outline.svg" %}
+                          <span class="md-ellipsis">
+                            {% if time == 1 %}
+                              {{ lang.t("readtime.one") }}
+                            {% else %}
+                              {{ lang.t("readtime.other") | replace("#", time) }}
+                            {% endif %}
+                          </span>
+                        </div>
+                      </li>
+                    {% endif %}
+                  </ul>
+                </nav>
               </li>
-              <li class="md-nav__item">
-                <div class="md-nav__link">
-                  {% include ".icons/material/calendar.svg" %}
-                  <time datetime="{{ page.config.date.created }}" class="md-ellipsis">
-                    {{- page.config.date.created | date -}}
-                  </time>
-                </div>
-              </li>
-              {% if page.config.date.updated %}
-                <li class="md-nav__item">
-                  <div class="md-nav__link">
-                    {% include ".icons/material/calendar-clock.svg" %}
-                    <time datetime="{{ page.config.date.updated }}" class="md-ellipsis">
-                      {{- page.config.date.updated | date -}}
-                    </time>
-                  </div>
-                </li>
-              {% endif %}
-              {% if page.categories %}
-                <li class="md-nav__item">
-                  <div class="md-nav__link">
-                    {% include ".icons/material/bookshelf.svg" %}
-                    <span class="md-ellipsis">
-                      {{ lang.t("blog.categories.in") }}
-                      {% for category in page.categories %}
-                        <a href="{{ category.url | url }}">
-                          {{- category.title -}}
-                        </a>
-                        {%- if loop.revindex > 1 %}, {% endif -%}
-                      {% endfor -%}
-                    </span>
-                  </div>
-                </li>
-              {% endif %}
-              {% if page.config.readtime %}
-                {% set time = page.config.readtime %}
-                <li class="md-nav__item">
-                  <div class="md-nav__link">
-                    {% include ".icons/material/clock-outline.svg" %}
-                    <span class="md-ellipsis">
-                      {% if time == 1 %}
-                        {{ lang.t("readtime.one") }}
-                      {% else %}
-                        {{ lang.t("readtime.other") | replace("#", time) }}
-                      {% endif %}
-                    </span>
-                  </div>
-                </li>
-              {% endif %}
             </ul>
           </nav>
           {% if "toc.integrate" in features %}

@@ -29,6 +29,8 @@ env:
 
 permissions:
   contents: write
+  id-token: write
+  pages: write
 
 jobs:
   documentation:
@@ -40,20 +42,25 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          sparse-checkout: |
+            docs
+            includes
+            material/overrides
+            src/templates/partials/languages
 
       - name: Set up Python runtime
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Set the date environmental variable
-        run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements.txt
 
       - name: Set up build cache
-        uses: actions/cache@v3
-        id: cache
+        uses: actions/cache/restore@v3
         with:
-          key: mkdocs-material-${{ env.cache_id }}
+          key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: .cache
           restore-keys: |
             mkdocs-material-
@@ -63,15 +70,8 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install \
-            "cairosvg>=2.5" \
-            "mkdocs-git-committers-plugin-2>=1.1.1" \
-            "mkdocs-git-revision-date-localized-plugin>=1.0" \
-            "mkdocs-minify-plugin>=0.3" \
-            "mkdocs-rss-plugin>=1.2" \
-            "mkdocs-redirects>=1.0" \
-            "lxml" \
-            "pillow<10"
+          pip install mkdocs-material
+          pip install mkdocs-material[recommended,git,imaging]
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
@@ -88,10 +88,30 @@ jobs:
           rm -rf material
           cp -r mkdocs-material-insiders/material material
 
-      - name: Deploy documentation
+      - name: Build documentation
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
         run: |
-          mkdocs gh-deploy --force
+          mkdocs build --clean
           mkdocs --version
+
+      - name: Adjust permissions
+        run: |
+          chmod -c -R +rX site/ | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+
+      - name: Save build cache
+        uses: actions/cache/save@v3
+        with:
+          key: mkdocs-material-${{ hashfiles('.cache/**') }}
+          path: .cache

@@ -36,7 +36,35 @@ permissions:
   contents: read
 
 jobs:
-  npm:
+  npm-build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js runtime
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Set up Node.js dependency cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+
+      - name: Set up Node.js dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build project
+        run: |
+          npm run build
+          git diff --name-only
+
+  npm-check:
     runs-on: ubuntu-latest
     steps:
 
@@ -62,12 +90,7 @@ jobs:
       - name: Check project
         run: npm run check
 
-      - name: Build project
-        run: |
-          npm run build
-          git diff --name-only
-
-  pypi:
+  python:
     runs-on: ubuntu-latest
     steps:
 
@@ -78,6 +101,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements.txt
 
       - name: Set up Python dependencies
         run: pip install --upgrade build twine
