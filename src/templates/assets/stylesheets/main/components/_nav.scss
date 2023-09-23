@@ -125,7 +125,7 @@
     }
 
     // Navigation link on focus/hover
-    @at-root :is(a#{&}, label#{&}):is(:focus, :hover) {
+    &:is([href], [for]):is(:focus, :hover) {
       color: var(--md-accent-fg-color);
       cursor: pointer;
     }
@@ -606,8 +606,9 @@
           pointer-events: none;
         }
 
-        // Hide naviation icon
-        .md-nav__icon {
+        // Hide navigation icon
+        > [for],
+        .md-icon {
           display: none;
         }
       }
