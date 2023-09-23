@@ -173,6 +173,9 @@
     // Stretch first child
     &:first-child {
       flex-grow: 1;
+      // Hack: if a very long word is used, it can push the arrow out of sight.
+      // Setting this property contains the text - see https://t.ly/E02vp
+      min-width: 0;
     }
   }
 
