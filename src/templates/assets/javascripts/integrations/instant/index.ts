@@ -30,10 +30,12 @@ import {
   debounceTime,
   distinctUntilKeyChanged,
   endWith,
+  filter,
   fromEvent,
   ignoreElements,
   map,
   of,
+  sample,
   share,
   skip,
   startWith,
@@ -289,19 +291,17 @@ export function setupInstantLoading(
   popstate$.pipe(map(getLocation))
     .subscribe(location$)
 
-  // Intercept clicks on anchor links, and scroll document into position. As
-  // we disabled scroll restoration, we need to do this manually here.
+  // Intercept clicks on anchor links, and scroll document into position - as
+  // we disabled scroll restoration, we need to do this manually here
   location$
     .pipe(
       startWith(getLocation()),
       bufferCount(2, 1),
-      switchMap(([prev, next]) => (
+      filter(([prev, next]) => (
         prev.pathname === next.pathname &&
         prev.hash     !== next.hash
-      )
-        ? of(next)
-        : EMPTY
-      )
+      )),
+      map(([, next]) => next)
     )
       .subscribe(url => {
         if (history.state !== null || !url.hash) {
@@ -311,6 +311,29 @@ export function setupInstantLoading(
           setLocationHash(url.hash)
           history.scrollRestoration = "manual"
         }
+      })
+
+  // Intercept clicks on the same anchor link - we must use a distinct pipeline
+  // for this, or we'd end up in a loop, setting the hash again and again
+  location$
+    .pipe(
+      sample(instant$),
+      startWith(getLocation()),
+      bufferCount(2, 1),
+      filter(([prev, next]) => (
+        prev.pathname === next.pathname &&
+        prev.hash     === next.hash
+      )),
+      map(([, next]) => next)
+    )
+      .subscribe(url => {
+        history.scrollRestoration = "auto"
+        setLocationHash(url.hash)
+        history.scrollRestoration = "manual"
+
+        // Hack: we need to make sure that we don't end up with multiple history
+        // entries for the same anchor link, so we just remove the last entry
+        history.back()
       })
 
   // After parsing the document, check if the current history entry has a state.
@@ -330,9 +353,8 @@ export function setupInstantLoading(
   // the current history state whenever the scroll position changes. This must
   // be debounced and cannot be done in popstate, as popstate has already
   // removed the entry from the history.
-  document$
+  viewport$
     .pipe(
-      switchMap(() => viewport$),
       distinctUntilKeyChanged("offset"),
       debounceTime(100)
     )
