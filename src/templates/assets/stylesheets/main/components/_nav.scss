@@ -588,6 +588,8 @@
       // Navigation
       > .md-nav {
         display: block;
+        opacity: 1;
+        visibility: visible;
 
         // Adjust spacing on next level item
         > .md-nav__list > .md-nav__item {
