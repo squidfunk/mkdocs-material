@@ -93,6 +93,7 @@
   // Navigation link
   &__link {
     display: flex;
+    gap: px2rem(8px);
     align-items: flex-start;
     margin-top: 0.625em;
     transition: color 125ms;
@@ -131,11 +132,6 @@
       flex-shrink: 0;
       height: 1.3em;
       fill: currentcolor;
-
-      // Adjust spacing of next child
-      + * {
-        margin-inline-start: px2rem(8px);
-      }
     }
 
     // Navigation link on focus/hover
