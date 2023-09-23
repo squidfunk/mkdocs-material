@@ -158,7 +158,12 @@
 
             <!-- Only render toggle if there's at least one more page -->
             {% if nav_item.children | length > 1 %}
-              <label class="md-nav__link {{ class }}" for="{{ path }}">
+              <label
+                class="md-nav__link {{ class }}"
+                for="{{ path }}"
+                id="{{ path }}_label"
+                tabindex="0"
+              >
                 <span class="md-nav__icon md-icon"></span>
               </label>
             {% endif %}
