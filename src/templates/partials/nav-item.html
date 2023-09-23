@@ -101,26 +101,26 @@
     {% endif %}
 
     <!-- Determine whether to render item as a section -->
-    {% if "navigation.sections" in features and level == 1 + (
-      "navigation.tabs" in features
-    ) %}
+    {% set tabs = "navigation.tabs" in features %}
+    {% set sections = "navigation.sections" in features %}
+    {% if tabs and level == 1 or sections and tabs >= level - 1 %}
       {% set class = class ~ " md-nav__item--section" %}
+      {% set is_section = true %}
 
     <!-- Determine whether to prune inactive item -->
     {% elif not nav_item.active and "navigation.prune" in features %}
       {% set class = class ~ " md-nav__item--pruned" %}
-      {% set prune = true %}
+      {% set is_pruned = true %}
     {% endif %}
 
     <!-- Nested navigation item -->
     <li class="{{ class }} md-nav__item--nested">
-      {% if not prune %}
-        {% set expanded = "navigation.expand" in features %}
-        {% set active = nav_item.active or expanded %}
+      {% if not is_pruned %}
+        {% set checked = "checked" if nav_item.active %}
 
         <!-- Determine checked and indeterminate state -->
-        {% set checked = "checked" if nav_item.active %}
-        {% if expanded and not checked %}
+        {% set is_expanded = "navigation.expand" in features %}
+        {% if is_expanded and not checked %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
 
@@ -134,11 +134,12 @@
 
         <!-- Toggle to expand nested items -->
         {% if not indexes %}
+          {% set tabindex = "0" if not is_section %}
           <label
             class="md-nav__link"
             for="{{ path }}"
             id="{{ path }}_label"
-            tabindex="0"
+            tabindex="{{ tabindex }}"
           >
             {{ render_content(nav_item) }}
             <span class="md-nav__icon md-icon"></span>
@@ -158,11 +159,12 @@
 
             <!-- Only render toggle if there's at least one more page -->
             {% if nav_item.children | length > 1 %}
+              {% set tabindex = "0" if not is_section %}
               <label
                 class="md-nav__link {{ class }}"
                 for="{{ path }}"
                 id="{{ path }}_label"
-                tabindex="0"
+                tabindex="{{ tabindex }}"
               >
                 <span class="md-nav__icon md-icon"></span>
               </label>

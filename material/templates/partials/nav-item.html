@@ -48,25 +48,26 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-    {% if "navigation.sections" in features and level == 1 + (
-      "navigation.tabs" in features
-    ) %}
+    {% set tabs = "navigation.tabs" in features %}
+    {% set sections = "navigation.sections" in features %}
+    {% if tabs and level == 1 or sections and tabs >= level - 1 %}
       {% set class = class ~ " md-nav__item--section" %}
+      {% set is_section = true %}
     {% elif not nav_item.active and "navigation.prune" in features %}
       {% set class = class ~ " md-nav__item--pruned" %}
-      {% set prune = true %}
+      {% set is_pruned = true %}
     {% endif %}
     <li class="{{ class }} md-nav__item--nested">
-      {% if not prune %}
-        {% set expanded = "navigation.expand" in features %}
-        {% set active = nav_item.active or expanded %}
+      {% if not is_pruned %}
         {% set checked = "checked" if nav_item.active %}
-        {% if expanded and not checked %}
+        {% set is_expanded = "navigation.expand" in features %}
+        {% if is_expanded and not checked %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
         <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>
         {% if not indexes %}
-          <label class="md-nav__link" for="{{ path }}" id="{{ path }}_label" tabindex="0">
+          {% set tabindex = "0" if not is_section %}
+          <label class="md-nav__link" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
             {{ render_content(nav_item) }}
             <span class="md-nav__icon md-icon"></span>
           </label>
@@ -78,7 +79,8 @@
               {{ render_content(index, nav_item) }}
             </a>
             {% if nav_item.children | length > 1 %}
-              <label class="md-nav__link {{ class }}" for="{{ path }}" id="{{ path }}_label" tabindex="0">
+              {% set tabindex = "0" if not is_section %}
+              <label class="md-nav__link {{ class }}" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             {% endif %}
