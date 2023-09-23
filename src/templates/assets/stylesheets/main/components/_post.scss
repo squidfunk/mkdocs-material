@@ -53,7 +53,7 @@
     display: flex;
     flex-direction: column;
     gap: px2rem(12px);
-    margin: 0 px2rem(12px);
+    margin: 0 px2rem(12px) px2rem(24px);
   }
 
   // Post metadata
@@ -68,6 +68,12 @@
         color: var(--md-accent-fg-color);
       }
     }
+  }
+
+  // Post navigation title @todo - generalize
+  &__title {
+    font-weight: 700;
+    color: var(--md-default-fg-color--light);
   }
 
   // Post excerpt
@@ -103,12 +109,6 @@
 
       margin-top: 0;
     }
-  }
-
-  // Adjust spacing for navigation
-  > .md-nav:first-child > .md-nav__list,
-  > .md-nav--secondary {
-    margin: 1em 0;
   }
 }
 

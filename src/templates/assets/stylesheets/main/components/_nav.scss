@@ -125,7 +125,7 @@
     }
 
     // Navigation link on focus/hover
-    &:not(.md-nav__container):is(:focus, :hover) {
+    @at-root :is(a#{&}, label#{&}):is(:focus, :hover) {
       color: var(--md-accent-fg-color);
       cursor: pointer;
     }
