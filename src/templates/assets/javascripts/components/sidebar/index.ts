@@ -24,6 +24,7 @@ import {
   Observable,
   Subject,
   animationFrameScheduler,
+  asyncScheduler,
   auditTime,
   combineLatest,
   defer,
@@ -36,6 +37,7 @@ import {
   ignoreElements,
   map,
   mergeMap,
+  observeOn,
   takeUntil,
   tap,
   withLatestFrom
@@ -202,6 +204,7 @@ export function mountSidebar(
       .pipe(
         mergeMap(label => fromEvent(label, "click")
           .pipe(
+            observeOn(asyncScheduler),
             map(() => label),
             takeUntil(done$)
           )
