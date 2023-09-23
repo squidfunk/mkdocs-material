@@ -110,6 +110,11 @@
       margin-top: 0;
     }
   }
+
+  // Add margin to table of contents
+  > .md-nav--secondary {
+    margin: 1em 0;
+  }
 }
 
 // ----------------------------------------------------------------------------

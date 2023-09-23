@@ -740,7 +740,15 @@
       .md-nav--secondary {
         display: block;
         margin-bottom: 1.25em;
+        visibility: visible;
         border-inline-start: px2rem(1px) solid var(--md-primary-fg-color);
+        opacity: 1;
+
+        // Navigation list
+        > .md-nav__list {
+          padding-bottom: 0;
+          overflow: visible;
+        }
 
         // Hide table of contents title
         > .md-nav__title {
