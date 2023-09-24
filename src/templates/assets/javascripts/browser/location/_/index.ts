@@ -22,6 +22,9 @@
 
 import { Subject } from "rxjs"
 
+import { feature } from "~/_"
+import { h } from "~/utilities"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -43,10 +46,31 @@ export function getLocation(): URL {
 /**
  * Set location
  *
- * @param url - URL to change to
+ * If instant navigation is enabled, this function creates a temporary anchor
+ * element, sets the `href` attribute, appends it to the body, clicks it, and
+ * then removes it again. The event will bubble up the DOM and trigger be
+ * intercepted by the instant loading business logic.
+ *
+ * Note that we must append and remove the anchor element, or the event will
+ * not bubble up the DOM, making it impossible to intercept it.
+ *
+ * @param url - URL to navigate to
+ * @param navigate - Force navigation
  */
-export function setLocation(url: URL | HTMLLinkElement): void {
-  location.href = url.href
+export function setLocation(
+  url: URL | HTMLLinkElement, navigate = false
+): void {
+  if (feature("navigation.instant") && !navigate) {
+    const el = h("a", { href: url.href })
+    document.body.appendChild(el)
+    el.click()
+    el.remove()
+
+  // If we're not using instant navigation, and the page should not be reloaded
+  // just instruct the browser to navigate to the given URL
+  } else {
+    location.href = url.href
+  }
 }
 
 /* ------------------------------------------------------------------------- */

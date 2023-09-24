@@ -50,7 +50,7 @@ export type Sitemap = string[]
  * Preprocess a list of URLs
  *
  * This function replaces the `site_url` in the sitemap with the actual base
- * URL, to allow instant loading to work in occasions like Netlify previews.
+ * URL, to allow instant navigation to work in occasions like Netlify previews.
  *
  * @param urls - URLs
  *

@@ -77,7 +77,7 @@ import {
 import {
   SearchIndex,
   setupClipboardJS,
-  setupInstantLoading,
+  setupInstantNavigation,
   setupVersionSelector
 } from "./integrations"
 import {
@@ -143,9 +143,9 @@ const index$ = document.forms.namedItem("search")
 const alert$ = new Subject<string>()
 setupClipboardJS({ alert$ })
 
-/* Set up instant loading, if enabled */
+/* Set up instant navigation, if enabled */
 if (feature("navigation.instant"))
-  setupInstantLoading({ location$, viewport$ })
+  setupInstantNavigation({ location$, viewport$ })
     .subscribe(document$)
 
 /* Set up version selector */
@@ -175,10 +175,7 @@ keyboard$
         case ",":
           const prev = getOptionalElement<HTMLLinkElement>("link[rel=prev]")
           if (typeof prev !== "undefined")
-            if (feature("navigation.instant"))
-              location$.next(new URL(prev.href))
-            else
-              setLocation(prev)
+            setLocation(prev)
           break
 
         /* Go to next page */
@@ -186,10 +183,7 @@ keyboard$
         case ".":
           const next = getOptionalElement<HTMLLinkElement>("link[rel=next]")
           if (typeof next !== "undefined")
-            if (feature("navigation.instant"))
-              location$.next(new URL(next.href))
-            else
-              setLocation(next)
+            setLocation(next)
           break
 
         /* Expand navigation, see https://bit.ly/3ZjG5io */
