@@ -71,6 +71,48 @@ interface SetupOptions {
 }
 
 /* ----------------------------------------------------------------------------
+ * Helper functions
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Create a map of head elements for lookup and replacement
+ *
+ * @param head - Document head
+ *
+ * @returns Element map
+ */
+function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
+  const tags = new Map<string, HTMLElement>()
+  for (const el of getElements(":scope > *", head)) {
+    let html = el.outerHTML
+
+    // If the current element is a style sheet or script, we must resolve the
+    // URL relative to the current location and make it absolute, so it's easy
+    // to deduplicate it later on by comparing the outer HTML of tags. We must
+    // keep identical style sheets and scripts without replacing them.
+    for (const key of ["href", "src"]) {
+      const value = el.getAttribute(key)!
+      if (value === null)
+        continue
+
+      // Resolve URL relative to current location
+      const url = new URL(value, getLocation())
+      const ref = el.cloneNode() as HTMLElement
+
+      // Set resolved URL and retrieve HTML for deduplication
+      ref.setAttribute(key, `${url}`)
+      html = ref.outerHTML
+    }
+
+    // Index element in tag map
+    tags.set(html, el)
+  }
+
+  // Return tag map
+  return tags
+}
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -84,7 +126,7 @@ interface SetupOptions {
  *
  * @returns Document observable
  */
-export function setupInstantLoading(
+export function setupInstantNavigation(
   { location$, viewport$ }: SetupOptions
 ): Observable<Document> {
   const config = configuration()
@@ -188,10 +230,10 @@ export function setupInstantLoading(
       history.pushState(null, "", url)
     })
 
-  // Emit URL that should be fetched via instant loading on location subject,
-  // which was passed into this function. The idea is that instant loading can
-  // be intercepted by other parts of the application, which can synchronously
-  // back up or restore state before instant loading happens.
+  // Emit URL that should be fetched via instant navigation on location subject,
+  // which was passed into this function. Instant navigation can be intercepted
+  // by other parts of the application, which can synchronously back up or
+  // restore state before instant navigation happens.
   instant$.subscribe(location$)
 
   // Fetch document - when fetching, we could use `responseType: document`, but
@@ -201,7 +243,7 @@ export function setupInstantLoading(
   // reason, we fall back to regular navigation and set the location explicitly,
   // which will force-load the page. Furthermore, we must pre-warm the buffer
   // for the duplicate check, or the first click on an anchor link will also
-  // trigger an instant loading event, which doesn't make sense.
+  // trigger an instant navigation event, which doesn't make sense.
   const response$ = location$
     .pipe(
       startWith(getLocation()),
@@ -210,7 +252,7 @@ export function setupInstantLoading(
       switchMap(url => request(url)
         .pipe(
           catchError(() => {
-            setLocation(url)
+            setLocation(url, true)
             return EMPTY
           })
         )
@@ -218,22 +260,14 @@ export function setupInstantLoading(
     )
 
   // Initialize the DOM parser, parse the returned HTML, and replace selected
-  // meta tags and components before handing control down to the application
+  // components before handing control down to the application
   const dom = new DOMParser()
   const document$ = response$
     .pipe(
       switchMap(res => res.text()),
       switchMap(res => {
-        const document = dom.parseFromString(res, "text/html")
+        const next = dom.parseFromString(res, "text/html")
         for (const selector of [
-
-          // Meta tags
-          "title",
-          "link[rel=canonical]",
-          "meta[name=author]",
-          "meta[name=description]",
-
-          // Components
           "[data-md-component=announce]",
           "[data-md-component=container]",
           "[data-md-component=header-topic]",
@@ -245,7 +279,7 @@ export function setupInstantLoading(
             : []
         ]) {
           const source = getOptionalElement(selector)
-          const target = getOptionalElement(selector, document)
+          const target = getOptionalElement(selector, next)
           if (
             typeof source !== "undefined" &&
             typeof target !== "undefined"
@@ -254,13 +288,28 @@ export function setupInstantLoading(
           }
         }
 
-        // After meta tags and components were replaced, re-evaluate scripts
+        // Update meta tags
+        const source = lookup(document.head)
+        const target = lookup(next.head)
+        for (const [html, el] of target) {
+          if (source.has(html)) {
+            source.delete(html)
+          } else {
+            document.head.appendChild(el)
+          }
+        }
+
+        // Remove meta tags that are not present in the new document
+        for (const el of source.values())
+          el.remove()
+
+        // After components and meta tags were replaced, re-evaluate scripts
         // that were provided by the author as part of Markdown files
         const container = getComponentElement("container")
         return concat(getElements("script", container))
           .pipe(
             switchMap(el => {
-              const script = document.createElement("script")
+              const script = next.createElement("script")
               if (el.src) {
                 for (const name of el.getAttributeNames())
                   script.setAttribute(name, el.getAttribute(name)!)
@@ -279,7 +328,7 @@ export function setupInstantLoading(
               }
             }),
             ignoreElements(),
-            endWith(document)
+            endWith(next)
           )
       }),
       share()

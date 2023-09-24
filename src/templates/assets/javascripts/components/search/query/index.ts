@@ -117,7 +117,7 @@ export function watchSearchQuery(
         first(active => !active)
       )
         .subscribe(() => {
-          const url = new URL(location.href)
+          const url = getLocation()
           url.searchParams.delete("q")
           history.replaceState({}, "", `${url}`)
         })

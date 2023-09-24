@@ -112,8 +112,8 @@ export function setupVersionSelector(
                 // find the same page, as we might have different deployments
                 // due to aliases. However, if we're outside the version
                 // selector, we must abort here, because we might otherwise
-                // interfere with instant loading. We need to refactor this
-                // at some point together with instant loading.
+                // interfere with instant navigation. We need to refactor this
+                // at some point together with instant navigation.
                 //
                 // See https://github.com/squidfunk/mkdocs-material/issues/4012
                 if (!ev.target.closest(".md-version")) {
@@ -143,7 +143,7 @@ export function setupVersionSelector(
         )
       )
     )
-      .subscribe(url => setLocation(url))
+      .subscribe(url => setLocation(url, true))
 
   /* Render version selector and warning */
   combineLatest([versions$, current$])
@@ -152,7 +152,7 @@ export function setupVersionSelector(
       topic.appendChild(renderVersionSelector(versions, current))
     })
 
-  /* Integrate outdated version banner with instant loading */
+  /* Integrate outdated version banner with instant navigation */
   document$.pipe(switchMap(() => current$))
     .subscribe(current => {
 

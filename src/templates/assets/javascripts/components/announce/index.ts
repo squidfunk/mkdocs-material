@@ -82,7 +82,7 @@ export function mountAnnounce(
   if (!feature("announce.dismiss") || !el.childElementCount)
     return EMPTY
 
-  /* Support instant loading - see https://t.ly/3FTme */
+  /* Support instant navigation - see https://t.ly/3FTme */
   if (!el.hidden) {
     const content = getElement(".md-typeset", el)
     if (__md_hash(content.innerHTML) === __md_get("__announce"))

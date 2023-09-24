@@ -77,7 +77,7 @@ import {
 import {
   SearchIndex,
   setupClipboardJS,
-  setupInstantLoading,
+  setupInstantNavigation,
   setupVersionSelector
 } from "./integrations"
 import {
@@ -143,9 +143,9 @@ const index$ = document.forms.namedItem("search")
 const alert$ = new Subject<string>()
 setupClipboardJS({ alert$ })
 
-/* Set up instant loading, if enabled */
+/* Set up instant navigation, if enabled */
 if (feature("navigation.instant"))
-  setupInstantLoading({ location$, viewport$ })
+  setupInstantNavigation({ location$, viewport$ })
     .subscribe(document$)
 
 /* Set up version selector */
