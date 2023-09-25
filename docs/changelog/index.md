@@ -2,6 +2,27 @@
 
 ## Material for MkDocs
 
+### 9.4.2 <small>September 25, 2023</small> { id="9.4.2" }
+
+- Updated Slovenian translations
+- Added animation to sidebar navigation expansion and collapse
+- Added support for auto-replacement of document head for instant navigation
+- Improved compatibility of new emoji extension with Python < 3.10
+- Switched regex dependency to use minimal version
+- Refactored alignment and spacing of sidebar navigation
+- Fixed expansion button not focusable via keyboard in sidebar navigation
+- Fixed viewport offset restoration on first load when using instant navigation
+- Fixed accidental highlight of non-clickable elements in blog plugin sidebar
+- Fixed #6041: Blog plugin crashes when `nav` is defined and blog not included
+- Fixed #5972: Blog plugin ignores section index pages in paginated views
+- Fixed #5954: Repeated click on anchor ignored when using instant navigation
+- Fixed #5742: Keyboard navigation broken when using instant navigation
+
+__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.1...master))
+
+- `partials/nav-item.html`
+- `blog-post.html`
+
 ### 9.4.1 <small>September 22, 2023</small> { id="9.4.1" }
 
 - Improved colors and contrast in dark mode
