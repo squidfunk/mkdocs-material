@@ -18,7 +18,7 @@
 - Fixed #5954: Repeated click on anchor ignored when using instant navigation
 - Fixed #5742: Keyboard navigation broken when using instant navigation
 
-__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.1...master))
+__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.1...9.4.2))
 
 - `partials/nav-item.html`
 - `blog-post.html`
