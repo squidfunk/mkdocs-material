@@ -370,7 +370,7 @@
       }
 
       // Show buttons when search is active and input non-empty
-      [data-md-toggle="search"]:checked ~ .md-header
+      [data-md-toggle="search"]:checked ~ .md-header // stylelint-disable-line
       .md-search__input:valid ~ & {
         pointer-events: initial;
         opacity: 1;
