@@ -36,17 +36,21 @@
 
   // Tag list
   .md-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: px2em(8px);
     margin-top: px2em(-2px);
     margin-bottom: px2em(12px);
   }
 
   // Tag
   .md-tag {
-    display: inline-block;
-    padding: px2em(4px, 12.8px) px2em(12px, 12.8px);
-    margin-inline-end: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: px2rem(12.8px);
+    display: inline-flex;
+    gap: px2em(8px);
+    align-items: center;
+    padding: px2em(4px, 12.8px) px2em(10px, 12.8px);
+    font-size: px2rem(12.8px); // Fallback
+    font-size: min(px2em(12.8px), px2rem(12.8px));
     font-weight: 700;
     line-height: 1.6;
     letter-spacing: initial;
@@ -83,7 +87,6 @@
       display: inline-block;
       width: 1.2em;
       height: 1.2em;
-      margin-right: 0.4em;
       vertical-align: text-bottom;
       content: "";
       background-color: var(--md-default-fg-color--lighter);
