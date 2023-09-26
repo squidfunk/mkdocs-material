@@ -168,92 +168,92 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Getting started:
-    - Installation: getting-started.md
-    - Creating your site: creating-your-site.md
-    - Publishing your site: publishing-your-site.md
-    - Customization: customization.md
-    - Conventions: conventions.md
-    - Browser support: browser-support.md
-    - Enterprise feedback: enterprise-support.md
-    - Philosophy: philosophy.md
-    - Alternatives: alternatives.md
-    - License: license.md
-    - Changelog:
-      - changelog/index.md
-      - How to upgrade: upgrade.md
-    - Contributing:
-      - contributing/index.md
-      - Reporting a bug: contributing/reporting-a-bug.md
-      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
-      - Requesting a change: contributing/requesting-a-change.md
-      - Adding translations: contributing/adding-translations.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
-    - Guides:
-      - Creating a reproduction: guides/creating-a-reproduction.md
-    - FAQ:
-      - Sponsoring: faq/sponsoring.md
+      - Installation: getting-started.md
+      - Creating your site: creating-your-site.md
+      - Publishing your site: publishing-your-site.md
+      - Customization: customization.md
+      - Conventions: conventions.md
+      - Browser support: browser-support.md
+      - Enterprise feedback: enterprise-support.md
+      - Philosophy: philosophy.md
+      - Alternatives: alternatives.md
+      - License: license.md
+      - Changelog:
+          - changelog/index.md
+          - How to upgrade: upgrade.md
+      - Contributing:
+          - contributing/index.md
+          - Reporting a bug: contributing/reporting-a-bug.md
+          - Reporting a docs issue: contributing/reporting-a-docs-issue.md
+          - Requesting a change: contributing/requesting-a-change.md
+          - Adding translations: contributing/adding-translations.md
+          - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+      - Guides:
+          - Creating a reproduction: guides/creating-a-reproduction.md
+      - FAQ:
+          - Sponsoring: faq/sponsoring.md
   - Setup:
-    - setup/index.md
-    - Changing the colors: setup/changing-the-colors.md
-    - Changing the fonts: setup/changing-the-fonts.md
-    - Changing the language: setup/changing-the-language.md
-    - Changing the logo and icons: setup/changing-the-logo-and-icons.md
-    - Ensuring data privacy: setup/ensuring-data-privacy.md
-    - Setting up navigation: setup/setting-up-navigation.md
-    - Setting up site search: setup/setting-up-site-search.md
-    - Setting up site analytics: setup/setting-up-site-analytics.md
-    - Setting up social cards: setup/setting-up-social-cards.md
-    - Setting up a blog: setup/setting-up-a-blog.md
-    - Setting up tags: setup/setting-up-tags.md
-    - Setting up versioning: setup/setting-up-versioning.md
-    - Setting up the header: setup/setting-up-the-header.md
-    - Setting up the footer: setup/setting-up-the-footer.md
-    - Adding a git repository: setup/adding-a-git-repository.md
-    - Adding a comment system: setup/adding-a-comment-system.md
-    - Building an optimized site: setup/building-an-optimized-site.md
-    - Building for offline usage: setup/building-for-offline-usage.md
-    - Extensions:
-      - setup/extensions/index.md
-      - Python Markdown: setup/extensions/python-markdown.md
-      - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
+      - setup/index.md
+      - Changing the colors: setup/changing-the-colors.md
+      - Changing the fonts: setup/changing-the-fonts.md
+      - Changing the language: setup/changing-the-language.md
+      - Changing the logo and icons: setup/changing-the-logo-and-icons.md
+      - Ensuring data privacy: setup/ensuring-data-privacy.md
+      - Setting up navigation: setup/setting-up-navigation.md
+      - Setting up site search: setup/setting-up-site-search.md
+      - Setting up site analytics: setup/setting-up-site-analytics.md
+      - Setting up social cards: setup/setting-up-social-cards.md
+      - Setting up a blog: setup/setting-up-a-blog.md
+      - Setting up tags: setup/setting-up-tags.md
+      - Setting up versioning: setup/setting-up-versioning.md
+      - Setting up the header: setup/setting-up-the-header.md
+      - Setting up the footer: setup/setting-up-the-footer.md
+      - Adding a git repository: setup/adding-a-git-repository.md
+      - Adding a comment system: setup/adding-a-comment-system.md
+      - Building an optimized site: setup/building-an-optimized-site.md
+      - Building for offline usage: setup/building-for-offline-usage.md
+      - Extensions:
+          - setup/extensions/index.md
+          - Python Markdown: setup/extensions/python-markdown.md
+          - Python Markdown Extensions: setup/extensions/python-markdown-extensions.md
   - Plugins:
-    - plugins/index.md
-    - Blog: plugins/blog.md
-    - Group: plugins/group.md
-    - Info: plugins/info.md
-    - Meta: plugins/meta.md
-    - Offline: plugins/offline.md
-    - Optimize: plugins/optimize.md
-    - Privacy: plugins/privacy.md
-    - Projects: plugins/projects.md
-    - Search: plugins/search.md
-    - Social: plugins/social.md
-    - Tags: plugins/tags.md
-    - Typeset: plugins/typeset.md
-    - Requirements:
-      - Image processing: plugins/requirements/image-processing.md
-      - Caching: plugins/requirements/caching.md
+      - plugins/index.md
+      - Blog: plugins/blog.md
+      - Group: plugins/group.md
+      - Info: plugins/info.md
+      - Meta: plugins/meta.md
+      - Offline: plugins/offline.md
+      - Optimize: plugins/optimize.md
+      - Privacy: plugins/privacy.md
+      - Projects: plugins/projects.md
+      - Search: plugins/search.md
+      - Social: plugins/social.md
+      - Tags: plugins/tags.md
+      - Typeset: plugins/typeset.md
+      - Requirements:
+          - Image processing: plugins/requirements/image-processing.md
+          - Caching: plugins/requirements/caching.md
   - Reference:
-    - reference/index.md
-    - Admonitions: reference/admonitions.md
-    - Annotations: reference/annotations.md
-    - Buttons: reference/buttons.md
-    - Code blocks: reference/code-blocks.md
-    - Content tabs: reference/content-tabs.md
-    - Data tables: reference/data-tables.md
-    - Diagrams: reference/diagrams.md
-    - Footnotes: reference/footnotes.md
-    - Formatting: reference/formatting.md
-    - Grids: reference/grids.md
-    - Icons, Emojis: reference/icons-emojis.md
-    - Images: reference/images.md
-    - Lists: reference/lists.md
-    - Math: reference/math.md
-    - Tooltips: reference/tooltips.md
+      - reference/index.md
+      - Admonitions: reference/admonitions.md
+      - Annotations: reference/annotations.md
+      - Buttons: reference/buttons.md
+      - Code blocks: reference/code-blocks.md
+      - Content tabs: reference/content-tabs.md
+      - Data tables: reference/data-tables.md
+      - Diagrams: reference/diagrams.md
+      - Footnotes: reference/footnotes.md
+      - Formatting: reference/formatting.md
+      - Grids: reference/grids.md
+      - Icons, Emojis: reference/icons-emojis.md
+      - Images: reference/images.md
+      - Lists: reference/lists.md
+      - Math: reference/math.md
+      - Tooltips: reference/tooltips.md
   - Insiders:
-    - insiders/index.md
-    - Getting started:
-      - Installation: insiders/getting-started.md
-      - Changelog: insiders/changelog.md
+      - insiders/index.md
+      - Getting started:
+          - Installation: insiders/getting-started.md
+          - Changelog: insiders/changelog.md
   - Blog:
-    - blog/index.md
+      - blog/index.md

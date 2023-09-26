@@ -57,6 +57,12 @@ jobs:
             pyproject.toml
             requirements.txt
 
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Check MkDocs YAML configuration
+        run: yamllint mkdocs.yml
+
       - name: Set up build cache
         uses: actions/cache/restore@v3
         with:
