@@ -85,7 +85,7 @@ the defaults, or use:
 ### Choosing a font
 
 Some fonts do not contain CJK characters, like for example the
-[default font, `Roboto`][roboto]. In case your `site_name`, `site_description`, or
+[default font, `Roboto`][font]. In case your `site_name`, `site_description`, or
 page title contain CJK characters, choose another font from [Google Fonts] which
 comes with CJK characters, e.g. one from the `Noto Sans` font family:
 
@@ -125,7 +125,7 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
             font_family: Noto Sans KR
     ```
 
-  [roboto]: https://fonts.google.com/specimen/Roboto
+  [font]: changing-the-fonts.md#regular-font
 
 ### Changing the layout
 
