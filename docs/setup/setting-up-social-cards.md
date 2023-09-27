@@ -125,6 +125,8 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
             font_family: Noto Sans KR
     ```
 
+  [font]: changing-the-fonts.md#regular-font
+
 ### Changing the layout
 
 <!-- md:version insiders-4.37.0 -->
