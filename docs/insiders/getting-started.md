@@ -30,20 +30,31 @@ your GitHub account in order to access the Insiders repository programmatically
   [Generate a new token]: https://github.com/settings/tokens/new
   [scopes]: https://docs.github.com/en/developers/apps/scopes-for-oauth-apps#available-scopes
 
+Some of the instructions below require that the `GH_TOKEN` environment
+variable is set to the value of the personal access token you
+generated in the previous step. Note that the personal access token
+must be kept secret at all times, as it allows the owner to access
+your private repositories.
+
 ## Installation
 
 ### with pip
 
-Material for MkDocs Insiders can be installed with `pip`:
+Material for MkDocs Insiders can be installed with `pip`. You will
+normally want to install the latest release but can also install a
+specific older release. Pick the corresponding tag from the [list of
+tags] for the Insiders repository. In the `pip` command below, replace
+the tag with the one you want to install and make sure to have the
+`GH_TOKEN` variable set as instructed above.
 
 ``` sh
-pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git@9.4.2-insiders-4.42.0
 ```
 
-The `GH_TOKEN` environment variable must be set to the value of the personal
-access token you generated in the previous step. Note that the personal access
-token must be kept secret at all times, as it allows the owner to access your
-private repositories.
+To install the latest development version, simply remove the last `@`
+symbol in the command and everything that follows it.
+
+[list of tags]: https://github.com/squidfunk/mkdocs-material-insiders/tags
 
 ### with docker
 
