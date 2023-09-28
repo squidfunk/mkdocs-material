@@ -95,8 +95,8 @@ changes into your templates. A good starting point is to [inspect the diff].
   [inspect the diff]: https://github.com/squidfunk/mkdocs-material/pull/4628/files#diff-3ca112736b9164701b599f34780107abf14bb79fe110c478cac410be90899828
   [MkDocs 1.4.1]: https://github.com/mkdocs/mkdocs/releases/tag/1.4.1
   [in config.plugins]: https://github.com/squidfunk/mkdocs-material/search?q=%22in+config.plugins%22
-  [content.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/content.html
-  [header.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/header.html
+  [content.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/content.html
+  [header.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/header.html
 
 ## Upgrading from 7.x to 8.x
 

@@ -50,6 +50,22 @@
               "type": "string",
               "default": "projects"
             },
+            "projects_config_files": {
+              "title": "Projects configuration files",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.projects_config_files",
+              "type": "string",
+              "default": "\"*/mkdocs.yml\""
+            },
+            "projects_config_transform": {
+              "title": "Projects configuration transform",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.projects_config_transform",
+              "type": "string",
+              "defaultSnippets": [
+                {
+                  "body": "!!python/name:${1:module}.${2:function}"
+                }
+              ]
+            },
             "hosting": {
               "title": "Enable hoisting",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.hoisting",

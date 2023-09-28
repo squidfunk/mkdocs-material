@@ -31,6 +31,7 @@ Social card of our [formatting] reference
 
   [custom layouts]: #customization
   [formatting]: ../reference/formatting.md
+  [Layout default variant]: ../assets/screenshots/social-cards-variant.png
 
 ## Configuration
 
@@ -123,6 +124,8 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
           cards_layout_options:
             font_family: Noto Sans KR
     ```
+
+  [font]: changing-the-fonts.md#regular-font
 
 ### Changing the layout
 

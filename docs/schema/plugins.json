@@ -93,7 +93,7 @@
       ]
     },
     "external-community": {
-      "description": "External plugins, schema provided by the community",
+      "description": "External plugins, schema provided by our community",
       "anyOf": [
         {
           "$ref": "https://raw.githubusercontent.com/mondeja/mkdocs-include-markdown-plugin/master/schema.json"

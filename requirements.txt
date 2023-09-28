@@ -21,8 +21,8 @@
 # Requirements for core
 jinja2~=3.0
 markdown~=3.2
-mkdocs~=1.5
-mkdocs-material-extensions~=1.1
+mkdocs~=1.5,>=1.5.3
+mkdocs-material-extensions~=1.2
 pygments~=2.16
 pymdown-extensions~=10.2
 
@@ -30,5 +30,5 @@ pymdown-extensions~=10.2
 babel~=2.10
 colorama~=0.4
 paginate~=0.5
-regex~=2022.4
+regex>=2022.4
 requests~=2.26

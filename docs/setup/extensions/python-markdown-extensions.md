@@ -222,8 +222,8 @@ in `*.svg` file format into the resulting HTML page. Enable it via `mkdocs.yml`:
 ``` yaml
 markdown_extensions:
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji # (1)!
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji # (1)!
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 ```
 
 1.  [Python Markdown Extensions] uses the `pymdownx` namespace, but in order to
@@ -241,7 +241,7 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_index: !!python/name:materialx.emoji.twemoji
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
     ```
 
 <!-- md:option pymdownx.emoji.emoji_generator -->
@@ -253,7 +253,7 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_generator: !!python/name:materialx.emoji.to_svg
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
     ```
 
 <!-- md:option pymdownx.emoji.options.custom_icons -->
@@ -265,8 +265,8 @@ The following configuration options are supported:
     ``` yaml
     markdown_extensions:
       - pymdownx.emoji:
-          emoji_index: !!python/name:materialx.emoji.twemoji
-          emoji_generator: !!python/name:materialx.emoji.to_svg
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
           options:
             custom_icons:
               - overrides/.icons
@@ -665,6 +665,18 @@ The following configuration options are supported:
           alternate_style: true
     ```
 
+<!-- md:option pymdownx.tabbed.combine_header_slug -->
+
+:   <!-- md:default `false` --> This option enables the content tabs
+    [combine_header_slug style] flag, which prepends the id of the header to
+    the id of the tab:
+
+    ``` yaml
+    markdown_extensions:
+      - pymdownx.tabbed:
+          combine_header_slug: true
+    ```
+
 <!-- md:option pymdownx.tabbed.slugify -->
 
 :   <!-- md:default `toc.slugify` --> This option allows for
@@ -702,6 +714,7 @@ See reference for usage:
 
   [Tabbed]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
+  [combine_header_slug style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#tab-ids
   [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
   [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
   [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content

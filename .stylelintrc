@@ -2,7 +2,8 @@
   "extends": [
     "stylelint-config-recess-order",
     "stylelint-config-recommended",
-    "stylelint-config-standard-scss"
+    "stylelint-config-standard-scss",
+    "stylelint-stylistic/config"
   ],
   "plugins": [
     "stylelint-scss"
@@ -32,16 +33,6 @@
       }
     ],
     "at-rule-no-unknown": null,
-    "block-closing-brace-newline-after": [
-      "always",
-      {
-        "ignoreAtRules": [
-          "if",
-          "else",
-          "elseif"
-        ]
-      }
-    ],
     "color-function-notation": null,
     "color-hex-length": "long",
     "color-named": "never",
@@ -58,12 +49,12 @@
     "declaration-colon-space-after": null,
     "declaration-no-important": true,
     "declaration-block-single-line-max-declarations": 0,
+    "font-family-name-quotes": "always-where-recommended",
+    "font-weight-notation": "numeric",
     "function-calc-no-unspaced-operator": null,
     "function-no-unknown": null,
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
-    "font-family-name-quotes": "always-where-recommended",
-    "font-weight-notation": "numeric",
     "hue-degree-notation": "number",
     "length-zero-no-unit": [
       true,
@@ -71,12 +62,10 @@
         "ignore": ["custom-properties"]
       }
     ],
-    "linebreaks": "unix",
     "media-feature-name-no-unknown": null,
     "media-feature-range-notation": null,
     "media-query-no-invalid": null,
     "no-descending-specificity": null,
-    "no-empty-first-line": true,
     "no-unknown-animations": true,
     "property-no-unknown": null,
     "property-no-vendor-prefix": [
@@ -92,13 +81,10 @@
     "selector-combinator-space-before": null,
     "selector-descendant-combinator-no-non-space": null,
     "selector-id-pattern": null,
-    "selector-max-empty-lines": 0,
     "selector-max-id": 0,
     "selector-no-qualifying-type": null,
     "selector-pseudo-class-no-unknown": null,
     "selector-pseudo-element-no-unknown": null,
-    "string-quotes": "double",
-    "unicode-bom": "never",
     "unit-allowed-list": [
       "%",
       "ch",
@@ -160,6 +146,23 @@
     "scss/operator-no-unspaced": true,
     "scss/partial-no-import": true,
     "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
-    "scss/selector-no-redundant-nesting-selector": true
+    "scss/selector-no-redundant-nesting-selector": true,
+    "stylistic/block-closing-brace-newline-after": [
+      "always",
+      {
+        "ignoreAtRules": [
+          "if",
+          "else",
+          "elseif"
+        ]
+      }
+    ],
+    "stylistic/declaration-colon-space-after": null,
+    "stylistic/no-empty-first-line": true,
+    "stylistic/linebreaks": "unix",
+    "stylistic/selector-max-empty-lines": 0,
+    "stylistic/string-quotes": "double",
+    "stylistic/unicode-bom": "never",
+    "stylistic/value-list-comma-newline-after": null
   }
 }

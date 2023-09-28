@@ -34,7 +34,7 @@ contents:
       deploy:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v3
+          - uses: actions/checkout@v4
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
@@ -89,7 +89,7 @@ contents:
         runs-on: ubuntu-latest
         if: github.event.repository.fork == false
         steps:
-          - uses: actions/checkout@v3
+          - uses: actions/checkout@v4
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x

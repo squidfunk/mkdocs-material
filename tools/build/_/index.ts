@@ -137,7 +137,7 @@ export function watch(
 ): Observable<string> {
   return fromEvent(
     chokidar.watch(pattern, options),
-    "change"
+    "change", file => file // see https://t.ly/dli_k
   ) as Observable<string>
 }
 

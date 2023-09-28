@@ -1,9 +1,9 @@
-# Reporting a bug
+# Bug reports
 
 Material for MkDocs is an actively maintained project that we constantly strive
 to improve. With a project of this size and complexity, bugs may occur. If you
 think you have discovered a bug, you can help us by submitting an issue in our
-public [issue tracker] by following this guide.
+public [issue tracker], following this guide.
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
 
@@ -14,7 +14,7 @@ of this project are trying very hard to keep the number of open issues down by
 fixing bugs as fast as possible. By following this guide, you will know exactly
 what information we need to help you quickly.
 
-__But first, please try the following things before creating an issue.__
+__But first, please do the following things before creating an issue.__
 
 ### Upgrade to latest version
 
@@ -37,7 +37,7 @@ We can't offer official support for bugs that might hide in your overrides, so
 make sure to omit the following settings from `mkdocs.yml`:
 
   - [`theme.custom_dir`][theme.custom_dir]
-  - [`theme.hooks`][theme.hooks]
+  - [`hooks`][hooks]
   - [`extra_css`][extra_css]
   - [`extra_javascript`][extra_javascript]
 
@@ -63,10 +63,10 @@ problems.__
   [JavaScript]: ../customization.md#additional-javascript
   [theme extension]: ../customization.md#extending-the-theme
   [theme.custom_dir]: https://www.mkdocs.org/user-guide/configuration/#custom_dir
-  [theme.hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
+  [hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
   [extra_css]: https://www.mkdocs.org/user-guide/configuration/#extra_css
   [extra_javascript]: https://www.mkdocs.org/user-guide/configuration/#extra_javascript
-  [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
+  [discussion board]: https://github.com/squidfunk/mkdocs-material/issues
   [StackOverflow]: https://stackoverflow.com
   [that our documentation explicitly mentions]: ?q="extends+base"
 
@@ -104,7 +104,7 @@ them in the bug report.__[^2]
 
   [^2]:
     We might be using terminology in our documentation different from yours,
-    but mean the same. When you include the search terms and related links
+    but we mean the same. When you include the search terms and related links
     in your bug report, you help us to adjust and improve the documentation.
 
 ---
@@ -119,13 +119,13 @@ how to create a complete and helpful bug report.
 ## Issue template
 
 We have created a new issue template to make the bug reporting process as simple
-as possible and more efficient for the community and us. It is the result of
+as possible and more efficient for our community and us. It is the result of
 our experience answering and fixing more than 1,600 issues (and counting) and
 consists of the following parts:
 
 - [Title]
 - [Context] <small>optional</small>
-- [Description]
+- [Bug description]
 - [Related links]
 - [Reproduction]
 - [Steps to reproduce]
@@ -134,7 +134,7 @@ consists of the following parts:
 
   [Title]: #title
   [Context]: #context
-  [Description]: #description
+  [Bug description]: #bug-description
   [Related links]: #related-links
   [Reproduction]: #reproduction
   [Steps to reproduce]: #steps-to-reproduce
@@ -152,12 +152,12 @@ can be inferred from the title.
 | :material-check:{ style="color: #4DB6AC" } __Clear__ | Built-in `typeset` plugin changes precedence of nav title over `h1`
 | :material-close:{ style="color: #EF5350" } __Wordy__ | The built-in `typeset` plugin changes the precedence of the nav title over the document headline
 | :material-close:{ style="color: #EF5350" } __Unclear__ | Title does not work
-| :material-close:{ style="color: #EF5350" } __Generic__ | Please help
+| :material-close:{ style="color: #EF5350" } __Useless__ | Help
 
 ### Context <small>optional</small> { #context }
 
 Before describing the bug, you can provide additional context for us to
-understand what you are trying to achieve. Explain the circumstances
+understand what you were trying to achieve. Explain the circumstances
 in which you're using Material for MkDocs, and what you _think_ might be
 relevant. Don't write about the bug here.
 
@@ -165,7 +165,7 @@ relevant. Don't write about the bug here.
 > environments or edge cases, for example, when your documentation contains
 > thousands of documents.
 
-### Description
+### Bug description
 
 Now, to the bug you want to report. Provide a clear, focused, specific, and
 concise summary of the bug you encountered. Explain why you think this is a bug
@@ -239,7 +239,7 @@ it allows us maintainers to instantly recreate the necessary conditions to
 inspect the bug to quickly find its root cause. It's a proven fact that issues
 with concise and small reproductions can be fixed much faster.
 
-[:material-bug:&nbsp; Create a reproduction][Create reproduction]{ .md-button .md-button--primary }
+[:material-bug: Create reproduction][Create reproduction]{ .md-button .md-button--primary }
 
 ---
 
@@ -256,7 +256,7 @@ will automatically upload it to GitHub.
 
     While we know that it is a good practice among developers to include a link
     to a repository with the bug report, we currently don't support those in our
-    process. The reason is that the reproduction which is automatically
+    process. The reason is that the reproduction, which is automatically
     produced by the [built-in info plugin] contains all of the necessary
     environment information that is often forgotten to be included.
 
@@ -264,16 +264,16 @@ will automatically upload it to GitHub.
     have trouble creating repositories.
 
   [Create reproduction]: ../guides/creating-a-reproduction.md
-  [built-in info plugin]: ../guides/creating-a-reproduction.md#creating-a-zip-file
+  [built-in info plugin]: ../plugins/info.md
 
 ### Steps to reproduce
 
-At this point, you provided us with enough information to understand the bug,
-and you gave us a reproduction that we could run and inspect. However, when we
-run your reproduction, it might not be immediately apparent how we can see
+At this point, you provided us with enough information to understand the bug
+and provided us with a reproduction that we could run and inspect. However, when
+we run your reproduction, it might not be immediately apparent how we can see
 the bug in action.
 
-Next, please list the specific steps we should follow when running your
+Thus, please list the specific steps we should follow when running your
 reproduction to observe the bug. Keep the steps short and concise, and make sure
 not to leave anything out. Use simple language as you would explain it to a
 five-year-old, and focus on continuity.
@@ -284,10 +284,16 @@ five-year-old, and focus on continuity.
 
 ### Browser <small>optional</small> { #browser }
 
-If you're reporting a bug that only happens in one or more _specific_ browsers,
+If you're reporting a bug that only occurs in one or more _specific_ browsers,
 we need to know which browsers are affected. This field is optional, as it is
 only relevant when the bug you are reporting does not involve a crash when
 [previewing] or [building] your site.
+
+---
+
+:material-incognito: __Incognito mode__ – Please verify that a the bug is
+not caused by a browser extension. Switch to incognito mode and try to reproduce
+the bug. If it's gone, it's caused by an extension.
 
 > __Why we need this__: some bugs only occur in specific browsers or versions.
 > Since now, almost all browsers are evergreen, we usually don't need to know the
@@ -300,15 +306,8 @@ only relevant when the bug you are reporting does not involve a crash when
 ### Checklist
 
 Thanks for following the guide and creating a high-quality and complete bug
-report – you are almost done. This section ensures that you have read this guide
-and have worked to the best of your knowledge to provide us with everything we
-need to know to help you.
+report – you are almost done. The checklist ensures that you have read this guide
+and have worked to your best knowledge to provide us with everything we need to
+know to help you.
 
 __We'll take it from here.__
-
-## Incomplete issues
-
-Please understand that we reserve the right to close incomplete issues which
-do not contain minimal reproductions or do not adhere to the quality standards
-and requirements mentioned in this document. Issues can be reopened when the
-missing information has been provided.

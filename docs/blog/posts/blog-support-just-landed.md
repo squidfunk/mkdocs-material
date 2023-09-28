@@ -7,7 +7,7 @@ description: >
 categories:
   - Blog
 links:
-  - Getting started with Insiders: insiders/getting-started.md#requirements
+  - setup/setting-up-a-blog.md
   - plugins/blog.md
 ---
 
@@ -36,27 +36,9 @@ If you want to build a blog alongside your documentation, please refer to
 
 ## Quick start
 
-### Setting up Insiders
-
-Before we can start bootstrapping a blog and [write our first post], we need to
-set up [Insiders], since the [built-in blog plugin] is currently reserved to
-sponsors. Without the funds this project receives through sponsorships, this
-plugin wouldn't exist. Three steps are necessary:
-
-1.  [Subscribe to a monthly sponsorship]
-2.  [Create a personal access token]
-3.  [Install Insiders]
-
-  [write our first post]: #writing-your-first-post
-  [Insiders]: ../../insiders/index.md
-  [Subscribe to a monthly sponsorship]: ../../insiders/index.md#how-to-become-a-sponsor
-  [Create a personal access token]: ../../insiders/getting-started.md#requirements
-  [Install Insiders]: ../../insiders/getting-started.md#installation
-
 ### Creating a standalone blog
 
-After Insiders is installed, you can bootstrap a new project using the `mkdocs`
-executable:
+You can bootstrap a new project using the `mkdocs` executable:
 
 ```
 mkdocs new .
@@ -84,7 +66,6 @@ theme:
   features:
     - navigation.sections
 plugins:
-  - meta
   - blog:
       blog_dir: . # (1)!
   - search

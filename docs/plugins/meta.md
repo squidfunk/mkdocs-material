@@ -181,9 +181,9 @@ The following settings are available for meta files:
 <!-- md:version insiders-4.21.0 -->
 <!-- md:default `.meta.yml` -->
 
-Use this setting to change the file  the plugin will look for when scanning
-the [`docs` directory][mkdocs.docs_dir]. It's normally not necessary to change
-this setting, but if you want to change it, use:
+Use this setting to change the meta file name the plugin will look for when
+scanning the [`docs` directory][mkdocs.docs_dir]. It's normally not necessary to
+change this setting, but if you want to change it, use:
 
 ``` yaml
 plugins:

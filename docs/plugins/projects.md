@@ -223,6 +223,107 @@ automatically hoisted by the plugin.
 
 The provided path is resolved from the root directory.
 
+---
+
+#### <!-- md:setting config.projects_config_files -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.42.0 -->
+<!-- md:default `*/mkdocs.yml` -->
+
+Use this setting to change the location or name of configuration files the
+plugin will look for when scanning the [`projects` directory]
+[config.projects_dir]. Adjusting this setting can be necessary when the
+configuration files are located in subdirectories of projects, e.g.
+`docs/mkdocs.yml`:
+
+``` yaml
+plugins:
+  - projects:
+      projects_config_files: "**/mkdocs.yml" # (1)!
+```
+
+1.  If all projects share the same location for their configuration files, e.g.,
+    `docs/mkdocs.yml`, it's advisable to fully qualify the path, as it's faster
+    to resolve than a `**` glob pattern.
+
+    ``` yaml
+    plugins:
+      - projects:
+          projects_config_files: "*/docs/mkdocs.yml"
+    ```
+
+    This configuration fits the following directory structure, which is quite
+    common for projects using git submodules:
+
+    ``` { .sh .no-copy }
+    .
+    ├─ docs/
+    ├─ projects/
+    │  ├─ git-submodule-a/
+    │  │  └─ docs/
+    │  │     └─ mkdocs.yml
+    │  └─ git-submodule-b/
+    │     └─ docs/
+    │        └─ mkdocs.yml
+    └─ mkdocs.yml
+    ```
+
+The provided path is resolved from the [`projects` directory]
+[config.projects_dir].
+
+---
+
+#### <!-- md:setting config.projects_config_transform -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.42.0 -->
+<!-- md:default none -->
+
+Use this setting to transform the configuration of each project as read from
+`mkdocs.yml` before it is built, which allows for adjusting the configuration
+of each project when building them together, but leave them untouched when
+building them individually:
+
+``` yaml
+plugins:
+  - projects:
+      projects_config_transform: !!python/name:projects.transform
+```
+
+The provided module and function name are looked up in Python's [module search
+path]. You need to add your root directory to the search path when building
+your site, so Python can resolve it. The easiest way is to add the working
+directory to the [`PYTHONPATH`][PYTHONPATH] environment variable:
+
+``` .sh
+export PYTHONPATH=.
+```
+
+!!! tip "How to define a configuration transformation function"
+
+    The [`python/name`][python-name] tag is provided by [PyYAML] and must point
+    to a valid module and function name within Python's [module search path].
+    The plugin passes the `project` and top-level `config` objects to the
+    function.
+
+    As an example, we can inherit the [`use_directory_urls`]
+    [mkdocs.use_directory_urls] setting for all projects from the top-level
+    configuration:
+
+    ``` py title="projects/__init__.py"
+    from mkdocs.config.defaults import MkDocsConfig
+
+    # Transform project configuration
+    def transform(project: MkDocsConfig, config: MkDocsConfig):
+        project.use_directory_urls = config.use_directory_urls
+    ```
+
+  [module search path]: https://docs.python.org/3/library/sys_path_init.html
+  [PYTHONPATH]: https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
+  [python-name]: https://pyyaml.org/wiki/PyYAMLDocumentation#yaml-tags-and-python-types
+  [PyYAML]: https://pyyaml.org/
+
 ### Hoisting
 
 The following settings are available for hoisting:
