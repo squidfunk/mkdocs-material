@@ -145,7 +145,7 @@ def _badge_for_version(text: str, page: Page, files: Files):
 # Create badge for version of Insiders
 def _badge_for_version_insiders(text: str, page: Page, files: Files):
     spec = text.replace("insiders-", "")
-    path = f"insiders/changelog.md#{spec}"
+    path = f"insiders/changelog/index.md#{spec}"
 
     # Return badge
     icon = "material-tag-heart-outline"
