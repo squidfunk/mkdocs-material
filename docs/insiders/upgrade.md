@@ -2,10 +2,10 @@
 
 When upgrading Insiders, you should always check the version of Material for
 MkDocs which makes up the first part of the version qualifier, e.g.Insiders
-`4.x.x` is currently based on `8.x.x`:
+`4.x.x` is currently based on `9.x.x`:
 
 ```
-8.x.x-insiders-4.x.x
+9.x.x-insiders-4.x.x
 ```
 
 If the major version increased, it's a good idea to consult the [upgrade
