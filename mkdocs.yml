@@ -253,8 +253,8 @@ nav:
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
-    - Getting started:
-      - Installation: insiders/getting-started.md
-      - Changelog: insiders/changelog.md
+    - Getting started with Insiders: insiders/getting-started.md
+    - Changelog: insiders/changelog.md
+    - How to upgrade: insiders/upgrade.md
   - Blog:
     - blog/index.md

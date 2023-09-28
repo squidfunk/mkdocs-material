@@ -1,4 +1,3 @@
-# Changelog
 
 ## Material for MkDocs Insiders
 

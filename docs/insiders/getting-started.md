@@ -42,17 +42,24 @@ your private repositories.
 
 Material for MkDocs Insiders can be installed with `pip`. You will
 normally want to install the latest release but can also install a
-specific older release. Pick the corresponding tag from the [list of
-tags] for the Insiders repository. In the `pip` command below, replace
-the tag with the one you want to install and make sure to have the
-`GH_TOKEN` variable set as instructed above.
+specific older release or even the latest development version. 
+Make sure you have the `GH_TOKEN` variable set as instructed above.
 
-``` sh
-pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git@9.4.2-insiders-4.42.0
-```
+=== "Specific release"
 
-To install the latest development version, simply remove the last `@`
-symbol in the command and everything that follows it.
+    Pick the corresponding tag from the [list of tags] for the Insiders 
+    repository. In the `pip` command below, replace the tag at the 
+    end of the URL with the one you want.
+
+    ``` sh
+    pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git@9.4.2-insiders-4.42.0
+    ```
+
+=== "Latest"
+
+    ``` sh
+    pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+    ```
 
 [list of tags]: https://github.com/squidfunk/mkdocs-material-insiders/tags
 
@@ -139,27 +146,6 @@ pip install -e mkdocs-material
   [Create a new release]: https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release
   [Pull App]: https://github.com/apps/pull
   [publish]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/publish.yml
-
-## Upgrading
-
-When upgrading Insiders, you should always check the version of Material for
-MkDocs which makes up the first part of the version qualifier, e.g.Insiders
-`4.x.x` is currently based on `8.x.x`:
-
-```
-8.x.x-insiders-4.x.x
-```
-
-If the major version increased, it's a good idea to consult the [upgrade
-guide] and go through the steps to ensure your configuration is up to date and
-all necessary changes have been made. If you installed Insiders via `pip`, you
-can upgrade your installation with the following command:
-
-```
-pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-```
-
-  [upgrade guide]: ../upgrade.md
 
 ## Built-in plugins
 
