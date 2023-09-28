@@ -1,7 +1,7 @@
 # How to upgrade
 
 When upgrading Insiders, you should always check the version of Material for
-MkDocs which makes up the first part of the version qualifier, e.g.Insiders
+MkDocs which makes up the first part of the version qualifier, e.g., Insiders
 `4.x.x` is currently based on `9.x.x`:
 
 ```
