@@ -63,7 +63,7 @@ need to run different commands:
 
     ```
     cd .. 
-    pip install -e --upgrade mkdocs-material
+    pip install -e mkdocs-material
     ```
 
 
