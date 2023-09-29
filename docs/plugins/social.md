@@ -588,7 +588,7 @@ the color if not explicitly set.
 
 The plugin allows to override a subset of settings through metadata (front
 matter) in order to customize social card generation, e.g., to set [options for
-the included default layouts][default layouts] for a single page, or even
+the included `default` layouts][default layouts] for a single page, or even
 [for an entire subsection] of your project by leveraging the [meta] plugin.
 
 The following properties are available:

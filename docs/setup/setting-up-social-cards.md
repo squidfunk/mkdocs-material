@@ -29,6 +29,7 @@ Social card of our [formatting] reference
   </figcaption>
 </figure>
 
+  [default layouts]: ../plugins/social.md#layouts
   [custom layouts]: #customization
   [formatting]: ../reference/formatting.md
   [Layout default variant]: ../assets/screenshots/social-cards-variant.png
@@ -316,6 +317,7 @@ mode in `mkdocs.yml`. The top left shows the layer index and offset, which is
 useful for alignment and composition.
 
   [Layer size]: ../assets/screenshots/social-cards-layer-size.png
+  [debug]: ../plugins/social.md#debugging
 
 #### Origin
 
