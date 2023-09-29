@@ -861,7 +861,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     # Create a file with the given content on disk
     def _save_to_file(self, path: str, content: str):
         os.makedirs(os.path.dirname(path), exist_ok = True)
-        with open(path, "w") as f:
+        with open(path, "w", encoding = "utf-8") as f:
             f.write(content)
 
     # -------------------------------------------------------------------------
