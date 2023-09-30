@@ -161,6 +161,36 @@
 
   // [tablet -]: Adjust spacing
   @include break-to-device(tablet) {
+    position: initial;
+    width: 100%;
     padding: 0;
+
+    .md-sidebar__inner {
+      padding: 0;
+    }
+
+    .md-post__meta {
+      margin-inline: px2rem(12px);
+    }
+
+    .md-nav__item {
+      display: inline;
+      border: none;
+    }
+
+    .md-nav__list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: px2rem(12px);
+      padding-block: px2rem(12px);
+    }
+
+    .md-nav__link {
+      padding: 0;
+    }
+
+    .md-nav {
+      position: initial;
+    }
   }
 }
