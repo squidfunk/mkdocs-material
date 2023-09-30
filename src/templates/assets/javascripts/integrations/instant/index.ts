@@ -47,6 +47,7 @@ import {
 import { configuration, feature } from "~/_"
 import {
   Viewport,
+  getElement,
   getElements,
   getLocation,
   getOptionalElement,
@@ -82,6 +83,15 @@ interface SetupOptions {
  * @returns Element map
  */
 function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
+
+  // @todo When resolving URLs, we must make sure to use the correct base for
+  // resolution. The next time we refactor instant loading, we should use the
+  // location subject as a source, which is also used for anchor links tracking,
+  // but for now we just rely on canonical.
+  const canonical = getElement<HTMLLinkElement>("[rel=canonical]", head)
+  canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1")
+
+  // Create tag map and index elements in head
   const tags = new Map<string, HTMLElement>()
   for (const el of getElements(":scope > *", head)) {
     let html = el.outerHTML
@@ -96,12 +106,13 @@ function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
         continue
 
       // Resolve URL relative to current location
-      const url = new URL(value, getLocation())
+      const url = new URL(value, canonical.href)
       const ref = el.cloneNode() as HTMLElement
 
       // Set resolved URL and retrieve HTML for deduplication
       ref.setAttribute(key, `${url}`)
       html = ref.outerHTML
+      break
     }
 
     // Index element in tag map
@@ -292,6 +303,15 @@ export function setupInstantNavigation(
         const source = lookup(document.head)
         const target = lookup(next.head)
         for (const [html, el] of target) {
+
+          // Hack: skip stylesheets and scripts until we manage to replace them
+          // entirely in order to omit flashes of white content @todo refactor
+          if (
+            el.getAttribute("rel") === "stylesheet" ||
+            el.hasAttribute("src")
+          )
+            continue
+
           if (source.has(html)) {
             source.delete(html)
           } else {
@@ -301,7 +321,16 @@ export function setupInstantNavigation(
 
         // Remove meta tags that are not present in the new document
         for (const el of source.values())
-          el.remove()
+
+          // Hack: skip stylesheets and scripts until we manage to replace them
+          // entirely in order to omit flashes of white content @todo refactor
+          if (
+            el.getAttribute("rel") === "stylesheet" ||
+            el.hasAttribute("src")
+          )
+            continue
+          else
+            el.remove()
 
         // After components and meta tags were replaced, re-evaluate scripts
         // that were provided by the author as part of Markdown files
