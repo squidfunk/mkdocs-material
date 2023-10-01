@@ -116,6 +116,7 @@ assets may also be put in the `overrides` directory:
 │  ├─ pagination.html                  # Pagination (used for blog)
 │  ├─ palette.html                     # Color palette toggle
 │  ├─ post.html                        # Blog post excerpt
+│  ├─ progress.html                    # Progress indicator
 │  ├─ search.html                      # Search interface
 │  ├─ social.html                      # Social links
 │  ├─ source.html                      # Repository information
@@ -124,7 +125,8 @@ assets may also be put in the `overrides` directory:
 │  ├─ tabs-item.html                   # Tabs navigation item
 │  ├─ tags.html                        # Tags
 │  ├─ toc.html                         # Table of contents
-│  └─ toc-item.html                    # Table of contents item
+│  ├─ toc-item.html                    # Table of contents item
+│  └─ top.html                         # Back-to-top button
 ├─ 404.html                            # 404 error page
 ├─ base.html                           # Base template
 ├─ blog.html                           # Blog index page
@@ -180,7 +182,7 @@ Then, e.g. to override the site title, add the following lines to `main.html`:
 ```
 
 If you intend to __add__ something to a block rather than to replace it
-altogether with new content, use `{{ super() }}` inside the block to include the 
+altogether with new content, use `{{ super() }}` inside the block to include the
 original block content. This is particularly useful when adding third-party
 scripts to your docs, e.g.
 
