@@ -21,16 +21,23 @@
  */
 
 import {
-  EMPTY,
   Observable,
-  catchError,
-  from,
+  Subject,
   map,
-  of,
   shareReplay,
-  switchMap,
-  throwError
+  switchMap
 } from "rxjs"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Options
+ */
+interface Options {
+  progress$?: Subject<number>          // Progress subject
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -48,16 +55,46 @@ import {
  * @returns Response observable
  */
 export function request(
-  url: URL | string, options: RequestInit = { credentials: "same-origin" }
-): Observable<Response> {
-  return from(fetch(`${url}`, options))
-    .pipe(
-      catchError(() => EMPTY),
-      switchMap(res => res.status !== 200
-        ? throwError(() => new Error(res.statusText))
-        : of(res)
-      )
-    )
+  url: URL | string, options?: Options
+): Observable<Blob> {
+  return new Observable<Blob>(observer => {
+    const req = new XMLHttpRequest()
+    req.open("GET",  `${url}`)
+    req.responseType = "blob"
+
+    // Handle response
+    req.addEventListener("load", () => {
+      if (req.status >= 200 && req.status < 300) {
+        observer.next(req.response)
+        observer.complete()
+      } else {
+        observer.error(new Error(req.statusText))
+      }
+    })
+
+    // Handle network errors
+    req.addEventListener("error", () => {
+      observer.error(new Error("Network Error"))
+    })
+
+    // Handle aborted requests
+    req.addEventListener("abort", () => {
+      observer.error(new Error("Request aborted"))
+    })
+
+    // Handle download progress
+    if (typeof options?.progress$ !== "undefined") {
+      req.addEventListener("progress", event => {
+        options.progress$!.next((event.loaded / event.total) * 100)
+      })
+
+      // Immediately set progress to 5% to indicate that we're loading
+      options.progress$.next(5)
+    }
+
+    // Send request
+    req.send()
+  })
 }
 
 /* ------------------------------------------------------------------------- */
@@ -73,11 +110,12 @@ export function request(
  * @returns Data observable
  */
 export function requestJSON<T>(
-  url: URL | string, options?: RequestInit
+  url: URL | string, options?: Options
 ): Observable<T> {
   return request(url, options)
     .pipe(
-      switchMap(res => res.json()),
+      switchMap(res => res.text()),
+      map(body => JSON.parse(body) as T),
       shareReplay(1)
     )
 }
@@ -91,7 +129,7 @@ export function requestJSON<T>(
  * @returns Data observable
  */
 export function requestXML(
-  url: URL | string, options?: RequestInit
+  url: URL | string, options?: Options
 ): Observable<Document> {
   const dom = new DOMParser()
   return request(url, options)

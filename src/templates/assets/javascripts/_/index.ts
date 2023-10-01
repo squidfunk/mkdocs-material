@@ -39,6 +39,7 @@ export type Flag =
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.indexes"               /* Section pages */
   | "navigation.instant"               /* Instant navigation */
+  | "navigation.instant.progress"      /* Instant navigation progress */
   | "navigation.sections"              /* Section navigation */
   | "navigation.tabs"                  /* Tabs navigation */
   | "navigation.tabs.sticky"           /* Tabs navigation (sticky) */

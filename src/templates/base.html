@@ -379,6 +379,11 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
 
+    <!-- Progress indicator -->
+    {% if "navigation.instant.progress" in features %}
+      {% include "partials/progress.html" %}
+    {% endif %}
+
     <!-- Consent -->
     {% if config.extra.consent %}
       <div class="md-consent" data-md-component="consent" id="__consent" hidden>

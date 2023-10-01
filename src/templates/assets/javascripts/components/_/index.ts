@@ -41,6 +41,7 @@ export type ComponentType =
   | "main"                             /* Main area */
   | "outdated"                         /* Version warning */
   | "palette"                          /* Color palette */
+  | "progress"                         /* Progress indicator */
   | "search"                           /* Search */
   | "search-query"                     /* Search input */
   | "search-result"                    /* Search results */
@@ -86,6 +87,7 @@ interface ComponentTypeMap {
   "main": HTMLElement                  /* Main area */
   "outdated": HTMLElement              /* Version warning */
   "palette": HTMLElement               /* Color palette */
+  "progress": HTMLElement              /* Progress indicator */
   "search": HTMLElement                /* Search */
   "search-query": HTMLInputElement     /* Search input */
   "search-result": HTMLElement         /* Search results */
