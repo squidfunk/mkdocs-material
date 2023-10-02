@@ -686,6 +686,20 @@
             ]
           },
           {
+            "title": "Instant prefetching",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-prefetching",
+            "enum": [
+              "navigation.instant.prefetch"
+            ]
+          },
+          {
+            "title": "Progress indicator",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#progress-indicator",
+            "enum": [
+              "navigation.instant.progress"
+            ]
+          },
+          {
             "title": "Navigation path (Breadcrumbs)",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path",
             "enum": [
