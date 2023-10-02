@@ -545,6 +545,8 @@ class Parser(HTMLParser):
         elif data.isspace():
             if not self.section.text or not self.section.text[-1].isspace():
                 self.section.text.append(data)
+            elif "pre" in self.context:
+                self.section.text.append(data)
 
         # Handle everything else
         else:
