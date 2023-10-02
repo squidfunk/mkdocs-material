@@ -41,7 +41,7 @@ encountered:
    retrieve past messages, resulting in lost insights and repeated conversations.
 
 1. __User interface__ –
-   After the acquisition by [Matrix], the user interface of Gitter has
+   After the acquisition by [Element], the user interface of Gitter has
    experienced a severe decline, becoming more complicated, less intuitive and
    user-friendly.
 
@@ -49,7 +49,7 @@ encountered:
    The necessity for users to grant access to their GitHub accounts to use
    Gitter posed an unnecessary access barrier and potential security concerns.
 
-  [Matrix]: https://matrix.org/
+  [Element]: https://element.io/blog/gitter-is-joining-element/
 
 ## GitHub Discussions
 
