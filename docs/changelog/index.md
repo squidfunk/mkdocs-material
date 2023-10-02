@@ -2,6 +2,19 @@
 
 ## Material for MkDocs
 
+### 9.4.3 <small>October 2, 2023</small> { id="9.4.3" }
+
+- Added support for instant navigation progress indicator
+- Improved spacing and alignment of tags
+- Moved back-to-top button into separate partial
+- Fixed #6104: Indentation for some code blocks lost in search
+- Fixed #6094: Blog post metadata overlaps with footer on small screens
+- Fixed #6069: Blog plugin crashes for categories with non-ASCII names
+
+__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.2...9.4.3))
+
+- `base.html`
+
 ### 9.4.2 <small>September 25, 2023</small> { id="9.4.2" }
 
 - Updated Slovenian translations
