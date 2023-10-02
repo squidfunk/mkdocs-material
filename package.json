@@ -57,7 +57,7 @@
     "@types/html-minifier": "^4.0.3",
     "@types/lunr": "^2.3.5",
     "@types/node": "^20.6.5",
-    "@types/resize-observer-browser": "^0.1.7",
+    "@types/resize-observer-browser": "^0.1.8",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
