@@ -52,6 +52,28 @@ theme:
     - navigation.instant.prefetch
 ```
 
+#### Progress indicator
+
+<!-- md:version 9.4.3 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
+
+In order to provide a better user experience on slow connections when using
+instant navigation, a progress indicator can be enabled. It will be shown at
+the top of the page and will be hidden once the page has fully loaded. You can
+enable it in `mkdocs.yml` with:
+
+``` yaml
+theme:
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+```
+
+The progress indicator will only show if the page hasn't finished loading after
+400ms, so that fast connections will never show it for a better instant
+experience.
+
 ### Anchor tracking
 
 <!-- md:version 8.0.0 -->
