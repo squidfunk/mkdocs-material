@@ -225,3 +225,10 @@ or your private web space.
 
   [GitHub Pages]: publishing-your-site.md#github-pages
   [GitLab pages]: publishing-your-site.md#gitlab-pages
+
+If you intend to distribute your documentation as a set of files to be
+read from a local filesystem rather than a web server (such as in a
+`.zip` file), please read the notes about [building for offline
+usage].
+
+  [building for offline usage]: setup/building-for-offline-usage.md
