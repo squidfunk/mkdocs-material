@@ -239,12 +239,37 @@ directly in the source of the theme and recompile it.
 
 ### Environment setup
 
-First, clone the repository:
+First, clone the repository for the edition you want to work on. If
+you want to clone the Insiders repository, you need to become a
+sponsor first to gain access.
 
-```
-git clone https://github.com/squidfunk/mkdocs-material
-cd mkdocs-material
-```
+  [Insiders]: insiders/index.md
+
+=== "Material for MkDocs"
+
+    ```
+    git clone https://github.com/squidfunk/mkdocs-material
+    cd mkdocs-material
+    ```
+
+=== "Insiders"
+
+    You will need to have a GitHub access token [as described in the
+    Insiders documentation] and make it available in the `$GH_TOKEN` 
+    variable. 
+
+    ``` sh
+    git clone https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git # (1)!
+    ```
+
+    1.  If you are using SSH keys for authenticating with GitHub, you can
+        clone Insiders with this command:
+
+        ```
+        git clone git@github.com:squidfunk/mkdocs-material-insiders.git
+        ```
+
+    [as described in the Insiders documentation]: insiders/getting-started.md#requirements
 
 Next, create a new [Python virtual environment][venv] and
 [activate][venv-activate] it:
@@ -254,17 +279,46 @@ python -m venv venv
 source venv/bin/activate
 ```
 
+!!! note "Ensure pip always runs in a virtual environment"
+
+    If you set the environment variable `PIP_REQUIRE_VIRTUALENV` to
+    `true`, `pip` will refuse to install anything outside a virtual
+    environment. Forgetting to activate a `venv` can be very annoying
+    as it will install all sorts of things outside virtual
+    environments over time, possibly leading to further errors. So, 
+    you may want to add this to your `.bashrc` or `.zshrc` and
+    re-start your shell:
+
+    ```
+    export PIP_REQUIRE_VIRTUALENV=true
+    ```
+
   [venv]: https://docs.python.org/3/library/venv.html
   [venv-activate]: https://docs.python.org/3/library/venv.html#how-venvs-work
 
 Then, install all Python dependencies:
 
-```
-pip install -e .
-pip install mkdocs-minify-plugin
-pip install mkdocs-redirects
-pip install nodeenv
-```
+=== "Material for MkDocs"
+
+    ```
+    pip install -e .
+    pip install "mkdocs-material[recommended]"
+    pip install nodeenv
+    ```
+
+=== "Insiders"
+
+    ```
+    pip install -e .
+    pip install "mkdocs-material[recommended, imaging]"
+    pip install nodeenv
+    ```
+
+    In addition, you will need to install the `cairo` and `pngquant` libraries in your
+    system, as described in the [image processing] requirements guide.
+
+    [image processing]: plugins/requirements/image-processing.md
+
 
 Finally, install the [Node.js] LTS version into the Python virtual environment
 and install all Node.js dependencies:
