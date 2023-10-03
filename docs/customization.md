@@ -242,7 +242,7 @@ directly in the source of the theme and recompile it.
 First, clone the repository for the edition you want to work on. Note
 that you need to be a member of [Insiders] to access its repository.
 
-  [Insiders]: insiders.md
+  [Insiders]: insiders/index.md
 
 === "Material for MkDocs"
 
