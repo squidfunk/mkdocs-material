@@ -239,8 +239,9 @@ directly in the source of the theme and recompile it.
 
 ### Environment setup
 
-First, clone the repository for the edition you want to work on. Note
-that you need to be a member of [Insiders] to access its repository.
+First, clone the repository for the edition you want to work on. If
+you want to clone the Insiders repository, you need to become a
+sponsor first to gain access.
 
   [Insiders]: insiders/index.md
 
@@ -251,7 +252,7 @@ that you need to be a member of [Insiders] to access its repository.
     cd mkdocs-material
     ```
 
-=== "Insiders (with token)"
+=== "Insiders"
 
     You will need to have a GitHub access token [as described in the
     Insiders documentation] and make it available in the `$GH_TOKEN` 
@@ -263,15 +264,6 @@ that you need to be a member of [Insiders] to access its repository.
 
     [as described in the Insiders documentation]: insiders/getting-started.md#requirements
 
-=== "Insiders (with SSH key)"
-
-    If you are using SSH keys for authenticating with GitHub, you can
-    clone Insiders with this command:
-
-    ```
-    git clone git@github.com:squidfunk/mkdocs-material-insiders.git
-    ```
-
 Next, create a new [Python virtual environment][venv] and
 [activate][venv-activate] it:
 
@@ -280,7 +272,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-!!! note "Get pip to refuse working outside a `venv`"
+!!! note "Ensure pip always runs in a virtual environment"
 
     If you set the environment variable `PIP_REQUIRE_VIRTUALENV` to
     `true`, `pip` will refuse to install anything outside a virtual
