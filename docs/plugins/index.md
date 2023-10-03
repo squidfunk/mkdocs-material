@@ -95,7 +95,7 @@ minimal reproductions for bug reports:
   [group]: group.md
   [info]: info.md
   [meta]: meta.md
-  [projects]: meta.md
+  [projects]: projects.md
 
 ### Optimization
 
