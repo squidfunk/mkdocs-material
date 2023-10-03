@@ -262,11 +262,12 @@ sponsor first to gain access.
     git clone https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git # (1)!
     ```
 
-    1. If you are using SSH keys for authenticating with GitHub, you can
-       clone Insiders with this command:
-       ```
-       git clone git@github.com:squidfunk/mkdocs-material-insiders.git
-       ```
+    1.  If you are using SSH keys for authenticating with GitHub, you can
+        clone Insiders with this command:
+
+        ```
+        git clone git@github.com:squidfunk/mkdocs-material-insiders.git
+        ```
 
     [as described in the Insiders documentation]: insiders/getting-started.md#requirements
 
