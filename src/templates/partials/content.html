@@ -31,8 +31,10 @@
 <!--
   Hack: check whether the content contains a h1 headline. If it doesn't, the
   page title (or respectively site name) is used as the main headline.
+  Optionally skip this behaviour if the hide meta contains 'title'.
 -->
-{% if "\x3ch1" not in page.content %}
+{% if "\x3ch1" not in page.content and
+      "title" not in page.meta.hide %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 

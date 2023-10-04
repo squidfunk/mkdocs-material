@@ -25,6 +25,26 @@ theme:
     - header.autohide
 ```
 
+### Hiding the page title
+
+<!-- md:version 9.4.4 -->
+<!-- md:flag metadata -->
+
+In documents missing a `<h1>` at the top of the page, Material for MkDocs
+automatically inserts a title. If you want to provide your own hero graphic or
+main heading (like for a landing page), it can be useful to hide the page title,
+as it consumes quite a bit of vertical space. 
+
+A document's title can be hidden with the front matter `hide` property. Add the
+following lines at the top of a Markdown file:
+
+```yaml
+---
+hide:
+  - title
+---
+```
+
 ### Announcement bar
 
 <!-- md:version 5.0.0 -->
