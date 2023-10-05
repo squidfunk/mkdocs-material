@@ -10,7 +10,7 @@
         "--incognito"
       ],
       "preLaunchTask": "Start and watch for changes",
-      "url": "http://localhost:8000/mkdocs-material/",
+      "url": "http://localhost:8000/",
       "webRoot": "${workspaceFolder}",
       "sourceMaps": true,
       "sourceMapPathOverrides": {
