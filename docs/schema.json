@@ -154,6 +154,9 @@
     "nav": {
       "$ref": "schema/nav.json"
     },
+    "validation": {
+      "$ref": "schema/validation.json"
+    },
     "exclude_docs": {
       "title": "Pattern to declare files to exclude from build",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#exclude_docs",

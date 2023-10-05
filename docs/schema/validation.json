@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Validation settings",
+  "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
+  "type": "object",
+  "properties": {
+    "nav": {
+      "title": "Settings for validation of navigation",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
+      "properties": {
+        "omitted_files": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        },
+        "not_found": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        },
+        "absolute_links": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        }
+      }
+    },
+    "links": {
+      "title": "Settings for validation of links",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
+      "properties": {
+        "not_found": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        },
+        "absolute_links": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        },
+        "unrecognized_links": {
+          "type": "string",
+          "enum": ["warn", "info", "ignore"]
+        }
+      }
+    }
+  }
+}
