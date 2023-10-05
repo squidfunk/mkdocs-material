@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.1 <small>October 5, 2023</small> { id="4.42.1" }
+
+- Fixed spacing of related links in blog posts on small screens
+
 ### 4.42.0 <small>September 19, 2023</small> { id="4.42.0" }
 
 - Added support for using git submodules in projects plugin
