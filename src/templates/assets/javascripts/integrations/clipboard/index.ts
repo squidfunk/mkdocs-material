@@ -55,7 +55,7 @@ interface SetupOptions {
  */
 function extract(el: HTMLElement): string {
   el.setAttribute("data-md-copying", "")
-  const text = el.innerText
+  const text = el.getAttribute("data-clipboard-text") ?? el.innerText
   el.removeAttribute("data-md-copying")
   return text
 }
