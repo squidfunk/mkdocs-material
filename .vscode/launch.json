@@ -9,9 +9,57 @@
         "--disable-features=Translate",
         "--incognito"
       ],
-      "url": "http://localhost:8000/mkdocs-material/",
+      "preLaunchTask": "Start and watch for changes",
+      "url": "http://localhost:8000/",
       "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "*": "${workspaceFolder}/*"
+      },
       "smartStep": true
+    },
+    {
+      "name": "MkDocs",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["build"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    {
+      "name": "MkDocs server",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["serve", "--watch-theme"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    {
+      "name": "MkDocs server (dirty)",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["serve", "--watch-theme", "--dirtyreload"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Application + MkDocs server",
+      "configurations": ["Application", "MkDocs server"]
+    },
+    {
+      "name": "Application + MkDocs server (dirty)",
+      "configurations": ["Application", "MkDocs server (dirty)"]
     }
   ]
 }
