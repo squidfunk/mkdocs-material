@@ -83,6 +83,9 @@ theme:
 
 ??? tip "Overriding the clipboard text"
 
+    <!-- md:version 9.4.4 -->
+    <!-- md:flag experimental -->
+
     If you want to define a slightly different text to be copied to the
     clipboard, you can use the `data-copy` attribute on the code block. Note
     that this attribute does not support multiple lines, which is not a
