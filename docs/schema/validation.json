@@ -3,42 +3,51 @@
   "title": "Validation settings",
   "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
+    "omitted_files": { "$ref": "#/$defs/omitted_files" },
+    "not_found": { "$ref": "#/$defs/not_found" },
+    "absolute_links": { "$ref": "#/$defs/absolute_links" },
     "nav": {
-      "title": "Settings for validation of navigation",
+      "title": "validation of navigation",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
+      "additionalProperties": false,
       "properties": {
-        "omitted_files": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        },
-        "not_found": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        },
-        "absolute_links": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        }
+        "omitted_files": { "$ref": "#/$defs/omitted_files" },
+        "not_found": { "$ref": "#/$defs/not_found" },
+        "absolute_links": { "$ref": "#/$defs/absolute_links" }
       }
     },
     "links": {
-      "title": "Settings for validation of links",
+      "title": "Validation of links",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
+      "additionalProperties": false,
       "properties": {
-        "not_found": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        },
-        "absolute_links": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        },
-        "unrecognized_links": {
-          "type": "string",
-          "enum": ["warn", "info", "ignore"]
-        }
+        "not_found": { "$ref": "#/$defs/not_found" },
+        "absolute_links": { "$ref": "#/$defs/absolute_links" },
+        "unrecognized_links": { "$ref": "#/$defs/unrecognized_links" }
       }
+    }
+  },
+  "$defs": {
+    "omitted_files": {
+      "title": "warning level when files exist but are not referenced in navigation",
+      "$ref": "#/$defs/warning_levels"
+    },
+    "not_found": {
+      "title": "warning level when file referenced is not found or is excluded",
+      "$ref": "#/$defs/warning_levels"
+    },
+    "absolute_links": {
+      "title": "warning level when absolute links are used",
+      "$ref": "#/$defs/warning_levels"
+    },
+    "unrecognized_links": {
+      "title": "warning level when a relative link cannot be resolved to a document",
+      "$ref": "#/$defs/warning_levels"
+    },
+    "warning_levels": {
+      "enum": ["warn", "info", "ignore"]
     }
   }
 }
