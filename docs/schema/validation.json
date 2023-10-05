@@ -3,7 +3,6 @@
   "title": "Validation settings",
   "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
   "type": "object",
-  "additionalProperties": false,
   "properties": {
     "omitted_files": { "$ref": "#/$defs/omitted_files" },
     "not_found": { "$ref": "#/$defs/not_found" },
@@ -11,24 +10,25 @@
     "nav": {
       "title": "validation of navigation",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
-      "additionalProperties": false,
       "properties": {
         "omitted_files": { "$ref": "#/$defs/omitted_files" },
         "not_found": { "$ref": "#/$defs/not_found" },
         "absolute_links": { "$ref": "#/$defs/absolute_links" }
-      }
+      },
+      "additionalProperties": false
     },
     "links": {
       "title": "Validation of links",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
-      "additionalProperties": false,
       "properties": {
         "not_found": { "$ref": "#/$defs/not_found" },
         "absolute_links": { "$ref": "#/$defs/absolute_links" },
         "unrecognized_links": { "$ref": "#/$defs/unrecognized_links" }
-      }
+      },
+      "additionalProperties": false
     }
   },
+  "additionalProperties": false,
   "$defs": {
     "omitted_files": {
       "title": "warning level when files exist but are not referenced in navigation",
