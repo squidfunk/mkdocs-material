@@ -1,3 +1,13 @@
+mkdocs-material-9.4.4+insiders-4.42.1 (2023-10-05)
+
+  * Fixed spacing of related links in blog posts on small screens
+
+mkdocs-material-9.4.4 (2023-10-05)
+
+  * Added support for overriding text to be copied for code blocks
+  * Fixed broken layout in some browsers at breakpoints when using zoom
+  * Fixed #6132: Incomplete search highlighting for code blocks in titles
+
 mkdocs-material-9.4.3 (2023-10-02)
 
   * Added support for instant navigation progress indicator

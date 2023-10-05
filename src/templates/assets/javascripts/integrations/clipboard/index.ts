@@ -55,7 +55,10 @@ interface SetupOptions {
  */
 function extract(el: HTMLElement): string {
   el.setAttribute("data-md-copying", "")
-  const text = el.innerText
+  const copy = el.closest("[data-copy]")
+  const text = copy
+    ? copy.getAttribute("data-copy")!
+    : el.innerText
   el.removeAttribute("data-md-copying")
   return text
 }

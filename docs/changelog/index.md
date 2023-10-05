@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.4.4 <small>October 5, 2023</small> { id="9.4.4" }
+
+- Added support for overriding text to be copied for code blocks
+- Fixed broken layout in some browsers at breakpoints when using zoom
+- Fixed #6132: Incomplete search highlighting for code blocks in titles
+
 ### 9.4.3 <small>October 2, 2023</small> { id="9.4.3" }
 
 - Added support for instant navigation progress indicator
