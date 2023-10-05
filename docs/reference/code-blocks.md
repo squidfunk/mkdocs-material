@@ -81,6 +81,37 @@ theme:
     ```
     ````
 
+??? tip "Overriding the clipboard text"
+
+    If you want to define a slightly different text to be copied to the
+    clipboard, you can use the `data-copy` attribute on the code block. Note
+    that this attribute does not support multiple lines, which is not a
+    limitation of Material for MkDocs, but of the Markdown parser. Example:
+
+    ```` markdown title="Code block"
+    ``` { .sh data-copy="curl https://www.example.com" }
+    $ curl https://www.example.com
+    # <!doctype html>
+    #   <html>
+    # ...
+    ```
+    ````
+
+    <div class="result" markdown>
+
+    ``` { .sh data-copy="curl https://www.example.com" }
+    $ curl https://www.example.com
+    # <!doctype html>
+    #   <html>
+    # ...
+    ```
+
+    </div>
+
+    We recommend to use this very sparingly, because sometimes it can be
+    confusing to copy something different to the clipboard than what is
+    actually displayed.
+
 ### Code selection button
 
 <!-- md:sponsors -->
