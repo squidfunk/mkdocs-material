@@ -21,6 +21,12 @@
       "group": "build",
       "presentation": {
         "reveal": "silent"
+      },
+      "problemMatcher": {
+        "background": {
+          "beginsPattern": "material\/templates\/redirect",
+          "endsPattern": "."
+        }
       }
     }
   ]

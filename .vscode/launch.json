@@ -12,6 +12,39 @@
       "url": "http://localhost:8000/mkdocs-material/",
       "webRoot": "${workspaceFolder}",
       "smartStep": true
+    },
+    {
+      "name": "MkDocs",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["build"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    {
+      "name": "MkDocs server",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["serve", "--watch-theme"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    {
+      "name": "MkDocs server (dirty)",
+      "type": "python",
+      "request": "launch",
+      "preLaunchTask": "Start and watch for changes",
+      "program": "venv/bin/mkdocs",
+      "args": ["serve", "--watch-theme", "--dirtyreload"],
+      "env": {
+        "PYTHONPATH": "."
+      }
     }
   ]
 }
