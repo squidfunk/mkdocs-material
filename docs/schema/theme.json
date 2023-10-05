@@ -796,13 +796,13 @@
           "type": "object",
           "properties": {
             "scheme": {
-              "$ref": "#/$defs/g/scheme"
+              "$ref": "#/$defs/scheme"
             },
             "primary": {
-              "$ref": "#/$defs/g/primary"
+              "$ref": "#/$defs/primary"
             },
             "accent": {
-              "$ref": "#/$defs/g/accent"
+              "$ref": "#/$defs/accent"
             }
           },
           "additionalProperties": false
@@ -815,13 +815,13 @@
             "type": "object",
             "properties": {
               "scheme": {
-                "$ref": "#/$defs/g/scheme"
+                "$ref": "#/$defs/scheme"
               },
               "primary": {
-                "$ref": "#/$defs/g/primary"
+                "$ref": "#/$defs/primary"
               },
               "accent": {
-                "$ref": "#/$defs/g/accent"
+                "$ref": "#/$defs/accent"
               },
               "media": {
                 "oneOf": [
