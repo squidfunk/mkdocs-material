@@ -49,13 +49,14 @@ export type Position = number
  * @param input - Input value
  * @param table - Table for indexing
  * @param positions - Occurrences
+ * @param full - Full results
  *
  * @returns Highlighted string value
  */
 export function highlight(
-  input: string, table: PositionTable, positions: Position[]
+  input: string, table: PositionTable, positions: Position[], full = false
 ): string {
-  return highlightAll([input], table, positions).pop()!
+  return highlightAll([input], table, positions, full).pop()!
 }
 
 /**
@@ -64,11 +65,12 @@ export function highlight(
  * @param inputs - Input values
  * @param table - Table for indexing
  * @param positions - Occurrences
+ * @param full - Full results
  *
  * @returns Highlighted string values
  */
 export function highlightAll(
-  inputs: string[], table: PositionTable, positions: Position[]
+  inputs: string[], table: PositionTable, positions: Position[], full = false
 ): string[] {
 
   /* Map blocks to input values */
@@ -87,6 +89,7 @@ export function highlightAll(
 
   /* Highlight strings one after another */
   return inputs.map((input, i) => {
+    let cursor = 0
 
     /* Map occurrences to blocks */
     const blocks = new Map<number, number[]>()
@@ -119,6 +122,10 @@ export function highlightAll(
       const end    = t[t.length - 1] >>> 12
       const length = t[t.length - 1] >>> 2 & 0x3FF
 
+      /* Add prefix, if full results are desired */
+      if (full && start > cursor)
+        slices.push(input.slice(cursor, start))
+
       /* Extract and highlight slice */
       let slice = input.slice(start, end + length)
       for (const j of indexes.sort((a, b) => b - a)) {
@@ -137,10 +144,17 @@ export function highlightAll(
         ].join("")
       }
 
+      /* Update cursor */
+      cursor = end + length
+
       /* Append slice and abort if we have two */
       if (slices.push(slice) === 2)
         break
     }
+
+    /* Add suffix, if full results are desired */
+    if (full && cursor < input.length)
+      slices.push(input.slice(cursor))
 
     /* Return highlighted slices */
     return slices.join("")

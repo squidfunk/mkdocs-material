@@ -264,7 +264,7 @@ export class Search {
               : highlight
 
             // @ts-expect-error - stop moaning, TypeScript!
-            doc[field] = fn(doc[field], table, positions)
+            doc[field] = fn(doc[field], table, positions, field !== "text")
           }
 
           /* Highlight title and text and apply post-query boosts */
