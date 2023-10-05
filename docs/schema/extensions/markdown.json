@@ -73,10 +73,10 @@
           "type": "object",
           "properties": {
             "toc": {
-              "$ref": "#/$defs/g/toc"
+              "$ref": "#/$defs/toc"
             },
             "markdown.extensions.toc": {
-              "$ref": "#/$defs/g/toc"
+              "$ref": "#/$defs/toc"
             }
           },
           "additionalProperties": false

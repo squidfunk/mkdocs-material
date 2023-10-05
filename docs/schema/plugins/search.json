@@ -18,12 +18,12 @@
             "lang": {
               "oneOf": [
                 {
-                  "$ref": "#/$defs/g/lang"
+                  "$ref": "#/$defs/lang"
                 },
                 {
                   "type": "array",
                   "items": {
-                    "$ref": "#/$defs/g/lang"
+                    "$ref": "#/$defs/lang"
                   },
                   "uniqueItems": true,
                   "minItems": 1

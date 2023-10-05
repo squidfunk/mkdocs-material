@@ -455,16 +455,16 @@
       "type": "object",
       "properties": {
         "edit": {
-          "$ref": "#/$defs/g/icon"
+          "$ref": "#/$defs/icon"
         },
         "view": {
-          "$ref": "#/$defs/g/icon"
+          "$ref": "#/$defs/icon"
         },
         "logo": {
-          "$ref": "#/$defs/g/icon"
+          "$ref": "#/$defs/icon"
         },
         "repo": {
-          "$ref": "#/$defs/g/icon"
+          "$ref": "#/$defs/icon"
         },
         "admonition": {
           "title": "Admonition icon",
@@ -472,40 +472,40 @@
           "type": "object",
           "properties": {
             "note": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "abstract": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "info": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "tip": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "success": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "question": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "warning": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "failure": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "danger": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "bug": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "example": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             },
             "quote": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false,
@@ -566,7 +566,7 @@
           "type": "object",
           "patternProperties": {
             "^[\\w-]+$": {
-              "$ref": "#/$defs/g/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false
@@ -850,7 +850,7 @@
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
                 "properties": {
                   "icon": {
-                    "$ref": "#/$defs/g/icon"
+                    "$ref": "#/$defs/icon"
                   },
                   "name": {
                     "title": "Color palette toggle name",

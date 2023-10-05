@@ -6,13 +6,13 @@
   "items": {
     "anyOf": [
       {
-        "$ref": "#/$defs/g/built-in"
+        "$ref": "#/$defs/built-in"
       },
       {
-        "$ref": "#/$defs/g/external"
+        "$ref": "#/$defs/external"
       },
       {
-        "$ref": "#/$defs/g/external-community"
+        "$ref": "#/$defs/external-community"
       }
     ]
   },
