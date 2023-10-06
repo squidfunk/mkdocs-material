@@ -18,12 +18,12 @@
             "lang": {
               "oneOf": [
                 {
-                  "$ref": "#/definitions/lang"
+                  "$ref": "#/$defs/lang"
                 },
                 {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/lang"
+                    "$ref": "#/$defs/lang"
                   },
                   "uniqueItems": true,
                   "minItems": 1
@@ -66,7 +66,7 @@
       "additionalProperties": false
     }
   ],
-  "definitions": {
+  "$defs": {
     "lang": {
       "title": "Site search language",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.lang",

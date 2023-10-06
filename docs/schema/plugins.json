@@ -6,19 +6,19 @@
   "items": {
     "anyOf": [
       {
-        "$ref": "#/definitions/built-in"
+        "$ref": "#/$defs/built-in"
       },
       {
-        "$ref": "#/definitions/external"
+        "$ref": "#/$defs/external"
       },
       {
-        "$ref": "#/definitions/external-community"
+        "$ref": "#/$defs/external-community"
       }
     ]
   },
   "uniqueItems": true,
   "minItems": 1,
-  "definitions": {
+  "$defs": {
     "built-in": {
       "description": "Built-in plugins",
       "anyOf": [
