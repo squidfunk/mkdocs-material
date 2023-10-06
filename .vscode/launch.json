@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Application",
+      "name": "Chrome",
       "type": "chrome",
       "request": "launch",
       "runtimeArgs": [
@@ -54,12 +54,12 @@
   ],
   "compounds": [
     {
-      "name": "Application + MkDocs server",
-      "configurations": ["Application", "MkDocs server"]
+      "name": "Chrome + MkDocs server",
+      "configurations": ["Chrome", "MkDocs server"]
     },
     {
-      "name": "Application + MkDocs server (dirty)",
-      "configurations": ["Application", "MkDocs server (dirty)"]
+      "name": "Chrome + MkDocs server (dirty)",
+      "configurations": ["Chrome", "MkDocs server (dirty)"]
     }
   ]
 }
