@@ -455,16 +455,16 @@
       "type": "object",
       "properties": {
         "edit": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "view": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "logo": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "repo": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "admonition": {
           "title": "Admonition icon",
@@ -472,40 +472,40 @@
           "type": "object",
           "properties": {
             "note": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "abstract": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "info": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "tip": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "success": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "question": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "warning": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "failure": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "danger": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "bug": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "example": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "quote": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false,
@@ -566,7 +566,7 @@
           "type": "object",
           "patternProperties": {
             "^[\\w-]+$": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false
@@ -796,13 +796,13 @@
           "type": "object",
           "properties": {
             "scheme": {
-              "$ref": "#/definitions/scheme"
+              "$ref": "#/$defs/scheme"
             },
             "primary": {
-              "$ref": "#/definitions/primary"
+              "$ref": "#/$defs/primary"
             },
             "accent": {
-              "$ref": "#/definitions/accent"
+              "$ref": "#/$defs/accent"
             }
           },
           "additionalProperties": false
@@ -815,13 +815,13 @@
             "type": "object",
             "properties": {
               "scheme": {
-                "$ref": "#/definitions/scheme"
+                "$ref": "#/$defs/scheme"
               },
               "primary": {
-                "$ref": "#/definitions/primary"
+                "$ref": "#/$defs/primary"
               },
               "accent": {
-                "$ref": "#/definitions/accent"
+                "$ref": "#/$defs/accent"
               },
               "media": {
                 "oneOf": [
@@ -850,7 +850,7 @@
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
                 "properties": {
                   "icon": {
-                    "$ref": "#/definitions/icon"
+                    "$ref": "#/$defs/icon"
                   },
                   "name": {
                     "title": "Color palette toggle name",
@@ -917,7 +917,7 @@
   "required": [
     "name"
   ],
-  "definitions": {
+  "$defs": {
     "scheme": {
       "title": "Color scheme",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme",

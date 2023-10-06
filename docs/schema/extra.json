@@ -68,7 +68,7 @@
                 "type": "object",
                 "properties": {
                   "icon": {
-                    "$ref": "#/definitions/icon"
+                    "$ref": "#/$defs/icon"
                   },
                   "name": {
                     "title": "Feedback rating name",
@@ -170,15 +170,15 @@
           "type": "object",
           "properties": {
             "analytics": {
-              "$ref": "#/definitions/cookie"
+              "$ref": "#/$defs/cookie"
             },
             "github": {
-              "$ref": "#/definitions/cookie"
+              "$ref": "#/$defs/cookie"
             }
           },
           "patternProperties": {
             "\\w+": {
-              "$ref": "#/definitions/cookie"
+              "$ref": "#/$defs/cookie"
             }
           },
           "additionalProperties": false,
@@ -261,7 +261,7 @@
         "type": "object",
         "properties": {
           "icon": {
-            "$ref": "#/definitions/icon"
+            "$ref": "#/$defs/icon"
           },
           "link": {
             "title": "Social link",
@@ -364,7 +364,7 @@
     }
   },
   "additionalProperties": true,
-  "definitions": {
+  "$defs": {
     "cookie": {
       "title": "Cookie",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/ensuring-data-privacy/#cookie-consent",
