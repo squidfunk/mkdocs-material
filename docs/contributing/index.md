@@ -1,3 +1,16 @@
+# Announcement 
+
+We are closing our Gitter Channel
+New channel- Github Discussions (https://github.com/squidfunk/mkdocs-material/discussions)
+Reason for closing- https://squidfunk.github.io/mkdocs-material/blog/2023/10/02/sunsetting-gitter-towards-efficient-community-engagement/
+TimeFrame-
+October 2 , 2023: We're going to limit conversation to administrators, users can still read past messages, but not post.
+October 13, 2023: We're closing the channel and will not allow new users to join.
+
+
+
+
+
 # Contributing
 
 Material for MkDocs is an actively maintained and constantly evolving project
