@@ -188,7 +188,9 @@ export function mountSidebar(
     next$.pipe(first())
       .subscribe(() => {
         for (const item of getElements(".md-nav__link--active[href]", el)) {
-          const container = getElementContainer(item)
+          if (!item.clientHeight) // skip invisible toc in left sidebar
+            continue
+          const container = item.closest<HTMLElement>(".md-sidebar__scrollwrap")!
           if (typeof container !== "undefined") {
             const offset = item.offsetTop - container.offsetTop
             const { height } = getElementSize(container)
