@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.4.5 <small>October 10, 2023</small> { id="9.4.5" }
+
+- Fixed sidebar auto-positioning (9.4.2 regression)
+- Fixed #6166: Improve group plugin compatibility with Python < 3.10
+- Fixed #6157: Hiding tags does not work (9.4.3 regression)
+
 ### 9.4.4 <small>October 5, 2023</small> { id="9.4.4" }
 
 - Added support for overriding text to be copied for code blocks
