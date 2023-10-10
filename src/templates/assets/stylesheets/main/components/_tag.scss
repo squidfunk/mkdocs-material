@@ -34,8 +34,8 @@
 // Scoped in typesetted content to match specificity of regular content
 .md-typeset {
 
-  // Tag list
-  .md-tags {
+  // Tag list (if not hidden)
+  .md-tags:not([hidden]) {
     display: inline-flex;
     flex-wrap: wrap;
     gap: px2em(8px);
