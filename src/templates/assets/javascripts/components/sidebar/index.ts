@@ -46,7 +46,6 @@ import {
 import {
   Viewport,
   getElement,
-  getElementContainer,
   getElementOffset,
   getElementSize,
   getElements
