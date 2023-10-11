@@ -36,12 +36,40 @@ permissions:
   contents: read
 
 jobs:
-  npm:
+  npm-build:
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js runtime
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Set up Node.js dependency cache
+        uses: actions/cache@v3
+        id: cache
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          path: node_modules
+
+      - name: Set up Node.js dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install
+
+      - name: Build project
+        run: |
+          npm run build
+          git diff --name-only
+
+  npm-check:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Node.js runtime
         uses: actions/setup-node@v3
@@ -62,22 +90,21 @@ jobs:
       - name: Check project
         run: npm run check
 
-      - name: Build project
-        run: |
-          npm run build
-          git diff --name-only
-
-  pypi:
+  python:
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python runtime
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements.txt
 
       - name: Set up Python dependencies
         run: pip install --upgrade build twine
@@ -97,24 +124,24 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
+        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Login to DockerHub
         if: github.event_name == 'release'
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Login to GitHub Container Registry
         if: github.event_name == 'release'
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
@@ -122,7 +149,7 @@ jobs:
 
       - name: Generate Docker tags and labels
         id: meta
-        uses: docker/metadata-action@v4
+        uses: docker/metadata-action@v5
         with:
           images: |
             ${{ github.event.repository.full_name }}
@@ -137,7 +164,7 @@ jobs:
             latest=${{ github.event.release.prerelease == false }}
 
       - name: Build Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           load: true
@@ -158,7 +185,7 @@ jobs:
           echo "PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7" >> $GITHUB_ENV
 
       - name: Publish Docker image
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: .
           platforms: ${{ env.PLATFORMS }}

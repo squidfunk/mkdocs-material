@@ -34,7 +34,7 @@ WORKDIR /tmp
 COPY material material
 COPY package.json package.json
 COPY README.md README.md
-COPY requirements.txt requirements.txt
+COPY *requirements.txt ./
 COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
@@ -61,10 +61,12 @@ RUN \
 && \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
     pip install --no-cache-dir \
-      "mkdocs-minify-plugin>=0.3" \
-      "mkdocs-redirects>=1.0" \
-      "pillow>=9.0" \
-      "cairosvg>=2.5"; \
+      mkdocs-material[recommended] \
+      mkdocs-material[imaging]; \
+  fi \
+&& \
+  if [ -e user-requirements.txt ]; then \
+    pip install -U -r user-requirements.txt; \
   fi \
 && \
   apk del .build \
@@ -72,7 +74,7 @@ RUN \
   for theme in mkdocs readthedocs; do \
     rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
     ln -s \
-      ${PACKAGES}/material \
+      ${PACKAGES}/material/templates \
       ${PACKAGES}/mkdocs/themes/$theme; \
   done \
 && \

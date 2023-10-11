@@ -73,10 +73,10 @@
           "type": "object",
           "properties": {
             "toc": {
-              "$ref": "#/definitions/toc"
+              "$ref": "#/$defs/toc"
             },
             "markdown.extensions.toc": {
-              "$ref": "#/definitions/toc"
+              "$ref": "#/$defs/toc"
             }
           },
           "additionalProperties": false
@@ -92,7 +92,7 @@
       ]
     }
   ],
-  "definitions": {
+  "$defs": {
     "toc": {
       "title": "Table Of Contents – Python Markdown",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#table-of-contents",

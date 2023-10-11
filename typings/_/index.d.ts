@@ -99,5 +99,6 @@ declare global {
   var screen$: Observable<boolean>     /* Media screen observable */
   var print$: Observable<boolean>      /* Media print observable */
   var alert$: Subject<string>          /* Alert subject */
+  var progress$: Subject<number>       /* Progress indicator subject */
   var component$: Observable<Component>/* Component observable */
 }

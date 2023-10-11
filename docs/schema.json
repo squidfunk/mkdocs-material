@@ -154,6 +154,19 @@
     "nav": {
       "$ref": "schema/nav.json"
     },
+    "validation": {
+      "$ref": "schema/validation.json"
+    },
+    "exclude_docs": {
+      "title": "Pattern to declare files to exclude from build",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#exclude_docs",
+      "type": "string"
+    },
+    "not_in_nav": {
+      "title": "Pattern to declare pages that do not appear in the navigation",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#not_in_nav",
+      "type": "string"
+    },
     "watch": {
       "items": {
         "title": "Path to watch for changes",

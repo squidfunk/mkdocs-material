@@ -22,6 +22,6 @@
 .git
 .github
 docs
-material/.overrides
+material/overrides
 node_modules
 src

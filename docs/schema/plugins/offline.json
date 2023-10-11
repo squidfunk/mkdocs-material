@@ -3,7 +3,7 @@
   "title": "Built-in offline plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#built-in-offline-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
       "enum": [
         "offline"
       ]
@@ -12,12 +12,12 @@
       "type": "object",
       "properties": {
         "offline": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#built-in-offline-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
           "type": "object",
           "properties": {
             "enabled": {
               "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/building-for-offline-usage/#+offline.enabled",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/#config.enabled",
               "type": "boolean",
               "default": true
             }

@@ -55,10 +55,6 @@ example.zip
 # Never ignore .gitkeep files
 !**/.gitkeep
 
-# Husky hooks
-.husky/.gitignore
-.husky/_
-
 # macOS internals
 .DS_Store
 
@@ -66,5 +62,6 @@ example.zip
 TODO
 tmp
 
-# IDEs
+# IDEs & Editors
 .idea
+*~

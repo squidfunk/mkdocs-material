@@ -2,6 +2,213 @@
 
 ## Material for MkDocs
 
+### 9.4.5 <small>October 10, 2023</small> { id="9.4.5" }
+
+- Fixed sidebar auto-positioning (9.4.2 regression)
+- Fixed #6166: Improve group plugin compatibility with Python < 3.10
+- Fixed #6157: Hiding tags does not work (9.4.3 regression)
+
+### 9.4.4 <small>October 5, 2023</small> { id="9.4.4" }
+
+- Added support for overriding text to be copied for code blocks
+- Fixed broken layout in some browsers at breakpoints when using zoom
+- Fixed #6132: Incomplete search highlighting for code blocks in titles
+
+### 9.4.3 <small>October 2, 2023</small> { id="9.4.3" }
+
+- Added support for instant navigation progress indicator
+- Improved spacing and alignment of tags
+- Moved back-to-top button into separate partial
+- Fixed #6104: Indentation for some code blocks lost in search
+- Fixed #6094: Blog post metadata overlaps with footer on small screens
+- Fixed #6069: Blog plugin crashes for categories with non-ASCII names
+
+__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.2...9.4.3))
+
+- `base.html`
+
+### 9.4.2 <small>September 25, 2023</small> { id="9.4.2" }
+
+- Updated Slovenian translations
+- Added animation to sidebar navigation expansion and collapse
+- Added support for auto-replacement of document head for instant navigation
+- Improved compatibility of new emoji extension with Python < 3.10
+- Switched regex dependency to use minimal version
+- Refactored alignment and spacing of sidebar navigation
+- Fixed expansion button not focusable via keyboard in sidebar navigation
+- Fixed viewport offset restoration on first load when using instant navigation
+- Fixed accidental highlight of non-clickable elements in blog plugin sidebar
+- Fixed #6041: Blog plugin crashes when `nav` is defined and blog not included
+- Fixed #5972: Blog plugin ignores section index pages in paginated views
+- Fixed #5954: Repeated click on anchor ignored when using instant navigation
+- Fixed #5742: Keyboard navigation broken when using instant navigation
+
+__Updated templates__ ([diff](https://github.com/squidfunk/mkdocs-material/compare/9.4.1...9.4.2))
+
+- `partials/nav-item.html`
+- `blog-post.html`
+
+### 9.4.1 <small>September 22, 2023</small> { id="9.4.1" }
+
+- Improved colors and contrast in dark mode
+- Improved admonition borders to match font weight
+- Switched content tabs to neutral color
+
+### 9.4.0 <small>September 21, 2023</small> { id="9.4.0" }
+
+- Added Belarusian translations
+- Added version info to entrypoint of package
+- Added emoji extension as a replacement for `materialx`
+- Improved slate color scheme (dark mode) - now even darker
+- Restructured project to improve development experience
+- Updated MkDocs to 1.5.3
+- Fixed #3890: Development mode crash on Linux
+
+### 9.3.2 <small>September 19, 2023</small> { id="9.3.2" }
+
+- Updated Slovenian translations
+- Updated Python dependencies in requirements to use minimum versions
+- Fixed #6017: Code highlighting inconsistent in Community and Insiders edition
+- Fixed #6001: Contributor avatars display incorrectly in Firefox
+- Fixed #6000: Blog post drafts are included in navigation
+
+### 9.3.1 <small>September 11, 2023</small> { id="9.3.1" }
+
+- Fixed crash of group plugin when used together with hooks
+
+### 9.3.0 <small>September 11, 2023</small> { id="9.3.0" }
+
+- Improved configuration sharing between Community and Insiders edition
+- Added experimental built-in group plugin for enabling plugins conditionally
+- Added new settings in tags plugin for enabling/disabling
+- Dropped support for Python 3.7 (EOL)
+
+### 9.2.8 <small>September 4, 2023</small> { id="9.2.8" }
+
+- Updated Italian and Russian translations
+- Fixed #5952: Combining blog and tags plugin leads to wrong links
+- Fixed #5951: Blog plugin ignores post title in metadata
+- Fixed #5949: Blog plugin ignores post linked in nav
+
+### 9.2.7 <small>September 2, 2023</small> { id="9.2.7" }
+
+- Switched dependencies to compatible release clauses
+- Removed `readtime` and `lxml` dependencies for blog plugin
+- Reduced size of Docker image to improve CI build performance
+- Fixed #5945: Incorrect footer navigation for sibling pages of blog
+- Fixed #5939: Page jumps when changing color palette (Firefox 117)
+- Fixed #5901: Announcement bar reappears when using instant loading
+- Fixed #5824: Allow to customize styles of sequence diagrams
+
+### 9.2.6 <small>August 31, 2023</small> { id="9.2.6" }
+
+- Added Basque translations
+- Added template for simple redirects
+- Improved blog plugin interop by moving view generation to `on_files`
+- Fixed #5924: Social plugin still checks dependencies when disabled
+- Fixed #5916: Blog plugin crashes on Python 3.8 (9.2.0 regression)
+
+### 9.2.5 <small>August 27, 2023</small> { id="9.2.5" }
+
+- Fixed error in dirty serve mode when using blog plugin
+- Fixed page title not being consistent in blog plugin pagination
+- Fixed #5899: Blog plugin pagination breaks when disabling directory URLs
+
+### 9.2.4 <small>August 26, 2023</small> { id="9.2.4" }
+
+- Added version to bug report name in info plugin
+- Updated Afrikaans translations
+
+### 9.2.3 <small>August 22, 2023</small> { id="9.2.3" }
+
+- Fixed blog plugin rendering wrongly with `markdown.extensions.toc`
+- Fixed blog plugin entrypoint generation
+
+### 9.2.2 <small>August 22, 2023</small> { id="9.2.2" }
+
+- Fixed #5880: Blog plugin failing when building a standalone blog
+- Fixed #5881: Blog plugin not compatible with Python < 3.10
+
+### 9.2.1 <small>August 21, 2023</small> { id="9.2.1" }
+
+- Fixed #5879: Blog plugin failing when building a standalone blog
+- Fixed error in blog plugin when using draft tagging on future date
+- Fixed error in blog plugin when toc extension is not enabled
+
+### 9.2.0 <small>August 21, 2023</small> { id="9.2.0" }
+
+__Additions and improvements__
+
+- Added blogging support via built-in blog plugin
+- Added support for Chinese language segmentaiton in search plugin
+- Added support for adding custom dates to blog posts
+- Added support for paginating archive and category pages
+- Added support for annotations (outside of code blocks)
+- Added support for navigation icons
+- Added support for navigation pruning
+- Added support for navigation status
+- Added support for customizing site icons
+- Added support for customizing (code) annotation icons
+- Added focus outline to admonitions and details
+- Added prompt for bug report name to info plugin
+- Added Luxembourgish translations
+- Improved rendering of (code) annotation markers
+- Improved print styles for (code) annotations
+- Improved customizability of navigation tabs
+- Improved interop of plugins with external tools like mike
+- Improved interop of blog plugin with awesome pages plugin
+- Improved header partial by moving buttons into separate partials
+- Improved clarity of `site_url` warning in social plugin
+- Improved blog plugin to automatically setup directory structure
+- Switched info plugin to `importlib` to mitigate deprecations
+- Automatically download ResizeObserver polyfill when necessary
+- Automatically add iframe-worker polyfill when necessary in offline plugin
+- Automatically focus and bring up keyboard on touch devices
+- Updated Serbo-Croatian translations
+- Updated MkDocs to 1.5.2
+
+__Removals__
+
+- Removed Universal Analytics integration
+- Removed ancient polyfills to reduce size of bundled JavaScript by 20%
+- Removed necessity for `Array.flat` and `Array.flatMap` polyfill
+- Removed announcement bar button when JavaScript is not available
+
+__Fixes__
+
+- Fixed rendering of tags when announcement bar is present
+- Fixed tags plugin rendering pages excluded by other plugins
+- Fixed #5132: Blog plugin requires `nav` entry in `mkdocs.yml`
+- Fixed #5599: Insufficient contrast for default link color
+- Fixed #5715: Blog plugin missing integrated table of contents in pagination
+- Fixed #5806: Version selector not hoverable on some Android devices
+- Fixed #5826: Blog post drafts with tags show up in tags index
+
+### 9.1.21 <small>July 27, 2023</small> { id="9.1.21" }
+
+- Fixed MkDocs 1.4 compat issue in social plugin (9.1.20 regression)
+
+### 9.1.20 <small>July 27, 2023</small> { id="9.1.20" }
+
+- Updated Sanskrit translations
+- Fixed deprecation warnings for social plugin
+
+### 9.1.19 <small>July 18, 2023</small> { id="9.1.19" }
+
+- Added support for MkDocs 1.5+
+- Fixed #5699: Improve error reporting in social plugin
+
+### 9.1.18 <small>July 3, 2023</small> { id="9.1.18" }
+
+- Updated Danish translations
+- Added support for installing user requirements in Docker image
+- Fixed #5655: Search separator with lookbehind breaks highlighting
+
+### 9.1.17 <small>June 23, 2023</small> { id="9.1.17" }
+
+- Fixed #5633: Code annotations with nested lists incorrectly mounted
+- Fixed #5628: Regression in new social plugin configuration scheme
+
 ### 9.1.16 <small>June 15, 2023</small> { id="9.1.16" }
 
 - Updated Indonesian translations
@@ -163,7 +370,7 @@
 ### 9.0.7 <small>January 28, 2023</small> { id="9.0.7" }
 
 - Improved accessibility of sidebar navigation
-- Moved all translations into community edition
+- Moved all translations into Community edition
 - Updated Polish and Portuguese (Brasilian) translations
 - Fixed info plugin terminating on subsequent reload when serving
 - Fixed #4910: Sidebar navigation labels have invalid ARIA roles

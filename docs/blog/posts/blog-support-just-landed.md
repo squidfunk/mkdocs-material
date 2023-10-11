@@ -7,8 +7,8 @@ description: >
 categories:
   - Blog
 links:
-  - Getting started with Insiders: insiders/getting-started.md#requirements
-  - setup/setting-up-a-blog.md#built-in-blog-plugin
+  - setup/setting-up-a-blog.md
+  - plugins/blog.md
 ---
 
 # Blog support just landed
@@ -31,32 +31,14 @@ _This article explains how to build a standalone blog with Material for MkDocs.
 If you want to build a blog alongside your documentation, please refer to
 [the plugin's documentation][built-in blog plugin]._
 
-  [built-in blog plugin]: ../../setup/setting-up-a-blog.md#built-in-blog-plugin
+  [built-in blog plugin]: ../../plugins/blog.md
   [Jekyll]: https://jekyllrb.com/
 
 ## Quick start
 
-### Setting up Insiders
-
-Before we can start bootstrapping a blog and [write our first post], we need to
-set up [Insiders], since the [built-in blog plugin] is currently reserved to
-sponsors. Without the funds this project receives through sponsorships, this
-plugin wouldn't exist. Three steps are necessary:
-
-1.  [Subscribe to a monthly sponsorship]
-2.  [Create a personal access token]
-3.  [Install Insiders]
-
-  [write our first post]: #writing-your-first-post
-  [Insiders]: ../../insiders/index.md
-  [Subscribe to a monthly sponsorship]: ../../insiders/index.md#how-to-become-a-sponsor
-  [Create a personal access token]: ../../insiders/getting-started.md#requirements
-  [Install Insiders]: ../../insiders/getting-started.md#installation
-
 ### Creating a standalone blog
 
-After Insiders is installed, you can bootstrap a new project using the `mkdocs`
-executable:
+You can bootstrap a new project using the `mkdocs` executable:
 
 ```
 mkdocs new .
@@ -84,7 +66,6 @@ theme:
   features:
     - navigation.sections
 plugins:
-  - meta
   - blog:
       blog_dir: . # (1)!
   - search
@@ -168,9 +149,9 @@ In velit purus, dictum quis neque nec, molestie viverra risus. Nam pellentesque
 tellus id elit ultricies, vel finibus erat cursus.
 ```
 
-1.  If you mark a post as a [draft], a red marker appears next to the post date 
-    on index pages. When the site is built, drafts are not included in the 
-    output. [This behavior can be changed], e.g. for rendering drafts when 
+1.  If you mark a post as a [draft], a red marker appears next to the post date
+    on index pages. When the site is built, drafts are not included in the
+    output. [This behavior can be changed], e.g. for rendering drafts when
     building deploy previews.
 
 When you spin up the [live preview server], you should be greeted by your first
@@ -233,7 +214,7 @@ Some ideas already proposed by users:
   part of a series, a list with links to all other posts should be included in
   the post's content.
 
-- __Author indexes__: Besides [archive] and [category] indexes, authors should 
+- __Author indexes__: Besides [archive] and [category] indexes, authors should
   be able to create per-author indexes, which list all posts linked to an
   author. Additionally, a profile should be created for each author and linked
   from posts.
