@@ -244,6 +244,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Netflix](https://netflix.github.io/titus/),
 [Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
+[SIEMENS](https://opensource.siemens.com/),
 [Slack](https://slackhq.github.io/circuit/),
 [Square](https://square.github.io/okhttp/),
 [Zalando](https://opensource.zalando.com/skipper/)
