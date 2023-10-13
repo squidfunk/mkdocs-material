@@ -460,7 +460,7 @@ from within a code block:
 
 ```` markdown title="Code block with external content"
 ``` title=".browserslistrc"
---8<-- ".browserslistrc"
+;--8<-- ".browserslistrc"
 ```
 ````
 
