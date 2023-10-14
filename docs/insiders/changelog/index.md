@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.2 <small>October 14, 2023</small> { id="4.42.2" }
+
+- Fixed #6186: Privacy plugin ignores hash fragments on images
+- Fixed #6180: Projects plugin crashing when adding or removing files
+
 ### 4.42.1 <small>October 5, 2023</small> { id="4.42.1" }
 
 - Fixed spacing of related links in blog posts on small screens

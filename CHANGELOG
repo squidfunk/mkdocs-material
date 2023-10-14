@@ -1,3 +1,8 @@
+mkdocs-material-9.4.6+insiders-4.42.2 (2023-10-14)
+
+  * Fixed #6186: Privacy plugin ignores hash fragments on images
+  * Fixed #6180: Projects plugin crashing when adding or removing files
+
 mkdocs-material-9.4.6 (2023-10-14)
 
   * Updated Danish and Norwegian (Nynorsk) translations
