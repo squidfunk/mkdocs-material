@@ -1,3 +1,8 @@
+mkdocs-material-9.4.6 (2023-10-14)
+
+  * Updated Danish and Norwegian (Nynorsk) translations
+  * Fixed #6169: Blog post metadata layout overflows on small screens
+
 mkdocs-material-9.4.5 (2023-10-10)
 
   * Fixed sidebar auto-positioning (9.4.2 regression)
