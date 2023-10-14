@@ -301,16 +301,14 @@ Then, install all Python dependencies:
 === "Material for MkDocs"
 
     ```
-    pip install -e .
-    pip install "mkdocs-material[recommended]"
+    pip install -e ".[recommended]"
     pip install nodeenv
     ```
 
 === "Insiders"
 
     ```
-    pip install -e .
-    pip install "mkdocs-material[recommended, imaging]"
+    pip install -e ".[recommended, imaging]"
     pip install nodeenv
     ```
 
