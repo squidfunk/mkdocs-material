@@ -54,7 +54,7 @@ extra_javascript:
   - javascripts/extra.js
 ```
 
-!!! tip "Make sure the page is fully loaded"
+??? tip "How to integrate with third-party JavaScript libraries"
 
     It is likely that you will want to run your JavaScript code only
     once the page has been fully loaded by the browser. This means
@@ -74,8 +74,8 @@ extra_javascript:
     `document$` is an [RxJS Observable] and you can call the `subscribe()`
     method any number of times to attach different functionality.
 
-    [instant loading]: setup/setting-up-navigation.md/#instant-loading
-    [RxJS Observable]: https://rxjs.dev/api/index/class/Observable
+  [instant loading]: setup/setting-up-navigation.md/#instant-loading
+  [RxJS Observable]: https://rxjs.dev/api/index/class/Observable
 
 ## Extending the theme
 
