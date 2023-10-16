@@ -46,8 +46,8 @@
       {% endif %}
 
       <!-- Canonical -->
-      {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}" />
+      {% if page.meta and page.meta.canonical_url %}
+        <link rel="canonical" href="{{ page.meta.canonical_url }}">
       {% endif %}
 
       <!-- Previous page -->
