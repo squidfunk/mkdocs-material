@@ -181,7 +181,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2023-01-31
+date: 2023-01-31 # (2)!
 categories:
   - Hello
   - World
