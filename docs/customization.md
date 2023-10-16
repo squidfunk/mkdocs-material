@@ -54,6 +54,29 @@ extra_javascript:
   - javascripts/extra.js
 ```
 
+!!! tip "Make sure the page is fully loaded"
+
+    It is likely that you will want to run your JavaScript code only
+    once the page has been fully loaded by the browser. This means
+    installing a callback function subscribing to events on the
+    `document$` observable exported by Material for MkDocs.
+    Using the `document$` observable is particularly important if you
+    are using [instant loading] since it will not result in a page
+    refresh in the browser - but subscribers on the observable will be
+    notified.
+
+    ``` javascript
+    document$.subscribe(function() {
+      console.log("Page loaded.") // or whatever it is you want to do
+    })
+    ```
+
+    `document$` is an [RxJS Observable] and you can call the `subscribe()`
+    method any number of times to attach different functionality.
+
+    [instant loading]: setup/setting-up-navigation.md/#instant-loading
+    [RxJS Observable]: https://rxjs.dev/api/index/class/Observable
+
 ## Extending the theme
 
 If you want to alter the HTML source (e.g. add or remove some parts), you can
@@ -255,8 +278,8 @@ sponsor first to gain access.
 === "Insiders"
 
     You will need to have a GitHub access token [as described in the
-    Insiders documentation] and make it available in the `$GH_TOKEN` 
-    variable. 
+    Insiders documentation] and make it available in the `$GH_TOKEN`
+    variable.
 
     ``` sh
     git clone https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git # (1)!
@@ -285,7 +308,7 @@ source venv/bin/activate
     `true`, `pip` will refuse to install anything outside a virtual
     environment. Forgetting to activate a `venv` can be very annoying
     as it will install all sorts of things outside virtual
-    environments over time, possibly leading to further errors. So, 
+    environments over time, possibly leading to further errors. So,
     you may want to add this to your `.bashrc` or `.zshrc` and
     re-start your shell:
 
