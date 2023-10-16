@@ -67,7 +67,7 @@ extra_javascript:
 
     ``` javascript
     document$.subscribe(function() {
-      console.log("Page loaded.") // or whatever it is you want to do
+      console.log("Initialize third-party libraries here")
     })
     ```
 
