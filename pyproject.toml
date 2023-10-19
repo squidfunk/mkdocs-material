@@ -22,7 +22,9 @@
 requires = [
   "hatchling",
   "hatch-requirements-txt",
-  "hatch-nodejs-version>=0.3.0"
+  "hatch-nodejs-version>=0.3.0",
+  # Needed for "Framework :: MkDocs"
+  "trove_classifiers>=2023.10.18",
 ]
 build-backend = "hatchling.build"
 
@@ -41,6 +43,7 @@ requires-python = ">=3.8"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
+  "Framework :: MkDocs",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: JavaScript",
   "Programming Language :: Python",
