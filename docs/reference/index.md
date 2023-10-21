@@ -130,10 +130,17 @@ status: new
 ...
 ```
 
-The following status identifiers are currently supported:
+The following status identifiers are already defined:
 
 - :material-alert-decagram: – `new`
 - :material-trash-can: – `deprecated`
+
+You can define a custom page status this way but if you want it to
+have an icon other than the default one you need to also configure
+that in your `extra.css`. We have an [example for a custom
+page status] to get you started.
+
+[example for a custom page status]: https://mkdocs-material.github.io/examples/page-status/
 
 ### Setting the page `subtitle`
 
