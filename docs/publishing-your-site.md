@@ -152,9 +152,9 @@ contents:
 === "Material for MkDocs"
 
     ``` yaml
-    image: python:latest
     pages:
       stage: deploy
+      image: python:latest
       script:
         - pip install mkdocs-material
         - mkdocs build --site-dir public
@@ -168,9 +168,9 @@ contents:
 === "Insiders"
 
     ``` yaml
-    image: python:latest
     pages:
       stage: deploy
+      image: python:latest
       script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
