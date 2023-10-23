@@ -87,7 +87,7 @@
     "rimraf": "^5.0.5",
     "sass": "^1.69.3",
     "simple-icons": "^9.18.0",
-    "stylelint": "^15.10.3",
+    "stylelint": "^15.11.0",
     "stylelint-config-recess-order": "4.2.0",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
