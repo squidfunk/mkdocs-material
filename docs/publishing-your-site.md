@@ -185,9 +185,9 @@ contents:
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
-Now, when a new commit is pushed to `master`, the static site is automatically
-built and deployed. Commit and push the file to your repository to see the
-workflow in action.
+Now, when a new commit is pushed to the [default branch] (typically `master` or
+`main`), the static site is automatically built and deployed. Commit and push
+the file to your repository to see the workflow in action.
 
 Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
 
@@ -210,6 +210,7 @@ other providers:
   [GitLab Pages]: https://gitlab.com/pages
   [GitLab CI]: https://docs.gitlab.com/ee/ci/
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
+  [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
   [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
   [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
   [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
