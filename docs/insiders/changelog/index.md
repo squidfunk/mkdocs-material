@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.42.3 <small>October 27, 2023</small> { id="4.42.3" }
+
+- Fixed #6251: Cards in grids cut off on very small screens
+- Fixed #6241: Using social plugin + static-i18n plugin errors
+
 ### 4.42.2 <small>October 14, 2023</small> { id="4.42.2" }
 
 - Fixed #6186: Privacy plugin ignores hash fragments on images

@@ -1,3 +1,12 @@
+mkdocs-material-9.4.7+insiders-4.42.3 (2023-10-27)
+
+  * Fixed #6251: Cards in grids cut off on very small screens
+  * Fixed #6241: Using social plugin + static-i18n plugin errors
+
+mkdocs-material-9.4.7 (2023-10-27)
+
+  * Added Azerbaijani translations
+
 mkdocs-material-9.4.6+insiders-4.42.2 (2023-10-14)
 
   * Fixed #6186: Privacy plugin ignores hash fragments on images

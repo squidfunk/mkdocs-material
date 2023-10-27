@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.4.7 <small>October 27, 2023</small> { id="9.4.7" }
+
+- Added Azerbaijani translations
+
 ### 9.4.6 <small>October 14, 2023</small> { id="9.4.6" }
 
 - Updated Danish and Norwegian (Nynorsk) translations
