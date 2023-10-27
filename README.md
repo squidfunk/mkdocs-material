@@ -161,6 +161,9 @@
   <a href="https://transformationflow.io/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png" height="58"
   /></a>
+  <a href="https://3dr.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
