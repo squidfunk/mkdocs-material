@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Configure navigation in Markdown instead of YAML",
+  "oneOf": [
+    {
+      "markdownDescription": "https://github.com/oprypin/mkdocs-literate-nav",
+      "enum": [
+        "literate-nav"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "literate-nav": {
+          "markdownDescription": "https://github.com/oprypin/mkdocs-literate-nav",
+          "type": "object",
+          "properties": {
+            "nav_file": {
+              "title": "The name of the file to read to determine the navigation for a particular directory under `docs_dir`",
+              "markdownDescription": "https://oprypin.github.io/mkdocs-literate-nav/reference.html#nav_file",
+              "type": "string",
+              "default": "SUMMARY.md"
+            },
+            "implicit_index": {
+              "title": "If set and a directory has a file named `index.md` or `README.md`, but the literate nav for that directory that never includes it, it will be inserted as the first item of the nav",
+              "markdownDescription": "https://oprypin.github.io/mkdocs-literate-nav/reference.html#implicit_index",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

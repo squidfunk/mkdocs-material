@@ -51,22 +51,28 @@ and [override the `comments.html` partial][overriding partials] with:
   <script>
     var giscus = document.querySelector("script[src*=giscus]")
 
-    /* Set palette on initial load */
+    // Set palette on initial load
     var palette = __md_get("__palette")
     if (palette && typeof palette.color === "object") {
-      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      var theme = palette.color.scheme === "slate"
+        ? "transparent_dark"
+        : "light"
+
+      // Instruct Giscus to set theme
       giscus.setAttribute("data-theme", theme) // (1)!
     }
 
-    /* Register event handlers after documented loaded */
+    // Register event handlers after documented loaded
     document.addEventListener("DOMContentLoaded", function() {
       var ref = document.querySelector("[data-md-component=palette]")
       ref.addEventListener("change", function() {
         var palette = __md_get("__palette")
         if (palette && typeof palette.color === "object") {
-          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+          var theme = palette.color.scheme === "slate"
+            ? "transparent_dark"
+            : "light"
 
-          /* Instruct Giscus to change theme */
+          // Instruct Giscus to change theme
           var frame = document.querySelector(".giscus-frame")
           frame.contentWindow.postMessage(
             { giscus: { setConfig: { theme } } },
@@ -93,7 +99,7 @@ property to `true`:
 comments: true
 ---
 
-# Document title
+# Page title
 ...
 ```
 
@@ -102,6 +108,6 @@ If you wish to enable comments for an entire folder, you can use the
 
   [Giscus GitHub App]: https://github.com/apps/giscus
   [theme extension]: ../customization.md#extending-the-theme
-  [comments]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/comments.html
+  [comments]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/comments.html
   [overriding partials]: ../customization.md#overriding-partials
-  [built-in meta plugin]: ../reference/index.md#built-in-meta-plugin
+  [built-in meta plugin]: ../plugins/meta.md

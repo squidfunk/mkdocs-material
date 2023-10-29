@@ -1,6 +1,6 @@
 # Creating your site
 
-After you've [installed] Material for MkDocs, you can bootstrap your project 
+After you've [installed] Material for MkDocs, you can bootstrap your project
 documentation using the `mkdocs` executable. Go to the directory where you want
 your project to be located and enter:
 
@@ -24,7 +24,7 @@ Alternatively, if you're running Material for MkDocs from within Docker, use:
 
 This will create the following structure:
 
-```
+``` { .sh .no-copy }
 .
 ├─ docs/
 │  └─ index.md
@@ -48,7 +48,7 @@ theme:
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
 
-    In order to minimize friction and maximize productivity, Material for MkDocs 
+    In order to minimize friction and maximize productivity, Material for MkDocs
     provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
     YAML schema validation, it's definitely recommended to set it up:
 
@@ -62,9 +62,19 @@ theme:
             {
               "yaml.schemas": {
                 "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
-              }
+              },
+              "yaml.customTags": [ // (1)!
+                "!ENV scalar",
+                "!ENV sequence",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
+                "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+              ]
             }
             ```
+
+            1.  This setting is necessary if you plan to use [icons and emojis],
+                or Visual Studio Code will show errors on certain lines.
 
     === "Other"
 
@@ -89,6 +99,7 @@ theme:
   [extension]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/extensions
   [plugin]: https://github.com/squidfunk/mkdocs-material/tree/master/docs/schema/plugins
   [$ref]: https://json-schema.org/understanding-json-schema/structuring.html#ref
+  [icons and emojis]: reference/icons-emojis.md
 
 ### Advanced configuration
 
@@ -114,6 +125,7 @@ and much more:
 - [Setting up the footer]
 - [Adding a git repository]
 - [Adding a comment system]
+- [Building an optimized site]
 - [Building for offline usage]
 
 </div>
@@ -139,6 +151,7 @@ technical writing experience.
   [Adding a git repository]: setup/adding-a-git-repository.md
   [Adding a comment system]: setup/adding-a-comment-system.md
   [Building for offline usage]: setup/building-for-offline-usage.md
+  [Building an optimized site]: setup/building-an-optimized-site.md
   [Markdown extensions]: setup/extensions/index.md
 
 ## Previewing as you write
@@ -212,3 +225,10 @@ or your private web space.
 
   [GitHub Pages]: publishing-your-site.md#github-pages
   [GitLab pages]: publishing-your-site.md#gitlab-pages
+
+If you intend to distribute your documentation as a set of files to be
+read from a local filesystem rather than a web server (such as in a
+`.zip` file), please read the notes about [building for offline
+usage].
+
+  [building for offline usage]: setup/building-for-offline-usage.md

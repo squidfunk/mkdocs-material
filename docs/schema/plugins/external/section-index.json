@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "title": "Add index section pages to navigation",
+  "oneOf": [
+    {
+      "markdownDescription": "https://github.com/oprypin/mkdocs-section-index",
+      "enum": [
+        "section-index"
+      ]
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "section-index": {}
+      }
+    }
+  ]
+}

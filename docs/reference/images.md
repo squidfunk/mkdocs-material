@@ -4,8 +4,8 @@ icon: material/image-frame
 
 # Images
 
-While images are first-class citizens of Markdown and part of the core syntax, 
-it can be difficult to work with them. Material for MkDocs makes working with 
+While images are first-class citizens of Markdown and part of the core syntax,
+it can be difficult to work with them. Material for MkDocs makes working with
 images more comfortable, providing styles for image alignment and image
 captions.
 
@@ -31,10 +31,10 @@ See additional configuration options:
 
 ### Lightbox
 
-[:octicons-tag-24: 0.1.0][Lightbox support] ·
-[:octicons-cpu-24: Plugin][glightbox]
+<!-- md:version 0.1.0 -->
+<!-- md:plugin [glightbox] -->
 
-If you want to add image zoom functionality to your documentation, the 
+If you want to add image zoom functionality to your documentation, the
 [glightbox] plugin is an excellent choice, as it integrates perfectly
 with Material for MkDocs. Install it with `pip`:
 
@@ -52,7 +52,6 @@ plugins:
 We recommend checking out the available
 [configuration options][glightbox options].
 
-  [Lightbox support]: https://github.com/squidfunk/mkdocs-material/releases/tag/0.1.0
   [glightbox]: https://github.com/blueswen/mkdocs-glightbox
   [glightbox options]: https://github.com/blueswen/mkdocs-glightbox#usage
 
@@ -72,7 +71,7 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 
     <div class="result" markdown>
 
-    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=left width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=left width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -88,7 +87,7 @@ respective alignment directions via the `align` attribute, i.e. `align=left` or
 
     <div class="result" markdown>
 
-    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–){ align=right width=300 }
+    ![Image title](https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–){ align=right width=300 }
 
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
@@ -131,7 +130,7 @@ but it's always possible to use the [Markdown in HTML] extension with literal
 
 <div class="result">
   <figure>
-    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+    <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
     <figcaption>Image caption</figcaption>
   </figure>
 </div>
@@ -147,15 +146,14 @@ browsers without support:
 ```
 
 <div class="result" markdown>
-  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa&text=–%20Image%20–" width="300" />
+  <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
 </div>
 
   [lazy-loading]: https://caniuse.com/#feat=loading-lazy-attr
 
 ### Light and dark mode
 
-[:octicons-tag-24: 8.1.1][Light and dark mode support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.1.1 -->
 
 If you added a [color palette toggle] and want to show different images for
 light and dark color schemes, you can append a `#only-light` or `#only-dark`
@@ -173,7 +171,36 @@ hash fragment to the image URL:
 
 </div>
 
-  [Light and dark mode support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.1
+!!! warning "Requirements when using [custom color schemes]"
+
+    The built-in [color schemes] define the aforementioned hash fragments, but
+    if you're using [custom color schemes], you'll also have to add the
+    following selectors to your scheme, depending on whether it's a light or
+    dark scheme:
+
+    === "Custom light scheme"
+
+        ``` css
+        [data-md-color-scheme="custom-light"] img[src$="#only-dark"],
+        [data-md-color-scheme="custom-light"] img[src$="#gh-dark-mode-only"] {
+          display: none; /* Hide dark images in light mode */
+        }
+        ```
+
+    === "Custom dark scheme"
+
+        ``` css
+        [data-md-color-scheme="custom-dark"] img[src$="#only-light"],
+        [data-md-color-scheme="custom-dark"] img[src$="#gh-light-mode-only"] {
+          display: none; /* Hide light images in dark mode */
+        }
+        ```
+
+    Remember to change `#!css "custom-light"` and `#!css "custom-dark"` to the
+    name of your scheme.
+
   [color palette toggle]: ../setup/changing-the-colors.md#color-palette-toggle
   [Zelda light world]: ../assets/images/zelda-light-world.png#only-light
   [Zelda dark world]: ../assets/images/zelda-dark-world.png#only-dark
+  [color schemes]: ../setup/changing-the-colors.md#color-scheme
+  [custom color schemes]: ../setup/changing-the-colors.md#custom-color-schemes

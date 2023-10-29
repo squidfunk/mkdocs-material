@@ -1,7 +1,7 @@
 # Changing the language
 
 Material for MkDocs supports internationalization (i18n) and provides
-translations for template variables and labels in 50+ languages. Additionally,
+translations for template variables and labels in 60+ languages. Additionally,
 the site search can be configured to use a language-specific stemmer, if
 available.
 
@@ -9,8 +9,8 @@ available.
 
 ### Site language
 
-[:octicons-tag-24: 1.12.0][Site language support] ·
-:octicons-milestone-24: Default: `en`
+<!-- md:version 1.12.0 -->
+<!-- md:default `en` -->
 
 You can set the site language in `mkdocs.yml` with:
 
@@ -29,84 +29,27 @@ theme:
 
 The following languages are supported:
 
-<div class="mdx-columns" markdown>
-
-- `af` – Afrikaans
-- `ar` – Arabic
-- `bg` – Bulgarian
-- `bn` – Bengali (Bangla)
-- `ca` – Catalan
-- `cs` – Czech
-- `da` – Danish
-- `de` – German
-- `el` – Greek
-- `en` – English
-- `eo` – Esperanto
-- `es` – Spanish
-- `et` – Estonian
-- `fa` – Persian (Farsi)
-- `fi` – Finnish
-- `fr` – French
-- `gl` – Galician
-- `he` – Hebrew
-- `hi` – Hindi
-- `hr` – Croatian
-- `hu` – Hungarian
-- `hy` – Armenian
-- `id` – Indonesian
-- `is` – Icelandic
-- `it` – Italian
-- `ja` – Japanese
-- `ka` – Georgian
-- `kr` – Korean
-- `lt` – Lithuanian
-- `lv` – Latvian
-- `mk` – Macedonian
-- `mn` – Mongolian
-- `ms` – Bahasa Malaysia
-- `my` – Burmese
-- `nl` – Dutch
-- `nn` – Norwegian (Nynorsk)
-- `no` – Norwegian
-- `pl` – Polish
-- `pt` – Portuguese
-- `pt-BR` – Portuguese (Brasilian)
-- `ro` – Romanian
-- `ru` – Russian
-- `sh` – Serbo-Croatian
-- `si` – Sinhalese
-- `sk` – Slovak
-- `sl` – Slovenian
-- `sr` – Serbian
-- `sv` – Swedish
-- `th` – Thai
-- `tl` – Tagalog
-- `tr` – Turkish
-- `uk` – Ukrainian
-- `ur` – Urdu
-- `uz` – Uzbek
-- `vi` – Vietnamese
-- `zh` – Chinese (Simplified)
-- `zh-Hant` – Chinese (Traditional)
-- `zh-TW` – Chinese (Taiwanese)
-- [Add language]
-
-</div>
+<!-- hooks/translations.py -->
 
 Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
 
-  [Site language support]: https://github.com/squidfunk/mkdocs-material/releases/tag/1.12.0
+!!! tip "Translations missing? Help us out, it takes only 5 minutes"
+
+    Material for MkDocs relies on outside contributions for adding and updating
+    translations for the more than 60 languages it supports. If your language
+    shows that some translations are missing, click on the link to add them. If
+    your language is not in the list, click here to [add a new language].
+
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
-  [Add language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=translate.yml&title=New+language%3A+%7Breplace+with+language+name%7D
+  [add a new language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=04-add-a-translation.yml&title=Add+translations+for+...
 
 ### Site language selector
 
-[:octicons-tag-24: 7.0.0][Site language selector support] ·
-:octicons-milestone-24: Default: _none_ ·
-:octicons-beaker-24: Experimental
+<!-- md:version 7.0.0 -->
+<!-- md:default none -->
 
 If your documentation is available in multiple languages, a language selector
 pointing to those languages can be added to the header. Alternate languages
@@ -129,36 +72,35 @@ extra:
 
 The following properties are available for each alternate language:
 
-[`name`](#+alternate.name){ #+alternate.name }
+<!-- md:option alternate.name -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This value of this property is used inside the language selector as the
     name of the language and must be set to a non-empty string.
 
-[`link`](#+alternate.link){ #+alternate.link }
+<!-- md:option alternate.link -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must be set to an absolute link, which might also point to
     another domain or subdomain not necessarily generated with MkDocs.
 
-[`lang`](#+alternate.lang){ #+alternate.lang }
+<!-- md:option alternate.lang -->
 
-:   :octicons-milestone-24: Default: _none_ · :octicons-alert-24: __Required__ –
+:   <!-- md:default none --> <!-- md:flag required -->
     This property must contain an [ISO 639-1 language code] and is used for
     the `hreflang` attribute of the link, improving discoverability via search
     engines.
 
 [![Language selector preview]][Language selector preview]
 
-  [Site language selector support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
 
 ### Directionality
 
-[:octicons-tag-24: 2.5.0][Directionality support] ·
-:octicons-milestone-24: Default: _automatically set_
+<!-- md:version 2.5.0 -->
+<!-- md:default computed -->
 
 While many languages are read `ltr` (left-to-right), Material for MkDocs also
 supports `rtl` (right-to-left) directionality which is deduced from the
@@ -182,13 +124,11 @@ Click on a tile to change the directionality:
     button.addEventListener("click", function() {
       var attr = this.getAttribute("data-md-dir")
       document.body.dir = attr
-      var name = document.querySelector("#__code_3 code span.l")
+      var name = document.querySelector("#__code_2 code span.l")
       name.textContent = attr
     })
   })
 </script>
-
-  [Directionality support]: https://github.com/squidfunk/mkdocs-material/releases/tag/2.5.0
 
 ## Customization
 
@@ -232,5 +172,5 @@ adjust the ones you want to override:
     ```
 
   [theme extension]: ../customization.md#extending-the-theme
-  [translations]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/languages/
-  [list of available languages]: https://github.com/squidfunk/mkdocs-material/blob/master/src/partials/languages/
+  [translations]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/languages/
+  [list of available languages]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/languages/

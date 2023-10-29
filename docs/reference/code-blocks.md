@@ -13,14 +13,16 @@ during runtime using a JavaScript syntax highlighter.
 
 ## Configuration
 
-This configuration enables syntax highlighting on code blocks and inline code 
-blocks, and allows to include source code directly from other files. Add the 
+This configuration enables syntax highlighting on code blocks and inline code
+blocks, and allows to include source code directly from other files. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
@@ -42,10 +44,87 @@ See additional configuration options:
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Snippets]: ../setup/extensions/python-markdown-extensions.md#snippets
 
+### Code copy button
+
+<!-- md:version 9.0.0 -->
+<!-- md:feature -->
+
+Code blocks can automatically render a button on the right side to allow the
+user to copy a code block's contents to the clipboard. Add the following to
+`mkdocs.yml` to enable them globally:
+
+``` yaml
+theme:
+  features:
+    - content.code.copy
+```
+
+??? info "Enabling or disabling code copy buttons for a specific code block"
+
+    If you don't want to enable code copy buttons globally, you can enable them
+    for a specific code block by using a slightly different syntax based on the
+    [Attribute Lists] extension:
+
+    ```` yaml
+    ``` { .yaml .copy }
+    # Code block content
+    ```
+    ````
+
+    Note that the language shortcode which has to come first must now also be
+    prefixed by a `.`. Similarly, the copy button can also be disabled for a
+    specific code block:
+
+    ```` { .yaml .no-copy }
+    ``` { .yaml .no-copy }
+    # Code block content
+    ```
+    ````
+
+### Code selection button
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.32.0 -->
+<!-- md:flag experimental -->
+
+Code blocks can include a button to allow for the selection of line ranges by
+the user, which is perfect for linking to a specific subsection of a code block. This allows the user to apply [line highlighting] dynamically. Add the following
+to `mkdocs.yml` to enable it globally:
+
+``` yaml
+theme:
+  features:
+    - content.code.select
+```
+
+??? info "Enabling or disabling code selection buttons for a specific code block"
+
+    If you don't want to enable code selection buttons globally, you can enable
+    them for a specific code block by using a slightly different syntax based on
+    the [Attribute Lists] extension:
+
+    ```` yaml
+    ``` { .yaml .select }
+    # Code block content
+    ```
+    ````
+
+    Note that the language shortcode which has to come first must now also be
+    prefixed by a `.`. Similarly, the selection button can also be disabled for
+    a specific code block:
+
+    ```` { .yaml .no-select }
+    ``` { .yaml .no-select }
+    # Code block content
+    ```
+    ````
+
+  [line highlighting]: #highlighting-specific-lines
+
 ### Code annotations
 
-[:octicons-tag-24: 8.0.0][Code annotations support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 8.0.0 -->
+<!-- md:feature -->
 
 Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
@@ -74,30 +153,50 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be 
+    Note that the language shortcode which has to come first must now also be
     prefixed by a `.`.
 
-  [Code annotations support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 
-#### Anchor links
+#### Custom selectors
 
-[:octicons-tag-24: 8.5.0][Anchor links support] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.32.0 -->
+<!-- md:flag experimental -->
 
-In order to be able to link to code annotations and share them more easily, an
-anchor link is automatically added to each annotation, which you can copy via
-right click or open in a new tab:
+Normally, code annotations can only be [placed in comments], as comments can be
+considered safe for placement. However, sometimes it might be necessary to place
+annotations in parts of the code block where comments are not allowed, e.g. in
+strings.
+
+Additional selectors can be set per-language:
 
 ``` yaml
-# (1)!
+extra:
+  annotate:
+    json: [.s2] # (1)!
 ```
 
-1.  If you ++cmd++ :material-plus::material-cursor-default-outline: me, I'm
-    rendered open in a new tab. You can also right-click me to __copy link
-    address__ to share me with others.
+1.  [`.s2`][s2] is the name of the lexeme that [Pygments] generates for double-quoted
+    strings. If you want to use a code annotation in another lexeme than a
+    comment, inspect the code block and determine which lexeme needs to be added
+    to the list of additional selectors.
 
-  [Anchor links support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
+    __Important__: Code annotations cannot be split between lexemes.
+
+Now, code annotations can be used from within strings in JSON:
+
+``` json
+{
+  "key": "value (1)"
+}
+```
+
+1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
+    text__, images, ... basically anything that can be written in Markdown.
+
+  [placed in comments]: #adding-annotations
+  [s2]: https://github.com/squidfunk/mkdocs-material/blob/87d5ca487b9d9ab95c41ee72813149d214048693/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss#L45
 
 ## Usage
 
@@ -189,8 +288,8 @@ theme:
 
 #### Stripping comments
 
-[:octicons-tag-24: 8.5.0][Stripping comments support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.5.0 -->
+<!-- md:flag experimental -->
 
 If you wish to strip the comment characters surrounding a code annotation,
 simply add an `!` after the closing parenthesis of the code annotation:
@@ -216,8 +315,6 @@ simply add an `!` after the closing parenthesis of the code annotation:
 Note that this only allows for a single code annotation to be rendered per
 comment. If you want to add multiple code annotations, comments cannot be
 stripped for technical reasons.
-
-  [Stripping comments support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.5.0
 
 ### Adding line numbers
 
@@ -255,27 +352,53 @@ argument placed right after the language shortcode. Note that line counts start
 at `1`, regardless of the starting line number specified as part of
 [`linenums`][Adding line numbers]:
 
-```` markdown title="Code block with highlighted lines"
-``` py hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
-````
+=== "Lines"
 
-<div class="result" markdown>
+    ```` markdown title="Code block with highlighted lines"
+    ``` py hl_lines="2 3"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+    ````
 
-``` py linenums="1" hl_lines="2 3"
-def bubble_sort(items):
-    for i in range(len(items)):
-        for j in range(len(items) - 1 - i):
-            if items[j] > items[j + 1]:
-                items[j], items[j + 1] = items[j + 1], items[j]
-```
+    <div class="result" markdown>
 
-</div>
+    ``` py linenums="1" hl_lines="2 3"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+
+    </div>
+
+=== "Line ranges"
+
+    ```` markdown title="Code block with highlighted line range"
+    ``` py hl_lines="3-5"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+    ````
+
+    <div class="result" markdown>
+
+    ``` py linenums="1" hl_lines="3-5"
+    def bubble_sort(items):
+        for i in range(len(items)):
+            for j in range(len(items) - 1 - i):
+                if items[j] > items[j + 1]:
+                    items[j], items[j + 1] = items[j + 1], items[j]
+    ```
+
+    </div>
 
   [Adding line numbers]: #adding-line-numbers
 
@@ -303,7 +426,7 @@ from within a code block:
 
 ```` markdown title="Code block with external content"
 ``` title=".browserslistrc"
---8<-- ".browserslistrc"
+;--8<-- ".browserslistrc"
 ```
 ````
 
@@ -382,11 +505,11 @@ override it as part of your [additional style sheet]:
       - stylesheets/extra.css
     ```
 
-  [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/_colors.scss
+  [colors]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/_colors.scss
   [color schemes]: ../setup/changing-the-colors.md#color-scheme
   [types of string tokens]: https://pygments.org/docs/tokens/#literals
   [additional style sheet]: ../customization.md#additional-css
-  [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
+  [syntax theme definition]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/stylesheets/main/extensions/pymdownx/_highlight.scss
 
 ### Annotation tooltip width
 
@@ -420,35 +543,3 @@ This will render annotations with a larger width:
 1. Muuuuuuuuuuuuuuuch more space for content
 
 </div>
-
-### Annotations with numbers
-
-Prior to [:octicons-tag-24: 8.1.0][code annotation markers], code annotations
-were rendered with markers showing the original number as used by the author.
-However, for technical reasons code annotation numbers restart each code block,
-which might lead to confusion. For this reason, code annotations now render as
-`+` signs which are rotated if they're open to denote that clicking them again
-will close them.
-
-If you wish to revert to the prior behavior and display code annotation numbers,
-you can add an [additional style sheet] and copy and paste the following CSS:
-
-=== ":octicons-file-code-16: `docs/stylesheets/extra.css`"
-
-    ``` css
-    .md-typeset .md-annotation__index > ::before {
-      content: attr(data-md-annotation-id);
-    }
-    .md-typeset :focus-within > .md-annotation__index > ::before {
-      transform: none;
-    }
-    ```
-
-=== ":octicons-file-code-16: `mkdocs.yml`"
-
-    ``` yaml
-    extra_css:
-      - stylesheets/extra.css
-    ```
-
-  [code annotation markers]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.1.0

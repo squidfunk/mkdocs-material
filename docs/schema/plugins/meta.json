@@ -3,7 +3,7 @@
   "title": "Built-in meta plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#built-in-meta-plugin",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
       "enum": [
         "meta"
       ]
@@ -12,12 +12,18 @@
       "type": "object",
       "properties": {
         "meta": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#built-in-meta-plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
           "type": "object",
           "properties": {
+            "enabled": {
+              "title": "Enable plugin",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.enabled",
+              "type": "boolean",
+              "default": true
+            },
             "meta_file": {
               "title": "Meta file name",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/#+meta.meta_file",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.meta_file",
               "pattern": "\\.yml$",
               "default": "\"**/.meta.yml\""
             }

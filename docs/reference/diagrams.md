@@ -13,8 +13,7 @@ popular and flexible solution for drawing diagrams.
 
 ## Configuration
 
-[:octicons-tag-24: 8.2.0][Diagrams support] ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.2.0 -->
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
 for MkDocs will automatically initialize the JavaScript runtime when a page 
@@ -39,14 +38,13 @@ No further configuration is necessary. Advantages over a custom integration:
   [^1]:
     While all [Mermaid.js] features should work out-of-the-box, Material for
     MkDocs will currently only adjust the fonts and colors for flowcharts,
-    sequence diagrams, class diagams, state diagrams and entity relationship 
-    diagrams. See the section on [other diagrams] for more informaton why this
+    sequence diagrams, class diagrams, state diagrams and entity relationship 
+    diagrams. See the section on [other diagrams] for more information why this
     is currently not implemented for all diagrams.
 
-  [Diagrams support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.2.0
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
-  [other diagrams]: #other-diagrams
+  [other diagrams]: #other-diagram-types
 
 ## Usage
 
@@ -91,6 +89,7 @@ between those actors:
 ```` markdown title="Sequence diagram"
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
@@ -106,6 +105,7 @@ sequenceDiagram
 
 ``` mermaid
 sequenceDiagram
+  autonumber
   Alice->>John: Hello John, how are you?
   loop Healthcheck
       John->>John: Fight against hypochondria
@@ -245,6 +245,10 @@ a specific domain of knowledge:
 erDiagram
   CUSTOMER ||--o{ ORDER : places
   ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 ````
@@ -255,6 +259,10 @@ erDiagram
 erDiagram
   CUSTOMER ||--o{ ORDER : places
   ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
   CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 

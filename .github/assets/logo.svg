@@ -42,7 +42,6 @@
             system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
             sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
           letter-spacing: -1px;
-          background: #FFFFFF;
           border-radius: 2px;
         }
 
@@ -62,14 +61,14 @@
           position: absolute;
           width: 100%;
           height: 100%;
-          background-image: linear-gradient(#1A1A1A, #5E5E5E);
+          background-image: linear-gradient(#22272e, #526cfe);
           border-radius: 100%;
           animation: backdrop infinite both 10s 1s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         h1 {
           margin: 24px 0 4px;
-          color: #1A1A1A;
+          color: #526cfe;
           font-weight: bold;
           font-size: 24px;
         }

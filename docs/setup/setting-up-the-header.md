@@ -1,6 +1,6 @@
 # Setting up the header
 
-Material for MkDocs' header can be customized to show an announcement bar that 
+Material for MkDocs' header can be customized to show an announcement bar that
 disappears upon scrolling, and provides some options for further configuration.
 It also includes the [search bar] and a place to display your project's
 [git repository], as explained in those dedicated guides.
@@ -12,8 +12,8 @@ It also includes the [search bar] and a place to display your project's
 
 ### Automatic hiding
 
-[:octicons-tag-24: 6.2.0][Automatic hiding support] ·
-:octicons-unlock-24: Feature flag
+<!-- md:version 6.2.0 -->
+<!-- md:feature -->
 
 When autohiding is enabled, the header is automatically hidden when the
 user scrolls past a certain threshold, leaving more space for content. Add the
@@ -25,12 +25,10 @@ theme:
     - header.autohide
 ```
 
-  [Automatic hiding support]: https://github.com/squidfunk/mkdocs-material/releases/tag/6.2.0
-
 ### Announcement bar
 
-[:octicons-tag-24: 5.0.0][Announcement bar support] ·
-:octicons-file-symlink-file-24: Customization
+<!-- md:version 5.0.0 -->
+<!-- md:flag customization -->
 
 Material for MkDocs includes an announcement bar, which is the perfect place to
 display project news or other important information to the user. When the user
@@ -46,15 +44,14 @@ block][overriding blocks], which is empty by default:
 {% endblock %}
 ```
 
-  [Announcement bar support]: https://github.com/squidfunk/mkdocs-material/releases/tag/5.0.0
   [extend the theme]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
 
 #### Mark as read
 
-[:octicons-tag-24: 8.4.0][dismiss support] ·
-:octicons-unlock-24: Feature flag ·
-:octicons-beaker-24: Experimental
+<!-- md:version 8.4.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
 
 In order to render temporary announcements that can be marked as read by the
 user, a button to dismiss the current announcement can be included. Add the
@@ -72,5 +69,4 @@ automatically.
 
 [Scroll to the top of this page][top] to see it in action.
 
-  [dismiss support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.4.0
   [top]: #

@@ -45,15 +45,14 @@ elements in a rectangular shape.
 
 ### Using card grids
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.12.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.12.0 -->
+<!-- md:flag experimental -->
 
 Card grids wrap each grid item with a beautiful hover card that levitates on
 hover. They come in two slightly different syntaxes: [list] and [block syntax],
 adding support for distinct use cases.
 
-  [Insiders]: ../insiders/index.md
   [list]: #list-syntax
   [block syntax]: #block-syntax
 
@@ -98,7 +97,7 @@ includes icons and links:
 
     Install [`mkdocs-material`](#) with [`pip`](#) and get up
     and running in minutes
-    
+
     [:octicons-arrow-right-24: Getting started](#)
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
@@ -106,7 +105,7 @@ includes icons and links:
     ---
 
     Focus on your content and generate a responsive and searchable static site
-    
+
     [:octicons-arrow-right-24: Reference](#)
 
 -   :material-format-font:{ .lg .middle } __Made to measure__
@@ -114,7 +113,7 @@ includes icons and links:
     ---
 
     Change the colors, fonts, language, icons, logo and more with a few lines
-    
+
     [:octicons-arrow-right-24: Customization](#)
 
 -   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
@@ -137,7 +136,7 @@ includes icons and links:
 
     Install [`mkdocs-material`][mkdocs-material] with [`pip`][pip] and get up
     and running in minutes
-    
+
     [:octicons-arrow-right-24: Getting started][getting started]
 
 -   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
@@ -145,7 +144,7 @@ includes icons and links:
     ---
 
     Focus on your content and generate a responsive and searchable static site
-    
+
     [:octicons-arrow-right-24: Reference][reference]
 
 -   :material-format-font:{ .lg .middle } __Made to measure__
@@ -153,7 +152,7 @@ includes icons and links:
     ---
 
     Change the colors, fonts, language, icons, logo and more with a few lines
-    
+
     [:octicons-arrow-right-24: Customization][customization]
 
 -   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
@@ -227,9 +226,9 @@ to the grid.
 
 ### Using generic grids
 
-[:octicons-heart-fill-24:{ .mdx-heart } Sponsors only][Insiders]{ .mdx-insiders } ·
-[:octicons-tag-24: insiders-4.12.0][Insiders] ·
-:octicons-beaker-24: Experimental
+<!-- md:sponsors -->
+<!-- md:version insiders-4.12.0 -->
+<!-- md:flag experimental -->
 
 Generic grids allow for arranging arbitrary block elements in a grid, including
 [admonitions], [code blocks], [content tabs] and more. Just wrap a set of blocks

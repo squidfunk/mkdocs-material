@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -22,7 +22,9 @@
 requires = [
   "hatchling",
   "hatch-requirements-txt",
-  "hatch-nodejs-version>=0.3.0"
+  "hatch-nodejs-version>=0.3.0",
+  # Needed for "Framework :: MkDocs"
+  "trove_classifiers>=2023.10.18",
 ]
 build-backend = "hatchling.build"
 
@@ -34,14 +36,14 @@ dynamic = [
   "license",
   "description",
   "authors",
-  "keywords",
-  "urls",
+  "keywords"
 ]
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
+  "Framework :: MkDocs",
   "License :: OSI Approved :: MIT License",
   "Programming Language :: JavaScript",
   "Programming Language :: Python",
@@ -50,13 +52,39 @@ classifiers = [
   "Topic :: Text Processing :: Markup :: HTML",
 ]
 
+[project.optional-dependencies]
+recommended = [
+  "mkdocs-minify-plugin~=0.7",
+  "mkdocs-redirects~=1.2",
+  "mkdocs-rss-plugin~=1.6"
+]
+git = [
+  "mkdocs-git-committers-plugin-2~=1.1",
+  "mkdocs-git-revision-date-localized-plugin~=1.2"
+]
+imaging = [
+  "pillow~=9.4",
+  "cairosvg~=2.6"
+]
+
+[project.urls]
+Documentation = "https://squidfunk.github.io/mkdocs-material/"
+Source = "https://github.com/squidfunk/mkdocs-material"
+Changelog = "https://squidfunk.github.io/mkdocs-material/changelog/"
+Issues = "https://github.com/squidfunk/mkdocs-material/issues"
+Funding = "https://github.com/sponsors/squidfunk"
+
 [project.entry-points."mkdocs.plugins"]
-search = "material.plugins.search.plugin:SearchPlugin"
-social = "material.plugins.social.plugin:SocialPlugin"
-tags = "material.plugins.tags.plugin:TagsPlugin"
+"material/blog" = "material.plugins.blog.plugin:BlogPlugin"
+"material/group" = "material.plugins.group.plugin:GroupPlugin"
+"material/info" = "material.plugins.info.plugin:InfoPlugin"
+"material/offline" = "material.plugins.offline.plugin:OfflinePlugin"
+"material/search" = "material.plugins.search.plugin:SearchPlugin"
+"material/social" = "material.plugins.social.plugin:SocialPlugin"
+"material/tags" = "material.plugins.tags.plugin:TagsPlugin"
 
 [project.entry-points."mkdocs.themes"]
-material = "material"
+material = "material.templates"
 
 [tool.hatch.version]
 source = "nodejs"
@@ -72,4 +100,4 @@ include = ["/material"]
 
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
-exclude = ["/material/.overrides"]
+exclude = ["/material/overrides"]

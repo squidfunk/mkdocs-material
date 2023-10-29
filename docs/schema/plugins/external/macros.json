@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Use variables and macros in Markdown",
+  "oneOf": [
+    {
+      "markdownDescription": "https://github.com/fralau/mkdocs_macros_plugin",
+      "enum": [
+        "macros"
+      ]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "macros": {
+          "markdownDescription": "",
+          "type": "object",
+          "properties": {
+            "module_name":  {
+              "title": "Name of the Python module containing macros, filters and variables",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/#configuration-of-the-plugin",
+              "type": "string",
+              "default": "main"
+            },
+            "modules": {
+              "title": "List of preinstalled Python modules, i.e. listed by `pip list`",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/#configuration-of-the-plugin",
+              "type": "array"
+            },
+            "include_dir": {
+              "title": "Directory for including external files",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#changing-the-directory-of-the-includes",
+              "type": "string"
+            },
+            "include_yaml": {
+              "title": "List of yaml files or `key: filename` pairs to be included",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#including-external-yaml-files",
+              "type": "array"
+            },
+            "j2_block_start_string": {
+              "title": "Non-standard Jinja2 marker for start of block",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#solution-4-altering-the-syntax-of-jinja2-for-mkdocs-macros",
+              "type": "string"
+            },
+            "j2_block_end_string": {
+              "title": "Non-standard Jinja2 marker for end of block",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#solution-4-altering-the-syntax-of-jinja2-for-mkdocs-macros",
+              "type": "string"
+            },
+            "j2_variable_start_string": {
+              "title": "Non-standard Jinja2 marker for start of variable",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#solution-4-altering-the-syntax-of-jinja2-for-mkdocs-macros",
+              "type": "string"
+            },
+            "j2_variable_end_string": {
+              "title": "Non-standard Jinja2 marker for end of variable",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#solution-4-altering-the-syntax-of-jinja2-for-mkdocs-macros",
+              "type": "string"
+            },
+            "on_error_fail": {
+              "title": "Stop build/serve when macro error happens",
+              "markdownDescription": "https://mkdocs-macros-plugin.readthedocs.io/en/latest/advanced/#can-i-make-mkdocs-macros-build-process-to-fail-in-case-of-error-instead-of-displaying-the-error-on-the-page",
+              "type": "boolean",
+              "default": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  ]
+}

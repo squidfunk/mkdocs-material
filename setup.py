@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -33,7 +33,6 @@ Unsupported installation method
 ===============================
 This version of mkdocs-material no longer supports
 installation with `python setup.py install`.
-
 Please use `python -m pip install .` instead.
 """
 )

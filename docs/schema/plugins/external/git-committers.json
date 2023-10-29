@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "title": "Git committers plugin",
+  "title": "Add git contributors to pages",
   "oneOf": [
     {
       "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2",

@@ -1,27 +1,27 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
-  "title": "Redirects plugin",
+  "title": "Add redirects when moving pages to new locations",
   "type": "object",
   "properties": {
     "redirects": {
-      "markdownDescription": "https://github.com/datarobot/mkdocs-redirects",
+      "markdownDescription": "https://github.com/mkdocs/mkdocs-redirects",
       "type": "object",
       "properties": {
         "redirect_maps": {
           "title": "Mapping of Markdown files",
-          "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+          "markdownDescription": "https://github.com/mkdocs/mkdocs-redirects#using",
           "type": "object",
           "patternProperties": {
             "\\.md$": {
               "oneOf": [
                 {
                   "title": "Internal redirect",
-                  "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+                  "markdownDescription": "https://github.com/mkdocs/mkdocs-redirects#using",
                   "pattern": "\\.md(#\\S+)?$"
                 },
                 {
                   "title": "External redirect",
-                  "markdownDescription": "https://github.com/datarobot/mkdocs-redirects#using",
+                  "markdownDescription": "https://github.com/mkdocs/mkdocs-redirects#using",
                   "pattern": "^https?:"
                 }
               ]

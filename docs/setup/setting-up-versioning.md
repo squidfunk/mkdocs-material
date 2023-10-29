@@ -11,8 +11,8 @@ documentation remain untouched.
 
 ### Versioning
 
-[:octicons-tag-24: 7.0.0][Versioning support] ·
-[:octicons-package-24: Utility][mike]
+<!-- md:version 7.0.0 -->
+<!-- md:utility [mike] -->
 
 [mike] makes it easy to deploy multiple versions of your project documentation.
 It integrates natively with Material for MkDocs and can be enabled via
@@ -51,15 +51,28 @@ Check out the versioning example to see it in action –
     to particularly notable versions. This makes it easy to make permalinks to
     whatever version of the documentation you want to direct people to.
 
-  [Versioning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/7.0.0
   [Version selector preview]: ../assets/screenshots/versioning.png
   [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
+### Stay on the same page when switching versions
+
+When the user chooses a version in the version selector, they usually want to go
+to the page corresponding to the page they were previously viewing. Material for
+MkDocs implements this behavior by default, but there are a few caveats:
+
+- the [`site_url`] must be set correctly in `mkdocs.yml`. See the ["Publishing a
+  new version"](#publishing-a-new-version) section for an example.
+- you must be viewing the site at that URL (and not locally, for example).
+- the redirect happens via JavaScript and there is no way to know which page you
+  will be redirected to ahead of time.
+
+[`site_url`]: https://www.mkdocs.org/user-guide/configuration/#site_url
+
 ### Version warning
 
-[:octicons-tag-24: 8.0.0][Version warning support] ·
-:octicons-file-symlink-file-24: Customization
+<!-- md:version 8.0.0 -->
+<!-- md:flag customization -->
 
 If you're using versioning, you might want to display a warning when the user
 visits any other version than the latest version. Using [theme extension],
@@ -76,7 +89,7 @@ you can [override the `outdated` block][overriding blocks]:
 {% endblock %}
 ```
 
-1.  Given this value for the `href` attribute, the link will always redirect to 
+1.  Given this value for the `href` attribute, the link will always redirect to
     the root of your site, which will then redirect to the latest version. This
     ensures that older versions of your site do not depend on a specific alias,
     e.g. `latest`, to allow for changing the alias later on without breaking
@@ -93,12 +106,26 @@ to `mkdocs.yml`:
 ``` yaml
 extra:
   version:
-    default: stable
+    default: stable # (1)!
 ```
 
-Make sure that this matches the [default version].
+1.  You can also define multiple aliases as the default version, e.g. `stable`
+    and `development`.
 
-  [Version warning support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
+    ``` yaml
+    extra:
+      version:
+        default:
+          - stable
+          - development
+    ```
+
+    Now every version that has the `stable` and `development` aliases will not
+    display the version warning.
+
+Make sure one alias matches the [default version], as this is where users are
+redirected to.
+
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
@@ -106,8 +133,8 @@ Make sure that this matches the [default version].
 
 ## Usage
 
-While this section outlines the basic workflow for publishing new versions, 
-it's best to check out [mike's documentation][mike] to make yourself familar
+While this section outlines the basic workflow for publishing new versions,
+it's best to check out [mike's documentation][mike] to make yourself familiar
 with its mechanics.
 
 ### Publishing a new version
@@ -120,7 +147,13 @@ mike deploy --push --update-aliases 0.1 latest
 ```
 
 Note that every version will be deployed as a subdirectory of your `site_url`,
-e.g.:
+which you should set explicitly. For example, if your `mkdocs.yml` contains:
+
+``` yaml
+site_url: 'https://docs.example.com/'  # Trailing slash is recommended
+```
+
+the documentation will be published to URLs such as:
 
 - _docs.example.com/0.1/_
 - _docs.example.com/0.2/_

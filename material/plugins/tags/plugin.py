@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2022 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -19,32 +19,36 @@
 # IN THE SOFTWARE.
 
 import logging
-import os
 import sys
 
 from collections import defaultdict
 from markdown.extensions.toc import slugify
 from mkdocs import utils
-from mkdocs.commands.build import DuplicateFilter
-from mkdocs.config.base import Config
-from mkdocs.config import config_options as opt
 from mkdocs.plugins import BasePlugin
 
-# -----------------------------------------------------------------------------
-# Class
-# -----------------------------------------------------------------------------
+# deprecated, but kept for downward compatibility. Use 'material.plugins.tags'
+# as an import source instead. This import is removed in the next major version.
+from . import casefold
+from .config import TagsConfig
 
-# Tags plugin configuration scheme
-class TagsPluginConfig(Config):
-    tags_file = opt.Optional(opt.Type(str))
-
+# -----------------------------------------------------------------------------
+# Classes
 # -----------------------------------------------------------------------------
 
 # Tags plugin
-class TagsPlugin(BasePlugin[TagsPluginConfig]):
+class TagsPlugin(BasePlugin[TagsConfig]):
+    supports_multiple_instances = True
 
     # Initialize plugin
     def on_config(self, config):
+        if not self.config.enabled:
+            return
+
+        # Skip if tags should not be built
+        if not self.config.tags:
+            return
+
+        # Initialize tags
         self.tags = defaultdict(list)
         self.tags_file = None
 
@@ -63,12 +67,32 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Hack: 2nd pass for tags index page(s)
     def on_nav(self, nav, config, files):
+        if not self.config.enabled:
+            return
+
+        # Skip if tags should not be built
+        if not self.config.tags:
+            return
+
+        # Resolve tags index page
         file = self.config.tags_file
         if file:
             self.tags_file = self._get_tags_file(files, file)
 
     # Build and render tags index page
     def on_page_markdown(self, markdown, page, config, files):
+        if not self.config.enabled:
+            return
+
+        # Skip if tags should not be built
+        if not self.config.tags:
+            return
+
+        # Skip, if page is excluded
+        if page.file.inclusion.is_excluded():
+            return
+
+        # Render tags index page
         if page.file == self.tags_file:
             return self._render_tag_index(markdown)
 
@@ -78,6 +102,14 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 
     # Inject tags into page (after search and before minification)
     def on_page_context(self, context, page, config, nav):
+        if not self.config.enabled:
+            return
+
+        # Skip if tags should not be built
+        if not self.config.tags:
+            return
+
+        # Provide tags for page
         if "tags" in page.meta:
             context["tags"] = [
                 self._render_tag(tag)
@@ -91,7 +123,7 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
         file = files.get_file_from_path(path)
         if not file:
             log.error(f"Tags file '{path}' does not exist.")
-            sys.exit()
+            sys.exit(1)
 
         # Add tags file to files
         files.append(file)
@@ -115,7 +147,7 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
             classes.append("md-tag-icon")
             type = self.tags_map.get(tag)
             if type:
-                classes.append(f"md-tag-icon--{type}")
+                classes.append(f"md-tag--{type}")
 
         # Render section for tag and a link to each page
         classes = " ".join(classes)
@@ -147,5 +179,4 @@ class TagsPlugin(BasePlugin[TagsPluginConfig]):
 # -----------------------------------------------------------------------------
 
 # Set up logging
-log = logging.getLogger("mkdocs")
-log.addFilter(DuplicateFilter())
+log = logging.getLogger("mkdocs.material.tags")

@@ -119,7 +119,7 @@ are still exclusively available to sponsors as part of [Insiders]:
 - [Boosting pages in search]
 - [Brand new search plugin]
 - [Code annotations]
-- [Code annotations: anchor links]
+- Code annotations: anchor links
 - [Code annotations: strip comments]
 - [Code block titles]
 - [Code block line anchors]
@@ -167,7 +167,6 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Boosting pages in search]: ../../setup/setting-up-site-search.md#search-boosting
   [Brand new search plugin]: search-better-faster-smaller.md
   [Code annotations]: ../../reference/code-blocks.md#adding-annotations
-  [Code annotations: anchor links]: ../../reference/code-blocks.md#anchor-links
   [Code annotations: strip comments]: ../../reference/code-blocks.md#stripping-comments
   [Code block titles]: ../../reference/code-blocks.md#adding-a-title
   [Code block line anchors]: ../../setup/extensions/python-markdown-extensions.md#anchor-linenums

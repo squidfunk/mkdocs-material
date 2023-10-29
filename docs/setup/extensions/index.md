@@ -15,7 +15,7 @@ syntax extensions for technical writing.
 
 ## Supported extensions
 
-The following extensions are all supported by Material for MkDocs and therefore 
+The following extensions are all supported by Material for MkDocs and therefore
 strongly recommended. Click on each extension to learn about its purpose and
 configuration:
 
@@ -77,8 +77,8 @@ your documentation project.
 
 ### Minimal configuration
 
-This configuration is a good starting point for when you're using Material for 
-MkDocs for the first time. The best idea is to explore the [reference], and 
+This configuration is a good starting point for when you're using Material for
+MkDocs for the first time. The best idea is to explore the [reference], and
 gradually add what you want to use:
 
 ``` yaml
@@ -121,8 +121,8 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.keys

@@ -215,9 +215,15 @@
           ]
         },
         {
+          "title": "Site language: Kannada",
+          "enum": [
+            "kn"
+          ]
+        },
+        {
           "title": "Site language: Korean",
           "enum": [
-            "kr"
+            "ko"
           ]
         },
         {
@@ -263,15 +269,15 @@
           ]
         },
         {
-          "title": "Site language: Norwegian (Nynorsk)",
+          "title": "Site language: Norwegian (Bokmål)",
           "enum": [
-            "nn"
+            "nb"
           ]
         },
         {
-          "title": "Site language: Norwegian",
+          "title": "Site language: Norwegian (Nynorsk)",
           "enum": [
-            "no"
+            "nn"
           ]
         },
         {
@@ -302,6 +308,12 @@
           "title": "Site language: Russian",
           "enum": [
             "ru"
+          ]
+        },
+        {
+          "title": "Site language: Sanskrit",
+          "enum": [
+            "sa"
           ]
         },
         {
@@ -338,6 +350,12 @@
           "title": "Site language: Swedish",
           "enum": [
             "sv"
+          ]
+        },
+        {
+          "title": "Site language: Telugu",
+          "enum": [
+            "te"
           ]
         },
         {
@@ -437,13 +455,16 @@
       "type": "object",
       "properties": {
         "edit": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
+        },
+        "view": {
+          "$ref": "#/$defs/icon"
         },
         "logo": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "repo": {
-          "$ref": "#/definitions/icon"
+          "$ref": "#/$defs/icon"
         },
         "admonition": {
           "title": "Admonition icon",
@@ -451,40 +472,40 @@
           "type": "object",
           "properties": {
             "note": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "abstract": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "info": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "tip": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "success": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "question": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "warning": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "failure": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "danger": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "bug": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "example": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             },
             "quote": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false,
@@ -545,7 +566,7 @@
           "type": "object",
           "patternProperties": {
             "^[\\w-]+$": {
-              "$ref": "#/definitions/icon"
+              "$ref": "#/$defs/icon"
             }
           },
           "additionalProperties": false
@@ -581,10 +602,38 @@
             ]
           },
           {
+            "title": "Edit this page",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions",
+            "enum": [
+              "content.action.edit"
+            ]
+          },
+          {
+            "title": "View source of this page",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions",
+            "enum": [
+              "content.action.view"
+            ]
+          },
+          {
             "title": "Code annotations",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
             "enum": [
               "content.code.annotate"
+            ]
+          },
+          {
+            "title": "Code copy button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button",
+            "enum": [
+              "content.code.copy"
+            ]
+          },
+          {
+            "title": "Code selection button",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button",
+            "enum": [
+              "content.code.select"
             ]
           },
           {
@@ -616,6 +665,13 @@
             ]
           },
           {
+            "title": "Navigation footer",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-footer",
+            "enum": [
+              "navigation.footer"
+            ]
+          },
+          {
             "title": "Section index pages",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages",
             "enum": [
@@ -627,6 +683,27 @@
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
             "enum": [
               "navigation.instant"
+            ]
+          },
+          {
+            "title": "Instant prefetching",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-prefetching",
+            "enum": [
+              "navigation.instant.prefetch"
+            ]
+          },
+          {
+            "title": "Progress indicator",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#progress-indicator",
+            "enum": [
+              "navigation.instant.progress"
+            ]
+          },
+          {
+            "title": "Navigation path (Breadcrumbs)",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path",
+            "enum": [
+              "navigation.path"
             ]
           },
           {
@@ -719,13 +796,13 @@
           "type": "object",
           "properties": {
             "scheme": {
-              "$ref": "#/definitions/scheme"
+              "$ref": "#/$defs/scheme"
             },
             "primary": {
-              "$ref": "#/definitions/primary"
+              "$ref": "#/$defs/primary"
             },
             "accent": {
-              "$ref": "#/definitions/accent"
+              "$ref": "#/$defs/accent"
             }
           },
           "additionalProperties": false
@@ -738,13 +815,13 @@
             "type": "object",
             "properties": {
               "scheme": {
-                "$ref": "#/definitions/scheme"
+                "$ref": "#/$defs/scheme"
               },
               "primary": {
-                "$ref": "#/definitions/primary"
+                "$ref": "#/$defs/primary"
               },
               "accent": {
-                "$ref": "#/definitions/accent"
+                "$ref": "#/$defs/accent"
               },
               "media": {
                 "oneOf": [
@@ -773,7 +850,7 @@
                 "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-palette-toggle",
                 "properties": {
                   "icon": {
-                    "$ref": "#/definitions/icon"
+                    "$ref": "#/$defs/icon"
                   },
                   "name": {
                     "title": "Color palette toggle name",
@@ -834,31 +911,17 @@
           }
         }
       ]
-    },
-    "include_search_page": {
-      "title": "Only necessary when installing from git",
-      "markdownDescription": "Must be set to `false`",
-      "enum": [
-        false
-      ]
-    },
-    "search_index_only": {
-      "title": "Only necessary when installing from git",
-      "markdownDescription": "Must be set to `false`",
-      "enum": [
-        true
-      ]
     }
   },
   "additionalProperties": false,
   "required": [
     "name"
   ],
-  "definitions": {
+  "$defs": {
     "scheme": {
       "title": "Color scheme",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-colors/#color-scheme",
-      "oneOf": [
+      "anyOf": [
         {
           "enum": [
             "default",
@@ -867,12 +930,6 @@
         },
         {
           "type": "string"
-        }
-      ],
-      "defaultSnippets": [
-        {
-          "label": "default",
-          "body": "${1:default}"
         }
       ]
     },
@@ -900,7 +957,8 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "accent": {
@@ -927,11 +985,12 @@
         "grey",
         "blue grey",
         "black",
-        "white"
+        "white",
+        "custom"
       ]
     },
     "icon": {
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "assets/icons.json"
         },
