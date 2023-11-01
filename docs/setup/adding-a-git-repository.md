@@ -274,6 +274,7 @@ plugins:
   - git-committers:
       repository: squidfunk/mkdocs-material
       branch: main
+      token: !ENV GH_TOKEN
 ```
 
 The following configuration options are supported:
@@ -311,6 +312,18 @@ The following configuration options are supported:
     plugins:
       - git-committers:
           branch: main
+    ```
+
+<!-- md:option git-committers.token -->
+
+:   <!-- md:default none --> <!-- md:flag required -->
+    This property must be set with a GitHub Personal Access Token, so that the plugin can execute
+    GraphQL API calls to retrieve contributors:
+
+    ``` yaml
+    plugins:
+      - git-committers:
+          token: !ENV GH_TOKEN
     ```
 
 The other configuration options of this extension are not officially supported
