@@ -142,6 +142,14 @@ the following command from the directory containing the `mkdocs.yml` file:
 mkdocs gh-deploy --force
 ```
 
+This will build your documentation and deploy it to a branch
+`gh-pages` in your repository. See [this overview in the MkDocs
+documentation] for more information. For a description of the
+arguments, see [the documentation for the command].
+
+  [this overview in the MkDocs documentation]: https://www.mkdocs.org/user-guide/deploying-your-docs/#project-pages
+  [the documentation for the command]: https://www.mkdocs.org/user-guide/cli/#mkdocs-gh-deploy
+
 ## GitLab Pages
 
 If you're hosting your code on GitLab, deploying to [GitLab Pages] can be done
