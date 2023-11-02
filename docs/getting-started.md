@@ -75,10 +75,12 @@ MkDocs on GitHub Pages in a step-by-step guide.
 
 ---
 
-__Tip__: If you don't have prior experience with Python, we recommend reading
-[Using Python's pip to Manage Your Projects' Dependencies], which is a really
-good introduction on the mechanics of Python package management and helps you
-troubleshoot if you run into errors.
+!!! tip
+
+    If you don't have prior experience with Python, we recommend reading
+    [Using Python's pip to Manage Your Projects' Dependencies], which is a
+    really good introduction on the mechanics of Python package management and
+    helps you troubleshoot if you run into errors.
 
   [Python package]: https://pypi.org/project/mkdocs-material/
   [virtual environment]: https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment
