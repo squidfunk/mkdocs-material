@@ -90,7 +90,7 @@ function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
   // but for now we just rely on canonical.
   const canonical = getOptionalElement<HTMLLinkElement>("[rel=canonical]", head)
   if (typeof canonical !== "undefined")
-    canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1")
+    canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1:")
 
   // Create tag map and index elements in head
   const tags = new Map<string, HTMLElement>()
