@@ -1,3 +1,14 @@
+mkdocs-material-9.4.8+insiders-4.43.0 (2023-11-05)
+
+  * Added support for GitLab committers (document contributors)
+  * Fixed #6264: Fixed compatibility with Python < 3.10
+  * Fixed #6254: Meta plugin not applying meta files to blog posts
+
+mkdocs-material-9.4.8 (2023-11-05)
+
+  * Fixed invalid local address replacement when using instant loading
+  * Fixed #6275: Crash after navigation caused 404 when using instant loading
+
 mkdocs-material-9.4.7+insiders-4.42.3 (2023-10-27)
 
   * Fixed #6251: Cards in grids cut off on very small screens

@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.4.8 <small>November 5, 2023</small> { id="9.4.8" }
+
+- Fixed invalid local address replacement when using instant loading
+- Fixed #6275: Crash after navigation caused 404 when using instant loading
+
 ### 9.4.7 <small>October 27, 2023</small> { id="9.4.7" }
 
 - Added Azerbaijani translations
