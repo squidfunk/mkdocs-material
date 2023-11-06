@@ -212,6 +212,7 @@ other providers:
 - [:simple-digitalocean: DigitalOcean][DigitalOcean]
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
+- [:simple-codeberg: Codeberg Pages][Codeberg Pages
 
 </div>
 
@@ -224,3 +225,4 @@ other providers:
   [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
   [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
   [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
+  [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
