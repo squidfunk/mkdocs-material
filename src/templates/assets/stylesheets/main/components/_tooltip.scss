@@ -163,8 +163,7 @@
     }
 
     // Hack: Work around Firefox bug that renders a subpixel outline when
-    // rotating a mask image element.
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1671784
+    // rotating a mask image element - see https://t.ly/qA1s4
     overflow: hidden; // stylelint-disable-line order/properties-order
     border-radius: 0.01px;
 
