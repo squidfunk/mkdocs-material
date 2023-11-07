@@ -66,7 +66,7 @@
                 }
               ]
             },
-            "hosting": {
+            "hoisting": {
               "title": "Enable hoisting",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.hoisting",
               "type": "boolean",

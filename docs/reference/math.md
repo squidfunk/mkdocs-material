@@ -99,6 +99,10 @@ supports a subset of LaTeX syntax and can render math to HTML and SVG. To use
 === ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
+    markdown_extensions:
+      - pymdownx.arithmatex:
+          generic: true
+          
     extra_javascript:
       - javascripts/katex.js 
       - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  # (1)!

@@ -627,7 +627,7 @@ tags:
   og:url: "{{ page.canonical_url }}"
 
   twitter:card: summary_large_image
-  twitter.title: *page_title_with_site_name
+  twitter:title: *page_title_with_site_name
   twitter:description: *page_description
   twitter:image: "{{ image.url }}"
 ```

@@ -161,6 +161,9 @@
   <a href="https://transformationflow.io/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png" height="58"
   /></a>
+  <a href="https://3dr.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
@@ -244,6 +247,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Netflix](https://netflix.github.io/titus/),
 [Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
+[SIEMENS](https://opensource.siemens.com/),
 [Slack](https://slackhq.github.io/circuit/),
 [Square](https://square.github.io/okhttp/),
 [Zalando](https://opensource.zalando.com/skipper/)

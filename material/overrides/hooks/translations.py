@@ -126,6 +126,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
 # Map ISO 639-1 (languages) to ISO 3166 (countries)
 countries = dict({
     "af": "za",
+    "az": "az",
     "ar": "ae",
     "be": "by",
     "bg": "bg",

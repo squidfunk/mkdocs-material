@@ -2,6 +2,22 @@
 
 ## Material for MkDocs Insiders
 
+### 4.43.0 <small>November 5, 2023</small> { id="4.43.0" }
+
+- Added support for GitLab committers (document contributors)
+- Fixed #6264: Fixed compatibility with Python < 3.10
+- Fixed #6254: Meta plugin not applying meta files to blog posts
+
+### 4.42.3 <small>October 27, 2023</small> { id="4.42.3" }
+
+- Fixed #6251: Cards in grids cut off on very small screens
+- Fixed #6241: Using social plugin + static-i18n plugin errors
+
+### 4.42.2 <small>October 14, 2023</small> { id="4.42.2" }
+
+- Fixed #6186: Privacy plugin ignores hash fragments on images
+- Fixed #6180: Projects plugin crashing when adding or removing files
+
 ### 4.42.1 <small>October 5, 2023</small> { id="4.42.1" }
 
 - Fixed spacing of related links in blog posts on small screens

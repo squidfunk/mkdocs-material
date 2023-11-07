@@ -47,7 +47,6 @@ import {
 import { configuration, feature } from "~/_"
 import {
   Viewport,
-  getElement,
   getElements,
   getLocation,
   getOptionalElement,
@@ -89,8 +88,9 @@ function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
   // resolution. The next time we refactor instant loading, we should use the
   // location subject as a source, which is also used for anchor links tracking,
   // but for now we just rely on canonical.
-  const canonical = getElement<HTMLLinkElement>("[rel=canonical]", head)
-  canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1")
+  const canonical = getOptionalElement<HTMLLinkElement>("[rel=canonical]", head)
+  if (typeof canonical !== "undefined")
+    canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1:")
 
   // Create tag map and index elements in head
   const tags = new Map<string, HTMLElement>()
@@ -107,7 +107,7 @@ function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
         continue
 
       // Resolve URL relative to current location
-      const url = new URL(value, canonical.href)
+      const url = new URL(value, canonical?.href)
       const ref = el.cloneNode() as HTMLElement
 
       // Set resolved URL and retrieve HTML for deduplication

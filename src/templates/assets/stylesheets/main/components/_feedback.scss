@@ -52,8 +52,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    align-content: baseline;
-    justify-content: center;
+    place-content: baseline center;
 
     // Feedback icon on hover
     &:hover .md-icon:not(:disabled) {
