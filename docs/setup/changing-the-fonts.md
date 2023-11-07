@@ -67,7 +67,7 @@ theme:
     while complying with the __General Data Protection Regulation__ (GDPR),
     by automatically downloading and self-hosting the web font files.
 
-  [data privacy]: https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users
+  [data privacy]: https://developers.google.com/fonts/faq/privacy
   [built-in privacy plugin]:../plugins/privacy.md
 
 ## Customization
