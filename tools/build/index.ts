@@ -141,12 +141,12 @@ const assets$ = concat(
       transform: async data => minsvg(data)
     })),
 
-  /* Copy Lunr.js search stemmers and segmenters */
-  ...["min/*.js", "tinyseg.js", "wordcut.js"]
-    .map(pattern => copyAll(pattern, {
-      from: "node_modules/lunr-languages",
-      to: `${base}/templates/assets/javascripts/lunr`
-    })),
+  // /* Copy Lunr.js search stemmers and segmenters */
+  // ...["min/*.js", "tinyseg.js", "wordcut.js"]
+  //   .map(pattern => copyAll(pattern, {
+  //     from: "node_modules/lunr-languages",
+  //     to: `${base}/templates/assets/javascripts/lunr`
+  //   })),
 
   /* Copy images and configurations */
   ...["**/*.{jpg,png,svg,yml}"]
