@@ -885,6 +885,7 @@
         {
           "title": "Google Fonts",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/",
+          "type": "object",
           "properties": {
             "text": {
               "$ref": "assets/fonts.json"
