@@ -166,6 +166,7 @@ You can cancel your sponsorship anytime.[^5]
 **Silver sponsors**:
 
 [![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
+[![Trendpop]{ style="height: 120px" }](https://www.trendpop.com/){ target=_blank title="Trendpop" }
 
 **Bronze sponsors**:
 
@@ -206,6 +207,7 @@ You can cancel your sponsorship anytime.[^5]
 </div>
 
   [FastAPI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png
+  [Trendpop]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png

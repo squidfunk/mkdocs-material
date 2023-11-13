@@ -168,8 +168,8 @@ export function setupVersionSelector(
 
         /* Check if version is considered a default */
         main: for (const ignore of ignored)
-          for (const alias of current.aliases)
-            if (new RegExp(ignore, "i").test(alias)) {
+          for (const version of current.aliases.concat(current.version))
+            if (new RegExp(ignore, "i").test(version)) {
               outdated = false
               break main
             }
