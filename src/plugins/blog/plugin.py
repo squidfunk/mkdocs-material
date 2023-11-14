@@ -618,7 +618,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 # Copy file to temporary directory
                 copy_file(view.file.abs_src_path, file.abs_src_path)
 
-            # Create view and attach to previous page
+            # Create and yield view
             if not isinstance(file.page, View):
                 yield View(None, file, config)
 
