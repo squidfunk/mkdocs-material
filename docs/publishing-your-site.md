@@ -35,6 +35,10 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
+          - name: Configure Git Credentials
+            run: |
+              git config user.name github-actions[bot]
+              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
@@ -90,6 +94,10 @@ contents:
         if: github.event.repository.fork == false
         steps:
           - uses: actions/checkout@v4
+          - name: Configure Git Credentials
+            run: |
+              git config user.name github-actions[bot]
+              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           - uses: actions/setup-python@v4
             with:
               python-version: 3.x
