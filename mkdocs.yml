@@ -255,6 +255,7 @@ nav:
   - Insiders:
     - insiders/index.md
     - Getting started: insiders/getting-started.md
+    - FAQ: insiders/faq/sponsoring.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
