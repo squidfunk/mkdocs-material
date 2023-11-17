@@ -34,8 +34,8 @@ The Insiders edition includes more than 20 additional features. You can find an
 overview of these features on our [Insiders page], which is updated when new
 features are added and released.
 
-  [Insiders]: ../insiders/index.md
-  [Insiders page]: ../insiders/index.md#whats-in-it-for-me
+  [Insiders]: ../index.md
+  [Insiders page]: ../index.md#whats-in-it-for-me
 
 [__How often is the Insiders edition updated?__](#insiders-updates){ #insiders-updates }
 
@@ -229,7 +229,7 @@ features, becoming a sponsor is the way to go. If you have a feature in mind
 that you would like to see on the list, we encourage you to
 [initiate a new discussion] to evaluate it with others.
 
-  [overview of these sponsoring goals]: ../insiders/index.md#goals
+  [overview of these sponsoring goals]: ../index.md#goals
   [initiate a new discussion]: https://github.com/squidfunk/mkdocs-material/discussions/new/chooses
 
 [__What happens if I reach my sponsoring limit for my current tier?__](#insiders-limit){ #insiders-limit }
@@ -373,7 +373,7 @@ No. Whether you're an individual or a company, you may use Material for
 MkDocs Insiders precisely under the same terms as Material for MkDocs, which are
 given by the [MIT license].
 
-[MIT license]: ../license.md
+[MIT license]: ../../license.md
 
 [__Can outside collaborators build and run the documentation locally without access to Insiders?__](#insiders-outside-collaborators){ #insiders-outside-collaborators }
 
@@ -396,8 +396,8 @@ overrides via [configuration inheritance].
 See the [getting started guide] for more information.
 
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
-  [getting started guide]: ../insiders/getting-started.md#caveats
-  [Card grids]: ../reference/grids.md?h=grids#using-card-grids
+  [getting started guide]: ../getting-started.md#caveats
+  [Card grids]: ../../reference/grids.md?h=grids#using-card-grids
 
 ## Support
 
@@ -461,7 +461,7 @@ which is essential when creating a reproduction, will not function correctly
 with customizations in place. For questions and issues with customizations,
 please use our [discussion board] to engage with the community.
 
-  [.zip file]: ../guides/creating-a-reproduction.md
+  [.zip file]: ../../guides/creating-a-reproduction.md
   [built-in info plugin]: https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/#creating-a-zip-file
 
 ## Privacy
