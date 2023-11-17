@@ -2,6 +2,16 @@
 
 ## Material for MkDocs
 
+### 9.4.9 <small>November 17, 2023</small> { id="9.4.9" }
+
+- Fixed #6344: Long entries cutoff in table of contents
+- Fixed #6336: Custom template for glob archive not working with pagination
+- Fixed #6328: Blog plugin crashes for locales with dashes, e.g. `pt-BR`
+- Fixed #6327: Copy-to-clipboard button doesn't trim trailing line feed
+- Fixed #6302: Version strings not matched when using mike, only aliases
+- Fixed instant navigation progress indicator for gzipped content in Chrome
+- Fixed rendering bug on details marker rotation in Firefox
+
 ### 9.4.8 <small>November 5, 2023</small> { id="9.4.8" }
 
 - Fixed invalid local address replacement when using instant loading
