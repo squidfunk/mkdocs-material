@@ -1,6 +1,6 @@
 {
   "name": "mkdocs-material",
-  "version": "9.4.8",
+  "version": "9.4.9",
   "description": "Documentation that simply works",
   "keywords": [
     "mkdocs",
@@ -56,7 +56,7 @@
     "@types/fuzzaldrin-plus": "^0.6.5",
     "@types/html-minifier": "^4.0.5",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^20.9.0",
+    "@types/node": "^20.9.1",
     "@types/resize-observer-browser": "^0.1.10",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
@@ -83,7 +83,7 @@
     "postcss-inline-svg": "^6.0.0",
     "postcss-logical": "5.0.4",
     "postcss-pseudo-is": "^0.3.0",
-    "preact": "^10.19.1",
+    "preact": "^10.19.2",
     "rimraf": "^5.0.5",
     "sass": "^1.69.5",
     "simple-icons": "^9.20.0",

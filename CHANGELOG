@@ -1,3 +1,13 @@
+mkdocs-material-9.4.9 (2023-11-17)
+
+  * Fixed #6344: Long entries cutoff in table of contents
+  * Fixed #6336: Custom template for glob archive not working with pagination
+  * Fixed #6328: Blog plugin crashes for locales with dashes, e.g. pt-BR
+  * Fixed #6327: Copy-to-clipboard button doesn't trim trailing line feed
+  * Fixed #6302: Version strings not matched when using mike, only aliases
+  * Fixed instant navigation progress indicator for gzipped content in Chrome
+  * Fixed rendering bug on details marker rotation in Firefox
+
 mkdocs-material-9.4.8+insiders-4.43.0 (2023-11-05)
 
   * Added support for GitLab committers (document contributors)

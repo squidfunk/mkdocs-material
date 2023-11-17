@@ -192,8 +192,6 @@ nav:
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
-    - FAQ:
-      - Sponsoring: faq/sponsoring.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
@@ -255,6 +253,7 @@ nav:
   - Insiders:
     - insiders/index.md
     - Getting started: insiders/getting-started.md
+    - FAQ: insiders/faq/sponsoring.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
