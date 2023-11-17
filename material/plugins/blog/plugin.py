@@ -620,7 +620,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
             # Create and yield view
             if not isinstance(file.page, View):
-                yield View(None, file, config)
+                yield view.__class__(None, file, config)
 
             # Assign pages and posts to view
             assert isinstance(file.page, View)
