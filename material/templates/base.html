@@ -224,7 +224,10 @@
         "search": "assets/javascripts/workers/search.f886a092.min.js" | url
       } -%}
       {%- if config.extra.version -%}
-        {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- set mike = config.plugins.get("mike") -%}
+        {%- if not mike or mike.config.version_selector -%}
+          {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- endif -%}
       {%- endif -%}
       {%- if config.extra.tags -%}
         {%- set _ = app.update({ "tags": config.extra.tags }) -%}
