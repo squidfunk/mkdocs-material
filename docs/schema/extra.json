@@ -41,11 +41,6 @@
                     "pattern": "^G-\\w{10}$"
                   },
                   {
-                    "title": "Universal Analytics",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-                    "pattern": "^UA-\\w{9}-\\w$"
-                  },
-                  {
                     "title": "Unknown property",
                     "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
                     "type": "string"
@@ -448,7 +443,7 @@
       "body": {
         "analytics": {
           "provider": "${1:google}",
-          "property": "${2:UA-XXXXXXXX-X}"
+          "property": "${2:G-XXXXXXXXXX}"
         }
       }
     }
