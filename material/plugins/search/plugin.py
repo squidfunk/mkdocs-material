@@ -47,6 +47,7 @@ class SearchPlugin(BasePlugin[SearchConfig]):
         super().__init__(*args, **kwargs)
 
         # Initialize incremental builds
+        self.is_dirty = False
         self.is_dirtyreload = False
 
         # Initialize search index cache
