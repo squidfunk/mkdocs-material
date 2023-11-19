@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.4.10 <small>November 19, 2023</small> { id="9.4.10" }
+
+- Fixed #6356: Version selector can't be disabled via mike's configuration
+- Fixed #6281: Navigation not rendering due to Safari bug (9.4.2 regression)
+- Fixed #6261: Navigation expansion animates on first load (9.4.2 regression)
+
 ### 9.4.9 <small>November 17, 2023</small> { id="9.4.9" }
 
 - Fixed #6344: Long entries cutoff in table of contents

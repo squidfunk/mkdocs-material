@@ -1,3 +1,15 @@
+mkdocs-material-9.4.10+insiders-4.43.1 (2023-11-19)
+
+  * Added third-party theme support in projects plugin, improving editing
+  * Fixed #6360: Projects plugin crashes when theme is not Material for MkDocs
+  * Fixed #6306: Projects plugin not reloading nested project configuration
+
+mkdocs-material-9.4.10 (2023-11-19)
+
+  * Fixed #6356: Version selector can't be disabled via mike's configuration
+  * Fixed #6281: Navigation not rendering due to Safari bug (9.4.2 regression)
+  * Fixed #6261: Navigation expansion animates on first load (9.4.2 regression)
+
 mkdocs-material-9.4.9 (2023-11-17)
 
   * Fixed #6344: Long entries cutoff in table of contents

@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.43.1 <small>November 19, 2023</small> { id="4.43.1" }
+
+- Added third-party theme support in projects plugin, improving editing
+- Fixed #6360: Projects plugin crashes when theme is not Material for MkDocs
+- Fixed #6306: Projects plugin not reloading nested project configuration
+
 ### 4.43.0 <small>November 5, 2023</small> { id="4.43.0" }
 
 - Added support for GitLab committers (document contributors)
