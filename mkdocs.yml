@@ -257,5 +257,7 @@ nav:
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
+    - Community Experts Program:
+      - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md
