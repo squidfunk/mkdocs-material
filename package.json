@@ -88,7 +88,7 @@
     "sass": "^1.69.5",
     "simple-icons": "^9.21.0",
     "stylelint": "^15.11.0",
-    "stylelint-config-recess-order": "4.2.0",
+    "stylelint-config-recess-order": "4.4.0",
     "stylelint-config-recommended": "^13.0.0",
     "stylelint-config-standard-scss": "^11.1.0",
     "stylelint-scss": "^5.3.1",
