@@ -567,7 +567,7 @@
     }
 
     // Show nested navigation when toggle is active or indeterminate
-    &__toggle:is(:checked, :indeterminate) ~ & {
+    &__toggle:is(:checked, .md-toggle--indeterminate) ~ & {
       grid-template-rows: 1fr;
       visibility: visible;
       opacity: 1;
@@ -575,6 +575,11 @@
         grid-template-rows 250ms cubic-bezier(0.86, 0, 0.07, 1),
         opacity            150ms 100ms,
         visibility           0ms;
+    }
+
+    // Disable transition for expanded navigation
+    &__toggle.md-toggle--indeterminate ~ & {
+      transition: none;
     }
 
     // Hide navigation title in nested navigation
@@ -661,7 +666,7 @@
 
         // Navigation icon - rotate icon when toggle is active or indeterminate
         .md-nav__item--nested .md-nav__toggle:checked ~ .md-nav__link &,
-        .md-nav__item--nested .md-nav__toggle:indeterminate ~ .md-nav__link & {
+        .md-nav__item--nested .md-toggle--indeterminate ~ .md-nav__link & {
           transform: rotate(90deg);
         }
       }

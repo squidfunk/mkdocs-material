@@ -618,9 +618,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 # Copy file to temporary directory
                 copy_file(view.file.abs_src_path, file.abs_src_path)
 
-            # Create view and attach to previous page
+            # Create and yield view
             if not isinstance(file.page, View):
-                yield View(None, file, config)
+                yield view.__class__(None, file, config)
 
             # Assign pages and posts to view
             assert isinstance(file.page, View)
@@ -800,7 +800,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # Format date
     def _format_date(self, date: datetime, format: str, config: MkDocsConfig):
-        locale = config.theme["language"]
+        locale: str = config.theme["language"].replace("-", "_")
         return format_date(date, format = format, locale = locale)
 
     # Format date for post
