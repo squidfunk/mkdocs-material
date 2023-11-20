@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/",
-      "enum": [
-        "blog"
-      ]
+      "const": "blog"
     },
     {
       "type": "object",
@@ -114,15 +112,11 @@
               "oneOf": [
                 {
                   "title": "Post excerpts are optional",
-                  "enum": [
-                    "optional"
-                  ]
+                  "const": "optional"
                 },
                 {
                   "title": "Post excerpts are required, thus the build will fail",
-                  "enum": [
-                    "required"
-                  ]
+                  "const": "required"
                 }
               ],
               "default": "optional"
