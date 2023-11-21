@@ -10,6 +10,9 @@
       },
       {
         "$ref": "extensions/pymdownx.json"
+      },
+      {
+        "$ref": "extensions/external/neoteroi.json"
       }
     ]
   },
