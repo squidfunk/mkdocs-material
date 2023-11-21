@@ -337,9 +337,7 @@ const schema$ = merge(
           "markdownDescription": `https://fonts.google.com/specimen/${
             font.replace(/\s+/g, "+")
           }`,
-          "enum": [
-            font
-          ],
+          "const": font,
         }))
       })),
       switchMap(data => write(

@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
-      "enum": [
-        "tags"
-      ]
+      "const": "tags"
     },
     {
       "type": "object",

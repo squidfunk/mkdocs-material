@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://timvink.github.io/mkdocs-git-authors-plugin/",
-      "enum": [
-        "git-authors"
-      ]
+      "const": "git-authors"
     },
     {
       "type": "object",
