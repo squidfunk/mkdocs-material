@@ -10,6 +10,13 @@ distinct projects, build them concurrently and preview them together as one.
 This is particularly useful when creating a multi-language project, but can also
 be used to split very large projects into smaller parts.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
+  [our awesome sponsors]: ../insiders/index.md
+
 ## Objective
 
 ### How it works
