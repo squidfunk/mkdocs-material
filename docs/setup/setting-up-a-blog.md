@@ -34,6 +34,22 @@ plugins:
 
 For a list of all settings, please consult the [plugin documentation].
 
+#### Advanced settings :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+
+The following advanced settings are currently reserved to our [sponsors]
+[Insiders]. They are entirely optional, and don't affect the functionality of
+the blog, but can be helpful for customizations:
+
+- [`archive_pagination`][config.archive_pagination]
+- [`archive_pagination_per_page`][config.archive_pagination_per_page]
+- [`categories_pagination`][config.categories_pagination]
+- [`categories_pagination_per_page`][config.categories_pagination_per_page]
+
+We'll add more settings here, as we discover new use cases.
+
   [plugin documentation]: ../plugins/blog.md
 
   [Insiders]: ../insiders/index.md
@@ -41,6 +57,11 @@ For a list of all settings, please consult the [plugin documentation].
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [start writing your first post]: #writing-your-first-post
+
+  [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
+  [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
+  [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
+  [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
 
 ### RSS
 
