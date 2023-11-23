@@ -731,6 +731,42 @@ The following placeholders are available:
 
 ---
 
+#### <!-- md:setting config.archive_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for archive pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.archive_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per archive page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.archive_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -738,7 +774,7 @@ The following placeholders are available:
 
 Use this setting to leverage the table of contents to display post titles on all
 archive pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set:
 
 ``` yaml
 plugins:
@@ -888,6 +924,42 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 ---
 
+#### <!-- md:setting config.categories_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for category pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.categories_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per category page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.categories_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -895,7 +967,7 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 Use this setting to leverage the table of contents to display post titles on all
 category pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set:
 
 ``` yaml
 plugins:

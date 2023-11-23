@@ -209,6 +209,18 @@
                 }
               ]
             },
+            "archive_pagination": {
+              "title": "Pagination for archive pages",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_pagination",
+              "type": "boolean",
+              "default": true
+            },
+            "archive_pagination_per_page": {
+              "title": "Posts per page for archive pages",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_pagination_per_page",
+              "type": "number",
+              "default": 10
+            },
             "archive_toc": {
               "title": "Archive table of contents",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.archive_toc",
@@ -262,6 +274,18 @@
               },
               "uniqueItems": true,
               "default": []
+            },
+            "categories_pagination": {
+              "title": "Pagination for categories",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_pagination",
+              "type": "boolean",
+              "default": true
+            },
+            "categories_pagination_per_page": {
+              "title": "Posts per page for categories",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_pagination_per_page",
+              "type": "number",
+              "default": 10
             },
             "categories_toc": {
               "title": "Categories table of contents",
