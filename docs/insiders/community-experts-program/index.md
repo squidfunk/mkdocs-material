@@ -25,7 +25,7 @@ That's why we're bulding a team of Community Experts!
 ## Your role
 
 As a Community Expert, your role primarily involves active participation on
-the [discussion board], where we'd expect you to be:
+our [discussion board], where we'd expect you to be:
 
 - Answering discussions to help users with their questions
 - Providing guidance regarding implementations
