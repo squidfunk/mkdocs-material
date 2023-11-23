@@ -47,16 +47,13 @@ Here is a list of the benefits we offer to our Community Experts:
     enhance your credibility.
 
   [^1]:
-    We can only grant access to individuals who are using Material for MkDocs
-    for non-commercial purposes. This means they are using it for their private
-    or Open Source projects. Please note that the role of a Community Expert
-    cannot be fulfilled by an organization member seeking access for the entire
-    organization's benefit.
+    Access to Insiders is granted to your primary account, i.e., the account
+    with which you're contributing to the project. It cannot be transferred to
+    another account. Additionally, it cannot be used for commercial purposes.
 
 ## Your knowledge & skills
 
-To be a successful Community Expert, your skills should include the
-following:
+To be a successful Community Expert, your skills should include the following:
 
 -   __Material and MkDocs allrounder__ – You have an understanding of Material
     for MkDocs and the MkDocs ecosystem, including many of its extensions and
