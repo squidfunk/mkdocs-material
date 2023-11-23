@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.4.11 <small>November 23, 2023</small> { id="9.4.11" }
+
+- Fixed blog plugin crashing when disabling pagination
+- Fixed #6364: Search plugin crashing when enabling theme while serving
+
 ### 9.4.10 <small>November 19, 2023</small> { id="9.4.10" }
 
 - Fixed #6356: Version selector can't be disabled via mike's configuration

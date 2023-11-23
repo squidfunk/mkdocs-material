@@ -1,3 +1,8 @@
+mkdocs-material-9.4.11 (2023-11-23)
+
+  * Fixed #6364: Search plugin crashing when enabling theme while serving
+  * Fixed blog plugin crashing when disabling pagination
+
 mkdocs-material-9.4.10+insiders-4.43.1 (2023-11-19)
 
   * Added third-party theme support in projects plugin, improving editing
