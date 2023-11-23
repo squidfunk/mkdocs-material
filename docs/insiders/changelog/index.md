@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.44.0 <small>November 23, 2023</small> { id="4.44.0" }
+
+- Added pagination settings for archive pages in blog plugin
+- Added pagination settings for category pages in blog plugin
+
 ### 4.43.1 <small>November 19, 2023</small> { id="4.43.1" }
 
 - Added third-party theme support in projects plugin, improving editing
