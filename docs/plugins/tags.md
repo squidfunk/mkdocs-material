@@ -176,35 +176,24 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.25.0 -->
-<!-- md:default [`toc.slugify`][toc.slugify] -->
+<!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
-Use this setting to change the function to use for generating URL-compatible
-slugs from tags. [Python Markdown Extensions] comes with a Unicode-aware
-[`slugify`][pymdownx.slugs.slugify] function:
+Use this setting to change the function for generating URL-compatible slugs
+from post titles. By default, the [`slugify`][pymdownx.slugs.slugify] function
+from [Python Markdown Extensions] is used as follows:
 
-=== "Unicode"
+``` yaml
+plugins:
+  - blog:
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+```
 
-    ``` yaml
-    plugins:
-      - tags:
-          tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
+The default configuration is Unicode-aware and should produce good slugs for all
+languages. Of course, you can also provide a custom slugification function for
+more granular control.
 
-=== "Unicode, case-sensitive"
-
-    ``` yaml
-    plugins:
-      - tags:
-          tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-    ```
-
-When your project features non-European languages, it's advisable to use this
-configuration. Of course, you can also provide a custom slugification function
-for more granular control.
-
-  [toc.slugify]: https://github.com/Python-Markdown/markdown/blob/1337d0891757e192165668d2606db36cf08e65a9/markdown/extensions/toc.py#L26-L33
   [pymdownx.slugs.slugify]: https://github.com/facelessuser/pymdown-extensions/blob/01c91ce79c91304c22b4e3d7a9261accc931d707/pymdownx/slugs.py#L59-L65
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
