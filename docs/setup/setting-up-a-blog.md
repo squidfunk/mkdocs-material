@@ -45,6 +45,8 @@ the blog, but can be helpful for customizations:
 
 - [`archive_pagination`][config.archive_pagination]
 - [`archive_pagination_per_page`][config.archive_pagination_per_page]
+- [`categories_sort_by`][config.categories_sort_by]
+- [`categories_sort_reverse`][config.categories_sort_reverse]
 - [`categories_pagination`][config.categories_pagination]
 - [`categories_pagination_per_page`][config.categories_pagination_per_page]
 
@@ -60,6 +62,8 @@ We'll add more settings here, as we discover new use cases.
 
   [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
   [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
+  [config.categories_sort_by]: ../plugins/blog.md#config.categories_sort_by
+  [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
   [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
   [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
 

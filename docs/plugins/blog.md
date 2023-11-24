@@ -882,6 +882,46 @@ plugins:
 
 ---
 
+#### <!-- md:setting config.categories_sort_by -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `material.plugins.blog.view_name` -->
+
+Use this setting to specify a custom function for sorting categories. For
+example, if you want to sort categories by the number of posts they contain,
+use the following configuration:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_by: !!python/name:material.plugins.blog.view_post_count
+```
+
+Don't forget to enable [`categories_sort_reverse`][config.categories_sort_reverse].
+You can define your own comparison function, which must return something
+that can be compared while sorting, i.e., a string or number.
+
+---
+
+#### <!-- md:setting config.categories_sort_reverse -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `false` -->
+
+Use this setting to reverse the order in which categories are sorted. By
+default, categories are sorted in ascending order, but you can reverse ordering
+as follows:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_reverse: true
+```
+
+---
+
 #### <!-- md:setting config.categories_allowed -->
 
 <!-- md:version 9.2.0 -->

@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.4.12 <small>November 24, 2023</small> { id="9.4.12" }
+
+- Improved blog plugin to generate Unicode-aware slugs by default
+- Fixed non-deterministic order of categories in blog plugin
+
 ### 9.4.11 <small>November 23, 2023</small> { id="9.4.11" }
 
 - Fixed #6364: Search plugin crashing when enabling theme while serving

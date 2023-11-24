@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.45.0 <small>November 24, 2023</small> { id="4.45.0" }
+
+- Added support for sorting blog categories by post count or custom function
+- Improved tags plugin to generate Unicode-aware slugs by default
+- Fixed non-deterministic order of multiple authors in blog plugin
+
 ### 4.44.0 <small>November 23, 2023</small> { id="4.44.0" }
 
 - Added pagination settings for archive pages in blog plugin

@@ -1,3 +1,14 @@
+mkdocs-material-9.4.12+insiders-4.45.0 (2023-11-24)
+
+  * Added support for sorting blog categories by post count or custom function
+  * Improved tags plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of multiple authors in blog plugin
+
+mkdocs-material-9.4.12 (2023-11-24)
+
+  * Improved blog plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of categories in blog plugin
+
 mkdocs-material-9.4.11+insiders-4.44.0 (2023-11-23)
 
   * Added pagination settings for archive pages in blog plugin

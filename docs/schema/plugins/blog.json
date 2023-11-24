@@ -265,6 +265,27 @@
               "type": "string",
               "default": "\"-\""
             },
+            "categories_sort_by": {
+              "title": "Sort categories by this function",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_sort_by",
+              "default": "!!python/name:material.plugins.blog.view_name",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "enum": [
+                    "!!python/name:material.plugins.blog.view_name",
+                    "!!python/name:material.plugins.blog.view_post_count"
+                  ]
+                }
+              ]
+            },
+            "categories_sort_reverse": {
+              "title": "Soft categories in reverse",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_sort_reverse",
+              "default": false
+            },
             "categories_allowed": {
               "title": "Categories allowed",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/#config.categories_allowed",
