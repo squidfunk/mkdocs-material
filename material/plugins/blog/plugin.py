@@ -138,13 +138,17 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Generate views for archive
         if self.config.archive:
-            views = self._generate_archive(config, files)
-            self.blog.views.extend(views)
+            self.blog.views.extend(
+                self._generate_archive(config, files)
+            )
 
         # Generate views for categories
         if self.config.categories:
-            views = self._generate_categories(config, files)
-            self.blog.views.extend(views)
+            self.blog.views.extend(sorted(
+                self._generate_categories(config, files),
+                key = lambda view: view.name,
+                reverse = False
+            ))
 
         # Generate pages for views
         if self.config.pagination:
@@ -573,10 +577,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 self._save_to_file(file.abs_src_path, f"# {name}")
                 file.inclusion = InclusionLevel.EXCLUDED
 
-            # Create and yield view - we don't explicitly set the title of
-            # the view, so authors can override them in the page's content
+            # Create and yield view
             if not isinstance(file.page, Archive):
-                yield Archive(None, file, config)
+                yield Archive(name, file, config)
 
             # Assign post to archive
             assert isinstance(file.page, Archive)
@@ -610,10 +613,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                     self._save_to_file(file.abs_src_path, f"# {name}")
                     file.inclusion = InclusionLevel.EXCLUDED
 
-                # Create and yield view - we don't explicitly set the title of
-                # the view, so authors can override them in the page's content
+                # Create and yield view
                 if not isinstance(file.page, Category):
-                    yield Category(None, file, config)
+                    yield Category(name, file, config)
 
                 # Assign post to category and vice versa
                 assert isinstance(file.page, Category)

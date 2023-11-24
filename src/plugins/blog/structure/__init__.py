@@ -212,10 +212,18 @@ class Excerpt(Page):
 # View
 class View(Page):
 
+    # Parent view
+    parent: View | Section
+
     # Initialize view
-    def __init__(self, title: str | None, file: File, config: MkDocsConfig):
-        super().__init__(title, file, config)
-        self.parent: View | Section
+    def __init__(self, name: str | None, file: File, config: MkDocsConfig):
+        super().__init__(None, file, config)
+
+        # Initialize name of the view - note that views never pass a title to
+        # the parent constructor, so the author can always override the title
+        # that is used for rendering. However, for some purposes, like for
+        # example sorting, we need something to compare.
+        self.name = name
 
         # Initialize posts and views
         self.posts: list[Post] = []
