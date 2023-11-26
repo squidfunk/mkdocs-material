@@ -213,9 +213,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles in
-views. The value of this setting is inherited by [`archive_toc`]
-[config.archive_toc] and [`categories_toc`][config.categories_toc],
-unless they are explicitly set:
+views. This might be useful, if your post excerpts are rather long. If you want
+to enable it, use:
 
 ``` yaml
 plugins:
@@ -746,7 +745,7 @@ plugins:
 
 Use this setting to change the number of posts rendered per archive page. The
 value of this setting is inherited from [`pagination_per_page`]
-[config.pagination_per_page], unless it's explicitly set:
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
 
 ``` yaml
 plugins:
@@ -763,7 +762,7 @@ plugins:
 
 Use this setting to leverage the table of contents to display post titles on all
 archive pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless it's explicitly set:
+[config.blog_toc], unless it's explicitly set. To change it, use
 
 ``` yaml
 plugins:
@@ -971,7 +970,7 @@ plugins:
 
 Use this setting to change the number of posts rendered per category page. The
 value of this setting is inherited from [`pagination_per_page`]
-[config.pagination_per_page], unless it's explicitly set:
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
 
 ``` yaml
 plugins:
@@ -988,12 +987,201 @@ plugins:
 
 Use this setting to leverage the table of contents to display post titles on all
 category pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless it's explicitly set:
+[config.blog_toc], unless it's explicitly set. To change it, use:
 
 ``` yaml
 plugins:
   - blog:
       categories_toc: true
+```
+
+### Authors
+
+The following settings are available for authors:
+
+---
+
+#### <!-- md:setting config.authors -->
+
+<!-- md:version 9.2.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable post authors. If this setting is enabled,
+the plugin will look for a file named [`.authors.yml`][config.authors_file] and
+render authors in posts and views. Disable this behavior with:
+
+``` yaml
+plugins:
+  - blog:
+      authors: false
+```
+
+---
+
+#### <!-- md:setting config.authors_file -->
+
+<!-- md:version 9.2.0 -->
+<!-- md:default `{blog}/.authors.yml` -->
+
+Use this setting to change the path of the file where the author information for
+your posts resides. It's normally not necessary to change this setting, but if
+you need to, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_file: "{blog}/.authors.yml"
+```
+
+The following placeholders are available:
+
+- `blog` – [`blog` directory][config.blog_dir]
+
+The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
+
+!!! info "Format of author information"
+
+    The `.authors.yml` file must adhere to the following format:
+
+    ``` yaml title=".authors.yml"
+    authors:
+      <author>:
+        name: string        # Author name
+        description: string # Author description
+        avatar: url         # Author avatar
+        slug: url           # Author profile slug
+        url: url            # Author website URL
+    ```
+
+    Note that `<author>` must be set to an identifier for associating authors
+    with posts, e.g., a GitHub username like `squidfunk`. This identifier can
+    then be used in the [`authors`][meta.authors] metadata property of
+    a post. Multiple authors are supported. As an example, see
+    [the `.authors.yml` file][.authors.yml] we're using for our blog.
+
+  [.authors.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/docs/blog/.authors.yml
+
+---
+
+#### <!-- md:setting config.authors_profiles -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `false` -->
+
+Use this setting to enable or disable automatically generated author profiles.
+An author profile shows all posts by an author in reverse chronological order.
+You can enable author profiles with:
+
+``` yaml
+plugins:
+  - blog:
+      author_profiles: true
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_name -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default computed -->
+
+Use this setting to change the title of the authors section the plugin adds to
+the navigation. If this setting is omitted, it's sourced from the translations.
+If you want to change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_name: Authors
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_url_format -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `author/{slug}` -->
+
+Use this setting to change the format string that is used when generating
+author profile URLs. You can freely combine placeholders, and join them with
+slashes or other characters:
+
+=== ":material-link: blog/author/:material-dots-horizontal:/"
+
+    ``` yaml
+    plugins:
+      - blog:
+          authors_profiles_url_format: "author/{slug}"
+    ```
+
+=== ":material-link: blog/:material-dots-horizontal:/"
+
+    ``` yaml
+    plugins:
+      - blog:
+          authors_profiles_url_format: "{slug}"
+    ```
+
+The following placeholders are available:
+
+- `slug` – Author slug or identifier from [`authors_file`][config.authors_file]
+- `name` – Author name from [`authors_file`][config.authors_file]
+
+---
+
+#### <!-- md:setting config.authors_profiles_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for author profiles. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per archive page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_pagination_per_page: 5
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_toc -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `false` -->
+
+Use this setting to leverage the table of contents to display post titles on all
+author profiles. The value of this setting is inherited from [`blog_toc`]
+[config.blog_toc], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_toc: true
 ```
 
 ### Pagination
@@ -1150,71 +1338,6 @@ plugins:
   - blog:
       pagination_keep_content: true
 ```
-
-### Authors
-
-The following settings are available for authors:
-
----
-
-#### <!-- md:setting config.authors -->
-
-<!-- md:version 9.2.0 -->
-<!-- md:default `true` -->
-
-Use this setting to enable or disable post authors. If this setting is enabled,
-the plugin will look for a file named [`.authors.yml`][config.authors_file] and
-render authors in posts and views. Disable this behavior with:
-
-``` yaml
-plugins:
-  - blog:
-      authors: false
-```
-
----
-
-#### <!-- md:setting config.authors_file -->
-
-<!-- md:version 9.2.0 -->
-<!-- md:default `{blog}/.authors.yml` -->
-
-Use this setting to change the path of the file where the author information for
-your posts resides. It's normally not necessary to change this setting, but if
-you need to, use:
-
-``` yaml
-plugins:
-  - blog:
-      authors_file: "{blog}/.authors.yml"
-```
-
-The following placeholders are available:
-
-- `blog` – [`blog` directory][config.blog_dir]
-
-The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
-
-!!! info "Format of author information"
-
-    The `.authors.yml` file must adhere to the following format:
-
-    ``` yaml title=".authors.yml"
-    authors:
-      <author>:
-        name: string        # Author name
-        description: string # Author description
-        avatar: url         # Author avatar
-        url: url            # Author website URL
-    ```
-
-    Note that `<author>` must be set to an identifier for associating authors
-    with posts, e.g., a GitHub username like `squidfunk`. This identifier can
-    then be used in the [`authors`][meta.authors] metadata property of
-    a post. Multiple authors are supported. As an example, see
-    [the `.authors.yml` file][.authors.yml] we're using for our blog.
-
-  [.authors.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/docs/blog/.authors.yml
 
 ### Drafts
 

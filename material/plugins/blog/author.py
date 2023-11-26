@@ -30,6 +30,7 @@ class Author(Config):
     name = Type(str)
     description = Type(str)
     avatar = Type(str)
+    slug = Optional(Type(str))
     url = Optional(Type(str))
 
 # -----------------------------------------------------------------------------
