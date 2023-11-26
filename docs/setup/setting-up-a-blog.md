@@ -289,25 +289,8 @@ authors:
 
 The [`.authors.yml`][authors_file] file associates each author with an
 identifier (in this example `squidfunk`), which can then be used in posts.
-The following properties are available for each author:
-
-<!-- md:option blog.authors_file.name -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must define a name for the author. The name is displayed in
-    the left sidebar of each post as part of the author info.
-
-<!-- md:option blog.authors_file.description -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property can be used to add a short description for the author, e.g.
-    the role or profession of the author, or any other title.
-
-<!-- md:option blog.authors_file.avatar -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must point to a valid image URL, internal or external, and is
-    used as part of posts and excerpts as the author's avatar.
+Different attributes can be configured. For a list of all possible attributes,
+please consult the [`authors_file`][authors_file] documentation.
 
 Now, you can assign one or more authors to a post by referencing their
 identifiers in the front matter of the Markdown file under the `authors`
@@ -328,6 +311,30 @@ authors:
 
   [authors]: ../plugins/blog.md#authors
   [authors_file]: ../plugins/blog.md#config.authors_file
+
+#### Adding author profiles :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:flag experimental -->
+
+If you wish to add a dedicated page for each author, you can enable author
+profiles by setting the [`authors_profiles`][authors_profiles] configuration
+option to `true`. Just add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles: true
+```
+
+If you combine this with [custom index pages], you can create a dedicated page
+for each author with a short description, social media links, etc. – basically
+anything you can write in Markdown. The list of posts is then appended after
+the content of the page.
+
+  [authors_profiles]: ../plugins/blog.md#config.authors_profiles
+  [custom index pages]: #custom-index-pages
 
 #### Adding categories
 
