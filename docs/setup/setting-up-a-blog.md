@@ -49,6 +49,8 @@ the blog, but can be helpful for customizations:
 - [`categories_sort_reverse`][config.categories_sort_reverse]
 - [`categories_pagination`][config.categories_pagination]
 - [`categories_pagination_per_page`][config.categories_pagination_per_page]
+- [`authors_profiles_pagination`][config.authors_profiles_pagination]
+- [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
 
 We'll add more settings here, as we discover new use cases.
 
@@ -66,6 +68,8 @@ We'll add more settings here, as we discover new use cases.
   [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
   [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
   [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
+  [config.authors_profiles_pagination]: ../plugins/blog.md#config.authors_profiles_pagination
+  [config.authors_profiles_pagination_per_page]: ../plugins/blog.md#config.authors_profiles_pagination_per_page
 
 ### RSS
 

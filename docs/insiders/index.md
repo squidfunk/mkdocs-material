@@ -88,14 +88,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 24 additional features__ that you can __start using now__, and
+access to 25 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Blog plugin: author profiles] :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
 - [x] [Blog plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
 - [x] [Projects plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
-- [x] [Instant prefetching] :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+- [x] [Instant prefetching]
 - [x] [Social plugin: custom layouts]
 - [x] [Social plugin: background images]
 - [x] [Code range selection]
@@ -310,6 +311,8 @@ are released for general availability.
 - [x] [Privacy plugin: optimization support]
 - [x] [Privacy plugin: external links]
 - [x] [Instant prefetching]
+- [x] [Blog plugin: advanced settings]
+- [x] [Blog plugin: author profiles]
 
   [Optimize plugin]: ../plugins/optimize.md
   [Typeset plugin]: ../plugins/typeset.md
@@ -317,6 +320,8 @@ are released for general availability.
   [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
+  [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
+  [Blog plugin: author profiles]: ../plugins/blog.md#config.author_profiles
 
 #### $ 24,000 – Blockpaprika
 
@@ -325,14 +330,13 @@ are released for general availability.
 - [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
-- [x] [Blog plugin: advanced settings]
+- [ ] more to come...
 
   [Projects plugin]: ../plugins/projects.md
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
   [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
-  [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
 
 ### Goals completed
 
