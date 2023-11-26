@@ -171,6 +171,16 @@ Following is a list of relevant tags:
 [TAGS]
 ```
 
+Then in your `mkdocs.yml` file, add the following.
+
+``` yaml
+plugins:
+  - tags:
+      tags_file: tags.md
+```
+
+Note that the path to `tags.md` is relative to the `docs/` directory.
+
 The `[TAGS]` marker specifies the position of the tags index, i.e. it is
 replaced with the actual tags index when the page is rendered. You can include
 arbitrary content before and after the marker:
