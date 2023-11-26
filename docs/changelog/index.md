@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.4.13 <small>November 26, 2023</small> { id="9.4.13" }
+
+- Fixed #6365: Blog plugin pagination links to previous pages broken
+- Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
 ### 9.4.12 <small>November 24, 2023</small> { id="9.4.12" }
 
 - Improved blog plugin to generate Unicode-aware slugs by default

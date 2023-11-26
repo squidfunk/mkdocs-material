@@ -1,3 +1,8 @@
+mkdocs-material-9.4.13 (2023-11-26)
+
+  * Fixed #6365: Blog plugin pagination links to previous pages broken
+  * Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
 mkdocs-material-9.4.12+insiders-4.45.0 (2023-11-24)
 
   * Added support for sorting blog categories by post count or custom function
