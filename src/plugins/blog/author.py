@@ -19,7 +19,7 @@
 # IN THE SOFTWARE.
 
 from mkdocs.config.base import Config
-from mkdocs.config.config_options import DictOfItems, SubConfig, Type
+from mkdocs.config.config_options import DictOfItems, Optional, SubConfig, Type
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -30,6 +30,7 @@ class Author(Config):
     name = Type(str)
     description = Type(str)
     avatar = Type(str)
+    url = Optional(Type(str))
 
 # -----------------------------------------------------------------------------
 

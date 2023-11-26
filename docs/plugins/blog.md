@@ -1205,6 +1205,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
         name: string        # Author name
         description: string # Author description
         avatar: url         # Author avatar
+        url: url            # Author website URL
     ```
 
     Note that `<author>` must be set to an identifier for associating authors
