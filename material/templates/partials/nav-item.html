@@ -39,6 +39,11 @@
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
   {% endif %}
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
+  {% endif %}
   {% if nav_item.children %}
     {% set indexes = [] %}
     {% if "navigation.indexes" in features %}

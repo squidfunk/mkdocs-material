@@ -401,7 +401,10 @@
 
       <!-- Versioning -->
       {%- if config.extra.version -%}
-        {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- set mike = config.plugins.get("mike") -%}
+        {%- if not mike or mike.config.version_selector -%}
+          {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- endif -%}
       {%- endif -%}
 
       <!-- Tags -->

@@ -406,35 +406,24 @@ If more than one category is given, they are joined with `/` after slugifying.
 #### <!-- md:setting config.post_slugify -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default [`toc.slugify`][toc.slugify] -->
+<!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
-Use this setting to change the function to use for generating URL-compatible
-slugs from post titles. [Python Markdown Extensions] comes with a Unicode-aware
-[`slugify`][pymdownx.slugs.slugify] function:
+Use this setting to change the function for generating URL-compatible slugs
+from post titles. By default, the [`slugify`][pymdownx.slugs.slugify] function
+from [Python Markdown Extensions] is used as follows:
 
-=== "Unicode"
+``` yaml
+plugins:
+  - blog:
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+```
 
-    ``` yaml
-    plugins:
-      - blog:
-          post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
+The default configuration is Unicode-aware and should produce good slugs for all
+languages. Of course, you can also provide a custom slugification function for
+more granular control.
 
-=== "Unicode, case-sensitive"
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-    ```
-
-When your project features non-European languages, it's advisable to use this
-configuration. Of course, you can also provide a custom slugification function
-for more granular control.
-
-  [toc.slugify]: https://github.com/Python-Markdown/markdown/blob/1337d0891757e192165668d2606db36cf08e65a9/markdown/extensions/toc.py#L26-L33
   [pymdownx.slugs.slugify]: https://github.com/facelessuser/pymdown-extensions/blob/01c91ce79c91304c22b4e3d7a9261accc931d707/pymdownx/slugs.py#L59-L65
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
@@ -731,6 +720,42 @@ The following placeholders are available:
 
 ---
 
+#### <!-- md:setting config.archive_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for archive pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.archive_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per archive page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.archive_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -738,7 +763,7 @@ The following placeholders are available:
 
 Use this setting to leverage the table of contents to display post titles on all
 archive pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set:
 
 ``` yaml
 plugins:
@@ -820,31 +845,23 @@ The following placeholders are available:
 #### <!-- md:setting config.categories_slugify -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default [`toc.slugify`][toc.slugify] -->
+<!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
-Use this setting to change the function to use for generating URL-compatible
-slugs from categories. [Python Markdown Extensions] comes with a Unicode-aware
-[`slugify`][pymdownx.slugs.slugify] function:
+Use this setting to change the function for generating URL-compatible slugs
+from categories. By default, the [`slugify`][pymdownx.slugs.slugify] function
+from [Python Markdown Extensions] is used as follows:
 
-=== "Unicode"
+``` yaml
+plugins:
+  - blog:
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+```
 
-    ``` yaml
-    plugins:
-      - blog:
-          categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
-
-=== "Unicode, case-sensitive"
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-    ```
-When your project features non-European languages, it's advisable to use this
-configuration.
+The default configuration is Unicode-aware and should produce good slugs for all
+languages. Of course, you can also provide a custom slugification function for
+more granular control.
 
 ---
 
@@ -861,6 +878,46 @@ the default is a hyphen, it can be set to any string, e.g., `_`:
 plugins:
   - blog:
       categories_slugify_separator: _
+```
+
+---
+
+#### <!-- md:setting config.categories_sort_by -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `material.plugins.blog.view_name` -->
+
+Use this setting to specify a custom function for sorting categories. For
+example, if you want to sort categories by the number of posts they contain,
+use the following configuration:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_by: !!python/name:material.plugins.blog.view_post_count
+```
+
+Don't forget to enable [`categories_sort_reverse`][config.categories_sort_reverse].
+You can define your own comparison function, which must return something
+that can be compared while sorting, i.e., a string or number.
+
+---
+
+#### <!-- md:setting config.categories_sort_reverse -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `false` -->
+
+Use this setting to reverse the order in which categories are sorted. By
+default, categories are sorted in ascending order, but you can reverse ordering
+as follows:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_reverse: true
 ```
 
 ---
@@ -888,6 +945,42 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 ---
 
+#### <!-- md:setting config.categories_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for category pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.categories_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per category page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.categories_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -895,7 +988,7 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 Use this setting to leverage the table of contents to display post titles on all
 category pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set:
 
 ``` yaml
 plugins:

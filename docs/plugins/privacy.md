@@ -11,6 +11,13 @@ external assets. With just a single line of configuration, the plugin can
 automatically identify and download external assets, making GDPR compliance
 as effortless as it can possibly be.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
+  [our awesome sponsors]: ../insiders/index.md
+
 ## Objective
 
 ### How it works

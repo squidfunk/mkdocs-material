@@ -1,7 +1,3 @@
----
-status: new
----
-
 # Setting up social cards
 
 Material for MkDocs can automatically create beautiful social cards for your

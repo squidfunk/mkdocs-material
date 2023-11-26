@@ -87,6 +87,13 @@
     {% set class = class ~ " md-nav__item--active" %}
   {% endif %}
 
+  <!-- Determine active page for paginated views -->
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
+  {% endif %}
+
   <!-- Navigation item with nested items -->
   {% if nav_item.children %}
 
