@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.46.0 <small>November 26, 2023</small> { id="4.46.0" }
+
+- Added support for author profiles in blog plugin
+- Fixed custom index pages yielding two navigation items (4.45.0 regression)
+
 ### 4.45.0 <small>November 24, 2023</small> { id="4.45.0" }
 
 - Added support for sorting blog categories by post count or custom function
