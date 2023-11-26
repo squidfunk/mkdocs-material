@@ -1,3 +1,7 @@
+mkdocs-material-9.4.14 (2023-11-26)
+
+  * Added support for linking authors in blog posts
+
 mkdocs-material-9.4.13 (2023-11-26)
 
   * Fixed #6365: Blog plugin pagination links to previous pages broken

@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.4.14 <small>November 26, 2023</small> { id="9.4.14" }
+
+- Added support for linking authors in blog posts
+
 ### 9.4.13 <small>November 26, 2023</small> { id="9.4.13" }
 
 - Fixed #6365: Blog plugin pagination links to previous pages broken
