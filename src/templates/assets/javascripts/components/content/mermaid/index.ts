@@ -113,7 +113,7 @@ export function mountMermaid(
     const text = el.textContent
 
     /* Render and inject diagram */
-    const { svg, fn } = await mermaid.render(id, text);
+    const { svg, fn } = await mermaid.render(id, text)
 
     /* Create a shadow root and inject diagram */
     const shadow = host.attachShadow({ mode: "closed" })
