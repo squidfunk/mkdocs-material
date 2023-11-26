@@ -321,7 +321,7 @@ are released for general availability.
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
   [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
-  [Blog plugin: author profiles]: ../setup/blog.md#adding-author-profiles
+  [Blog plugin: author profiles]: ../setup/setting-up-a-blog.md#adding-author-profiles
 
 #### $ 24,000 – Blockpaprika
 
