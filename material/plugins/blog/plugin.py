@@ -339,16 +339,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if view not in self._resolve_views(self.blog):
             return
 
-        # If the current view is paginated, replace and rewire it - the current
-        # view temporarily becomes the main view, and is reset after rendering
-        assert isinstance(view, View)
-        if view != page:
-            prev = view.pages[view.pages.index(page) - 1]
-
-            # Replace previous page with current page
-            items = self._resolve_siblings(view, nav)
-            items[items.index(prev)] = page
-
         # Render excerpts and prepare pagination
         posts, pagination = self._render(page)
 
@@ -363,26 +353,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Assign posts and pagination to context
         context["posts"]      = posts
         context["pagination"] = pager if pagination else None
-
-    # After rendering a paginated view, replace the URL of the paginated view
-    # with the URL of the original view - since we need to replace the original
-    # view with a paginated view in `on_page_context` for correct resolution of
-    # the active state, we must fix the paginated view URLs after rendering
-    def on_post_page(self, output, *, page, config):
-        if not self.config.enabled:
-            return
-
-        # Skip if page is not a view managed by this instance - this plugin has
-        # support for multiple instances, which is why this check is necessary
-        view = self._resolve_original(page)
-        if view not in self._resolve_views(self.blog):
-            return
-
-        # If the current view is paginated, replace the URL of the paginated
-        # view with the URL of the original view - see https://t.ly/Yeh-P
-        assert isinstance(view, View)
-        if view != page:
-            page.file.url = view.file.url
 
     # Remove temporary directory on shutdown
     def on_shutdown(self):
