@@ -47,13 +47,13 @@ bug fixes and new features.
 
 [__Can I sponsor the project without a GitHub account?__](#sponsorship-account){ #sponsorship-account }
 
-Yes. You can support Material for MkDocs by sponsoring us on [Ko-fi], regardless
-of whether you have a GitHub account or not. However, please note that Insiders
-is provided as a private repository on GitHub. If after sponsoring, you'd like to
-gain access to the repository, you'll need to have a GitHub individual or bot
-account that can be added as a collaborator. If your organization doesn't use
-GitHub or/and host its repositories on other platforms, you can mirror the
-Insiders repository in your environment once you have access.
+No, you can't support Material for MkDocs if you don't have a GitHub account.
+GitHub Sponsors handles all transactions and access management for us. Please
+also note that the private Insiders repository is on GitHub, so in order to gain
+access, you'll need to have a GitHub individual or bot account that can be added
+as a collaborator. If your organization doesn't use GitHub or hosts its
+repositories on other platforms, you can mirror the Insiders repository in your
+environment once you have access.
 
 [__Which sponsoring tier should I choose?__](#sponsorship-tier){ #sponsorship-tier }
 
@@ -123,18 +123,15 @@ the end of your billing cycle.
 
 [__What payment options do you accept?__](#insiders-payment){ #insiders-payment }
 
-We manage all our transactions and sponsorships through [GitHub Sponsors] and
-[Ko-fi]. To become a sponsor of Material for MkDocs on GitHub, visit
-[our sponsors' page]. On there, you can choose from five different sponsorship
-tiers and pay by credit card. Please note that as of the beginning of 2023,
-[GitHub no longer supports PayPal] payments. If you wish to pay with PayPal,
-you can find a selection of our sponsorship tiers on [Ko-fi]. Both platforms
-provide you with a payment receipt once your purchase is successful.
+We manage all our transactions and sponsorships through [GitHub Sponsors]. To
+become a sponsor of Material for MkDocs on GitHub, visit [our sponsors' page].
+On there, you can choose from five different sponsorship tiers and pay by credit
+card. Please note that as of the beginning of 2023,
+[GitHub no longer supports PayPal] payments.
 
 If you're a company and need assistance choosing the right payment method,
 please don't hesitate to reach out to sponsors@squidfunk.com.
 
-  [Ko-fi]: https://ko-fi.com/squidfunk
   [GitHub Sponsors]: https://github.com/sponsors
   [GitHub no longer supports PayPal]: https://github.blog/changelog/2023-01-23-github-sponsors-will-stop-supporting-paypal/
   [our sponsors' page]: https://github.com/sponsors/squidfunk/
@@ -197,16 +194,16 @@ further questions, please contact us at sponsors@squidfunk.com.
 [__Can I get an invoice for my sponsorship payment?__](#insiders-invoice){ #insiders-invoice}
 
 Right now, we can't provide you with an invoice for your sponsoring transaction,
-as [GitHub Sponsors] handles all transactions for us. However, both payment
-platforms, [GitHub] and [Ko-Fi], automatically send you a payment receipt
-via mail once the sponsorship is active.
+as [GitHub Sponsors] handles all transactions for us. However, [GitHub Sponsors]
+automatically sends you a payment receipt via mail once the sponsorship is
+active.
 
 Furthermore, we are working on a solution to optimize access management and more
 features. If you are interested in this, please get in touch with us via mail at
 sponsors@squidfunk.com or turn on all notifications for MkDocs, and we will
 reach out as soon as we are live.
 
-  [GitHub]: https://github.com/sponsors/squidfunk/
+  [GitHub Sponsors]: https://github.com/sponsors/squidfunk/
 
 [__Can I switch between different sponsoring tiers?__](#insiders-switch-tiers){ #insiders-switch-tiers }
 
@@ -243,10 +240,10 @@ Insiders version and build more sites. The change will be effective immediately.
 [__Do you offer refunds for sponsoring payments?__](#insiders-refunds){ #insiders-refunds }
 
 Unfortunately, we cannot offer any refund for sponsorship payments.
-[GitHub Sponsors] and [Ko-Fi] manage all sponsoring transactions. Because of
-that, we do not have any insights into the details of the funds and cannot access
-them. If you have any payment issues, please get in touch with the GitHub
-or Ko-Fi support team, as they can help you.
+[GitHub Sponsors] manages all sponsoring transactions. Because of that, we do
+not have any insights into the details of the funds and cannot access them. If
+you have any payment issues, please get in touch with the GitHub Sponsors
+support team, as they can help you.
 
 ## Access management
 
@@ -503,5 +500,5 @@ bot account and us maintainers will have insights into his sponsorship.
 
 No, there are no geographical restrictions for becoming a sponsor. We welcome
 sponsorships from individuals and organizations worldwide. As long as your
-credit card is valid and accepted by GitHub or Ko-Fi, you are eligible to become
+credit card is valid and accepted by GitHub you are eligible to become
 a sponsor and support the project, regardless of your location.
