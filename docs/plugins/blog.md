@@ -1076,7 +1076,7 @@ You can enable author profiles with:
 ``` yaml
 plugins:
   - blog:
-      author_profiles: true
+      authors_profiles: true
 ```
 
 ---
