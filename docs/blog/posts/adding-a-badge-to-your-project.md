@@ -7,6 +7,9 @@ description: >
   project is built with Material for MkDocs
 categories:
   - General
+social:
+  cards_layout_options:
+    title: Adding a badge to your project
 ---
 
 # Adding a :simple-materialformkdocs: badge to your project
