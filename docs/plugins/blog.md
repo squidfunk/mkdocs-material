@@ -32,13 +32,15 @@ directory layout, and will create any missing directories or files for you:
 ``` { .sh .no-copy }
 .
 ├─ docs/
-│  └─ blog/
+│  └─ blog/ # (1)!
 │     ├─ posts/
 │     └─ index.md
 └─ mkdocs.yml
 ```
 
-The `index.md` file in the [`blog` directory][config.blog_dir] is the entry
+1. The `blog/` directory can be [modified][config.blog_dir] and has to be omitted (by putting `posts/` and `index.md` in the root of `docs`) in the Blog only mode `blog_dir: .`.
+
+The `index.md` file in the [`blog` directory (or `docs` directory for Blog only)][config.blog_dir] is the entry
 point to your blog – a paginated view listing all posts in reverse chronological
 order. Besides that, the plugin supports automatically creating [archive] and
 [category] pages that list a subset of posts for a time interval or category.
