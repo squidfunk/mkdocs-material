@@ -16,6 +16,8 @@ documentation, or new functionality you have developed.
     want to work on a new feature, please create a [change request]. Keep in
     mind the guidance given and let people advise you. It might be that
     there are easier solutions to the problem you perceive and want to address.
+    It might be that what you want to achieve can already be achieved through
+    configuration.
 
 [bug report]: reporting-a-bug.md
 [documentation issue]: reporting-a-docs-issue.md
@@ -27,58 +29,167 @@ Before you consider making a pull request, you should familiarize yourself
 with the documentation on GitHub. The following articles there are of particular
 importance:
 
-1. [Creating a pull request]
-2. [Creating a pull request from a fork]
+1. [Creating a pull request from a fork]
+2. [Creating a pull request]
+
+Note that they provide tailored documentation for different operating systems
+and different ways of interacting with GitHub. We do our best in the
+documentation here to describe the process as it applies to Material for MkDocs
+but it is still essential that you understand the concepts behind it.
 
 [Creating a pull request from a fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
-
 [Creating a pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
+## Pull request process
+
 In the following, we describe the process for making pull requests. The diagram
-below describes what typically happens to repositories in this process:
+below describes what typically happens to repositories in the process or
+preparing a pull request. We will be discussing the review-revise process below.
+It is important that you understand the overall process first before you worry
+about specific commands. This is why we cover this first before providing
+instructions below.
 
-??? note "PR Overview"
-    ``` mermaid
-    sequenceDiagram
-      autonumber
+``` mermaid
+sequenceDiagram
+  autonumber
 
-      participant mkdocs-material
-      participant PR
-      participant fork
-      participant local
+  participant mkdocs-material
+  participant PR
+  participant fork
+  participant local
 
-      mkdocs-material ->> fork: fork on GitHub
-      fork ->> local: clone to local
-      local ->> local: branch
-      loop prepare
-        loop push
-          loop edit
-            local ->> local: commit
-          end
-          local ->> fork: push
-        end
-        mkdocs-material ->> fork: merge in any changes
-        activate PR
-        fork ->> PR: create draft PR
-        PR ->> PR: review your changes
+  mkdocs-material ->> fork: fork on GitHub
+  fork ->> local: clone to local
+  local ->> local: branch
+  loop prepare
+    loop push
+      loop edit
+        local ->> local: commit
       end
-      loop review
-        PR ->> PR : finalize PR
-        loop discuss
-          PR ->> PR: request review
-          PR ->> PR: discussion
-          local ->> fork: push futher changes
-        end
-        PR ->> mkdocs-material: merge (and squash)
-        deactivate PR
-        fork ->> fork: delete branch
-        mkdocs-material ->> fork: pull
-        local ->> local: delete branch
-        fork ->> local: pull
-      end
-    ```
+      local ->> fork: push
+    end
+    mkdocs-material ->> fork: merge in any changes
+    fork ->>+ PR: create draft PR
+    PR ->> PR: review your changes
+  end
+```
 
-## Cloning the repository
+1. The first step is that you create a fork of the Material for MkDocs
+   repository (either [mkdocs-material] or [mkdocs-material-insider]). This
+   provides you with a repository that you can push changes to. Note that it is
+   not possible to have more than one fork of a given repository at any point in
+   time. So, the fork you create will be *the* fork you have.
+
+2. Once it is made, clone it to your local machine so you can start working on
+   your changes.
+
+3. All contributions should be made through a 'topic branch' with a name that
+   describes the work being done. This allows you to have more than one piece
+   of work in progress and, if you are working with the public version, also
+   shows others clearly that the code contained is work in progress. The topic
+   branch will be relatively short-lived and will disappear at the end, when
+   your changes have been incorporated into the codebase.
+
+4. Next comes the iterative process of making edits, committing them to your
+   clone. Do feel free to commit in sensible chunks that constitute a piece of
+   work. Remember that fine-grained, incremental commits are much easier to
+   review in than large changes all over the place and with many files involved.
+   Try to keep your changes as small and localized as possible and keep the
+   reviewer in mind when committing. In particular, make sure to write
+   meaningful commit messages.
+
+5. Push your work up to your fork regularly.
+
+6. You should also keep an eye on changes in the Material for MkDocs repository
+   you cloned. This is especially important if you work takes a while. Please
+   try and merge any concurrent changes into your fork and into your branch
+   regularly. You *must* do this at least once before creating a pull request,
+   so make your life easier and do it more often so as to minimize the risk of
+   conflicting changes.
+
+7. Once you are happy that your changes are in a state that you can describe
+   them in a *draft* pull request, you should create this. Make sure to
+   reference any previous discussions or issues that gave rise to your work.
+   Creating a draft is a good way to get *early* feedback on your work from the
+   maintainer or others. You can explicitly request reviews at points where you
+   think this would be important.
+
+8. Review your work as if you were the reviewer and fix any issues with your
+   work so far. Look critically at the diffs of the files that you have changed.
+   In particular, pay attention to whether the changes are as small as possible
+   and whether you have follow the general coding style used in the project.
+   If you received feedback, iterate over the process so far as necessary.
+
+[mkdocs-material]: https://github.com/squidfunk/mkdocs-material
+[mkdocs-material-insider]: https://github.com/squidfunk/mkdocs-material-insiders/
+
+Once you are happy with your changes, you can move to the next step, finalizing
+your pull request and asking for a more formal and detailed review. The diagram
+below shows the process:
+
+``` mermaid
+sequenceDiagram
+  autonumber
+  participant mkdocs-material
+  participant PR
+  participant fork
+  participant local
+
+  activate PR
+  PR ->> PR : finalize PR
+  loop review
+    loop discuss
+      PR ->> PR: request review
+      PR ->> PR: discussion
+      local ->> fork: push futher changes
+    end
+    PR ->> mkdocs-material: merge (and squash)
+    deactivate PR
+    fork ->> fork: delete branch
+    mkdocs-material ->> fork: pull
+    local ->> local: delete branch
+    fork ->> local: pull
+  end
+```
+
+1. When you are happy that the changes you made amount to a contribution that
+   the maintainer(s) could integrate into the codebase, finalize the pull
+   request. This signals to everyone that consider the work 'done' and that the
+   work can be reviewed with a view to accept and integrate it.
+
+2. Request a review from the maintainer.
+
+3. The maintainer may make comments on your code, which you should discuss with
+   them.
+
+4. Make any requested changes but committing them to your local clone and
+   pushing them up to your fork. This will automatically update the pull request.
+   It may well take a few iterations to get your contributions to an acceptable
+   state. You can help the process along by carefully reading comments made and
+   making changes with care.
+
+5. Once the reviewer is fully satisfied with the changes, they can merge them
+   into the main branch (or 'master'). In the process, they may 'squash' your
+   commits together into a smaller number of commits and may edit the messages
+   that describe them. Congratulations, you have now contributed to this project
+   and should see the changes in the main branch under your name.
+
+6. You can now delete the fork and your local repository and start afresh again
+   next time around. Alternatively, you can keep the repository and local clone
+   around but it is important that you keep them in a good state for any
+   subsequent work. We recommend that you start by deleting the branch you used
+   on your fork.
+
+7. To make sure you have the changes you produced, pull them from the main
+   repository into the main branch of your fork.
+
+8. Similarly, delete the topic branch from your local clone and...
+
+9. pull the changes to its master branch.
+
+## Steps
+
+### Cloning the repository
 
 To make changes to Material for MkDocs, you would first fork one of its
 repositories on GitHub. This is so that you have a repository on GitHub that
@@ -98,14 +209,14 @@ Sponsorware approach used to maintain and develop Material for MkDocs.
 [the Insiders repository]: https://github.com/squidfunk/mkdocs-material-insiders/
 [terms of the Insiders program]: http://localhost:8000/mkdocs-material/insiders/faq/sponsoring/#licensing
 
-## Set up a development environment
+### Setting up a development environment
 
-From this point onwards, please follow the [instructions for seting up the
+From this point onwards, please follow the [instructions for setting up the
 development environment].
 
 [instructions for setting up the development environment]: ../customization.md#environment-setup
 
-## Making changes
+### Making changes
 
 When you make changes to the code or the documentation please follow the
 established style used in the project. Doing so increases readability and
@@ -125,7 +236,7 @@ unintended side effects.
     In fact, doing so is probably a good way to get close to the code style
     used in Material for MkDocs.
 
-## Committing to a branch
+### Committing to a branch
 
 Development for pull requests is best done in a named branch separate from the
 `main/master` branch. Create a new local branch with `git switch -c <name>` and
@@ -134,7 +245,7 @@ commit your changes to this branch.
 When you want to push commits to your fork, you can do so with
 `git push -u origin <name>`.
 
-## Testing and reviewing changes
+### Testing and reviewing changes
 
 Before you commit any changes, you should make sure that they work as expected
 and do not create any unintended side effects. You should test them on at least
@@ -163,12 +274,13 @@ functionality you change.
 [examples repository]: https://github.com/mkdocs-material/examples
 [projects plugin]: https://squidfunk.github.io/mkdocs-material/plugins/projects/
 
-## Creating the pull request
+### Creating the pull request
 
 Initially, create the pull request **as a draft**.
 
+### Commits, messages, mistakes and 'squash'
 
-## Deleting branches
+### Deleting branches
 
 Once the pull request has been merged into the master branch of the Material
 for MkDocs repository, you should remove the branch both from the fork on
@@ -178,7 +290,7 @@ confusion about the state of development.
 First, switch back to the `master` branch with `git switch master` and then
 delete the branch used for the PR using `git branch -d <name>`.
 
-## Subsequent Pull Requests
+### Subsequent Pull Requests
 
 It is important that subsequent pull requests are started from an up-to-date
 history of the `master` branch. One way to achieve this is to delete the fork
