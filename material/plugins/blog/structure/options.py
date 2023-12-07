@@ -64,7 +64,7 @@ class PostDate(BaseConfigOption[DateDict]):
         for key, value in config[key_name].items():
 
             # Handle datetime - since datetime is a subclass of date, we need
-            # to check it first, or we'll loose time - see https://t.ly/-KG9N
+            # to check it first, or we lose the time - see https://t.ly/-KG9N
             if isinstance(value, datetime):
                 continue
 
