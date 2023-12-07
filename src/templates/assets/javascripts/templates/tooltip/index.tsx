@@ -23,6 +23,16 @@
 import { h } from "~/utilities"
 
 /* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Tooltip style
+ */
+export type TooltipStyle =
+  | "inline"
+
+/* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
 
@@ -30,13 +40,24 @@ import { h } from "~/utilities"
  * Render a tooltip
  *
  * @param id - Tooltip identifier
+ * @param style - Tooltip style
  *
  * @returns Element
  */
-export function renderTooltip(id?: string): HTMLElement {
-  return (
-    <div class="md-tooltip" id={id}>
-      <div class="md-tooltip__inner md-typeset"></div>
-    </div>
-  )
+export function renderTooltip(
+  id?: string, style?: TooltipStyle
+): HTMLElement {
+  if (style === "inline") { // @todo refactor control flow
+    return (
+      <div class="md-tooltip md-tooltip--inline" id={id} role="tooltip">
+        <div class="md-tooltip__inner md-typeset"></div>
+      </div>
+    )
+  } else {
+    return (
+      <div class="md-tooltip" id={id} role="tooltip">
+        <div class="md-tooltip__inner md-typeset"></div>
+      </div>
+    )
+  }
 }

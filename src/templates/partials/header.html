@@ -79,6 +79,11 @@
       {% endif %}
     {% endif %}
 
+    <!-- User preference: color palette -->
+    {% if not config.theme.palette is mapping %}
+      {% include "partials/javascripts/palette.html" %}
+    {% endif %}
+
     <!-- Site language selector -->
     {% if config.extra.alternate %}
       {% include "partials/alternate.html" %}

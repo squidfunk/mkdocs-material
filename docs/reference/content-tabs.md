@@ -32,13 +32,12 @@ See additional configuration options:
 
 ### Anchor links
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.17.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:flag experimental -->
 
-In order to link to content tabs and share them more easily, [Insiders] adds
-an anchor link to each content tab automatically, which you can copy via right
-click or open in a new tab:
+In order to link to content tabs and share them more easily, an anchor link is
+automatically added to each content tab, which you can copy via right click or
+open in a new tab:
 
 === "Open me in a new tab ..."
 

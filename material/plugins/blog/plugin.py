@@ -112,7 +112,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         root = posixpath.normpath(self.config.blog_dir)
         site = config.site_dir
 
-        # Compute path to posts directory
+        # Compute and normalize path to posts directory
         path = self.config.post_dir.format(blog = root)
         path = posixpath.normpath(path)
 
@@ -265,10 +265,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # is not already present, so we can remove footnotes or other content
         # from the excerpt without affecting the content of the excerpt
         if separator not in page.markdown:
-            path = page.file.src_path
             if self.config.post_excerpt == "required":
+                docs = os.path.relpath(config.docs_dir)
+                path = os.path.relpath(page.file.abs_src_path, docs)
                 raise PluginError(
-                    f"Couldn't find '{separator}' separator in '{path}'"
+                    f"Couldn't find '{separator}' in post '{path}' in '{docs}'"
                 )
             else:
                 page.markdown += f"\n\n{separator}"
@@ -476,19 +477,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Validate authors and throw if errors occurred
         errors, warnings = config.validate()
-        if not config.authors and warnings:
-            log.warning(
-                f"Action required: the format of the authors file changed.\n"
-                f"All authors must now be located under the 'authors' key.\n"
-                f"Please adjust '{file}' to match:\n"
-                f"\n"
-                f"authors:\n"
-                f"  squidfunk:\n"
-                f"    avatar: https://avatars.githubusercontent.com/u/932156\n"
-                f"    description: Creator\n"
-                f"    name: Martin Donath\n"
-                f"\n"
-            )
         for _, w in warnings:
             log.warning(w)
         for _, e in errors:

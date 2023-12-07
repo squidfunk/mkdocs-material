@@ -147,8 +147,7 @@ copyright: >
 
 ### Built-in privacy plugin
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.9.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [privacy][built-in privacy plugin] -->
 <!-- md:flag experimental -->
 

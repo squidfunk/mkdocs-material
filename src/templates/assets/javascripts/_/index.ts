@@ -35,6 +35,7 @@ export type Flag =
   | "content.code.copy"                /* Code copy button */
   | "content.lazy"                     /* Lazy content elements */
   | "content.tabs.link"                /* Link content tabs */
+  | "content.tooltips"                 /* Tooltips */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.indexes"               /* Section pages */

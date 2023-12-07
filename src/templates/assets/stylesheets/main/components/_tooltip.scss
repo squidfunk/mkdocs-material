@@ -95,6 +95,30 @@
     transform: translateY(0);
   }
 
+  // Inline tooltip
+  &--inline {
+    width: auto;
+    font-weight: 700;
+    user-select: none;
+
+    // Tooltip is not active
+    &:not(.md-tooltip--active) {
+      transform: translateY(px2rem(4px)) scale(0.9);
+    }
+
+    // Tooltip wrapper
+    .md-tooltip__inner {
+      padding: px2rem(4px) px2rem(8px);
+      font-size: px2rem(10px);
+    }
+
+    // Hack: When the host element is hidden, the context for the tooltip is
+    // lost immediately, resulting in invalid and sometimes jumpy positioning.
+    [hidden] + & {
+      display: none;
+    }
+  }
+
   // Show outline on target and for keyboard devices
   :is(.focus-visible > &, &:target) {
     outline: var(--md-accent-fg-color) auto;

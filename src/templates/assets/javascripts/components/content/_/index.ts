@@ -22,9 +22,14 @@
 
 import { Observable, merge } from "rxjs"
 
+import { feature } from "~/_"
 import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
+import {
+  Tooltip,
+  mountTooltip
+} from "../../tooltip"
 import {
   Annotation,
   mountAnnotationBlock
@@ -64,6 +69,7 @@ export type Content =
   | DataTable
   | Details
   | Mermaid
+  | Tooltip
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -120,6 +126,11 @@ export function mountContent(
 
     /* Content tabs */
     ...getElements("[data-tabs]", el)
-      .map(child => mountContentTabs(child, { viewport$ }))
+      .map(child => mountContentTabs(child, { viewport$, target$ })),
+
+    /* Tooltips */
+    ...getElements("[title]", el)
+      .filter(() => feature("content.tooltips"))
+      .map(child => mountTooltip(child))
   )
 }

@@ -65,18 +65,24 @@ theme:
     - toc.follow
     # - toc.integrate
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
   font:
     text: Roboto
     code: Roboto Mono
@@ -99,8 +105,9 @@ hooks:
 
 # Additional configuration
 extra:
-  annotate:
-    json: [.s2]
+  status:
+    new: Recently added
+    deprecated: Deprecated
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY

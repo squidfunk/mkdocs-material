@@ -34,6 +34,8 @@ import {
   mergeWith,
   switchMap,
   take,
+  takeLast,
+  takeUntil,
   tap
 } from "rxjs"
 
@@ -47,6 +49,10 @@ import { renderClipboardButton } from "~/templates"
 
 import { Component } from "../../../_"
 import {
+  Tooltip,
+  mountTooltip
+} from "../../../tooltip"
+import {
   Annotation,
   mountAnnotationList
 } from "../../annotation"
@@ -56,11 +62,19 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Code block
+ * Code block overflow
  */
-export interface CodeBlock {
+export interface Overflow {
   scrollable: boolean                  /* Code block overflows */
 }
+
+/**
+ * Code block
+ */
+export type CodeBlock =
+  | Overflow
+  | Annotation
+  | Tooltip
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -125,7 +139,7 @@ function findCandidateList(el: HTMLElement): HTMLElement | undefined {
  */
 export function watchCodeBlock(
   el: HTMLElement
-): Observable<CodeBlock> {
+): Observable<Overflow> {
   return watchElementSize(el)
     .pipe(
       map(({ width }) => {
@@ -158,12 +172,13 @@ export function watchCodeBlock(
  */
 export function mountCodeBlock(
   el: HTMLElement, options: MountOptions
-): Observable<Component<CodeBlock | Annotation>> {
+): Observable<Component<CodeBlock>> {
   const { matches: hover } = matchMedia("(hover)")
 
   /* Defer mounting of code block - see https://bit.ly/3vHVoVD */
   const factory$ = defer(() => {
-    const push$ = new Subject<CodeBlock>()
+    const push$ = new Subject<Overflow>()
+    const done$ = push$.pipe(takeLast(1))
     push$.subscribe(({ scrollable }) => {
       if (scrollable && hover)
         el.setAttribute("tabindex", "0")
@@ -172,16 +187,19 @@ export function mountCodeBlock(
     })
 
     /* Render button for Clipboard.js integration */
+    const content$: Array<Observable<Component<CodeBlock>>> = []
     if (ClipboardJS.isSupported()) {
       if (el.closest(".copy") || (
         feature("content.code.copy") && !el.closest(".no-copy")
       )) {
         const parent = el.closest("pre")!
         parent.id = `__code_${sequence++}`
-        parent.insertBefore(
-          renderClipboardButton(parent.id),
-          el
-        )
+
+        /* Mount tooltip, if enabled */
+        const button = renderClipboardButton(parent.id)
+        parent.insertBefore(button, el)
+        if (feature("content.tooltips"))
+          content$.push(mountTooltip(button))
       }
     }
 
@@ -196,22 +214,15 @@ export function mountCodeBlock(
         feature("content.code.annotate")
       )) {
         const annotations$ = mountAnnotationList(list, el, options)
-
-        /* Create and return component */
-        return watchCodeBlock(el)
-          .pipe(
-            tap(state => push$.next(state)),
-            finalize(() => push$.complete()),
-            map(state => ({ ref: el, ...state })),
-            mergeWith(
-              watchElementSize(container)
-                .pipe(
-                  map(({ width, height }) => width && height),
-                  distinctUntilChanged(),
-                  switchMap(active => active ? annotations$ : EMPTY)
-                )
+        content$.push(
+          watchElementSize(container)
+            .pipe(
+              takeUntil(done$),
+              map(({ width, height }) => width && height),
+              distinctUntilChanged(),
+              switchMap(active => active ? annotations$ : EMPTY)
             )
-          )
+        )
       }
     }
 
@@ -220,7 +231,8 @@ export function mountCodeBlock(
       .pipe(
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
-        map(state => ({ ref: el, ...state }))
+        map(state => ({ ref: el, ...state })),
+        mergeWith(...content$)
       )
   })
 

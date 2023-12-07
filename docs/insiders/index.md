@@ -88,7 +88,7 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can __start using now__, and
+access to 19 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
@@ -112,12 +112,6 @@ which are currently exclusively available to sponsors:
 - [x] [Blog plugin: related links]
 - [x] [Meta plugin]
 - [x] [Tags plugin: additional indexes]
-- [x] [Document contributors]
-- [x] [Automatic light / dark mode]
-- [x] [Content tabs: anchor links]
-- [x] [Tooltips]
-- [x] [Card grids]
-- [x] [Privacy plugin]
 
 </div>
 
@@ -270,22 +264,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
-#### $ 14,000 – Goat's Horn
-
-- [x] [Privacy plugin]
-- [x] [Card grids]
-- [x] [Tooltips]
-- [x] [Content tabs: anchor links]
-- [x] [Automatic light / dark mode]
-- [x] [Document contributors]
-
-  [Privacy plugin]: ../setup/ensuring-data-privacy.md
-  [Card grids]: ../reference/grids.md
-  [Tooltips]: ../reference/tooltips.md
-  [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
-  [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
-  [Document contributors]: ../setup/adding-a-git-repository.md#document-contributors
-
 #### $ 16,000 – Chipotle
 
 - [x] [Meta plugin]
@@ -343,6 +321,22 @@ are released for general availability.
 This section lists all funding goals that were previously completed, which means
 that those features were part of Insiders, but are now generally available and
 can be used by all users.
+
+#### $ 14,000 – Goat's Horn
+
+- [x] [Privacy plugin]
+- [x] [Card grids]
+- [x] [Tooltips]
+- [x] [Content tabs: anchor links]
+- [x] [Automatic light / dark mode]
+- [x] [Document contributors]
+
+  [Privacy plugin]: ../setup/ensuring-data-privacy.md#built-in-privacy-plugin
+  [Card grids]: ../reference/grids.md
+  [Tooltips]: ../reference/tooltips.md
+  [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
+  [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
+  [Document contributors]: ../setup/adding-a-git-repository.md#document-contributors
 
 #### $ 12,000 – Piri Piri
 
