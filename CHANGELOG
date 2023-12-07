@@ -1,3 +1,14 @@
+mkdocs-material-9.5.0 (2023-12-07)
+
+  Merged Insiders features of 'Goat's Horn' funding goal
+
+  * Added privacy plugin: automatic downloading of external assets
+  * Added support for card grids and grid layouts
+  * Added support for improved tooltips
+  * Added support for content tabs anchor links (deep linking)
+  * Added support for automatic dark/light mode
+  * Added support for document contributors
+
 mkdocs-material-9.4.14+insiders-4.46.0 (2023-11-26)
 
   * Added support for author profiles in blog plugin
