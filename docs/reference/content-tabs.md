@@ -65,8 +65,8 @@ or to the [publishing guide for Insiders][tab_2].
 
     Fore more information, please [see the extension guide][slugification].
 
-  [tab_1]: #-or-even-me
-  [tab_2]: ../publishing-your-site.md#insiders
+  [tab_1]: #anchor-links--or-even-me
+  [tab_2]: ../publishing-your-site.md#with-github-actions-insiders
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
   [slugification]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.tabbed.slugify
 
