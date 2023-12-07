@@ -62,6 +62,14 @@ class PostDate(BaseConfigOption[DateDict]):
 
         # Convert all date values to datetime
         for key, value in config[key_name].items():
+
+            # Handle datetime - since datetime is a subclass of date, we need
+            # to check it first, or we'll loose time - see https://t.ly/-KG9N
+            if isinstance(value, datetime):
+                continue
+
+            # Handle date - we set 00:00:00 as the default time, if the author
+            # only supplied a date, and convert it to datetime
             if isinstance(value, date):
                 config[key_name][key] = datetime.combine(value, time())
 
