@@ -37,3 +37,10 @@
       }
   </script>
 {% endif %}
+
+<!-- Switch to content tab target -->
+<script>
+  var target = document.getElementById(location.hash.slice(1))
+  if (target && target.name)
+    target.checked = target.name.startsWith("__tabbed_")
+</script>

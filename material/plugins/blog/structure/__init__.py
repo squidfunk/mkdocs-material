@@ -61,7 +61,7 @@ class Post(Page):
             self.markdown = f.read()
 
             # Sadly, MkDocs swallows any exceptions that occur during parsing.
-            # As we want to provide the best possible authoring experience, we
+            # Since we want to provide the best possible user experience, we
             # need to catch errors early and display them nicely. We decided to
             # drop support for MkDocs' MultiMarkdown syntax, because it is not
             # correctly implemented anyway. When using MultiMarkdown syntax, all
@@ -80,7 +80,7 @@ class Post(Page):
                 self.markdown = self.markdown[match.end():].lstrip("\n")
 
             # The post's metadata could not be parsed because of a syntax error,
-            # which we display to the user with a nice error message
+            # which we display to the author with a nice error message
             except Exception as e:
                 raise PluginError(
                     f"Error reading metadata of post '{path}' in '{docs}':\n"

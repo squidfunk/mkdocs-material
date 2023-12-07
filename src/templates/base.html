@@ -194,11 +194,6 @@
   {% endif %}
     {% set features = config.theme.features or [] %}
 
-    <!-- User preference: color palette -->
-    {% if not config.theme.palette is mapping %}
-      {% include "partials/javascripts/palette.html" %}
-    {% endif %}
-
     <!--
       State toggles - we need to set autocomplete="off" in order to reset the
       drawer on back button invocation in some browsers

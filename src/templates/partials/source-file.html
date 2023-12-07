@@ -20,25 +20,106 @@
   IN THE SOFTWARE.
 -->
 
+<!-- Determine date of last update -->
+{% if page.meta %}
+  {% if page.meta.git_revision_date_localized %}
+    {% set updated = page.meta.git_revision_date_localized %}
+  {% elif page.meta.revision_date %}
+    {% set updated = page.meta.revision_date %}
+  {% endif %}
+
+  <!-- Determine date of creation -->
+  {% if page.meta.git_creation_date_localized %}
+    {% set created = page.meta.git_creation_date_localized %}
+  {% endif %}
+{% endif %}
+
 <!-- Source file information -->
-<hr />
-<div class="md-source-file">
-  <small>
+{% if updated or created or git_info or committers %}
+  <aside class="md-source-file">
 
-    <!-- mkdocs-git-revision-date-localized-plugin -->
-    {% if page.meta.git_revision_date_localized %}
-      {{ lang.t("source.file.date.updated") }}:
-      {{ page.meta.git_revision_date_localized }}
-      {% if page.meta.git_creation_date_localized %}
-        <br />
-        {{ lang.t("source.file.date.created") }}:
-        {{ page.meta.git_creation_date_localized }}
-      {% endif %}
-
-    <!-- mkdocs-git-revision-date-plugin -->
-    {% elif page.meta.revision_date %}
-      {{ lang.t("source.file.date.updated") }}:
-      {{ page.meta.revision_date }}
+    <!-- Date of last update -->
+    {% if updated %}
+      <span class="md-source-file__fact">
+        <span class="md-icon" title="{{ lang.t('source.file.date.updated') }}">
+          {% include ".icons/material/clock-edit-outline.svg" %}
+        </span>
+        {{ updated }}
+      </span>
     {% endif %}
-  </small>
-</div>
+
+    <!-- Date of creation -->
+    {% if created %}
+      <span class="md-source-file__fact">
+        <span class="md-icon" title="{{ lang.t('source.file.date.created') }}">
+          {% include ".icons/material/clock-plus-outline.svg" %}
+        </span>
+        {{ created }}
+      </span>
+    {% endif %}
+
+    <!-- Authors (git-authors plugin) -->
+    {% if git_info %}
+      {% set authors = git_info.get("page_authors") %}
+      <span class="md-source-file__fact">
+        <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
+          {% if authors | length == 1 %}
+            {% include ".icons/material/account.svg" %}
+          {% else %}
+            {% include ".icons/material/account-group.svg" %}
+          {% endif %}
+        </span>
+        <nav>
+          {% for author in authors %}
+            <a href="mailto:{{ author.email }}">
+              {{- author.name -}}
+            </a>
+            {%- if loop.revindex > 1 %}, {% endif -%}
+          {% endfor %}
+        </nav>
+      </span>
+    {% endif %}
+
+    <!-- Authors (git-committers plugin) -->
+    {% if committers %}
+      <span class="md-source-file__fact">
+        <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
+          {% include ".icons/material/github.svg" %}
+        </span>
+        <span>GitHub</span>
+        <nav>
+          {% for author in committers[:4] %}
+            <a
+              href="{{ author.url }}"
+              class="md-author"
+              title="@{{ author.login }}"
+            >
+              {% set separator = "&" if "?" in author.avatar else "?" %}
+              <img
+                src="{{ author.avatar }}{{ separator }}size=72"
+                alt="{{ author.name or 'GitHub user' }}"
+              />
+            </a>
+          {% endfor %}
+
+          <!-- More authors -->
+          {% set more = committers[4:] | length %}
+          {% if more > 0 %}
+            {% if page.edit_url %}
+              <a
+                href="{{ page.edit_url | replace('edit', 'blob') }}"
+                class="md-author md-author--more"
+              >
+                +{{ more }}
+              </a>
+            {% else %}
+              <span class="md-author md-author--more">
+                +{{ more }}
+              </span>
+            {% endif %}
+          {% endif %}
+        </nav>
+      </span>
+    {% endif %}
+  </aside>
+{% endif %}
