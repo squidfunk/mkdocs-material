@@ -267,8 +267,7 @@ default color palette.
 
 #### Automatic light / dark mode
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.18.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:flag experimental -->
 <!-- md:example color-palette-system-preference -->
 
