@@ -29,25 +29,41 @@ Before you consider making a pull request, you should familiarize yourself
 with the documentation on GitHub. The following articles there are of particular
 importance:
 
-1. [Creating a pull request from a fork]
-2. [Creating a pull request]
+1. [Forking a repository]
+2. [Creating a pull request from a fork]
+3. [Creating a pull request]
 
 Note that they provide tailored documentation for different operating systems
 and different ways of interacting with GitHub. We do our best in the
 documentation here to describe the process as it applies to Material for MkDocs
 but it is still essential that you understand the concepts behind it.
 
+[Forking a repository]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Creating a pull request from a fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
 [Creating a pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
+!!! note "General Philosophy"
+
+    There are many choices to be made when describing a process for contributing
+    to a project via a pull request. In the following, we assume that you are
+    working with the Git command-line tools. For most alternatives (such as
+    using IDEs or using functionality provided through the GitHub web interface),
+    the translation from the commandline instructions should be simple enough.
+    We will add notes only where really necessary to keep the overhead of
+    maintaining this part of the documentation low.
+
 ## Pull request process
 
-In the following, we describe the process for making pull requests. The diagram
-below describes what typically happens to repositories in the process or
-preparing a pull request. We will be discussing the review-revise process below.
-It is important that you understand the overall process first before you worry
-about specific commands. This is why we cover this first before providing
-instructions below.
+In the following, we describe the general process for making pull requests. The
+aim here is to provide the 30k ft overview before describing details later on.
+
+### Preparing changes and draft PR
+
+The diagram below describes what typically happens to repositories in the
+process or preparing a pull request. We will be discussing the review-revise
+process below. It is important that you understand the overall process first
+before you worry about specific commands. This is why we cover this first before
+providing instructions below.
 
 ``` mermaid
 sequenceDiagram
@@ -123,6 +139,8 @@ sequenceDiagram
 [mkdocs-material]: https://github.com/squidfunk/mkdocs-material
 [mkdocs-material-insider]: https://github.com/squidfunk/mkdocs-material-insiders/
 
+### Finalizing
+
 Once you are happy with your changes, you can move to the next step, finalizing
 your pull request and asking for a more formal and detailed review. The diagram
 below shows the process:
@@ -189,6 +207,9 @@ sequenceDiagram
 
 ## Steps
 
+Now that the overall process is outlined, here are specific instructions to
+follow for the necessary steps and additional activities.
+
 ### Cloning the repository
 
 To make changes to Material for MkDocs, you would first fork one of its
@@ -212,7 +233,8 @@ Sponsorware approach used to maintain and develop Material for MkDocs.
 ### Setting up a development environment
 
 From this point onwards, please follow the [instructions for setting up the
-development environment].
+development environment]. They will take you through the process of setting up
+an environment in which you make make changes and review/test them.
 
 [instructions for setting up the development environment]: ../customization.md#environment-setup
 
@@ -226,7 +248,7 @@ to re-format all code.
 
 Study the code that you are modifying well to ensure that you fully understand
 how it works before you try to change it. This will not only help you solve the
-problem you aretrying to addressd but also minimize the risks of creating
+problem you are trying to address but also minimize the risks of creating
 unintended side effects.
 
 !!! tip "Linters"
