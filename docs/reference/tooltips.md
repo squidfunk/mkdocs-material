@@ -155,3 +155,14 @@ pages with the following configuration:
     ````
 
   [auto-append]: https://facelessuser.github.io/pymdown-extensions/extensions/snippets/#auto-append-snippets
+
+!!! tip
+
+    When using a dedicated file outside of the `docs` folder, add the parent directory to the list
+    of `watch` folders so that when the glossary file is updated, the project is automatically
+    reloaded when running `mkdocs serve`.
+
+    ```` yaml
+    watch:
+      - includes
+    ````
