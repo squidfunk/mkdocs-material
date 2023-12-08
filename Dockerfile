@@ -86,8 +86,8 @@ RUN \
     -exec rm -f {} \;
 
 # Trust directory, required for git >= 2.35.2
-RUN git config --global --add safe.directory /docs &&\
-    git config --global --add safe.directory /site
+RUN git config --system --add safe.directory /docs &&\
+    git config --system --add safe.directory /site
 
 # Set working directory
 WORKDIR /docs
