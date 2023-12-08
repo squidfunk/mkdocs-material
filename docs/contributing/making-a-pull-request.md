@@ -1,7 +1,7 @@
 # Making a Pull Request
 
 You can contribute to Material for MkDocs by making a [pull request] that
-will be reviewed by developers and integrated into the main repository when
+will be reviewed by maintainers and integrated into the main repository when
 the changes made are approved. You can contribute bug fixes, changes to the
 documentation, or new functionality you have developed.
 
@@ -13,10 +13,11 @@ documentation, or new functionality you have developed.
     request, please discuss what you intend to do. If you are responding to
     what you think might be a bug, please issue a [bug report] first. If you
     indend to work on documentation, create a [documentation issue]. If you
-    want to work on a new feature, please create a [change request]. Keep in
-    mind the guidance given and let people advise you. It might be that
+    want to work on a new feature, please create a [change request].
+
+    Keep in mind the guidance given and let people advise you. It might be that
     there are easier solutions to the problem you perceive and want to address.
-    It might be that what you want to achieve can already be achieved through
+    It might be that what you want to achieve can already be done by
     configuration.
 
 [bug report]: reporting-a-bug.md
@@ -26,7 +27,7 @@ documentation, or new functionality you have developed.
 ## Learning about pull requests
 
 Before you consider making a pull request, you should familiarize yourself
-with the documentation on GitHub. The following articles there are of particular
+with the documentation on GitHub. The following articles are of particular
 importance:
 
 1. [Forking a repository]
@@ -36,11 +37,23 @@ importance:
 Note that they provide tailored documentation for different operating systems
 and different ways of interacting with GitHub. We do our best in the
 documentation here to describe the process as it applies to Material for MkDocs
-but it is still essential that you understand the concepts behind it.
+but cannot cover all possible combinations of tools and ways of doing things.
+It is also important that you understand the concept of a pull-request in
+general before continuing.
 
 [Forking a repository]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Creating a pull request from a fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
 [Creating a pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+
+!!! tip "Pay attention to the instructions"
+
+    One important thing to understand is that pull requests are a concept layered on
+    top of Git by services that provide Git hosting. There may, therefore be
+    differences between how these services implement them. As they say in the
+    airline industry: pay attention to the instructions as they may differ from any
+    aircraft you have flown on before. The same is true for how pull requests work
+    in different environments.
+
 
 !!! note "General Philosophy"
 
@@ -49,8 +62,8 @@ but it is still essential that you understand the concepts behind it.
     working with the Git command-line tools. For most alternatives (such as
     using IDEs or using functionality provided through the GitHub web interface),
     the translation from the commandline instructions should be simple enough.
-    We will add notes only where really necessary to keep the overhead of
-    maintaining this part of the documentation low.
+    We will add notes only where really necessary to keep the complexity of this
+    to a reasonable level.
 
 ## Pull request process
 
@@ -106,13 +119,15 @@ sequenceDiagram
    branch will be relatively short-lived and will disappear at the end, when
    your changes have been incorporated into the codebase.
 
-4. Next comes the iterative process of making edits, committing them to your
-   clone. Do feel free to commit in sensible chunks that constitute a piece of
-   work. Remember that fine-grained, incremental commits are much easier to
-   review in than large changes all over the place and with many files involved.
-   Try to keep your changes as small and localized as possible and keep the
-   reviewer in mind when committing. In particular, make sure to write
-   meaningful commit messages.
+4.  Next comes the iterative process of making edits, committing them to your
+    clone. Please commit in sensible chunks that constitute a piece of work
+    instead of committing everything in one go.
+
+    Remember that fine-grained, incremental commits are much easier to
+    review in than large changes all over the place and with many files involved.
+    Try to keep your changes as small and localized as possible and keep the
+    reviewer in mind when committing. In particular, make sure to write
+    meaningful commit messages.
 
 5. Push your work up to your fork regularly.
 
@@ -130,14 +145,21 @@ sequenceDiagram
    maintainer or others. You can explicitly request reviews at points where you
    think this would be important.
 
-8. Review your work as if you were the reviewer and fix any issues with your
-   work so far. Look critically at the diffs of the files that you have changed.
-   In particular, pay attention to whether the changes are as small as possible
-   and whether you have follow the general coding style used in the project.
-   If you received feedback, iterate over the process so far as necessary.
+8.  Review your work as if you were the reviewer and fix any issues with your
+    work so far. Look critically at the diffs of the files that you have changed.
+    In particular, pay attention to whether the changes are as small as possible
+    and whether you have follow the general coding style used in the project.
+    If you received feedback, iterate over the process so far as necessary.
+
+    You should choose a number of projects to test your changes with. You should
+    definitely make sure that the changes do not break the building of the
+    documentation for Material for MkDocs, which you can find in the `docs`
+    folder. You may also want to make sure that relevant examples from the
+    [examples repository] still build fine.
 
 [mkdocs-material]: https://github.com/squidfunk/mkdocs-material
 [mkdocs-material-insider]: https://github.com/squidfunk/mkdocs-material-insiders/
+[examples repository]: https://github.com/mkdocs-material/examples
 
 ### Finalizing
 
@@ -172,15 +194,26 @@ sequenceDiagram
 
 1. When you are happy that the changes you made amount to a contribution that
    the maintainer(s) could integrate into the codebase, finalize the pull
-   request. This signals to everyone that consider the work 'done' and that the
-   work can be reviewed with a view to accept and integrate it.
+   request. This signals to everyone that consider the work 'done' and that it
+   can be reviewed with a view to accepting and integrating it.
 
-2. Request a review from the maintainer.
+2. Request a review from the maintainer, `@squidfunk`.
 
-3. The maintainer may make comments on your code, which you should discuss with
-   them.
+3.  The maintainer may make comments on your code, which you should discuss with
+    them. Bear in mind when doing this that the maintainer may have a different
+    point of view compared to yours. They will often take a more long-term
+    perspective of maintaining the project in the years to come while you may be
+    more focused on the specific issue or feature that you worked on. Please keep
+    the discussion respectful at all times.
 
-4. Make any requested changes but committing them to your local clone and
+    It is important to note that not all pull requests get incorporated int the
+    codebase. The reasons can vary. The work may bring to light other issues that
+    block integration of the pull request. Sometimes it helps uncover better ways of
+    doing things or shows that a more general approach is needed. All of this is
+    fine and helps the project progress, even if specific changes are not,
+    ultimately, accepted.
+
+4. Make any requested changes by committing them to your local clone and
    pushing them up to your fork. This will automatically update the pull request.
    It may well take a few iterations to get your contributions to an acceptable
    state. You can help the process along by carefully reading comments made and
