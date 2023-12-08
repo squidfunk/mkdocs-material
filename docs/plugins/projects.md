@@ -183,6 +183,81 @@ plugins:
       cache_dir: my/custom/dir
 ```
 
+### Logging
+
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should display log messages from
+projects when building your site. While not neing recommended, you can disable
+logging with:
+
+``` yaml
+plugins:
+  - projects:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:default `info` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`error`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: error
+    ```
+
+    Only errors are reported.
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: warn
+    ```
+
+    Errors and warnings are reported, terminating the build in
+    [`strict`][mkdocs.strict] mode.
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: info
+    ```
+
+    Errors, warnings and informational messages are reported.
+
+=== "`debug`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: debug
+    ```
+
+    All messages are reported, including debug messages.
+
 ### Projects
 
 The following settings are available for projects:

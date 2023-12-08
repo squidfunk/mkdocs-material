@@ -88,14 +88,15 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 19 additional features__ that you can __start using now__, and
+access to 20 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Stay on page when switching languages] :material-alert-decagram:{ .mdx-pulse title="Added on December 8, 2023" }
 - [x] [Blog plugin: author profiles] :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
 - [x] [Blog plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
-- [x] [Projects plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
+- [x] [Projects plugin]
 - [x] [Instant prefetching]
 - [x] [Social plugin: custom layouts]
 - [x] [Social plugin: background images]
@@ -308,6 +309,7 @@ are released for general availability.
 - [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
+- [x] [Stay on page when switching languages]
 - [ ] more to come...
 
   [Projects plugin]: ../plugins/projects.md
@@ -315,6 +317,7 @@ are released for general availability.
   [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
+  [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page
 
 ### Goals completed
 

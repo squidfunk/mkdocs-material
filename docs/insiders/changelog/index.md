@@ -2,6 +2,19 @@
 
 ## Material for MkDocs Insiders
 
+### 4.47.0 <small>December 8, 2023</small> { id="4.47.0" }
+
+- Added support for staying on page when switching languages
+- Added configurable logging capabilities to projects plugin
+- Removed temporary warning on blog plugin authors file format change
+- Fixed projects plugin logging messages twice on Linux systems
+- Fixed projects plugin trying to hoist theme assets of divergent themes
+- Fixed compatibility of optimize plugin and projects plugin
+- Fixed compatibility of social plugin and projects plugin
+- Fixed #6448: Code line selection broken for code blocks with custom ids
+- Fixed #6437: Projects plugin crashing for certain site URL configurations
+- Fixed #6414: Projects plugin doesn't prefix messages coming from projects
+
 ### 4.46.0 <small>November 26, 2023</small> { id="4.46.0" }
 
 - Added support for author profiles in blog plugin

@@ -97,6 +97,38 @@ The following properties are available for each alternate language:
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
 
+#### Stay on page :material-alert-decagram:{ .mdx-pulse title="Added on December 8, 2023" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:flag experimental -->
+
+[Insiders] improves the user experience when switching between languages, e.g.,
+if language `en` and `de` contain a page with the same path name, the user will
+stay on the current page:
+
+=== "Insiders"
+
+    ```
+    docs.example.com/en/     -> docs.example.com/de/
+    docs.example.com/en/foo/ -> docs.example.com/de/foo/
+    docs.example.com/en/bar/ -> docs.example.com/de/bar/
+    ```
+
+=== "Material for MkDocs"
+
+    ```
+    docs.example.com/en/     -> docs.example.com/de/
+    docs.example.com/en/foo/ -> docs.example.com/de/
+    docs.example.com/en/bar/ -> docs.example.com/de/
+    ```
+
+No configuration is necessary. We're working hard on improving multi-language
+support in 2024, including making switching between languages even more seamless
+in the future.
+
+  [Insiders]: ../insiders/index.md
+
 ### Directionality
 
 <!-- md:version 2.5.0 -->
