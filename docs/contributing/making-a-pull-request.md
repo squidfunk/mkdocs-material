@@ -55,16 +55,6 @@ general before continuing.
     in different environments.
 
 
-!!! note "General Philosophy"
-
-    There are many choices to be made when describing a process for contributing
-    to a project via a pull request. In the following, we assume that you are
-    working with the Git command-line tools. For most alternatives (such as
-    using IDEs or using functionality provided through the GitHub web interface),
-    the translation from the commandline instructions should be simple enough.
-    We will add notes only where really necessary to keep the complexity of this
-    to a reasonable level.
-
 ## Pull request process
 
 In the following, we describe the general process for making pull requests. The
@@ -240,8 +230,14 @@ sequenceDiagram
 
 ## Steps
 
-Now that the overall process is outlined, here are specific instructions to
-follow for the necessary steps and additional activities.
+Now that the overall process is outlined, here are specific instructions and
+tips. There are many choices to be made when describing a process for
+contributing to a project via a pull request. In the following, we assume that
+you are working with the Git command-line tools. For most alternatives (such as
+using IDEs or using functionality provided through the GitHub web interface),
+the translation from the command-line instructions should be simple enough.  We
+will add notes only where really necessary to keep the complexity of this to a
+reasonable level.
 
 ### Cloning the repository
 
