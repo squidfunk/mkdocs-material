@@ -239,15 +239,19 @@ the translation from the command-line instructions should be simple enough.  We
 will add notes only where really necessary to keep the complexity of this to a
 reasonable level.
 
-### Cloning the repository
+### Forking the repository
 
 To make changes to Material for MkDocs, you would first fork one of its
 repositories on GitHub. This is so that you have a repository on GitHub that
-you can push changes to.
+you can push changes to (only maintainers and collaborators have write access
+to the original repositories).
 
 Fork the [repository for the public version] if you want to make changes to
 code that is in the public version or if you want to make changes to the
-documentation.
+documentation. Please make sure to change the name of the repository by
+appending `-fork` to that people who come across it know that they have found a
+temporary fork rather then the original or a permanent fork of the project.
+You may want to add a description that clarifies what the repository is for.
 
 [repository for the public version]: https://github.com/squidfunk/mkdocs-material
 
@@ -263,7 +267,7 @@ Sponsorware approach used to maintain and develop Material for MkDocs.
 
 From this point onwards, please follow the [instructions for setting up the
 development environment]. They will take you through the process of setting up
-an environment in which you make make changes and review/test them.
+an environment in which you can make changes and review/test them.
 
 [instructions for setting up the development environment]: ../customization.md#environment-setup
 
@@ -282,19 +286,65 @@ unintended side effects.
 
 !!! tip "Linters"
 
-    We are not using linters as part of the build process. However, this does
-    not mean that you cannot use a linter in your development environment.
-    In fact, doing so is probably a good way to get close to the code style
-    used in Material for MkDocs.
+    We are not currently using linters as part of the build process. However,
+    this does not mean that you cannot use a linter in your development
+    environment.  In fact, doing so is probably a good way to get close to the
+    code style used in Material for MkDocs. A linter does not replace careful
+    crafting of code, though.
 
 ### Committing to a branch
 
-Development for pull requests is best done in a named branch separate from the
-`main/master` branch. Create a new local branch with `git switch -c <name>` and
+Development for pull requests is best done in a topic branch separate from the
+`master` branch. Create a new local branch with `git switch -c <name>` and
 commit your changes to this branch.
 
 When you want to push commits to your fork, you can do so with
-`git push -u origin <name>`.
+`git push -u origin <name>`. The `-u` argument is the short version of
+`--set-upstream`, which makes the newly created branch 'track' the branch with
+the same `<name>` in your fork. This means that then `pull` and `push` commands
+will work against that branch in your fork by default.
+
+### Merging concurrent changes
+
+If the work you do takes some time then the chances increase that changes will
+be made to the main repository while you work.It is probably a good idea to set
+up the original Material for MkDocs repository as an `upstream` repository for
+your local clone.
+
+This is what it might look like:
+
+```bash hl_lines="4"
+$ git remote -v
+origin	git@github.com:<your_username>/mkdocs-material-fork.git (fetch)
+origin	git@github.com:<your_username>/mkdocs-material-fork.git (push)
+$ git remote add upstream https://github.com/squidfunk/mkdocs-material.git
+$ git remote -v
+origin	git@github.com:alexvoss/mkdocs-material-fork.git (fetch)
+origin	git@github.com:alexvoss/mkdocs-material-fork.git (push)
+upstream	https://github.com/squidfunk/mkdocs-material.git (fetch)
+upstream	https://github.com/squidfunk/mkdocs-material.git (push)
+```
+
+After you have done this, you can pull any concurrent changes from the upstream
+repository directly into your clone and do any necessary merges there, then push
+them up to your fork. You will need to be explicit about which remote repository
+you want to use when you are doing a `pull`:
+
+```bash
+# making and committing some local changes
+push pull upstream master
+```
+
+This fetches changes from the `master` branch into your topic branch and merges
+them.
+
+!!! question "Rebase, merge, squash?"
+
+    @squidfunk, this does raise the question what strategy to advise people to
+    use in case there are merge conflicts. I feel that handling merge conflicts
+    is a whole dark art of its own. I don't have a ton of experience with it
+    either. Perhaps something that is best figured out together - unless you
+    already have a view on this.
 
 ### Testing and reviewing changes
 
@@ -303,16 +353,25 @@ and do not create any unintended side effects. You should test them on at least
 these three [smoke tests]:
 
 - The documentation of Material for MkDocs itself. If you set up and run the
-development environment as outlines in the [instructions for setting up the
+development environment as outlined in the [instructions for setting up the
 development environment], `mkdocs serve` should be running and continuously
 building the documentation. Check that there are no error messages and, ideally,
 no (new) warnings.
 
 - Test on a project that represents the problem or a test for a newly developed
 feature. You may already have this if you have filed a bug report and created
-a [minimal reproduction].
+a [minimal reproduction]. If you are working on a new feature then you may need
+to build a project to serve as a test suite. It can double as documentation that
+shows how your new feature is meant to work.
 
+- Test with relevant examples from the [Material for MkDocs Examples]
+  repository. Note that to build all examples in one go you need the projects
+  plugin from Insiders but you can always build the examples individually
+  using the public version.
+
+[smoke tests]: https://en.wikipedia.org/wiki/Smoke_testing_(software)
 [minimal reproduction]: https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/
+[Material for MkDocs Examples]: https://github.com/mkdocs-material/examples
 
 - Ideally, also test the examples in the [examples repository]. If you are
 working on the Insiders edition of Material for MkDocs, you can simply start a
@@ -327,7 +386,20 @@ functionality you change.
 
 ### Creating the pull request
 
-Initially, create the pull request **as a draft**.
+Initially, create the pull request **as a draft**. You do this [through the
+various interfaces that GitHub provides]. Which one you use is entirely up to
+you. We do not provide specific instructions for using the interfaces as GitHub
+provide all the information that should be necessary.
+
+[through the various interfaces that GitHub provides]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+
+!!! question "Pull Request Template?"
+
+    @squidfunk, would it be useful to have a [PR template]? That might replace a
+    bunch of paragraphs of guidance we would otherwise need to add to this
+    document?
+
+[PR template]: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository
 
 ### Commits, messages, mistakes and 'squash'
 
@@ -350,13 +422,29 @@ and start with an entirely new one next time round.
 If you contribute to Material for MkDocs more often or just happen to be
 doing two or more pull requests in succession, you can also just make sure
 to sync your fork (using the GitHub UI) and pull from it into your local
-repository.
+repository. So, just delete the topic branch you created (both locally and in
+your fork) and pull from the main repository's `master` branch into your
+`master` branch before starting work on a new pull request.
 
-Anyother way of approaching it is to define the original Material for MkDocs
-repository as a remote repository and pull from it directly, then pushing
-any new commits into your fork. For example, using the public repository
-as an example:
+## Dos and Don'ts
 
-```bash
-$ git --set-upstream-to...
-```
+1. **Do** discuss what you intend to do with people in the discussions so that the
+   rational for any changes is clear before you write or modify code.
+
+2. **Don't** just create a pull request with changes that are not explained.
+
+3. **Do** link to the discussion or any issues to provide the context for a pull
+   request.
+
+4. **Do** ask questions if you are uncertain about anything.
+
+5. **Do** ask yourself if what you are doing benefits the wider community and
+   makes Material for MkDocs a better product.
+
+6. **Do** ask yourself if the cost of making the changes stands in a good
+   relation to the benefits they will bring. Some otherwise sensible changes can
+   add complexity for comparatively little gain, might break existing behaviour
+   or might be brittle when other changes need to be made.
+
+7. **Do** merge in concurrent changes frequently to minimize the chance of
+   conflicting changes that may be difficult to resolve.
