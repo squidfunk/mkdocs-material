@@ -370,14 +370,6 @@ provide all the information that should be necessary.
 
 [through the various interfaces that GitHub provides]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
-!!! question "Pull Request Template?"
-
-    @squidfunk, would it be useful to have a [PR template]? That might replace a
-    bunch of paragraphs of guidance we would otherwise need to add to this
-    document?
-
-[PR template]: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/creating-a-pull-request-template-for-your-repository
-
 ### Commits, messages, mistakes and 'squash'
 
 ### Deleting branches
