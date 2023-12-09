@@ -1,4 +1,4 @@
-# Making a Pull Request
+# Pull Requests
 
 You can contribute to Material for MkDocs by making a [pull request] that
 will be reviewed by maintainers and integrated into the main repository when
