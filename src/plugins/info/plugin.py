@@ -57,7 +57,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
     # Create a self-contained example (run earliest) - determine all files that
     # are visible to MkDocs and are used to build the site, create an archive
     # that contains all of them, and print a summary of the archive contents.
-    # The user must attach this archive to the bug report.
+    # The author must attach this archive to the bug report.
     @event_priority(100)
     def on_config(self, config):
         if not self.config.enabled:
@@ -103,10 +103,10 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please remove 'hooks' setting.")
             self._help_on_customizations_and_exit()
 
-        # Create in-memory archive and prompt user to enter a short descriptive
+        # Create in-memory archive and prompt author for a short descriptive
         # name for the archive, which is also used as the directory name. Note
         # that the name is slugified for better readability and stripped of any
-        # file extension that the user might have entered.
+        # file extension that the author might have entered.
         archive = BytesIO()
         example = input("\nPlease name your bug report (2-4 words): ")
         example, _ = os.path.splitext(example)

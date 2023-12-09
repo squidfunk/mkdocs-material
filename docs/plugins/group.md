@@ -64,7 +64,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.2.0 -->
+<!-- md:version 9.3.0 -->
 <!-- md:default `false` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -103,7 +103,7 @@ CI=true mkdocs build
 
 #### <!-- md:setting config.plugins -->
 
-<!-- md:version 9.2.0 -->
+<!-- md:version 9.3.0 -->
 <!-- md:default none -->
 
 Use this setting to list the plugins that are part of the group. The syntax is

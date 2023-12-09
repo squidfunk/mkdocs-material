@@ -31,12 +31,15 @@ import {
   mergeMap,
   observeOn,
   of,
+  repeat,
   shareReplay,
+  skip,
   startWith,
+  takeUntil,
   tap
 } from "rxjs"
 
-import { getElements } from "~/browser"
+import { getElements, watchMedia } from "~/browser"
 import { h } from "~/utilities"
 
 import {
@@ -52,6 +55,7 @@ import {
  * Palette colors
  */
 export interface PaletteColor {
+  media?: string                       /* Media query */
   scheme?: string                      /* Color scheme */
   primary?: string                     /* Primary color */
   accent?: string                      /* Accent color */
@@ -88,15 +92,12 @@ export function watchPalette(
   /* Emit changes in color palette */
   return of(...inputs)
     .pipe(
-      mergeMap(input => fromEvent(input, "change")
-        .pipe(
-          map(() => input)
-        )
-      ),
+      mergeMap(input => fromEvent(input, "change").pipe(map(() => input))),
       startWith(inputs[Math.max(0, current.index)]),
       map(input => ({
         index: inputs.indexOf(input),
         color: {
+          media:   input.getAttribute("data-md-color-media"),
           scheme:  input.getAttribute("data-md-color-scheme"),
           primary: input.getAttribute("data-md-color-primary"),
           accent:  input.getAttribute("data-md-color-accent")
@@ -116,6 +117,7 @@ export function watchPalette(
 export function mountPalette(
   el: HTMLElement
 ): Observable<Component<Palette>> {
+  const inputs = getElements<HTMLInputElement>("input", el)
   const meta = h("meta", { name: "theme-color" })
   document.head.appendChild(meta)
 
@@ -124,16 +126,31 @@ export function mountPalette(
   document.head.appendChild(scheme)
 
   /* Mount component on subscription */
+  const media$ = watchMedia("(prefers-color-scheme: light)")
   return defer(() => {
     const push$ = new Subject<Palette>()
     push$.subscribe(palette => {
       document.body.setAttribute("data-md-color-switching", "")
 
+      /* Retrieve color palette for system preference */
+      if (palette.color.media === "(prefers-color-scheme)") {
+        const media = matchMedia("(prefers-color-scheme: light)")
+        const input = document.querySelector(media.matches
+          ? "[data-md-color-media='(prefers-color-scheme: light)']"
+          : "[data-md-color-media='(prefers-color-scheme: dark)']"
+        )!
+
+        /* Retrieve colors for system preference */
+        palette.color.scheme  = input.getAttribute("data-md-color-scheme")!
+        palette.color.primary = input.getAttribute("data-md-color-primary")!
+        palette.color.accent  = input.getAttribute("data-md-color-accent")!
+      }
+
       /* Set color palette */
       for (const [key, value] of Object.entries(palette.color))
         document.body.setAttribute(`data-md-color-${key}`, value)
 
-      /* Toggle visibility */
+      /* Set toggle visibility */
       for (let index = 0; index < inputs.length; index++) {
         const label = inputs[index].nextElementSibling
         if (label instanceof HTMLElement)
@@ -169,9 +186,10 @@ export function mountPalette(
       })
 
     /* Create and return component */
-    const inputs = getElements<HTMLInputElement>("input", el)
     return watchPalette(inputs)
       .pipe(
+        takeUntil(media$.pipe(skip(1))),
+        repeat(),
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
         map(state => ({ ref: el, ...state }))

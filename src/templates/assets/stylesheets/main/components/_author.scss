@@ -35,6 +35,7 @@
     width: px2rem(32px);
     height: px2rem(32px);
     overflow: hidden;
+    border-radius: 100%;
     transition:
       color 125ms,
       transform 125ms;
@@ -42,7 +43,6 @@
     // Author image
     img {
       display: block;
-      border-radius: 100%;
     }
 
     // More authors

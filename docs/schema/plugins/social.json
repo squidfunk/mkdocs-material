@@ -42,6 +42,22 @@
               "type": "boolean",
               "default": true
             },
+            "log": {
+              "title": "Enable logging",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log",
+              "type": "boolean",
+              "default": true
+            },
+            "log_level": {
+              "title": "Log level",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log_level",
+              "enum": [
+                "warn",
+                "info",
+                "ignore"
+              ],
+              "default": "warn"
+            },
             "cards_dir": {
               "title": "Social cards directory",
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_dir",

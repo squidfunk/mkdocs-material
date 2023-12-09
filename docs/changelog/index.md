@@ -2,6 +2,23 @@
 
 ## Material for MkDocs
 
+### 9.5.1 <small>December 8, 2023</small> { id="9.5.1" }
+
+- Updated Greek translations
+- Fixed #6464: Privacy plugin cannot be enabled
+- Fixed #6461: Sorting blog posts ignores time component in date
+
+### 9.5.0 <small>December 7, 2023</small> { id="9.5.0" }
+
+Merged Insiders features of 'Goat's Horn' funding goal
+
+- Added privacy plugin: automatic downloading of external assets
+- Added support for card grids and grid layouts
+- Added support for improved tooltips
+- Added support for content tabs anchor links (deep linking)
+- Added support for automatic dark/light mode
+- Added support for document contributors
+
 ### 9.4.14 <small>November 26, 2023</small> { id="9.4.14" }
 
 - Added support for linking authors in blog posts

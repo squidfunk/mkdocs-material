@@ -181,6 +181,36 @@ For further information, see the [documentation].
   [theme extension]: ../customization.md
   [documentation]: https://guts.github.io/mkdocs-rss-plugin/configuration/
 
+### Blog only
+
+You might need to build a pure blog without any documentation.
+In this case, you can create a folder tree like this:
+
+``` { .sh .no-copy }
+.
+├─ docs/
+│  ├─ posts/ # (1)!
+│  ├─ .authors.yml
+│  └─ index.md
+└─ mkdocs.yml
+```
+
+1.  Notice that the `posts` directory is in the root of `docs` without
+    intermediate `blog` directory.
+
+And add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      blog_dir: . # (1)!
+```
+
+1.  More info about [blog_dir](../plugins/blog.md#config.blog_dir)
+
+With this configuration, the url of the blog post will be `/<post_slug>`
+instead of `/blog/<post_slug>`.
+
 ## Usage
 
 ### Writing your first post
@@ -631,5 +661,5 @@ The following templates are added by the [built-in blog plugin]:
 
   [theme extension]: ../customization.md#extending-the-theme
 
-  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog.html
-  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog-post.htmlhtml
+  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog.html
+  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog-post.html

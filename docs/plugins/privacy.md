@@ -11,13 +11,6 @@ external assets. With just a single line of configuration, the plugin can
 automatically identify and download external assets, making GDPR compliance
 as effortless as it can possibly be.
 
----
-
-<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
-[our awesome sponsors].
-
-  [our awesome sponsors]: ../insiders/index.md
-
 ## Objective
 
 ### How it works
@@ -106,8 +99,7 @@ pipelines tailored to your project:
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.9.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [privacy] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
@@ -135,8 +127,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.10.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -155,8 +146,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -186,8 +176,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -205,8 +194,7 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -233,8 +221,7 @@ The following settings are available for external assets:
 
 #### <!-- md:setting config.assets -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should download external
@@ -253,8 +240,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should downloads or only report
@@ -272,8 +258,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want

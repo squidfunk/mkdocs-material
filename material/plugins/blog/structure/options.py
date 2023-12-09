@@ -53,15 +53,23 @@ class PostDate(BaseConfigOption[DateDict]):
     # Normalize the supported types for post dates to datetime
     def pre_validation(self, config: Config, key_name: str):
 
-        # If the date points to a scalar value, convert it to a dictionary,
-        # since we want to allow the user to specify custom and arbitrary date
-        # values for posts. Currently, only the `created` date is mandatory,
-        # because it's needed to sort posts for views.
+        # If the date points to a scalar value, convert it to a dictionary, as
+        # we want to allow the author to specify custom and arbitrary dates for
+        # posts. Currently, only the `created` date is mandatory, because it's
+        # needed to sort posts for views.
         if not isinstance(config[key_name], dict):
             config[key_name] = { "created": config[key_name] }
 
         # Convert all date values to datetime
         for key, value in config[key_name].items():
+
+            # Handle datetime - since datetime is a subclass of date, we need
+            # to check it first, or we lose the time - see https://t.ly/-KG9N
+            if isinstance(value, datetime):
+                continue
+
+            # Handle date - we set 00:00:00 as the default time, if the author
+            # only supplied a date, and convert it to datetime
             if isinstance(value, date):
                 config[key_name][key] = datetime.combine(value, time())
 
