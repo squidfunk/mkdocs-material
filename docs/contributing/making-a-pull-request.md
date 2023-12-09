@@ -18,17 +18,19 @@ documentation, or new functionality you have developed.
     Keep in mind the guidance given and let people advise you. It might be that
     there are easier solutions to the problem you perceive and want to address.
     It might be that what you want to achieve can already be done by
-    configuration.
+    configuration or [customization].
 
 [bug report]: reporting-a-bug.md
 [documentation issue]: reporting-a-docs-issue.md
 [change request]: requesting-a-change.md
+[customization]: ../customization.md
 
 ## Learning about pull requests
 
-Before you consider making a pull request, you should familiarize yourself
-with the documentation on GitHub. The following articles are of particular
-importance:
+Pull requests are a concept layered on top of Git by services that provide Git
+hosting. Before you consider making a pull request, you should familiarize
+yourself with the documentation on GitHub, the service we are using. The
+following articles are of particular importance:
 
 1. [Forking a repository]
 2. [Creating a pull request from a fork]
@@ -44,16 +46,6 @@ general before continuing.
 [Forking a repository]: https://docs.github.com/en/get-started/quickstart/fork-a-repo
 [Creating a pull request from a fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
 [Creating a pull request]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
-
-!!! tip "Pay attention to the instructions"
-
-    One important thing to understand is that pull requests are a concept layered on
-    top of Git by services that provide Git hosting. There may, therefore be
-    differences between how these services implement them. As they say in the
-    airline industry: pay attention to the instructions as they may differ from any
-    aircraft you have flown on before. The same is true for how pull requests work
-    in different environments.
-
 
 ## Pull request process
 
@@ -94,10 +86,11 @@ sequenceDiagram
 ```
 
 1. The first step is that you create a fork of the Material for MkDocs
-   repository (either [mkdocs-material] or [mkdocs-material-insider]). This
-   provides you with a repository that you can push changes to. Note that it is
-   not possible to have more than one fork of a given repository at any point in
-   time. So, the fork you create will be *the* fork you have.
+   repository, either [mkdocs-material] or [mkdocs-material-insiders]
+   (only accessible to sponsors). This provides you with a repository that you
+   can push changes to. Note that it is not possible to have more than one fork
+   of a given repository at any point in time. So, the fork you create will be
+   *the* fork you have.
 
 2. Once it is made, clone it to your local machine so you can start working on
    your changes.
@@ -148,7 +141,7 @@ sequenceDiagram
     [examples repository] still build fine.
 
 [mkdocs-material]: https://github.com/squidfunk/mkdocs-material
-[mkdocs-material-insider]: https://github.com/squidfunk/mkdocs-material-insiders/
+[mkdocs-material-insiders]: https://github.com/squidfunk/mkdocs-material-insiders/
 [examples repository]: https://github.com/mkdocs-material/examples
 
 ### Finalizing
@@ -217,9 +210,9 @@ sequenceDiagram
 
 6. You can now delete the fork and your local repository and start afresh again
    next time around. Alternatively, you can keep the repository and local clone
-   around but it is important that you keep them in a good state for any
-   subsequent work. We recommend that you start by deleting the branch you used
-   on your fork.
+   around but it is important that you keep them in sync with the upstream
+   repository for any subsequent work. We recommend that you start by deleting
+   the branch you used on your fork.
 
 7. To make sure you have the changes you produced, pull them from the main
    repository into the main branch of your fork.
@@ -286,11 +279,17 @@ unintended side effects.
 
 !!! tip "Linters"
 
+    We are using linters for JavaScript ([ESLint]) and for (S)CSS (Stylelint)
+    as part of our build process.
+
     We are not currently using linters as part of the build process. However,
     this does not mean that you cannot use a linter in your development
     environment.  In fact, doing so is probably a good way to get close to the
     code style used in Material for MkDocs. A linter does not replace careful
     crafting of code, though.
+
+[ESLint]: https://eslint.org/
+[Stylelint]: https://stylelint.io/
 
 ### Committing to a branch
 
@@ -428,10 +427,10 @@ your fork) and pull from the main repository's `master` branch into your
 
 ## Dos and Don'ts
 
-1. **Do** discuss what you intend to do with people in the discussions so that the
-   rational for any changes is clear before you write or modify code.
+1. **Don't** just create a pull request with changes that are not explained.
 
-2. **Don't** just create a pull request with changes that are not explained.
+2. **Do** discuss what you intend to do with people in the discussions so that the
+   rational for any changes is clear before you write or modify code.
 
 3. **Do** link to the discussion or any issues to provide the context for a pull
    request.
