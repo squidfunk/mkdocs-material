@@ -166,3 +166,7 @@ pages with the following configuration:
     watch:
       - includes
     ````
+
+    Alternatively, you may include the file within the `docs` folder as long as it is nested
+    within a directory that starts with a `.` (period). Such hidden directories do not get copied
+    by MkDocs to the output directory.
