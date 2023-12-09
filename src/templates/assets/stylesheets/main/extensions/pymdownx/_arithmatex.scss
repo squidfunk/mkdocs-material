@@ -34,11 +34,15 @@
     // [mobile -]: Align with body copy
     @include break-to-device(mobile) {
       margin: 0 px2rem(-16px);
+
+      // Arithmatex content
+      > * {
+        width: min-content;
+      }
     }
 
     // Arithmatex content
     > * {
-      width: min-content;
       padding: 0 px2rem(16px);
       margin-inline: auto !important; // stylelint-disable-line
       touch-action: auto;
@@ -47,6 +51,12 @@
       mjx-container {
         margin: 0 !important; // stylelint-disable-line
       }
+    }
+
+    // Prevent horizontal overflow, as this element is not visible but still has
+    // a height, which might be a bug in MathJax - see https://t.ly/ckPiA
+    mjx-assistive-mml {
+      height: 0;
     }
   }
 }
