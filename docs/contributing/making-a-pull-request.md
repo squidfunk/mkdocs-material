@@ -241,10 +241,10 @@ to the original repositories).
 
 Fork the [repository for the public version] if you want to make changes to
 code that is in the public version or if you want to make changes to the
-documentation. Please make sure to change the name of the repository by
-appending `-fork` to that people who come across it know that they have found a
+documentation. It is a good idea to change the name of the repository by
+appending `-fork` so that people who come across it know that they have found a
 temporary fork rather then the original or a permanent fork of the project.
-You may want to add a description that clarifies what the repository is for.
+You may also want to add a description that clarifies what the repository is for.
 
 [repository for the public version]: https://github.com/squidfunk/mkdocs-material
 
@@ -276,20 +276,6 @@ Study the code that you are modifying well to ensure that you fully understand
 how it works before you try to change it. This will not only help you solve the
 problem you are trying to address but also minimize the risks of creating
 unintended side effects.
-
-!!! tip "Linters"
-
-    We are using linters for JavaScript ([ESLint]) and for (S)CSS (Stylelint)
-    as part of our build process.
-
-    We are not currently using linters as part of the build process. However,
-    this does not mean that you cannot use a linter in your development
-    environment.  In fact, doing so is probably a good way to get close to the
-    code style used in Material for MkDocs. A linter does not replace careful
-    crafting of code, though.
-
-[ESLint]: https://eslint.org/
-[Stylelint]: https://stylelint.io/
 
 ### Committing to a branch
 
@@ -336,14 +322,6 @@ push pull upstream master
 
 This fetches changes from the `master` branch into your topic branch and merges
 them.
-
-!!! question "Rebase, merge, squash?"
-
-    @squidfunk, this does raise the question what strategy to advise people to
-    use in case there are merge conflicts. I feel that handling merge conflicts
-    is a whole dark art of its own. I don't have a ton of experience with it
-    either. Perhaps something that is best figured out together - unless you
-    already have a view on this.
 
 ### Testing and reviewing changes
 
