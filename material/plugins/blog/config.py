@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from functools import partial
+from collections.abc import Callable
 from mkdocs.config.config_options import Choice, Deprecated, Optional, Type
 from mkdocs.config.base import Config
 from pymdownx.slugs import slugify
@@ -41,7 +41,7 @@ class BlogConfig(Config):
     post_url_date_format = Type(str, default = "yyyy/MM/dd")
     post_url_format = Type(str, default = "{date}/{slug}")
     post_url_max_categories = Type(int, default = 1)
-    post_slugify = Type(partial, default = slugify(case = "lower"))
+    post_slugify = Type(Callable, default = slugify(case = "lower"))
     post_slugify_separator = Type(str, default = "-")
     post_excerpt = Choice(["optional", "required"], default = "optional")
     post_excerpt_max_authors = Type(int, default = 1)
@@ -62,7 +62,7 @@ class BlogConfig(Config):
     categories = Type(bool, default = True)
     categories_name = Type(str, default = "blog.categories")
     categories_url_format = Type(str, default = "category/{slug}")
-    categories_slugify = Type(partial, default = slugify(case = "lower"))
+    categories_slugify = Type(Callable, default = slugify(case = "lower"))
     categories_slugify_separator = Type(str, default = "-")
     categories_allowed = Type(list, default = [])
     categories_toc = Optional(Type(bool))
