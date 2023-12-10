@@ -66,6 +66,9 @@ imaging = [
   "pillow~=9.4",
   "cairosvg~=2.6"
 ]
+dev = [
+  "pylint~=3.0.2"
+]
 
 [project.urls]
 Documentation = "https://squidfunk.github.io/mkdocs-material/"
