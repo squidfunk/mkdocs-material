@@ -628,7 +628,7 @@ tags:
   twitter:image: "{{ image.url }}"
 ```
 
-Note that this examples makes use of [YAML anchors] to minify repetition. The
+Note that this example makes use of [YAML anchors] to minify repetition. The
  `definitions` property is solely intended for the definition on aliases that
  can then be referenced with anchors.
 
