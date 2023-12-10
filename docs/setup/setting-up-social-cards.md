@@ -49,7 +49,7 @@ plugins:
 
 For a list of all settings, please consult the [plugin documentation].
 
-  [plugin documentation]: ../plugins/blog.md
+  [plugin documentation]: ../plugins/social.md
 
 !!! info "The [`site_url`][site_url] setting must be set"
 
