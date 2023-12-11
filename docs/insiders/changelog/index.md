@@ -2,6 +2,15 @@
 
 ## Material for MkDocs Insiders
 
+### 4.47.1 <small>December 11, 2023</small> { id="4.47.1" }
+
+- Improved editing experience for projects plugin
+- Improved resilience of optimize and social plugin
+- Fixed race condition when writing manifest in optimize and social plugin
+- Fixed #6475: Logo not taking precedence over icon in social card
+- Fixed #6399: Projects plugin doesn't pick up added/removed projects
+- Fixed #6306: Projects plugin cache not correctly updated
+
 ### 4.47.0 <small>December 8, 2023</small> { id="4.47.0" }
 
 - Added support for staying on page when switching languages

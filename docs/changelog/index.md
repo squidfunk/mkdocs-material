@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.2 <small>December 11, 2023</small> { id="9.5.2" }
+
+- Fixed types for `slugify` settings in blog plugin config
+- Fixed #6469: Horizontal scrollbars on MathJax containers
+
 ### 9.5.1 <small>December 8, 2023</small> { id="9.5.1" }
 
 - Updated Greek translations

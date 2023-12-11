@@ -1,3 +1,17 @@
+mkdocs-material-9.5.2+insiders-4.47.1 (2023-12-11)
+
+  * Improved editing experience for projects plugin
+  * Improved resilience of optimize and social plugin
+  * Fixed race condition when writing manifest in optimize and social plugin
+  * Fixed #6475: Logo not taking precedence over icon in social card
+  * Fixed #6399: Projects plugin doesn't pick up added/removed projects
+  * Fixed #6306: Projects plugin cache not correctly updated
+
+mkdocs-material-9.5.2 (2023-12-11)
+
+  * Fixed types for `slugify` settings in blog plugin config
+  * Fixed #6469: Horizontal scrollbars on MathJax containers
+
 mkdocs-material-9.5.1+insiders-4.47.0 (2023-12-08)
 
   * Added support for staying on page when switching languages
