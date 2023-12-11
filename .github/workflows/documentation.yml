@@ -49,7 +49,7 @@ jobs:
             src/templates/partials/languages
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -109,7 +109,7 @@ jobs:
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v3
 
       - name: Save build cache
         uses: actions/cache/save@v3
