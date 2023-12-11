@@ -44,7 +44,7 @@
 
     // Details title icon - rotate icon on transition to open state
     &[open] > summary::after {
-      transform: rotate(90deg);
+      transform: rotate(270deg);
     }
 
     // Adjust spacing for details in closed state
@@ -97,17 +97,12 @@
       content: "";
       background-color: currentcolor;
       transition: transform 250ms;
-      transform: rotate(0deg);
+      transform: rotate(90deg);
       inset-inline-end: px2rem(8px);
       mask-image: var(--md-details-icon);
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: contain;
-
-      // Adjust for right-to-left languages
-      [dir="rtl"] & {
-        transform: rotate(180deg);
-      }
     }
 
     // Hide native details marker - modern
