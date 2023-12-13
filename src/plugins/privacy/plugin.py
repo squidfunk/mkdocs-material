@@ -209,6 +209,10 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
     # Check if the given URL is excluded
     def _is_excluded(self, url: URL, initiator: File | None = None):
+        # Skip Giscus client script - see https://t.ly/QTJ3s
+        if url.geturl() == "https://giscus.app/client.js":
+            return True
+
         if not self._is_external(url):
             return True
 
