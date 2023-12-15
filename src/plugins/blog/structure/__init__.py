@@ -148,8 +148,8 @@ class Excerpt(Page):
         self._set_canonical_url(config.site_url)
 
         # Initialize configuration and metadata
-        self.config   = post.config
-        self.meta     = post.meta
+        self.config = post.config
+        self.meta   = post.meta
 
         # Initialize authors and categories - note that views usually contain
         # subsets of those lists, which is why we need to manage them here
