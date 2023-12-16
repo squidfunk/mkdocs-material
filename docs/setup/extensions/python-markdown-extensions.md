@@ -667,8 +667,8 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.combine_header_slug -->
 
-:   <!-- md:default `false` --> This option enables the content tabs
-    [combine_header_slug style] flag, which prepends the id of the header to
+:   <!-- md:default `false` --> This option enables the content tabs'
+    [`combine_header_slug` style] flag, which prepends the id of the header to
     the id of the tab:
 
     ``` yaml
