@@ -35,6 +35,7 @@ copyright: Copyright &copy; 2016 - 2023 Martin Donath
 
 # Configuration
 theme:
+  language: mk
   name: material
   custom_dir: material/overrides
   features:
