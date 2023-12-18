@@ -21,7 +21,7 @@
 import os
 
 from mkdocs.config.base import Config
-from mkdocs.config.config_options import Deprecated, DictOfItems, Type
+from mkdocs.config.config_options import DictOfItems, Type
 
 # -----------------------------------------------------------------------------
 # Classes
