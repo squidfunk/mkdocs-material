@@ -38,6 +38,14 @@ from .config import GroupConfig
 class GroupPlugin(BasePlugin[GroupConfig]):
     supports_multiple_instances = True
 
+    # Initialize plugin
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Initialize object attributes
+        self.is_serve = False
+        self.is_dirty = False
+
     # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
         self.is_serve = command == "serve"
