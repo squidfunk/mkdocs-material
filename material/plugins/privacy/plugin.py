@@ -62,11 +62,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Initialize collections of external assets
         self.assets = Files([])
-        self.assets_expr_map = dict({
+        self.assets_expr_map = {
             ".css": r"url\((\s*http?[^)]+)\)",
             ".js": r"[\"'](http[^\"']+\.(?:css|js(?:on)?))[\"']",
             **self.config.assets_expr_map
-        })
+        }
 
     # Process external style sheets and scripts (run latest) - run this after
     # all other plugins, so they can add additional assets
@@ -537,7 +537,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 log = logging.getLogger("mkdocs.material.privacy")
 
 # Expected file extensions
-extensions = dict({
+extensions = {
     "application/javascript": ".js",
     "image/avif": ".avif",
     "image/gif": ".gif",
@@ -547,4 +547,4 @@ extensions = dict({
     "image/webp": ".webp",
     "text/javascript": ".js",
     "text/css": ".css"
-})
+}
