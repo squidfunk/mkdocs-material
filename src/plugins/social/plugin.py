@@ -491,7 +491,7 @@ log = logging.getLogger("mkdocs")
 log.addFilter(DuplicateFilter())
 
 # Color palette
-colors = dict({
+colors = {
     "red":         { "fill": "#ef5552", "text": "#ffffff" },
     "pink":        { "fill": "#e92063", "text": "#ffffff" },
     "purple":      { "fill": "#ab47bd", "text": "#ffffff" },
@@ -513,4 +513,4 @@ colors = dict({
     "blue-grey":   { "fill": "#546d78", "text": "#ffffff" },
     "black":       { "fill": "#000000", "text": "#ffffff" },
     "white":       { "fill": "#ffffff", "text": "#000000" }
-})
+}
