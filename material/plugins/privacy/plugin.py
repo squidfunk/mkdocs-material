@@ -247,7 +247,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
     # Parse and extract all external assets from a media file using a preset
     # regular expression, and return all URLs found.
-    def _parse_media(self, initiator: File) -> "list[URL]":
+    def _parse_media(self, initiator: File) -> list[URL]:
         _, extension = posixpath.splitext(initiator.dest_uri)
         if extension not in self.assets_expr_map:
             return []

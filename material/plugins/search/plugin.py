@@ -312,9 +312,9 @@ class Element:
     """
 
     # Initialize HTML element
-    def __init__(self, tag, attrs = {}):
+    def __init__(self, tag, attrs = None):
         self.tag   = tag
-        self.attrs = attrs
+        self.attrs = attrs or {}
 
     # String representation
     def __repr__(self):
