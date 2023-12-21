@@ -153,6 +153,35 @@ installed.
   [blog]: blog.md
   [built-in plugins]: index.md
 
+### Navigation
+
+If you do not have site navigation configured in your `mkdocs.yml` then there is
+nothing more to do. The blog [archive] and [category] pages will automatically
+appear underneath the automatically generated navigation.
+
+If you do have a navigation structure defined then you will need to specify
+where the blog should appear in this. Create a [navigation section with an index
+page] for the blog:
+
+```yaml
+theme:
+  name: material
+  features:
+    - navigation.indexes
+nav:
+  - ...
+  - Blog:
+    - blog/index.md
+```
+
+The [archive] and [category] pages will appear within that section as
+subsections beneath pages in the blog section. In this case, they would appear
+after `index.md`. The path to the `index.md` file must match
+[blog_dir][config.blog_dir]. This means that you can name the blog navigation
+entry anything you like: 'Blog' or 'News' or perhaps 'Tips'.
+
+[navigation section with an index page]: ../setup/setting-up-navigation.md#section-index-pages
+
 ### General
 
 The following settings are available:
