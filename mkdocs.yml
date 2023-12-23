@@ -220,6 +220,18 @@ nav:
     - Adding a comment system: setup/adding-a-comment-system.md
     - Building an optimized site: setup/building-an-optimized-site.md
     - Building for offline usage: setup/building-for-offline-usage.md
+    - Tags:
+      - setup/tags/index.md
+      - Listings:
+        - setup/tags/listings/index.md
+        - setup/tags/listings/collections.md
+        - setup/tags/listings/scoped-listings.md
+        - setup/tags/listings/tag-filters.md
+        - setup/tags/listings/tag-slugs.md
+        - setup/tags/listings/sorting.md
+      - setup/tags/nested-tags.md
+      - setup/tags/shadow-tags.md
+      - setup/tags/sorting.md
     - Extensions:
       - setup/extensions/index.md
       - Python Markdown: setup/extensions/python-markdown.md
