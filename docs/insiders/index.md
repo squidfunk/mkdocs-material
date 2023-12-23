@@ -88,14 +88,17 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 20 additional features__ that you can __start using now__, and
+access to 23 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Tags plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Tags plugin: nested tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Tags plugin: shadow tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
 - [x] [Stay on page when switching languages] :material-alert-decagram:{ .mdx-pulse title="Added on December 8, 2023" }
 - [x] [Blog plugin: author profiles] :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
-- [x] [Blog plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
+- [x] [Blog plugin: advanced settings]
 - [x] [Projects plugin]
 - [x] [Instant prefetching]
 - [x] [Social plugin: custom layouts]
@@ -310,7 +313,8 @@ are released for general availability.
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
 - [x] [Stay on page when switching languages]
-- [ ] more to come...
+- [x] [Tags plugin: nested tags]
+- [x] [Tags plugin: shadow tags]
 
   [Projects plugin]: ../plugins/projects.md
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
@@ -318,6 +322,14 @@ are released for general availability.
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
   [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page
+  [Tags plugin: nested tags]: ../plugins/tags.md#config.tags_hierarchy
+  [Tags plugin: shadow tags]: ../plugins/tags.md#config.shadow
+
+#### $ 28,000 – Lemon Drop
+
+- [x] [Tags plugin: advanced settings]
+
+  [Tags plugin: advanced settings]: ../setup/setting-up-tags.md#advanced-settings
 
 ### Goals completed
 

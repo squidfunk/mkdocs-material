@@ -2,6 +2,24 @@
 
 ## Material for MkDocs Insiders
 
+### 4.48.0 <small>December 23, 2023</small> { id="4.48.0" }
+
+- Rewrite of tags plugin, now much more powerful
+- Added support for nested tags (tag hierarchies, e.g. foo/bar)
+- Added support for shadow tags (by list, prefix or suffix)
+- Added support for custom tag layouts and templates
+- Added support for configurable inline tag listings
+- Added support for hiding tags in table of contents
+- Added support for automatically linking to closest tag listing
+- Added support for multiple instances of tags plugin
+- Added support for changing front matter property and template variable
+- Added support for tag slugification format strings
+- Fixed #6510: Projects plugin out of memory on Linux (4.47.1 regression)
+- Fixed projects plugin not notifying plugins about serve mode
+- Fixed projects plugin skipping projects on prefix match
+- Deprecated tags_file and tags_extra_files settings
+- Modernized tags plugin code base
+
 ### 4.47.1 <small>December 11, 2023</small> { id="4.47.1" }
 
 - Improved editing experience for projects plugin
