@@ -8,9 +8,10 @@
 - Added support for nested tags (tag hierarchies, e.g. foo/bar)
 - Added support for shadow tags (by list, prefix or suffix)
 - Added support for custom tag layouts and templates
-- Added support for configurable inline tag listings
 - Added support for hiding tags in table of contents
+- Added support for configurable inline tag listings
 - Added support for automatically linking to closest tag listing
+- Added support for scoped listings (limit to subsection of site)
 - Added support for multiple instances of tags plugin
 - Added support for changing front matter property and template variable
 - Added support for tag slugification format strings
