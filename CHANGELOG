@@ -1,3 +1,10 @@
+mkdocs-material-9.5.3 (2023-12-23)
+
+  * Limited version range of MkDocs to < 1.6
+  * Updated Macedonian translations
+  * Fixed #6520: Group plugin crashes when using mike
+  * Fixed #6494: Hide author's email address if disabled in git-authors plugin
+
 mkdocs-material-9.5.2+insiders-4.47.1 (2023-12-11)
 
   * Improved editing experience for projects plugin
@@ -9,7 +16,7 @@ mkdocs-material-9.5.2+insiders-4.47.1 (2023-12-11)
 
 mkdocs-material-9.5.2 (2023-12-11)
 
-  * Fixed types for `slugify` settings in blog plugin config
+  * Fixed types for slugify settings in blog plugin config
   * Fixed #6469: Horizontal scrollbars on MathJax containers
 
 mkdocs-material-9.5.1+insiders-4.47.0 (2023-12-08)
@@ -2521,7 +2528,7 @@ mkdocs-material-4.0.0 (2019-02-13)
 
 mkdocs-material-3.3.0 (2019-01-29)
 
-  * Moved Google Analytics integration into `head` using Google Tag Manager
+  * Moved Google Analytics integration into head using Google Tag Manager
   * Fixed #972: Unicode slugifier breaks table of contents blur on scroll
   * Fixed #974: Additional links in table of contents break blur on scroll
 

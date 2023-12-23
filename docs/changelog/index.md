@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.5.3 <small>December 23, 2023</small> { id="9.5.3" }
+
+- Limited version range of MkDocs to < 1.6
+- Updated Macedonian translations
+- Fixed #6520: Group plugin crashes when using mike
+- Fixed #6494: Hide author's email address if disabled in git-authors plugin
+
 ### 9.5.2 <small>December 11, 2023</small> { id="9.5.2" }
 
 - Fixed types for `slugify` settings in blog plugin config
