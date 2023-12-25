@@ -109,7 +109,7 @@ jobs:
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
 
       - name: Save build cache
         uses: actions/cache/save@v3
