@@ -102,3 +102,19 @@ include = ["/material"]
 [tool.hatch.build.targets.sdist]
 include = ["/material", "/package.json", "/requirements.txt"]
 exclude = ["/material/overrides"]
+
+[tool.coverage.run]
+source_pkgs = ["material", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+material = ["material", "*/material/material"]
+tests = ["tests", "*/material/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
