@@ -104,12 +104,12 @@ jobs:
           done
 
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
 
       - name: Save build cache
         uses: actions/cache/save@v3
