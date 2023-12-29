@@ -34,6 +34,8 @@ plugins:
 
 For a list of all settings, please consult the [plugin documentation].
 
+  [plugin documentation]: ../plugins/blog.md
+
 #### Advanced settings :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
 
 <!-- md:sponsors -->
@@ -53,8 +55,6 @@ the blog, but can be helpful for customizations:
 - [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
 
 We'll add more settings here, as we discover new use cases.
-
-  [plugin documentation]: ../plugins/blog.md
 
   [Insiders]: ../insiders/index.md
   [built-in blog plugin]: ../plugins/blog.md

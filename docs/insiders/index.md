@@ -96,8 +96,8 @@ which are currently exclusively available to sponsors:
 - [x] [Tags plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
 - [x] [Tags plugin: nested tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
 - [x] [Tags plugin: shadow tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
-- [x] [Stay on page when switching languages] :material-alert-decagram:{ .mdx-pulse title="Added on December 8, 2023" }
-- [x] [Blog plugin: author profiles] :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
+- [x] [Stay on page when switching languages]
+- [x] [Blog plugin: author profiles]
 - [x] [Blog plugin: advanced settings]
 - [x] [Projects plugin]
 - [x] [Instant prefetching]
@@ -115,7 +115,7 @@ which are currently exclusively available to sponsors:
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Meta plugin]
-- [x] [Tags plugin: additional indexes]
+- [x] [Tags plugin: configurable listings]
 
 </div>
 
@@ -273,14 +273,14 @@ are released for general availability.
 - [x] [Meta plugin]
 - [x] [Blog plugin: related links]
 - [x] [Blog plugin: custom index pages]
-- [x] [Tags plugin: additional indexes]
+- [x] [Tags plugin: configurable listings]
 - [x] [Tags plugin: allow list] + [custom sorting]
 - [x] [Navigation subtitles]
 
   [Meta plugin]: ../plugins/meta.md
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
   [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
-  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
+  [Tags plugin: configurable listings]: ../setup/setting-up-tags.md#configurable-listings
   [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
   [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
   [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
@@ -322,8 +322,8 @@ are released for general availability.
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
   [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page
-  [Tags plugin: nested tags]: ../plugins/tags.md#config.tags_hierarchy
-  [Tags plugin: shadow tags]: ../plugins/tags.md#config.shadow
+  [Tags plugin: nested tags]: ../setup/setting-up-tags.md#nested-tags
+  [Tags plugin: shadow tags]: ../setup/setting-up-tags.md#shadow-tags
 
 #### $ 28,000 – Lemon Drop
 
