@@ -1,3 +1,9 @@
+mkdocs-material-9.5.3+insiders-4.49.0 (2023-12-29)
+
+  * Added support for exporting tags and mappings
+  * Added support for disabling tags and/or listings or both
+  * Fixed tag links from pages to listings on homepage
+
 mkdocs-material-9.5.3+insiders-4.48.0 (2023-12-23)
 
   * Rewrite of tags plugin, now much more powerful

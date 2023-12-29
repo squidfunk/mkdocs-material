@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.49.0 <small>December 29, 2023</small> { id="4.49.0" }
+
+- Added support for exporting tags and mappings
+- Added support for disabling tags and/or listings or both
+- Fixed tag links from pages to listings on homepage
+
 ### 4.48.0 <small>December 23, 2023</small> { id="4.48.0" }
 
 - Rewrite of tags plugin, now much more powerful
