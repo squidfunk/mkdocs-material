@@ -31,7 +31,7 @@
   <a href="https://github.com/sponsors/squidfunk"><img
     src="https://img.shields.io/github/sponsors/squidfunk"
     alt="Sponsors"
-  /></a>
+  /></a><!-- gh-dependents-info-used-by-start --><!-- gh-dependents-info-used-by-end -->
 </p>
 
 <p align="center">

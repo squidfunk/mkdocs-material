@@ -1,0 +1,69 @@
+# GitHub Dependents Info workflow
+# More info at https://github.com/nvuillam/github-dependents-info/
+name: GitHub Dependents Info
+
+# Let by default
+on:
+  # On manual launch
+  workflow_dispatch:
+  # On every push on selected branches (usually just main)
+  push:
+    branches: [main,master,setup-gdi]
+  # Scheduled interval: Use CRON format https://crontab.guru/
+  schedule:
+    - cron: "0 0 * * 0" # Every sunday at midnight
+
+permissions: read-all
+
+concurrency:
+  group: ${{ github.ref }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: GitHub Dependents Info
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      # Git Checkout
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      # Collect data & generate markdown
+      - name: GitHub Dependents Info
+        uses: nvuillam/github-dependents-info@v1.5.1 # If you trust me enough you can replace version by "main" :)
+        # See documentation for variables details: https://github.com/nvuillam/github-dependents-info?tab=readme-ov-file#%EF%B8%8F-usage
+        with:
+          repo: ${{ github.repository }}
+          # markdownfile: docs/github-dependents-info.md
+          # badgemarkdownfile: README.md
+          # sort: stars
+          # minstars: "0"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Workaround for git issues
+      - name: Prepare commit
+        run: sudo chown -R $USER:$USER .
+
+      # Create pull request
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.PAT || secrets.GITHUB_TOKEN  }}
+          branch: github-dependents-info-auto-update
+          commit-message: "[GitHub Dependents Info] Updated markdown file(s)"
+          delete-branch: true
+          title: "[GitHub Dependents Info] Updated markdown file"
+          body: "_Generated with [github-dependents-info](https://github.com/nvuillam/github-dependents-info), by [Nicolas Vuillamy](https://github.com/nvuillam)_"
+          labels: documentation
+      - name: Create PR output
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
