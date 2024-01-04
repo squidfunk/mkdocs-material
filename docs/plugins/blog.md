@@ -317,7 +317,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: medium
     ```
 
-=== "1/31/22"
+=== "1/31/23"
 
     ``` yaml
     plugins:
