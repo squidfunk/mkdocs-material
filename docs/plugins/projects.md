@@ -196,7 +196,7 @@ The following settings are available for logging:
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should display log messages from
-projects when building your site. While not neing recommended, you can disable
+projects when building your site. While not being recommended, you can disable
 logging with:
 
 ``` yaml
