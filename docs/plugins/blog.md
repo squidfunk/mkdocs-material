@@ -293,7 +293,7 @@ Use this setting to change the date format of posts. This plugin uses [babel]
 to render dates in the configured [site language]. You can use [babel]'s
 [pattern syntax] or the following shortcodes:
 
-=== "Monday, January 31, 2023"
+=== "Monday, January 31, 2024"
 
     ``` yaml
     plugins:
@@ -301,7 +301,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: full
     ```
 
-=== "January 31, 2023"
+=== "January 31, 2024"
 
     ``` yaml
     plugins:
@@ -309,7 +309,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: long
     ```
 
-=== "Jan 31, 2023"
+=== "Jan 31, 2024"
 
     ``` yaml
     plugins:
@@ -317,7 +317,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: medium
     ```
 
-=== "1/31/22"
+=== "1/31/24"
 
     ``` yaml
     plugins:
@@ -343,7 +343,7 @@ Use this setting to change the date format used in post URLs. The format string
 must adhere to [babel]'s [pattern syntax] and should not contain whitespace.
 Some popular choices:
 
-=== ":material-link: blog/2023/01/31/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/01/31/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -351,7 +351,7 @@ Some popular choices:
           post_url_date_format: yyyy/MM/dd
     ```
 
-=== ":material-link: blog/2023/01/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/01/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -359,7 +359,7 @@ Some popular choices:
           post_url_date_format: yyyy/MM
     ```
 
-=== ":material-link: blog/2023/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -382,7 +382,7 @@ Use this setting to change the format string that is used when generating post
 URLs. You can freely combine placeholders, and join them with slashes or other
 characters:
 
-=== ":material-link: blog/2023/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -669,7 +669,7 @@ plugins:
 Use this setting to change the date format used for archive page titles. The
 format string must adhere to [babel]'s [pattern syntax]. Some popular choices:
 
-=== "2023"
+=== "2024"
 
     ``` yaml
     plugins:
@@ -677,7 +677,7 @@ format string must adhere to [babel]'s [pattern syntax]. Some popular choices:
           archive_date_format: yyyy
     ```
 
-=== "January 2023"
+=== "January 2024"
 
     ``` yaml
     plugins:
@@ -699,7 +699,7 @@ Use this setting to change the date format used for archive page URLs. The
 format string must adhere to [babel]'s [pattern syntax] and should not contain
 whitespace. Some popular choices:
 
-=== ":material-link: blog/archive/2023/"
+=== ":material-link: blog/archive/2024/"
 
     ``` yaml
     plugins:
@@ -707,7 +707,7 @@ whitespace. Some popular choices:
           archive_url_date_format: yyyy
     ```
 
-=== ":material-link: blog/archive/2023/01/"
+=== ":material-link: blog/archive/2024/01/"
 
     ``` yaml
     plugins:
@@ -726,7 +726,7 @@ Use this setting to change the format string that is used when generating
 archive page URLs. You can freely combine placeholders, and join them with
 slashes or other characters:
 
-=== ":material-link: blog/archive/2023/"
+=== ":material-link: blog/archive/2024/"
 
     ``` yaml
     plugins:
@@ -734,7 +734,7 @@ slashes or other characters:
           archive_url_format: "archive/{date}"
     ```
 
-=== ":material-link: blog/2023/"
+=== ":material-link: blog/2024/"
 
     ``` yaml
     plugins:
@@ -1516,7 +1516,7 @@ using a slightly different syntax:
 
     ``` yaml
     ---
-    date: 2023-01-31
+    date: 2024-01-31
     ---
 
     # Post title
@@ -1528,8 +1528,8 @@ using a slightly different syntax:
     ``` yaml
     ---
     date:
-      created: 2023-01-31 # (1)!
-      updated: 2023-02-01
+      created: 2024-01-31 # (1)!
+      updated: 2024-02-01
     ---
 
     # Post title
@@ -1543,8 +1543,8 @@ using a slightly different syntax:
     ``` yaml
     ---
     date:
-      created: 2023-01-31
-      my_custom_date: 2023-02-01 # (1)!
+      created: 2024-01-31
+      my_custom_date: 2024-02-01 # (1)!
     ---
 
     # Post title
@@ -1559,8 +1559,8 @@ using a slightly different syntax:
 
 The following date formats are supported:
 
-- `2023-01-31`
-- `2023-01-31T12:00:00`
+- `2024-01-31`
+- `2024-01-31T12:00:00`
 
 ---
 
