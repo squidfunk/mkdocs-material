@@ -35,7 +35,7 @@ $md-toggle__drawer--checked:
 // Sidebar container
 .md-sidebar {
   position: absolute;
-  width: px2rem(280px);
+  width: px2rem(290px);
   padding: px2rem(24px) 0;
   overflow: hidden;
   background-color: var(--codacy-primary);
@@ -61,7 +61,7 @@ $md-toggle__drawer--checked:
       top: 0;
       left: px2rem(-280px);
       z-index: 3;
-      width: px2rem(280px);
+      width: px2rem(290px);
       height: 100%;
       background-color: var(--codacy-primary);
       transform: translateX(0);
