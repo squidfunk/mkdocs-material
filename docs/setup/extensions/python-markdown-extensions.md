@@ -532,7 +532,7 @@ See reference for usage:
 <!-- md:extension [pymdownx.smartsymbols][SmartSymbols] -->
 
 The [SmartSymbols] extension converts some sequences of characters into their
-corresponding symbols, e.h. copyright symbols or fractions. Enable it via
+corresponding symbols, e.g. copyright symbols or fractions. Enable it via
 `mkdocs.yml`:
 
 ``` yaml
