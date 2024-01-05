@@ -43,8 +43,6 @@
     "escape-html": "^1.0.3",
     "focus-visible": "^5.2.0",
     "fuzzaldrin-plus": "^0.6.0",
-    "lunr": "^2.3.9",
-    "lunr-languages": "^1.14.0",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
