@@ -49,7 +49,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.d593da4b.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.4d9fb3f3.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.936ed772.min.css' | url }}">
       {% endif %}
@@ -127,11 +127,28 @@
         <div class="md-main__inner">
           <div class="md-content">
             <article class="md-content__inner md-typeset">
+              {% if config.extra.preview_pull_request or config.extra.preview_branch %}
+                <div class="admonition important" style="margin-top:0">
+                  <div class="admonition-title">
+                    {% if config.extra.preview_pull_request %}
+                      This documentation is a preview of the pull request
+                      <a href="{{ config.repo_url }}/pull/{{ config.extra.preview_pull_request }}">#{{ config.extra.preview_pull_request }}</a>
+                    {% else %}
+                      This documentation is a preview of the branch
+                      <code><a href="{{ config.repo_url }}/tree/{{ config.extra.preview_branch }}">{{ config.extra.preview_branch }}</a></code>
+                    {% endif %}
+                  </div>
+                  <p>
+                    For the latest updates and improvements in production,
+                    open <a href="https://docs.codacy.com/">docs.codacy.com</a> instead.
+                  </p>
+                </div>
+              {% endif %}
               {% if config.extra.self_hosted %}
                 <div class="admonition important" style="margin-top:0">
                   <div class="admonition-title">This documentation applies to Codacy Self-hosted
-                    {% if config.extra.version %}
-                    v{{ config.extra.version }}
+                    {% if config.extra.codacy_self_hosted_version %}
+                    v{{ config.extra.codacy_self_hosted_version }}
                     {% endif %}
                   </div>
                   <p>

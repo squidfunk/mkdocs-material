@@ -136,9 +136,9 @@
     // Logo
     &.md-logo {
       display: flex;
-      width: px2rem(280px);
+      width: px2rem(290px);
       margin: 0;
-      padding: px2rem(24px);
+      padding: px2rem(24px) px2rem(50px) px2rem(24px) px2rem(24px);
       flex-shrink: 0;
       background-color: var(--codacy-primary);
 
