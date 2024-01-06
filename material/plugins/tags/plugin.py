@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -131,11 +131,13 @@ class TagsPlugin(BasePlugin[TagsConfig]):
 
     # Render tags index
     def _render_tag_index(self, markdown):
-        if not "[TAGS]" in markdown:
-            markdown += "\n[TAGS]"
+        if "[TAGS]" in markdown:
+            markdown = markdown.replace("[TAGS]", "<!-- material/tags -->")
+        if not "<!-- material/tags -->" in markdown:
+            markdown += "\n<!-- material/tags -->"
 
         # Replace placeholder in Markdown with rendered tags index
-        return markdown.replace("[TAGS]", "\n".join([
+        return markdown.replace("<!-- material/tags -->", "\n".join([
             self._render_tag_links(*args)
                 for args in sorted(self.tags.items())
         ]))
