@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.49.1 <small>January 7, 2024</small> { id="4.49.1" }
+
+- Improved interop of new tags plugin with other plugins
+- Fixed #6594: Tags plugin doesn't work with mkdocs-macros plugin
+- Fixed #6569: Social plugin crashes if in different file system location
+
 ### 4.49.0 <small>December 29, 2023</small> { id="4.49.0" }
 
 - Added support for exporting tags and mappings
