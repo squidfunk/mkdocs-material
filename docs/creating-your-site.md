@@ -16,7 +16,7 @@ Alternatively, if you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
     ```
 
-=== "Windows"
+=== "Windows (cmd)"
 
     ```
     docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .

@@ -535,6 +535,11 @@ This will disable automatic reading time computation.
 
 #### Setting defaults
 
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:plugin [meta] – built-in -->
+<!-- md:flag experimental -->
+
 If you have a lot of posts, it might feel redundant to define all of the above
 for each post. Luckily, the [built-in meta plugin] allows to set default front
 matter properties per folder. You can group your posts by categories, or
