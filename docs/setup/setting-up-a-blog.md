@@ -240,7 +240,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2023-01-31 # (2)!
+date: 2024-01-31 # (2)!
 categories:
   - Hello
   - World
@@ -329,7 +329,7 @@ each post, as well as in post excerpts on index pages:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 authors:
   - squidfunk
     ...
@@ -375,7 +375,7 @@ add them to the front matter `categories` property:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 categories:
   - Hello
   - World
@@ -401,7 +401,7 @@ part of a post, the post is linked from the [tags index]:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 tags:
   - Foo
   - Bar
@@ -444,7 +444,7 @@ to add related links to a post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
@@ -460,7 +460,7 @@ links and even use nesting:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
@@ -520,7 +520,7 @@ post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 readtime: 15
 ---
 
