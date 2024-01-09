@@ -1,3 +1,8 @@
+mkdocs-material-9.5.3+insiders-4.49.2 (2024-01-09)
+
+  * Fixed missing attribute lists extension for tags plugin
+  * Fixed #6627: New tags plugin crashes on Python 3.8
+
 mkdocs-material-9.5.3+insiders-4.49.1 (2024-01-07)
 
   * Improved interop of new tags plugin with other plugins

@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.49.2 <small>January 9, 2024</small> { id="4.49.2" }
+
+- Fixed missing attribute lists extension for tags plugin
+- Fixed #6627: New tags plugin crashes on Python 3.8
+
 ### 4.49.1 <small>January 7, 2024</small> { id="4.49.1" }
 
 - Improved interop of new tags plugin with other plugins
