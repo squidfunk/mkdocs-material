@@ -174,7 +174,6 @@ You can cancel your sponsorship anytime.[^5]
 [![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
-[![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
 [![Posit]](https://docs.posit.co){ target=_blank title="Posit" }
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
@@ -211,7 +210,6 @@ You can cancel your sponsorship anytime.[^5]
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
-  [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
   [Posit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
