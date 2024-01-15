@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.4 <small>January 15, 2024</small> { id="9.5.4" }
+
+- Fixed #6645: Local storage with invalid value can break site
+- Fixed #6635: Tags icons before default ignored if default is set
+
 ### 9.5.3 <small>December 23, 2023</small> { id="9.5.3" }
 
 - Limited version range of MkDocs to < 1.6
