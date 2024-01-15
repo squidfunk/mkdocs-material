@@ -90,10 +90,11 @@ export function watchPalette(
   }
 
   /* Emit changes in color palette */
+  const index = Math.max(0, Math.min(current.index, inputs.length - 1))
   return of(...inputs)
     .pipe(
       mergeMap(input => fromEvent(input, "change").pipe(map(() => input))),
-      startWith(inputs[Math.max(0, current.index)]),
+      startWith(inputs[index]),
       map(input => ({
         index: inputs.indexOf(input),
         color: {
