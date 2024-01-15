@@ -114,6 +114,12 @@ export function getOptionalElement<T extends HTMLElement>(
  * @returns Element or nothing
  */
 export function getActiveElement(): HTMLElement | undefined {
+  const isHTMLElement = document.activeElement instanceof HTMLElement;
+  const hasShadowRoot = isHTMLElement && document.activeElement?.shadowRoot;
+
+  if (hasShadowRoot) {
+    return document.activeElement?.shadowRoot?.activeElement || undefined;
+  }
   return document.activeElement instanceof HTMLElement
     ? document.activeElement || undefined
     : undefined
