@@ -32,7 +32,7 @@
   {% for type, icon in config.theme.icon.tag.items() %}
     {% import ".icons/" ~ icon ~ ".svg" as icon %}
     {% if type != "default" %}
-      {% set modifier = "--" ~ type %}
+      {% set modifier = ".md-tag--" ~ type %}
     {% endif %}
     {% set _ = style.append(
       ".md-tag" ~ modifier ~ "{" ~
