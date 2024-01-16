@@ -119,8 +119,8 @@ export function getActiveElement(): HTMLElement | undefined {
 
   if (hasShadowRoot) {
     return document.activeElement?.shadowRoot?.activeElement || undefined;
-  }
-  return document.activeElement instanceof HTMLElement
+  } 
+  return isHTMLElement
     ? document.activeElement || undefined
     : undefined
 }
