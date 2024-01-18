@@ -66,7 +66,7 @@ import { Sitemap, fetchSitemap } from "../sitemap"
 interface SetupOptions {
   location$: Subject<URL>              // Location subject
   viewport$: Observable<Viewport>      // Viewport observable
-  progress$: Subject<number>           // Progress suject
+  progress$: Subject<number>           // Progress subject
 }
 
 /* ----------------------------------------------------------------------------
