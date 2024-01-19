@@ -218,7 +218,7 @@ other providers:
 - [:simple-azuredevops: Azure][Azure]
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
 - [:simple-digitalocean: DigitalOcean][DigitalOcean]
-- [Fly.io][Flyio]
+- [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
 
