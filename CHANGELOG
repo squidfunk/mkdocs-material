@@ -1,3 +1,7 @@
+mkdocs-material-9.5.4+insiders-4.50.0 (2024-01-19)
+
+  * Added configurable logging capabilities to privacy plugin
+
 mkdocs-material-9.5.4 (2024-01-15)
 
   * Fixed #6645: Local storage with invalid value can break site

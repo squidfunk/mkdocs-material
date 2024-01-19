@@ -105,7 +105,7 @@ which are currently exclusively available to sponsors:
 - [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
-- [x] [Privacy plugin: optimization support]
+- [x] [Privacy plugin: advanced settings]
 - [x] [Optimize plugin]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
@@ -277,8 +277,8 @@ are released for general availability.
   [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
   [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
   [Tags plugin: configurable listings]: ../setup/setting-up-tags.md#configurable-listings
-  [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
-  [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
+  [Tags plugin: allow list]: ../plugins/tags.md#config.tags_allowed
+  [custom sorting]: ../plugins/tags.md#config.tags_sort_by
   [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
 
 #### $ 20,000 – Jalapeño
@@ -286,7 +286,7 @@ are released for general availability.
 - [x] [Optimize plugin]
 - [x] [Typeset plugin]
 - [x] [Navigation path] (Breadcrumbs)
-- [x] [Privacy plugin: optimization support]
+- [x] [Privacy plugin: advanced settings]
 - [x] [Privacy plugin: external links]
 - [x] [Instant prefetching]
 - [x] [Blog plugin: advanced settings]
@@ -294,8 +294,8 @@ are released for general availability.
 
   [Optimize plugin]: ../plugins/optimize.md
   [Typeset plugin]: ../plugins/typeset.md
-  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
-  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
+  [Privacy plugin: external links]: ../plugins/privacy.md#external-links
+  [Privacy plugin: advanced settings]: ../setup/ensuring-data-privacy.md#advanced-settings
   [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
   [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
   [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
@@ -314,7 +314,7 @@ are released for general availability.
 
   [Projects plugin]: ../plugins/projects.md
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
-  [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
+  [Social plugin: background images]: ../plugins/social.md#option.background_image
   [Code range selection]: ../reference/code-blocks.md#code-selection-button
   [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
   [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page

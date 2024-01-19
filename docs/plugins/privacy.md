@@ -213,6 +213,84 @@ with each other.
 
   [multiple instances]: index.md#multiple-instances
 
+### Logging
+
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should display log messages when
+building your site. While not being recommended, you can disable logging with:
+
+``` yaml
+plugins:
+  - privacy:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `info` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`error`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: error
+    ```
+
+    Only errors are reported.
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: warn
+    ```
+
+    Errors and warnings are reported, terminating the build in
+    [`strict`][mkdocs.strict] mode. This includes warnings when symlinks cannot
+    be created due to a lack of permissions on Windows systems (#6550).
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: info
+    ```
+
+    Errors, warnings and informational messages are reported, including which
+    assets were successfully downloaded by the plugin.
+
+=== "`debug`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: debug
+    ```
+
+    All messages are reported, including debug messages, if and only if MkDocs
+    was started with the `--verbose` flag. Note that this will print a lot of
+    messages and is only useful for debugging.
+
 ### External assets
 
 The following settings are available for external assets:
