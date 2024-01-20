@@ -53,10 +53,16 @@ of [additional JavaScript]:
       }
     };
 
-    document$.subscribe(() => {
+    document$.subscribe(() => { // (1)!
+      MathJax.startup.output.clearCache()
+      MathJax.typesetClear()
+      MathJax.texReset()
       MathJax.typesetPromise()
     })
     ```
+
+    1. This integrates MathJax with [instant loading]
+
 
 === ":octicons-file-code-16: `mkdocs.yml`"
 
@@ -81,6 +87,7 @@ See reference for usage:
   [MathJax]: https://www.mathjax.org/
   [KaTeX]: https://github.com/Khan/KaTeX
   [additional JavaScript]: ../../customization.md#additional-javascript
+  [instant loading]: ../setting-up-navigation.md#instant-loading
   [Using block syntax]: ../../reference/math.md#using-block-syntax
   [Using inline block syntax]: ../../reference/math.md#using-inline-block-syntax
 
