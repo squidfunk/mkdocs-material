@@ -218,6 +218,7 @@ other providers:
 - [:simple-azuredevops: Azure][Azure]
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
 - [:simple-digitalocean: DigitalOcean][DigitalOcean]
+- [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
 
@@ -230,5 +231,6 @@ other providers:
   [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
   [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
   [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
+  [Flyio]: https://documentation.breadnet.co.uk/cloud/fly/mkdocs-on-fly/
   [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
   [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
