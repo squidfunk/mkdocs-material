@@ -221,7 +221,7 @@ other providers:
 - [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
-- [:simple-codeberg: Codeberg Pages][Codeberg Pages
+- [:simple-codeberg: Codeberg Pages][Codeberg Pages]
 
 </div>
 
