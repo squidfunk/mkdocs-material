@@ -201,6 +201,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
 [![Transformation Flow]](https://transformationflow.io/){ target=_blank title="Transformation Flow" }
 [![3DR]](https://3dr.com/){ target=_blank title="3DR" }
+[![Spotware]](https://spotware.com/){ target=_blank title="Spotware" }
 
 </div>
 
@@ -238,6 +239,7 @@ You can cancel your sponsorship anytime.[^5]
   [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
   [Transformation Flow]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png
   [3DR]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png
+  [Spotware]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png
 
 <hr />
 
