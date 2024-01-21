@@ -53,10 +53,16 @@ of [additional JavaScript]:
       }
     };
 
-    document$.subscribe(() => {
+    document$.subscribe(() => { // (1)!
+      MathJax.startup.output.clearCache()
+      MathJax.typesetClear()
+      MathJax.texReset()
       MathJax.typesetPromise()
     })
     ```
+
+    1. This integrates MathJax with [instant loading]
+
 
 === ":octicons-file-code-16: `mkdocs.yml`"
 
@@ -81,6 +87,7 @@ See reference for usage:
   [MathJax]: https://www.mathjax.org/
   [KaTeX]: https://github.com/Khan/KaTeX
   [additional JavaScript]: ../../customization.md#additional-javascript
+  [instant loading]: ../setting-up-navigation.md#instant-loading
   [Using block syntax]: ../../reference/math.md#using-block-syntax
   [Using inline block syntax]: ../../reference/math.md#using-inline-block-syntax
 
@@ -532,7 +539,7 @@ See reference for usage:
 <!-- md:extension [pymdownx.smartsymbols][SmartSymbols] -->
 
 The [SmartSymbols] extension converts some sequences of characters into their
-corresponding symbols, e.h. copyright symbols or fractions. Enable it via
+corresponding symbols, e.g. copyright symbols or fractions. Enable it via
 `mkdocs.yml`:
 
 ``` yaml
@@ -667,8 +674,8 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.combine_header_slug -->
 
-:   <!-- md:default `false` --> This option enables the content tabs
-    [combine_header_slug style] flag, which prepends the id of the header to
+:   <!-- md:default `false` --> This option enables the content tabs'
+    [`combine_header_slug` style] flag, which prepends the id of the header to
     the id of the tab:
 
     ``` yaml

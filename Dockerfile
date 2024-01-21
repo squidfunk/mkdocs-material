@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -83,11 +83,11 @@ RUN \
   find ${PACKAGES} \
     -type f \
     -path "*/__pycache__/*" \
-    -exec rm -f {} \;
-
-# Trust directory, required for git >= 2.35.2
-RUN git config --global --add safe.directory /docs &&\
-    git config --global --add safe.directory /site
+    -exec rm -f {} \; \
+&& \
+  git config --system --add safe.directory /docs \
+&& \
+  git config --system --add safe.directory /site
 
 # Set working directory
 WORKDIR /docs

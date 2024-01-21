@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -85,6 +85,13 @@
   {% set class = "md-nav__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
+  {% endif %}
+
+  <!-- Determine active page for paginated views -->
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
   {% endif %}
 
   <!-- Navigation item with nested items -->

@@ -139,7 +139,7 @@ in `mkdocs.yml`:
 
 ``` yaml
 copyright: >
-  Copyright &copy; 2016 - 2023 Martin Donath –
+  Copyright &copy; 2016 - 2024 Martin Donath –
   <a href="#__consent">Change cookie settings</a>
 ```
 
@@ -147,8 +147,7 @@ copyright: >
 
 ### Built-in privacy plugin
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.9.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [privacy][built-in privacy plugin] -->
 <!-- md:flag experimental -->
 
@@ -206,7 +205,6 @@ For a list of all settings, please consult the [plugin documentation].
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [built-in optimize plugin]: ../plugins/optimize.md
-
 
 ??? example "Expand to inspect example"
 
@@ -280,6 +278,24 @@ For a list of all settings, please consult the [plugin documentation].
 
   [built-in privacy plugin]: ../plugins/privacy.md
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch
+
+#### Advanced settings
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+
+The following advanced settings are currently reserved to our [sponsors]
+[Insiders]. They are entirely optional, and don't affect the functionality of
+the blog, but can be helpful for customizations:
+
+- [`log`][config.log]
+- [`log_level`][config.log_level]
+
+We'll add more settings here, as we discover new use cases.
+
+  [Insiders]: ../insiders/index.md
+  [config.log]: ../plugins/privacy.md#config.log
+  [config.log_level]: ../plugins/privacy.md#config.log_level
 
 ## Customization
 

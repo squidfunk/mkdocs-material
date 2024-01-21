@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -85,7 +85,12 @@ export function request(
     // Handle download progress
     if (typeof options?.progress$ !== "undefined") {
       req.addEventListener("progress", event => {
-        options.progress$!.next((event.loaded / event.total) * 100)
+        if (event.lengthComputable) {
+          options.progress$!.next((event.loaded / event.total) * 100)
+        } else { // https://bugs.chromium.org/p/chromium/issues/detail?id=463622
+          const totalFromHeader = Number(req.getResponseHeader("Content-Length")) || 0
+          options.progress$!.next((event.loaded / totalFromHeader) * 100)
+        }
       })
 
       // Immediately set progress to 5% to indicate that we're loading

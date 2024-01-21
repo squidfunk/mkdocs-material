@@ -99,8 +99,7 @@ pipelines tailored to your project:
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.9.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [privacy] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
@@ -128,8 +127,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.10.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -148,8 +146,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -179,8 +176,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -198,8 +194,7 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -218,6 +213,84 @@ with each other.
 
   [multiple instances]: index.md#multiple-instances
 
+### Logging
+
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should display log messages when
+building your site. While not being recommended, you can disable logging with:
+
+``` yaml
+plugins:
+  - privacy:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `info` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`error`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: error
+    ```
+
+    Only errors are reported.
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: warn
+    ```
+
+    Errors and warnings are reported, terminating the build in
+    [`strict`][mkdocs.strict] mode. This includes warnings when symlinks cannot
+    be created due to a lack of permissions on Windows systems (#6550).
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: info
+    ```
+
+    Errors, warnings and informational messages are reported, including which
+    assets were successfully downloaded by the plugin.
+
+=== "`debug`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: debug
+    ```
+
+    All messages are reported, including debug messages, if and only if MkDocs
+    was started with the `--verbose` flag. Note that this will print a lot of
+    messages and is only useful for debugging.
+
 ### External assets
 
 The following settings are available for external assets:
@@ -226,8 +299,7 @@ The following settings are available for external assets:
 
 #### <!-- md:setting config.assets -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should download external
@@ -246,8 +318,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should downloads or only report
@@ -265,8 +336,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want

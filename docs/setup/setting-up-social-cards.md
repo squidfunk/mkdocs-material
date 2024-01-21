@@ -1,7 +1,3 @@
----
-status: new
----
-
 # Setting up social cards
 
 Material for MkDocs can automatically create beautiful social cards for your
@@ -53,7 +49,7 @@ plugins:
 
 For a list of all settings, please consult the [plugin documentation].
 
-  [plugin documentation]: ../plugins/blog.md
+  [plugin documentation]: ../plugins/social.md
 
 !!! info "The [`site_url`][site_url] setting must be set"
 
@@ -632,7 +628,7 @@ tags:
   twitter:image: "{{ image.url }}"
 ```
 
-Note that this examples makes use of [YAML anchors] to minify repetition. The
+Note that this example makes use of [YAML anchors] to minify repetition. The
  `definitions` property is solely intended for the definition on aliases that
  can then be referenced with anchors.
 

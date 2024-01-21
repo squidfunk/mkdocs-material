@@ -60,6 +60,14 @@
       ]
     },
     {
+      "title": "Sane Lists – Python Markdown",
+      "markdownDescription": "https://python-markdown.github.io/extensions/sane_lists/",
+      "enum": [
+        "markdown.extensions.sane_lists",
+        "sane_lists"
+      ]
+    },
+    {
       "title": "Tables – Python Markdown",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#tables",
       "enum": [

@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
-      "enum": [
-        "privacy"
-      ]
+      "const": "privacy"
     },
     {
       "type": "object",
@@ -37,6 +35,23 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.cache_dir",
               "type": "string",
               "default": ".cache/plugins/privacy"
+            },
+            "log": {
+              "title": "Enable logging",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log",
+              "type": "boolean",
+              "default": true
+            },
+            "log_level": {
+              "title": "Log level",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log_level",
+              "enum": [
+                "error",
+                "warn",
+                "info",
+                "debug"
+              ],
+              "default": "info"
             },
             "assets": {
               "title": "Process external assets",

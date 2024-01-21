@@ -93,13 +93,19 @@ which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Projects plugin] :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
-- [x] [Instant prefetching] :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
-- [x] [Social plugin: custom layouts] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
-- [x] [Social plugin: background images] :material-alert-decagram:{ .mdx-pulse title="Added on May 8, 2023" }
+- [x] [Tags plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Tags plugin: nested tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Tags plugin: shadow tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Stay on page when switching languages]
+- [x] [Blog plugin: author profiles]
+- [x] [Blog plugin: advanced settings]
+- [x] [Projects plugin]
+- [x] [Instant prefetching]
+- [x] [Social plugin: custom layouts]
+- [x] [Social plugin: background images]
 - [x] [Code range selection]
 - [x] [Code annotations: custom selectors]
-- [x] [Privacy plugin: optimization support]
+- [x] [Privacy plugin: advanced settings]
 - [x] [Optimize plugin]
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
@@ -109,13 +115,7 @@ which are currently exclusively available to sponsors:
 - [x] [Blog plugin: custom index pages]
 - [x] [Blog plugin: related links]
 - [x] [Meta plugin]
-- [x] [Tags plugin: additional indexes]
-- [x] [Document contributors]
-- [x] [Automatic light / dark mode]
-- [x] [Content tabs: anchor links]
-- [x] [Tooltips]
-- [x] [Card grids]
-- [x] [Privacy plugin]
+- [x] [Tags plugin: configurable listings]
 
 </div>
 
@@ -166,15 +166,14 @@ You can cancel your sponsorship anytime.[^5]
 **Silver sponsors**:
 
 [![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
+[![Trendpop]{ style="height: 120px" }](https://www.trendpop.com/){ target=_blank title="Trendpop" }
 
 **Bronze sponsors**:
 
 [![Cirrus CI]](https://cirrus-ci.org/){ target=_blank title="Cirrus CI" }
 [![Basler]](https://docs.baslerweb.com/){ target=_blank title="Basler" }
 [![KX]](https://kx.com/){ target=_blank title="KX Systems" }
-[![Manticore Games]](https://www.manticoregames.com/){ target=_blank title="Manticore Games" }
 [![Prefect]](https://orion-docs.prefect.io/){ target=_blank title="Prefect" }
-[![Datadog]](https://datadoghq.com/){ target=_blank title="Datadog" }
 [![Zenoss]](https://zenoss.com/){ target=_blank title="Zenoss" }
 [![Posit]](https://docs.posit.co){ target=_blank title="Posit" }
 [![n8n]](https://n8n.io){ target=_blank title="n8n" }
@@ -202,16 +201,16 @@ You can cancel your sponsorship anytime.[^5]
 [![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
 [![Transformation Flow]](https://transformationflow.io/){ target=_blank title="Transformation Flow" }
 [![3DR]](https://3dr.com/){ target=_blank title="3DR" }
+[![Spotware]](https://spotware.com/){ target=_blank title="Spotware" }
 
 </div>
 
   [FastAPI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png
+  [Trendpop]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
   [Basler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png
   [KX]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png
-  [Manticore Games]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png
   [Prefect]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png
-  [Datadog]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png
   [Zenoss]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png
   [Posit]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png
   [n8n]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png
@@ -240,6 +239,7 @@ You can cancel your sponsorship anytime.[^5]
   [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
   [Transformation Flow]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png
   [3DR]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png
+  [Spotware]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png
 
 <hr />
 
@@ -266,6 +266,75 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 :octicons-check-circle-fill-24:{ style="color: var(--md-default-fg-color--lightest)" } planned, but not yet implemented. When the funding goal is hit, the features
 are released for general availability.
 
+#### $ 16,000 – Chipotle
+
+- [x] [Meta plugin]
+- [x] [Blog plugin: related links]
+- [x] [Blog plugin: custom index pages]
+- [x] [Tags plugin: configurable listings]
+- [x] [Tags plugin: allow list] + [custom sorting]
+- [x] [Navigation subtitles]
+
+  [Meta plugin]: ../plugins/meta.md
+  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
+  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
+  [Tags plugin: configurable listings]: ../setup/setting-up-tags.md#configurable-listings
+  [Tags plugin: allow list]: ../plugins/tags.md#config.tags_allowed
+  [custom sorting]: ../plugins/tags.md#config.tags_sort_by
+  [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
+
+#### $ 20,000 – Jalapeño
+
+- [x] [Optimize plugin]
+- [x] [Typeset plugin]
+- [x] [Navigation path] (Breadcrumbs)
+- [x] [Privacy plugin: advanced settings]
+- [x] [Privacy plugin: external links]
+- [x] [Instant prefetching]
+- [x] [Blog plugin: advanced settings]
+- [x] [Blog plugin: author profiles]
+
+  [Optimize plugin]: ../plugins/optimize.md
+  [Typeset plugin]: ../plugins/typeset.md
+  [Privacy plugin: external links]: ../plugins/privacy.md#external-links
+  [Privacy plugin: advanced settings]: ../setup/ensuring-data-privacy.md#advanced-settings
+  [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
+  [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
+  [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
+  [Blog plugin: author profiles]: ../setup/setting-up-a-blog.md#adding-author-profiles
+
+#### $ 24,000 – Blockpaprika
+
+- [x] [Projects plugin]
+- [x] [Social plugin: custom layouts]
+- [x] [Social plugin: background images]
+- [x] [Code range selection]
+- [x] [Code annotations: custom selectors]
+- [x] [Stay on page when switching languages]
+- [x] [Tags plugin: nested tags]
+- [x] [Tags plugin: shadow tags]
+
+  [Projects plugin]: ../plugins/projects.md
+  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
+  [Social plugin: background images]: ../plugins/social.md#option.background_image
+  [Code range selection]: ../reference/code-blocks.md#code-selection-button
+  [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
+  [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page
+  [Tags plugin: nested tags]: ../setup/setting-up-tags.md#nested-tags
+  [Tags plugin: shadow tags]: ../setup/setting-up-tags.md#shadow-tags
+
+#### $ 28,000 – Lemon Drop
+
+- [x] [Tags plugin: advanced settings]
+
+  [Tags plugin: advanced settings]: ../setup/setting-up-tags.md#advanced-settings
+
+### Goals completed
+
+This section lists all funding goals that were previously completed, which means
+that those features were part of Insiders, but are now generally available and
+can be used by all users.
+
 #### $ 14,000 – Goat's Horn
 
 - [x] [Privacy plugin]
@@ -275,66 +344,12 @@ are released for general availability.
 - [x] [Automatic light / dark mode]
 - [x] [Document contributors]
 
-  [Privacy plugin]: ../setup/ensuring-data-privacy.md
+  [Privacy plugin]: ../setup/ensuring-data-privacy.md#built-in-privacy-plugin
   [Card grids]: ../reference/grids.md
   [Tooltips]: ../reference/tooltips.md
   [Content tabs: anchor links]: ../reference/content-tabs.md#anchor-links
   [Automatic light / dark mode]: ../setup/changing-the-colors.md#automatic-light-dark-mode
   [Document contributors]: ../setup/adding-a-git-repository.md#document-contributors
-
-#### $ 16,000 – Chipotle
-
-- [x] [Meta plugin]
-- [x] [Blog plugin: related links]
-- [x] [Blog plugin: custom index pages]
-- [x] [Tags plugin: additional indexes]
-- [x] [Tags plugin: allow list] + [custom sorting]
-- [x] [Navigation subtitles]
-
-  [Meta plugin]: ../plugins/meta.md
-  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
-  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
-  [Tags plugin: additional indexes]: ../setup/setting-up-tags.md#+tags.tags_extra_files
-  [Tags plugin: allow list]: ../setup/setting-up-tags.md#+tags.tags_allowed
-  [custom sorting]: ../setup/setting-up-tags.md#+tags.tags_compare
-  [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
-
-#### $ 20,000 – Jalapeño
-
-- [x] [Optimize plugin]
-- [x] [Typeset plugin]
-- [x] [Navigation path] (Breadcrumbs)
-- [x] [Privacy plugin: optimization support]
-- [x] [Privacy plugin: external links]
-- [x] [Instant prefetching]
-
-  [Optimize plugin]: ../plugins/optimize.md
-  [Typeset plugin]: ../plugins/typeset.md
-  [Privacy plugin: external links]: ../setup/ensuring-data-privacy.md#+privacy.links
-  [Privacy plugin: optimization support]: ../setup/ensuring-data-privacy.md#+privacy.assets_include
-  [Navigation path]: ../setup/setting-up-navigation.md#navigation-path
-  [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
-
-#### $ 24,000 – Blockpaprika
-
-- [x] [Projects plugin]
-- [x] [Social plugin: custom layouts]
-- [x] [Social plugin: background images]
-- [x] [Code range selection]
-- [x] [Code annotations: custom selectors]
-- [ ] Code line wrap button
-
-  [Projects plugin]: ../plugins/projects.md
-  [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
-  [Social plugin: background images]: ../setup/setting-up-social-cards.md#+social.cards_layout_params.background_image
-  [Code range selection]: ../reference/code-blocks.md#code-selection-button
-  [Code annotations: custom selectors]: ../reference/code-blocks.md#custom-selectors
-
-### Goals completed
-
-This section lists all funding goals that were previously completed, which means
-that those features were part of Insiders, but are now generally available and
-can be used by all users.
 
 #### $ 12,000 – Piri Piri
 

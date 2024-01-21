@@ -2,6 +2,75 @@
 
 ## Material for MkDocs
 
+### 9.5.4 <small>January 15, 2024</small> { id="9.5.4" }
+
+- Fixed #6645: Local storage with invalid value can break site
+- Fixed #6635: Tags icons before default ignored if default is set
+
+### 9.5.3 <small>December 23, 2023</small> { id="9.5.3" }
+
+- Limited version range of MkDocs to < 1.6
+- Updated Macedonian translations
+- Fixed #6520: Group plugin crashes when using mike
+- Fixed #6494: Hide author's email address if disabled in git-authors plugin
+
+### 9.5.2 <small>December 11, 2023</small> { id="9.5.2" }
+
+- Fixed types for `slugify` settings in blog plugin config
+- Fixed #6469: Horizontal scrollbars on MathJax containers
+
+### 9.5.1 <small>December 8, 2023</small> { id="9.5.1" }
+
+- Updated Greek translations
+- Fixed #6464: Privacy plugin cannot be enabled
+- Fixed #6461: Sorting blog posts ignores time component in date
+
+### 9.5.0 <small>December 7, 2023</small> { id="9.5.0" }
+
+Merged Insiders features of 'Goat's Horn' funding goal
+
+- Added privacy plugin: automatic downloading of external assets
+- Added support for card grids and grid layouts
+- Added support for improved tooltips
+- Added support for content tabs anchor links (deep linking)
+- Added support for automatic dark/light mode
+- Added support for document contributors
+
+### 9.4.14 <small>November 26, 2023</small> { id="9.4.14" }
+
+- Added support for linking authors in blog posts
+
+### 9.4.13 <small>November 26, 2023</small> { id="9.4.13" }
+
+- Fixed #6365: Blog plugin pagination links to previous pages broken
+- Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
+### 9.4.12 <small>November 24, 2023</small> { id="9.4.12" }
+
+- Improved blog plugin to generate Unicode-aware slugs by default
+- Fixed non-deterministic order of categories in blog plugin
+
+### 9.4.11 <small>November 23, 2023</small> { id="9.4.11" }
+
+- Fixed #6364: Search plugin crashing when enabling theme while serving
+- Fixed blog plugin crashing when disabling pagination
+
+### 9.4.10 <small>November 19, 2023</small> { id="9.4.10" }
+
+- Fixed #6356: Version selector can't be disabled via mike's configuration
+- Fixed #6281: Navigation not rendering due to Safari bug (9.4.2 regression)
+- Fixed #6261: Navigation expansion animates on first load (9.4.2 regression)
+
+### 9.4.9 <small>November 17, 2023</small> { id="9.4.9" }
+
+- Fixed #6344: Long entries cutoff in table of contents
+- Fixed #6336: Custom template for glob archive not working with pagination
+- Fixed #6328: Blog plugin crashes for locales with dashes, e.g. `pt-BR`
+- Fixed #6327: Copy-to-clipboard button doesn't trim trailing line feed
+- Fixed #6302: Version strings not matched when using mike, only aliases
+- Fixed instant navigation progress indicator for gzipped content in Chrome
+- Fixed rendering bug on details marker rotation in Firefox
+
 ### 9.4.8 <small>November 5, 2023</small> { id="9.4.8" }
 
 - Fixed invalid local address replacement when using instant loading

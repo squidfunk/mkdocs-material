@@ -267,15 +267,14 @@ default color palette.
 
 #### Automatic light / dark mode
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.18.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:flag experimental -->
 <!-- md:example color-palette-system-preference -->
 
-Newer operating system allow to automatically switch between light and dark
-appearance during day and night times. [Insiders] adds support for automatic
-light / dark mode, delegating color palette selection to the user's operating
-system. Add the following lines to `mkdocs.yml`:
+Newer operating systems allow to automatically switch between light and dark
+appearance during day and night times. Material for MkDocs adds support for
+automatic light / dark mode, delegating color palette selection to the user's
+operating system. Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:

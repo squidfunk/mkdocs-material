@@ -33,7 +33,7 @@ explicitly define them. The default value of the property is always included.
 
 #### <!-- md:default computed --> – Default value is computed { #default data-toc-label="is computed" }
 
-Some default values are not set to static values but computed form other values,
+Some default values are not set to static values but computed from other values,
 like the site language, repository provider, or other settings.
 
 #### <!-- md:default none --> – Default value is empty { #default data-toc-label="is empty" }

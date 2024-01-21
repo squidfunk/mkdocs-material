@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -31,7 +31,7 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2023 Martin Donath
+copyright: Copyright &copy; 2016 - 2024 Martin Donath
 
 # Configuration
 theme:
@@ -65,18 +65,24 @@ theme:
     - toc.follow
     # - toc.integrate
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
   font:
     text: Roboto
     code: Roboto Mono
@@ -99,8 +105,9 @@ hooks:
 
 # Additional configuration
 extra:
-  annotate:
-    json: [.s2]
+  status:
+    new: Recently added
+    deprecated: Deprecated
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
@@ -189,11 +196,10 @@ nav:
       - Reporting a docs issue: contributing/reporting-a-docs-issue.md
       - Requesting a change: contributing/requesting-a-change.md
       - Adding translations: contributing/adding-translations.md
+      - Making a pull request: contributing/making-a-pull-request.md
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
-    - FAQ:
-      - Sponsoring: faq/sponsoring.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
@@ -255,8 +261,11 @@ nav:
   - Insiders:
     - insiders/index.md
     - Getting started: insiders/getting-started.md
+    - FAQ: insiders/faq/sponsoring.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
+    - Community Experts Program:
+      - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md

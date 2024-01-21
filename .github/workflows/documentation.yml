@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -49,7 +49,7 @@ jobs:
             src/templates/partials/languages
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -104,12 +104,12 @@ jobs:
           done
 
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
       - name: Save build cache
         uses: actions/cache/save@v3

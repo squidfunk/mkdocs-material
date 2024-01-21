@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -491,7 +491,7 @@ log = logging.getLogger("mkdocs")
 log.addFilter(DuplicateFilter())
 
 # Color palette
-colors = dict({
+colors = {
     "red":         { "fill": "#ef5552", "text": "#ffffff" },
     "pink":        { "fill": "#e92063", "text": "#ffffff" },
     "purple":      { "fill": "#ab47bd", "text": "#ffffff" },
@@ -513,4 +513,4 @@ colors = dict({
     "blue-grey":   { "fill": "#546d78", "text": "#ffffff" },
     "black":       { "fill": "#000000", "text": "#ffffff" },
     "white":       { "fill": "#ffffff", "text": "#000000" }
-})
+}

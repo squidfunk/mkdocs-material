@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -167,6 +167,23 @@
       // Tab label on hover
       &:hover {
         color: var(--md-default-fg-color);
+      }
+
+      // Tab label anchor link
+      > [href]:first-child {
+        color: inherit;
+      }
+    }
+
+    // Tab label with anchor link
+    &--linked > label {
+      padding: 0;
+
+      // Move padding one level down to anchor link, so the whole tab area
+      // becomes clickable, not only the text.
+      > a {
+        display: block;
+        padding: px2em(10px, 12.8px) 1.25em px2em(8px, 12.8px);
       }
     }
   }

@@ -1,3 +1,156 @@
+mkdocs-material-9.5.4+insiders-4.50.0 (2024-01-19)
+
+  * Added configurable logging capabilities to privacy plugin
+
+mkdocs-material-9.5.4 (2024-01-15)
+
+  * Fixed #6645: Local storage with invalid value can break site
+  * Fixed #6635: Tags icons before default ignored if default is set
+
+mkdocs-material-9.5.3+insiders-4.49.2 (2024-01-09)
+
+  * Fixed missing attribute lists extension for tags plugin
+  * Fixed #6627: New tags plugin crashes on Python 3.8
+
+mkdocs-material-9.5.3+insiders-4.49.1 (2024-01-07)
+
+  * Improved interop of new tags plugin with other plugins
+  * Fixed #6594: Tags plugin doesn't work with mkdocs-macros plugin
+  * Fixed #6569: Social plugin crashes if in different file system location
+
+mkdocs-material-9.5.3+insiders-4.49.0 (2023-12-29)
+
+  * Added support for exporting tags and mappings
+  * Added support for disabling tags and/or listings or both
+  * Fixed tag links from pages to listings on homepage
+
+mkdocs-material-9.5.3+insiders-4.48.0 (2023-12-23)
+
+  * Rewrite of tags plugin, now much more powerful
+  * Added support for nested tags (tag hierarchies, e.g. foo/bar)
+  * Added support for shadow tags (by list, prefix or suffix)
+  * Added support for custom tag layouts and templates
+  * Added support for hiding tags in table of contents
+  * Added support for configurable inline tag listings
+  * Added support for automatically linking to closest tag listing
+  * Added support for scoped listings (limit to subsection of site)
+  * Added support for multiple instances of tags plugin
+  * Added support for changing front matter property and template variable
+  * Added support for tag slugification format strings
+  * Fixed #6510: Projects plugin out of memory on Linux (4.47.1 regression)
+  * Fixed projects plugin not notifying plugins about serve mode
+  * Fixed projects plugin skipping projects on prefix match
+  * Deprecated tags_file and tags_extra_files settings
+  * Modernized tags plugin code base
+
+mkdocs-material-9.5.3 (2023-12-23)
+
+  * Limited version range of MkDocs to < 1.6
+  * Updated Macedonian translations
+  * Fixed #6520: Group plugin crashes when using mike
+  * Fixed #6494: Hide author's email address if disabled in git-authors plugin
+
+mkdocs-material-9.5.2+insiders-4.47.1 (2023-12-11)
+
+  * Improved editing experience for projects plugin
+  * Improved resilience of optimize and social plugin
+  * Fixed race condition when writing manifest in optimize and social plugin
+  * Fixed #6475: Logo not taking precedence over icon in social card
+  * Fixed #6399: Projects plugin doesn't pick up added/removed projects
+  * Fixed #6306: Projects plugin cache not correctly updated
+
+mkdocs-material-9.5.2 (2023-12-11)
+
+  * Fixed types for slugify settings in blog plugin config
+  * Fixed #6469: Horizontal scrollbars on MathJax containers
+
+mkdocs-material-9.5.1+insiders-4.47.0 (2023-12-08)
+
+  * Added support for staying on page when switching languages
+  * Added configurable logging capabilities to projects plugin
+  * Removed temporary warning on blog plugin authors file format change
+  * Fixed projects plugin logging messages twice on Linux systems
+  * Fixed projects plugin trying to hoist theme assets of divergent themes
+  * Fixed compatibility of optimize plugin and projects plugin
+  * Fixed compatibility of social plugin and projects plugin
+  * Fixed #6448: Code line selection broken for code blocks with custom ids
+  * Fixed #6437: Projects plugin crashing for certain site URL configurations
+  * Fixed #6414: Projects plugin doesn't prefix messages coming from projects
+
+mkdocs-material-9.5.1 (2023-12-08)
+
+  * Updated Greek translations
+  * Fixed #6464: Privacy plugin cannot be enabled
+  * Fixed #6461: Sorting blog posts ignores time component in date
+
+mkdocs-material-9.5.0 (2023-12-07)
+
+  Merged Insiders features of 'Goat's Horn' funding goal
+
+  * Added privacy plugin: automatic downloading of external assets
+  * Added support for card grids and grid layouts
+  * Added support for improved tooltips
+  * Added support for content tabs anchor links (deep linking)
+  * Added support for automatic dark/light mode
+  * Added support for document contributors
+
+mkdocs-material-9.4.14+insiders-4.46.0 (2023-11-26)
+
+  * Added support for author profiles in blog plugin
+  * Fixed custom index pages yielding two navigation items (4.45.0 regression)
+
+mkdocs-material-9.4.14 (2023-11-26)
+
+  * Added support for linking authors in blog posts
+
+mkdocs-material-9.4.13 (2023-11-26)
+
+  * Fixed #6365: Blog plugin pagination links to previous pages broken
+  * Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
+mkdocs-material-9.4.12+insiders-4.45.0 (2023-11-24)
+
+  * Added support for sorting blog categories by post count or custom function
+  * Improved tags plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of multiple authors in blog plugin
+
+mkdocs-material-9.4.12 (2023-11-24)
+
+  * Improved blog plugin to generate Unicode-aware slugs by default
+  * Fixed non-deterministic order of categories in blog plugin
+
+mkdocs-material-9.4.11+insiders-4.44.0 (2023-11-23)
+
+  * Added pagination settings for archive pages in blog plugin
+  * Added pagination settings for category pages in blog plugin
+
+mkdocs-material-9.4.11 (2023-11-23)
+
+  * Fixed #6364: Search plugin crashing when enabling theme while serving
+  * Fixed blog plugin crashing when disabling pagination
+
+mkdocs-material-9.4.10+insiders-4.43.1 (2023-11-19)
+
+  * Added third-party theme support in projects plugin, improving editing
+  * Fixed #6360: Projects plugin crashes when theme is not Material for MkDocs
+  * Fixed #6306: Projects plugin not reloading nested project configuration
+
+mkdocs-material-9.4.10 (2023-11-19)
+
+  * Fixed #6356: Version selector can't be disabled via mike's configuration
+  * Fixed #6281: Navigation not rendering due to Safari bug (9.4.2 regression)
+  * Fixed #6261: Navigation expansion animates on first load (9.4.2 regression)
+
+mkdocs-material-9.4.9 (2023-11-17)
+
+  * Fixed #6344: Long entries cutoff in table of contents
+  * Fixed #6336: Custom template for glob archive not working with pagination
+  * Fixed #6328: Blog plugin crashes for locales with dashes, e.g. pt-BR
+  * Fixed #6327: Copy-to-clipboard button doesn't trim trailing line feed
+  * Fixed #6302: Version strings not matched when using mike, only aliases
+  * Fixed instant navigation progress indicator for gzipped content in Chrome
+  * Fixed rendering bug on details marker rotation in Firefox
+
 mkdocs-material-9.4.8+insiders-4.43.0 (2023-11-05)
 
   * Added support for GitLab committers (document contributors)
@@ -2420,7 +2573,7 @@ mkdocs-material-4.0.0 (2019-02-13)
 
 mkdocs-material-3.3.0 (2019-01-29)
 
-  * Moved Google Analytics integration into `head` using Google Tag Manager
+  * Moved Google Analytics integration into head using Google Tag Manager
   * Fixed #972: Unicode slugifier breaks table of contents blur on scroll
   * Fixed #974: Additional links in table of contents break blur on scroll
 

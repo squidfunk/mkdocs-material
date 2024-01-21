@@ -277,7 +277,6 @@ enabled. The following log levels are available:
 
     Errors are only reported when using the `--verbose` flag.
 
-
 ### Social cards
 
 The following settings are available for social card generation:

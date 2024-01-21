@@ -32,13 +32,12 @@ See additional configuration options:
 
 ### Anchor links
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.17.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:flag experimental -->
 
-In order to link to content tabs and share them more easily, [Insiders] adds
-an anchor link to each content tab automatically, which you can copy via right
-click or open in a new tab:
+In order to link to content tabs and share them more easily, an anchor link is
+automatically added to each content tab, which you can copy via right click or
+open in a new tab:
 
 === "Open me in a new tab ..."
 
@@ -66,8 +65,8 @@ or to the [publishing guide for Insiders][tab_2].
 
     Fore more information, please [see the extension guide][slugification].
 
-  [tab_1]: #-or-even-me
-  [tab_2]: ../publishing-your-site.md#insiders
+  [tab_1]: #anchor-links--or-even-me
+  [tab_2]: ../publishing-your-site.md#with-github-actions-insiders
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
   [slugification]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.tabbed.slugify
 

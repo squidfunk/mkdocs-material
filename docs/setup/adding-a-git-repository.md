@@ -248,8 +248,7 @@ them at your own risk.
 
 #### Document contributors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.19.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [git-committers] -->
 <!-- md:flag experimental -->
 
@@ -324,8 +323,7 @@ them at your own risk.
 
 #### Document authors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.19.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [git-authors] -->
 <!-- md:flag experimental -->
 
@@ -333,7 +331,10 @@ The [git-authors] plugin is a lightweight alternative to the
 [git-committers] plugin and extracts the authors of a document from git to display
 them at the bottom of each page.
 
-[Insiders] offers deep integration for [git-authors]. This means the [customized overrides](https://timvink.github.io/mkdocs-git-authors-plugin/usage.html#mkdocs-material-theme) are not necessary, and additional styling (such as nice icons) are added. Simply install it with `pip`:
+Material for MkDocs offers deep integration for [git-authors]. This means the
+[customized overrides](https://timvink.github.io/mkdocs-git-authors-plugin/usage.html#mkdocs-material-theme)
+are not necessary, and additional styling (such as nice icons) are added.
+Simply install it with `pip`:
 
 ```
 pip install mkdocs-git-authors-plugin

@@ -36,11 +36,40 @@ For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
 
+#### Advanced settings :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+
+The following advanced settings are currently reserved to our [sponsors]
+[Insiders]. They are entirely optional, and don't affect the functionality of
+the blog, but can be helpful for customizations:
+
+- [`archive_pagination`][config.archive_pagination]
+- [`archive_pagination_per_page`][config.archive_pagination_per_page]
+- [`categories_sort_by`][config.categories_sort_by]
+- [`categories_sort_reverse`][config.categories_sort_reverse]
+- [`categories_pagination`][config.categories_pagination]
+- [`categories_pagination_per_page`][config.categories_pagination_per_page]
+- [`authors_profiles_pagination`][config.authors_profiles_pagination]
+- [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
+
+We'll add more settings here, as we discover new use cases.
+
   [Insiders]: ../insiders/index.md
   [built-in blog plugin]: ../plugins/blog.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
   [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [start writing your first post]: #writing-your-first-post
+
+  [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
+  [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
+  [config.categories_sort_by]: ../plugins/blog.md#config.categories_sort_by
+  [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
+  [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
+  [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
+  [config.authors_profiles_pagination]: ../plugins/blog.md#config.authors_profiles_pagination
+  [config.authors_profiles_pagination_per_page]: ../plugins/blog.md#config.authors_profiles_pagination_per_page
 
 ### RSS
 
@@ -152,6 +181,36 @@ For further information, see the [documentation].
   [theme extension]: ../customization.md
   [documentation]: https://guts.github.io/mkdocs-rss-plugin/configuration/
 
+### Blog only
+
+You might need to build a pure blog without any documentation.
+In this case, you can create a folder tree like this:
+
+``` { .sh .no-copy }
+.
+├─ docs/
+│  ├─ posts/ # (1)!
+│  ├─ .authors.yml
+│  └─ index.md
+└─ mkdocs.yml
+```
+
+1.  Notice that the `posts` directory is in the root of `docs` without
+    intermediate `blog` directory.
+
+And add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      blog_dir: . # (1)!
+```
+
+1.  More info about [blog_dir](../plugins/blog.md#config.blog_dir)
+
+With this configuration, the url of the blog post will be `/<post_slug>`
+instead of `/blog/<post_slug>`.
+
 ## Usage
 
 ### Writing your first post
@@ -181,7 +240,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2023-01-31 # (2)!
+date: 2024-01-31 # (2)!
 categories:
   - Hello
   - World
@@ -260,25 +319,8 @@ authors:
 
 The [`.authors.yml`][authors_file] file associates each author with an
 identifier (in this example `squidfunk`), which can then be used in posts.
-The following properties are available for each author:
-
-<!-- md:option blog.authors_file.name -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must define a name for the author. The name is displayed in
-    the left sidebar of each post as part of the author info.
-
-<!-- md:option blog.authors_file.description -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property can be used to add a short description for the author, e.g.
-    the role or profession of the author, or any other title.
-
-<!-- md:option blog.authors_file.avatar -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must point to a valid image URL, internal or external, and is
-    used as part of posts and excerpts as the author's avatar.
+Different attributes can be configured. For a list of all possible attributes,
+please consult the [`authors_file`][authors_file] documentation.
 
 Now, you can assign one or more authors to a post by referencing their
 identifiers in the front matter of the Markdown file under the `authors`
@@ -287,7 +329,7 @@ each post, as well as in post excerpts on index pages:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 authors:
   - squidfunk
     ...
@@ -300,6 +342,30 @@ authors:
   [authors]: ../plugins/blog.md#authors
   [authors_file]: ../plugins/blog.md#config.authors_file
 
+#### Adding author profiles :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:flag experimental -->
+
+If you wish to add a dedicated page for each author, you can enable author
+profiles by setting the [`authors_profiles`][authors_profiles] configuration
+option to `true`. Just add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles: true
+```
+
+If you combine this with [custom index pages], you can create a dedicated page
+for each author with a short description, social media links, etc. – basically
+anything you can write in Markdown. The list of posts is then appended after
+the content of the page.
+
+  [authors_profiles]: ../plugins/blog.md#config.authors_profiles
+  [custom index pages]: #custom-index-pages
+
 #### Adding categories
 
 Categories are an excellent way for grouping your posts thematically on
@@ -309,7 +375,7 @@ add them to the front matter `categories` property:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 categories:
   - Hello
   - World
@@ -335,7 +401,7 @@ part of a post, the post is linked from the [tags index]:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 tags:
   - Foo
   - Bar
@@ -378,7 +444,7 @@ to add related links to a post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
@@ -394,7 +460,7 @@ links and even use nesting:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
   - insiders/index.md#how-to-become-a-sponsor
@@ -454,7 +520,7 @@ post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 readtime: 15
 ---
 
@@ -468,6 +534,11 @@ This will disable automatic reading time computation.
   [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:plugin [meta] – built-in -->
+<!-- md:flag experimental -->
 
 If you have a lot of posts, it might feel redundant to define all of the above
 for each post. Luckily, the [built-in meta plugin] allows to set default front
@@ -595,5 +666,5 @@ The following templates are added by the [built-in blog plugin]:
 
   [theme extension]: ../customization.md#extending-the-theme
 
-  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog.html
-  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog-post.htmlhtml
+  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog.html
+  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog-post.html

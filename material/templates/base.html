@@ -32,7 +32,7 @@
         <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.4.8">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.5.4">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -44,10 +44,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.78cf6014.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.50c56a3b.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.356b1318.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
@@ -96,9 +96,6 @@
     <body dir="{{ direction }}">
   {% endif %}
     {% set features = config.theme.features or [] %}
-    {% if not config.theme.palette is mapping %}
-      {% include "partials/javascripts/palette.html" %}
-    {% endif %}
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -221,10 +218,13 @@
         "base": base_url,
         "features": features,
         "translations": {},
-        "search": "assets/javascripts/workers/search.f886a092.min.js" | url
+        "search": "assets/javascripts/workers/search.c011b7c0.min.js" | url
       } -%}
       {%- if config.extra.version -%}
-        {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- set mike = config.plugins.get("mike") -%}
+        {%- if not mike or mike.config.version_selector -%}
+          {%- set _ = app.update({ "version": config.extra.version }) -%}
+        {%- endif -%}
       {%- endif -%}
       {%- if config.extra.tags -%}
         {%- set _ = app.update({ "tags": config.extra.tags }) -%}
@@ -249,7 +249,7 @@
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.81fa17fe.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.7389ff0e.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}

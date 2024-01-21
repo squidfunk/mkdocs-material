@@ -16,7 +16,7 @@ Alternatively, if you're running Material for MkDocs from within Docker, use:
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
     ```
 
-=== "Windows"
+=== "Windows (cmd)"
 
     ```
     docker run --rm -it -v "%cd%":/docs squidfunk/mkdocs-material new .
@@ -66,6 +66,7 @@ theme:
               "yaml.customTags": [ // (1)!
                 "!ENV scalar",
                 "!ENV sequence",
+                "!relative scalar",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
                 "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"

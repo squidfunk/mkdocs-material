@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/zhaoterryy/mkdocs-git-revision-date-plugin",
-      "enum": [
-        "git-revision-date"
-      ]
+      "const": "git-revision-date"
     },
     {
       "type": "object",

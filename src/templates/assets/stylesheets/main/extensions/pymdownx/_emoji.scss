@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -29,15 +29,47 @@
 
   // Emoji and icon container
   :is(.emojione, .twemoji, .gemoji) {
+    --md-icon-size: #{px2em(18px)};
+
     display: inline-flex;
-    height: px2em(18px);
+    height: var(--md-icon-size);
     vertical-align: text-top;
 
     // Icon - inlined via mkdocs-material-extensions
     svg {
-      width: px2em(18px);
+      width: var(--md-icon-size);
       max-height: 100%;
       fill: currentcolor;
     }
+  }
+
+  // Icon with size modifier
+  :is(.lg, .xl, .xxl, .xxxl) {
+    vertical-align: text-bottom;
+  }
+
+  // Adjust icon alignment
+  .middle {
+    vertical-align: middle;
+  }
+
+  // Adjust icon size to 1.5x
+  .lg {
+    --md-icon-size: #{px2em(24px)};
+  }
+
+  // Adjust icon size to 2x
+  .xl {
+    --md-icon-size: #{px2em(36px)};
+  }
+
+  // Adjust icon size to 3x
+  .xxl {
+    --md-icon-size: #{px2em(48px)};
+  }
+
+  // Adjust icon size to 4x
+  .xxxl {
+    --md-icon-size: #{px2em(64px)};
   }
 }

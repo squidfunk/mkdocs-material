@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/oprypin/mkdocs-section-index",
-      "enum": [
-        "section-index"
-      ]
+      "const": "section-index"
     },
     {
       "type": "object",
