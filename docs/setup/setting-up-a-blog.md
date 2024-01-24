@@ -36,7 +36,7 @@ For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
 
-#### Advanced settings :material-alert-decagram:{ .mdx-pulse title="Added on November 23, 2023" }
+#### Advanced settings
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.44.0 -->

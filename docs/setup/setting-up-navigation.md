@@ -33,7 +33,7 @@ especially useful for large documentation sites.
 
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
-#### Instant prefetching :material-alert-decagram:{ .mdx-pulse title="Added on June 15, 2023" }
+#### Instant prefetching
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.36.0 -->

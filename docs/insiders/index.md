@@ -88,11 +88,12 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 23 additional features__ that you can __start using now__, and
+access to 24 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
+- [x] [Footnote tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on January 24, 2023" }
 - [x] [Tags plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
 - [x] [Tags plugin: nested tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
 - [x] [Tags plugin: shadow tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
@@ -293,6 +294,7 @@ are released for general availability.
 - [x] [Instant prefetching]
 - [x] [Blog plugin: advanced settings]
 - [x] [Blog plugin: author profiles]
+- [x] [Footnote tooltips]
 
   [Optimize plugin]: ../plugins/optimize.md
   [Typeset plugin]: ../plugins/typeset.md
@@ -302,6 +304,7 @@ are released for general availability.
   [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
   [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
   [Blog plugin: author profiles]: ../setup/setting-up-a-blog.md#adding-author-profiles
+  [Footnote tooltips]: ../reference/footnotes.md#footnote-tooltips
 
 #### $ 24,000 – Blockpaprika
 
@@ -313,6 +316,7 @@ are released for general availability.
 - [x] [Stay on page when switching languages]
 - [x] [Tags plugin: nested tags]
 - [x] [Tags plugin: shadow tags]
+- [x] [Tags plugin: advanced settings]
 
   [Projects plugin]: ../plugins/projects.md
   [Social plugin: custom layouts]: ../setup/setting-up-social-cards.md#customization
@@ -322,12 +326,8 @@ are released for general availability.
   [Stay on page when switching languages]: ../setup/changing-the-language.md#stay-on-page
   [Tags plugin: nested tags]: ../setup/setting-up-tags.md#nested-tags
   [Tags plugin: shadow tags]: ../setup/setting-up-tags.md#shadow-tags
-
-#### $ 28,000 – Lemon Drop
-
-- [x] [Tags plugin: advanced settings]
-
   [Tags plugin: advanced settings]: ../setup/setting-up-tags.md#advanced-settings
+
 
 ### Goals completed
 

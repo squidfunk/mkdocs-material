@@ -499,6 +499,11 @@
             "const": "content.code.select"
           },
           {
+            "title": "Footnote tooltips",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/footnotes/#footnote-tooltips",
+            "const": "content.footnote.tooltips"
+          },
+          {
             "title": "Linked content tabs",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
             "const": "content.tabs.link"

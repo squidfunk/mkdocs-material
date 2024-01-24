@@ -9,7 +9,7 @@ further useful automatic optimization techniques.
 
 ## Configuration
 
-### Built-in projects plugin :material-alert-decagram:{ .mdx-pulse title="Added on July 29, 2023" }
+### Built-in projects plugin
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.38.0 -->
