@@ -2,6 +2,20 @@
 
 ## Material for MkDocs
 
+### 9.5.5 <small>January 24, 2024</small> { id="9.5.5" }
+
+- Updated Tagalog translations
+- Updated Pillow to 10.2 to mitigate security vulnerabilities
+- Improved resilience of instant navigation
+- Fixed #6687: Updated Mermaid.js to version 10.7.0 (latest)
+- Fixed #6652: Keyboard events in custom elements captured
+- Fixed #6582: Instant navigation doesn't correctly handle alternate URLs
+- Fixed #6565: Instant navigation doesn't allow for `onclick` handlers
+- Fixed #6345: Instant navigation sometimes breaks browser back button
+- Fixed #6334: Instant navigation doesn't correctly position anchors (Safari)
+- Fixed #6275: Instant navigation doesn't correctly resolve after 404
+- Fixed #6102: Instant navigation reloads page on same link navigation
+
 ### 9.5.4 <small>January 15, 2024</small> { id="9.5.4" }
 
 - Fixed #6645: Local storage with invalid value can break site
