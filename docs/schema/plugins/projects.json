@@ -51,7 +51,7 @@
                 "info",
                 "debug"
               ],
-              "default": "warn"
+              "default": "info"
             },
             "projects": {
               "title": "Enable projects",

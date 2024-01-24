@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.50.0 <small>January 19, 2024</small> { id="4.50.0" }
+
+- Added configurable logging capabilities to privacy plugin
+
 ### 4.49.2 <small>January 9, 2024</small> { id="4.49.2" }
 
 - Fixed missing attribute lists extension for tags plugin

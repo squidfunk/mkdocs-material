@@ -63,7 +63,7 @@ git = [
   "mkdocs-git-revision-date-localized-plugin~=1.2"
 ]
 imaging = [
-  "pillow~=9.4",
+  "pillow~=10.2",
   "cairosvg~=2.6"
 ]
 
