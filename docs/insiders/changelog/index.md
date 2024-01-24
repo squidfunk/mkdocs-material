@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.51.0 <small>January 24, 2024</small> { id="4.51.0" }
+
+- Added support for footnote tooltips
+
 ### 4.50.0 <small>January 19, 2024</small> { id="4.50.0" }
 
 - Added configurable logging capabilities to privacy plugin
