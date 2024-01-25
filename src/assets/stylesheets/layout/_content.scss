@@ -51,6 +51,12 @@
     }
   }
 
+  img {
+    box-shadow:
+      0 px2rem(4px) px2rem(10px) hsla(0, 0%, 0%, 0.05),
+      0 0           px2rem(1px)  hsla(0, 0%, 0%, 0.1);
+  }
+
   // Define spacing
   &__inner {
     // Limit the width of page content
