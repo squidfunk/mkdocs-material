@@ -200,7 +200,8 @@ g.stateGroup .composit {
 }
 
 /* State node label */
-.nodeLabel {
+.nodeLabel,
+.nodeLabel p {
   color: var(--md-mermaid-label-fg-color);
   font-family: var(--md-mermaid-font-family);
 }
