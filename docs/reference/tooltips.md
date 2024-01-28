@@ -1,6 +1,5 @@
 ---
 icon: material/tooltip-plus
-status: new
 ---
 
 # Tooltips
