@@ -1,3 +1,13 @@
+mkdocs-material-9.5.6+insiders-4.52.0 (2024-01-28)
+
+  * Added support for instant previews
+  * Fixed footnote tooltips positioning edge cases
+  * Fixed #6703: New tags plugin crashes on Windows
+
+mkdocs-material-9.5.6 (2024-01-28)
+
+  * Fixed #6700: Missing styles for Mermaid.js labels with Markdown
+
 mkdocs-material-9.5.5+insiders-4.51.0 (2024-01-24)
 
   * Added support for footnote tooltips

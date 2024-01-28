@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.6 <small>January 28, 2024</small> { id="9.5.6" }
+
+- Fixed #6700: Missing styles for Mermaid.js labels with Markdown
+
 ### 9.5.5 <small>January 24, 2024</small> { id="9.5.5" }
 
 - Updated Tagalog translations

@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.52.0 <small>January 28, 2024</small> { id="4.52.0" }
+
+- Added support for instant previews
+- Fixed footnote tooltips positioning edge cases
+- Fixed #6703: New tags plugin crashes on Windows
+
 ### 4.51.0 <small>January 24, 2024</small> { id="4.51.0" }
 
 - Added support for footnote tooltips
