@@ -24,8 +24,8 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [SuperFences]
-- [Tabbed]
+- [SuperFences]{ data-preview="" }
+- [Tabbed]{ data-preview="" }
 
   [SuperFences]: ../setup/extensions/python-markdown-extensions.md#superfences
   [Tabbed]: ../setup/extensions/python-markdown-extensions.md#tabbed

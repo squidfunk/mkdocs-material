@@ -113,6 +113,7 @@ def _resolve(file: File, page: Page):
 # Create badge
 def _badge(icon: str, text: str = "", type: str = ""):
     classes = f"mdx-badge mdx-badge--{type}" if type else "mdx-badge"
+    text = f"{text}{{ data-preview='' }}" if text.endswith(")") else text
     return "".join([
         f"<span class=\"{classes}\">",
         *([f"<span class=\"mdx-badge__icon\">{icon}</span>"] if icon else []),

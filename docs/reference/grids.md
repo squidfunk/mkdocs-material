@@ -26,8 +26,8 @@ markdown_extensions: # (1)!
 
 See additional configuration options:
 
-- [Attribute Lists]
-- [Markdown in HTML]
+- [Attribute Lists]{ data-preview="" }
+- [Markdown in HTML]{ data-preview="" }
 
   [icons and emojis]: icons-emojis.md
   [configured separately]: icons-emojis.md#configuration

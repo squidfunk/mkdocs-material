@@ -24,9 +24,9 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Admonition]
-- [Details]
-- [SuperFences]
+- [Admonition]{ data-preview="" }
+- [Details]{ data-preview="" }
+- [SuperFences]{ data-preview="" }
 
   [Admonition]: ../setup/extensions/python-markdown.md#admonition
   [Details]: ../setup/extensions/python-markdown-extensions.md#details

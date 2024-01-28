@@ -22,7 +22,7 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Footnotes]
+- [Footnotes]{ data-preview="" }
 
   [Footnotes]: ../setup/extensions/python-markdown.md#footnotes
 

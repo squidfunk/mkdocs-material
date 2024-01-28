@@ -24,8 +24,8 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Definition Lists]
-- [Tasklist]
+- [Definition Lists]{ data-preview="" }
+- [Tasklist]{ data-preview="" }
 
   [Definition Lists]: ../setup/extensions/python-markdown.md#definition-lists
   [Tasklist]: ../setup/extensions/python-markdown-extensions.md#tasklist
@@ -62,7 +62,7 @@ of lists can be nested inside each other:
 
 ### Using ordered lists
 
-Ordered lists must start with a number immediately followed by a dot. The 
+Ordered lists must start with a number immediately followed by a dot. The
 numbers do not need to be consecutive and can be all set to `1.`, as they will
 be re-numbered when rendered:
 
