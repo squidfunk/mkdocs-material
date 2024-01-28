@@ -253,7 +253,7 @@ export function setupInstantNavigation(
     return EMPTY
 
   // Load sitemap immediately, so we have it available when the user initiates
-  // the first navigation request, so there's no perceived delay.
+  // the first navigation request without any perceivable delay
   const sitemap$ = fetchSitemap(config.base)
 
   // Since we might be on a slow connection, the user might trigger multiple
