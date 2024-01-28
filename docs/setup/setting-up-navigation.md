@@ -74,6 +74,40 @@ The progress indicator will only show if the page hasn't finished loading after
 400ms, so that fast connections will never show it for a better instant
 experience.
 
+### Instant previews :material-alert-decagram:{ .mdx-pulse title="Added on January 28, 2024" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.52.0 -->
+<!-- md:feature -->
+<!-- md:flag experimental -->
+
+Instant previews are a brand new feature that allow the user to preview another
+site of your documentation without navigating to it. They can be very helpful to
+keep the user in context. A link can be opted into instant previews with the
+`data-preview` attribute:
+
+```` markdown title="Link with instant preview"
+``` markdown
+[Attribute Lists](#){ data-preview }
+```
+````
+
+<div class="result" markdown>
+
+[Attribute Lists](extensions/python-markdown.md#attribute-lists){ data-preview }
+
+</div>
+
+Instant previews can also be enabled globally by adding the following lines to
+`mkdocs.yml`, which will enable instant previews for all internal links,
+alleviating the need to add data attributes:
+
+``` yaml
+theme:
+  features:
+    - navigation.instant.preview
+```
+
 ### Anchor tracking
 
 <!-- md:version 8.0.0 -->
