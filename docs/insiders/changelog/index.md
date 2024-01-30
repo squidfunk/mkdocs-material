@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.52.1 <small>January 30, 2024</small> { id="4.52.1" }
+
+- Fixed #6705: Navigation path not being hidden when specified
+- Fixed #6703: New tags plugin crashes on Windows (2nd attempt)
+
 ### 4.52.0 <small>January 28, 2024</small> { id="4.52.0" }
 
 - Added support for instant previews

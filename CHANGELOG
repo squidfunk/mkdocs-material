@@ -1,3 +1,8 @@
+mkdocs-material-9.5.6+insiders-4.52.1 (2024-01-30)
+
+  * Fixed #6705: Navigation path not being hidden when specified
+  * Fixed #6703: New tags plugin crashes on Windows (2nd attempt)
+
 mkdocs-material-9.5.6+insiders-4.52.0 (2024-01-28)
 
   * Added support for instant previews
