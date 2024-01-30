@@ -177,8 +177,8 @@ from [Python Markdown Extensions] is used as follows:
 
 ``` yaml
 plugins:
-  - blog:
-      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+  - tags:
+      tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
 ```
@@ -555,7 +555,7 @@ behavior with:
 
 ``` yaml
 plugins:
-  - blog:
+  - tags:
       listings_toc: false
 ```
 
