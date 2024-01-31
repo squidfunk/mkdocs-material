@@ -35,15 +35,17 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
           - name: Configure Git Credentials
             run: |
               git config user.name github-actions[bot]
               git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          - uses: actions/setup-python@v4
+          - uses: actions/setup-python@v5
             with:
               python-version: 3.x
           - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
-          - uses: actions/cache@v3
+          - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
               path: .cache
