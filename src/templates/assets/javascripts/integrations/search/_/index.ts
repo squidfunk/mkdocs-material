@@ -244,7 +244,7 @@ export class Search {
 
           /* Highlight matches in fields */
           for (const field of this.index.fields) {
-            if (typeof doc[field] === "undefined")
+            if (typeof doc[field] === "undefined" || doc[field].length === 0)
               continue
 
             /* Collect positions from matches */
