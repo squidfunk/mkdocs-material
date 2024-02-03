@@ -71,7 +71,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install mkdocs-material
-          pip install mkdocs-material[recommended,git,imaging]
+          pip install .[recommended,git,imaging]
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
