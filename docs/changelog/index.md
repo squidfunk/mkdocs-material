@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.7 <small>February 3, 2024</small> { id="9.5.7" }
+
+- Fixed #6731: Small images in figures are not centered
+- Fixed #6719: Instant navigation breaks table of contents (9.5.5 regression)
+
 ### 9.5.6 <small>January 28, 2024</small> { id="9.5.6" }
 
 - Fixed #6700: Missing styles for Mermaid.js labels with Markdown

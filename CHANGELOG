@@ -1,3 +1,8 @@
+mkdocs-material-9.5.7 (2024-02-03)
+
+  * Fixed #6731: Small images in figures are not centered
+  * Fixed #6719: Instant navigation breaks table of contents (9.5.5 regression)
+
 mkdocs-material-9.5.6+insiders-4.52.1 (2024-01-30)
 
   * Fixed #6705: Navigation path not being hidden when specified
