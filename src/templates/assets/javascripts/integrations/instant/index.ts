@@ -145,16 +145,22 @@ function head(document: Document): Map<string, HTMLElement> {
 /**
  * Resolve relative URLs in the given document
  *
+ * This function resolves relative `href` and `src` attributes, which can belong
+ * to all sorts of tags, like meta tags, links, images, scripts and more.
+ *
  * @param document - Document
  *
  * @returns Document observable
  */
 function resolve(document: Document): Observable<Document> {
-  for (const el of getElements<HTMLLinkElement>("[href], [src]", document))
-    for (const key in ["href", "src"]) {
+  for (const el of getElements("[href], [src]", document))
+    for (const key of ["href", "src"]) {
       const value = el.getAttribute(key)
-      if (!/^(?:[a-z]+:)?\/\//i.test(value!))
-        el.href = el.href
+      if (value && !/^(?:[a-z]+:)?\/\//i.test(value)) {
+        // @ts-expect-error - trick: self-assign to resolve URL
+        el[key] = el[key]
+        break
+      }
     }
 
   // Return document observable
