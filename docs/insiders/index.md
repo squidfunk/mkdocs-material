@@ -206,6 +206,8 @@ You can cancel your sponsorship anytime.[^5]
 [![Spotware]](https://spotware.com/){ target=_blank title="Spotware" }
 [![Milford Assets]](https://milfordasset.com/){ target=_blank title="Milford Assets" }
 
+</div>
+
   [FastAPI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png
   [Trendpop]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png
   [Cirrus CI]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png
