@@ -49,7 +49,7 @@ contents:
               path: .cache
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material 
+          - run: pip install mkdocs
           - run: pip install $(echo "mkdocs get-deps") # (4)!
           - run: mkdocs gh-deploy --force
     ```
