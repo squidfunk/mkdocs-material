@@ -49,7 +49,8 @@ contents:
               path: .cache
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material # (4)!
+          - run: pip install mkdocs-material 
+          - run: pip install $(echo "mkdocs get-deps") # (4)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -67,15 +68,8 @@ contents:
 
         You can read the [manual page] to learn more about the formatting options of the `date` command.
 
-    4.  This is the place to install further [MkDocs plugins] or Markdown
-        extensions with `pip` to be used during the build:
-
-        ``` sh
-        pip install \
-          mkdocs-material \
-          mkdocs-awesome-pages-plugin \
-          ...
-        ```
+    4.  This checks mkdocs.yml again for your installed plugins and automatically installs them
+        using the mkdocks get-deps command.
 
 === "Insiders"
 
