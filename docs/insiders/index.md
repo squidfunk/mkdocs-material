@@ -205,6 +205,7 @@ You can cancel your sponsorship anytime.[^5]
 [![3DR]](https://3dr.com/){ target=_blank title="3DR" }
 [![Spotware]](https://spotware.com/){ target=_blank title="Spotware" }
 [![Milford Assets]](https://milfordasset.com/){ target=_blank title="Milford Assets" }
+[![Lechler]](https://www.lechler.com/){ target=_blank title="Lechler" }
 
 </div>
 
@@ -244,6 +245,7 @@ You can cancel your sponsorship anytime.[^5]
   [3DR]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png
   [Spotware]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png
   [Milford Assets]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png
+  [Lechler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png
 
 <hr />
 
