@@ -182,6 +182,7 @@ countries = {
     "sv": "se",
     "te": "in",
     "th": "th",
+    "ta": "in",
     "tl": "ph",
     "tr": "tr",
     "uk": "ua",

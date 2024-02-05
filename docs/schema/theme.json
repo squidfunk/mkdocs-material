@@ -249,6 +249,10 @@
           "const": "sv"
         },
         {
+          "title": "Site language: Tamil",
+          "const": "ta"
+        },
+        {
           "title": "Site language: Telugu",
           "const": "te"
         },
