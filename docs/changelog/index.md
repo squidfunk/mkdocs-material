@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.8 <small>February 7, 2024</small> { id="9.5.8" }
+
+- Added Tamil translations
+- Updated Esperanto translations
+- Fixed relative images not being resolved for instant navigation
+
 ### 9.5.7 <small>February 3, 2024</small> { id="9.5.7" }
 
 - Fixed #6731: Small images in figures are not centered
