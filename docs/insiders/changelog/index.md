@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.52.2 <small>February 7, 2024</small> { id="4.52.2" }
+
+- Fixed #6735: Instant previews misplaced when below tabs
+
 ### 4.52.1 <small>January 30, 2024</small> { id="4.52.1" }
 
 - Fixed #6705: Navigation path not being hidden when specified
