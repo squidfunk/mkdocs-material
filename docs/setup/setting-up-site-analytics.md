@@ -46,7 +46,7 @@ extra:
 
   [site search]: setting-up-site-search.md
 
-### Was this page helpful?
+### Was this page helpful? 👍
 
 <!-- md:version 8.4.0 -->
 <!-- md:default none -->
