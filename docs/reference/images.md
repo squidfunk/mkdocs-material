@@ -122,7 +122,7 @@ but it's always possible to use the [Markdown in HTML] extension with literal
 `figure` and `figcaption` tags:
 
 ``` html title="Image with caption"
-<figure markdown>
+<figure markdown="span">
   ![Image title](https://dummyimage.com/600x400/){ width="300" }
   <figcaption>Image caption</figcaption>
 </figure>
