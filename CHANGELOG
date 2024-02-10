@@ -1,3 +1,7 @@
+mkdocs-material-9.5.9 (2024-02-10)
+
+  * Fixed navigation pruning with tabs and sections enabled
+
 mkdocs-material-9.5.8+insiders-4.52.2 (2024-02-07)
 
   * Fixed #6735: Instant previews misplaced when below tabs

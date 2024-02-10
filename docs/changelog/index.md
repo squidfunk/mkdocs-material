@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.9 <small>February 10, 2024</small> { id="9.5.9" }
+
+- Fixed navigation pruning with tabs and sections enabled
+
 ### 9.5.8 <small>February 7, 2024</small> { id="9.5.8" }
 
 - Added Tamil translations
