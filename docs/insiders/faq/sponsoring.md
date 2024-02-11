@@ -161,7 +161,7 @@ to all new features, benefiting you from our ongoing development efforts.
 [__Is Insiders free for those who contribute to this project?__](#insiders-contributors){ #insiders-contributors }
 
 Thank you for your interest in contributing to Material for MkDocs! We value
-every contribution, but it's important to distinguish between the types of
+every contribution, but it's important to distinguish between different types of
 contributions. While minor edits such as typo corrections or adding new
 languages are appreciated, they demand significant review efforts that exceed
 the scope of such contributions. Consequently, free access to the Insiders
