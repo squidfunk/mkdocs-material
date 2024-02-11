@@ -71,8 +71,8 @@ Material for MkDocs Insiders.
 
 For any questions about integrating Material for MkDocs Insiders into your
 projects, our [discussion board] is a valuable resource. It offers a space to
-connect with others who may have similar setups, exchange tips, and explore
-solutions together.
+connect with others who may have similar requirements and setups as well as to
+exchange tips, and explore solutions together.
 
   [mirror the repository in another location]: https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository#mirroring-a-repository-in-another-location
 
