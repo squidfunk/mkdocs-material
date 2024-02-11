@@ -160,24 +160,28 @@ to all new features, benefiting you from our ongoing development efforts.
 
 [__Is Insiders free for those who contribute to this project?__](#insiders-contributors){ #insiders-contributors }
 
-Great question! We can not offer free access to "drive-by" contributors that
-only fix minor issues like typos or add new languages. These contributions are
-always welcome, but as we need to review them, they result in a higher time
-investment from our side and don't compensate for this work. However, as this
-project keeps growing, we always seek for individuals to support us. In return,
-we offer financial compensation or/and Insiders access. If you are interested
-and have experience in the technologies and paradigms listed below, please get
-in touch with us at sponsors@squidfunk.com:
+Thank you for your interest in contributing to Material for MkDocs! We value
+every contribution, but it's important to distinguish between the types of
+contributions. While minor edits such as typo corrections or adding new
+languages are appreciated, they demand significant review efforts that exceed
+the scope of such contributions. Consequently, free access to the Insiders
+edition is exclusively offered to our [community experts].
 
-- Deep knowledge of CSS, HTML, TypeScript
-- Experience with progressive enhancement and responsive design
-- Experience with reactive programming with RxJS
-- Solid understanding of Python, MkDocs + ecosystem
-- Solid technical writing skills
+If you're passionate about making a significant impact, we encourage you to
+explore our [community experts] program. This program is designed for
+experienced users eager to share their expertise on our [discussion board]. Our
+discussion board facilitates the exchange of insights on workarounds, setups,
+and features and addresses queries from users at all levels of experience. As a
+community expert you become an integral part of our project by actively
+assisting users and addressing their inquiries. This allows our team to focus
+more on enhancing and developing new features – benefiting the entire community.
 
-Additionally, we're working on a contributor program that will reward
-contributors that engage in the community by answering questions and helping
-users with access to Insiders.
+In acknowledgment of such valuable contributions, active [community experts] are
+granted free access to the Insiders edition. This presents a fantastic
+opportunity for you to make meaningful contributions while enjoying the perks of
+the Insiders edition.
+
+  [community experts]: ../community-experts-program/index.md
 
 [__How can I set my billing to monthly or yearly?__](#insiders-billing-cycle){ #insiders-billing-cycle }
 
