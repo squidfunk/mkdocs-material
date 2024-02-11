@@ -164,20 +164,16 @@ Great question! We can not offer free access to "drive-by" contributors that
 only fix minor issues like typos or add new languages. These contributions are
 always welcome, but as we need to review them, they result in a higher time
 investment from our side and don't compensate for this work. However, as this
-project keeps growing, we always seek for individuals to support us. In return,
-we offer financial compensation or/and Insiders access. If you are interested
-and have experience in the technologies and paradigms listed below, please get
-in touch with us at sponsors@squidfunk.com:
+project keeps growing, we always seek for individuals to support us.
 
-- Deep knowledge of CSS, HTML, TypeScript
-- Experience with progressive enhancement and responsive design
-- Experience with reactive programming with RxJS
-- Solid understanding of Python, MkDocs + ecosystem
-- Solid technical writing skills
+This is why we did set up a [community experts] program. We are always on the
+lookout for active community members who are passionate about supporting our
+awesome community by answering questions on our [discussion board]. In return
+for valuable contributions, time, and insights, our community experts gain free
+access to the Insiders edition. If that sounds something you might be interested
+in, check out our [community experts] page.
 
-Additionally, we're working on a contributor program that will reward
-contributors that engage in the community by answering questions and helping
-users with access to Insiders.
+  [community experts]: ../community-experts-program/index.md
 
 [__How can I set my billing to monthly or yearly?__](#insiders-billing-cycle){ #insiders-billing-cycle }
 
