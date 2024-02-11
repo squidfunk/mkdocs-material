@@ -55,6 +55,27 @@ as a collaborator. If your organization doesn't use GitHub or hosts its
 repositories on other platforms, you can mirror the Insiders repository in your
 environment once you have access.
 
+[__We are hosting our repository on Gitlab, can we also use Insiders?__](#github-alternatives){ #github-alternatives }
+
+Absolutely! Material for MkDocs Insiders is designed to be compatible with
+various repository hosting platforms, including GitLab. The key requirement is
+still a GitHub account, as we use GitHub Sponsors for all transactions and
+manage access to the private Insiders repository through GitHub.
+
+Once you've become a sponsor and secured access to the private Insiders
+repository via an individual GitHub account, you can
+[mirror the repository in another location]. This mirroring process not only
+allows for easy integration into your existing workflow but also ensures that
+your projects stay up-to-date with the latest features and improvements of
+Material for MkDocs Insiders.
+
+For any questions about integrating Material for MkDocs Insiders into your
+projects, our [discussion board] is a valuable resource. It offers a space to
+connect with others who may have similar requirements and setups as well as to
+exchange tips, and explore solutions together.
+
+  [mirror the repository in another location]: https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository#mirroring-a-repository-in-another-location
+
 [__Which sponsoring tier should I choose?__](#sponsorship-tier){ #sponsorship-tier }
 
 The sponsoring tiers are divided into non-commercial and commercial tiers. If
