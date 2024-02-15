@@ -271,8 +271,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 raise PluginError(
                     f"Couldn't find '{separator}' in post '{path}' in '{docs}'"
                 )
-            else:
-                page.markdown += f"\n\n{separator}"
 
         # Create excerpt for post and inherit authors and categories - excerpts
         # can contain a subset of the authors and categories of the post

@@ -90,10 +90,12 @@
     {{ post.content }}
 
     <!-- Continue reading link -->
-    <nav class="md-post__action">
-      <a href="{{ post.url | url }}">
-        {{ lang.t("blog.continue") }}
-      </a>
-    </nav>
+    {% if post.more %}
+      <nav class="md-post__action">
+        <a href="{{ post.url | url }}">
+          {{ lang.t("blog.continue") }}
+        </a>
+      </nav>
+    {% endif %}
   </div>
 </article>

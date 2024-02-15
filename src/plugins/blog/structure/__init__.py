@@ -156,6 +156,10 @@ class Excerpt(Page):
         self.authors: list[Author] = []
         self.categories: list[Category] = []
 
+        # Initialize content after separator - allow template authors to render
+        # posts inline or to provide a link to the post's page
+        self.more = None
+
         # Initialize parser - note that we need to patch the configuration,
         # more specifically the table of contents extension
         config = _patch(config)
@@ -200,7 +204,9 @@ class Excerpt(Page):
 
         # Convert Markdown to HTML and extract excerpt
         self.content = self.md.convert(self.markdown)
-        self.content, *_ = self.content.split(separator, 1)
+        self.content, *more = self.content.split(separator, 1)
+        if more:
+            self.more = more[0]
 
         # Extract table of contents and reset post URL - if we wouldn't reset
         # the excerpt URL, linking to the excerpt from the view would not work
