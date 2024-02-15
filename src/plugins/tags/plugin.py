@@ -19,7 +19,6 @@
 # IN THE SOFTWARE.
 
 import logging
-import operator
 import sys
 
 from collections import defaultdict
@@ -155,7 +154,10 @@ class TagsPlugin(BasePlugin[TagsConfig]):
         # Render section for tag and a link to each page
         classes = " ".join(classes)
         content = [f"## <span class=\"{classes}\">{tag}</span>", ""]
-        for page in sorted(pages, key=operator.attrgetter("title")):
+        for page in sorted(
+            pages, 
+            key=lambda page: page.meta.get("title", page.title)
+        ):
             url = utils.get_relative_url(
                 page.file.src_uri,
                 self.tags_file.src_uri
