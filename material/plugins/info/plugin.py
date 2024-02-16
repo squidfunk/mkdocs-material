@@ -30,7 +30,6 @@ from importlib.metadata import distributions, version
 from io import BytesIO
 from markdown.extensions.toc import slugify
 from mkdocs.plugins import BasePlugin, event_priority
-from mkdocs.structure.files import get_files
 from mkdocs.utils import get_theme_dir
 from zipfile import ZipFile, ZIP_DEFLATED
 
@@ -115,14 +114,11 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         # Create self-contained example from project
         files: list[str] = []
         with ZipFile(archive, "a", ZIP_DEFLATED, False) as f:
-            for path in ["mkdocs.yml", "requirements.txt"]:
-                if os.path.isfile(path):
+            for abs_root, dirnames, filenames in os.walk(os.getcwd()):
+                for name in filenames:
+                    path = os.path.join(abs_root, name)
+                    path = os.path.relpath(path, os.path.curdir)
                     f.write(path, os.path.join(example, path))
-
-            # Append all files visible to MkDocs
-            for file in get_files(config):
-                path = os.path.relpath(file.abs_src_path, os.path.curdir)
-                f.write(path, os.path.join(example, path))
 
             # Add information on installed packages
             f.writestr(
