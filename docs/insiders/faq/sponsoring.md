@@ -8,25 +8,81 @@ below, ask it on our [discussion board]!
 
 ## General
 
-[__Why is the Insiders edition offered as a subscription model?__](#insiders-subscription){ #insiders-subscription }
+[__Why did we create Material for MkDocs Insiders?__](#insiders-edition){ #insiders-edition }
 
-Material for MkDocs always was and will be Open Source, available for free to
-individuals and organizations. As the project grew over time, we found that
-maintaining and managing the overhead that comes with growth became more
-challenging and time-consuming.
+So, here's the deal: Material for MkDocs began as a passion project, which we
+made open-source to share freely with everyone. However, as the project's
+popularity grew over the last few years, so did the demands of its maintenance
+and overhead. Faced with the growing demands and the tough choice between
+discontinuing our efforts or dedicating ourselves full-time, we chose to commit
+ourselves fully to the project.
 
-In order to sustain the project and add new and useful features more frequently,
-we decided to create the [Insiders] edition, with early access to the latest and
-greatest features of Material for MkDocs. The subscription-based model of the
-Insiders edition allows us to dedicate more time and resources to the project,
-which benefits all
-users of Material for MkDocs. Once our funding goals based on monthly
-subscriptions are hit, the Insiders features of those^ funding goals are released
-to the community edition, letting everyone benefit from them.
+To sustain this full-time commitment and to expand the team, we introduced
+Material for MkDocs Insiders. This private Insiders repository, available
+exclusively to our monthly sponsors, is where we first release the latest
+advancements of Material for MkDocs. That way our sponsors get the
+[premium features] in advance of all others users as a thank you for their
+support. But here's the best part: once we achieve specific funding goals, these
+advancements become available to the wider community. This model ensures ongoing
+development and accessibility for all, keeping the project vibrant and
+up-to-date.
 
-Maintaining both the community and Insiders editions is an ongoing process, and
-we rely on our sponsors to support us on a monthly basis, which makes this whole
-project possible.
+We communicate these [funding goals] and their progress openly, ensuring our
+community is involved every step of the way. It's our way of making sure that
+while we do need the support to keep going, everyone will eventually benefit
+from the advancements made possible by our sponsors.
+
+  [funding goals]: ../index.md/#funding
+  [premium features]: ../index.md/#whats-in-it-for-me
+
+
+[__Why is the Insiders offered as a subscription model?__](#subscription-model){ #subscription-model }
+
+You might wonder why we opted for a subscription model for the Insiders edition
+instead of a one-time purchase. Here's the thing: Material for MkDocs is in
+constant evolution. Our work is never done because there's always something new
+on the horizon – be it adapting to upstream dependency updates, keeping pace
+with environment changes like browser updates, or bringing to life
+the new features and improvements our users wish for.
+
+A one-time payment might seem appealing at first glance, but it's a bit like
+buying a snapshot: great for a moment, but it doesn't stay current for long.
+With a subscription, you're not just buying what's already been developed;
+you're investing in what's coming next. You get all the future updates, bug
+fixes, and new features as they roll out. This ongoing development is crucial
+not just for keeping the project alive and kicking but for ensuring it
+continues to meet your needs and expectations.
+
+This subscription model is what enables us to dedicate the necessary time and
+resources to Material for MkDocs, ensuring its sustainability and growth. It's
+about more than just maintaining the status quo; it's about pushing boundaries,
+improving, and innovating. When we hit our funding goals through these monthly
+subscriptions, we will roll out the Insiders features to the community edition.
+That way, the whole community benefits from the advancements made possible by
+our supporters.
+
+In essence, the subscription is a commitment to not just maintaining but
+actively developing Material for MkDocs. It allows us to plan for the future
+with confidence, knowing we have the backing to continue our work. This model
+has made all the difference, enabling us to rely on our sponsors' ongoing
+support and ensuring that Material for MkDocs remains a cutting-edge tool for
+everyone.
+
+[__Can I purchase the Insiders edition with a one-time donation?__](#one-time-donation){ #one-time-donation }
+
+__For individual users:__
+One-time donations, while appreciated, cannot support the ongoing development of
+Material for MkDocs like subscriptions do. Our project's growth relies on the
+steady support from subscriptions to fund new features, updates, and
+maintenance. Therefore, the Insiders version is not available through a one-time
+donation.
+
+__For companies:__
+We understand that some companies prefer one-time payments due to their
+financial policies, and often require invoices for these transactions. If your
+company is looking to support Material for MkDocs but needs to adhere to
+specific financial practices, please reach out to us via email at
+sponsors@squidfunk.com.
 
 [__What features are included in the Insiders edition?__](#insiders-features){ #insiders-features }
 
@@ -258,7 +314,7 @@ that you would like to see on the list, we encourage you to
 
 If you extend the number of sites that are in your current sponsoring limit,
 please [upgrade your sponsorship] to a higher tier to continue using the
-Insiders version and build more sites. The change will be effective immediately.
+Insiders edition and build more sites. The change will be effective immediately.
 
   [upgrade your sponsorship]: https://docs.github.com/en/billing/managing-billing-for-github-sponsors/upgrading-a-sponsorship
 
@@ -350,14 +406,15 @@ effective. From that day on, you will no longer receive future updates. However,
 you are __welcome to continue using the latest version__ that was available to
 you at the time of your cancellation for as long as you like.
 
-Please note that [GitHub deletes private forks], so you may want to take steps to ensure
-that you have a backup of the software if necessary and use the locally installed version.
+Please note that [GitHub deletes private forks], so you may want to take steps
+to ensure that you have a backup of the software if necessary and use the
+locally installed version.
 
   [GitHub deletes private forks]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/removing-a-collaborator-from-a-personal-repository#deleting-forks-of-private-repositories
 
 ## Licensing
 
-[__What constitutes commercial use of the Insiders version?__](#commercial-use){ #commercial-use }
+[__What constitutes commercial use of the Insiders edition?__](#commercial-use){ #commercial-use }
 
 Commercial use refers to any use of the software for a business or for-profit
 purpose. This includes any use by a corporation or other organization, whether
@@ -366,7 +423,7 @@ pricing tiers for commercial use, each tailored to the needs of different
 businesses. It's important to note that internal use of the software within your
 organization is also considered commercial use, as with all commercial software.
 
-[__What constitutes non-commercial use of the Insiders version?__](#non-commercial-use){ #non-commercial-use }
+[__What constitutes non-commercial use of the Insiders edition?__](#non-commercial-use){ #non-commercial-use }
 
 Non-commercial use of our Material for MkDocs refers to private use. This
 includes individuals using the Insiders edition for private or purely
@@ -389,7 +446,7 @@ to push this project forward.
 please make sure to [upgrade your sponsorship] once your current sponsoring tier
 limit has been reached.
 
-[__Does the Insiders version have a different license?__](#insiders-license){ #insiders-license }
+[__Does the Insiders edition have a different license?__](#insiders-license){ #insiders-license }
 
 No. Whether you're an individual or a company, you may use Material for
 MkDocs Insiders precisely under the same terms as Material for MkDocs, which are
@@ -465,7 +522,7 @@ Yes, all of our commercial benefits, such as logo placement and backlinks, are
 optional and can be opted in or out at any time. You can keep your sponsorship
 completely private.
 
-[__How can I report a bug in the Insiders version?__](#insiders-bugs){ #insiders-bugs }
+[__How can I report a bug in the Insiders edition?__](#insiders-bugs){ #insiders-bugs }
 
 If you encounter a bug in the Insiders edition, we kindly request that you
 report it on our [issue tracker] in the public community repository. When
