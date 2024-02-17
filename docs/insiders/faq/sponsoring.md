@@ -20,16 +20,21 @@ ourselves fully to the project.
 To sustain this full-time commitment and to expand the team, we introduced
 Material for MkDocs Insiders. This private Insiders repository, available
 exclusively to our monthly sponsors, is where we first release the latest
-advancements of Material for MkDocs. That way our sponsors get the premium
-features in advance of all others users as a thank you for their support. But
-here's the best part: once we achieve specific funding goals, these advancements
-become available to the wider community. This model ensures ongoing development
-and accessibility for all, keeping the project vibrant and up-to-date.
+advancements of Material for MkDocs. That way our sponsors get the
+[premium features] in advance of all others users as a thank you for their
+support. But here's the best part: once we achieve specific funding goals, these
+advancements become available to the wider community. This model ensures ongoing
+development and accessibility for all, keeping the project vibrant and
+up-to-date.
 
-We communicate these funding goals and their progress openly, ensuring our
+We communicate these [funding goals] and their progress openly, ensuring our
 community is involved every step of the way. It's our way of making sure that
 while we do need the support to keep going, everyone will eventually benefit
 from the advancements made possible by our sponsors.
+
+  [funding goals]: ../index.md/#funding
+  [premium features]: ../index.md/#whats-in-it-for-me
+
 
 [__Why is the Insiders offered as a subscription model?__](#subscription-model){ #subscription-model }
 
@@ -37,7 +42,7 @@ You might wonder why we opted for a subscription model for the Insiders edition
 instead of a one-time purchase. Here's the thing: Material for MkDocs is in
 constant evolution. Our work is never done because there's always something new
 on the horizon – be it adapting to upstream dependency updates, keeping pace
-with environment changes like software or browser updates, or bringing to life
+with environment changes like browser updates, or bringing to life
 the new features and improvements our users wish for.
 
 A one-time payment might seem appealing at first glance, but it's a bit like
@@ -46,7 +51,7 @@ With a subscription, you're not just buying what's already been developed;
 you're investing in what's coming next. You get all the future updates, bug
 fixes, and new features as they roll out. This ongoing development is crucial
 not just for keeping the project alive and kicking but for ensuring it
-continually meets your needs and expectations.
+continues to meet your needs and expectations.
 
 This subscription model is what enables us to dedicate the necessary time and
 resources to Material for MkDocs, ensuring its sustainability and growth. It's
