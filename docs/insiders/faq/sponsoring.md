@@ -74,7 +74,7 @@ donation.
 
 __For companies:__
 We understand that some companies prefer one-time payments due to their
-financial policies, and often require receipts for these transactions. If your
+financial policies, and often require invoices for these transactions. If your
 company is looking to support Material for MkDocs but needs to adhere to
 specific financial practices, please reach out to us via email at
 sponsors@squidfunk.com.
