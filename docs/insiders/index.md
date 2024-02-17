@@ -169,6 +169,7 @@ You can cancel your sponsorship anytime.[^5]
 
 [![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
 [![Trendpop]{ style="height: 120px" }](https://www.trendpop.com/){ target=_blank title="Trendpop" }
+[![SailPoint]{ style="height: 120px" }](https://www.sailpoint.com/){ target=_blank title="SailPoint" }
 
 **Bronze sponsors**:
 
@@ -246,6 +247,7 @@ You can cancel your sponsorship anytime.[^5]
   [Spotware]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png
   [Milford Assets]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png
   [Lechler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png
+  [SailPoint]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png
 
 <hr />
 
