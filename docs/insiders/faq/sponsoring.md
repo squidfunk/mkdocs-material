@@ -569,7 +569,7 @@ please reach out to us at sponsors@squidfunk.com.
 
 Yes, you can. GitHub offers the option to [set your sponsorship to private] when
 you initiate your sponsorship. This means that your account will not appear in
-sponsor-listings so there is no public affiliartion with Material for MkDocs.
+sponsor-listings so there is no public affiliation with Material for MkDocs.
 Only we know that you sponsored, but we will never disclose this information
 without your written consent.
 
