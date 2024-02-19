@@ -437,7 +437,7 @@ Our fair use policy includes the following guidelines:
 
 - Please refrain from __distributing the source code__ of Insiders. While you
 may use the software for public, private, or commercial projects and may
-privately fork or mirror it, we ask that you keep the source code private. This
+privately [fork] or [mirror] it, we ask that you keep the source code private. This
 is important to our sponsorware strategy, which helps us fund ongoing
 development and support of the software. If this guidelines is violated,
 everybody loses, as it will reduce the time of us maintainers we can set aside
@@ -568,22 +568,12 @@ please reach out to us at sponsors@squidfunk.com.
 [__Can I sponsor privately?__](#sponsorship-private){ #sponsorship-private }
 
 Yes, you can. GitHub offers the option to [set your sponsorship to private] when
-you initiate your sponsorship. For those seeking additional privacy, we
-recommend the following workflow:
-
-1. Create a new GitHub bot account specifically for this purpose – this bot
-account should not be associated with any individual and should be set as a
-privately listed owner within your GitHub organization.
-2. Use this account to sponsor Material for MkDocs privately – the account will
-be automatically listed as a collaborator on the private Insiders repository.
-3. [Clone], [fork], or [mirror] the repository as needed.
-
-Rest assured, all information will remain confidential, with only the bot
-account and our team of maintainers having access to the details of the
-sponsorship.
+you initiate your sponsorship. This means that your account will not appear in
+sponsor-listings so there is no public affiliartion with Material for MkDocs.
+Only we know that you sponsored, but we will never disclose this information
+without your written consent.
 
   [set your sponsorship to private]: https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/managing-your-sponsorship#managing-the-privacy-setting-for-your-sponsorship
-  [clone]: https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository
   [fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
   [mirror]: https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository
 
