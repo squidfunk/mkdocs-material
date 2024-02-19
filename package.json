@@ -85,7 +85,7 @@
     "postcss-pseudo-is": "^0.3.0",
     "preact": "^10.19.4",
     "rimraf": "^5.0.5",
-    "sass": "^1.70.0",
+    "sass": "^1.71.0",
     "simple-icons": "^11.4.0",
     "stylelint": "^15.11.0",
     "stylelint-config-recess-order": "4.2.0",
