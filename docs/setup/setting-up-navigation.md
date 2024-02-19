@@ -31,6 +31,16 @@ are rebound automatically, i.e., __Material for MkDocs now behaves like a Single
 Page Application__. Now, the search index survives navigation, which is
 especially useful for large documentation sites.
 
+!!! info "The [`site_url`][mkdocs.site_url] setting must be set"
+
+    Note that you must set [`site_url`][mkdocs.site_url] when using instant
+    navigation, as instant navigation relies on the generated `sitemap.xml`
+    which will be empty if this setting is omitted. Example:
+
+    ``` yaml
+    site_url: https://example.com
+    ```
+
   [XHR]: https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
 
 #### Instant prefetching
@@ -107,6 +117,16 @@ theme:
   features:
     - navigation.instant.preview
 ```
+
+!!! info "The [`site_url`][mkdocs.site_url] setting must be set"
+
+    Note that you must set [`site_url`][mkdocs.site_url] when using instant
+    previews, as instant previews rely on the generated `sitemap.xml`
+    which will be empty if this setting is omitted. Example:
+
+    ``` yaml
+    site_url: https://example.com
+    ```
 
 ### Anchor tracking
 
