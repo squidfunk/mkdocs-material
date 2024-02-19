@@ -4,7 +4,7 @@
 
 ### 9.5.10 <small>February 19, 2024</small> { id="9.5.10" }
 
-- Added Bahasa Malaysia translations
+- Updated Bahasa Malaysia translations
 - Fixed #6783: Hide continue reading link for blog posts without separators
 - Fixed #6779: Incorrect positioning of integrated table of contents
 
