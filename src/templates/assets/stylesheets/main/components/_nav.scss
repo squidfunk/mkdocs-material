@@ -710,7 +710,7 @@
         }
 
         // Adjust spacing for nested navigation
-        > .md-nav {
+        > .md-nav:not(.md-nav--secondary) {
           margin-inline-start: px2rem(-12px);
         }
 
@@ -731,16 +731,6 @@
 
     // Modifier for when table of contents is rendered in primary navigation
     &--integrated > .md-nav__list > .md-nav__item--active {
-
-      // Add spacing to container for non-nested navigation items
-      &:not(.md-nav__item--nested) {
-        padding: 0 px2rem(12px);
-
-        // Remove padding as it's given by container
-        > .md-nav__link {
-          padding: 0;
-        }
-      }
 
       // Show integrated table of contents
       .md-nav--secondary {
