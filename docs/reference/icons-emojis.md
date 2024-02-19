@@ -71,7 +71,7 @@ See additional configuration options:
 ### Using emojis
 
 Emojis can be integrated in Markdown by putting the shortcode of the emoji
-between two colons. If you're using [Twemoji] (recommended), you can look up
+between two colons. If you're using Twemoji (recommended), you can look up
 the shortcodes at [Emojipedia]:
 
 ``` title="Emoji"
@@ -84,7 +84,6 @@ the shortcodes at [Emojipedia]:
 
 </div>
 
-  [Twemoji]: https://twemoji.twitter.com/
   [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons
