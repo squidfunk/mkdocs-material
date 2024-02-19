@@ -205,8 +205,6 @@ MkDocs Insiders program. To ensure that everyone can afford the Insiders program
 and keep the barrier as low as possible, we have set prices as low as [$15] a
 month for [non-commercial] use.
 
-  [non-commercial]: ../faq/sponsoring.md/#non-commercial-use
-
 [__Do you offer free access to Insiders for Open Source projects?__](#insiders-open-source){ #insiders-open-source }
 
 No, we do not offer free access to our Material for MkDocs Insiders edition.
