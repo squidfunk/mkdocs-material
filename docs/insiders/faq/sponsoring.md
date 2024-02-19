@@ -71,11 +71,11 @@ everyone.
 [__What features are included in the Insiders edition?__](#insiders-features){ #insiders-features }
 
 The Insiders edition includes more than 20 additional features. You can find an
-overview of these features on our [Insiders page], which is updated when new
+[overview of these features] on our [Insiders page], which is updated when new
 features are added and released.
 
-  [Insiders]: ../index.md
-  [Insiders page]: ../index.md#whats-in-it-for-me
+  [Insiders page]: ../index.md
+  [overview of these features]: ../index.md#whats-in-it-for-me
 
 [__How often is the Insiders edition updated?__](#insiders-updates){ #insiders-updates }
 
@@ -118,7 +118,7 @@ exchange tips, and explore solutions together.
 
 [__Which sponsoring tier should I choose?__](#sponsorship-tier){ #sponsorship-tier }
 
-The sponsoring tiers are divided into non-commercial and commercial tiers. If
+The sponsoring tiers are divided into [non-commercial] and [commercial] tiers. If
 you are an individual or organization using Material for MkDocs for private or
 __non-commercial__ Open Source projects, you have two tiers to choose from,
 depending on the number of sites you want to build. For companies using
@@ -127,7 +127,8 @@ you can choose depending on your requirements.
 
 Also, please read what is considered [commercial use].
 
-  [commercial use]: #commercial-use
+  [commercial]: ../faq/sponsoring.md/#commercial-use
+  [non-commercial]: ../faq/sponsoring.md/#non-commercial-use
 
 [__Why are one-time sponsorships not granted access to Insiders?__](#sponsorship-one-time){ #sponsorship-one-time }
 
@@ -174,9 +175,9 @@ already there.
 [__Is there a trial period for the Insiders edition?__](#insiders-trial){ #insiders-trial }
 
 No, we do not offer a trial period for the Insiders edition. However, if you're
-a company and are considering sponsoring on the commercial tier, but want to
+a company and are considering sponsoring on the [commercial] tier, but want to
 first give the Insiders edition a try, you can sponsor on the [$15] tier with a
-personal account for non-commercial evaluation purposes.
+personal account for [non-commercial] evaluation purposes.
 
 Additionally, our subscription model allows you to cancel your sponsorship
 anytime. If you decide to cancel, your sponsorship will remain active until
@@ -202,7 +203,9 @@ please don't hesitate to reach out to sponsors@squidfunk.com.
 Unfortunately, we are not able to offer any discounts for the Material for
 MkDocs Insiders program. To ensure that everyone can afford the Insiders program
 and keep the barrier as low as possible, we have set prices as low as [$15] a
-month for non-commercial use.
+month for [non-commercial] use.
+
+  [non-commercial]: ../faq/sponsoring.md/#non-commercial-use
 
 [__Do you offer free access to Insiders for Open Source projects?__](#insiders-open-source){ #insiders-open-source }
 
@@ -216,7 +219,7 @@ Open Source model. Therefore, Material for MkDocs itself is already free.
 
 However, we do offer an affordable sponsorship tier starting at [$15] a month,
 which is meant for individuals and non-profit organizations using Material for
-MkDocs to build 1-2 sites for non-commercial purposes. This tier provides access
+MkDocs to build 1-2 sites for [non-commercial] purposes. This tier provides access
 to all new features, benefiting you from our ongoing development efforts.
 
 [__Is Insiders free for those who contribute to this project?__](#insiders-contributors){ #insiders-contributors }
@@ -252,10 +255,10 @@ support from subscriptions to fund new features, updates, and maintenance.
 Therefore, the Insiders version is not available through a one-time donation.
 
 If monthly payments do not work for you or your company, you can adjust your
-[GitHub account's billing cycle] to annual instead of monthly and sponsor at the
+GitHub account's [billing cycle] to annual instead of monthly and sponsor at the
 appropriate tier.
 
-[GitHub account's billing cycle]: ../insiders/sponsoring.md/#insiders-billing-cycle
+[billing cycle]: ../insiders/faq/sponsoring.md/#insiders-billing-cycle
 
 [__How can I set my billing to monthly or yearly?__](#insiders-billing-cycle){ #insiders-billing-cycle }
 
@@ -308,7 +311,7 @@ that you would like to see on the list, we encourage you to
 [initiate a new discussion] to evaluate it with others.
 
   [overview of these sponsoring goals]: ../index.md#goals
-  [initiate a new discussion]: https://github.com/squidfunk/mkdocs-material/discussions/new/chooses
+  [initiate a new discussion]: https://github.com/squidfunk/mkdocs-material/discussions
 
 [__What happens if I reach my sponsoring limit for my current tier?__](#insiders-limit){ #insiders-limit }
 
@@ -361,7 +364,7 @@ for sponsorship.
 It depends. If you are using the Insiders edition as an individual, you can work
 directly with the private repository, as you do not need to share the Insiders
 features with others. If you are working with a team, it is best to create a
-private fork using the individual account you listed as a collaborator of
+private [fork] using the individual account you listed as a collaborator of
 Material for MkDocs to grant access to all members of your organization to
 your fork.
 
@@ -425,7 +428,7 @@ organization is also considered commercial use, as with all commercial software.
 
 [__What constitutes non-commercial use of the Insiders edition?__](#non-commercial-use){ #non-commercial-use }
 
-Non-commercial use of our Material for MkDocs refers to private use. This
+[Non-commercial] use of our Material for MkDocs refers to private use. This
 includes individuals using the Insiders edition for private or purely
 non-commercial Open Source projects. We offer two different tiers for
 non-commercial use, depending on the number of sites you want to build.
@@ -452,7 +455,7 @@ No. Whether you're an individual or a company, you may use Material for
 MkDocs Insiders precisely under the same terms as Material for MkDocs, which are
 given by the [MIT license].
 
-[MIT license]: ../../license.md
+  [MIT license]: ../../license.md
 
 [__Can outside collaborators build and run the documentation locally without access to Insiders?__](#insiders-outside-collaborators){ #insiders-outside-collaborators }
 
