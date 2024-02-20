@@ -177,6 +177,9 @@
   <a href="https://www.lechler.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png" height="58"
   /></a>
+  <a href="https://invers.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
