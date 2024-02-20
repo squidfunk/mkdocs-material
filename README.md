@@ -65,7 +65,7 @@
   <a href="https://www.trendpop.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png" height="120"
   /></a>
-  <a href="https://www.sailpoint.com/" target=_blank><img
+  <a href="https://documentation.sailpoint.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png" height="120"
   /></a>
 </p>

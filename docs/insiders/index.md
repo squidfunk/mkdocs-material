@@ -169,7 +169,7 @@ You can cancel your sponsorship anytime.[^5]
 
 [![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
 [![Trendpop]{ style="height: 120px" }](https://www.trendpop.com/){ target=_blank title="Trendpop" }
-[![SailPoint]{ style="height: 120px" }](https://www.sailpoint.com/){ target=_blank title="SailPoint" }
+[![SailPoint]{ style="height: 120px" }](https://documentation.sailpoint.com/){ target=_blank title="SailPoint" }
 
 **Bronze sponsors**:
 
