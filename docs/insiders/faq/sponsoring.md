@@ -68,30 +68,14 @@ has made all the difference, enabling us to rely on our sponsors' ongoing
 support and ensuring that Material for MkDocs remains a cutting-edge tool for
 everyone.
 
-[__Can I purchase the Insiders edition with a one-time donation?__](#one-time-donation){ #one-time-donation }
-
-__For individual users:__
-One-time donations, while appreciated, cannot support the ongoing development of
-Material for MkDocs like subscriptions do. Our project's growth relies on the
-steady support from subscriptions to fund new features, updates, and
-maintenance. Therefore, the Insiders version is not available through a one-time
-donation.
-
-__For companies:__
-We understand that some companies prefer one-time payments due to their
-financial policies, and often require invoices for these transactions. If your
-company is looking to support Material for MkDocs but needs to adhere to
-specific financial practices, please reach out to us via email at
-sponsors@squidfunk.com.
-
 [__What features are included in the Insiders edition?__](#insiders-features){ #insiders-features }
 
 The Insiders edition includes more than 20 additional features. You can find an
-overview of these features on our [Insiders page], which is updated when new
+[overview of these features] on our [Insiders page], which is updated when new
 features are added and released.
 
-  [Insiders]: ../index.md
-  [Insiders page]: ../index.md#whats-in-it-for-me
+  [Insiders page]: ../index.md
+  [overview of these features]: ../index.md#whats-in-it-for-me
 
 [__How often is the Insiders edition updated?__](#insiders-updates){ #insiders-updates }
 
@@ -134,7 +118,7 @@ exchange tips, and explore solutions together.
 
 [__Which sponsoring tier should I choose?__](#sponsorship-tier){ #sponsorship-tier }
 
-The sponsoring tiers are divided into non-commercial and commercial tiers. If
+The sponsoring tiers are divided into [non-commercial] and [commercial] tiers. If
 you are an individual or organization using Material for MkDocs for private or
 __non-commercial__ Open Source projects, you have two tiers to choose from,
 depending on the number of sites you want to build. For companies using
@@ -143,7 +127,8 @@ you can choose depending on your requirements.
 
 Also, please read what is considered [commercial use].
 
-  [commercial use]: #commercial-use
+  [commercial]: ../faq/sponsoring.md/#commercial-use
+  [non-commercial]: ../faq/sponsoring.md/#non-commercial-use
 
 [__Why are one-time sponsorships not granted access to Insiders?__](#sponsorship-one-time){ #sponsorship-one-time }
 
@@ -190,9 +175,9 @@ already there.
 [__Is there a trial period for the Insiders edition?__](#insiders-trial){ #insiders-trial }
 
 No, we do not offer a trial period for the Insiders edition. However, if you're
-a company and are considering sponsoring on the commercial tier, but want to
+a company and are considering sponsoring on the [commercial] tier, but want to
 first give the Insiders edition a try, you can sponsor on the [$15] tier with a
-personal account for non-commercial evaluation purposes.
+personal account for [non-commercial] evaluation purposes.
 
 Additionally, our subscription model allows you to cancel your sponsorship
 anytime. If you decide to cancel, your sponsorship will remain active until
@@ -218,7 +203,7 @@ please don't hesitate to reach out to sponsors@squidfunk.com.
 Unfortunately, we are not able to offer any discounts for the Material for
 MkDocs Insiders program. To ensure that everyone can afford the Insiders program
 and keep the barrier as low as possible, we have set prices as low as [$15] a
-month for non-commercial use.
+month for [non-commercial] use.
 
 [__Do you offer free access to Insiders for Open Source projects?__](#insiders-open-source){ #insiders-open-source }
 
@@ -232,7 +217,7 @@ Open Source model. Therefore, Material for MkDocs itself is already free.
 
 However, we do offer an affordable sponsorship tier starting at [$15] a month,
 which is meant for individuals and non-profit organizations using Material for
-MkDocs to build 1-2 sites for non-commercial purposes. This tier provides access
+MkDocs to build 1-2 sites for [non-commercial] purposes. This tier provides access
 to all new features, benefiting you from our ongoing development efforts.
 
 [__Is Insiders free for those who contribute to this project?__](#insiders-contributors){ #insiders-contributors }
@@ -260,29 +245,45 @@ the Insiders edition.
 
   [community experts]: ../community-experts-program/index.md
 
+[__Can I purchase the Insiders edition with a one-time donation?__](#one-time-donation){ #one-time-donation }
+
+One-time donations, while appreciated, cannot support the ongoing development of
+Material for MkDocs as subscriptions do. Our project's growth relies on steady
+support from subscriptions to fund new features, updates, and maintenance.
+Therefore, the Insiders version is not available through a one-time donation.
+
+If monthly payments do not work for you or your company, you can adjust your
+GitHub account's [billing cycle] to annual instead of monthly and sponsor at the
+appropriate tier.
+
+[billing cycle]: ../insiders/faq/sponsoring.md/#insiders-billing-cycle
+
 [__How can I set my billing to monthly or yearly?__](#insiders-billing-cycle){ #insiders-billing-cycle }
 
-You can sponsor Material for MkDocs on a monthly or yearly basis. Depending on
-your billing cycle you automatically become a monthly or yearly sponsor. Your
-[billing cycle] is an account-level setting that you can easily change in your
-account. If, for some reason, you cannot make this change, you can create a
-dedicated bot account with a yearly billing cycle on GitHub, which you only use
-for sponsoring (some sponsors already do that). If you have any problems or
-further questions, please contact us at sponsors@squidfunk.com.
+Before you sponsor Material for MkDocs on one of our sponsoring tiers, you can
+change your [billing cycle] to either monthly or yearly, according to your
+preference. Your [billing cycle] is a setting at the account level on GitHub,
+which you can easily modify in your account settings. When selecting one of our
+sponsoring tiers, this adjustment will automatically categorize you as a monthly
+or yearly sponsor.
+
+If you find it challenging to make this change in your account, a practical
+workaround is to create a dedicated GitHub bot account where you set the billing
+cycle to yearly and use it specifically for your sponsorship contributions. This
+is a strategy some of our sponsors have successfully implemented. For any
+difficulties or further inquiries, please don’t hesitate to contact us at
+sponsors@squidfunk.com for support.
 
   [billing cycle]: https://docs.github.com/en/github/setting-up-and-managing-billing-and-payments-on-github/changing-the-duration-of-your-billing-cycle
 
 [__Can I get an invoice for my sponsorship payment?__](#insiders-invoice){ #insiders-invoice}
 
-Right now, we can't provide you with an invoice for your sponsoring transaction,
-as [GitHub Sponsors] handles all transactions for us. However, [GitHub Sponsors]
-automatically sends you a payment receipt via mail once the sponsorship is
-active.
-
-Furthermore, we are working on a solution to optimize access management and more
-features. If you are interested in this, please get in touch with us via mail at
-sponsors@squidfunk.com or turn on all notifications for MkDocs, and we will
-reach out as soon as we are live.
+Since [GitHub Sponsors] manages all transactions on our behalf, GitHub Sponsors
+is considered your supplier, not us. As part of their process, GitHub Sponsors
+automatically sends you a payment receipt via email for each billing cycle. It's
+important to note that this document is a receipt, not an invoice. If you
+require an invoice for your records, please contact us at sponsors@squidfunk.com
+before initiating your sponsorship.
 
   [GitHub Sponsors]: https://github.com/sponsors/squidfunk/
 
@@ -308,7 +309,7 @@ that you would like to see on the list, we encourage you to
 [initiate a new discussion] to evaluate it with others.
 
   [overview of these sponsoring goals]: ../index.md#goals
-  [initiate a new discussion]: https://github.com/squidfunk/mkdocs-material/discussions/new/chooses
+  [initiate a new discussion]: https://github.com/squidfunk/mkdocs-material/discussions
 
 [__What happens if I reach my sponsoring limit for my current tier?__](#insiders-limit){ #insiders-limit }
 
@@ -361,7 +362,7 @@ for sponsorship.
 It depends. If you are using the Insiders edition as an individual, you can work
 directly with the private repository, as you do not need to share the Insiders
 features with others. If you are working with a team, it is best to create a
-private fork using the individual account you listed as a collaborator of
+private [fork] using the individual account you listed as a collaborator of
 Material for MkDocs to grant access to all members of your organization to
 your fork.
 
@@ -425,7 +426,7 @@ organization is also considered commercial use, as with all commercial software.
 
 [__What constitutes non-commercial use of the Insiders edition?__](#non-commercial-use){ #non-commercial-use }
 
-Non-commercial use of our Material for MkDocs refers to private use. This
+[Non-commercial] use of our Material for MkDocs refers to private use. This
 includes individuals using the Insiders edition for private or purely
 non-commercial Open Source projects. We offer two different tiers for
 non-commercial use, depending on the number of sites you want to build.
@@ -436,7 +437,7 @@ Our fair use policy includes the following guidelines:
 
 - Please refrain from __distributing the source code__ of Insiders. While you
 may use the software for public, private, or commercial projects and may
-privately fork or mirror it, we ask that you keep the source code private. This
+privately [fork] or [mirror] it, we ask that you keep the source code private. This
 is important to our sponsorware strategy, which helps us fund ongoing
 development and support of the software. If this guidelines is violated,
 everybody loses, as it will reduce the time of us maintainers we can set aside
@@ -452,7 +453,7 @@ No. Whether you're an individual or a company, you may use Material for
 MkDocs Insiders precisely under the same terms as Material for MkDocs, which are
 given by the [MIT license].
 
-[MIT license]: ../../license.md
+  [MIT license]: ../../license.md
 
 [__Can outside collaborators build and run the documentation locally without access to Insiders?__](#insiders-outside-collaborators){ #insiders-outside-collaborators }
 
@@ -560,23 +561,21 @@ transactions for us. Consequently, we have decided to introduce a setup fee for
 any additional administrative tasks other than those handled by GitHub Sponsors
 that require our attention and involve the completion of forms or adherence to
 company processes when purchasing Material for MkDocs Insiders. If your purchase
-departmenz requires additional time and effort from our team, please be aware
+department requires additional time and effort from our team, please be aware
 that the setup fee will apply. For detailed information and specific inquiries,
 please reach out to us at sponsors@squidfunk.com.
 
 [__Can I sponsor privately?__](#sponsorship-private){ #sponsorship-private }
 
-Yes, you can. GitHub gives you the option to set your sponsorship to [private]
-when you set up your sponsorship. Additionally, we have a recommended workflow
-for you: We suggest you create a new GitHub bot account. This bot account should
-not be tied to a particular individual and should be privately listed as an
-owner of your GitHub organization. This account can then be used to sponsor
-Material for MkDocs privately. As a bot account, it will automatically be listed
-as a collaborator of the private Insiders repository. You can clone, fork, or
-mirror using this account. All information will be kept confidential; only the
-bot account and us maintainers will have insights into his sponsorship.
+Yes, you can. GitHub offers the option to [set your sponsorship to private] when
+you initiate your sponsorship. This means that your account will not appear in
+sponsor-listings so there is no public affiliation with Material for MkDocs.
+Only we know that you sponsored, but we will never disclose this information
+without your written consent.
 
-  [private]: https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/managing-your-sponsorship#managing-the-privacy-setting-for-your-sponsorship
+  [set your sponsorship to private]: https://docs.github.com/en/sponsors/sponsoring-open-source-contributors/managing-your-sponsorship#managing-the-privacy-setting-for-your-sponsorship
+  [fork]: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+  [mirror]: https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository
 
 [__Are there any geographical restrictions on becoming a sponsor?__](#sponsorship-geo){ #sponsorship-geo }
 
