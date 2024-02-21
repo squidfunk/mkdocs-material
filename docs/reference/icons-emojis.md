@@ -83,8 +83,7 @@ the shortcodes at [Emojipedia]:
 :smile:
 
 </div>
-
-  [Twemoji]: https://twemoji.twitter.com/
+  [Twemoji]: https://github.com/twitter/twemoji
   [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons
