@@ -24,7 +24,7 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Tables]{ data-preview="" }
+- [Tables]
 
   [Tables]: ../setup/extensions/python-markdown.md#tables
 

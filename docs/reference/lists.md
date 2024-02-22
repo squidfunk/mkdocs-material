@@ -24,8 +24,8 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Definition Lists]{ data-preview="" }
-- [Tasklist]{ data-preview="" }
+- [Definition Lists]
+- [Tasklist]
 
   [Definition Lists]: ../setup/extensions/python-markdown.md#definition-lists
   [Tasklist]: ../setup/extensions/python-markdown-extensions.md#tasklist

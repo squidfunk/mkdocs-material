@@ -34,10 +34,10 @@ JavaScript syntax highlighter.
 
 See additional configuration options:
 
-- [Highlight]{ data-preview="" }
-- [InlineHilite]{ data-preview="" }
-- [SuperFences]{ data-preview="" }
-- [Snippets]{ data-preview="" }
+- [Highlight]
+- [InlineHilite]
+- [SuperFences]
+- [Snippets]
 
   [Highlight]: ../setup/extensions/python-markdown-extensions.md#highlight
   [InlineHilite]: ../setup/extensions/python-markdown-extensions.md#inlinehilite

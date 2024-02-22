@@ -21,7 +21,7 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Attribute Lists]{ data-preview="" }
+- [Attribute Lists]
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
 

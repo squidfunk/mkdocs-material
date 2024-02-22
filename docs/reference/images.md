@@ -23,8 +23,8 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Attribute Lists]{ data-preview="" }
-- [Markdown in HTML]{ data-preview="" }
+- [Attribute Lists]
+- [Markdown in HTML]
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html

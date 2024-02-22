@@ -28,9 +28,9 @@ markdown_extensions:
 
 See additional configuration options:
 
-- [Critic]{ data-preview="" }
-- [Caret, Mark & Tilde]{ data-preview="" }
-- [Keys]{ data-preview="" }
+- [Critic]
+- [Caret, Mark & Tilde]
+- [Keys]
 
   [Critic]: ../setup/extensions/python-markdown-extensions.md#critic
   [Caret, Mark & Tilde]: ../setup/extensions/python-markdown-extensions.md#caret-mark-tilde
