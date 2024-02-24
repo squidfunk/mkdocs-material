@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.11 <small>February 24, 2024</small> { id="9.5.11" }
+
+- Updated Finnish translation
+
 ### 9.5.10 <small>February 19, 2024</small> { id="9.5.10" }
 
 - Updated Bahasa Malaysia translations
