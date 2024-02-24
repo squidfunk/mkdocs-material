@@ -201,7 +201,7 @@ uphold these values.[^1]
     1.2. __Second warning and opportunity for resolution:__ If the behavior
     persists, a second warning will be issued. Upon receiving the second
     warning, the user will be given a 5-day period for reflection, during which
-    they are encouraged to __publicly explain or apologize for their actions__.
+    they are encouraged to publicly explain or apologize for their actions.
     This period is designed to offer an opportunity for openly clearing out any
     misunderstanding.
 
@@ -248,9 +248,9 @@ organized.
   progresses with new information helps us to maintain focus and support our
   community.
 
-  We further _reserve the right to immediately close discussions or issues that
-  are reopened without providing new information_ or simply because users have
-  not yet received a response to their issue/question, as the issue is marked as
-  incomplete.
+    We further _reserve the right to immediately close discussions or issues that
+    are reopened without providing new information_ or simply because users have
+    not yet received a response to their issue/question, as the issue is marked as
+    incomplete.
 
   [minimal reproductions]: ../guides/creating-a-reproduction.md
