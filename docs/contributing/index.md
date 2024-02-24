@@ -114,7 +114,7 @@ In this section, we guide your through our processes.
   [report a docs issue]: reporting-a-docs-issue.md
   [request a change]: requesting-a-change.md
   [add translations]: https://github.com/squidfunk/mkdocs-material/adding-translations
-  [create a pull request]: https://github.com/squidfunk/mkdocs-material/pulls
+  [create a pull request]: making-a-pull-request.md
 
 ## Checklist
 
@@ -169,28 +169,9 @@ with our community.
 ## Rights and responsibilities
 
 As maintainers, we reserve the right and have the responsibility to close,
-remove, reject, or edit contributions, such as issues, discussions, comments,
-or commits, that do not align with our contribution guidelines and our
-[Code of Conduct].
-
-### Incomplete issues
-
-We have invested significant time in reviewing our contribution process and
-carefully assessed the essential requirements when reviewing and responding to
-issues. Each field in our issue templates has been thoughtfully curated, helping
-us to understand your matter.
-
-__Therefore, it is mandatory to fill out every field as requested__ to the best
-of your knowledge. We need all of this information because it ensures that every
-user and maintainer, regardless of their experience, can understand the content
-and severity of your bug report or change request.
-
-__We reserve the right to close issues missing essential information__, such as
-but not limited to [minimal reproductions], or that do not comply with the
-quality standards and requirements stated in our issue templates. Issues
-can be reopened once the missing information has been provided.
-
-  [minimal reproductions]: ../guides/creating-a-reproduction.md
+remove, block, reject, or edit contributions, such as issues, discussions,
+comments, or commits, or even users that __do not align__ with our contribution
+guidelines and our [Code of Conduct].
 
 ### Code of Conduct
 
@@ -199,4 +180,73 @@ treat each other with respect, and use inclusive and welcoming language. We
 always strive to create a positive and supportive environment and do not accept
 inappropriate, offensive, or harmful behavior.
 
-We take violations seriously and will take appropriate action in response.
+We take any violations seriously and will take appropriate action in response.[^1]
+
+  [^1]:
+    __Warning and blocking policy:__
+    Given the increasing popularity of our project, it's imperative to have
+    clear guidelines in place for handling extreme cases of disruptive behavior.
+    This is why we have established a policy on how to proceed with violations:
+
+    1.1. __First warning:__ Any user displaying inappropriate, offensive, or
+    harmful behavior will receive a first warning. This warning serves as a
+    formal notice that their behavior is not in alignment with our community
+    standards and Code of Conduct. The first warning is permanent and documented.
+
+    1.2. __Second warning and opportunity for resolution:__ If the behavior
+    persists, a second warning will be issued. Upon receiving the second
+    warning, the user will be given a 5-day period for reflection, during which
+    they are encouraged to __publicly explain or apologize for their actions__.
+    As all of our communication through the issue tracker and discussion board
+    is public, an apology should be made as well. This period is designed to offer
+    an opportunity for understanding and correction.
+
+    1.3. __Blocking:__ Should there be no improvement or response in behavior
+    following the second warning, we __reserve the right to block the user from
+    the community and repository. Blocking is considered a last resort, used
+    only when necessary to protect the community's integrity and positive
+    atmosphere.
+
+    Blocking has been a rare necessity in our community – employed just twice in
+    eight years – highlighting our preference for dialogue and mutual respect.
+    It aims to protect our community members and team.
+
+### Incomplete issues and duplicates
+
+We have invested significant time and effort in reviewing our contribution
+process, ensuring that we assess the essential requirements for reviewing and
+responding to issues effectively. Each field in our issue templates is
+thoughtfully designed to help us fully understand your concerns and the nature
+of your matter. We encourage all members to utilize the search function before
+submitting new issues or starting discussions to help avoid duplicates. Your
+cooperation is crucial in keeping our community's discussions constructive and
+organized.
+
+  - __Mandatory completion of issue templates:__ We need all of the information
+  required in our issue templates because it ensures that every user and
+  maintainer, regardless of their experience, can understand the content and
+  severity of your bug report or change request.
+
+  - __Closing incomplete issues:__
+  We _reserve the right to close issues lacking essential information_, such as
+  but not limited to [minimal reproductions] or those not adhering to the
+  quality standards and requirements specified in our issue templates. Such
+  issues can be reopened once the missing information has been duly provided.
+
+  - __Handling duplicates:__ To maintain organized and efficient
+  communication within our [issue tracker] and [discussion board], we
+  _reserve the right to close any duplicated issues or lock duplicated discussions_.
+  Opening multiple channels to ask the same question or report the same issue
+  across different forums hinders our ability to manage and address community
+  concerns effectively. This approach is vital for efficient time management, as
+  duplicated questions can consume the time of multiple team members
+  simultaneously. Ensuring that each issue or discussion is unique and
+  progresses with new information helps us to maintain focus and support our
+  community.
+
+  - __Reopened issues without new information:__ We further
+  _reserve the right to immediately close discussions or issues that are reopened without providing new information_
+  or simply because users have not yet received a response to their issue/
+  question, as the issue is marked as incomplete.
+
+  [minimal reproductions]: ../guides/creating-a-reproduction.md
