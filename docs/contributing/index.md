@@ -168,48 +168,53 @@ with our community.
 
 ## Rights and responsibilities
 
-As maintainers, we reserve the right and have the responsibility to close,
-remove, block, reject, or edit contributions, such as issues, discussions,
-comments, or commits, or even users that __do not align__ with our contribution
-guidelines and our [Code of Conduct].
+As maintainers, we are entrusted with the __responsibility__ to moderate
+communication within our community, including the authority to close, remove,
+reject, or edit issues, discussions, comments, commits, and to block users who
+__do not align__ with our contribution guidelines and our [Code of Conduct].
+This role requires us to be actively involved in maintaining the integrity and
+positive atmosphere of our community. Upholding these standards decisively
+ensures a respectful and inclusive environment for all members.
+
 
 ### Code of Conduct
 
-As stated in our [Code of Conduct], we expect all members of our community to
-treat each other with respect, and use inclusive and welcoming language. We
-always strive to create a positive and supportive environment and do not accept
+Our [Code of Conduct] outlines the expectation for all community members to
+treat one another with respect, employing inclusive and welcoming language. Our
+commitment is to foster a positive and supportive environment, intolerant of
 inappropriate, offensive, or harmful behavior.
 
-We take any violations seriously and will take appropriate action in response.[^1]
+We take any violations seriously and will take appropriate action in response to
+uphold these values.[^1]
 
   [^1]:
     __Warning and blocking policy:__
-    Given the increasing popularity of our project, it's imperative to have
-    clear guidelines in place for handling extreme cases of disruptive behavior.
-    This is why we have established a policy on how to proceed with violations:
+    Given the increasing popularity of our project and our commitment to a
+    healthy community, we've defined clear guidelines on how to proceed with
+    violations:
 
-    1.1. __First warning:__ Any user displaying inappropriate, offensive, or
+    1.1. __First warning:__ Users displaying repeated inappropriate, offensive, or
     harmful behavior will receive a first warning. This warning serves as a
     formal notice that their behavior is not in alignment with our community
-    standards and Code of Conduct. The first warning is permanent and documented.
+    standards and Code of Conduct. The first warning is permanent.
 
     1.2. __Second warning and opportunity for resolution:__ If the behavior
     persists, a second warning will be issued. Upon receiving the second
     warning, the user will be given a 5-day period for reflection, during which
     they are encouraged to __publicly explain or apologize for their actions__.
-    As all of our communication through the issue tracker and discussion board
-    is public, an apology should be made as well. This period is designed to offer
-    an opportunity for understanding and correction.
+    This period is designed to offer an opportunity for openly clearing out any
+    misunderstanding.
 
     1.3. __Blocking:__ Should there be no improvement or response in behavior
-    following the second warning, we __reserve the right to block the user from
+    following the second warning, we reserve the right to block the user from
     the community and repository. Blocking is considered a last resort, used
     only when necessary to protect the community's integrity and positive
     atmosphere.
 
-    Blocking has been a rare necessity in our community – employed just twice in
-    eight years – highlighting our preference for dialogue and mutual respect.
-    It aims to protect our community members and team.
+    Blocking has been an exceptionally rare necessity in our overwhelmingly
+    positve community – employed just twice in eight years – highlighting our
+    preference for dialogue and mutual respect. It aims to protect our community
+    members and team.
 
 ### Incomplete issues and duplicates
 
