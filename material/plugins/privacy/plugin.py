@@ -37,7 +37,7 @@ from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure.files import File, Files
 from mkdocs.utils import is_error_template
 from re import Match
-from urllib.parse import ParseResult as URL, urlparse
+from urllib.parse import ParseResult as URL, urlparse, unquote
 from xml.etree.ElementTree import Element, tostring
 
 from .config import PrivacyConfig
@@ -515,7 +515,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
     # Create a file for the given path
     def _path_to_file(self, path: str, config: MkDocsConfig):
         return File(
-            posixpath.join(self.config.assets_fetch_dir, path),
+            posixpath.join(self.config.assets_fetch_dir, unquote(path)),
             os.path.abspath(self.config.cache_dir),
             config.site_dir,
             False
