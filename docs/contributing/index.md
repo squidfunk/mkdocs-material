@@ -181,7 +181,7 @@ ensures a respectful and inclusive environment for all members.
 
 Our [Code of Conduct] outlines the expectation for all community members to
 treat one another with respect, employing inclusive and welcoming language. Our
-commitment is to foster a positive and supportive environment, intolerant of
+commitment is to foster a positive and supportive environment, free of
 inappropriate, offensive, or harmful behavior.
 
 We take any violations seriously and will take appropriate action in response to
@@ -190,11 +190,11 @@ uphold these values.[^1]
   [^1]:
     __Warning and blocking policy:__
     Given the increasing popularity of our project and our commitment to a
-    healthy community, we've defined clear guidelines on how to proceed with
+    healthy community, we've defined clear guidelines on how we proceed with
     violations:
 
-    1.1. __First warning:__ Users displaying repeated inappropriate, offensive, or
-    harmful behavior will receive a first warning. This warning serves as a
+    1.1. __First warning:__ Users displaying repeated inappropriate, offensive,
+    or harmful behavior will receive a first warning. This warning serves as a
     formal notice that their behavior is not in alignment with our community
     standards and Code of Conduct. The first warning is permanent.
 
@@ -205,20 +205,19 @@ uphold these values.[^1]
     This period is designed to offer an opportunity for openly clearing out any
     misunderstanding.
 
-    1.3. __Blocking:__ Should there be no improvement or response in behavior
+    1.3. __Blocking:__ Should there be no response or improvement in behavior
     following the second warning, we reserve the right to block the user from
     the community and repository. Blocking is considered a last resort, used
-    only when necessary to protect the community's integrity and positive
-    atmosphere.
+    only when absolutely necessary to protect the community's integrity and
+    positive atmosphere.
 
     Blocking has been an exceptionally rare necessity in our overwhelmingly
-    positve community – employed just twice in eight years – highlighting our
-    preference for dialogue and mutual respect. It aims to protect our community
-    members and team.
+    positive community, highlighting our preference for constructive dialogue
+    and mutual respect. It aims to protect our community members and team.
 
 ### Incomplete issues and duplicates
 
-We have invested significant time and effort in reviewing our contribution
+We have invested significant time and effort in the setup of our contribution
 process, ensuring that we assess the essential requirements for reviewing and
 responding to issues effectively. Each field in our issue templates is
 thoughtfully designed to help us fully understand your concerns and the nature
@@ -236,22 +235,22 @@ organized.
   We _reserve the right to close issues lacking essential information_, such as
   but not limited to [minimal reproductions] or those not adhering to the
   quality standards and requirements specified in our issue templates. Such
-  issues can be reopened once the missing information has been duly provided.
+  issues can be reopened once the missing information has been provided.
 
   - __Handling duplicates:__ To maintain organized and efficient
   communication within our [issue tracker] and [discussion board], we
-  _reserve the right to close any duplicated issues or lock duplicated discussions_.
-  Opening multiple channels to ask the same question or report the same issue
-  across different forums hinders our ability to manage and address community
-  concerns effectively. This approach is vital for efficient time management, as
-  duplicated questions can consume the time of multiple team members
-  simultaneously. Ensuring that each issue or discussion is unique and
+  _reserve the right to close any duplicated issues or lock duplicated
+  discussions_. Opening multiple channels to ask the same question or report the
+  same issue across different forums hinders our ability to manage and address
+  community concerns effectively. This approach is vital for efficient time
+  management, as duplicated questions can consume the time of multiple team
+  members simultaneously. Ensuring that each issue or discussion is unique and
   progresses with new information helps us to maintain focus and support our
   community.
 
-  - __Reopened issues without new information:__ We further
-  _reserve the right to immediately close discussions or issues that are reopened without providing new information_
-  or simply because users have not yet received a response to their issue/
-  question, as the issue is marked as incomplete.
+  We further _reserve the right to immediately close discussions or issues that
+  are reopened without providing new information_ or simply because users have
+  not yet received a response to their issue/question, as the issue is marked as
+  incomplete.
 
   [minimal reproductions]: ../guides/creating-a-reproduction.md
