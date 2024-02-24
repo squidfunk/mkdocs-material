@@ -88,16 +88,17 @@ a handful of them, [thanks to our awesome sponsors]!
 ## What's in it for me?
 
 The moment you [become a sponsor][how to become a sponsor], you'll get __immediate
-access to 25 additional features__ that you can __start using now__, and
+access to 26 additional features__ that you can __start using now__, and
 which are currently exclusively available to sponsors:
 
 <div class="mdx-columns" markdown>
 
-- [x] [Instant previews] :material-alert-decagram:{ .mdx-pulse title="Added on January 28, 2023" }
-- [x] [Footnote tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on January 24, 2023" }
-- [x] [Tags plugin: advanced settings] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
-- [x] [Tags plugin: nested tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
-- [x] [Tags plugin: shadow tags] :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+- [x] [Blog plugin: pinned posts] :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+- [x] [Instant previews] :material-alert-decagram:{ .mdx-pulse title="Added on January 28, 2024" }
+- [x] [Footnote tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on January 24, 2024" }
+- [x] [Tags plugin: advanced settings]
+- [x] [Tags plugin: nested tags]
+- [x] [Tags plugin: shadow tags]
 - [x] [Stay on page when switching languages]
 - [x] [Blog plugin: author profiles]
 - [x] [Blog plugin: advanced settings]
@@ -303,6 +304,7 @@ are released for general availability.
 - [x] [Instant prefetching]
 - [x] [Blog plugin: advanced settings]
 - [x] [Blog plugin: author profiles]
+- [x] [Blog plugin: pinned posts]
 - [x] [Footnote tooltips]
 
   [Optimize plugin]: ../plugins/optimize.md
@@ -313,6 +315,7 @@ are released for general availability.
   [Instant prefetching]: ../setup/setting-up-navigation.md#instant-prefetching
   [Blog plugin: advanced settings]: ../setup/setting-up-a-blog.md#advanced-settings
   [Blog plugin: author profiles]: ../setup/setting-up-a-blog.md#adding-author-profiles
+  [Blog plugin: pinned posts]: ../setup/setting-up-a-blog.md#pinning-a-post
   [Footnote tooltips]: ../reference/footnotes.md#footnote-tooltips
 
 #### $ 24,000 – Blockpaprika

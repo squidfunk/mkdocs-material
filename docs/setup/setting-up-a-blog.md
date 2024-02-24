@@ -342,7 +342,7 @@ authors:
   [authors]: ../plugins/blog.md#authors
   [authors_file]: ../plugins/blog.md#config.authors_file
 
-#### Adding author profiles :material-alert-decagram:{ .mdx-pulse title="Added on November 26, 2023" }
+#### Adding author profiles
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.46.0 -->
@@ -505,6 +505,29 @@ All assets inside the `posts` directory are copied to the `blog/assets` folder
 when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
+
+#### Pinning a post :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.0 -->
+<!-- md:flag experimental -->
+
+If you want to pin a post to the top of the index page, as well as the archive
+and category indexes it is part of, you can use the front matter `pin` property:
+
+``` yaml
+---
+date: 2024-01-31
+pin: true
+---
+
+# Hello world!
+...
+```
+
+If multiple posts are pinned, they are sorted by their creation date, with the
+most recent pinned post being shown first, followed by the other pinned posts in
+descending order.
 
 #### Setting the reading time
 

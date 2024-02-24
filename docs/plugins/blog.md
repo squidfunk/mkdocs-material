@@ -1585,6 +1585,29 @@ draft: true
 
 ---
 
+#### <!-- md:setting meta.pin -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.0 -->
+<!-- md:flag metadata -->
+<!-- md:default `false` -->
+<!-- md:flag experimental -->
+
+Use this property to pin a post to the top of a view. In case multiple posts are
+pinned, the pinned posts are sorted by descending order and appear before all
+other posts. Pin a post with:
+
+``` yaml
+---
+ping: true
+---
+
+# Post title
+...
+```
+
+---
+
 #### <!-- md:setting meta.links -->
 
 <!-- md:sponsors -->

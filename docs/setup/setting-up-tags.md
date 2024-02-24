@@ -27,7 +27,7 @@ For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/tags.md
 
-#### Advanced settings :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+#### Advanced settings
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.48.0 -->
@@ -211,7 +211,7 @@ arbitrary content before and after the marker:
   [tags.tags_file]: #tags-file
   [tags index enabled]: ../assets/screenshots/tags-index.png
 
-### Advanced features :material-alert-decagram:{ .mdx-pulse title="Added on December 23, 2023" }
+### Advanced features
 
 [Insiders] ships a __ground up rewrite of the tags plugin__ which is infinitely
 more powerful than the current version in the community edition. It allows

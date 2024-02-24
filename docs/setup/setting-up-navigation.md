@@ -93,8 +93,8 @@ experience.
 
 Instant previews are a brand new feature that allow the user to preview another
 site of your documentation without navigating to it. They can be very helpful to
-keep the user in context. A link can be opted into instant previews with the
-`data-preview` attribute:
+keep the user in context. Instant previews can be enabled on any internal link
+with the `data-preview` attribute:
 
 ```` markdown title="Link with instant preview"
 ``` markdown
@@ -107,6 +107,59 @@ keep the user in context. A link can be opted into instant previews with the
 [Attribute Lists](extensions/python-markdown.md#attribute-lists){ data-preview }
 
 </div>
+
+#### Automatic previews
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.0 -->
+<!-- md:extension -->
+<!-- md:flag experimental -->
+
+The recommended way to work with instant previews is to use the Markdown
+extension that is included with Material for MkDocs, as it allows you to enable
+instant previews on a per-page or per-section level for your documentation:
+
+``` yaml
+markdown_extensions:
+  - material.extensions.preview:
+      targets:
+        include:
+          - changelog/index.md
+          - customization.md
+          - insiders/changelog/*
+          - setup/extensions/*
+```
+
+The above configuration is what we use for our documentation. We've enabled
+instant previews for our changelogs, customization guide, and Insiders sections,
+as well as for all Markdown extensions that we support.
+
+!!! info "Full configuration example"
+
+    ``` yaml
+    markdown_extensions:
+      - material.extensions.preview:
+          sources: # (1)!
+            include:
+              - ...
+            exclude:
+              - ...
+          targets: # (2)!
+            include:
+              - ...
+            exclude:
+              - ...
+    ```
+
+    1.  Sources specify the pages _on_ which instant previews should be enabled.
+        If this setting is omitted, instant previews will be enabled on all
+        pages. You can use patterns to include or exclude pages. Exclusion is
+        evaluated on top of inclusion, so if a page is matched by both, it will
+        be excluded.
+
+    2.  Targets specify the pages _to_ which instant previews should be enabled.
+        This is the recommended way to enable instant previews.
+---
 
 Instant previews can also be enabled globally by adding the following lines to
 `mkdocs.yml`, which will enable instant previews for all internal links,

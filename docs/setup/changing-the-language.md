@@ -97,7 +97,7 @@ The following properties are available for each alternate language:
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
 
-#### Stay on page :material-alert-decagram:{ .mdx-pulse title="Added on December 8, 2023" }
+#### Stay on page
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.47.0 -->
