@@ -101,8 +101,8 @@ supports a subset of LaTeX syntax and can render math to HTML and SVG. To use
 === ":octicons-file-code-16: `docs/javascripts/katex.js`"
 
     ``` js
-    document$.subscribe(({ body }) => { // (1)!
-      renderMathInElement(body, {
+    document$.subscribe(() => { // (1)!
+      renderMathInElement(document.body, {
         delimiters: [
           { left: "$$",  right: "$$",  display: true },
           { left: "$",   right: "$",   display: false },
