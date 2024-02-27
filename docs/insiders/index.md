@@ -209,6 +209,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Milford Assets]](https://milfordasset.com/){ target=_blank title="Milford Assets" }
 [![Lechler]](https://www.lechler.com/){ target=_blank title="Lechler" }
 [![Invers]](https://invers.com/){ target=_blank title="Invers" }
+[![Maxar]](https://maxar.com/){ target=_blank title="Maxar" }
 
 </div>
 
@@ -251,6 +252,7 @@ You can cancel your sponsorship anytime.[^5]
   [Lechler]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png
   [SailPoint]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png
   [Invers]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png
+  [Maxar]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png
 
 <hr />
 
