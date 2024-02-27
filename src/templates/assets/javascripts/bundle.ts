@@ -229,10 +229,6 @@ const control$ = merge(
   ...getComponentElements("header")
     .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
-  /* Color palette */
-  ...getComponentElements("palette")
-    .map(el => mountPalette(el)),
-
   /* Progress bar */
   ...getComponentElements("progress")
     .map(el => mountProgress(el, { progress$ })),
@@ -267,6 +263,10 @@ const content$ = defer(() => merge(
   /* Header title */
   ...getComponentElements("header-title")
     .map(el => mountHeaderTitle(el, { viewport$, header$ })),
+
+  /* Color palette */
+  ...getComponentElements("palette")
+    .map(el => mountPalette(el)),
 
   /* Sidebar */
   ...getComponentElements("sidebar")
