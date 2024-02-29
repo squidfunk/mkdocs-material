@@ -27,13 +27,14 @@ import requests
 import site
 import sys
 
+import yaml
 from colorama import Fore, Style
 from importlib.metadata import distributions, version
 from io import BytesIO
 from markdown.extensions.toc import slugify
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin, event_priority
-from mkdocs.utils import get_theme_dir
+from mkdocs.utils import get_yaml_loader
 import regex
 from zipfile import ZipFile, ZIP_DEFLATED
 
@@ -97,7 +98,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         # hack to detect whether the custom_dir setting was used without parsing
         # mkdocs.yml again - we check at which position the directory provided
         # by the theme resides, and if it's not the first one, abort.
-        if config.theme.dirs.index(get_theme_dir(config.theme.name)):
+        if config.theme.custom_dir:
             log.error("Please remove 'custom_dir' setting.")
             self._help_on_customizations_and_exit()
 
@@ -109,26 +110,56 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please remove 'hooks' setting.")
             self._help_on_customizations_and_exit()
 
-        # Assure that config_file_path is absolute.
-        # If the --config-file option is used then the path is
-        # used as provided, so it is likely relative.
-        if not os.path.isabs(config.config_file_path):
-            config.config_file_path = os.path.normpath(os.path.join(
-                os.getcwd(),
-                config.config_file_path
-            ))
+        # Assure that possible relative paths, which will be validated
+        # or used to generate other paths are absolute.
+        config.config_file_path = _convert_to_abs(config.config_file_path)
+        config_file_parent = os.path.dirname(config.config_file_path)
+
+        # The theme.custom_dir property cannot be set, therefore a helper
+        # variable is used.
+        custom_dir = config.theme.custom_dir
+        if custom_dir:
+            custom_dir = _convert_to_abs(
+                custom_dir,
+                abs_prefix = config_file_parent
+            )
 
         # Support projects plugin
         projects_plugin = config.plugins.get("material/projects")
         if projects_plugin:
-            abs_projects_dir = os.path.normpath(
-                os.path.join(
-                    os.path.dirname(config.config_file_path),
-                    projects_plugin.config.projects_dir
-                )
+            abs_projects_dir = _convert_to_abs(
+                projects_plugin.config.projects_dir,
+                abs_prefix = config_file_parent
             )
         else:
             abs_projects_dir = ""
+
+        # Load the current MkDocs config(s) to get access to INHERIT
+        loaded_configs = _load_yaml(config.config_file_path)
+        if not isinstance(loaded_configs, list):
+            loaded_configs = [loaded_configs]
+
+        # Validate different MkDocs paths to assure that
+        # they're children of the current working directory.
+        paths_to_validate = [
+            config.config_file_path,
+            config.docs_dir,
+            custom_dir or "",
+            abs_projects_dir,
+            *[cfg.get("INHERIT", "") for cfg in loaded_configs]
+        ]
+
+        for hook in config.hooks:
+            path = _convert_to_abs(hook, abs_prefix = config_file_parent)
+            paths_to_validate.append(path)
+
+        for path in list(paths_to_validate):
+            if not path or path.startswith(os.getcwd()):
+                paths_to_validate.remove(path)
+
+        if paths_to_validate:
+            log.error(f"One or more paths aren't children of root")
+            self._help_on_not_in_cwd(paths_to_validate)
 
         # Create in-memory archive and prompt author for a short descriptive
         # name for the archive, which is also used as the directory name. Note
@@ -295,7 +326,28 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         if self.config.archive_stop_on_violation:
             sys.exit(1)
 
-    # Exclude files, which we don't want in our zip file
+    # Print help on not in current working directory and exit
+    def _help_on_not_in_cwd(self, bad_paths):
+        print(Fore.RED)
+        print("  The current working (root) directory:\n")
+        print(f"    {os.getcwd()}\n")
+        print("  is not a parent of the following paths:")
+        print(Style.NORMAL)
+        for path in bad_paths:
+            print(f"    {path}")
+        print()
+        print("  To assure that all project files are found")
+        print("  please adjust your config or file structure and")
+        print("  put everything within the root directory of the project.\n")
+        print("  Please also make sure `mkdocs build` is run in")
+        print("  the actual root directory of the project.")
+        print(Style.RESET_ALL)
+
+        # Exit, unless explicitly told not to
+        if self.config.archive_stop_on_violation:
+            sys.exit(1)
+
+    # Exclude files which we don't want in our zip file
     def _is_excluded(self, posix_path: str) -> bool:
         for pattern in self.exclusion_patterns:
             if regex.match(pattern, posix_path):
@@ -317,6 +369,42 @@ def _size(value, factor = 1):
         if abs(value) < 1000.0:
             return f"{color}{value:3.1f} {unit}"
         value /= 1000.0
+
+# To validate if a file is within the file tree,
+# it needs to be absolute, so that it is possible to
+# check the prefix.
+def _convert_to_abs(path: str, abs_prefix: str = None) -> str:
+    if os.path.isabs(path): return path
+    if abs_prefix is None: abs_prefix = os.getcwd()
+    return os.path.normpath(os.path.join(abs_prefix, path))
+
+# Custom YAML loader - required to handle the parent INHERIT config.
+# It converts the INHERIT path to absolute as a side effect.
+# Returns the loaded config, or a list of all loaded configs.
+def _load_yaml(abs_src_path: str):
+
+    with open(abs_src_path, "r", encoding ="utf-8-sig") as file:
+        source = file.read()
+
+    try:
+        result = yaml.load(source, Loader = get_yaml_loader()) or {}
+    except yaml.YAMLError:
+        result = {}
+
+    if "INHERIT" in result:
+        relpath = result.get('INHERIT')
+        parent_path = os.path.dirname(abs_src_path)
+        abspath = _convert_to_abs(relpath, abs_prefix = parent_path)
+        if os.path.exists(abspath):
+            result["INHERIT"] = abspath
+            log.debug(f"Loading inherited configuration file: {abspath}")
+            parent = _load_yaml(abspath)
+            if isinstance(parent, list):
+                result = [result, *parent]
+            elif isinstance(parent, dict):
+                result = [result, parent]
+
+    return result
 
 # Load info.gitignore, ignore any empty lines or # comments
 def _load_exclusion_patterns(path: str = None):
