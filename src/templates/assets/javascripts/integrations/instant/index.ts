@@ -205,8 +205,14 @@ function inject(next: Document): Observable<Document> {
       document.head.appendChild(el)
 
   // Remove meta tags that are not present in the new document
-  for (const el of tags.values())
-    el.remove()
+  for (const el of tags.values()) {
+    const name = el.getAttribute("name")
+    // @todo - find a better way to handle attributes we add dynamically in
+    // other components without mounting components on every navigation, as
+    // this might impact overall performance - see https://t.ly/ehp_O
+    if (name !== "theme-color" && name !== "color-scheme")
+      el.remove()
+  }
 
   // After components and meta tags were replaced, re-evaluate scripts
   // that were provided by the author as part of Markdown files
