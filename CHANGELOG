@@ -1,3 +1,9 @@
+mkdocs-material-9.5.12 (2024-02-29)
+
+  * Fixed #6846: Some meta tags removed on instant navigation (9.5.5 regression)
+  * Fixed #6823: KaTex not rendering on instant navigation (9.5.5 regression)
+  * Fixed #6821: Privacy plugin doesn't handle URLs with encoded characters
+
 mkdocs-material-9.5.11+insiders-4.53.0 (2024-02-24)
 
   * Added support for automatic instant previews

@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.12 <small>February 29, 2024</small> { id="9.5.12" }
+
+- Fixed #6846: Some meta tags removed on instant navigation (9.5.5 regression)
+- Fixed #6823: KaTex not rendering on instant navigation (9.5.5 regression)
+- Fixed #6821: Privacy plugin doesn't handle URLs with encoded characters
+
 ### 9.5.11 <small>February 24, 2024</small> { id="9.5.11" }
 
 - Updated Finnish translation
