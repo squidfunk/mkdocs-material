@@ -23,11 +23,12 @@ import json
 import logging
 import os
 import platform
+import regex
 import requests
 import site
 import sys
-
 import yaml
+
 from colorama import Fore, Style
 from importlib.metadata import distributions, version
 from io import BytesIO
@@ -35,7 +36,6 @@ from markdown.extensions.toc import slugify
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.utils import get_yaml_loader
-import regex
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from .config import InfoConfig
@@ -110,21 +110,24 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please remove 'hooks' setting.")
             self._help_on_customizations_and_exit()
 
-        # Assure that possible relative paths, which will be validated
-        # or used to generate other paths are absolute.
+        # Assure all paths that will be validated are absolute. Convert possible
+        # relative config_file_path to absolute. Its absolute directory path is
+        # being later used to resolve other paths.
         config.config_file_path = _convert_to_abs(config.config_file_path)
         config_file_parent = os.path.dirname(config.config_file_path)
 
-        # The theme.custom_dir property cannot be set, therefore a helper
-        # variable is used.
-        custom_dir = config.theme.custom_dir
-        if custom_dir:
-            custom_dir = _convert_to_abs(
-                custom_dir,
+        # Convert relative custom_dir path to absolute. The Theme.custom_dir
+        # property cannot be set, therefore a helper variable is used.
+        if config.theme.custom_dir:
+            abs_custom_dir = _convert_to_abs(
+                config.theme.custom_dir,
                 abs_prefix = config_file_parent
             )
+        else:
+            abs_custom_dir = ""
 
-        # Support projects plugin
+        # Extract the absolute path to projects plugin's directory to explicitly
+        # support path validation and dynamic exclusion for the plugin
         projects_plugin = config.plugins.get("material/projects")
         if projects_plugin:
             abs_projects_dir = _convert_to_abs(
@@ -134,29 +137,39 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         else:
             abs_projects_dir = ""
 
-        # Load the current MkDocs config(s) to get access to INHERIT
+        # MkDocs removes the INHERIT configuration key during load, and doesn't
+        # expose the information in any way, as the parent configuration is
+        # merged into one. To validate that the INHERIT config file will be
+        # included in the ZIP file the current config file must be loaded again
+        # without parsing. Each file can have their own INHERIT key, so a list
+        # of configurations is supported. The INHERIT path is converted during
+        # load to absolute.
         loaded_configs = _load_yaml(config.config_file_path)
         if not isinstance(loaded_configs, list):
             loaded_configs = [loaded_configs]
 
-        # Validate different MkDocs paths to assure that
-        # they're children of the current working directory.
+        # We need to make sure the user put every file in the current working
+        # directory. To assure the reproduction inside the ZIP file can be run,
+        # validate that the MkDocs paths are children of the current root.
         paths_to_validate = [
             config.config_file_path,
             config.docs_dir,
-            custom_dir or "",
+            abs_custom_dir,
             abs_projects_dir,
             *[cfg.get("INHERIT", "") for cfg in loaded_configs]
         ]
 
+        # Convert relative hook paths to absolute path
         for hook in config.hooks:
             path = _convert_to_abs(hook, abs_prefix = config_file_parent)
             paths_to_validate.append(path)
 
+        # Remove valid paths from the list
         for path in list(paths_to_validate):
             if not path or path.startswith(os.getcwd()):
                 paths_to_validate.remove(path)
 
+        # Report the invalid paths to the user
         if paths_to_validate:
             log.error(f"One or more paths aren't children of root")
             self._help_on_not_in_cwd(paths_to_validate)
@@ -198,26 +211,36 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         files: list[str] = []
         with ZipFile(archive, "a", ZIP_DEFLATED, False) as f:
             for abs_root, dirnames, filenames in os.walk(os.getcwd()):
-                # Prune the folders in-place to prevent
-                # scanning excluded folders
+                # Prune the folders in-place to prevent their processing
                 for name in list(dirnames):
+                    # Resolve the absolute directory path
                     path = os.path.join(abs_root, name)
+
+                    # Exclude the directory and all subdirectories
                     if self._is_excluded(_resolve_pattern(path)):
                         dirnames.remove(name)
                         continue
-                    # Multi-language setup from #2346 separates the
-                    # language config, so each mkdocs.yml file is
-                    # unaware of other site_dir directories. Therefore,
-                    # we add this with the assumption a site_dir contains
-                    # the sitemap file.
+
+                    # Projects, which don't use the projects plugin for
+                    # multi-language support could have separate build folders
+                    # for each config file or language. Therefore, we exclude
+                    # them with the assumption a site_dir contains the sitemap
+                    # file. Example of such a setup: https://t.ly/DLQcy
                     sitemap_gz = os.path.join(path, "sitemap.xml.gz")
                     if os.path.exists(sitemap_gz):
                         log.debug(f"Excluded site_dir: {path}")
                         dirnames.remove(name)
+
+                # Write files to the in-memory archive
                 for name in filenames:
+                    # Resolve the absolute file path
                     path = os.path.join(abs_root, name)
+
+                    # Exclude the file
                     if self._is_excluded(_resolve_pattern(path)):
                         continue
+
+                    # Resolve the relative path to create a matching structure
                     path = os.path.relpath(path, os.path.curdir)
                     f.write(path, os.path.join(example, path))
 
@@ -320,6 +343,11 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         print(Style.NORMAL)
         print("  - extra_css")
         print("  - extra_javascript")
+        print(Fore.YELLOW)
+        print("  If you're using customizations from the theme's documentation")
+        print("  and you want to report a bug specific to those customizations")
+        print("  then set the 'archive_stop_on_violation: false' option in the")
+        print("  info plugin config.")
         print(Style.RESET_ALL)
 
         # Exit, unless explicitly told not to
@@ -327,20 +355,19 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             sys.exit(1)
 
     # Print help on not in current working directory and exit
-    def _help_on_not_in_cwd(self, bad_paths):
+    def _help_on_not_in_cwd(self, outside_root):
         print(Fore.RED)
         print("  The current working (root) directory:\n")
         print(f"    {os.getcwd()}\n")
         print("  is not a parent of the following paths:")
         print(Style.NORMAL)
-        for path in bad_paths:
+        for path in outside_root:
             print(f"    {path}")
-        print()
-        print("  To assure that all project files are found")
-        print("  please adjust your config or file structure and")
-        print("  put everything within the root directory of the project.\n")
-        print("  Please also make sure `mkdocs build` is run in")
-        print("  the actual root directory of the project.")
+        print("  \nTo assure that all project files are found please adjust")
+        print("  your config or file structure and put everything within the")
+        print("  root directory of the project.\n")
+        print("  Please also make sure `mkdocs build` is run in the actual")
+        print("  root directory of the project.")
         print(Style.RESET_ALL)
 
         # Exit, unless explicitly told not to
@@ -370,17 +397,19 @@ def _size(value, factor = 1):
             return f"{color}{value:3.1f} {unit}"
         value /= 1000.0
 
-# To validate if a file is within the file tree,
-# it needs to be absolute, so that it is possible to
+# Get the absolute path with set prefix. To validate if a file is inside the
+# current working directory it needs to be absolute, so that it is possible to
 # check the prefix.
 def _convert_to_abs(path: str, abs_prefix: str = None) -> str:
     if os.path.isabs(path): return path
     if abs_prefix is None: abs_prefix = os.getcwd()
     return os.path.normpath(os.path.join(abs_prefix, path))
 
-# Custom YAML loader - required to handle the parent INHERIT config.
-# It converts the INHERIT path to absolute as a side effect.
-# Returns the loaded config, or a list of all loaded configs.
+# Get the loaded config, or a list with all loaded configs. MkDocs removes the
+# INHERIT configuration key during load, and doesn't expose the information in
+# any way, as the parent configuration is merged into one. The INHERIT path is
+# needed for validation. This custom YAML loader replicates MkDocs' loading
+# logic. Side effect: It converts the INHERIT path to absolute.
 def _load_yaml(abs_src_path: str):
 
     with open(abs_src_path, "r", encoding ="utf-8-sig") as file:
@@ -417,11 +446,9 @@ def _load_exclusion_patterns(path: str = None):
 
     return [line for line in lines if line and not line.startswith("#")]
 
-# For the pattern matching it is best to remove the CWD
-# prefix and keep only the relative root of the reproduction.
-# Additionally, as the patterns are in POSIX format,
-# assure that the path is also in POSIX format.
-# Side-effect: It appends "/" for directory patterns.
+# Get a normalized POSIX path for the pattern matching with removed current
+# working directory prefix. Directory paths end with a '/' to allow more control
+# in the pattern creation for files and directories.
 def _resolve_pattern(abspath: str):
     path = abspath.replace(os.getcwd(), "", 1).replace(os.sep, "/")
 
@@ -434,7 +461,7 @@ def _resolve_pattern(abspath: str):
 
     return path
 
-# Get project configuration
+# Get project configuration with resolved absolute paths for validation
 def _get_project_config(project_config_file: str):
     with open(project_config_file, encoding="utf-8") as file:
         config = MkDocsConfig(config_file_path = project_config_file)
