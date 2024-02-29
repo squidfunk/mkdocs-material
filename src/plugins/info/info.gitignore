@@ -1,0 +1,40 @@
+# Custom .gitignore-like file
+# The difference is that those are https://docs.python.org/3/library/re.html
+# regex patterns, that will be compared against directory and file names
+# case-sensitively.
+
+# Additional info:
+# The paths will be always in POSIX format.
+# Each directory path will have a / at the end to make it easier to
+# distinguish them from files.
+
+
+# Patterns for dynamic or custom paths like Virtual Environments (venv)
+# or build site directories are created during plugin runtime.
+
+# ---
+
+# Byte-compiled / optimized / DLL files
+# Python cache directory
+.*__pycache__/
+
+# macOS
+
+.*\.DS_Store
+
+# .dotfiles in the root directory
+
+^/\.[^/]+$
+
+# Generated files and folders
+
+^/.*\.zip
+
+# Allow .github or .devcontainer directories
+# Exclude .cache files and folders
+# Exclude known IDE directories
+
+.*\.cache/?
+^/\.vscode/
+^/\.vs/
+^/\.idea/

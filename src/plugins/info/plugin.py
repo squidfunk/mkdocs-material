@@ -23,6 +23,7 @@ import logging
 import os
 import platform
 import requests
+import site
 import sys
 
 from colorama import Fore, Style
@@ -31,6 +32,7 @@ from io import BytesIO
 from markdown.extensions.toc import slugify
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.utils import get_theme_dir
+import regex
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from .config import InfoConfig
@@ -48,6 +50,9 @@ class InfoPlugin(BasePlugin[InfoConfig]):
 
         # Initialize incremental builds
         self.is_serve = False
+
+        # Initialize empty members
+        self.exclusion_patterns = []
 
     # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
@@ -111,12 +116,42 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         example, _ = os.path.splitext(example)
         example = "-".join([present, slugify(example, "-")])
 
+        # Load exclusion patterns
+        self.exclusion_patterns = _load_exclusion_patterns()
+
+        # Exclude the site_dir at project root
+        if config.site_dir.startswith(os.getcwd()):
+            self.exclusion_patterns.append(_resolve_pattern(config.site_dir))
+
+        # Exclude the site-packages directory
+        for path in site.getsitepackages():
+            if path.startswith(os.getcwd()):
+                self.exclusion_patterns.append(_resolve_pattern(path))
+
         # Create self-contained example from project
         files: list[str] = []
         with ZipFile(archive, "a", ZIP_DEFLATED, False) as f:
             for abs_root, dirnames, filenames in os.walk(os.getcwd()):
+                # Prune the folders in-place to prevent
+                # scanning excluded folders
+                for name in list(dirnames):
+                    path = os.path.join(abs_root, name)
+                    if self._is_excluded(_resolve_pattern(path)):
+                        dirnames.remove(name)
+                        continue
+                    # Multi-language setup from #2346 separates the
+                    # language config, so each mkdocs.yml file is
+                    # unaware of other site_dir directories. Therefore,
+                    # we add this with the assumption a site_dir contains
+                    # the sitemap file.
+                    sitemap_gz = os.path.join(path, "sitemap.xml.gz")
+                    if os.path.exists(sitemap_gz):
+                        log.debug(f"Excluded site_dir: {path}")
+                        dirnames.remove(name)
                 for name in filenames:
                     path = os.path.join(abs_root, name)
+                    if self._is_excluded(_resolve_pattern(path)):
+                        continue
                     path = os.path.relpath(path, os.path.curdir)
                     f.write(path, os.path.join(example, path))
 
@@ -225,6 +260,15 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         if self.config.archive_stop_on_violation:
             sys.exit(1)
 
+    # Exclude files, which we don't want in our zip file
+    def _is_excluded(self, posix_path: str) -> bool:
+        for pattern in self.exclusion_patterns:
+            if regex.match(pattern, posix_path):
+                log.debug(f"Excluded pattern '{pattern}': {posix_path}")
+                return True
+
+        return False
+
 # -----------------------------------------------------------------------------
 # Helper functions
 # -----------------------------------------------------------------------------
@@ -238,6 +282,34 @@ def _size(value, factor = 1):
         if abs(value) < 1000.0:
             return f"{color}{value:3.1f} {unit}"
         value /= 1000.0
+
+# Load info.gitignore, ignore any empty lines or # comments
+def _load_exclusion_patterns(path: str = None):
+    if path is None:
+        path = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(path, "info.gitignore")
+
+    with open(path, encoding = "utf-8") as file:
+        lines = map(str.strip, file.readlines())
+
+    return [line for line in lines if line and not line.startswith("#")]
+
+# For the pattern matching it is best to remove the CWD
+# prefix and keep only the relative root of the reproduction.
+# Additionally, as the patterns are in POSIX format,
+# assure that the path is also in POSIX format.
+# Side-effect: It appends "/" for directory patterns.
+def _resolve_pattern(abspath: str):
+    path = abspath.replace(os.getcwd(), "", 1).replace(os.sep, "/")
+
+    if not path:
+        return "/"
+
+    # Check abspath, as the file needs to exist
+    if not os.path.isfile(abspath):
+        return path.rstrip("/") + "/"
+
+    return path
 
 # -----------------------------------------------------------------------------
 # Data
