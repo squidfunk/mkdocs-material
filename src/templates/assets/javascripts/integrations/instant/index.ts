@@ -168,7 +168,7 @@ function resolve(document: Document): Observable<Document> {
 }
 
 /**
- * Create a map of head elements for lookup and replacement
+ * Inject the contents of a document into the current one
  *
  * @param next - Next document
  *
@@ -327,8 +327,8 @@ export function setupInstantNavigation(
   // that are not needed anymore, e.g., when the user clicks multiple links in
   // quick succession or on slow connections. If the request fails for some
   // reason, we fall back and use regular navigation, forcing a reload.
-  const document$ = location$
-    .pipe(
+  const document$ =
+    location$.pipe(
       distinctUntilKeyChanged("pathname"),
       switchMap(url => requestHTML(url, { progress$ })
         .pipe(
@@ -421,15 +421,14 @@ export function setupInstantNavigation(
   // and forth between pages. Note that this must be debounced and cannot be
   // done in popstate, as popstate has already removed the entry from the
   // history, which means it is too late.
-  viewport$
-    .pipe(
-      distinctUntilKeyChanged("offset"),
-      debounceTime(100)
-    )
-      .subscribe(({ offset }) => {
-        history.replaceState(offset, "")
-      })
+  viewport$.pipe(
+    distinctUntilKeyChanged("offset"),
+    debounceTime(100)
+  )
+    .subscribe(({ offset }) => {
+      history.replaceState(offset, "")
+    })
 
-  // Return document
+  // Return document observable
   return document$
 }
