@@ -233,7 +233,7 @@ function inject(next: Document): Observable<Document> {
         }
       }),
       ignoreElements(),
-      endWith(next)
+      endWith(document)
     )
 }
 
