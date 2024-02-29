@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import glob
 import json
 import logging
 import os
@@ -30,6 +31,7 @@ from colorama import Fore, Style
 from importlib.metadata import distributions, version
 from io import BytesIO
 from markdown.extensions.toc import slugify
+from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.utils import get_theme_dir
 import regex
@@ -107,6 +109,27 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             log.error("Please remove 'hooks' setting.")
             self._help_on_customizations_and_exit()
 
+        # Assure that config_file_path is absolute.
+        # If the --config-file option is used then the path is
+        # used as provided, so it is likely relative.
+        if not os.path.isabs(config.config_file_path):
+            config.config_file_path = os.path.normpath(os.path.join(
+                os.getcwd(),
+                config.config_file_path
+            ))
+
+        # Support projects plugin
+        projects_plugin = config.plugins.get("material/projects")
+        if projects_plugin:
+            abs_projects_dir = os.path.normpath(
+                os.path.join(
+                    os.path.dirname(config.config_file_path),
+                    projects_plugin.config.projects_dir
+                )
+            )
+        else:
+            abs_projects_dir = ""
+
         # Create in-memory archive and prompt author for a short descriptive
         # name for the archive, which is also used as the directory name. Note
         # that the name is slugified for better readability and stripped of any
@@ -127,6 +150,18 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         for path in site.getsitepackages():
             if path.startswith(os.getcwd()):
                 self.exclusion_patterns.append(_resolve_pattern(path))
+
+        # Exclude site_dir for projects
+        if projects_plugin:
+            for path in glob.iglob(
+                pathname = projects_plugin.config.projects_config_files,
+                root_dir = abs_projects_dir,
+                recursive = True
+            ):
+                current_config_file = os.path.join(abs_projects_dir, path)
+                project_config = _get_project_config(current_config_file)
+                pattern = _resolve_pattern(project_config.site_dir)
+                self.exclusion_patterns.append(pattern)
 
         # Create self-contained example from project
         files: list[str] = []
@@ -310,6 +345,17 @@ def _resolve_pattern(abspath: str):
         return path.rstrip("/") + "/"
 
     return path
+
+# Get project configuration
+def _get_project_config(project_config_file: str):
+    with open(project_config_file, encoding="utf-8") as file:
+        config = MkDocsConfig(config_file_path = project_config_file)
+        config.load_file(file)
+
+        # MkDocs transforms site_dir to absolute path during validation
+        config.validate()
+
+        return config
 
 # -----------------------------------------------------------------------------
 # Data
