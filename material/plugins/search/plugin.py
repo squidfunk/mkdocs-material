@@ -164,7 +164,7 @@ class SearchIndex:
 
     # Add page to search index
     def add_entry_from_context(self, page):
-        search = page.meta.get("search", {})
+        search = page.meta.get("search") or {}
         if search.get("exclude"):
             return
 
@@ -218,7 +218,7 @@ class SearchIndex:
                     entry["tags"].append(name)
 
         # Set document boost
-        search = page.meta.get("search", {})
+        search = page.meta.get("search") or {}
         if "boost" in search:
             entry["boost"] = search["boost"]
 
