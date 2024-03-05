@@ -84,7 +84,7 @@ extend the theme. MkDocs supports [theme extension], an easy way to override
 parts of Material for MkDocs without forking from git. This ensures that you
 can update to the latest version more easily.
 
-  [theme extension]: https://www.mkdocs.org/user-guide/styling-your-docs/#using-the-theme-custom_dir
+  [theme extension]: https://www.mkdocs.org/user-guide/customizing-your-theme/#using-the-theme-custom_dir
 
 ### Setup and theme structure
 
