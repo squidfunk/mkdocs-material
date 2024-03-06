@@ -1,3 +1,8 @@
+mkdocs-material-9.5.13+insiders-4.53.1 (2024-03-06)
+
+  * Fixed #6877: Projects plugin computes incorrect path to assets
+  * Fixed #6869: Blog plugin should emit warning on invalid related link
+
 mkdocs-material-9.5.13 (2024-03-06)
 
   * Updated Slovak translations

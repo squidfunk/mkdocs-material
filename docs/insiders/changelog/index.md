@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.1 <small>March 6, 2024</small> { id="4.53.1" }
+
+- Fixed #6877: Projects plugin computes incorrect path to assets
+- Fixed #6869: Blog plugin should emit warning on invalid related link
+
 ### 4.53.0 <small>February 24, 2024</small> { id="4.53.0" }
 
 - Added support for automatic instant previews
