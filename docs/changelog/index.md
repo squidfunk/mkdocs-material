@@ -2,6 +2,14 @@
 
 ## Material for MkDocs
 
+### 9.5.13 <small>March 6, 2024</small> { id="9.5.13" }
+
+- Updated Slovak translations
+- Improved info plugin intertop with projects plugin
+- Improved info plugin inclusion/exclusion logic
+- Fixed info plugin not gathering files recursively
+- Fixed #6750: Ensure info plugin packs up all necessary files
+
 ### 9.5.12 <small>February 29, 2024</small> { id="9.5.12" }
 
 - Fixed #6846: Some meta tags removed on instant navigation (9.4.2 regression)

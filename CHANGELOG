@@ -1,3 +1,11 @@
+mkdocs-material-9.5.13 (2024-03-06)
+
+  * Updated Slovak translations
+  * Improved info plugin intertop with projects plugin
+  * Improved info plugin inclusion/exclusion logic
+  * Fixed info plugin not gathering files recursively
+  * Fixed #6750: Ensure info plugin packs up all necessary files
+
 mkdocs-material-9.5.12 (2024-02-29)
 
   * Fixed #6846: Some meta tags removed on instant navigation (9.4.2 regression)
