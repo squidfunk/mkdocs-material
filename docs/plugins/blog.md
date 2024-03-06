@@ -1256,7 +1256,7 @@ plugins:
 #### <!-- md:setting config.pagination_url_format -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default `{date}/{slug}` -->
+<!-- md:default `page/{page}` -->
 
 Use this setting to change the format string that is used when generating
 paginated view URLs. You can freely combine placeholders, and join them with
