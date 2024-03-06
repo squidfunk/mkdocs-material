@@ -210,6 +210,7 @@ You can cancel your sponsorship anytime.[^5]
 [![Lechler]](https://www.lechler.com/){ target=_blank title="Lechler" }
 [![Invers]](https://invers.com/){ target=_blank title="Invers" }
 [![Maxar]](https://maxar.com/){ target=_blank title="Maxar" }
+[![EquipmentShare]](https://www.equipmentshare.com/){ target=_blank title="EquipmentShare" }
 
 </div>
 
@@ -253,6 +254,7 @@ You can cancel your sponsorship anytime.[^5]
   [SailPoint]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png
   [Invers]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png
   [Maxar]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png
+  [EquipmentShare]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png
 
 <hr />
 
