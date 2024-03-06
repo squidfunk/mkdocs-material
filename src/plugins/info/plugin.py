@@ -39,6 +39,7 @@ from mkdocs.utils import get_yaml_loader
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from .config import InfoConfig
+from .patterns import get_exclusion_patterns
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -56,6 +57,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
 
         # Initialize empty members
         self.exclusion_patterns = []
+        self.excluded_entries = []
 
     # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
@@ -183,15 +185,18 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         example, _ = os.path.splitext(example)
         example = "-".join([present, slugify(example, "-")])
 
-        # Load exclusion patterns
-        self.exclusion_patterns = _load_exclusion_patterns()
+        # Get local copy of the exclusion patterns
+        self.exclusion_patterns = get_exclusion_patterns()
+        self.excluded_entries = []
 
         # Exclude the site_dir at project root
         if config.site_dir.startswith(os.getcwd()):
             self.exclusion_patterns.append(_resolve_pattern(config.site_dir))
 
-        # Exclude the site-packages directory
-        for path in site.getsitepackages():
+        # Exclude the Virtual Environment directory. site.getsitepackages() has
+        # inconsistent results across operating systems, and relies on the
+        # PREFIXES that will contain the absolute path to the activated venv.
+        for path in site.PREFIXES:
             if path.startswith(os.getcwd()):
                 self.exclusion_patterns.append(_resolve_pattern(path))
 
@@ -211,24 +216,17 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         files: list[str] = []
         with ZipFile(archive, "a", ZIP_DEFLATED, False) as f:
             for abs_root, dirnames, filenames in os.walk(os.getcwd()):
+                # Set and print progress indicator
+                indicator = f"Processing: {abs_root}"
+                print(indicator, end="\r", flush=True)
+
                 # Prune the folders in-place to prevent their processing
                 for name in list(dirnames):
                     # Resolve the absolute directory path
                     path = os.path.join(abs_root, name)
 
                     # Exclude the directory and all subdirectories
-                    if self._is_excluded(_resolve_pattern(path)):
-                        dirnames.remove(name)
-                        continue
-
-                    # Projects, which don't use the projects plugin for
-                    # multi-language support could have separate build folders
-                    # for each config file or language. Therefore, we exclude
-                    # them with the assumption a site_dir contains the sitemap
-                    # file. Example of such a setup: https://t.ly/DLQcy
-                    sitemap_gz = os.path.join(path, "sitemap.xml.gz")
-                    if os.path.exists(sitemap_gz):
-                        log.debug(f"Excluded site_dir: {path}")
+                    if self._is_excluded(path):
                         dirnames.remove(name)
 
                 # Write files to the in-memory archive
@@ -237,12 +235,15 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                     path = os.path.join(abs_root, name)
 
                     # Exclude the file
-                    if self._is_excluded(_resolve_pattern(path)):
+                    if self._is_excluded(path):
                         continue
 
                     # Resolve the relative path to create a matching structure
                     path = os.path.relpath(path, os.path.curdir)
                     f.write(path, os.path.join(example, path))
+
+                # Clear the line for the next indicator
+                print(" " * len(indicator), end="\r", flush=True)
 
             # Add information on installed packages
             f.writestr(
@@ -261,11 +262,14 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                         "system": platform.platform(),
                         "architecture": platform.architecture(),
                         "python": platform.python_version(),
+                        "cwd": os.getcwd(),
                         "command": " ".join([
                             sys.argv[0].rsplit(os.sep, 1)[-1],
                             *sys.argv[1:]
                         ]),
-                        "sys.path": sys.path
+                        "env:$PYTHONPATH": os.getenv("PYTHONPATH", ""),
+                        "sys.path": sys.path,
+                        "excluded_entries": self.excluded_entries
                     },
                     default = str,
                     indent = 2
@@ -363,10 +367,10 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         print(Style.NORMAL)
         for path in outside_root:
             print(f"    {path}")
-        print("  \nTo assure that all project files are found please adjust")
+        print("\n  To assure that all project files are found please adjust")
         print("  your config or file structure and put everything within the")
-        print("  root directory of the project.\n")
-        print("  Please also make sure `mkdocs build` is run in the actual")
+        print("  root directory of the project.")
+        print("\n  Please also make sure `mkdocs build` is run in the actual")
         print("  root directory of the project.")
         print(Style.RESET_ALL)
 
@@ -374,12 +378,33 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         if self.config.archive_stop_on_violation:
             sys.exit(1)
 
-    # Exclude files which we don't want in our zip file
-    def _is_excluded(self, posix_path: str) -> bool:
+    # Check if path is excluded and should be omitted from the zip. Use pattern
+    # matching for files and folders, and lookahead specific files in folders to
+    # skip them. Side effect: Save excluded paths to save them in the zip file.
+    def _is_excluded(self, abspath: str) -> bool:
+
+        # Resolve the path into POSIX format to match the patterns
+        pattern_path = _resolve_pattern(abspath, return_path = True)
+
         for pattern in self.exclusion_patterns:
-            if regex.match(pattern, posix_path):
-                log.debug(f"Excluded pattern '{pattern}': {posix_path}")
+            if regex.search(pattern, pattern_path):
+                log.debug(f"Excluded pattern '{pattern}': {abspath}")
+                self.excluded_entries.append(f"{pattern} - {pattern_path}")
                 return True
+
+        # File exclusion should be limited to pattern matching
+        if os.path.isfile(abspath):
+            return False
+
+        # Projects, which don't use the projects plugin for multi-language
+        # support could have separate build folders for each config file or
+        # language. Therefore, we exclude them with the assumption a site_dir
+        # contains the sitemap file. Example of such a setup: https://t.ly/DLQcy
+        sitemap_gz = os.path.join(abspath, "sitemap.xml.gz")
+        if os.path.exists(sitemap_gz):
+            log.debug(f"Excluded site_dir: {abspath}")
+            self.excluded_entries.append(f"sitemap.xml.gz - {pattern_path}")
+            return True
 
         return False
 
@@ -435,31 +460,22 @@ def _load_yaml(abs_src_path: str):
 
     return result
 
-# Load info.gitignore, ignore any empty lines or # comments
-def _load_exclusion_patterns(path: str = None):
-    if path is None:
-        path = os.path.dirname(os.path.abspath(__file__))
-        path = os.path.join(path, "info.gitignore")
-
-    with open(path, encoding = "utf-8") as file:
-        lines = map(str.strip, file.readlines())
-
-    return [line for line in lines if line and not line.startswith("#")]
-
 # Get a normalized POSIX path for the pattern matching with removed current
 # working directory prefix. Directory paths end with a '/' to allow more control
-# in the pattern creation for files and directories.
-def _resolve_pattern(abspath: str):
-    path = abspath.replace(os.getcwd(), "", 1).replace(os.sep, "/")
+# in the pattern creation for files and directories. The patterns are matched
+# using the search function, so they are prefixed with ^ for specificity.
+def _resolve_pattern(abspath: str, return_path: bool = False):
+    path = abspath.replace(os.getcwd(), "", 1)
+    path = path.replace(os.sep, "/").rstrip("/")
 
     if not path:
         return "/"
 
     # Check abspath, as the file needs to exist
     if not os.path.isfile(abspath):
-        return path.rstrip("/") + "/"
+        path = path + "/"
 
-    return path
+    return path if return_path else f"^{path}"
 
 # Get project configuration with resolved absolute paths for validation
 def _get_project_config(project_config_file: str):
