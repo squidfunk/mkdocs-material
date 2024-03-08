@@ -191,16 +191,6 @@ nav:
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md
-    - Contributing:
-      - contributing/index.md
-      - Reporting a bug: contributing/reporting-a-bug.md
-      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
-      - Requesting a change: contributing/requesting-a-change.md
-      - Adding translations: contributing/adding-translations.md
-      - Making a pull request: contributing/making-a-pull-request.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
-    - Guides:
-      - Creating a reproduction: guides/creating-a-reproduction.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
@@ -266,7 +256,18 @@ nav:
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
-    - Community Experts Program:
+  - Community:
+    - Contributing:
+      - contributing/index.md
+      - Reporting a bug: contributing/reporting-a-bug.md
+      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
+      - Requesting a change: contributing/requesting-a-change.md
+      - Adding translations: contributing/adding-translations.md
+      - Making a pull request: contributing/making-a-pull-request.md
+      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+    - Guides:
+      - Creating a reproduction: guides/creating-a-reproduction.md
+    - Community experts program:
       - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md
