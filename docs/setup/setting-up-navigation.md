@@ -93,7 +93,7 @@ experience.
 
 Instant previews are a brand new feature that allow the user to preview another
 site of your documentation without navigating to it. They can be very helpful to
-keep the user in context. Instant previews can be enabled on any internal link
+keep the user in context. Instant previews can be enabled on any header link
 with the `data-preview` attribute:
 
 ```` markdown title="Link with instant preview"
@@ -107,6 +107,14 @@ with the `data-preview` attribute:
 [Attribute Lists](extensions/python-markdown.md#attribute-lists){ data-preview }
 
 </div>
+
+!!! info "Limitations"
+
+    Instant previews are still an experimental feature and currently limited to
+    headerlinks. This means, you can use them on any internal link that points
+    to a header on another page, but not other elements with `id` attributes.
+    After we have gathered enough feedback, we will consider extending this
+    feature to other, and possibly arbitrary elements.
 
 #### Automatic previews
 
@@ -162,7 +170,7 @@ as well as for all Markdown extensions that we support.
 ---
 
 Instant previews can also be enabled globally by adding the following lines to
-`mkdocs.yml`, which will enable instant previews for all internal links,
+`mkdocs.yml`, which will enable instant previews for all header links,
 alleviating the need to add data attributes:
 
 ``` yaml
