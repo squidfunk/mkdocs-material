@@ -422,6 +422,11 @@ kbd {
   // Limit width to container
   iframe {
     max-width: 100%;
+    // Hack: we're currently not sure whether this is a bug in Twitter's CSS,
+    // or everything is working as intended, but if we don't reset the color
+    // scheme, Twitter's embedded tweets will have white background at the
+    // borders, which looks odd - see https://t.ly/N8P-Z
+    color-scheme: initial;
   }
 
   // Data table
