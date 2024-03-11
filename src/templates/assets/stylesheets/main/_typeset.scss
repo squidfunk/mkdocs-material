@@ -426,7 +426,7 @@ kbd {
     // or everything is working as intended, but if we don't reset the color
     // scheme, Twitter's embedded tweets will have white background at the
     // borders, which looks odd - see https://t.ly/N8P-Z
-    color-scheme: initial;
+    color-scheme: auto;
   }
 
   // Data table
