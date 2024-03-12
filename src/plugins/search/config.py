@@ -46,7 +46,7 @@ class SearchConfig(Config):
     # Settings for search
     lang = Optional(LangOption())
     separator = Optional(Type(str))
-    pipeline = ListOfItems(Choice(pipeline), default = [])
+    pipeline = Optional(ListOfItems(Choice(pipeline)))
 
     # Settings for text segmentation (Chinese)
     jieba_dict = Optional(Type(str))
