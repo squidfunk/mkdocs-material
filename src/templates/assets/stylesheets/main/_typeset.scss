@@ -26,8 +26,8 @@
 
 // Enable font-smoothing in Webkit and FF
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
 
   // Font with fallback for body copy
   --md-text-font-family:
