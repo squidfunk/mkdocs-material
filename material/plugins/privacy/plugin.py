@@ -254,7 +254,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Find and extract all external asset URLs
         expr = re.compile(self.assets_expr_map[extension], flags = re.I | re.M)
-        with open(initiator.abs_src_path, encoding = "utf-8") as f:
+        with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
             return [urlparse(url) for url in re.findall(expr, f.read())]
 
     # Parse template or page HTML and find all external links that need to be
@@ -437,7 +437,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
     # Patch all links to external assets in the given file
     def _patch(self, initiator: File):
-        with open(initiator.abs_src_path, encoding = "utf-8") as f:
+        with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
 
             # Replace callback
             def replace(match: Match):

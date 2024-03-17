@@ -460,7 +460,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             return config.authors
 
         # Open file and parse as YAML
-        with open(file, encoding = "utf-8") as f:
+        with open(file, encoding = "utf-8-sig") as f:
             config.config_file_path = os.path.abspath(file)
             try:
                 config.load_dict(yaml.load(f, SafeLoader) or {})

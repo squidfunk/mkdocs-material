@@ -57,7 +57,7 @@ class Post(Page):
         path = os.path.relpath(file.abs_src_path, docs)
 
         # Read contents and metadata immediately
-        with open(file.abs_src_path, encoding = "utf-8") as f:
+        with open(file.abs_src_path, encoding = "utf-8-sig") as f:
             self.markdown = f.read()
 
             # Sadly, MkDocs swallows any exceptions that occur during parsing.
