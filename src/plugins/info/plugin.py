@@ -437,7 +437,7 @@ def _convert_to_abs(path: str, abs_prefix: str = None) -> str:
 # logic. Side effect: It converts the INHERIT path to absolute.
 def _load_yaml(abs_src_path: str):
 
-    with open(abs_src_path, "r", encoding ="utf-8-sig") as file:
+    with open(abs_src_path, encoding ="utf-8-sig") as file:
         source = file.read()
 
     try:
@@ -479,7 +479,7 @@ def _resolve_pattern(abspath: str, return_path: bool = False):
 
 # Get project configuration with resolved absolute paths for validation
 def _get_project_config(project_config_file: str):
-    with open(project_config_file, encoding="utf-8") as file:
+    with open(project_config_file, encoding="utf-8-sig") as file:
         config = MkDocsConfig(config_file_path = project_config_file)
         config.load_file(file)
 
