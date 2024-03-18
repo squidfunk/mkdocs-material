@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.2 <small>March 18, 2024</small> { id="4.53.2" }
+
+- Fixed abort on first non-matching configuration in preview extension
+- Fixed #6914: Meta files take precedence over front matter
+
 ### 4.53.1 <small>March 6, 2024</small> { id="4.53.1" }
 
 - Fixed #6877: Projects plugin computes incorrect path to assets
