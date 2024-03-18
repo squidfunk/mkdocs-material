@@ -1,3 +1,13 @@
+mkdocs-material-9.5.14 (2024-03-18)
+
+  * Added support for hiding versions from selector when using mike
+  * Added init system to improve signal handling in Docker image
+  * Fixed edge cases in exclusion logic of info plugin
+  * Fixed inability to reset pipeline in search plugin
+  * Fixed syntax error in Finnish translations
+  * Fixed #6917: UTF-8 encoding problems in blog plugin on Windows
+  * Fixed #6889: Transparent iframes get background color
+
 mkdocs-material-9.5.13+insiders-4.53.1 (2024-03-06)
 
   * Fixed #6877: Projects plugin computes incorrect path to assets

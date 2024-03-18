@@ -2,6 +2,16 @@
 
 ## Material for MkDocs
 
+### 9.5.14 <small>March 18, 2024</small> { id="9.5.14" }
+
+- Added support for hiding versions from selector when using mike
+- Added init system to improve signal handling in Docker image
+- Fixed edge cases in exclusion logic of info plugin
+- Fixed inability to reset pipeline in search plugin
+- Fixed syntax error in Finnish translations
+- Fixed #6917: UTF-8 encoding problems in blog plugin on Windows
+- Fixed #6889: Transparent iframes get background color
+
 ### 9.5.13 <small>March 6, 2024</small> { id="9.5.13" }
 
 - Updated Slovak translations
