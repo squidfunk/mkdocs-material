@@ -117,9 +117,12 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         if "palette" in theme:
             palette = theme["palette"]
 
-            # Use first palette, if multiple are defined
+            # Find first palette that includes primary color definition
             if isinstance(palette, list):
-                palette = palette[0]
+                for p in palette:
+                    if "primary" in p and p["primary"]:
+                        palette = p
+                        break
 
             # Set colors according to palette
             if "primary" in palette and palette["primary"]:
