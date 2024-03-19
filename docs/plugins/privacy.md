@@ -387,7 +387,7 @@ external assets for different origins:
 plugins:
   - privacy:
       assets_exclude: # (1)!
-        - cdn.jsdelivr.net/npm/mathjax@3/*
+        - unpkg.com/mathjax@3/*
         - giscus.app/*
 ```
 

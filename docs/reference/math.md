@@ -65,7 +65,7 @@ to your `mkdocs.yml`.
     extra_javascript:
       - javascripts/mathjax.js
       - https://polyfill.io/v3/polyfill.min.js?features=es6
-      - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+      - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
     ```
 
 See additional configuration options:
@@ -76,7 +76,7 @@ See additional configuration options:
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
 
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script id="MathJax-script" async src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
   window.MathJax = {
     tex: {
@@ -124,11 +124,11 @@ supports a subset of LaTeX syntax and can render math to HTML and SVG. To use
 
     extra_javascript:
       - javascripts/katex.js
-      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js
-      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+      - https://unpkg.com/katex@0/dist/katex.min.js
+      - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
 
     extra_css:
-      - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+      - https://unpkg.com/katex@0/dist/katex.min.css
     ```
 
 ## Usage
