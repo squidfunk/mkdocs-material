@@ -1599,7 +1599,7 @@ other posts. Pin a post with:
 
 ``` yaml
 ---
-ping: true
+pin: true
 ---
 
 # Post title
