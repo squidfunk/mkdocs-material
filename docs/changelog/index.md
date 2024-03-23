@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.15 <small>March 23, 2024</small> { id="9.5.15" }
+
+- Reverted fix for transparent iframes (9.5.14)
+- Fixed #6929: Interference of social plugin and auto dark mode
+- Fixed #6938: Giscus shows dark background in light mode (9.5.14 regression)
+
 ### 9.5.14 <small>March 18, 2024</small> { id="9.5.14" }
 
 - Added support for hiding versions from selector when using mike

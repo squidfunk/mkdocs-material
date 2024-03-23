@@ -1,3 +1,9 @@
+mkdocs-material-9.5.15 (2024-03-23)
+
+  * Reverted fix for transparent iframes (9.5.14)
+  * Fixed #6929: Interference of social plugin and auto dark mode
+  * Fixed #6938: Giscus shows dark background in light mode (9.5.14 regression)
+
 mkdocs-material-9.5.14 (2024-03-18)
 
   * Added support for hiding versions from selector when using mike
