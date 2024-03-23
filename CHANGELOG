@@ -1,8 +1,22 @@
+mkdocs-material-9.5.15+insiders-4.53.3 (2024-03-23)
+
+  * Added support for font variants in social plugin
+  * Improved resilience of font resolution in social plugin
+  * Fixed tag listing sometimes not being auto-populated
+  * Fixed tag listing scope not being correctly resolved
+  * Fixed #6941: Meta plugin adding duplicate entries
+  * Fixed #6928: Social plugin crashes for some fonts
+
 mkdocs-material-9.5.15 (2024-03-23)
 
   * Reverted fix for transparent iframes (9.5.14)
   * Fixed #6929: Interference of social plugin and auto dark mode
   * Fixed #6938: Giscus shows dark background in light mode (9.5.14 regression)
+
+mkdocs-material-9.5.14+insiders-4.53.2 (2024-03-18)
+
+  * Fixed abort on first non-matching configuration in preview extension
+  * Fixed #6914: Meta files take precedence over front matter
 
 mkdocs-material-9.5.14 (2024-03-18)
 

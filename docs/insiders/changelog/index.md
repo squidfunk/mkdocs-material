@@ -2,6 +2,15 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.3 <small>March 23, 2024</small> { id="4.53.3" }
+
+- Added support for font variants in social plugin
+- Improved resilience of font resolution in social plugin
+- Fixed tag listing sometimes not being auto-populated
+- Fixed tag listing scope not being correctly resolved
+- Fixed #6941: Meta plugin adding duplicate entries
+- Fixed #6928: Social plugin crashes for some fonts
+
 ### 4.53.2 <small>March 18, 2024</small> { id="4.53.2" }
 
 - Fixed abort on first non-matching configuration in preview extension
