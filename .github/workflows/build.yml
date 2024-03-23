@@ -66,6 +66,7 @@ jobs:
 
   npm-check:
     runs-on: ubuntu-latest
+    needs: [python-deps]
     steps:
 
       - name: Checkout repository
@@ -90,7 +91,10 @@ jobs:
       - name: Check project
         run: npm run check
 
-  python:
+  python-deps:
+    #
+    # Sets up the Python dependencies, used by both the python and the npm-check jobs.
+    #
     runs-on: ubuntu-latest
     steps:
 
@@ -105,6 +109,13 @@ jobs:
           cache-dependency-path: |
             pyproject.toml
             requirements.txt
+
+      - run: pip install -e .[dev]
+
+  python:
+    runs-on: ubuntu-latest
+    needs: [python-deps]
+    steps:
 
       - name: Set up Python dependencies
         run: pip install --upgrade build twine
