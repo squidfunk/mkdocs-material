@@ -686,7 +686,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.slugify -->
 
-:   <!-- md:default `toc.slugify` --> This option allows for
+:   <!-- md:default `None` --> This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
     like for example those from [Python Markdown Extensions][Slugs]:
@@ -706,7 +706,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - pymdownx.tabbed:
-              slugify: !!python/object/apply:pymdownx.slugs.slugify
+              slugify: !!python/object/apply:pymdownx.slugs.slugify {}
         ```
 
 The other configuration options of this extension are not officially supported
