@@ -452,9 +452,12 @@ class SocialPlugin(BasePlugin[SocialConfig]):
                 if match:
                     font[match.group(1)] = fname
 
-        # If none found, fetch from Google and try again
+        # If none found, fetch from local folder (if configured) or Google and try again
         if len(font) == 0:
-            self._load_font_from_google(name)
+            if self.config.fonts_dir:
+                self._load_font_from_filesystem(name)
+            else:
+                self._load_font_from_google(name)
             for currentpath, folders, files in os.walk(self.cache):
                 for file in files:
                     # Map available font weights to file paths
@@ -465,6 +468,21 @@ class SocialPlugin(BasePlugin[SocialConfig]):
 
         # Return available font weights with fallback
         return defaultdict(lambda: font["Regular"], font)
+
+    def _load_font_from_filesystem(self, name):
+        """
+        Load font from a directory that has been configured as containing
+        the fonts used. The fonts need to be in a .zip file as if they
+        were just downloaded from Google Fonts or a similar font CDN.
+        """
+        with ZipFile(os.path.join(
+                self.config.fonts_dir,
+                f"{name}.zip")
+            ) as zipfile:
+            files = [file for file in zipfile.namelist()
+                     if file.endswith(".ttf") or file.endswith(".otf")]
+            zipfile.extractall(self.cache, files)
+        return files
 
     # Retrieve font from Google Fonts
     def _load_font_from_google(self, name):

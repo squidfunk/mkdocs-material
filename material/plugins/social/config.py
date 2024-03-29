@@ -29,6 +29,7 @@ from mkdocs.config.config_options import Deprecated, Type
 class SocialConfig(Config):
     enabled = Type(bool, default = True)
     cache_dir = Type(str, default = ".cache/plugin/social")
+    fonts_dir = Type(str, default = "fonts")
 
     # Settings for social cards
     cards = Type(bool, default = True)
