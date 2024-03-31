@@ -49,13 +49,24 @@ from mkdocs.plugins import BasePlugin
 from mkdocs.utils import copy_file
 from shutil import copyfile
 from tempfile import NamedTemporaryFile
-try:
-    from cairosvg import svg2png
-    from PIL import Image, ImageDraw, ImageFont
-except ImportError:
-    pass
 
 from .config import SocialConfig
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError as e:
+    import_errors = {repr(e)}
+else:
+    import_errors = set()
+
+cairosvg_error: str = ""
+
+try:
+    from cairosvg import svg2png
+except ImportError as e:
+    import_errors.add(repr(e))
+except OSError as e:
+    cairosvg_error = str(e)
 
 
 # -----------------------------------------------------------------------------
@@ -76,10 +87,18 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             return
 
         # Check dependencies
-        if "Image" not in globals():
+        if import_errors:
             raise PluginError(
-                "Required dependencies of \"social\" plugin not found. "
-                "Install with: pip install \"mkdocs-material[imaging]\""
+                "Required dependencies of \"social\" plugin not found:\n"
+                + str("\n".join(map(lambda x: "- " + x, import_errors)))
+                + "\n\n--> Install with: pip install \"mkdocs-material[imaging]\""
+            )
+
+        if cairosvg_error:
+            raise PluginError(
+                "\"cairosvg\" Python module is installed, but it crashed with:\n"
+                + cairosvg_error
+                + "\n\n--> Check out the troubleshooting guide: https://t.ly/MfX6u"
             )
 
         # Move color options
