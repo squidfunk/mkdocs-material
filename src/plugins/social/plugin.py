@@ -500,17 +500,6 @@ class SocialPlugin(BasePlugin[SocialConfig]):
                 if not fallback or len(name) < len(fallback):
                     fallback = name
 
-        # Print warning in debug mode, since the font could not be resolved
-        if self.config.debug:
-            log.warning(
-                f"Couldn't find style '{style}' for font family '{family}'. " +
-                f"Styles available:\n\n" +
-                f"\n".join([os.path.splitext(file)[0] for file in list]) +
-                f"\n\n"
-                f"Falling back to: {fallback}\n"
-                f"\n"
-            )
-
         # Fall back to regular font (guess if there are multiple)
         return self._resolve_font(family, fallback)
 
