@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.5.16 <small>March 31, 2024</small> { id="9.5.16" }
+
+- Updated Russian translations
+- Improved error handling and reporting in social plugin
+- Fixed blog plugin not allowing to use time in format strings
+- Fixed #6983: Social plugin crashes because of Google Fonts API change
+
 ### 9.5.15 <small>March 23, 2024</small> { id="9.5.15" }
 
 - Reverted fix for transparent iframes (9.5.14)
