@@ -1,3 +1,7 @@
+mkdocs-material-9.5.16+insiders-4.53.4 (2024-03-31)
+
+  * Fixed #6973: Escaping issue in tags extra files deprecation helper
+
 mkdocs-material-9.5.16 (2024-03-31)
 
   * Updated Russian translations

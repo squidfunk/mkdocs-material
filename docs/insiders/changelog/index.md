@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.4 <small>March 31, 2024</small> { id="4.53.4" }
+
+- Fixed #6973: Escaping issue in tags extra files deprecation helper
+
 ### 4.53.3 <small>March 23, 2024</small> { id="4.53.3" }
 
 - Added support for font variants in social plugin
