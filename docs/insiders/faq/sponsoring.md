@@ -125,7 +125,7 @@ depending on the number of sites you want to build. For companies using
 Material for MkDocs, we offer three different __commercial__ tiers, from which
 you can choose depending on your requirements.
 
-Also, please read what is considered [commercial use].
+Also, please read what is considered [commercial] use.
 
   [commercial]: ../faq/sponsoring.md/#commercial-use
   [non-commercial]: ../faq/sponsoring.md/#non-commercial-use

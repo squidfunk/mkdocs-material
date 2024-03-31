@@ -25,7 +25,7 @@ import os
 import posixpath
 import yaml
 
-from babel.dates import format_date
+from babel.dates import format_datetime
 from datetime import datetime
 from jinja2 import pass_context
 from jinja2.runtime import Context
@@ -460,7 +460,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             return config.authors
 
         # Open file and parse as YAML
-        with open(file, encoding = "utf-8") as f:
+        with open(file, encoding = "utf-8-sig") as f:
             config.config_file_path = os.path.abspath(file)
             try:
                 config.load_dict(yaml.load(f, SafeLoader) or {})
@@ -783,7 +783,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     # Format date
     def _format_date(self, date: datetime, format: str, config: MkDocsConfig):
         locale: str = config.theme["language"].replace("-", "_")
-        return format_date(date, format = format, locale = locale)
+        return format_datetime(date, format = format, locale = locale)
 
     # Format date for post
     def _format_date_for_post(self, date: datetime, config: MkDocsConfig):
