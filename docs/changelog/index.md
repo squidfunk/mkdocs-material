@@ -6,6 +6,7 @@
 
 - Updated Russian translations
 - Improved error handling and reporting in social plugin
+- Improved error handling and reporting in privacy plugin
 - Fixed blog plugin not allowing to use time in format strings
 - Fixed #6983: Social plugin crashes because of Google Fonts API change
 
