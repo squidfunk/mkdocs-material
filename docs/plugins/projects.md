@@ -59,7 +59,7 @@ There are some [limitations], but we're working hard to remove them.
 The plugin came into existence because we needed a convenient and scalable
 method to build our [examples] repository, which features many self-contained
 and runnable projects that users can download and use as a basis when
-boostrapping a new project or [creating a reproduction].
+bootstrapping a new project or [creating a reproduction].
 
 When you want to create a multi-language project, or have a very large existing
 project, you might consider using the plugin, as it makes managing, editing

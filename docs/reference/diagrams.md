@@ -164,7 +164,7 @@ stateDiagram-v2
 
 ### Using class diagrams
 
-[Class diagrams] are central to object oriented programing, describing the
+[Class diagrams] are central to object oriented programming, describing the
 structure of a system by modelling entities as classes and relationships between
 them:
 

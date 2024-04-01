@@ -20,7 +20,7 @@ base to complement our documentation.
 We're eager to keeping it well-maintained, organized, easy to search and address
 all queries which is why we need extra hands to keep up with the demand.
 
-That's why we're bulding a team of Community Experts!
+That's why we're building a team of Community Experts!
 
 ## Your role
 
