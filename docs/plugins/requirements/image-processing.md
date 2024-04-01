@@ -219,7 +219,7 @@ process is different:
 === ":material-linux: Linux"
 
     On Linux the library lookup can [differ greatly][find-library-Linux] and is
-    dependant from the installed distribution. For tested Ubuntu and Manjaro
+    dependent from the installed distribution. For tested Ubuntu and Manjaro
     systems Python runs shell commands to check which libraries are available in
     [`ldconfig`][ubuntu-ldconfig], in the [`gcc`][ubuntu-gcc]/`cc` compiler, and
     in [`ld`][ubuntu-ld].

@@ -588,7 +588,7 @@
             "const": "navigation.tracking"
           },
           {
-            "title": "Search higlighting",
+            "title": "Search highlighting",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting",
             "const": "search.highlight"
           },

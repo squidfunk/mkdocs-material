@@ -164,7 +164,7 @@ sequenceDiagram
     loop discuss
       PR ->> PR: request review
       PR ->> PR: discussion
-      local ->> fork: push futher changes
+      local ->> fork: push further changes
     end
     PR ->> mkdocs-material: merge (and squash)
     deactivate PR

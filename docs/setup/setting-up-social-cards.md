@@ -303,7 +303,7 @@ layers:
 ```
 
 If the `size` is omitted, it defaults to the size of the layout. If the `offset`
-is omitted, it defaults to the top left corner, which is the defaut `origin`.
+is omitted, it defaults to the top left corner, which is the default `origin`.
 Saving the layout and reloading renders:
 
 ![Layer size]

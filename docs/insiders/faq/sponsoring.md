@@ -387,7 +387,7 @@ from the Insiders features and work together on the project.
 
 Your sponsorship is valid for as long as your monthly or yearly subscription
 is valid. If you choose to cancel your sponsorship, you will lose access to
-the Insiders edition once your cancelation is active and will be automatically
+the Insiders edition once your cancellation is active and will be automatically
 removed by GitHub as a collaborator from the private repository.
 
 [__How do I cancel my sponsorship?__](#sponsorship-cancellation){ #sponsorship-cancellation }
