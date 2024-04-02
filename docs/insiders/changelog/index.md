@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.5 <small>April 2, 2024</small> { id="4.53.5" }
+
+- Fixed social plugin crashing when no colors are specified in palettes
+
 ### 4.53.4 <small>March 31, 2024</small> { id="4.53.4" }
 
 - Fixed #6973: Escaping issue in tags extra files deprecation helper

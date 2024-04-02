@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.5.17 <small>April 2, 2024</small> { id="9.5.17" }
+
+- Updated Serbian translations
+- Fixed #7003: Confusing keyboard interaction for palette toggle
+- Fixed #7001: Blog posts now show time by default (9.5.16 regression)
+- Fixed edge case in backport of social plugin font loading logic
+
 ### 9.5.16 <small>March 31, 2024</small> { id="9.5.16" }
 
 - Updated Russian translations
