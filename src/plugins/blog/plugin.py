@@ -25,7 +25,7 @@ import os
 import posixpath
 import yaml
 
-from babel.dates import format_datetime
+from babel.dates import format_date, format_datetime
 from datetime import datetime
 from jinja2 import pass_context
 from jinja2.runtime import Context
@@ -780,10 +780,16 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # -------------------------------------------------------------------------
 
-    # Format date
+    # Format date - if the given format string refers to a predefined format,
+    # we format the date without a time component in order to keep sane default
+    # behavior, since authors will not expect time to be relevant for most posts
+    # as by our assumptions - see https://t.ly/Yi7ZC
     def _format_date(self, date: datetime, format: str, config: MkDocsConfig):
         locale: str = config.theme["language"].replace("-", "_")
-        return format_datetime(date, format = format, locale = locale)
+        if format in ["full", "long", "medium", "short"]:
+            return format_date(date, format = format, locale = locale)
+        else:
+            return format_datetime(date, format = format, locale = locale)
 
     # Format date for post
     def _format_date_for_post(self, date: datetime, config: MkDocsConfig):
