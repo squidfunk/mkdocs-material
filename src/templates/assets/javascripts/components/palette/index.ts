@@ -25,6 +25,7 @@ import {
   Subject,
   asyncScheduler,
   defer,
+  filter,
   finalize,
   fromEvent,
   map,
@@ -36,7 +37,8 @@ import {
   skip,
   startWith,
   takeUntil,
-  tap
+  tap,
+  withLatestFrom
 } from "rxjs"
 
 import { getElements, watchMedia } from "~/browser"
@@ -161,6 +163,17 @@ export function mountPalette(
       /* Persist preference in local storage */
       __md_set("__palette", palette)
     })
+
+    // Handle color switch on Enter or Space - see https://t.ly/YIhVj
+    fromEvent<KeyboardEvent>(el, "keydown").pipe(
+      filter(ev => ev.key === "Enter"),
+      withLatestFrom(push$, (_, palette) => palette)
+    )
+      .subscribe(({ index }) => {
+        index = (index + 1) % inputs.length
+        inputs[index].click()
+        inputs[index].focus()
+      })
 
     /* Update theme-color meta tag */
     push$
