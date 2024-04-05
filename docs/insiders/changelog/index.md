@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.6 <small>April 5, 2024</small> { id="4.53.6" }
+
+- Ensure working directory is set for projects when using projects plugin
+- Fixed #6970: Incorrect relative paths in git submodules with projects plugin
+
 ### 4.53.5 <small>April 2, 2024</small> { id="4.53.5" }
 
 - Fixed social plugin crashing when no colors are specified in palettes

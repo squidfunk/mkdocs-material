@@ -1,3 +1,8 @@
+mkdocs-material-9.5.17+insiders-4.53.6 (2024-04-05)
+
+  * Ensure working directory is set for projects when using projects plugin
+  * Fixed #6970: Incorrect relative paths in git submodules with projects plugin
+
 mkdocs-material-9.5.17+insiders-4.53.5 (2024-04-02)
 
   * Fixed social plugin crashing when no colors are specified in palettes
