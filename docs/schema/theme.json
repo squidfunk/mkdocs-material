@@ -490,6 +490,34 @@
         {
           "label": "repo",
           "body": "repo: ${1:fontawesome/brands/git-alt}"
+        },
+        {
+          "label": "top",
+          "body": "top: ${1:material/arrow-up}"
+        },
+        {
+          "label": "menu",
+          "body": "menu: ${1:material/menu}"
+        },
+        {
+          "label": "alternate",
+          "body": "alternate: ${1:material/translate}"
+        },
+        {
+          "label": "share",
+          "body": "share: ${1:material/share-variant}"
+        },
+        {
+          "label": "search",
+          "body": "search: ${1:material/magnify}"
+        },
+        {
+          "label": "previous",
+          "body": "previous: ${1:material/arrow-left}"
+        },
+        {
+          "label": "next",
+          "body": "next: ${1:material/arrow-right}"
         }
       ]
     },
