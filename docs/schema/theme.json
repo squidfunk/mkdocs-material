@@ -344,6 +344,33 @@
         "repo": {
           "$ref": "#/$defs/icon"
         },
+        "annotation": {
+          "$ref": "#/$defs/icon"
+        },
+        "top": {
+          "$ref": "#/$defs/icon"
+        },
+        "share": {
+          "$ref": "#/$defs/icon"
+        },
+        "menu": {
+          "$ref": "#/$defs/icon"
+        },
+        "alternate": {
+          "$ref": "#/$defs/icon"
+        },
+        "search": {
+          "$ref": "#/$defs/icon"
+        },
+        "close": {
+          "$ref": "#/$defs/icon"
+        },
+        "previous": {
+          "$ref": "#/$defs/icon"
+        },
+        "next": {
+          "$ref": "#/$defs/icon"
+        },
         "admonition": {
           "title": "Admonition icon",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/admonitions/#admonition-icons",
