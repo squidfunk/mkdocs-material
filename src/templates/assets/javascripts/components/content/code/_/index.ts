@@ -42,6 +42,7 @@ import {
 import { feature } from "~/_"
 import {
   getElementContentSize,
+  getElements,
   watchElementSize,
   watchElementVisibility
 } from "~/browser"
@@ -225,6 +226,14 @@ export function mountCodeBlock(
         )
       }
     }
+
+    // If the code block has line spans, we can add this additional class to
+    // the code block element, which fixes the problem for highlighted code
+    // lines not stretching to the entirety of the screen when the code block
+    // overflows, e.g., on mobile - see
+    const spans = getElements(":scope > span[id]", el)
+    if (spans.length)
+      el.classList.add("md-code__content")
 
     /* Create and return component */
     return watchCodeBlock(el)
