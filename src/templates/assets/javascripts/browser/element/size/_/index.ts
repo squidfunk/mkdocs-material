@@ -80,15 +80,12 @@ const observer$ = defer(() => (
     : of(undefined)
 ))
   .pipe(
-    map(() => new ResizeObserver(entries => {
-      for (const entry of entries)
-        entry$.next(entry)
-    })),
-    switchMap(observer => merge(NEVER, of(observer))
-      .pipe(
-        finalize(() => observer.disconnect())
-      )
-    ),
+    map(() => new ResizeObserver(entries => (
+      entries.forEach(entry => entry$.next(entry))
+    ))),
+    switchMap(observer => merge(NEVER, of(observer)).pipe(
+      finalize(() => observer.disconnect())
+    )),
     shareReplay(1)
   )
 
@@ -136,16 +133,27 @@ export function getElementSize(
 export function watchElementSize(
   el: HTMLElement
 ): Observable<ElementSize> {
-  return observer$
-    .pipe(
-      tap(observer => observer.observe(el)),
-      switchMap(observer => entry$
-        .pipe(
-          filter(({ target }) => target === el),
-          finalize(() => observer.unobserve(el)),
-          map(() => getElementSize(el))
-        )
-      ),
-      startWith(getElementSize(el))
-    )
+
+  // Compute target element - since inline elements cannot be observed by the
+  // current `ResizeObserver` implementation as provided by browsers, we need
+  // to determine the first containing parent element and use that one as a
+  // target, while we always compute the actual size from the element.
+  let target = el
+  while (target.clientWidth === 0)
+    if (target.parentElement)
+      target = target.parentElement
+    else
+      break
+
+  // Observe target element and recompute element size on resize - as described
+  // above, the target element is not necessarily the element of interest
+  return observer$.pipe(
+    tap(observer => observer.observe(target)),
+    switchMap(observer => entry$.pipe(
+      filter(entry => entry.target === target),
+      finalize(() => observer.unobserve(target))
+    )),
+    map(() => getElementSize(el)),
+    startWith(getElementSize(el))
+  )
 }
