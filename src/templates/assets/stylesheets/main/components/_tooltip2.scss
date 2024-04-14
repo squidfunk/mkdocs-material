@@ -182,6 +182,13 @@
           )
         );
       width: fit-content;
+      // @todo refactor - this is currently a hack to fix overly long tooltips,
+      // but should be refactored in the future to be more flexible
+      max-width:
+        min(
+          calc(100vw - 2 * #{px2rem(16px)}),
+          400px
+        );
       padding: px2rem(4px) px2rem(8px);
       font-size: px2rem(10px);
       font-weight: 700;
