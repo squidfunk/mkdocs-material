@@ -1,3 +1,12 @@
+mkdocs-material-9.5.18 (2024-04-16)
+
+  * Refactored tooltips implementation to fix positioning issues
+  * Fixed #7044: Rendering glitch when hovering contributor avatar in Chrome
+  * Fixed #7043: Highlighted lines in code blocks cutoff on mobile
+  * Fixed #6910: Incorrect position of tooltip for page status in sidebar
+  * Fixed #6760: Incorrect position and overly long tooltip in tables
+  * Fixed #6488: Incorrect position and cutoff tooltip in content tabs
+
 mkdocs-material-9.5.17+insiders-4.53.6 (2024-04-05)
 
   * Ensure working directory is set for projects when using projects plugin

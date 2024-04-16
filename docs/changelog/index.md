@@ -2,6 +2,15 @@
 
 ## Material for MkDocs
 
+### 9.5.18 <small>April 16, 2024</small> { id="9.5.18" }
+
+- Refactored tooltips implementation to fix positioning issues
+- Fixed #7044: Rendering glitch when hovering contributor avatar in Chrome
+- Fixed #7043: Highlighted lines in code blocks cutoff on mobile
+- Fixed #6910: Incorrect position of tooltip for page status in sidebar
+- Fixed #6760: Incorrect position and overly long tooltip in tables
+- Fixed #6488: Incorrect position and cutoff tooltip in content tabs
+
 ### 9.5.17 <small>April 2, 2024</small> { id="9.5.17" }
 
 - Updated Serbian translations
