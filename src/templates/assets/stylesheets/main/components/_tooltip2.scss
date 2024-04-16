@@ -1,0 +1,210 @@
+////
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Tooltip variables
+:root {
+  --md-tooltip-width: #{px2rem(400px)};
+  --md-tooltip-tail: #{px2rem(6px)};
+}
+
+// ----------------------------------------------------------------------------
+
+// Tooltip
+.md-tooltip2 {
+  position: absolute;
+  // Note that the top offset is computed from the host element offset plus the
+  // tooltip offset, which is always measured relative to the host element
+  top:
+    calc(
+      var(--md-tooltip-host-y) +
+      var(--md-tooltip-y)
+    );
+  inline-size: 100%;
+  // Hack: set an explicit `z-index` so we can transition it to ensure that any
+  // following elements are not overlaying the tooltip during the transition.
+  z-index: 0;
+  font-family: var(--md-text-font-family);
+  color: var(--md-default-fg-color);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    transform 0ms 250ms,
+    opacity 250ms,
+    z-index 250ms;
+  transform: translateY(px2rem(-8px));
+  // We explicitly set the origin to the tooltip tail, allowing the author to
+  // easily add further transforms to the tooltip, customizing the transition
+  transform-origin:
+    calc(
+      var(--md-tooltip-host-x) +
+      var(--md-tooltip-x)
+    )
+    0;
+  // Hack: promote to own layer to reduce jitter
+  backface-visibility: hidden;
+
+  // Tooltip tail
+  &::before {
+    position: absolute;
+    // The offset of the tooltip tail is computed from the host element offset,
+    // plus the tooltip offset, which equals the center of the host element,
+    // and minus the half width of the tooltip tail to center it. Then, on both
+    // sides, the tooltip tail is padded with 150% of the inset area.
+    left:
+      clamp(
+        1.5 * #{px2rem(16px)},
+        calc(
+          var(--md-tooltip-host-x) +
+          var(--md-tooltip-x) -
+          var(--md-tooltip-tail)
+        ),
+        calc(
+          100vw -
+          2 * var(--md-tooltip-tail) -
+          1.5 * #{px2rem(16px)}
+        )
+      );
+    z-index: 1;
+    display: block;
+    content: "";
+    border-inline: var(--md-tooltip-tail) solid transparent;
+  }
+
+  // Tooltip tail if rendered above target
+  &--top::before {
+    bottom: calc(-1 * var(--md-tooltip-tail) + px2rem(0.5px));
+    filter: drop-shadow(0 1px 0 hsla(0, 0%, 0%, 0.05));
+    border-top: var(--md-tooltip-tail) solid var(--md-default-bg-color);
+  }
+
+  // Tooltip tail if rendered below target
+  &--bottom::before {
+    top: calc(-1 * var(--md-tooltip-tail) + px2rem(0.5px));
+    filter: drop-shadow(0 -1px 0 hsla(0, 0%, 0%, 0.05));
+    border-bottom: var(--md-tooltip-tail) solid var(--md-default-bg-color);
+  }
+
+  // Tooltip is visible
+  &--active {
+    z-index: 2;
+    opacity: 1;
+    transition:
+      transform 400ms cubic-bezier(0, 1, 0.5, 1),
+      opacity   250ms,
+      z-index     0ms;
+    transform: translateY(0);
+  }
+
+  // Tooltip wrapper
+  &__inner {
+    position: relative;
+    // The tooltip is slightly moved to the left, so it nicely aligns with the
+    // content of the tooltip set by the padding of this element. On both sides,
+    // the tooltip is padded with the inset area, so it never touches the edge
+    // of the window for a better user experience.
+    left:
+      clamp(
+        #{px2rem(16px)},
+        calc(
+          var(--md-tooltip-host-x) -
+          #{px2rem(16px)}
+        ),
+        calc(
+          100vw -
+          var(--md-tooltip-width) -
+          #{px2rem(16px)}
+        )
+      );
+    max-width: calc(100vw - 2 * #{px2rem(16px)});
+    max-height: 40vh;
+    background-color: var(--md-default-bg-color);
+    border-radius: px2rem(2px);
+    box-shadow: var(--md-shadow-z2);
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+
+    // Webkit scrollbar
+    &::-webkit-scrollbar {
+      width: px2rem(4px);
+      height: px2rem(4px);
+    }
+
+    // Webkit scrollbar thumb
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--md-default-fg-color--lighter);
+
+      // Webkit scrollbar thumb on hover
+      &:hover {
+        background-color: var(--md-accent-fg-color);
+      }
+    }
+
+    // Tooltip is non-interactive - this role should be set if the tooltip has
+    // only informational and non-interactive content, e.g., an actual tooltip.
+    // It has no explicitl width set, uses a smaller font, and is centered,
+    // other than a tooltip with typesetted content.
+    [role="tooltip"] > & {
+      left:
+        clamp(
+          #{px2rem(16px)},
+          calc(
+            var(--md-tooltip-host-x) +
+            var(--md-tooltip-x) -
+            var(--md-tooltip-width) / 2
+          ),
+          calc(
+            100vw -
+            var(--md-tooltip-width) -
+            #{px2rem(16px)}
+          )
+        );
+      width: fit-content;
+      // @todo refactor - this is currently a hack to fix overly long tooltips,
+      // but should be refactored in the future to be more flexible
+      max-width:
+        min(
+          calc(100vw - 2 * #{px2rem(16px)}),
+          400px
+        );
+      padding: px2rem(4px) px2rem(8px);
+      font-size: px2rem(10px);
+      font-weight: 700;
+      // If the author wishes to keep the tooltip visible upon hover and make
+      // the text selectable, this property can be set to `initial`
+      user-select: none;
+    }
+
+    // Adjust spacing on first child
+    &.md-typeset > :first-child {
+      margin-top: 0;
+    }
+
+    // Adjust spacing on last child
+    &.md-typeset > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}

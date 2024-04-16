@@ -66,6 +66,7 @@ export function watchElementContentOffset(
 ): Observable<ElementOffset> {
   return merge(
     fromEvent(el, "scroll"),
+    fromEvent(window, "scroll"),
     fromEvent(window, "resize")
   )
     .pipe(

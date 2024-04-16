@@ -46,13 +46,13 @@ import {
   watchElementSize,
   watchElementVisibility
 } from "~/browser"
+import {
+  Tooltip,
+  mountInlineTooltip2
+} from "~/components/tooltip2"
 import { renderClipboardButton } from "~/templates"
 
 import { Component } from "../../../_"
-import {
-  Tooltip,
-  mountTooltip
-} from "../../../tooltip"
 import {
   Annotation,
   mountAnnotationList
@@ -200,7 +200,7 @@ export function mountCodeBlock(
         const button = renderClipboardButton(parent.id)
         parent.insertBefore(button, el)
         if (feature("content.tooltips"))
-          content$.push(mountTooltip(button))
+          content$.push(mountInlineTooltip2(button, { viewport$ }))
       }
     }
 
