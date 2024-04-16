@@ -69,6 +69,9 @@
     // Author image
     img {
       filter: grayscale(100%) opacity(75%);
+      // Hack: also apply this here, in order to mitigate browser glitches in
+      // Chrome and Edge when hovering the avatar - see https://t.ly/Q3ECC
+      border-radius: 100%;
       transition: filter 125ms;
     }
 
