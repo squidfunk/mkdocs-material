@@ -174,13 +174,15 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+not_in_nav: |
+  /tutorials/**/*.md
+
 # Page tree
 nav:
   - Home: index.md
   - Getting started:
     - Installation: getting-started.md
     - Creating your site: creating-your-site.md
-    - Tutorials: tutorials.md
     - Publishing your site: publishing-your-site.md
     - Customization: customization.md
     - Conventions: conventions.md
@@ -189,6 +191,8 @@ nav:
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
+    - Tutorials:
+      - tutorials/index.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md
