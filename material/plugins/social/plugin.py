@@ -408,7 +408,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             return Image.open(path).convert("RGBA")
 
         # Handle icons
-        icon = theme["icon"] or {}
+        icon = theme.get("icon") or {}
         if "logo" in icon and icon["logo"]:
             logo = icon["logo"]
         else:
@@ -448,13 +448,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
     def _load_font(self, config):
         name = self.config.cards_layout_options.get("font_family")
         if not name:
-
-            # Retrieve from theme (default: Roboto)
-            theme = config.theme
-            if isinstance(theme["font"], dict) and "text" in theme["font"]:
-                name = theme["font"]["text"]
-            else:
-                name = "Roboto"
+            name = config.theme.get("font", {}).get("text", "Roboto")
 
         # Resolve relevant fonts
         font = {}
