@@ -38,7 +38,7 @@
     "lunr-languages": "^1.4.0",
     "ramda": "^0.27.0",
     "rxjs": "^7.0.0-beta.0",
-    "tar": ">=4.4.18"
+    "tar": ">=6.2.1"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.13.0",
