@@ -400,6 +400,26 @@ the archive index pages, and the category index pages.
         categories_pagination_per_page: 10
     ```
 
+## Blog table of contents
+
+Another thing you may want to do once you have a large enough number of posts
+is to turn on the function that produces a table of contents for the blog
+index pages, giving your readers the opportunity to quickly scan the content
+of each page for something that interests them without having to scroll
+(assuming that the number of post per page is not too big).
+
+!!! example "Turn on the table of contents feature"
+
+    To produce a table of contents for the blog index pages, add the following
+    to the configuration of the blog plugin:
+
+    ```yaml hl_lines="2"
+    - blog:
+        blog_toc: true
+        archive_date_format: MMMM yyyy
+        # ...
+    ```
+
 ## Custom slugs
 
 If, for some reason, you are not happy with the way that Material for MkDocs
