@@ -42,13 +42,13 @@ your private repositories.
 
 Material for MkDocs Insiders can be installed with `pip`. You will
 normally want to install the latest release but can also install a
-specific older release or even the latest development version. 
+specific older release or even the latest development version.
 Make sure you have the `GH_TOKEN` variable set as instructed above.
 
 === "Specific release"
 
-    Pick the corresponding tag from the [list of tags] for the Insiders 
-    repository. In the `pip` command below, replace the tag at the 
+    Pick the corresponding tag from the [list of tags] for the Insiders
+    repository. In the `pip` command below, replace the tag at the
     end of the URL with the one you want.
 
     ``` sh
@@ -179,13 +179,6 @@ Of course, you can also enable both groups with:
 ```
 CI=1 INSIDERS=1 mkdocs build
 ```
-
-  [^1]:
-    Previously we recommended to use [configuration inheritance] to work around
-    this limitations, but the brand new [built-in group plugin] is a much better
-    approach, as it allows you to use a single configuration file for building
-    your project with the community edition and Insiders version of Material
-    for MkDocs.
 
   [built-in group plugin]: ../plugins/group.md
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance

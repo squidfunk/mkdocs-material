@@ -476,7 +476,7 @@ overrides via [configuration inheritance].
 See the [getting started guide] for more information.
 
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
-  [getting started guide]: ../getting-started.md#caveats
+  [getting started guide]: ../getting-started.md
   [Card grids]: ../../reference/grids.md?h=grids#using-card-grids
 
 ## Support
@@ -530,7 +530,7 @@ report it on our [issue tracker] in the public community repository. When
 submitting the bug report, please ensure that you do not include any private
 Insiders' source code, as we want to uphold our fair use policy.
 
-[__How can I report an issue in my customizations?__](#customizations-issues){ #costumisations-issues }
+[__How can I report an issue in my customizations?__](#customizations-issues){ #customizations-issues }
 
 Please note, that we do not offer support for customizations as they vary
 widely and are specific to individual cases. Our support is primarily focused on

@@ -94,7 +94,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:version 9.2.9 -->
+<!-- md:version 9.3.2 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
