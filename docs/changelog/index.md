@@ -2,6 +2,16 @@
 
 ## Material for MkDocs
 
+### 9.5.19 <small>April 25, 2024</small> { id="9.5.19" }
+
+- Updated MkDocs to 1.6 and limited version to < 2
+- Updated Docker image to latest Alpine Linux
+- Removed `setup.py`, now that GitHub fully understands `pyproject.toml`
+- Improved interop of social plugin with third-party MkDocs themes
+- Fixed #7099: Blog reading time not rendered correctly for Japanese
+- Fixed #7097: Improved resilience of tags plugin when no tags are given
+- Fixed #7090: Active tab indicator in nested content tabs rendering bug
+
 ### 9.5.18 <small>April 16, 2024</small> { id="9.5.18" }
 
 - Refactored tooltips implementation to fix positioning issues
