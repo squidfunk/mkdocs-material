@@ -97,8 +97,10 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             return self._render_tag_index(markdown)
 
         # Add page to tags index
-        for tag in page.meta.get("tags", []):
-            self.tags[tag].append(page)
+        tags = page.meta.get("tags", [])
+        if tags:
+            for tag in tags:
+                self.tags[tag].append(page)
 
     # Inject tags into page (after search and before minification)
     def on_page_context(self, context, page, config, nav):
@@ -110,7 +112,8 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             return
 
         # Provide tags for page
-        if "tags" in page.meta:
+        context["tags"] =[]
+        if "tags" in page.meta and page.meta["tags"]:
             context["tags"] = [
                 self._render_tag(tag)
                     for tag in page.meta["tags"]
