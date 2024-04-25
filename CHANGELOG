@@ -1,3 +1,7 @@
+mkdocs-material-9.5.19+insiders-4.53.7 (2024-04-25)
+
+  * Fixed #7060: Incorrect resolution of translation when using static-i18n
+
 mkdocs-material-9.5.19 (2024-04-25)
 
   * Updated MkDocs to 1.6 and limited version to < 2
