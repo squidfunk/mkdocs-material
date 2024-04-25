@@ -83,16 +83,16 @@ syntax, which is more convenient that directly using the corresponding
 [`mark`][mark], [`ins`][ins] and [`del`][del] HTML tags:
 
 ``` title="Text with highlighting"
-- ==This was marked==
-- ^^This was inserted^^
-- ~~This was deleted~~
+- ==This was marked (highlight)==
+- ^^This was inserted (underline)^^
+- ~~This was deleted (strikethrough)~~
 ```
 
 <div class="result" markdown>
 
-- ==This was marked==
-- ^^This was inserted^^
-- ~~This was deleted~~
+- ==This was marked (highlight)==
+- ^^This was inserted (underline)^^
+- ~~This was deleted (strikethrough)~~
 
 </div>
 

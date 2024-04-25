@@ -113,7 +113,7 @@ In this section, we guide your through our processes.
   [report a bug]: reporting-a-bug.md
   [report a docs issue]: reporting-a-docs-issue.md
   [request a change]: requesting-a-change.md
-  [add translations]: https://github.com/squidfunk/mkdocs-material/adding-translations
+  [add translations]: adding-translations.md
   [create a pull request]: making-a-pull-request.md
 
 ## Checklist
