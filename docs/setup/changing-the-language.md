@@ -43,7 +43,7 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
-  [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
+  [Unicode-aware slug function]: extensions/python-markdown.md#+toc.slugify
   [add a new language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=04-add-a-translation.yml&title=Add+translations+for+...
 
 ### Site language selector
