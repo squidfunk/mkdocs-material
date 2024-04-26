@@ -2,6 +2,12 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.8 <small>April 26, 2024</small> { id="4.53.8" }
+
+- Fixed #7052: Preview extension automatically including all pages
+- Fixed #7051: Instant previews mounting on footnote references
+- Fixed #5165: Improved tooltips not mounting in sidebar for typeset plugin
+
 ### 4.53.7 <small>April 25, 2024</small> { id="4.53.7" }
 
 - Fixed #7060: Incorrect resolution of translation when using static-i18n

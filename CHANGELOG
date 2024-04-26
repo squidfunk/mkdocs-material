@@ -1,3 +1,9 @@
+mkdocs-material-9.5.19+insiders-4.53.8 (2024-04-26)
+
+  * Fixed #7052: Preview extension automatically including all pages
+  * Fixed #7051: Instant previews mounting on footnote references
+  * Fixed #5165: Improved tooltips not mounting in sidebar for typeset plugin
+
 mkdocs-material-9.5.19+insiders-4.53.7 (2024-04-25)
 
   * Fixed #7060: Incorrect resolution of translation when using static-i18n
