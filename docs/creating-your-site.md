@@ -44,6 +44,22 @@ theme:
   name: material
 ```
 
+Note that by default, MkDocs will assume that your site is hosted at the root of
+your domain. If that is not the case then you also need to add a `site_url`
+setting:
+
+``` yaml hl_lines="1"
+site_url: https://www.example.com/mysite
+theme:
+  name: material
+```
+
+For example, the `site_url` needs to be set in order to [publish to GitHub
+pages] - unless you use GitHub pages with a custom domain.
+
+[publish to GitHub pages]: publishing-your-site.md#github-pages
+
+
   [installation methods]: getting-started.md#installation
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
