@@ -46,7 +46,7 @@ from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
-from mkdocs.utils import copy_file
+from mkdocs.utils import write_file
 from shutil import copyfile
 from tempfile import NamedTemporaryFile
 
@@ -522,19 +522,15 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             with requests.get(match) as res:
                 res.raise_for_status()
 
-                # Create a temporary file to download the font
-                with NamedTemporaryFile() as temp:
-                    temp.write(res.content)
-                    temp.flush()
+                #  Extract font family name and style
+                content = BytesIO(res.content)
+                font = ImageFont.truetype(content)
+                name, style = font.getname()
+                name = " ".join([name.replace(family, ""), style]).strip()
+                target = os.path.join(path, family, f"{name}.ttf")
 
-                    # Extract font family name and style
-                    font = ImageFont.truetype(temp.name)
-                    name, style = font.getname()
-                    name = " ".join([name.replace(family, ""), style]).strip()
-
-                    # Move fonts to cache directory
-                    target = os.path.join(path, family, f"{name}.ttf")
-                    copy_file(temp.name, target)
+                # write font to cache
+                write_file(res.content, target)
 
 # -----------------------------------------------------------------------------
 # Data

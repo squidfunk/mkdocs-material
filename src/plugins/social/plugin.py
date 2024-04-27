@@ -46,7 +46,7 @@ from io import BytesIO
 from mkdocs.commands.build import DuplicateFilter
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
-from mkdocs.utils import copy_file
+from mkdocs.utils import write_file
 from shutil import copyfile
 from tempfile import NamedTemporaryFile
 
@@ -522,19 +522,27 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             with requests.get(match) as res:
                 res.raise_for_status()
 
+                content = BytesIO(res.content)
+                font = ImageFont.truetype(content)
+                name, style = font.getname()
+                name = " ".join([name.replace(family, ""), style]).strip()
+                target = os.path.join(path, family, f"{name}.ttf")
+                content.seek(0)
+                write_file(content, target)
+                
                 # Create a temporary file to download the font
-                with NamedTemporaryFile() as temp:
-                    temp.write(res.content)
-                    temp.flush()
+                # with NamedTemporaryFile() as temp:
+                #     temp.write(res.content)
+                #     temp.flush()
 
-                    # Extract font family name and style
-                    font = ImageFont.truetype(temp.name)
-                    name, style = font.getname()
-                    name = " ".join([name.replace(family, ""), style]).strip()
+                #     # Extract font family name and style
+                #     font = ImageFont.truetype(temp.name)
+                #     name, style = font.getname()
+                #     name = " ".join([name.replace(family, ""), style]).strip()
 
-                    # Move fonts to cache directory
-                    target = os.path.join(path, family, f"{name}.ttf")
-                    copy_file(temp.name, target)
+                #     # Move fonts to cache directory
+                #     target = os.path.join(path, family, f"{name}.ttf")
+                #     copy_file(temp.name, target)
 
 # -----------------------------------------------------------------------------
 # Data
