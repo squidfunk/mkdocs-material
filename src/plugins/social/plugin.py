@@ -522,27 +522,14 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             with requests.get(match) as res:
                 res.raise_for_status()
 
-                content = BytesIO(res.content)
-                font = ImageFont.truetype(content)
+                # Extract font family name and style
+                font = ImageFont.truetype(BytesIO(res.content))
                 name, style = font.getname()
                 name = " ".join([name.replace(family, ""), style]).strip()
                 target = os.path.join(path, family, f"{name}.ttf")
-                content.seek(0)
-                write_file(content, target)
                 
-                # Create a temporary file to download the font
-                # with NamedTemporaryFile() as temp:
-                #     temp.write(res.content)
-                #     temp.flush()
-
-                #     # Extract font family name and style
-                #     font = ImageFont.truetype(temp.name)
-                #     name, style = font.getname()
-                #     name = " ".join([name.replace(family, ""), style]).strip()
-
-                #     # Move fonts to cache directory
-                #     target = os.path.join(path, family, f"{name}.ttf")
-                #     copy_file(temp.name, target)
+                # write file to cache
+                write_file(res.content, target)
 
 # -----------------------------------------------------------------------------
 # Data
