@@ -37,29 +37,22 @@ This will create the following structure:
 
 ### Minimal configuration
 
-Simply add the following lines to `mkdocs.yml` to enable the theme:
+Simply set the `site_name` and add the following lines to `mkdocs.yml` to enable the theme:
 
-``` yaml
+``` yaml hl_lines="2-5"
+site_name: My site
+site_url: https://mydomain.org/mysite
 theme:
   name: material
 ```
 
-Note that by default, MkDocs will assume that your site is hosted at the root of
-your domain. If that is not the case then you also need to add a `site_url`
-setting:
+The `site_url` setting is important for a number of reasons.
+By default, MkDocs will assume that your site is hosted at the root of
+your domain. This is not the case, for example, when [publishing to GitHub
+pages] - unless you use a custom domain. Another reason is that some of the
+plugins require the `site_url` to be set, so you should always do this.
 
-``` yaml hl_lines="1"
-site_url: https://www.example.com/mysite
-theme:
-  name: material
-```
-
-For example, the `site_url` needs to be set in order to [publish to GitHub
-pages] - unless you use GitHub pages with a custom domain.
-
-[publish to GitHub pages]: publishing-your-site.md#github-pages
-
-
+  [publishing to GitHub pages]: publishing-your-site.md#github-pages
   [installation methods]: getting-started.md#installation
 
 ???+ tip "Recommended: [configuration validation and auto-complete]"
