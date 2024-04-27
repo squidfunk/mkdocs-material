@@ -675,6 +675,7 @@ All post excerpts belonging to the category are automatically appended.
   [page description]: ../reference/index.md#setting-the-page-description
   [categories_url_format]: ../plugins/blog.md#config.categories_url_format
   [categories_slugify]: ../plugins/blog.md#config.categories_slugify
+  [this is configurable]: ../plugins/blog.md#config.blog_dir
 
 ### Overriding templates
 
