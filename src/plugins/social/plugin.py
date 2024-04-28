@@ -523,11 +523,16 @@ class SocialPlugin(BasePlugin[SocialConfig]):
                 res.raise_for_status()
 
                 # Extract font family name and style
-                font = ImageFont.truetype(BytesIO(res.content))
-                name, style = font.getname()
-                name = " ".join([name.replace(family, ""), style]).strip()
-                target = os.path.join(path, family, f"{name}.ttf")
-                
+                # using the content in the response via ByteIO to avoid writing
+                # a temp file. Done to fix problems with passing a
+                # NamedTemporaryFile to ImageFont.truetype() on Windows,
+                # see https://t.ly/LiF_k
+                with BytesIO(res.content) as fontdata:
+                    font = ImageFont.truetype(fontdata)
+                    name, style = font.getname()
+                    name = " ".join([name.replace(family, ""), style]).strip()
+                    target = os.path.join(path, family, f"{name}.ttf")
+
                 # write file to cache
                 write_file(res.content, target)
 
