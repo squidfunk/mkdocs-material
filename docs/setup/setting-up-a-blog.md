@@ -122,7 +122,7 @@ The following configuration options are supported:
 
 :   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variables][mkdocs.env]:
+    local builds, you can use an [environment variable][mkdocs.env]:
 
     ``` yaml
     plugins:
