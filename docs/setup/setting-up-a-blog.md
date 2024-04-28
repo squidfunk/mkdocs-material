@@ -32,6 +32,19 @@ plugins:
   - blog
 ```
 
+If you do not have a navigation (`nav`) definition in your `mkdocs.yml` then
+there is nothing else to do there as the blog plugin will add navigation
+automatically. If you do have a navigation defined then you need to add *the
+blog index page only* to it. You need not and should not add the individual
+blog posts. For example:
+
+```yaml
+nav:
+  - index.md
+  - Blog:
+    - blog/index.md
+```
+
 For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
