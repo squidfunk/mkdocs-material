@@ -444,11 +444,17 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         svg2png(bytestring = data, write_to = file, scale = 10)
         return Image.open(file)
 
-    # Retrieve font
+    # Retrieve font either from the card layout option or from the Material
+    # font defintion. If no font is defined for Material or font is False
+    # then choose a default.
     def _load_font(self, config):
         name = self.config.cards_layout_options.get("font_family")
         if not name:
-            name = config.theme.get("font", {}).get("text", "Roboto")
+            material_name = config.theme.get("font", False)
+            if material_name is False:
+                name = "Roboto"
+            else:
+                name = material_name.get("text", "Roboto")
 
         # Resolve relevant fonts
         font = {}
