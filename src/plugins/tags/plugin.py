@@ -128,7 +128,11 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             log.error(f"Tags file '{path}' does not exist.")
             sys.exit(1)
 
-        # Add tags file to files
+        # Add tags file to files - note: since MkDoc 1.6, not removing the
+        # file before adding it to the end will trigger a deprecation warning
+        # The new tags plugin does not require this hack, so we're just going
+        # to live with it until the new tags plugin is released.
+        files.remove(file)
         files.append(file)
         return file
 
