@@ -1,3 +1,10 @@
+mkdocs-material-9.5.20 (2024-04-29)
+
+  * Fixed deprecation warning in privacy plugin (9.5.19 regression)
+  * Fixed #7119: Tags plugin emits deprecation warning (9.5.19 regression)
+  * Fixed #7118: Social plugin crashes if fonts are disabled (9.5.19 regression)
+  * Fixed #7085: Social plugin crashes on Windows when downloading fonts
+
 mkdocs-material-9.5.19+insiders-4.53.8 (2024-04-26)
 
   * Fixed #7052: Preview extension automatically including all pages
