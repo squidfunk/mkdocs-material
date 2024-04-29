@@ -363,8 +363,10 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             else:
                 self._fetch(file, config)
 
-            # Register external asset as file
-            self.assets.append(file)
+            # Register external asset as file - it might have already been
+            # registered, and since MkDocs 1.6, trigger a deprecation warning
+            if not self.assets.get_file_from_path(file.src_uri):
+                self.assets.append(file)
 
         # If the URL of the external asset includes a hash fragment, add it to
         # the returned file, e.g. for dark/light images - see https://t.ly/7b16Y
