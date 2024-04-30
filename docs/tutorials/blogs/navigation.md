@@ -462,15 +462,15 @@ can manually define a slug for a specific post.
             return functools.partial(_make_slug_short, **kwargs)
         return functools.partial(_make_slug, **kwargs)
     ```
-    Save this code in `code/slugs.py` and also add an (empty) `__init__.py``
+    Save this code in `ext/slugs.py` and also add an (empty) `__init__.py``
     file to indicate that the directory is a module. Now you can configure
-    your custome slugify code like this:
+    your custom slugify code like this:
 
     ```yaml hl_lines="4-6"
     plugins:
     - blog:
         # other entries omitted
-        post_slugify: !!python/object/apply:code.slugs.slugify
+        post_slugify: !!python/object/apply:ext.slugs.slugify
           kwds:
             short: true
     ```
