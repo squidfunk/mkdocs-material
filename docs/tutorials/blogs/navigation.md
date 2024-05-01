@@ -287,7 +287,7 @@ the page header.
 
     ```yaml
     authors:
-      material:
+      team:
         name: Team
         description: Creator
         avatar: https://simpleicons.org/icons/materialformkdocs.svg
@@ -501,3 +501,12 @@ be tedious.
 
     The URL for this post should now be
     `http://localhost:8000/blog/2023/01/31/ny-eve/`.
+
+## What's next?
+
+You may want to increase engagement with your blog by allowing people to
+subscribe to an RSS feed, by providing links to your social media profiles, by
+providing share and like buttons, or by setting up a comment system.
+The [engagement and dissemination tutorial] walks you through setting these up.
+
+[engagement and dissemination tutorial]: engage.md
