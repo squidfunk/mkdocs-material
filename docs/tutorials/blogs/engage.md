@@ -253,20 +253,21 @@ to generate a piece of code that embeds Giscuss in your site. The resulting code
 snippet will look something like this:
 
 ```html
-<script
-    src="https://giscus.app/client.js"
-    data-repo="<username>/<repository>"
-    data-repo-id="..."
-    data-category="..."
-    data-category-id="..."
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-emit-metadata="1"
-    data-theme="preferred_color_scheme"
-    data-lang="en"
-    crossorigin="anonymous"
-    async
->
+<script src="https://giscus.app/client.js"
+        data-repo="<username>/<repository>"
+        data-repo-id="..."
+        data-category="Announcements"
+        data-category-id="..."
+        data-mapping="title"
+        data-strict="1"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
 </script>
 ```
 
