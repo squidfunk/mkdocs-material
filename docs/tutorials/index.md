@@ -7,13 +7,20 @@ the breadth of features available in Material for MkDocs but also within
 the wider MkDocs ecosystem.
 
 <!-- TODO: add links to template repos -->
-* Blogs
-    * [Basics](blogs/basic.md) (20 min) <br/>
-      covers the basics of setting up a blog, including post metadata.
-    * [Navigation, pagination, multiple authors](blogs/navigation.md) (30 min)<br/>
-      describes how to make it easier for your readers to find content.
-    * [Engagement and dissemination](blogs/engage.md) (30 min)<br/>
-      walks you through ways of increasing engagement with your content
+## Blogs
+* [Basics](blogs/basic.md) (20 min) <br/>
+  covers the basics of setting up a blog, including post metadata.
+* [Navigation, pagination, multiple authors](blogs/navigation.md) (30 min)<br/>
+  describes how to make it easier for your readers to find content.
+* [Engagement and dissemination](blogs/engage.md) (30 min)<br/>
+  walks you through ways of increasing engagement with your content
+
+## Social cards
+* [Basics](social/basic.md) (20 min) <br/>
+  shows you how to configure Material for MkDocs to create social cards for
+  your content.
+* [Custom cards](social/custom.md) (xx min)<br/>
+  shows you how to design your own custom social cards.
 
 ## Tutorial structure
 
