@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.21 <small>May 3, 2024</small> { id="9.5.21" }
+
+- Fixed #7133: Ensure latest version of Mermaid.js is used
+- Fixed #7125: Added warning for dotfiles in info plugin
+
 ### 9.5.20 <small>April 29, 2024</small> { id="9.5.20" }
 
 - Fixed deprecation warning in privacy plugin (9.5.19 regression)
