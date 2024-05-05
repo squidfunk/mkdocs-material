@@ -19,7 +19,7 @@ the wider MkDocs ecosystem.
 * [Basics](social/basic.md) (20 min) <br/>
   shows you how to configure Material for MkDocs to create social cards for
   your content.
-* [Custom cards](social/custom.md) (xx min)<br/>
+* [Custom cards](social/custom.md) (15 min)<br/>
   shows you how to design your own custom social cards.
 
 ## Tutorial structure
@@ -58,6 +58,7 @@ Likewise, helpful tips and warnings appear in boxes of their own:
     ...and warnings like this!
 
 ## Prerequisites
+
 The tutorials assumes that you have installed either the
 [public version] or the [Insiders edition] of Material for MkDocs and that you have
 worked through the [creating your site] setup guide. Note that where the features
