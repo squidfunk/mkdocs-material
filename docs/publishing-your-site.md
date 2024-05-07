@@ -222,6 +222,7 @@ other providers:
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
 - [:simple-codeberg: Codeberg Pages][Codeberg Pages]
+- [Zeabur][Zeabur]
 
 </div>
 
@@ -236,3 +237,4 @@ other providers:
   [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
   [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
   [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
+  [Zeabur]: https://zeabur.com/docs/guides/static/mkdocs
