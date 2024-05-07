@@ -416,6 +416,8 @@
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
-    {% endblock %}
+
+      {% include "partials/integrations/zendesk.html" %}
+  {% endblock %}
   </body>
 </html>

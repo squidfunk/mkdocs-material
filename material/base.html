@@ -49,7 +49,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.5cc77c8e.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.8604980a.min.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.936ed772.min.css' | url }}">
       {% endif %}
@@ -222,6 +222,7 @@
       {% for path in config["extra_javascript"] %}
         <script src="{{ path | url }}"></script>
       {% endfor %}
-    {% endblock %}
+      {% include "partials/integrations/zendesk.html" %}
+  {% endblock %}
   </body>
 </html>
