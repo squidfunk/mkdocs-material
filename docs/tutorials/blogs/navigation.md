@@ -1,4 +1,4 @@
-# Navigation, authors, and pagination tutorial
+# Navigation, authors, and pagination
 
 The Blog plugin provides blog-style navigation with a reverse-chronological
 index page and an archive organized by year by default. This tutorial shows

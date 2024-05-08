@@ -1,4 +1,4 @@
-# Blog tutorial
+# Basic blogs
 
 Blogs are a great way to engage with your audience. Software developers can use
 a blog to announce new features, demonstrate their usage and provide background

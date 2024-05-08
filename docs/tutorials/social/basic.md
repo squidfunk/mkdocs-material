@@ -1,4 +1,4 @@
-# Social cards tutorial
+# Basic social cards
 
 Social cards are images that other systems such as social media can display as
 a preview for content linked to. It is easy to get started with the social
