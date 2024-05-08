@@ -1,4 +1,4 @@
-# Custom cards <!-- md:sponsors -->
+# Custom cards
 
 The Insiders Edition allows you to define custom layouts for your social cards
 to suit your specific needs if the configuration options are not enough.
@@ -11,7 +11,7 @@ event page when clicked on.
     First, copy the default social card layout from your installation of Material
     for MkDocs to a new directory `layouts`. The instructions below assume you
     are in your project root and have a virtual environment within this. The
-    path on your machine, of course may differ.
+    path on your machine, of course, may differ.
 
     ```
     $ mkdir layouts
@@ -37,7 +37,7 @@ event page when clicked on.
 
     To include an event date and location, it makes sense to use information in
     the page header, where you might also specify that your custom card layout
-    it to be used. Create a page with the following content:
+    is to be used. Create a page with the following content:
 
     ```yaml
     ---
