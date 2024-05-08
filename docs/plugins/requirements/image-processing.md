@@ -52,9 +52,17 @@ Material for MkDocs makes use of for generating [social cards] and performing
 
 === ":fontawesome-brands-windows: Windows"
 
-    As stated in the [installation guide], the easiest way to get up and running
-    with the [Cairo Graphics] library on Windows is by installing [GTK+]. You
-    can also download a precompiled [GTK runtime].
+    The easiest way to get up and running with the [Cairo Graphics] library is
+    by installing it via [MSYS2], which is a software distribution and building
+    platform for Windows. Run the following command inside of a MSYS2 shell:
+
+    ```
+    pacman -S mingw-w64-ucrt-x86_64-cairo
+    ```
+
+    MSYS2 provides the Cairo Graphics library in several different environments.
+    The above command uses the [UCRT64] environment, as recommended by the MSYS2
+    developers.
 
 === ":material-linux: Linux"
 
@@ -88,8 +96,8 @@ The following environments come with a preinstalled version of [Cairo Graphics]:
   [Cairo Graphics]: https://www.cairographics.org/
   [Homebrew]: https://brew.sh/
   [installation guide]: https://www.cairographics.org/download/
-  [GTK+]: https://www.gtk.org/docs/installations/windows/
-  [GTK runtime]: https://github.com/tschoonj/GTK-for-Windows-Runtime-Environment-Installer/releases
+  [MSYS2]: https://www.msys2.org/
+  [UCRT64]: https://www.msys2.org/docs/environments/
   [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [GitHub Actions]: ../../publishing-your-site.md#with-github-actions
 
@@ -111,9 +119,13 @@ explains how to install [pngquant] system:
 
 === ":fontawesome-brands-windows: Windows"
 
-    Installing [pngquant] on Windows is a little more involved. The
-    [pngquant-winbuild] repository contains a guide on how to set up an
-    environment for building [pngquant] on Windows.
+    The easiest way to get [pngquant] is by installing it via [MSYS2], which is
+    a software distribution and building platform for Windows. Run the following
+    command inside of a MSYS2 shell:
+
+    ```
+    pacman -S mingw-w64-ucrt-x86_64-pngquant
+    ```
 
 === ":material-linux: Linux"
 
@@ -190,19 +202,19 @@ process is different:
     environmental `PATH` variable. Additionally each library `name` is checked
     in [two variants][find-library-Windows] with the `name` and `name.dll` format.
 
-    The default installation path of [GTK runtime] is:
+    The default binary and shared library path for the [UCRT64] environment of
+    [MSYS2], in which the packages were installed using the above commands, is:
 
     ```powershell
-    C:\Program Files\GTK3-Runtime Win64
+    C:\msys64\ucrt64\bin
     ```
 
-    and the libraries are in the `<INSTALL-DIR>\lib` directory. Use the debug
-    script below to check if the path is included. If it isn't then:
+    Use the debug script below to check if the path is included. If it isn't then:
 
     1. Press ++windows+r++.
     2. Run the `SystemPropertiesAdvanced` applet.
     3. Select "Environmental Variables" at the bottom.
-    4. Add the whole path to the `lib` directory to your `Path` variable.
+    4. Add the whole path to the above directory to your `Path` variable.
     5. Click OK on all open windows to apply changes.
     6. Fully restart any open Terminal windows and their parent hosts like IDEs.
 
