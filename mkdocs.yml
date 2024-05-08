@@ -192,7 +192,13 @@ nav:
     - Alternatives: alternatives.md
     - License: license.md
     - Tutorials:
-      - tutorials/index.md
+      - "Blogs":
+        - tutorials/blogs/basic.md
+        - tutorials/blogs/navigation.md
+        - tutorials/blogs/engage.md
+      - "Social cards":
+        - tutorials/social/basic.md
+        - tutorials/social/custom.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md
