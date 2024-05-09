@@ -102,7 +102,11 @@ sequenceDiagram
    branch will be relatively short-lived and will disappear at the end, when
    your changes have been incorporated into the codebase.
 
-4.  Next comes the iterative process of making edits, committing them to your
+4. If you intend to make any code changes, as opposed to working on
+   documentation only, you will need to [set up a development
+   environment](#setting-up-a-development-environment).
+
+5.  Next comes the iterative process of making edits, committing them to your
     clone. Please commit in sensible chunks that constitute a piece of work
     instead of committing everything in one go.
 
@@ -112,23 +116,23 @@ sequenceDiagram
     reviewer in mind when committing. In particular, make sure to write
     meaningful commit messages.
 
-5. Push your work up to your fork regularly.
+6. Push your work up to your fork regularly.
 
-6. You should also keep an eye on changes in the Material for MkDocs repository
+7. You should also keep an eye on changes in the Material for MkDocs repository
    you cloned. This is especially important if you work takes a while. Please
    try and merge any concurrent changes into your fork and into your branch
    regularly. You *must* do this at least once before creating a pull request,
    so make your life easier and do it more often so as to minimize the risk of
    conflicting changes.
 
-7. Once you are happy that your changes are in a state that you can describe
+8. Once you are happy that your changes are in a state that you can describe
    them in a *draft* pull request, you should create this. Make sure to
    reference any previous discussions or issues that gave rise to your work.
    Creating a draft is a good way to get *early* feedback on your work from the
    maintainer or others. You can explicitly request reviews at points where you
    think this would be important.
 
-8.  Review your work as if you were the reviewer and fix any issues with your
+9.  Review your work as if you were the reviewer and fix any issues with your
     work so far. Look critically at the diffs of the files that you have changed.
     In particular, pay attention to whether the changes are as small as possible
     and whether you have follow the general coding style used in the project.
