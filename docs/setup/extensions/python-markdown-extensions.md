@@ -429,8 +429,9 @@ markdown_extensions:
 
 <!-- md:option pymdownx.highlight.anchor_linenums -->
 
-:   <!-- md:version 8.1.0 --> :octicons-milestone-24:
-    Default: `false` – If a code blocks contains line numbers, enabling this
+:   <!-- md:version 8.1.0 -->
+    <!-- md:default `false` -->
+    If a code blocks contains line numbers, enabling `true` this
     setting will wrap them with anchor links, so they can be hyperlinked and
     shared more easily:
 
