@@ -1,3 +1,9 @@
+mkdocs-material-9.5.22 (2024-05-12)
+
+  * Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)
+  * Fixed #7160: Version switching doesn't stay on page (9.5.5 regression)
+  * Fixed #5619: Links in Mermaid.js diagrams not discernible
+
 mkdocs-material-9.5.21 (2024-05-03)
 
   * Fixed #7133: Ensure latest version of Mermaid.js is used

@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.22 <small>May 12, 2024</small> { id="9.5.22" }
+
+- Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)
+- Fixed #7160: Version switching doesn't stay on page (9.5.5 regression)
+- Fixed #5619: Links in Mermaid.js diagrams not discernible
+
 ### 9.5.21 <small>May 3, 2024</small> { id="9.5.21" }
 
 - Fixed #7133: Ensure latest version of Mermaid.js is used
