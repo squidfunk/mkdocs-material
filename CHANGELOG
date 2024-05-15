@@ -1,3 +1,8 @@
+mkdocs-material-9.5.23 (2024-05-15)
+
+  * Fixed #7183: Edge case in anchor navigation when using instant navigation
+  * Fixed #6436: Version selector not showing version alias
+
 mkdocs-material-9.5.22 (2024-05-12)
 
   * Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)

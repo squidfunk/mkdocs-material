@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.23 <small>May 15, 2024</small> { id="9.5.23" }
+
+- Fixed #7183: Edge case in anchor navigation when using instant navigation
+- Fixed #6436: Version selector not showing version alias
+
 ### 9.5.22 <small>May 12, 2024</small> { id="9.5.22" }
 
 - Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)
