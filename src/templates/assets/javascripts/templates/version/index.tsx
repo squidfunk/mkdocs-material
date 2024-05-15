@@ -64,6 +64,11 @@ function renderVersion(version: Version): HTMLElement {
     <li class="md-version__item">
       <a href={`${url}`} class="md-version__link">
         {version.title}
+        {config.version?.alias && version.aliases.length && (
+          <span class="md-version__alias">
+            {version.aliases[0]}
+          </span>
+        )}
       </a>
     </li>
   )
@@ -84,6 +89,7 @@ function renderVersion(version: Version): HTMLElement {
 export function renderVersionSelector(
   versions: Version[], active: Version
 ): HTMLElement {
+  const config = configuration()
   versions = versions.filter(version => !version.properties?.hidden)
   return (
     <div class="md-version">
@@ -92,6 +98,11 @@ export function renderVersionSelector(
         aria-label={translation("select.version")}
       >
         {active.title}
+        {config.version?.alias && active.aliases.length && (
+          <span class="md-version__alias">
+            {active.aliases[0]}
+          </span>
+        )}
       </button>
       <ul class="md-version__list">
         {versions.map(renderVersion)}
