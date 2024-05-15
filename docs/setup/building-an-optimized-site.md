@@ -42,6 +42,51 @@ For a list of all settings, please consult the [plugin documentation].
     so that we can improve it together with our users and make it even more
     powerful as we discover new use cases.
 
+#### Scope
+
+<!-- md:version 8.0.0 -->
+<!-- md:default none -->
+
+There might be a use case, where you want to share user-level settings like
+the selected [color palette], or [cookie consent] across all projects. To do
+so, add the following lines to `mkdocs.yml`:
+
+``` yaml
+extra:
+  scope: /
+```
+
+!!! example "How it works"
+
+    Suppose you have this site structure:
+    ```
+    .
+    └── /
+        ├── subsite-a/
+        ├── subsite-b/
+        └── subsite-c/
+    ```
+    By default, each site will have its own scope (`/subsite-a/`, `/subsite-b/`,
+    `/subsite-c/`). To modify this behaviour, add the following lines to
+    `mkdocs.yml`:
+
+    ``` yaml
+    extra:
+      scope: /
+    ```
+
+    By setting it to `/`, it should allow you to share the following preferences
+    across the main site and all subsites:
+
+    - [Cookie consent][cookie consent]
+    - [Linking of content tabs, i.e. active tab]
+    - [Color palette][color palette]
+
+  [Scope support]: https://github.com/squidfunk/mkdocs-material/releases/tag/8.0.0
+  [cookie consent]: ../setup/ensuring-data-privacy.md#cookie-consent
+  [Linking of content tabs, i.e. active tab]: ../reference/content-tabs.md
+  [color palette]: ../setup/changing-the-colors.md#color-palette
+
 ### Built-in optimize plugin
 
 <!-- md:sponsors -->
