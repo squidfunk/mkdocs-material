@@ -64,7 +64,7 @@ function renderVersion(version: Version): HTMLElement {
     <li class="md-version__item">
       <a href={`${url}`} class="md-version__link">
         {version.title}
-        {config.version?.alias && version.aliases.length && (
+        {config.version?.alias && version.aliases.length > 0 && (
           <span class="md-version__alias">
             {version.aliases[0]}
           </span>
@@ -98,7 +98,7 @@ export function renderVersionSelector(
         aria-label={translation("select.version")}
       >
         {active.title}
-        {config.version?.alias && active.aliases.length && (
+        {config.version?.alias && active.aliases.length > 0 && (
           <span class="md-version__alias">
             {active.aliases[0]}
           </span>
