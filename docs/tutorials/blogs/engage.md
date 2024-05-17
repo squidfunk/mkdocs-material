@@ -7,6 +7,8 @@ your posts, you may want to integrate an analytics system. You may also want
 to post on social media when you public a new blog post. This tutorial gives
 you a leg up on all of these topics.
 
+__Time required:__ typically 30 minutes
+
 ## RSS feeds
 
 An _RSS feed_ allows users to subscribe to a blog so that they get notified when
@@ -36,18 +38,20 @@ Since it is a third-party plugin, you need to install it before using it.
 
     [instructed in the basic blog tutorial]: basic.md#setting-up-your-blog
 
-    Now, configure the plugin in the `mkdocs.yml`:
+    Now, configure the plugin in the `mkdocs.yml`. The options provided restrict
+    the pages that RSS entries are created for to the blog posts, which is
+    probably what you want. Also note the configuration of the date fields to
+    match the format that Material for MkDocs uses to accommodate both a
+    creation date and a date for updates.
 
     ```yaml hl_lines="9"
     plugins:
-        - search
-        - blog:
-            authors_profiles: true
-            categories_allowed:
-            - Holidays
-            - News
-        - tags
-        - rss
+        - ...
+        - rss:
+            match_path: "blog/posts/.*"
+            date_from_meta:
+              as_creation: date.created
+              as_update: date.updated
     ```
 
     Have a look at http://localhost:8000/feed_rss_created.xml to see the RSS
@@ -64,8 +68,8 @@ Since it is a third-party plugin, you need to install it before using it.
     will need to deploy your project somewhere that is accessible to them.
 
 This minimal configuration should work well if you have not made any changes
-to the default configuration of the blog plugin. For more information on
-adapting the feed to your needs, see [the RSS plugin's documentation].
+to the default configuration of the blog plugin. For more information on adapting
+the feed to your needs, see [the RSS plugin's documentation].
 
 [the RSS plugin's documentation]: https://guts.github.io/mkdocs-rss-plugin/
 
@@ -112,7 +116,7 @@ necessary links and define the icons to use.
         link: mailto:<email-address>
     ```
 
-    Finally, you can specify a URL within your side, such as to your contact
+    Finally, you can specify a URL within your site, such as to your contact
     page. It is possible to specify only the path to the page:
 
     ```yaml
@@ -138,11 +142,10 @@ more involved, which is why there are companies offering components for this.
     duties as a provider to ensure that processing occurs only once the user
     has granted consent.
 
-The implementation of share buttons deliberately does not use third party code
-to practice data minimization. It supports sharing to Twitter/X and
-Facebook without causing a data flow to these companies whenever someone views
-the pages. Only when someone clicks a share button will there be interactions
-with those companies' servers.
+This implementation of share buttons deliberately does not use third party code.
+It supports sharing to Twitter/X and Facebook without causing a data flow to
+these companies whenever someone views the pages. Only when someone clicks a
+share button will there be interactions with those companies' servers.
 
 !!! example "Add share buttons"
 
@@ -184,7 +187,16 @@ with those companies' servers.
     ```
 
     The hook first checks if the current page is a blog post and then appends
-    Markdown code for the share buttons.
+    Markdown code for the share buttons. The buttons use icons, so you also need
+    to configure the following markdown extensions:
+
+    ```yaml
+    markdown_extensions:
+      - attr_list
+      - pymdownx.emoji:
+          emoji_index: !!python/name:material.extensions.emoji.twemoji
+          emoji_generator: !!python/name:material.extensions.emoji.to_svg
+    ```
 
 
 ## Add a discussion system

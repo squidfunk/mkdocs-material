@@ -7,6 +7,7 @@ add more navigation options using categories and the [Tags plugin].
 
 [Tags plugin]: ../../plugins/tags.md
 
+__Time required:__ typically 30 minutes
 
 ## Integrating navigation
 
@@ -156,7 +157,7 @@ of the navigation hierarchy.
 
 [Tags plugin]: https://squidfunk.github.io/mkdocs-material/plugins/tags/
 
-You may have a tutorial like this one as well a more comprehensive setup guide
+You may have a tutorial like this one as well as a more comprehensive setup guide
 and reference documentation. Adding the same tag to all three shows that they
 are related. As you will see, it is possible to navigate from a tagged page to
 the tag index and, from there, to other pages that carry the same tag.
@@ -178,10 +179,11 @@ the tag index and, from there, to other pages that carry the same tag.
 
     Once this is done, you can add tags to posts in the page header:
 
-    ``` hl_lines="8-11""
+    ``` hl_lines="9-12""
     ---
-    date: 2023-12-31
-    updated: 2024-01-02
+    date:
+      created: 2023-12-31
+      updated: 2024-01-02
     authors:
       - material
     categories:
@@ -265,7 +267,16 @@ indexes, scoped listings, shadow tags, nested tags, and much more.
         ```
 
         You now have two index pages: one covers the whole site and one
-        covers only the blog.
+        covers only the blog. Add both to the navigation:
+
+        ```yaml
+        nav:
+            - Home: index.md
+            - Tags: tags.md
+            - Blog:
+                - blog/index.md
+                - blog/tags.md
+        ```
 
         The tags plugin in the Insider Edition is an incredibly powerful tool
         and we can only scratch the surface of what is possible with it. If you
@@ -300,10 +311,11 @@ the page header.
     and then add a line to the header of the first post:
 
 
-    ```hl_lines="4-5"
+    ```hl_lines="5-6"
     ---
-    date: 2023-12-31
-    updated: 2024-01-02
+    date:
+      created: 2023-12-31
+      updated: 2024-01-02
     authors:
       - team
     ---
@@ -462,7 +474,7 @@ can manually define a slug for a specific post.
             return functools.partial(_make_slug_short, **kwargs)
         return functools.partial(_make_slug, **kwargs)
     ```
-    Save this code in `ext/slugs.py` and also add an (empty) `__init__.py``
+    Save this code in `ext/slugs.py` and also add an (empty) `__init__.py`
     file to indicate that the directory is a module. Now you can configure
     your custom slugify code like this:
 
@@ -489,10 +501,11 @@ be tedious.
     If, for example, you wanted the slug to be 'ny-eve'  instead of the somewhat
     lengthy 'happy-new-years-eve', you could add the following:
 
-    ```hl_lines="6"
+    ```hl_lines="7"
     ---
-    date: 2023-12-31
-    updated: 2024-01-02
+    date:
+      created: 2023-12-31
+      updated: 2024-01-02
     readtime: 15
     pin: true
     slug: ny-eve

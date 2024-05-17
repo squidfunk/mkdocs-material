@@ -192,6 +192,7 @@ nav:
     - Alternatives: alternatives.md
     - License: license.md
     - Tutorials:
+      - tutorials/index.md
       - "Blogs":
         - tutorials/blogs/basic.md
         - tutorials/blogs/navigation.md

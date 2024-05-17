@@ -11,9 +11,9 @@ The [blog plugin] makes running a blog alongside your other content easy but you
 can also configure it to run a stand-alone blog if posts are the only kind
 of content you need.
 
-This tutorial guides you through the process of configuring the
-[blog plugin], setting up your blog, creating posts, and defining
-post metadata.
+After a brief overview of the basic concepts of a blog, this tutorial guides you
+through the process of configuring the [blog plugin], setting up your blog,
+creating posts, and defining post metadata.
 
 [blog plugin]: ../../plugins/blog.md
 
@@ -22,12 +22,12 @@ __Time required:__ typically 20 minutes
 ## Key concepts
 
 **Post, excerpt**: a blog consists of a number of self-contained _posts_ (often called
-articles) and an index page shows the posts in reverse chronological order, with
+articles) and an index page that shows the posts in reverse chronological order, with
 the most recent post at the top. The index page usually shows only a short _excerpt_ and a
 link that the user can click to navigate to the full post.
 
 **Metadata**: both the index page and the post itself list information such as
-when you published the post, when you updated it, who the author is and what the
+when you published the post, when you updated it, who the author is, and what the
 expected reading time is.
 
 **Slug**: since the blog posts are primarily arranged by time and not into a hierarchy,
@@ -36,8 +36,8 @@ contains a shortened description, the _slug_, which is usually derived from
 the first heading in the post.
 
 **Navigation**: the main navigation structure is the timeline, which you can
-subdivide into _categories_. The main index page shows a given number of posts
-and an _archive_ section allows access to older posts, organized by year.
+subdivide into _categories_. The main index page shows the more recent posts
+while an _archive_ section allows access to older ones, organized by year.
 In addition, posts can be _tagged_ and _tag index pages_ provide an additional
 navigation structure based on content.
 
@@ -97,7 +97,8 @@ that the index page shows.
 
     ```
     ---
-    date: 2023-12-31
+    date:
+      created: 2023-12-31
     ---
 
     # Happy new years eve!
@@ -144,7 +145,8 @@ header to indicate that a post is still in draft form.
 
     ```hl_lines="3"
     ---
-    date: 2024-01-01
+    date:
+      created: 2024-01-01
     draft: true
     ---
 
@@ -187,11 +189,10 @@ Meta plugin later on.
 
 ### Edits
 
-Sometimes, bloggers need to update a post. This might happen when they have made
-a mistake or when something changes they need to reflect in the post. To
+Sometimes, bloggers need to update a post. This might happen when you make
+a mistake or when something changes that you need to reflect in the post. To
 indicate you have edited a post, you can include an `updated` date in the page
-header. Note that this means that you need to move the original publication date
-to a `created` attribute of the `date` entry.
+header.
 
 !!! example "Editing a post"
 
@@ -241,8 +242,9 @@ attribute in the page header:
 
     ```hl_lines="5"
     ---
-    date: 2023-12-31
-    updated: 2024-01-02
+    date:
+      created: 2023-12-31
+      updated: 2024-01-02
     readtime: 15
     pin: true
     ---
@@ -264,9 +266,10 @@ header:
 
     Add the following to a blog post:
 
-    ``` hl_lines="4-6"
+    ``` hl_lines="5-7"
     ---
-    date: 2023-12-31
+    date:
+      created: 2023-12-31
     ...
     links:
       - index.md
@@ -286,9 +289,10 @@ subsections:
 
     Change the link section to override the page titles:
 
-    ```hl_lines="5-7"
+    ```hl_lines="6-9"
     ---
-    date: 2023-12-31
+    date:
+      created: 2023-12-31
     ...
     links:
       - Homepage: index.md
@@ -298,17 +302,9 @@ subsections:
     ---
     ```
 
-As you can see, the plugin renders subsections in the left sidebar on screens
-that are wide enough, and in a way similar to mobile navigation menus on
-more narrow screens.
-
-
-
-<!-- TODO
-If you look closely, you'll realize that you can even use an anchor to link to a specific section of a document, extending the possibilities of the nav syntax in mkdocs.yml. The built-in blog plugin resolves the anchor and sets the title of the anchor as a subtitle of the related link.
-
-Note that all links must be relative to docs_dir, as is also the case for the nav setting.
--->
+The plugin renders related links in the left sidebar on screens that are wide
+enough and at the bottom of the post on narrow screens. Change the size of your
+browser window to see this in action.
 
 ## Meta plugin <!-- md:sponsors -->
 
