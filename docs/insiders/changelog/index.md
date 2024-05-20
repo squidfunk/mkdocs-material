@@ -2,6 +2,11 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.10 <small>May 20, 2024</small> { id="4.53.10" }
+
+- Fixed projects plugin crashing in serve mode when disabled
+- Fixed projects plugin crashing when building nested projects
+
 ### 4.53.9 <small>May 20, 2024</small> { id="4.53.9" }
 
 - Fixed #7191: Tags listings not rendering when `toc_depth` is changed
