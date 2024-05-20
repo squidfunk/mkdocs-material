@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.24 <small>May 20, 2024</small> { id="9.5.24" }
+
+- Fixed #7187: Version selector title rendering issue
+
 ### 9.5.23 <small>May 15, 2024</small> { id="9.5.23" }
 
 - Fixed #7183: Edge case in anchor navigation when using instant navigation

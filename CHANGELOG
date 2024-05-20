@@ -1,3 +1,7 @@
+mkdocs-material-9.5.24 (2024-05-20)
+
+  * Fixed #7187: Version selector title rendering issue
+
 mkdocs-material-9.5.23 (2024-05-15)
 
   * Fixed #7183: Edge case in anchor navigation when using instant navigation
