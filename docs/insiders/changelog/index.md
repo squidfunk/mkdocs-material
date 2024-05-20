@@ -2,6 +2,8 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.9 <small>May 20, 2024</small> { id="4.53.9" }
+
 - Fixed #7191: Tags listings not rendering when `toc_depth` is changed
 
 ### 4.53.8 <small>April 26, 2024</small> { id="4.53.8" }
