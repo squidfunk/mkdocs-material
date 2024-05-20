@@ -1,3 +1,7 @@
+mkdocs-material-9.5.24+insiders-4.53.8 (2024-05-20)
+
+  * Fixed #7191: Tags listings not rendering when toc_depth is changed
+
 mkdocs-material-9.5.24 (2024-05-20)
 
   * Fixed #7187: Version selector title rendering issue

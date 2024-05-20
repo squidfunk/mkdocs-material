@@ -2,6 +2,8 @@
 
 ## Material for MkDocs Insiders
 
+- Fixed #7191: Tags listings not rendering when `toc_depth` is changed
+
 ### 4.53.8 <small>April 26, 2024</small> { id="4.53.8" }
 
 - Fixed #7052: Preview extension automatically including all pages
