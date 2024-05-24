@@ -100,7 +100,7 @@ class TagsPlugin(BasePlugin[TagsConfig]):
         tags = page.meta.get("tags", [])
         if tags:
             for tag in tags:
-                self.tags[tag].append(page)
+                self.tags[str(tag)].append(page)
 
     # Inject tags into page (after search and before minification)
     def on_page_context(self, context, page, config, nav):

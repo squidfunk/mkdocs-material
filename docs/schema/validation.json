@@ -22,6 +22,7 @@
       "title": "Validation of links",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#validation",
       "properties": {
+        "anchors": { "$ref": "#/$defs/anchors" },
         "not_found": { "$ref": "#/$defs/not_found" },
         "absolute_links": { "$ref": "#/$defs/absolute_links" },
         "unrecognized_links": { "$ref": "#/$defs/unrecognized_links" }
@@ -45,6 +46,10 @@
     },
     "unrecognized_links": {
       "title": "warning level when a relative link cannot be resolved to a document",
+      "$ref": "#/$defs/warning_levels"
+    },
+    "anchors": {
+      "title": "warning level when an #anchor does not exist on the linked document",
       "$ref": "#/$defs/warning_levels"
     },
     "warning_levels": {

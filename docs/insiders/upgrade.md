@@ -34,7 +34,12 @@ need to run different commands:
     latest development version, run:
 
     ```
-    pip install --upgrade git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+    pip install --upgrade --force-reinstall git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
+    ```
+
+    The `--force-reinstall` option serves to make sure `pip` does, in fact,
+    install the latest development version, instead of deciding that  nothing
+    is to be done based on the version numbers.
     ```
 
 === "git upgrade"

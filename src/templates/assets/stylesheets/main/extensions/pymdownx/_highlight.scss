@@ -222,6 +222,11 @@
   // Copying in progress - this class is set before the content is copied and
   // removed after copying is done to mitigate whitespace-related issues.
   code[data-md-copying] {
+    // Hack: since we're using grid layout when line spans are enabled, we need
+    // to set the display property to `initial` to prevent the grid layout from
+    // being applied to the code block when copying, because it will add empty
+    // lines to the copied content - see https://t.ly/wt4ye
+    display: initial;
 
     // Temporarily remove highlighted lines - see https://bit.ly/32iVGWh
     .hll {

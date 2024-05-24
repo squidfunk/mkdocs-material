@@ -317,6 +317,12 @@
             }
           ],
           "default": "stable"
+        },
+        "alias": {
+          "title": "Show alias next to version number",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-versioning/#version-alias",
+          "type": "boolean",
+          "default": true
         }
       }
     },

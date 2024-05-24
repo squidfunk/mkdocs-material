@@ -206,6 +206,11 @@ g.stateGroup .composit {
   font-family: var(--md-mermaid-font-family);
 }
 
+/* State node label link */
+a .nodeLabel {
+  text-decoration: underline;
+}
+
 /* State start and end marker */
 .start-state,
 .node circle.state-start,
