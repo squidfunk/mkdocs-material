@@ -169,7 +169,7 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Code annotations]: ../../reference/code-blocks.md#adding-annotations
   [Code annotations: strip comments]: ../../reference/code-blocks.md#stripping-comments
   [Code block titles]: ../../reference/code-blocks.md#adding-a-title
-  [Code block line anchors]: ../../setup/extensions/python-markdown-extensions.md#anchor-linenums
+  [Code block line anchors]: ../../setup/extensions/python-markdown-extensions.md#+pymdownx.highlight.anchor_linenums
   [Color palette toggle]: ../../setup/changing-the-colors.md#color-palette-toggle
   [Content tabs: improved support]: ../../reference/content-tabs.md
   [Content tabs: auto-linking]: ../../reference/content-tabs.md#linked-content-tabs

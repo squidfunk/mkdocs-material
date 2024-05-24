@@ -2,6 +2,25 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.10 <small>May 20, 2024</small> { id="4.53.10" }
+
+- Fixed projects plugin crashing in serve mode when disabled
+- Fixed projects plugin crashing when building nested projects
+
+### 4.53.9 <small>May 20, 2024</small> { id="4.53.9" }
+
+- Fixed #7191: Tags listings not rendering when `toc_depth` is changed
+
+### 4.53.8 <small>April 26, 2024</small> { id="4.53.8" }
+
+- Fixed #7052: Preview extension automatically including all pages
+- Fixed #7051: Instant previews mounting on footnote references
+- Fixed #5165: Improved tooltips not mounting in sidebar for typeset plugin
+
+### 4.53.7 <small>April 25, 2024</small> { id="4.53.7" }
+
+- Fixed #7060: Incorrect resolution of translation when using static-i18n
+
 ### 4.53.6 <small>April 5, 2024</small> { id="4.53.6" }
 
 - Ensure working directory is set for projects when using projects plugin

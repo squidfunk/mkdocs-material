@@ -555,7 +555,7 @@ exclusive to Insiders, it's recommended to split configuration into a base
 See the [getting started guide] for more information.
 
   [configuration inheritance]: https://www.mkdocs.org/user-guide/configuration/#configuration-inheritance
-  [getting started guide]: getting-started.md#caveats
+  [getting started guide]: getting-started.md
 
 ### Payment
 

@@ -1,3 +1,68 @@
+mkdocs-material-9.5.24+insiders-4.53.10 (2024-05-20)
+
+  * Fixed projects plugin crashing in serve mode when disabled
+  * Fixed projects plugin crashing when building nested projects
+
+mkdocs-material-9.5.24+insiders-4.53.9 (2024-05-20)
+
+  * Fixed #7191: Tags listings not rendering when toc_depth is changed
+
+mkdocs-material-9.5.24 (2024-05-20)
+
+  * Fixed #7187: Version selector title rendering issue
+
+mkdocs-material-9.5.23 (2024-05-15)
+
+  * Fixed #7183: Edge case in anchor navigation when using instant navigation
+  * Fixed #6436: Version selector not showing version alias
+
+mkdocs-material-9.5.22 (2024-05-12)
+
+  * Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)
+  * Fixed #7160: Version switching doesn't stay on page (9.5.5 regression)
+  * Fixed #5619: Links in Mermaid.js diagrams not discernible
+
+mkdocs-material-9.5.21 (2024-05-03)
+
+  * Fixed #7133: Ensure latest version of Mermaid.js is used
+  * Fixed #7125: Added warning for dotfiles in info plugin
+
+mkdocs-material-9.5.20 (2024-04-29)
+
+  * Fixed deprecation warning in privacy plugin (9.5.19 regression)
+  * Fixed #7119: Tags plugin emits deprecation warning (9.5.19 regression)
+  * Fixed #7118: Social plugin crashes if fonts are disabled (9.5.19 regression)
+  * Fixed #7085: Social plugin crashes on Windows when downloading fonts
+
+mkdocs-material-9.5.19+insiders-4.53.8 (2024-04-26)
+
+  * Fixed #7052: Preview extension automatically including all pages
+  * Fixed #7051: Instant previews mounting on footnote references
+  * Fixed #5165: Improved tooltips not mounting in sidebar for typeset plugin
+
+mkdocs-material-9.5.19+insiders-4.53.7 (2024-04-25)
+
+  * Fixed #7060: Incorrect resolution of translation when using static-i18n
+
+mkdocs-material-9.5.19 (2024-04-25)
+
+  * Updated MkDocs to 1.6 and limited version to < 2
+  * Updated Docker image to latest Alpine Linux
+  * Removed setup.py, now that GitHub fully understands pyproject.toml
+  * Improved interop of social plugin with third-party MkDocs themes
+  * Fixed #7099: Blog reading time not rendered correctly for Japanese
+  * Fixed #7097: Improved resilience of tags plugin when no tags are given
+  * Fixed #7090: Active tab indicator in nested content tabs rendering bug
+
+mkdocs-material-9.5.18 (2024-04-16)
+
+  * Refactored tooltips implementation to fix positioning issues
+  * Fixed #7044: Rendering glitch when hovering contributor avatar in Chrome
+  * Fixed #7043: Highlighted lines in code blocks cutoff on mobile
+  * Fixed #6910: Incorrect position of tooltip for page status in sidebar
+  * Fixed #6760: Incorrect position and overly long tooltip in tables
+  * Fixed #6488: Incorrect position and cutoff tooltip in content tabs
+
 mkdocs-material-9.5.17+insiders-4.53.6 (2024-04-05)
 
   * Ensure working directory is set for projects when using projects plugin

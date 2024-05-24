@@ -882,7 +882,7 @@ from [Python Markdown Extensions] is used as follows:
 ``` yaml
 plugins:
   - blog:
-      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+      categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
         kwds:
           case: lower
 ```

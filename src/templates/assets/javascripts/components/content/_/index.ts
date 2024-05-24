@@ -28,8 +28,8 @@ import { Viewport, getElements } from "~/browser"
 import { Component } from "../../_"
 import {
   Tooltip,
-  mountTooltip
-} from "../../tooltip"
+  mountInlineTooltip2
+} from "../../tooltip2"
 import {
   Annotation,
   mountAnnotationBlock
@@ -131,6 +131,6 @@ export function mountContent(
     /* Tooltips */
     ...getElements("[title]", el)
       .filter(() => feature("content.tooltips"))
-      .map(child => mountTooltip(child))
+      .map(child => mountInlineTooltip2(child, { viewport$ }))
   )
 }

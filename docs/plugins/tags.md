@@ -109,7 +109,7 @@ The following settings are available for tags:
 
 #### <!-- md:setting config.tags -->
 
-<!-- md:version 9.2.9 -->
+<!-- md:version 9.3.2 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable rendering of tags. The plugin still
@@ -425,7 +425,7 @@ Then, just reference the listing identifier:
 
 See the [listings section] for a list of all available settings.
 
-  [listings section]: #listing_configuration
+  [listings section]: #listing-configuration
 
 ---
 

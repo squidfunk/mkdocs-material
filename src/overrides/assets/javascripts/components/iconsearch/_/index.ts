@@ -20,12 +20,16 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, merge } from "rxjs"
+import { BehaviorSubject, Observable, fromEvent, map, merge } from "rxjs"
 
 import { configuration } from "~/_"
 import { requestJSON } from "~/browser"
 
-import { Component, getComponentElement } from "../../_"
+import {
+  Component,
+  getComponentElement,
+  getComponentElements
+} from "../../_"
 import {
   IconSearchQuery,
   mountIconSearchQuery
@@ -64,6 +68,14 @@ export type IconSearch =
   | IconSearchQuery
   | IconSearchResult
 
+/**
+ * Icon search mode
+ */
+export type IconSearchMode =
+  | "all"
+  | "icons"
+  | "emojis"
+
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
@@ -87,8 +99,18 @@ export function mountIconSearch(
   const query  = getComponentElement("iconsearch-query", el)
   const result = getComponentElement("iconsearch-result", el)
 
+  /* Retrieve select component */
+  const mode$ = new BehaviorSubject<IconSearchMode>("all")
+  const selects = getComponentElements("iconsearch-select", el)
+  for (const select of selects) {
+    fromEvent(select, "change").pipe(
+      map(ev => (ev.target as HTMLSelectElement).value as IconSearchMode)
+    )
+      .subscribe(mode$)
+  }
+
   /* Create and return component */
   const query$  = mountIconSearchQuery(query)
-  const result$ = mountIconSearchResult(result, { index$, query$ })
+  const result$ = mountIconSearchResult(result, { index$, query$, mode$ })
   return merge(query$, result$)
 }

@@ -38,6 +38,7 @@ import {
   skip,
   startWith,
   subscribeOn,
+  switchMap,
   takeUntil,
   tap,
   withLatestFrom
@@ -53,7 +54,8 @@ import {
   getElementSize,
   getElements,
   watchElementContentOffset,
-  watchElementSize
+  watchElementSize,
+  watchElementVisibility
 } from "~/browser"
 import { renderTabbedControl } from "~/templates"
 import { h } from "~/utilities"
@@ -284,8 +286,9 @@ export function mountContentTabs(
       })
 
     /* Create and return component */
-    return watchContentTabs(inputs)
+    return watchElementVisibility(el)
       .pipe(
+        switchMap(() => watchContentTabs(inputs)),
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
         map(state => ({ ref: el, ...state }))

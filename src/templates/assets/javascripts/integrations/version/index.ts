@@ -128,14 +128,13 @@ export function setupVersionSelector(
             return EMPTY
           }),
           switchMap(url => {
-            const { version } = urls.get(url)!
             return fetchSitemap(new URL(url))
               .pipe(
                 map(sitemap => {
                   const location = getLocation()
-                  const path = location.href.replace(config.base, "")
+                  const path = location.href.replace(config.base, url)
                   return sitemap.has(path.split("#")[0])
-                    ? new URL(`../${version}/${path}`, config.base)
+                    ? new URL(path)
                     : new URL(url)
                 })
               )

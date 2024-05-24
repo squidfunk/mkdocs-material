@@ -370,15 +370,16 @@ export function setupInstantNavigation(
     // the scroll restoration to the current page, as we don't need to restore
     // the viewport offset when the user navigates to a different page, as this
     // is already handled by the previous observable.
-    location$.pipe(
+    document$.pipe(
+      switchMap(() => location$),
       distinctUntilKeyChanged("pathname"),
       switchMap(() => location$),
-      distinctUntilKeyChanged("hash"),
+      distinctUntilKeyChanged("hash")
     ),
 
     // Handle instant navigation events that are triggered by the user clicking
     // on an anchor link with the same hash fragment as the current one in the
-    // URL. Is is essential that we only intercept those from instant navigation
+    // URL. It is essential that we only intercept those from instant navigation
     // events and not from history change events, or we'll end up in and endless
     // loop. The top-level history entry must be removed, as it will be replaced
     // with a new one, which would otherwise lead to a duplicate entry.

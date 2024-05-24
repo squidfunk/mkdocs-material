@@ -22,12 +22,14 @@
 
 import {
   Observable,
-  debounceTime,
+  debounce,
+  defer,
   fromEvent,
   identity,
   map,
   merge,
-  startWith
+  startWith,
+  timer
 } from "rxjs"
 
 /* ----------------------------------------------------------------------------
@@ -37,20 +39,26 @@ import {
 /**
  * Watch element hover
  *
+ * The second parameter allows to specify a timeout in milliseconds after which
+ * the hover state will be reset to `false`. This is useful for tooltips which
+ * should disappear after a certain amount of time, in order to allow the user
+ * to move the cursor from the host to the tooltip.
+ *
  * @param el - Element
- * @param duration - Debounce duration
+ * @param timeout - Timeout
  *
  * @returns Element hover observable
  */
 export function watchElementHover(
-  el: HTMLElement, duration?: number
+  el: HTMLElement, timeout?: number
 ): Observable<boolean> {
-  return merge(
+  return defer(() => merge(
     fromEvent(el, "mouseenter").pipe(map(() => true)),
     fromEvent(el, "mouseleave").pipe(map(() => false))
   )
     .pipe(
-      duration ? debounceTime(duration) : identity,
-      startWith(false)
+      timeout ? debounce(active => timer(+!active * timeout)) : identity,
+      startWith(el.matches(":hover"))
     )
+  )
 }

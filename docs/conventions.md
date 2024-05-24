@@ -69,7 +69,7 @@ Several features are implemented through MkDocs excellent plugin architecture,
 some of which are built-in and distributed with Material for MkDocs, so no
 installation is required.
 
-### <!-- md:extension --> – Markdown extension { data-toc-label="Markdown extension" }
+### <!-- md:extension --> – Markdown extension { data-toc-label="Markdown extension" #extension }
 
 This symbol denotes that the thing described is a Markdown extension, which can
 be enabled in `mkdocs.yml` and adds additional functionality to the Markdown

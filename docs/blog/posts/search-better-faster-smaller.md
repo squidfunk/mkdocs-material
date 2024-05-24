@@ -36,7 +36,7 @@ implementation. If you immediately want to learn what's new, skip to the
 [section just after that][what's new]._
 
   [search]: ../../setup/setting-up-site-search.md
-  [multilingual]: ../../setup/setting-up-site-search.md#lang
+  [multilingual]: ../../plugins/search.md#config.lang
   [offline-capable]: ../../setup/building-for-offline-usage.md
   [what's new]: #whats-new
 
@@ -206,7 +206,7 @@ more magic involved, e.g., search results are [post-processed] and [rescored] to
 account for some shortcomings of [lunr], but in general, this is how data gets
 into and out of the index.
 
-  [separator]: ../../setup/setting-up-site-search.md#search-separator
+  [separator]: ../../plugins/search.md#config.separator
   [default tokenizer]: https://github.com/olivernn/lunr.js/blob/aa5a878f62a6bba1e8e5b95714899e17e8150b38/lunr.js#L413-L456
   [post-processed]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/_/index.ts#L249-L272
   [rescored]: https://github.com/squidfunk/mkdocs-material/blob/ec7ccd2b2d15dd033740f388912f7be7738feec2/src/assets/javascripts/integrations/search/_/index.ts#L274-L275
@@ -486,7 +486,7 @@ digit `\d`, which leaves version numbers discoverable. Searching for
 [:octicons-search-24: 7.2.6][q=7.2.6] brings up the [7.2.6] release notes.
 
   [q=7.2.6]: ?q=7.2.6
-  [7.2.6]: ../../changelog/index.md#726-_-september-1-2021
+  [7.2.6]: ../../changelog/index.md#7.2.6
 
 #### HTML/XML tags
 
@@ -499,18 +499,11 @@ following expression to the separator allows for just that:
 &[lg]t;
 ```
 
-Searching for [:octicons-search-24: custom search worker script][q=script]
-brings up the section on [custom search] and matches the `script` tag among the
-other search terms discovered.
-
 ---
 
 _We've only just begun to scratch the surface of the new possibilities
 tokenizer lookahead brings. If you found other useful expressions, you're
 invited to share them in the comment section._
-
-  [q=script]: ?q=custom+search+worker+script
-  [custom search]: ../../setup/setting-up-site-search.md#custom-search
 
 ### Accurate highlighting
 

@@ -76,6 +76,12 @@
     }
   }
 
+  // Version alias
+  &__alias {
+    margin-left: px2rem(6px);
+    opacity: 0.7;
+  }
+
   // Version selection list
   &__list {
     position: absolute;

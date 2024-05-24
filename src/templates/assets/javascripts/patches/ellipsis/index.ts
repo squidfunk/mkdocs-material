@@ -33,10 +33,11 @@ import {
 } from "rxjs"
 
 import {
+  Viewport,
   getElements,
   watchElementVisibility
 } from "~/browser"
-import { mountTooltip } from "~/components"
+import { mountInlineTooltip2 } from "~/components/tooltip2"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -47,6 +48,7 @@ import { mountTooltip } from "~/components"
  */
 interface PatchOptions {
   document$: Observable<Document>      /* Document observable */
+  viewport$: Observable<Viewport>      /* Viewport observable */
 }
 
 /* ----------------------------------------------------------------------------
@@ -64,7 +66,7 @@ interface PatchOptions {
  * @param options - Options
  */
 export function patchEllipsis(
-  { document$ }: PatchOptions
+  { document$, viewport$ }: PatchOptions
 ): void {
   document$
     .pipe(
@@ -84,7 +86,7 @@ export function patchEllipsis(
         host.title = text
 
         /* Mount tooltip */
-        return mountTooltip(host)
+        return mountInlineTooltip2(host, { viewport$ })
           .pipe(
             takeUntil(document$.pipe(skip(1))),
             finalize(() => host.removeAttribute("title"))
@@ -97,7 +99,7 @@ export function patchEllipsis(
   document$
     .pipe(
       switchMap(() => getElements(".md-status")),
-      mergeMap(el => mountTooltip(el))
+      mergeMap(el => mountInlineTooltip2(el, { viewport$ }))
     )
       .subscribe()
 }

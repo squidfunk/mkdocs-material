@@ -9,6 +9,13 @@ of its flagship features: [instant loading].
   [sections]: #navigation-sections
   [instant loading]: #instant-loading
 
+Additional navigation can be configured [in the footer] as well as with the
+[tags plugin]. The [blog plugin] also sets up additional navigation.
+
+[in the footer]: setting-up-the-footer.md#navigation
+[tags plugin]: ../plugins/tags.md
+[blog plugin]: ../plugins/blog.md
+
 ## Configuration
 
 ### Instant loading
