@@ -251,8 +251,20 @@ nav:
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
-    - Getting started: insiders/getting-started.md
-    - FAQ: insiders/faq/sponsoring.md
+    - Why sponsor us: insiders/why-sponsor-us.md
+    - What's in it for you: insiders/benefits.md
+    - Who is sponsoring: insiders/our-sponsors.md
+    - Sponsoring tiers: insiders/sponsoring-tiers.md
+    - How to sponsor: insiders/how-to-sponsor.md
+    - Additional information:
+      - Payment and billing: insiders/payment-and-billing.md
+      - Access management: insiders/access-management.md
+      - Runtime and cancellation: insiders/runtime-and-cancellation.md
+      - Privacy: insiders/privacy.md
+      - License: insiders/license.md
+      - Support: support.md
+    - Using Insiders:
+      - Getting started: insiders/getting-started.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
