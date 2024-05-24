@@ -40,13 +40,13 @@ automated invitation via email to access the private Material for MkDocs Insider
 repository. Due to [GitHub limitations], granting access to a private repository
 for an entire organization is not possible.
 
-Therefore, please contact us at sponsors@squidfunk.com with the names of the
-[personal accounts] or the name of a [bot account] that is publicly or privately
+Therefore, please contact us at sponsors@squidfunk.com with the name of a
+[personal account] or the name of a [bot account] that is publicly or privately
 listed as an owner of your GitHub organization after you received a confirmation
 that your sponsorship was initiated.
 
-We will add these designated accounts as collaborators, and once the invitations
-are [accepted within seven days], your organization will be all set to [get
+We will add this designated account as a collaborator, and once the invitation
+is [accepted within seven days], your organization will be all set to [get
 started].
 
   [organization account]: https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#organization-accounts
@@ -79,8 +79,9 @@ accounts] to the Material for MkDocs Insiders repository – a private
 repository.
 
 As much as we would love to give each member of your organization access, it's
-simply not feasible for us to add each member account, which is why each
-[sponsoring tier] has a limited number of seats. However, you can use a [bot account] to work around this limitation.
+simply not feasible for us to add each member account, which is why every
+[sponsoring tier] is limited to one seat. However, you can use a [bot account]
+to work around this limitation.
 
   [private repositories]: https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository
   [personal accounts]: https://docs.github.com/en/get-started/learning-about-github/types-of-github-accounts#personal-accounts
@@ -99,13 +100,11 @@ it's necessary to provide us with the name of a [personal account].
 Given that only personal accounts can be listed as collaborators on
 [private repositories], ensuring access for an entire organization requires
 coordination through individuals. Changes within the team could lead to losing
-access to the entire organization. To avoid this, you have two options:
+access to the entire organization.
 
-  - Choose a sponsoring tier with multiple seats to add additional accounts as
-  collaborators
-  - Create a bot account, which is [a new personal account] that does not belong
-  to a specific individual but is publicly or privately listed as the owner of
-  the GitHub organization
+To avoid this, you have the option to create a bot account, which is
+[a new personal account] that does not belong to a specific individual but is
+publicly or privately listed as the owner of the GitHub organization
 
 Using a bot account for access management and initiating your [public] or
 [private] sponsorship through it also allows for better attribution of

@@ -18,7 +18,8 @@ and [commercial] use:
 Each [monthly sponsoring tier] offers a range of benefits tailored to your needs.
 Benefits include access to our private Material for MkDocs Insiders repository,
 priority handling of bug reports, and more, which vary by the number of
-projects[^1] that you intend to build with it and collaborators required. Remember, you can always [upgrade or downgrade] your
+projects[^1] that you intend to build with it and collaborators required.
+Remember, you can always [upgrade or downgrade] your
 sponsorship level at any time.
 
   [^1]:
@@ -54,7 +55,7 @@ exclusively released to sponsors, and don't want to miss out.
 
 __Rewards:__
 
-  - :material-door-open: Access to Insiders with __1 account__
+  - :material-door-open: Access to Insiders
   - :material-charity: Non-commercial use for __1-2 projects__
 
 [&nbsp; Sponsor with __$15 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][15 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
@@ -74,7 +75,7 @@ to worry about the constantly breaking JavaScript ecosystem – this is now
 
 __Rewards:__
 
-  - :material-door-open: Access to Insiders with __2 accounts__
+  - :material-door-open: Access to Insiders
   - :material-charity: Non-commercial use for __3+ projects__
 
 [&nbsp; Sponsor with __$35 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][35 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
@@ -104,7 +105,7 @@ problems you don't want to fight yourself.
 
 __Rewards:__
 
-  - :material-door-open: Access to Insiders with __3 accounts__
+  - :material-door-open: Access to Insiders
   - :material-currency-usd: Commercial use for __1-9 projects__
   - :material-run-fast: Your bug reports are __prioritized__
   - :material-star: Backlink + placement of __small logo__
@@ -126,7 +127,7 @@ out of it.
 
 __Rewards:__
 
-  - :material-door-open: Access to Insiders with __5 accounts__
+  - :material-door-open: Access to Insiders
   - :material-currency-usd: Commercial use for __10-49 projects__
   - :material-run-fast: Your bug reports are __prioritized__
   - :material-star: Backlink + placement of __logo__
@@ -146,7 +147,7 @@ giving back is essential to keeping everything you fight for alive.
 
 __Rewards:__
 
-  - :material-door-open: Access to Insiders with __10 accounts__
+  - :material-door-open: Access to Insiders
   - :material-currency-usd: Commercial use for __50+ projects__
   - :material-run-fast: Your bug reports are __prioritized__
   - :material-star: Backlink + placement of __large logo__

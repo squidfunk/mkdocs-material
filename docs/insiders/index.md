@@ -225,7 +225,7 @@ get all the information you need to get started:
   [License]: license.md
   [Support]: ../support.md
   [Getting started]: getting-started.md
-  [Changelog]: changelog.md
+  [Changelog]: ../changelog/index.md
   [Upgrade]: upgrade.md
 
 ----

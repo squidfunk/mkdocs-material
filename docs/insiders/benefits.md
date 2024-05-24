@@ -67,7 +67,6 @@ to our individual sponsors. When sponsoring our work on one of our [commercial
 tiers] starting at [$125 a month], you'll get additional benefits that we offer
 for enterprises:
 
-- Multiple seats for your team
 - [Prioritized] bug reports to keep your projects running smoothly
 - Logo placement and backlink on our site for increased visibility
 - Private support via email for any questions to our maintainers
