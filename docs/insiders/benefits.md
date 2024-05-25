@@ -86,6 +86,8 @@ future holds!
 
   [sponsoring tiers]: sponsoring-tiers.md#commercial-use
 
+<div data-mdx-component="sponsorship"></div>
+
 ## Funding <span class="mdx-sponsorship-total" data-mdx-component="sponsorship-total"></span>
 
 ### Goals

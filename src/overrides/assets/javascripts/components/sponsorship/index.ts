@@ -20,13 +20,13 @@
  * IN THE SOFTWARE.
  */
 
-import { Observable, map } from "rxjs"
+import { Observable, from, map, switchMap, tap } from "rxjs"
 
-import { getElement, requestJSON } from "~/browser"
+import { getOptionalElement, requestJSON } from "~/browser"
 
 import { renderPrivateSponsor, renderPublicSponsor } from "_/templates"
 
-import { Component, getComponentElement } from "../_"
+import { Component, getComponentElements } from "../_"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -113,35 +113,46 @@ export function mountSponsorship(
   )
 
   /* Retrieve adjacent components */
-  const count = getComponentElement("sponsorship-count")
-  const total = getComponentElement("sponsorship-total")
+  const count = getComponentElements("sponsorship-count")
+  const total = getComponentElements("sponsorship-total")
 
-  /* Render sponsorship */
-  sponsorship$.subscribe(sponsorship => {
-    el.removeAttribute("hidden")
-
-    /* Render public sponsors with avatar and links */
-    const list = getElement(":scope > :first-child", el)
-    for (const sponsor of sponsorship.sponsors)
-      if (sponsor.type === "public")
-        list.appendChild(renderPublicSponsor(sponsor.user))
-
-    /* Render combined private sponsors */
-    list.appendChild(renderPrivateSponsor(
-      sponsorship.sponsors.filter(({ type }) => (
-        type === "private"
-      )).length
+  /* Render sponsorship count */
+  sponsorship$.pipe(
+    switchMap(sponsorship => from(count).pipe(
+      tap(child => child.innerText = `${sponsorship.sponsors.length}`)
     ))
+  )
+    .subscribe(() => el.removeAttribute("hidden"))
 
-    /* Render sponsorship count and total */
-    count.innerText = `${sponsorship.sponsors.length}`
-    total.innerText = `$ ${sponsorship.total
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    } a month`
-  })
+  /* Render sponsorship total */
+  sponsorship$.pipe(
+    switchMap(sponsorship => from(total).pipe(
+      tap(child => child.innerText = `$ ${sponsorship.total
+        .toString()
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+      } a month`)
+    ))
+  )
+    .subscribe()
 
-  // /* Create and return component */
+  // Render sponsorship list
+  const list = getOptionalElement(":scope > .mdx-sponsorship__list", el)
+  if (list && count.length) {
+    sponsorship$.subscribe(sponsorship => {
+      for (const sponsor of sponsorship.sponsors)
+        if (sponsor.type === "public")
+          list.appendChild(renderPublicSponsor(sponsor.user))
+
+      /* Render combined private sponsors */
+      list.appendChild(renderPrivateSponsor(
+        sponsorship.sponsors.filter(({ type }) => (
+          type === "private"
+        )).length
+      ))
+    })
+  }
+
+  /* Create and return component */
   return sponsorship$
     .pipe(
       map(state => ({ ref: el, ...state }))
