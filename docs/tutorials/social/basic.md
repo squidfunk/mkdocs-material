@@ -177,15 +177,6 @@ indicate that the event is part of the webinar series.
     ---
     ```
 
-## Using include and exclude
-
-!!! tip "Question"
-
-    **@suidfunk**, do you have a killer use case for the `card_include`
-    and `cards_exclude` options? I realize that what I did above with the
-    meta plugin could also be done using these. It would be good to show
-    both but not using the same example.
-
 ## What's next?
 
 With the Insiders Edition, you can also define custom layouts if the
