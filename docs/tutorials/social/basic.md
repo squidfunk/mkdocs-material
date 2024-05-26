@@ -16,8 +16,9 @@ With those prerequisites met, it is simply a matter of activating the plugin,
 which will:
 
 * produce the social cards as PNG images for each page in your site;
-* create page meta data in the header that will provide social media systems
-  with key information and tell them how to find the social card image.
+* create meta data in the headers of your site's pages that will provide
+  social media systems with key information and tell them how to find the
+  social card image.
 
 !!! example "Add social cards"
 
@@ -30,17 +31,17 @@ which will:
             - ...
     ```
 
-    Now, then you run `mkdocs build` and look at the `site` directory, you will
-    see that it contains subfolders under `assets/images/social` that reflect
-    the structure of your Markdown files. Each page has a corresponding PNG file
-    that contains the social card image.
+Now, then you run `mkdocs build` and look at the `site` directory, you will
+see that it contains subfolders under `assets/images/social` that reflect
+the structure of your Markdown files. Each page has a corresponding PNG file
+that contains the social card image.
 
-    Have a look at the generated HTML and you will see the metadata produced in
-    the `head` element, including one entry that points to the image.
+Have a look at the generated HTML and you will see the metadata produced in
+the `head` element, including one entry that points to the image.
 
 ## Background color
 
-The social plugin configuration options for changing aspects such as colors,
+The social plugin has configuration options for changing aspects such as colors,
 images, fonts, logos, the title, even the description. You can configure them
 for all social cards in the `mkdocs.yml` and, in the Insiders Edition, they can
 be overridden in the page header for individual pages.
@@ -60,14 +61,15 @@ be overridden in the page header for individual pages.
 
 ## Logos
 
-By default, the plugin uses the logo that set for the whole site, either
-through the `theme.logo` or the `theme.icon.logo` setting. You can set your
-own logo specific for the social cards if you want this to be different. The
-path used is relative to your project root and needs to point to an SVG file
-or a pixel image of appropriate size and with transparent background.
+By default, the plugin uses the logo that you set for the whole site, either
+through the `theme.logo` or the `theme.icon.logo` setting. The difference
+between the two is that the `theme.icon.logo` version will directly embed the
+logo's SVG code into the HTML, allowing it to inherit CSS color settings. When
+you use `theme.logo`, the Material includes the logo as an image.
 
-!!! tip "Question"
-    **@squidfunk**, not sure about the last sentence, what are the requirements?
+You can set your own logo specific for the social cards as well. The path used
+is relative to your project root and needs to point to an SVG file or a pixel
+image. It should be rectangular and have a transparent background.
 
 !!! example "Set your own logo"
 
