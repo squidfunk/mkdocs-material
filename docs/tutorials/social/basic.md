@@ -87,6 +87,10 @@ social cards is to add a background image instead of the default solid color
 background. Make sure you choose one that will contrast well with the other
 elements of the card.
 
+Also, the background color gets rendered *on top of* the background image,
+allowing you to use a transparent color to tint an image. To use just the image,
+use the color value `transparent`.
+
 !!! example "Add background image"
 
     ```yaml hl_lines="4 5"
@@ -96,6 +100,11 @@ elements of the card.
           background_image: layouts/background.png
           background_color: transparent
     ```
+
+The path to the background image is resolved from the root of your project,
+so this is where you should make the `layouts` directory and place the
+background image. The default site of the social cards included with the plugin
+is 1200x630 pixels, so choose an image that size or one that scales well to it.
 
 ## Additional layouts and styles <!-- md:sponsors -->
 
