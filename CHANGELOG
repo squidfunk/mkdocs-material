@@ -1,3 +1,11 @@
+mkdocs-material-9.5.25+insiders-4.53.11 (2024-05-27)
+
+  * Fixed projects plugin crashing when serving before building subprojects
+
+mkdocs-material-9.5.25 (2024-05-27)
+
+  * Fixed #7209: Tags plugin crashing on numeric tags
+
 mkdocs-material-9.5.24+insiders-4.53.10 (2024-05-20)
 
   * Fixed projects plugin crashing in serve mode when disabled

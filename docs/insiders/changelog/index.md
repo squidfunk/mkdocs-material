@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.11 <small>May 20, 2024</small> { id="4.53.11" }
+
+- Fixed projects plugin crashing when serving before building subprojects
+
 ### 4.53.10 <small>May 20, 2024</small> { id="4.53.10" }
 
 - Fixed projects plugin crashing in serve mode when disabled

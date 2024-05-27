@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.25 <small>May 27, 2024</small> { id="9.5.25" }
+
+- Fixed #7209: Tags plugin crashing on numeric tags
+
 ### 9.5.24 <small>May 20, 2024</small> { id="9.5.24" }
 
 - Fixed #7187: Version selector title rendering issue
