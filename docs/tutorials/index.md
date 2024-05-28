@@ -27,14 +27,16 @@ that case, we will show them in a tabbed view so you can see one or the other.
 
 !!! note "Feedback wanted!"
     The tutorials are a recent addition to our documentation and we are still
-    working out what shape they should have in the end. Please contact us if you
-    want to provide feedback. <!--- TODO: how? -->
+    working out what shape they should have in the end. Please [provide any
+    feedback you might have in this discussion thread].
 
     Note, however, that suggestions should be specific and feasible. We want to
     focus on creating more content at the moment, instead of developing a
     specific styling or behaviour for the tutorials. If there are worthwhile
     improvements that we can make through simple customization then we are happy
     to consider those.
+
+[provide any feedback you might have in this discussion thread]: https://github.com/squidfunk/mkdocs-material/discussions/7220
 
 ## Blogs
 * [Basics](blogs/basic.md) (20 min) <br/>
