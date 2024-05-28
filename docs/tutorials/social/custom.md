@@ -103,7 +103,7 @@ ones already present.
 
 !!! example "Render release version"
 
-    Finally, add the following to the layout template:
+    Finally, add the following to end of the custom layout:
 
     ```yaml
       - size: { width: 990, height: 50 }
