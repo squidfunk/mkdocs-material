@@ -169,7 +169,9 @@ do this in the [custom social cards tutorial](custom.md).
 
 With the Insiders Edition, you can customize the card layout for each
 page by adding settings to the page header. You have effectively done this
-in the previous exercise, but using the meta plugin so simplify things.
+in the previous exercise, but using the meta plugin to affect a whole set of
+pages.
+
 Say that in addition to regular events you also have the odd webinar and
 for this you want to set a different icon and also set the description to
 indicate that the event is part of the webinar series.
@@ -183,7 +185,7 @@ indicate that the event is part of the webinar series.
     ---
     icon: material/web
     social:
-    cards_layout_options:
+      cards_layout_options:
         description: Our Webinar Series
     ---
     ```
