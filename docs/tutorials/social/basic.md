@@ -126,18 +126,20 @@ the meta plugin to assign them a calendar icon.
     First, create a directory in your `docs` directory to hold the event pages:
 
     ```
-    mkdir docs/events
+    $ mkdir docs/events
     ```
 
     Then, add a file `.meta.yml` inside this new directory with settings for
     the page icon and a hot pink background color that will stand out on
-    social media:
+    social media. Note that you can override the background image by setting it
+    to `null` here since it is not visible anyway because of the opaque coloring.
 
     ```yaml
     ---
     icon: material/calendar-plus
     social:
       cards_layout_options:
+        background_image: null
         background_color: "#ff1493"
     ---
     ```
