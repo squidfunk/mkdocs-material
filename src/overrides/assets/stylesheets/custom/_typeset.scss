@@ -103,6 +103,8 @@
       --md-accent-fg-color:              hsla(#{hex2hsl($clr-pink-a200)}, 1);
       --md-accent-fg-color--transparent: hsla(#{hex2hsl($clr-pink-500)}, 0.1);
 
+      color: $clr-pink-500;
+
       // Animate icon
       .twemoji {
         animation: heart 1000ms infinite;
