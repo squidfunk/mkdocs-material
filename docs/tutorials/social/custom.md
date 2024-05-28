@@ -2,9 +2,9 @@
 
 The Insiders Edition allows you to define custom layouts for your social cards
 to suit your specific needs if the configuration options are not enough.
-For example, you may want to include the date of an event on the social
-card as well as a calendar icon to indicate that the card leads to an
-event page when clicked on.
+For example, you may want to define a social card to advertise a new release
+of your product. It should have an icon indicating a launch announcement as
+well as the version number of the release on the card.
 
 ## Setup
 
@@ -21,8 +21,8 @@ use the default layout as the basis.
 
     ```
     $ mkdir layouts
-    $ cp venv/lib/python3.12/site-packages/material/plugins/social/templates/default.yml \
-      layouts/event.yml
+    $ cp venv/lib/python3.12/site-packages/material/plugins/social/templates/default/variant.yml \
+      layouts/release.yml
     ```
 
     Before customizing the social cards, you need to tell the plugin where to
@@ -38,63 +38,56 @@ use the default layout as the basis.
       - layouts
     ```
 
-Have a look at the contents of `event.yml`. You will see that there are:
+Have a look at the contents of `release.yml`. You will see that there are:
 
 * a number of definitions of content pulled from the site,
 * definitions of tags that end up in the `meta` elements in the page header
   of each page,
-* a specification that consists of a number of layers that are applied on
-  top of each other in the order in which they are defined.
+* a specification that consists of a number of layers that the social plugin
+  applies on top of each other in the order in which they are defined.
 
 ## Define page metadata
 
-In the following, you will add an event date and location to the social card.
-As each event will have its own date and location, it makes sense to define
-these in the page header and then of this information in the custom layout.
+In the following, you will add a version number to the social card. This
+assumes you have a changelog page with information about each release.
+Add the version number of the latest version to the page header (so it does
+not need to be parsed out of the Markdown content):
 
-!!! example "Defining the event data <!-- md:sponsors -->"
+!!! example "Defining the release data <!-- md:sponsors -->"
 
-    Create a page with the following content:
+    Create a page `docs/changelog.md` with the following content:
 
     ```yaml
     ---
+    icon: material/rocket-launch-outline
     social:
-      cards_layout: event
-    event:
-      date: 2024-04-08
-      location: Online
+      cards_layout: release
+      cards_layout_options:
+        title: New release!
+    latest: 1.2.3
     ---
 
-    # Introduction to Material for MkDocs
+    # Releases
     ```
 
 ## Extract page metadata
 
 With the data defined in the page header, you can now add code to the layout
 that pulls it out and makes it available to render later on. This is to separate
-the data manipulation from the actually layout instructions and so make the
+the data manipulation from the actual layout instructions and so make the
 layout file easier to read.
 
 !!! example "Adding data definitions"
 
     Add the following at the top of the layout file:
 
-    ```yaml hl_lines="2-99"
+    ```yaml hl_lines="2-9"
     definitions:
-      - &event >-
-        {%- if 'event' in page.meta %}
-            {%- if 'date' in page.meta['event'] %}
-                {{ "%s - " | format(page.meta['event']['date'].strftime('%d %B %Y')) }}
-            {%- else -%}
-                Date is undefined!
-            {%- endif -%}
-            {%- if 'location' in page.meta['event'] -%}
-                {{ page.meta['event']['location'] }}
-            {%- else -%}
-                Location is undefined!
-            {%- endif -%}
+      - &latest >-
+        {%- if 'latest' in page.meta %}
+            {{ page.meta['latest']}}
         {%- else -%}
-            No event data defined!
+            No release version data defined!
         {%- endif -%}
     ```
 
@@ -103,12 +96,12 @@ entries and spits out a message to the social card if not. Unfortunately, there
 is no straightforward way to raise an exception or log an error, so the messages
 merely appear in the social card produced.
 
-## Add event data layer
+## Add release version layer
 
 The next step is to use these data definitions in a new layer and add it to the
 ones already present.
 
-!!! example "Render date and location"
+!!! example "Render release version"
 
     Finally, add the following to the layout template:
 
@@ -116,13 +109,19 @@ ones already present.
       - size: { width: 990, height: 50 }
         offset: { x: 50, y: 360 }
         typography:
-        content: *event
-        align: start
-        color: *color
+          content: *latest
+          align: start
+          color: *color
     ```
 
-You should now see the social plugin use the custom layout on the event page
+You should now see the social plugin use the custom layout on the changelog page
 you set up.
+
+## Adjust layout
+
+Finally, the rocket icon used for the changelog page is not quite in the right
+position. Find the please where the `page_icon` variable is used to create the
+page icon layer and adjust the horizontal position to 600 instead of 800.
 
 !!! tip "Debugging layout files"
 
