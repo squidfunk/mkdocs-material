@@ -132,8 +132,25 @@ export function setupVersionSelector(
               .pipe(
                 map(sitemap => {
                   const location = getLocation()
+                  // checkPath is used to check if the current page is in the sitemap even if it is the canonical version
+                  let checkPath
+                  // path is the actual path of the page we want to redirect to
                   const path = location.href.replace(config.base, url)
-                  return sitemap.has(path.split("#")[0])
+
+                  // If the canonical version is set, we replace the current version with the canonical version in the checkPath
+                  if (config.canonical_version) {
+                    const baseUrl = new URL(config.base)
+                    // Make sure the canonical version has a trailing slash if the base URL has one
+                    if (config.base.endsWith("/") && !config.canonical_version.endsWith("/")) {
+                      baseUrl.pathname = `${config.canonical_version}/`
+                    } else {
+                      baseUrl.pathname = config.canonical_version
+                    }
+                    checkPath = location.href.replace(config.base, baseUrl.href)
+                  } else {
+                    checkPath = path
+                  }
+                  return sitemap.has(checkPath.split("#")[0])
                     ? new URL(path)
                     : new URL(url)
                 })

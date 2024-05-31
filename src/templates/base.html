@@ -398,7 +398,10 @@
       {%- if config.extra.version -%}
         {%- set mike = config.plugins.get("mike") -%}
         {%- if not mike or mike.config.version_selector -%}
-          {%- set _ = app.update({ "version": config.extra.version }) -%}
+            {%- set _ = app.update({ "version": config.extra.version}) -%}
+        {%- endif -%}
+        {%- if mike.config.canonical_version -%}
+          {%- set _ = app.update({ "canonical_version": mike.config.canonical_version }) -%}
         {%- endif -%}
       {%- endif -%}
 

@@ -96,6 +96,7 @@ export interface Config {
   search: string                       /* Search worker URL */
   tags?: Record<string, string>        /* Tags mapping */
   version?: Versioning                 /* Versioning */
+  canonical_version?: string           /* Optional canonical version set in Mike */
 }
 
 /* ----------------------------------------------------------------------------
