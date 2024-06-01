@@ -29,7 +29,7 @@
       <nav class="md-post__authors md-typeset">
         {% for author in post.authors %}
           <span class="md-author">
-            <img src="{{ author.avatar }}" alt="{{ author.name }}" />
+            <img src="{{ author.avatar | url }}" alt="{{ author.name }}" />
           </span>
         {% endfor %}
       </nav>
