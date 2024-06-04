@@ -186,6 +186,9 @@
   <a href="https://www.equipmentshare.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png" height="58"
   /></a>
+  <a href="https://hummingbot.org/" target=_blank><img
+    src="https://camo.githubusercontent.com/a1d4f7b2c134d94f7c31cebd96813c3a98b3869a9dbf618d569a9799544ee685/68747470733a2f2f692e6962622e636f2f58357a4e6b4b772f626c61636b6c6f676f2d776974682d746578742e706e67" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
