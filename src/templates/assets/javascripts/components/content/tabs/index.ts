@@ -38,7 +38,6 @@ import {
   skip,
   startWith,
   subscribeOn,
-  switchMap,
   takeUntil,
   tap,
   withLatestFrom
@@ -137,7 +136,7 @@ export function mountContentTabs(
   return defer(() => {
     const push$ = new Subject<ContentTabs>()
     const done$ = push$.pipe(ignoreElements(), endWith(true))
-    combineLatest([push$, watchElementSize(el)])
+    combineLatest([push$, watchElementSize(el), watchElementVisibility(el)])
       .pipe(
         takeUntil(done$),
         auditTime(1, animationFrameScheduler)
@@ -286,9 +285,8 @@ export function mountContentTabs(
       })
 
     /* Create and return component */
-    return watchElementVisibility(el)
+    return watchContentTabs(inputs)
       .pipe(
-        switchMap(() => watchContentTabs(inputs)),
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
         map(state => ({ ref: el, ...state }))
