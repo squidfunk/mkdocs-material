@@ -1,3 +1,8 @@
+mkdocs-material-9.5.26 (2024-06-06)
+
+  * Fixed #7232: Tab switches on scroll when linking tabs (9.5.19 regression)
+  * Fixed #7230: Blog author avatar broken when refering to local file
+
 mkdocs-material-9.5.25+insiders-4.53.11 (2024-05-27)
 
   * Fixed projects plugin crashing when serving before building subprojects

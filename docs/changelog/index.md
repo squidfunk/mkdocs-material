@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.26 <small>June 6, 2024</small> { id="9.5.26" }
+
+- Fixed #7232: Tab switches on scroll when linking tabs (9.5.19 regression)
+- Fixed #7230: Blog author avatar broken when refering to local file
+
 ### 9.5.25 <small>May 27, 2024</small> { id="9.5.25" }
 
 - Fixed #7209: Tags plugin crashing on numeric tags
