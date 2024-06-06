@@ -62,6 +62,7 @@ _Be our first gold sponsor!_
 [![Invers]](https://invers.com/){ target=_blank title="Invers" }
 [![Maxar]](https://maxar.com/){ target=_blank title="Maxar" }
 [![EquipmentShare]](https://www.equipmentshare.com/){ target=_blank title="EquipmentShare" }
+[![Hummingbot]](https://hummingbot.org/){ target=_blank title="Hummingbot" }
 
 </div>
 
@@ -106,6 +107,7 @@ _Be our first gold sponsor!_
   [Invers]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png
   [Maxar]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png
   [EquipmentShare]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png
+  [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
 
 <hr />
 
