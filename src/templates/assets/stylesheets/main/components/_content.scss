@@ -31,6 +31,7 @@
   // dimensions of its parent. Otherwise, long code blocks might lead to a
   // wider content area which will overflow. See https://bit.ly/3bP3f8k
   min-width: 0;
+  text-align: justify;
 
   // Content wrapper
   &__inner {
