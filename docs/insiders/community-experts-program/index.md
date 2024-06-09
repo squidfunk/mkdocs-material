@@ -1,4 +1,4 @@
----
+---beta134
 title: Community Experts Program
 status: new
 ---
@@ -37,7 +37,7 @@ our [discussion board], where we'd expect you to be:
 Here is a list of the benefits we offer to our Community Experts:
 
 -   __Free access to Material for MkDocs Insiders__ – Exclusive Access to all of
-    our Material for MkDocs Insiders features for _non-commercial use_.[^1]
+    our Material for MkDocs Insiders features for _non-commercial use_.[^]
 
 -   __Close communication with the team__ – Stay connected with us through various
     channels, including calls and internal project management tools.
