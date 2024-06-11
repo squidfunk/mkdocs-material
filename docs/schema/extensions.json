@@ -32,6 +32,9 @@
       "anyOf": [
         {
           "$ref": "https://raw.githubusercontent.com/Neoteroi/mkdocs-plugins/main/docs/extensions-schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mikitex70/plantuml-markdown/master/plantuml_markdown.json"
         }
       ]
     }
