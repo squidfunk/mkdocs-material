@@ -121,8 +121,8 @@ extra:
       link: https://pypi.org/project/mkdocs-material/
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@squidfunk
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/squidfunk
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/squidfunk
 
 # Extensions
 markdown_extensions:
