@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.27 <small>June 16, 2024</small> { id="9.5.27" }
+
+- Updated Estonian translations
+
 ### 9.5.26 <small>June 6, 2024</small> { id="9.5.26" }
 
 - Fixed #7232: Tab switches on scroll when linking tabs (9.5.19 regression)

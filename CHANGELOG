@@ -1,3 +1,7 @@
+mkdocs-material-9.5.27 (2024-06-16)
+
+  * Updated Estonian translations
+
 mkdocs-material-9.5.26 (2024-06-06)
 
   * Fixed #7232: Tab switches on scroll when linking tabs (9.5.19 regression)
