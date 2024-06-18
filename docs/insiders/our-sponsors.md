@@ -109,7 +109,7 @@ _Be our first gold sponsor!_
   [Maxar]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png
   [EquipmentShare]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png
   [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
-  [Future]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.png
+  [Future]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg
 
 <hr />
 
