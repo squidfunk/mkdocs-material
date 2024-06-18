@@ -122,7 +122,7 @@ that the index page shows.
 
     We also have a [tutorial on navigation] that shows you how to change the
     automatically created navigation and integrate the blog into your existing
-    navigation structure. It shows how to create secondary nagigation, produce
+    navigation structure. It shows how to create secondary navigation, produce
     author pages, and control pagination.
 
 [tutorial on navigation]: navigation.md
