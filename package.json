@@ -96,7 +96,7 @@
     "svgo": "3.0.0",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   },
   "engines": {
     "node": ">= 18"
