@@ -475,12 +475,12 @@ Dynamically created URLs as part of scripts are not detected, and thus cannot be
 downloaded automatically, as the plugin does not execute scripts – it only detects fully qualified URLs for downloading and replacement. In short, don't do this:
 
 ``` js
-const cdn = "https://polyfill.io"
-const url = `${cdn}/v3/polyfill.min.js`
+const host = "https://example.com"
+const path = `${host}/script.js`
 ```
 
 Instead, always use fully qualified URLs:
 
 ``` js
-const url ="https://polyfill.io/v3/polyfill.min.js"
+const url ="https://example.com/script.js"
 ```

@@ -216,64 +216,63 @@ For a list of all settings, please consult the [plugin documentation].
     └─ assets/external/
        ├─ unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
        ├─ fonts.googleapis.com/css
-       ├─ fonts.gstatic.com/s/
-       │  ├─ roboto/v29/
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc-CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc0CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc1CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc2CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc3CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc5CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TjASc6CsQ.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic-CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic0CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic1CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic2CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic3CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic5CsTKlA.woff2
-       │  │  ├─ KFOjCnqEu92Fr1Mu51TzBic6CsQ.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xEIzIFKw.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xFIzIFKw.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xGIzIFKw.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xHIzIFKw.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xIIzI.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xLIzIFKw.woff2
-       │  │  ├─ KFOkCnqEu92Fr1Mu51xMIzIFKw.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fBBc4.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfBBc4.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2
-       │  │  ├─ KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu4WxKOzY.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu4mxK.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu5mxKOzY.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu72xKOzY.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu7GxKOzY.woff2
-       │  │  ├─ KFOmCnqEu92Fr1Mu7WxKOzY.woff2
-       │  │  └─ KFOmCnqEu92Fr1Mu7mxKOzY.woff2
-       │  └─ robotomono/v13/
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSV0mf0h.woff2
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSZ0mf0h.woff2
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSd0mf0h.woff2
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSh0mQ.woff2
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSt0mf0h.woff2
-       │     ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSx0mf0h.woff2
-       │     ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtElOUlYIw.woff2
-       │     ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEleUlYIw.woff2
-       │     ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEluUlYIw.woff2
-       │     ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEm-Ul.woff2
-       │     ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEmOUlYIw.woff2
-       │     └─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEn-UlYIw.woff2
-       └─ polyfill.io/v3/polyfill.min.js
+       └─ fonts.gstatic.com/s/
+          ├─ roboto/v29/
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc-CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc0CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc1CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc2CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc3CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc5CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TjASc6CsQ.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic-CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic0CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic1CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic2CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic3CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic5CsTKlA.woff2
+          │  ├─ KFOjCnqEu92Fr1Mu51TzBic6CsQ.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xEIzIFKw.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xFIzIFKw.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xGIzIFKw.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xHIzIFKw.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xIIzI.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xLIzIFKw.woff2
+          │  ├─ KFOkCnqEu92Fr1Mu51xMIzIFKw.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fBBc4.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fBxc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fCBc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmSU5fCxc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfABc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfBBc4.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfBxc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfCBc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfCRc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfChc4EsA.woff2
+          │  ├─ KFOlCnqEu92Fr1MmWUlfCxc4EsA.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu4WxKOzY.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu4mxK.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu5mxKOzY.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu72xKOzY.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu7GxKOzY.woff2
+          │  ├─ KFOmCnqEu92Fr1Mu7WxKOzY.woff2
+          │  └─ KFOmCnqEu92Fr1Mu7mxKOzY.woff2
+          └─ robotomono/v13/
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSV0mf0h.woff2
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSZ0mf0h.woff2
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSd0mf0h.woff2
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSh0mQ.woff2
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSt0mf0h.woff2
+             ├─ L0xTDF4xlVMF-BfR8bXMIhJHg45mwgGEFl0_3vrtSM1J-gEPT5Ese6hmHSx0mf0h.woff2
+             ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtElOUlYIw.woff2
+             ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEleUlYIw.woff2
+             ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEluUlYIw.woff2
+             ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEm-Ul.woff2
+             ├─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEmOUlYIw.woff2
+             └─ L0xdDF4xlVMF-BfR8bXMIjhOsXG-q2oeuFoqFrlnAIe2Imhk1T8rbociImtEn-UlYIw.woff2
     ```
 
   [built-in privacy plugin]: ../plugins/privacy.md

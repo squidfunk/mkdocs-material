@@ -64,7 +64,6 @@ to your `mkdocs.yml`.
 
     extra_javascript:
       - javascripts/mathjax.js
-      - https://polyfill.io/v3/polyfill.min.js?features=es6
       - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
     ```
 
@@ -75,7 +74,6 @@ See additional configuration options:
   [Arithmatex]: ../setup/extensions/python-markdown-extensions.md#arithmatex
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>
   window.MathJax = {
