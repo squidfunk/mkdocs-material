@@ -114,7 +114,7 @@ encourage you to create an issue because it's now very likely that you
 stumbled over something we don't know yet. Read the following section to learn
 how to create a complete and helpful bug report.
 
-  [Search our documentation]: ?q=
+  [Search our documentation]: https://github.com/squidfunk/mkdocs-material/discussions?q=
 
 ## Issue template
 
