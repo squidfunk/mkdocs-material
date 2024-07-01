@@ -21,6 +21,7 @@
  */
 
 import {
+  EMPTY,
   Observable,
   filter,
   finalize,
@@ -32,6 +33,7 @@ import {
   takeUntil
 } from "rxjs"
 
+import { feature } from "~/_"
 import {
   Viewport,
   getElements,
@@ -85,6 +87,10 @@ export function patchEllipsis(
         const host = el.closest("a") || el
         host.title = text
 
+        // Do not mount improved tooltip if feature is disabled
+        if (!feature("content.tooltips"))
+          return EMPTY
+
         /* Mount tooltip */
         return mountInlineTooltip2(host, { viewport$ })
           .pipe(
@@ -96,10 +102,11 @@ export function patchEllipsis(
       .subscribe()
 
   // @todo move this outside of here and fix memleaks
-  document$
-    .pipe(
-      switchMap(() => getElements(".md-status")),
-      mergeMap(el => mountInlineTooltip2(el, { viewport$ }))
-    )
-      .subscribe()
+  if (feature("content.tooltips"))
+    document$
+      .pipe(
+        switchMap(() => getElements(".md-status")),
+        mergeMap(el => mountInlineTooltip2(el, { viewport$ }))
+      )
+        .subscribe()
 }
