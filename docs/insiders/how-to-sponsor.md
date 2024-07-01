@@ -66,7 +66,7 @@ organizations, the opportunity for [logo placement].
 
   [sponsorship private or to make it public]: privacy.md
   [our sponsors]: our-sponsors.md
-  [logo placement]: our-sponsors.md/#our-premium-sponsors
+  [logo placement]: our-sponsors.md/#premium-sponsors
 
 #### News and updates
 

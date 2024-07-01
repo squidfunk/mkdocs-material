@@ -12,7 +12,7 @@ repository, you need to [become an eligible sponsor] of @squidfunk on GitHub.
   [pip]: #with-pip
   [docker]: #with-docker
   [git]: #with-git
-  [become an eligible sponsor]: index.md#how-to-become-a-sponsor
+  [become an eligible sponsor]: how-to-sponsor.md
 
 ## Requirements
 
