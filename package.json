@@ -78,7 +78,7 @@
     "material-shadows": "^3.0.1",
     "npm-check-updates": "^16.14.20",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.39",
     "postcss-dir-pseudo-class": "^8.0.1",
     "postcss-inline-svg": "^6.0.0",
     "postcss-logical": "5.0.4",
