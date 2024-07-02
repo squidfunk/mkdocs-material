@@ -1,3 +1,7 @@
+mkdocs-material-9.5.28 (2024-07-02)
+
+  * Fixed #7313: Improved tooltips mounted in sidebar when feature is disabled
+
 mkdocs-material-9.5.27 (2024-06-16)
 
   * Updated Estonian translations
