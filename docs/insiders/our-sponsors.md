@@ -55,7 +55,6 @@ _Be our first gold sponsor!_
 [![Astral]](https://astral.sh/){ target=_blank title="Astral" }
 [![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
 [![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
-[![Transformation Flow]](https://transformationflow.io/){ target=_blank title="Transformation Flow" }
 [![3DR]](https://3dr.com/){ target=_blank title="3DR" }
 [![Spotware]](https://spotware.com/){ target=_blank title="Spotware" }
 [![Milford Assets]](https://milfordasset.com/){ target=_blank title="Milford Assets" }
@@ -99,7 +98,6 @@ _Be our first gold sponsor!_
   [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
   [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
   [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
-  [Transformation Flow]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png
   [3DR]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png
   [Spotware]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png
   [Milford Assets]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png
