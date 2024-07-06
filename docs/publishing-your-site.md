@@ -215,7 +215,7 @@ other providers:
 
 <div class="mdx-columns" markdown>
 
-- [:simple-azuredevops: Azure][Azure]
+- [:material-microsoft-azure-devops: Azure][Azure]
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
 - [:simple-digitalocean: DigitalOcean][DigitalOcean]
 - [:material-airballoon-outline: Fly.io][Flyio]
