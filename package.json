@@ -59,7 +59,7 @@
     "@types/fuzzaldrin-plus": "^0.6.5",
     "@types/html-minifier": "^4.0.5",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "@types/resize-observer-browser": "^0.1.11",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
@@ -67,11 +67,11 @@
     "autoprefixer": "^10.4.19",
     "chokidar": "^3.6.0",
     "cssnano": "5.1.0",
-    "esbuild": "^0.22.0",
+    "esbuild": "^0.23.0",
     "eslint": "8.57.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^48.5.0",
+    "eslint-plugin-jsdoc": "^48.5.2",
     "eslint-plugin-no-null": "^1.0.2",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
@@ -87,9 +87,9 @@
     "postcss-logical": "5.0.4",
     "postcss-pseudo-is": "^0.3.0",
     "preact": "^10.22.1",
-    "rimraf": "^5.0.7",
+    "rimraf": "^5.0.8",
     "sass": "^1.77.6",
-    "simple-icons": "^13.0.0",
+    "simple-icons": "^13.1.0",
     "stylelint": "15.11.0",
     "stylelint-config-recess-order": "4.2.0",
     "stylelint-config-recommended": "13.0.0",
@@ -99,7 +99,7 @@
     "svgo": "3.0.0",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "engines": {
     "node": ">= 18"
