@@ -2,7 +2,7 @@ import { strict as assert } from "assert"
 
 import { Sitemap } from "../sitemap"
 
-import { selectedVersionCorrespondingURL } from "./correspondingPage"
+import { selectedVersionCorrespondingURL, shortestCommonPrefix, stripPrefix } from "./correspondingPage"
 
 describe("Version switcher tests", () => {
   // These examples are obtained by pausing the JS debugger in various situation and
@@ -54,7 +54,7 @@ describe("Version switcher tests", () => {
       "https://test.github.io/project/latest/foo/"
     ]
 
-    it("does not (yet, TODO #7226) return a URL when the selected version has the current page", () => {
+    it("returns a URL when the selected version has the current page", () => {
       assert.equal(
         selectedVersionCorrespondingURL({
           selectedVersionSitemap: sitemapFromURLList(sitemapURLsLatestVersion),
@@ -64,7 +64,7 @@ describe("Version switcher tests", () => {
           currentLocation: new URL("https://test.github.io/project/0.2/bar/#heading?param=some"),
           currentBaseURL: "https://test.github.io/project/0.2/"
         })?.href,
-        undefined,
+        "https://test.github.io/project/0.1/bar/#heading?param=some",
       )
     })
     it("returns nothing when the selected version does not have the current page", () => {
@@ -92,7 +92,7 @@ describe("Version switcher tests", () => {
       "https://localhost/project/0.1/foo/"
     ]
 
-    it("does not (yet, TODO) return a URL when the selected version has the current page", () => {
+    it("returns a URL when the selected version has the current page", () => {
       assert.equal(
         selectedVersionCorrespondingURL({
           selectedVersionSitemap: sitemapFromURLList(sitemapURLsLocalhost),
@@ -100,7 +100,7 @@ describe("Version switcher tests", () => {
           currentLocation: new URL("https://localhost:8000/0.2/bar/#heading?param=some"),
           currentBaseURL: "https://localhost:8000/0.2/"
         })?.href,
-        undefined,
+        "https://localhost:8000/0.1/bar/#heading?param=some",
       )
     })
     it("returns nothing when the selected version does not have the current page", () => {
@@ -130,3 +130,16 @@ describe("Version switcher tests", () => {
 function sitemapFromURLList(urls: string[]): Sitemap {
   return new Map(urls.map(url => [url, [new URL(url)]]))
 }
+
+describe("Utility string processing function tests", () => {
+  it("shortestCommonPrefix", () => {
+    assert.equal(shortestCommonPrefix([]), "")
+    assert.equal(shortestCommonPrefix(["abc", "abcd", "abe"]), "ab")
+    assert.equal(shortestCommonPrefix(["abcef", "abcd", "abc"]), "abc")
+    assert.equal(shortestCommonPrefix(["", "abc"]), "")
+  })
+  it("stripPrefix", () => {
+    assert.equal(stripPrefix("abc", "ab"), "c")
+    assert.equal(stripPrefix("abc", "b"), undefined)
+  })
+})
