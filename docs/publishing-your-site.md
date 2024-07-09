@@ -118,7 +118,7 @@ contents:
     1.  This step is only necessary if you want to use the
         [built-in optimize plugin] to automatically compress images.
 
-    2.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    2.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [GitHub secrets].
 
@@ -197,7 +197,7 @@ contents:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
-    1.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    1.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
