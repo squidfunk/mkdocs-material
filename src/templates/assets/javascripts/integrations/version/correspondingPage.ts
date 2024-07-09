@@ -34,7 +34,10 @@ export function selectedVersionCorrespondingURL(
     selectedVersionBaseURL,
     currentLocation,
     currentBaseURL} = params
-  const current_path = (new URL(currentBaseURL)).pathname
+  const current_path = safeURLParse(currentBaseURL)?.pathname
+  if (current_path === undefined) {
+    return
+  }
   const currentRelativePath = stripPrefix(currentLocation.pathname, current_path)
   if (currentRelativePath === undefined) {
     return
@@ -47,15 +50,35 @@ export function selectedVersionCorrespondingURL(
     return
   }
 
-  const potentialSitemapURL = new URL(currentRelativePath, sitemapCommonPrefix)
-  if (!selectedVersionSitemap.has(potentialSitemapURL.href)) {
+  const potentialSitemapURL = safeURLParse(currentRelativePath, sitemapCommonPrefix)
+  if (!potentialSitemapURL || !selectedVersionSitemap.has(potentialSitemapURL.href)) {
     return
   }
 
-  const result = new URL(currentRelativePath, selectedVersionBaseURL)
+  const result = safeURLParse(currentRelativePath, selectedVersionBaseURL)
+  if (!result) {
+    return
+  }
   result.hash = currentLocation.hash
   result.search = currentLocation.search
   return result
+}
+
+/**
+ * A version of `new URL` that never throws. A polyfill for URL.parse() which is
+ * not yet ubuquitous.
+ *
+ * @param url - passed to `new URL` constructor
+ * @param base - passed to `new URL` constructor
+ *
+ * @returns `new URL(url, base)` or undefined if the URL is invalid.
+ */
+function safeURLParse(url: string|URL, base?: string|URL): URL | undefined {
+  try {
+    return new URL(url, base)
+  } catch {
+    return
+  }
 }
 
 // Basic string manipulation
