@@ -36,6 +36,7 @@
     "src/overrides/assets/javascripts",
     "src/templates/assets/javascripts",
     "tools",
-    "typings"
+    "typings",
+    "tests/javascripts"
   ]
 }

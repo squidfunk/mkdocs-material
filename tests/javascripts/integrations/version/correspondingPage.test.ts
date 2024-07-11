@@ -1,8 +1,8 @@
 import { strict as assert } from "assert"
 
-import { Sitemap } from "../sitemap"
+import { Sitemap } from "../../../../src/templates/assets/javascripts/integrations/sitemap"
 
-import { selectedVersionCorrespondingURL } from "./correspondingPage"
+import { selectedVersionCorrespondingURL } from "../../../../src/templates/assets/javascripts/integrations/version/correspondingPage"
 
 describe("Version switcher tests", () => {
   // These examples are obtained by pausing the JS debugger in various situation and

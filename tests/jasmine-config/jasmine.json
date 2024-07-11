@@ -1,0 +1,9 @@
+{
+  "spec_dir": "tests",
+  "spec_files": [
+    "**/*.test.ts"
+  ],
+  "helpers": [
+    "jasmine-config/helper-*.ts"
+  ]
+}
