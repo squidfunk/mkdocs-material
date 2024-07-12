@@ -31,7 +31,7 @@ which will:
             - ...
     ```
 
-Now, then you run `mkdocs build` and look at the `site` directory, you will
+Now, when you run `mkdocs build` and look at the `site` directory, you will
 see that it contains subfolders under `assets/images/social` that reflect
 the structure of your Markdown files. Each page has a corresponding PNG file
 that contains the social card image.
