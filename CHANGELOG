@@ -1,3 +1,8 @@
+mkdocs-material-9.5.29 (2024-07-14)
+
+  * Updated Galician translations
+  * Fixed #7362: Annotations in figure captions rendering incorrectly
+
 mkdocs-material-9.5.28 (2024-07-02)
 
   * Fixed #7313: Improved tooltips mounted in sidebar when feature is disabled

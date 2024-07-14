@@ -121,7 +121,6 @@
     "scss/at-function-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-if-no-null": true,
-    "scss/at-import-no-partial-leading-underscore": true,
     "scss/at-import-partial-extension": "never",
     "scss/at-mixin-argumentless-call-parentheses": "always",
     "scss/at-mixin-parentheses-space-before": "never",
