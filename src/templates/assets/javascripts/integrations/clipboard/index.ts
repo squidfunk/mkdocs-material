@@ -60,7 +60,7 @@ function extract(el: HTMLElement): string {
     ? copy.getAttribute("data-copy")!
     : el.innerText
   el.removeAttribute("data-md-copying")
-  return text.trimEnd()
+  return text.replace(/[^\S\r\n]+$/gm, "").trimEnd()
 }
 
 /* ----------------------------------------------------------------------------
