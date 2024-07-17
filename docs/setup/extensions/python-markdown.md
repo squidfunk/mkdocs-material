@@ -169,6 +169,26 @@ No configuration options are available. See reference for usage:
   [Using grids]: ../../reference/grids.md#usage
   [Image captions]: ../../reference/images.md#image-captions
 
+### Sane Lists
+
+<!-- md:version 0.1.0 -->
+<!-- md:extension [sane_lists][Sane Lists] -->
+
+The [Sane Lists] extension modifies the behavior of the standard Markdown list,
+making it less surprising and more intuitive. Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - sane_lists
+```
+
+No configuration options are available. See reference for usage:
+
+- [Using sane lists]
+
+  [Sane Lists]: https://python-markdown.github.io/extensions/sane_lists/
+  [Using sane lists]: ../../reference/lists.md#using-sane-lists
+
 ### Table of Contents
 
 <!-- md:version 0.1.0 -->

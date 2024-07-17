@@ -130,6 +130,7 @@ markdown_extensions:
   - admonition
   - attr_list
   - def_list
+  - sane_lists
   - footnotes
   - md_in_html
   - toc:

@@ -11,13 +11,14 @@ are supported through extensions.
 
 ## Configuration
 
-This configuration enables the use of definition lists and tasks lists, which
+This configuration enables the use of definition lists, tasks lists and sane lists, which
 are both not part of the standard Markdown syntax. Add the following lines to
 `mkdocs.yml`:
 
 ``` yaml
 markdown_extensions:
   - def_list
+  - sane_lists
   - pymdownx.tasklist:
       custom_checkbox: true
 ```
@@ -26,9 +27,11 @@ See additional configuration options:
 
 - [Definition Lists]
 - [Tasklist]
+- [Sane Lists]
 
   [Definition Lists]: ../setup/extensions/python-markdown.md#definition-lists
   [Tasklist]: ../setup/extensions/python-markdown-extensions.md#tasklist
+  [Sane Lists]: ../setup/extensions/python-markdown.md#sane-lists
 
 ## Usage
 
@@ -164,5 +167,109 @@ for the definition of task lists:
     * [x] In scelerisque nibh non dolor mollis congue sed et metus
     * [ ] Praesent sed risus massa
 - [ ] Aenean pretium efficitur erat, donec pharetra, ligula non scelerisque
+
+</div>
+
+### Using sane lists
+
+The [Sane Lists] extension prevents the mixing of list types.
+In other words, an ordered list will not continue when an unordered
+list item is encountered and vice versa.
+
+=== "With Sane Lists"
+    ``` markdown
+    1. Ordered item 1
+    2. Ordered item 2
+
+    * Unordered item 1
+    * Unordered item 2
+    ```
+
+    <div class="result" markdown>
+
+    1. Ordered item 1
+    2. Ordered item 2
+
+    * Unordered item 1
+    * Unordered item 2
+
+    </div>
+
+=== "Without Sane Lists"
+    ``` markdown
+    1. Ordered item 1
+    2. Ordered item 2
+
+    * Unordered item 1
+    * Unordered item 2
+    ```
+
+    <div class="result" markdown>
+      <ol>
+        <li>Ordered item 1</li>
+        <li>Ordered item 2</li>
+        <li>Unordered item 1</li>
+        <li>Unordered item 2</li>
+      </ol>
+    </div>
+
+A side effect of this extensions is that, unlike the default behavior of Markdown,
+if a blank line is not included between a paragraph and a list, the different list
+type will be completely ignored and will be rendered as a continuation of the
+previous list item.
+
+=== "With Sane Lists"
+    ``` markdown
+    A Paragraph.
+    * Not a list item.
+
+    1. Ordered list item.
+    * Not a separate list item.
+    ```
+
+    <div class="result" markdown>
+
+    A Paragraph.
+    * Not a list item.
+
+    1. Ordered list item.
+    * Not a separate list item.
+
+    </div>
+
+=== "Without Sane Lists"
+    ``` markdown
+    A Paragraph.
+    * Not a list item.
+
+    1. Ordered list item.
+    * Not a separate list item.
+    ```
+
+    <div class="result" markdown>
+      <p>A Paragraph.
+      * Not a list item.</p>
+      <ol>
+        <li>Ordered list item.</li>
+        <li>Not a separate list item.</li>
+      </ol>
+    </div>
+
+#### Defining starting numbers
+
+When [Sane Lists] is enabled, the starting number of ordered
+lists can be defined with the first number in the list:
+
+``` markdown title="Starting number"
+5. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+1. Vestibulum convallis sit amet nisi a tincidunt
+1. In hac habitasse platea dictumst
+```
+
+<div class="result" markdown>
+
+5. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+1. Vestibulum convallis sit amet nisi a tincidunt
+1. In hac habitasse platea dictumst
 
 </div>
