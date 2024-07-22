@@ -120,7 +120,7 @@
     // Navigation link icon
     svg {
       // Hack: Safari has another bug where SVGs disappear on hover - same fix
-      // as above via `position: relative` - see https://bit.ly/3HljM1T
+      // as above via `position: relative` - see https://t.ly/5fSj1
       position: relative;
       flex-shrink: 0;
       height: 1.3em;
