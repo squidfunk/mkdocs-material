@@ -1,3 +1,8 @@
+mkdocs-material-9.5.30 (2024-07-23)
+
+  * Fixed #7380: Navigation icons disappearing on hover in Safari
+  * Fixed #7367: Blog readtime computation includes SVG text content
+
 mkdocs-material-9.5.29 (2024-07-14)
 
   * Updated Galician translations
