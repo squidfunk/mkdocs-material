@@ -59,7 +59,7 @@
     "@types/fuzzaldrin-plus": "^0.6.5",
     "@types/html-minifier": "^4.0.5",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^20.14.11",
+    "@types/node": "^20.14.12",
     "@types/resize-observer-browser": "^0.1.11",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "5.62.0",
@@ -81,15 +81,15 @@
     "material-shadows": "^3.0.1",
     "npm-check-updates": "^16.14.20",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.39",
+    "postcss": "^8.4.40",
     "postcss-dir-pseudo-class": "^8.0.1",
     "postcss-inline-svg": "^6.0.0",
     "postcss-logical": "5.0.4",
     "postcss-pseudo-is": "^0.3.0",
-    "preact": "^10.22.1",
+    "preact": "^10.23.1",
     "rimraf": "^6.0.1",
     "sass": "^1.77.8",
-    "simple-icons": "^13.2.0",
+    "simple-icons": "^13.3.0",
     "stylelint": "15.11.0",
     "stylelint-config-recess-order": "4.2.0",
     "stylelint-config-recommended": "13.0.0",
@@ -99,7 +99,7 @@
     "svgo": "3.0.0",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "engines": {
     "node": ">= 18"
