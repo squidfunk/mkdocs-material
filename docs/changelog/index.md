@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.31 <small>August 2, 2024</small> { id="9.5.31" }
+
+- Fixed #7405: DockerHub missing images > 9.5.27 due to change in Alpine/APK
+
 ### 9.5.30 <small>July 23, 2024</small> { id="9.5.30" }
 
 - Fixed #7380: Navigation icons disappearing on hover in Safari

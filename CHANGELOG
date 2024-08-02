@@ -1,3 +1,12 @@
+mkdocs-material-9.5.31+insiders-4.53.12 (2024-08-02)
+
+  * Fixed #7410: Instant previews jump on content tabs with anchor links
+  * Fixed #7408: Instant previews jump on content tabs
+
+mkdocs-material-9.5.31 (2024-08-02)
+
+  * Fixed #7405: DockerHub missing images > 9.5.27 due to change in Alpine/APK
+
 mkdocs-material-9.5.30 (2024-07-23)
 
   * Fixed #7380: Navigation icons disappearing on hover in Safari

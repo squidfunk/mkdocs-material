@@ -2,7 +2,12 @@
 
 ## Material for MkDocs Insiders
 
-### 4.53.11 <small>May 20, 2024</small> { id="4.53.11" }
+### 4.53.12 <small>August 2, 2024</small> { id="4.53.12" }
+
+- Fixed #7410: Instant previews jump on content tabs with anchor links
+- Fixed #7408: Instant previews jump on content tabs
+
+### 4.53.11 <small>May 27, 2024</small> { id="4.53.11" }
 
 - Fixed projects plugin crashing when serving before building subprojects
 
