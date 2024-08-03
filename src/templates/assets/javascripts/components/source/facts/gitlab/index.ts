@@ -26,12 +26,24 @@ import {
   Observable,
   catchError,
   defaultIfEmpty,
-  map
+  map,
+  zip
 } from "rxjs"
 
 import { requestJSON } from "~/browser"
 
 import { SourceFacts } from "../_"
+
+/* ----------------------------------------------------------------------------
+ * Helper types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * GitLab release (partial)
+ */
+interface Release { // @todo remove and use the ReleaseSchema type instead after switching from gitlab to @gitbeaker/rest
+  tag_name: string                     /* Tag name */
+}
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -49,7 +61,20 @@ export function fetchSourceFactsFromGitLab(
   base: string, project: string
 ): Observable<SourceFacts> {
   const url = `https://${base}/api/v4/projects/${encodeURIComponent(project)}`
-  return requestJSON<ProjectSchema>(url)
+  return zip(
+
+    /* Fetch version */
+    requestJSON<Release>(`${url}/releases/permalink/latest`)
+      .pipe(
+        catchError(() => EMPTY), // @todo refactor instant loading
+        map(({tag_name}) => ({
+          version: tag_name
+        })),
+        defaultIfEmpty({})
+      ),
+
+    /* Fetch stars and forks */
+    requestJSON<ProjectSchema>(url)
     .pipe(
       catchError(() => EMPTY), // @todo refactor instant loading
       map(({ star_count, forks_count }) => ({
@@ -57,5 +82,9 @@ export function fetchSourceFactsFromGitLab(
         forks: forks_count
       })),
       defaultIfEmpty({})
+    )
+  )
+    .pipe(
+      map(([release, info]) => ({ ...release, ...info }))
     )
 }
