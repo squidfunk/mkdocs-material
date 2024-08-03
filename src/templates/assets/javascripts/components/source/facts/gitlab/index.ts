@@ -67,7 +67,7 @@ export function fetchSourceFactsFromGitLab(
     requestJSON<Release>(`${url}/releases/permalink/latest`)
       .pipe(
         catchError(() => EMPTY), // @todo refactor instant loading
-        map(({tag_name}) => ({
+        map(({ tag_name }) => ({
           version: tag_name
         })),
         defaultIfEmpty({})
@@ -75,14 +75,14 @@ export function fetchSourceFactsFromGitLab(
 
     /* Fetch stars and forks */
     requestJSON<ProjectSchema>(url)
-    .pipe(
-      catchError(() => EMPTY), // @todo refactor instant loading
-      map(({ star_count, forks_count }) => ({
-        stars: star_count,
-        forks: forks_count
-      })),
-      defaultIfEmpty({})
-    )
+      .pipe(
+        catchError(() => EMPTY), // @todo refactor instant loading
+        map(({ star_count, forks_count }) => ({
+          stars: star_count,
+          forks: forks_count
+        })),
+        defaultIfEmpty({})
+      )
   )
     .pipe(
       map(([release, info]) => ({ ...release, ...info }))
