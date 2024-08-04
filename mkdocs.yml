@@ -253,6 +253,7 @@ nav:
     - Content tabs: reference/content-tabs.md
     - Data tables: reference/data-tables.md
     - Diagrams: reference/diagrams.md
+    - Drawio: reference/drawio.md
     - Footnotes: reference/footnotes.md
     - Formatting: reference/formatting.md
     - Grids: reference/grids.md
