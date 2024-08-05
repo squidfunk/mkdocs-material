@@ -79,7 +79,7 @@
     "html-minifier": "^4.0.0",
     "material-design-color": "^2.3.2",
     "material-shadows": "^3.0.1",
-    "npm-check-updates": "^16.14.20",
+    "npm-check-updates": "^17.0.2",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.40",
     "postcss-dir-pseudo-class": "^8.0.1",
