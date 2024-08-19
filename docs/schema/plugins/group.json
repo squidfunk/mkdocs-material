@@ -3,7 +3,7 @@
   "title": "Built-in group plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/",
       "const": "group"
     },
     {
