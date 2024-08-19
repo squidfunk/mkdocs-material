@@ -1,3 +1,8 @@
+mkdocs-material-9.5.32 (2024-08-19)
+
+  * Fixed RXSS vulnerability via deep link in search results
+  * Added support for fetching latest release from GitLab
+
 mkdocs-material-9.5.31+insiders-4.53.12 (2024-08-02)
 
   * Fixed #7410: Instant previews jump on content tabs with anchor links
