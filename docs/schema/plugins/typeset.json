@@ -7,7 +7,7 @@
       "const": "typeset"
     },
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
       "const": "material/typeset"
     },
     {
