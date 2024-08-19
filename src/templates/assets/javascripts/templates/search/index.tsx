@@ -20,6 +20,7 @@
  * IN THE SOFTWARE.
  */
 
+import escapeHTML from "escape-html"
 import { ComponentChild } from "preact"
 
 import { configuration, feature, translation } from "~/_"
@@ -60,7 +61,7 @@ function renderSearchDocument(
   const missing = Object.keys(document.terms)
     .filter(key => !document.terms[key])
     .reduce<ComponentChild[]>((list, key) => [
-      ...list, <del>{key}</del>, " "
+      ...list, <del>{escapeHTML(key)}</del>, " "
     ], [])
     .slice(0, -1)
 
