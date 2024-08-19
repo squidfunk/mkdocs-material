@@ -3,7 +3,7 @@
   "title": "Built-in projects plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
       "const": "projects"
     },
     {
@@ -12,7 +12,7 @@
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
       "properties": {
         "projects": {
           "$ref": "#/$defs/projectsConfig"
@@ -22,7 +22,7 @@
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
       "properties": {
         "material/projects": {
           "$ref": "#/$defs/projectsConfig"

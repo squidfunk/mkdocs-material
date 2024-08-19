@@ -3,16 +3,16 @@
   "title": "Built-in tags plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
       "const": "tags"
     },
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
       "const": "material/tags"
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
       "properties": {
         "tags": {
           "$ref": "#/$defs/tagsConfig"

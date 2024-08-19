@@ -3,16 +3,16 @@
   "title": "Built-in privacy plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
       "const": "privacy"
     },
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
       "const": "material/privacy"
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
       "properties": {
         "privacy": {
           "$ref": "#/$defs/privacyConfig"
@@ -22,7 +22,7 @@
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
       "properties": {
         "material/privacy": {
           "$ref": "#/$defs/privacyConfig"

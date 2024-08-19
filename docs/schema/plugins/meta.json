@@ -3,16 +3,16 @@
   "title": "Built-in meta plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
       "const": "meta"
     },
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
       "const": "material/meta"
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
       "properties": {
         "meta": {
           "$ref": "#/$defs/metaConfig"
@@ -22,7 +22,7 @@
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
       "properties": {
         "material/meta": {
           "$ref": "#/$defs/metaConfig"
