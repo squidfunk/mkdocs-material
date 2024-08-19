@@ -3,155 +3,175 @@
   "title": "Built-in social plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "social"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/social"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "social": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.enabled",
-              "type": "boolean",
-              "default": true
-            },
-            "concurrency": {
-              "title": "Concurrency (number of CPUs)",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.concurrency",
-              "type": "number"
-            },
-            "cache": {
-              "title": "Enable caching",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cache",
-              "type": "boolean",
-              "default": true
-            },
-            "cache_dir": {
-              "title": "Cache directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cache_dir",
-              "type": "string",
-              "default": ".cache/plugins/social"
-            },
-            "cards": {
-              "title": "Social cards",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards",
-              "type": "boolean",
-              "default": true
-            },
-            "log": {
-              "title": "Enable logging",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log",
-              "type": "boolean",
-              "default": true
-            },
-            "log_level": {
-              "title": "Log level",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log_level",
-              "enum": [
-                "warn",
-                "info",
-                "ignore"
-              ],
-              "default": "warn"
-            },
-            "cards_dir": {
-              "title": "Social cards directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_dir",
-              "type": "string",
-              "default": "assets/images/social"
-            },
-            "cards_layout_dir": {
-              "title": "Social cards layout directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout_dir",
-              "type": "string",
-              "default": "layouts"
-            },
-            "cards_layout": {
-              "title": "Social cards layout",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout",
-              "default": "default",
-              "oneOf": [
-                {
-                  "enum": [
-                    "default",
-                    "default/accent",
-                    "default/invert",
-                    "default/variant"
-                  ]
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "cards_layout_options": {
-              "title": "Social cards layout options",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout_options",
-              "type": "object"
-            },
-            "cards_include": {
-              "title": "Pages or folders to include",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_include",
-              "type": "array",
-              "items": {
-                "title": "Pages or folders matching this pattern will be included",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_include",
-                "pattern": ".*"
-              },
-              "uniqueItems": true,
-              "minItems": 1
-            },
-            "cards_exclude": {
-              "title": "Pages or folders to exclude",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_exclude",
-              "type": "array",
-              "items": {
-                "title": "Pages or folders matching this pattern will be excluded",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_exclude",
-                "pattern": ".*"
-              },
-              "uniqueItems": true,
-              "minItems": 1
-            },
-            "debug": {
-              "title": "Debug mode",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug",
-              "type": "boolean",
-              "default": true
-            },
-            "debug_on_build": {
-              "title": "Always disable debug mode on build",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_on_build",
-              "type": "boolean",
-              "default": false
-            },
-            "debug_grid": {
-              "title": "Debug grid",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_grid",
-              "type": "boolean",
-              "default": true
-            },
-            "debug_grid_step": {
-              "title": "Debug grid step size",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_grid_step",
-              "type": "number",
-              "default": 32
-            },
-            "debug_color": {
-              "title": "Debug color",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_color",
-              "type": "string",
-              "default": "yellow"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/socialConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/social": {
+          "$ref": "#/$defs/socialConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "socialConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "concurrency": {
+          "title": "Concurrency (number of CPUs)",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.concurrency",
+          "type": "number"
+        },
+        "cache": {
+          "title": "Enable caching",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cache",
+          "type": "boolean",
+          "default": true
+        },
+        "cache_dir": {
+          "title": "Cache directory",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cache_dir",
+          "type": "string",
+          "default": ".cache/plugins/social"
+        },
+        "cards": {
+          "title": "Social cards",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards",
+          "type": "boolean",
+          "default": true
+        },
+        "log": {
+          "title": "Enable logging",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log",
+          "type": "boolean",
+          "default": true
+        },
+        "log_level": {
+          "title": "Log level",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.log_level",
+          "enum": [
+            "warn",
+            "info",
+            "ignore"
+          ],
+          "default": "warn"
+        },
+        "cards_dir": {
+          "title": "Social cards directory",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_dir",
+          "type": "string",
+          "default": "assets/images/social"
+        },
+        "cards_layout_dir": {
+          "title": "Social cards layout directory",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout_dir",
+          "type": "string",
+          "default": "layouts"
+        },
+        "cards_layout": {
+          "title": "Social cards layout",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout",
+          "default": "default",
+          "oneOf": [
+            {
+              "enum": [
+                "default",
+                "default/accent",
+                "default/invert",
+                "default/variant"
+              ]
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "cards_layout_options": {
+          "title": "Social cards layout options",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_layout_options",
+          "type": "object"
+        },
+        "cards_include": {
+          "title": "Pages or folders to include",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_include",
+          "type": "array",
+          "items": {
+            "title": "Pages or folders matching this pattern will be included",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_include",
+            "pattern": ".*"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "cards_exclude": {
+          "title": "Pages or folders to exclude",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_exclude",
+          "type": "array",
+          "items": {
+            "title": "Pages or folders matching this pattern will be excluded",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.cards_exclude",
+            "pattern": ".*"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "debug": {
+          "title": "Debug mode",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug",
+          "type": "boolean",
+          "default": true
+        },
+        "debug_on_build": {
+          "title": "Always disable debug mode on build",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_on_build",
+          "type": "boolean",
+          "default": false
+        },
+        "debug_grid": {
+          "title": "Debug grid",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_grid",
+          "type": "boolean",
+          "default": true
+        },
+        "debug_grid_step": {
+          "title": "Debug grid step size",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_grid_step",
+          "type": "number",
+          "default": 32
+        },
+        "debug_color": {
+          "title": "Debug color",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/#config.debug_color",
+          "type": "string",
+          "default": "yellow"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

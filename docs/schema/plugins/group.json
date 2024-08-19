@@ -3,27 +3,51 @@
   "title": "Built-in group plugin",
   "oneOf": [
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "group"
+    },
+    {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/group"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "group": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/#config.enabled",
-              "type": "boolean",
-              "default": true
-            },
-            "plugins": {
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/#config.plugins",
-              "$ref": "../plugins.json"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/groupConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/group": {
+          "$ref": "#/$defs/groupConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "groupConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/#config.enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "plugins": {
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/#config.plugins",
+          "$ref": "../plugins.json"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

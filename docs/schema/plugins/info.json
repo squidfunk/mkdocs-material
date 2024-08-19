@@ -3,45 +3,65 @@
   "title": "Built-in info plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "info"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/info"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "info": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.enabled",
-              "type": "boolean",
-              "default": true
-            },
-            "enabled_on_serve": {
-              "title": "Enable plugin when previewing",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.enabled_on_serve",
-              "type": "boolean",
-              "default": false
-            },
-            "archive": {
-              "title": "Enable creation of archive",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.archive",
-              "type": "boolean",
-              "default": true
-            },
-            "archive_stop_on_violation": {
-              "title": "Stop creation of archive on violation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.archive_stop_on_violation",
-              "type": "boolean",
-              "default": true
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/infoConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/info": {
+          "$ref": "#/$defs/infoConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "infoConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "enabled_on_serve": {
+          "title": "Enable plugin when previewing",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.enabled_on_serve",
+          "type": "boolean",
+          "default": false
+        },
+        "archive": {
+          "title": "Enable creation of archive",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.archive",
+          "type": "boolean",
+          "default": true
+        },
+        "archive_stop_on_violation": {
+          "title": "Stop creation of archive on violation",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/#config.archive_stop_on_violation",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

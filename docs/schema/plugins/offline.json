@@ -3,27 +3,47 @@
   "title": "Built-in offline plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "offline"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/offline"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "offline": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/#config.enabled",
-              "type": "boolean",
-              "default": true
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/offlineConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/offline": {
+          "$ref": "#/$defs/offlineConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "offlineConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/#config.enabled",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

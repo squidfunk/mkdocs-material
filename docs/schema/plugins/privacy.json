@@ -3,125 +3,145 @@
   "title": "Built-in privacy plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "privacy"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/privacy"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "privacy": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.enabled",
-              "type": "boolean",
-              "default": true
-            },
-            "concurrency": {
-              "title": "Concurrency (number of CPUs)",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.concurrency",
-              "type": "number"
-            },
-            "cache": {
-              "title": "Enable caching",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.cache",
-              "type": "boolean",
-              "default": true
-            },
-            "cache_dir": {
-              "title": "Cache directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.cache_dir",
-              "type": "string",
-              "default": ".cache/plugins/privacy"
-            },
-            "log": {
-              "title": "Enable logging",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log",
-              "type": "boolean",
-              "default": true
-            },
-            "log_level": {
-              "title": "Log level",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log_level",
-              "enum": [
-                "error",
-                "warn",
-                "info",
-                "debug"
-              ],
-              "default": "info"
-            },
-            "assets": {
-              "title": "Process external assets",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets",
-              "type": "boolean",
-              "default": true
-            },
-            "assets_fetch": {
-              "title": "Download external assets",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_fetch",
-              "type": "boolean",
-              "default": true
-            },
-            "assets_fetch_dir": {
-              "title": "Download external assets to this directory",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_fetch_dir",
-              "type": "string",
-              "default": "assets/external"
-            },
-            "assets_include": {
-              "title": "External assets to include",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_include",
-              "type": "array",
-              "items": {
-                "title": "External assets matching this pattern will be downloaded",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_include",
-                "pattern": ".*"
-              },
-              "uniqueItems": true,
-              "minItems": 1
-            },
-            "assets_exclude": {
-              "title": "External assets to exclude",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_exclude",
-              "type": "array",
-              "items": {
-                "title": "External assets matching this pattern will not be downloaded",
-                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_exclude",
-                "pattern": ".*"
-              },
-              "uniqueItems": true,
-              "minItems": 1
-            },
-            "links": {
-              "title": "Process external links",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links",
-              "type": "boolean",
-              "default": true
-            },
-            "links_attr_map": {
-              "title": "Custom attributes to add to external links",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links_attr_map",
-              "type": "object",
-              "patternProperties": {
-                "^[\\w_]+$": {
-                  "type": "string"
-                }
-              }
-            },
-            "links_noopener": {
-              "title": "Behavior for external links that open in new windows",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links_noopener",
-              "type": "boolean",
-              "default": true
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/privacyConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/privacy": {
+          "$ref": "#/$defs/privacyConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "privacyConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "concurrency": {
+          "title": "Concurrency (number of CPUs)",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.concurrency",
+          "type": "number"
+        },
+        "cache": {
+          "title": "Enable caching",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.cache",
+          "type": "boolean",
+          "default": true
+        },
+        "cache_dir": {
+          "title": "Cache directory",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.cache_dir",
+          "type": "string",
+          "default": ".cache/plugins/privacy"
+        },
+        "log": {
+          "title": "Enable logging",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log",
+          "type": "boolean",
+          "default": true
+        },
+        "log_level": {
+          "title": "Log level",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.log_level",
+          "enum": [
+            "error",
+            "warn",
+            "info",
+            "debug"
+          ],
+          "default": "info"
+        },
+        "assets": {
+          "title": "Process external assets",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets",
+          "type": "boolean",
+          "default": true
+        },
+        "assets_fetch": {
+          "title": "Download external assets",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_fetch",
+          "type": "boolean",
+          "default": true
+        },
+        "assets_fetch_dir": {
+          "title": "Download external assets to this directory",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_fetch_dir",
+          "type": "string",
+          "default": "assets/external"
+        },
+        "assets_include": {
+          "title": "External assets to include",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_include",
+          "type": "array",
+          "items": {
+            "title": "External assets matching this pattern will be downloaded",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_include",
+            "pattern": ".*"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "assets_exclude": {
+          "title": "External assets to exclude",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_exclude",
+          "type": "array",
+          "items": {
+            "title": "External assets matching this pattern will not be downloaded",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.assets_exclude",
+            "pattern": ".*"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "links": {
+          "title": "Process external links",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links",
+          "type": "boolean",
+          "default": true
+        },
+        "links_attr_map": {
+          "title": "Custom attributes to add to external links",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links_attr_map",
+          "type": "object",
+          "patternProperties": {
+            "^[\\w_]+$": {
+              "type": "string"
+            }
+          }
+        },
+        "links_noopener": {
+          "title": "Behavior for external links that open in new windows",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/#config.links_noopener",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

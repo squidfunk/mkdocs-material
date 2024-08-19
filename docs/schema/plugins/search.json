@@ -7,58 +7,25 @@
       "const": "search"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/search"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "search": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
-          "type": "object",
-          "properties": {
-            "lang": {
-              "oneOf": [
-                {
-                  "$ref": "#/$defs/lang"
-                },
-                {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/$defs/lang"
-                  },
-                  "uniqueItems": true,
-                  "minItems": 1
-                }
-              ],
-              "default": "en"
-            },
-            "separator": {
-              "title": "Separator for indexing and query tokenization",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.separator",
-              "type": "string"
-            },
-            "pipeline": {
-              "title": "Text processing pipeline for indexing",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.pipeline",
-              "type": "array",
-              "items": {
-                "enum": [
-                  "stemmer",
-                  "stopWordFilter",
-                  "trimmer"
-                ]
-              },
-              "uniqueItems": true
-            },
-            "jieba_dict": {
-              "title": "Jieba dictionary replacement",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict",
-              "type": "string"
-            },
-            "jieba_dict_user": {
-              "title": "Jieba dictionary augmentation",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict_user",
-              "type": "string"
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/searchConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/search": {
+          "$ref": "#/$defs/searchConfig"
         }
       },
       "additionalProperties": false
@@ -146,7 +113,57 @@
           "const": "vi"
         }
       ]
+    },
+    "searchConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "type": "object",
+      "properties": {
+        "lang": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/lang"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/lang"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          ],
+          "default": "en"
+        },
+        "separator": {
+          "title": "Separator for indexing and query tokenization",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.separator",
+          "type": "string"
+        },
+        "pipeline": {
+          "title": "Text processing pipeline for indexing",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.pipeline",
+          "type": "array",
+          "items": {
+            "enum": [
+              "stemmer",
+              "stopWordFilter",
+              "trimmer"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "jieba_dict": {
+          "title": "Jieba dictionary replacement",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict",
+          "type": "string"
+        },
+        "jieba_dict_user": {
+          "title": "Jieba dictionary augmentation",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/#config.jieba_dict_user",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
     }
   }
 }
-

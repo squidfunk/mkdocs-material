@@ -12,6 +12,9 @@
           "const": "material"
         },
         {
+          "const": "pyodide-mkdocs-theme"
+        },
+        {
           "type": "null"
         }
       ],

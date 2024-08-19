@@ -3,27 +3,47 @@
   "title": "Built-in typeset plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "typeset"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/typeset"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "typeset": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/#config.enabled",
-              "type": "boolean",
-              "default": true
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/typesetConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/typeset": {
+          "$ref": "#/$defs/typesetConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "typesetConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/#config.enabled",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }

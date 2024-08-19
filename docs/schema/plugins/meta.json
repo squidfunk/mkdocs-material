@@ -3,33 +3,53 @@
   "title": "Built-in meta plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "const": "meta"
     },
     {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "const": "material/meta"
+    },
+    {
       "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
       "properties": {
         "meta": {
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
-          "type": "object",
-          "properties": {
-            "enabled": {
-              "title": "Enable plugin",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.enabled",
-              "type": "boolean",
-              "default": true
-            },
-            "meta_file": {
-              "title": "Meta file name",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.meta_file",
-              "pattern": "\\.yml$",
-              "default": "\"**/.meta.yml\""
-            }
-          },
-          "additionalProperties": false
+          "$ref": "#/$defs/metaConfig"
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "properties": {
+        "material/meta": {
+          "$ref": "#/$defs/metaConfig"
         }
       },
       "additionalProperties": false
     }
-  ]
+  ],
+  "$defs": {
+    "metaConfig": {
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "title": "Enable plugin",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "meta_file": {
+          "title": "Meta file name",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/#config.meta_file",
+          "pattern": "\\.yml$",
+          "default": "\"**/.meta.yml\""
+        }
+      },
+      "additionalProperties": false
+    }
+  }
 }
