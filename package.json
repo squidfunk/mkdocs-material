@@ -44,7 +44,7 @@
   "dependencies": {
     "clipboard": "^2.0.11",
     "escape-html": "^1.0.3",
-    "focus-visible": "^5.2.0",
+    "focus-visible": "^5.2.1",
     "fuzzaldrin-plus": "^0.6.0",
     "lunr": "^2.3.9",
     "lunr-languages": "^1.14.0",
