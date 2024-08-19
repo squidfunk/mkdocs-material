@@ -118,7 +118,9 @@ As you may know, our initial effort involved the [projects plugin] that aims to 
 
 __:octicons-goal-16: Goal – Enable scaling documentation to any size or team structure by offering seamless methods for integrating multiple documentation projects, whether they involve different languages, versions, or distinct sections of an overall body of work.__
 
-As a result, we are developing a new approach to offer a more comprehensive and robust solution for both multi-language support and versioning. This new approach also intersects with adjacent functionalities like search, as many of our users are interested in federated search capabilities that combine results from multiple documentation sites into a unified search interface. Overcoming this challenge is one of the major hurdles we need to address before releasing the new search system.
+As a result, we are developing a new approach to offer a more comprehensive and robust solution for both multi-language support and versioning. This new approach also intersects with adjacent functionalities like search, as many of our users are interested in [federated search] capabilities that combine results from multiple documentation sites into a unified search interface. Overcoming this challenge is one of the major hurdles we need to address before releasing the new search system.
+
+  [federated search]: https://github.com/squidfunk/mkdocs-material/issues/5230
 
 ### Editing and collaboration
 
@@ -130,7 +132,7 @@ We had considered developing a live editor in response to MkDocs' [performance i
   [generated significant interest]: https://github.com/squidfunk/mkdocs-material/issues/2110
 
   [^6]:
-    Our proof of concept supported some features of Material for MkDocs but didn't cover them all. For instance, integrating support for icons or linking between documents would have necessitated reimplementing parts of MkDocs to bypass a full rebuild — something we obviously wanted to avoid. Additionally, certain links, such as those to blog posts generated from schemas, are not merely translated but computed dynamically, which means they cannot be inferred by replacing the `.md` extension with `.html`.
+    Our [proof of concept] supported some features of Material for MkDocs but didn't cover them all. For instance, integrating support for icons or linking between documents would have necessitated reimplementing parts of MkDocs to bypass a full rebuild — something we obviously wanted to avoid. Additionally, certain links, such as those to blog posts generated from schemas, are not merely translated but computed dynamically, which means they cannot be inferred by replacing the `.md` extension with `.html`.
 
   [^7]:
     After [we raised this issue] with the maintainers of MkDocs again[^8], and [maintainership changed] mid 2024, work on a [ground-up rewrite] that aims to address slow reloads by [rendering only the page currently being built] has started. It's still unclear how this rewrite will integrate with the requirements of existing plugins. Complex plugins such as [mkdocstrings], or our [built-in blog] and [tags] plugins require a coordinated build of all pages to accurately resolve links between pages and to computed resources, which cannot be determined without building the entire project.
@@ -157,7 +159,7 @@ __:octicons-goal-16: Goal – Everyone, regardless of their technical skill leve
   [^9]:
     We are actively aligning our future development efforts to address this, recognizing it as a key area for improvement. While it's not something we can deliver immediately, we are committed to making this vision a reality in our work.
 
-This focus on collaboration aligns with how knowledge is managed in enterprises. In large organizations, documentation often exists in [information silos] — decentralized yet essential repositories of information. We understand the need to be able to unify these disparate sources into a coherent body of knowledge while preserving decentralized ownership. This also nicely aligns with our previously outlined work on multi-project support, as well as the new search system to implement federated search among multiple projects.
+This focus on collaboration aligns with how knowledge is managed in enterprises. In large organizations, documentation often exists in [information silos] — decentralized yet essential repositories of information. We understand the need to be able to unify these disparate sources into a coherent body of knowledge while preserving decentralized ownership. This also nicely aligns with our previously outlined work on multi-project support, as well as the new search system to implement [federated search] among multiple projects.
 
   [information silos]: https://en.wikipedia.org/wiki/Information_silo
 
