@@ -7,13 +7,13 @@ authors:
 categories:
   - General
 description: >
-  We are transforming Material for MkDocs to ensure its community continues to thrive - building the best tools for creating professional documentation.
+  We are transforming Material for MkDocs to ensure its community continues to thrive and doubling down on our commitment to Open Source.
 title: How we're transforming Material for MkDocs
 ---
 
 # Transforming Material for MkDocs
 
-__We are working on an amazing set of features which has required some behind-the-scenes work we are now ready to share in a series of posts. Here, we give an overview of our goals, features in the making, and things that kept us up at night.__
+__We are working on an amazing set of features which has required some behind-the-scenes work we are now ready to share in a series of posts. Here, we give an overview of our goals, features in the making, things that kept us up at night, and our commitment to Open Source.__
 
 We know it's been quite a while since our last update, which is why we're eager to share what's happening in and around Material for MkDocs with you. For the largest part of 2024, we've been focused on transforming the core of Material for MkDocs preparing the ground for new, interconnected features that are amongst the most frequently requested.
 
