@@ -12,7 +12,7 @@
     },
     {
       "type": "object",
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/",
       "properties": {
         "blog": {
           "$ref": "#/$defs/blogConfig"
