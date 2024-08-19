@@ -19,9 +19,9 @@ We know it's been quite a while since our last update, which is why we're eager 
 
 This article is the first in a series where we'll explore how we aim to support our users through improved information retrieval, provide better support for multi-lingual sites and versioning, as well as improve the overall authoring experience. We outline our vision for the projects' evolution and describe what we have been working on. In this and the coming blog posts, we will share our progress with you, and we're excited to hear your thoughts.
 
-_Please note that this post includes several technical details, specifically on challenges, in the footnotes. Feel free to skip them if you're not interested in the specifics._
-
 <!-- more -->
+
+_Please note that this post includes several technical details in the footnotes, specifically on challenges. Feel free to skip them if you're not interested in the specifics._
 
 ## A success story
 
