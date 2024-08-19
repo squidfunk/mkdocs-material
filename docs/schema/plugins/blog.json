@@ -7,7 +7,7 @@
       "const": "blog"
     },
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/blog/",
       "const": "material/blog"
     },
     {
