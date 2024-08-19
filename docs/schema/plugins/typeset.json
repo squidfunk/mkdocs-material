@@ -3,7 +3,7 @@
   "title": "Built-in typeset plugin",
   "oneOf": [
     {
-      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/search/",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
       "const": "typeset"
     },
     {
