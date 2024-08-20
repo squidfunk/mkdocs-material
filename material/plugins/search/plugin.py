@@ -197,6 +197,11 @@ class SearchIndex:
         title = "".join(section.title).strip()
         text  = "".join(section.text).strip()
 
+        if page.ancestors:
+            chapters = [i.title for i in page.ancestors]
+            chapters.reverse()
+            title = " → ".join(chapters + [title])
+
         # Segment Chinese characters if jieba is available
         if jieba:
             title = self._segment_chinese(title)
