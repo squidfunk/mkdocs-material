@@ -1,0 +1,3 @@
+# plugins required for our docs project
+mkdocs-awesome-pages-plugin
+mkdocs-monorepo-plugin

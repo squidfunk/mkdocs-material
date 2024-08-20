@@ -29,7 +29,7 @@ requires = [
 build-backend = "hatchling.build"
 
 [project]
-name = "mkdocs-material"
+name = "zon-mkdocs-material"
 dynamic = [
   "version",
   "dependencies",
