@@ -21,7 +21,7 @@
 FROM python:3.11-alpine3.19
 
 # Build-time flags
-ARG WITH_PLUGINS=true
+ARG WITH_PLUGINS=false
 
 # Environment variables
 ENV PACKAGES=/usr/local/lib/python3.11/site-packages
