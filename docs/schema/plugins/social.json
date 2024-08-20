@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/",
-      "const": "social"
+      "type": "string",
+      "pattern": "^(material/)?social$"
     },
     {
       "type": "object",
       "properties": {
-        "social": {
+        "^(material/)?social$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/social/",
           "type": "object",
           "properties": {

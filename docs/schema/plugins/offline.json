@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
-      "const": "offline"
+      "type": "string",
+      "pattern": "^(material/)?offline$"
     },
     {
       "type": "object",
-      "properties": {
-        "offline": {
+      "patternProperties": {
+        "^(material/)?offline$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
           "type": "object",
           "properties": {

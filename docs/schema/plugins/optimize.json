@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/optimize/",
-      "const": "optimize"
+      "type": "string",
+      "pattern": "^(material/)?optimize$"
     },
     {
       "type": "object",
-      "properties": {
-        "optimize": {
+      "patternProperties": {
+        "^(material/)?optimize$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/optimize/",
           "type": "object",
           "properties": {

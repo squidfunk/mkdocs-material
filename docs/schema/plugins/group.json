@@ -4,8 +4,8 @@
   "oneOf": [
     {
       "type": "object",
-      "properties": {
-        "group": {
+      "patternProperties": {
+        "^(material/)?group$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/group/",
           "type": "object",
           "properties": {

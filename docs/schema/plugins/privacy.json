@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
-      "const": "privacy"
+      "type": "string",
+      "pattern": "^(material/)?privacy$"
     },
     {
       "type": "object",
-      "properties": {
-        "privacy": {
+      "patternProperties": {
+        "^(material/)?privacy$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/privacy/",
           "type": "object",
           "properties": {

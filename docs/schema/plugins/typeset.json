@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
-      "const": "typeset"
+      "type": "string",
+      "pattern": "^(material/)?typeset$"
     },
     {
       "type": "object",
-      "properties": {
-        "typeset": {
+      "patternProperties": {
+        "^(material/)?typeset$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
           "type": "object",
           "properties": {

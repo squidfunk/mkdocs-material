@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
-      "const": "tags"
+      "type": "string",
+      "pattern": "^(material/)?tags$"
     },
     {
       "type": "object",
-      "properties": {
-        "tags": {
+      "patternProperties": {
+        "^(material/)?tags$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/tags/",
           "type": "object",
           "properties": {

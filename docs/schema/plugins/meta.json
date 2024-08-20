@@ -4,12 +4,13 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
-      "const": "meta"
+      "type": "string",
+      "pattern": "^(material/)?meta$"
     },
     {
       "type": "object",
-      "properties": {
-        "meta": {
+      "patternProperties": {
+        "^(material/)?meta$": {
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/meta/",
           "type": "object",
           "properties": {
