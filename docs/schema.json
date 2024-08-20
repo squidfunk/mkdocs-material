@@ -44,6 +44,11 @@
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#edit_uri",
       "type": "string"
     },
+    "edit_uri_template": {
+      "title": "More flexible variant of edit_uri",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#edit_uri_template",
+      "type": "string"
+    },
     "copyright": {
       "title": "Copyright, used in footer",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice",
