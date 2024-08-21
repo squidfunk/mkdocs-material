@@ -137,6 +137,8 @@ We had considered developing a live editor in response to MkDocs' [performance i
   [^7]:
     After [we raised this issue] with the maintainers of MkDocs again[^8], and [maintainership changed] mid 2024, work on a [ground-up rewrite] that aims to address slow reloads by [rendering only the page currently being built] has started. It's still unclear how this rewrite will integrate with the requirements of existing plugins. Complex plugins such as [mkdocstrings], or our [built-in blog] and [tags] plugins require a coordinated build of all pages to accurately resolve links between pages and to computed resources, which cannot be determined without building the entire project.
 
+    __Update__{ title="August 21, 2024" }: The new maintainer now publicly stated that he's working towards a new version of MkDocs that [does not require or support plugins], and mentions it will be equally capable through offering customization via templating, themes, and styling, which he also mentioned to us and several other users in [a team call on August 1]. In this call, [we raised objections multiple times] in regards to how this will impact the ecosystem, to no avail. No intention or roadmap for plugin support was provided. This development is orthogonal to our goal empowering users and organizations to adapt the core framework to their requirements by the means of modularity. We're working on resolving this situation, and will provide a way forward for our community.
+
   [we raised this issue]: https://github.com/mkdocs/mkdocs/issues/3695
   [maintainership changed]: https://github.com/mkdocs/mkdocs/discussions/3677
   [ground-up rewrite]: https://github.com/mkdocs/sketch
@@ -144,6 +146,9 @@ We had considered developing a live editor in response to MkDocs' [performance i
   [mkdocstrings]: https://mkdocstrings.github.io/
   [built-in blog]: ../../plugins/blog.md
   [tags]: ../../plugins/tags.md
+  [does not require or support plugins]: https://github.com/mkdocs/mkdocs/discussions/3815
+  [a team call on August 1]: https://github.com/mkdocs/mkdocs/discussions/3671#discussioncomment-10164237
+  [we raised objections multiple times]: https://github.com/mkdocs/mkdocs/discussions/3671#discussioncomment-10215445
 
   [^8]:
     Previously raised issues include [#2418], [#2384], and [#1900].
