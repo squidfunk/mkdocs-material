@@ -69,7 +69,7 @@ let sequence = 0
  */
 function fetchScripts(): Observable<void> {
   return typeof mermaid === "undefined" || mermaid instanceof Element
-    ? watchScript("https://unpkg.com/mermaid@10/dist/mermaid.min.js")
+    ? watchScript("https://unpkg.com/mermaid@11/dist/mermaid.min.js")
     : of(undefined)
 }
 
