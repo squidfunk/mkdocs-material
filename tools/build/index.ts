@@ -92,9 +92,17 @@ function minsvg(data: string): string {
   /* Optimize SVG */
   const result = optimize(data, {
     plugins: [
-      "preset-default",
-      { name: "removeDimensions", active: true },
-      { name: "removeViewBox", active: false }
+      {
+        name: "preset-default",
+        params: {
+          overrides: {
+            removeViewBox: false
+          }
+        }
+      },
+      {
+        name: "removeDimensions"
+      }
     ]
   })
 
