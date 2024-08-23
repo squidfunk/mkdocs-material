@@ -86,8 +86,8 @@
     gap: px2rem(8px);
     align-items: flex-start;
     margin-top: 0.625em;
-    transition: color 125ms;
     scroll-snap-align: start;
+    transition: color 125ms;
 
     // Navigation link that was passed
     &--passed {
@@ -148,8 +148,8 @@
         display: block;
         width: 100%;
         height: 100%;
-        mask-image: var(--md-toc-icon);
         background-color: currentcolor;
+        mask-image: var(--md-toc-icon);
       }
 
       // Hide table of contents
@@ -221,8 +221,8 @@
         // Navigation icon
         .md-nav__icon {
           position: absolute;
-          top: px2rem(8px);
           inset-inline-start: px2rem(8px);
+          top: px2rem(8px);
           display: block;
           width: px2rem(24px);
           height: px2rem(24px);
@@ -236,8 +236,8 @@
             content: "";
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--prev);
-            mask-position: center;
             mask-repeat: no-repeat;
+            mask-position: center;
             mask-size: contain;
           }
         }
@@ -246,10 +246,10 @@
         ~ .md-nav__list {
           overflow-y: auto;
           touch-action: pan-y;
+          scroll-snap-type: y mandatory;
           background-color: var(--md-default-bg-color);
           box-shadow:
             0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
-          scroll-snap-type: y mandatory;
 
           // Omit border on first child
           > :first-child {
@@ -325,8 +325,8 @@
             content: "";
             background-color: currentcolor;
             mask-image: var(--md-nav-icon--next);
-            mask-position: center;
             mask-repeat: no-repeat;
+            mask-position: center;
             mask-size: contain;
           }
         }
@@ -656,11 +656,11 @@
         content: "";
         background-color: currentcolor;
         border-radius: 100%;
-        transition: transform 250ms;
         mask-image: var(--md-nav-icon--next);
-        mask-position: center;
         mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
+        transition: transform 250ms;
 
         // Adjust for right-to-left languages
         [dir="rtl"] & {

@@ -233,11 +233,11 @@ kbd {
       overflow: auto;
       word-break: normal;
       touch-action: auto;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+      scrollbar-width: thin;
       outline-color: var(--md-accent-fg-color);
       box-shadow: none;
       box-decoration-break: slice;
-      scrollbar-width: thin;
-      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
       // Code block on hover
       &:hover {
@@ -515,10 +515,10 @@ kbd {
       margin-inline-start: 0.5em;
       vertical-align: text-bottom;
       content: "";
-      transition: background-color 125ms;
       mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;
       mask-size: contain;
+      transition: background-color 125ms;
     }
 
     // Show sort icon on hover

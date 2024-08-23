@@ -59,8 +59,8 @@
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
     touch-action: pan-y;
-    scrollbar-width: thin;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+    scrollbar-width: thin;
 
     // Icon search result inside tooltip
     .md-tooltip & {

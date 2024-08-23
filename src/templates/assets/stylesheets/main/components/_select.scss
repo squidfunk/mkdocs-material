@@ -96,11 +96,11 @@
     width: 100%;
     padding-inline: px2rem(12px) px2rem(24px);
     cursor: pointer;
+    scroll-snap-align: start;
     outline: none;
     transition:
       background-color 250ms,
       color            250ms;
-    scroll-snap-align: start;
 
     // Link on focus/hover
     &:is(:focus, :hover) {

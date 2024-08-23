@@ -140,15 +140,15 @@ $admonitions: (
     // Admonition icon
     &::before {
       position: absolute;
+      inset-inline-start: px2rem(12px);
       top: px2em(10px);
       width: px2rem(20px);
       height: px2rem(20px);
       content: "";
       background-color: $clr-blue-a200;
-      inset-inline-start: px2rem(12px);
       mask-image: var(--md-admonition-icon--note);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
     }
 

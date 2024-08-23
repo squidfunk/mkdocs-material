@@ -211,8 +211,8 @@
         content: "";
         background: var(--md-default-bg-color);
         mask-image: var(--md-annotation-bg-icon);
-        mask-position: center;
         mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
       }
 
@@ -228,15 +228,15 @@
         height: 2.2ch;
         content: "";
         background-color: var(--md-default-fg-color--lighter);
+        mask-image: var(--md-annotation-icon);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
         transition:
           background-color 250ms,
           transform        250ms;
         // Hack: promote to own layer to reduce jitter
         transform: scale(1.0001);
-        mask-image: var(--md-annotation-icon);
-        mask-position: center;
-        mask-repeat: no-repeat;
-        mask-size: contain;
 
         // Annotation marker for active tooltip
         .md-tooltip--active + & {
@@ -296,8 +296,8 @@
       // Annotation list marker
       &::before {
         position: absolute;
-        top: px2em(4px);
         inset-inline-start: px2em(-34px);
+        top: px2em(4px);
         min-width: 2ch;
         height: 2ch;
         padding: 0 0.6ch;

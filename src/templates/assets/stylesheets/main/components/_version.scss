@@ -70,8 +70,8 @@
       content: "";
       background-color: currentcolor;
       mask-image: var(--md-version-icon);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
     }
   }
@@ -93,6 +93,7 @@
     overflow: auto;
     color: var(--md-default-fg-color);
     list-style-type: none;
+    scroll-snap-type: y mandatory;
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z2);
@@ -100,7 +101,6 @@
     transition:
       max-height 0ms 500ms,
       opacity  250ms 250ms;
-    scroll-snap-type: y mandatory;
 
     // Version selection list on parent focus/hover
     .md-version:is(:focus-within, :hover) & {
@@ -137,11 +137,11 @@
     padding-inline: px2rem(12px) px2rem(24px);
     white-space: nowrap;
     cursor: pointer;
+    scroll-snap-align: start;
     outline: none;
     transition:
       color            250ms,
       background-color 250ms;
-    scroll-snap-align: start;
 
     // Link on focus/hover
     &:is(:focus, :hover) {

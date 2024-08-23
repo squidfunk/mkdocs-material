@@ -1,11 +1,12 @@
 {
   "extends": [
+    "@stylistic/stylelint-config",
     "stylelint-config-recess-order",
     "stylelint-config-recommended",
-    "stylelint-config-standard-scss",
-    "stylelint-stylistic/config"
+    "stylelint-config-standard-scss"
   ],
   "plugins": [
+    "@stylistic/stylelint-plugin",
     "stylelint-scss"
   ],
   "rules": {
@@ -46,7 +47,6 @@
     ],
     "custom-property-empty-line-before": null,
     "custom-property-pattern": null,
-    "declaration-colon-space-after": null,
     "declaration-no-important": true,
     "declaration-block-single-line-max-declarations": 0,
     "font-family-name-quotes": "always-where-recommended",
@@ -78,8 +78,6 @@
       }
     ],
     "selector-class-pattern": null,
-    "selector-combinator-space-before": null,
-    "selector-descendant-combinator-no-non-space": null,
     "selector-id-pattern": null,
     "selector-max-id": 0,
     "selector-no-qualifying-type": null,
@@ -106,7 +104,6 @@
         ]
       }
     ],
-    "value-list-comma-newline-after": null,
     "value-no-vendor-prefix": [
       true,
       {
@@ -121,7 +118,6 @@
     "scss/at-function-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
     "scss/at-if-no-null": true,
-    "scss/at-import-partial-extension": "never",
     "scss/at-mixin-argumentless-call-parentheses": "always",
     "scss/at-mixin-parentheses-space-before": "never",
     "scss/at-mixin-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
@@ -139,6 +135,7 @@
     "scss/double-slash-comment-empty-line-before": null,
     "scss/double-slash-comment-whitespace-inside": "always",
     "scss/at-extend-no-missing-placeholder": null,
+    "scss/load-partial-extension": "never",
     "scss/no-duplicate-mixins": true,
     "scss/no-global-function-names": null,
     "scss/operator-no-newline-after": null,
@@ -146,7 +143,7 @@
     "scss/partial-no-import": true,
     "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/selector-no-redundant-nesting-selector": true,
-    "stylistic/block-closing-brace-newline-after": [
+    "@stylistic/block-closing-brace-newline-after": [
       "always",
       {
         "ignoreAtRules": [
@@ -156,12 +153,14 @@
         ]
       }
     ],
-    "stylistic/declaration-colon-space-after": null,
-    "stylistic/no-empty-first-line": true,
-    "stylistic/linebreaks": "unix",
-    "stylistic/selector-max-empty-lines": 0,
-    "stylistic/string-quotes": "double",
-    "stylistic/unicode-bom": "never",
-    "stylistic/value-list-comma-newline-after": null
+    "@stylistic/declaration-colon-space-after": null,
+    "@stylistic/no-empty-first-line": true,
+    "@stylistic/linebreaks": "unix",
+    "@stylistic/selector-combinator-space-before": null,
+    "@stylistic/selector-descendant-combinator-no-non-space": null,
+    "@stylistic/selector-max-empty-lines": 0,
+    "@stylistic/string-quotes": "double",
+    "@stylistic/unicode-bom": "never",
+    "@stylistic/value-list-comma-newline-after": null
   }
 }

@@ -91,18 +91,18 @@
     // Details marker
     &::after {
       position: absolute;
+      inset-inline-end: px2rem(8px);
       top: px2em(10px);
       width: px2rem(20px);
       height: px2rem(20px);
       content: "";
       background-color: currentcolor;
+      mask-image: var(--md-details-icon);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
       transition: transform 250ms;
       transform: rotate(0deg);
-      inset-inline-end: px2rem(8px);
-      mask-image: var(--md-details-icon);
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: contain;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {

@@ -53,6 +53,7 @@
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
       position: absolute;
+      inset-inline-start: px2rem(-44px);
       top: px2rem(-20px);
       width: px2rem(40px);
       height: px2rem(40px);
@@ -64,7 +65,6 @@
         transform 300ms 100ms,
         opacity   200ms 200ms;
       transform-origin: center;
-      inset-inline-start: px2rem(-44px);
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -78,6 +78,7 @@
     // [tablet landscape +]: Header-embedded search
     @include break-from-device(tablet landscape) {
       position: fixed;
+      inset-inline-start: 0;
       top: 0;
       width: 0;
       height: 0;
@@ -87,7 +88,6 @@
         width     0ms 250ms,
         height    0ms 250ms,
         opacity 250ms;
-      inset-inline-start: 0;
 
       // Show overlay when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -133,6 +133,7 @@
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
       position: fixed;
+      inset-inline-start: 0;
       top: 0;
       z-index: 2;
       width: 0;
@@ -145,7 +146,6 @@
         transform 150ms 150ms cubic-bezier(0.4, 0, 0.2, 1),
         opacity   150ms 150ms;
       transform: translateX(5%);
-      inset-inline-start: 0;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -307,8 +307,8 @@
     // Search focus button
     &[for="__search"] {
       position: absolute;
-      top: px2rem(6px);
       inset-inline-start: px2rem(10px);
+      top: px2rem(6px);
       z-index: 2;
 
       // Adjust for right-to-left languages
@@ -318,8 +318,8 @@
 
       // [tablet portrait -]: Search modal
       @include break-to-device(tablet portrait) {
-        top: px2rem(12px);
         inset-inline-start: px2rem(16px);
+        top: px2rem(12px);
 
         // Hide the magnifying glass
         svg:first-child {
@@ -342,15 +342,15 @@
   // Search options
   &__options {
     position: absolute;
-    top: px2rem(6px);
     inset-inline-end: px2rem(10px);
+    top: px2rem(6px);
     z-index: 2;
     pointer-events: none;
 
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
-      top: px2rem(12px);
       inset-inline-end: px2rem(16px);
+      top: px2rem(12px);
     }
 
     // Search option buttons
@@ -471,8 +471,8 @@
     // [tablet landscape +]: Limit height to viewport
     @include break-from-device(tablet landscape) {
       max-height: 0;
-      scrollbar-width: thin;
       scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+      scrollbar-width: thin;
 
       // Show scroll wrapper when search is active
       [data-md-toggle="search"]:checked ~ .md-header & {
@@ -514,8 +514,8 @@
     font-size: px2rem(12.8px);
     line-height: px2rem(36px);
     color: var(--md-default-fg-color--light);
-    background-color: var(--md-default-fg-color--lightest);
     scroll-snap-align: start;
+    background-color: var(--md-default-fg-color--lightest);
 
     // [tablet landscape +]: Adjust spacing
     @include break-from-device(tablet landscape) {
@@ -545,9 +545,9 @@
   // Search result link
   &__link {
     display: block;
+    scroll-snap-align: start;
     outline: none;
     transition: background-color 250ms;
-    scroll-snap-align: start;
 
     // Search result link on focus/hover
     &:is(:focus, :hover) {
@@ -567,8 +567,8 @@
     z-index: 1;
     display: block;
     cursor: pointer;
-    outline: none;
     scroll-snap-align: start;
+    outline: none;
 
     // Hide native details marker
     &::marker {
@@ -643,8 +643,8 @@
       content: "";
       background-color: currentcolor;
       mask-image: var(--md-search-result-icon);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
 
       // Adjust for right-to-left languages

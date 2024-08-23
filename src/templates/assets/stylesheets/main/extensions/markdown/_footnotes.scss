@@ -129,8 +129,8 @@
       content: "";
       background-color: currentcolor;
       mask-image: var(--md-footnotes-icon);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
 
       // Adjust for right-to-left languages

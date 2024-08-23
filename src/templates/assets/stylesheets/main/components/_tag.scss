@@ -90,11 +90,11 @@
       vertical-align: text-bottom;
       content: "";
       background-color: var(--md-default-fg-color--lighter);
-      transition: background-color 125ms;
       mask-image: var(--md-tag-icon);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
+      transition: background-color 125ms;
     }
 
     // Linked tag on focus/hover
