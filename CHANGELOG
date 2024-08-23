@@ -1,3 +1,7 @@
+mkdocs-material-9.5.33 (2024-08-23)
+
+  * Fixed #7453: Incorrect position of tooltip when sorting table
+
 mkdocs-material-9.5.32 (2024-08-19)
 
   * Fixed RXSS vulnerability via deep link in search results

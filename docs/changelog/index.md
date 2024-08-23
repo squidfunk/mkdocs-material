@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.33 <small>August 23, 2024</small> { id="9.5.33" }
+
+- Fixed #7453: Incorrect position of tooltip when sorting table
+
 ### 9.5.32 <small>August 19, 2024</small> { id="9.5.32" }
 
 - Fixed RXSS vulnerability via deep link in search results
