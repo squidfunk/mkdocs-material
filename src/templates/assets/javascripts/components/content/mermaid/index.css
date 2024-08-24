@@ -68,7 +68,7 @@ marker {
 
 /* Flowchart edge label */
 .edgeLabel,
-.edgeLabel rect {
+.edgeLabel p {
   color: var(--md-mermaid-edge-color);
   background-color: var(--md-mermaid-label-bg-color);
   fill: var(--md-mermaid-label-bg-color);
