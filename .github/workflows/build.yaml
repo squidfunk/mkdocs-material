@@ -1,0 +1,38 @@
+name: Build Docker image
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "Dockerfile"
+      - ".github/workflows/build.yaml"
+
+env:
+  PROJECT: zon-mkdocs-material
+
+jobs:
+  build:
+    name: Build
+    runs-on: zon-ubuntu-general-dind
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: Baseproject
+        uses: ZeitOnline/gh-action-baseproject@7c7182aa1a12c7ec0f23424ced2077b502fa037f # v0.10.4
+        with:
+          project_name: ${{env.PROJECT}}
+          environment: production
+          setup_buildx: true
+      - uses: docker/build-push-action@5cd11c3a4ced054e52742c5fd54dca954e0edd85 # v6
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{env.PROJECT}}:latest
+            ${{env.PROJECT}}:${{github.sha}}
+          outputs: type=docker
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
