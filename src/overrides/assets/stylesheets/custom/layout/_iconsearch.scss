@@ -112,7 +112,7 @@
       border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
 
       // Omit border on last child
-      &:last-child {
+      &:last-of-type {
         border-bottom: none;
       }
 

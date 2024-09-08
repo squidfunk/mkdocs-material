@@ -114,7 +114,7 @@
     }
 
     // Always align navigation icons to the end
-    .md-icon:last-child {
+    .md-icon:last-of-type {
       margin-inline-start: auto;
     }
 
@@ -162,7 +162,7 @@
     margin-top: 0;
 
     // Stretch first child
-    &:first-child {
+    &:first-of-type {
       flex-grow: 1;
       // Hack: if a very long word is used, it can push the arrow out of sight.
       // Setting this property contains the text - see https://t.ly/E02vp
@@ -250,7 +250,7 @@
           scroll-snap-type: y mandatory;
 
           // Omit border on first child
-          > :first-child {
+          > :first-of-type {
             border-top: 0;
           }
         }
@@ -589,7 +589,7 @@
       margin: 1.25em 0;
 
       // Adjust spacing on last child
-      &:last-child {
+      &:last-of-type {
         margin-bottom: 0;
       }
 

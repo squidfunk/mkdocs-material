@@ -368,7 +368,7 @@ kbd {
       }
 
       // Adjust spacing on last child
-      &:last-child {
+      &:last-of-type {
         margin-bottom: 0;
       }
 
@@ -468,12 +468,12 @@ kbd {
     :is(th, td) > * {
 
       // Adjust spacing on first child
-      &:first-child {
+      &:first-of-type {
         margin-top: 0;
       }
 
       // Adjust spacing on last child
-      &:last-child {
+      &:last-of-type {
         margin-bottom: 0;
       }
     }

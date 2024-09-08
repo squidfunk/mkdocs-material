@@ -173,7 +173,7 @@
     }
 
     // Adjust font weight of site title
-    &:first-child {
+    &:first-of-type {
       font-weight: 700;
     }
   }

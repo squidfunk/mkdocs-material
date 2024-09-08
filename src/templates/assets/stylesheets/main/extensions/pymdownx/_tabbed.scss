@@ -199,8 +199,8 @@
 
     // Code block is the first child of a tab - remove margin and mirror
     // previous (now deprecated) SuperFences code block grouping behavior
-    > pre:first-child,
-    > .highlight:first-child > pre {
+    > pre:first-of-type,
+    > .highlight:first-of-type > pre {
       margin: 0;
 
       // Remove rounded borders on code block
@@ -212,7 +212,7 @@
 
     // Code block is the first child of a tab - remove margin and mirror
     // previous (now deprecated) SuperFences code block grouping behavior
-    > .highlight:first-child {
+    > .highlight:first-of-type {
 
       // Code block title - remove spacing and rounded borders
       > .filename {

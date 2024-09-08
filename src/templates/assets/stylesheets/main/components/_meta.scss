@@ -40,7 +40,7 @@
   }
 
   // Metadata item separator
-  &__item:not(:last-child)::after {
+  &__item:not(:last-of-type)::after {
     margin-inline: px2rem(4px);
     content: "·";
   }

@@ -322,7 +322,7 @@
         inset-inline-start: px2rem(16px);
 
         // Hide the magnifying glass
-        svg:first-child {
+        svg:first-of-type {
           display: none;
         }
       }
@@ -332,7 +332,7 @@
         pointer-events: none;
 
         // Hide the back arrow
-        svg:last-child {
+        svg:last-of-type {
           display: none;
         }
       }
@@ -537,7 +537,7 @@
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest);
 
     // Omit border on first child
-    &:first-child {
+    &:first-of-type {
       box-shadow: none;
     }
   }
@@ -555,7 +555,7 @@
     }
 
     // Adjust spacing on last child of last link
-    &:last-child p:last-child {
+    &:last-of-type p:last-of-type {
       margin-bottom: px2rem(12px);
     }
   }

@@ -123,7 +123,7 @@
       border-end-start-radius: px2rem(2px);
 
       // If icon is alone, round corners
-      &:last-child {
+      &:last-of-type {
         border-radius: px2rem(2px);
       }
     }

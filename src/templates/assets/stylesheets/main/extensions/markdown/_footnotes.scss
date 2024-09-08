@@ -67,7 +67,7 @@
         }
 
         // Adjust spacing on first child
-        > :first-child {
+        > :first-of-type {
           margin-top: 0;
         }
       }

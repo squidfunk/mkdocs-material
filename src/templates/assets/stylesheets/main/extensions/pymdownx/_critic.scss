@@ -64,12 +64,12 @@
     box-shadow: none;
 
     // Adjust spacing on first child
-    > :first-child {
+    > :first-of-type {
       margin-top: 0.5em;
     }
 
     // Adjust spacing on last child
-    > :last-child {
+    > :last-of-type {
       margin-bottom: 0.5em;
     }
   }

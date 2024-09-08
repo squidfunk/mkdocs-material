@@ -104,7 +104,7 @@
     }
 
     // Post excerpt content
-    .md-post__content > :first-child {
+    .md-post__content > :first-of-type {
       --md-scroll-margin: #{px2rem(120px)};
 
       margin-top: 0;

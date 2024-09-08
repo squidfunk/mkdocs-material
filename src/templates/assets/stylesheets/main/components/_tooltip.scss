@@ -106,12 +106,12 @@
     font-size: px2rem(12.8px);
 
     // Adjust spacing on first child
-    &.md-typeset > :first-child {
+    &.md-typeset > :first-of-type {
       margin-top: 0;
     }
 
     // Adjust spacing on last child
-    &.md-typeset > :last-child {
+    &.md-typeset > :last-of-type {
       margin-bottom: 0;
     }
   }

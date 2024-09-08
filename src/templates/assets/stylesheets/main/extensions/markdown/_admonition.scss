@@ -113,7 +113,7 @@ $admonitions: (
     }
 
     // Adjust spacing on last child
-    html & > :last-child {
+    html & > :last-of-type {
       margin-bottom: px2rem(12px);
     }
   }
@@ -133,7 +133,7 @@ $admonitions: (
     border-start-end-radius: px2rem(2px);
 
     // Adjust spacing for title-only admonitions
-    html &:last-child {
+    html &:last-of-type {
       margin-bottom: 0;
     }
 

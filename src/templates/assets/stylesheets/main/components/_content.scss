@@ -60,7 +60,7 @@
     }
 
     // Adjust spacing on last child
-    > :last-child {
+    > :last-of-type {
       margin-bottom: 0;
     }
   }
