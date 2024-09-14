@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.13 <small>September 14, 2024</small> { id="4.53.13" }
+
+- Fixed #7520: Social plugin errors for generated files (MkDocs 1.6+)
+
 ### 4.53.12 <small>August 2, 2024</small> { id="4.53.12" }
 
 - Fixed #7410: Instant previews jump on content tabs with anchor links
