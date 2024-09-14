@@ -230,9 +230,9 @@ other providers:
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
   [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
   [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
-  [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
-  [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
+  [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-mkdocs-material-cloudflare/
+  [DigitalOcean]: https://deborahwrites.com/guides/deploy-mkdocs-material-digitalocean-app-platform/
   [Flyio]: https://documentation.breadnet.co.uk/cloud/fly/mkdocs-on-fly/
   [Netlify]: https://deborahwrites.com/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
-  [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
+  [Vercel]: https://deborahwrites.com/guides/deploy-mkdocs-material-vercel/
   [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
