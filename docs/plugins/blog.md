@@ -479,9 +479,9 @@ plugins:
 <!-- md:version 9.2.0 -->
 <!-- md:default `optional` -->
 
-By default, the plugin makes post excerpts optional. When a post doesn't define
-an excerpt, views include the entire post. This setting can be used to make
-post excerpts required:
+By default, the plugin makes [post excerpts](../setup/setting-up-a-blog.md#adding-an-excerpt)
+optional. When a post doesn't define an excerpt, views include the entire post.
+This setting can be used to make post excerpts required:
 
 === "Optional"
 
