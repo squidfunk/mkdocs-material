@@ -186,6 +186,9 @@ export async function handler(
 /* Expose Lunr.js in global scope, or stemmers won't work */
 self.lunr = lunr
 
+/* Monkey-patch Lunr.js to mitigate https://t.ly/68TLq */
+lunr.utils.warn = console.warn
+
 /* Handle messages */
 addEventListener("message", async ev => {
   postMessage(await handler(ev.data))
