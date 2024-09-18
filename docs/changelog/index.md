@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.35 <small>September 18, 2024</small> { id="9.5.35" }
+
+- Fixed #7498: Search not showing for Vietnamese language
+
 ### 9.5.34 <small>August 31, 2024</small> { id="9.5.34" }
 
 - Updated Mermaid.js to version 11 (latest)

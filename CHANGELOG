@@ -1,3 +1,7 @@
+mkdocs-material-9.5.35 (2024-09-18)
+
+  * Fixed #7498: Search not showing for Vietnamese language
+
 mkdocs-material-9.5.34+insiders-4.53.13 (2024-09-14)
 
   * Fixed #7520: Social plugin errors for generated files (MkDocs 1.6+)
