@@ -62,3 +62,6 @@ commercial use and ask our sponsors to respect these requirements when
 initiating a sponsorship. Additionally, we base our sponsoring tiers on the number
 of sites you intend to build. Please upgrade your sponsorship accordingly to
 support the project’s growth and ensure its continued development.
+
+  [fork]: access-management.md/#forking
+  [mirror]: access-management.md/#mirroring

@@ -2,7 +2,7 @@
 
 If you want to get the best out of Material for MkDocs, Insiders is what you're
 looking for – it's an exclusive version of Material for MkDocs that offers
-additional features and enhancements. By becoming a sponsor, you get early access
+additional features and enhancements.
 
 Material for MkDocs Insiders offers an enhanced experience with early access to
 exclusive features that aren't available in the community edition. Become a
