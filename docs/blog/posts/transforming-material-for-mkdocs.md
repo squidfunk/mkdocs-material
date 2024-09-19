@@ -146,7 +146,7 @@ We had considered developing a live editor in response to MkDocs' [performance i
   [mkdocstrings]: https://mkdocstrings.github.io/
   [built-in blog]: ../../plugins/blog.md
   [tags]: ../../plugins/tags.md
-  [does not require or support plugins]: https://github.com/mkdocs/mkdocs/discussions/3815
+  [does not require or support plugins]: https://github.com/mkdocs/mkdocs/discussions/3815#discussioncomment-10398312
   [a team call on August 1]: https://github.com/mkdocs/mkdocs/discussions/3671#discussioncomment-10164237
   [we raised objections multiple times]: https://github.com/mkdocs/mkdocs/discussions/3671#discussioncomment-10215445
 
