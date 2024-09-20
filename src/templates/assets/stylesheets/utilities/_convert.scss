@@ -20,6 +20,7 @@
 /// DEALINGS
 ////
 
+@use "sass:color";
 @use "sass:math";
 
 // ----------------------------------------------------------------------------
@@ -41,9 +42,9 @@
 ///
 @function hex2hsl($color) {
   @return
-    round(strip-units(hue($color))),
-    round(saturation($color)),
-    round(lightness($color));
+    round(strip-units(color.channel($color, "hue", $space: hsl))),
+    round(color.channel($color, "saturation", $space: hsl)),
+    round(color.channel($color, "lightness", $space: hsl));
 }
 
 // ----------------------------------------------------------------------------
