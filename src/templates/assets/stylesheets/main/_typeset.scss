@@ -313,7 +313,7 @@ kbd {
   }
 
   // Unordered list
-  ul {
+  ul:not([type]) {
     list-style-type: disc;
   }
 
@@ -329,11 +329,11 @@ kbd {
     }
 
     // Nested ordered list
-    ol {
+    ol:not([type]) {
       list-style-type: lower-alpha;
 
       // Triply nested ordered list
-      ol {
+      ol:not([type]) {
         list-style-type: lower-roman;
       }
     }
