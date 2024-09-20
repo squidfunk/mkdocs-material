@@ -313,8 +313,14 @@ kbd {
   }
 
   // Unordered list
-  ul:not([type]) {
+  ul {
     list-style-type: disc;
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert;
+    }
   }
 
   // Unordered and ordered list
@@ -329,13 +335,19 @@ kbd {
     }
 
     // Nested ordered list
-    ol:not([type]) {
+    ol {
       list-style-type: lower-alpha;
 
       // Triply nested ordered list
-      ol:not([type]) {
+      ol {
         list-style-type: lower-roman;
       }
+    }
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert;
     }
 
     // List element
