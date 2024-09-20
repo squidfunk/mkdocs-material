@@ -49,7 +49,6 @@ from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 from mkdocs.utils import write_file
 from shutil import copyfile
-from tempfile import NamedTemporaryFile
 
 from .config import SocialConfig
 
