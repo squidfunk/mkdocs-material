@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.36 <small>September 21, 2024</small> { id="9.5.36" }
+
+- Fixed #7544: Social cards incorrectly rendering HTML entities
+- Fixed #7542: Improved support for setting custom list styles
+
 ### 9.5.35 <small>September 18, 2024</small> { id="9.5.35" }
 
 - Fixed #7498: Search not showing for Vietnamese language

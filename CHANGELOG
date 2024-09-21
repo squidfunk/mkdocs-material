@@ -1,3 +1,8 @@
+mkdocs-material-9.5.36 (2024-09-21)
+
+  * Fixed #7544: Social cards incorrectly rendering HTML entities
+  * Fixed #7542: Improved support for setting custom list styles
+
 mkdocs-material-9.5.35 (2024-09-18)
 
   * Fixed #7498: Search not showing for Vietnamese language
