@@ -319,7 +319,7 @@ kbd {
     // Hack: allow to override `list-style-type` via `type`, without breaking
     // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
     &[type] {
-      list-style-type: revert;
+      list-style-type: revert-layer;
     }
   }
 
@@ -334,20 +334,30 @@ kbd {
       display: flow-root;
     }
 
-    // Nested ordered list
+    // 2nd layer nested ordered list
     ol {
       list-style-type: lower-alpha;
 
-      // Triply nested ordered list
+      // 3rd layer nested ordered list
       ol {
         list-style-type: lower-roman;
+
+        // 4th layer nested ordered list
+        ol {
+          list-style-type: upper-alpha;
+
+          // 5th layer nested ordered list
+          ol {
+            list-style-type: upper-roman;
+          }
+        }
       }
     }
 
     // Hack: allow to override `list-style-type` via `type`, without breaking
     // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
     &[type] {
-      list-style-type: revert;
+      list-style-type: revert-layer;
     }
 
     // List element
