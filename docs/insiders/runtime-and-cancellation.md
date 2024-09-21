@@ -1,4 +1,6 @@
-# Runtime and cancellation
+npm run buildmkdocs serve --watch-themenpm startnodeenv -p -n lts
+npm installpip install -e ".[recommended]"
+pip install nodeenv# Runtime and cancellation
 
 The sponsorship model for Material for MkDocs is facilitated through GitHub
 Sponsors and, therefore, adheres to GitHub's policies. If you're curious about
