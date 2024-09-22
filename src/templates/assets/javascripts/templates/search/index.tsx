@@ -88,16 +88,20 @@ function renderSearchDocument(
         {teaser > 0 && document.text.length > 0 &&
           document.text
         }
-        {document.tags && document.tags.map(tag => {
-          const type = tags
-            ? tag in tags
-              ? `md-tag-icon md-tag--${tags[tag]}`
-              : "md-tag-icon"
-            : ""
-          return (
-            <span class={`md-tag ${type}`}>{tag}</span>
-          )
-        })}
+        {document.tags && (
+          <nav class="md-tags">
+            {document.tags.map(tag => {
+              const type = tags
+                ? tag in tags
+                  ? `md-tag-icon md-tag--${tags[tag]}`
+                  : "md-tag-icon"
+                : ""
+              return (
+                <span class={`md-tag ${type}`}>{tag}</span>
+              )
+            })}
+          </nav>
+        )}
         {teaser > 0 && missing.length > 0 &&
           <p class="md-search-result__terms">
             {translation("search.result.term.missing")}: {...missing}
