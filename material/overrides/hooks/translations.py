@@ -175,6 +175,7 @@ countries = {
     "ru": "ru",
     "sa": "in",
     "sh": "rs",
+    "sq": "al",
     "si": "lk",
     "sk": "sk",
     "sl": "si",

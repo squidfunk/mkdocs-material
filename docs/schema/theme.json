@@ -241,6 +241,10 @@
           "const": "sl"
         },
         {
+          "title": "Site language: Albanian",
+          "const": "sq"
+        },
+        {
           "title": "Site language: Serbian",
           "const": "sr"
         },
