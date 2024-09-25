@@ -1,3 +1,8 @@
+mkdocs-material-9.5.37 (2024-09-25)
+
+  * Added 4th and 5th level ordered list styles
+  * Fixed #7548: Tags have no spacing in search
+
 mkdocs-material-9.5.36 (2024-09-21)
 
   * Fixed #7544: Social cards incorrectly rendering HTML entities

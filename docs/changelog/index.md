@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.37 <small>September 25, 2024</small> { id="9.5.37" }
+
+- Added 4th and 5th level ordered list styles
+- Fixed #7548: Tags have no spacing in search
+
 ### 9.5.36 <small>September 21, 2024</small> { id="9.5.36" }
 
 - Fixed #7544: Social cards incorrectly rendering HTML entities
