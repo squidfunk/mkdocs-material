@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.38 <small>September 26, 2024</small> { id="9.5.38" }
+
+- Added Albanian translations
+
 ### 9.5.37 <small>September 25, 2024</small> { id="9.5.37" }
 
 - Added 4th and 5th level ordered list styles
