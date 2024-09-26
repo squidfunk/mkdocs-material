@@ -1,4 +1,4 @@
-import { Sitemap } from "../sitemap"
+import { Sitemap } from "../../sitemap"
 
 /** See docstring for `selectedVersionCorrespondingURL` for the meaning of these fields. */
 type CorrespondingURLParams = {

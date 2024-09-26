@@ -48,7 +48,7 @@ import {
 
 import { fetchSitemap } from "../sitemap"
 
-import { selectedVersionCorrespondingURL } from "./correspondingPage"
+import { selectedVersionCorrespondingURL } from "./findurl"
 
 /* ----------------------------------------------------------------------------
  * Helper types
