@@ -64,7 +64,6 @@ MkDocs implements this behavior by default, but there are a few caveats:
 - the [`site_url`][mkdocs.site_url] must be set correctly in `mkdocs.yml`.
   See the ["Publishing a new version"](#publishing-a-new-version) section for
   an example.
-- you must be viewing the site at that URL (and not locally, for example).
 - the redirect happens via JavaScript and there is no way to know which page you
   will be redirected to ahead of time.
 
