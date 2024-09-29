@@ -2,6 +2,10 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.14 <small>September 29, 2024</small> { id="4.53.14" }
+
+- Fixed #7567: Empty headlines when using typeset plugin with anchorlinks
+
 ### 4.53.13 <small>September 14, 2024</small> { id="4.53.13" }
 
 - Fixed #7520: Social plugin errors for generated files (MkDocs 1.6+)
