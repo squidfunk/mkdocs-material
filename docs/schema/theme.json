@@ -314,7 +314,7 @@
     "favicon": {
       "title": "Favicon",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon",
-      "pattern": "\\.(ico|png|svg|jpe?g)$",
+      "pattern": "\\.(ico|png|svg|jpe?g|gif)$",
       "defaultSnippets": [
         {
           "body": "${1:path/to/file}.png"
@@ -324,7 +324,7 @@
     "logo": {
       "title": "Logo",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
-      "pattern": "\\.(png|svg|jpe?g)$",
+      "pattern": "\\.(png|svg|jpe?g|gif|webp)$",
       "defaultSnippets": [
         {
           "body": "${1:path/to/file}.png"
