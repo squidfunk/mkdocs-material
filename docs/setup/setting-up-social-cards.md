@@ -55,7 +55,7 @@ For a list of all settings, please consult the [plugin documentation].
 
     Note that you must set [`site_url`][site_url] when using the social plugin,
     or the generated cards will not be correctly linked. Social media services
-    like Twitter and Facebook demand that social previews point to an absolute
+    like X and Facebook demand that social previews point to an absolute
     URL, which the plugin can only compute when [`site_url`][site_url] is set.
     Example:
 
@@ -594,7 +594,7 @@ This will add two circles to the background:
 ### Tags
 
 The new [built-in social plugin] gives full flexibility of the meta tags that
-are added to your site, which are necessary to instruct services like Twitter
+are added to your site, which are necessary to instruct services like X
 or Discord how to display your social card. All default layouts use the following
 set of tags, which you can copy to your layout and adapt:
 
