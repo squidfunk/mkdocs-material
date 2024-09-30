@@ -102,7 +102,7 @@ plugins require the `site_url` to be set, so you should always do this.
     If you already have a schema defined, or wish to self-host your schema to
     reduce duplication, you can add it via [$ref].
 
-  [configuration validation and auto-complete]: https://twitter.com/squidfunk/status/1487746003692400642
+  [configuration validation and auto-complete]: https://x.com/squidfunk/status/1487746003692400642
   [schema.json]: schema.json
   [vscode-yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
   [settings.json]: https://code.visualstudio.com/docs/getstarted/settings

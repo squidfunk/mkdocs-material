@@ -747,7 +747,7 @@ __Fixes__
 
 ### 8.5.11 <small>November 30, 2022</small> { id="8.5.11" }
 
-- Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+- Let it snow, see https://x.com/squidfunk/status/1597939243090788352
 
 ### 8.5.10 <small>November 11, 2022</small> { id="8.5.10" }
 

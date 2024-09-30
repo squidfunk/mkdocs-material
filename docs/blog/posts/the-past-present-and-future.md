@@ -254,12 +254,12 @@ features that will see the light of day in 2022:
   Material for MkDocs.
 
 This list is incomplete. Additionally, many new smaller features will be added
-next year, just as in 2021. You can follow [@squidfunk on Twitter] to stay
+next year, just as in 2021. You can follow [@squidfunk on X] to stay
 updated.
 
 __Happy new year!__ :tada:
 
-  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Instant previews]: https://x.com/squidfunk/status/1466794654213492743
   [card grids]: https://github.com/squidfunk/mkdocs-material/issues/3018
   [under investigation]: https://github.com/squidfunk/mkdocs-material/issues/3353
-  [@squidfunk on Twitter]: https://twitter.com/squidfunk
+  [@squidfunk on X]: https://x.com/squidfunk
