@@ -182,9 +182,11 @@ The following configuration options are supported:
     ```
 
 Material for MkDocs will automatically add the [necessary metadata] to your site
-which will make the RSS feed discoverable by browsers and feed readers. Note
-that the [RSS plugin][rss] comes with several other configuration options.
-For further information, see the [documentation].
+which will make the RSS feed discoverable by browsers and feed readers.
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use them
+at your own risk.
 
   [rss]: https://guts.github.io/mkdocs-rss-plugin/
   [categories]: ../plugins/blog.md#categories
@@ -192,7 +194,6 @@ For further information, see the [documentation].
   [comment system]: adding-a-comment-system.md
   [necessary metadata]: https://guts.github.io/mkdocs-rss-plugin/configuration/#integration
   [theme extension]: ../customization.md
-  [documentation]: https://guts.github.io/mkdocs-rss-plugin/configuration/
 
 ### Blog only
 
