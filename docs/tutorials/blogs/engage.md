@@ -167,7 +167,7 @@ share button will there be interactions with those companies' servers.
     import urllib.parse
     import re
 
-    x_intent = "https://twitter.com/intent/tweet"
+    x_intent = "https://x.com/intent/tweet"
     fb_sharer = "https://www.facebook.com/sharer/sharer.php"
     include = re.compile(r"blog/[1-9].*")
 

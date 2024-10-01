@@ -721,7 +721,7 @@ See reference for usage:
   [Tabbed]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
   [combine_header_slug style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#tab-ids
-  [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
+  [better behavior on mobile viewports]: https://x.com/squidfunk/status/1424740370596958214
   [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
   [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content
   [Embedded content]: ../../reference/content-tabs.md#embedded-content
