@@ -78,7 +78,8 @@ plugins require the `site_url` to be set, so you should always do this.
                 "!relative scalar",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
-                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+                "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
               ]
             }
             ```
