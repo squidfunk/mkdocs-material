@@ -222,6 +222,7 @@ other providers:
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
 - [:simple-codeberg: Codeberg Pages][Codeberg Pages]
+- [:simple-scaleway: Scaleway][Scaleway]
 
 </div>
 
@@ -236,3 +237,5 @@ other providers:
   [Netlify]: https://deborahwrites.com/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
   [Vercel]: https://deborahwrites.com/guides/deploy-mkdocs-material-vercel/
   [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
+  [Scaleway]: https://www.scaleway.com/en/docs/tutorials/using-bucket-website-with-mkdocs/
+
