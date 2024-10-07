@@ -56,7 +56,7 @@
     "@primer/octicons": "^19.11.0",
     "@stylistic/eslint-plugin-ts": "^2.8.0",
     "@stylistic/stylelint-config": "^2.0.0",
-    "@stylistic/stylelint-plugin": "^3.1.0",
+    "@stylistic/stylelint-plugin": "^3.1.1",
     "@types/css-modules": "^1.0.5",
     "@types/escape-html": "^1.0.4",
     "@types/fuzzaldrin-plus": "^0.6.5",
