@@ -26,6 +26,7 @@ import {
   EMPTY,
   concat,
   defer,
+  from,
   map,
   merge,
   mergeMap,
@@ -47,6 +48,7 @@ import {
   transformScript,
   transformStyle
 } from "./transform"
+import glob from "tiny-glob"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -213,7 +215,9 @@ const manifest$ = merge(
   })
     .map(([pattern, observable$]) => (
       defer(() => process.argv.includes("--watch")
-        ? watch(pattern, { cwd: "src" })
+        ? from(glob(pattern, { cwd: "src" })).pipe(
+          switchMap(files => watch(files, { cwd: "src" }))
+        )
         : EMPTY
       )
         .pipe(
