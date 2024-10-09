@@ -484,3 +484,16 @@ Instead, always use fully qualified URLs:
 ``` js
 const url ="https://example.com/script.js"
 ```
+
+Note that the plugin does not scan embedded HTML for external assets –
+this is related to MkDocs, as it does not process HTML
+(not to be confused with the generated HTML) in the plugin pipeline.
+To self-host external assets of an embedded HTML,
+it has to be explicitly listed under [`extra_templates`][extra_templates] in `mkdocs.yml`:
+
+  [extra_templates]: https://www.mkdocs.org/user-guide/configuration/#extra_templates
+
+``` yaml
+extra_templates:
+  - embed.html
+```
