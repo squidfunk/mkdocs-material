@@ -1,3 +1,8 @@
+mkdocs-material-9.5.40 (2024-10-10)
+
+  * Updated Latvian translations
+  * Fixed #7597: Social cards not using site name on home page
+
 mkdocs-material-9.5.39+insiders-4.53.14 (2024-09-29)
 
   * Fixed #7567: Empty headlines when using typeset plugin with anchorlinks
