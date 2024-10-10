@@ -10,7 +10,7 @@ categories:
 links:
   - blog/posts/search-better-faster-smaller.md
   - plugins/search.md#segmentation
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
 ---
 
 # Chinese search support – 中文搜索​支持

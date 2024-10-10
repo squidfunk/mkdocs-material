@@ -205,6 +205,7 @@ For a list of all settings, please consult the [plugin documentation].
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [built-in optimize plugin]: ../plugins/optimize.md
+  [technical limitations]: ../plugins/privacy.md#limitations
 
 ??? example "Expand to inspect example"
 

@@ -213,7 +213,7 @@ Source projects sustainable by following a well-designed release strategy.
 
 You can learn about the strategy in the [Insiders] guide.
 
-  [awesome sponsors]: ../../insiders/index.md#how-to-become-a-sponsor
+  [awesome sponsors]: ../../insiders/how-to-sponsor.md
 
 ## 2022
 

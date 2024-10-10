@@ -10,7 +10,7 @@ categories:
   - Performance
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
 ---
 
 # Search: better, faster, smaller
