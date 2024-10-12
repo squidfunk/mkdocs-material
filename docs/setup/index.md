@@ -38,7 +38,7 @@ configuration or alter the appearance.
 
 <div class="grid cards" markdown>
 
-- :material-brush-variant: __[Colors]__ Change colors with an existing color palette or customize with CSS
+- :material-brush-variant: __[Colors]__ – Change colors with an existing color palette or customize with CSS
 - :material-format-font: __[Fonts]__ – Choose among 1,000 Google Fonts or load self-hosted fonts
 - :material-google-downasaur: __[Logo & Icons]__ – Change the logo, use any of the 8,000+ icons, or add new ones
 - :material-cards-variant: __[Social Cards]__ – Automatically create social media previews when sharing links
