@@ -106,4 +106,9 @@
       transform: translateY(0);
     }
   }
+
+  // [print]: Hide feedback
+  @media print {
+    display: none;
+  }
 }
