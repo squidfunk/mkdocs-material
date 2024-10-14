@@ -96,11 +96,9 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     # automatically loads Mermaid.js when a Mermaid diagram is
                     # found in the page - https://bit.ly/36tZXsA.
                     if "mermaid.min.js" in url.path and not config.site_url:
-                        path = url.geturl()
-                        if path not in config.extra_javascript:
-                            config.extra_javascript.append(
-                                ExtraScriptValue(path)
-                            )
+                        script = ExtraScriptValue(url.geturl())
+                        if script not in config.extra_javascript:
+                            config.extra_javascript.append(script)
 
             # The local asset references at least one external asset, which
             # means we must download and replace them later
@@ -148,6 +146,10 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             url = urlparse(el.get("src"))
             if not self._is_excluded(url, page.file):
                 self._queue(url, config, concurrent = True)
+
+    # Sync all concurrent jobs
+    def on_env(self, env, *, config, files):
+        wait(self.pool_jobs)
 
     # Process external assets in template (run later)
     @event_priority(-50)
