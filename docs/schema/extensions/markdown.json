@@ -32,7 +32,8 @@
       "markdownDescription": "https://github.com/oprypin/markdown-callouts",
       "enum": [
         "markdown.extensions.callouts",
-        "callouts"
+        "callouts",
+        "github-callouts"
       ]
     },
     {
