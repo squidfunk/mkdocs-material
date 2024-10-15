@@ -225,10 +225,6 @@ const control$ = merge(
   ...getComponentElements("dialog")
     .map(el => mountDialog(el, { alert$ })),
 
-  /* Header */
-  ...getComponentElements("header")
-    .map(el => mountHeader(el, { viewport$, header$, main$ })),
-
   /* Color palette */
   ...getComponentElements("palette")
     .map(el => mountPalette(el)),
@@ -263,6 +259,10 @@ const content$ = defer(() => merge(
       ? mountSearchHiglight(el, { index$, location$ })
       : EMPTY
     ),
+
+  /* Header */
+  ...getComponentElements("header")
+    .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
   /* Header title */
   ...getComponentElements("header-title")
