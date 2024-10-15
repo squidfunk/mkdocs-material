@@ -180,7 +180,6 @@ function inject(next: Document): Observable<Document> {
     "[data-md-component=container]",
     "[data-md-component=header-topic]",
     "[data-md-component=outdated]",
-    "[data-md-component=logo]",
     "[data-md-component=skip]",
     ...feature("navigation.tabs.sticky")
       ? ["[data-md-component=tabs]"]
