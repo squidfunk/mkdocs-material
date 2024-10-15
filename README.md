@@ -291,23 +291,29 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Crystal](https://crystal-lang.org/reference/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
+[Freqtrade](https://www.freqtrade.io/en/stable/),
 [GoReleaser](https://goreleaser.com/),
+[Hummingbot](https://hummingbot.org/),
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
+[Orchard Core](https://docs.orchardcore.net/en/latest/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [PyPI](https://docs.pypi.org/),
 [Renovate](https://docs.renovatebot.com/),
+[Supervision](https://supervision.roboflow.com/latest/),
 [Traefik](https://docs.traefik.io/),
 [Trivy](https://aquasecurity.github.io/trivy/),
+[Typer](https://typer.tiangolo.com/),
+[Ultralytics](https://docs.ultralytics.com/),
 [Vapor](https://docs.vapor.codes/),
-[ZeroNet](https://zeronet.io/docs/),
 [WebKit](https://docs.webkit.org/),
-[WTF](https://wtfutil.com/)
+[WTF](https://wtfutil.com/),
+[ZeroNet](https://zeronet.io/docs/)
 
 ## License
 
