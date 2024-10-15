@@ -149,6 +149,10 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
     # Sync all concurrent jobs
     def on_env(self, env, *, config, files):
+        if not self.config.enabled:
+            return
+
+        # Wait until all jobs until now are finished
         wait(self.pool_jobs)
 
     # Process external assets in template (run later)
