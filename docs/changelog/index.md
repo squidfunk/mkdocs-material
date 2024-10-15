@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.41 <small>October 15, 2024</small> { id="9.5.41" }
+
+- Fixed #7619: Improved tooltip on logo disappears after instant navigation
+- Fixed #7616: Race condition in built-in privacy plugin when inlining assets
+- Fixed #7615: Comments and "Was this page helpful?" visible when printing
+
 ### 9.5.40 <small>October 10, 2024</small> { id="9.5.40" }
 
 - Updated Latvian translations
