@@ -192,5 +192,5 @@ countries = {
     "vi": "vn",
     "zh": "cn",
     "zh-Hant": "cn",
-    "zh-TW": "tw"
+    "zh-TW": "cn"
 }
