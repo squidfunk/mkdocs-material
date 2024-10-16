@@ -336,7 +336,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Return void or opening tag as string, strip closing tag
         data = tostring(el, encoding = "unicode")
-        return data.replace(" />", ">").replace(f"\"{temp}\"", "")
+        return data.replace(" />", ">").replace(f"=\"{temp}\"", "")
 
     # Enqueue external asset for download, if not already done
     def _queue(self, url: URL, config: MkDocsConfig, concurrent = False):
