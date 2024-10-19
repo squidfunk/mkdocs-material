@@ -311,7 +311,6 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [PyPI](https://docs.pypi.org/),
-[PySimpleGUI](https://docs.pysimplegui.com/en/latest/),
 [Renovate](https://docs.renovatebot.com/),
 [RetroPie](https://retropie.org.uk/docs/),
 [Supervision](https://supervision.roboflow.com/latest/),
