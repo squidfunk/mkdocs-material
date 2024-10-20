@@ -1,3 +1,8 @@
+mkdocs-material-9.5.42 (2024-10-20)
+
+  * Fixed #7625: Invalid encoding of boolean attributes in privacy plugin
+  * Fixed #7624: Crash when disabling privacy plugin (9.5.41 regression)
+
 mkdocs-material-9.5.41 (2024-10-15)
 
   * Fixed #7619: Improved tooltip on logo disappears after instant navigation

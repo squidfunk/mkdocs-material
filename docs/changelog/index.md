@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.42 <small>October 20, 2024</small> { id="9.5.42" }
+
+- Fixed #7625: Invalid encoding of boolean attributes in privacy plugin
+- Fixed #7624: Crash when disabling privacy plugin (9.5.41 regression)
+
 ### 9.5.41 <small>October 15, 2024</small> { id="9.5.41" }
 
 - Fixed #7619: Improved tooltip on logo disappears after instant navigation
