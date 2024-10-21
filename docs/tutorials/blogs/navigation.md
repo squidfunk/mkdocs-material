@@ -39,7 +39,7 @@ attach the blog navigation to the rest of the navigation structure.
 
     You will notice that "Blog" is duplicated in the navigation structure. To
     avoid this, you can use the `navigation.indexes` feature to make the blog
-    index the seciton index page for the blog:
+    index the section index page for the blog:
 
     ```yaml hl_lines="3 4"
     theme:
