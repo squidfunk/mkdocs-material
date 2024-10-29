@@ -19,15 +19,18 @@ following lines to `mkdocs.yml`:
 markdown_extensions:
   - attr_list
   - md_in_html
+  - pymdownx.blocks.caption
 ```
 
 See additional configuration options:
 
 - [Attribute Lists]
 - [Markdown in HTML]
+- [Caption]
 
   [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Markdown in HTML]: ../setup/extensions/python-markdown.md#markdown-in-html
+  [Caption]: ../setup/extensions/python-markdown-extensions.md#caption
 
 ### Lightbox
 
@@ -116,18 +119,15 @@ will stretch to the full width of the viewport, e.g. on mobile viewports.
   [image captions]: #image-captions
 
 ### Image captions
+When [Caption] is enabled, a caption can be added to
+any Markdown block element, including images:
 
-Sadly, the Markdown syntax doesn't provide native support for image captions,
-but it's always possible to use the [Markdown in HTML] extension with literal
-`figure` and `figcaption` tags:
-
-``` html title="Image with caption"
-<figure markdown="span">
-  ![Image title](https://dummyimage.com/600x400/){ width="300" }
-  <figcaption>Image caption</figcaption>
-</figure>
+``` markdown title="Image with caption"
+![Image title](https://dummyimage.com/600x400/){ width="300" }
+/// caption
+Image caption
+///
 ```
-
 <div class="result">
   <figure>
     <img src="https://dummyimage.com/600x400/f5f5f5/aaaaaa?text=–%20Image%20–" width="300" />
