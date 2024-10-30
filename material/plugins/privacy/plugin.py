@@ -64,8 +64,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # Initialize collections of external assets
         self.assets = Files([])
         self.assets_expr_map = {
-            ".css": r"url\((\s*http?[^)]+)\)",
-            ".js": r"[\"'](http[^\"']+\.(?:css|js(?:on)?))[\"']",
+            ".css": r"url\(\s*([\"']?)(?P<url>http?[^)'\"]+)\1\s*\)",
+            ".js": r"[\"'](?P<url>http[^\"']+\.(?:css|js(?:on)?))[\"']",
             **self.config.assets_expr_map
         }
 
@@ -271,7 +271,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # Find and extract all external asset URLs
         expr = re.compile(self.assets_expr_map[extension], flags = re.I | re.M)
         with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
-            return [urlparse(url) for url in re.findall(expr, f.read())]
+            results = re.finditer(expr, f.read())
+            return [urlparse(result.group("url")) for result in results]
 
     # Parse template or page HTML and find all external links that need to be
     # replaced. Many of the assets should already be downloaded earlier, i.e.,
