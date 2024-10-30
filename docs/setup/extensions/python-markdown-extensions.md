@@ -110,6 +110,25 @@ documentation][BetterEm] for more information.
 
   [BetterEm]: https://facelessuser.github.io/pymdown-extensions/extensions/betterem/
 
+### Caption
+
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.blocks.caption][Caption] -->
+
+The [Caption] extension adds the ability to add captions to any Markdown block,
+including images, tables, and code blocks. Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.blocks.caption
+```
+
+The configuration options of this extension are not specific to Material for
+MkDocs, as they only impact the Markdown parsing stage. See the [Caption
+documentation][Caption] for more information.
+
+  [Caption]: https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/
+
 ### Caret, Mark & Tilde
 
 <!-- md:version 1.0.0 -->
