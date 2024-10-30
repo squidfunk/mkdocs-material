@@ -313,12 +313,19 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     file = self._queue(url, config)
                     el.set("src", resolve(file))
 
+            # Handle external image in SVG
+            if el.tag == "image":
+                url = urlparse(el.get("href"))
+                if not self._is_excluded(url, initiator):
+                    file = self._queue(url, config)
+                    el.set("href", resolve(file))
+
             # Return element as string
             return self._print(el)
 
         # Find and replace all external asset URLs in current page
         return re.sub(
-            r"<(?:(?:a|link)[^>]+href|(?:script|img)[^>]+src)=['\"]?http[^>]+>",
+            r"<(?:(?:a|link|image)[^>]+href|(?:script|img)[^>]+src)=['\"]?http[^>]+>",
             replace, output, flags = re.I | re.M
         )
 
