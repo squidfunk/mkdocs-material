@@ -138,7 +138,7 @@ but it's always possible to use the [Markdown in HTML] extension with literal
   </figure>
 </div>
 
-However, [Caption] provides a alternative syntax to add captions
+However, [Caption] provides an alternative syntax to add captions
 to any Markdown block element, including images:
 
 ``` markdown title="Image with caption"
