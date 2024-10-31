@@ -1,3 +1,8 @@
+mkdocs-material-9.5.43 (2024-10-31)
+
+  * Added support for external images in SVGs in privacy plugin
+  * Fixed #7651: Privacy plugin doesn't handle quoted URLs in CSS
+
 mkdocs-material-9.5.42 (2024-10-20)
 
   * Fixed #7625: Invalid encoding of boolean attributes in privacy plugin

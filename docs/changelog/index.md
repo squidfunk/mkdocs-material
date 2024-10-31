@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.43 <small>October 31, 2024</small> { id="9.5.43" }
+
+- Added support for external images in SVGs in privacy plugin
+- Fixed #7651: Privacy plugin doesn't handle quoted URLs in CSS
+
 ### 9.5.42 <small>October 20, 2024</small> { id="9.5.42" }
 
 - Fixed #7625: Invalid encoding of boolean attributes in privacy plugin
