@@ -66,7 +66,7 @@
     "@types/resize-observer-browser": "^0.1.11",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "^8.11.0",
-    "@typescript-eslint/parser": "^8.11.0",
+    "@typescript-eslint/parser": "^8.12.2",
     "autoprefixer": "^10.4.20",
     "chokidar": "^4.0.1",
     "cssnano": "5.1.0",
