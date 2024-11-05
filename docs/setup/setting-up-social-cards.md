@@ -1,7 +1,3 @@
----
-status: new
----
-
 # Setting up social cards
 
 Material for MkDocs can automatically create beautiful social cards for your
@@ -53,13 +49,13 @@ plugins:
 
 For a list of all settings, please consult the [plugin documentation].
 
-  [plugin documentation]: ../plugins/blog.md
+  [plugin documentation]: ../plugins/social.md
 
 !!! info "The [`site_url`][site_url] setting must be set"
 
     Note that you must set [`site_url`][site_url] when using the social plugin,
     or the generated cards will not be correctly linked. Social media services
-    like Twitter and Facebook demand that social previews point to an absolute
+    like X and Facebook demand that social previews point to an absolute
     URL, which the plugin can only compute when [`site_url`][site_url] is set.
     Example:
 
@@ -307,7 +303,7 @@ layers:
 ```
 
 If the `size` is omitted, it defaults to the size of the layout. If the `offset`
-is omitted, it defaults to the top left corner, which is the defaut `origin`.
+is omitted, it defaults to the top left corner, which is the default `origin`.
 Saving the layout and reloading renders:
 
 ![Layer size]
@@ -598,7 +594,7 @@ This will add two circles to the background:
 ### Tags
 
 The new [built-in social plugin] gives full flexibility of the meta tags that
-are added to your site, which are necessary to instruct services like Twitter
+are added to your site, which are necessary to instruct services like X
 or Discord how to display your social card. All default layouts use the following
 set of tags, which you can copy to your layout and adapt:
 
@@ -632,7 +628,7 @@ tags:
   twitter:image: "{{ image.url }}"
 ```
 
-Note that this examples makes use of [YAML anchors] to minify repetition. The
+Note that this example makes use of [YAML anchors] to minify repetition. The
  `definitions` property is solely intended for the definition on aliases that
  can then be referenced with anchors.
 

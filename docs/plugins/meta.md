@@ -10,6 +10,13 @@ pages in a folder, i.e., a subsection of your project, which is particularly
 useful to ensure that a certain subset of pages features specific tags, uses a
 custom template, or is attributed to an author.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
+  [our awesome sponsors]: ../insiders/index.md
+
 ## Objective
 
 ### How it works

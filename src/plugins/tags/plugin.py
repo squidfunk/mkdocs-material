@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -97,8 +97,10 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             return self._render_tag_index(markdown)
 
         # Add page to tags index
-        for tag in page.meta.get("tags", []):
-            self.tags[tag].append(page)
+        tags = page.meta.get("tags", [])
+        if tags:
+            for tag in tags:
+                self.tags[str(tag)].append(page)
 
     # Inject tags into page (after search and before minification)
     def on_page_context(self, context, page, config, nav):
@@ -110,7 +112,8 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             return
 
         # Provide tags for page
-        if "tags" in page.meta:
+        context["tags"] =[]
+        if "tags" in page.meta and page.meta["tags"]:
             context["tags"] = [
                 self._render_tag(tag)
                     for tag in page.meta["tags"]
@@ -125,17 +128,23 @@ class TagsPlugin(BasePlugin[TagsConfig]):
             log.error(f"Tags file '{path}' does not exist.")
             sys.exit(1)
 
-        # Add tags file to files
+        # Add tags file to files - note: since MkDoc 1.6, not removing the
+        # file before adding it to the end will trigger a deprecation warning
+        # The new tags plugin does not require this hack, so we're just going
+        # to live with it until the new tags plugin is released.
+        files.remove(file)
         files.append(file)
         return file
 
     # Render tags index
     def _render_tag_index(self, markdown):
-        if not "[TAGS]" in markdown:
-            markdown += "\n[TAGS]"
+        if "[TAGS]" in markdown:
+            markdown = markdown.replace("[TAGS]", "<!-- material/tags -->")
+        if not "<!-- material/tags -->" in markdown:
+            markdown += "\n<!-- material/tags -->"
 
         # Replace placeholder in Markdown with rendered tags index
-        return markdown.replace("[TAGS]", "\n".join([
+        return markdown.replace("<!-- material/tags -->", "\n".join([
             self._render_tag_links(*args)
                 for args in sorted(self.tags.items())
         ]))

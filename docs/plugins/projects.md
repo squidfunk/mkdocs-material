@@ -10,6 +10,13 @@ distinct projects, build them concurrently and preview them together as one.
 This is particularly useful when creating a multi-language project, but can also
 be used to split very large projects into smaller parts.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
+  [our awesome sponsors]: ../insiders/index.md
+
 ## Objective
 
 ### How it works
@@ -52,7 +59,7 @@ There are some [limitations], but we're working hard to remove them.
 The plugin came into existence because we needed a convenient and scalable
 method to build our [examples] repository, which features many self-contained
 and runnable projects that users can download and use as a basis when
-boostrapping a new project or [creating a reproduction].
+bootstrapping a new project or [creating a reproduction].
 
 When you want to create a multi-language project, or have a very large existing
 project, you might consider using the plugin, as it makes managing, editing
@@ -175,6 +182,81 @@ plugins:
   - projects:
       cache_dir: my/custom/dir
 ```
+
+### Logging
+
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should display log messages from
+projects when building your site. While not being recommended, you can disable
+logging with:
+
+``` yaml
+plugins:
+  - projects:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:default `info` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`error`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: error
+    ```
+
+    Only errors are reported.
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: warn
+    ```
+
+    Errors and warnings are reported, terminating the build in
+    [`strict`][mkdocs.strict] mode.
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: info
+    ```
+
+    Errors, warnings and informational messages are reported.
+
+=== "`debug`"
+
+    ``` yaml
+    plugins:
+      - projects:
+          log_level: debug
+    ```
+
+    All messages are reported, including debug messages.
 
 ### Projects
 

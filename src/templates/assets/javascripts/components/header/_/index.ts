@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -31,8 +31,11 @@ import {
   distinctUntilKeyChanged,
   endWith,
   filter,
+  from,
   ignoreElements,
   map,
+  mergeMap,
+  mergeWith,
   of,
   shareReplay,
   startWith,
@@ -43,12 +46,17 @@ import {
 import { feature } from "~/_"
 import {
   Viewport,
+  getElements,
   watchElementSize,
   watchToggle
 } from "~/browser"
 
 import { Component } from "../../_"
 import { Main } from "../../main"
+import {
+  Tooltip,
+  mountTooltip
+} from "../../tooltip"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -173,7 +181,7 @@ export function watchHeader(
  */
 export function mountHeader(
   el: HTMLElement, { header$, main$ }: MountOptions
-): Observable<Component<Header>> {
+): Observable<Component<Header | Tooltip>> {
   return defer(() => {
     const push$ = new Subject<Main>()
     const done$ = push$.pipe(ignoreElements(), endWith(true))
@@ -187,6 +195,13 @@ export function mountHeader(
           el.hidden = hidden
         })
 
+    /* Mount tooltips, if enabled */
+    const tooltips = from(getElements("[title]", el))
+      .pipe(
+        filter(() => feature("content.tooltips")),
+        mergeMap(child => mountTooltip(child))
+      )
+
     /* Link to main area */
     main$.subscribe(push$)
 
@@ -194,7 +209,8 @@ export function mountHeader(
     return header$
       .pipe(
         takeUntil(done$),
-        map(state => ({ ref: el, ...state }))
+        map(state => ({ ref: el, ...state })),
+        mergeWith(tooltips.pipe(takeUntil(done$)))
       )
   })
 }

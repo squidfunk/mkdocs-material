@@ -22,20 +22,25 @@ repo_url: https://github.com/squidfunk/mkdocs-material
 
 The link to the repository will be rendered next to the search bar on big
 screens and as part of the main navigation drawer on smaller screen sizes.
-Additionally, for public repositories hosted on [GitHub] or [GitLab], the
-number of stars and forks is automatically requested and rendered.
 
-GitHub repositories also include the tag of the latest release.[^1]
+Additionally, for public repositories hosted on [GitHub] or [GitLab], the
+latest release tag[^1], as well as the number of stars and forks, are
+automatically requested and rendered.
 
   [^1]:
     Unfortunately, GitHub only provides an API endpoint to obtain the [latest
     release] - not the latest tag. Thus, make sure to [create a release] (not
     pre-release) for the latest tag you want to display next to the number of
-    stars and forks.
+    stars and forks. For GitLab, although it is possible to get a [list of tags
+    sorted by update time], the [equivalent API endpoint] is used. So, make sure
+    you also [create a release for GitLab repositories].
 
   [repo_url]: https://www.mkdocs.org/user-guide/configuration/#repo_url
   [latest release]: https://docs.github.com/en/rest/reference/releases#get-the-latest-release
   [create a release]: https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release
+  [list of tags sorted by update time]: https://docs.gitlab.com/ee/api/tags.html#list-project-repository-tags
+  [equivalent API endpoint]: https://docs.gitlab.com/ee/api/releases/#get-the-latest-release
+  [create a release for GitLab repositories]: https://docs.gitlab.com/ee/user/project/releases/#create-a-release
 
 #### Repository name
 
@@ -248,8 +253,7 @@ them at your own risk.
 
 #### Document contributors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.19.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [git-committers] -->
 <!-- md:flag experimental -->
 
@@ -324,8 +328,7 @@ them at your own risk.
 
 #### Document authors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.19.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [git-authors] -->
 <!-- md:flag experimental -->
 
@@ -333,7 +336,10 @@ The [git-authors] plugin is a lightweight alternative to the
 [git-committers] plugin and extracts the authors of a document from git to display
 them at the bottom of each page.
 
-[Insiders] offers deep integration for [git-authors]. This means the [customized overrides](https://timvink.github.io/mkdocs-git-authors-plugin/usage.html#mkdocs-material-theme) are not necessary, and additional styling (such as nice icons) are added. Simply install it with `pip`:
+Material for MkDocs offers deep integration for [git-authors]. This means the
+[customized overrides](https://timvink.github.io/mkdocs-git-authors-plugin/usage.html#mkdocs-material-theme)
+are not necessary, and additional styling (such as nice icons) are added.
+Simply install it with `pip`:
 
 ```
 pip install mkdocs-git-authors-plugin

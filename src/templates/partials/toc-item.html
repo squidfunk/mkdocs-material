@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -23,7 +23,9 @@
 <!-- Table of contents item -->
 <li class="md-nav__item">
   <a href="{{ toc_item.url }}" class="md-nav__link">
-    {{ toc_item.title | nav_math }}
+    <span class="md-ellipsis">
+      {{ toc_item.title | nav_math }}
+    </span>
   </a>
 
   <!-- Table of contents list -->

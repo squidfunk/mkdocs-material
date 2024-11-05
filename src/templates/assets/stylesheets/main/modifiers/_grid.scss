@@ -1,0 +1,129 @@
+////
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Scoped in typesetted content to match specificity of regular content
+.md-typeset {
+
+  // Grid container
+  .grid {
+    display: grid;
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(
+          min(100%, #{px2rem(320px)}),
+          1fr
+        )
+      );
+    grid-gap: px2rem(8px);
+    margin: 1em 0;
+
+    // Grid card container - if all grid items should render as cards, the
+    // `.cards` class can be added, which moves list items up one level.
+    &.cards > :is(ul, ol) {
+      display: contents;
+    }
+
+    // Grid card - a card is either a list item of a grid container with the
+    // `.cards` class or a single element with the `.card` class, which allows
+    // to align cards with other components (admonitions, tabs, ...) in grids.
+    &.cards > :is(ul, ol) > li,
+    > .card {
+      display: block;
+      padding: px2rem(16px);
+      margin: 0;
+      border: px2rem(1px) solid var(--md-default-fg-color--lightest);
+      border-radius: px2rem(2px);
+      transition:
+        border     250ms,
+        box-shadow 250ms;
+
+      // Grid list item on focus/hover
+      &:is(:focus-within, :hover) {
+        border-color: transparent;
+        box-shadow: var(--md-shadow-z2);
+      }
+
+      // Adjust spacing for horizontal separators
+      > hr {
+        margin-block: 1em;
+      }
+
+      // Adjust spacing on first child
+      > :first-child {
+        margin-top: 0;
+      }
+
+      // Adjust spacing on last child
+      > :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    // Grid item
+    > * {
+      margin-block: 0;
+    }
+
+    // Grid item: admonition
+    > :is(.admonition, details) {
+      margin-block: 0;
+    }
+
+    // Grid item: code block
+    > pre,
+    > .highlight > *,
+    > .highlighttable {
+      margin-block: 0;
+    }
+
+    // Grid item: code block without line numbers - stretch to match height
+    // of containing grid item, which must be done explicitly.
+    > .highlight > pre:only-child,
+    > .highlight > pre > code {
+      height: 100%;
+    }
+
+    // Grid item: code block with line numbers - stretch to match height of
+    // containing grid item, which is even uglier than the rule before. However,
+    // it's not possible to achieve this behavior without explicitly setting the
+    // height on each and every element as we do here.
+    > .highlighttable,
+    > .highlighttable > tbody,
+    > .highlighttable > tbody > tr,
+    > .highlighttable > tbody > tr > .code,
+    > .highlighttable > tbody > tr > .code > .highlight,
+    > .highlighttable > tbody > tr > .code > .highlight > pre,
+    > .highlighttable > tbody > tr > .code > .highlight > pre > code {
+      height: 100%;
+    }
+
+    // Grid item: tabbed container
+    > .tabbed-set {
+      margin-block: 0;
+    }
+  }
+}

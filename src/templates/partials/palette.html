@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -39,13 +39,13 @@
       {% endif %}
       type="radio"
       name="__palette"
-      id="__palette_{{ loop.index }}"
+      id="__palette_{{ loop.index0 }}"
     />
     {% if option.toggle %}
       <label
         class="md-header__button md-icon"
         title="{{ option.toggle.name }}"
-        for="__palette_{{ loop.index0 or loop.length }}"
+        for="__palette_{{ loop.index % loop.length }}"
         hidden
       >
         {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}

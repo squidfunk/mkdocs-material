@@ -32,7 +32,8 @@
       "markdownDescription": "https://github.com/oprypin/markdown-callouts",
       "enum": [
         "markdown.extensions.callouts",
-        "callouts"
+        "callouts",
+        "github-callouts"
       ]
     },
     {
@@ -57,6 +58,14 @@
       "enum": [
         "markdown.extensions.md_in_html",
         "md_in_html"
+      ]
+    },
+    {
+      "title": "Sane Lists – Python Markdown",
+      "markdownDescription": "https://python-markdown.github.io/extensions/sane_lists/",
+      "enum": [
+        "markdown.extensions.sane_lists",
+        "sane_lists"
       ]
     },
     {

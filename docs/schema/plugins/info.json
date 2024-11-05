@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/info/",
-      "enum": [
-        "info"
-      ]
+      "const": "info"
     },
     {
       "type": "object",

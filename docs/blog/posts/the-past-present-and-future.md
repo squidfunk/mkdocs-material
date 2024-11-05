@@ -169,7 +169,7 @@ __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
   [Code annotations]: ../../reference/code-blocks.md#adding-annotations
   [Code annotations: strip comments]: ../../reference/code-blocks.md#stripping-comments
   [Code block titles]: ../../reference/code-blocks.md#adding-a-title
-  [Code block line anchors]: ../../setup/extensions/python-markdown-extensions.md#anchor-linenums
+  [Code block line anchors]: ../../setup/extensions/python-markdown-extensions.md#+pymdownx.highlight.anchor_linenums
   [Color palette toggle]: ../../setup/changing-the-colors.md#color-palette-toggle
   [Content tabs: improved support]: ../../reference/content-tabs.md
   [Content tabs: auto-linking]: ../../reference/content-tabs.md#linked-content-tabs
@@ -213,7 +213,7 @@ Source projects sustainable by following a well-designed release strategy.
 
 You can learn about the strategy in the [Insiders] guide.
 
-  [awesome sponsors]: ../../insiders/index.md#how-to-become-a-sponsor
+  [awesome sponsors]: ../../insiders/how-to-sponsor.md
 
 ## 2022
 
@@ -254,12 +254,12 @@ features that will see the light of day in 2022:
   Material for MkDocs.
 
 This list is incomplete. Additionally, many new smaller features will be added
-next year, just as in 2021. You can follow [@squidfunk on Twitter] to stay
+next year, just as in 2021. You can follow [@squidfunk on X] to stay
 updated.
 
 __Happy new year!__ :tada:
 
-  [Instant previews]: https://twitter.com/squidfunk/status/1466794654213492743
+  [Instant previews]: https://x.com/squidfunk/status/1466794654213492743
   [card grids]: https://github.com/squidfunk/mkdocs-material/issues/3018
   [under investigation]: https://github.com/squidfunk/mkdocs-material/issues/3353
-  [@squidfunk on Twitter]: https://twitter.com/squidfunk
+  [@squidfunk on X]: https://x.com/squidfunk

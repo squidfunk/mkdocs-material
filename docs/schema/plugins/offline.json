@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/offline/",
-      "enum": [
-        "offline"
-      ]
+      "const": "offline"
     },
     {
       "type": "object",

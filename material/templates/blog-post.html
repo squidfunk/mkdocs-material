@@ -24,10 +24,17 @@
                 {% for author in page.authors %}
                   <div class="md-profile md-post__profile">
                     <span class="md-author md-author--long">
-                      <img src="{{ author.avatar }}" alt="{{ author.name }}">
+                      <img src="{{ author.avatar | url }}" alt="{{ author.name }}">
                     </span>
                     <span class="md-profile__description">
-                      <strong>{{ author.name }}</strong><br>
+                      <strong>
+                        {% if author.url %}
+                          <a href="{{ author.url }}">{{ author.name }}</a>
+                        {% else %}
+                          {{ author.name }}
+                        {% endif %}
+                      </strong>
+                      <br>
                       {{ author.description }}
                     </span>
                   </div>

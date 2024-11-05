@@ -13,99 +13,71 @@
       "title": "Analytics provider",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
       "type": "object",
-      "properties": {
-        "provider": {
-          "title": "Analytics provider",
-          "anyOf": [
-            {
-              "title": "Google Analytics",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-              "enum": [
-                "google"
-              ]
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "property": {
-          "anyOf": [
-            {
-              "title": "Google Analytics 4",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-              "pattern": "^G-\\w{10}$"
-            },
-            {
-              "title": "Universal Analytics",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-              "pattern": "^UA-\\w{9}-\\w$"
-            },
-            {
-              "title": "Unknown property",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
-              "type": "string"
-            }
-          ]
-        },
-        "feedback": {
-          "title": "Was this page helpful?",
-          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
-          "type": "object",
-          "properties": {
-            "title": {
-              "title": "Feedback widget title",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
-              "type": "string",
-              "default": "Was this page helpful?"
-            },
-            "ratings": {
-              "title": "Feedback ratings",
-              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
-              "type": "array",
-              "items": {
-                "title": "Feedback rating",
-                "type": "object",
-                "properties": {
-                  "icon": {
-                    "$ref": "#/$defs/icon"
-                  },
-                  "name": {
-                    "title": "Feedback rating name",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.name",
-                    "type": "string"
-                  },
-                  "data": {
-                    "title": "Feedback rating data",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.data",
-                    "type": "number"
-                  },
-                  "note": {
-                    "title": "Feedback rating data",
-                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.note",
-                    "type": "string"
-                  }
-                },
-                "additionalProperties": false,
-                "required": [
-                  "icon",
-                  "name",
-                  "data",
-                  "note"
-                ]
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "provider": {
+                "const": "google"
               }
             }
           },
-          "additionalProperties": false,
-          "required": [
-            "title"
-          ]
+          "then": {
+            "properties": {
+              "provider": {
+                "title": "Google Analytics",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
+                "const": "google"
+              },
+              "property": {
+                "anyOf": [
+                  {
+                    "title": "Google Analytics 4",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
+                    "pattern": "^G-\\w{10}$"
+                  },
+                  {
+                    "title": "Unknown property",
+                    "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#google-analytics",
+                    "type": "string"
+                  }
+                ]
+              },
+              "feedback": {
+                "$ref": "#/$defs/feedback"
+              }
+            },
+            "required": [
+              "provider",
+              "property"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provider": {
+                "type": "string"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "title": "Custom analytics provider",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#custom-site-analytics",
+                "type": "string"
+              },
+              "feedback": {
+                "$ref": "#/$defs/feedback"
+              }
+            },
+            "required": [
+              "provider"
+            ]
+          }
         }
-      },
-      "additionalProperties": false,
-      "required": [
-        "provider",
-        "property"
       ],
       "defaultSnippets": [
         {
@@ -213,21 +185,15 @@
             "oneOf": [
               {
                 "title": "Button to accept cookies",
-                "enum": [
-                  "accept"
-                ]
+                "const": "accept"
               },
               {
                 "title": "Button to reject cookies",
-                "enum": [
-                  "reject"
-                ]
+                "const": "reject"
               },
               {
                 "title": "Button to manage settings",
-                "enum": [
-                  "manage"
-                ]
+                "const": "manage"
               }
             ]
           },
@@ -334,9 +300,7 @@
         "provider": {
           "title": "Versioning provider",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-versioning/#versioning",
-          "enum": [
-            "mike"
-          ]
+          "const": "mike"
         },
         "default": {
           "title": "Default version",
@@ -353,6 +317,12 @@
             }
           ],
           "default": "stable"
+        },
+        "alias": {
+          "title": "Show alias next to version number",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-versioning/#version-alias",
+          "type": "boolean",
+          "default": true
         }
       }
     },
@@ -406,6 +376,59 @@
           "type": "string"
         }
       ]
+    },
+    "feedback": {
+      "title": "Was this page helpful?",
+      "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Feedback widget title",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
+          "type": "string",
+          "default": "Was this page helpful?"
+        },
+        "ratings": {
+          "title": "Feedback ratings",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#was-this-page-helpful",
+          "type": "array",
+          "items": {
+            "title": "Feedback rating",
+            "type": "object",
+            "properties": {
+              "icon": {
+                "$ref": "#/$defs/icon"
+              },
+              "name": {
+                "title": "Feedback rating name",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.name",
+                "type": "string"
+              },
+              "data": {
+                "title": "Feedback rating data",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.data",
+                "type": "number"
+              },
+              "note": {
+                "title": "Feedback rating data",
+                "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-analytics/#+analytics.feedback.ratings.note",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false,
+            "required": [
+              "icon",
+              "name",
+              "data",
+              "note"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ]
     }
   },
   "defaultSnippets": [
@@ -414,7 +437,7 @@
       "body": {
         "analytics": {
           "provider": "${1:google}",
-          "property": "${2:UA-XXXXXXXX-X}"
+          "property": "${2:G-XXXXXXXXXX}"
         }
       }
     }

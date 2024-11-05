@@ -71,15 +71,18 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be
-    prefixed by a `.`. Similarly, the copy button can also be disabled for a
-    specific code block:
+    Note that there must be a language shortcode, which has to come first and
+    must also be prefixed by a `.`. Similarly, the copy button can also be
+    disabled for a specific code block:
 
     ```` { .yaml .no-copy }
     ``` { .yaml .no-copy }
     # Code block content
     ```
     ````
+
+    To enable or disable the copy button without syntax highlighting, you can
+    use the `.text` language shortcode, which doesn't highlight anything.
 
 ### Code selection button
 

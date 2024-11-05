@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/oprypin/mkdocs-literate-nav",
-      "enum": [
-        "literate-nav"
-      ]
+      "const": "literate-nav"
     },
     {
       "type": "object",

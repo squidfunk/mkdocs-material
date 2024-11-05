@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -44,12 +44,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
@@ -72,12 +72,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
@@ -98,7 +98,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -164,7 +164,7 @@ jobs:
             latest=${{ github.event.release.prerelease == false }}
 
       - name: Build Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           load: true
@@ -185,7 +185,7 @@ jobs:
           echo "PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7" >> $GITHUB_ENV
 
       - name: Publish Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           platforms: ${{ env.PLATFORMS }}

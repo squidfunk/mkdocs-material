@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -69,7 +69,7 @@ let sequence = 0
  */
 function fetchScripts(): Observable<void> {
   return typeof mermaid === "undefined" || mermaid instanceof Element
-    ? watchScript("https://unpkg.com/mermaid@9.4.3/dist/mermaid.min.js")
+    ? watchScript("https://unpkg.com/mermaid@11/dist/mermaid.min.js")
     : of(undefined)
 }
 
@@ -104,7 +104,7 @@ export function mountMermaid(
     )
 
   /* Render diagram */
-  mermaid$.subscribe(() => {
+  mermaid$.subscribe(async () => {
     el.classList.add("mermaid") // Hack: mitigate https://bit.ly/3CiN6Du
     const id = `__mermaid_${sequence++}`
 
@@ -113,16 +113,15 @@ export function mountMermaid(
     const text = el.textContent
 
     /* Render and inject diagram */
-    mermaid.mermaidAPI.render(id, text, (svg: string, fn: Function) => {
+    const { svg, fn } = await mermaid.render(id, text)
 
-      /* Create a shadow root and inject diagram */
-      const shadow = host.attachShadow({ mode: "closed" })
-      shadow.innerHTML = svg
+    /* Create a shadow root and inject diagram */
+    const shadow = host.attachShadow({ mode: "closed" })
+    shadow.innerHTML = svg
 
-      /* Replace code block with diagram and bind functions */
-      el.replaceWith(host)
-      fn?.(shadow)
-    })
+    /* Replace code block with diagram and bind functions */
+    el.replaceWith(host)
+    fn?.(shadow)
   })
 
   /* Create and return component */

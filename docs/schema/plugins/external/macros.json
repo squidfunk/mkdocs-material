@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/fralau/mkdocs_macros_plugin",
-      "enum": [
-        "macros"
-      ]
+      "const": "macros"
     },
     {
       "type": "object",

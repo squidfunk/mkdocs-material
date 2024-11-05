@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/typeset/",
-      "enum": [
-        "typeset"
-      ]
+      "const": "typeset"
     },
     {
       "type": "object",

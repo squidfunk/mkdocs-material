@@ -2,6 +2,305 @@
 
 ## Material for MkDocs
 
+### 9.5.43 <small>October 31, 2024</small> { id="9.5.43" }
+
+- Added support for external images in SVGs in privacy plugin
+- Fixed #7651: Privacy plugin doesn't handle quoted URLs in CSS
+
+### 9.5.42 <small>October 20, 2024</small> { id="9.5.42" }
+
+- Fixed #7625: Invalid encoding of boolean attributes in privacy plugin
+- Fixed #7624: Crash when disabling privacy plugin (9.5.41 regression)
+
+### 9.5.41 <small>October 15, 2024</small> { id="9.5.41" }
+
+- Fixed #7619: Improved tooltip on logo disappears after instant navigation
+- Fixed #7616: Race condition in built-in privacy plugin when inlining assets
+- Fixed #7615: Comments and "Was this page helpful?" visible when printing
+
+### 9.5.40 <small>October 10, 2024</small> { id="9.5.40" }
+
+- Updated Latvian translations
+- Fixed #7597: Social cards not using site name on home page
+
+### 9.5.39 <small>September 29, 2024</small> { id="9.5.39" }
+
+- Fixed #7226: not staying on page when using mike's canonical versioning
+
+### 9.5.38 <small>September 26, 2024</small> { id="9.5.38" }
+
+- Added Albanian translations
+
+### 9.5.37 <small>September 25, 2024</small> { id="9.5.37" }
+
+- Added 4th and 5th level ordered list styles
+- Fixed #7548: Tags have no spacing in search
+
+### 9.5.36 <small>September 21, 2024</small> { id="9.5.36" }
+
+- Fixed #7544: Social cards incorrectly rendering HTML entities
+- Fixed #7542: Improved support for setting custom list styles
+
+### 9.5.35 <small>September 18, 2024</small> { id="9.5.35" }
+
+- Fixed #7498: Search not showing for Vietnamese language
+
+### 9.5.34 <small>August 31, 2024</small> { id="9.5.34" }
+
+- Updated Mermaid.js to version 11 (latest)
+
+### 9.5.33 <small>August 23, 2024</small> { id="9.5.33" }
+
+- Fixed #7453: Incorrect position of tooltip when sorting table
+
+### 9.5.32 <small>August 19, 2024</small> { id="9.5.32" }
+
+- Fixed RXSS vulnerability via deep link in search results
+- Added support for fetching latest release from GitLab
+
+### 9.5.31 <small>August 2, 2024</small> { id="9.5.31" }
+
+- Fixed #7405: DockerHub missing images > 9.5.27 due to change in Alpine/APK
+
+### 9.5.30 <small>July 23, 2024</small> { id="9.5.30" }
+
+- Fixed #7380: Navigation icons disappearing on hover in Safari
+- Fixed #7367: Blog readtime computation includes SVG text content
+
+### 9.5.29 <small>July 14, 2024</small> { id="9.5.29" }
+
+- Updated Galician translations
+- Fixed #7362: Annotations in figure captions rendering incorrectly
+
+### 9.5.28 <small>July 2, 2024</small> { id="9.5.28" }
+
+- Fixed #7313: Improved tooltips mounted in sidebar when feature is disabled
+
+### 9.5.27 <small>June 16, 2024</small> { id="9.5.27" }
+
+- Updated Estonian translations
+
+### 9.5.26 <small>June 6, 2024</small> { id="9.5.26" }
+
+- Fixed #7232: Tab switches on scroll when linking tabs (9.5.19 regression)
+- Fixed #7230: Blog author avatar broken when referring to local file
+
+### 9.5.25 <small>May 27, 2024</small> { id="9.5.25" }
+
+- Fixed #7209: Tags plugin crashing on numeric tags
+
+### 9.5.24 <small>May 20, 2024</small> { id="9.5.24" }
+
+- Fixed #7187: Version selector title rendering issue
+
+### 9.5.23 <small>May 15, 2024</small> { id="9.5.23" }
+
+- Fixed #7183: Edge case in anchor navigation when using instant navigation
+- Fixed #6436: Version selector not showing version alias
+
+### 9.5.22 <small>May 12, 2024</small> { id="9.5.22" }
+
+- Fixed #7170: Copy button adds empty lines for line spans (9.5.18 regression)
+- Fixed #7160: Version switching doesn't stay on page (9.5.5 regression)
+- Fixed #5619: Links in Mermaid.js diagrams not discernible
+
+### 9.5.21 <small>May 3, 2024</small> { id="9.5.21" }
+
+- Fixed #7133: Ensure latest version of Mermaid.js is used
+- Fixed #7125: Added warning for dotfiles in info plugin
+
+### 9.5.20 <small>April 29, 2024</small> { id="9.5.20" }
+
+- Fixed deprecation warning in privacy plugin (9.5.19 regression)
+- Fixed #7119: Tags plugin emits deprecation warning (9.5.19 regression)
+- Fixed #7118: Social plugin crashes if fonts are disabled (9.5.19 regression)
+- Fixed #7085: Social plugin crashes on Windows when downloading fonts
+
+### 9.5.19 <small>April 25, 2024</small> { id="9.5.19" }
+
+- Updated MkDocs to 1.6 and limited version to < 2
+- Updated Docker image to latest Alpine Linux
+- Removed `setup.py`, now that GitHub fully understands `pyproject.toml`
+- Improved interop of social plugin with third-party MkDocs themes
+- Fixed #7099: Blog reading time not rendered correctly for Japanese
+- Fixed #7097: Improved resilience of tags plugin when no tags are given
+- Fixed #7090: Active tab indicator in nested content tabs rendering bug
+
+### 9.5.18 <small>April 16, 2024</small> { id="9.5.18" }
+
+- Refactored tooltips implementation to fix positioning issues
+- Fixed #7044: Rendering glitch when hovering contributor avatar in Chrome
+- Fixed #7043: Highlighted lines in code blocks cutoff on mobile
+- Fixed #6910: Incorrect position of tooltip for page status in sidebar
+- Fixed #6760: Incorrect position and overly long tooltip in tables
+- Fixed #6488: Incorrect position and cutoff tooltip in content tabs
+
+### 9.5.17 <small>April 2, 2024</small> { id="9.5.17" }
+
+- Updated Serbian translations
+- Fixed #7003: Confusing keyboard interaction for palette toggle
+- Fixed #7001: Blog posts now show time by default (9.5.16 regression)
+- Fixed edge case in backport of social plugin font loading logic
+
+### 9.5.16 <small>March 31, 2024</small> { id="9.5.16" }
+
+- Updated Russian translations
+- Improved error handling and reporting in social plugin
+- Improved error handling and reporting in privacy plugin
+- Fixed blog plugin not allowing to use time in format strings
+- Fixed #6983: Social plugin crashes because of Google Fonts API change
+
+### 9.5.15 <small>March 23, 2024</small> { id="9.5.15" }
+
+- Reverted fix for transparent iframes (9.5.14)
+- Fixed #6929: Interference of social plugin and auto dark mode
+- Fixed #6938: Giscus shows dark background in light mode (9.5.14 regression)
+
+### 9.5.14 <small>March 18, 2024</small> { id="9.5.14" }
+
+- Added support for hiding versions from selector when using mike
+- Added init system to improve signal handling in Docker image
+- Fixed edge cases in exclusion logic of info plugin
+- Fixed inability to reset pipeline in search plugin
+- Fixed syntax error in Finnish translations
+- Fixed #6917: UTF-8 encoding problems in blog plugin on Windows
+- Fixed #6889: Transparent iframes get background color
+
+### 9.5.13 <small>March 6, 2024</small> { id="9.5.13" }
+
+- Updated Slovak translations
+- Improved info plugin interop with projects plugin
+- Improved info plugin inclusion/exclusion logic
+- Fixed info plugin not gathering files recursively
+- Fixed #6750: Ensure info plugin packs up all necessary files
+
+### 9.5.12 <small>February 29, 2024</small> { id="9.5.12" }
+
+- Fixed #6846: Some meta tags removed on instant navigation (9.4.2 regression)
+- Fixed #6823: KaTex not rendering on instant navigation (9.5.5 regression)
+- Fixed #6821: Privacy plugin doesn't handle URLs with encoded characters
+
+### 9.5.11 <small>February 24, 2024</small> { id="9.5.11" }
+
+- Updated Finnish translation
+
+### 9.5.10 <small>February 19, 2024</small> { id="9.5.10" }
+
+- Updated Bahasa Malaysia translations
+- Fixed #6783: Hide continue reading link for blog posts without separators
+- Fixed #6779: Incorrect positioning of integrated table of contents
+
+### 9.5.9 <small>February 10, 2024</small> { id="9.5.9" }
+
+- Fixed navigation pruning with tabs and sections enabled
+
+### 9.5.8 <small>February 7, 2024</small> { id="9.5.8" }
+
+- Added Tamil translations
+- Updated Esperanto translations
+- Fixed relative images not being resolved for instant navigation
+
+### 9.5.7 <small>February 3, 2024</small> { id="9.5.7" }
+
+- Fixed #6731: Small images in figures are not centered
+- Fixed #6719: Instant navigation breaks table of contents (9.5.5 regression)
+
+### 9.5.6 <small>January 28, 2024</small> { id="9.5.6" }
+
+- Fixed #6700: Missing styles for Mermaid.js labels with Markdown
+
+### 9.5.5 <small>January 24, 2024</small> { id="9.5.5" }
+
+- Updated Tagalog translations
+- Updated Pillow to 10.2 to mitigate security vulnerabilities
+- Improved resilience of instant navigation
+- Fixed #6687: Updated Mermaid.js to version 10.7.0 (latest)
+- Fixed #6652: Keyboard events in custom elements captured
+- Fixed #6582: Instant navigation doesn't correctly handle alternate URLs
+- Fixed #6565: Instant navigation doesn't allow for `onclick` handlers
+- Fixed #6345: Instant navigation sometimes breaks browser back button
+- Fixed #6334: Instant navigation doesn't correctly position anchors (Safari)
+- Fixed #6275: Instant navigation doesn't correctly resolve after 404
+- Fixed #6102: Instant navigation reloads page on same link navigation
+
+### 9.5.4 <small>January 15, 2024</small> { id="9.5.4" }
+
+- Fixed #6645: Local storage with invalid value can break site
+- Fixed #6635: Tags icons before default ignored if default is set
+
+### 9.5.3 <small>December 23, 2023</small> { id="9.5.3" }
+
+- Limited version range of MkDocs to < 1.6
+- Updated Macedonian translations
+- Fixed #6520: Group plugin crashes when using mike
+- Fixed #6494: Hide author's email address if disabled in git-authors plugin
+
+### 9.5.2 <small>December 11, 2023</small> { id="9.5.2" }
+
+- Fixed types for `slugify` settings in blog plugin config
+- Fixed #6469: Horizontal scrollbars on MathJax containers
+
+### 9.5.1 <small>December 8, 2023</small> { id="9.5.1" }
+
+- Updated Greek translations
+- Fixed #6464: Privacy plugin cannot be enabled
+- Fixed #6461: Sorting blog posts ignores time component in date
+
+### 9.5.0 <small>December 7, 2023</small> { id="9.5.0" }
+
+Merged Insiders features of 'Goat's Horn' funding goal
+
+- Added privacy plugin: automatic downloading of external assets
+- Added support for card grids and grid layouts
+- Added support for improved tooltips
+- Added support for content tabs anchor links (deep linking)
+- Added support for automatic dark/light mode
+- Added support for document contributors
+
+### 9.4.14 <small>November 26, 2023</small> { id="9.4.14" }
+
+- Added support for linking authors in blog posts
+
+### 9.4.13 <small>November 26, 2023</small> { id="9.4.13" }
+
+- Fixed #6365: Blog plugin pagination links to previous pages broken
+- Fixed #5758: Updated Mermaid.js to version 10.6.1 (latest)
+
+### 9.4.12 <small>November 24, 2023</small> { id="9.4.12" }
+
+- Improved blog plugin to generate Unicode-aware slugs by default
+- Fixed non-deterministic order of categories in blog plugin
+
+### 9.4.11 <small>November 23, 2023</small> { id="9.4.11" }
+
+- Fixed #6364: Search plugin crashing when enabling theme while serving
+- Fixed blog plugin crashing when disabling pagination
+
+### 9.4.10 <small>November 19, 2023</small> { id="9.4.10" }
+
+- Fixed #6356: Version selector can't be disabled via mike's configuration
+- Fixed #6281: Navigation not rendering due to Safari bug (9.4.2 regression)
+- Fixed #6261: Navigation expansion animates on first load (9.4.2 regression)
+
+### 9.4.9 <small>November 17, 2023</small> { id="9.4.9" }
+
+- Fixed #6344: Long entries cutoff in table of contents
+- Fixed #6336: Custom template for glob archive not working with pagination
+- Fixed #6328: Blog plugin crashes for locales with dashes, e.g. `pt-BR`
+- Fixed #6327: Copy-to-clipboard button doesn't trim trailing line feed
+- Fixed #6302: Version strings not matched when using mike, only aliases
+- Fixed instant navigation progress indicator for gzipped content in Chrome
+- Fixed rendering bug on details marker rotation in Firefox
+
+### 9.4.8 <small>November 5, 2023</small> { id="9.4.8" }
+
+- Fixed invalid local address replacement when using instant loading
+- Fixed #6275: Crash after navigation caused 404 when using instant loading
+
+### 9.4.7 <small>October 27, 2023</small> { id="9.4.7" }
+
+- Added Azerbaijani translations
+
 ### 9.4.6 <small>October 14, 2023</small> { id="9.4.6" }
 
 - Updated Danish and Norwegian (Nynorsk) translations
@@ -469,7 +768,7 @@ __Fixes__
 
 ### 8.5.11 <small>November 30, 2022</small> { id="8.5.11" }
 
-- Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+- Let it snow, see https://x.com/squidfunk/status/1597939243090788352
 
 ### 8.5.10 <small>November 11, 2022</small> { id="8.5.10" }
 
@@ -839,7 +1138,7 @@ __Fixes__
 - Removed deprecated prebuilt search index support
 - Removed deprecated web app manifest – use customization
 - Removed `extracopyright` variable – use new `copyright` partial
-- Removed Disqus integation – use customization
+- Removed Disqus integration – use customization
 - Switched to `:is()` selectors for simple selector lists
 - Switched autoprefixer from `last 4 years` to `last 2 years`
 - Improved CSS overall to match modern standards

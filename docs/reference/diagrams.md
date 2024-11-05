@@ -9,7 +9,7 @@ different technical components, and are a great addition to project
 documentation. Material for MkDocs integrates with [Mermaid.js], a very
 popular and flexible solution for drawing diagrams.
 
-  [Mermaid.js]: https://mermaid-js.github.io/mermaid/
+  [Mermaid.js]: https://mermaid.js.org/
 
 ## Configuration
 
@@ -78,7 +78,7 @@ graph LR
 
 </div>
 
-  [Flowcharts]: https://mermaid-js.github.io/mermaid/#/flowchart
+  [Flowcharts]: https://mermaid.js.org/syntax/flowchart.html
 
 ### Using sequence diagrams
 
@@ -118,7 +118,7 @@ sequenceDiagram
 
 </div>
 
-  [Sequence diagrams]: https://mermaid-js.github.io/mermaid/#/sequenceDiagram
+  [Sequence diagrams]: https://mermaid.js.org/syntax/sequenceDiagram.html
 
 ### Using state diagrams
 
@@ -160,11 +160,11 @@ stateDiagram-v2
 
 </div>
 
-  [State diagrams]: https://mermaid-js.github.io/mermaid/#/stateDiagram
+  [State diagrams]: https://mermaid.js.org/syntax/stateDiagram.html
 
 ### Using class diagrams
 
-[Class diagrams] are central to object oriented programing, describing the
+[Class diagrams] are central to object oriented programming, describing the
 structure of a system by modelling entities as classes and relationships between
 them:
 
@@ -232,7 +232,7 @@ classDiagram
 
 </div>
 
-  [Class diagrams]: https://mermaid-js.github.io/mermaid/#/classDiagram
+  [Class diagrams]: https://mermaid.js.org/syntax/classDiagram.html
 
 ### Using entity-relationship diagrams
 
@@ -268,7 +268,7 @@ erDiagram
 
 </div>
 
-  [entity-relationship diagram]: https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram
+  [entity-relationship diagram]: https://mermaid.js.org/syntax/entityRelationshipDiagram.html
 
 ### Other diagram types
 
@@ -278,8 +278,8 @@ Besides the diagram types listed above, [Mermaid.js] provides support for
 for MkDocs. Those diagrams should still work as advertised by [Mermaid.js], but
 we don't consider them a good choice, mostly as they don't work well on mobile.
 
-  [pie charts]: https://mermaid-js.github.io/mermaid/#/pie
-  [gantt charts]: https://mermaid-js.github.io/mermaid/#/gantt
-  [user journeys]: https://mermaid-js.github.io/mermaid/#/user-journey
-  [git graphs]: https://mermaid-js.github.io/mermaid/#/gitgraph
-  [requirement diagrams]: https://mermaid-js.github.io/mermaid/#/requirementDiagram
+  [pie charts]: https://mermaid.js.org/syntax/pie.html
+  [gantt charts]: https://mermaid.js.org/syntax/gantt.html
+  [user journeys]: https://mermaid.js.org/syntax/userJourney.html
+  [git graphs]: https://mermaid.js.org/syntax/gitgraph.html
+  [requirement diagrams]: https://mermaid.js.org/syntax/requirementDiagram.html

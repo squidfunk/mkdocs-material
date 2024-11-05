@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -22,9 +22,14 @@
 
 import { Observable, merge } from "rxjs"
 
+import { feature } from "~/_"
 import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
+import {
+  Tooltip,
+  mountInlineTooltip2
+} from "../../tooltip2"
 import {
   Annotation,
   mountAnnotationBlock
@@ -64,6 +69,7 @@ export type Content =
   | DataTable
   | Details
   | Mermaid
+  | Tooltip
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -120,6 +126,11 @@ export function mountContent(
 
     /* Content tabs */
     ...getElements("[data-tabs]", el)
-      .map(child => mountContentTabs(child, { viewport$ }))
+      .map(child => mountContentTabs(child, { viewport$, target$ })),
+
+    /* Tooltips */
+    ...getElements("[title]", el)
+      .filter(() => feature("content.tooltips"))
+      .map(child => mountInlineTooltip2(child, { viewport$ }))
   )
 }

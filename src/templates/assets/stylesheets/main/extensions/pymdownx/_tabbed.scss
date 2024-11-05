@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -95,9 +95,9 @@
     display: flex;
     max-width: 100%;
     overflow: auto;
+    scrollbar-width: none;             // Firefox
     box-shadow: 0 px2rem(-1px) var(--md-default-fg-color--lightest) inset;
     -ms-overflow-style: none;          // IE, Edge
-    scrollbar-width: none;             // Firefox
 
     // [print]: Move one layer up for ordering
     @media print {
@@ -146,12 +146,12 @@
       color: var(--md-default-fg-color--light);
       white-space: nowrap;
       cursor: pointer;
+      scroll-margin-inline-start: px2rem(20px);
       border-bottom: px2rem(2px) solid transparent;
       border-radius: px2rem(2px) px2rem(2px) 0 0;
       transition:
         background-color 250ms,
         color            250ms;
-      scroll-margin-inline-start: px2rem(20px);
 
       // [print]: Intersperse labels with containers
       @media print {
@@ -167,6 +167,23 @@
       // Tab label on hover
       &:hover {
         color: var(--md-default-fg-color);
+      }
+
+      // Tab label anchor link
+      > [href]:first-child {
+        color: inherit;
+      }
+    }
+
+    // Tab label with anchor link
+    &--linked > label {
+      padding: 0;
+
+      // Move padding one level down to anchor link, so the whole tab area
+      // becomes clickable, not only the text.
+      > a {
+        display: block;
+        padding: px2em(10px, 12.8px) 1.25em px2em(8px, 12.8px);
       }
     }
   }
@@ -279,13 +296,13 @@
       height: 100%;
       content: "";
       background-color: currentcolor;
+      mask-image: var(--md-tabbed-icon--prev);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
       transition:
         background-color 250ms,
         transform        250ms;
-      mask-image: var(--md-tabbed-icon--prev);
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: contain;
     }
   }
 

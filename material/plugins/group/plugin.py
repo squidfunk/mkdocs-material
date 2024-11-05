@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -38,6 +38,14 @@ from .config import GroupConfig
 class GroupPlugin(BasePlugin[GroupConfig]):
     supports_multiple_instances = True
 
+    # Initialize plugin
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Initialize object attributes
+        self.is_serve = False
+        self.is_dirty = False
+
     # Determine whether we're serving the site
     def on_startup(self, *, command, dirty):
         self.is_serve = command == "serve"
@@ -53,8 +61,8 @@ class GroupPlugin(BasePlugin[GroupConfig]):
     # little hacky, but has huge potential making plugin configuration easier.
     # There's one little caveat: the `__init__` and `on_startup` methods of the
     # plugins that are part of the group are called after all other plugins, so
-    # the `event_priority` decorator for `on_startup` events and is effectively
-    # useless. However, the `on_startup` event is only intended to set up the
+    # the `event_priority` decorator for `on_startup` methods is effectively
+    # useless. However, the `on_startup` method is only intended to set up the
     # plugin and doesn't receive anything else than the invoked command and
     # whether we're running a dirty build, so there should be no problems.
     @event_priority(150)

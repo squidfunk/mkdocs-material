@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -149,8 +149,8 @@
       vertical-align: text-top;
       content: "";
       background-color: currentcolor;
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
     }
 
@@ -177,6 +177,38 @@
     // Repository fact: repositories
     &--repositories::before {
       mask-image: var(--md-source-repositories-icon);
+    }
+  }
+}
+
+// Source file information
+.md-source-file {
+  margin: 1em 0;
+
+  // Source file information fact
+  &__fact {
+    display: inline-flex;
+    gap: px2rem(6px);
+    align-items: center;
+    margin-inline-end: px2rem(12px);
+    font-size: px2rem(13.6px);
+    color: var(--md-default-fg-color--light);
+
+    // Adjust vertical spacing
+    .md-icon {
+      flex-shrink: 0;
+      margin-bottom: px2rem(1px);
+    }
+
+    // Author
+    .md-author {
+      float: inline-start;
+      margin-right: px2rem(4px);
+    }
+
+    // Adjust size of icon
+    svg {
+      width: px2rem(18px);
     }
   }
 }

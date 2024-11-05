@@ -5,7 +5,7 @@ philosophy behind the project, in order to make sure it aligns with your goals.
 This page explains the design principles anchored in Material for MkDocs, and
 discusses the [conventions] used in this documentation.
 
-  [conventions]: #conventions
+  [conventions]: conventions.md
 
 ## Design principles
 
@@ -30,6 +30,6 @@ discusses the [conventions] used in this documentation.
   documentation with touch devices, keyboard, and screen readers. Semantic
   markup ensures that your documentation works for everyone.
 
-- __Open Source__: Trust 20,000+ users – choose a mature and well-funded
+- __Open Source__: Trust 45,000+ users – choose a mature and well-funded
   solution built with state-of-the-art Open Source technologies. Keep ownership
   of your content without fear of vendor lock-in. Licensed under MIT.

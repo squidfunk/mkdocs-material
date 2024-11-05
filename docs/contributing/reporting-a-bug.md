@@ -66,7 +66,7 @@ problems.__
   [hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
   [extra_css]: https://www.mkdocs.org/user-guide/configuration/#extra_css
   [extra_javascript]: https://www.mkdocs.org/user-guide/configuration/#extra_javascript
-  [discussion board]: https://github.com/squidfunk/mkdocs-material/issues
+  [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
   [StackOverflow]: https://stackoverflow.com
   [that our documentation explicitly mentions]: ?q="extends+base"
 

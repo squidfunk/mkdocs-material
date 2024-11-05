@@ -43,7 +43,7 @@ the default slug function works. Consider using a [Unicode-aware slug function].
 
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
-  [Unicode-aware slug function]: extensions/python-markdown.md#toc-slugify
+  [Unicode-aware slug function]: extensions/python-markdown.md#+toc.slugify
   [add a new language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=04-add-a-translation.yml&title=Add+translations+for+...
 
 ### Site language selector
@@ -96,6 +96,38 @@ The following properties are available for each alternate language:
   [site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [ISO 639-1 language code]: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
   [Language selector preview]: ../assets/screenshots/language-selection.png
+
+#### Stay on page
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.47.0 -->
+<!-- md:flag experimental -->
+
+[Insiders] improves the user experience when switching between languages, e.g.,
+if language `en` and `de` contain a page with the same path name, the user will
+stay on the current page:
+
+=== "Insiders"
+
+    ```
+    docs.example.com/en/     -> docs.example.com/de/
+    docs.example.com/en/foo/ -> docs.example.com/de/foo/
+    docs.example.com/en/bar/ -> docs.example.com/de/bar/
+    ```
+
+=== "Material for MkDocs"
+
+    ```
+    docs.example.com/en/     -> docs.example.com/de/
+    docs.example.com/en/foo/ -> docs.example.com/de/
+    docs.example.com/en/bar/ -> docs.example.com/de/
+    ```
+
+No configuration is necessary. We're working hard on improving multi-language
+support in 2024, including making switching between languages even more seamless
+in the future.
+
+  [Insiders]: ../insiders/index.md
 
 ### Directionality
 

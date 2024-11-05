@@ -7,7 +7,7 @@
       <nav class="md-post__authors md-typeset">
         {% for author in post.authors %}
           <span class="md-author">
-            <img src="{{ author.avatar }}" alt="{{ author.name }}">
+            <img src="{{ author.avatar | url }}" alt="{{ author.name }}">
           </span>
         {% endfor %}
       </nav>
@@ -51,10 +51,12 @@
   </header>
   <div class="md-post__content md-typeset">
     {{ post.content }}
-    <nav class="md-post__action">
-      <a href="{{ post.url | url }}">
-        {{ lang.t("blog.continue") }}
-      </a>
-    </nav>
+    {% if post.more %}
+      <nav class="md-post__action">
+        <a href="{{ post.url | url }}">
+          {{ lang.t("blog.continue") }}
+        </a>
+      </nav>
+    {% endif %}
   </div>
 </article>

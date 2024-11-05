@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -132,7 +132,7 @@ export function watchTableOfContents(
   const table = new Map<HTMLAnchorElement, HTMLElement>()
 
   /* Compute anchor-to-target mapping */
-  const anchors = getElements<HTMLAnchorElement>("[href^=\\#]", el)
+  const anchors = getElements<HTMLAnchorElement>(".md-nav__link", el)
   for (const anchor of anchors) {
     const id = decodeURIComponent(anchor.hash.substring(1))
     const target = getOptionalElement(`[id="${id}"]`)

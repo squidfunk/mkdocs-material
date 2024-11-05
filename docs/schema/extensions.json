@@ -4,15 +4,39 @@
   "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/",
   "type": "array",
   "items": {
-    "oneOf": [
+    "anyOf": [
       {
-        "$ref": "extensions/markdown.json"
+        "$ref": "#/$defs/external"
       },
       {
-        "$ref": "extensions/pymdownx.json"
+        "$ref": "#/$defs/external-community"
       }
     ]
   },
   "uniqueItems": true,
-  "minItems": 1
+  "minItems": 1,
+  "$defs": {
+    "external": {
+      "description": "External markdown extensions, schema provided by us",
+      "anyOf": [
+        {
+          "$ref": "extensions/markdown.json"
+        },
+        {
+          "$ref": "extensions/pymdownx.json"
+        }
+      ]
+    },
+    "external-community": {
+      "description": "External markdown extensions, schema provided by our community",
+      "anyOf": [
+        {
+          "$ref": "https://raw.githubusercontent.com/Neoteroi/mkdocs-plugins/main/docs/extensions-schema.json"
+        },
+        {
+          "$ref": "https://raw.githubusercontent.com/mikitex70/plantuml-markdown/master/plantuml_markdown.json"
+        }
+      ]
+    }
+  }
 }

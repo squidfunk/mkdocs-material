@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -124,7 +124,7 @@ def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files):
 # -----------------------------------------------------------------------------
 
 # Map ISO 639-1 (languages) to ISO 3166 (countries)
-countries = dict({
+countries = {
     "af": "za",
     "az": "az",
     "ar": "ae",
@@ -175,6 +175,7 @@ countries = dict({
     "ru": "ru",
     "sa": "in",
     "sh": "rs",
+    "sq": "al",
     "si": "lk",
     "sk": "sk",
     "sl": "si",
@@ -182,6 +183,7 @@ countries = dict({
     "sv": "se",
     "te": "in",
     "th": "th",
+    "ta": "in",
     "tl": "ph",
     "tr": "tr",
     "uk": "ua",
@@ -191,4 +193,4 @@ countries = dict({
     "zh": "cn",
     "zh-Hant": "cn",
     "zh-TW": "tw"
-})
+}

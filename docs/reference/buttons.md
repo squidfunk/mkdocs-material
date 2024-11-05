@@ -44,7 +44,7 @@ In order to render a link as a button, suffix it with curly braces and add the
 </div>
 
   [primary color]: ../setup/changing-the-colors.md#primary-color
-  [accent color]: ../setup/changing-the-colors.md#accent-color 
+  [accent color]: ../setup/changing-the-colors.md#accent-color
   [Demo]: javascript:alert$.next("Demo")
 
 ### Adding primary buttons

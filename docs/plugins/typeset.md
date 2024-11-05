@@ -10,6 +10,13 @@ headlines within the navigation and table of contents. This means that code
 blocks, icons, emojis and any other inline formatting can be rendered exactly
 as defined in the page's content.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
+  [our awesome sponsors]: ../insiders/index.md
+
 ## Objective
 
 ### How it works

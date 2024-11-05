@@ -104,6 +104,7 @@ export function transformStyle(
       "node_modules/material-design-color",
       "node_modules/material-shadows"
     ],
+    silenceDeprecations: ["global-builtin", "import"],
     sourceMap: true
   })))
     .pipe(

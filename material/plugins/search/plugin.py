@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -47,6 +47,7 @@ class SearchPlugin(BasePlugin[SearchConfig]):
         super().__init__(*args, **kwargs)
 
         # Initialize incremental builds
+        self.is_dirty = False
         self.is_dirtyreload = False
 
         # Initialize search index cache
@@ -74,7 +75,7 @@ class SearchPlugin(BasePlugin[SearchConfig]):
             )
 
         # Retrieve default value for pipeline
-        if not self.config.pipeline:
+        if self.config.pipeline is None:
             self.config.pipeline = list(filter(len, re.split(
                 r"\s*,\s*", self._translate(config, "search.config.pipeline")
             )))
@@ -163,7 +164,7 @@ class SearchIndex:
 
     # Add page to search index
     def add_entry_from_context(self, page):
-        search = page.meta.get("search", {})
+        search = page.meta.get("search") or {}
         if search.get("exclude"):
             return
 
@@ -217,7 +218,7 @@ class SearchIndex:
                     entry["tags"].append(name)
 
         # Set document boost
-        search = page.meta.get("search", {})
+        search = page.meta.get("search") or {}
         if "boost" in search:
             entry["boost"] = search["boost"]
 
@@ -311,9 +312,9 @@ class Element:
     """
 
     # Initialize HTML element
-    def __init__(self, tag, attrs = {}):
+    def __init__(self, tag, attrs = None):
         self.tag   = tag
-        self.attrs = attrs
+        self.attrs = attrs or {}
 
     # String representation
     def __repr__(self):
@@ -449,16 +450,15 @@ class Parser(HTMLParser):
                 return
 
         # Render opening tag if kept
-        if not self.skip.intersection(self.context):
-            if tag in self.keep:
+        if not self.skip.intersection(self.context) and tag in self.keep:
 
-                # Check whether we're inside the section title
-                data = self.section.text
-                if self.section.el in self.context:
-                    data = self.section.title
+            # Check whether we're inside the section title
+            data = self.section.text
+            if self.section.el in self.context:
+                data = self.section.title
 
-                # Append to section title or text
-                data.append(f"<{tag}>")
+            # Append to section title or text
+            data.append(f"<{tag}>")
 
     # Called at the end of every HTML tag
     def handle_endtag(self, tag):
@@ -487,29 +487,28 @@ class Parser(HTMLParser):
             return
 
         # Render closing tag if kept
-        if not self.skip.intersection(self.context):
-            if tag in self.keep:
+        if not self.skip.intersection(self.context) and tag in self.keep:
 
-                # Check whether we're inside the section title
-                data = self.section.text
-                if self.section.el in self.context:
-                    data = self.section.title
+            # Check whether we're inside the section title
+            data = self.section.text
+            if self.section.el in self.context:
+                data = self.section.title
 
-                # Search for corresponding opening tag
-                index = data.index(f"<{tag}>")
-                for i in range(index + 1, len(data)):
-                    if not data[i].isspace():
-                        index = len(data)
-                        break
+            # Search for corresponding opening tag
+            index = data.index(f"<{tag}>")
+            for i in range(index + 1, len(data)):
+                if not data[i].isspace():
+                    index = len(data)
+                    break
 
-                # Remove element if empty (or only whitespace)
-                if len(data) > index:
-                    while len(data) > index:
-                        data.pop()
+            # Remove element if empty (or only whitespace)
+            if len(data) > index:
+                while len(data) > index:
+                    data.pop()
 
-                # Append to section title or text
-                else:
-                    data.append(f"</{tag}>")
+            # Append to section title or text
+            else:
+                data.append(f"</{tag}>")
 
     # Called for the text contents of each tag
     def handle_data(self, data):

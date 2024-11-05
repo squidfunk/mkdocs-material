@@ -9,9 +9,7 @@
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#name",
       "oneOf": [
         {
-          "enum": [
-            "material"
-          ]
+          "const": "material"
         },
         {
           "type": "null"
@@ -48,375 +46,259 @@
         {
           "title": "Site language: Custom",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-language/#custom-translations",
-          "enum": [
-            "custom"
-          ]
+          "const": "custom"
         },
         {
           "title": "Site language: Afrikaans",
-          "enum": [
-            "af"
-          ]
+          "const": "af"
         },
         {
           "title": "Site language: Arabic",
-          "enum": [
-            "ar"
-          ]
+          "const": "ar"
         },
         {
           "title": "Site language: Bulgarian",
-          "enum": [
-            "bg"
-          ]
+          "const": "bg"
         },
         {
           "title": "Site language: Bengali (Bangla)",
-          "enum": [
-            "bn"
-          ]
+          "const": "bn"
         },
         {
           "title": "Site language: Catalan",
-          "enum": [
-            "ca"
-          ]
+          "const": "ca"
         },
         {
           "title": "Site language: Czech",
-          "enum": [
-            "cs"
-          ]
+          "const": "cs"
         },
         {
           "title": "Site language: Danish",
-          "enum": [
-            "da"
-          ]
+          "const": "da"
         },
         {
           "title": "Site language: German",
-          "enum": [
-            "de"
-          ]
+          "const": "de"
         },
         {
           "title": "Site language: Greek",
-          "enum": [
-            "el"
-          ]
+          "const": "el"
         },
         {
           "title": "Site language: English",
-          "enum": [
-            "en"
-          ]
+          "const": "en"
         },
         {
           "title": "Site language: Esperanto",
-          "enum": [
-            "eo"
-          ]
+          "const": "eo"
         },
         {
           "title": "Site language: Spanish",
-          "enum": [
-            "es"
-          ]
+          "const": "es"
         },
         {
           "title": "Site language: Estonian",
-          "enum": [
-            "et"
-          ]
+          "const": "et"
         },
         {
           "title": "Site language: Persian (Farsi)",
-          "enum": [
-            "fa"
-          ]
+          "const": "fa"
         },
         {
           "title": "Site language: Finnish",
-          "enum": [
-            "fi"
-          ]
+          "const": "fi"
         },
         {
           "title": "Site language: French",
-          "enum": [
-            "fr"
-          ]
+          "const": "fr"
         },
         {
           "title": "Site language: Galician",
-          "enum": [
-            "gl"
-          ]
+          "const": "gl"
         },
         {
           "title": "Site language: Hebrew",
-          "enum": [
-            "he"
-          ]
+          "const": "he"
         },
         {
           "title": "Site language: Hindi",
-          "enum": [
-            "hi"
-          ]
+          "const": "hi"
         },
         {
           "title": "Site language: Croatian",
-          "enum": [
-            "hr"
-          ]
+          "const": "hr"
         },
         {
           "title": "Site language: Hungarian",
-          "enum": [
-            "hu"
-          ]
+          "const": "hu"
         },
         {
           "title": "Site language: Armenian",
-          "enum": [
-            "hy"
-          ]
+          "const": "hy"
         },
         {
           "title": "Site language: Indonesian",
-          "enum": [
-            "id"
-          ]
+          "const": "id"
         },
         {
           "title": "Site language: Icelandic",
-          "enum": [
-            "is"
-          ]
+          "const": "is"
         },
         {
           "title": "Site language: Italian",
-          "enum": [
-            "it"
-          ]
+          "const": "it"
         },
         {
           "title": "Site language: Japanese",
-          "enum": [
-            "ja"
-          ]
+          "const": "ja"
         },
         {
           "title": "Site language: Georgian",
-          "enum": [
-            "ka"
-          ]
+          "const": "ka"
         },
         {
           "title": "Site language: Kannada",
-          "enum": [
-            "kn"
-          ]
+          "const": "kn"
         },
         {
           "title": "Site language: Korean",
-          "enum": [
-            "ko"
-          ]
+          "const": "ko"
         },
         {
           "title": "Site language: Lithuanian",
-          "enum": [
-            "lt"
-          ]
+          "const": "lt"
         },
         {
           "title": "Site language: Latvian",
-          "enum": [
-            "lv"
-          ]
+          "const": "lv"
         },
         {
           "title": "Site language: Macedonian",
-          "enum": [
-            "mk"
-          ]
+          "const": "mk"
         },
         {
           "title": "Site language: Mongolian",
-          "enum": [
-            "mn"
-          ]
+          "const": "mn"
         },
         {
           "title": "Site language: Bahasa Malaysia",
-          "enum": [
-            "ms"
-          ]
+          "const": "ms"
         },
         {
           "title": "Site language: Burmese",
-          "enum": [
-            "my"
-          ]
+          "const": "my"
         },
         {
           "title": "Site language: Dutch",
-          "enum": [
-            "nl"
-          ]
+          "const": "nl"
         },
         {
           "title": "Site language: Norwegian (Bokmål)",
-          "enum": [
-            "nb"
-          ]
+          "const": "nb"
         },
         {
           "title": "Site language: Norwegian (Nynorsk)",
-          "enum": [
-            "nn"
-          ]
+          "const": "nn"
         },
         {
           "title": "Site language: Polish",
-          "enum": [
-            "pl"
-          ]
+          "const": "pl"
         },
         {
           "title": "Site language: Portuguese",
-          "enum": [
-            "pt"
-          ]
+          "const": "pt"
         },
         {
           "title": "Site language: Portuguese (Brasilian)",
-          "enum": [
-            "pt-BR"
-          ]
+          "const": "pt-BR"
         },
         {
           "title": "Site language: Romanian",
-          "enum": [
-            "ro"
-          ]
+          "const": "ro"
         },
         {
           "title": "Site language: Russian",
-          "enum": [
-            "ru"
-          ]
+          "const": "ru"
         },
         {
           "title": "Site language: Sanskrit",
-          "enum": [
-            "sa"
-          ]
+          "const": "sa"
         },
         {
           "title": "Site language: Serbo-Croatian",
-          "enum": [
-            "sh"
-          ]
+          "const": "sh"
         },
         {
           "title": "Site language: Sinhalese",
-          "enum": [
-            "si"
-          ]
+          "const": "si"
         },
         {
           "title": "Site language: Slovak",
-          "enum": [
-            "sk"
-          ]
+          "const": "sk"
         },
         {
           "title": "Site language: Slovenian",
-          "enum": [
-            "sl"
-          ]
+          "const": "sl"
+        },
+        {
+          "title": "Site language: Albanian",
+          "const": "sq"
         },
         {
           "title": "Site language: Serbian",
-          "enum": [
-            "sr"
-          ]
+          "const": "sr"
         },
         {
           "title": "Site language: Swedish",
-          "enum": [
-            "sv"
-          ]
+          "const": "sv"
+        },
+        {
+          "title": "Site language: Tamil",
+          "const": "ta"
         },
         {
           "title": "Site language: Telugu",
-          "enum": [
-            "te"
-          ]
+          "const": "te"
         },
         {
           "title": "Site language: Thai",
-          "enum": [
-            "th"
-          ]
+          "const": "th"
         },
         {
           "title": "Site language: Tagalog",
-          "enum": [
-            "tl"
-          ]
+          "const": "tl"
         },
         {
           "title": "Site language: Turkish",
-          "enum": [
-            "tr"
-          ]
+          "const": "tr"
         },
         {
           "title": "Site language: Ukrainian",
-          "enum": [
-            "uk"
-          ]
+          "const": "uk"
         },
         {
           "title": "Site language: Urdu",
-          "enum": [
-            "ur"
-          ]
+          "const": "ur"
         },
         {
           "title": "Site language: Uzbek",
-          "enum": [
-            "uz"
-          ]
+          "const": "uz"
         },
         {
           "title": "Site language: Vietnamese",
-          "enum": [
-            "vi"
-          ]
+          "const": "vi"
         },
         {
           "title": "Site language: Chinese (Simplified)",
-          "enum": [
-            "zh"
-          ]
+          "const": "zh"
         },
         {
           "title": "Site language: Chinese (Traditional)",
-          "enum": [
-            "zh-Hant"
-          ]
+          "const": "zh-Hant"
         },
         {
           "title": "Site language: Chinese (Taiwanese)",
-          "enum": [
-            "zh-TW"
-          ]
+          "const": "zh-TW"
         }
       ],
       "default": "en"
@@ -432,7 +314,7 @@
     "favicon": {
       "title": "Favicon",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#favicon",
-      "pattern": "\\.(ico|png|svg|jpe?g)$",
+      "pattern": "\\.(ico|png|svg|jpe?g|gif)$",
       "defaultSnippets": [
         {
           "body": "${1:path/to/file}.png"
@@ -442,7 +324,7 @@
     "logo": {
       "title": "Logo",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-logo-and-icons/#logo",
-      "pattern": "\\.(png|svg|jpe?g)$",
+      "pattern": "\\.(png|svg|jpe?g|gif|webp)$",
       "defaultSnippets": [
         {
           "body": "${1:path/to/file}.png"
@@ -464,6 +346,33 @@
           "$ref": "#/$defs/icon"
         },
         "repo": {
+          "$ref": "#/$defs/icon"
+        },
+        "annotation": {
+          "$ref": "#/$defs/icon"
+        },
+        "top": {
+          "$ref": "#/$defs/icon"
+        },
+        "share": {
+          "$ref": "#/$defs/icon"
+        },
+        "menu": {
+          "$ref": "#/$defs/icon"
+        },
+        "alternate": {
+          "$ref": "#/$defs/icon"
+        },
+        "search": {
+          "$ref": "#/$defs/icon"
+        },
+        "close": {
+          "$ref": "#/$defs/icon"
+        },
+        "previous": {
+          "$ref": "#/$defs/icon"
+        },
+        "next": {
           "$ref": "#/$defs/icon"
         },
         "admonition": {
@@ -585,6 +494,34 @@
         {
           "label": "repo",
           "body": "repo: ${1:fontawesome/brands/git-alt}"
+        },
+        {
+          "label": "top",
+          "body": "top: ${1:material/arrow-up}"
+        },
+        {
+          "label": "menu",
+          "body": "menu: ${1:material/menu}"
+        },
+        {
+          "label": "alternate",
+          "body": "alternate: ${1:material/translate}"
+        },
+        {
+          "label": "share",
+          "body": "share: ${1:material/share-variant}"
+        },
+        {
+          "label": "search",
+          "body": "search: ${1:material/magnify}"
+        },
+        {
+          "label": "previous",
+          "body": "previous: ${1:material/arrow-left}"
+        },
+        {
+          "label": "next",
+          "body": "next: ${1:material/arrow-right}"
         }
       ]
     },
@@ -597,191 +534,142 @@
           {
             "title": "Mark as read",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#mark-as-read",
-            "enum": [
-              "announce.dismiss"
-            ]
+            "const": "announce.dismiss"
           },
           {
             "title": "Edit this page",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions",
-            "enum": [
-              "content.action.edit"
-            ]
+            "const": "content.action.edit"
           },
           {
             "title": "View source of this page",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/adding-a-git-repository/#code-actions",
-            "enum": [
-              "content.action.view"
-            ]
+            "const": "content.action.view"
           },
           {
             "title": "Code annotations",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-annotations",
-            "enum": [
-              "content.code.annotate"
-            ]
+            "const": "content.code.annotate"
           },
           {
             "title": "Code copy button",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-copy-button",
-            "enum": [
-              "content.code.copy"
-            ]
+            "const": "content.code.copy"
           },
           {
             "title": "Code selection button",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/code-blocks/#code-selection-button",
-            "enum": [
-              "content.code.select"
-            ]
+            "const": "content.code.select"
+          },
+          {
+            "title": "Footnote tooltips",
+            "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/footnotes/#footnote-tooltips",
+            "const": "content.footnote.tooltips"
           },
           {
             "title": "Linked content tabs",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#linked-content-tabs",
-            "enum": [
-              "content.tabs.link"
-            ]
+            "const": "content.tabs.link"
           },
           {
             "title": "Improved tooltips",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/reference/tooltips/#improved-tooltips",
-            "enum": [
-              "content.tooltips"
-            ]
+            "const": "content.tooltips"
           },
           {
             "title": "Header hides automatically when scrolling",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-header/#automatic-hiding",
-            "enum": [
-              "header.autohide"
-            ]
+            "const": "header.autohide"
           },
           {
             "title": "Navigation expansion",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-expansion",
-            "enum": [
-              "navigation.expand"
-            ]
+            "const": "navigation.expand"
           },
           {
             "title": "Navigation footer",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-footer",
-            "enum": [
-              "navigation.footer"
-            ]
+            "const": "navigation.footer"
           },
           {
             "title": "Section index pages",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#section-index-pages",
-            "enum": [
-              "navigation.indexes"
-            ]
+            "const": "navigation.indexes"
           },
           {
             "title": "Instant loading",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-loading",
-            "enum": [
-              "navigation.instant"
-            ]
+            "const": "navigation.instant"
           },
           {
             "title": "Instant prefetching",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#instant-prefetching",
-            "enum": [
-              "navigation.instant.prefetch"
-            ]
+            "const": "navigation.instant.prefetch"
           },
           {
             "title": "Progress indicator",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#progress-indicator",
-            "enum": [
-              "navigation.instant.progress"
-            ]
+            "const": "navigation.instant.progress"
           },
           {
             "title": "Navigation path (Breadcrumbs)",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-path",
-            "enum": [
-              "navigation.path"
-            ]
+            "const": "navigation.path"
           },
           {
             "title": "Navigation pruning",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-pruning",
-            "enum": [
-              "navigation.prune"
-            ]
+            "const": "navigation.prune"
           },
           {
             "title": "Navigation sections",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-sections",
-            "enum": [
-              "navigation.sections"
-            ]
+            "const": "navigation.sections"
           },
           {
             "title": "Navigation tabs",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-tabs",
-            "enum": [
-              "navigation.tabs"
-            ]
+            "const": "navigation.tabs"
           },
           {
             "title": "Sticky navigation tabs",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#sticky-navigation-tabs",
-            "enum": [
-              "navigation.tabs.sticky"
-            ]
+            "const": "navigation.tabs.sticky"
           },
           {
             "title": "Back-to-top button",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#back-to-top-button",
-            "enum": [
-              "navigation.top"
-            ]
+            "const": "navigation.top"
           },
           {
             "title": "Anchor tracking",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-tracking",
-            "enum": [
-              "navigation.tracking"
-            ]
+            "const": "navigation.tracking"
           },
           {
-            "title": "Search higlighting",
+            "title": "Search highlighting",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-highlighting",
-            "enum": [
-              "search.highlight"
-            ]
+            "const": "search.highlight"
           },
           {
             "title": "Search sharing",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-sharing",
-            "enum": [
-              "search.share"
-            ]
+            "const": "search.share"
           },
           {
             "title": "Search suggestions",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/#search-suggestions",
-            "enum": [
-              "search.suggest"
-            ]
+            "const": "search.suggest"
           },
           {
             "title": "Integrated table of contents",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#anchor-following",
-            "enum": [
-              "toc.follow"
-            ]
+            "const": "toc.follow"
           },
           {
             "title": "Integrated table of contents",
             "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-navigation/#navigation-integration",
-            "enum": [
-              "toc.integrate"
-            ]
+            "const": "toc.integrate"
           }
         ]
       },
@@ -885,6 +773,7 @@
         {
           "title": "Google Fonts",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/changing-the-fonts/",
+          "type": "object",
           "properties": {
             "text": {
               "$ref": "assets/fonts.json"

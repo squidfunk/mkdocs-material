@@ -27,9 +27,7 @@
         {
           "title": "Arithmatex – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#arithmatex",
-          "enum": [
-            "pymdownx.arithmatex"
-          ]
+          "const": "pymdownx.arithmatex"
         }
       ]
     },
@@ -63,9 +61,7 @@
         {
           "title": "BetterEm – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#betterem",
-          "enum": [
-            "pymdownx.betterem"
-          ]
+          "const": "pymdownx.betterem"
         }
       ]
     },
@@ -74,9 +70,7 @@
         {
           "title": "Caret – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
-          "enum": [
-            "pymdownx.caret"
-          ]
+          "const": "pymdownx.caret"
         },
         {
           "type": "object",
@@ -114,9 +108,7 @@
         {
           "title": "Critic – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#critic",
-          "enum": [
-            "pymdownx.critic"
-          ]
+          "const": "pymdownx.critic"
         },
         {
           "type": "object",
@@ -145,18 +137,14 @@
     {
       "title": "Details – Python Markdown Extensions",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#details",
-      "enum": [
-        "pymdownx.details"
-      ]
+      "const": "pymdownx.details"
     },
     {
       "oneOf": [
         {
           "title": "Emoji – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji",
-          "enum": [
-            "pymdownx.emoji"
-          ]
+          "const": "pymdownx.emoji"
         },
         {
           "type": "object",
@@ -208,9 +196,7 @@
         {
           "title": "Highlight – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight",
-          "enum": [
-            "pymdownx.highlight"
-          ]
+          "const": "pymdownx.highlight"
         },
         {
           "type": "object",
@@ -267,18 +253,14 @@
     {
       "title": "InlineHilite – Python Markdown Extensions",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite",
-      "enum": [
-        "pymdownx.inlinehilite"
-      ]
+      "const": "pymdownx.inlinehilite"
     },
     {
       "oneOf": [
         {
           "title": "Keys – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#keys",
-          "enum": [
-            "pymdownx.keys"
-          ]
+          "const": "pymdownx.keys"
         },
         {
           "type": "object",
@@ -320,9 +302,7 @@
         {
           "title": "MagicLink – Python Markdown Extensions",
           "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/",
-          "enum": [
-            "pymdownx.magiclink"
-          ]
+          "const": "pymdownx.magiclink"
         },
         {
           "type": "object",
@@ -410,9 +390,7 @@
         {
           "title": "Mark – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
-          "enum": [
-            "pymdownx.mark"
-          ]
+          "const": "pymdownx.mark"
         },
         {
           "type": "object",
@@ -440,9 +418,7 @@
         {
           "title": "SmartSymbols – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#smartsymbols",
-          "enum": [
-            "pymdownx.smartsymbols"
-          ]
+          "const": "pymdownx.smartsymbols"
         },
         {
           "type": "object",
@@ -569,9 +545,7 @@
         {
           "title": "Snippets – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#snippets",
-          "enum": [
-            "pymdownx.snippets"
-          ]
+          "const": "pymdownx.snippets"
         }
       ]
     },
@@ -580,9 +554,7 @@
         {
           "title": "SuperFences – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#superfences",
-          "enum": [
-            "pymdownx.superfences"
-          ]
+          "const": "pymdownx.superfences"
         },
         {
           "type": "object",
@@ -663,9 +635,7 @@
         {
           "title": "Tasklist – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#tasklist",
-          "enum": [
-            "pymdownx.tasklist"
-          ]
+          "const": "pymdownx.tasklist"
         },
         {
           "type": "object",
@@ -697,9 +667,7 @@
         {
           "title": "Tilde – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
-          "enum": [
-            "pymdownx.tilde"
-          ]
+          "const": "pymdownx.tilde"
         },
         {
           "type": "object",
