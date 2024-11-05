@@ -2,7 +2,7 @@
 
 ## Material for MkDocs
 
-### 9.5.44 <small>October 31, 2024</small> { id="9.5.44" }
+### 9.5.44 <small>November 5, 2024</small> { id="9.5.44" }
 
 - Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)
 
