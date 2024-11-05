@@ -1,3 +1,7 @@
+mkdocs-material-9.5.44 (2024-11-05)
+
+  * Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)
+
 mkdocs-material-9.5.43 (2024-10-31)
 
   * Added support for external images in SVGs in privacy plugin
