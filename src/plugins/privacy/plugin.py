@@ -467,7 +467,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
             # Replace callback
             def replace(match: Match):
-                value = match.group(1)
+                value = match.group("url")
 
                 # Map URL to canonical path
                 path = self._path_from_url(urlparse(value))
