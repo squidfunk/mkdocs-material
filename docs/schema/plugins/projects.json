@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/",
-      "enum": [
-        "projects"
-      ]
+      "const": "projects"
     },
     {
       "type": "object",
@@ -37,6 +35,23 @@
               "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.cache_dir",
               "type": "string",
               "default": ".cache/plugins/projects"
+            },
+            "log": {
+              "title": "Enable logging",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.log",
+              "type": "boolean",
+              "default": true
+            },
+            "log_level": {
+              "title": "Log level",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/plugins/projects/#config.log_level",
+              "enum": [
+                "error",
+                "warn",
+                "info",
+                "debug"
+              ],
+              "default": "info"
             },
             "projects": {
               "title": "Enable projects",

@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.11-alpine3.18
+FROM python:3.11-alpine3.19
 
 # Build-time flags
 ARG WITH_PLUGINS=true
@@ -48,10 +48,12 @@ RUN \
     git-fast-import \
     jpeg-dev \
     openssh \
+    tini \
     zlib-dev \
 && \
   apk add --no-cache --virtual .build \
     gcc \
+    g++ \
     libffi-dev \
     musl-dev \
 && \
@@ -83,11 +85,11 @@ RUN \
   find ${PACKAGES} \
     -type f \
     -path "*/__pycache__/*" \
-    -exec rm -f {} \;
-
-# Trust directory, required for git >= 2.35.2
-RUN git config --global --add safe.directory /docs &&\
-    git config --global --add safe.directory /site
+    -exec rm -f {} \; \
+&& \
+  git config --system --add safe.directory /docs \
+&& \
+  git config --system --add safe.directory /site
 
 # Set working directory
 WORKDIR /docs
@@ -96,5 +98,5 @@ WORKDIR /docs
 EXPOSE 8000
 
 # Start development server by default
-ENTRYPOINT ["mkdocs"]
+ENTRYPOINT ["/sbin/tini", "--", "mkdocs"]
 CMD ["serve", "--dev-addr=0.0.0.0:8000"]

@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/ojacques/mkdocs-git-committers-plugin-2",
-      "enum": [
-        "git-committers"
-      ]
+      "const": "git-committers"
     },
     {
       "type": "object",

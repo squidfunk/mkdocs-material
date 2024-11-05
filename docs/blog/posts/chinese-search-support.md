@@ -10,7 +10,7 @@ categories:
 links:
   - blog/posts/search-better-faster-smaller.md
   - plugins/search.md#segmentation
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
 ---
 
 # Chinese search support – 中文搜索​支持
@@ -78,6 +78,6 @@ improved, please [open an issue].
 
   [jieba]: https://pypi.org/project/jieba/
   [zero-width whitespace]: https://en.wikipedia.org/wiki/Zero-width_space
-  [separator]: ../../setup/setting-up-site-search.md#separator
+  [separator]: ../../plugins/search.md#config.separator
   [q=支持]: ?q=支持
   [open an issue]: https://github.com/squidfunk/mkdocs-material/issues/new/choose

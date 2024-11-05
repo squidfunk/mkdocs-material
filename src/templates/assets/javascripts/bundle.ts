@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -82,6 +82,7 @@ import {
   setupVersionSelector
 } from "./integrations"
 import {
+  patchEllipsis,
   patchIndeterminate,
   patchScrollfix,
   patchScrolllock
@@ -199,6 +200,7 @@ keyboard$
     })
 
 /* Set up patches */
+patchEllipsis({ viewport$, document$ })
 patchIndeterminate({ document$, tablet$ })
 patchScrollfix({ document$ })
 patchScrolllock({ viewport$, tablet$ })
@@ -222,10 +224,6 @@ const control$ = merge(
   /* Dialog */
   ...getComponentElements("dialog")
     .map(el => mountDialog(el, { alert$ })),
-
-  /* Header */
-  ...getComponentElements("header")
-    .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
   /* Color palette */
   ...getComponentElements("palette")
@@ -261,6 +259,10 @@ const content$ = defer(() => merge(
       ? mountSearchHiglight(el, { index$, location$ })
       : EMPTY
     ),
+
+  /* Header */
+  ...getComponentElements("header")
+    .map(el => mountHeader(el, { viewport$, header$, main$ })),
 
   /* Header title */
   ...getComponentElements("header-title")

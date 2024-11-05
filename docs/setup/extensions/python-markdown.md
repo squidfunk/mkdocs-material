@@ -257,7 +257,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - toc:
-              slugify: !!python/object/apply:pymdownx.slugs.slugify
+              slugify: !!python/object/apply:pymdownx.slugs.slugify {}
         ```
 
 <!-- md:option toc.toc_depth -->

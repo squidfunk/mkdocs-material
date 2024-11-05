@@ -33,7 +33,7 @@ This renders a version selector in the header:
   <figcaption markdown>
 
 Check out the versioning example to see it in action –
-[squidfunk.github.io/mkdocs-material-example-versioning][version example]
+[mkdocs-material.github.io/example-versioning][version example]
 
   </figcaption>
 </figure>
@@ -52,7 +52,7 @@ Check out the versioning example to see it in action –
     whatever version of the documentation you want to direct people to.
 
   [Version selector preview]: ../assets/screenshots/versioning.png
-  [version example]: https://squidfunk.github.io/mkdocs-material-example-versioning/
+  [version example]: https://mkdocs-material.github.io/example-versioning/
   [Why use mike?]: https://github.com/jimporter/mike#why-use-mike
 
 ### Stay on the same page when switching versions
@@ -61,13 +61,11 @@ When the user chooses a version in the version selector, they usually want to go
 to the page corresponding to the page they were previously viewing. Material for
 MkDocs implements this behavior by default, but there are a few caveats:
 
-- the [`site_url`] must be set correctly in `mkdocs.yml`. See the ["Publishing a
-  new version"](#publishing-a-new-version) section for an example.
-- you must be viewing the site at that URL (and not locally, for example).
+- the [`site_url`][mkdocs.site_url] must be set correctly in `mkdocs.yml`.
+  See the ["Publishing a new version"](#publishing-a-new-version) section for
+  an example.
 - the redirect happens via JavaScript and there is no way to know which page you
   will be redirected to ahead of time.
-
-[`site_url`]: https://www.mkdocs.org/user-guide/configuration/#site_url
 
 ### Version warning
 
@@ -130,6 +128,21 @@ redirected to.
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
   [default version]: #setting-a-default-version
+
+### Version alias
+
+<!-- md:version 9.5.23 -->
+<!-- md:default `false` -->
+
+If you're using aliases for versioning, and want to show the version alias
+besides the version number, you can enable this feature by setting the `alias`
+option to `true`:
+
+``` yaml
+extra:
+  version:
+    alias: true
+```
 
 ## Usage
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -24,40 +24,37 @@ import {
   EMPTY,
   Observable,
   Subject,
-  bufferCount,
   catchError,
+  combineLatestWith,
   concat,
   debounceTime,
+  distinctUntilChanged,
   distinctUntilKeyChanged,
   endWith,
-  filter,
   fromEvent,
   ignoreElements,
   map,
+  merge,
   of,
-  sample,
   share,
-  skip,
-  startWith,
   switchMap,
-  take,
+  tap,
   withLatestFrom
 } from "rxjs"
 
 import { configuration, feature } from "~/_"
 import {
   Viewport,
-  getElement,
   getElements,
   getLocation,
   getOptionalElement,
-  request,
+  requestHTML,
   setLocation,
   setLocationHash
 } from "~/browser"
 import { getComponentElement } from "~/components"
 
-import { fetchSitemap } from "../sitemap"
+import { Sitemap, fetchSitemap } from "../sitemap"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -69,7 +66,7 @@ import { fetchSitemap } from "../sitemap"
 interface SetupOptions {
   location$: Subject<URL>              // Location subject
   viewport$: Observable<Viewport>      // Viewport observable
-  progress$: Subject<number>           // Progress suject
+  progress$: Subject<number>           // Progress subject
 }
 
 /* ----------------------------------------------------------------------------
@@ -77,51 +74,173 @@ interface SetupOptions {
  * ------------------------------------------------------------------------- */
 
 /**
+ * Handle clicks on internal URLs while skipping external URLs
+ *
+ * @param ev - Mouse event
+ * @param sitemap - Sitemap
+ *
+ * @returns URL observable
+ */
+function handle(
+  ev: MouseEvent, sitemap: Sitemap
+): Observable<URL> {
+  if (!(ev.target instanceof Element))
+    return EMPTY
+
+  // Skip, as target is not within a link - clicks on non-link elements are
+  // also captured, which we need to exclude from processing
+  const el = ev.target.closest("a")
+  if (el === null)
+    return EMPTY
+
+  // Skip, as link opens in new window - we now know we have captured a click
+  // on a link, but the link either has a `target` property defined, or the
+  // user pressed the `meta` or `ctrl` key to open it in a new window. Thus,
+  // we need to filter this event as well.
+  if (el.target || ev.metaKey || ev.ctrlKey)
+    return EMPTY
+
+  // Next, we must check if the URL is relevant for us, i.e., if it's an
+  // internal link to a page that is managed by MkDocs. Only then we can be
+  // sure that the structure of the page to be loaded adheres to the current
+  // document structure and can subsequently be injected into it without doing
+  // a full reload. For this reason, we must canonicalize the URL by removing
+  // all search parameters and hash fragments.
+  const url = new URL(el.href)
+  url.search = url.hash = ""
+
+  // Skip, if URL is not included in the sitemap - this could be the case when
+  // linking between versions or languages, or to another page that the author
+  // included as part of the build, but that is not managed by MkDocs. In that
+  // case we must not continue with instant navigation.
+  if (!sitemap.has(`${url}`))
+    return EMPTY
+
+  // We now know that we have a link to an internal page, so we prevent the
+  // browser from navigation and emit the URL for instant navigation. Note that
+  // this also includes anchor links, which means we need to implement anchor
+  // positioning ourselves. The reason for this is that if we wouldn't manage
+  // anchor links as well, scroll restoration will not work correctly (e.g.
+  // following an anchor link and scrolling).
+  ev.preventDefault()
+  return of(new URL(el.href))
+}
+
+/**
  * Create a map of head elements for lookup and replacement
  *
- * @param head - Document head
+ * @param document - Document
  *
- * @returns Element map
+ * @returns Tag map
  */
-function lookup(head: HTMLHeadElement): Map<string, HTMLElement> {
-
-  // @todo When resolving URLs, we must make sure to use the correct base for
-  // resolution. The next time we refactor instant loading, we should use the
-  // location subject as a source, which is also used for anchor links tracking,
-  // but for now we just rely on canonical.
-  const canonical = getElement<HTMLLinkElement>("[rel=canonical]", head)
-  canonical.href = canonical.href.replace("//localhost:", "//127.0.0.1")
-
-  // Create tag map and index elements in head
+function head(document: Document): Map<string, HTMLElement> {
   const tags = new Map<string, HTMLElement>()
-  for (const el of getElements(":scope > *", head)) {
-    let html = el.outerHTML
-
-    // If the current element is a style sheet or script, we must resolve the
-    // URL relative to the current location and make it absolute, so it's easy
-    // to deduplicate it later on by comparing the outer HTML of tags. We must
-    // keep identical style sheets and scripts without replacing them.
-    for (const key of ["href", "src"]) {
-      const value = el.getAttribute(key)!
-      if (value === null)
-        continue
-
-      // Resolve URL relative to current location
-      const url = new URL(value, canonical.href)
-      const ref = el.cloneNode() as HTMLElement
-
-      // Set resolved URL and retrieve HTML for deduplication
-      ref.setAttribute(key, `${url}`)
-      html = ref.outerHTML
-      break
-    }
-
-    // Index element in tag map
-    tags.set(html, el)
-  }
+  for (const el of getElements(":scope > *", document.head))
+    tags.set(el.outerHTML, el)
 
   // Return tag map
   return tags
+}
+
+/**
+ * Resolve relative URLs in the given document
+ *
+ * This function resolves relative `href` and `src` attributes, which can belong
+ * to all sorts of tags, like meta tags, links, images, scripts and more.
+ *
+ * @param document - Document
+ *
+ * @returns Document observable
+ */
+function resolve(document: Document): Observable<Document> {
+  for (const el of getElements("[href], [src]", document))
+    for (const key of ["href", "src"]) {
+      const value = el.getAttribute(key)
+      if (value && !/^(?:[a-z]+:)?\/\//i.test(value)) {
+        // @ts-expect-error - trick: self-assign to resolve URL
+        el[key] = el[key]
+        break
+      }
+    }
+
+  // Return document observable
+  return of(document)
+}
+
+/**
+ * Inject the contents of a document into the current one
+ *
+ * @param next - Next document
+ *
+ * @returns Document observable
+ */
+function inject(next: Document): Observable<Document> {
+  for (const selector of [
+    "[data-md-component=announce]",
+    "[data-md-component=container]",
+    "[data-md-component=header-topic]",
+    "[data-md-component=outdated]",
+    "[data-md-component=logo]",
+    "[data-md-component=skip]",
+    ...feature("navigation.tabs.sticky")
+      ? ["[data-md-component=tabs]"]
+      : []
+  ]) {
+    const source = getOptionalElement(selector)
+    const target = getOptionalElement(selector, next)
+    if (
+      typeof source !== "undefined" &&
+      typeof target !== "undefined"
+    ) {
+      source.replaceWith(target)
+    }
+  }
+
+  // Update meta tags
+  const tags = head(document)
+  for (const [html, el] of head(next))
+    if (tags.has(html))
+      tags.delete(html)
+    else
+      document.head.appendChild(el)
+
+  // Remove meta tags that are not present in the new document
+  for (const el of tags.values()) {
+    const name = el.getAttribute("name")
+    // @todo - find a better way to handle attributes we add dynamically in
+    // other components without mounting components on every navigation, as
+    // this might impact overall performance - see https://t.ly/ehp_O
+    if (name !== "theme-color" && name !== "color-scheme")
+      el.remove()
+  }
+
+  // After components and meta tags were replaced, re-evaluate scripts
+  // that were provided by the author as part of Markdown files
+  const container = getComponentElement("container")
+  return concat(getElements("script", container))
+    .pipe(
+      switchMap(el => {
+        const script = next.createElement("script")
+        if (el.src) {
+          for (const name of el.getAttributeNames())
+            script.setAttribute(name, el.getAttribute(name)!)
+          el.replaceWith(script)
+
+          // Complete when script is loaded
+          return new Observable(observer => {
+            script.onload = () => observer.complete()
+          })
+
+        // Complete immediately
+        } else {
+          script.textContent = el.textContent
+          el.replaceWith(script)
+          return EMPTY
+        }
+      }),
+      ignoreElements(),
+      endWith(document)
+    )
 }
 
 /* ----------------------------------------------------------------------------
@@ -146,301 +265,177 @@ export function setupInstantNavigation(
     return EMPTY
 
   // Load sitemap immediately, so we have it available when the user initiates
-  // the first instant navigation request, and canonicalize URLs to the current
-  // base URL. The base URL will remain stable in between loads, as it's only
-  // read at the first initialization of the application.
-  const sitemap$ = fetchSitemap()
-    .pipe(
-      map(paths => paths.map(path => `${new URL(path, config.base)}`))
-    )
+  // the first navigation request without any perceivable delay
+  const sitemap$ = fetchSitemap(config.base)
 
-  // Intercept inter-site navigation - to keep the number of event listeners
-  // low we use the fact that uncaptured events bubble up to the body. This also
-  // has the nice property that we don't need to detach and then again attach
-  // event listeners when instant navigation occurs.
-  const instant$ = fromEvent<MouseEvent>(document.body, "click")
-    .pipe(
-      withLatestFrom(sitemap$),
-      switchMap(([ev, sitemap]) => {
-        if (!(ev.target instanceof Element))
-          return EMPTY
+  // Since we might be on a slow connection, the user might trigger multiple
+  // instant navigation events that overlap. MkDocs produces relative URLs for
+  // all internal links, which becomes a problem in this case, because we need
+  // to change the base URL the moment the user clicks a link that should be
+  // intercepted in order to be consistent with popstate, which means that the
+  // base URL would now be incorrect when resolving another relative link from
+  // the same site. For this reason we always resolve all relative links to
+  // absolute links, so we can be sure this never happens.
+  of(document)
+    .subscribe(resolve)
 
-        // Skip, as target is not within a link - clicks on non-link elements
-        // are also captured, which we need to exclude from processing
-        const el = ev.target.closest("a")
-        if (el === null)
-          return EMPTY
+  // --------------------------------------------------------------------------
+  // Navigation interception
+  // --------------------------------------------------------------------------
 
-        // Skip, as link opens in new window - we now know we have captured a
-        // click on a link, but the link either has a `target` property defined,
-        // or the user pressed the `meta` or `ctrl` key to open it in a new
-        // window. Thus, we need to filter those events, too.
-        if (el.target || ev.metaKey || ev.ctrlKey)
-          return EMPTY
+  // Intercept navigation - to keep the number of event listeners down we use
+  // the fact that uncaptured events bubble up to the body. This has the nice
+  // property that we don't need to detach and then re-attach event listeners
+  // when the document is replaced after a navigation event.
+  const instant$ =
+    fromEvent<MouseEvent>(document.body, "click")
+      .pipe(
+        combineLatestWith(sitemap$),
+        switchMap(([ev, sitemap]) => handle(ev, sitemap)),
+        share()
+      )
 
-        // Next, we must check if the URL is relevant for us, i.e., if it's an
-        // internal link to a page that is managed by MkDocs. Only then we can
-        // be sure that the structure of the page to be loaded adheres to the
-        // current document structure and can subsequently be injected into it
-        // without doing a full reload. For this reason, we must canonicalize
-        // the URL by removing all search parameters and hash fragments.
-        const url = new URL(el.href)
-        url.search = url.hash = ""
+  // Intercept history change events, e.g. when the user uses the browser's
+  // back or forward buttons, and emit new location for fetching and parsing
+  const history$ =
+    fromEvent<PopStateEvent>(window, "popstate")
+      .pipe(
+        map(getLocation),
+        share()
+      )
 
-        // Skip, if URL is not included in the sitemap - this could be the case
-        // when linking between versions or languages, or to another page that
-        // the author included as part of the build, but that is not managed by
-        // MkDocs. In that case we must not continue with instant navigation.
-        if (!sitemap.includes(`${url}`))
-          return EMPTY
-
-        // We now know that we have a link to an internal page, so we prevent
-        // the browser from navigation and emit the URL for instant navigation.
-        // Note that this also includes anchor links, which means we need to
-        // implement anchor positioning ourselves. The reason for this is that
-        // if we wouldn't manage anchor links as well, scroll restoration will
-        // not work correctly (e.g. following an anchor link and scrolling).
-        ev.preventDefault()
-        return of(new URL(el.href))
-      }),
-      share()
-    )
-
-  // Before fetching for the first time, resolve the absolute favicon position,
-  // as the browser will try to fetch the icon immediately
-  instant$.pipe(take(1))
-    .subscribe(() => {
-      const favicon = getOptionalElement<HTMLLinkElement>("link[rel=icon]")
-      if (typeof favicon !== "undefined")
-        favicon.href = favicon.href
-    })
-
-  // Enable scroll restoration before window unloads - this is essential to
-  // ensure that full reloads (F5) restore the viewport offset correctly. If
-  // only popstate events wouldn't reset the scroll position prior to their
-  // emission, we could just reset this in popstate. Meh.
-  fromEvent(window, "beforeunload")
-    .subscribe(() => {
-      history.scrollRestoration = "auto"
-    })
-
-  // When an instant navigation event occurs, disable scroll restoration, since
-  // we must normalize and synchronize the behavior across all browsers. For
-  // instance, when the user clicks the back or forward button, the browser
-  // would immediately jump to the position of the previous document.
+  // While it would be better UX to defer navigation events until the document
+  // is fully fetched and parsed, we must schedule it here to synchronize with
+  // popstate events, as they are emitted immediately. Moreover we need to
+  // store the current viewport offset for scroll restoration later on.
   instant$.pipe(withLatestFrom(viewport$))
     .subscribe(([url, { offset }]) => {
-      history.scrollRestoration = "manual"
-
-      // While it would be better UX to defer the history state change until the
-      // document was fully fetched and parsed, we must schedule it here, since
-      // popstate events are emitted when history state changes happen. Moreover
-      // we need to back up the current viewport offset, so we can restore it
-      // when popstate events occur, e.g., when the browser's back and forward
-      // buttons are used for navigation.
       history.replaceState(offset, "")
       history.pushState(null, "", url)
     })
 
-  // Emit URL that should be fetched via instant navigation on location subject,
-  // which was passed into this function. Instant navigation can be intercepted
-  // by other parts of the application, which can synchronously back up or
-  // restore state before instant navigation happens.
-  instant$.subscribe(location$)
+  // Emit URLs that should be fetched via instant navigation on location subject
+  // which was passed into this function. The state of instant navigation can be
+  // intercepted by other parts of the application, which can synchronously back
+  // up or restore state before or after instant navigation happens.
+  merge(instant$, history$)
+    .subscribe(location$)
 
-  // Fetch document - when fetching, we could use `responseType: document`, but
-  // since all MkDocs links are relative, we need to make sure that the current
-  // location matches the document we just loaded. Otherwise any relative links
-  // in the document might use the old location. If the request fails for some
-  // reason, we fall back to regular navigation and set the location explicitly,
-  // which will force-load the page. Furthermore, we must pre-warm the buffer
-  // for the duplicate check, or the first click on an anchor link will also
-  // trigger an instant navigation event, which doesn't make sense.
-  const response$ = location$
-    .pipe(
-      startWith(getLocation()),
+  // --------------------------------------------------------------------------
+  // Fetching and parsing
+  // --------------------------------------------------------------------------
+
+  // Fetch document - we deduplicate requests to the same location, so we don't
+  // end up with multiple requests for the same page. We use `switchMap`, since
+  // we want to cancel the previous request when a new one is triggered, which
+  // is automatically handled by the observable returned by `request`. This is
+  // essential to ensure a good user experience, as we don't want to load pages
+  // that are not needed anymore, e.g., when the user clicks multiple links in
+  // quick succession or on slow connections. If the request fails for some
+  // reason, we fall back and use regular navigation, forcing a reload.
+  const document$ =
+    location$.pipe(
       distinctUntilKeyChanged("pathname"),
-      skip(1),
-      switchMap(url => request(url, { progress$ })
+      switchMap(url => requestHTML(url, { progress$ })
         .pipe(
           catchError(() => {
             setLocation(url, true)
             return EMPTY
           })
         )
-      )
-    )
+      ),
 
-  // Initialize the DOM parser, parse the returned HTML, and replace selected
-  // components before handing control down to the application
-  const dom = new DOMParser()
-  const document$ = response$
-    .pipe(
-      switchMap(res => res.text()),
-      switchMap(res => {
-        const next = dom.parseFromString(res, "text/html")
-        for (const selector of [
-          "[data-md-component=announce]",
-          "[data-md-component=container]",
-          "[data-md-component=header-topic]",
-          "[data-md-component=outdated]",
-          "[data-md-component=logo]",
-          "[data-md-component=skip]",
-          ...feature("navigation.tabs.sticky")
-            ? ["[data-md-component=tabs]"]
-            : []
-        ]) {
-          const source = getOptionalElement(selector)
-          const target = getOptionalElement(selector, next)
-          if (
-            typeof source !== "undefined" &&
-            typeof target !== "undefined"
-          ) {
-            source.replaceWith(target)
-          }
-        }
-
-        // Update meta tags
-        const source = lookup(document.head)
-        const target = lookup(next.head)
-        for (const [html, el] of target) {
-
-          // Hack: skip stylesheets and scripts until we manage to replace them
-          // entirely in order to omit flashes of white content @todo refactor
-          if (
-            el.getAttribute("rel") === "stylesheet" ||
-            el.hasAttribute("src")
-          )
-            continue
-
-          if (source.has(html)) {
-            source.delete(html)
-          } else {
-            document.head.appendChild(el)
-          }
-        }
-
-        // Remove meta tags that are not present in the new document
-        for (const el of source.values())
-
-          // Hack: skip stylesheets and scripts until we manage to replace them
-          // entirely in order to omit flashes of white content @todo refactor
-          if (
-            el.getAttribute("rel") === "stylesheet" ||
-            el.hasAttribute("src")
-          )
-            continue
-          else
-            el.remove()
-
-        // After components and meta tags were replaced, re-evaluate scripts
-        // that were provided by the author as part of Markdown files
-        const container = getComponentElement("container")
-        return concat(getElements("script", container))
-          .pipe(
-            switchMap(el => {
-              const script = next.createElement("script")
-              if (el.src) {
-                for (const name of el.getAttributeNames())
-                  script.setAttribute(name, el.getAttribute(name)!)
-                el.replaceWith(script)
-
-                // Complete when script is loaded
-                return new Observable(observer => {
-                  script.onload = () => observer.complete()
-                })
-
-              // Complete immediately
-              } else {
-                script.textContent = el.textContent
-                el.replaceWith(script)
-                return EMPTY
-              }
-            }),
-            ignoreElements(),
-            endWith(next)
-          )
-      }),
+      // The document was successfully fetched and parsed, so we can inject its
+      // contents into the currently active document
+      switchMap(resolve),
+      switchMap(inject),
       share()
     )
 
-  // Intercept popstate events, e.g. when using the browser's back and forward
-  // buttons, and emit new location for fetching and parsing
-  const popstate$ = fromEvent<PopStateEvent>(window, "popstate")
-  popstate$.pipe(map(getLocation))
-    .subscribe(location$)
+  // --------------------------------------------------------------------------
+  // Scroll restoration
+  // --------------------------------------------------------------------------
 
-  // Intercept clicks on anchor links, and scroll document into position - as
-  // we disabled scroll restoration, we need to do this manually here
-  location$
-    .pipe(
-      startWith(getLocation()),
-      bufferCount(2, 1),
-      filter(([prev, next]) => (
-        prev.pathname === next.pathname &&
-        prev.hash     !== next.hash
+  // Handle scroll restoration - we must restore the viewport offset after the
+  // document has been fetched and injected, and every time the user clicks an
+  // anchor that leads to an element on the same page, which might also happen
+  // when the user uses the back or forward button.
+  merge(
+    document$.pipe(withLatestFrom(location$, (_, url) => url)),
+
+    // Handle instant navigation events that are triggered by the user clicking
+    // on an anchor link with a hash fragment different from the current one, as
+    // well as from popstate events, which are emitted when the user navigates
+    // back and forth between pages. We use a two-layered subscription to scope
+    // the scroll restoration to the current page, as we don't need to restore
+    // the viewport offset when the user navigates to a different page, as this
+    // is already handled by the previous observable.
+    document$.pipe(
+      switchMap(() => location$),
+      distinctUntilKeyChanged("pathname"),
+      switchMap(() => location$),
+      distinctUntilKeyChanged("hash")
+    ),
+
+    // Handle instant navigation events that are triggered by the user clicking
+    // on an anchor link with the same hash fragment as the current one in the
+    // URL. It is essential that we only intercept those from instant navigation
+    // events and not from history change events, or we'll end up in and endless
+    // loop. The top-level history entry must be removed, as it will be replaced
+    // with a new one, which would otherwise lead to a duplicate entry.
+    location$.pipe(
+      distinctUntilChanged((a, b) => (
+        a.pathname === b.pathname &&
+        a.hash     === b.hash
       )),
-      map(([, next]) => next)
+      switchMap(() => instant$),
+      tap(() => history.back())
     )
-      .subscribe(url => {
-        if (history.state !== null || !url.hash) {
-          window.scrollTo(0, history.state?.y ?? 0)
-        } else {
-          history.scrollRestoration = "auto"
-          setLocationHash(url.hash)
-          history.scrollRestoration = "manual"
-        }
-      })
+  )
+    .subscribe(url => {
 
-  // Intercept clicks on the same anchor link - we must use a distinct pipeline
-  // for this, or we'd end up in a loop, setting the hash again and again
-  location$
-    .pipe(
-      sample(instant$),
-      startWith(getLocation()),
-      bufferCount(2, 1),
-      filter(([prev, next]) => (
-        prev.pathname === next.pathname &&
-        prev.hash     === next.hash
-      )),
-      map(([, next]) => next)
-    )
-      .subscribe(url => {
-        history.scrollRestoration = "auto"
-        setLocationHash(url.hash)
-        history.scrollRestoration = "manual"
-
-        // Hack: we need to make sure that we don't end up with multiple history
-        // entries for the same anchor link, so we just remove the last entry
-        history.back()
-      })
-
-  // After parsing the document, check if the current history entry has a state.
-  // This may happen when users press the back or forward button to visit a page
-  // that was already seen. If there's no state, it means a new page was visited
-  // and we should scroll to the top, unless an anchor is given.
-  document$.pipe(withLatestFrom(location$))
-    .subscribe(([, url]) => {
+      // Check if the current history entry has a state, which happens when the
+      // user presses the back or forward button to visit a page we've already
+      // seen. If there's no state, it means a new page was visited and we must
+      // scroll to the top, unless an anchor is given.
       if (history.state !== null || !url.hash) {
         window.scrollTo(0, history.state?.y ?? 0)
       } else {
+        history.scrollRestoration = "auto"
         setLocationHash(url.hash)
+        history.scrollRestoration = "manual"
       }
     })
 
-  // If the current history is not empty, register an event listener updating
-  // the current history state whenever the scroll position changes. This must
-  // be debounced and cannot be done in popstate, as popstate has already
-  // removed the entry from the history.
-  viewport$
-    .pipe(
-      distinctUntilKeyChanged("offset"),
-      debounceTime(100)
-    )
-      .subscribe(({ offset }) => {
-        history.replaceState(offset, "")
-      })
+  // Disable scroll restoration when an instant navigation event occurs, so the
+  // browser does not immediately set the viewport offset to the prior history
+  // entry, scrolling to the position on the same page, which would look odd.
+  // Instead, we manually restore the position once the page has loaded.
+  location$.subscribe(() => {
+    history.scrollRestoration = "manual"
+  })
 
-  // Return document
+  // Enable scroll restoration before window unloads - this is essential to
+  // ensure that full reloads (F5) restore the viewport offset correctly. If
+  // only popstate events wouldn't reset the viewport offset prior to their
+  // emission, we could just reset this in popstate. Meh.
+  fromEvent(window, "beforeunload")
+    .subscribe(() => {
+      history.scrollRestoration = "auto"
+    })
+
+  // Track viewport offset, so we can restore it when the user navigates back
+  // and forth between pages. Note that this must be debounced and cannot be
+  // done in popstate, as popstate has already removed the entry from the
+  // history, which means it is too late.
+  viewport$.pipe(
+    distinctUntilKeyChanged("offset"),
+    debounceTime(100)
+  )
+    .subscribe(({ offset }) => {
+      history.replaceState(offset, "")
+    })
+
+  // Return document observable
   return document$
 }

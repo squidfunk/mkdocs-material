@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -49,7 +49,7 @@ jobs:
             src/templates/partials/languages
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -58,7 +58,7 @@ jobs:
             requirements.txt
 
       - name: Set up build cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: .cache
@@ -71,7 +71,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install mkdocs-material
-          pip install mkdocs-material[recommended,git,imaging]
+          pip install .[recommended,git,imaging]
 
       - name: Install Insiders build
         if: github.event.repository.fork == false
@@ -85,7 +85,7 @@ jobs:
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           pip install -e mkdocs-material-insiders
           cp mkdocs-material-insiders/mkdocs.yml mkdocs.yml
-          echo 'extra_javascript: [${{ vars.CHAT_CLIENT_URL }}]' >> mkdocs.yml
+          # echo 'extra_javascript: [${{ vars.CHAT_CLIENT_URL }}]' >> mkdocs.yml
           rm -rf material
           cp -r mkdocs-material-insiders/material material
 
@@ -104,15 +104,15 @@ jobs:
           done
 
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
       - name: Save build cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: .cache

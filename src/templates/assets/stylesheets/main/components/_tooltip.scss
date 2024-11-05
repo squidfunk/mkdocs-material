@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -95,6 +95,30 @@
     transform: translateY(0);
   }
 
+  // Inline tooltip
+  &--inline {
+    width: auto;
+    font-weight: 700;
+    user-select: none;
+
+    // Tooltip is not active
+    &:not(.md-tooltip--active) {
+      transform: translateY(px2rem(4px)) scale(0.9);
+    }
+
+    // Tooltip wrapper
+    .md-tooltip__inner {
+      padding: px2rem(4px) px2rem(8px);
+      font-size: px2rem(10px);
+    }
+
+    // Hack: When the host element is hidden, the context for the tooltip is
+    // lost immediately, resulting in invalid and sometimes jumpy positioning.
+    [hidden] + & {
+      display: none;
+    }
+  }
+
   // Show outline on target and for keyboard devices
   :is(.focus-visible > &, &:target) {
     outline: var(--md-accent-fg-color) auto;
@@ -121,7 +145,9 @@
 
 // Annotation
 .md-annotation {
+  font-style: initial;
   font-weight: 400;
+  text-align: initial;
   white-space: normal;
   vertical-align: text-bottom;
   outline: none;
@@ -155,18 +181,16 @@
     cursor: pointer;
     user-select: none;
     outline: none;
+    // Hack: Work around Firefox bug that renders a subpixel outline when
+    // rotating a mask image element - see https://t.ly/qA1s4
+    overflow: hidden; // stylelint-disable-line order/properties-order
+    border-radius: 0.01px;
 
     // Hack: increase specificity to override default for anchors in typesetted
     // content, because transitions are defined on anchor elements
     .md-annotation & {
       transition: z-index 250ms;
     }
-
-    // Hack: Work around Firefox bug that renders a subpixel outline when
-    // rotating a mask image element.
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1671784
-    overflow: hidden; // stylelint-disable-line order/properties-order
-    border-radius: 0.01px;
 
     // [screen]: Render annotation markers as icons
     @media screen {
@@ -187,8 +211,8 @@
         content: "";
         background: var(--md-default-bg-color);
         mask-image: var(--md-annotation-bg-icon);
-        mask-position: center;
         mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
       }
 
@@ -204,15 +228,15 @@
         height: 2.2ch;
         content: "";
         background-color: var(--md-default-fg-color--lighter);
+        mask-image: var(--md-annotation-icon);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
         transition:
           background-color 250ms,
           transform        250ms;
         // Hack: promote to own layer to reduce jitter
         transform: scale(1.0001);
-        mask-image: var(--md-annotation-icon);
-        mask-position: center;
-        mask-repeat: no-repeat;
-        mask-size: contain;
 
         // Annotation marker for active tooltip
         .md-tooltip--active + & {
@@ -272,8 +296,8 @@
       // Annotation list marker
       &::before {
         position: absolute;
-        top: px2em(4px);
         inset-inline-start: px2em(-34px);
+        top: px2em(4px);
         min-width: 2ch;
         height: 2ch;
         padding: 0 0.6ch;

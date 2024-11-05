@@ -277,7 +277,6 @@ enabled. The following log levels are available:
 
     Errors are only reported when using the `--verbose` flag.
 
-
 ### Social cards
 
 The following settings are available for social card generation:
@@ -421,6 +420,7 @@ defining which parts of your layout can be parametrized. The [`default` layouts]
 - [`background_image`][option.background_image]
 - [`color`][option.color]
 - [`font_family`][option.font_family]
+- [`font_variant`][option.font_variant]
 - [`logo`][option.logo]
 - [`title`][option.title]
 - [`description`][option.description]
@@ -977,6 +977,29 @@ name from the font's specimen page and use it as the value for this option –
 no further configuration needed.
 
   [Google Fonts]: https://fonts.google.com/
+
+---
+
+#### <!-- md:setting option.font_variant -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.3 -->
+<!-- md:default none -->
+
+Use this option to change the font variant used to generate the social card.
+If the downloaded font has variants like `Condensed` or `Expanded`, you can set
+them with:
+
+``` yaml
+plugins:
+  - social:
+      cards_layout_options:
+        font_variant: Condensed
+```
+
+The variant is combined with the style as used in the custom layout, so the
+plugin is instructed to use combinations like `Condensed Regular` or
+`Expanded Bold`.
 
 ---
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,10 +18,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-from functools import partial
-from markdown.extensions.toc import slugify
+from collections.abc import Callable
 from mkdocs.config.config_options import Choice, Deprecated, Optional, Type
 from mkdocs.config.base import Config
+from pymdownx.slugs import slugify
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -41,7 +41,7 @@ class BlogConfig(Config):
     post_url_date_format = Type(str, default = "yyyy/MM/dd")
     post_url_format = Type(str, default = "{date}/{slug}")
     post_url_max_categories = Type(int, default = 1)
-    post_slugify = Type((type(slugify), partial), default = slugify)
+    post_slugify = Type(Callable, default = slugify(case = "lower"))
     post_slugify_separator = Type(str, default = "-")
     post_excerpt = Choice(["optional", "required"], default = "optional")
     post_excerpt_max_authors = Type(int, default = 1)
@@ -62,10 +62,14 @@ class BlogConfig(Config):
     categories = Type(bool, default = True)
     categories_name = Type(str, default = "blog.categories")
     categories_url_format = Type(str, default = "category/{slug}")
-    categories_slugify = Type((type(slugify), partial), default = slugify)
+    categories_slugify = Type(Callable, default = slugify(case = "lower"))
     categories_slugify_separator = Type(str, default = "-")
     categories_allowed = Type(list, default = [])
     categories_toc = Optional(Type(bool))
+
+    # Settings for authors
+    authors = Type(bool, default = True)
+    authors_file = Type(str, default = "{blog}/.authors.yml")
 
     # Settings for pagination
     pagination = Type(bool, default = True)
@@ -74,10 +78,6 @@ class BlogConfig(Config):
     pagination_format = Type(str, default = "~2~")
     pagination_if_single_page = Type(bool, default = False)
     pagination_keep_content = Type(bool, default = False)
-
-    # Settings for authors
-    authors = Type(bool, default = True)
-    authors_file = Type(str, default = "{blog}/.authors.yml")
 
     # Settings for drafts
     draft = Type(bool, default = False)

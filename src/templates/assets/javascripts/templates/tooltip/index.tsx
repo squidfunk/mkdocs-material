@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -20,7 +20,19 @@
  * IN THE SOFTWARE.
  */
 
+import { ComponentChild } from "preact"
+
 import { h } from "~/utilities"
+
+/* ----------------------------------------------------------------------------
+ * Types
+ * ------------------------------------------------------------------------- */
+
+/**
+ * Tooltip style
+ */
+export type TooltipStyle =
+  | "inline"
 
 /* ----------------------------------------------------------------------------
  * Functions
@@ -30,13 +42,37 @@ import { h } from "~/utilities"
  * Render a tooltip
  *
  * @param id - Tooltip identifier
+ * @param style - Tooltip style
  *
  * @returns Element
  */
-export function renderTooltip(id?: string): HTMLElement {
+export function renderTooltip(
+  id?: string, style?: TooltipStyle
+): HTMLElement {
+  if (style === "inline") { // @todo refactor control flow
+    return (
+      <div class="md-tooltip md-tooltip--inline" id={id} role="tooltip">
+        <div class="md-tooltip__inner md-typeset"></div>
+      </div>
+    )
+  } else {
+    return (
+      <div class="md-tooltip" id={id} role="tooltip">
+        <div class="md-tooltip__inner md-typeset"></div>
+      </div>
+    )
+  }
+}
+
+// @todo: rename
+export function renderInlineTooltip2(
+  ...children: ComponentChild[]
+): HTMLElement {
   return (
-    <div class="md-tooltip" id={id}>
-      <div class="md-tooltip__inner md-typeset"></div>
+    <div class="md-tooltip2" role="tooltip">
+      <div class="md-tooltip2__inner md-typeset">
+        {children}
+      </div>
     </div>
   )
 }

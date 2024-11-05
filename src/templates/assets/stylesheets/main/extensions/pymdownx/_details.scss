@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -69,6 +69,9 @@
     display: block;
     min-height: px2rem(20px);
     padding-inline-end: px2rem(36px);
+    // Hack: Work around Firefox bug that renders a subpixel outline when
+    // rotating a mask image element - see https://t.ly/qA1s4
+    overflow: hidden;
     cursor: pointer;
     border-start-start-radius: px2rem(2px);
     border-start-end-radius: px2rem(2px);
@@ -88,18 +91,18 @@
     // Details marker
     &::after {
       position: absolute;
+      inset-inline-end: px2rem(8px);
       top: px2em(10px);
       width: px2rem(20px);
       height: px2rem(20px);
       content: "";
       background-color: currentcolor;
+      mask-image: var(--md-details-icon);
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
       transition: transform 250ms;
       transform: rotate(0deg);
-      inset-inline-end: px2rem(8px);
-      mask-image: var(--md-details-icon);
-      mask-position: center;
-      mask-repeat: no-repeat;
-      mask-size: contain;
 
       // Adjust for right-to-left languages
       [dir="rtl"] & {
@@ -112,7 +115,7 @@
       display: none;
     }
 
-    // Hide native details marker - legacy, must be split into a seprate rule,
+    // Hide native details marker - legacy, must be split into a separate rule,
     // so older browsers don't consider the selector list as invalid
     &::-webkit-details-marker {
       display: none;

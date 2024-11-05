@@ -28,6 +28,10 @@
     src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material"
     alt="Docker Pulls"
   /></a>
+  <a href="https://github.com/sponsors/squidfunk"><img
+    src="https://img.shields.io/github/sponsors/squidfunk"
+    alt="Sponsors"
+  /></a>
 </p>
 
 <p align="center">
@@ -58,6 +62,18 @@
   <a href="https://fastapi.tiangolo.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="120"
   /></a>
+  <a href="https://www.trendpop.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png" height="120"
+  /></a>
+  <a href="https://documentation.sailpoint.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png" height="120"
+  /></a>
+  <a href="https://futureplc.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg" height="120"
+  /></a>
+  <a href="https://opensource.siemens.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png" height="120"
+  /></a>
 </p>
 <p>&nbsp;</p>
 <p align="center"><strong>Bronze sponsors</strong></p>
@@ -71,14 +87,8 @@
   <a href="https://kx.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="58"
   /></a>
-  <a href="https://www.manticoregames.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-manticore-games.png" height="58"
-  /></a>
   <a href="https://orion-docs.prefect.io/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png" height="58"
-  /></a>
-  <a href="https://datadoghq.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-datadog.png" height="58"
   /></a>
   <a href="https://www.zenoss.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png" height="58"
@@ -158,11 +168,29 @@
   <a href="https://www.buhlergroup.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png" height="58"
   /></a>
-  <a href="https://transformationflow.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-transformationflow.png" height="58"
-  /></a>
   <a href="https://3dr.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png" height="58"
+  /></a>
+  <a href="https://spotware.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png" height="58"
+  /></a>
+  <a href="https://milfordasset.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png" height="58"
+  /></a>
+  <a href="https://www.lechler.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png" height="58"
+  /></a>
+  <a href="https://invers.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png" height="58"
+  /></a>
+  <a href="https://maxar.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png" height="58"
+  /></a>
+  <a href="https://www.equipmentshare.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png" height="58"
+  /></a>
+  <a href="https://hummingbot.org/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
   /></a>
 </p>
 <p>&nbsp;</p>
@@ -237,7 +265,9 @@ For detailed installation instructions, configuration options, and a demo, visit
 [CloudFlare](https://cloudflare.github.io/itty-router-openapi/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
+[Harvard](https://informatics.fas.harvard.edu/),
 [Hewlett Packard](https://hewlettpackard.github.io/squest/),
+[HSBC](https://hsbc.github.io/pyratings/),
 [ING](https://ing-bank.github.io/baker/),
 [Intel](https://open-amt-cloud-toolkit.github.io/docs/),
 [JetBrains](https://jetbrains.github.io/projector-client/mkdocs/),
@@ -246,45 +276,59 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Netflix](https://netflix.github.io/titus/),
 [Red Hat](https://ansible.readthedocs.io/projects/lint/),
-[Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
+[Roboflow](https://inference.roboflow.com/),
+[Salesforce](https://policy-sentry.readthedocs.io/),
 [SIEMENS](https://opensource.siemens.com/),
 [Slack](https://slackhq.github.io/circuit/),
 [Square](https://square.github.io/okhttp/),
+[Uber](https://uber-go.github.io/fx/),
 [Zalando](https://opensource.zalando.com/skipper/)
 
 ### ... and successful Open Source projects
 
+[Amp](https://amp.rs/docs/),
 [Arduino](https://arduino.github.io/arduino-cli/),
 [Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [CentOS](https://docs.infra.centos.org/),
 [Crystal](https://crystal-lang.org/reference/),
+[eBPF](https://ebpf-go.dev/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
+[Freqtrade](https://www.freqtrade.io/en/stable/),
 [GoReleaser](https://goreleaser.com/),
+[HedgeDoc](https://docs.hedgedoc.org/),
+[Hummingbot](https://hummingbot.org/),
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
+[NetBox](https://netboxlabs.com/docs/netbox/en/stable/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
+[Orchard Core](https://docs.orchardcore.net/en/latest/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [PyPI](https://docs.pypi.org/),
 [Renovate](https://docs.renovatebot.com/),
+[RetroPie](https://retropie.org.uk/docs/),
+[Supervision](https://supervision.roboflow.com/latest/),
 [Traefik](https://docs.traefik.io/),
 [Trivy](https://aquasecurity.github.io/trivy/),
+[Typer](https://typer.tiangolo.com/),
+[tinygrad](https://docs.tinygrad.org/),
+[Ultralytics](https://docs.ultralytics.com/),
 [Vapor](https://docs.vapor.codes/),
-[ZeroNet](https://zeronet.io/docs/),
 [WebKit](https://docs.webkit.org/),
-[WTF](https://wtfutil.com/)
+[WTF](https://wtfutil.com/),
+[ZeroNet](https://zeronet.io/docs/)
 
 ## License
 
 **MIT License**
 
-Copyright (c) 2016-2023 Martin Donath
+Copyright (c) 2016-2024 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to

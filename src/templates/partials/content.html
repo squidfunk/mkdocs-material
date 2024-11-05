@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -44,12 +44,7 @@
 {{ page.content }}
 
 <!-- Source file information -->
-{% if page.meta and (
-  page.meta.git_revision_date_localized or
-  page.meta.revision_date
-) %}
-  {% include "partials/source-file.html" %}
-{% endif %}
+{% include "partials/source-file.html" %}
 
 <!-- Was this page helpful? -->
 {% include "partials/feedback.html" %}

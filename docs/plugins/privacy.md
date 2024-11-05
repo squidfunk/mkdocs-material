@@ -99,8 +99,7 @@ pipelines tailored to your project:
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.9.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:plugin [privacy] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
@@ -128,8 +127,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.10.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -148,8 +146,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -179,8 +176,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -198,8 +194,7 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.30.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `.cache/plugin/privacy` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -218,6 +213,84 @@ with each other.
 
   [multiple instances]: index.md#multiple-instances
 
+### Logging
+
+The following settings are available for logging:
+
+---
+
+#### <!-- md:setting config.log -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `true` -->
+
+Use this setting to control whether the plugin should display log messages when
+building your site. While not being recommended, you can disable logging with:
+
+``` yaml
+plugins:
+  - privacy:
+      log: false
+```
+
+---
+
+#### <!-- md:setting config.log_level -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.50.0 -->
+<!-- md:default `info` -->
+
+Use this setting to control the log level that the plugin should employ when
+encountering errors, which requires that the [`log`][config.log] setting is
+enabled. The following log levels are available:
+
+=== "`error`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: error
+    ```
+
+    Only errors are reported.
+
+=== "`warn`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: warn
+    ```
+
+    Errors and warnings are reported, terminating the build in
+    [`strict`][mkdocs.strict] mode. This includes warnings when symlinks cannot
+    be created due to a lack of permissions on Windows systems (#6550).
+
+=== "`info`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: info
+    ```
+
+    Errors, warnings and informational messages are reported, including which
+    assets were successfully downloaded by the plugin.
+
+=== "`debug`"
+
+    ``` yaml
+    plugins:
+      - privacy:
+          log_level: debug
+    ```
+
+    All messages are reported, including debug messages, if and only if MkDocs
+    was started with the `--verbose` flag. Note that this will print a lot of
+    messages and is only useful for debugging.
+
 ### External assets
 
 The following settings are available for external assets:
@@ -226,8 +299,7 @@ The following settings are available for external assets:
 
 #### <!-- md:setting config.assets -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should download external
@@ -246,8 +318,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should downloads or only report
@@ -265,8 +336,7 @@ plugins:
 
 #### <!-- md:setting config.assets_fetch_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.5.0 -->
 <!-- md:default `assets/external` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -317,7 +387,7 @@ external assets for different origins:
 plugins:
   - privacy:
       assets_exclude: # (1)!
-        - cdn.jsdelivr.net/npm/mathjax@3/*
+        - unpkg.com/mathjax@3/*
         - giscus.app/*
 ```
 
@@ -401,16 +471,34 @@ plugins:
 
 ## Limitations
 
+### Dynamic URLs
+
 Dynamically created URLs as part of scripts are not detected, and thus cannot be
 downloaded automatically, as the plugin does not execute scripts – it only detects fully qualified URLs for downloading and replacement. In short, don't do this:
 
 ``` js
-const cdn = "https://polyfill.io"
-const url = `${cdn}/v3/polyfill.min.js`
+const host = "https://example.com"
+const path = `${host}/script.js`
 ```
 
 Instead, always use fully qualified URLs:
 
 ``` js
-const url ="https://polyfill.io/v3/polyfill.min.js"
+const url ="https://example.com/script.js"
 ```
+
+### Embedded HTML
+
+By default, embedded HTML files (e.g. in iframes) are not scanned for external
+assets. This is a limitation of MkDocs, as it considers `.html` files to be
+templates, which must be explicitly listed under
+[`extra_templates`][mkdocs.extra_templates]. Thus, to self-host external assets
+of an embedded HTML file:
+
+``` yaml
+extra_templates:
+  - iframe.html
+```
+
+Note that the path to `iframe.html` is relative to the
+[`docs_dir`][mkdocs.docs_dir] directory.

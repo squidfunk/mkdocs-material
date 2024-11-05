@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -64,4 +64,41 @@ export function getElementContainer(
 
   /* Return overflowing container */
   return parent ? el : undefined
+}
+
+/**
+ * Retrieve all overflowing containers of an element, if any
+ *
+ * Note that this function has a slightly different behavior, so we should at
+ * some point consider refactoring how overflowing containers are handled.
+ *
+ * @param el - Element
+ *
+ * @returns Overflowing containers
+ */
+export function getElementContainers(
+  el: HTMLElement
+): HTMLElement[] {
+  const containers: HTMLElement[] = []
+
+  // Walk up the DOM tree until we find an overflowing container
+  let parent = el.parentElement
+  while (parent) {
+    if (
+      el.clientWidth  > parent.clientWidth ||
+      el.clientHeight > parent.clientHeight
+    )
+      containers.push(parent)
+
+    // Continue with parent element
+    parent = (el = parent).parentElement
+  }
+
+  // If the page is short, the body might not be overflowing and there might be
+  // no other containers, which is why we need to make sure the body is present
+  if (containers.length === 0)
+    containers.push(document.documentElement)
+
+  // Return overflowing containers
+  return containers
 }

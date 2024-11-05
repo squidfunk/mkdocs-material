@@ -33,7 +33,7 @@ explicitly define them. The default value of the property is always included.
 
 #### <!-- md:default computed --> – Default value is computed { #default data-toc-label="is computed" }
 
-Some default values are not set to static values but computed form other values,
+Some default values are not set to static values but computed from other values,
 like the site language, repository provider, or other settings.
 
 #### <!-- md:default none --> – Default value is empty { #default data-toc-label="is empty" }
@@ -69,7 +69,7 @@ Several features are implemented through MkDocs excellent plugin architecture,
 some of which are built-in and distributed with Material for MkDocs, so no
 installation is required.
 
-### <!-- md:extension --> – Markdown extension { data-toc-label="Markdown extension" }
+### <!-- md:extension --> – Markdown extension { data-toc-label="Markdown extension" #extension }
 
 This symbol denotes that the thing described is a Markdown extension, which can
 be enabled in `mkdocs.yml` and adds additional functionality to the Markdown

@@ -39,6 +39,11 @@
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
   {% endif %}
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
+  {% endif %}
   {% if nav_item.children %}
     {% set indexes = [] %}
     {% if "navigation.indexes" in features %}
@@ -48,20 +53,33 @@
         {% endif %}
       {% endfor %}
     {% endif %}
-    {% set tabs = "navigation.tabs" in features %}
-    {% set sections = "navigation.sections" in features %}
-    {% if tabs and level == 1 or sections and tabs >= level - 1 %}
-      {% set class = class ~ " md-nav__item--section" %}
-      {% set is_section = true %}
-    {% elif not nav_item.active and "navigation.prune" in features %}
-      {% set class = class ~ " md-nav__item--pruned" %}
-      {% set is_pruned = true %}
+    {% if "navigation.tabs" in features %}
+      {% if level == 1 and nav_item.active %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+      {% if "navigation.sections" in features %}
+        {% if level == 2 and nav_item.parent.active %}
+          {% set class = class ~ " md-nav__item--section" %}
+          {% set is_section = true %}
+        {% endif %}
+      {% endif %}
+    {% elif "navigation.sections" in features %}
+      {% if level == 1 %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+    {% endif %}
+    {% if "navigation.prune" in features %}
+      {% if not is_section and not nav_item.active %}
+        {% set class = class ~ " md-nav__item--pruned" %}
+        {% set is_pruned = true %}
+      {% endif %}
     {% endif %}
     <li class="{{ class }} md-nav__item--nested">
       {% if not is_pruned %}
         {% set checked = "checked" if nav_item.active %}
-        {% set is_expanded = "navigation.expand" in features %}
-        {% if is_expanded and not checked %}
+        {% if "navigation.expand" in features and not checked %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
         <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>

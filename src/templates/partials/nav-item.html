@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -87,6 +87,13 @@
     {% set class = class ~ " md-nav__item--active" %}
   {% endif %}
 
+  <!-- Determine active page for paginated views -->
+  {% if nav_item.pages %}
+    {% if page in nav_item.pages %}
+      {% set nav_item = page %}
+    {% endif %}
+  {% endif %}
+
   <!-- Navigation item with nested items -->
   {% if nav_item.children %}
 
@@ -100,17 +107,43 @@
       {% endfor %}
     {% endif %}
 
-    <!-- Determine whether to render item as a section -->
-    {% set tabs = "navigation.tabs" in features %}
-    {% set sections = "navigation.sections" in features %}
-    {% if tabs and level == 1 or sections and tabs >= level - 1 %}
-      {% set class = class ~ " md-nav__item--section" %}
-      {% set is_section = true %}
+    <!-- Navigation tabs -->
+    {% if "navigation.tabs" in features %}
 
-    <!-- Determine whether to prune inactive item -->
-    {% elif not nav_item.active and "navigation.prune" in features %}
-      {% set class = class ~ " md-nav__item--pruned" %}
-      {% set is_pruned = true %}
+      <!-- Render 1st level active item as section -->
+      {% if level == 1 and nav_item.active %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+
+      <!-- Navigation tabs + sections -->
+      {% if "navigation.sections" in features %}
+
+        <!-- Render 2nd level items with nested items as sections -->
+        {% if level == 2 and nav_item.parent.active %}
+          {% set class = class ~ " md-nav__item--section" %}
+          {% set is_section = true %}
+        {% endif %}
+      {% endif %}
+
+    <!-- Navigation sections -->
+    {% elif "navigation.sections" in features %}
+
+      <!-- Render 1st level items with nested items as sections -->
+      {% if level == 1 %}
+        {% set class = class ~ " md-nav__item--section" %}
+        {% set is_section = true %}
+      {% endif %}
+    {% endif %}
+
+    <!-- Navigation pruning -->
+    {% if "navigation.prune" in features %}
+
+      <!-- Prune item if it is not a section and not active -->
+      {% if not is_section and not nav_item.active %}
+        {% set class = class ~ " md-nav__item--pruned" %}
+        {% set is_pruned = true %}
+      {% endif %}
     {% endif %}
 
     <!-- Nested navigation item -->
@@ -119,8 +152,7 @@
         {% set checked = "checked" if nav_item.active %}
 
         <!-- Determine checked and indeterminate state -->
-        {% set is_expanded = "navigation.expand" in features %}
-        {% if is_expanded and not checked %}
+        {% if "navigation.expand" in features and not checked %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
 

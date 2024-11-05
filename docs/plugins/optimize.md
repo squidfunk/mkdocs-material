@@ -10,7 +10,13 @@ The optimize plugin automatically identifies and optimizes all media files when
 As a result, your site loads significantly faster and yields better rankings in
 search engines.
 
+---
+
+<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
+[our awesome sponsors].
+
   [building your project]: ../creating-your-site.md#building-your-site
+  [our awesome sponsors]: ../insiders/index.md
 
 ## Objective
 

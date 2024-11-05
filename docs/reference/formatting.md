@@ -4,8 +4,8 @@ icon: material/format-font
 
 # Formatting
 
-Material for MkDocs provides support for several HTML elements that can be used 
-to highlight sections of a document or apply specific formatting. Additionally, 
+Material for MkDocs provides support for several HTML elements that can be used
+to highlight sections of a document or apply specific formatting. Additionally,
 [Critic Markup] is supported, adding the ability to display suggested changes
 for a document.
 
@@ -14,7 +14,7 @@ for a document.
 ## Configuration
 
 This configuration enables support for keyboard keys, tracking changes in
-documents, defining sub- and superscript and highlighting text. Add the 
+documents, defining sub- and superscript and highlighting text. Add the
 following lines to `mkdocs.yml`:
 
 ``` yaml
@@ -40,7 +40,7 @@ See additional configuration options:
 
 ### Highlighting changes
 
-When [Critic] is enabled, [Critic Markup] can be used, which adds the ability to 
+When [Critic] is enabled, [Critic Markup] can be used, which adds the ability to
 highlight suggested changes, as well as add inline comments to a document:
 
 ``` title="Text with suggested changes"
@@ -78,21 +78,21 @@ Text can be <del class="critic">deleted</del> and replacement text
 
 ### Highlighting text
 
-When [Caret, Mark & Tilde] are enabled, text can be highlighted with a simple 
+When [Caret, Mark & Tilde] are enabled, text can be highlighted with a simple
 syntax, which is more convenient that directly using the corresponding
 [`mark`][mark], [`ins`][ins] and [`del`][del] HTML tags:
 
 ``` title="Text with highlighting"
-- ==This was marked==
-- ^^This was inserted^^
-- ~~This was deleted~~
+- ==This was marked (highlight)==
+- ^^This was inserted (underline)^^
+- ~~This was deleted (strikethrough)~~
 ```
 
 <div class="result" markdown>
 
-- ==This was marked==
-- ^^This was inserted^^
-- ~~This was deleted~~
+- ==This was marked (highlight)==
+- ^^This was inserted (underline)^^
+- ~~This was deleted (strikethrough)~~
 
 </div>
 
@@ -102,7 +102,7 @@ syntax, which is more convenient that directly using the corresponding
 
 ### Sub- and superscripts
 
-When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and 
+When [Caret & Tilde][Caret, Mark & Tilde] are enabled, text can be sub- and
 superscripted with a simple syntax, which is more convenient than directly
 using the corresponding [`sub`][sub] and [`sup`][sup] HTML tags:
 

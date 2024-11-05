@@ -57,18 +57,18 @@ The following properties are available for each link:
     This property must contain a valid path to any icon bundled with the theme,
     or the build will not succeed. Some popular choices:
 
+    * :fontawesome-brands-github: – `fontawesome/brands/github`
+    * :fontawesome-brands-gitlab: – `fontawesome/brands/gitlab`
+    * :fontawesome-brands-x-twitter: – `fontawesome/brands/x-twitter`
     * :fontawesome-brands-mastodon: – `fontawesome/brands/mastodon`
       <small>automatically adds [`rel=me`][rel=me]</small>
-    * :fontawesome-brands-twitter: – `fontawesome/brands/twitter`
-    * :fontawesome-brands-github: – `fontawesome/brands/github`
     * :fontawesome-brands-docker: – `fontawesome/brands/docker`
     * :fontawesome-brands-facebook: – `fontawesome/brands/facebook`
-    * :fontawesome-brands-medium: – `fontawesome/brands/medium`
     * :fontawesome-brands-instagram: – `fontawesome/brands/instagram`
     * :fontawesome-brands-linkedin: – `fontawesome/brands/linkedin`
-    * :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
     * :fontawesome-brands-slack: – `fontawesome/brands/slack`
     * :fontawesome-brands-discord: – `fontawesome/brands/discord`
+    * :fontawesome-brands-pied-piper-alt: – `fontawesome/brands/pied-piper-alt`
 
 <!-- md:option social.link -->
 

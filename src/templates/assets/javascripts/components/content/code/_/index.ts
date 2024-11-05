@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -34,15 +34,22 @@ import {
   mergeWith,
   switchMap,
   take,
+  takeLast,
+  takeUntil,
   tap
 } from "rxjs"
 
 import { feature } from "~/_"
 import {
   getElementContentSize,
+  getElements,
   watchElementSize,
   watchElementVisibility
 } from "~/browser"
+import {
+  Tooltip,
+  mountInlineTooltip2
+} from "~/components/tooltip2"
 import { renderClipboardButton } from "~/templates"
 
 import { Component } from "../../../_"
@@ -56,11 +63,19 @@ import {
  * ------------------------------------------------------------------------- */
 
 /**
- * Code block
+ * Code block overflow
  */
-export interface CodeBlock {
+export interface Overflow {
   scrollable: boolean                  /* Code block overflows */
 }
+
+/**
+ * Code block
+ */
+export type CodeBlock =
+  | Overflow
+  | Annotation
+  | Tooltip
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -125,7 +140,7 @@ function findCandidateList(el: HTMLElement): HTMLElement | undefined {
  */
 export function watchCodeBlock(
   el: HTMLElement
-): Observable<CodeBlock> {
+): Observable<Overflow> {
   return watchElementSize(el)
     .pipe(
       map(({ width }) => {
@@ -158,12 +173,13 @@ export function watchCodeBlock(
  */
 export function mountCodeBlock(
   el: HTMLElement, options: MountOptions
-): Observable<Component<CodeBlock | Annotation>> {
+): Observable<Component<CodeBlock>> {
   const { matches: hover } = matchMedia("(hover)")
 
   /* Defer mounting of code block - see https://bit.ly/3vHVoVD */
   const factory$ = defer(() => {
-    const push$ = new Subject<CodeBlock>()
+    const push$ = new Subject<Overflow>()
+    const done$ = push$.pipe(takeLast(1))
     push$.subscribe(({ scrollable }) => {
       if (scrollable && hover)
         el.setAttribute("tabindex", "0")
@@ -172,16 +188,19 @@ export function mountCodeBlock(
     })
 
     /* Render button for Clipboard.js integration */
+    const content$: Array<Observable<Component<CodeBlock>>> = []
     if (ClipboardJS.isSupported()) {
       if (el.closest(".copy") || (
         feature("content.code.copy") && !el.closest(".no-copy")
       )) {
         const parent = el.closest("pre")!
         parent.id = `__code_${sequence++}`
-        parent.insertBefore(
-          renderClipboardButton(parent.id),
-          el
-        )
+
+        /* Mount tooltip, if enabled */
+        const button = renderClipboardButton(parent.id)
+        parent.insertBefore(button, el)
+        if (feature("content.tooltips"))
+          content$.push(mountInlineTooltip2(button, { viewport$ }))
       }
     }
 
@@ -196,31 +215,33 @@ export function mountCodeBlock(
         feature("content.code.annotate")
       )) {
         const annotations$ = mountAnnotationList(list, el, options)
-
-        /* Create and return component */
-        return watchCodeBlock(el)
-          .pipe(
-            tap(state => push$.next(state)),
-            finalize(() => push$.complete()),
-            map(state => ({ ref: el, ...state })),
-            mergeWith(
-              watchElementSize(container)
-                .pipe(
-                  map(({ width, height }) => width && height),
-                  distinctUntilChanged(),
-                  switchMap(active => active ? annotations$ : EMPTY)
-                )
+        content$.push(
+          watchElementSize(container)
+            .pipe(
+              takeUntil(done$),
+              map(({ width, height }) => width && height),
+              distinctUntilChanged(),
+              switchMap(active => active ? annotations$ : EMPTY)
             )
-          )
+        )
       }
     }
+
+    // If the code block has line spans, we can add this additional class to
+    // the code block element, which fixes the problem for highlighted code
+    // lines not stretching to the entirety of the screen when the code block
+    // overflows, e.g., on mobile - see
+    const spans = getElements(":scope > span[id]", el)
+    if (spans.length)
+      el.classList.add("md-code__content")
 
     /* Create and return component */
     return watchCodeBlock(el)
       .pipe(
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
-        map(state => ({ ref: el, ...state }))
+        map(state => ({ ref: el, ...state })),
+        mergeWith(...content$)
       )
   })
 

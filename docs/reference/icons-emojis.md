@@ -21,6 +21,14 @@ can be added] and used in `mkdocs.yml`, documents and templates.
     data-mdx-component="iconsearch-query"
   />
   <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result">
+    <select
+      class="mdx-iconsearch-result__select"
+      data-mdx-component="iconsearch-select"
+    >
+      <option value="all" selected>All</option>
+      <option value="icons">Icons</option>
+      <option value="emojis">Emojis</option>
+    </select>
     <div class="mdx-iconsearch-result__meta"></div>
     <ol class="mdx-iconsearch-result__list"></ol>
   </div>
@@ -83,8 +91,7 @@ the shortcodes at [Emojipedia]:
 :smile:
 
 </div>
-
-  [Twemoji]: https://twemoji.twitter.com/
+  [Twemoji]: https://github.com/twitter/twemoji
   [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons
@@ -113,16 +120,16 @@ styles], it's always recommended to add an [additional style sheet] and move
 declarations into dedicated CSS classes:
 
 <style>
-  .twitter {
-    color: #1DA1F2;
+  .youtube {
+    color: #EE0F0F;
   }
 </style>
 
 === ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
-    .twitter {
-      color: #1DA1F2;
+    .youtube {
+      color: #EE0F0F;
     }
     ```
 
@@ -136,12 +143,12 @@ declarations into dedicated CSS classes:
 After applying the customization, add the CSS class to the icon shortcode:
 
 ``` markdown title="Icon with color"
-:fontawesome-brands-twitter:{ .twitter }
+:fontawesome-brands-youtube:{ .youtube }
 ```
 
 <div class="result" markdown>
 
-:fontawesome-brands-twitter:{ .twitter }
+:fontawesome-brands-youtube:{ .youtube }
 
 </div>
 
@@ -211,7 +218,7 @@ reference any icon that's [bundled with the theme][icon search] with Jinja's
 
 ``` html
 <span class="twemoji">
-  {% include ".icons/fontawesome/brands/twitter.svg" %} <!-- (1)! -->
+  {% include ".icons/fontawesome/brands/youtube.svg" %} <!-- (1)! -->
 </span>
 ```
 
@@ -219,7 +226,7 @@ reference any icon that's [bundled with the theme][icon search] with Jinja's
     click on the shortcode to copy it to your clipboard:
 
     <div class="mdx-iconsearch" data-mdx-component="iconsearch">
-      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brands twitter" />
+      <input class="md-input md-input--stretch mdx-iconsearch__input" placeholder="Search icon" data-mdx-component="iconsearch-query" value="brands youtube" />
       <div class="mdx-iconsearch-result" data-mdx-component="iconsearch-result" data-mdx-mode="file">
         <div class="mdx-iconsearch-result__meta"></div>
         <ol class="mdx-iconsearch-result__list"></ol>

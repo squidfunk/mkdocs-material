@@ -4,9 +4,7 @@
   "oneOf": [
     {
       "markdownDescription": "https://github.com/oprypin/mkdocs-gen-files",
-      "enum": [
-        "git-authors"
-      ]
+      "const": "git-authors"
     },
     {
       "type": "object",

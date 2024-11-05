@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -233,11 +233,11 @@ kbd {
       overflow: auto;
       word-break: normal;
       touch-action: auto;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+      scrollbar-width: thin;
       outline-color: var(--md-accent-fg-color);
       box-shadow: none;
       box-decoration-break: slice;
-      scrollbar-width: thin;
-      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
       // Code block on hover
       &:hover {
@@ -291,24 +291,6 @@ kbd {
     text-decoration: none;
     cursor: help;
     border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
-
-    // Show tooltip for touch devices
-    @media (hover: none) {
-
-      // Tooltip
-      &[title]:is(:focus, :hover)::after {
-        position: absolute;
-        inset-inline: px2rem(16px);
-        padding: px2rem(4px) px2rem(6px);
-        margin-top: 2em;
-        font-size: px2rem(14px);
-        color: var(--md-default-bg-color);
-        content: attr(title);
-        background-color: var(--md-default-fg-color);
-        border-radius: px2rem(2px);
-        box-shadow: var(--md-shadow-z3);
-      }
-    }
   }
 
   // Small text
@@ -333,6 +315,12 @@ kbd {
   // Unordered list
   ul {
     list-style-type: disc;
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert-layer;
+    }
   }
 
   // Unordered and ordered list
@@ -346,14 +334,30 @@ kbd {
       display: flow-root;
     }
 
-    // Nested ordered list
+    // 2nd layer nested ordered list
     ol {
       list-style-type: lower-alpha;
 
-      // Triply nested ordered list
+      // 3rd layer nested ordered list
       ol {
         list-style-type: lower-roman;
+
+        // 4th layer nested ordered list
+        ol {
+          list-style-type: upper-alpha;
+
+          // 5th layer nested ordered list
+          ol {
+            list-style-type: upper-roman;
+          }
+        }
       }
+    }
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert-layer;
     }
 
     // List element
@@ -426,6 +430,7 @@ kbd {
     // Figure images
     img {
       display: block;
+      margin: 0 auto;
     }
   }
 
@@ -532,10 +537,10 @@ kbd {
       margin-inline-start: 0.5em;
       vertical-align: text-bottom;
       content: "";
-      transition: background-color 125ms;
       mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;
       mask-size: contain;
+      transition: background-color 125ms;
     }
 
     // Show sort icon on hover

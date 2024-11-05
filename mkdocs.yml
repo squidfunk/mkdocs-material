@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -31,7 +31,7 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2023 Martin Donath
+copyright: Copyright &copy; 2016 - 2024 Martin Donath
 
 # Configuration
 theme:
@@ -44,6 +44,7 @@ theme:
     - content.code.annotate
     - content.code.copy
     # - content.code.select
+    # - content.footnote.tooltips
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
@@ -65,18 +66,24 @@ theme:
     - toc.follow
     # - toc.integrate
   palette:
-    - scheme: default
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7
+        icon: material/toggle-switch
         name: Switch to dark mode
-    - scheme: slate
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
       accent: indigo
       toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
   font:
     text: Roboto
     code: Roboto Mono
@@ -99,8 +106,9 @@ hooks:
 
 # Additional configuration
 extra:
-  annotate:
-    json: [.s2]
+  status:
+    new: Recently added
+    deprecated: Deprecated
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
@@ -113,8 +121,8 @@ extra:
       link: https://pypi.org/project/mkdocs-material/
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@squidfunk
-    - icon: fontawesome/brands/twitter
-      link: https://twitter.com/squidfunk
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/squidfunk
 
 # Extensions
 markdown_extensions:
@@ -166,6 +174,9 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
+not_in_nav: |
+  /tutorials/**/*.md
+
 # Page tree
 nav:
   - Home: index.md
@@ -180,20 +191,18 @@ nav:
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
+    - Tutorials:
+      - tutorials/index.md
+      - "Blogs":
+        - tutorials/blogs/basic.md
+        - tutorials/blogs/navigation.md
+        - tutorials/blogs/engage.md
+      - "Social cards":
+        - tutorials/social/basic.md
+        - tutorials/social/custom.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md
-    - Contributing:
-      - contributing/index.md
-      - Reporting a bug: contributing/reporting-a-bug.md
-      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
-      - Requesting a change: contributing/requesting-a-change.md
-      - Adding translations: contributing/adding-translations.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
-    - Guides:
-      - Creating a reproduction: guides/creating-a-reproduction.md
-    - FAQ:
-      - Sponsoring: faq/sponsoring.md
   - Setup:
     - setup/index.md
     - Changing the colors: setup/changing-the-colors.md
@@ -254,9 +263,35 @@ nav:
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
-    - Getting started: insiders/getting-started.md
+    - Why sponsor us: insiders/why-sponsor-us.md
+    - What's in it for you: insiders/benefits.md
+    - Who is sponsoring: insiders/our-sponsors.md
+    - Sponsoring tiers: insiders/sponsoring-tiers.md
+    - How to sponsor: insiders/how-to-sponsor.md
+    - Additional information:
+      - Payment and billing: insiders/payment-and-billing.md
+      - Access management: insiders/access-management.md
+      - Runtime and cancellation: insiders/runtime-and-cancellation.md
+      - Privacy: insiders/privacy.md
+      - License: insiders/license.md
+      - Support: support.md
+    - Using Insiders:
+      - Getting started: insiders/getting-started.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
+  - Community:
+    - Contributing:
+      - contributing/index.md
+      - Reporting a bug: contributing/reporting-a-bug.md
+      - Reporting a docs issue: contributing/reporting-a-docs-issue.md
+      - Requesting a change: contributing/requesting-a-change.md
+      - Adding translations: contributing/adding-translations.md
+      - Making a pull request: contributing/making-a-pull-request.md
+      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+    - Guides:
+      - Creating a reproduction: guides/creating-a-reproduction.md
+    - Community experts program:
+      - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md

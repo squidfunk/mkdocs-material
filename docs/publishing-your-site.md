@@ -35,11 +35,15 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
-          - uses: actions/setup-python@v4
+          - name: Configure Git Credentials
+            run: |
+              git config user.name github-actions[bot]
+              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          - uses: actions/setup-python@v5
             with:
               python-version: 3.x
           - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
-          - uses: actions/cache@v3
+          - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
               path: .cache
@@ -90,11 +94,15 @@ contents:
         if: github.event.repository.fork == false
         steps:
           - uses: actions/checkout@v4
-          - uses: actions/setup-python@v4
+          - name: Configure Git Credentials
+            run: |
+              git config user.name github-actions[bot]
+              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          - uses: actions/setup-python@v5
             with:
               python-version: 3.x
           - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-          - uses: actions/cache@v3
+          - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
               path: .cache
@@ -110,7 +118,7 @@ contents:
     1.  This step is only necessary if you want to use the
         [built-in optimize plugin] to automatically compress images.
 
-    2.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    2.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [GitHub secrets].
 
@@ -141,6 +149,14 @@ the following command from the directory containing the `mkdocs.yml` file:
 ```
 mkdocs gh-deploy --force
 ```
+
+This will build your documentation and deploy it to a branch
+`gh-pages` in your repository. See [this overview in the MkDocs
+documentation] for more information. For a description of the
+arguments, see [the documentation for the command].
+
+  [this overview in the MkDocs documentation]: https://www.mkdocs.org/user-guide/deploying-your-docs/#project-pages
+  [the documentation for the command]: https://www.mkdocs.org/user-guide/cli/#mkdocs-gh-deploy
 
 ## GitLab Pages
 
@@ -181,7 +197,7 @@ contents:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
-    1.  Remember to set the `GH_TOKEN` environment variable to the value of your
+    1.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
@@ -199,11 +215,14 @@ other providers:
 
 <div class="mdx-columns" markdown>
 
-- [:simple-azuredevops: Azure][Azure]
+- [:material-microsoft-azure-devops: Azure][Azure]
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
 - [:simple-digitalocean: DigitalOcean][DigitalOcean]
+- [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
 - [:simple-vercel: Vercel][Vercel]
+- [:simple-codeberg: Codeberg Pages][Codeberg Pages]
+- [:simple-scaleway: Scaleway][Scaleway]
 
 </div>
 
@@ -212,7 +231,11 @@ other providers:
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
   [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
   [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
-  [Cloudflare Pages]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-cloudflare/
-  [DigitalOcean]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-digitalocean-app-platform/
-  [Netlify]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
-  [Vercel]: https://www.starfallprojects.co.uk/projects/deploy-host-docs/deploy-mkdocs-material-vercel/
+  [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-mkdocs-material-cloudflare/
+  [DigitalOcean]: https://deborahwrites.com/guides/deploy-mkdocs-material-digitalocean-app-platform/
+  [Flyio]: https://documentation.breadnet.co.uk/cloud/fly/mkdocs-on-fly/
+  [Netlify]: https://deborahwrites.com/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
+  [Vercel]: https://deborahwrites.com/guides/deploy-mkdocs-material-vercel/
+  [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
+  [Scaleway]: https://www.scaleway.com/en/docs/tutorials/using-bucket-website-with-mkdocs/
+

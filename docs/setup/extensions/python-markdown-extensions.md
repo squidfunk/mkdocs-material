@@ -53,18 +53,23 @@ of [additional JavaScript]:
       }
     };
 
-    document$.subscribe(() => {
+    document$.subscribe(() => { // (1)!
+      MathJax.startup.output.clearCache()
+      MathJax.typesetClear()
+      MathJax.texReset()
       MathJax.typesetPromise()
     })
     ```
+
+    1. This integrates MathJax with [instant loading]
+
 
 === ":octicons-file-code-16: `mkdocs.yml`"
 
     ``` yaml
     extra_javascript:
       - javascripts/mathjax.js
-      - https://polyfill.io/v3/polyfill.min.js?features=es6
-      - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+      - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
     ```
 
 The other configuration options of this extension are not officially supported
@@ -81,6 +86,7 @@ See reference for usage:
   [MathJax]: https://www.mathjax.org/
   [KaTeX]: https://github.com/Khan/KaTeX
   [additional JavaScript]: ../../customization.md#additional-javascript
+  [instant loading]: ../setting-up-navigation.md#instant-loading
   [Using block syntax]: ../../reference/math.md#using-block-syntax
   [Using inline block syntax]: ../../reference/math.md#using-inline-block-syntax
 
@@ -103,6 +109,25 @@ MkDocs, as they only impact the Markdown parsing stage. See the [BetterEm
 documentation][BetterEm] for more information.
 
   [BetterEm]: https://facelessuser.github.io/pymdown-extensions/extensions/betterem/
+
+### Caption
+
+<!-- md:version 1.0.0 -->
+<!-- md:extension [pymdownx.blocks.caption][Caption] -->
+
+The [Caption] extension adds the ability to add captions to any Markdown block,
+including images, tables, and code blocks. Enable it via `mkdocs.yml`:
+
+``` yaml
+markdown_extensions:
+  - pymdownx.blocks.caption
+```
+
+The configuration options of this extension are not specific to Material for
+MkDocs, as they only impact the Markdown parsing stage. See the [Caption
+documentation][Caption] for more information.
+
+  [Caption]: https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/
 
 ### Caret, Mark & Tilde
 
@@ -532,7 +557,7 @@ See reference for usage:
 <!-- md:extension [pymdownx.smartsymbols][SmartSymbols] -->
 
 The [SmartSymbols] extension converts some sequences of characters into their
-corresponding symbols, e.h. copyright symbols or fractions. Enable it via
+corresponding symbols, e.g. copyright symbols or fractions. Enable it via
 `mkdocs.yml`:
 
 ``` yaml
@@ -667,8 +692,8 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.combine_header_slug -->
 
-:   <!-- md:default `false` --> This option enables the content tabs
-    [combine_header_slug style] flag, which prepends the id of the header to
+:   <!-- md:default `false` --> This option enables the content tabs'
+    [`combine_header_slug` style] flag, which prepends the id of the header to
     the id of the tab:
 
     ``` yaml
@@ -679,7 +704,7 @@ The following configuration options are supported:
 
 <!-- md:option pymdownx.tabbed.slugify -->
 
-:   <!-- md:default `toc.slugify` --> This option allows for
+:   <!-- md:default `None` --> This option allows for
     customization of the slug function. For some languages, the default may not
     produce good and readable identifiers – consider using another slug function
     like for example those from [Python Markdown Extensions][Slugs]:
@@ -699,7 +724,7 @@ The following configuration options are supported:
         ``` yaml
         markdown_extensions:
           - pymdownx.tabbed:
-              slugify: !!python/object/apply:pymdownx.slugs.slugify
+              slugify: !!python/object/apply:pymdownx.slugs.slugify {}
         ```
 
 The other configuration options of this extension are not officially supported
@@ -715,7 +740,7 @@ See reference for usage:
   [Tabbed]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/
   [alternate style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#alternate-style
   [combine_header_slug style]: https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/#tab-ids
-  [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
+  [better behavior on mobile viewports]: https://x.com/squidfunk/status/1424740370596958214
   [Grouping code blocks]: ../../reference/content-tabs.md#grouping-code-blocks
   [Grouping other content]: ../../reference/content-tabs.md#grouping-other-content
   [Embedded content]: ../../reference/content-tabs.md#embedded-content

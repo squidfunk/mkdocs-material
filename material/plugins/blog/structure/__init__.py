@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -57,11 +57,11 @@ class Post(Page):
         path = os.path.relpath(file.abs_src_path, docs)
 
         # Read contents and metadata immediately
-        with open(file.abs_src_path, encoding = "utf-8") as f:
+        with open(file.abs_src_path, encoding = "utf-8-sig") as f:
             self.markdown = f.read()
 
             # Sadly, MkDocs swallows any exceptions that occur during parsing.
-            # As we want to provide the best possible authoring experience, we
+            # Since we want to provide the best possible user experience, we
             # need to catch errors early and display them nicely. We decided to
             # drop support for MkDocs' MultiMarkdown syntax, because it is not
             # correctly implemented anyway. When using MultiMarkdown syntax, all
@@ -80,7 +80,7 @@ class Post(Page):
                 self.markdown = self.markdown[match.end():].lstrip("\n")
 
             # The post's metadata could not be parsed because of a syntax error,
-            # which we display to the user with a nice error message
+            # which we display to the author with a nice error message
             except Exception as e:
                 raise PluginError(
                     f"Error reading metadata of post '{path}' in '{docs}':\n"
@@ -148,13 +148,17 @@ class Excerpt(Page):
         self._set_canonical_url(config.site_url)
 
         # Initialize configuration and metadata
-        self.config   = post.config
-        self.meta     = post.meta
+        self.config = post.config
+        self.meta   = post.meta
 
         # Initialize authors and categories - note that views usually contain
         # subsets of those lists, which is why we need to manage them here
         self.authors: list[Author] = []
         self.categories: list[Category] = []
+
+        # Initialize content after separator - allow template authors to render
+        # posts inline or to provide a link to the post's page
+        self.more = None
 
         # Initialize parser - note that we need to patch the configuration,
         # more specifically the table of contents extension
@@ -200,7 +204,9 @@ class Excerpt(Page):
 
         # Convert Markdown to HTML and extract excerpt
         self.content = self.md.convert(self.markdown)
-        self.content, *_ = self.content.split(separator, 1)
+        self.content, *more = self.content.split(separator, 1)
+        if more:
+            self.more = more[0]
 
         # Extract table of contents and reset post URL - if we wouldn't reset
         # the excerpt URL, linking to the excerpt from the view would not work
@@ -212,10 +218,18 @@ class Excerpt(Page):
 # View
 class View(Page):
 
+    # Parent view
+    parent: View | Section
+
     # Initialize view
-    def __init__(self, title: str | None, file: File, config: MkDocsConfig):
-        super().__init__(title, file, config)
-        self.parent: View | Section
+    def __init__(self, name: str | None, file: File, config: MkDocsConfig):
+        super().__init__(None, file, config)
+
+        # Initialize name of the view - note that views never pass a title to
+        # the parent constructor, so the author can always override the title
+        # that is used for rendering. However, for some purposes, like for
+        # example sorting, we need something to compare.
+        self.name = name
 
         # Initialize posts and views
         self.posts: list[Post] = []

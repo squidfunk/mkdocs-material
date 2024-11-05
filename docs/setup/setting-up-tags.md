@@ -27,6 +27,25 @@ For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/tags.md
 
+#### Advanced settings
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.48.0 -->
+<!-- md:flag experimental -->
+
+The following advanced settings are currently reserved to our [sponsors]
+[Insiders]. They are entirely optional, and only add additional capabilities to
+the tags plugin:
+
+<!-- - [`listings_layout`][config.listings_layout] -->
+- [`listings_toc`][config.listings_toc]
+
+We'll add more settings here in the near future.
+
+  [Insiders]: ../insiders/index.md
+  [config.listings_layout]: ../plugins/tags.md#config.listings_layout
+  [config.listings_toc]: ../plugins/tags.md#config.listings_toc
+
 ### Tag icons and identifiers
 
 <!-- md:version 8.5.0 -->
@@ -159,19 +178,31 @@ search preview, which now allows to __find pages by tags__.
 <!-- md:version 8.2.0 -->
 <!-- md:example tags -->
 
-The [built-in tags plugin] allows to define a file to render a [tags index]
-[tags.tags_file], which can be any page that is part of the `nav` section. To
-add a tags index, create a page, e.g. `tags.md`:
+The [built-in tags plugin] allows to define a file to render a tags index,
+which can be any page that is part of the `nav` section. To add a tags index,
+create a page, e.g. `tags.md`:
 
 ``` markdown
 # Tags
 
 Following is a list of relevant tags:
 
-[TAGS]
+<!-- material/tags -->
 ```
 
-The `[TAGS]` marker specifies the position of the tags index, i.e. it is
+Then in your `mkdocs.yml` file, add the following.
+
+``` yaml
+plugins:
+  - tags:
+      tags_file: tags.md # (1)!
+```
+
+1. This setting is not necessary when using [Insiders].
+
+Note that the path to `tags.md` is relative to the `docs/` directory.
+
+The tags marker specifies the position of the tags index, i.e. it is
 replaced with the actual tags index when the page is rendered. You can include
 arbitrary content before and after the marker:
 
@@ -179,6 +210,134 @@ arbitrary content before and after the marker:
 
   [tags.tags_file]: #tags-file
   [tags index enabled]: ../assets/screenshots/tags-index.png
+
+### Advanced features
+
+[Insiders] ships a __ground up rewrite of the tags plugin__ which is infinitely
+more powerful than the current version in the community edition. It allows
+for an arbitrary number of tags indexes (listings), [scoped listings],
+[shadow tags], [nested tags], and much more.
+
+  [scoped listings]: #scoped-listings
+  [shadow tags]: #shadow-tags
+  [nested tags]: #nested-tags
+
+#### Configurable listings
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.48.0 -->
+<!-- md:flag experimental -->
+
+Listings can be configured in `mkdocs.yml` or directly at the location of the
+marker that you position in a Markdown document. Some examples:
+
+- __Use [scoped listings]__: limit the tags index to pages that are on the same
+  level of the subsection of the documentation the page is in:
+
+    ``` html
+    <!-- material/tags { scope: true } -->
+    ```
+
+- __List only specific tags__: limit the tags index to a single or multiple
+  selected tags, e.g., `Foo` and `Bar`, excluding all other tags:
+
+    ``` html
+    <!-- material/tags { include: [Foo, Bar] } -->
+    ```
+
+- __Exclude pages with specific tags__: don't include pages that are tagged
+  with specific tags, e.g. `Internal`. This can be any tag, including a shadow
+  tag:
+
+    ``` html
+    <!-- material/tags { exclude: [Internal] } -->
+    ```
+
+- __Enable or disable tags inside the table of contents__: specify whether the
+  table of contents lists all tags under the nearest headline:
+
+    ``` html
+    <!-- material/tags { toc: false } -->
+    ```
+
+See the [listing configuration] for all options.
+
+  [listing configuration]: ../plugins/tags.md#listing-configuration
+
+#### Scoped listings
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.48.0 -->
+<!-- md:flag experimental -->
+
+If your documentation is large, you might want to consider using scoped listings
+which will only include pages that are on the same level or below the page
+containing the listing. Just use:
+
+``` html
+<!-- material/tags { scope: true } -->
+```
+
+If you plan to use multiple scoped indexes, it's a good idea to define a
+listing configuration in `mkdocs.yml`, which you can then reference by its id:
+
+``` yaml
+plugins:
+  - tags:
+      listings_map:
+        scoped:
+          scope: true
+```
+
+You can now use:
+
+``` html
+<!-- material/tags scoped -->
+```
+
+#### Shadow tags
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.48.0 -->
+<!-- md:flag experimental -->
+
+Shadow tags are tags that are solely meant to organization, which can be
+included or excluded for rendering with a simple flag. They can be enumerated
+in the [`shadow_tags`][config.shadow_tags] setting:
+
+``` yaml
+plugins:
+  - tags:
+      shadow_tags:
+        - Draft
+        - Internal
+```
+
+If a document is tagged with `Draft`, the tag will only be rendered if
+[`shadow`][config.shadow] setting is enabled, and excluded when it is disabled.
+This is an excellent opportunity for using tags for structuring.
+
+  [config.shadow]: ../plugins/tags.md#config.shadow
+  [config.shadow_tags]: ../plugins/tags.md#config.shadow_tags
+
+#### Nested tags
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.48.0 -->
+<!-- md:flag experimental -->
+
+[Insiders] ships support for nested tags. The
+[`tags_hierarchy_separator`][config.tags_hierarchy_separator] allows to create
+hierarchies of tags, e.g., `Foo/Bar`. Nested tags will be rendered as children
+of the parent tag:
+
+``` yaml
+plugins:
+  - tags:
+      tags_hierarchy: true
+```
+
+  [config.tags_hierarchy_separator]: ../plugins/tags.md#config.tags_hierarchy_separator
 
 ### Hiding tags on a page
 

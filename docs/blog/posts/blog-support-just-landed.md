@@ -78,7 +78,7 @@ nav:
     project, and not in a subdirectory. For more information, see the
     [`blog_dir`][blog_dir] configuration option.
 
-  [blog_dir]: ../../setup/setting-up-a-blog.md#+blog.blog_dir
+  [blog_dir]: ../../plugins/blog.md#config.blog_dir
 
 #### Blog setup
 
@@ -182,12 +182,12 @@ which allow for fine-tuning the output. You can configure post slugs, general
 behavior and much more.
 
   [exact same Markdown flavor]: ../../reference/index.md
-  [post slugs]: ../../setup/setting-up-a-blog.md#+blog.post_url_format
-  [draft]: ../../setup/setting-up-a-blog.md#drafts
-  [This behavior can be changed]: ../../setup/setting-up-a-blog.md#+blog.draft
+  [post slugs]: ../../plugins/blog.md#config.post_url_format
+  [draft]: ../../plugins/blog.md#meta.draft
+  [This behavior can be changed]: ../../plugins/blog.md#config.draft
   [live preview server]: ../../creating-your-site.md#previewing-as-you-write
-  [archive]: ../../setup/setting-up-a-blog.md#archive
-  [category]: ../../setup/setting-up-a-blog.md#categories
+  [archive]: ../../plugins/blog.md#config.archive
+  [category]: ../../plugins/blog.md#config.categories
   [Blog]: blog-support-just-landed/blog.png
   [Blog post]: blog-support-just-landed/blog-post.png
   [Adding an excerpt]: ../../setup/setting-up-a-blog.md#adding-an-excerpt

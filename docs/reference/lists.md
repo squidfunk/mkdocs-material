@@ -62,7 +62,7 @@ of lists can be nested inside each other:
 
 ### Using ordered lists
 
-Ordered lists must start with a number immediately followed by a dot. The 
+Ordered lists must start with a number immediately followed by a dot. The
 numbers do not need to be consecutive and can be all set to `1.`, as they will
 be re-numbered when rendered:
 

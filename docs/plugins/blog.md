@@ -153,6 +153,35 @@ installed.
   [blog]: blog.md
   [built-in plugins]: index.md
 
+### Navigation
+
+If you do not have site navigation configured in your `mkdocs.yml` then there is
+nothing more to do. The blog [archive] and [category] pages will automatically
+appear underneath the automatically generated navigation.
+
+If you do have a navigation structure defined then you will need to specify
+where the blog should appear in this. Create a [navigation section with an index
+page] for the blog:
+
+```yaml
+theme:
+  name: material
+  features:
+    - navigation.indexes
+nav:
+  - ...
+  - Blog:
+    - blog/index.md
+```
+
+The [archive] and [category] pages will appear within that section as
+subsections beneath pages in the blog section. In this case, they would appear
+after `index.md`. The path to the `index.md` file must match
+[blog_dir][config.blog_dir]. This means that you can name the blog navigation
+entry anything you like: 'Blog' or 'News' or perhaps 'Tips'.
+
+[navigation section with an index page]: ../setup/setting-up-navigation.md#section-index-pages
+
 ### General
 
 The following settings are available:
@@ -213,9 +242,8 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles in
-views. The value of this setting is inherited by [`archive_toc`]
-[config.archive_toc] and [`categories_toc`][config.categories_toc],
-unless they are explicitly set:
+views. This might be useful, if your post excerpts are rather long. If you want
+to enable it, use:
 
 ``` yaml
 plugins:
@@ -265,7 +293,7 @@ Use this setting to change the date format of posts. This plugin uses [babel]
 to render dates in the configured [site language]. You can use [babel]'s
 [pattern syntax] or the following shortcodes:
 
-=== "Monday, January 31, 2023"
+=== "Monday, January 31, 2024"
 
     ``` yaml
     plugins:
@@ -273,7 +301,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: full
     ```
 
-=== "January 31, 2023"
+=== "January 31, 2024"
 
     ``` yaml
     plugins:
@@ -281,7 +309,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: long
     ```
 
-=== "Jan 31, 2023"
+=== "Jan 31, 2024"
 
     ``` yaml
     plugins:
@@ -289,7 +317,7 @@ to render dates in the configured [site language]. You can use [babel]'s
           post_date_format: medium
     ```
 
-=== "1/31/22"
+=== "1/31/24"
 
     ``` yaml
     plugins:
@@ -315,7 +343,7 @@ Use this setting to change the date format used in post URLs. The format string
 must adhere to [babel]'s [pattern syntax] and should not contain whitespace.
 Some popular choices:
 
-=== ":material-link: blog/2023/01/31/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/01/31/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -323,7 +351,7 @@ Some popular choices:
           post_url_date_format: yyyy/MM/dd
     ```
 
-=== ":material-link: blog/2023/01/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/01/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -331,7 +359,7 @@ Some popular choices:
           post_url_date_format: yyyy/MM
     ```
 
-=== ":material-link: blog/2023/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -354,7 +382,7 @@ Use this setting to change the format string that is used when generating post
 URLs. You can freely combine placeholders, and join them with slashes or other
 characters:
 
-=== ":material-link: blog/2023/:material-dots-horizontal:/"
+=== ":material-link: blog/2024/:material-dots-horizontal:/"
 
     ``` yaml
     plugins:
@@ -406,35 +434,24 @@ If more than one category is given, they are joined with `/` after slugifying.
 #### <!-- md:setting config.post_slugify -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default [`toc.slugify`][toc.slugify] -->
+<!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
-Use this setting to change the function to use for generating URL-compatible
-slugs from post titles. [Python Markdown Extensions] comes with a Unicode-aware
-[`slugify`][pymdownx.slugs.slugify] function:
+Use this setting to change the function for generating URL-compatible slugs
+from post titles. By default, the [`slugify`][pymdownx.slugs.slugify] function
+from [Python Markdown Extensions] is used as follows:
 
-=== "Unicode"
+``` yaml
+plugins:
+  - blog:
+      post_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+```
 
-    ``` yaml
-    plugins:
-      - blog:
-          post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
+The default configuration is Unicode-aware and should produce good slugs for all
+languages. Of course, you can also provide a custom slugification function for
+more granular control.
 
-=== "Unicode, case-sensitive"
-
-    ``` yaml
-    plugins:
-      - blog:
-          post_slugify: !!python/object/apply:pymdownx.slugs.slugify
-    ```
-
-When your project features non-European languages, it's advisable to use this
-configuration. Of course, you can also provide a custom slugification function
-for more granular control.
-
-  [toc.slugify]: https://github.com/Python-Markdown/markdown/blob/1337d0891757e192165668d2606db36cf08e65a9/markdown/extensions/toc.py#L26-L33
   [pymdownx.slugs.slugify]: https://github.com/facelessuser/pymdown-extensions/blob/01c91ce79c91304c22b4e3d7a9261accc931d707/pymdownx/slugs.py#L59-L65
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/extras/slugs/
 
@@ -462,9 +479,9 @@ plugins:
 <!-- md:version 9.2.0 -->
 <!-- md:default `optional` -->
 
-By default, the plugin makes post excerpts optional. When a post doesn't define
-an excerpt, views include the entire post. This setting can be used to make
-post excerpts required:
+By default, the plugin makes [post excerpts](../setup/setting-up-a-blog.md#adding-an-excerpt)
+optional. When a post doesn't define an excerpt, views include the entire post.
+This setting can be used to make post excerpts required:
 
 === "Optional"
 
@@ -652,7 +669,7 @@ plugins:
 Use this setting to change the date format used for archive page titles. The
 format string must adhere to [babel]'s [pattern syntax]. Some popular choices:
 
-=== "2023"
+=== "2024"
 
     ``` yaml
     plugins:
@@ -660,7 +677,7 @@ format string must adhere to [babel]'s [pattern syntax]. Some popular choices:
           archive_date_format: yyyy
     ```
 
-=== "January 2023"
+=== "January 2024"
 
     ``` yaml
     plugins:
@@ -682,7 +699,7 @@ Use this setting to change the date format used for archive page URLs. The
 format string must adhere to [babel]'s [pattern syntax] and should not contain
 whitespace. Some popular choices:
 
-=== ":material-link: blog/archive/2023/"
+=== ":material-link: blog/archive/2024/"
 
     ``` yaml
     plugins:
@@ -690,7 +707,7 @@ whitespace. Some popular choices:
           archive_url_date_format: yyyy
     ```
 
-=== ":material-link: blog/archive/2023/01/"
+=== ":material-link: blog/archive/2024/01/"
 
     ``` yaml
     plugins:
@@ -709,7 +726,7 @@ Use this setting to change the format string that is used when generating
 archive page URLs. You can freely combine placeholders, and join them with
 slashes or other characters:
 
-=== ":material-link: blog/archive/2023/"
+=== ":material-link: blog/archive/2024/"
 
     ``` yaml
     plugins:
@@ -717,7 +734,7 @@ slashes or other characters:
           archive_url_format: "archive/{date}"
     ```
 
-=== ":material-link: blog/2023/"
+=== ":material-link: blog/2024/"
 
     ``` yaml
     plugins:
@@ -731,6 +748,42 @@ The following placeholders are available:
 
 ---
 
+#### <!-- md:setting config.archive_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for archive pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.archive_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per archive page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      archive_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.archive_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -738,7 +791,7 @@ The following placeholders are available:
 
 Use this setting to leverage the table of contents to display post titles on all
 archive pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set. To change it, use
 
 ``` yaml
 plugins:
@@ -820,31 +873,23 @@ The following placeholders are available:
 #### <!-- md:setting config.categories_slugify -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default [`toc.slugify`][toc.slugify] -->
+<!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
-Use this setting to change the function to use for generating URL-compatible
-slugs from categories. [Python Markdown Extensions] comes with a Unicode-aware
-[`slugify`][pymdownx.slugs.slugify] function:
+Use this setting to change the function for generating URL-compatible slugs
+from categories. By default, the [`slugify`][pymdownx.slugs.slugify] function
+from [Python Markdown Extensions] is used as follows:
 
-=== "Unicode"
+``` yaml
+plugins:
+  - blog:
+      categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+```
 
-    ``` yaml
-    plugins:
-      - blog:
-          categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-            kwds:
-              case: lower
-    ```
-
-=== "Unicode, case-sensitive"
-
-    ``` yaml
-    plugins:
-      - blog:
-          categories_slugify: !!python/object/apply:pymdownx.slugs.slugify
-    ```
-When your project features non-European languages, it's advisable to use this
-configuration.
+The default configuration is Unicode-aware and should produce good slugs for all
+languages. Of course, you can also provide a custom slugification function for
+more granular control.
 
 ---
 
@@ -861,6 +906,46 @@ the default is a hyphen, it can be set to any string, e.g., `_`:
 plugins:
   - blog:
       categories_slugify_separator: _
+```
+
+---
+
+#### <!-- md:setting config.categories_sort_by -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `material.plugins.blog.view_name` -->
+
+Use this setting to specify a custom function for sorting categories. For
+example, if you want to sort categories by the number of posts they contain,
+use the following configuration:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_by: !!python/name:material.plugins.blog.view_post_count
+```
+
+Don't forget to enable [`categories_sort_reverse`][config.categories_sort_reverse].
+You can define your own comparison function, which must return something
+that can be compared while sorting, i.e., a string or number.
+
+---
+
+#### <!-- md:setting config.categories_sort_reverse -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.45.0 -->
+<!-- md:default `false` -->
+
+Use this setting to reverse the order in which categories are sorted. By
+default, categories are sorted in ascending order, but you can reverse ordering
+as follows:
+
+``` yaml
+plugins:
+  - blog:
+      categories_sort_reverse: true
 ```
 
 ---
@@ -888,6 +973,42 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 ---
 
+#### <!-- md:setting config.categories_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for category pages. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.categories_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per category page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      categories_pagination_per_page: 5
+```
+
+---
+
 #### <!-- md:setting config.categories_toc -->
 
 <!-- md:version 9.2.0 -->
@@ -895,12 +1016,201 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 Use this setting to leverage the table of contents to display post titles on all
 category pages. The value of this setting is inherited from [`blog_toc`]
-[config.blog_toc], unless its explicitly set:
+[config.blog_toc], unless it's explicitly set. To change it, use:
 
 ``` yaml
 plugins:
   - blog:
       categories_toc: true
+```
+
+### Authors
+
+The following settings are available for authors:
+
+---
+
+#### <!-- md:setting config.authors -->
+
+<!-- md:version 9.2.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable post authors. If this setting is enabled,
+the plugin will look for a file named [`.authors.yml`][config.authors_file] and
+render authors in posts and views. Disable this behavior with:
+
+``` yaml
+plugins:
+  - blog:
+      authors: false
+```
+
+---
+
+#### <!-- md:setting config.authors_file -->
+
+<!-- md:version 9.2.0 -->
+<!-- md:default `{blog}/.authors.yml` -->
+
+Use this setting to change the path of the file where the author information for
+your posts resides. It's normally not necessary to change this setting, but if
+you need to, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_file: "{blog}/.authors.yml"
+```
+
+The following placeholders are available:
+
+- `blog` – [`blog` directory][config.blog_dir]
+
+The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
+
+!!! info "Format of author information"
+
+    The `.authors.yml` file must adhere to the following format:
+
+    ``` yaml title=".authors.yml"
+    authors:
+      <author>:
+        name: string        # Author name
+        description: string # Author description
+        avatar: url         # Author avatar
+        slug: url           # Author profile slug
+        url: url            # Author website URL
+    ```
+
+    Note that `<author>` must be set to an identifier for associating authors
+    with posts, e.g., a GitHub username like `squidfunk`. This identifier can
+    then be used in the [`authors`][meta.authors] metadata property of
+    a post. Multiple authors are supported. As an example, see
+    [the `.authors.yml` file][.authors.yml] we're using for our blog.
+
+  [.authors.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/docs/blog/.authors.yml
+
+---
+
+#### <!-- md:setting config.authors_profiles -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `false` -->
+
+Use this setting to enable or disable automatically generated author profiles.
+An author profile shows all posts by an author in reverse chronological order.
+You can enable author profiles with:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles: true
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_name -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default computed -->
+
+Use this setting to change the title of the authors section the plugin adds to
+the navigation. If this setting is omitted, it's sourced from the translations.
+If you want to change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_name: Authors
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_url_format -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `author/{slug}` -->
+
+Use this setting to change the format string that is used when generating
+author profile URLs. You can freely combine placeholders, and join them with
+slashes or other characters:
+
+=== ":material-link: blog/author/:material-dots-horizontal:/"
+
+    ``` yaml
+    plugins:
+      - blog:
+          authors_profiles_url_format: "author/{slug}"
+    ```
+
+=== ":material-link: blog/:material-dots-horizontal:/"
+
+    ``` yaml
+    plugins:
+      - blog:
+          authors_profiles_url_format: "{slug}"
+    ```
+
+The following placeholders are available:
+
+- `slug` – Author slug or identifier from [`authors_file`][config.authors_file]
+- `name` – Author name from [`authors_file`][config.authors_file]
+
+---
+
+#### <!-- md:setting config.authors_profiles_pagination -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `true` -->
+
+Use this setting to enable or disable pagination for author profiles. The value
+of this setting is inherited from [`pagination`][config.pagination], unless it's
+explicitly set. To disable pagination, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_pagination: false
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_pagination_per_page -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `10` -->
+
+Use this setting to change the number of posts rendered per archive page. The
+value of this setting is inherited from [`pagination_per_page`]
+[config.pagination_per_page], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_pagination_per_page: 5
+```
+
+---
+
+#### <!-- md:setting config.authors_profiles_toc -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:default `false` -->
+
+Use this setting to leverage the table of contents to display post titles on all
+author profiles. The value of this setting is inherited from [`blog_toc`]
+[config.blog_toc], unless it's explicitly set. To change it, use:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles_toc: true
 ```
 
 ### Pagination
@@ -946,7 +1256,7 @@ plugins:
 #### <!-- md:setting config.pagination_url_format -->
 
 <!-- md:version 9.2.0 -->
-<!-- md:default `{date}/{slug}` -->
+<!-- md:default `page/{page}` -->
 
 Use this setting to change the format string that is used when generating
 paginated view URLs. You can freely combine placeholders, and join them with
@@ -1057,70 +1367,6 @@ plugins:
   - blog:
       pagination_keep_content: true
 ```
-
-### Authors
-
-The following settings are available for authors:
-
----
-
-#### <!-- md:setting config.authors -->
-
-<!-- md:version 9.2.0 -->
-<!-- md:default `true` -->
-
-Use this setting to enable or disable post authors. If this setting is enabled,
-the plugin will look for a file named [`.authors.yml`][config.authors_file] and
-render authors in posts and views. Disable this behavior with:
-
-``` yaml
-plugins:
-  - blog:
-      authors: false
-```
-
----
-
-#### <!-- md:setting config.authors_file -->
-
-<!-- md:version 9.2.0 -->
-<!-- md:default `{blog}/.authors.yml` -->
-
-Use this setting to change the path of the file where the author information for
-your posts resides. It's normally not necessary to change this setting, but if
-you need to, use:
-
-``` yaml
-plugins:
-  - blog:
-      authors_file: "{blog}/.authors.yml"
-```
-
-The following placeholders are available:
-
-- `blog` – [`blog` directory][config.blog_dir]
-
-The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
-
-!!! info "Format of author information"
-
-    The `.authors.yml` file must adhere to the following format:
-
-    ``` yaml title=".authors.yml"
-    authors:
-      <author>:
-        name: string        # Author name
-        description: string # Author description
-        avatar: url         # Author avatar
-    ```
-
-    Note that `<author>` must be set to an identifier for associating authors
-    with posts, e.g., a GitHub username like `squidfunk`. This identifier can
-    then be used in the [`authors`][meta.authors] metadata property of
-    a post. Multiple authors are supported. As an example, see
-    [the `.authors.yml` file][.authors.yml] we're using for our blog.
-
-  [.authors.yml]: https://github.com/squidfunk/mkdocs-material/blob/master/docs/blog/.authors.yml
 
 ### Drafts
 
@@ -1270,7 +1516,7 @@ using a slightly different syntax:
 
     ``` yaml
     ---
-    date: 2023-01-31
+    date: 2024-01-31
     ---
 
     # Post title
@@ -1282,8 +1528,8 @@ using a slightly different syntax:
     ``` yaml
     ---
     date:
-      created: 2023-01-31 # (1)!
-      updated: 2023-02-01
+      created: 2024-01-31 # (1)!
+      updated: 2024-02-01
     ---
 
     # Post title
@@ -1297,8 +1543,8 @@ using a slightly different syntax:
     ``` yaml
     ---
     date:
-      created: 2023-01-31
-      my_custom_date: 2023-02-01 # (1)!
+      created: 2024-01-31
+      my_custom_date: 2024-02-01 # (1)!
     ---
 
     # Post title
@@ -1313,8 +1559,8 @@ using a slightly different syntax:
 
 The following date formats are supported:
 
-- `2023-01-31`
-- `2023-01-31T12:00:00`
+- `2024-01-31`
+- `2024-01-31T12:00:00`
 
 ---
 
@@ -1331,6 +1577,29 @@ exclude posts marked as drafts when [building your project] using the
 ``` yaml
 ---
 draft: true
+---
+
+# Post title
+...
+```
+
+---
+
+#### <!-- md:setting meta.pin -->
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.0 -->
+<!-- md:flag metadata -->
+<!-- md:default `false` -->
+<!-- md:flag experimental -->
+
+Use this property to pin a post to the top of a view. In case multiple posts are
+pinned, the pinned posts are sorted by descending order and appear before all
+other posts. Pin a post with:
+
+``` yaml
+---
+pin: true
 ---
 
 # Post title
@@ -1386,7 +1655,7 @@ a post. The property follows the same syntax as [`nav`][mkdocs.nav] in
     links:
       - plugins/search.md # (1)!
       - Insiders:
-        - insiders/index.md#how-to-become-a-sponsor
+        - insiders/how-to-sponsor.md
         - insiders/getting-started.md#requirements
     ---
 

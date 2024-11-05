@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -25,8 +25,10 @@ import os
 import posixpath
 import yaml
 
-from babel.dates import format_date
+from babel.dates import format_date, format_datetime
 from datetime import datetime
+from jinja2 import pass_context
+from jinja2.runtime import Context
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin, event_priority
@@ -35,6 +37,7 @@ from mkdocs.structure.files import File, Files, InclusionLevel
 from mkdocs.structure.nav import Navigation, Section
 from mkdocs.structure.pages import Page
 from mkdocs.utils import copy_file, get_relative_url
+from mkdocs.utils.templates import url_filter
 from paginate import Page as Pagination
 from shutil import rmtree
 from tempfile import mkdtemp
@@ -44,7 +47,6 @@ from .author import Authors
 from .config import BlogConfig
 from .readtime import readtime
 from .structure import Archive, Category, Excerpt, Post, View
-from .templates import url_filter
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -110,7 +112,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         root = posixpath.normpath(self.config.blog_dir)
         site = config.site_dir
 
-        # Compute path to posts directory
+        # Compute and normalize path to posts directory
         path = self.config.post_dir.format(blog = root)
         path = posixpath.normpath(path)
 
@@ -136,19 +138,22 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Generate views for archive
         if self.config.archive:
-            views = self._generate_archive(config, files)
-            self.blog.views.extend(views)
+            self.blog.views.extend(
+                self._generate_archive(config, files)
+            )
 
         # Generate views for categories
         if self.config.categories:
-            views = self._generate_categories(config, files)
-            self.blog.views.extend(views)
+            self.blog.views.extend(sorted(
+                self._generate_categories(config, files),
+                key = lambda view: view.name,
+                reverse = False
+            ))
 
         # Generate pages for views
         if self.config.pagination:
             for view in self._resolve_views(self.blog):
                 for page in self._generate_pages(view, config, files):
-                    page.file.inclusion = InclusionLevel.EXCLUDED
                     view.pages.append(page)
 
         # Ensure that entrypoint is always included in navigation
@@ -180,6 +185,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Revert temporary exclusion of views from navigation
         for view in self._resolve_views(self.blog):
+            view.file.inclusion = self.blog.file.inclusion
             for page in view.pages:
                 page.file.inclusion = self.blog.file.inclusion
 
@@ -259,13 +265,12 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # is not already present, so we can remove footnotes or other content
         # from the excerpt without affecting the content of the excerpt
         if separator not in page.markdown:
-            path = page.file.src_path
             if self.config.post_excerpt == "required":
+                docs = os.path.relpath(config.docs_dir)
+                path = os.path.relpath(page.file.abs_src_path, docs)
                 raise PluginError(
-                    f"Couldn't find '{separator}' separator in '{path}'"
+                    f"Couldn't find '{separator}' in post '{path}' in '{docs}'"
                 )
-            else:
-                page.markdown += f"\n\n{separator}"
 
         # Create excerpt for post and inherit authors and categories - excerpts
         # can contain a subset of the authors and categories of the post
@@ -298,9 +303,25 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         def date_filter(date: datetime):
             return self._format_date_for_post(date, config)
 
+        # Patch URL template filter to add support for paginated views, i.e.,
+        # that paginated views never link to themselves but to the main view
+        @pass_context
+        def url_filter_with_pagination(context: Context, url: str | None):
+            page = context["page"]
+
+            # If the current page is a view, check if the URL links to the page
+            # itself, and replace it with the URL of the main view
+            if isinstance(page, View):
+                view = self._resolve_original(page)
+                if page.url == url:
+                    url = view.url
+
+            # Forward to original template filter
+            return url_filter(context, url)
+
         # Register custom template filters
         env.filters["date"] = date_filter
-        env.filters["url"]  = url_filter
+        env.filters["url"]  = url_filter_with_pagination
 
     # Prepare view for rendering (run latest) - views are rendered last, as we
     # need to mutate the navigation to account for pagination. The main problem
@@ -317,16 +338,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if view not in self._resolve_views(self.blog):
             return
 
-        # If the current view is paginated, replace and rewire it - the current
-        # view temporarily becomes the main view, and is reset after rendering
-        assert isinstance(view, View)
-        if view != page:
-            prev = view.pages[view.pages.index(page) - 1]
-
-            # Replace previous page with current page
-            items = self._resolve_siblings(view, nav)
-            items[items.index(prev)] = page
-
         # Render excerpts and prepare pagination
         posts, pagination = self._render(page)
 
@@ -341,26 +352,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Assign posts and pagination to context
         context["posts"]      = posts
         context["pagination"] = pager if pagination else None
-
-    # After rendering a paginated view, replace the URL of the paginated view
-    # with the URL of the original view - since we need to replace the original
-    # view with a paginated view in `on_page_context` for correct resolution of
-    # the active state, we must fix the paginated view URLs after rendering
-    def on_post_page(self, output, *, page, config):
-        if not self.config.enabled:
-            return
-
-        # Skip if page is not a view managed by this instance - this plugin has
-        # support for multiple instances, which is why this check is necessary
-        view = self._resolve_original(page)
-        if view not in self._resolve_views(self.blog):
-            return
-
-        # If the current view is paginated, replace the URL of the paginated
-        # view with the URL of the original view - see https://t.ly/Yeh-P
-        assert isinstance(view, View)
-        if view != page:
-            page.file.url = view.file.url
 
     # Remove temporary directory on shutdown
     def on_shutdown(self):
@@ -469,7 +460,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             return config.authors
 
         # Open file and parse as YAML
-        with open(file, encoding = "utf-8") as f:
+        with open(file, encoding = "utf-8-sig") as f:
             config.config_file_path = os.path.abspath(file)
             try:
                 config.load_dict(yaml.load(f, SafeLoader) or {})
@@ -484,19 +475,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Validate authors and throw if errors occurred
         errors, warnings = config.validate()
-        if not config.authors and warnings:
-            log.warning(
-                f"Action required: the format of the authors file changed.\n"
-                f"All authors must now be located under the 'authors' key.\n"
-                f"Please adjust '{file}' to match:\n"
-                f"\n"
-                f"authors:\n"
-                f"  squidfunk:\n"
-                f"    avatar: https://avatars.githubusercontent.com/u/932156\n"
-                f"    description: Creator\n"
-                f"    name: Martin Donath\n"
-                f"\n"
-            )
         for _, w in warnings:
             log.warning(w)
         for _, e in errors:
@@ -527,7 +505,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # Resolve original page or view (e.g. for paginated views)
     def _resolve_original(self, page: Page):
-        if isinstance(page, View):
+        if isinstance(page, View) and page.pages:
             return page.pages[0]
         else:
             return page
@@ -550,13 +528,14 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file = self._path_to_file(path, config)
                 files.append(file)
 
-                # Create file in temporary directory
+                # Create file in temporary directory and temporarily remove
+                # from navigation, as we'll add it at a specific location
                 self._save_to_file(file.abs_src_path, f"# {name}")
+                file.inclusion = InclusionLevel.EXCLUDED
 
-            # Create and yield view - we don't explicitly set the title of
-            # the view, so authors can override them in the page's content
+            # Create and yield view
             if not isinstance(file.page, Archive):
-                yield Archive(None, file, config)
+                yield Archive(name, file, config)
 
             # Assign post to archive
             assert isinstance(file.page, Archive)
@@ -585,13 +564,14 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                     file = self._path_to_file(path, config)
                     files.append(file)
 
-                    # Create file in temporary directory
+                    # Create file in temporary directory and temporarily remove
+                    # from navigation, as we'll add it at a specific location
                     self._save_to_file(file.abs_src_path, f"# {name}")
+                    file.inclusion = InclusionLevel.EXCLUDED
 
-                # Create and yield view - we don't explicitly set the title of
-                # the view, so authors can override them in the page's content
+                # Create and yield view
                 if not isinstance(file.page, Category):
-                    yield Category(None, file, config)
+                    yield Category(name, file, config)
 
                 # Assign post to category and vice versa
                 assert isinstance(file.page, Category)
@@ -615,12 +595,14 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file = self._path_to_file(path, config)
                 files.append(file)
 
-                # Copy file to temporary directory
+                # Copy file to temporary directory  and temporarily remove
+                # from navigation, as we'll add it at a specific location
                 copy_file(view.file.abs_src_path, file.abs_src_path)
+                file.inclusion = InclusionLevel.EXCLUDED
 
-            # Create view and attach to previous page
+            # Create and yield view
             if not isinstance(file.page, View):
-                yield View(None, file, config)
+                yield view.__class__(None, file, config)
 
             # Assign pages and posts to view
             assert isinstance(file.page, View)
@@ -798,10 +780,16 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
     # -------------------------------------------------------------------------
 
-    # Format date
+    # Format date - if the given format string refers to a predefined format,
+    # we format the date without a time component in order to keep sane default
+    # behavior, since authors will not expect time to be relevant for most posts
+    # as by our assumptions - see https://t.ly/Yi7ZC
     def _format_date(self, date: datetime, format: str, config: MkDocsConfig):
-        locale = config.theme["language"]
-        return format_date(date, format = format, locale = locale)
+        locale: str = config.theme["language"].replace("-", "_")
+        if format in ["full", "long", "medium", "short"]:
+            return format_date(date, format = format, locale = locale)
+        else:
+            return format_datetime(date, format = format, locale = locale)
 
     # Format date for post
     def _format_date_for_post(self, date: datetime, config: MkDocsConfig):

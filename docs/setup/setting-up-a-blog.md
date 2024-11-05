@@ -32,15 +32,56 @@ plugins:
   - blog
 ```
 
+If you do not have a navigation (`nav`) definition in your `mkdocs.yml` then
+there is nothing else to do there as the blog plugin will add navigation
+automatically. If you do have a navigation defined then you need to add *the
+blog index page only* to it. You need not and should not add the individual
+blog posts. For example:
+
+```yaml
+nav:
+  - index.md
+  - Blog:
+    - blog/index.md
+```
+
 For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
 
+#### Advanced settings
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.44.0 -->
+
+The following advanced settings are currently reserved to our [sponsors]
+[Insiders]. They are entirely optional, and don't affect the functionality of
+the blog, but can be helpful for customizations:
+
+- [`archive_pagination`][config.archive_pagination]
+- [`archive_pagination_per_page`][config.archive_pagination_per_page]
+- [`categories_sort_by`][config.categories_sort_by]
+- [`categories_sort_reverse`][config.categories_sort_reverse]
+- [`categories_pagination`][config.categories_pagination]
+- [`categories_pagination_per_page`][config.categories_pagination_per_page]
+- [`authors_profiles_pagination`][config.authors_profiles_pagination]
+- [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
+
+We'll add more settings here, as we discover new use cases.
+
   [Insiders]: ../insiders/index.md
   [built-in blog plugin]: ../plugins/blog.md
   [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
   [start writing your first post]: #writing-your-first-post
+
+  [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
+  [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
+  [config.categories_sort_by]: ../plugins/blog.md#config.categories_sort_by
+  [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
+  [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
+  [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
+  [config.authors_profiles_pagination]: ../plugins/blog.md#config.authors_profiles_pagination
+  [config.authors_profiles_pagination_per_page]: ../plugins/blog.md#config.authors_profiles_pagination_per_page
 
 ### RSS
 
@@ -80,7 +121,7 @@ The following configuration options are supported:
 
 :   <!-- md:default `true` --> This option specifies whether
     the plugin is enabled when building your project. If you want to speed up
-    local builds, you can use an [environment variable]:
+    local builds, you can use an [environment variable][mkdocs.env]:
 
     ``` yaml
     plugins:
@@ -140,9 +181,11 @@ The following configuration options are supported:
     ```
 
 Material for MkDocs will automatically add the [necessary metadata] to your site
-which will make the RSS feed discoverable by browsers and feed readers. Note
-that the [RSS plugin][rss] comes with several other configuration options.
-For further information, see the [documentation].
+which will make the RSS feed discoverable by browsers and feed readers.
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use them
+at your own risk.
 
   [rss]: https://guts.github.io/mkdocs-rss-plugin/
   [categories]: ../plugins/blog.md#categories
@@ -150,7 +193,37 @@ For further information, see the [documentation].
   [comment system]: adding-a-comment-system.md
   [necessary metadata]: https://guts.github.io/mkdocs-rss-plugin/configuration/#integration
   [theme extension]: ../customization.md
-  [documentation]: https://guts.github.io/mkdocs-rss-plugin/configuration/
+
+### Blog only
+
+You might need to build a pure blog without any documentation.
+In this case, you can create a folder tree like this:
+
+``` { .sh .no-copy }
+.
+├─ docs/
+│  ├─ posts/ # (1)!
+│  ├─ .authors.yml
+│  └─ index.md
+└─ mkdocs.yml
+```
+
+1.  Notice that the `posts` directory is in the root of `docs` without
+    intermediate `blog` directory.
+
+And add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      blog_dir: . # (1)!
+```
+
+1.  Please see the [plugin documentation] for more information about the
+    [`blog_dir`][blog_dir] setting.
+
+With this configuration, the url of the blog post will be `/<post_slug>`
+instead of `/blog/<post_slug>`.
 
 ## Usage
 
@@ -181,7 +254,7 @@ Create a new file called `hello-world.md` and add the following lines:
 ``` yaml
 ---
 draft: true # (1)!
-date: 2023-01-31 # (2)!
+date: 2024-01-31 # (2)!
 categories:
   - Hello
   - World
@@ -260,25 +333,8 @@ authors:
 
 The [`.authors.yml`][authors_file] file associates each author with an
 identifier (in this example `squidfunk`), which can then be used in posts.
-The following properties are available for each author:
-
-<!-- md:option blog.authors_file.name -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must define a name for the author. The name is displayed in
-    the left sidebar of each post as part of the author info.
-
-<!-- md:option blog.authors_file.description -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property can be used to add a short description for the author, e.g.
-    the role or profession of the author, or any other title.
-
-<!-- md:option blog.authors_file.avatar -->
-
-:   <!-- md:default none --> <!-- md:flag required -->
-    This property must point to a valid image URL, internal or external, and is
-    used as part of posts and excerpts as the author's avatar.
+Different attributes can be configured. For a list of all possible attributes,
+please consult the [`authors_file`][authors_file] documentation.
 
 Now, you can assign one or more authors to a post by referencing their
 identifiers in the front matter of the Markdown file under the `authors`
@@ -287,7 +343,7 @@ each post, as well as in post excerpts on index pages:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 authors:
   - squidfunk
     ...
@@ -300,6 +356,30 @@ authors:
   [authors]: ../plugins/blog.md#authors
   [authors_file]: ../plugins/blog.md#config.authors_file
 
+#### Adding author profiles
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.46.0 -->
+<!-- md:flag experimental -->
+
+If you wish to add a dedicated page for each author, you can enable author
+profiles by setting the [`authors_profiles`][authors_profiles] configuration
+option to `true`. Just add the following lines to `mkdocs.yml`:
+
+``` yaml
+plugins:
+  - blog:
+      authors_profiles: true
+```
+
+If you combine this with [custom index pages], you can create a dedicated page
+for each author with a short description, social media links, etc. – basically
+anything you can write in Markdown. The list of posts is then appended after
+the content of the page.
+
+  [authors_profiles]: ../plugins/blog.md#config.authors_profiles
+  [custom index pages]: #custom-index-pages
+
 #### Adding categories
 
 Categories are an excellent way for grouping your posts thematically on
@@ -309,7 +389,7 @@ add them to the front matter `categories` property:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 categories:
   - Hello
   - World
@@ -335,7 +415,7 @@ part of a post, the post is linked from the [tags index]:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 tags:
   - Foo
   - Bar
@@ -378,26 +458,26 @@ to add related links to a post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
 ---
 
 # Hello world!
 ...
 ```
 
-You can use the exact same syntax as for the [`nav`][nav] section in
+You can use the exact same syntax as for the [`nav`][mkdocs.nav] section in
 `mkdocs.yml`, which means you can set explicit titles for links, add external
 links and even use nesting:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
   - Nested section:
     - External link: https://example.com
     - setup/setting-up-site-search.md
@@ -408,14 +488,13 @@ links:
 ```
 
 If you look closely, you'll realize that you can even use an anchor to link to
-a specific section of a document, extending the possibilities of the [`nav`][nav]
-syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets
-the title of the anchor as a [subtitle] of the related link.
+a specific section of a document, extending the possibilities of the
+[`nav`][mkdocs.nav] syntax in `mkdocs.yml`. The [built-in blog plugin] resolves
+the anchor and sets the title of the anchor as a [subtitle] of the related link.
 
-Note that all links must be relative to [`docs_dir`][docs_dir], as is also the
-case for the [`nav`][nav] setting.
+Note that all links must be relative to [`docs_dir`][mkdocs.docs_dir], as is
+also the case for the [`nav`][mkdocs.nav] setting.
 
-  [nav]: https://www.mkdocs.org/user-guide/configuration/#nav
   [subtitle]: ../reference/index.md#setting-the-page-subtitle
 
 #### Linking from and to posts
@@ -440,6 +519,29 @@ when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
 
+#### Pinning a post :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.53.0 -->
+<!-- md:flag experimental -->
+
+If you want to pin a post to the top of the index page, as well as the archive
+and category indexes it is part of, you can use the front matter `pin` property:
+
+``` yaml
+---
+date: 2024-01-31
+pin: true
+---
+
+# Hello world!
+...
+```
+
+If multiple posts are pinned, they are sorted by their creation date, with the
+most recent pinned post being shown first, followed by the other pinned posts in
+descending order.
+
 #### Setting the reading time
 
 When [enabled], the [readtime] package is used to compute the expected reading
@@ -454,7 +556,7 @@ post:
 
 ``` yaml
 ---
-date: 2023-01-31
+date: 2024-01-31
 readtime: 15
 ---
 
@@ -468,6 +570,11 @@ This will disable automatic reading time computation.
   [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:plugin [meta][built-in meta plugin] – built-in -->
+<!-- md:flag experimental -->
 
 If you have a lot of posts, it might feel redundant to define all of the above
 for each post. Luckily, the [built-in meta plugin] allows to set default front
@@ -515,9 +622,9 @@ values defined for a post, which means you can define common properties in
 ### Adding pages
 
 Besides posts, it's also possible to add static pages to your blog by listing
-the pages in the [`nav`][nav] section of `mkdocs.yml`. All generated indexes
-are included after the last specified page. For example, to add a page on the
-authors of the blog, add the following to `mkdocs.yml`:
+the pages in the [`nav`][mkdocs.nav] section of `mkdocs.yml`. All generated
+indexes are included after the last specified page. For example, to add a page
+on the authors of the blog, add the following to `mkdocs.yml`:
 
 ``` yaml
 nav:
@@ -553,13 +660,13 @@ the [built-in blog plugin] would create it:
 
 1.  The easiest way is to first [add the category] to the blog post, then take
     the URL generated by the [built-in blog plugin] and create the file at the
-    corresponding location in the [`blog_dir`][this is configurable] folder.
+    corresponding location in the [`blog_dir`][blog_dir] folder.
 
     Note that the shown directory listing is based on the default configuration.
     If you specify different values for the following options, be sure to adjust
     the path accordingly:
 
-    - [`blog_dir`][this is configurable]
+    - [`blog_dir`][blog_dir]
     - [`categories_url_format`][categories_url_format]
     - [`categories_slugify`][categories_slugify]
 
@@ -581,6 +688,7 @@ All post excerpts belonging to the category are automatically appended.
   [page description]: ../reference/index.md#setting-the-page-description
   [categories_url_format]: ../plugins/blog.md#config.categories_url_format
   [categories_slugify]: ../plugins/blog.md#config.categories_slugify
+  [blog_dir]: ../plugins/blog.md#config.blog_dir
 
 ### Overriding templates
 
@@ -595,5 +703,5 @@ The following templates are added by the [built-in blog plugin]:
 
   [theme extension]: ../customization.md#extending-the-theme
 
-  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog.html
-  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/blog-post.htmlhtml
+  [blog.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog.html
+  [blog-post.html]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/blog-post.html

@@ -285,7 +285,7 @@ the default type, and thus fallback for unknown type qualifiers, is `note`[^1]:
   [^1]:
     Previously, some of the supported types defined more than one qualifier.
     For example, authors could use `summary` or `tldr` as alternative qualifiers
-    to render an [`abstract`](#type:abstract) admonition. As this increased the
+    to render an [`abstract`](#+type:abstract) admonition. As this increased the
     size of the CSS that is shipped with Material for MkDocs, the additional
     type qualifiers are now all deprecated and will be removed in the next major
     version. This will also be mentioned in the upgrade guide.

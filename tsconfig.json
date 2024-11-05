@@ -30,7 +30,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "stripInternal": true,
-    "target": "es2015"
+    "target": "es2018"
   },
   "include": [
     "src/overrides/assets/javascripts",

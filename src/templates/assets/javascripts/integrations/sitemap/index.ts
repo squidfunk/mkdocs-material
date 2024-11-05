@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -21,17 +21,17 @@
  */
 
 import {
-  EMPTY,
   Observable,
   catchError,
-  defaultIfEmpty,
   map,
-  of,
-  tap
+  of
 } from "rxjs"
 
-import { configuration } from "~/_"
-import { getElements, requestXML } from "~/browser"
+import {
+  getElement,
+  getElements,
+  requestXML
+} from "~/browser"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -40,41 +40,75 @@ import { getElements, requestXML } from "~/browser"
 /**
  * Sitemap, i.e. a list of URLs
  */
-export type Sitemap = string[]
+export type Sitemap = Map<string, URL[]>
 
 /* ----------------------------------------------------------------------------
  * Helper functions
  * ------------------------------------------------------------------------- */
 
 /**
- * Preprocess a list of URLs
+ * Resolve URL to the given base URL
  *
- * This function replaces the `site_url` in the sitemap with the actual base
- * URL, to allow instant navigation to work in occasions like Netlify previews.
+ * When serving the site with instant navigation, MkDocs will set the hostname
+ * to the value as specified in `dev_addr`, but the browser allows for several
+ * hostnames to be used: `localhost`, `127.0.0.1` or even `0.0.0.0`, depending
+ * on configuration. This function resolves the URL to the given hostname.
  *
- * @param urls - URLs
+ * @param url - URL
+ * @param base - Base URL
  *
- * @returns URL path parts
+ * @returns Resolved URL
  */
-function preprocess(urls: Sitemap): Sitemap {
-  if (urls.length < 2)
-    return [""]
+function resolve(url: URL, base: URL) {
+  url.protocol = base.protocol
+  url.hostname = base.hostname
+  return url
+}
 
-  /* Take the first two URLs and remove everything after the last slash */
-  const [root, next] = [...urls]
-    .sort((a, b) => a.length - b.length)
-    .map(url => url.replace(/[^/]+$/, ""))
+/**
+ * Extract sitemap from document
+ *
+ * This function extracts the URLs and alternate links from the document, and
+ * associates alternate links to the original URL as found in `loc`, allowing
+ * the browser to navigate to the correct page when switching languages. The
+ * format of the sitemap is expected to adhere to:
+ *
+ * ``` xml
+ * <urlset>
+ *   <url>
+ *     <loc>...</loc>
+ *     <xhtml:link rel="alternate" hreflang="en" href="..."/>
+ *     <xhtml:link rel="alternate" hreflang="de" href="..."/>
+ *     ...
+ *   </url>
+ *   ...
+ * </urlset>
+ * ```
+ *
+ * @param document - Document
+ * @param base - Base URL
+ *
+ * @returns Sitemap
+ */
+function extract(document: Document, base: URL): Sitemap {
+  const sitemap: Sitemap = new Map()
+  for (const el of getElements("url", document)) {
+    const url = getElement("loc", el)
 
-  /* Compute common prefix */
-  let index = 0
-  if (root === next)
-    index = root.length
-  else
-    while (root.charCodeAt(index) === next.charCodeAt(index))
-      index++
+    // Create entry for location and add it to the list of links
+    const links = [resolve(new URL(url.textContent!), base)]
+    sitemap.set(`${links[0]}`, links)
 
-  /* Remove common prefix and return in original order */
-  return urls.map(url => url.replace(root.slice(0, index), ""))
+    // Attach alternate links to current entry
+    for (const link of getElements("[rel=alternate]", el)) {
+      const href = link.getAttribute("href")
+      if (href != null)
+        links.push(resolve(new URL(href), base))
+    }
+  }
+
+  // Return sitemap
+  return sitemap
 }
 
 /* ----------------------------------------------------------------------------
@@ -84,24 +118,17 @@ function preprocess(urls: Sitemap): Sitemap {
 /**
  * Fetch the sitemap for the given base URL
  *
+ * If a network or parsing error occurs, we just default to an empty sitemap,
+ * which means the caller should fall back to regular navigation.
+ *
  * @param base - Base URL
  *
  * @returns Sitemap observable
  */
-export function fetchSitemap(base?: URL): Observable<Sitemap> {
-  const cached = __md_get<Sitemap>("__sitemap", sessionStorage, base)
-  if (cached) {
-    return of(cached)
-  } else {
-    const config = configuration()
-    return requestXML(new URL("sitemap.xml", base || config.base))
-      .pipe(
-        map(sitemap => preprocess(getElements("loc", sitemap)
-          .map(node => node.textContent!)
-        )),
-        catchError(() => EMPTY), // @todo refactor instant loading
-        defaultIfEmpty([]),
-        tap(sitemap => __md_set("__sitemap", sitemap, sessionStorage, base))
-      )
-  }
+export function fetchSitemap(base: URL | string): Observable<Sitemap> {
+  return requestXML(new URL("sitemap.xml", base))
+    .pipe(
+      map(document => extract(document, new URL(base))),
+      catchError(() => of(new Map())),
+    )
 }

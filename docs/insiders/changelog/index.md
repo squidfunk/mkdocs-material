@@ -2,6 +2,198 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.14 <small>September 29, 2024</small> { id="4.53.14" }
+
+- Fixed #7567: Empty headlines when using typeset plugin with anchorlinks
+
+### 4.53.13 <small>September 14, 2024</small> { id="4.53.13" }
+
+- Fixed #7520: Social plugin errors for generated files (MkDocs 1.6+)
+
+### 4.53.12 <small>August 2, 2024</small> { id="4.53.12" }
+
+- Fixed #7410: Instant previews jump on content tabs with anchor links
+- Fixed #7408: Instant previews jump on content tabs
+
+### 4.53.11 <small>May 27, 2024</small> { id="4.53.11" }
+
+- Fixed projects plugin crashing when serving before building subprojects
+
+### 4.53.10 <small>May 20, 2024</small> { id="4.53.10" }
+
+- Fixed projects plugin crashing in serve mode when disabled
+- Fixed projects plugin crashing when building nested projects
+
+### 4.53.9 <small>May 20, 2024</small> { id="4.53.9" }
+
+- Fixed #7191: Tags listings not rendering when `toc_depth` is changed
+
+### 4.53.8 <small>April 26, 2024</small> { id="4.53.8" }
+
+- Fixed #7052: Preview extension automatically including all pages
+- Fixed #7051: Instant previews mounting on footnote references
+- Fixed #5165: Improved tooltips not mounting in sidebar for typeset plugin
+
+### 4.53.7 <small>April 25, 2024</small> { id="4.53.7" }
+
+- Fixed #7060: Incorrect resolution of translation when using static-i18n
+
+### 4.53.6 <small>April 5, 2024</small> { id="4.53.6" }
+
+- Ensure working directory is set for projects when using projects plugin
+- Fixed #6970: Incorrect relative paths in git submodules with projects plugin
+
+### 4.53.5 <small>April 2, 2024</small> { id="4.53.5" }
+
+- Fixed social plugin crashing when no colors are specified in palettes
+
+### 4.53.4 <small>March 31, 2024</small> { id="4.53.4" }
+
+- Fixed #6973: Escaping issue in tags extra files deprecation helper
+
+### 4.53.3 <small>March 23, 2024</small> { id="4.53.3" }
+
+- Added support for font variants in social plugin
+- Improved resilience of font resolution in social plugin
+- Fixed tag listing sometimes not being auto-populated
+- Fixed tag listing scope not being correctly resolved
+- Fixed #6941: Meta plugin adding duplicate entries
+- Fixed #6928: Social plugin crashes for some fonts
+
+### 4.53.2 <small>March 18, 2024</small> { id="4.53.2" }
+
+- Fixed abort on first non-matching configuration in preview extension
+- Fixed #6914: Meta files take precedence over front matter
+
+### 4.53.1 <small>March 6, 2024</small> { id="4.53.1" }
+
+- Fixed #6877: Projects plugin computes incorrect path to assets
+- Fixed #6869: Blog plugin should emit warning on invalid related link
+
+### 4.53.0 <small>February 24, 2024</small> { id="4.53.0" }
+
+- Added support for automatic instant previews
+- Added support for pinned blog posts
+
+### 4.52.3 <small>February 21, 2024</small> { id="4.52.3" }
+
+- Fixed resolution of URLs in instant previews
+- Fixed instant previews not mounting for same-page links
+
+### 4.52.2 <small>February 7, 2024</small> { id="4.52.2" }
+
+- Fixed #6735: Instant previews misplaced when below tabs
+
+### 4.52.1 <small>January 30, 2024</small> { id="4.52.1" }
+
+- Fixed #6705: Navigation path not being hidden when specified
+- Fixed #6703: New tags plugin crashes on Windows (2nd attempt)
+
+### 4.52.0 <small>January 28, 2024</small> { id="4.52.0" }
+
+- Added support for instant previews
+- Fixed footnote tooltips positioning edge cases
+- Fixed #6703: New tags plugin crashes on Windows
+
+### 4.51.0 <small>January 24, 2024</small> { id="4.51.0" }
+
+- Added support for footnote tooltips
+
+### 4.50.0 <small>January 19, 2024</small> { id="4.50.0" }
+
+- Added configurable logging capabilities to privacy plugin
+
+### 4.49.2 <small>January 9, 2024</small> { id="4.49.2" }
+
+- Fixed missing attribute lists extension for tags plugin
+- Fixed #6627: New tags plugin crashes on Python 3.8
+
+### 4.49.1 <small>January 7, 2024</small> { id="4.49.1" }
+
+- Improved interop of new tags plugin with other plugins
+- Fixed #6594: Tags plugin doesn't work with mkdocs-macros plugin
+- Fixed #6569: Social plugin crashes if in different file system location
+
+### 4.49.0 <small>December 29, 2023</small> { id="4.49.0" }
+
+- Added support for exporting tags and mappings
+- Added support for disabling tags and/or listings or both
+- Fixed tag links from pages to listings on homepage
+
+### 4.48.0 <small>December 23, 2023</small> { id="4.48.0" }
+
+- Rewrite of tags plugin, now much more powerful
+- Added support for nested tags (tag hierarchies, e.g. foo/bar)
+- Added support for shadow tags (by list, prefix or suffix)
+- Added support for custom tag layouts and templates
+- Added support for hiding tags in table of contents
+- Added support for configurable inline tag listings
+- Added support for automatically linking to closest tag listing
+- Added support for scoped listings (limit to subsection of site)
+- Added support for multiple instances of tags plugin
+- Added support for changing front matter property and template variable
+- Added support for tag slugification format strings
+- Fixed #6510: Projects plugin out of memory on Linux (4.47.1 regression)
+- Fixed projects plugin not notifying plugins about serve mode
+- Fixed projects plugin skipping projects on prefix match
+- Deprecated tags_file and tags_extra_files settings
+- Modernized tags plugin code base
+
+### 4.47.1 <small>December 11, 2023</small> { id="4.47.1" }
+
+- Improved editing experience for projects plugin
+- Improved resilience of optimize and social plugin
+- Fixed race condition when writing manifest in optimize and social plugin
+- Fixed #6475: Logo not taking precedence over icon in social card
+- Fixed #6399: Projects plugin doesn't pick up added/removed projects
+- Fixed #6306: Projects plugin cache not correctly updated
+
+### 4.47.0 <small>December 8, 2023</small> { id="4.47.0" }
+
+- Added support for staying on page when switching languages
+- Added configurable logging capabilities to projects plugin
+- Removed temporary warning on blog plugin authors file format change
+- Fixed projects plugin logging messages twice on Linux systems
+- Fixed projects plugin trying to hoist theme assets of divergent themes
+- Fixed compatibility of optimize plugin and projects plugin
+- Fixed compatibility of social plugin and projects plugin
+- Fixed #6448: Code line selection broken for code blocks with custom ids
+- Fixed #6437: Projects plugin crashing for certain site URL configurations
+- Fixed #6414: Projects plugin doesn't prefix messages coming from projects
+
+### 4.46.0 <small>November 26, 2023</small> { id="4.46.0" }
+
+- Added support for author profiles in blog plugin
+- Fixed custom index pages yielding two navigation items (4.45.0 regression)
+
+### 4.45.0 <small>November 24, 2023</small> { id="4.45.0" }
+
+- Added support for sorting blog categories by post count or custom function
+- Improved tags plugin to generate Unicode-aware slugs by default
+- Fixed non-deterministic order of multiple authors in blog plugin
+
+### 4.44.0 <small>November 23, 2023</small> { id="4.44.0" }
+
+- Added pagination settings for archive pages in blog plugin
+- Added pagination settings for category pages in blog plugin
+
+### 4.43.1 <small>November 19, 2023</small> { id="4.43.1" }
+
+- Added third-party theme support in projects plugin, improving editing
+- Fixed #6360: Projects plugin crashes when theme is not Material for MkDocs
+- Fixed #6306: Projects plugin not reloading nested project configuration
+
+### 4.43.0 <small>November 5, 2023</small> { id="4.43.0" }
+
+- Added support for GitLab committers (document contributors)
+- Fixed #6264: Fixed compatibility with Python < 3.10
+- Fixed #6254: Meta plugin not applying meta files to blog posts
+
+### 4.42.3 <small>October 27, 2023</small> { id="4.42.3" }
+
+- Fixed #6251: Cards in grids cut off on very small screens
+- Fixed #6241: Using social plugin + static-i18n plugin errors
+
 ### 4.42.2 <small>October 14, 2023</small> { id="4.42.2" }
 
 - Fixed #6186: Privacy plugin ignores hash fragments on images

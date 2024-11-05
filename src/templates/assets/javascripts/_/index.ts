@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2023 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -35,6 +35,7 @@ export type Flag =
   | "content.code.copy"                /* Code copy button */
   | "content.lazy"                     /* Lazy content elements */
   | "content.tabs.link"                /* Link content tabs */
+  | "content.tooltips"                 /* Tooltips */
   | "header.autohide"                  /* Hide header */
   | "navigation.expand"                /* Automatic expansion */
   | "navigation.indexes"               /* Section pages */
@@ -82,6 +83,7 @@ export type Translations =
 export interface Versioning {
   provider: "mike"                     /* Version provider */
   default?: string | string[]          /* Default version */
+  alias?: boolean                      /* Show alias */
 }
 
 /**
