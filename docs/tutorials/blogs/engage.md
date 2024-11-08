@@ -4,7 +4,7 @@ You can foster reader engagement and improve the dissemination of content
 on your blog by providing an RSS feed that people can subscribe to and by
 integrating a discussion system. To learn more about who is or is not reading
 your posts, you may want to integrate an analytics system. You may also want
-to post on social media when you public a new blog post. This tutorial gives
+to post on social media when you publish a new blog post. This tutorial gives
 you a leg up on all of these topics.
 
 __Time required:__ typically 30 minutes
