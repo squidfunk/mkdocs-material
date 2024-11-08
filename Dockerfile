@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.11-alpine3.19
+FROM python:3.11-alpine3.19 AS build
 
 # Build-time flags
 ARG WITH_PLUGINS=true
@@ -90,6 +90,12 @@ RUN \
   git config --system --add safe.directory /docs \
 && \
   git config --system --add safe.directory /site
+
+#  From empty image
+FROM scratch 
+
+# Copy all from build
+COPY --from=build / /
 
 # Set working directory
 WORKDIR /docs
