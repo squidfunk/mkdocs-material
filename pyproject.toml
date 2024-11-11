@@ -20,7 +20,7 @@
 
 [build-system]
 requires = [
-  "hatchling",
+  "hatchling==1.25.0", # Temporary pin, see https://t.ly/tkdhx
   "hatch-requirements-txt",
   "hatch-nodejs-version>=0.3.0",
   # Needed for "Framework :: MkDocs"
