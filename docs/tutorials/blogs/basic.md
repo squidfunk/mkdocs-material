@@ -53,7 +53,7 @@ in the `mkdocs.yml`.
 !!! example "Set up a blog"
 
     If you have not done so already, create a project for your blog,
-    then edit the `mkdocs.yml` file to make sure if has the following content:
+    then edit the `mkdocs.yml` file to make sure it has the following content:
 
     ```yaml
     site_name: Blog Tutorial
