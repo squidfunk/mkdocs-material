@@ -306,6 +306,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [NetBox](https://netboxlabs.com/docs/netbox/en/stable/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
+[OpenSSL](https://docs.openssl.org/),
 [Orchard Core](https://docs.orchardcore.net/en/latest/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
