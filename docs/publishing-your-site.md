@@ -50,6 +50,7 @@ contents:
               restore-keys: |
                 mkdocs-material-
           - run: pip install mkdocs-material # (4)!
+          - run: mkdir overrides # (5)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -69,6 +70,8 @@ contents:
 
     4.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
+
+    5. You can safetly remove this if you have added files to your overrides directory or if your `mkdocs.yml` doesn't contain `custom_dir: overrides`.
 
         ``` sh
         pip install \
