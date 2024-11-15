@@ -303,6 +303,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
+[MapLibre](https://maplibre.org/maplibre-style-spec/),
 [NetBox](https://netboxlabs.com/docs/netbox/en/stable/),
 [Nokogiri](https://nokogiri.org/),
 [OpenFaaS](https://docs.openfaas.com/),
