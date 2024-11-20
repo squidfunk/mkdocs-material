@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.45 <small>November 20, 2024</small> { id="9.5.45" }
+
+- Reduced size of Docker image through multi-stage build
+- Fixed #7708: Blog plugin crashing on YAML dates with timezones
+
 ### 9.5.44 <small>November 5, 2024</small> { id="9.5.44" }
 
 - Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)

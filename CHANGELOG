@@ -1,3 +1,8 @@
+mkdocs-material-9.5.45 (2024-11-20)
+
+  * Reduced size of Docker image through multi-stage build
+  * Fixed #7708: Blog plugin crashing on YAML dates with timezones
+
 mkdocs-material-9.5.44 (2024-11-05)
 
   * Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)
