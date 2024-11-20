@@ -66,7 +66,11 @@ class PostDate(BaseConfigOption[DateDict]):
             # Handle datetime - since datetime is a subclass of date, we need
             # to check it first, or we lose the time - see https://t.ly/-KG9N
             if isinstance(value, datetime):
-                continue
+                # Set timezone to UTC if not set
+                if datetime.tzinfo is None:
+                    config[key_name][key] = datetime.replace(tzinfo=timezone.utc)
+                continue;
+
 
             # Handle date - we set 00:00:00 as the default time, if the author
             # only supplied a date, and convert it to datetime in UTC
