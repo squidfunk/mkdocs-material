@@ -67,8 +67,8 @@ class PostDate(BaseConfigOption[DateDict]):
             # to check it first, or we lose the time - see https://t.ly/-KG9N
             if isinstance(value, datetime):
                 # Set timezone to UTC if not set
-                if datetime.tzinfo is None:
-                    config[key_name][key] = datetime.replace(tzinfo=timezone.utc)
+                if value.tzinfo is None:
+                    config[key_name][key] = value.replace(tzinfo=timezone.utc)
                 continue;
 
 
