@@ -302,8 +302,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     if rel == "preconnect":
                         return ""
 
-                    # Replace external style sheet or favicon
-                    if rel == "stylesheet" or rel == "icon":
+                    # Replace external favicon, preload hint or style sheet
+                    if rel in ("icon", "preload", "stylesheet"):
                         file = self._queue(url, config)
                         el.set("href", resolve(file))
 
