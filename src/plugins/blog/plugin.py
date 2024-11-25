@@ -26,7 +26,7 @@ import posixpath
 import yaml
 
 from babel.dates import format_date, format_datetime
-from datetime import datetime
+from datetime import datetime, timezone
 from jinja2 import pass_context
 from jinja2.runtime import Context
 from mkdocs.config.defaults import MkDocsConfig
@@ -370,7 +370,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # and must be explicitly enabled by the author.
         if not isinstance(post.config.draft, bool):
             if self.config.draft_if_future_date:
-                return post.config.date.created > datetime.now()
+                return post.config.date.created > datetime.now().replace(tzinfo=timezone.utc)
 
         # Post might be a draft
         return bool(post.config.draft)
