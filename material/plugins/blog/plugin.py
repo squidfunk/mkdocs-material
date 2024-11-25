@@ -370,7 +370,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # and must be explicitly enabled by the author.
         if not isinstance(post.config.draft, bool):
             if self.config.draft_if_future_date:
-                return post.config.date.created > datetime.now().replace(tzinfo=timezone.utc)
+                return post.config.date.created > datetime.now(timezone.utc)
 
         # Post might be a draft
         return bool(post.config.draft)
