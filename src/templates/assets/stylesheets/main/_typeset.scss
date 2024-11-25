@@ -146,6 +146,11 @@ kbd {
   // Headline on level 5
   h5 {
     text-transform: uppercase;
+
+    // Don't uppercase code blocks
+    code {
+      text-transform: none;
+    }
   }
 
   // Horizontal separator
