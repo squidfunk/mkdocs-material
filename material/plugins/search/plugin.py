@@ -215,7 +215,7 @@ class SearchIndex:
             entry["tags"] = []
             for name in tags:
                 if name and isinstance(name, (str, int, float, bool)):
-                    entry["tags"].append(name)
+                    entry["tags"].append(str(name))
 
         # Set document boost
         search = page.meta.get("search") or {}
