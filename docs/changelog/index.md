@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.46 <small>November 25, 2024</small> { id="9.5.46" }
+
+- Added support for removing `preload` hints in privacy plugin
+- Fixed #7734: Code blocks in h5 headlines are uppercased
+- Fixed #7725: Blog plugin crashing on missing timezone (9.5.45 regression)
+
 ### 9.5.45 <small>November 20, 2024</small> { id="9.5.45" }
 
 - Reduced size of Docker image through multi-stage build
