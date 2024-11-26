@@ -174,4 +174,8 @@ Next, install the theme and its dependencies with:
 pip install -e mkdocs-material
 ```
 
+### Additional steps
+
+Some of the built-in plugins depend on external libraries for efficient image processing, most notably the social plugin to generate social cards, and the optimize plugin for applying image optimization. Installation instructions for those on the [Image Processing page](https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/).
+
   [GitHub]: https://github.com/squidfunk/mkdocs-material
