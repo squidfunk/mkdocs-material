@@ -1,0 +1,30 @@
+# Top 25 Cybersicherheitsprojekte auf GitHub
+
+
+## Top Projekte
+
+1. **trimstray/the-book-of-secret-knowledge** - Cybersicherheitsrelevante Ressourcen (135k Sterne)
+2. **Hack-with-Github/Awesome-Hacking** - Liste für Hacker und Penetrationstester (79,1k Sterne)
+3. **swisskyrepo/PayloadAllTheThings** - Nützliche Payloads und Bypasses für Webanwendungen (57,7k Sterne)
+4. **NationalSecurityAgency/ghidra** - Software-Reverse-Engineering-Framework (48,8k Sterne)
+5. **x64dbg/x64dbg** - User-Mode-Debugger für Reverse Engineering unter Windows (43,5k Sterne)
+6. **Z4nzu/hackingtool** - All-in-One-Hacking-Tool für Hacker (43,3k Sterne)
+7. **WerWolv/ImHex** - Hex-Editor für Reverse Engineers und Programmierer (33,6k Sterne)
+8. **rapid7/metasploit-framework** - Metasploit Penetrationstesting-Software (33,1k Sterne)
+9. **sqlmapproject/sqlmap** - Automatisches SQL-Injection- & Datenbank-Übernahme-Tool (31k Sterne)
+10. **hashicorp/vault** - Tool für Geheimnismanagement & Verschlüsselung als Service (29,9k Sterne)
+11. **StevenBlack/hosts** - Einheitliche Hosts-Datei aus kuratierten Quellen erstellt (25,8k Sterne)
+12. **spipm/Depix** - Passwörter aus verpixelten Screenshots wiederherstellen (25,3k Sterne)
+13. **openssl/openssl** - TLS/SSL- und Krypto-Bibliothek und Toolkit (24,7k Sterne)
+14. **hwdsl2/setup-ipsec-vpn** - Skripte zum Aufbau eines eigenen IPsec-VPN-Servers (24,3k Sterne)
+15. **shieldfy/API-Security-Checklist** - Sicherheitsrichtlinien für API-Entwickler (22,1k Sterne)
+16. **aquasecurity/trivy** - Sicherheitsscanner für Schwachstellen in Containern (21,9k Sterne)
+17. **osquery/osquery** - SQL-basiertes OS-Instrumentierungs- & Analyse-Framework (21,4k Sterne)
+18. **enaqx/awesome-pentest** - Sammlung von Pentest-bezogenen Ressourcen & Tools (20,8k Sterne)
+19. **hashcat/hashcat** - Passwort-Wiederherstellungs-Utility mit zahlreichen Angriffsmodi (20,2k Sterne)
+20. **radareorg/radare2** - Reverse-Engineering-Framework & Kommandozeilen-Tools (19,9k Sterne)
+21. **Lissy93/web-check** - All-in-One-OSINT-Tool zur Analyse beliebiger Websites (19,5k Sterne)
+22. **iBotPeaches/Apktool** - Tool für Reverse Engineering von Android-APK-Dateien (19,2k Sterne)
+23. **projectdiscovery/nuclei** - Schwachstellenscanner basierend auf YAML-basierter DSL (17,9k Sterne)
+24. **amark/gun** - Cybersicherheitsprotokoll zur Synchronisierung dezentraler Graphdaten (17,9k Sterne)
+25. **Ciphey/Ciphey** - NLP-basiertes automatisiertes Entschlüsselungs-/Decodierungs-/Cracking-Tool (17,3k Sterne)

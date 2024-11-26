@@ -1,0 +1,47 @@
+# Links sind Reference
+
+- **www\.tcpdump.org** \[1] - This link directs to the official website for tcpdump, a command-line packet analyzer.
+- **https\://nmap.org/book/man.html** \[2] - This link provides comprehensive information about Nmap command-line options from the official Nmap documentation.
+- **http\://nmap.org/book/man-port-scanning-basics.html** \[3] - This link offers insights into Nmap port scanning basics, a crucial aspect of active network discovery.
+- **http\://www\.professormesser.com/nmap/deciphering-nmaps-port-descriptions** \[3] - This link explains how to interpret Nmap's port descriptions.
+- **http\://www\.shodan.io** \[4] - This link leads to the official Shodan website, a search engine for internet-connected devices.
+- **https\://icsmap.shodan.io** \[4] - This link directs to the ICS Map on Shodan, visualizing the geographical distribution of ICS devices.
+- **https\://ics-radar.shodan.io/** \[4] - This link leads to the ICS Radar on Shodan, providing insights into the types and vulnerabilities of ICS devices.
+- **https\://github.com/glastopf/conpot** \[5] - This link points to the GitHub repository for Conpot, an open-source ICS/SCADA honeypot.
+- **http\://gauss.ececs.uc.edu/Courses/c5155/pdf/bro\_log\_vars.pdf** \[6] - This link appears to be broken. It may have been intended to provide a list of logs and fields captured by Zeek IDS.
+- **https\://www\.bro.org/** \[7] - This link directs to the official website for Zeek, an open-source network security monitoring tool.
+- **https\://nvd.nist.gov/** \[8] - This link leads to the National Vulnerability Database (NVD), a comprehensive resource on publicly disclosed cybersecurity vulnerabilities.
+- **https\://www\.langner.com/wp-content/uploads/2017/03/to-kill-a-centrifuge.pdf** \[9] - This link provides access to Ralph Langner's article "To Kill a Centrifuge", offering a detailed account of the Stuxnet attack on Iranian nuclear facilities.
+- **www\.metasploit.com** \[10] - This link directs to the official website for Metasploit, a penetration testing framework.
+- **offensive-security.com/metasploit-unleashed/Main\_Page** \[10] - This link leads to the "Metasploit Unleashed" resource on Offensive Security's website, offering comprehensive training and documentation on Metasploit.
+- **https\://virustotal.github.io/yara/** \[11] - This link leads to the official documentation for YARA, a tool used for malware identification and classification.
+- **https\://www\.owasp.org/** \[12] - This link directs to the website for OWASP (Open Web Application Security Project), a non-profit organization focused on improving web application security.
+- **https\://us-cert.cisa.gov/ics/Information-Products** \[13] - This link directs to the information products section on CISA's website, providing access to alerts, advisories, white papers, and other resources related to Industrial Control Systems security.
+- **https\://ics-cert.us-cert.gov/Information-Products-\&gt;Other ICS White Papers** \[13] - This link appears to be broken. It may have been intended to provide access to other ICS white papers on CISA's website.
+- **https\://us-cert.cisa.gov/ics/Recommended-Practices** \[13] - This link leads to the recommended practices section on CISA's website, providing guidance and best practices for securing Industrial Control Systems.
+- **http\://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r2.pdf** \[13] - This link offers access to NIST Special Publication 800-82 Revision 2, "Guide to Industrial Control Systems (ICS) Security".
+- **https\://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-53r5.pdf** \[13] - This link provides access to NIST Special Publication 800-53 Revision 5, "Security and Privacy Controls for Federal Information Systems and Organizations".
+- **http\://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf** \[14] - This link offers access to NIST Special Publication 800-61 Revision 2, "Computer Security Incident Handling Guide".
+- **http\://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-167.pdf** \[14] - This link provides access to NIST Special Publication 800-167, "Guide to Application Whitelisting".
+- **http\://www\.qosient.com/argus/** \[14] - This link directs to the official website for Argus, a network traffic analyzer.
+- **https\://github.com/arkime/arkime** \[14] - This link points to the GitHub repository for Arkime (formerly Moloch), a large-scale, full-packet capturing, indexing, and database system.
+- **http\://www\.securixlive.com/barnyard2/** \[14] - This link leads to the website for Barnyard2, a tool that processes Snort unified2 binary output files into readable log formats.
+- **http\://chaosreader.sourceforge.net/** \[14] - This link directs to the website for Chaosreader, a tool for extracting and analyzing data from network traffic captures.
+- **http\://www\.snort.org/snort-downloads/additional-downloads#daemonlogger** \[14] - This link directs to the additional downloads section on Snort's website, specifically for Daemonlogger.
+- **http\://www\.ex-parrot.com/\~chris/driftnet/** \[14] - This link directs to the website for Driftnet, a tool that listens to network traffic and displays images transmitted over unencrypted protocols.
+- **http\://etherape.sourceforge.net/** \[14] - This link leads to the website for Etherape, a graphical network monitor.
+- **http\://www\.tcpdump.org/** \[14] - This link directs to the official website for tcpdump.
+- **http\://www\.wireshark.org/docs/man-pages/mergecap.html** \[14] - This link provides access to the manual page for mergecap, a utility for merging multiple captured network traffic files.
+- **http\://search.cpan.org/\~kcarnut/Net-Pcap-0.05/Pcap.pm** \[14] - This link leads to the CPAN (Comprehensive Perl Archive Network) page for Net::Pcap, a Perl module for capturing and analyzing network packets.
+- **http\://search.cpan.org/\~jettero/Net-Pcap-Easy-1.4207/Easy.pod** \[14] - This link directs to the CPAN page for Net::Pcap::Easy, a Perl module that provides a simplified interface to Net::Pcap.
+- **http\://netsniff-ng.org/** \[14] - This link directs to the official website for netsniff-ng, a suite of network analysis and security tools.
+- **https\://github.com/gamelinux/nftracker** \[14] - This link points to the GitHub repository for nftracker, a network flow visualizer.
+- **http\://ngrep.sourceforge.net/** \[14] - This link leads to the website for ngrep, a command-line tool for searching through network traffic in real time.
+- **http\://www\.winpcap.org/windump/** \[15] - This link appears to be broken. It likely directed to the WinDump website, a Windows port of tcpdump.
+- **http\://www\.winpcap.org** \[15] - This link leads to the WinPcap website, a library for capturing and transmitting network packets on Windows operating systems.
+- **http\://www\.bribes.org/perl/wnetpcap.html** \[15] - This link appears to be broken. It might have directed to a resource on Wnetp::Pcap, a Perl module for capturing network traffic on Windows using WinPcap.
+- **http\://www\.winsnort.com/** \[15] - This link appears to be broken. It likely directed to the WinSnort website, a Windows port of Snort.
+- **http\://www\.wireshark.org/** \[15] - This link directs to the official website for Wireshark, a popular graphical network protocol analyzer.
+- **http\://packetlife.net/library/cheat-sheets/** \[16] - This link leads to the cheat sheet library on PacketLife.net, a resource for network engineers and security professionals.
+- **http\://biot.com/capstats/bpf.html** \[16] - This link leads to a document about Berkeley Packet Filter (BPF) syntax.
+- **http\://www\.infosecwriters.com/text\_resources/pdf/JStebelton\_BPF.pdf** \[16] - This link offers a PDF document on BPF syntax.

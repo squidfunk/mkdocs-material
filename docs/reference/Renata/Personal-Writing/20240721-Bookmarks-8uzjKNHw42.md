@@ -1,0 +1,978 @@
+# Bookmarks
+
+
+- [ Google Cloud Console-MyProjects](https://console.cloud.google.com/welcome/new?project=verdant-medium-394714) - A useful resource for various information.
+- [ Windows IoT Enterprise](https://learn.microsoft.com/en-gb/windows/iot/iot-enterprise/getting_started) - A useful resource for various information.
+- [ development kanban](https://github.com/orgs/Significant-Gravitas/projects/1/views/1) - A useful resource for various information.
+- [ image generator](https://chat.openai.com/g/g-pmuQfob8d-image-generator) - A useful resource for various information.
+- [.minecraft - OneDrive](https://onedrive.live.com/?authkey=%21APGpGVULmvYaSsU&id=41CEE579659042F3%2110911&cid=41CEE579659042F3) - A useful resource for various information.
+- [10 Things to Do After Installing Ubuntu 20.10 - OMG! Ubuntu](https://www.omgubuntu.co.uk/2020/10/things-to-do-after-installing-ubuntu-20-10-groovy-gorilla) - A useful resource for various information.
+- [10 minutes to pandas — pandas 2.2.0 documentation](https://pandas.pydata.org/docs/user_guide/10min.html) - A useful resource for various information.
+- [123anime - Watch Anime Online free English Sub and Dub](https://123anime.info/) - A useful resource for various information.
+- [14 Things To Do After Installing Ubuntu 14.04](http://itsfoss.com/things-to-do-after-installing-ubuntu-14-04/) - A useful resource for various information.
+- [14 Things To Do After Installing Ubuntu 14.04](http://itsfoss.com/things-to-do-after-installing-ubuntu-14-04/) - A useful resource for various information.
+- [170 Primary Public Schools In Geneva Switch To Ubuntu](http://itsfoss.com/170-primary-public-schools-geneva-switch-ubuntu/) - A useful resource for various information.
+- [23 Things You MUST DO After Installing Ubuntu 23.10](https://kskroyal.com/23-things-to-do-after-installing-ubuntu/) - A useful resource for various information.
+- [235+ Best Rated Torrent Sites & Trackers of 2023 🥇](https://torrentsites.com/) - A useful resource for various information.
+- [3 Types of Failover in Hyper-V Replica](http://www.petri.co.il/types-of-failover-hyper-v-replica.htm) - A useful resource for various information.
+- [3 Types of Failover in Hyper-V Replica](http://www.petri.co.il/types-of-failover-hyper-v-replica.htm) - A useful resource for various information.
+- [40+ High-Quality Free Resources for Web Development - DEV Community](https://dev.to/joserfelix/40-high-quality-free-resources-for-web-development-10o3) - A useful resource for various information.
+- [4anime - Watch Anime online free with English DUB and SUB](https://4anime.gg/browse) - A useful resource for various information.
+- [5 Best VPNs for Ubuntu - Best VPN.com](https://www.bestvpn.com/blog/6268/5-best-vpns-for-ubuntu/) - A useful resource for various information.
+- [6GK5416-4GR00-2AM2 - Industry Support Siemens](https://support.industry.siemens.com/cs/pd/277892?pdti=td&dl=en&lc=en-CH) - A useful resource for various information.
+- [72 year old skinny granny hardcore - Pornhub.com](https://www.pornhub.com/view_video.php?viewkey=ph56dca9475483e) - A useful resource for various information.
+- [AGP](https://play.google.com/store/games?device=windows) - A useful resource for various information.
+- [AI Accelerator PCIe Card｜AIoT & Industrial Solutions｜ASUS Global](https://www.asus.com/networking-iot-servers/aiot-industrial-solutions/gpu-edge-ai-accelerators/ai-accelerator-pcie-card/) - A useful resource for various information.
+- [AI Developer Courses: Learn, Build, Innovate](https://www.ai-for-devs.com/store) - A useful resource for various information.
+- [AI Developer Courses: Learn, Build, Innovate](https://www.ai-for-devs.com/store) - A useful resource for various information.
+- [ALFA AWUS036AXML Driver & Support Page – Rokland](https://store.rokland.com/pages/alfa-awus036axml-driver-support-page) - A useful resource for various information.
+- [AM](https://music.apple.com/ch/browse) - A useful resource for various information.
+- [AMD Catalyst™ 14.3 LINUX Beta V1.0 Driver](http://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx) - A useful resource for various information.
+- [AMD Catalyst™ 14.3 LINUX Beta V1.0 Driver](http://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx) - A useful resource for various information.
+- [ANY.RUN](https://any.run/malware-reports/) - A useful resource for various information.
+- [ANY.RUN - Interactive Online Malware Sandbox](https://any.run/) - A useful resource for various information.
+- [APILayer - Best API Marketplace | Reliable, Scalable APIs | APILayer](https://apilayer.com/) - A useful resource for various information.
+- [ASUS IoT Global](https://iot.asus.com/) - A useful resource for various information.
+- [ASUS IoT Global](https://iot.asus.com/) - A useful resource for various information.
+- [AWS Management Console](https://eu-central-1.console.aws.amazon.com/console/home?region=eu-central-1#) - A useful resource for various information.
+- [AWS to Azure services comparison - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-gb/azure/architecture/aws-professional/services) - A useful resource for various information.
+- [AbuseIPDB - IP address abuse reports - Making the Internet safer, one IP at a time](https://www.abuseipdb.com/) - A useful resource for various information.
+- [Activate windows server 2012 evaluation standard version with a product key OEM](http://social.technet.microsoft.com/Forums/msonline/en-US/4211c642-b15d-49ea-8124-f0628aa0f92e/activate-windows-server-2012-evaluation-standard-version-with-a-product-key-oem?forum=winserver8gen) - A useful resource for various information.
+- [Activate windows server 2012 evaluation standard version with a product key OEM](http://social.technet.microsoft.com/Forums/msonline/en-US/4211c642-b15d-49ea-8124-f0628aa0f92e/activate-windows-server-2012-evaluation-standard-version-with-a-product-key-oem?forum=winserver8gen) - A useful resource for various information.
+- [Administrator Portals | MSPortals.io - Microsoft Portals](https://msportals.io/?search=) - A useful resource for various information.
+- [Advanced Penetration Testing Software - Cobalt Strike](http://www.advancedpentest.com/) - A useful resource for various information.
+- [AgentKit](https://agentkit.infra.x.bcg.com/) - A useful resource for various information.
+- [Alle Dienste - Microsoft Azure](https://portal.azure.com/#allservices) - A useful resource for various information.
+- [Alle Services · ePortal](https://eportal.admin.ch/start) - A useful resource for various information.
+- [AlwaysUp](https://www.coretechnologies.com/products/AlwaysUp/) - A useful resource for various information.
+- [An Illustrated History of Mac OS X](http://www.git-tower.com/blog/history-of-osx/) - A useful resource for various information.
+- [Analyst Reports, E-Books, and White Papers | Microsoft Azure](https://azure.microsoft.com/en-us/resources/research/) - A useful resource for various information.
+- [Analyst Reports, E-Books, and White Papers | Microsoft Azure](https://azure.microsoft.com/en-us/resources/research/) - A useful resource for various information.
+- [Android Geräte-Manager](https://www.google.com/android/devicemanager?hl=de) - A useful resource for various information.
+- [Android TV](http://www.android.com/tv/) - A useful resource for various information.
+- [AniWave - Watch Anime Online, Free Anime Streaming](https://aniwave.to/) - A useful resource for various information.
+- [Anime Recommendations, Reviews, Manga and More! | Anime-Planet](https://www.anime-planet.com/) - A useful resource for various information.
+- [Animista - On-Demand CSS Animations Library](https://animista.net/play/text/tracking-in/tracking-in-contract-bck-bottom) - A useful resource for various information.
+- [Anthony Fu](https://antfu.me/) - A useful resource for various information.
+- [AnythingLLM ](https://useanything.com/download) - A useful resource for various information.
+- [AoE For Linux 0 A.D. Adds Indian Civilization In Alpha 13 Release](http://itsfoss.com/0-a-d-indian-civilization-in-alpha-13/) - A useful resource for various information.
+- [App-Passwörter – Kontoeinstellungen](https://security.google.com/settings/security/apppasswords?pli=1) - A useful resource for various information.
+- [Apple: Most OS X users safe from 'Shellshock' exploit, patch coming quickly for advanced Unix users | iMore](http://m.imore.com/apple-working-quickly-protect-os-x-against-shellshock-exploit) - A useful resource for various information.
+- [Asset Database | Bundesamt für Statistik](https://www.bfs.admin.ch/bfs/de/home/dienstleistungen/forschung/api/api-diffusion-dam.html) - A useful resource for various information.
+- [Astro](https://astro.build/) - A useful resource for various information.
+- [Atraci: New YouTube-Based Music Player](http://www.webupd8.org/2014/07/atraci-new-youtube-based-music-player.html) - A useful resource for various information.
+- [Audiobooks Online Download, Free Unabridged Audiobook Torrent on AudioBook Bay (ABB)](https://audiobookbay.lu/) - A useful resource for various information.
+- [Automated Malware Analysis - Joe Sandbox Cloud Basic](https://www.joesandbox.com/#windows) - A useful resource for various information.
+- [Awesome Cybersecurity Blue Team | Curated list of awesome lists | Project-Awesome.org](https://project-awesome.org/fabacab/awesome-cybersecurity-blueteam#application-or-binary-hardening) - A useful resource for various information.
+- [Awesome GPTs](https://awesomegpt.vip/) - A useful resource for various information.
+- [Awesome GPTs](https://awesomegpt.vip/) - A useful resource for various information.
+- [Awesome-Warez | All your base are belong to us!](https://lkrjangid1.github.io/Awesome-Warez/) - A useful resource for various information.
+- [Azure Architect](https://chatgpt.com/g/g-QgiQ408Af-azure-architect) - A useful resource for various information.
+- [Azure Architect](https://chatgpt.com/g/g-Q70MUlrjN-azure-architect) - A useful resource for various information.
+- [Azure IOT](https://learn.microsoft.com/en-us/azure/?product=iot) - A useful resource for various information.
+- [Azure IoT Hub communication protocols and ports | Microsoft Learn](https://learn.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-protocols) - A useful resource for various information.
+- [Azure IoT documentation](https://learn.microsoft.com/en-gb/azure/iot/) - A useful resource for various information.
+- [Azure IoT reference architecture - Azure Reference Architectures | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/iot) - A useful resource for various information.
+- [Azure documentation | Microsoft Learn](https://learn.microsoft.com/en-gb/azure/?product=popular) - A useful resource for various information.
+- [Azure documentation | Microsoft Learn](https://learn.microsoft.com/en-us/azure/?product=popular) - A useful resource for various information.
+- [AzureStackHOLs/admin-guides/01-HydrateMSLab/readme.md at main · mostrub/AzureStackHOLs](https://github.com/mostrub/AzureStackHOLs/blob/main/admin-guides/01-HydrateMSLab/readme.md) - A useful resource for various information.
+- [BTC Wallet - Coinbase](https://www.coinbase.com/accounts/49c33f5f-c47d-5e2d-99b6-0b5b90bc0be5) - A useful resource for various information.
+- [BTC Wallet – Coinbase](https://www.coinbase.com/accounts/primary) - A useful resource for various information.
+- [Back up photos & videos automatically - Google+ Help](https://support.google.com/plus/answer/1647509?hl=en) - A useful resource for various information.
+- [Basic](https://chat.openai.com/) - A useful resource for various information.
+- [Basic Concepts | docfx](https://dotnet.github.io/docfx/docs/basic-concepts.html#introduction) - A useful resource for various information.
+- [Basic Syntax | Markdown Guide](https://www.markdownguide.org/basic-syntax/) - A useful resource for various information.
+- [Beautiful Open](http://beautifulopen.com/) - A useful resource for various information.
+- [Bike](https://www.bikester.ch/myaccount/index.html) - A useful resource for various information.
+- [BinaryDriverHowto/AMD](https://help.ubuntu.com/community/BinaryDriverHowto/AMD#Installing_upstream_drivers_directly_from_AMD.27s_website) - A useful resource for various information.
+- [BinaryDriverHowto/AMD](https://help.ubuntu.com/community/BinaryDriverHowto/AMD#Installing_upstream_drivers_directly_from_AMD.27s_website) - A useful resource for various information.
+- [BinaryDriverHowto/AMD - Community Help Wiki](https://help.ubuntu.com/community/BinaryDriverHowto/AMD) - A useful resource for various information.
+- [Bitstamp](https://www.bitstamp.net/account/balance/) - A useful resource for various information.
+- [Boot Camp Support Software 5.1.5621](http://support.apple.com/kb/DL1720) - A useful resource for various information.
+- [Boot Camp Support Software 5.1.5621](http://support.apple.com/kb/DL1720) - A useful resource for various information.
+- [Boot Camp: System requirements for Microsoft Windows operating systems](http://support.apple.com/kb/HT5634) - A useful resource for various information.
+- [Boot Camp: System requirements for Microsoft Windows operating systems](http://support.apple.com/kb/HT5634) - A useful resource for various information.
+- [Boot-Repair - Community Help Wiki](https://help.ubuntu.com/community/Boot-Repair) - A useful resource for various information.
+- [Boot-Repair - Community Help Wiki](https://help.ubuntu.com/community/Boot-Repair) - A useful resource for various information.
+- [Bridging MQTT Messages to the Cloud with Mosquitto Bridge | EMQ](https://www.emqx.com/en/blog/bridging-mosquitto-to-emqx-cluster) - A useful resource for various information.
+- [Build optimized websites quickly, focus on your content | Docusaurus](https://docusaurus.io/) - A useful resource for various information.
+- [Building a Custom Malware Analysis Lab Environment - SentinelLabs](https://www.sentinelone.com/labs/building-a-custom-malware-analysis-lab-environment/) - A useful resource for various information.
+- [CERN Quantum Technology Initiative Strategy and Roadmap](https://zenodo.org/records/5571809#.YWldmdlBw6E) - A useful resource for various information.
+- [CIS Benchmarks secutety](https://www.cisecurity.org/cis-benchmarks) - A useful resource for various information.
+- [CIS Center for Internet Security](https://www.cisecurity.org/) - A useful resource for various information.
+- [CIS Center for Internet Security](https://www.cisecurity.org/) - A useful resource for various information.
+- [CIS Center for Internet Security](https://www.cisecurity.org/) - A useful resource for various information.
+- [CIS Controls Navigator](https://www.cisecurity.org/controls/cis-controls-navigator) - A useful resource for various information.
+- [CIS Controls Navigator](https://www.cisecurity.org/controls/cis-controls-navigator) - A useful resource for various information.
+- [CIS Controls Navigator](https://www.cisecurity.org/controls/cis-controls-navigator) - A useful resource for various information.
+- [CODEPEN](https://codepen.io/pen/tour/welcome/start) - A useful resource for various information.
+- [CUDA Toolkit 12.3 Update 2 Downloads | NVIDIA Developer](https://developer.nvidia.com/cuda-downloads?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local#) - A useful resource for various information.
+- [CVE security vulnerability database. Security vulnerabilities, exploits, references and more](https://www.cvedetails.com/sign-in) - A useful resource for various information.
+- [Can not install: Disk is locked · Issue #11 · foxlet/macOS-Simple-KVM](https://github.com/foxlet/macOS-Simple-KVM/issues/11) - A useful resource for various information.
+- [Canva](https://chat.openai.com/g/g-alKfVrz9K-canva) - A useful resource for various information.
+- [Carbon | Create and share beautiful images of your source code](https://carbon.now.sh/?bg=rgba%28171%2C-184%2C-195%2C-1%29&t=seti&wt=none&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520pluckDeep%2520%253D%2520key%2520%253D%253E%2520obj%2520%253D%253E%2520key.split%28%27.%27%29.reduce%28%28accum%252C%2520key%29%2520%253D%253E%2520accum%255Bkey%255D%252C%2520obj%29%250A%250Aconst%2520compose%2520%253D%2520%28...fns%29%2520%253D%253E%2520res%2520%253D%253E%2520fns.reduce%28%28accum%252C%2520next%29%2520%253D%253E%2520next%28accum%29%252C%2520res%29%250A%250Aconst%2520unfold%2520%253D%2520%28f%252C%2520seed%29%2520%253D%253E%2520%257B%250A%2520%2520const%2520go%2520%253D%2520%28f%252C%2520seed%252C%2520acc%29%2520%253D%253E%2520%257B%250A%2520%2520%2520%2520const%2520res%2520%253D%2520f%28seed%29%250A%2520%2520%2520%2520return%2520res%2520%253F%2520go%28f%252C%2520res%255B1%255D%252C%2520acc.concat%28%255Bres%255B0%255D%255D%29%29%2520%253A%2520acc%250A%2520%2520%257D%250A%2520%2520return%2520go%28f%252C%2520seed%252C%2520%255B%255D%29%250A%257D) - A useful resource for various information.
+- [Carbon | Create and share beautiful images of your source code](https://carbon.now.sh/) - A useful resource for various information.
+- [Carbon | Create and share beautiful images of your source code](https://carbon.now.sh/?bg=rgba%28171%2C-184%2C-195%2C-1%29&t=seti&wt=none&l=auto&width=680&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=const%2520pluckDeep%2520%253D%2520key%2520%253D%253E%2520obj%2520%253D%253E%2520key.split%28%27.%27%29.reduce%28%28accum%252C%2520key%29%2520%253D%253E%2520accum%255Bkey%255D%252C%2520obj%29%250A%250Aconst%2520compose%2520%253D%2520%28...fns%29%2520%253D%253E%2520res%2520%253D%253E%2520fns.reduce%28%28accum%252C%2520next%29%2520%253D%253E%2520next%28accum%29%252C%2520res%29%250A%250Aconst%2520unfold%2520%253D%2520%28f%252C%2520seed%29%2520%253D%253E%2520%257B%250A%2520%2520const%2520go%2520%253D%2520%28f%252C%2520seed%252C%2520acc%29%2520%253D%253E%2520%257B%250A%2520%2520%2520%2520const%2520res%2520%253D%2520f%28seed%29%250A%2520%2520%2520%2520return%2520res%2520%253F%2520go%28f%252C%2520res%255B1%255D%252C%2520acc.concat%28%255Bres%255B0%255D%255D%29%29%2520%253A%2520acc%250A%2520%2520%257D%250A%2520%2520return%2520go%28f%252C%2520seed%252C%2520%255B%255D%29%250A%257D) - A useful resource for various information.
+- [Category:OWASP Project - OWASP](https://wiki.owasp.org/index.php/Category:OWASP_Project#Starting_a_New_Project) - A useful resource for various information.
+- [Champagne Piracy Wiki - Champagne.](https://champagne.pages.dev/) - A useful resource for various information.
+- [ChatGPT - 22.500+ Best Custom GPTs](https://chat.openai.com/g/g-RuhDS8mbd-22-500-best-custom-gpts) - A useful resource for various information.
+- [ChatGPT - Advanced Python Assistant](https://chat.openai.com/g/g-cKXjWStaE-advanced-python-assistant) - A useful resource for various information.
+- [ChatGPT - AskYourPDF Research Assistant](https://chat.openai.com/g/g-UfFxTDMxq-askyourpdf-research-assistant) - A useful resource for various information.
+- [ChatGPT - Azure Cloud Expert](https://chatgpt.com/g/g-CfTr7WmXb-azure-cloud-expert?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - Azure Cloud Expert](https://chatgpt.com/g/g-CfTr7WmXb-azure-cloud-expert?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - Azure Expert](https://chatgpt.com/g/g-VIsiBgv06-azure-expert?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - Azure Expert](https://chatgpt.com/g/g-VIsiBgv06-azure-expert?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - Convert Anything](https://chat.openai.com/g/g-kMKw5tFmB-convert-anything) - A useful resource for various information.
+- [ChatGPT - CrewAI Assistant](https://chat.openai.com/g/g-qqTuUWsBY-crewai-assistant) - A useful resource for various information.
+- [ChatGPT - Doc Maker](https://chat.openai.com/g/g-Gt6Z8pqWF-doc-maker) - A useful resource for various information.
+- [ChatGPT - Excel GPT](https://chat.openai.com/g/g-8m2CPAfeF-excel-gpt) - A useful resource for various information.
+- [ChatGPT - Fully SEO Optimized Article including FAQ's](https://chat.openai.com/g/g-ySbhcRtru-fully-seo-optimized-article-including-faq-s) - A useful resource for various information.
+- [ChatGPT - Network Architecture Advisor](https://chatgpt.com/g/g-NY7tBA9zz-network-architecture-advisor?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - Network Architecture Advisor](https://chatgpt.com/g/g-NY7tBA9zz-network-architecture-advisor?oai-dm=1) - A useful resource for various information.
+- [ChatGPT - ScholarAI](https://chat.openai.com/g/g-L2HknCZTC-scholarai) - A useful resource for various information.
+- [ChatGPT - SciSpace](https://chat.openai.com/g/g-NgAcklHd8-scispace) - A useful resource for various information.
+- [ChatGPT - Slide Maker](https://chat.openai.com/g/g-Vklr0BddT-slide-maker) - A useful resource for various information.
+- [ChatGPT - WebPilot](https://chat.openai.com/g/g-pNWGgUYqS-webpilot) - A useful resource for various information.
+- [Cheat Sheets](https://cheatography.com/) - A useful resource for various information.
+- [Check If Your Linux System Is Vulnerable To Shellshock And Fix It](http://itsfoss.com/linux-shellshock-check-fix/) - A useful resource for various information.
+- [Chocolatey Software | Community](https://community.chocolatey.org/) - A useful resource for various information.
+- [Chris Titus WinUtil Official Documentation](https://christitustech.github.io/winutil/) - A useful resource for various information.
+- [Chrome Web Store - Apps](https://chrome.google.com/webstore/category/apps?hl=de) - A useful resource for various information.
+- [Chromecast](https://cast.google.com/chromecast/setup) - A useful resource for various information.
+- [Chubby Granny Pounded in Missionary Position: Free Porn 10](https://xhamster.com/movies/7546459/chubby_granny_pounded_in_missionary_position.html) - A useful resource for various information.
+- [Cisco DevNet Sandbox - try out online developer environments - Cisco DevNet](https://developer.cisco.com/site/sandbox/) - A useful resource for various information.
+- [Cjwdev | Free Software For IT Professionals](http://www.cjwdev.co.uk/) - A useful resource for various information.
+- [Cjwdev | Free Software For IT Professionals](http://www.cjwdev.co.uk/) - A useful resource for various information.
+- [Classy French Brunette Cums Hard on the Bed: Retro Porn | xHamster](https://xhamster.com/videos/classy-french-brunette-cums-hard-on-the-bed-xhFVl9q) - A useful resource for various information.
+- [Claude](https://claude.ai/chats) - A useful resource for various information.
+- [Clonezilla - About](http://clonezilla.org/) - A useful resource for various information.
+- [Cloud Computing Patterns | Summary of the book “Cloud Computing Patterns” by Springer and related materials.](https://www.cloudcomputingpatterns.org/) - A useful resource for various information.
+- [Cloud Free Tier | Oracle Schweiz](https://www.oracle.com/ch-de/cloud/free/) - A useful resource for various information.
+- [Cloud cost hacking | HackerNoon](https://hackernoon.com/cloud-cost-hacking-fc35fd19985d) - A useful resource for various information.
+- [Cloud design patterns - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/patterns/) - A useful resource for various information.
+- [Cloud | Extreme Networks](https://www.extremenetworks.com/solutions/cloud-management) - A useful resource for various information.
+- [CloudKit](https://icloud.developer.apple.com/dashboard/home/teams/Q2G2ULGD7L) - A useful resource for various information.
+- [Cloudflare ](https://dash.cloudflare.com/) - A useful resource for various information.
+- [Code blocks - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/reference/code-blocks/) - A useful resource for various information.
+- [Codespaces](https://github.com/codespaces) - A useful resource for various information.
+- [Codux IDE for React](https://www.codux.com/) - A useful resource for various information.
+- [Colors & fonts](https://www.colorsandfonts.com/) - A useful resource for various information.
+- [Columbus Project - Advanced subdomain discovery service.](https://columbus.elmasy.com/) - A useful resource for various information.
+- [Command Line Interface | EMQX 5.6 Docs](https://docs.emqx.com/en/emqx/v5.6/admin/cli.html#admins) - A useful resource for various information.
+- [Command Line Interface | EMQX 5.6 Documentation](https://www.emqx.io/docs/en/v5.6/admin/cli.html#admins) - A useful resource for various information.
+- [Computing | CERN](https://home.cern/science/computing) - A useful resource for various information.
+- [Computing | CERN](https://home.cern/science/computing) - A useful resource for various information.
+- [Configure Xbox Controller on your Ubuntu/Linux Mint - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/08/configure-xbox-controller-on-your.html) - A useful resource for various information.
+- [Consensus](https://chat.openai.com/g/g-bo0FiWLY7-consensus) - A useful resource for various information.
+- [Considerations for an Azure industrial IIoT (IIoT) analytics solution - Azure Application Architecture Guide | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/guide/iiot-guidance/iiot-considerations) - A useful resource for various information.
+- [Coral](https://coral.ai/) - A useful resource for various information.
+- [Cum Deep Down in Throat, Free Cum Tube Porn 1b: xHamster de](https://de.xhamster.com/videos/cum-deep-down-in-throat-4203276) - A useful resource for various information.
+- [CustomizeGuestSession - Community Help Wiki](https://help.ubuntu.com/community/CustomizeGuestSession) - A useful resource for various information.
+- [CustomizeGuestSession - Community Help Wiki](https://help.ubuntu.com/community/CustomizeGuestSession) - A useful resource for various information.
+- [Cyber Security Kiosk - MetaDefender Kiosk - OPSWAT](https://www.opswat.com/products/metadefender/kiosk) - A useful resource for various information.
+- [Cyber_Security](https://chat.openai.com/g/g-AUt7Uu3R5-cyber-guardian) - A useful resource for various information.
+- [Cyotek WebCopy - Copy websites locally for offline browsing • Cyotek](https://www.cyotek.com/cyotek-webcopy) - A useful resource for various information.
+- [Cyotek WebCopy - Copy websites locally for offline browsing • Cyotek](https://www.cyotek.com/cyotek-webcopy) - A useful resource for various information.
+- [DEV](https://dev.to/) - A useful resource for various information.
+- [DEV Community](https://dev.to/random_ti/top-12-websites-that-every-developer-must-know-2a67) - A useful resource for various information.
+- [DLP: Schutz vor ungewolltem Datenabfluss - Data Leakage Prevention | TecChannel.de](http://www.tecchannel.de/sicherheit/management/2020290/data_leakage_prevention_dlp_datenschutz_datenlecks/#) - A useful resource for various information.
+- [DLP: Schutz vor ungewolltem Datenabfluss - Data Leakage Prevention | TecChannel.de](http://www.tecchannel.de/sicherheit/management/2020290/data_leakage_prevention_dlp_datenschutz_datenlecks/#) - A useful resource for various information.
+- [DNS Resolvers - Privacy Guides](https://www.privacyguides.org/en/dns/) - A useful resource for various information.
+- [DR for Azure Data Platform - Architecture - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/data-guide/disaster-recovery/dr-for-azure-data-platform-architecture) - A useful resource for various information.
+- [DaneJones Breathtaking romantic sex scene with creampie | PornTube ®](http://www.porntube.com/videos/danejones-breathtaking-romantic-sex-scene-creampie_1207946) - A useful resource for various information.
+- [DaneJones Fit Russian girl has sensual sex | PornTube ®](http://www.porntube.com/videos/danejones-fit-russian-girl-sensual-sex_1182504) - A useful resource for various information.
+- [DaneJones When a man comes from a woman | PornTube ®](http://www.porntube.com/videos/danejones-man-comes-woman_1207959) - A useful resource for various information.
+- [DarkRL @ 2022-10-15 17:53:20 (embed.tracy) - Tracy Profiler 0.10.0](https://tracy.nereid.pl/) - A useful resource for various information.
+- [Dashy](http://192.168.11.16:4000/home/getting-started) - A useful resource for various information.
+- [Data Downloads - OpenCelliD - Largest Open Database of Cell Towers & Geolocation - by Unwired Labs](https://www.opencellid.org/downloads.php?token=pk.ad5898bc7d3a2b7edb18639e5c08f8bc) - A useful resource for various information.
+- [Data Visualizations | U.S. Geological Survey](https://www.usgs.gov/products/web-tools/data-visualizations) - A useful resource for various information.
+- [Data-Science-For-Beginners/2-Working-With-Data at main · microsoft/Data-Science-For-Beginners](https://github.com/microsoft/Data-Science-For-Beginners/tree/main/2-Working-With-Data) - A useful resource for various information.
+- [Data-Training](https://www.everyprompt.com/marc-3/functions/untitled-4RegF1) - A useful resource for various information.
+- [Datalab | State of the art document intelligence models](https://www.datalab.to/) - A useful resource for various information.
+- [Datalytics club of CIT](https://datalyticscit.netlify.app/index.html) - A useful resource for various information.
+- [Daten | opendata.swiss](https://opendata.swiss/de/dataset) - A useful resource for various information.
+- [Datentools](https://www.google.com/settings/takeout) - A useful resource for various information.
+- [Designer | Adaptive Cards](https://adaptivecards.io/designer/) - A useful resource for various information.
+- [DevDocs API Documentation](https://devdocs.io/) - A useful resource for various information.
+- [DevOps](https://dev.azure.com/RobotInvation/BabyRobot) - A useful resource for various information.
+- [DevSecOps on Azure Kubernetes Service (AKS) - Azure Architecture Center | Microsoft Learn](https://learn.microsoft.com/en-us/azure/architecture/guide/devsecops/devsecops-on-aks) - A useful resource for various information.
+- [Develop highly available distributed applications - Azure IoT MQ | Microsoft Learn](https://learn.microsoft.com/en-gb/azure/iot-operations/develop/concept-about-distributed-apps) - A useful resource for various information.
+- [Devhints — TL;DR for developer documentation](https://devhints.io/) - A useful resource for various information.
+- [Devhints — TL;DR for developer documentation](https://devhints.io/) - A useful resource for various information.
+- [Devices-docs/surface/manage-surface-driver-and-firmware-updates.md at public · MicrosoftDocs/Devices-docs](https://github.com/microsoftdocs/devices-docs/blob/public/surface/manage-surface-driver-and-firmware-updates.md) - A useful resource for various information.
+- [Diagram](https://diagrams.helpful.dev/s/s:eQ58DnhH) - A useful resource for various information.
+- [Diagramms](https://whimsical.com/my-files-G3JS2C4HF4CHTdJaKX87kA) - A useful resource for various information.
+- [Diagrams](https://chat.openai.com/g/g-5QhhdsfDj-diagrams-show-me/c/dfec8ff7-3ab9-46c9-bc45-c06c093c1345) - A useful resource for various information.
+- [Die Windows Technical Preview ist in Kürze erhältlich - Microsoft Windows](http://windows.microsoft.com/de-de/windows/preview-coming-soon) - A useful resource for various information.
+- [Die Windows Technical Preview ist in Kürze erhältlich - Microsoft Windows](http://windows.microsoft.com/de-de/windows/preview-coming-soon) - A useful resource for various information.
+- [Digital Defense](https://digital-defense.io/) - A useful resource for various information.
+- [Disable Amazon Shopping Suggestions From Unity Dash In Ubuntu 14.04](http://itsfoss.com/disable-amazon-ubuntu-1404/) - A useful resource for various information.
+- [DisplayLink USB Graphics Software for Ubuntu 5.8 | Synaptics](https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu-5.8?filetype=exe) - A useful resource for various information.
+- [Docker Compose - LinuxServer.io](https://docs.linuxserver.io/general/docker-compose) - A useful resource for various information.
+- [Documentation for Visual Studio Code](https://code.visualstudio.com/docs/?dv=win) - A useful resource for various information.
+- [Dolly buster - FilePursuit Search](https://filepursuit.com/pursuit?q=Dolly+buster&type=video) - A useful resource for various information.
+- [DoubleDouble - Music Downloads](https://doubledouble.top/) - A useful resource for various information.
+- [Download EMQX Open Source](https://www.emqx.com/en/downloads-and-install/broker) - A useful resource for various information.
+- [Download eKuiper](https://ekuiper.org/downloads) - A useful resource for various information.
+- [Download the free Testcontainers Desktop app](https://testcontainers.com/desktop/?_gl=1*eus2nq*_up*MQ..*_ga*MTQ3ODc5MzMyMi4xNzE0MTYwNzQy*_ga_22TYV8FBPD*MTcxNDE2MDc0MC4xLjAuMTcxNDE2MDc0MC4wLjAuMA..#windows) - A useful resource for various information.
+- [Download | NETworkManager](https://borntoberoot.net/NETworkManager/download) - A useful resource for various information.
+- [EDGE](https://edgeimpulse.com/product) - A useful resource for various information.
+- [EMQ - YouTube](https://www.youtube.com/@emqx/videos) - A useful resource for various information.
+- [EMQ Technologies](https://github.com/emqx) - A useful resource for various information.
+- [EMQX Dashboard](http://192.168.11.19:18083/#/dashboard/overview) - A useful resource for various information.
+- [EMQX Docs](https://docs.emqx.com/en/emqx/latest/getting-started/getting-started.html) - A useful resource for various information.
+- [EMQX Documentation](https://docs.emqx.com/en/) - A useful resource for various information.
+- [EMQX MQTT Platform Pricing | EMQ](https://www.emqx.com/en/pricing) - A useful resource for various information.
+- [EMQX Overview](https://docs.emqx.com/en/emqx/latest/) - A useful resource for various information.
+- [Easy-to-Use Online MQTT Client | Try Now](https://mqttx.app/web-client#/recent_connections) - A useful resource for various information.
+- [Easy-to-Use Online MQTT Client | Try Now](https://mqttx.app/web-client#/recent_connections/0?oper=create) - A useful resource for various information.
+- [Edge WebView2](https://learn.microsoft.com/en-gb/microsoft-edge/webview2/) - A useful resource for various information.
+- [Editor - Editor ⋅ Storybook](https://mgt.dev/?path=/story/editor--editor&source=ge) - A useful resource for various information.
+- [Einsteiger › Wiki › ubuntuusers.de](http://wiki.ubuntuusers.de/Einsteiger) - A useful resource for various information.
+- [Einsteiger › Wiki › ubuntuusers.de](http://wiki.ubuntuusers.de/Einsteiger) - A useful resource for various information.
+- [Elevation of Privilege from Local Admin to gMSA](https://aadinternals.com/post/local_admin_to_gmsa/) - A useful resource for various information.
+- [Elfbar 2500 - NS20mg - Einweg Vape Pen günstig kaufen - Red Vape](https://www.red-vape.ch/elf-bar-2500-8ml-ns20mg-einweg-vape-pen) - A useful resource for various information.
+- [Employment at Renata | Renata SA](https://www.renata.com/en-ch/career/employment-at-renata/) - A useful resource for various information.
+- [Enterprise Content Plattform | Alfresco](http://www.alfresco.com/de/enterprise-content-plattform) - A useful resource for various information.
+- [EverythingMoe](https://everythingmoe.com/) - A useful resource for various information.
+- [Example draw.io diagrams and templates](https://www.drawio.com/example-diagrams) - A useful resource for various information.
+- [Exchange Kalender in der OS X Kalender App abonnieren / freigeben](http://www.michael-ertel.de/2013/05/17/exchange-kalender-der-os-kalender-app-abonnieren-freigeben/) - A useful resource for various information.
+- [Exchange Kalender in der OS X Kalender App abonnieren / freigeben](http://www.michael-ertel.de/2013/05/17/exchange-kalender-der-os-kalender-app-abonnieren-freigeben/) - A useful resource for various information.
+- [Exploit Database](https://www.exploit-db.com/) - A useful resource for various information.
+- [Exploit-DB](https://www.exploit-db.com/) - A useful resource for various information.
+- [Explore all Microsoft repos | Microsoft Open Source](https://opensource.microsoft.com/projects/explore/) - A useful resource for various information.
+- [Explore | Nix & NixOS](https://nixos.org/explore/) - A useful resource for various information.
+- [ExtremeCloud IQ | Top Network Management Platform | Extreme Networks](https://netagen.com/solutions/cloud/extremecloud-iq/) - A useful resource for various information.
+- [FFMultiConverter is now available for Ubuntu 14.04 & Linux Mint 17 - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/08/ffmulticonverter-is-now-available-for.html?m=1) - A useful resource for various information.
+- [FIRST.Org, Inc.](https://www.first.org/epss/data_stats) - A useful resource for various information.
+- [Featured Projects | Microsoft Open Source](https://opensource.microsoft.com/projects/) - A useful resource for various information.
+- [Features · Tailscale](https://tailscale.com/features) - A useful resource for various information.
+- [Feuerstelle hellgrau Leichtbeton rechteckig PAVO II | Beliani.ch](https://www.beliani.ch/feuerstelle-hellgrau-leichtbeton-rechteckig-pavo-ii.html?gad_source=1&gclid=CjwKCAjw_e2wBhAEEiwAyFFFo1oho6qj7l4-6Qy6CoqesK4eBM-qeGwE03LojDufL6sUu-ygvJ1ACxoCKxMQAvD_BwE) - A useful resource for various information.
+- [FileMood: your gateway to explore discover and download files](https://filemood.com/) - A useful resource for various information.
+- [FilePursuit- Discover Everything!, Search the web for files, videos, audios, eBooks and much more.](https://filepursuit.com/) - A useful resource for various information.
+- [Filthy Cumpig: Free Mobile Xxx Porn Video bb - xHamster](https://xhamster.com/videos/filthy-cumpig-11159577#mlrelated) - A useful resource for various information.
+- [Find Pre-trained Models | Kaggle](https://www.kaggle.com/models) - A useful resource for various information.
+- [Find out what websites are built with - Wappalyzer](https://www.wappalyzer.com/) - A useful resource for various information.
+- [Fit Granny is so fucking hot - Pornhub.com](https://www.pornhub.com/view_video.php?viewkey=ph5704ee12a9563) - A useful resource for various information.
+- [Fix Ubuntu](https://fixubuntu.com/) - A useful resource for various information.
+- [Fix Ubuntu](https://fixubuntu.com/) - A useful resource for various information.
+- [Fluent UI - Styles - React - Fluent UI Icons](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons) - A useful resource for various information.
+- [Fluent UI Theme Designer Generator](https://fluentuipr.z22.web.core.windows.net/heads/master/theming-designer/index.html) - A useful resource for various information.
+- [Fluture documentation — DevDocs](https://devdocs.io/fluture/) - A useful resource for various information.
+- [Focalboard](https://www.focalboard.com/download/personal-edition/desktop/) - A useful resource for various information.
+- [Format Junkie media converter available for Ubuntu/Linux Mint/other Ubuntu derivatives via PPA [Updated] - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/01/format-junkie-converter-for-ubuntu.html) - A useful resource for various information.
+- [Free Collaborative Markdown Editor - onlinemarkdowneditor.dev](https://onlinemarkdowneditor.dev/) - A useful resource for various information.
+- [Free HTML Templates on HTMLrev](https://htmlrev.com/) - A useful resource for various information.
+- [Free News, Magazines, Newspapers, Journals, Reference Articles and Classic Books - Free Online Library](https://www.thefreelibrary.com/) - A useful resource for various information.
+- [Free ipSpace.net Webinars and Videos - www.ipSpace.net](https://www.ipspace.net/Subscription/Free) - A useful resource for various information.
+- [From Data to Intelligence: One-Stop MQTT Platform for Smart Factory Advancements | EMQ](https://www.emqx.com/en/blog/data-infrastructure-for-smart-factory) - A useful resource for various information.
+- [GAM](https://mail.google.com/mail/u/0/#inbox) - A useful resource for various information.
+- [GC](https://console.groq.com/playground) - A useful resource for various information.
+- [GD](https://drive.google.com/drive/u/0/my-drive) - A useful resource for various information.
+- [GDrive](https://drive.google.com/#my-drive) - A useful resource for various information.
+- [GIT projects](https://github.com/mostrub?tab=projects) - A useful resource for various information.
+- [GITCODE](https://chat.openai.com/g/g-3s6SJ5V7S-askthecode) - A useful resource for various information.
+- [GITDEV](https://github.dev/github/dev) - A useful resource for various information.
+- [GITGARD-Dashboard](https://dashboard.gitguardian.com/workspace/482055/incidents/secrets?sort_date=true&status=TRIGGERED%2CASSIGNED) - A useful resource for various information.
+- [GITHUB](https://github.com/mostrub) - A useful resource for various information.
+- [GL](https://www.galaxus.ch/en) - A useful resource for various information.
+- [GM](https://music.youtube.com/) - A useful resource for various information.
+- [GP](https://photos.google.com/) - A useful resource for various information.
+- [GPT Researcher - Official Page](https://gptr.dev/) - A useful resource for various information.
+- [GPT Researcher - Official Page](https://gptr.dev/) - A useful resource for various information.
+- [GPT4All](https://gpt4all.io/index.html) - A useful resource for various information.
+- [GaiaNet](https://www.gaianet.ai/) - A useful resource for various information.
+- [GaiaNet](https://www.gaianet.ai/) - A useful resource for various information.
+- [Gemini](https://gemini.google.com/app/0d1ef2e10c8c461d) - A useful resource for various information.
+- [Gemini for Application Developers | Google Cloud Skills Boost](https://www.cloudskillsboost.google/paths/236/course_templates/881) - A useful resource for various information.
+- [Gemma - a family of lightweight, state-of-the art open models from Google.  |  Google AI for Developers](https://ai.google.dev/gemma) - A useful resource for various information.
+- [German Rap Hits Now - Hyperpipe](https://hyperpipe.surge.sh/) - A useful resource for various information.
+- [German_Write](https://chat.openai.com/g/g-1LJ5osiUb-darhtwrite) - A useful resource for various information.
+- [Get Started with TV Apps | Android Developers](http://developer.android.com/preview/tv/start/index.html) - A useful resource for various information.
+- [Get Ubuntu | Download | Ubuntu](https://ubuntu.com/download) - A useful resource for various information.
+- [Getting Connected with your Pwnagotchi – phreakboutique](https://phreakboutique.com/blogs/tutorials/getting-connected-with-your-pwnagotchi) - A useful resource for various information.
+- [Getting Started - Spaceship](https://spaceship-prompt.sh/getting-started/) - A useful resource for various information.
+- [Gisela Kunz Oma Pervers 19 Vto Pictures Porn Videos | xHamster](https://xhamster.com/search/gisela+kunz+oma+pervers+19+vto+pictures) - A useful resource for various information.
+- [Git](http://git-scm.com/) - A useful resource for various information.
+- [GitButler](https://gitbutler.com/) - A useful resource for various information.
+- [GitHub - danielmiessler/fabric: fabric is an open-source framework for augmenting humans using AI. It provides a modular framework for solving specific problems using a crowdsourced set of AI prompts that can be used anywhere.](https://github.com/danielmiessler/fabric) - A useful resource for various information.
+- [GitHub Docs](https://docs.github.com/en) - A useful resource for various information.
+- [GitHub Pages | Websites for you and your projects, hosted directly from your GitHub repository. Just edit, push, and your changes are live.](https://pages.github.com/) - A useful resource for various information.
+- [Github Ranking | Github-Ranking](https://evanli.github.io/Github-Ranking/) - A useful resource for various information.
+- [GoAccess - Get Started](https://goaccess.io/get-started) - A useful resource for various information.
+- [Google AI Studio](https://aistudio.google.com/app/prompts/new_chat) - A useful resource for various information.
+- [Google Cloud console](https://console.cloud.google.com/welcome?project=desktop-399010) - A useful resource for various information.
+- [Google Codelabs](https://codelabs.developers.google.com/?cat=apps) - A useful resource for various information.
+- [Google Drive](https://drive.google.com/drive/#my-drive) - A useful resource for various information.
+- [Google Fonts](https://fonts.google.com/?selection.family=Gloria+Hallelujah|Griffy|Indie+Flower) - A useful resource for various information.
+- [Google Hacking DB](https://www.exploit-db.com/google-hacking-database) - A useful resource for various information.
+- [Google Meet](https://meet.google.com/) - A useful resource for various information.
+- [Google Play Music on Ubuntu ](http://www.omgubuntu.co.uk/2011/11/getting-started-with-google-music-on-ubuntu) - A useful resource for various information.
+- [Google Play Music on Ubuntu ](http://www.omgubuntu.co.uk/2011/11/getting-started-with-google-music-on-ubuntu) - A useful resource for various information.
+- [Google-Cloud-Console-VERTEX](https://console.cloud.google.com/vertex-ai/generative/language/create/chat?project=desktop-399010) - A useful resource for various information.
+- [Grafana](http://192.168.11.12:3000/?orgId=1) - A useful resource for various information.
+- [Granny Molly Maracas Suck and Fuck Young Boy: Free Porn 7c de](https://de.xhamster.com/videos/granny-molly-maracas-suck-and-fuck-young-boy-11328899) - A useful resource for various information.
+- [Graph Explorer | Try Microsoft Graph APIs - Microsoft Graph](https://developer.microsoft.com/en-us/graph/graph-explorer?request=groups/%7Bid%7D/planner/plans&version=v1.0) - A useful resource for various information.
+- [GreyNoise Visualizer](https://viz.greynoise.io/) - A useful resource for various information.
+- [GreyNoise Visualizer](https://viz.greynoise.io/) - A useful resource for various information.
+- [Group Apps In Unity Launcher With LauncherFolders](http://itsfoss.com/group-apps-unity-launcher-launcherfolders/) - A useful resource for various information.
+- [Group Policy in Windows Server 2012: Results Report Improvements - Group Policy Team Blog - Site Home - TechNet Blogs](http://blogs.technet.com/b/grouppolicy/archive/2012/11/28/group-policy-in-windows-server-2012-results-report-improvements.aspx) - A useful resource for various information.
+- [Group Policy in Windows Server 2012: Results Report Improvements - Group Policy Team Blog - Site Home - TechNet Blogs](http://blogs.technet.com/b/grouppolicy/archive/2012/11/28/group-policy-in-windows-server-2012-results-report-improvements.aspx) - A useful resource for various information.
+- [H](https://dash.cloudflare.com/c60dd254f444c2b848eaed3447b19a69) - A useful resource for various information.
+- [HP OfficeJet Pro 9010 Home Printer](https://192.168.11.176/#) - A useful resource for various information.
+- [HTTrack Website Copier - Free Software Offline Browser (GNU GPL)](https://www.httrack.com/) - A useful resource for various information.
+- [HackSquad 2023 Leaderboard](https://www.hacksquad.dev/leaderboard/) - A useful resource for various information.
+- [Have I Been Pwned: Check if your email has been compromised in a data breach](https://haveibeenpwned.com/) - A useful resource for various information.
+- [Have I Been Pwned: Check if your email has been compromised in a data breach](https://haveibeenpwned.com/) - A useful resource for various information.
+- [HiAnime Free Anime Streaming Homepage](https://hianime.to/home) - A useful resource for various information.
+- [Home - FMovies | Watch Movies Online Free on FMovies.to](https://fmoviesz.to/home) - A useful resource for various information.
+- [Home - Flugel Anime](https://flugel-anime.com/) - A useful resource for various information.
+- [Home | Awesome Privacy](https://awesome-privacy.xyz/) - A useful resource for various information.
+- [Home | Awesome Privacy](https://awesome-privacy.xyz/) - A useful resource for various information.
+- [Home | Oh My Posh](https://ohmyposh.dev/) - A useful resource for various information.
+- [Home – iA](https://ia.net/) - A useful resource for various information.
+- [Hoppscotch • Open source API development ecosystem • Hoppscotch](https://hoppscotch.io/) - A useful resource for various information.
+- [How To Install Cinnamon In Ubuntu 14.04](http://itsfoss.com/install-cinnamon-ubuntu-14-04/#more-5029) - A useful resource for various information.
+- [How to Install Apache Guacamole via Docker on Ubuntu 22.04 – VITUX](https://vitux.com/how-to-install-apache-guacamole-via-docker-on-ubuntu/) - A useful resource for various information.
+- [How to build a movie search app using React Hooks](https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-hooks-24eb72ddfaf7/) - A useful resource for various information.
+- [How to install DisplayLink software on legacy Ubuntu versions – DisplayLink Support](https://support.displaylink.com/knowledgebase/articles/684649) - A useful resource for various information.
+- [How to install Windows 7 via USB on a 2010 Macbook (No Optical) - MacRumors Forums](http://forums.macrumors.com/showthread.php?t=1680345) - A useful resource for various information.
+- [How to install Windows 7 via USB on a 2010 Macbook (No Optical) - MacRumors Forums](http://forums.macrumors.com/showthread.php?t=1680345) - A useful resource for various information.
+- [How to prevent unauthorized pairing with your iPhone or iPad using Apple Configurator | iMore](http://www.imore.com/how-prevent-unauthorized-pairing-your-iphone-or-ipad-using-apple-configurator) - A useful resource for various information.
+- [How to prevent unauthorized pairing with your iPhone or iPad using Apple Configurator | iMore](http://www.imore.com/how-prevent-unauthorized-pairing-your-iphone-or-ipad-using-apple-configurator) - A useful resource for various information.
+- [Huge Tits And Anal Play With Hot Mature Lady | PornTube ®](http://www.porntube.com/videos/huge-tits-anal-play-hot-mature-lady_1404288) - A useful resource for various information.
+- [Hugging Face – The AI community building the future.](https://huggingface.co/) - A useful resource for various information.
+- [Hyper-V Cmdlets](http://technet.microsoft.com/en-us/library/hh848559.aspx) - A useful resource for various information.
+- [Hyper-V Cmdlets](http://technet.microsoft.com/en-us/library/hh848559.aspx) - A useful resource for various information.
+- [Hyper-V Replica Failover fuer Domain Controller - Aktives Verzeichnis Blog - Site Home - TechNet Blogs](http://blogs.technet.com/b/deds/archive/2012/11/28/hyper-v-replica-failover-fuer-domain-controller.aspx) - A useful resource for various information.
+- [Hyper-V Replica Failover fuer Domain Controller - Aktives Verzeichnis Blog - Site Home - TechNet Blogs](http://blogs.technet.com/b/deds/archive/2012/11/28/hyper-v-replica-failover-fuer-domain-controller.aspx) - A useful resource for various information.
+- [I2P](https://alternativeto.net/software/i2p/) - A useful resource for various information.
+- [I2P for anonymity | Kali Linux](https://subscription.packtpub.com/book/security/9781789952308/1/ch01lvl1sec10/setting-up-i2p-for-anonymity) - A useful resource for various information.
+- [IFTTT](https://ifttt.com/recipes) - A useful resource for various information.
+- [IIoT Platform: Key Components and 5 Notable Solutions | EMQ](https://www.emqx.com/en/blog/iiot-platform-key-components-and-5-notable-solutions) - A useful resource for various information.
+- [IP Address Tools, Network Tools, DNS Tools | IPVoid](https://www.ipvoid.com/) - A useful resource for various information.
+- [IPFS Software | AlternativeTo](https://alternativeto.net/platform/ipfs/) - A useful resource for various information.
+- [IPFS: App](https://alternativeto.net/software/ipfs/about/) - A useful resource for various information.
+- [ISPCONFIG](http://www.ispconfig.org/page/home.html) - A useful resource for various information.
+- [ISPCONFIG](http://www.ispconfig.org/page/home.html) - A useful resource for various information.
+- [IT Asset Lifecycle Management: The 9 Stages to Manage Your IT Assets](https://blog.invgate.com/it-asset-lifecycle-management) - A useful resource for various information.
+- [IT Tools - Handy online tools for developers](https://it-tools.tech/) - A useful resource for various information.
+- [Igglybuff/awesome-piracy: A curated list of awesome warez and piracy links](https://github.com/Igglybuff/awesome-piracy) - A useful resource for various information.
+- [Illegal-Services/Illegal_Services: ♾️🌚✨Illegal Services✨🌚♾️](https://github.com/Illegal-Services/Illegal_Services) - A useful resource for various information.
+- [ImHex - Free and Open Source Hex Editor](https://imhex.werwolv.net/) - A useful resource for various information.
+- [Industrial IoT Integrator GPT](https://chatgpt.com/g/g-rMqfETdS4-industrial-iot-integrator-gpt) - A useful resource for various information.
+- [Industrial Solution & Platform](https://chatgpt.com/g/g-HZrmvJ67k-42works-industrial-solution-platform-chat) - A useful resource for various information.
+- [Industries - Manufacturing more efficiently | Coral](https://coral.ai/industries/manufacturing/) - A useful resource for various information.
+- [InfluxDB Time Series Data Platform | InfluxData](https://www.influxdata.com/) - A useful resource for various information.
+- [InfraNodus - google_productivity_apps_tools by demo - Text Network Graph](https://infranodus.com/demo/google_productivity_apps_tools/) - A useful resource for various information.
+- [InfraNodus - google_productivity_apps_tools by demo - Text Network Graph](https://infranodus.com/demo/google_productivity_apps_tools/) - A useful resource for various information.
+- [Inkdrop - Plugins](https://my.inkdrop.app/plugins) - A useful resource for various information.
+- [Inkdrop Forum](https://forum.inkdrop.app/top?period=quarterly) - A useful resource for various information.
+- [Inkdrop User Manual](https://docs.inkdrop.app/) - A useful resource for various information.
+- [Insights - My Dashboard](https://platform.securityscorecard.io/#/home) - A useful resource for various information.
+- [Install Mosquitto | Ubuntu Appliance | Ubuntu](https://ubuntu.com/appliance/mosquitto) - A useful resource for various information.
+- [Install Nemo With Unity Patches (And Without Cinnamon Dependencies) In Ubuntu ~ Web Upd8: Ubuntu / Linux blog](http://www.webupd8.org/2013/10/install-nemo-with-unity-patches-and.html) - A useful resource for various information.
+- [Install Plank Dock and Plank-Themer (Themes Included) in Ubuntu/Linux Mint via PPA - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/08/install-plank-dock-and-plank-themer.html) - A useful resource for various information.
+- [Install utorrent in Ubuntu 14.04 / 13.10 / 12.04 / Fedora 20](http://www.howopensource.com/2011/08/install-utorrent-in-ubuntu-fedora/) - A useful resource for various information.
+- [Installation - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/#with-docker-latest) - A useful resource for various information.
+- [Installation - Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/) - A useful resource for various information.
+- [Installation - PhoneInfoga](https://sundowndev.github.io/phoneinfoga/getting-started/install/) - A useful resource for various information.
+- [Installation | Wiki.js](https://docs.requarks.io/install) - A useful resource for various information.
+- [Installing CUDA on Google Cloud Platform in 10 minutes | by Shruti | Towards Data Science](https://towardsdatascience.com/installing-cuda-on-google-cloud-platform-in-10-minutes-9525d874c8c1) - A useful resource for various information.
+- [Installing CUDA on Google Cloud Platform in 10 minutes | by Shruti | Towards Data Science](https://towardsdatascience.com/installing-cuda-on-google-cloud-platform-in-10-minutes-9525d874c8c1) - A useful resource for various information.
+- [Intel RST](https://help.ubuntu.com/rst/) - A useful resource for various information.
+- [Intel(R) Graphics Installer 1.0.4 for Linux* | Linux Graphics](https://01.org/linuxgraphics/downloads/2014/intelr-graphics-installer-1.0.4-linux) - A useful resource for various information.
+- [Intel(R) Graphics Installer 1.0.4 for Linux* | Linux Graphics](https://01.org/linuxgraphics/downloads/2014/intelr-graphics-installer-1.0.4-linux) - A useful resource for various information.
+- [Internet of Things (IoT)/Edge Computing](https://tailscale.com/use-cases/iot) - A useful resource for various information.
+- [Introduction - SP1 Book](https://succinctlabs.github.io/sp1/) - A useful resource for various information.
+- [Introduction to Linux | edX](https://www.edx.org/course/linuxfoundationx/linuxfoundationx-lfs101x-introduction-1621#.U9jMg_l_s81) - A useful resource for various information.
+- [Introduction | FAST](https://www.fast.design/docs/introduction/) - A useful resource for various information.
+- [Introduction | Hackage](https://hackage.haskell.org/) - A useful resource for various information.
+- [IoT (Internet of Things) Mentor](https://chatgpt.com/g/g-IaygNmWnl-iot-internet-of-things-mentor) - A useful resource for various information.
+- [IoT Edge | Cloud Intelligence | Microsoft Azure](https://azure.microsoft.com/en-gb/products/iot-edge/) - A useful resource for various information.
+- [It's F.O.S.S.](http://itsfoss.com/) - A useful resource for various information.
+- [JSON Crack](https://jsoncrack.com/editor?json=58a43181f28c263e56f8f961) - A useful resource for various information.
+- [JSON Schema](https://json-schema.org/) - A useful resource for various information.
+- [JSON Viewer - JSON Hero](https://jsonhero.io/) - A useful resource for various information.
+- [Jan](https://jan.ai/) - A useful resource for various information.
+- [Jeff Su](https://www.jeffsu.org/) - A useful resource for various information.
+- [Jekyll • Simple, blog-aware, static sites | Transform your plain text into static websites and blogs](https://jekyllrb.com/) - A useful resource for various information.
+- [KB](https://usevia.app/#/) - A useful resource for various information.
+- [KDE Connect | KDE Connect: A project that enables all your devices to communicate with each other.](https://kdeconnect.kde.org/) - A useful resource for various information.
+- [Kali Docs](https://www.kali.org/docs/) - A useful resource for various information.
+- [Kali Forums](https://forums.kali.org/) - A useful resource for various information.
+- [Kali Linux](https://www.kali.org/) - A useful resource for various information.
+- [Kali Linux Man in the Middle Attack | Ethical Hacking Tutorials, Tips and Tricks](http://www.hacking-tutorial.com/hacking-tutorial/kali-linux-man-middle-attack/#sthash.PF3pTzuc.dpbs) - A useful resource for various information.
+- [Kali NetHunter](https://www.kali.org/kali-nethunter/) - A useful resource for various information.
+- [Kali Tools](https://www.kali.org/tools/) - A useful resource for various information.
+- [Karten der Schweiz API](https://map.geo.admin.ch/?topic=energie&lang=de&bgLayer=ch.swisstopo.pixelkarte-grau&catalogNodes=2419,2420,2427,2480,2429,2431,2434,2436,2767,2441,3206&layers=ch.bfe.windenergieanlagen,ch.bfe.windenergie-geschwindigkeit_h50,ch.bfe.windenergie-geschwindigkeit_h75,ch.bafu.wasser-rueckgabe&layers_opacity=1,0.75,0.75,1&layers_visibility=false,false,false,true&E=2481748.89&N=1106603.38&zoom=3&swipe_ratio=0.71) - A useful resource for various information.
+- [Kataloge und Datenbanken | Bundesamt für Statistik](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.html) - A useful resource for various information.
+- [Kindo](https://app.kindo.ai/) - A useful resource for various information.
+- [Kite is saying farewell - Code Faster with Kite](https://linux.kite.com/blog/product/kite-is-saying-farewell/) - A useful resource for various information.
+- [Known Exploited Vulnerabilities Catalog | CISA](https://www.cisa.gov/known-exploited-vulnerabilities-catalog) - A useful resource for various information.
+- [LF Edge eKuiper - Lightweight data stream processing engine for IoT edge | eKuiper Documentation](https://ekuiper.org/docs/en/latest/) - A useful resource for various information.
+- [LHL](http://localhost:11434/) - A useful resource for various information.
+- [LLaMA and other on iOS and MacOS](https://llmfarm.site/) - A useful resource for various information.
+- [LLaVA](https://llava.hliu.cc/) - A useful resource for various information.
+- [LM Studio - Discover, download, and run local LLMs](https://lmstudio.ai/) - A useful resource for various information.
+- [LZADMIN](https://www.thatlazyadmin.com/) - A useful resource for various information.
+- [LZADMIN-GIT](https://github.com/thatlazyadmin?tab=stars) - A useful resource for various information.
+- [Labs](https://labs.perplexity.ai/) - A useful resource for various information.
+- [LastPass - Mein Konto](https://lastpass.com/my.php?lpnorefresh=1) - A useful resource for various information.
+- [Latest Appliance topics - Ubuntu Community Hub](https://discourse.ubuntu.com/c/appliance/45) - A useful resource for various information.
+- [Latest Help topics - Inkdrop Forum](https://forum.inkdrop.app/c/help/19) - A useful resource for various information.
+- [Latest LXD topics - Ubuntu Community Hub](https://discourse.ubuntu.com/c/lxd/126) - A useful resource for various information.
+- [LearnDataWithMark/openclip-playground/app.py at main · mneedham/LearnDataWithMark](https://github.com/mneedham/LearnDataWithMark/blob/main/openclip-playground/app.py) - A useful resource for various information.
+- [Lexica](https://lexica.art/) - A useful resource for various information.
+- [Library - Gigasheet](https://app.gigasheet.com/datasets) - A useful resource for various information.
+- [Lieb](https://chat.openai.com/gpts) - A useful resource for various information.
+- [Lime Text: An Open Source Alternative Of Sublime Text](http://itsfoss.com/lime-text-open-source-alternative/) - A useful resource for various information.
+- [Limelight: who needs a Steam Machine when you have a Pi? | Raspberry Pi](http://www.raspberrypi.org/limelight-who-needs-a-steam-machine-when-you-have-a-pi/) - A useful resource for various information.
+- [Link Lock - Password-protect links](https://jstrieb.github.io/link-lock/create/) - A useful resource for various information.
+- [Linux Containers](https://linuxcontainers.org/) - A useful resource for various information.
+- [Linux und Ich](http://linuxundich.de/) - A useful resource for various information.
+- [Linux und Ich](http://linuxundich.de/) - A useful resource for various information.
+- [List-Formatting/view-samples at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples) - A useful resource for various information.
+- [List-Formatting/view-samples/board-tags at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples/board-tags) - A useful resource for various information.
+- [List-Formatting/view-samples/custom-charts at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples/custom-charts) - A useful resource for various information.
+- [List-Formatting/view-samples/honeycomb-link at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples/honeycomb-link) - A useful resource for various information.
+- [List-Formatting/view-samples/menu-link-button at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples/menu-link-button) - A useful resource for various information.
+- [List-Formatting/view-samples/multi-choice-links at master · pnp/List-Formatting](https://github.com/pnp/List-Formatting/tree/master/view-samples/multi-choice-links) - A useful resource for various information.
+- [Lists](https://lists.live.com/?ocid=cmmovh5r9x5) - A useful resource for various information.
+- [LlamaIndex](https://docs.llamaindex.ai/en/stable/getting_started/installation.html) - A useful resource for various information.
+- [Lobotomo Software: WinShortcutter](http://www.lobotomo.com/products/WinShortcutter/index.html) - A useful resource for various information.
+- [Lobotomo Software: WinShortcutter](http://www.lobotomo.com/products/WinShortcutter/index.html) - A useful resource for various information.
+- [Locoloader](https://www.locoloader.com/) - A useful resource for various information.
+- [Login - A usenet indexing website](https://nzb.cat/login?redirect=%2Findex.php) - A useful resource for various information.
+- [Login - Edge Impulse](https://studio.edgeimpulse.com/login?next=%2Fstudio%2F421697) - A useful resource for various information.
+- [Logos, Backgrounds, Posters and more for your TV, Movie and Music collections](https://fanart.tv/) - A useful resource for various information.
+- [Lustygrandmas GILF gets Facial from Young Studs Cock...](https://xhamster.com/videos/lustygrandmas-gilf-gets-facial-from-young-studs-cock-12202911) - A useful resource for various information.
+- [Lustygrandmas Shaved Business G-milf got Dicked by Stud](https://xhamster.com/videos/lustygrandmas-shaved-business-g-milf-got-dicked-by-stud-11445634) - A useful resource for various information.
+- [MASS](https://converter.net/mass) - A useful resource for various information.
+- [MOM Blonde MILF rubs more than just his back | PornTube ®](http://www.porntube.com/videos/mom-blonde-milf-rubs-just-back_1334189) - A useful resource for various information.
+- [MOM MILF with big tits has multiple orgasms | PornTube ®](http://www.porntube.com/videos/mom-milf-big-tits-multiple-orgasms_1248097) - A useful resource for various information.
+- [MQTT - Lightweight Messaging Protocol Cheat Sheet by otavio021 - Cheatography.com - otavio021_mqtt-lightweight-messaging-protocol.pdf](https://cheatography.com/otavio021/cheat-sheets/mqtt-lightweight-messaging-protocol/pdf/?last=1489583509) - A useful resource for various information.
+- [MQTT 5.0: 7 New Features and a Migration Checklist | EMQ](https://www.emqx.com/en/blog/introduction-to-mqtt-5#7-new-features-in-mqtt-v5) - A useful resource for various information.
+- [MQTT Broker: How It Works, Popular Options, and Quickstart | EMQ](https://www.emqx.com/en/blog/the-ultimate-guide-to-mqtt-broker-comparison) - A useful resource for various information.
+- [MQTT Platform for the Technology Industry | EMQ](https://www.emqx.com/en/solutions/industries/technology) - A useful resource for various information.
+- [MQTT for Azure | EMQX on Azure | EMQ](https://www.emqx.com/en/solutions/mqtt-for-azure) - A useful resource for various information.
+- [MQTTX Download](https://mqttx.app/downloads) - A useful resource for various information.
+- [MQTTX Web Migration Announcement · emqx/MQTTX · Discussion #1658](https://github.com/emqx/MQTTX/discussions/1658) - A useful resource for various information.
+- [MSP Comparison Charts - Google Drive](https://docs.google.com/spreadsheets/d/1f4S9VaK27oqWtCvtbQe8J0ZcUJHP2HLjX-eHhkOt5JI/htmlview#gid=1766813807) - A useful resource for various information.
+- [Mac App Store – „App Factory“](https://itunes.apple.com/ch/app/id556464792?mt=12) - A useful resource for various information.
+- [Mac App Store – „App Factory“](https://itunes.apple.com/ch/app/id556464792?mt=12) - A useful resource for various information.
+- [Magic IP Address Shortcuts - Stuff… And Things…](https://stuff-things.net/2014/09/25/magic-ip-address-shortcuts/) - A useful resource for various information.
+- [Malware Analysis Service](https://www.hybrid-analysis.com/) - A useful resource for various information.
+- [Managing Multiple Python Versions With pyenv – Real Python](https://realpython.com/intro-to-pyenv/) - A useful resource for various information.
+- [Mapping and Compliance](https://www.cisecurity.org/cybersecurity-tools/mapping-compliance) - A useful resource for various information.
+- [Mark Text](https://marktext.app/) - A useful resource for various information.
+- [Markdown Guide](https://www.markdownguide.org/) - A useful resource for various information.
+- [Markdown Tutorial](https://www.markdowntutorial.com/) - A useful resource for various information.
+- [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - A useful resource for various information.
+- [Mature Lady Fucked after Sucking Cock, HD Porn 70: xHamster](https://xhamster.com/movies/7051440/mature_lady_fucked_after_sucking_cock.html) - A useful resource for various information.
+- [MediaPipe Studio](https://mediapipe-studio.webapps.google.com/studio/demo/face_stylizer) - A useful resource for various information.
+- [MediaPipe Studio](https://mediapipe-studio.webapps.google.com/studio/demo/object_detector) - A useful resource for various information.
+- [Mein Konto](https://myaccount.google.com/?utm_source=Google&utm_medium=HPP&utm_term=Desktop&utm_content=Signed_IN&utm_campaign=My_Account&pli=1) - A useful resource for various information.
+- [Mein Konto](https://stores.office.com/myaccount/home.aspx?ms.officeurl=myaccount&ui=de-DE&rs=de-DE&ad=DE&fromAR=1) - A useful resource for various information.
+- [Mermaid Chart](https://www.mermaidchart.com/app/projects) - A useful resource for various information.
+- [Mervin Praison](https://mer.vin/) - A useful resource for various information.
+- [Mervin Praison - Site Reliability Engineer](https://mer.vin/) - A useful resource for various information.
+- [Michelle's Nylons: Free Teen Titans Free Porn Video 67 de](https://de.xhamster.com/videos/michelle-s-nylons-10914467) - A useful resource for various information.
+- [Microsoft 365 & Power Platform Community](https://github.com/pnp) - A useful resource for various information.
+- [Microsoft Account Management](https://account.microsoft.com/) - A useful resource for various information.
+- [Microsoft Activation Scripts (MAS) | MAS](https://massgrave.dev/) - A useful resource for various information.
+- [Microsoft Download Center](https://www.microsoft.com/en-us/download) - A useful resource for various information.
+- [Microsoft Evaluation Center](https://www.microsoft.com/en-us/evalcenter/) - A useful resource for various information.
+- [Microsoft Excel’s Python Editor Just Got an Update](https://www.howtogeek.com/microsoft-excel-python-editor-update/) - A useful resource for various information.
+- [Microsoft Excel’s Python Editor Just Got an Update](https://www.howtogeek.com/microsoft-excel-python-editor-update/) - A useful resource for various information.
+- [Microsoft Hilfe und Support](http://support.microsoft.com/?ln=de) - A useful resource for various information.
+- [Microsoft Hilfe und Support](http://support.microsoft.com/?ln=de) - A useful resource for various information.
+- [Microsoft Learn](https://learn.microsoft.com/de-de/) - A useful resource for various information.
+- [Microsoft Learn: Build skills that open doors in your career](https://learn.microsoft.com/en-gb/?source=docs) - A useful resource for various information.
+- [Microsoft Loop](https://loop.microsoft.com/) - A useful resource for various information.
+- [Microsoft Open Source](https://opensource.microsoft.com/) - A useful resource for various information.
+- [Microsoft OpenAPI documentation | Microsoft Learn](https://learn.microsoft.com/en-us/openapi/) - A useful resource for various information.
+- [Microsoft PC Manager - Microsoft Apps](https://apps.microsoft.com/en-us/detail/9pm860492szd) - A useful resource for various information.
+- [Microsoft Power Automate](https://make.powerautomate.com/manage) - A useful resource for various information.
+- [Microsoft Power Automate | Home](https://make.powerautomate.com/environments/de80b5d9-7cf4-48dc-a7f9-8e0aa1ecef02/home?auth_upn=mostrub%40LIVE.DE&utm_source=consumer_office&utm_medium=%7Bmedium%7D&utm_campaign=consumer_referrals) - A useful resource for various information.
+- [Microsoft Safety Scanner - Kostenloses Onlinetool für die Integrität und Sicherheit von Computern](http://www.microsoft.com/security/scanner/de-de/default.aspx) - A useful resource for various information.
+- [Microsoft Safety Scanner - Kostenloses Onlinetool für die Integrität und Sicherheit von Computern](http://www.microsoft.com/security/scanner/de-de/default.aspx) - A useful resource for various information.
+- [Microsoft SharePoint](https://github.com/SharePoint) - A useful resource for various information.
+- [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/MyMVA/Dashboard.aspx#?fbid=RzMOge-NRKA) - A useful resource for various information.
+- [Microsoft Virtual Academy](http://www.microsoftvirtualacademy.com/MyMVA/Dashboard.aspx#?fbid=RzMOge-NRKA) - A useful resource for various information.
+- [MicrosoftDocs/edge-developer: Developer documentation for Edge.](https://github.com/MicrosoftDocs/edge-developer?tab=readme-ov-file) - A useful resource for various information.
+- [Milf And The Boy Next Door 5 - Pornhub.com](https://www.pornhub.com/view_video.php?viewkey=ph5755676b963e6) - A useful resource for various information.
+- [Million](https://million.dev/) - A useful resource for various information.
+- [Miru | Torrenting Made Simple](https://miru.watch/features/) - A useful resource for various information.
+- [Mistral Dashboard](https://console.mistral.ai/?code=ory_ac_pJPFx3Uwzc7_gr6AW6ja-T8DIj02RouhTBiDTBbR9io.u55QR3sL6Ex6t9XDWqJEVuDzQlujUzxYEvrWknjiG80&scope=openid+profile+email+offline_access&state=tu1-hfnha0hIl4Gdo9JLG3dr) - A useful resource for various information.
+- [MkDocs](https://www.mkdocs.org/) - A useful resource for various information.
+- [ModbusGPTMQTT](https://chatgpt.com/g/g-wkUW1Jn6D-modbusgpt) - A useful resource for various information.
+- [Models - Hugging Face](https://huggingface.co/models) - A useful resource for various information.
+- [Modules](https://testcontainers.com/modules/) - A useful resource for various information.
+- [Moonraker02](http://192.168.11.116:5000/) - A useful resource for various information.
+- [Moonraker03](http://192.168.11.114:5000/) - A useful resource for various information.
+- [Moonraker04](http://192.168.11.113:9090/cgi-bin/) - A useful resource for various information.
+- [Mosquitto MQTT Broker: Pros/Cons, Tutorial, and a Modern Alternative | EMQ](https://www.emqx.com/en/blog/mosquitto-mqtt-broker-pros-cons-tutorial-and-modern-alternatives) - A useful resource for various information.
+- [Mother and Son Sex Without Limits, Free Porn e5: xHamster de](https://de.xhamster.com/videos/mother-and-son-sex-without-limits-10436851#mlrelated) - A useful resource for various information.
+- [Msty - Running LLMs made simple and easy.](https://msty.app/) - A useful resource for various information.
+- [My AppsSWATCH](https://myapplications.microsoft.com/) - A useful resource for various information.
+- [My Best Creampie Compilation - Slowmen17, Porn e5: xHamster de](https://de.xhamster.com/videos/my-best-creampie-compilation-slowmen17-5745772#mlrelated) - A useful resource for various information.
+- [My First Playground | RunKit](https://runkit.com/mostrub/659f8a1182d1700008951c16) - A useful resource for various information.
+- [My Ultimate PowerShell prompt with Oh My Posh and the Windows Terminal - Scott Hanselman's Blog](https://www.hanselman.com/blog/my-ultimate-powershell-prompt-with-oh-my-posh-and-the-windows-terminal) - A useful resource for various information.
+- [NAPALM FTP Indexer](https://www.searchftps.net/) - A useful resource for various information.
+- [NISTIR 8259 Series | NIST](https://www.nist.gov/itl/applied-cybersecurity/nist-cybersecurity-iot-program/nistir-8259-series) - A useful resource for various information.
+- [NVD - API Key Request](https://nvd.nist.gov/developers/api-key-requested) - A useful resource for various information.
+- [NVD - Vulnerability Metrics](https://nvd.nist.gov/vuln-metrics/cvss#) - A useful resource for various information.
+- [Namviek - The open source task manager for super tiny teams](https://www.namviek.com/#features) - A useful resource for various information.
+- [National Institute of Standards and Technology](https://www.nist.gov/) - A useful resource for various information.
+- [Netlify](https://app.netlify.com/teams/mostrub/overview) - A useful resource for various information.
+- [Network Tools From MxToolBox](https://mxtoolbox.com/NetworkTools.aspx) - A useful resource for various information.
+- [Network_Engineer](https://chat.openai.com/g/g-zNcPcl4Ys-wng) - A useful resource for various information.
+- [NeuronEX Docs](https://docs.emqx.com/en/neuronex/latest/configuration/south-devices/south-devices.html) - A useful resource for various information.
+- [NeuronEX: Industrial Edge Data Hub | EMQ](https://www.emqx.com/en/products/neuronex) - A useful resource for various information.
+- [New MFA-bypassing phishing kit targets Microsoft 365, Gmail accounts](https://www-bleepingcomputer-com.cdn.ampproject.org/c/s/www.bleepingcomputer.com/news/security/new-mfa-bypassing-phishing-kit-targets-microsoft-365-gmail-accounts/amp/) - A useful resource for various information.
+- [Newshosting.com | Usenet Free Newsgroups - Download For 2 Weeks FREE!](https://controlpanel.newshosting.com/customer/index.php) - A useful resource for various information.
+- [Node-RED : Flow 2](http://192.168.11.24:1880/#flow/217d52981fb20d33) - A useful resource for various information.
+- [NoobSubs - Direct Download Anime Made Easy](https://www.noobsubs.com/) - A useful resource for various information.
+- [Note synchronization - Inkdrop User Manual](https://docs.inkdrop.app/reference/note-synchronization) - A useful resource for various information.
+- [Numix-Circle Linux Desktop Icon Theme by me4oslav on deviantART](http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466) - A useful resource for various information.
+- [Numix-Circle Linux Desktop Icon Theme by me4oslav on deviantART](http://me4oslav.deviantart.com/art/Numix-Circle-Linux-Desktop-Icon-Theme-414741466) - A useful resource for various information.
+- [NvChad](https://nvchad.com/docs/quickstart/install) - A useful resource for various information.
+- [ONE](https://onedrive.live.com/?id=root&cid=AF422D99D57E7171) - A useful resource for various information.
+- [OS X Daily](http://osxdaily.com/) - A useful resource for various information.
+- [OS X Daily](http://osxdaily.com/) - A useful resource for various information.
+- [OSINT Framework](https://osintframework.com/) - A useful resource for various information.
+- [OSINT Framework](https://osintframework.com/) - A useful resource for various information.
+- [OT Manager Overview](https://chatgpt.com/share/dec5e047-ce28-4eb9-9c97-f1da390ba5b8?oai-dm=1) - A useful resource for various information.
+- [OT Ref](https://draw.roadmap.sh/66052b60da1671f986ca4f1e) - A useful resource for various information.
+- [OWASP Switzerland | OWASP Foundation](https://owasp.org/www-chapter-switzerland/#) - A useful resource for various information.
+- [OffSec](https://www.offsec.com/) - A useful resource for various information.
+- [Official Microsoft Power Apps documentation - Power Apps | Microsoft Learn](https://learn.microsoft.com/en-gb/power-apps/) - A useful resource for various information.
+- [Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/#install) - A useful resource for various information.
+- [Oh My Zsh - a delightful & open source framework for Zsh](https://ohmyz.sh/#install) - A useful resource for various information.
+- [Oma pervers vto | xHamster](https://xhamster.com/videos/oma-pervers-vto-3030916) - A useful resource for various information.
+- [One post tagged with "UI" | AutoGen](https://microsoft.github.io/autogen/) - A useful resource for various information.
+- [OneCoin ANNUAL REVIEW – 2016 | OneCoin](https://www.onecoin.eu/en/news/onecoin-annual-review-%E2%80%93-2016) - A useful resource for various information.
+- [OneDrive](https://onedrive.live.com/?cid=af422d99d57e7171) - A useful resource for various information.
+- [Online API Testing Tool | Test Your API Online](https://reqbin.com/) - A useful resource for various information.
+- [Online Audio Converter - Einfach in MP3, WAV, MP4, M4A, OGG oder iPhone-Klingeltöne konvertieren](http://online-audio-converter.com/de/) - A useful resource for various information.
+- [Open Datasets and Machine Learning Projects](https://www.kaggle.com/datasets?fileType=csv#:~:text=,Flexible%20Data%20Ingestion) - A useful resource for various information.
+- [Open MQTT Benchmarking Comparison: EMQX vs Mosquitto | EMQ](https://www.emqx.com/en/blog/open-mqtt-benchmarking-comparison-emqx-vs-mosquitto) - A useful resource for various information.
+- [Open Manufacturing Hub: A Reference Architecture for Industrial IoT (IIoT) | EMQ](https://www.emqx.com/en/resources/open-manufacturing-hub-a-reference-architecture-for-industrial-iot?from=blog-smart-manufacturing-revolution) - A useful resource for various information.
+- [Open Source Monitoring › Icinga](https://www.icinga.org/) - A useful resource for various information.
+- [Open WebUI](http://localhost:3000/) - A useful resource for various information.
+- [OpenAI API](https://platform.openai.com/settings/profile?tab=api-keys) - A useful resource for various information.
+- [OpenCelliD Dashboard](https://my.opencellid.org/dashboard?firstLogin=1) - A useful resource for various information.
+- [OpenRefine](https://openrefine.org/) - A useful resource for various information.
+- [OpenRefine](https://github.com/OpenRefine/) - A useful resource for various information.
+- [OpenRefine](https://openrefine.org/) - A useful resource for various information.
+- [OpenRefine/openrefine.org: Source website for openrefine.org](https://github.com/OpenRefine/openrefine.org) - A useful resource for various information.
+- [Ophiuchi - Your Local Development Companion](https://www.ophiuchi.dev/#features) - A useful resource for various information.
+- [Overview | TaskWeaver](https://microsoft.github.io/TaskWeaver/docs/overview) - A useful resource for various information.
+- [PC](https://play.pocketcasts.com/web#/podcasts/new_releases) - A useful resource for various information.
+- [PDF](https://chat.openai.com/g/g-V2KIUZSj0-ai-pdf) - A useful resource for various information.
+- [PDuded](https://theporndude.com/) - A useful resource for various information.
+- [PKI the IoT Security Expert](https://chatgpt.com/g/g-40CALsehQ-pki-the-iot-security-expert) - A useful resource for various information.
+- [PRO](https://mail.proton.me/u/0/inbox) - A useful resource for various information.
+- [Pamdas-Data-Snalysis](https://colab.research.google.com/drive/1ZnO-njhL7TBOYPZaqvMvGtsjckZKrv2E?usp=sharing) - A useful resource for various information.
+- [Pamdas-Data-Snalysis](https://colab.research.google.com/drive/1ZnO-njhL7TBOYPZaqvMvGtsjckZKrv2E?usp=sharing) - A useful resource for various information.
+- [Pamdas-Data-Snalysis](https://colab.research.google.com/drive/1ZnO-njhL7TBOYPZaqvMvGtsjckZKrv2E?usp=sharing) - A useful resource for various information.
+- [Pamdas-Data-Snalysis](https://colab.research.google.com/drive/1ZnO-njhL7TBOYPZaqvMvGtsjckZKrv2E?usp=sharing) - A useful resource for various information.
+- [Pandoc - Demos](https://pandoc.org/demos.html) - A useful resource for various information.
+- [Pandoc - Pandoc User’s Guide](https://pandoc.org/MANUAL.html#pandocs-markdown) - A useful resource for various information.
+- [Papers With Code](https://paperswithcode.com/) - A useful resource for various information.
+- [PayPal: Übersicht](https://www.paypal.com/myaccount/home) - A useful resource for various information.
+- [Per](https://www.perplexity.ai/) - A useful resource for various information.
+- [PerPlexAPI](https://docs.perplexity.ai/reference/post_chat_completions) - A useful resource for various information.
+- [Perspective | Perspective](https://perspective.finos.org/) - A useful resource for various information.
+- [Perspective | Perspective](https://perspective.finos.org/) - A useful resource for various information.
+- [PeteNetLive - KB0000842 - Windows Server 2012 - Direct Access with Windows 8](http://www.petenetlive.com/KB/Article/0000842.htm) - A useful resource for various information.
+- [PeteNetLive - KB0000842 - Windows Server 2012 - Direct Access with Windows 8](http://www.petenetlive.com/KB/Article/0000842.htm) - A useful resource for various information.
+- [PlaneDashboard](https://app.plane.so/Lolohansen) - A useful resource for various information.
+- [PlayOnLinux reached to version 4.2.4, Install in Ubuntu/Linux Mint via PPA - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/08/playonlinux-reached-to-version-424.html) - A useful resource for various information.
+- [Plex](https://app.plex.tv/desktop/#!/) - A useful resource for various information.
+- [Plex](http://127.0.0.1:32400/web/index.html#!/media/2ee040d16abbf25f9f767649f4cfb9c24a4551c9/com.plexapp.plugins.library?source=1) - A useful resource for various information.
+- [PlexLocalext](http://192.168.11.33:32400/web/index.html#!/) - A useful resource for various information.
+- [Plexlocal](http://127.0.0.1:32400/web/index.html#!/) - A useful resource for various information.
+- [Portkey](https://app.portkey.ai/organisation/8905c987-1436-44a3-817b-c5b3fa4e90c1/fb0444b1-f311-4f99-862a-986c1f49bcbe/collection/c6e7e6e4-ba30-4075-9902-417904330851/prompts/create) - A useful resource for various information.
+- [Posit Cloud](https://posit.cloud/content/yours?sort=name_asc) - A useful resource for various information.
+- [PostFinance - E-Finance](https://www.postfinance.ch/ap/ba/ob/html/finance/home?login) - A useful resource for various information.
+- [Postman](https://learning.postman.com/docs/designing-and-developing-your-api/importing-an-api/) - A useful resource for various information.
+- [Postman API Platform](https://www.postman.com/) - A useful resource for various information.
+- [PouchDB, the JavaScript Database that Syncs!](https://pouchdb.com/) - A useful resource for various information.
+- [PowerShell Gallery | Home](https://www.powershellgallery.com/) - A useful resource for various information.
+- [Pricing for Internal Tools | Jet Admin](https://www.jetadmin.io/pricing/internal-tool) - A useful resource for various information.
+- [Product Details - Industry Mall - Siemens WW](https://mall.industry.siemens.com/mall/en/WW/Catalog/Product/6GK5416-4GR00-2AM2) - A useful resource for various information.
+- [Product Hunt – The best new products in tech.](https://www.producthunt.com/) - A useful resource for various information.
+- [Products & Solutions - Siemens Xcelerator Global](https://xcelerator.siemens.com/global/en/all-offerings.html) - A useful resource for various information.
+- [Project IDX](https://idx.google.com/?pli=1) - A useful resource for various information.
+- [Project Jupyter$](https://jupyter.org/) - A useful resource for various information.
+- [Projects  |  Google Open Source](https://opensource.google/projects) - A useful resource for various information.
+- [Prometheus](http://192.168.11.11:9090/alerts?search=) - A useful resource for various information.
+- [Prompt Generator](https://huggingface.co/spaces/merve/ChatGPT-prompt-generator) - A useful resource for various information.
+- [ProxMox02](https://192.168.11.8:8006/#v1:0:=node%2FProxMoxHost02:4:::::::) - A useful resource for various information.
+- [Proxmox - Open-Source Server-Software](https://www.proxmox.com/de/) - A useful resource for various information.
+- [Public API2](https://rapidapi.com/collection/transportation-apis) - A useful resource for various information.
+- [Public APIs](https://www.skillreactor.io/blog/free-public-apis-that-developers-love/) - A useful resource for various information.
+- [Publish and subscribe MQTT messages using Azure IoT MQ - Azure IoT MQ | Microsoft Learn](https://learn.microsoft.com/en-gb/azure/iot-operations/manage-mqtt-connectivity/overview-iot-mq) - A useful resource for various information.
+- [Puppeteer | Puppeteer](https://pptr.dev/) - A useful resource for various information.
+- [QAnything](https://qanything.ai/) - A useful resource for various information.
+- [Qubes OS](https://www.qubes-os.org/intro/) - A useful resource for various information.
+- [Qubes OS](https://www.qubes-os.org/intro/) - A useful resource for various information.
+- [Question Maker](https://chat.openai.com/g/g-dfcHBtJQR-question-maker) - A useful resource for various information.
+- [Quick Reference Cheat Sheet](https://quickref.me/) - A useful resource for various information.
+- [R Markdown](https://rmarkdown.rstudio.com/index.html) - A useful resource for various information.
+- [RD](https://remotedesktop.google.com/?pli=1) - A useful resource for various information.
+- [README.md: The Ultimate Guide - Tiloid](https://tiloid.com/p/readme-md-the-ultimate-guide) - A useful resource for various information.
+- [REDIT](https://www.reddit.com/) - A useful resource for various information.
+- [RS](https://rapidsave.com/) - A useful resource for various information.
+- [RStudio Desktop - Posit](https://posit.co/download/rstudio-desktop/) - A useful resource for various information.
+- [RabbitHoleEscapeR1](https://github.com/RabbitHoleEscapeR1) - A useful resource for various information.
+- [Raspberry Pi • View topic - Limelight Pi](http://www.raspberrypi.org/forums/viewtopic.php?t=65878&p=483479) - A useful resource for various information.
+- [Reactive Resume - A free and open-source resume builder](https://rxresu.me/) - A useful resource for various information.
+- [Real Python](https://realpython.com/start-here/) - A useful resource for various information.
+- [Reddit - Dive into anything](https://www.reddit.com/r/Piracy/wiki/megathread/music/?utm_medium=android_app&utm_source=share) - A useful resource for various information.
+- [Release pandoc 3.1.13 · jgm/pandoc](https://github.com/jgm/pandoc/releases/tag/3.1.13) - A useful resource for various information.
+- [Release pandoc 3.1.13 · jgm/pandoc](https://github.com/jgm/pandoc/releases/tag/3.1.13) - A useful resource for various information.
+- [Releases · microsoft/MSLab](https://github.com/microsoft/MSLab/releases) - A useful resource for various information.
+- [Remove Background from Image for Free – remove.bg](https://www.remove.bg/) - A useful resource for various information.
+- [Renata SA OTs - Test - All Documents](https://itsazrmgrswatchgroup.sharepoint.com/sites/Team-REN-OT/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FTeam-REN-OT%2FShared+Documents%2Ftz%2FTest&p=true&ga=1) - A useful resource for various information.
+- [RenataBeta](https://ba18-2001-1715-9d9c-2280-193e-f80c-7743-ef45.ngrok-free.app/auth/) - A useful resource for various information.
+- [Reor](https://www.reorproject.org/) - A useful resource for various information.
+- [Request Trial - Cobalt Strike](http://www.advancedpentest.com/trial) - A useful resource for various information.
+- [Resources | EMQ](https://www.emqx.com/en/resources) - A useful resource for various information.
+- [Resume Matcher | Free Open Source ATS Tool To Match Resumes To Job Descriptions](https://www.resumematcher.fyi/) - A useful resource for various information.
+- [Rio](https://rio.dev/examples/ai-chatbot) - A useful resource for various information.
+- [Rio - Examples](https://rio.dev/examples/ai-chatbot) - A useful resource for various information.
+- [Ripped](https://ripped.guide/) - A useful resource for various information.
+- [Router](https://192.168.11.1/0.8/gui/#/) - A useful resource for various information.
+- [Run BPA](http://blogs.technet.com/b/kevinholman/archive/2012/06/04/windows-server-2012-red-dashboard-right-after-install-run-bpa.aspx) - A useful resource for various information.
+- [Run BPA](http://blogs.technet.com/b/kevinholman/archive/2012/06/04/windows-server-2012-red-dashboard-right-after-install-run-bpa.aspx) - A useful resource for various information.
+- [SF](https://open.spotify.com/) - A useful resource for various information.
+- [SMD](https://spotifydown.com/) - A useful resource for various information.
+- [SP 800-82 Rev. 3, Guide to Operational Technology (OT) Security | CSRC](https://csrc.nist.gov/pubs/sp/800/82/r3/final) - A useful resource for various information.
+- [SP 800-82 Rev. 3, Guide to Operational Technology (OT) Security | CSRC](https://csrc.nist.gov/pubs/sp/800/82/r3/final) - A useful resource for various information.
+- [SRVHost - Glances](http://192.168.11.7:61208/) - A useful resource for various information.
+- [SRVHost01](https://192.168.11.7:8006/#v1:0:18:4:::::::) - A useful resource for various information.
+- [SRVHost: Netdata Agent Console](http://192.168.11.7:19999/spaces/srvhost/rooms/local/overview#metrics_correlation=false&after=-900&before=0&utc=Europe%2FZurich&offset=%2B2&timezoneName=Amsterdam%2C%20Berlin%2C%20Bern%2C%20Rome%2C%20Stockholm%2C%20Vienna&modal=&modalTab=&modalParams=&selectedIntegrationCategory=deploy.operating-systems&force_play=false&local--chartName-val=menu_system) - A useful resource for various information.
+- [SVGOMG - SVGO's Missing GUI](https://jakearchibald.github.io/svgomg/) - A useful resource for various information.
+- [SVGOMG - SVGO's Missing GUI](https://jakearchibald.github.io/svgomg/) - A useful resource for various information.
+- [SWICA](https://meta.swica.ch/sso/Account/Login?ReturnUrl=%2Fsso%2Fconnect%2Fauthorize%2Fcallback%3Fresponse_type%3Dcode%26scope%3Dopenid%2520profile%2520email%2520offline_access%26prompt%3Dlogin%26code_challenge%3DZIk6LIH_8iruCdYIN4GuVccu9pB1OGg_zaiq5ZeqoJQ%26code_challenge_method%3DS256%26state%3D398aabe8d1bdf80d6bf502eaf366aa8b3158f86425ad0ac3f7069d8f1c4e1150%26ui_locales%3Den%26redirect_uri%3Dhttps%253A%252F%252Fmyswica.ch%252Fapi%252Fauth%252Fcallback%252Fidentity-server4%26client_id%3Dmyswicaweb%26suppressed_prompt%3Dlogin) - A useful resource for various information.
+- [Sample OT network connectivity models](https://learn.microsoft.com/en-us/azure/defender-for-iot/organizations/best-practices/sample-connectivity-models) - A useful resource for various information.
+- [Sample Solution Gallery - Microsoft Adoption](https://adoption.microsoft.com/en-us/sample-solution-gallery/?keyword=&sort-by=updateDateTime-true&page=1&product=SharePoint&product=Power+Apps) - A useful resource for various information.
+- [SciSpace](https://typeset.io/) - A useful resource for various information.
+- [Scoop](https://scoop.sh/) - A useful resource for various information.
+- [Script Samples | PnP Samples](https://pnp.github.io/script-samples/index.html) - A useful resource for various information.
+- [Scripts](https://tteck.github.io/Proxmox/) - A useful resource for various information.
+- [Search Files - The Premium File Search Engine for Mega, Mediafire, 4shared, Easy-Share & Co](https://searchfiles.de/) - A useful resource for various information.
+- [Search and Browse YIFY Movies Torrent Downloads - YTS](https://yts.mx/browse-movies) - A useful resource for various information.
+- [Secure IoT Gateway, IoT Gateway Device - AWS IoT Core - AWS](https://aws.amazon.com/iot-core/) - A useful resource for various information.
+- [Secure, Scalable, and Serverless MQTT Messaging | EMQ](https://www.emqx.com/en/cloud/serverless-mqtt) - A useful resource for various information.
+- [Security Engines | CrowdSec Console](https://app.crowdsec.net/security-engines) - A useful resource for various information.
+- [Security architecture - Azure IoT | Microsoft Learn](https://learn.microsoft.com/en-us/azure/iot/iot-security-architecture) - A useful resource for various information.
+- [SeppPenner/awesome-german-piracy: A curated list of (not only) German piracy sites.](https://github.com/SeppPenner/awesome-german-piracy) - A useful resource for various information.
+- [SerpApi: Google Search API](https://serpapi.com/) - A useful resource for various information.
+- [Server World](http://www.server-world.info/en/note?os=Ubuntu_14.04&p=clamav) - A useful resource for various information.
+- [Set up 1.1.1.1 on Windows · Cloudflare 1.1.1.1 docs](https://developers.cloudflare.com/1.1.1.1/setup/windows/) - A useful resource for various information.
+- [Set up a security key as your verification method - Microsoft Support](https://support.microsoft.com/en-us/account-billing/set-up-a-security-key-as-your-verification-method-2911cacd-efa5-4593-ae22-e09ae14c6698) - A useful resource for various information.
+- [Setting Up Kiosk](http://m.instructables.com/id/Setting-Up-Ubuntu-as-a-Kiosk-Web-Appliance/) - A useful resource for various information.
+- [Setting Up Kiosk](http://m.instructables.com/id/Setting-Up-Ubuntu-as-a-Kiosk-Web-Appliance/) - A useful resource for various information.
+- [SettingUpConky - Community Help Wiki](https://help.ubuntu.com/community/SettingUpConky) - A useful resource for various information.
+- [Shaping the Future of IoT: 7 MQTT Technology Trends in 2023 | EMQ](https://www.emqx.com/en/blog/7-mqtt-trends-in-2023) - A useful resource for various information.
+- [SharePoint Framework library for Microsoft Graph Toolkit - Microsoft Graph | Microsoft Learn](https://learn.microsoft.com/en-gb/graph/toolkit/get-started/mgt-spfx?view=graph-rest-1.0) - A useful resource for various information.
+- [Ship & Container Tracking - VesselFinder](https://www.vesselfinder.com/) - A useful resource for various information.
+- [Showdown Live Editor](http://demo.showdownjs.com/) - A useful resource for various information.
+- [Showdown Live Editor](http://demo.showdownjs.com/) - A useful resource for various information.
+- [Showdownjs - A markdown to HTML converter](https://showdownjs.com/) - A useful resource for various information.
+- [Sick Codes - Security Research, Hardware & Software Hacking, Consulting, Linux, IoT, Cloud, Embedded, Arch, Tweaks & Tips!](https://sick.codes/) - A useful resource for various information.
+- [Siemens S7 Driver Performance Testing | NeuronEX Docs](https://docs.emqx.com/en/neuronex/latest/performance/siemens-s7.html) - A useful resource for various information.
+- [Siemens | 6GK5416-4GR00-2AM2 | Layer 16x RJ45 6GK5416-4GR00-2AM2 | Netzwerk Switch](https://www.eibabo.ch/siemens/layer-16x-rj45-6gk5416-4gr00-2am2-eb16114200?utm_source=Portals&utm_medium=CPC&utm_campaign=eibabo-CH_GoogleShopping_CH) - A useful resource for various information.
+- [Sign Up - Windows Azure](https://account.windowsazure.com/signup?offer=ms-azr-0044p) - A useful resource for various information.
+- [Single Server Installation — Kasm 1.15.0 documentation](https://kasmweb.com/docs/latest/index.html) - A useful resource for various information.
+- [Site](https://myporn.club/home) - A useful resource for various information.
+- [Site report for http://renata.com | Netcraft](https://sitereport.netcraft.com/?url=http://renata.com) - A useful resource for various information.
+- [Six best practices for OT cybersecurity](https://www.controleng.com/articles/six-best-practices-for-ot-cybersecurity/) - A useful resource for various information.
+- [Skinny Mature in White Lingerie Fucks with his Foreman - Pornhub.com](https://www.pornhub.com/view_video.php?viewkey=1043360968) - A useful resource for various information.
+- [Skinny hairy granny and her young lover - Pornhub.com](https://www.pornhub.com/view_video.php?viewkey=1822940157) - A useful resource for various information.
+- [Skype – Mein Konto](https://secure.skype.com/portal/overview) - A useful resource for various information.
+- [Slim Hairy Granny and Young Boy, Free HD Porn bc: xHamster de](https://de.xhamster.com/videos/slim-hairy-granny-and-young-boy-3635962) - A useful resource for various information.
+- [SmartThings Find](https://smartthingsfind.samsung.com/) - A useful resource for various information.
+- [Software](https://mqtt.org/software/) - A useful resource for various information.
+- [Software-Installation - Was ist der richtige Weg, um proprietäre ATI Catalyst Grafiktreiber (fglrx) direkt von AMD installiert? - Fragen Sie Ubuntu](http://translate.googleusercontent.com/translate_c?depth=1&hl=de&prev=/search%3Fq%3Dvideo%2Bissues%2Bamd%2B7970%2Bubuntu%2B14.04%26client%3Dtablet-android-google%26espv%3D1&rurl=translate.google.ch&sl=en&u=http://askubuntu.com/questions/124292/what-is-the-correct-way-to-install-proprietary-ati-catalyst-video-drivers-fglrx/435796&usg=ALkJrhguWKdGAHFNOms-aX7cVEe_R_rrLw#435796) - A useful resource for various information.
+- [Sonarr](http://192.168.11.33:8989/) - A useful resource for various information.
+- [Sophos Home](https://cloud.sophos.com/manage/home/dashboard) - A useful resource for various information.
+- [Sophos Home](https://cloud.sophos.com/manage/home/device/1c5b4a2f-b0f1-8467-b855-26387370b35c/status) - A useful resource for various information.
+- [Sourcegraph](https://sourcegraph.com/search) - A useful resource for various information.
+- [Spielplan | Junioren G (2017 & jünger) - Turnieragenda](https://www.turnieragenda.ch/veranstaltung/spielplan/23817) - A useful resource for various information.
+- [Spotube](https://spotube.krtirtho.dev/other-downloads/stable-downloads) - A useful resource for various information.
+- [SquirrelDisk - What's taking your Hard Disk space?](https://www.squirreldisk.com/) - A useful resource for various information.
+- [Squoosh](https://squoosh.app/) - A useful resource for various information.
+- [Squoosh](https://squoosh.app/) - A useful resource for various information.
+- [Start gaming with Shea Silverman, and add a startup animation to your Pi | Raspberry Pi](http://www.raspberrypi.org/start-gaming-with-shea-silverman-and-add-a-startup-animation-to-your-pi/) - A useful resource for various information.
+- [Start self-hosting | Self-Hosting](https://docs.movie-web.app/self-hosting/hosting-intro) - A useful resource for various information.
+- [Start self-hosting | sudo-flix](https://docs.sudo-flix.lol/self-hosting/hosting-intro) - A useful resource for various information.
+- [Startup key combinations for Intel-based Macs](http://support.apple.com/kb/ht1533?viewlocale=de_de) - A useful resource for various information.
+- [Startup key combinations for Intel-based Macs](http://support.apple.com/kb/ht1533?viewlocale=de_de) - A useful resource for various information.
+- [Stationboard Example - Transport API](https://transport.opendata.ch/examples/stationboard.html) - A useful resource for various information.
+- [Steam CD Keys and PC Game Keys - Compare & Buy | Kinguin.net](https://www.kinguin.net/) - A useful resource for various information.
+- [Step 5: Respond to an Unplanned Failover](http://technet.microsoft.com/de-de/library/jj134169.aspx) - A useful resource for various information.
+- [Step 5: Respond to an Unplanned Failover](http://technet.microsoft.com/de-de/library/jj134169.aspx) - A useful resource for various information.
+- [Stirling PDF](http://192.168.11.7:8080/) - A useful resource for various information.
+- [Stirling PDF](http://192.168.11.223:8080/) - A useful resource for various information.
+- [Streamlined remote access solutions for Siemens PLC systems](https://www.ixon.cloud/knowledge-hub/remote-access-for-siemens-plc) - A useful resource for various information.
+- [Streamlit](https://share.streamlit.io/) - A useful resource for various information.
+- [Supabase](https://supabase.com/dashboard/projects) - A useful resource for various information.
+- [Superhelden (T-Shirts) Poster - bei AllPosters.ch](http://www.allposters.ch/-st/Superhelden-T-Shirts-Poster_c44079_.htm) - A useful resource for various information.
+- [Supermemory - Your second brain](https://supermemory.dhr.wtf/) - A useful resource for various information.
+- [Support_Ticketing](https://chat.openai.com/g/g-rPDIobGiG-level1) - A useful resource for various information.
+- [Swagger UI](https://dam-api.bfs.admin.ch/hub/swagger-ui/index.html) - A useful resource for various information.
+- [Swissfolio | Astro](https://astro.build/themes/details/swissfolio/) - A useful resource for various information.
+- [Swissky’s adventures into InfoSec World ! | Write-ups/CTF & Bug Bounties](https://swisskyrepo.github.io/) - A useful resource for various information.
+- [Swissky’s adventures into InfoSec World ! | Write-ups/CTF & Bug Bounties](https://swisskyrepo.github.io/) - A useful resource for various information.
+- [Synology Web Assistant](http://find.synology.com/) - A useful resource for various information.
+- [System Center 2012](http://technet.microsoft.com/de-ch/systemcenter/hh278293.aspx) - A useful resource for various information.
+- [System Center 2012](http://technet.microsoft.com/de-ch/systemcenter/hh278293.aspx) - A useful resource for various information.
+- [T.LY: World's Shortest URL Shortener](https://t.ly/) - A useful resource for various information.
+- [TAO Toolkit Getting Started | NVIDIA NGC](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/resources/tao-getting-started?_gl=1*1hcyf1w*_gcl_au*MTk5Nzg2MTM0Ni4xNzE2NjIyMzQw) - A useful resource for various information.
+- [TOR](http://itsfoss.com/install-tar-browser-ubuntu-linux-mint-17/#more-4976) - A useful resource for various information.
+- [TSearch Engine](https://1337x.unban.workers.dev/) - A useful resource for various information.
+- [TV Calendar November 2021 - Prime Time TV Schedule & TV Episode Calendar: Track your favourite TV shows](https://www.pogdesign.co.uk/cat/) - A useful resource for various information.
+- [TV Shows | TVmaze - List of popular TV shows and streaming web shows.](https://www.tvmaze.com/shows) - A useful resource for various information.
+- [Tabby - a terminal for a more modern age](https://tabby.sh/) - A useful resource for various information.
+- [Table of Contents - Enterprise Integration Patterns](https://www.enterpriseintegrationpatterns.com/patterns/messaging/toc.html) - A useful resource for various information.
+- [Tails](https://tails.net/index.en.html) - A useful resource for various information.
+- [Tailscale Community](https://tailscale.dev/) - A useful resource for various information.
+- [Tailscale-Dashboard](https://login.tailscale.com/admin/welcome) - A useful resource for various information.
+- [TaskWeaver](https://microsoft.github.io/TaskWeaver/) - A useful resource for various information.
+- [Tautulli](http://192.168.11.33:8181/home) - A useful resource for various information.
+- [Teleport Community Edition will adopt a commercial license starting wi](https://goteleport.com/blog/teleport-community-license/) - A useful resource for various information.
+- [Teleport Community Edition will adopt a commercial license starting wi](https://goteleport.com/blog/teleport-community-license/) - A useful resource for various information.
+- [TensorFlow](https://www.tensorflow.org/) - A useful resource for various information.
+- [Terminal Trove - The $HOME of all things in the terminal.](https://terminaltrove.com/) - A useful resource for various information.
+- [Terraform by HashiCorp](https://www.terraform.io/) - A useful resource for various information.
+- [Test MQTT Services Quickly with Powerful MQTT Client | EMQ](https://www.emqx.com/en/products/mqttx) - A useful resource for various information.
+- [Testcontainers Cloud](https://app.testcontainers.cloud/dashboard/install) - A useful resource for various information.
+- [Thank You](https://www.ai-for-devs.com/thank-you?email=mostrub%40gmail.com) - A useful resource for various information.
+- [The Free Global Public MQTT Broker | Try Now | EMQ](https://www.emqx.com/en/mqtt/public-mqtt5-broker) - A useful resource for various information.
+- [The Ins and Outs of Using Markdown for Technical Writing](https://document360.com/blog/markdown-for-technical-writing/#:~:text=Many%20technical%20writers%20either%20currently,incredibly%20useful%20in%20certain%20contexts) - A useful resource for various information.
+- [The Local AI Playground](https://www.localai.app/) - A useful resource for various information.
+- [The NetworkChuck Academy](https://academy.networkchuck.com/products/youtube-videos/categories/2155282450/posts/2177513911) - A useful resource for various information.
+- [The Official Auto-GPT Website](https://news.agpt.co/) - A useful resource for various information.
+- [The Smart Manufacturing Revolution: Examples, Tech & Tips | EMQ](https://www.emqx.com/en/blog/the-smart-manufacturing-revolution) - A useful resource for various information.
+- [TheBloke (Tom Jobbins)](https://huggingface.co/TheBloke) - A useful resource for various information.
+- [TheBloke/Chronos-70B-v2-GGUF · Hugging Face](https://huggingface.co/TheBloke/Chronos-70B-v2-GGUF) - A useful resource for various information.
+- [Tidal-Media-Downloader Installation Documentation | YaornzZ](https://doc.yaronzz.com/post/tidal_dl_installation/) - A useful resource for various information.
+- [TinyPNG](https://tinypng.com/) - A useful resource for various information.
+- [Toolbox for Developers](https://extendsclass.com/) - A useful resource for various information.
+- [Top 1432 Anything-You-Can-Think-Of APIs For Developers - Public APIs](https://publicapis.dev/category/all) - A useful resource for various information.
+- [Transport API](https://transport.opendata.ch/) - A useful resource for various information.
+- [Trigger.dev](https://cloud.trigger.dev/orgs/loloproject-91f6/projects/lolofam1-pm_x) - A useful resource for various information.
+- [Trilium Notes](http://192.168.11.22:8080/#root?ntxId=bVuEbC) - A useful resource for various information.
+- [Try Ubuntu Appliances in a VM | Ubuntu](https://ubuntu.com/appliance/vm) - A useful resource for various information.
+- [Try pandoc!](https://pandoc.org/try/) - A useful resource for various information.
+- [Turn any song file into a custom iPhone ringtone or alert sound - How to - Macworld UK](http://www.macworld.co.uk/how-to/iphone/how-turn-any-song-iphone-ringtone-alert-tone-3460817/) - A useful resource for various information.
+- [Turn your Ubuntu/Linux Mint into Personal Cloud with Tonido for Free - Ubuntu/Linux News, Reviews, Tutorials, Apps](http://www.noobslab.com/2014/08/turn-your-ubuntulinux-mint-into.html?m=1) - A useful resource for various information.
+- [Turndown](https://mixmark-io.github.io/turndown/) - A useful resource for various information.
+- [Tutorial: Use MQTT to create an IoT device client - Azure IoT | Microsoft Learn](https://learn.microsoft.com/en-us/azure/iot-develop/tutorial-use-mqtt) - A useful resource for various information.
+- [Tutorials - PiMAME | Gaming and Emulators for the Raspbery Pi | Shea Silverman](http://pimame.org/quickstart.html) - A useful resource for various information.
+- [UBS e-banking Login](https://ebanking-ch1.ubs.com/workbench/WorkbenchOpenAction.do?login&) - A useful resource for various information.
+- [URL Pages Editor](https://jstrieb.github.io/urlpages/editor/#eyJjc3MiOiIiLCJqcyI6IiIsImh0bWwiOiIifQ==) - A useful resource for various information.
+- [USB Accelerator | Coral](https://coral.ai/docs/accelerator/get-started/) - A useful resource for various information.
+- [Ubiquiti](https://account.ui.com/) - A useful resource for various information.
+- [Ubuntu 14.04 Proleme mit Grafiktreiber - ComputerBase Forum](http://www.computerbase.de/forum/showthread.php?t=1342610) - A useful resource for various information.
+- [Ubuntu Apps Directory](https://apps.ubuntu.com/cat/) - A useful resource for various information.
+- [Ubuntu Apps Directory](https://apps.ubuntu.com/cat/) - A useful resource for various information.
+- [Ubuntu Cloud Images - the official Ubuntu images for public clouds, Openstack, KVM and LXD](https://cloud-images.ubuntu.com/) - A useful resource for various information.
+- [Ubuntu Community Hub](https://discourse.ubuntu.com/c/appliance/45) - A useful resource for various information.
+- [Ubuntu Driver for Downloads Section | Synaptics](https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu) - A useful resource for various information.
+- [Ubuntu Minimal Cloud Images (RELEASED)](https://cloud-images.ubuntu.com/minimal/releases/noble/) - A useful resource for various information.
+- [Ubuntu Pro Dashboard | Ubuntu](https://ubuntu.com/pro/dashboard) - A useful resource for various information.
+- [UbuntuOne](https://login.ubuntu.com/) - A useful resource for various information.
+- [UniFi Site Manager](https://unifi.ui.com/) - A useful resource for various information.
+- [Use AWS IoT Core MQTT broker with standard MQTT libraries | The Internet of Things on AWS – Official Blog](https://aws.amazon.com/blogs/iot/use-aws-iot-core-mqtt-broker-with-standard-mqtt-libraries/#) - A useful resource for various information.
+- [Use column formatting to customize SharePoint | Microsoft Learn](https://learn.microsoft.com/en-gb/sharepoint/dev/declarative-customization/column-formatting) - A useful resource for various information.
+- [Use of the API | Open data platform mobility Switzerland](https://opentransportdata.swiss/en/cookbook/verwendung-der-api/#:~:text=Open%20Data%20Platform%20Swiss%20Public,15%E2%80%A0restrictions%E3%80%91) - A useful resource for various information.
+- [VS-DrNo3](https://vscode.dev/tunnel/drno3/c:/Users/mostr) - A useful resource for various information.
+- [VS-Tronmaster](https://vscode.dev/tunnel/tronmasterlan/) - A useful resource for various information.
+- [VS-dev1nodomaccess](https://vscode.dev/tunnel/dev1nodomaccess/c:/Users/mostr) - A useful resource for various information.
+- [Vercel](https://vercel.com/mostrubs-projects) - A useful resource for various information.
+- [Vercel](https://vercel.com/mostrubs-projects?sort=name&view=grid) - A useful resource for various information.
+- [Vertex](https://console.cloud.google.com/vertex-ai/generative/multimodal/create/text?model=gemini-1.5-pro-preview-0409&project=desktop-399010) - A useful resource for various information.
+- [VikParuchuri/marker: Convert PDF to markdown quickly with high accuracy](https://github.com/VikParuchuri/marker) - A useful resource for various information.
+- [Violentmonkey](https://violentmonkey.github.io/) - A useful resource for various information.
+- [Violentmonkey](https://violentmonkey.github.io/) - A useful resource for various information.
+- [Virtualization for your modern datacenter and hybrid cloud | Microsoft](https://www.microsoft.com/en/server-cloud/solutions/virtualization.aspx) - A useful resource for various information.
+- [VirusTotal - Home](https://www.virustotal.com/gui/home/upload) - A useful resource for various information.
+- [Visual Studio: IDE and Code Editor for Software Developers and Teams](https://visualstudio.microsoft.com/) - A useful resource for various information.
+- [Volume Licensing Service Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) - A useful resource for various information.
+- [Volume Licensing Service Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) - A useful resource for various information.
+- [WEBMicrosoft Apps](https://apps.microsoft.com/home?hl=en-nz&gl=NZ) - A useful resource for various information.
+- [WFM](https://chatgpt.com/g/g-B3hgivKK9-write-for-me) - A useful resource for various information.
+- [WP](https://www.uhdpaper.com/search?q=Digital+Art&by-date=true) - A useful resource for various information.
+- [WR](https://www.whiterabbitneo.com/) - A useful resource for various information.
+- [Watch Anime Online, Free Anime Streaming Online on HiAnime.to Anime Website](https://hianime.to/tv) - A useful resource for various information.
+- [Watch your favorite shows and movies for free with no ads ever! (っ'ヮ'c) | sudo-flix](https://docs.sudo-flix.lol/) - A useful resource for various information.
+- [Wazuh](https://documentation.wazuh.com/current/quickstart.html) - A useful resource for various information.
+- [Weaponizing and Gamifying AI for WiFi Hacking: Presenting Pwnagotchi 1.0.0](https://www.evilsocket.net/2019/10/19/Weaponizing-and-Gamifying-AI-for-WiFi-Hacking-Presenting-Pwnagotchi-1-0-0/#The-AI) - A useful resource for various information.
+- [Web Browser](https://chatgpt.com/g/g-3w1rEXGE0-web-browser) - A useful resource for various information.
+- [Web Check](https://web-check.xyz/) - A useful resource for various information.
+- [Web Tools | U.S. Geological Survey](https://www.usgs.gov/products/web-tools) - A useful resource for various information.
+- [Webpage archive](https://archive.is/) - A useful resource for various information.
+- [Welcome to GraphRAG](https://microsoft.github.io/graphrag/) - A useful resource for various information.
+- [Welcome — Sphinx documentation](https://www.sphinx-doc.org/en/master/index.html) - A useful resource for various information.
+- [What is MQTT and How Does it Work?](https://www.techtarget.com/iotagenda/definition/MQTT-MQ-Telemetry-Transport) - A useful resource for various information.
+- [What is MQTT? - MQTT Protocol Explained - AWS](https://aws.amazon.com/what-is/mqtt/) - A useful resource for various information.
+- [What is OT Security? An Operational Technology Security Primer](https://www.fortinet.com/uk/solutions/industries/scada-industrial-control-systems/what-is-ot-security) - A useful resource for various information.
+- [What is a Design System? | FAST](https://www.fast.design/docs/design-systems/overview) - A useful resource for various information.
+- [What is dbt?](https://www.getdbt.com/product/what-is-dbt) - A useful resource for various information.
+- [WhiteRabbitNeo/WhiteRabbitNeo-13B-v1 · Hugging Face](https://huggingface.co/WhiteRabbitNeo/WhiteRabbitNeo-13B-v1) - A useful resource for various information.
+- [Whonix ](https://www.whonix.org/) - A useful resource for various information.
+- [Why Vagrant? - Vagrant Documentation](http://docs.vagrantup.com/v2/why-vagrant/index.html) - A useful resource for various information.
+- [WiGLE: Wireless Network Mapping](https://wigle.net/) - A useful resource for various information.
+- [Win-KeX | Kali Linux Documentation](https://www.kali.org/docs/wsl/win-kex/#run-win-kex) - A useful resource for various information.
+- [Windows Embedded | Product Downloads](http://www.microsoft.com/windowsembedded/de-de/downloads.aspx) - A useful resource for various information.
+- [Windows Embedded | Product Downloads](http://www.microsoft.com/windowsembedded/de-de/downloads.aspx) - A useful resource for various information.
+- [Windows Sandbox configuration - Windows Security | Microsoft Learn](https://learn.microsoft.com/en-us/windows/security/application-security/application-isolation/windows-sandbox/windows-sandbox-configure-using-wsb-file) - A useful resource for various information.
+- [Windows Server 2012 – The New and Improved Group Policy Management Console - Ask Premier Field Engineering (PFE) Platforms - Site Home - TechNet Blogs](http://blogs.technet.com/b/askpfeplat/archive/2012/11/04/windows-server-2012-the-new-and-improved-group-policy-management-console.aspx) - A useful resource for various information.
+- [Windows Server 2012 – The New and Improved Group Policy Management Console - Ask Premier Field Engineering (PFE) Platforms - Site Home - TechNet Blogs](http://blogs.technet.com/b/askpfeplat/archive/2012/11/04/windows-server-2012-the-new-and-improved-group-policy-management-console.aspx) - A useful resource for various information.
+- [Windows Update Troubleshooter](https://support.microsoft.com/en-us/instantanswers/512a5183-ffab-40c5-8a68-021e32467565/windows-update-troubleshooter) - A useful resource for various information.
+- [Windows client documentation - Windows for IT Pros | Microsoft Learn](https://learn.microsoft.com/en-us/windows/resources/) - A useful resource for various information.
+- [Windows | Oh My Posh](https://ohmyposh.dev/docs/installation/windows) - A useful resource for various information.
+- [Windows | Oh My Posh](https://ohmyposh.dev/docs/installation/windows) - A useful resource for various information.
+- [Write For Me](https://chat.openai.com/g/g-B3hgivKK9-write-for-me) - A useful resource for various information.
+- [XGIMI Aura Projection Calculator](https://www.projectorcentral.com/XGIMI-Aura-projection-calculator-pro.htm?&l_=0) - A useful resource for various information.
+- [XPS2PDF ](https://xps2pdf.co.uk/) - A useful resource for various information.
+- [XPS2PDF ](https://xps2pdf.co.uk/) - A useful resource for various information.
+- [XRDP – Installing XRDP on Ubuntu 15.04 – Griffon's IT Library](http://c-nergy.be/blog/?p=7984) - A useful resource for various information.
+- [Xbox](https://account.xbox.com/de-CH/social?xr=shellnav) - A useful resource for various information.
+- [YT](https://www.youtube.com/) - A useful resource for various information.
+- [YTS](https://studio.youtube.com/channel/UCK1j45vS9susW5uSNPU9GWg) - A useful resource for various information.
+- [Ytd | Wails](https://wails.io/docs/community/showcase/ytd) - A useful resource for various information.
+- [Yubico | YubiKey Strong Two Factor Authentication](https://www.yubico.com/) - A useful resource for various information.
+- [Z4nzu/hackingtool: ALL IN ONE Hacking Tool For Hackers](https://github.com/Z4nzu/hackingtool) - A useful resource for various information.
+- [ai-boost/Awesome-GPTs: Curated list of awesome GPTs 👍.](https://github.com/ai-boost/Awesome-GPTs?tab=readme-ov-file#academic) - A useful resource for various information.
+- [algorithm-visualizer](https://algorithm-visualizer.org/) - A useful resource for various information.
+- [algorithm-visualizer](https://algorithm-visualizer.org/) - A useful resource for various information.
+- [animepahe :: okay-ish anime website](https://animepahe.ru/) - A useful resource for various information.
+- [apache/superset: Apache Superset is a Data Visualization and Data Exploration Platform](https://github.com/apache/superset) - A useful resource for various information.
+- [assafelovic/gpt-researcher: GPT based autonomous agent that does online comprehensive research on any given topic](https://github.com/assafelovic/gpt-researcher) - A useful resource for various information.
+- [backup codes](https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Faccounts.google.com%2Fb%2F0%2FSmsAuthSettings&followup=https%3A%2F%2Faccounts.google.com%2Fb%2F0%2FSmsAuthSettings&authuser=0) - A useful resource for various information.
+- [blog/en/202304/emqx-enterprise-v-4-4-18-release-notes.md at main · emqx/blog](https://github.com/emqx/blog/blob/main/en/202304/emqx-enterprise-v-4-4-18-release-notes.md) - A useful resource for various information.
+- [bregman-arie/devops-exercises: Linux, Jenkins, AWS, SRE, Prometheus, Docker, Python, Ansible, Git, Kubernetes, Terraform, OpenStack, SQL, NoSQL, Azure, GCP, DNS, Elastic, Network, Virtualization. DevOps Interview Questions](https://github.com/bregman-arie/devops-exercises) - A useful resource for various information.
+- [buzzheavier](https://buzzheavier.com/) - A useful resource for various information.
+- [carpedm20/awesome-hacking: A curated list of awesome Hacking tutorials, tools and resources](https://github.com/carpedm20/awesome-hacking) - A useful resource for various information.
+- [cidrblock/drawthe.net: drawthe.net draws network diagrams dynamically from a text file describing the placement, layout and icons. Given a yaml file describing the hierarchy of the network and it's connections, a resulting diagram will be created.](https://github.com/cidrblock/drawthe.net) - A useful resource for various information.
+- [cobalt](https://cobalt.tools/) - A useful resource for various information.
+- [codium](https://app.codium.ai/) - A useful resource for various information.
+- [cram](https://ollama.com/cram) - A useful resource for various information.
+- [devices](https://account.microsoft.com/devices?ref=fmdsetting) - A useful resource for various information.
+- [de🔸digger find public files in Google Drive](https://www.dedigger.com/#gsc.tab=0) - A useful resource for various information.
+- [dns0.eu — The European public DNS that makes your Internet safer](https://www.dns0.eu/) - A useful resource for various information.
+- [draw.io](https://www.drawio.com/) - A useful resource for various information.
+- [draw.io](https://app.diagrams.net/?src=about) - A useful resource for various information.
+- [drawthe](http://go.drawthe.net/) - A useful resource for various information.
+- [drawthe](http://go.drawthe.net/) - A useful resource for various information.
+- [drawthe](http://go.drawthe.net/#) - A useful resource for various information.
+- [ehartford/dolphin · Hugging Face](https://huggingface.co/ehartford/dolphin-2.5-mixtral-8x7b) - A useful resource for various information.
+- [emqx-docgen/generate-markdown.exs at main · mostrub/emqx-docgen](https://github.com/mostrub/emqx-docgen/blob/main/generate-markdown.exs) - A useful resource for various information.
+- [emqx-webinars/2022-02-09-emqx-tls/scripts at main · emqx/emqx-webinars](https://github.com/emqx/emqx-webinars/tree/main/2022-02-09-emqx-tls/scripts) - A useful resource for various information.
+- [emqx-webinars/2022-02-09-emqx-tls/slides/emqx_tls_certificates.pdf at main · emqx/emqx-webinars](https://github.com/emqx/emqx-webinars/blob/main/2022-02-09-emqx-tls/slides/emqx_tls_certificates.pdf) - A useful resource for various information.
+- [emqx/MQTTX Q A · Discussions · GitHub](https://github.com/emqx/MQTTX/discussions/categories/general) - A useful resource for various information.
+- [emqx/MQTTX · Discussions · GitHub](https://github.com/emqx/MQTTX/discussions) - A useful resource for various information.
+- [emqx/MQTTX: A Powerful and All-in-One MQTT 5.0 client toolbox for Desktop, CLI and WebSocket.](https://github.com/emqx/MQTTX) - A useful resource for various information.
+- [emqx/emqx-webinars: Webinar materials](https://github.com/emqx/emqx-webinars/tree/main) - A useful resource for various information.
+- [emqx/emqx: The most scalable open-source MQTT broker for IoT, IIoT, and connected vehicles](https://github.com/emqx/emqx) - A useful resource for various information.
+- [evilsocket (Simone Margaritelli)](https://github.com/evilsocket) - A useful resource for various information.
+- [evilsocket (Simone Margaritelli)](https://github.com/evilsocket) - A useful resource for various information.
+- [form](https://forms.office.com/pages/designpagev2.aspx?origin=OfficeDotCom&lang=en-GB&sessionid=e4fe14bc-c7dc-4b53-8171-507faa3e3f84&route=CreateOnHome&fromar=1&subpage=design&id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAO__av9cnNUOU1MSU5GTEY1MURIUlRXMjYzMVdLWEtHVS4u&analysis=false) - A useful resource for various information.
+- [freemediaheckyeah](https://fmhy.pages.dev/adblockvpnguide) - A useful resource for various information.
+- [gallery-dl - Terminal Trove](https://terminaltrove.com/gallery-dl/) - A useful resource for various information.
+- [gethomepage/homepage: A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations.](https://github.com/gethomepage/homepage) - A useful resource for various information.
+- [grep.app | code search](https://grep.app/) - A useful resource for various information.
+- [hashcat hcxpcapngtool - advanced password recovery](https://hashcat.net/cap2hashcat/) - A useful resource for various information.
+- [https://mall.industry.siemens.com/teddatasheet/?format=PDF&caller=Mall&mlfbs=6GK5416-4GR00-2AM2&language=en](https://mall.industry.siemens.com/teddatasheet/?format=PDF&caller=Mall&mlfbs=6GK5416-4GR00-2AM2&language=en) - A useful resource for various information.
+- [https://raw.githubusercontent.com/kazukikasama/youtube-dlp-gui-installer/main/yt-dlp-gui-installer.ps1](https://raw.githubusercontent.com/kazukikasama/youtube-dlp-gui-installer/main/yt-dlp-gui-installer.ps1) - A useful resource for various information.
+- [https://www.westconcomstor.com/content/dam/wcgcom/Global/CorpSite/pdfs/ExtremeCloud-IQ-factsheet-EN.pdf](https://www.westconcomstor.com/content/dam/wcgcom/Global/CorpSite/pdfs/ExtremeCloud-IQ-factsheet-EN.pdf) - A useful resource for various information.
+- [hyper v replica failover - Google-Suche](https://www.google.ch/search?q=hyper+v+replica+failover&oq=hyperv+replica+failover+&aqs=chrome.2.69i57j0l3&client=ms-android-google&sourceid=chrome-mobile&espv=1&ie=UTF-8) - A useful resource for various information.
+- [hyper v replica failover - Google-Suche](https://www.google.ch/search?q=hyper+v+replica+failover&oq=hyperv+replica+failover+&aqs=chrome.2.69i57j0l3&client=ms-android-google&sourceid=chrome-mobile&espv=1&ie=UTF-8) - A useful resource for various information.
+- [iA Writer: The Benchmark of Markdown Writing Apps](https://ia.net/writer) - A useful resource for various information.
+- [iC](https://www.icloud.com/#) - A useful resource for various information.
+- [iMore | The #1 site for iPhone, iPad, Mac, and all things Apple!](http://www.imore.com/) - A useful resource for various information.
+- [iMore | The #1 site for iPhone, iPad, Mac, and all things Apple!](http://www.imore.com/) - A useful resource for various information.
+- [infracost/infracost: Cloud cost estimates for Terraform in pull requests💰📉 Shift FinOps Left!](https://github.com/infracost/infracost) - A useful resource for various information.
+- [ipSpace.net Webinar Subscription - www.ipSpace.net](https://www.ipspace.net/Subscription/) - A useful resource for various information.
+- [iso27000toolkit/ISMS Governance, Management & Implementation Guidance/Awareness Presentation.pptx at master · mostrub/iso27000toolkit](https://github.com/mostrub/iso27000toolkit/blob/master/ISMS%20Governance%2C%20Management%20%26%20Implementation%20Guidance/Awareness%20Presentation.pptx) - A useful resource for various information.
+- [kannagi0303/yt-dlp-gui: Windows GUI for yt-dlp](https://github.com/kannagi0303/yt-dlp-gui) - A useful resource for various information.
+- [learn](https://learn.microsoft.com/en-us/training/) - A useful resource for various information.
+- [markdowntutorial.com/](about:blank) - A useful resource for various information.
+- [menu - How to find firefox path? - Ask Ubuntu](http://askubuntu.com/questions/90752/how-to-find-firefox-path) - A useful resource for various information.
+- [menu - How to find firefox path? - Ask Ubuntu](http://askubuntu.com/questions/90752/how-to-find-firefox-path) - A useful resource for various information.
+- [merill/awesome-entra: 😎 Awesome list of all things related to Microsoft Entra](https://github.com/merill/awesome-entra) - A useful resource for various information.
+- [mesos.apache.org/documentation/latest/](http://mesos.apache.org/documentation/latest/) - A useful resource for various information.
+- [mesos.apache.org/documentation/latest/](http://mesos.apache.org/documentation/latest/) - A useful resource for various information.
+- [microsoft/fast: The adaptive interface system for modern web experiences.](https://github.com/microsoft/fast) - A useful resource for various information.
+- [microsoftgraph/microsoft-graph-toolkit: Authentication Providers and UI components for Microsoft Graph 🦒](https://github.com/microsoftgraph/microsoft-graph-toolkit) - A useful resource for various information.
+- [microsoftgraph/msgraph-sdk-powershell: Powershell SDK for Microsoft Graph](https://github.com/microsoftgraph/msgraph-sdk-powershell) - A useful resource for various information.
+- [mining.bitcoin.cz](https://mining.bitcoin.cz/dashboard/) - A useful resource for various information.
+- [ml-tooling/best-of-python: 🏆 A ranked list of awesome Python open-source libraries and tools. Updated weekly.](https://github.com/ml-tooling/best-of-python) - A useful resource for various information.
+- [modery/PowerDocu: Generate technical documentation from your existing Power Automate Flows and Power Apps canvas apps](https://github.com/modery/PowerDocu) - A useful resource for various information.
+- [mostrub/Docker-OSX: Run macOS VM in a Docker! Run near native OSX-KVM in Docker! X11 Forwarding! CI/CD for OS X Security Research! Docker mac Containers.](https://github.com/mostrub/Docker-OSX) - A useful resource for various information.
+- [mostrub/GPTHub: 🔍 Discover the Best in Custom GPT at OpenAI's GPT Store – Your Adventure Begins Here!](https://github.com/mostrub/GPTHub) - A useful resource for various information.
+- [mostrub/ekuiper: Lightweight data stream processing engine for IoT edge](https://github.com/mostrub/ekuiper) - A useful resource for various information.
+- [mostrub/gpt-crawler: Crawl a site to generate knowledge files to create your own custom GPT from a URL](https://github.com/mostrub/gpt-crawler) - A useful resource for various information.
+- [mostrub/llamafile: Distribute and run LLMs with a single file.](https://github.com/mostrub/llamafile/tree/main) - A useful resource for various information.
+- [mostrub/movie-web: A small web app for watching movies and shows easily](https://github.com/mostrub/movie-web) - A useful resource for various information.
+- [movie-web](https://movie-web.app/) - A useful resource for various information.
+- [movie-web instances](https://erynith.github.io/movie-web-instances/) - A useful resource for various information.
+- [mqtt and iot Management azure](https://www.perplexity.ai/search/mqtt-and-iot-b.GyJAC9Rji237ilzhTrGg) - A useful resource for various information.
+- [myD](https://app.gitbook.com/o/ewSwbK8leIUC349FF1UH/s/MDX1KNp3F7QLeV6OcdIR/) - A useful resource for various information.
+- [mySuva](https://www.suva.ch/services#cockpit-location=%2F) - A useful resource for various information.
+- [myapp](https://myapplications.microsoft.com/) - A useful resource for various information.
+- [n8n integrations](https://n8n.io/integrations/) - A useful resource for various information.
+- [n8n-io/n8n: Free and source-available fair-code licensed workflow automation tool. Easily automate tasks across different services.](https://github.com/n8n-io/n8n) - A useful resource for various information.
+- [ngrok](https://dashboard.ngrok.com/get-started/setup/windows) - A useful resource for various information.
+- [nschloe/tiptop at terminaltrove](https://github.com/nschloe/tiptop?ref=terminaltrove) - A useful resource for various information.
+- [numixproject/numix-icon-theme-circle · GitHub](https://github.com/numixproject/numix-icon-theme-circle) - A useful resource for various information.
+- [numixproject/numix-icon-theme-circle · GitHub](https://github.com/numixproject/numix-icon-theme-circle) - A useful resource for various information.
+- [omgwtfnzbs](https://omgwtfnzbs.org/index) - A useful resource for various information.
+- [opendata.ch](https://github.com/OpendataCH) - A useful resource for various information.
+- [pandoc.org/try/](about:blank) - A useful resource for various information.
+- [pandoc: Conversion between markup formats](https://hackage.haskell.org/package/pandoc) - A useful resource for various information.
+- [parallax.js](https://matthew.wagerfield.com/parallax/) - A useful resource for various information.
+- [pnp/List-Formatting: List Formatting Samples for use in SharePoint and Microsoft Lists](https://github.com/pnp/List-Formatting/tree/master) - A useful resource for various information.
+- [pnp/List-Formatting: List Formatting Samples for use in SharePoint and Microsoft Lists](https://github.com/pnp/List-Formatting) - A useful resource for various information.
+- [pnp/powerapps-samples: Contains curated community Microsoft Power App samples](https://github.com/pnp/powerapps-samples) - A useful resource for various information.
+- [postman](https://lolohannsenfamparty.postman.co/home) - A useful resource for various information.
+- [privacy](https://privacy.sexy/) - A useful resource for various information.
+- [privacy.sexy - Maximize Your Privacy and Security](https://privacy.sexy/) - A useful resource for various information.
+- [prowler-cloud/prowler: Prowler is an Open Source Security tool for AWS, Azure, GCP and Kubernetes to do security assessments, audits, incident response, compliance, continuous monitoring, hardening and forensics readiness. Includes CIS, NIST 800, NIST CSF, CISA, FedRAMP, PCI-DSS, GDPR, HIPAA, FFIEC, SOC2, GXP, Well-Architected Security, ENS and more](https://github.com/prowler-cloud/prowler) - A useful resource for various information.
+- [public-apis/public-apis: A collective list of free APIs](https://github.com/public-apis/public-apis?tab=readme-ov-file) - A useful resource for various information.
+- [rabbit — home](https://www.rabbit.tech/) - A useful resource for various information.
+- [recommenders/examples/05_operationalize/als_movie_o16n.ipynb at main · recommenders-team/recommenders](https://github.com/recommenders-team/recommenders/blob/main/examples/05_operationalize/als_movie_o16n.ipynb) - A useful resource for various information.
+- [sbb.ch | searchcode](https://searchcode.com/?q=sbb.ch) - A useful resource for various information.
+- [scottdurow/power-drag-drop](https://github.com/scottdurow/power-drag-drop) - A useful resource for various information.
+- [searchcode | source code search engine](https://searchcode.com/) - A useful resource for various information.
+- [sickcodes/Docker-OSX: Run macOS VM in a Docker! Run near native OSX-KVM in Docker! X11 Forwarding! CI/CD for OS X Security Research! Docker mac Containers.](https://github.com/sickcodes/Docker-OSX?tab=readme-ov-file#quick-start-docker-osx) - A useful resource for various information.
+- [sindresorhus/awesome-nodejs: :zap: Delightful Node.js packages and resources](https://github.com/sindresorhus/awesome-nodejs) - A useful resource for various information.
+- [spaceship-prompt.sh/getting-started/](about:blank) - A useful resource for various information.
+- [sudo-flix](https://sudo-flix.lol/) - A useful resource for various information.
+- [synology](https://account.synology.com/en-uk/overview) - A useful resource for various information.
+- [tails / tails · GitLab](https://gitlab.tails.boum.org/tails/tails) - A useful resource for various information.
+- [test.mosquitto.org](https://test.mosquitto.org/) - A useful resource for various information.
+- [tv](https://iptv-web.app/#US) - A useful resource for various information.
+- [ubuntu 20.10 Archives - OMG! Ubuntu](https://www.omgubuntu.co.uk/tag/ubuntu-20-10) - A useful resource for various information.
+- [unity - How do I make a program auto-start everytime I log in in Ubuntu 14.04? - Ask Ubuntu](http://askubuntu.com/questions/459277/how-do-i-make-a-program-auto-start-everytime-i-log-in-in-ubuntu-14-04) - A useful resource for various information.
+- [unity - How do I make a program auto-start everytime I log in in Ubuntu 14.04? - Ask Ubuntu](http://askubuntu.com/questions/459277/how-do-i-make-a-program-auto-start-everytime-i-log-in-in-ubuntu-14-04) - A useful resource for various information.
+- [usb linux mac](http://itsfoss.com/create-bootable-ubuntu-usb-drive-mac-os/) - A useful resource for various information.
+- [vintage - hoppla jetzt komm ich | xHamster](https://xhamster.com/videos/vintage-hoppla-jetzt-komm-ich-xhmTm5V) - A useful resource for various information.
+- [warez · GitHub Topics](https://github.com/topics/warez) - A useful resource for various information.
+- [whiterabbitneo/WhiteRabbitNeo-13B · Hugging Face](https://huggingface.co/whiterabbitneo/WhiteRabbitNeo-13B) - A useful resource for various information.
+- [win2to](http://www.easyuefi.com/wintousb/) - A useful resource for various information.
+- [yt-dlp - Terminal Trove](https://terminaltrove.com/yt-dlp/) - A useful resource for various information.
+- [yt-dlp/yt-dlp: A feature-rich command-line audio/video downloader](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file) - A useful resource for various information.
+- [| F-Droid - Free and Open Source Android App Repository](https://f-droid.org/en/packages/) - A useful resource for various information.
+- [▶️ The ultimate guide to Stremio.](https://rentry.co/a-guide-to-stremio#how-to-set-up-stremio-method-2-superflix) - A useful resource for various information.
+- [▶️ The ultimate guide to Stremio.](https://rentry.co/a-guide-to-stremio) - A useful resource for various information.
+- [👋 Welcome | Piracy Wiki](https://mediasavvy.pages.dev/Wiki/) - A useful resource for various information.
+- [📜 ➜ Megathread](https://rentry.co/megathread) - A useful resource for various information.
+- [🖥 Home | [cmd.ms]](https://cmd.ms/) - A useful resource for various information.
