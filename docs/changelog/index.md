@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.5.47 <small>December 1, 2024</small> { id="9.5.47" }
+
+- Fixed #7750: Numeric tags break search
+- Fixed #7748: Blog plugin breaks when using future drafts (9.5.45 regression)
+
 ### 9.5.46 <small>November 25, 2024</small> { id="9.5.46" }
 
 - Added support for removing `preload` hints in privacy plugin

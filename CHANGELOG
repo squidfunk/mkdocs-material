@@ -1,3 +1,8 @@
+mkdocs-material-9.5.47 (2024-12-01)
+
+  * Fixed #7750: Numeric tags break search
+  * Fixed #7748: Blog plugin breaks when using future drafts (9.5.45 regression)
+
 mkdocs-material-9.5.46 (2024-11-25)
 
   * Added support for removing preload hints in privacy plugin
