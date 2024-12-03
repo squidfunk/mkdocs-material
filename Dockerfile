@@ -19,13 +19,11 @@
 # IN THE SOFTWARE.
 
 FROM python:3.11-alpine3.19 AS build
-
 # Build-time flags
 ARG WITH_PLUGINS=true
 
 # Environment variables
 ENV PACKAGES=/usr/local/lib/python3.11/site-packages
-ENV PYTHONDONTWRITEBYTECODE=1
 
 # Set build directory
 WORKDIR /tmp
@@ -38,58 +36,74 @@ COPY *requirements.txt ./
 COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
-RUN \
-  apk upgrade --update-cache -a \
-&& \
-  apk add --no-cache \
-    cairo \
-    freetype-dev \
-    git \
-    git-fast-import \
-    jpeg-dev \
-    openssh \
-    tini \
-    zlib-dev \
-&& \
-  apk add --no-cache --virtual .build \
-    gcc \
-    g++ \
-    libffi-dev \
-    musl-dev \
-&& \
-  pip install --no-cache-dir --upgrade pip \
-&& \
-  pip install --no-cache-dir . \
-&& \
-  if [ "${WITH_PLUGINS}" = "true" ]; then \
-    pip install --no-cache-dir \
-      mkdocs-material[recommended] \
-      mkdocs-material[imaging]; \
-  fi \
-&& \
-  if [ -e user-requirements.txt ]; then \
-    pip install -U -r user-requirements.txt; \
-  fi \
-&& \
-  apk del .build \
-&& \
-  for theme in mkdocs readthedocs; do \
-    rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
-    ln -s \
-      ${PACKAGES}/material/templates \
-      ${PACKAGES}/mkdocs/themes/$theme; \
-  done \
-&& \
-  rm -rf /tmp/* /root/.cache \
-&& \
-  find ${PACKAGES} \
-    -type f \
-    -path "*/__pycache__/*" \
-    -exec rm -f {} \; \
-&& \
-  git config --system --add safe.directory /docs \
-&& \
-  git config --system --add safe.directory /site
+
+# Apk
+RUN <<RUN_END
+apk upgrade --update-cache -a
+apk add --no-cache \
+        cairo \
+        freetype-dev \
+        git \
+        git-fast-import \
+        jpeg-dev \
+        openssh \
+        tini \
+        zlib-dev
+apk add --no-cache --virtual .build \
+        gcc \
+        g++ \
+        libffi-dev \
+        musl-dev
+RUN_END
+
+# Python with uv <= 10-100x faster than pip
+# docker system prune -f && build no cache:
+# [+] Building 33.1s (22/22) FINISHED versus [+] Building 51.6s (15/15) FINISHED
+# https://docs.astral.sh/uv/
+# https://docs.astral.sh/uv/reference/cli/#uv-pip-install
+# uv don't compile module by default => no *.pyc
+ARG PYTHONDONTWRITEBYTECODE=1 
+ARG UV_NO_CACHE=1
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /tmp/
+RUN <<RUN_END
+TO_INSTALL=' .'
+if [ "${WITH_PLUGINS}" = "true" ]
+then
+  TO_INSTALL="$TO_INSTALL mkdocs-material[recommended] mkdocs-material[imaging]"
+fi
+if [ -e user-requirements.txt ]
+then
+  TO_INSTALL="$TO_INSTALL --requirements user-requirements.txt"
+fi
+echo "$TO_INSTALL" > /tmp/TO_INSTALL.txt
+/tmp/uv pip install --system $TO_INSTALL
+RUN_END
+
+# Themes and Git
+RUN <<RUN_END
+for theme in mkdocs readthedocs
+do
+  rm -rf ${PACKAGES}/mkdocs/themes/$theme
+  ln -s ${PACKAGES}/material/templates ${PACKAGES}/mkdocs/themes/$theme
+done
+git config --system --add safe.directory /docs
+git config --system --add safe.directory /site
+RUN_END
+
+# Clean: apk, python modules, folders
+RUN <<RUN_END
+apk del \
+  .build \
+  python3-idle
+/tmp/uv pip uninstall --system \
+  pip \
+  idlelib
+rm -rf \
+  /tmp/* \
+  /usr/include/* \
+  /usr/local/include/* \
+  /var/cache/*
+RUN_END
 
 #  From empty image
 FROM scratch 
