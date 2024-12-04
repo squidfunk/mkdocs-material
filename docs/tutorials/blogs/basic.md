@@ -254,7 +254,11 @@ attribute in the page header:
     its publication date is prior to other posts. A small pin icon shows that the
     post has been pinned.
 
-### Related links <!-- md:sponsors -->
+### Related links
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.23.0 -->
+<!-- md:flag experimental -->
 
 When your blog is part of a wider site such as technical documentation, you
 will want to provide links from blog posts into your other content. One way you
@@ -306,7 +310,12 @@ The plugin renders related links in the left sidebar on screens that are wide
 enough and at the bottom of the post on narrow screens. Change the size of your
 browser window to see this in action.
 
-## Meta plugin <!-- md:sponsors -->
+## Meta plugin
+
+<!-- md:sponsors -->
+<!-- md:version insiders-4.21.0 -->
+<!-- md:plugin [meta] – built-in -->
+<!-- md:flag experimental -->
 
 The Meta plugin is available in the [Insiders Edition].
 It helps simplify the management of metadata that is common to a group of
@@ -355,6 +364,7 @@ output to the files to figure out which posts are drafts.)
     while in the version built for publication it does not appear. To move a
     post from draft status to published, simply move it outside `drafts/`.
 
+[meta]: ../../plugins/meta.md
 [Insiders Edition]: ../../insiders/index.md
 
 ## What's next?
