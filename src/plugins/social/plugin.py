@@ -82,7 +82,8 @@ class SocialPlugin(BasePlugin[SocialConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
-        self.config.cards = self.config.enabled
+        if not self.config.enabled:
+            self.config.cards = False
         if not self.config.cards:
             return
 
