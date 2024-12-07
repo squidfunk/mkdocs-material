@@ -1,4 +1,4 @@
-# Creating your site
+# Creating my sitea
 
 After you've [installed] Material for MkDocs, you can bootstrap your project
 documentation using the `mkdocs` executable. Go to the directory where you want
