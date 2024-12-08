@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.48 <small>December 8, 2024</small> { id="9.5.48" }
+
+- Fixed #7774: Disabling social cards doesn't work
+
 ### 9.5.47 <small>December 1, 2024</small> { id="9.5.47" }
 
 - Fixed #7750: Numeric tags break search

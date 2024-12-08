@@ -1,3 +1,7 @@
+mkdocs-material-9.5.48 (2024-12-08)
+
+  * Fixed #7774: Disabling social cards doesn't work
+
 mkdocs-material-9.5.47 (2024-12-01)
 
   * Fixed #7750: Numeric tags break search
