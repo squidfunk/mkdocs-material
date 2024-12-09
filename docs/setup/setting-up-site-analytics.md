@@ -98,8 +98,8 @@ integrated with the [cookie consent] feature[^2].
 
     1.  Go to your Google Analytics __dashboard__
 
-    2.  Go to the __configure__ page on the left hand menu, then select
-        __custom definitions__
+    2.  Go to the __Admin__ page on the left hand menu (at the bottom), then select
+        __custom definitions__ in the __Data display__ card
 
     3.  Click the __custom metrics__ tab and then __create custom metrics__,
         enter the following values:
