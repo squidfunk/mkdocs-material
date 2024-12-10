@@ -48,6 +48,11 @@ marker {
  * Rules: flowcharts
  * ------------------------------------------------------------------------- */
 
+/* Flowchart title */
+.flowchartTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
+
 /* Flowchart node label */
 .label {
   color: var(--md-mermaid-label-fg-color);
@@ -112,6 +117,11 @@ g #flowchart-pointEnd {
 /* ----------------------------------------------------------------------------
  * Rules: class diagrams
  * ------------------------------------------------------------------------- */
+
+/* Class diagram title */
+.classDiagramTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* Class group node */
 g.classGroup line,
@@ -181,6 +191,11 @@ defs #classDiagram-aggregationEnd {
 /* ----------------------------------------------------------------------------
  * Rules: state diagrams
  * ------------------------------------------------------------------------- */
+
+/* State diagram title */
+.statediagramTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* State group node */
 g.stateGroup rect {
@@ -269,6 +284,11 @@ defs #statediagram-barbEnd {
  * Rules: entity-relationship diagrams
  * ------------------------------------------------------------------------- */
 
+/* Entity-relationship diagram title */
+.entityTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
+
 /* Attribute box */
 .attributeBoxEven,
 .attributeBoxOdd {
@@ -327,6 +347,11 @@ defs #ZERO_OR_MORE_END circle {
 /* ----------------------------------------------------------------------------
  * Rules: sequence diagrams
  * ------------------------------------------------------------------------- */
+
+/* Sequence diagram title */
+text:not([class]):last-child {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* Sequence actor */
 .actor {
