@@ -228,7 +228,7 @@ other providers:
 
   [GitLab Pages]: https://gitlab.com/pages
   [GitLab CI]: https://docs.gitlab.com/ee/ci/
-  [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
+  [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable
   [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
   [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
   [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-mkdocs-material-cloudflare/
