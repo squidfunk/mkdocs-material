@@ -147,6 +147,8 @@ file system:
 - [Versioning]
 - [Comment systems]
 
+The plugin deactivates also the [use_direcotory_urls](https://www.mkdocs.org/user-guide/configuration/#use_directory_urls) setting so that the documentation can be viewed offline. We therefore recommend only activating the offline plugin if it is necessary. See [here](https://squidfunk.github.io/mkdocs-material/plugins/offline/#config.enabled)
+
   [Instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [Site analytics]: ../setup/setting-up-site-analytics.md
   [Versioning]: ../setup/setting-up-versioning.md
