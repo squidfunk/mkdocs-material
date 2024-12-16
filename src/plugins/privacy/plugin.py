@@ -268,6 +268,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         if extension not in self.assets_expr_map:
             return []
 
+        # Skip if source path is not set, which might be true for generated
+        # files or for files that were added programatically in plugins
+        if not initiator.abs_src_path:
+            return []
+
         # Find and extract all external asset URLs
         expr = re.compile(self.assets_expr_map[extension], flags = re.I | re.M)
         with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
