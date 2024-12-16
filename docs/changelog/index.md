@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.5.49 <small>December 16, 2024</small> { id="9.5.49" }
+
+- Adjusted title color in dark mode for all supported Mermaid.js diagrams
+- Fixed #7803: Privacy plugin crashes on generated files
+- Fixed #7781: Mermaid.js flow chart title not visible in dark mode
+
 ### 9.5.48 <small>December 8, 2024</small> { id="9.5.48" }
 
 - Fixed #7774: Disabling social cards doesn't work

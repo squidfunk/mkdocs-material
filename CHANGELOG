@@ -1,3 +1,9 @@
+mkdocs-material-9.5.49 (2024-12-16)
+
+  * Adjusted title color in dark mode for all supported Mermaid.js diagrams
+  * Fixed #7803: Privacy plugin crashes on generated files
+  * Fixed #7781: Mermaid.js flow chart title not visible in dark mode
+
 mkdocs-material-9.5.48 (2024-12-08)
 
   * Fixed #7774: Disabling social cards doesn't work
