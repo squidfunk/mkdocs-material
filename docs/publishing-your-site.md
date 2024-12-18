@@ -168,6 +168,9 @@ contents:
 === "Material for MkDocs"
 
     ``` yaml
+    stages:
+      - deploy # (1)!
+
     pages:
       stage: deploy
       image: python:latest
@@ -181,6 +184,7 @@ contents:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
     ```
 
+    1.  Add your other `stages` here 
 === "Insiders"
 
     ``` yaml
