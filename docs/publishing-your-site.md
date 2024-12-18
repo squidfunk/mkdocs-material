@@ -184,6 +184,9 @@ contents:
 === "Insiders"
 
     ``` yaml
+    stages:
+      - deploy # (2)!
+    
     pages:
       stage: deploy
       image: python:latest
@@ -200,6 +203,8 @@ contents:
     1.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
+
+    2.  Add your other `stages` here 
 
 Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
