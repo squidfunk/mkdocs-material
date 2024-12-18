@@ -221,17 +221,17 @@ Don't let your users wait – get incredible value with a small footprint by usi
 one of the fastest themes available with excellent performance, yielding optimal
 search engine rankings and happy users that return.
 
-### Built for everyone
+### Maintain ownership
 
-Make accessibility a priority – users can navigate your documentation with touch
-devices, keyboards, and screen readers. Semantic markup ensures that your
-documentation works for everyone.
+Own your documentation's complete sources and outputs, guaranteeing both
+integrity and security – no need to entrust the backbone of your product
+knowledge to third-party platforms. Retain full control.
 
 ### Open Source
 
-Trust 20,000+ users – choose a mature and actively maintained solution built
-with state-of-the-art Open Source technologies. Keep ownership of your content
-without fear of vendor lock-in. Licensed under MIT.
+You're in good company – choose a mature and actively maintained solution built
+with state-of-the-art Open Source technologies, trusted by more than 50.000
+individuals and organizations. Licensed under MIT.
 
 ## Quick start
 
