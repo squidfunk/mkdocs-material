@@ -15,7 +15,7 @@ discusses the [conventions] used in this documentation.
 
 - __Works on all devices__: Serve your documentation with confidence – the
   underlying layout automatically adapts to perfectly fit the available screen
-  estate, no matter the type or size of the viewing device.
+  estate, no matter the type or size of the viewing device. Desktop. Tablet. Mobile. All great.
 
 - __Made to measure__: Change the colors, fonts, language, icons, logo and much
   more with a few lines of configuration. Material for MkDocs can be easily
