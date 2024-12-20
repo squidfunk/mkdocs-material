@@ -240,7 +240,7 @@ attribute in the page header:
 
     Add the `pin` attribute to your first blog post:
 
-    ```hl_lines="5"
+    ```hl_lines="6"
     ---
     date:
       created: 2023-12-31
