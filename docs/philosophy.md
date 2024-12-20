@@ -30,6 +30,6 @@ discusses the [conventions] used in this documentation.
   documentation with touch devices, keyboard, and screen readers. Semantic
   markup ensures that your documentation works for everyone.
 
-- __Open Source__: Trust 55,000+ users – choose a mature and well-funded
+- __Open Source__: Trust 50,000+ users – choose a mature and well-funded
   solution built with state-of-the-art Open Source technologies. Keep ownership
   of your content without fear of vendor lock-in. Licensed under MIT.
