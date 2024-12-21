@@ -119,6 +119,8 @@ extra:
       link: https://hub.docker.com/r/squidfunk/mkdocs-material/
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/mkdocs-material/
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/squidfunk.bsky.social
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@squidfunk
     - icon: fontawesome/brands/x-twitter
