@@ -223,6 +223,7 @@ other providers:
 - [:simple-vercel: Vercel][Vercel]
 - [:simple-codeberg: Codeberg Pages][Codeberg Pages]
 - [:simple-scaleway: Scaleway][Scaleway]
+- [:simple-readthedocs: Read the Docs][Read the Docs]
 
 </div>
 
@@ -238,4 +239,4 @@ other providers:
   [Vercel]: https://deborahwrites.com/guides/deploy-mkdocs-material-vercel/
   [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
   [Scaleway]: https://www.scaleway.com/en/docs/tutorials/using-bucket-website-with-mkdocs/
-
+  [Read the Docs]: https://docs.readthedocs.io/en/stable/intro/mkdocs.html
