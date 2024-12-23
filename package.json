@@ -68,7 +68,7 @@
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
     "autoprefixer": "^10.4.20",
-    "chokidar": "^4.0.1",
+    "chokidar": "^4.0.3",
     "cssnano": "5.1.0",
     "esbuild": "^0.24.0",
     "eslint": "8.57.0",
