@@ -59,7 +59,6 @@
 
       // Button with logo, pointing to `config.site_url`
       &.md-logo {
-
         // Image or icon
         :is(img, svg) {
           display: block;
@@ -96,7 +95,6 @@
 
     // Active link
     .md-nav__item &--active {
-
       // Also enable color transitions on inline code blocks
       &,
       code {
@@ -184,7 +182,6 @@
 
   // [tablet -]: Layered navigation
   @include break-to-device(tablet) {
-
     // Primary and nested navigation
     &--primary,
     &--primary & {
@@ -200,7 +197,6 @@
 
     // Primary navigation
     &--primary {
-
       // Navigation title and item
       :is(.md-nav__title, .md-nav__item) {
         font-size: px2rem(16px);
@@ -248,8 +244,7 @@
           touch-action: pan-y;
           scroll-snap-type: y mandatory;
           background-color: var(--md-default-bg-color);
-          box-shadow:
-            0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
+          box-shadow: 0 px2rem(1px) 0 var(--md-default-fg-color--lightest) inset;
 
           // Omit border on first child
           > :first-child {
@@ -334,7 +329,6 @@
 
       // Flip icon vertically
       .md-nav__icon {
-
         // Adjust for right-to-left languages
         [dir="rtl"] &::after {
           transform: scale(-1);
@@ -343,7 +337,6 @@
 
       // Table of contents contained in primary navigation
       .md-nav--secondary {
-
         // Navigation on level 2-6
         .md-nav {
           position: static;
@@ -381,9 +374,8 @@
     &__toggle ~ & {
       display: flex;
       opacity: 0;
-      transition:
-        transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
-        opacity   125ms 50ms;
+      transition: transform 250ms cubic-bezier(0.8, 0, 0.6, 1),
+        opacity 125ms 50ms;
       transform: translateX(100%);
 
       // Adjust for right-to-left languages
@@ -395,9 +387,8 @@
     // Show nested navigation when toggle is active
     &__toggle:checked ~ & {
       opacity: 1;
-      transition:
-        transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        opacity   125ms 125ms;
+      transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 125ms 125ms;
       transform: translateX(0);
 
       // Navigation list
@@ -410,7 +401,6 @@
 
   // [tablet portrait -]: Layered navigation with table of contents
   @include break-to-device(tablet portrait) {
-
     // Show link to table of contents
     &--primary &__link[for="__toc"] {
       display: flex;
@@ -442,7 +432,6 @@
 
   // [tablet landscape]: Layered navigation with table of contents
   @include break-at-device(tablet landscape) {
-
     // Show link to integrated table of contents
     &--integrated &__link[for="__toc"] {
       display: flex;
@@ -470,7 +459,6 @@
 
     // Table of contents
     &--secondary {
-
       // Navigation title
       .md-nav__title {
         position: sticky;
@@ -515,7 +503,6 @@
 
     // Primary navigation
     &--primary {
-
       // Navigation title
       .md-nav__title {
         position: sticky;
@@ -558,14 +545,13 @@
       grid-template-rows: 0fr;
       visibility: collapse;
       opacity: 0;
-      transition:
-        grid-template-rows 250ms cubic-bezier(0.86, 0, 0.07, 1),
-        opacity            250ms,
-        visibility           0ms 250ms;
+      transition: grid-template-rows 250ms cubic-bezier(0.86, 0, 0.07, 1),
+        opacity 250ms, visibility 0ms 250ms;
 
       // Navigation list
       > .md-nav__list {
         overflow: hidden;
+        border-left: 2px solid lightgrey;
       }
     }
 
@@ -574,10 +560,8 @@
       grid-template-rows: 1fr;
       visibility: visible;
       opacity: 1;
-      transition:
-        grid-template-rows 250ms cubic-bezier(0.86, 0, 0.07, 1),
-        opacity            150ms 100ms,
-        visibility           0ms;
+      transition: grid-template-rows 250ms cubic-bezier(0.86, 0, 0.07, 1),
+        opacity 150ms 100ms, visibility 0ms;
     }
 
     // Disable transition for expanded navigation
@@ -677,7 +661,6 @@
 
     // Modifier for when navigation tabs are rendered
     &--lifted {
-
       // Hide site title
       > .md-nav__title {
         display: none;
@@ -734,7 +717,6 @@
 
     // Modifier for when table of contents is rendered in primary navigation
     &--integrated > .md-nav__list > .md-nav__item--active {
-
       // Show integrated table of contents
       .md-nav--secondary {
         display: block;
