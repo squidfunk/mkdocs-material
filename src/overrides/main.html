@@ -25,14 +25,11 @@
 <!-- Custom front matter -->
 {% block extrahead %}
 
-  <!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
-  <link
-    rel="stylesheet"
-    href="{{ 'assets/stylesheets/custom.css' | url }}"
-  />
+<!-- Extra style sheets (can't be set in mkdocs.yml due to content hash) -->
+<link rel="stylesheet" href="{{ 'assets/stylesheets/custom.css' | url }}" />
 {% endblock %}
 
-<!-- Announcement bar -->
+<!-- Announcement bar 
 {% block announce %}
   For updates follow <strong>@squidfunk</strong> on
   <a rel="me" href="https://fosstodon.org/@squidfunk">
@@ -49,11 +46,10 @@
     <strong>Twitter</strong>
   </a>
 {% endblock %}
-
+-->
 <!-- Theme-related JavaScript -->
-{% block scripts %}
-  {{ super() }}
+{% block scripts %} {{ super() }}
 
-  <!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
-  <script src="{{ 'assets/javascripts/custom.js' | url }}"></script>
+<!-- Extra JavaScript (can't be set in mkdocs.yml due to content hash) -->
+<script src="{{ 'assets/javascripts/custom.js' | url }}"></script>
 {% endblock %}
