@@ -17,5 +17,10 @@
     "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
     "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
     "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
-  ]
+  ],
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#3E2247",
+    "titleBar.activeBackground": "#573064",
+    "titleBar.activeForeground": "#FBF9FC"
+  }
 }
