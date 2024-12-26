@@ -62,203 +62,35 @@
 
 <!-- Render navigation item -->
 {% macro render(nav_item, path, level, index = '') %}
-
-  <!-- Determine classes -->
   {% set class = "md-nav__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
   {% endif %}
 
-  <!-- Determine active page for paginated views -->
-  {% if nav_item.pages %}
-    {% if page in nav_item.pages %}
-      {% set nav_item = page %}
-    {% endif %}
+  <!-- Add class for level 1 items -->
+  {% if level == 1 %}
+    {% set class = class ~ " md-nav__item--level-1" %}
   {% endif %}
 
-  <!-- Navigation item with nested items -->
-  {% if nav_item.children %}
-
-    <!-- Determine all nested items that are index pages -->
-    {% set indexes = [] %}
-    
-    {% if "navigation.indexes" in features %}
-      {% for nav_item in nav_item.children %}
-        {% if nav_item.is_index and not index is defined %}
-          {% set _ = indexes.append(nav_item) %}
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-
-    <!-- Navigation tabs -->
-    {% if "navigation.tabs" in features %}
-
-      <!-- Render 1st level active item as section -->
-      {% if level == 1 and nav_item.active %}
-        {% set class = class ~ " md-nav__item--section" %}
-        {% set is_section = true %}
-      {% endif %}
-
-      <!-- Navigation tabs + sections -->
-      {% if "navigation.sections" in features %}
-
-        <!-- Render 2nd level items with nested items as sections -->
-        {% if level == 2 and nav_item.parent.active %}
-          {% set class = class ~ " md-nav__item--section" %}
-          {% set is_section = true %}
-        {% endif %}
-      {% endif %}
-
-    <!-- Navigation sections -->
-    {% elif "navigation.sections" in features %}
-
-      <!-- Render 1st level items with nested items as sections -->
-      {% if level == 1 %}
-        {% set class = class ~ " md-nav__item--section" %}
-        {% set is_section = true %}
-      {% endif %}
-    {% endif %}
-
-    <!-- Navigation pruning -->
-    {% if "navigation.prune" in features %}
-
-      <!-- Prune item if it is not a section and not active -->
-      {% if not is_section and not nav_item.active %}
-        {% set class = class ~ " md-nav__item--pruned" %}
-        {% set is_pruned = true %}
-      {% endif %}
-    {% endif %}
-
-    <!-- Nested navigation item -->
-    <li class="{{ class }} md-nav__item--nested">
-      {% if not is_pruned %}
-        {% set checked = "checked" if nav_item.active %}
-
-        <!-- Determine checked and indeterminate state -->
-        {% if "navigation.expand" in features and not checked %}
-          {% set indeterminate = "md-toggle--indeterminate" %}
-        {% endif %}
-
-        <!-- Active checkbox expands items contained within nested section -->
-        <input
-          class="md-nav__toggle md-toggle {{ indeterminate }}"
-          type="checkbox"
-          id="{{ path }}"
-          {{ checked }}
-        />
-
-        <!-- Toggle to expand nested items -->
-        {% if not indexes %}
-          {% set tabindex = "0" if not is_section %}
-          <label
-            class="md-nav__link"
-            for="{{ path }}"
-            id="{{ path }}_label"
-            tabindex="{{ tabindex }}"
-          >
-            {{ render_content(nav_item, nav_item, index) }}
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-
-        <!-- Toggle to expand nested items with link to index page -->
-        {% else %}
-          {% set index = indexes | first %}
-          {% set class = "md-nav__link--active" if index == page %}
-          <div class="md-nav__link md-nav__container">
-            <a
-              href="{{ index.url | url }}"
-              class="md-nav__link {{ class }}"
-            >
-              {{ render_content(index, nav_item, index) }}
-            </a>
-
-            <!-- Only render toggle if there's at least one more page -->
-            {% if nav_item.children | length > 1 %}
-              {% set tabindex = "0" if not is_section %}
-              <label
-                class="md-nav__link {{ class }}"
-                for="{{ path }}"
-                id="{{ path }}_label"
-                tabindex="{{ tabindex }}"
-              >
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            {% endif %}
-          </div>
-        {% endif %}
-
-        <!-- Nested navigation -->
-        <nav
-          class="md-nav"
-          data-md-level="{{ level }}"
-          aria-labelledby="{{ path }}_label"
-          aria-expanded="{{ nav_item.active | tojson }}"
-        >
-          <label class="md-nav__title" for="{{ path }}">
-            <span class="md-nav__icon md-icon"></span>
-            {{ nav_item.title }}
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-
-            <!-- Nested navigation item -->
-            {% for nav_item in nav_item.children %}
-              {% if not indexes or nav_item != indexes | first %}
-                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1, loop.index) }}
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </nav>
-
-      <!-- Pruned navigation item -->
-      {% else %}
-        {{ render_pruned(nav_item) }}
-      {% endif %}
-    </li>
-
-  <!-- Currently active page -->
-  {% elif nav_item == page %}
-    <li class="{{ class }}">
-      {% set toc = page.toc %}
-
-      <!-- State toggle -->
-      <input
-        class="md-nav__toggle md-toggle"
-        type="checkbox"
-        id="__toc"
-      />
-
-      <!-- Hack: see partials/toc.html for more information -->
-      {% set first = toc | first %}
-      {% if first and first.level == 1 %}
-        {% set toc = first.children %}
-      {% endif %}
-
-      <!-- Navigation link to table of contents -->
-      {% if toc %}
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          {{ render_content(nav_item, nav_item, index) }}
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      {% endif %}
-      <a
-        href="{{ nav_item.url | url }}"
-        class="md-nav__link md-nav__link--active"
-      >
-        {{ render_content(nav_item, nav_item, index) }}
-      </a>
-
-      <!-- Table of contents -->
-      {% if toc %}
-        {% include "partials/toc.html" %}
-      {% endif %}
-    </li>
+  <!-- Determine the index based on the level -->
+  {% if level == 1 %}
+    {% set level_index = '1' %}
+  {% else %}
+    {% set level_index = '2' %}
+  {% endif %}
 
   <!-- Navigation item -->
-  {% else %}
-    <li class="{{ class }}">
-      <a href="{{ nav_item.url | url }}" class="md-nav__link">
-        {{ render_content(nav_item, nav_item, index) }}
-      </a>
-    </li>
+  <li class="{{ class }}">
+    <a href="{{ nav_item.url | url }}" class="md-nav__link">
+      {{ render_content(nav_item, nav_item, level_index) }}  {# Pass the level index to render_content #}
+    </a>
+  </li>
+
+  {% if nav_item.children %}
+    <ul>
+      {% for child in nav_item.children %}
+        {{ render(child, path ~ "_" ~ loop.index, level + 1) }}  {# Increment level for children #}
+      {% endfor %}
+    </ul>
   {% endif %}
 {% endmacro %}

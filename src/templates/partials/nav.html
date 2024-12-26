@@ -41,7 +41,7 @@
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
       {% set path = "__nav_" ~ loop.index %}
-      {{ item.render(nav_item, path, 1, loop.index) }}
+      {{ item.render(nav_item, path, 1) }}
     {% endfor %}
   </ul>
 </nav>

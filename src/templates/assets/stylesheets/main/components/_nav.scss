@@ -33,6 +33,13 @@
 
 // ----------------------------------------------------------------------------
 
+.md-nav__item--level-1 {
+  font-weight: bold;  // Make text bold
+  text-decoration: underline;  // Underline the text
+  background-color: green;  // Set background color to green
+  color: white;  // Optional: Change text color for better contrast
+}
+
 // Navigation
 .md-nav {
   font-size: px2rem(14px);
