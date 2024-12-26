@@ -33,7 +33,7 @@ theme:
     - content.tooltips
     # - header.autohide
     # - navigation.expand
-    - navigation.footer
+    # - navigation.footer
     - navigation.indexes
     # - navigation.instant
     # - navigation.instant.prefetch
