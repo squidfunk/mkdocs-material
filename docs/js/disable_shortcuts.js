@@ -14,9 +14,9 @@ document.addEventListener(
   true // Capture in the capture phase
 );
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Re-apply styles when system preference changes
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", applyPinkHeader);
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Re-apply styles when system preference changes
+//   window
+//     .matchMedia("(prefers-color-scheme: dark)")
+//     .addEventListener("change", applyPinkHeader);
+// });
