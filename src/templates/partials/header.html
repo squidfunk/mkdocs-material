@@ -72,6 +72,24 @@
       </div>
     </div>
 
+     <!-- Button to open search modal -->
+     {% if "material/search" in config.plugins %}
+     <label class="md-header__button md-icon" for="__search">
+       {% set icon = config.theme.icon.search or "material/magnify" %}
+       {% include ".icons/" ~ icon ~ ".svg" %}
+     </label>
+
+     <!-- Search interface -->
+     {% include "partials/search.html" %}
+   {% endif %}
+
+      <!-- Repository information -->
+      {% if config.repo_url %}
+      <div class="md-header__source">
+        {% include "partials/source.html" %}
+      </div>
+    {% endif %}
+    
     <!-- Color palette toggle -->
     {% if config.theme.palette %}
       {% if not config.theme.palette is mapping %}
@@ -89,23 +107,9 @@
       {% include "partials/alternate.html" %}
     {% endif %}
 
-    <!-- Button to open search modal -->
-    {% if "material/search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% set icon = config.theme.icon.search or "material/magnify" %}
-        {% include ".icons/" ~ icon ~ ".svg" %}
-      </label>
+   
 
-      <!-- Search interface -->
-      {% include "partials/search.html" %}
-    {% endif %}
-
-    <!-- Repository information -->
-    {% if config.repo_url %}
-      <div class="md-header__source">
-        {% include "partials/source.html" %}
-      </div>
-    {% endif %}
+ 
   </nav>
 
   <!-- Navigation tabs (sticky) -->
