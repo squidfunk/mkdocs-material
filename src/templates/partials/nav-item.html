@@ -17,7 +17,7 @@
 {% endmacro %}
 
 <!-- Render navigation link content -->
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref = nav_item, index = '') %}
 
   <!-- Navigation link icon -->
   {% if nav_item.is_page and nav_item.meta.icon %}
@@ -26,7 +26,11 @@
 
   <!-- Navigation link title -->
   <span class="md-ellipsis">
-    {{ ref.title }}
+    {% if index %}
+      {{ index }}. {{ ref.title }}
+    {% else %}
+      {{ ref.title }}
+    {% endif %}
   </span>
 
   <!-- Navigation link status -->
@@ -57,7 +61,7 @@
 {% endmacro %}
 
 <!-- Render navigation item -->
-{% macro render(nav_item, path, level) %}
+{% macro render(nav_item, path, level, index = '') %}
 
   <!-- Determine classes -->
   {% set class = "md-nav__item" %}
@@ -77,6 +81,7 @@
 
     <!-- Determine all nested items that are index pages -->
     {% set indexes = [] %}
+    
     {% if "navigation.indexes" in features %}
       {% for nav_item in nav_item.children %}
         {% if nav_item.is_index and not index is defined %}
@@ -151,7 +156,7 @@
             id="{{ path }}_label"
             tabindex="{{ tabindex }}"
           >
-            {{ render_content(nav_item) }}
+            {{ render_content(nav_item, nav_item, index) }}
             <span class="md-nav__icon md-icon"></span>
           </label>
 
@@ -164,7 +169,7 @@
               href="{{ index.url | url }}"
               class="md-nav__link {{ class }}"
             >
-              {{ render_content(index, nav_item) }}
+              {{ render_content(index, nav_item, index) }}
             </a>
 
             <!-- Only render toggle if there's at least one more page -->
@@ -198,7 +203,7 @@
             <!-- Nested navigation item -->
             {% for nav_item in nav_item.children %}
               {% if not indexes or nav_item != indexes | first %}
-                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1, loop.index) }}
               {% endif %}
             {% endfor %}
           </ul>
@@ -231,7 +236,7 @@
       <!-- Navigation link to table of contents -->
       {% if toc %}
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          {{ render_content(nav_item) }}
+          {{ render_content(nav_item, nav_item, index) }}
           <span class="md-nav__icon md-icon"></span>
         </label>
       {% endif %}
@@ -239,7 +244,7 @@
         href="{{ nav_item.url | url }}"
         class="md-nav__link md-nav__link--active"
       >
-        {{ render_content(nav_item) }}
+        {{ render_content(nav_item, nav_item, index) }}
       </a>
 
       <!-- Table of contents -->
@@ -252,7 +257,7 @@
   {% else %}
     <li class="{{ class }}">
       <a href="{{ nav_item.url | url }}" class="md-nav__link">
-        {{ render_content(nav_item) }}
+        {{ render_content(nav_item, nav_item, index) }}
       </a>
     </li>
   {% endif %}

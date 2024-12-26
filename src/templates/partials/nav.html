@@ -1,7 +1,7 @@
 {% import "partials/nav-item.html" as item with context %}
 
 <!-- Determine classes -->
-{% set class = "md-nav md-nav--primary" %}
+{% set class = "md-nav md-nav--primary 2" %}
 {% if "navigation.tabs" in features %}
   {% set class = class ~ " md-nav--lifted" %}
 {% endif %}
@@ -16,7 +16,7 @@
   data-md-level="0"
 >
 
-  <!-- Site title -->````
+  <!-- Site title -->
   <label class="md-nav__title" for="__drawer">
     <a
       href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}"
@@ -41,7 +41,7 @@
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}
       {% set path = "__nav_" ~ loop.index %}
-      {{ item.render(nav_item, path, 1) }}
+      {{ item.render(nav_item, path, 1, loop.index) }}
     {% endfor %}
   </ul>
 </nav>
