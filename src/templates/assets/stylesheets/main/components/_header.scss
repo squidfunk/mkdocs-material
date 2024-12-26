@@ -36,9 +36,9 @@
   background-color: var(--md-primary-fg-color);
   // Hack: reduce jitter by adding a transparent box shadow of the same size
   // so the size of the layer doesn't change during animation
-  box-shadow:
-    0 0           px2rem(4px) rgba(0, 0, 0, 0),
-    0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
+  //box-shadow:
+  //  0 0           px2rem(4px) rgba(0, 0, 0, 0),
+  //  0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0);
 
   // [print]: Hide header
   @media print {
@@ -54,14 +54,14 @@
   }
 
   // Header in shadow state, i.e. shadow is visible
-  &--shadow {
-    box-shadow:
-      0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
-      0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
-    transition:
-      transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
-      box-shadow 250ms;
-  }
+  // &--shadow {
+  //   box-shadow:
+  //     0 0           px2rem(4px) rgba(0, 0, 0, 0.1),
+  //     0 px2rem(4px) px2rem(8px) rgba(0, 0, 0, 0.2);
+  //   transition:
+  //     transform  250ms cubic-bezier(0.1, 0.7, 0.1, 1),
+  //     box-shadow 250ms;
+  // }
 
   // Header wrapper
   &__inner {
