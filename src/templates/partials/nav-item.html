@@ -18,7 +18,6 @@
 
 <!-- Render navigation link content -->
 {% macro render_content(nav_item, ref = nav_item, index = '') %}
-
   <!-- Navigation link icon -->
   {% if nav_item.is_page and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
@@ -26,11 +25,7 @@
 
   <!-- Navigation link title -->
   <span class="md-ellipsis">
-    {% if index %}
-      {{ index }}. {{ ref.title }}
-    {% else %}
-      {{ ref.title }}
-    {% endif %}
+    {{ ref.title }}
   </span>
 
   <!-- Navigation link status -->
@@ -72,24 +67,17 @@
     {% set class = class ~ " md-nav__item--level-1" %}
   {% endif %}
 
-  <!-- Determine the index based on the level -->
-  {% if level == 1 %}
-    {% set level_index = '1' %}
-  {% else %}
-    {% set level_index = '2' %}
-  {% endif %}
-
   <!-- Navigation item -->
   <li class="{{ class }}">
     <a href="{{ nav_item.url | url }}" class="md-nav__link">
-      {{ render_content(nav_item, nav_item, level_index) }}  {# Pass the level index to render_content #}
+      {{ render_content(nav_item, nav_item) }}
     </a>
   </li>
 
   {% if nav_item.children %}
     <ul>
       {% for child in nav_item.children %}
-        {{ render(child, path ~ "_" ~ loop.index, level + 1) }}  {# Increment level for children #}
+        {{ render(child, path ~ "_" ~ loop.index, level + 1) }}
       {% endfor %}
     </ul>
   {% endif %}
