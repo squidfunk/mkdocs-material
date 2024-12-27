@@ -351,7 +351,9 @@ output to the files to figure out which posts are drafts.)
         ```
 
     === "Windows"
-        TODO
+        ```powershell
+        $ mkdir docs\blog\posts\drafts
+        ```
 
     Now, within this folder, crate a file `.meta.yml` that contains:
 
