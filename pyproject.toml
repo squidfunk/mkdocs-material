@@ -59,7 +59,7 @@ recommended = [
   "mkdocs-rss-plugin~=1.6"
 ]
 git = [
-  "mkdocs-git-committers-plugin-2~=1.1",
+  "mkdocs-git-committers-plugin-2>=1.1,<3",
   "mkdocs-git-revision-date-localized-plugin~=1.2,>=1.2.4"
 ]
 imaging = [
