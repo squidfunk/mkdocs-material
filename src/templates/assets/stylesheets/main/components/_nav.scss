@@ -466,6 +466,8 @@
     &--secondary {
       // Navigation title
       .md-nav__title {
+        margin-top: 18px !important;
+
         position: sticky;
         top: 0;
         // Hack: because of the hack that we need to make .md-ellipsis work in
