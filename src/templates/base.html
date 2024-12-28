@@ -278,14 +278,14 @@
       <!-- Hero teaser -->
       {% block hero %}{% endblock %}
 
-      <!-- Navigation tabs (collapsing) -->
+      <!-- Navigation tabs (collapsing) 
       {% block tabs %}
         {% if "navigation.tabs.sticky" not in features %}
           {% if "navigation.tabs" in features %}
             {% include "partials/tabs.html" %}
           {% endif %}
         {% endif %}
-      {% endblock %}
+      {% endblock %} -->
 
       <!-- Main area -->
       <main class="md-main" data-md-component="main">
@@ -360,15 +360,15 @@
       {% endblock %}
     </div>
 
-    <!-- Dialog -->
+    <!-- Dialog 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
-    </div>
+    </div> -->
 
-    <!-- Progress indicator -->
+    <!-- Progress indicator 
     {% if "navigation.instant.progress" in features %}
       {% include "partials/progress.html" %}
-    {% endif %}
+    {% endif %} -->
 
     <!-- Consent -->
     {% if config.extra.consent %}
