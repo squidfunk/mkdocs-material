@@ -42,7 +42,6 @@
 
       // Sidebar with navigation is visible
       .md-sidebar--primary:not([hidden]) ~ .md-content > & {
-        margin-inline-start: px2rem(24px);
       }
 
       // Sidebar with table of contents is visible
