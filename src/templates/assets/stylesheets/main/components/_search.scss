@@ -34,7 +34,7 @@
 // Search
 .md-search {
   position: relative;
-
+  margin-left: 20px !important;
   // [tablet landscape +]: Header-embedded search
   @include break-from-device(tablet landscape) {
     padding: px2rem(4px) 0;
@@ -129,6 +129,7 @@
   &__inner {
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
+    width: 510px !important;
 
     // [tablet portrait -]: Search modal
     @include break-to-device(tablet portrait) {
@@ -460,7 +461,7 @@
 
     // [tablet landscape]: Set fixed width to omit unnecessary reflow
     @include break-at-device(tablet landscape) {
-      width: px2rem(468px);
+      width: 800px;
     }
 
     // [screen +]: Set fixed width to omit unnecessary reflow
