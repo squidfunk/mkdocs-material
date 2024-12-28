@@ -181,8 +181,9 @@
   &__title {
     flex-grow: 1;
     height: px2rem(48px);
-    font-size: px2rem(18px);
+    font-size: px2rem(24px);
     line-height: px2rem(48px);
+    margin-top: px2rem(10px);
 
     // Header title in active state, i.e. page title is visible
     &--active .md-header__topic {
