@@ -27,7 +27,7 @@
 // Sidebar
 .md-sidebar {
   position: sticky;
-  top: px2rem(48px);
+  top: 0 !important;
   flex-shrink: 0;
   align-self: flex-start;
   width: px2rem(242px);

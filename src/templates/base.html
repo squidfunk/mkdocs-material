@@ -267,10 +267,7 @@
       </div>
     {% endif %}
 
-    <!-- Header -->
-    {% block header %}
-      {% include "partials/header.html" %}
-    {% endblock %}
+
 
     <!-- Container -->
     <div class="md-container" data-md-component="container">
@@ -305,7 +302,35 @@
                 data-md-type="navigation"
                 {{ hidden }}
               >
+              
                 <div class="md-sidebar__scrollwrap">
+                  
+
+                  
+                  <!-- Header title -->
+                  <div class="md-header__title" data-md-component="header-title">
+                    <div class="md-header__ellipsis">
+                      <div class="md-header__topic">
+                        <span class="md-ellipsis">
+                          <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
+                            {% include "partials/logo.html" %}
+                          </a>
+                          {{ config.site_name }}
+                        </span>
+                      </div>
+                      <div class="md-header__topic" data-md-component="header-topic">
+                        <span class="md-ellipsis">
+                          {% if page.meta and page.meta.title %}
+                            {{ page.meta.title }}
+                          {% else %}
+                            {{ page.title }}
+                          {% endif %}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Real Sidebar Elements -->
                   <div class="md-sidebar__inner">
                     {% include "partials/nav.html" %}
                   </div>
@@ -336,6 +361,12 @@
           <!-- Page content -->
           {% block container %}
             <div class="md-content" data-md-component="content">
+              
+              <!-- Header -->
+              {% block header %}
+                {% include "partials/header.html" %}
+              {% endblock %}
+              
               <article class="md-content__inner md-typeset">
                 {% block content %}
                   {% include "partials/content.html" %}
