@@ -7,8 +7,8 @@ site_description: >-
   minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
-repo_name: HexmosTech/Lama2
-repo_url: https://github.com/HexmosTech/Lama2
+# repo_name: HexmosTech/Lama2
+# repo_url: https://github.com/HexmosTech/Lama2
 
 extra_javascript:
   - js/widgetla.js
