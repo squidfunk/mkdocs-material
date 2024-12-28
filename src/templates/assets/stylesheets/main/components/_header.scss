@@ -100,7 +100,6 @@
 
     // Button with logo, pointing to `config.site_url`
     &.md-logo {
-      padding: px2rem(8px);
       margin: px2rem(4px);
 
       // [tablet -]: Hide button
@@ -182,7 +181,6 @@
   &__title {
     flex-grow: 1;
     height: px2rem(48px);
-    margin-inline: px2rem(20px) px2rem(8px);
     font-size: px2rem(18px);
     line-height: px2rem(48px);
 
