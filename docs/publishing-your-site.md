@@ -205,7 +205,9 @@ Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
 the file to your repository to see the workflow in action.
 
-Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
+Your documentation is not published under `<username>.gitlab.io/<repository>` by default. So that you can access your documentation at `<username>.gitlab.io/<repository>`, you can view the blog [^1] from a community member.
+
+[^1]: Blog post by @niclasheinz [here](https://nh.hobbilies.net/blog/2024/12/deploy-your-material-for-mkdocs-site-on-gitlab-pages-without-unique-domains/)
 
 ## Other
 
