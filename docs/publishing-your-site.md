@@ -205,7 +205,23 @@ Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
 the file to your repository to see the workflow in action.
 
-Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
+Your documentation is not published under `<username>.gitlab.io/<repository>`
+by default since **GitLab 17.4** [^1]. However, if you prefer a cleaner URL 
+structure, such as `<username>.gitlab.io/<repository>`, you need to adjust
+your configuration.
+
+To switch from a unique domain to the traditional URL structure, follow
+these steps:
+
+1.  Locate Your Repository
+2.  Go to **Settings › Pages** in the repository menu.
+3.  In the **Unique domain settings** section, **uncheck** the box labeled
+4.  **Use unique domain**.
+5.  Click **Save changes** to apply the update.
+
+Now you can reach your documentation under `<username>.gitlab.io/<repository>`. 
+
+[^1]: [Release notes for Gitlab 17.4](https://about.gitlab.com/releases/2024/09/19/gitlab-17-4-released/)
 
 ## Other
 
