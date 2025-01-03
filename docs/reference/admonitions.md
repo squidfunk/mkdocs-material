@@ -155,7 +155,7 @@ links, formatting, ...) after the type qualifier:
 
 </div>
 
-### nested admonitions
+### Nested admonitions
 
 You can also include nested admonitions in your documentation. To do this, you
 can use your existing admonitions and indent the desired ones:
