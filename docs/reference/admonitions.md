@@ -155,6 +155,41 @@ links, formatting, ...) after the type qualifier:
 
 </div>
 
+### nested admonitions
+
+By default, the title will equal the type qualifier in titlecase. However, it
+can be changed by adding a quoted string containing valid Markdown (including
+links, formatting, ...) after the type qualifier:
+
+``` markdown title="Nested Admonition"
+!!! note "Outer Note"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+    
+    !!! note "Inner Note"
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+        nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+        massa, nec semper lorem quam in massa.
+```
+
+<div class="result" markdown>
+
+!!! note "Outer Note"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+    
+    !!! note "Inner Note"
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+        nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+        massa, nec semper lorem quam in massa.
+</div>
+
 ### Removing the title
 
 Similar to [changing the title], the icon and title can be omitted entirely by
