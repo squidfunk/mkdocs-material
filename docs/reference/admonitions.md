@@ -157,9 +157,8 @@ links, formatting, ...) after the type qualifier:
 
 ### nested admonitions
 
-By default, the title will equal the type qualifier in titlecase. However, it
-can be changed by adding a quoted string containing valid Markdown (including
-links, formatting, ...) after the type qualifier:
+You can also include nested admonitions in your documentation. To do this, you
+can use your existing admonitions and indent the desired ones:
 
 ``` markdown title="Nested Admonition"
 !!! note "Outer Note"
