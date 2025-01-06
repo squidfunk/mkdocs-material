@@ -258,7 +258,7 @@ Please respect the [terms of the Insiders program] and the spirit of the
 Sponsorware approach used to maintain and develop Material for MkDocs.
 
 [the Insiders repository]: https://github.com/squidfunk/mkdocs-material-insiders/
-[terms of the Insiders program]: https://squidfunk.github.io/mkdocs-material/insiders/faq/sponsoring/#licensing
+[terms of the Insiders program]: https://squidfunk.github.io/mkdocs-material/insiders/license/
 
 ### Setting up a development environment
 
