@@ -230,7 +230,7 @@ indexes, scoped listings, shadow tags, nested tags, and much more.
             - Usage: usage.md
             - Blog:
                 - blog/index.md
-                Tags: blog/tags.md
+                - Tags: blog/tags.md
         ```
 
         The tag index will be appended to the configured page, which you should
