@@ -193,7 +193,7 @@ After applying the customization, add the CSS class to the icon shortcode:
 
 <div class="result" markdown>
 
-:octicons-heart-fill-24:{ .mdx-heart }
+:octicons-heart-fill-24:{ .heart }
 
 </div>
 
