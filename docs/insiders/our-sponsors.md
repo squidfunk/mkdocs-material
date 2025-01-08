@@ -64,6 +64,7 @@ _Be our first gold sponsor!_
 [![Maxar]](https://maxar.com/){ target=_blank title="Maxar" }
 [![EquipmentShare]](https://www.equipmentshare.com/){ target=_blank title="EquipmentShare" }
 [![Hummingbot]](https://hummingbot.org/){ target=_blank title="Hummingbot" }
+[![OctoPerf]](https://octoperf.com/){ target=_blank title="OctoPerf" }
 
 </div>
 
@@ -110,6 +111,7 @@ _Be our first gold sponsor!_
   [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
   [Future]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg
   [SIEMENS]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png
+  [OctoPerf]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png
 
 <hr />
 
