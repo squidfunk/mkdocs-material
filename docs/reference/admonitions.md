@@ -219,7 +219,7 @@ not work for [collapsible blocks]:
 ### Collapsible blocks
 
 When [Details] is enabled and an admonition block is started with `???` instead
-of `!!!`, the admonition is rendered as a collapsible block with a small toggle
+of `!!!`, the admonition is rendered as an expandable block with a small toggle
 on the right side:
 
 ``` markdown title="Admonition, collapsible"
