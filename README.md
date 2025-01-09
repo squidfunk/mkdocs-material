@@ -74,6 +74,9 @@
   <a href="https://opensource.siemens.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png" height="120"
   /></a>
+  <a href="https://pydantic.dev/logfire/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png" height="120"
+  /></a>
 </p>
 <p>&nbsp;</p>
 <p align="center"><strong>Bronze sponsors</strong></p>
