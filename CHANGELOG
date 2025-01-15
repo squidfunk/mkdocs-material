@@ -1,3 +1,7 @@
+mkdocs-material-9.5.49+insiders-4.53.15 (2025-01-15)
+
+  * Fixed #7896: Scoped tags listings not rendering in subsections
+
 mkdocs-material-9.5.49 (2024-12-16)
 
   * Adjusted title color in dark mode for all supported Mermaid.js diagrams
