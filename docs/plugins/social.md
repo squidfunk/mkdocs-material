@@ -669,6 +669,9 @@ Setting an option to `#!yaml null` resets the option.
 
 ### Layouts
 
+<!-- md:sponsors -->
+<!-- md:version insiders-4.33.0 -->
+
 While it is possible and simple to build [custom layouts], the plugin ships
 several predefined layouts, all of which are prefixed with `default`. The
 following layouts are included:
