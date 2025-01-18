@@ -1,0 +1,18 @@
+<div class="md-copyright">
+    {% if config.copyright %}
+      <div class="md-copyright__highlight">
+        {{ config.copyright }}
+      </div>
+    {% endif %}
+  <p>&copy; 2016 - <span id="currentYear"></span> Martin Donath<br>
+        <!-- Copyright and theme information -->
+    Built using <a href="https://squidfunk.github.io/mkdocs-material" target="_blank" rel="noopener">Material for MkDocs</a> 
+  </div>
+  
+      <script>
+          // Get the current year
+          const currentYear = new Date().getFullYear();
+          // Set the current year in the span
+          document.getElementById('currentYear').textContent = currentYear;
+      </script>
+  
