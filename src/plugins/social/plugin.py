@@ -163,7 +163,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         self._image_promises = []
 
     # Create social cards
-    def on_page_markdown(self, markdown, page, config, files):
+    def on_page_content(self, html, page, config, files):
         if not self.config.cards:
             return
 
