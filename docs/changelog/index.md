@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.5.50 <small>January 18, 2025</small> { id="9.5.50" }
+
+- Fixed #7913: Social plugin renders attribute lists in page title
+
 ### 9.5.49 <small>December 16, 2024</small> { id="9.5.49" }
 
 - Adjusted title color in dark mode for all supported Mermaid.js diagrams
