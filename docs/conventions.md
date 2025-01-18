@@ -94,4 +94,4 @@ to provide extended functionality, like for example support for versioning.
 
 ### <!-- md:examplerepo --> – Example Repository
 
-This symbol indicates that an example repository is available. 
+This symbol indicates that an example repository is available on GitHub. 
