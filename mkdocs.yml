@@ -30,9 +30,6 @@ site_description: >-
 repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
-# Copyright
-copyright: Copyright &copy; 2016 - 2025 Martin Donath
-
 # Configuration
 theme:
   name: material
