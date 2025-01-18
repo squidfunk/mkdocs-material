@@ -22,6 +22,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 <!-- md:version 9.2.0 -->
 <!-- md:plugin -->
 <!-- md:flag experimental -->
+<!-- md:examplerepo create-blog -->
 
 The built-in blog plugin adds support for building a blog from a folder of
 posts, which are annotated with dates and other structured data. First, add the
