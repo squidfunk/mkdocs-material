@@ -146,7 +146,7 @@ def _badge_for_version(text: str, page: Page, files: Files):
 # Create badge for example repositories
 def _badge_for_example_repo(args: str, page: Page, files: Files):
     repo_name = args.strip()  
-    icon_url = _resolve_path("conventions.md#experimental", page, files)  
+    icon_url = _resolve_path("conventions.md#example-repository", page, files)  
     text_href = f"https://github.com/mkdocs-material/{repo_name}" 
     icon = "material-github"  
     return _badge(
