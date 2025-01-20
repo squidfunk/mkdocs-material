@@ -1,3 +1,7 @@
+mkdocs-material-9.5.50 (2025-01-18)
+
+  * Fixed #7913: Social plugin renders attribute lists in page title
+
 mkdocs-material-9.5.49+insiders-4.53.15 (2025-01-15)
 
   * Fixed #7896: Scoped tags listings not rendering in subsections
