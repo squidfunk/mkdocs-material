@@ -424,6 +424,11 @@
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
 
+      <!-- Mermaid -->
+      {%- if config.theme.mermaid -%}
+        {%- set _ = app.update({ "mermaid": config.theme.mermaid }) -%}
+      {%- endif -%}
+
       <!-- Configuration -->
       <script id="__config" type="application/json">
         {{- app | tojson -}}

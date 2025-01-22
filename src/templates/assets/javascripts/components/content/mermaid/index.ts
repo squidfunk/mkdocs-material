@@ -30,6 +30,7 @@ import {
 
 import { watchScript } from "~/browser"
 import { h } from "~/utilities"
+import { MermaidConfig } from "~/_"
 
 import { Component } from "../../_"
 
@@ -67,9 +68,14 @@ let sequence = 0
  *
  * @returns Mermaid scripts observable
  */
-function fetchScripts(): Observable<void> {
+function fetchScripts(config?: MermaidConfig): Observable<void> {
+  let version = "11";
+  if (config && config.version) {
+    version = config.version;
+  }
+
   return typeof mermaid === "undefined" || mermaid instanceof Element
-    ? watchScript("https://unpkg.com/mermaid@11/dist/mermaid.min.js")
+    ? watchScript(`https://unpkg.com/mermaid@${version}/dist/mermaid.min.js`)
     : of(undefined)
 }
 
@@ -85,20 +91,32 @@ function fetchScripts(): Observable<void> {
  * @returns Mermaid diagram component observable
  */
 export function mountMermaid(
-  el: HTMLElement
+  el: HTMLElement, config?: MermaidConfig
 ): Observable<Component<Mermaid>> {
   el.classList.remove("mermaid") // Hack: mitigate https://bit.ly/3CiN6Du
-  mermaid$ ||= fetchScripts()
+  mermaid$ ||= fetchScripts(config)
     .pipe(
-      tap(() => mermaid.initialize({
-        startOnLoad: false,
-        themeCSS,
-        sequence: {
-          actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
-          messageFontSize: "16px",
-          noteFontSize: "16px"
+      tap(() => {
+        mermaid.initialize({
+          startOnLoad: false,
+          themeCSS,
+          sequence: {
+            actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
+            messageFontSize: "16px",
+            noteFontSize: "16px"
+          }
+        });
+
+        /* Load icon packs */
+        if (config && config.iconPacks) {
+          mermaid.registerIconPacks(
+            config.iconPacks.map(name => ({
+              name: name.split('@')[0],
+              loader: () => fetch(`https://unpkg.com/@iconify-json/${name}/icons.json`).then((res) => res.json()),
+            }))
+          );
         }
-      })),
+      }),
       map(() => undefined),
       shareReplay(1)
     )

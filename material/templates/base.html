@@ -244,12 +244,15 @@
       ] -%}
         {%- set _ = translations.update({ key: lang.t(key) }) -%}
       {%- endfor -%}
+      {%- if config.theme.mermaid -%}
+        {%- set _ = app.update({ "mermaid": config.theme.mermaid }) -%}
+      {%- endif -%}
       <script id="__config" type="application/json">
         {{- app | tojson -}}
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.5090c770.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.165b9300.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}

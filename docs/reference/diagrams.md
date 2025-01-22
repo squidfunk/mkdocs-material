@@ -16,7 +16,7 @@ popular and flexible solution for drawing diagrams.
 <!-- md:version 8.2.0 -->
 
 This configuration enables native support for [Mermaid.js] diagrams. Material
-for MkDocs will automatically initialize the JavaScript runtime when a page 
+for MkDocs will automatically initialize the JavaScript runtime when a page
 includes a `mermaid` code block:
 
 ``` yaml
@@ -38,13 +38,34 @@ No further configuration is necessary. Advantages over a custom integration:
   [^1]:
     While all [Mermaid.js] features should work out-of-the-box, Material for
     MkDocs will currently only adjust the fonts and colors for flowcharts,
-    sequence diagrams, class diagrams, state diagrams and entity relationship 
+    sequence diagrams, class diagrams, state diagrams and entity relationship
     diagrams. See the section on [other diagrams] for more information why this
     is currently not implemented for all diagrams.
 
   [instant loading]: ../setup/setting-up-navigation.md#instant-loading
   [additional style sheets]: ../customization.md#additional-css
   [other diagrams]: #other-diagram-types
+
+### Loading additional icon packs
+
+You can define additional [icon packs](https://mermaid.js.org/config/icons.html) you want be loaded by specifying list in `theme.mermaid.iconPacks`
+
+``` yaml
+theme:
+  mermaid:
+    iconPacks:
+    - logos@1
+```
+
+### Overriding Mermaid JS version
+
+Mermaid JS version can be overrided by providing `theme.mermaid.version` value. Use this carefully.
+
+``` yaml
+theme:
+  mermaid:
+    version: "11"
+```
 
 ## Usage
 
@@ -82,7 +103,7 @@ graph LR
 
 ### Using sequence diagrams
 
-[Sequence diagrams] describe a specific scenario as sequential interactions 
+[Sequence diagrams] describe a specific scenario as sequential interactions
 between multiple objects or actors, including the messages that are exchanged
 between those actors:
 
@@ -194,7 +215,7 @@ classDiagram
     +int postalCode
     +String country
     -validate()
-    +outputAsLabel()  
+    +outputAsLabel()
   }
 ```
 ````
@@ -226,7 +247,7 @@ classDiagram
     +int postalCode
     +String country
     -validate()
-    +outputAsLabel()  
+    +outputAsLabel()
   }
 ```
 

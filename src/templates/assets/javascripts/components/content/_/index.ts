@@ -22,7 +22,7 @@
 
 import { Observable, merge } from "rxjs"
 
-import { feature } from "~/_"
+import { configuration, feature } from "~/_"
 import { Viewport, getElements } from "~/browser"
 
 import { Component } from "../../_"
@@ -114,7 +114,7 @@ export function mountContent(
 
     /* Mermaid diagrams */
     ...getElements("pre.mermaid", el)
-      .map(child => mountMermaid(child)),
+      .map(child => mountMermaid(child, configuration().mermaid)),
 
     /* Data tables */
     ...getElements("table:not([class])", el)

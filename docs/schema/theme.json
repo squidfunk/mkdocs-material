@@ -800,6 +800,35 @@
           }
         }
       ]
+    },
+    "mermaid": {
+      "title": "Mermaid JS configuration",
+      "type": "object",
+      "properties": {
+        "version": {
+          "title": "Mermaid JS version",
+          "description": "ID of version to be substituted in https://unpkg.com/mermaid@(VERSION)/dist/mermaid.min.js",
+          "examples": [
+            "11"
+          ]
+        },
+        "iconPacks": {
+          "title": "Icon packs",
+          "type": "array",
+          "items": {
+            "title": "Name of icon pack",
+            "description": "Name of icon pack to be substituted in https://unpkg.com/@iconify-json/(name)/icons.json - should include version",
+            "type": "string",
+            "examples": [
+              "logos@1"
+            ]
+          },
+          "examples": [
+            ["logos@1"]
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false,

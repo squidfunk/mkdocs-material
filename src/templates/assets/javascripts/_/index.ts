@@ -87,6 +87,14 @@ export interface Versioning {
 }
 
 /**
+ * Mermaid JS Configuration
+ */
+export interface MermaidConfig {
+  version?: string
+  iconPacks?: string[]
+}
+
+/**
  * Configuration
  */
 export interface Config {
@@ -96,6 +104,7 @@ export interface Config {
   search: string                       /* Search worker URL */
   tags?: Record<string, string>        /* Tags mapping */
   version?: Versioning                 /* Versioning */
+  mermaid?: MermaidConfig              /* Mermaid JS configuration */
 }
 
 /* ----------------------------------------------------------------------------
