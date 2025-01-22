@@ -83,6 +83,55 @@ function fetchScripts(config?: MermaidConfig): Observable<void> {
  * Functions
  * ------------------------------------------------------------------------- */
 
+
+/**
+ * Icon descriptor for Mermaid JS icon Packs
+ */
+interface IconPackDescriptor {
+  name: string,
+  loader: () => Promise<any>
+}
+
+/**
+ * Prepare details about icon packs for Mermaid JS
+ *
+ * @param iconName - Icon name. url:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json or iconify:logos@1
+ * @returns icon pack descriptor for Mermaid JS
+ */
+export function prepareIconDescriptor(iconName: string):  IconPackDescriptor | undefined {
+  // First - we need to strip type from full icon name
+  const parts = iconName.split(':');
+  if (parts.length < 2) {
+    return undefined;
+  }
+
+  switch (parts[0]){
+    case 'url':
+      if (parts.length < 3) {
+        return undefined;
+      }
+
+      const url = parts.slice(2).join(':');
+      return {
+        name: parts[1],
+        loader: () => fetch(url).then((res) => res.json()),
+      }
+    case 'iconify':
+      const iconifyParts = parts[1].split('@', 2);
+      if (iconifyParts.length !== 2) {
+        return undefined;
+      }
+
+      return {
+        name: iconifyParts[0],
+        loader: () => fetch(`https://unpkg.com/@iconify-json/${parts[1]}/icons.json`).then((res) => res.json()),
+      }
+
+    default:
+      return undefined;
+  }
+}
+
 /**
  * Mount Mermaid diagram
  *
@@ -110,10 +159,7 @@ export function mountMermaid(
         /* Load icon packs */
         if (config && config.iconPacks) {
           mermaid.registerIconPacks(
-            config.iconPacks.map(name => ({
-              name: name.split('@')[0],
-              loader: () => fetch(`https://unpkg.com/@iconify-json/${name}/icons.json`).then((res) => res.json()),
-            }))
+            config.iconPacks.map(name => prepareIconDescriptor(name)).filter(descriptor => descriptor !== undefined)
           );
         }
       }),

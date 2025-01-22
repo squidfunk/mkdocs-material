@@ -817,14 +817,18 @@
           "type": "array",
           "items": {
             "title": "Name of icon pack",
-            "description": "Name of icon pack to be substituted in https://unpkg.com/@iconify-json/(name)/icons.json - should include version",
+            "description": "url:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json or iconify:logos@1",
             "type": "string",
             "examples": [
-              "logos@1"
+              "url:aws:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json",
+              "iconify:logos@1"
             ]
           },
           "examples": [
-            ["logos@1"]
+            [
+              "url:aws:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json",
+              "iconify:logos@1"
+            ]
           ]
         }
       },

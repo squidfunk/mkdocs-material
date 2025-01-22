@@ -50,11 +50,16 @@ No further configuration is necessary. Advantages over a custom integration:
 
 You can define additional [icon packs](https://mermaid.js.org/config/icons.html) you want be loaded by specifying list in `theme.mermaid.iconPacks`
 
+Options:
+- `url:<prefix>:<url>` for loading from Icon Packs from URL
+- `iconify:<package>@<version>` for loading icons from iconify
+
 ``` yaml
 theme:
   mermaid:
     iconPacks:
-    - logos@1
+    - iconify:logos@1
+    - url:aws:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json
 ```
 
 ### Overriding Mermaid JS version
