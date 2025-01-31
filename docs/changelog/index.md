@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.6.1 <small>January 31, 2025</small> { id="9.6.1" }
+
+- Fixed #7943: Tags plugin crashing due to merge error
+
 ### 9.6.0 <small>January 31, 2025</small> { id="9.6.0" }
 
 - Added meta plugin
