@@ -134,12 +134,14 @@ is enabled.
 <!-- md:version 8.2.0 -->
 <!-- md:default none -->
 
-!!! info "This setting is not needed in [Insiders]"
+!!! warning "This setting is deprecated"
 
-    Insiders ships a __ground up rewrite of the tags plugin__ which is infinitely
-    more powerful than the current version in the community edition. It allows
-    for an arbitrary number of tags indexes (listings), [scoped listings],
-    [shadow tags], [nested tags], and much more.
+    As of version <!-- md:version 9.6.0 -->, this setting is deprecated, as this
+    version ships a __ground up rewrite of the tags plugin__ which is much more
+    powerful than the previous version. Tags [listings] can be used on any page
+    now.
+
+<div style="opacity: 0.5" markdown>
 
 Use this setting to specify the location of the tags index, which is the page
 used to render a list of all tags and their associated pages. If this setting is
@@ -158,10 +160,9 @@ if you want to have a tags index.
 
 The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
-  [Insiders]: ../insiders/index.md
-  [scoped listings]: ../setup/setting-up-tags.md#scoped-listings
-  [shadow tags]: ../setup/setting-up-tags.md#shadow-tags
-  [nested tags]: ../setup/setting-up-tags.md#nested-tags
+</div>
+
+  [listings]: ../setup/setting-up-tags.md#adding-a-tags-index
 
 ---
 
