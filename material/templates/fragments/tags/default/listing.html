@@ -1,0 +1,19 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% macro render(listing) %}
+  {{ listing.content }}
+  <ul>
+    {% for mapping in listing.mappings %}
+      <li>
+        <a href="{{ mapping.item.url | url }}">
+          {{ mapping.item.title }}
+        </a>
+      </li>
+    {% endfor %}
+    {% for child in listing %}
+      <li style="list-style-type:none">{{ render(child) }}</li>
+    {% endfor %}
+  </ul>
+{% endmacro %}
+{{ render(listing) }}
