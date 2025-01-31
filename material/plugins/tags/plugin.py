@@ -36,7 +36,6 @@ from .config import TagsConfig
 from .renderer import Renderer
 from .structure.listing.manager import ListingManager
 from .structure.mapping.manager import MappingManager
-from .structure.mapping.storage import MappingStorage
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -45,11 +44,6 @@ from .structure.mapping.storage import MappingStorage
 class TagsPlugin(BasePlugin[TagsConfig]):
     """
     A tags plugin.
-
-    This plugin collects tags from the front matter of pages, and builds a tag
-    structure from them. The tag structure can be used to render listings on
-    pages, or to just create a site-wide tags index and export all tags and
-    mappings to a JSON file for consumption in another project.
     """
 
     supports_multiple_instances = True
@@ -129,12 +123,6 @@ class TagsPlugin(BasePlugin[TagsConfig]):
         else:
             config.markdown_extensions.append("attr_list")
 
-        # If the author only wants to extract and export mappings, we allow to
-        # disable the rendering of all tags and listings with a single setting
-        if self.config.export_only:
-            self.config.tags = False
-            self.config.listings = False
-
     @event_priority(-50)
     def on_page_markdown(
         self, markdown: str, *, page: Page, config: MkDocsConfig, **kwargs
@@ -162,10 +150,6 @@ class TagsPlugin(BasePlugin[TagsConfig]):
         # Handle deprecation of `tags_file` setting
         if self.config.tags_file:
             markdown = self._handle_deprecated_tags_file(page, markdown)
-
-        # Handle deprecation of `tags_extra_files` setting
-        if self.config.tags_extra_files:
-            markdown = self._handle_deprecated_tags_extra_files(page, markdown)
 
         # Collect tags from page
         try:
@@ -201,15 +185,6 @@ class TagsPlugin(BasePlugin[TagsConfig]):
 
         # Populate and render all listings
         self.listings.populate_all(self.mappings, Renderer(env, config))
-
-        # Export mappings to file, if enabled
-        if self.config.export:
-            path = os.path.join(config.site_dir, self.config.export_file)
-            path = os.path.normpath(path)
-
-            # Serialize mappings and save to file
-            storage = MappingStorage(self.config)
-            storage.save(path, self.mappings)
 
     def on_page_context(
         self, context: TemplateContext, *, page: Page, **kwargs
@@ -262,38 +237,6 @@ class TagsPlugin(BasePlugin[TagsConfig]):
 
         # Try to find the directive and add it if not present
         pattern = r"<!--\s+{directive}".format(directive = directive)
-        if not re.search(pattern, markdown):
-            markdown += f"\n<!-- {directive} -->"
-
-        # Return markdown
-        return markdown
-
-    def _handle_deprecated_tags_extra_files(
-        self, page: Page, markdown: str
-    ) -> str:
-        """
-        Handle deprecation of `tags_extra_files` setting.
-
-        Arguments:
-            page: The page.
-        """
-        directive = self.config.listings_directive
-        if page.file.src_uri not in self.config.tags_extra_files:
-            return markdown
-
-        # Compute tags to render on page
-        tags = self.config.tags_extra_files[page.file.src_uri]
-        if tags:
-            directive += f" {{ include: [{', '.join(tags)}] }}"
-
-        # Try to find the legacy tags marker and replace with directive
-        if "[TAGS]" in markdown:
-            markdown = markdown.replace(
-                "[TAGS]", f"<!-- {directive} -->"
-            )
-
-        # Try to find the directive and add it if not present
-        pattern = r"<!--\s+{directive}".format(directive = re.escape(directive))
         if not re.search(pattern, markdown):
             markdown += f"\n<!-- {directive} -->"
 

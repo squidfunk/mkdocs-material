@@ -81,10 +81,7 @@ def populate(listing: Listing, slugify: Slugify) -> dict[Tag, AnchorLink]:
 
     # Filter top-level anchor links and insert them into the page
     children = [anchors[tag] for tag in anchors if not tag.parent]
-    if listing.config.toc:
-        host.children[at:at + 1] = children
-    else:
-        host.children.pop(at)
+    host.children[at:at + 1] = children
 
     # Return mapping of tags to anchor links
     return anchors
