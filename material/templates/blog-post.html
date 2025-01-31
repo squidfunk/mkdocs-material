@@ -100,28 +100,28 @@
                       </li>
                     {% endif %}
                   </ul>
-                  {% if page.config.links %}
-                    <ul class="md-post__meta md-nav__list">
-                      <li class="md-nav__item md-nav__item--section">
-                        <div class="md-post__title">
-                          <span class="md-ellipsis">
-                            {{ lang.t("blog.references") }}
-                          </span>
-                        </div>
-                        <nav class="md-nav">
-                          <ul class="md-nav__list">
-                            {% for nav_item in page.config.links %}
-                              {% set path = "__ref_" ~ loop.index %}
-                              {{ item.render(nav_item, path, 1) }}
-                            {% endfor %}
-                          </ul>
-                        </nav>
-                      </li>
-                    </ul>
-                  {% endif %}
                 </nav>
               </li>
             </ul>
+            {% if page.config.links %}
+              <ul class="md-post__meta md-nav__list">
+                <li class="md-nav__item md-nav__item--section">
+                  <div class="md-post__title">
+                    <span class="md-ellipsis">
+                      {{ lang.t("blog.references") }}
+                    </span>
+                  </div>
+                  <nav class="md-nav">
+                    <ul class="md-nav__list">
+                      {% for nav_item in page.config.links %}
+                        {% set path = "__ref_" ~ loop.index %}
+                        {{ item.render(nav_item, path, 1) }}
+                      {% endfor %}
+                    </ul>
+                  </nav>
+                </li>
+              </ul>
+            {% endif %}
           </nav>
           {% if "toc.integrate" in features %}
             {% include "partials/toc.html" %}
