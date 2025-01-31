@@ -85,7 +85,8 @@ export function watchSource(
   el: HTMLAnchorElement
 ): Observable<Source> {
   return fetch$ ||= defer(() => {
-    const cached = __md_get<SourceFacts>("__source", sessionStorage)
+    const cacheKey = `__source/${el.href}`
+    const cached = __md_get<SourceFacts>(cacheKey, sessionStorage)
     if (cached) {
       return of(cached)
     } else {
@@ -101,7 +102,7 @@ export function watchSource(
       /* Fetch repository facts */
       return fetchSourceFacts(el.href)
         .pipe(
-          tap(facts => __md_set("__source", facts, sessionStorage))
+          tap(facts => __md_set(cacheKey, facts, sessionStorage))
         )
     }
   })
