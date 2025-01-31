@@ -11,13 +11,17 @@
   {% endif %}
 {% endmacro %}
 {% macro render_content(nav_item, ref = nav_item) %}
-  {% if nav_item.is_page and nav_item.meta.icon %}
+  {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
   <span class="md-ellipsis">
     {{ ref.title }}
+    {% if nav_item.meta and nav_item.meta.subtitle %}
+      <br>
+      <small>{{ nav_item.meta.subtitle }}</small>
+    {% endif %}
   </span>
-  {% if nav_item.is_page and nav_item.meta.status %}
+  {% if nav_item.meta and nav_item.meta.status %}
     {{ render_status(nav_item, nav_item.meta.status) }}
   {% endif %}
 {% endmacro %}
