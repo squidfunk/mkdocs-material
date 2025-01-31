@@ -800,6 +800,39 @@
           }
         }
       ]
+    },
+    "mermaid": {
+      "title": "Mermaid JS configuration",
+      "type": "object",
+      "properties": {
+        "version": {
+          "title": "Mermaid JS version",
+          "description": "ID of version to be substituted in https://unpkg.com/mermaid@(VERSION)/dist/mermaid.min.js",
+          "examples": [
+            "11"
+          ]
+        },
+        "iconPacks": {
+          "title": "Icon packs",
+          "type": "array",
+          "items": {
+            "title": "Name of icon pack",
+            "description": "url:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json or iconify:logos@1",
+            "type": "string",
+            "examples": [
+              "url:aws:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json",
+              "iconify:logos@1"
+            ]
+          },
+          "examples": [
+            [
+              "url:aws:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json",
+              "iconify:logos@1"
+            ]
+          ]
+        }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false,

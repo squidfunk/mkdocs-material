@@ -30,6 +30,7 @@ import {
 
 import { watchScript } from "~/browser"
 import { h } from "~/utilities"
+import { MermaidConfig } from "~/_"
 
 import { Component } from "../../_"
 
@@ -67,15 +68,69 @@ let sequence = 0
  *
  * @returns Mermaid scripts observable
  */
-function fetchScripts(): Observable<void> {
+function fetchScripts(config?: MermaidConfig): Observable<void> {
+  let version = "11";
+  if (config && config.version) {
+    version = config.version;
+  }
+
   return typeof mermaid === "undefined" || mermaid instanceof Element
-    ? watchScript("https://unpkg.com/mermaid@11/dist/mermaid.min.js")
+    ? watchScript(`https://unpkg.com/mermaid@${version}/dist/mermaid.min.js`)
     : of(undefined)
 }
 
 /* ----------------------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------------------- */
+
+
+/**
+ * Icon descriptor for Mermaid JS icon Packs
+ */
+interface IconPackDescriptor {
+  name: string,
+  loader: () => Promise<any>
+}
+
+/**
+ * Prepare details about icon packs for Mermaid JS
+ *
+ * @param iconName - Icon name. url:https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v19.0/dist/aws-icons-mermaid.json or iconify:logos@1
+ * @returns icon pack descriptor for Mermaid JS
+ */
+export function prepareIconDescriptor(iconName: string):  IconPackDescriptor | undefined {
+  // First - we need to strip type from full icon name
+  const parts = iconName.split(':');
+  if (parts.length < 2) {
+    return undefined;
+  }
+
+  switch (parts[0]){
+    case 'url':
+      if (parts.length < 3) {
+        return undefined;
+      }
+
+      const url = parts.slice(2).join(':');
+      return {
+        name: parts[1],
+        loader: () => fetch(url).then((res) => res.json()),
+      }
+    case 'iconify':
+      const iconifyParts = parts[1].split('@', 2);
+      if (iconifyParts.length !== 2) {
+        return undefined;
+      }
+
+      return {
+        name: iconifyParts[0],
+        loader: () => fetch(`https://unpkg.com/@iconify-json/${parts[1]}/icons.json`).then((res) => res.json()),
+      }
+
+    default:
+      return undefined;
+  }
+}
 
 /**
  * Mount Mermaid diagram
@@ -85,20 +140,29 @@ function fetchScripts(): Observable<void> {
  * @returns Mermaid diagram component observable
  */
 export function mountMermaid(
-  el: HTMLElement
+  el: HTMLElement, config?: MermaidConfig
 ): Observable<Component<Mermaid>> {
   el.classList.remove("mermaid") // Hack: mitigate https://bit.ly/3CiN6Du
-  mermaid$ ||= fetchScripts()
+  mermaid$ ||= fetchScripts(config)
     .pipe(
-      tap(() => mermaid.initialize({
-        startOnLoad: false,
-        themeCSS,
-        sequence: {
-          actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
-          messageFontSize: "16px",
-          noteFontSize: "16px"
+      tap(() => {
+        mermaid.initialize({
+          startOnLoad: false,
+          themeCSS,
+          sequence: {
+            actorFontSize: "16px", // Hack: mitigate https://bit.ly/3y0NEi3
+            messageFontSize: "16px",
+            noteFontSize: "16px"
+          }
+        });
+
+        /* Load icon packs */
+        if (config && config.iconPacks) {
+          mermaid.registerIconPacks(
+            config.iconPacks.map(name => prepareIconDescriptor(name)).filter(descriptor => descriptor !== undefined)
+          );
         }
-      })),
+      }),
       map(() => undefined),
       shareReplay(1)
     )
