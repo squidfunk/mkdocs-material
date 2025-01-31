@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
-    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg?branch=master"
+    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg"
     alt="Build"
   /></a>
   <a href="https://pypistats.org/packages/mkdocs-material"><img
