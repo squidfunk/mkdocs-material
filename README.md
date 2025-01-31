@@ -198,6 +198,9 @@
   <a href="https://octoperf.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png" height="58"
   /></a>
+  <a href="https://intercomestibles.ch/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
