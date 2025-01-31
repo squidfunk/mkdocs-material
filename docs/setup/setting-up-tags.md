@@ -224,8 +224,7 @@ for an arbitrary number of tags indexes (listings), [scoped listings],
 
 #### Configurable listings
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Listings can be configured in `mkdocs.yml` or directly at the location of the

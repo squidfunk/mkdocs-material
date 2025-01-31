@@ -167,8 +167,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.tags_slugify -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
 Use this setting to change the function for generating URL-compatible slugs
@@ -194,8 +193,7 @@ more granular control.
 
 #### <!-- md:setting config.tags_slugify_separator -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
@@ -212,8 +210,7 @@ plugins:
 
 #### <!-- md:setting config.tags_slugify_format -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `tag:{slug}` -->
 
 Use this setting to change the format string that is used when generating tag
@@ -272,8 +269,7 @@ plugins:
 
 #### <!-- md:setting config.tags_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.26.2 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.tag_name` -->
 
 Use this setting to specify a custom function for comparing tags. By default,
@@ -294,8 +290,7 @@ or number representing the tag, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.tags_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.26.2 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which tags are sorted when comparing
@@ -312,8 +307,7 @@ plugins:
 
 #### <!-- md:setting config.tags_name_property -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default [`tags`][meta.tags] -->
 
 Use this setting to change the name of the front matter property that is used by
@@ -330,8 +324,7 @@ plugins:
 
 #### <!-- md:setting config.tags_name_variable -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `tags` -->
 
 Use this setting to change the name of the template variable that is used by
@@ -348,8 +341,7 @@ plugins:
 
 #### <!-- md:setting config.tags_allowed -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 The plugin allows to check tags against a predefined list, in order to catch
@@ -377,8 +369,7 @@ The following settings are available for listings:
 
 #### <!-- md:setting config.listings -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable listings. It is normally not necessary to
@@ -400,8 +391,7 @@ is enabled.
 
 #### <!-- md:setting config.listings_map -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this define listing configurations that you can then reference in listings
@@ -431,8 +421,7 @@ See the [listings section] for a list of all available settings.
 
 #### <!-- md:setting config.listings_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.39.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.item_title` -->
 
 Use this setting to specify a custom function for comparing listing items. By
@@ -463,8 +452,7 @@ or number representing the item, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.listings_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.39.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which items are sorted when comparing
@@ -481,8 +469,7 @@ plugins:
 
 #### <!-- md:setting config.listings_tags_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.tag_name` -->
 
 Use this setting to specify a custom function for comparing tags in listings. By
@@ -503,8 +490,7 @@ or number representing the tag, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.listings_tags_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which tags are sorted when comparing
@@ -521,8 +507,7 @@ plugins:
 
 #### <!-- md:setting config.listings_directive -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material/tags` -->
 
 Use this setting to change the name of the directive the plugin will look for
@@ -777,8 +762,7 @@ The following settings are available:
 
 #### <!-- md:setting listing.scope -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 This setting specifies whether the listing should only consider pages that are
@@ -879,8 +863,7 @@ setting on a per-listing basis:
 
 #### <!-- md:setting listing.include -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this setting to specify which tags should be included in the listing. Each
@@ -917,8 +900,7 @@ If this setting is left empty, all tags and pages are included.
 
 #### <!-- md:setting listing.exclude -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this setting to specify which tags should be excluded from the listing. Each

@@ -26,7 +26,7 @@ See additional configuration options:
 
   [Footnotes]: ../setup/extensions/python-markdown.md#footnotes
 
-### Footnote tooltips :material-alert-decagram:{ .mdx-pulse title="Added on January 24, 2024" }
+### Footnote tooltips
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.51.0 -->
