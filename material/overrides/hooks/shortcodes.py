@@ -55,6 +55,7 @@ def on_page_markdown(
         elif type == "extension":    return _badge_for_extension(args, page, files)
         elif type == "utility":      return _badge_for_utility(args, page, files)
         elif type == "demonstration": return _badge_for_demonstration(args, page, files)
+        elif type == "demo":         return _badge_for_demo(args, page, files)
         elif type == "default":
             if   args == "none":     return _badge_for_default_none(page, files)
             elif args == "computed": return _badge_for_default_computed(page, files)
@@ -214,6 +215,16 @@ def _badge_for_demonstration_download(text: str, page: Page, files: Files):
     return _badge(
         icon = f"[:{icon}:]({href} 'Download demonstration files')",
         text = f"[`.zip`]({href})",
+        type = "right"
+    )
+
+# Create badge for demo repository
+def _badge_for_demo(text: str, page: Page, files: Files):
+    icon = "material-github"
+    href = f"https://github.com/mkdocs-material/{text}"
+    return _badge(
+        icon = f"[:{icon}:]({href} 'Demo repository')",
+        text = text,
         type = "right"
     )
 
