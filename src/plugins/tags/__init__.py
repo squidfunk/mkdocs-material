@@ -18,10 +18,27 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+from .structure.mapping import Mapping
+from .structure.tag import Tag
+
 # -----------------------------------------------------------------------------
 # Functions
 # -----------------------------------------------------------------------------
 
-# Casefold a string for comparison when sorting
-def casefold(tag: str):
-    return tag.casefold()
+# Return tag name for sorting
+def tag_name(tag: Tag, *args):
+    return tag.name
+
+# Return casefolded tag name for sorting
+def tag_name_casefold(tag: Tag, *args):
+    return tag.name.casefold()
+
+# -----------------------------------------------------------------------------
+
+# Return item title for sorting
+def item_title(mapping: Mapping):
+    return mapping.item.title
+
+# Return item URL for sorting
+def item_url(mapping: Mapping):
+    return mapping.item.url

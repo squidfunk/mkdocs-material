@@ -26,6 +26,7 @@ import posixpath
 import yaml
 
 from babel.dates import format_date, format_datetime
+from copy import copy
 from datetime import datetime, timezone
 from jinja2 import pass_context
 from jinja2.runtime import Context
@@ -34,19 +35,20 @@ from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin, event_priority
 from mkdocs.structure import StructureItem
 from mkdocs.structure.files import File, Files, InclusionLevel
-from mkdocs.structure.nav import Navigation, Section
+from mkdocs.structure.nav import Link, Navigation, Section
 from mkdocs.structure.pages import Page
+from mkdocs.structure.toc import AnchorLink, TableOfContents
 from mkdocs.utils import copy_file, get_relative_url
-from mkdocs.utils.templates import url_filter
 from paginate import Page as Pagination
 from shutil import rmtree
 from tempfile import mkdtemp
+from urllib.parse import urlparse
 from yaml import SafeLoader
 
 from .author import Authors
 from .config import BlogConfig
 from .readtime import readtime
-from .structure import Archive, Category, Excerpt, Post, View
+from .structure import Archive, Category, Excerpt, Post, Reference, View
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -299,9 +301,17 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         if not self.config.enabled:
             return
 
+        # Transform links to point to posts and pages
+        for post in self.blog.posts:
+            self._generate_links(post, config, files)
+
         # Filter for formatting dates related to posts
         def date_filter(date: datetime):
             return self._format_date_for_post(date, config)
+
+        # Fetch URL template filter from environment - the filter might
+        # be overridden by other plugins, so we must retrieve and wrap it
+        url_filter = env.filters["url"]
 
         # Patch URL template filter to add support for paginated views, i.e.,
         # that paginated views never link to themselves but to the main view
@@ -524,14 +534,15 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
             # Create file for view, if it does not exist
             file = files.get_file_from_path(path)
-            if not file or self.temp_dir not in file.abs_src_path:
+            if not file:
                 file = self._path_to_file(path, config)
                 files.append(file)
 
-                # Create file in temporary directory and temporarily remove
-                # from navigation, as we'll add it at a specific location
+                # Create file in temporary directory
                 self._save_to_file(file.abs_src_path, f"# {name}")
-                file.inclusion = InclusionLevel.EXCLUDED
+
+            # Temporarily remove view from navigation
+            file.inclusion = InclusionLevel.EXCLUDED
 
             # Create and yield view
             if not isinstance(file.page, Archive):
@@ -560,14 +571,15 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
                 # Create file for view, if it does not exist
                 file = files.get_file_from_path(path)
-                if not file or self.temp_dir not in file.abs_src_path:
+                if not file:
                     file = self._path_to_file(path, config)
                     files.append(file)
 
-                    # Create file in temporary directory and temporarily remove
-                    # from navigation, as we'll add it at a specific location
+                    # Create file in temporary directory
                     self._save_to_file(file.abs_src_path, f"# {name}")
-                    file.inclusion = InclusionLevel.EXCLUDED
+
+                # Temporarily remove view from navigation
+                file.inclusion = InclusionLevel.EXCLUDED
 
                 # Create and yield view
                 if not isinstance(file.page, Category):
@@ -591,14 +603,15 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
             # Create file for view, if it does not exist
             file = files.get_file_from_path(path)
-            if not file or self.temp_dir not in file.abs_src_path:
+            if not file:
                 file = self._path_to_file(path, config)
                 files.append(file)
 
-                # Copy file to temporary directory  and temporarily remove
-                # from navigation, as we'll add it at a specific location
+                # Copy file to temporary directory
                 copy_file(view.file.abs_src_path, file.abs_src_path)
-                file.inclusion = InclusionLevel.EXCLUDED
+
+            # Temporarily remove view from navigation
+            file.inclusion = InclusionLevel.EXCLUDED
 
             # Create and yield view
             if not isinstance(file.page, View):
@@ -608,6 +621,79 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             assert isinstance(file.page, View)
             file.page.pages = view.pages
             file.page.posts = view.posts
+
+    # Generate links from the given post to other posts, pages, and sections -
+    # this can only be done once all posts and pages have been parsed
+    def _generate_links(self, post: Post, config: MkDocsConfig, files: Files):
+        if not post.config.links:
+            return
+
+        # Resolve path relative to docs directory for error reporting
+        docs = os.path.relpath(config.docs_dir)
+        path = os.path.relpath(post.file.abs_src_path, docs)
+
+        # Find all links to pages and replace them with references - while all
+        # internal links are processed, external links remain as they are
+        for link in _find_links(post.config.links.items):
+            url = urlparse(link.url)
+            if url.scheme:
+                continue
+
+            # Resolve file for link, and throw if the file could not be found -
+            # authors can link to other pages, as well as to assets or files of
+            # any kind, but it is essential that the file that is linked to is
+            # found, so errors are actually catched and reported
+            file = files.get_file_from_path(url.path)
+            if not file:
+                log.warning(
+                    f"Error reading metadata of post '{path}' in '{docs}':\n"
+                    f"Couldn't find file for link '{url.path}'"
+                )
+                continue
+
+            # If the file linked to is not a page, but an asset or any other
+            # file, we resolve the destination URL and continue
+            if not isinstance(file.page, Page):
+                link.url = file.url
+                continue
+
+            # Cast link to reference
+            link.__class__ = Reference
+            assert isinstance(link, Reference)
+
+            # Assign page title, URL and metadata to link
+            link.title = link.title or file.page.title
+            link.url   = file.page.url
+            link.meta  = copy(file.page.meta)
+
+            # If the link has no fragment, we can continue - if it does, we
+            # need to find the matching anchor in the table of contents
+            if not url.fragment:
+                continue
+
+            # If we're running under dirty reload, MkDocs will reset all pages,
+            # so it's not possible to resolve anchor links. Thus, the only way
+            # to make this work is to skip the entire process of anchor link
+            # resolution in case of a dirty reload.
+            if self.is_dirty:
+                continue
+
+            # Resolve anchor for fragment, and throw if the anchor could not be
+            # found - authors can link to any anchor in the table of contents
+            anchor = _find_anchor(file.page.toc, url.fragment)
+            if not anchor:
+                log.warning(
+                    f"Error reading metadata of post '{path}' in '{docs}':\n"
+                    f"Couldn't find anchor '{url.fragment}' in '{url.path}'"
+                )
+
+                # Restore link to original state
+                link.url = url.geturl()
+                continue
+
+            # Append anchor to URL and set subtitle
+            link.url += f"#{anchor.id}"
+            link.meta["subtitle"] = anchor.title
 
     # -------------------------------------------------------------------------
 
@@ -863,6 +949,35 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Translate placeholder
         return template.module.t(key)
+
+# -----------------------------------------------------------------------------
+# Helper functions
+# -----------------------------------------------------------------------------
+
+# Find all links in the given list of items
+def _find_links(items: list[StructureItem]):
+    for item in items:
+
+        # Resolve link
+        if isinstance(item, Link):
+            yield item
+
+        # Resolve sections recursively
+        if isinstance(item, Section):
+            for item in _find_links(item.children):
+                assert isinstance(item, Link)
+                yield item
+
+# Find anchor in table of contents for the given id
+def _find_anchor(toc: TableOfContents, id: str):
+    for anchor in toc:
+        if anchor.id == id:
+            return anchor
+
+        # Resolve anchors recursively
+        anchor = _find_anchor(anchor.children, id)
+        if isinstance(anchor, AnchorLink):
+            return anchor
 
 # -----------------------------------------------------------------------------
 # Data

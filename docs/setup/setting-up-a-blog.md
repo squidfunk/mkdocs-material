@@ -448,8 +448,7 @@ slug: hello-world
 
 #### Adding related links
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.23.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Related links offer the perfect way to prominently add a _further reading_
@@ -520,7 +519,7 @@ when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
 
-#### Pinning a post :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+#### Pinning a post
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.53.0 -->
@@ -572,8 +571,7 @@ This will disable automatic reading time computation.
 
 #### Setting defaults
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:plugin [meta][built-in meta plugin] – built-in -->
 <!-- md:flag experimental -->
 
@@ -639,8 +637,7 @@ nav:
 
 ### Custom index pages
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.24.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 If you want to add custom content to automatically generated [archive] and

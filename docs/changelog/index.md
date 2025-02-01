@@ -2,6 +2,21 @@
 
 ## Material for MkDocs
 
+### 9.6.1 <small>January 31, 2025</small> { id="9.6.1" }
+
+- Fixed #7943: Tags plugin crashing due to merge error
+
+### 9.6.0 <small>January 31, 2025</small> { id="9.6.0" }
+
+- Added meta plugin
+- Rewrite of the tags plugin
+- Added support for allow lists in tags plugin
+- Added support for and custom sorting in tags plugin
+- Added support for related links in blog plugin
+- Added support for custom index pages in blog plugin
+- Added support for navigation subtitles
+- Fixed #7924: Anchors might require two clicks when using instant navigation
+
 ### 9.5.50 <small>January 18, 2025</small> { id="9.5.50" }
 
 - Fixed #7913: Social plugin renders attribute lists in page title

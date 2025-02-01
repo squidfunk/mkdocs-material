@@ -7,15 +7,15 @@ for you to __start using now__.
 
 ## Features
 
-Our sponsors currently enjoy access to the following 26 additional features. New
+Our sponsors currently enjoy access to the following 20 additional features. New
 features are added regularly, so be sure to check back regularly to stay
 updated.
 
 <div class="mdx-columns" markdown>
 
-- [x] [Blog plugin: pinned posts] :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
-- [x] [Instant previews] :material-alert-decagram:{ .mdx-pulse title="Added on January 28, 2024" }
-- [x] [Footnote tooltips] :material-alert-decagram:{ .mdx-pulse title="Added on January 24, 2024" }
+- [x] [Blog plugin: pinned posts]
+- [x] [Instant previews]
+- [x] [Footnote tooltips]
 - [x] [Tags plugin: advanced settings]
 - [x] [Tags plugin: nested tags]
 - [x] [Tags plugin: shadow tags]
@@ -33,12 +33,6 @@ updated.
 - [x] [Navigation path] (Breadcrumbs)
 - [x] [Typeset plugin]
 - [x] [Privacy plugin: external links]
-- [x] [Navigation subtitles]
-- [x] [Tags plugin: allow list] + [custom sorting]
-- [x] [Blog plugin: custom index pages]
-- [x] [Blog plugin: related links]
-- [x] [Meta plugin]
-- [x] [Tags plugin: configurable listings]
 
 </div>
 
@@ -99,23 +93,6 @@ features prefixed with a checkmark symbol, denoting whether a feature is
 planned, but not yet implemented. This means that each funding goal unlocks new
 features for general availability in the community edition, after sponsors have
 used them for a while.
-
-#### $ 16,000 – Chipotle
-
-- [x] [Meta plugin]
-- [x] [Blog plugin: related links]
-- [x] [Blog plugin: custom index pages]
-- [x] [Tags plugin: configurable listings]
-- [x] [Tags plugin: allow list] + [custom sorting]
-- [x] [Navigation subtitles]
-
-  [Meta plugin]: ../plugins/meta.md
-  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
-  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
-  [Tags plugin: configurable listings]: ../setup/setting-up-tags.md#configurable-listings
-  [Tags plugin: allow list]: ../plugins/tags.md#config.tags_allowed
-  [custom sorting]: ../plugins/tags.md#config.tags_sort_by
-  [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
 
 #### $ 18,000 – Lemon Drop
 
@@ -183,6 +160,23 @@ This section celebrates the milestones we’ve achieved thanks to our incredible
 sponsors. Those features were once part of Material for MkDocs Insiders, and
 therefore only available to our sponsors, and are now generally available to
 be used by all users.
+
+#### $ 16,000 – Chipotle
+
+- [x] [Meta plugin]
+- [x] [Blog plugin: related links]
+- [x] [Blog plugin: custom index pages]
+- [x] [Tags plugin: configurable listings]
+- [x] [Tags plugin: allow list] + [custom sorting]
+- [x] [Navigation subtitles]
+
+  [Meta plugin]: ../plugins/meta.md
+  [Blog plugin: related links]: ../setup/setting-up-a-blog.md#adding-related-links
+  [Blog plugin: custom index pages]: ../setup/setting-up-a-blog.md#custom-index-pages
+  [Tags plugin: configurable listings]: ../setup/setting-up-tags.md#configurable-listings
+  [Tags plugin: allow list]: ../plugins/tags.md#config.tags_allowed
+  [custom sorting]: ../plugins/tags.md#config.tags_sort_by
+  [Navigation subtitles]: ../reference/index.md#setting-the-page-subtitle
 
 #### $ 14,000 – Goat's Horn
 

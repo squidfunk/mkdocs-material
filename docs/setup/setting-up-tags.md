@@ -190,25 +190,12 @@ Following is a list of relevant tags:
 <!-- material/tags -->
 ```
 
-Then in your `mkdocs.yml` file, add the following.
-
-``` yaml
-plugins:
-  - tags:
-      tags_file: tags.md # (1)!
-```
-
-1. This setting is not necessary when using [Insiders].
-
-Note that the path to `tags.md` is relative to the `docs/` directory.
-
 The tags marker specifies the position of the tags index, i.e. it is
 replaced with the actual tags index when the page is rendered. You can include
 arbitrary content before and after the marker:
 
 [![Tags index][tags index enabled]][tags index enabled]
 
-  [tags.tags_file]: #tags-file
   [tags index enabled]: ../assets/screenshots/tags-index.png
 
 ### Advanced features
@@ -224,8 +211,7 @@ for an arbitrary number of tags indexes (listings), [scoped listings],
 
 #### Configurable listings
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Listings can be configured in `mkdocs.yml` or directly at the location of the

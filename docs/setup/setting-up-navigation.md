@@ -91,7 +91,7 @@ The progress indicator will only show if the page hasn't finished loading after
 400ms, so that fast connections will never show it for a better instant
 experience.
 
-### Instant previews :material-alert-decagram:{ .mdx-pulse title="Added on January 28, 2024" }
+### Instant previews
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.52.0 -->

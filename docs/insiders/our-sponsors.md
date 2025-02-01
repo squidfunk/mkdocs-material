@@ -66,6 +66,7 @@ _Be our first gold sponsor!_
 [![EquipmentShare]](https://www.equipmentshare.com/){ target=_blank title="EquipmentShare" }
 [![Hummingbot]](https://hummingbot.org/){ target=_blank title="Hummingbot" }
 [![OctoPerf]](https://octoperf.com/){ target=_blank title="OctoPerf" }
+[![Inter Comestibles]](https://intercomestibles.ch/){ target=_blank title="Inter Comestibles" }
 
 </div>
 
@@ -114,6 +115,7 @@ _Be our first gold sponsor!_
   [SIEMENS]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png
   [OctoPerf]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png
   [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
+  [Inter Comestibles]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png
 
 <hr />
 

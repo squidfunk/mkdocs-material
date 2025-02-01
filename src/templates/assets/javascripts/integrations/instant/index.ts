@@ -366,15 +366,10 @@ export function setupInstantNavigation(
     // Handle instant navigation events that are triggered by the user clicking
     // on an anchor link with a hash fragment different from the current one, as
     // well as from popstate events, which are emitted when the user navigates
-    // back and forth between pages. We use a two-layered subscription to scope
-    // the scroll restoration to the current page, as we don't need to restore
-    // the viewport offset when the user navigates to a different page, as this
-    // is already handled by the previous observable.
+    // back and forth between pages.
     document$.pipe(
       switchMap(() => location$),
-      distinctUntilKeyChanged("pathname"),
-      switchMap(() => location$),
-      distinctUntilKeyChanged("hash")
+      distinctUntilKeyChanged("hash"),
     ),
 
     // Handle instant navigation events that are triggered by the user clicking
