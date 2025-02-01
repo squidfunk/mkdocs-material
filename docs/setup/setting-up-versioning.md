@@ -13,7 +13,6 @@ documentation remain untouched.
 
 <!-- md:version 7.0.0 -->
 <!-- md:utility [mike] -->
-<!-- md:examplerepo example-versioning -->
 
 [mike] makes it easy to deploy multiple versions of your project documentation.
 It integrates natively with Material for MkDocs and can be enabled via

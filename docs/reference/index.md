@@ -95,7 +95,7 @@ icon: material/emoticon-happy # (1)!
 
 <!-- md:version 9.2.0 -->
 <!-- md:flag experimental -->
-<!-- md:example page-status -->
+<!-- md:demonstration page-status -->
 
 A status can be assigned to each page, which is then displayed as part of the
 navigation sidebar. First, associate a status identifier with a description by

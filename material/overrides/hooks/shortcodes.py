@@ -54,7 +54,7 @@ def on_page_markdown(
         elif type == "plugin":       return _badge_for_plugin(args, page, files)
         elif type == "extension":    return _badge_for_extension(args, page, files)
         elif type == "utility":      return _badge_for_utility(args, page, files)
-        elif type == "example":      return _badge_for_example(args, page, files)
+        elif type == "demonstration": return _badge_for_demonstration(args, page, files)
         elif type == "default":
             if   args == "none":     return _badge_for_default_none(page, files)
             elif args == "computed": return _badge_for_default_computed(page, files)
@@ -191,28 +191,28 @@ def _badge_for_utility(text: str, page: Page, files: Files):
         text = text
     )
 
-# Create badge for example
-def _badge_for_example(text: str, page: Page, files: Files):
+# Create badge for demonstration
+def _badge_for_demonstration(text: str, page: Page, files: Files):
     return "\n".join([
-        _badge_for_example_download(text, page, files),
-        _badge_for_example_view(text, page, files)
+        _badge_for_demonstration_download(text, page, files),
+        _badge_for_demonstration_view(text, page, files)
     ])
 
-# Create badge for example view
-def _badge_for_example_view(text: str, page: Page, files: Files):
+# Create badge for demonstration view
+def _badge_for_demonstration_view(text: str, page: Page, files: Files):
     icon = "material-folder-eye"
-    href = f"https://mkdocs-material.github.io/examples/{text}/"
+    href = f"https://mkdocs-material.github.io/demonstrations/{text}/"
     return _badge(
-        icon = f"[:{icon}:]({href} 'View example')",
+        icon = f"[:{icon}:]({href} 'View demonstration')",
         type = "right"
     )
 
-# Create badge for example download
-def _badge_for_example_download(text: str, page: Page, files: Files):
+# Create badge for demonstration download
+def _badge_for_demonstration_download(text: str, page: Page, files: Files):
     icon = "material-folder-download"
-    href = f"https://mkdocs-material.github.io/examples/{text}.zip"
+    href = f"https://mkdocs-material.github.io/demonstrations/{text}.zip"
     return _badge(
-        icon = f"[:{icon}:]({href} 'Download example')",
+        icon = f"[:{icon}:]({href} 'Download demonstration files')",
         text = f"[`.zip`]({href})",
         type = "right"
     )

@@ -166,7 +166,7 @@ See our guide below to learn how to set [custom colors].
 
 <!-- md:version 7.1.0 -->
 <!-- md:default none -->
-<!-- md:example color-palette-toggle -->
+<!-- md:demonstration color-palette-toggle -->
 
 Offering a light _and_ dark color palette makes your documentation pleasant to
 read at different times of the day, so the user can choose accordingly. Add the
@@ -236,7 +236,7 @@ The following properties must be set for each toggle:
 
 <!-- md:version 7.1.0 -->
 <!-- md:default none -->
-<!-- md:example color-palette-system-preference -->
+<!-- md:demonstration color-palette-system-preference -->
 
 Each color palette can be linked to the user's system preference for light and
 dark appearance by using a media query. Simply add a `media` property next to
@@ -269,7 +269,7 @@ default color palette.
 
 <!-- md:version 9.5.0 -->
 <!-- md:flag experimental -->
-<!-- md:example color-palette-system-preference -->
+<!-- md:demonstration color-palette-system-preference -->
 
 Newer operating systems allow to automatically switch between light and dark
 appearance during day and night times. Material for MkDocs adds support for
@@ -316,7 +316,7 @@ reload the site.
 ### Custom colors
 
 <!-- md:version 5.0.0 -->
-<!-- md:example custom-colors -->
+<!-- md:demonstration custom-colors -->
 
 Material for MkDocs implements colors using [CSS variables] (custom
 properties). If you want to customize the colors beyond the palette (e.g. to

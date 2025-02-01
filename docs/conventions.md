@@ -92,6 +92,3 @@ to provide extended functionality, like for example support for versioning.
 
   [Insiders]: insiders/index.md
 
-### <!-- md:examplerepo --> – Example Repository
-
-This symbol indicates that an example repository is available on GitHub. 
