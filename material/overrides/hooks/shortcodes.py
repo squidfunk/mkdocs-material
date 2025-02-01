@@ -201,7 +201,7 @@ def _badge_for_demonstration(text: str, page: Page, files: Files):
 # Create badge for demonstration view
 def _badge_for_demonstration_view(text: str, page: Page, files: Files):
     icon = "material-folder-eye"
-    href = f"https://mkdocs-material.github.io/demonstrations/{text}/"
+    href = f"https://mkdocs-material.github.io/examples/{text}/"
     return _badge(
         icon = f"[:{icon}:]({href} 'View demonstration')",
         type = "right"
@@ -210,7 +210,7 @@ def _badge_for_demonstration_view(text: str, page: Page, files: Files):
 # Create badge for demonstration download
 def _badge_for_demonstration_download(text: str, page: Page, files: Files):
     icon = "material-folder-download"
-    href = f"https://mkdocs-material.github.io/demonstrations/{text}.zip"
+    href = f"https://mkdocs-material.github.io/examples/{text}.zip"
     return _badge(
         icon = f"[:{icon}:]({href} 'Download demonstration files')",
         text = f"[`.zip`]({href})",
