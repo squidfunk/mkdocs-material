@@ -50,7 +50,7 @@ We'll add more settings here in the near future.
 
 <!-- md:version 8.5.0 -->
 <!-- md:flag experimental -->
-<!-- md:demonstration tags-with-icons -->
+<!-- md:example tags-with-icons -->
 
 Each tag can be associated with an icon, which is then rendered inside the tag.
 Before assigning icons to tags, associate each tag with a unique identifier,
@@ -132,7 +132,7 @@ setting:
 ### Adding tags
 
 <!-- md:version 8.2.0 -->
-<!-- md:demonstration tags -->
+<!-- md:example tags -->
 
 When the [built-in tags plugin] is enabled, tags can be added for a document
 with the front matter `tags` property. Add the following lines at the top of a
@@ -176,7 +176,7 @@ search preview, which now allows to __find pages by tags__.
 ### Adding a tags index
 
 <!-- md:version 8.2.0 -->
-<!-- md:demonstration tags -->
+<!-- md:example tags -->
 
 The [built-in tags plugin] allows to define a file to render a tags index,
 which can be any page that is part of the `nav` section. To add a tags index,

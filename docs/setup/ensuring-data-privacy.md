@@ -16,7 +16,7 @@ automatically downloaded for [self-hosting].
 <!-- md:version 8.4.0 -->
 <!-- md:default none -->
 <!-- md:flag experimental -->
-<!-- md:demonstration cookie-consent -->
+<!-- md:example cookie-consent -->
 
 Material for MkDocs ships a native and extensible cookie consent form which
 asks the user for consent prior to sending requests to third parties. Add the
@@ -302,7 +302,7 @@ We'll add more settings here, as we discover new use cases.
 ### Custom cookies
 
 <!-- md:version 8.4.0 -->
-<!-- md:demonstration custom-cookies -->
+<!-- md:example custom-cookies -->
 
 If you've customized the [cookie consent] and added a `custom` cookie, the user
 will be prompted to accept or reject your custom cookie. Once the user accepts
