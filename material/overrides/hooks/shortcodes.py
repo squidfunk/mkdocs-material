@@ -46,7 +46,6 @@ def on_page_markdown(
                 return _badge_for_version_insiders(args, page, files)
             else:
                 return _badge_for_version(args, page, files)
-        elif type == "examplerepo": return _badge_for_example_repo(args, page, files)
         elif type == "sponsors":     return _badge_for_sponsors(page, files)
         elif type == "flag":         return flag(args, page, files)
         elif type == "option":       return option(args)
@@ -141,17 +140,6 @@ def _badge_for_version(text: str, page: Page, files: Files):
     return _badge(
         icon = f"[:{icon}:]({href} 'Minimum version')",
         text = f"[{text}]({_resolve_path(path, page, files)})" if spec else ""
-    )
-
-# Create badge for example repositories
-def _badge_for_example_repo(args: str, page: Page, files: Files):
-    repo_name = args.strip()  
-    icon_url = _resolve_path("conventions.md#example-repository", page, files)  
-    text_href = f"https://github.com/mkdocs-material/{repo_name}" 
-    icon = "material-github"  
-    return _badge(
-        icon=f"[:{icon}:]({icon_url} 'Example Repository')", 
-        text=f"[{repo_name}]({text_href})" 
     )
 
 # Create badge for version of Insiders
