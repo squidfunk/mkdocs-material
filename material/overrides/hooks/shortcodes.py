@@ -192,28 +192,28 @@ def _badge_for_utility(text: str, page: Page, files: Files):
         text = text
     )
 
-# Create badge for demonstration
+# Create badge for example
 def _badge_for_example(text: str, page: Page, files: Files):
     return "\n".join([
         _badge_for_example_download(text, page, files),
         _badge_for_example_view(text, page, files)
     ])
 
-# Create badge for demonstration view
+# Create badge for example view
 def _badge_for_example_view(text: str, page: Page, files: Files):
     icon = "material-folder-eye"
     href = f"https://mkdocs-material.github.io/examples/{text}/"
     return _badge(
-        icon = f"[:{icon}:]({href} 'View demonstration')",
+        icon = f"[:{icon}:]({href} 'View example')",
         type = "right"
     )
 
-# Create badge for demonstration download
+# Create badge for example download
 def _badge_for_example_download(text: str, page: Page, files: Files):
     icon = "material-folder-download"
     href = f"https://mkdocs-material.github.io/examples/{text}.zip"
     return _badge(
-        icon = f"[:{icon}:]({href} 'Download demonstration files')",
+        icon = f"[:{icon}:]({href} 'Download example files')",
         text = f"[`.zip`]({href})",
         type = "right"
     )
