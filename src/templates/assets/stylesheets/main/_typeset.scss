@@ -75,6 +75,7 @@ kbd {
 .md-typeset {
   font-size: px2rem(16px);
   line-height: 1.6;
+  overflow-wrap: break-word;
   color-adjust: exact;
 
   // [print]: We'll use a smaller `font-size` for printing, so code examples
