@@ -23,7 +23,8 @@
 <!-- Version warning -->
 <script>
   var el = document.querySelector("[data-md-component=outdated]")
-  var outdated = __md_get("__outdated", sessionStorage)
+  var base = new URL("{{ base_url }}");
+  var outdated = __md_get("__outdated", sessionStorage, base)
   if (outdated === true && el)
     el.hidden = false
 </script>
