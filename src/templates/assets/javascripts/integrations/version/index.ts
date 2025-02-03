@@ -158,8 +158,11 @@ export function setupVersionSelector(
   document$.pipe(switchMap(() => current$))
     .subscribe(current => {
 
+      // Always scope outdate version banner to the base URL of the site
+      const base = new URL(config.base)
+
       /* Check if version state was already determined */
-      let outdated = __md_get("__outdated", sessionStorage)
+      let outdated = __md_get("__outdated", sessionStorage, base)
       if (outdated === null) {
         outdated = true
 
@@ -177,7 +180,7 @@ export function setupVersionSelector(
             }
 
         /* Persist version state in session storage */
-        __md_set("__outdated", outdated, sessionStorage)
+        __md_set("__outdated", outdated, sessionStorage, base)
       }
 
       /* Unhide outdated version banner */
