@@ -1,3 +1,8 @@
+mkdocs-material-9.6.2 (2025-02-03)
+
+  * Fixed #7955: Excessively long words don't break on narrow screens
+  * Fixed #7947: Scope setting interferes with outdated version banner
+
 mkdocs-material-9.6.1 (2025-01-31)
 
   * Fixed #7943: Tags plugin crashing due to merge error
