@@ -114,16 +114,16 @@
           "$ref": "https://raw.githubusercontent.com/prcr/mkdocs-meta-descriptions-plugin/main/schema.json"
         },
         {
-          "$ref": "https://raw.githubusercontent.com/mkdocstrings/mkdocstrings/master/docs/schema.json"
+          "$ref": "https://raw.githubusercontent.com/mkdocstrings/mkdocstrings/main/docs/schema.json"
         },
         {
-          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-coverage/master/docs/schema.json"
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-coverage/main/docs/schema.json"
         },
         {
-          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-spellcheck/master/docs/schema.json"
+          "$ref": "https://raw.githubusercontent.com/pawamoy/mkdocs-spellcheck/main/docs/schema.json"
         },
         {
-          "$ref": "https://raw.githubusercontent.com/pawamoy/markdown-exec/master/docs/schema.json"
+          "$ref": "https://raw.githubusercontent.com/pawamoy/markdown-exec/main/docs/schema.json"
         },
         {
           "$ref": "https://raw.githubusercontent.com/timvink/mkdocs-table-reader-plugin/master/docs/schema.json"
