@@ -37,7 +37,9 @@ def tag_name_casefold(tag: Tag, *args):
 
 # Return item title for sorting
 def item_title(mapping: Mapping):
-    return mapping.item.title
+    # Note that this must be coerced to a string, as the title might be sourced
+    # from metadata, which can be of any type - see https://t.ly/1AXyo
+    return str(mapping.item.title)
 
 # Return item URL for sorting
 def item_url(mapping: Mapping):
