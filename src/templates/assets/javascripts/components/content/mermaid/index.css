@@ -171,19 +171,15 @@ g.classGroup text {
 }
 
 /* Class extension, composition and dependency marker */
-defs #classDiagram-extensionStart,
-defs #classDiagram-extensionEnd,
-defs #classDiagram-compositionStart,
-defs #classDiagram-compositionEnd,
-defs #classDiagram-dependencyStart,
-defs #classDiagram-dependencyEnd {
+defs marker.marker.extension.class path,
+defs marker.marker.composition.class path ,
+defs marker.marker.dependency.class path  {
   fill: var(--md-mermaid-edge-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
 
 /* Class aggregation marker */
-defs #classDiagram-aggregationStart,
-defs #classDiagram-aggregationEnd {
+defs marker.marker.aggregation.class path  {
   fill: var(--md-mermaid-label-bg-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
