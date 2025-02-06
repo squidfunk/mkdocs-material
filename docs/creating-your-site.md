@@ -10,13 +10,6 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-???+ warning
-
-    Please note that the container image with which mkdocs-material is delivered is not an image for
-    publishing the documentation in a production environment. The container image supports the creation
-    of the documentation and has a built-in live preview server.
-
-
 === "Unix, Powershell"
 
     ```
