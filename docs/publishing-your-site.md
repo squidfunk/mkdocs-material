@@ -223,12 +223,6 @@ Now you can reach your documentation under `<username>.gitlab.io/<repository>`.
 
 [^1]: [Release notes for Gitlab 17.4](https://about.gitlab.com/releases/2024/09/19/gitlab-17-4-released/)
 
-???+ warning
-
-    Please note that the container image with which mkdocs-material is delivered is not an image for
-    publishing the documentation in a production environment. The container image supports the creation
-    of the documentation and has a built-in live preview server.
-
 ## Other
 
 Since we can't cover all possible platforms, we rely on community contributed
