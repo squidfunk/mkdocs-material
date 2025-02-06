@@ -340,7 +340,7 @@ add:
 === ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
-    :root {
+    :root  > * {
       --md-primary-fg-color:        #EE0F0F;
       --md-primary-fg-color--light: #ECB7B7;
       --md-primary-fg-color--dark:  #90030C;
