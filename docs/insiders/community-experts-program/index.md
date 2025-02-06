@@ -1,6 +1,5 @@
 ---
 title: Community Experts Program
-
 ---
 
 # Calling for Community Experts
