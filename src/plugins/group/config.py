@@ -27,5 +27,12 @@ from mkdocs.config.base import Config
 
 # Group plugin configuration
 class GroupConfig(Config):
-    enabled = Type(bool, default = False)
+    # While the canonical type for this setting is obviously bool, setting it
+    # from environment variables seems to have different effects on different
+    # systems. For instance, setting CI=true seems to correctly work on macOS,
+    # but not on Linux – see https://t.ly/MWj0H.
+    #
+    # Thus, as long as the value evaluates to a truthy or falsy value, the
+    # plugin will work as expected, until we find a better solution.
+    enabled = Type((bool, str, int), default = False)
     plugins = Type((list, dict))
