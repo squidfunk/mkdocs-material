@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.3 <small>February 7, 2025</small> { id="9.6.3" }
+
+- Fixed rendering of arrow heads in Mermaid.js class diagrams
+- Fixed #7960: Tags plugin crashes on numeric metadata titles
+
 ### 9.6.2 <small>February 3, 2025</small> { id="9.6.2" }
 
 - Fixed #7955: Excessively long words don't break on narrow screens
