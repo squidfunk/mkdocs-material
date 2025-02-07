@@ -93,6 +93,13 @@ MkDocs on GitHub Pages in a step-by-step guide.
 
 ### with docker
 
+???+ warning
+
+    The Docker container is intended for local previewing purposes only and
+    is not suitable for deployment. This is because the web server used by
+    MkDocs for live previews is not designed for production use and may have
+    security vulnerabilities.
+
 The official [Docker image] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Open up a terminal
 and pull the image with:
