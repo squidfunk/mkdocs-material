@@ -284,21 +284,21 @@ theme:
     - media: "(prefers-color-scheme)"
       toggle:
         icon: material/brightness-auto
-        name: Switch to light mode
+        name: Switch to system preference
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default # (1)!
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
+        name: Switch to light mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/brightness-4
-        name: Switch to system preference
+        name: Switch to dark mode
 ```
 
 1.  You can also define separate settings for [`primary`][palette.primary] and
