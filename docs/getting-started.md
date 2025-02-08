@@ -122,6 +122,13 @@ The following plugins are bundled with the Docker image:
   [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
   [mkdocs-redirects]: https://github.com/datarobot/mkdocs-redirects
 
+???+ warning
+
+    The Docker container is intended for local previewing purposes only and
+    is not suitable for deployment. This is because the web server used by
+    MkDocs for live previews is not designed for production use and may have
+    security vulnerabilities.
+
 ??? question "How to add plugins to the Docker image?"
 
     Material for MkDocs only bundles selected plugins in order to keep the size
