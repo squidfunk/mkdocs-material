@@ -147,6 +147,7 @@
 
   // Content wrapper
   > .md-content__inner {
+    flex-grow: 1;
     min-width: 0;
 
     // [screen +]: Adjust spacing between content area and sidebars
