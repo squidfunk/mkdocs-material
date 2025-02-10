@@ -42,11 +42,11 @@ contents:
           - uses: actions/setup-python@v5
             with:
               python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
+          - run: echo "cache_id=$(date --utc '+%Y-%V')" >> $GITHUB_ENV # (3)!
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: ~/.cache/pip
               restore-keys: |
                 mkdocs-material-
           - run: pip install mkdocs-material # (4)!
@@ -101,11 +101,11 @@ contents:
           - uses: actions/setup-python@v5
             with:
               python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
+          - run: echo "cache_id=$(date --utc '+%Y-%V')" >> $GITHUB_ENV
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: ~/.cache/pip
               restore-keys: |
                 mkdocs-material-
           - run: apt-get install pngquant # (1)!
