@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.4 <small>February 12, 2025</small> { id="9.6.4" }
+
+- Fixed #7985: Blog content sometimes not stretching to full width
+- Fixed #7978: Navigation rendering bug in Safari 18.3
+
 ### 9.6.3 <small>February 7, 2025</small> { id="9.6.3" }
 
 - Fixed rendering of arrow heads in Mermaid.js class diagrams
