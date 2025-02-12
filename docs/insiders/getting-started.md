@@ -153,14 +153,14 @@ plugins:
   - search
   - social
 
-  # CI=1 mkdocs build
+  # CI=true mkdocs build
   - group:
       enabled: !ENV CI
       plugins:
         - git-revision-date-localized
         - git-committers
 
-  # INSIDERS=1 mkdocs build
+  # INSIDERS=true mkdocs build
   - group:
       enabled: !ENV INSIDERS
       plugins:
@@ -170,8 +170,8 @@ plugins:
 
 Of course, you can also enable both groups with:
 
-```
-CI=1 INSIDERS=1 mkdocs build
+``` shell
+CI=true INSIDERS=true mkdocs build
 ```
 
   [built-in group plugin]: ../plugins/group.md
