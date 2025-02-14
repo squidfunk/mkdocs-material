@@ -143,7 +143,7 @@ header to indicate that a post is still in draft form.
     Create a second blog post in `docs/blogs/posts/draft.md` with the following
     contents:
 
-    ```hl_lines="3"
+    ```hl_lines="4"
     ---
     date:
       created: 2024-01-01
