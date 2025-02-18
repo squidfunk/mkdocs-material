@@ -44,6 +44,8 @@ from xml.etree.ElementTree import Element, tostring
 from .config import PrivacyConfig
 from .parser import FragmentParser
 
+DEFAULT_TIMEOUT_IN_SECS = 5
+
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
@@ -310,21 +312,24 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     # Replace external favicon, preload hint or style sheet
                     if rel in ("icon", "preload", "stylesheet"):
                         file = self._queue(url, config)
-                        el.set("href", resolve(file))
+                        if file:
+                            el.set("href", resolve(file))
 
             # Handle external script or image
             if el.tag == "script" or el.tag == "img":
                 url = urlparse(el.get("src"))
                 if not self._is_excluded(url, initiator):
                     file = self._queue(url, config)
-                    el.set("src", resolve(file))
+                    if file:
+                        el.set("src", resolve(file))
 
             # Handle external image in SVG
             if el.tag == "image":
                 url = urlparse(el.get("href"))
                 if not self._is_excluded(url, initiator):
                     file = self._queue(url, config)
-                    el.set("href", resolve(file))
+                    if file:
+                        el.set("href", resolve(file))
 
             # Return element as string
             return self._print(el)
@@ -380,7 +385,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             # Fetch external asset synchronously, as it either has no extension
             # or is fetched from a context in which replacements are done
             else:
-                self._fetch(file, config)
+                if not self._fetch(file, config):
+                    return None
 
             # Register external asset as file - it might have already been
             # registered, and since MkDocs 1.6, trigger a deprecation warning
@@ -404,18 +410,28 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
             # Download external asset
             log.info(f"Downloading external file: {file.url}")
-            res = requests.get(file.url, headers = {
-
-                # Set user agent explicitly, so Google Fonts gives us *.woff2
-                # files, which according to caniuse.com is the only format we
-                # need to download as it covers the entire range of browsers
-                # we're officially supporting.
-                "User-Agent": " ".join([
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                    "AppleWebKit/537.36 (KHTML, like Gecko)",
-                    "Chrome/98.0.4758.102 Safari/537.36"
-                ])
-            })
+            try:
+                res = requests.get(
+                    file.url,
+                    headers={
+                        # Set user agent explicitly, so Google Fonts gives us *.woff2
+                        # files, which according to caniuse.com is the only format we
+                        # need to download as it covers the entire range of browsers
+                        # we're officially supporting.
+                        "User-Agent": " ".join(
+                            [
+                                "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                                "AppleWebKit/537.36 (KHTML, like Gecko)",
+                                "Chrome/98.0.4758.102 Safari/537.36",
+                            ]
+                        )
+                    },
+                    timeout=DEFAULT_TIMEOUT_IN_SECS,
+                )
+                res.raise_for_status()
+            except Exception as error:  # this could be a ConnectionError or an HTTPError
+                log.error(f"Could not retrieve {file.url}: {error}")
+                return False
 
             # Compute expected file extension and append if missing
             mime = res.headers["content-type"].split(";")[0]
