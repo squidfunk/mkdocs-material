@@ -106,7 +106,9 @@ so this is where you should make the `layouts` directory and place the
 background image. The default site of the social cards included with the plugin
 is 1200x630 pixels, so choose an image that size or one that scales well to it.
 
-## Additional layouts and styles <!-- md:sponsors -->
+## Additional layouts and styles 
+
+<!-- md:sponsors -->
 
 The Insiders Edition provides additional layouts as well as the option to
 configure different styles for different (kinds of) pages.
@@ -165,7 +167,9 @@ page. If that is not what you want then you will need to modify the social
 card template to gets its icons from another source. You can learn how to
 do this in the [custom social cards tutorial](custom.md).
 
-## Per-page settings <!-- md:sponsors -->
+## Per-page settings 
+
+<!-- md:sponsors -->
 
 With the Insiders Edition, you can customize the card layout for each
 page by adding settings to the page header. You have effectively done this
