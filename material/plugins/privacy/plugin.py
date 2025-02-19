@@ -430,7 +430,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                 )
                 res.raise_for_status()
             except Exception as error:  # this could be a ConnectionError or an HTTPError
-                log.error(f"Could not retrieve {file.url}: {error}")
+                log.warning(f"Could not retrieve {file.url}: {error}")
                 return False
 
             # Compute expected file extension and append if missing
