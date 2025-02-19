@@ -176,6 +176,10 @@ class ListingManager:
             # is unique, so we use the page source file path and the position
             # of the match within the page as an identifier.
             id = f"{page.file.src_uri}:{match.start()}-{match.end()}"
+
+            # Replace whitespaces in the identifier that we computed, or we
+            # can't just prefix it with "#" - see https://t.ly/U_hfp
+            id = id.replace(" ", "-")
             self.data.add(Listing(page, id, config))
 
             # Replace directive with hx headline if listings are enabled, or
