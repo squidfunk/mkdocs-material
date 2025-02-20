@@ -137,12 +137,13 @@ instant previews on a per-page or per-section level for your documentation:
 ``` yaml
 markdown_extensions:
   - material.extensions.preview:
-      targets:
-        include:
-          - changelog/index.md
-          - customization.md
-          - insiders/changelog/*
-          - setup/extensions/*
+      configurations:
+        - targets:
+            include:
+              - changelog/index.md
+              - customization.md
+              - insiders/changelog/*
+              - setup/extensions/*
 ```
 
 The above configuration is what we use for our documentation. We've enabled
@@ -154,16 +155,17 @@ as well as for all Markdown extensions that we support.
     ``` yaml
     markdown_extensions:
       - material.extensions.preview:
-          sources: # (1)!
-            include:
-              - ...
-            exclude:
-              - ...
-          targets: # (2)!
-            include:
-              - ...
-            exclude:
-              - ...
+          configurations:
+            - sources: # (1)!
+                include:
+                  - ...
+                exclude:
+                  - ...
+              targets: # (2)!
+                include:
+                  - ...
+                exclude:
+                  - ...
     ```
 
     1.  Sources specify the pages _on_ which instant previews should be enabled.
@@ -171,6 +173,10 @@ as well as for all Markdown extensions that we support.
         pages. You can use patterns to include or exclude pages. Exclusion is
         evaluated on top of inclusion, so if a page is matched by both, it will
         be excluded.
+
+        Note that you can define multiple items under the `configurations`
+        setting, which allows to precisely control where instant previews are
+        shown.
 
     2.  Targets specify the pages _to_ which instant previews should be enabled.
         This is the recommended way to enable instant previews.
