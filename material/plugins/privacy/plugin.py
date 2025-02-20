@@ -259,7 +259,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # quote, we need to catch this here, as we're using pretty basic
         # regular expression based extraction
         raise PluginError(
-            f"Could not parse due to possible syntax error in HTML: \n\n"
+            "Couldn't parse due to possible syntax error in HTML: \n\n"
             + fragment
         )
 
@@ -413,11 +413,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             try:
                 res = requests.get(
                     file.url,
-                    headers={
-                        # Set user agent explicitly, so Google Fonts gives us *.woff2
-                        # files, which according to caniuse.com is the only format we
-                        # need to download as it covers the entire range of browsers
-                        # we're officially supporting.
+                    headers = {
+                        # Set user agent explicitly, so Google Fonts gives us
+                        # *.woff2 files, which according to caniuse.com is the
+                        # only format we need to download as it covers the range
+                        # range of browsers we're officially supporting.
                         "User-Agent": " ".join(
                             [
                                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
@@ -429,9 +429,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     timeout=DEFAULT_TIMEOUT_IN_SECS,
                 )
                 res.raise_for_status()
-            except Exception as error:  # this could be a ConnectionError or an HTTPError
-                log.warning(f"Could not retrieve {file.url}: {error}")
-                return False
+
+            # Intercept errors of type `ConnectionError` and `HTTPError`
+            except Exception as error:
+                log.warning(f"Couldn't retrieve {file.url}: {error}")
+                return
 
             # Compute expected file extension and append if missing
             mime = res.headers["content-type"].split(";")[0]
