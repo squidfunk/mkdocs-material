@@ -1,3 +1,8 @@
+mkdocs-material-9.6.5 (2025-02-20)
+
+  * Fixed #8016: Tags listing not showing when when file name has spaces
+  * Fixed #8012: Privacy plugin crashes if HTTP download fails
+
 mkdocs-material-9.6.4 (2025-02-12)
 
   * Fixed #7985: Blog content sometimes not stretching to full width

@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.5 <small>February 20, 2025</small> { id="9.6.5" }
+
+- Fixed #8016: Tags listing not showing when when file name has spaces
+- Fixed #8012: Privacy plugin crashes if HTTP download fails
+
 ### 9.6.4 <small>February 12, 2025</small> { id="9.6.4" }
 
 - Fixed #7985: Blog content sometimes not stretching to full width
