@@ -46,10 +46,10 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: .cache # (4)!
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material # (4)!
+          - run: pip install mkdocs-material # (5)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -67,7 +67,10 @@ contents:
 
         You can read the [manual page] to learn more about the formatting options of the `date` command.
 
-    4.  This is the place to install further [MkDocs plugins] or Markdown
+    4.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
+
+    5.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
 
         ``` sh
@@ -105,20 +108,23 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: .cache # (1)!
               restore-keys: |
                 mkdocs-material-
-          - run: apt-get install pngquant # (1)!
+          - run: apt-get install pngquant # (2)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (2)!
+      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (3)!
     ```
 
-    1.  This step is only necessary if you want to use the
+    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
+
+    2.  This step is only necessary if you want to use the
         [built-in optimize plugin] to automatically compress images.
 
-    2.  Remember to set the `GH_TOKEN` repository secret to the value of your
+    3.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [GitHub secrets].
 
@@ -140,6 +146,7 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
   [manual page]: https://man7.org/linux/man-pages/man1/date.1.html
+  [caching]: plugins/requirements/caching.md
 
 ### with MkDocs
 
@@ -206,7 +213,7 @@ Now, when a new commit is pushed to the [default branch] (typically `master` or
 the file to your repository to see the workflow in action.
 
 Your documentation is not published under `<username>.gitlab.io/<repository>`
-by default since **GitLab 17.4** [^1]. However, if you prefer a cleaner URL 
+by default since **GitLab 17.4** [^1]. However, if you prefer a cleaner URL
 structure, such as `<username>.gitlab.io/<repository>`, you need to adjust
 your configuration.
 
@@ -219,7 +226,7 @@ these steps:
 4.  **Use unique domain**.
 5.  Click **Save changes** to apply the update.
 
-Now you can reach your documentation under `<username>.gitlab.io/<repository>`. 
+Now you can reach your documentation under `<username>.gitlab.io/<repository>`.
 
 [^1]: [Release notes for Gitlab 17.4](https://about.gitlab.com/releases/2024/09/19/gitlab-17-4-released/)
 
