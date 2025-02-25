@@ -301,13 +301,15 @@ The following pipeline functions can be used:
 ### Segmentation
 
 The plugin supports text segmentation of Chinese via [jieba], a popular
-Chinese text segmentation library. Other languages like Japanese and Korean are
+Chinese text segmentation library, combined with extended regular expression
+support provided by [regex]. Other languages like Japanese and Korean are
 currently segmented on the client side, but we're considering to move this
 functionality into the plugin in the future.
 
 The following settings are available for segmentation:
 
   [jieba]: https://pypi.org/project/jieba/
+  [regex]: https://pypi.org/project/regex/
 
 ---
 

@@ -41,12 +41,12 @@ search plugin in a few minutes._
 ## Configuration
 
 Chinese language support for Material for MkDocs is provided by [jieba], an
-excellent Chinese text segmentation library. If [jieba] is installed, the
-built-in search plugin automatically detects Chinese characters and runs them
-through the segmenter. You can install [jieba] with:
+excellent Chinese text segmentation library. If [jieba] and [regex] packages
+are installed, the built-in search plugin automatically detects Chinese
+characters and runs them through the segmenter. You can install them with:
 
 ```
-pip install jieba
+pip install jieba regex
 ```
 
 The next step is only required if you specified the [`separator`][separator]
@@ -77,6 +77,7 @@ proficient in Chinese (yet?). If you find a bug or think something can be
 improved, please [open an issue].
 
   [jieba]: https://pypi.org/project/jieba/
+  [regex]: https://pypi.org/project/regex/
   [zero-width whitespace]: https://en.wikipedia.org/wiki/Zero-width_space
   [separator]: ../../plugins/search.md#config.separator
   [q=支持]: ?q=支持

@@ -21,7 +21,6 @@
 import json
 import logging
 import os
-import regex as re
 
 from html import escape
 from html.parser import HTMLParser
@@ -33,6 +32,14 @@ from .config import SearchConfig
 try:
     import jieba
 except ImportError:
+    jieba = None
+
+try:
+    import regex as re
+except ImportError:
+    import re
+
+    # jieba support requires `\p{IsHan}` that is not supported by `re`
     jieba = None
 
 # -----------------------------------------------------------------------------

@@ -23,7 +23,6 @@ import json
 import logging
 import os
 import platform
-import regex
 import requests
 import site
 import sys
@@ -40,6 +39,11 @@ from zipfile import ZipFile, ZIP_DEFLATED
 
 from .config import InfoConfig
 from .patterns import get_exclusion_patterns
+
+try:
+    import regex as re
+except ImportError:
+    import re
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -410,7 +414,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         pattern_path = _resolve_pattern(abspath, return_path = True)
 
         for pattern in self.exclusion_patterns:
-            if regex.search(pattern, pattern_path):
+            if re.search(pattern, pattern_path):
                 log.debug(f"Excluded pattern '{pattern}': {abspath}")
                 self.excluded_entries.append(f"{pattern} - {pattern_path}")
                 return True
