@@ -21,7 +21,8 @@
 import json
 import logging
 import os
-import regex as re
+import re
+from backrefs import bre
 
 from html import escape
 from html.parser import HTMLParser
@@ -285,7 +286,7 @@ class SearchIndex:
 
     # Find and segment Chinese characters in string
     def _segment_chinese(self, data):
-        expr = re.compile(r"(\p{IsHan}+)", re.UNICODE)
+        expr = bre.compile(r"(\p{script: Han}+)", bre.UNICODE)
 
         # Replace callback
         def replace(match):
