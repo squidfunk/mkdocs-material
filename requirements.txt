@@ -30,5 +30,5 @@ pymdown-extensions~=10.2
 babel~=2.10
 colorama~=0.4
 paginate~=0.5
-backrefs~=5.8
+backrefs~=5.7.post1
 requests~=2.26
