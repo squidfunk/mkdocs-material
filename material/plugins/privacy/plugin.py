@@ -433,7 +433,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             # Intercept errors of type `ConnectionError` and `HTTPError`
             except Exception as error:
                 log.warning(f"Couldn't retrieve {file.url}: {error}")
-                return
+                return False
 
             # Compute expected file extension and append if missing
             mime = res.headers["content-type"].split(";")[0]
@@ -483,6 +483,9 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         for url in self._parse_media(file):
             if not self._is_excluded(url, file):
                 self._queue(url, config, concurrent = True)
+
+        # External asset was successfully downloaded
+        return True
 
     # Patch all links to external assets in the given file
     def _patch(self, initiator: File):
