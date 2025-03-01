@@ -27,7 +27,7 @@
 {% endif %}
 
 <!-- Table of contents -->
-<nav class="md-nav md-nav--secondary" aria-label="{{ title }}">
+<nav class="md-nav md-nav--secondary" aria-label="{{ title | e }}">
   {% set toc = page.toc %}
 
   <!--
