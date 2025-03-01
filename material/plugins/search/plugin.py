@@ -22,7 +22,7 @@ import json
 import logging
 import os
 import re
-from backrefs import bre
+import backrefs as bre
 
 from html import escape
 from html.parser import HTMLParser
