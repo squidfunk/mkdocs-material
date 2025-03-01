@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.6 <small>March 1, 2025</small> { id="9.6.6" }
+
+- Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)
+- Fixed #8031: Replace unmtaintained `regex` package in search plugin
+
 ### 9.6.5 <small>February 20, 2025</small> { id="9.6.5" }
 
 - Fixed #8016: Tags listing not showing when when file name has spaces
