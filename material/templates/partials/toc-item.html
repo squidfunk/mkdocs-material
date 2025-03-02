@@ -8,7 +8,7 @@
     </span>
   </a>
   {% if toc_item.children %}
-    <nav class="md-nav" aria-label="{{ toc_item.title | striptags }}">
+    <nav class="md-nav" aria-label="{{ toc_item.title | striptags | e }}">
       <ul class="md-nav__list">
         {% for toc_item in toc_item.children %}
           {% include "partials/toc-item.html" %}
