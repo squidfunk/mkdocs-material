@@ -169,13 +169,18 @@ The following plugins are bundled with the Docker/Podman image:
     ```
     docker build -t squidfunk/mkdocs-material .
     ```
-    === "Docker"
-      ```
-      docker build -t squidfunk/mkdocs-material .
-      ```
 
+    === "Docker"
+
+        ```bash
+        docker build -t squidfunk/mkdocs-material .
+        ```
     === "Podman"
-      sdfoisdjo
+
+        ```bash
+        podman build -t squidfunk/mkdocs-material .
+        ```
+
 
     The new image will have additional packages installed and can be used
     exactly like the official image.
