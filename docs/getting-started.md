@@ -91,7 +91,7 @@ MkDocs on GitHub Pages in a step-by-step guide.
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
   [Using Python's pip to Manage Your Projects' Dependencies]: https://realpython.com/what-is-pip/
 
-### with docker/Podman
+### with docker/podman
 
 The official [Docker/Podman image] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Open up a terminal
@@ -165,10 +165,6 @@ The following plugins are bundled with the Docker/Podman image:
         ```
 
     Next, build the image with the following command:
-
-    ```
-    docker build -t squidfunk/mkdocs-material .
-    ```
 
     === "Docker"
 
