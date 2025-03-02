@@ -91,9 +91,9 @@ MkDocs on GitHub Pages in a step-by-step guide.
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
   [Using Python's pip to Manage Your Projects' Dependencies]: https://realpython.com/what-is-pip/
 
-### with docker
+### with docker/Podman
 
-The official [Docker image] is a great way to get up and running in a few
+The official [Docker/Podman image] is a great way to get up and running in a few
 minutes, as it comes with all dependencies pre-installed. Open up a terminal
 and pull the image with:
 
@@ -102,23 +102,31 @@ and pull the image with:
     ```
     docker pull squidfunk/mkdocs-material
     ```
+    or
+    ```
+    podman pull docker.io/squidfunk/mkdocs-material
+    ```    
 
 === "9.x"
 
     ```
     docker pull squidfunk/mkdocs-material:9
     ```
+    or
+    ```
+    podman pull docker.io/squidfunk/mkdocs-material:9
+    ```   
 
 The `mkdocs` executable is provided as an entry point and `serve` is the
-default command. If you're not familiar with Docker don't worry, we have you
+default command. If you're not familiar with Docker/Podman don't worry, we have you
 covered in the following sections.
 
-The following plugins are bundled with the Docker image:
+The following plugins are bundled with the Docker/Podman image:
 
 - [mkdocs-minify-plugin]
 - [mkdocs-redirects]
 
-  [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
+  [Docker/Podman image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
   [mkdocs-redirects]: https://github.com/datarobot/mkdocs-redirects
 
@@ -161,6 +169,13 @@ The following plugins are bundled with the Docker image:
     ```
     docker build -t squidfunk/mkdocs-material .
     ```
+    === "Docker"
+      ```
+      docker build -t squidfunk/mkdocs-material .
+      ```
+
+    === "Podman"
+      sdfoisdjo
 
     The new image will have additional packages installed and can be used
     exactly like the official image.
