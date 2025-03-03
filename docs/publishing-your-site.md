@@ -181,11 +181,16 @@ contents:
       script:
         - pip install mkdocs-material
         - mkdocs build --site-dir public
+      cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+          - .cache/
       artifacts:
         paths:
           - public
       rules:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
     ```
 
 === "Insiders"
@@ -197,6 +202,10 @@ contents:
       script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
+      cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+          - .cache/
       artifacts:
         paths:
           - public
