@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.7 <small>March 3, 2025</small> { id="9.6.7" }
+
+- Fixed #8056: Error in backrefs implementation (9.6.6 regression)
+- Fixed #8054: Unescaped quotes in ARIA labels of table of contents
+
 ### 9.6.6 <small>March 1, 2025</small> { id="9.6.6" }
 
 - Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)

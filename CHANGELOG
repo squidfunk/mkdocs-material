@@ -1,3 +1,8 @@
+mkdocs-material-9.6.7 (2025-03-03)
+
+  * Fixed #8056: Error in backrefs implementation (9.6.6 regression)
+  * Fixed #8054: Unescaped quotes in ARIA labels of table of contents
+
 mkdocs-material-9.6.6 (2025-03-01)
 
   * Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)
