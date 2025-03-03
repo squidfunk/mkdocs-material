@@ -184,7 +184,7 @@ contents:
       cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
-          - .cache/
+          - .cache/ # (1)!
       artifacts:
         paths:
           - public
@@ -192,6 +192,9 @@ contents:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
     ```
+
+    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
 
 === "Insiders"
 
@@ -205,7 +208,7 @@ contents:
       cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
-          - .cache/
+          - .cache/ # (2)!
       artifacts:
         paths:
           - public
@@ -216,6 +219,9 @@ contents:
     1.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
+
+    2.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
 
 Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
