@@ -6,7 +6,7 @@ mkdocs-material-9.6.7 (2025-03-03)
 mkdocs-material-9.6.6 (2025-03-01)
 
   * Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)
-  * Fixed #8031: Replace unmtaintained regex package in search plugin
+  * Fixed #8031: Replace unmaintained regex package in search plugin
 
 mkdocs-material-9.6.5 (2025-02-20)
 
