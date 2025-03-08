@@ -77,7 +77,12 @@
       {% endif %}
 
       <!-- Favicon -->
-      <link rel="icon" href="{{ config.theme.favicon | url }}" />
+      {% if config.site_url %}
+        {% set favicon = config.site_url + config.theme.favicon %}
+        <link rel="icon" href="{{ favicon | url }}" />
+      {% else %}
+        <link rel="icon" href="{{ config.theme.favicon | url }}" />
+      {% endif %}
 
       <!-- Generator banner -->
       <meta
