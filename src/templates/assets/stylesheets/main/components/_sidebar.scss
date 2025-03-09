@@ -124,7 +124,6 @@
     margin: 0 px2rem(4px);
     overflow-y: auto;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
-    scrollbar-gutter: stable;
     // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
     // to the bottom if `scroll-snap-type` is set on the initial render. For
     // this reason, we disable scroll snapping until this is resolved (#1667).
@@ -153,6 +152,12 @@
         }
       }
     }
+
+    // This needs to be scoped, as otherwise it creates an empty padding bar
+    // on Firefox. - see https://t.ly/fXNBP
+    ul {
+      scrollbar-gutter: stable;
+    }
   }
 
   // Hack: the scrollbar is only visible when the sidebar's contents overflow,
@@ -166,8 +171,8 @@
   // from Ayke van Laëthem's year old trick – see https://bit.ly/3Sb1qql
   @supports selector(::-webkit-scrollbar) {
 
-    // Sidebar scroll wrapper
-    &__scrollwrap {
+    // Sidebar scroll handle
+    ul {
       scrollbar-gutter: auto;
     }
 
