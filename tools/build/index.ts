@@ -112,6 +112,35 @@ function minsvg(data: string): string {
   return result.data
 }
 
+/**
+ * Return a path with POSIX style separators
+ *
+ * The default function assumes UNIX system, so it just returns the path.
+ *
+ * @param p - string path
+ * @returns String path
+ */
+let assurePosixSep = function (p: string): string {
+  return p
+};
+
+/**
+ * Return a path with POSIX style separators
+ *
+ * The Windows variant of this function replaces the separator with regex.
+ *
+ * @param p - string path
+ * @returns String path
+ */
+const winSepRegex = new RegExp(`\\${path.win32.sep}`, "g");
+function assurePosixSepWin(p: string): string {
+  return p.replace(winSepRegex, path.posix.sep)
+};
+
+if (path.sep === path.win32.sep) {
+  assurePosixSep = assurePosixSepWin;
+}
+
 /* ----------------------------------------------------------------------------
  * Tasks
  * ------------------------------------------------------------------------- */
@@ -187,7 +216,7 @@ const sources$ = copyAll("**/*.py", {
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".css").replace(/(overrides|templates)\//, "")),
+      of(ext(file, ".css").replace(new RegExp(`(overrides|templates)\\${path.sep}`), "")),
       transformStyle({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".css")
@@ -199,7 +228,7 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
 const javascripts$ = resolve("**/{custom,bundle,search}.ts", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".js").replace(/(overrides|templates)\//, "")),
+      of(ext(file, ".js").replace(new RegExp(`(overrides|templates)\\${path.sep}`), "")),
       transformScript({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".js")
@@ -229,10 +258,10 @@ const manifest$ = merge(
   .pipe(
     scan((prev, mapping) => (
       mapping.reduce((next, [key, value]) => (
-        next.set(key, value.replace(
-          new RegExp(`${base}\\/(overrides|templates)\\/`),
+        next.set(assurePosixSep(key), assurePosixSep(value.replace(
+          new RegExp(`${base}\\/(overrides|templates)\\${path.sep}`),
           ""
-        ))
+        )))
       ), prev)
     ), new Map<string, string>()),
   )
@@ -291,8 +320,8 @@ const icons$ = defer(() => resolve("**/*.svg", {
 }))
   .pipe(
     reduce((index, file) => index.set(
-      file.replace(/\.svg$/, "").replace(/\//g, "-"),
-      file
+      file.replace(/\.svg$/, "").replace(new RegExp(`\\${path.sep}`, "g"), "-"),
+      assurePosixSep(file)
     ), new Map<string, string>())
   )
 
@@ -372,7 +401,7 @@ const schema$ = merge(
           "reference/icons-emojis/#search"
         ].join("/"),
         "type": "string",
-        "enum": icons.map(icon => icon.replace(".svg", ""))
+        "enum": icons.map(icon => assurePosixSep(icon.replace(".svg", "")))
       })),
       switchMap(data => write(
         "docs/schema/assets/icons.json",
