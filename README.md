@@ -284,6 +284,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Netflix](https://netflix.github.io/titus/),
+[OpenAI](https://openai.github.io/openai-agents-python/),
 [Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Roboflow](https://inference.roboflow.com/),
 [Salesforce](https://policy-sentry.readthedocs.io/),
