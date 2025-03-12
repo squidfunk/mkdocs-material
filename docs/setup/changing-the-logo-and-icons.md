@@ -68,6 +68,16 @@ theme:
   favicon: images/favicon.png
 ```
 
+!!! danger "Your favicon doesn't appear in search engines?"
+
+    Some search engines require that the favicon path starts at the root of the
+    domain. However, if you deploy your site to GitHub Pages, the root of your
+    project is the subfolder. This leads to the problem that the favicon is
+    not showing up in search results. To make sure that the favicon always
+    appears, make sure to set [`site_url`][mkdocs.site_url] in `mkdocs.yml`.
+
+    For more information, see #8066.
+
   [Favicon default]: https://github.com/squidfunk/mkdocs-material/blob/master/material/assets/images/favicon.png
 
 ### Site icons
