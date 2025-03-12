@@ -318,6 +318,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [LlamaIndex](https://docs.llamaindex.ai/),
 [NetBox](https://netboxlabs.com/docs/netbox/en/stable/),
 [Nokogiri](https://nokogiri.org/),
+[OpenAI](https://openai.github.io/openai-agents-python/),
 [OpenFaaS](https://docs.openfaas.com/),
 [OpenSSL](https://docs.openssl.org/),
 [Orchard Core](https://docs.orchardcore.net/en/latest/),
