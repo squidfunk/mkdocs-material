@@ -200,9 +200,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     self._patch, file
                 ))
 
-            # Otherwise just copy external asset to output directory
+            # Otherwise just copy external asset to output directory if it
+            # exists, i.e., if the download succeeded
             else:
-                file.copy_file()
+                if os.path.exists(file.abs_src_path):
+                    file.copy_file()
 
         # Reconcile concurrent jobs for the last time, so the plugins following
         # in the build process always have a consistent state to work with
