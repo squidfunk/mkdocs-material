@@ -27,6 +27,7 @@ import {
   concat,
   defer,
   from,
+  identity,
   map,
   merge,
   mergeMap,
@@ -132,14 +133,54 @@ let assurePosixSep = function (p: string): string {
  * @param p - string path
  * @returns String path
  */
-const winSepRegex = new RegExp(`\\${path.win32.sep}`, "g");
 function assurePosixSepWin(p: string): string {
   return p.replace(winSepRegex, path.posix.sep)
 };
 
+const winSepRegex = new RegExp(`\\${path.win32.sep}`, "g");
+
 if (path.sep === path.win32.sep) {
   assurePosixSep = assurePosixSepWin;
 }
+
+/**
+ * Compare two path strings to decide on the order
+ *
+ * On Windows the default order of paths containing `_` from the resolve function
+ * is different than on macOS. This function restores the order to the usual.
+ * Implementation adapted based on https://t.ly/VJp78
+ *
+ * Note: The paths should have no extension like .svg, just the name. Otherwise
+ * it won't check the compare.startsWith(reference) properly.
+ *
+ * @param reference Left string to compare
+ * @param compare Right string to compare against
+ * @returns Number for the sort function to define the order
+ */
+function sortOrderForWindows(reference: string, compare: string): number {
+  reference = reference.toLowerCase();
+  compare = compare.toLowerCase();
+
+  const length = Math.min(reference.length, compare.length);
+
+  for (let i = 0; i < length; i++) {
+    const leftChar = reference[i];
+    const rightChar = compare[i];
+
+    if (leftChar !== rightChar)
+      return customAlphabet.indexOf(leftChar) - customAlphabet.indexOf(rightChar);
+  }
+
+  if (reference.length !== compare.length) {
+    if (compare.startsWith(reference) && compare[reference.length] === "-")
+      return 1;
+    return reference.length - compare.length;
+  }
+
+  return 0;
+}
+
+const customAlphabet: string = "_,-./0123456789abcdefghijklmnopqrstuvwxyz";
 
 /* ----------------------------------------------------------------------------
  * Tasks
@@ -322,7 +363,13 @@ const icons$ = defer(() => resolve("**/*.svg", {
     reduce((index, file) => index.set(
       file.replace(/\.svg$/, "").replace(new RegExp(`\\${path.sep}`, "g"), "-"),
       assurePosixSep(file)
-    ), new Map<string, string>())
+    ), new Map<string, string>()),
+    // The icons are stored in the index file, and the output needs to be OS
+    // agnostic. Some icons contain the `_` character, which has different order
+    // in the glob output on Windows.
+    (path.sep === path.win32.sep) ? map(icons => new Map(
+      [...icons].sort((a, b) => sortOrderForWindows(a[0], b[0]))
+    )) : identity
   )
 
 /* Compute emoji mappings (based on Twemoji) */
