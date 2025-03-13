@@ -23,7 +23,7 @@
 <!-- Render translation language -->
 {% macro render_language(language) %}
   <div class="mdx-flags__item" markdown>
-    :flag_{{ language.flag }}:{ .lg .middle }
+    :{{ language.flag }}:{ .lg .middle }
     <span class="mdx-flags__content">
       <span>
         <strong>{{ language.name }}</strong>
