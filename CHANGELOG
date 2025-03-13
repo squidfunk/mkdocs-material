@@ -1,3 +1,8 @@
+mkdocs-material-9.6.8 (2025-03-13)
+
+  * Added Welsh translations
+  * Fixed #8076: Privacy plugin crashes if HTTP download fails
+
 mkdocs-material-9.6.7 (2025-03-03)
 
   * Fixed #8056: Error in backrefs implementation (9.6.6 regression)

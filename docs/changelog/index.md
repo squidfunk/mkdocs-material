@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.8 <small>March 13, 2025</small> { id="9.6.8" }
+
+- Added Welsh translations
+- Fixed #8076: Privacy plugin crashes if HTTP download fails
+
 ### 9.6.7 <small>March 3, 2025</small> { id="9.6.7" }
 
 - Fixed #8056: Error in backrefs implementation (9.6.6 regression)
