@@ -1,3 +1,7 @@
+mkdocs-material-9.6.8+insiders-4.53.16 (2025-03-13)
+
+  * Fixed #8019: Tooltips have precedence over instant previews
+
 mkdocs-material-9.6.8 (2025-03-13)
 
   * Added Welsh translations
