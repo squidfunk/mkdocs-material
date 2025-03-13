@@ -124,14 +124,18 @@
     margin: 0 px2rem(4px);
     overflow-y: auto;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
-    scrollbar-gutter: stable;
-    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
-    // to the bottom if `scroll-snap-type` is set on the initial render. For
-    // this reason, we disable scroll snapping until this is resolved (#1667).
-    // scroll-snap-type: y mandatory;
-    scrollbar-width: thin;
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
+
+    // [tablet landscape +]: Show sidebars
+    @include break-from-device(tablet landscape) {
+      scrollbar-gutter: stable;
+      // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+      // to the bottom if `scroll-snap-type` is set on the initial render. For
+      // this reason, we disable scroll snapping until this is resolved (#1667).
+      // scroll-snap-type: y mandatory;
+      scrollbar-width: thin;
+    }
 
     // Webkit scrollbar
     &::-webkit-scrollbar {
