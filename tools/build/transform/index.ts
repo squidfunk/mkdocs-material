@@ -60,7 +60,8 @@ interface TransformOptions {
 /**
  * Base directory for source map resolution
  */
-const root = new RegExp(`file://${path.resolve(".")}/`, "g")
+const currentPath = path.resolve(".").replace(new RegExp(`\\${path.win32.sep}`, "g"), path.posix.sep)
+const root = path.sep === path.posix.sep ? new RegExp(`file://${currentPath}/`, "g") : new RegExp(`file:///${currentPath}/`, "g")
 
 /* ----------------------------------------------------------------------------
  * Helper functions
