@@ -35,6 +35,8 @@ contents:
         runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0 # (3)!
           - name: Configure Git Credentials
             run: |
               git config user.name github-actions[bot]
@@ -42,15 +44,15 @@ contents:
           - uses: actions/setup-python@v5
             with:
               python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
+          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (4)!
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache # (4)!
+              path: .cache # (5)!
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material # (5)!
-          - run: mkdocs gh-deploy --force
+          - run: pip install mkdocs-material # (6)!
+          - run: mkdocs gh-deploy
     ```
 
     1.  You can change the name to your liking.
@@ -58,7 +60,9 @@ contents:
     2.  At some point, GitHub renamed `master` to `main`. If your default branch
         is named `master`, you can safely remove `main`, vice versa.
 
-    3.  Store the `cache_id` environmental variable to access it later during cache
+    3.  Fetch all history, so that MkDocs could push incremental updates.
+
+    4.  Store the `cache_id` environmental variable to access it later during cache
         `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
 
         - The `--utc` option makes sure that each workflow runner uses the same time zone.
@@ -67,10 +71,10 @@ contents:
 
         You can read the [manual page] to learn more about the formatting options of the `date` command.
 
-    4.  Some Material for MkDocs plugins use [caching] to speed up repeated
+    5.  Some Material for MkDocs plugins use [caching] to speed up repeated
         builds, and store the results in the `.cache` directory.
 
-    5.  This is the place to install further [MkDocs plugins] or Markdown
+    6.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
 
         ``` sh
@@ -97,6 +101,8 @@ contents:
         if: github.event.repository.fork == false
         steps:
           - uses: actions/checkout@v4
+            with:
+              fetch-depth: 0
           - name: Configure Git Credentials
             run: |
               git config user.name github-actions[bot]
@@ -113,7 +119,7 @@ contents:
                 mkdocs-material-
           - run: apt-get install pngquant # (2)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-          - run: mkdocs gh-deploy --force
+          - run: mkdocs gh-deploy
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }} # (3)!
     ```
@@ -154,7 +160,7 @@ If you prefer to deploy your project documentation manually, you can just invoke
 the following command from the directory containing the `mkdocs.yml` file:
 
 ```
-mkdocs gh-deploy --force
+mkdocs gh-deploy --force # Remove the `--force` flag if you don't want force pushes.
 ```
 
 This will build your documentation and deploy it to a branch

@@ -90,7 +90,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy
 ```
 
 ## Conclusion
