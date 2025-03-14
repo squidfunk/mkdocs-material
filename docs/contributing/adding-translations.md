@@ -98,7 +98,7 @@ adding the shortcode for the country flag to this field. Go to our
     translations for a subdivision, please choose the most appropriate available
     flag.
 
-  [Twemoji]: https://github.com/twitter/twemoji
+  [Twemoji]: https://github.com/jdecked/twemoji
   [emoji search]: ../reference/icons-emojis.md#search
 
 > __Why this might be helpful__: adding a country flag next to the country name

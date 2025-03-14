@@ -91,7 +91,7 @@ the shortcodes at [Emojipedia]:
 :smile:
 
 </div>
-  [Twemoji]: https://github.com/twitter/twemoji
+  [Twemoji]: https://github.com/jdecked/twemoji
   [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons
