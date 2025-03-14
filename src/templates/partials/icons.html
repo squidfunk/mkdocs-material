@@ -28,7 +28,7 @@
     {% set _ = style.append(
       "--md-admonition-icon--" ~ type ~ ":" ~
       "url('data:image/svg+xml;charset=utf-8," ~
-        icon | replace("\n", "") ~
+        icon | replace("\n", "") | urlencode ~
       "');"
     ) %}
   {% endfor %}
@@ -43,7 +43,7 @@
   {% set _ = style.append(
     "--md-annotation-icon:" ~
     "url('data:image/svg+xml;charset=utf-8," ~
-      icon | replace("\n", "") ~
+      icon | replace("\n", "") | urlencode ~
     "');"
   ) %}
   {% set _ = style.append("}\x3c/style\x3e") %}
@@ -62,7 +62,7 @@
       ".md-tag" ~ modifier ~ "{" ~
         "--md-tag-icon:" ~
         "url('data:image/svg+xml;charset=utf-8," ~
-          icon | replace("\n", "") ~
+          icon | replace("\n", "") | urlencode ~
         "');" ~
       "}"
     ) %}
