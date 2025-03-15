@@ -397,7 +397,7 @@ const index$ = zip(icons$, emojis$)
           data: Object.fromEntries(icons)
         },
         emojis: {
-          base: `${cdn}/twitter/twemoji/master/assets/svg/`,
+          base: `${cdn}/jdecked/twemoji/master/assets/svg/`,
           data: Object.fromEntries(emojis)
         }
       } as IconSearchIndex
