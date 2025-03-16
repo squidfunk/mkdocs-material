@@ -10,7 +10,13 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+=== "Unix"
+
+    ```
+    docker run --rm -it -v ${PWD}:/docs -u $(id -u):$(id -g) squidfunk/mkdocs-material new .
+    ```
+
+=== "Powershell"
 
     ```
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
