@@ -1,3 +1,9 @@
+mkdocs-material-9.6.9 (2025-03-17)
+
+  * Updated Serbo-Croatian translations
+  * Fixed #8086: Custom SVG icons containing hashes break rendering
+  * Fixed #8067: Drawer has gap on right side in Firefox on some OSs
+
 mkdocs-material-9.6.8+insiders-4.53.16 (2025-03-13)
 
   * Fixed #8019: Tooltips have precedence over instant previews

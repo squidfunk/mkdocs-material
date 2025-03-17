@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.6.9 <small>March 17, 2025</small> { id="9.6.9" }
+
+- Updated Serbo-Croatian translations
+- Fixed #8086: Custom SVG icons containing hashes break rendering
+- Fixed #8067: Drawer has gap on right side in Firefox on some OSs
+
 ### 9.6.8 <small>March 13, 2025</small> { id="9.6.8" }
 
 - Added Welsh translations
