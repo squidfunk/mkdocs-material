@@ -10,7 +10,8 @@
     <span class="{{ class }}"></span>
   {% endif %}
 {% endmacro %}
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
@@ -25,7 +26,8 @@
     {{ render_status(nav_item, nav_item.meta.status) }}
   {% endif %}
 {% endmacro %}
-{% macro render_pruned(nav_item, ref = nav_item) %}
+{% macro render_pruned(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% set first = nav_item.children | first %}
   {% if first and first.children %}
     {{ render_pruned(first, ref) }}
@@ -49,14 +51,15 @@
     {% endif %}
   {% endif %}
   {% if nav_item.children %}
-    {% set indexes = [] %}
+    {% set _ = namespace(index = none) %}
     {% if "navigation.indexes" in features %}
-      {% for nav_item in nav_item.children %}
-        {% if nav_item.is_index and not index is defined %}
-          {% set _ = indexes.append(nav_item) %}
+      {% for item in nav_item.children %}
+        {% if item.is_index and _.index is none %}
+          {% set _.index = item %}
         {% endif %}
       {% endfor %}
     {% endif %}
+    {% set index = _.index %}
     {% if "navigation.tabs" in features %}
       {% if level == 1 and nav_item.active %}
         {% set class = class ~ " md-nav__item--section" %}
@@ -87,14 +90,13 @@
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
         <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>
-        {% if not indexes %}
+        {% if not index %}
           {% set tabindex = "0" if not is_section %}
           <label class="md-nav__link" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
             {{ render_content(nav_item) }}
             <span class="md-nav__icon md-icon"></span>
           </label>
         {% else %}
-          {% set index = indexes | first %}
           {% set class = "md-nav__link--active" if index == page %}
           <div class="md-nav__link md-nav__container">
             <a href="{{ index.url | url }}" class="md-nav__link {{ class }}">
@@ -115,7 +117,7 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             {% for nav_item in nav_item.children %}
-              {% if not indexes or nav_item != indexes | first %}
+              {% if not index or nav_item != index %}
                 {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
               {% endif %}
             {% endfor %}

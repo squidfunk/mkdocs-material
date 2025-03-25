@@ -1,17 +1,25 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% set cookies = config.extra.consent.cookies | d({}) %}
-{% if config.extra.analytics %}
-  {% if "analytics" not in cookies %}
-    {% set _ = cookies.update({ "analytics": "Google Analytics" }) %}
+{% macro render_cookie(cookie, type) %}
+  {% set checked = "" %}
+  {% if cookie is string %}
+    {% set name = cookie %}
+    {% set checked = "checked" %}
+  {% else %}
+    {% set name = cookie.name %}
+    {% if cookie.checked %}
+      {% set checked = "checked" %}
+    {% endif %}
   {% endif %}
-{% endif %}
-{% if config.repo_url and "github.com" in config.repo_url %}
-  {% if "github" not in cookies %}
-    {% set _ = cookies.update({ "github": "GitHub" }) %}
-  {% endif %}
-{% endif %}
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="{{ type }}" {{ checked }}>
+      <span class="task-list-indicator"></span>
+      {{ name }}
+    </label>
+  </li>
+{% endmacro %}
 {% set actions = config.extra.consent.actions %}
 {% if not actions %}
   {% set actions = ["accept", "manage"] %}
@@ -24,24 +32,21 @@
 <input class="md-toggle" type="checkbox" id="__settings" {{ checked }}>
 <div class="md-consent__settings">
   <ul class="task-list">
-    {% for type in cookies %}
-      {% set checked = "" %}
-      {% if cookies[type] is string %}
-        {% set name = cookies[type] %}
-        {% set checked = "checked" %}
-      {% else %}
-        {% set name = cookies[type].name %}
-        {% if cookies[type].checked %}
-          {% set checked = "checked" %}
-        {% endif %}
+    {% set cookies = config.extra.consent.cookies %}
+    {% if "analytics" not in cookies %}
+      {% if config.extra.analytics %}
+        {{ render_cookie("Google Analytics", "analytics") }}
       {% endif %}
-      <li class="task-list-item">
-        <label class="task-list-control">
-          <input type="checkbox" name="{{ type }}" {{ checked }}>
-          <span class="task-list-indicator"></span>
-          {{ name }}
-        </label>
-      </li>
+    {% endif %}
+    {% if "github" not in cookies %}
+      {% if config.repo_url and "github.com" in config.repo_url %}
+        {{ render_cookie("GitHub", "github") }}
+      {% endif %}
+    {% endif %}
+    {% for type in cookies %}
+      {% if cookies[type] %}
+        {{ render_cookie(cookies[type], type) }}
+      {% endif %}
     {% endfor %}
   </ul>
 </div>

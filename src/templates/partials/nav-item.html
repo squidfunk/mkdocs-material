@@ -39,7 +39,8 @@
 {% endmacro %}
 
 <!-- Render navigation link content -->
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
 
   <!-- Navigation link icon -->
   {% if nav_item.meta and nav_item.meta.icon %}
@@ -64,7 +65,8 @@
 {% endmacro %}
 
 <!-- Render navigation item (pruned) -->
-{% macro render_pruned(nav_item, ref = nav_item) %}
+{% macro render_pruned(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% set first = nav_item.children | first %}
 
   <!-- Recurse, if the first item has further nested items -->
@@ -104,14 +106,15 @@
   {% if nav_item.children %}
 
     <!-- Determine all nested items that are index pages -->
-    {% set indexes = [] %}
+    {% set _ = namespace(index = none) %}
     {% if "navigation.indexes" in features %}
-      {% for nav_item in nav_item.children %}
-        {% if nav_item.is_index and not index is defined %}
-          {% set _ = indexes.append(nav_item) %}
+      {% for item in nav_item.children %}
+        {% if item.is_index and _.index is none %}
+          {% set _.index = item %}
         {% endif %}
       {% endfor %}
     {% endif %}
+    {% set index = _.index %}
 
     <!-- Navigation tabs -->
     {% if "navigation.tabs" in features %}
@@ -171,7 +174,7 @@
         />
 
         <!-- Toggle to expand nested items -->
-        {% if not indexes %}
+        {% if not index %}
           {% set tabindex = "0" if not is_section %}
           <label
             class="md-nav__link"
@@ -185,7 +188,6 @@
 
         <!-- Toggle to expand nested items with link to index page -->
         {% else %}
-          {% set index = indexes | first %}
           {% set class = "md-nav__link--active" if index == page %}
           <div class="md-nav__link md-nav__container">
             <a
@@ -225,7 +227,7 @@
 
             <!-- Nested navigation item -->
             {% for nav_item in nav_item.children %}
-              {% if not indexes or nav_item != indexes | first %}
+              {% if not index or nav_item != index %}
                 {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
               {% endif %}
             {% endfor %}

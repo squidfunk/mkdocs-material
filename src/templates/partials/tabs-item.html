@@ -21,7 +21,8 @@
 -->
 
 <!-- Render navigation link content -->
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
 
   <!-- Navigation link icon -->
   {% if nav_item == ref or "navigation.indexes" in features %}
@@ -35,7 +36,8 @@
 {% endmacro %}
 
 <!-- Render navigation item -->
-{% macro render(nav_item, ref = nav_item) %}
+{% macro render(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
 
   <!-- Determine classes -->
   {% set class = "md-tabs__item" %}
