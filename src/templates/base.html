@@ -162,7 +162,7 @@
     {% if page.meta and page.meta.meta %}
       {% for tag in page.meta.meta %}
         <meta
-          {% for key, value in tag.items() %}
+          {% for key, value in tag | items %}
             {{ key }}="{{value}}"
           {% endfor %}
         />
