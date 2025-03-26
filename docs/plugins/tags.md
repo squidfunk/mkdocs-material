@@ -933,3 +933,9 @@ listing entirely:
     ```
 
 If this setting is left empty, no tags or pages are excluded.
+
+## Limitations
+
+The implementation of the tags plugin is tricky due to MkDocs architecture.
+Notably, tag listing markers cannot appear within code blocks. For technical
+details, refer to #8114.
