@@ -40,7 +40,7 @@
     </a>
   {% endif %}
 {% endmacro %}
-{% macro render(nav_item, path, level) %}
+{% macro render(nav_item, path, level, parent) %}
   {% set class = "md-nav__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
@@ -66,7 +66,7 @@
         {% set is_section = true %}
       {% endif %}
       {% if "navigation.sections" in features %}
-        {% if level == 2 and nav_item.parent.active %}
+        {% if level == 2 and parent.active %}
           {% set class = class ~ " md-nav__item--section" %}
           {% set is_section = true %}
         {% endif %}
@@ -116,9 +116,9 @@
             {{ nav_item.title }}
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            {% for nav_item in nav_item.children %}
-              {% if not index or nav_item != index %}
-                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% for item in nav_item.children %}
+              {% if not index or item != index %}
+                {{ render(item, path ~ "_" ~ loop.index, level + 1, nav_item) }}
               {% endif %}
             {% endfor %}
           </ul>
