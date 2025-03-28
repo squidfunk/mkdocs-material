@@ -1,7 +1,8 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% if nav_item == ref or "navigation.indexes" in features %}
     {% if nav_item.is_index and nav_item.meta.icon %}
       {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
@@ -9,7 +10,8 @@
   {% endif %}
   {{ ref.title }}
 {% endmacro %}
-{% macro render(nav_item, ref = nav_item) %}
+{% macro render(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% set class = "md-tabs__item" %}
   {% if ref.active %}
     {% set class = class ~ " md-tabs__item--active" %}

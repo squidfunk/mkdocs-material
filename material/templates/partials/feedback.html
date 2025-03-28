@@ -32,7 +32,12 @@
               {% else %}
                 {% set title = page.title | urlencode %}
               {% endif %}
-              {{ rating.note.format(url = url, title = title) }}
+              {% set note = rating.note %}
+              {% if note %}
+                {% set note = note | replace("{url}", url) %}
+                {% set note = note | replace("{title}", title) %}
+              {% endif %}
+              {{ note }}
             </div>
           {% endfor %}
         </div>
