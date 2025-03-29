@@ -133,7 +133,6 @@ Code annotations offer a comfortable and friendly way to attach arbitrary
 content to specific sections of code blocks by adding numeric markers in block
 and inline comments in the language of the code block. Add the following to
 `mkdocs.yml` to enable them globally:
-
 ``` yaml
 theme:
   features:
@@ -142,6 +141,30 @@ theme:
 
 1.  :man_raising_hand: I'm a code annotation! I can contain `code`, __formatted
     text__, images, ... basically anything that can be written in Markdown.
+
+??? tip "In case if you are wondering! How?"
+    Here's how to use code annotation markers:
+    
+    -   Code block with marker
+    -   Followed by content list
+    
+    ````markdown
+    ```py title="Example"
+    def hello(): # (1)!
+        print("Hello")
+    ```
+
+    1.  :man_raising_hand: Say's hello!!
+    ````
+
+    Here's the result:
+
+    ```py title="Result"
+    def hello(): # (1)!
+        print("Hello")
+    ```
+
+    1.  :man_raising_hand: Say's hello!!
 
 ??? info "Enabling code annotations for a specific code block"
 
