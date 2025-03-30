@@ -2,6 +2,27 @@
 
 ## Material for MkDocs
 
+### 9.6.10 <small>March 30, 2025</small> { id="9.6.10" }
+
+This version is a pure refactoring release, and does not contain new features
+or bug fixes. It strives to improve the compatibility of our templates with
+alternative Jinja-like template engines that we're currently exploring,
+including [minijinja].
+
+Additionally, it replaces several instances of Python function invocations
+with idiomatic use of template filters. All instances where variables have
+been mutated inside templates have been replaced. Most changes have been made
+in partials, and only a few in blocks, and all of them are fully backward
+compatible, so no changes to overrides are necessary.
+
+Note that this release does not replace the Jinja template engine with
+minijinja. However, our templates are now 99% compatible with minijinja,
+which means we can explore alternative Jinja-compatible implementations.
+Additionally, immutability and removal of almost all Python function
+invocations means much more idiomatic templating.
+
+  [minijinja]: https://github.com/mitsuhiko/minijinja
+
 ### 9.6.9 <small>March 17, 2025</small> { id="9.6.9" }
 
 - Updated Serbo-Croatian translations
