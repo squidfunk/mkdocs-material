@@ -67,6 +67,7 @@ _Be our first gold sponsor!_
 [![Hummingbot]](https://hummingbot.org/){ target=_blank title="Hummingbot" }
 [![OctoPerf]](https://octoperf.com/){ target=_blank title="OctoPerf" }
 [![Inter Comestibles]](https://intercomestibles.ch/){ target=_blank title="Inter Comestibles" }
+[![Centara]](https://www.centara.com/){ target=_blank title="Centara" }
 
 </div>
 
@@ -116,6 +117,7 @@ _Be our first gold sponsor!_
   [OctoPerf]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png
   [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
   [Inter Comestibles]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png
+  [Centara]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png
 
 <hr />
 
