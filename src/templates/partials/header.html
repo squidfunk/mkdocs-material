@@ -91,13 +91,18 @@
 
     <!-- Button to open search modal -->
     {% if "material/search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% set icon = config.theme.icon.search or "material/magnify" %}
-        {% include ".icons/" ~ icon ~ ".svg" %}
-      </label>
+      {% set search = config.plugins["material/search"] | attr("config") %}
 
-      <!-- Search interface -->
-      {% include "partials/search.html" %}
+      <!-- Check if search is actually enabled - see https://t.ly/DT_0V -->
+      {% if search.enabled %}
+        <label class="md-header__button md-icon" for="__search">
+          {% set icon = config.theme.icon.search or "material/magnify" %}
+          {% include ".icons/" ~ icon ~ ".svg" %}
+        </label>
+
+        <!-- Search interface -->
+        {% include "partials/search.html" %}
+      {% endif %}
     {% endif %}
 
     <!-- Repository information -->
