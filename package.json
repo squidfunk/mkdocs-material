@@ -54,7 +54,7 @@
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@mdi/svg": "^7.4.47",
     "@primer/octicons": "^19.15.1",
-    "@stylistic/eslint-plugin-ts": "3.1.0",
+    "@stylistic/eslint-plugin-ts": "4.2.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/css-modules": "^1.0.5",
