@@ -193,7 +193,7 @@ sequenceDiagram
     more focused on the specific issue or feature that you worked on. Please keep
     the discussion respectful at all times.
 
-    It is important to note that not all pull requests get incorporated int the
+    It is important to note that not all pull requests get incorporated into the
     codebase. The reasons can vary. The work may bring to light other issues that
     block integration of the pull request. Sometimes it helps uncover better ways of
     doing things or shows that a more general approach is needed. All of this is
@@ -296,7 +296,7 @@ will work against that branch in your fork by default.
 ### Merging concurrent changes
 
 If the work you do takes some time then the chances increase that changes will
-be made to the main repository while you work.It is probably a good idea to set
+be made to the main repository while you work. It is probably a good idea to set
 up the original Material for MkDocs repository as an `upstream` repository for
 your local clone.
 
