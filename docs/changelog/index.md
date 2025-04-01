@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.6.11 <small>April 1, 2025</small> { id="9.6.11" }
+
+- Updated Docker image to latest Alpine Linux
+- Bump required Jinja version to 3.1
+- Fixed #8133: Jinja filter `items` not available (9.6.10 regression)
+- Fixed #8128: Search plugin not entirely disabled via enabled setting
+
 ### 9.6.10 <small>March 30, 2025</small> { id="9.6.10" }
 
 This version is a pure refactoring release, and does not contain new features
