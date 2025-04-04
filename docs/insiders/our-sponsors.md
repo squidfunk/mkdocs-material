@@ -50,10 +50,8 @@ _Be our first gold sponsor!_
 [![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }
 [![GetScreen.me]](https://getscreen.me/){ target=_blank title="GetScreen.me" }
 [![BotCity]](https://botcity.dev/){ target=_blank title="BotCity" }
-[![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
 [![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
 [![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
-[![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 [![Astral]](https://astral.sh/){ target=_blank title="Astral" }
 [![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
 [![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
@@ -96,10 +94,8 @@ _Be our first gold sponsor!_
   [bitcrowd]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png
   [GetScreen.me]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png
   [BotCity]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png
-  [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
   [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
   [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
-  [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
   [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
   [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
   [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
