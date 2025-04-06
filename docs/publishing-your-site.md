@@ -267,9 +267,7 @@ other providers:
   [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable
   [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
   [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-cloudflare/
-  [DigitalOcean]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-digitalocean-app-platform/
   [Flyio]: https://documentation.breadnet.co.uk/cloud/fly/mkdocs-on-fly/
   [Netlify]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-netlify/
-  [Vercel]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-vercel/
   [Scaleway]: https://www.scaleway.com/en/docs/tutorials/using-bucket-website-with-mkdocs/
 
