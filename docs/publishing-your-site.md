@@ -254,10 +254,8 @@ other providers:
 <div class="mdx-columns" markdown>
 
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
-- [:simple-digitalocean: DigitalOcean][DigitalOcean]
 - [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
-- [:simple-vercel: Vercel][Vercel]
 - [:simple-scaleway: Scaleway][Scaleway]
 
 </div>
