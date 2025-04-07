@@ -297,6 +297,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [CentOS](https://docs.infra.centos.org/),
 [Crystal](https://crystal-lang.org/reference/),
 [eBPF](https://ebpf-go.dev/),
+[ejabberd](https://docs.ejabberd.im/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
 [FlatBuffers](https://flatbuffers.dev/),
