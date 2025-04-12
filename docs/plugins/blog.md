@@ -599,6 +599,14 @@ plugins:
       post_readtime: false
 ```
 
+!!! warning "Chinese, Japanese and Korean characters"
+
+    Reading time computation currently does not take segmentation of Chinese,
+    Japanese and Korean characters into account. This means that the reading
+    time for posts in these languages may be inaccurate. We're planning on
+    adding support in the future. In the meantime, please use the `readtime`
+    front matter property to set the reading time.
+
 ---
 
 #### <!-- md:setting config.post_readtime_words_per_minute -->

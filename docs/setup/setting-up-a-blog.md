@@ -544,10 +544,10 @@ descending order.
 
 #### Setting the reading time
 
-When [enabled], the [readtime] package is used to compute the expected reading
-time of each post, which is rendered as part of the post and post excerpt.
-Nowadays, many blogs show reading times, which is why the [built-in blog plugin]
-offers this capability as well.
+When [enabled], the reading the expected reading time of each post is computed,
+which is rendered as part of the post and post excerpt. Nowadays, many blogs
+show reading times, which is why the [built-in blog plugin] offers this
+capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
 result in odd and unpleasant numbers. For this reason, reading time can be
@@ -566,7 +566,14 @@ readtime: 15
 
 This will disable automatic reading time computation.
 
-  [readtime]: https://pypi.org/project/readtime/
+!!! warning "Chinese, Japanese and Korean characters"
+
+    Reading time computation currently does not take segmentation of Chinese,
+    Japanese and Korean characters into account. This means that the reading
+    time for posts in these languages may be inaccurate. We're planning on
+    adding support in the future. In the meantime, please use the `readtime`
+    front matter property to set the reading time.
+
   [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
