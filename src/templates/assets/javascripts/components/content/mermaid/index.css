@@ -25,11 +25,7 @@
  * ------------------------------------------------------------------------- */
 
 /* General node */
-.node circle:not(.erDiagram *),
-.node ellipse:not(.erDiagram *),
-.node path:not(.erDiagram *),
-.node polygon:not(.erDiagram *),
-.node rect:not(.erDiagram *) {
+.node :where(circle, ellipse, path, polygon, rect):not(.erDiagram *) {
   fill: var(--md-mermaid-node-bg-color);
   stroke: var(--md-mermaid-node-fg-color);
 }
