@@ -282,18 +282,13 @@ defs #statediagram-barbEnd {
 }
 
 /* Entity relationship line markers */
-defs .marker.onlyOne.er *,
-defs .marker.zeroOrOne.er *,
-defs .marker.oneOrMore.er *,
-defs .marker.zeroOrMore.er * {
+defs .marker.er * {
   stroke: var(--md-mermaid-edge-color) !important;
 }
-
 
 g[id^="entity-"].node.default span.nodeLabel p {
   color: black; 
 } 
-
 
 
 /* ----------------------------------------------------------------------------
