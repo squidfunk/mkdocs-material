@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.6.12 <small>April 17, 2025</small> { id="9.6.12" }
+
+- Fixed #8158: Flip footnote back reference icon for right-to-left languages
+
 ### 9.6.11 <small>April 1, 2025</small> { id="9.6.11" }
 
 - Updated Docker image to latest Alpine Linux

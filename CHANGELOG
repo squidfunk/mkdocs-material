@@ -1,3 +1,7 @@
+mkdocs-material-9.6.12 (2025-04-17)
+
+  * Fixed #8158: Flip footnote back reference icon for right-to-left languages
+
 mkdocs-material-9.6.11 (2025-04-01)
 
   * Updated Docker image to latest Alpine Linux
