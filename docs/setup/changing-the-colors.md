@@ -323,16 +323,6 @@ properties). If you want to customize the colors beyond the palette (e.g. to
 use your brand-specific colors), you can add an [additional style sheet] and
 tweak the values of the CSS variables.
 
-First, set the [`primary`][palette.primary] or [`accent`][palette.accent] values
-in `mkdocs.yml` to `custom`, to signal to the theme that you want to define
-custom colors, e.g., when you want to override the `primary` color:
-
-``` yaml
-theme:
-  palette:
-    primary: custom
-```
-
 Let's say you're :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __YouTube__, and want to set the primary color to your brand's palette. Just
 add:
