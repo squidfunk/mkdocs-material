@@ -37,15 +37,22 @@ def readtime(html: str, words_per_minute: int):
     parser.feed(html)
     parser.close()
 
+    # Chinese, Japanese, Korean characters are typically in these ranges. Note
+    # that we must count CJK characters as words, or reading times will be off.
+    # This is not a perfect solution, but it should work well enough to give a
+    # reasonable estimate - see https://t.ly/zmPie
+    cjk = r'[\u4e00-\u9fff\u3040-\u30ff\u3400-\u4dbf\uac00-\ud7a3]'
+
     # Extract words from text and compute readtime in seconds
-    words = len(re.split(r"\W+", "".join(parser.text)))
+    words = len(re.findall(f"(\\w+|{cjk})", "".join(parser.text)))
     seconds = ceil(words / words_per_minute * 60)
 
     # Account for additional images
     delta = 12
     for _ in range(parser.images):
         seconds += delta
-        if delta > 3: delta -= 1
+        if delta > 3:
+            delta -= 1
 
     # Return readtime in minutes
     return ceil(seconds / 60)
