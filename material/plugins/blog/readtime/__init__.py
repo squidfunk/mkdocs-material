@@ -41,11 +41,11 @@ def readtime(html: str, words_per_minute: int):
     # that we must count CJK characters as words, or reading times will be off.
     # This is not a perfect solution, but it should work well enough to give a
     # reasonable estimate - see https://t.ly/zmPie
-    cjk = r'[\u4e00-\u9fff\u3040-\u30ff\u3400-\u4dbf\uac00-\ud7a3]'
+    cjk = r"[\u4e00-\u9fff\u3040-\u30ff\u3400-\u4dbf\uac00-\ud7a3]"
 
     # Extract words from text and compute readtime in seconds
-    words = len(re.findall(f"(\\w+|{cjk})", "".join(parser.text)))
-    seconds = ceil(words / words_per_minute * 60)
+    words = re.split(f"\\W+|(?={cjk})", "".join(parser.text))
+    seconds = ceil(len(words) / words_per_minute * 60)
 
     # Account for additional images
     delta = 12
