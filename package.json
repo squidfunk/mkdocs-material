@@ -62,7 +62,7 @@
     "@types/fuzzaldrin-plus": "^0.6.5",
     "@types/html-minifier-terser": "^7.0.2",
     "@types/lunr": "^2.3.7",
-    "@types/node": "^22.14.1",
+    "@types/node": "^22.15.3",
     "@types/resize-observer-browser": "^0.1.11",
     "@types/sass": "^1.45.0",
     "@typescript-eslint/eslint-plugin": "^8.30.1",
