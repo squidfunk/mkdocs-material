@@ -26,7 +26,7 @@ implementation.
     change requests
 
 
-  [How we manage change requests]: #how-we-handle-change-requests
+  [How we manage change requests]: #how-we-manage-change-requests
 
 ## Before creating an issue
 
@@ -225,18 +225,17 @@ they often propose new features or enhancements, we review and manage them
 differently than bug reports.
 
 To maintain clarity and ensure that our roadmap remains focused and achievable,
-we’ve introduced a structured process and use a dedicated [project board] to
-track and organize change requests.
+we've introduced a structured process and use a dedicated [backlog] to
+track and organize change requests, and how they fit into our roadmap.
 
-  [project board]: https://github.com/users/squidfunk/projects/4/views/1
+  [backlog]: https://github.com/users/squidfunk/projects/4/views/1
 
 Here’s how we handle new change requests:
 
 1. We read and review the request to understand the idea.
 2. We may leave comments to clarify intent or suggest alternatives.
 3. If the idea is out of scope, we will close the request and explain why.
-4. If the idea aligns with the project's vision, we’ll add a label and place it
-on the project board for tracking.
+4. If the idea aligns with the project's vision, we'll categorize it as a change request, and add it to our [backlog].
 5. In either case, we close the request to keep the issue tracker clean and
 focused on open bugs.
 
@@ -244,12 +243,9 @@ focused on open bugs.
 > change requests added to the project board remain part of our long-term
 > planning.
 
-__Why we do it this way:__
-- Gives users a better overview of active issues and bugs, seperated from
-  change requests
-- Keeps the issue tracker focused and manageable
-- Allows us to group related ideas and track progress more effectively
-- Improves transparency by making priorities visible to everyone
+__Benefits of this approach:__
+- Users get a better and quicker overview of known issues and bugs, as change requests are separated out, giving a better idea how actively this project is maintained.
+- Related ideas are grouped in the backlog, allowing us to track progress more effectively, and to more easily see which change requests are related.
 
 ## Rejected requests
 
