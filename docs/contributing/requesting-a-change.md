@@ -20,6 +20,14 @@ implementation.
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
 
+!!! warning "[How we manage change requests]"
+
+    Before submitting a new idea, please take a moment to read how we manage
+    change requests
+
+
+  [How we manage change requests]: #how-we-manage-change-requests
+
 ## Before creating an issue
 
 Before you invest your time to fill out and submit a change request, we kindly
@@ -209,6 +217,39 @@ review your idea for Material for MkDocs.
 __We'll take it from here.__
 
 ---
+
+## How we manage change requests
+
+Change requests are submitted as issues on our public [issue tracker]. Since
+they often propose new features or enhancements, we review and manage them
+differently than bug reports.
+
+To maintain clarity and ensure that our roadmap remains focused and achievable,
+we've introduced a structured process and use a dedicated [backlog] to
+track and organize change requests, and how they fit into our roadmap.
+
+  [backlog]: https://github.com/users/squidfunk/projects/4/views/1
+
+Here’s how we handle new change requests:
+
+1. We read and review the request to understand the idea.
+2. We may leave comments to clarify intent or suggest alternatives.
+3. If the idea is out of scope, we will close the request and explain why.
+4. If the idea aligns with the project's vision, we'll categorize it as a change
+request, and add it to our [backlog].
+5. In either case, we close the request to keep the issue tracker clean and
+focused on open bugs.
+
+> Note: While the issue may be closed, that doesn't mean it's forgotten –
+> change requests added to the project board remain part of our long-term
+> planning.
+
+__Benefits of this approach:__
+- Users get a clearer and quicker overview of known issues and bugs, as change
+requests are managed separentely, giving a better idea how actively this project
+is maintained.
+- Related ideas are grouped in the backlog, allowing us to track progress more
+effectively, and to more easily see which change requests are related.
 
 ## Rejected requests
 
