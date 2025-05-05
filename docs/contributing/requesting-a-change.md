@@ -235,7 +235,8 @@ Here’s how we handle new change requests:
 1. We read and review the request to understand the idea.
 2. We may leave comments to clarify intent or suggest alternatives.
 3. If the idea is out of scope, we will close the request and explain why.
-4. If the idea aligns with the project's vision, we'll categorize it as a change request, and add it to our [backlog].
+4. If the idea aligns with the project's vision, we'll categorize it as a change
+request, and add it to our [backlog].
 5. In either case, we close the request to keep the issue tracker clean and
 focused on open bugs.
 
@@ -244,8 +245,11 @@ focused on open bugs.
 > planning.
 
 __Benefits of this approach:__
-- Users get a better and quicker overview of known issues and bugs, as change requests are separated out, giving a better idea how actively this project is maintained.
-- Related ideas are grouped in the backlog, allowing us to track progress more effectively, and to more easily see which change requests are related.
+- Users get a clearer and quicker overview of known issues and bugs, as change
+requests are managed separentely, giving a better idea how actively this project
+is maintained.
+- Related ideas are grouped in the backlog, allowing us to track progress more
+effectively, and to more easily see which change requests are related.
 
 ## Rejected requests
 
