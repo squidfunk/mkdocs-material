@@ -246,7 +246,7 @@ focused on open bugs.
 
 __Benefits of this approach:__
 - Users get a clearer and quicker overview of known issues and bugs, as change
-requests are managed separentely, giving a better idea how actively this project
+requests are managed separately, giving a better idea how actively this project
 is maintained.
 - Related ideas are grouped in the backlog, allowing us to track progress more
 effectively, and to more easily see which change requests are related.
