@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.13 <small>May 10, 2025</small> { id="9.6.13" }
+
+- Fixed #8204: Annotations showing list markers in print view
+- Fixed #8153: Improve style of cardinality symbols in Mermaid.js ER diagrams
+
 ### 9.6.12 <small>April 17, 2025</small> { id="9.6.12" }
 
 - Fixed #8158: Flip footnote back reference icon for right-to-left languages
