@@ -280,64 +280,23 @@ defs #statediagram-barbEnd {
  * Rules: entity-relationship diagrams
  * ------------------------------------------------------------------------- */
 
-/* Entity-relationship diagram title */
-.entityTitleText {
-  fill: var(--md-mermaid-label-fg-color);
+/* Entity node and path - override color or markers will shine through */
+[id^=entity] rect,
+[id^=entity] path {
+  fill: var(--md-default-bg-color);
 }
 
-/* Attribute box */
-.attributeBoxEven,
-.attributeBoxOdd {
-  fill: var(--md-mermaid-node-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
-}
-
-/* Entity node */
-.entityBox {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
-}
-
-/* Entity node label */
-.entityLabel {
-  font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-label-fg-color);
-}
-
-/* Entity relationship label container */
-.relationshipLabelBox {
-  background-color: var(--md-mermaid-label-bg-color);
-  opacity: 1;
-  fill: var(--md-mermaid-label-bg-color);
-  fill-opacity: 1;
-}
-
-/* Entity relationship label */
-.relationshipLabel {
-  fill: var(--md-mermaid-label-fg-color);
-}
-
-/* Entity relationship line { */
+/* Entity relationship line */
 .relationshipLine {
   stroke: var(--md-mermaid-edge-color);
 }
 
 /* Entity relationship line markers */
-defs #ZERO_OR_ONE_START *,
-defs #ZERO_OR_ONE_END *,
-defs #ZERO_OR_MORE_START *,
-defs #ZERO_OR_MORE_END *,
-defs #ONLY_ONE_START *,
-defs #ONLY_ONE_END *,
-defs #ONE_OR_MORE_START *,
-defs #ONE_OR_MORE_END * {
+defs .marker.onlyOne.er *,
+defs .marker.zeroOrOne.er *,
+defs .marker.oneOrMore.er *,
+defs .marker.zeroOrMore.er * {
   stroke: var(--md-mermaid-edge-color) !important;
-}
-
-/* Entity relationship line markers */
-defs #ZERO_OR_MORE_START circle,
-defs #ZERO_OR_MORE_END circle {
-  fill: var(--md-mermaid-label-bg-color);
 }
 
 /* ----------------------------------------------------------------------------
