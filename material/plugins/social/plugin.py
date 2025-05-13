@@ -443,10 +443,9 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         # Fill with color, if given
         if fill:
             data = data.replace("<svg", f"<svg fill=\"{fill}\"")
-            data = data.encode("utf-8")
 
         # Convert to PNG and return image
-        svg2png(bytestring = data, write_to = file, scale = 10)
+        svg2png(bytestring = data.encode("utf-8"), write_to = file, scale = 10)
         return Image.open(file)
 
     # Retrieve font either from the card layout option or from the Material
