@@ -443,6 +443,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         # Fill with color, if given
         if fill:
             data = data.replace("<svg", f"<svg fill=\"{fill}\"")
+            data = data.encode("utf-8")
 
         # Convert to PNG and return image
         svg2png(bytestring = data, write_to = file, scale = 10)
