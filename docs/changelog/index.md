@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.6.14 <small>May 13, 2025</small> { id="9.6.14" }
+
+- Fixed #8215: Social plugin crashes when CairoSVG is updated to 2.8
+
 ### 9.6.13 <small>May 10, 2025</small> { id="9.6.13" }
 
 - Fixed #8204: Annotations showing list markers in print view
