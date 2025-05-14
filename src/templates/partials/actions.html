@@ -46,6 +46,7 @@
       href="{{ page.edit_url | replace(part, 'raw') }}"
       title="{{ lang.t('action.view') }}"
       class="md-content__button md-icon"
+      rel="edit"
     >
       {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
