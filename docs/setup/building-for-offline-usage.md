@@ -1,7 +1,7 @@
 # Building for offline usage
 
 If you want to ship your documentation together with your product, MkDocs has
-you covered – with support from themes, [MkDocs] allows for building
+you covered – with support from themes, [MkDocs] supports building
 offline-capable documentation. Notably, Material for MkDocs offers offline
 support for many of its features.
 
