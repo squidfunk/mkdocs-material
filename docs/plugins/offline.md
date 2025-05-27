@@ -6,10 +6,11 @@ icon: material/connection
 
 # Built-in offline plugin
 
-[MkDocs][mkdocs] is one of the few frameworks that allow to build offline-capable
-documentation that can be directly viewed by the user – no server needed. With
-the offline plugin, you can distribute the [`site` directory][mkdocs.site_dir]
-as a downloadable `.zip` file while retaining most interactive functionality.
+[MkDocs][mkdocs] is one of the few frameworks that supports building
+offline-capable documentation that can be directly viewed by the user – no
+server needed. With the offline plugin, you can distribute the
+[`site` directory][mkdocs.site_dir] as a downloadable `.zip` file while
+retaining most interactive functionality.
 
 ## Objective
 
