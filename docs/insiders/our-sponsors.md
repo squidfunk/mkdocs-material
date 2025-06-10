@@ -22,7 +22,6 @@ _Be our first gold sponsor!_
 [![SailPoint]{ style="height: 120px" }](https://documentation.sailpoint.com/){ target=_blank title="SailPoint" }
 [![Future]{ style="height: 120px" }](https://futureplc.com/){ target=_blank title="Future" }
 [![SIEMENS]{ style="height: 120px" }](https://opensource.siemens.com/){ target=_blank title="SIEMENS" }
-[![Pydantic Logfire]{ style="height: 120px" }](https://pydantic.dev/logfire/){ target=_blank title="Pydantic Logfire" }
 
 ----
 
@@ -65,6 +64,7 @@ _Be our first gold sponsor!_
 [![OctoPerf]](https://octoperf.com/){ target=_blank title="OctoPerf" }
 [![Inter Comestibles]](https://intercomestibles.ch/){ target=_blank title="Inter Comestibles" }
 [![Centara]](https://www.centara.com/){ target=_blank title="Centara" }
+[![Pydantic Logfire]](https://pydantic.dev/logfire/){ target=_blank title="Pydantic Logfire" }
 
 </div>
 
@@ -109,9 +109,9 @@ _Be our first gold sponsor!_
   [Future]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg
   [SIEMENS]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png
   [OctoPerf]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png
-  [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
   [Inter Comestibles]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png
   [Centara]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png
+  [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
 
 <hr />
 
