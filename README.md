@@ -289,6 +289,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Amp](https://amp.rs/docs/),
 [Apache Iceberg](https://iceberg.apache.org/),
 [Arduino](https://arduino.github.io/arduino-cli/),
+[Asahi Linux](https://asahilinux.org/docs/),
 [Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
