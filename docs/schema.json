@@ -171,6 +171,11 @@
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#not_in_nav",
       "type": "string"
     },
+    "draft_docs": {
+      "title": "Pattern to declare draft documents",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#draft_docs",
+      "type": "string"
+    },
     "watch": {
       "items": {
         "title": "Path to watch for changes",
