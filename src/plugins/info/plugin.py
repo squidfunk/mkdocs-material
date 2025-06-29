@@ -201,6 +201,19 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             if path.startswith(os.getcwd()):
                 self.exclusion_patterns.append(_resolve_pattern(path))
 
+        # Guess other Virtual Environment paths in case we forget to activate
+        # them or in case we have multiple. Making sure which venv is activated
+        # is not necessary, as it is an optional step in the guidelines.
+        for path in glob.iglob(
+            pathname = "**/pyvenv.cfg",
+            root_dir = os.getcwd(),
+            recursive = True
+        ):
+            path = os.path.join(os.getcwd(), os.path.dirname(path))
+            if path not in site.PREFIXES:
+                print(f"Possible inactive venv: {path}")
+                self.exclusion_patterns.append(_resolve_pattern(path))
+
         # Exclude site_dir for projects
         if projects_plugin:
             for path in glob.iglob(
