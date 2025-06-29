@@ -282,6 +282,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                             *sys.argv[1:]
                         ]),
                         "env:$PYTHONPATH": os.getenv("PYTHONPATH", ""),
+                        "env:$VIRTUAL_ENV": os.getenv("VIRTUAL_ENV", ""),
                         "sys.path": sys.path,
                         "excluded_entries": self.excluded_entries
                     },
