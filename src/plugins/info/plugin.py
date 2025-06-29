@@ -280,8 +280,13 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                 ]))
             )
 
+            # Try to get login to replace it with USERNAME placeholder
+            try:
+                username = getpass.getuser()
+            except Exception:
+                username = ""
+
             # Add information on platform
-            # Replace login with USERNAME placeholder
             f.writestr(
                 os.path.join(example, "platform.json"),
                 json.dumps(
@@ -301,7 +306,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                     },
                     default = str,
                     indent = 2
-                ).replace(getpass.getuser(), "USERNAME")
+                ).replace(username, "USERNAME")
             )
 
             # Retrieve list of processed files
