@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import getpass
 import glob
 import json
 import logging
@@ -267,6 +268,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             )
 
             # Add information on platform
+            # Replace login with USERNAME placeholder
             f.writestr(
                 os.path.join(example, "platform.json"),
                 json.dumps(
@@ -285,7 +287,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                     },
                     default = str,
                     indent = 2
-                )
+                ).replace(getpass.getuser(), "USERNAME")
             )
 
             # Retrieve list of processed files
