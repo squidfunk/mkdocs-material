@@ -18,6 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import getpass
 import glob
 import json
 import logging
@@ -200,6 +201,19 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             if path.startswith(os.getcwd()):
                 self.exclusion_patterns.append(_resolve_pattern(path))
 
+        # Guess other Virtual Environment paths in case we forget to activate
+        # them or in case we have multiple. Making sure which venv is activated
+        # is not necessary, as it is an optional step in the guidelines.
+        for path in glob.iglob(
+            pathname = "**/pyvenv.cfg",
+            root_dir = os.getcwd(),
+            recursive = True
+        ):
+            path = os.path.join(os.getcwd(), os.path.dirname(path))
+            if path not in site.PREFIXES:
+                print(f"Possible inactive venv: {path}")
+                self.exclusion_patterns.append(_resolve_pattern(path))
+
         # Exclude site_dir for projects
         if projects_plugin:
             for path in glob.iglob(
@@ -266,6 +280,12 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                 ]))
             )
 
+            # Try to get login to replace it with USERNAME placeholder
+            try:
+                username = getpass.getuser()
+            except Exception:
+                username = ""
+
             # Add information on platform
             f.writestr(
                 os.path.join(example, "platform.json"),
@@ -280,12 +300,13 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                             *sys.argv[1:]
                         ]),
                         "env:$PYTHONPATH": os.getenv("PYTHONPATH", ""),
+                        "env:$VIRTUAL_ENV": os.getenv("VIRTUAL_ENV", ""),
                         "sys.path": sys.path,
                         "excluded_entries": self.excluded_entries
                     },
                     default = str,
                     indent = 2
-                )
+                ).replace(username, "USERNAME")
             )
 
             # Retrieve list of processed files
