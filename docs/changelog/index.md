@@ -2,6 +2,13 @@
 
 ## Material for MkDocs
 
+### 9.6.15 <small>July 1, 2025</small> { id="9.6.15" }
+
+- Updated Mongolian translations
+- Improved semantic markup of "edit this page" button
+- Improved info plugin virtual environment resolution
+- Fixed #8291: Large font size setting throws of breakpoints in JavaScript
+
 ### 9.6.14 <small>May 13, 2025</small> { id="9.6.14" }
 
 - Fixed #8215: Social plugin crashes when CairoSVG is updated to 2.8
