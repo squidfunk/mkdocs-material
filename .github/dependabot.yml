@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -25,7 +25,7 @@ updates:
   directory: "/"
   labels: []
   schedule:
-    interval: weekly
+    interval: monthly
     time: "04:00"
 - package-ecosystem: pip
   # We only want to bump versions of packages in case of security updates, as
@@ -34,12 +34,12 @@ updates:
   directory: "/"
   labels: []
   schedule:
-    interval: weekly
+    interval: monthly
     time: "04:00"
 - package-ecosystem: github-actions
   open-pull-requests-limit: 10
   directory: "/"
   labels: []
   schedule:
-    interval: weekly
+    interval: monthly
     time: "04:00"

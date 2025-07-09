@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -75,6 +75,7 @@ kbd {
 .md-typeset {
   font-size: px2rem(16px);
   line-height: 1.6;
+  overflow-wrap: break-word;
   color-adjust: exact;
 
   // [print]: We'll use a smaller `font-size` for printing, so code examples
@@ -146,6 +147,11 @@ kbd {
   // Headline on level 5
   h5 {
     text-transform: uppercase;
+
+    // Don't uppercase code blocks
+    code {
+      text-transform: none;
+    }
   }
 
   // Horizontal separator

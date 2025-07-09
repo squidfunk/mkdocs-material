@@ -10,13 +10,6 @@ pages in a folder, i.e., a subsection of your project, which is particularly
 useful to ensure that a certain subset of pages features specific tags, uses a
 custom template, or is attributed to an author.
 
----
-
-<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
-[our awesome sponsors].
-
-  [our awesome sponsors]: ../insiders/index.md
-
 ## Objective
 
 ### How it works
@@ -132,8 +125,7 @@ of the meta plugin and other built-in plugins are:
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:plugin [meta] – built-in -->
 <!-- md:flag experimental -->
 
@@ -160,8 +152,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -184,8 +175,7 @@ The following settings are available for meta files:
 
 #### <!-- md:setting config.meta_file -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `.meta.yml` -->
 
 Use this setting to change the meta file name the plugin will look for when

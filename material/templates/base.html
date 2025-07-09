@@ -37,7 +37,7 @@
         <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.6.15">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -49,7 +49,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.b1210451.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.bd3167ff.min.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
@@ -63,8 +63,8 @@
     {% endblock %}
     {% block fonts %}
       {% if config.theme.font != false %}
-        {% set text = config.theme.font.get("text", "Roboto") %}
-        {% set code = config.theme.font.get("code", "Roboto Mono") %}
+        {% set text = config.theme.font.text | d("Roboto", true) %}
+        {% set code = config.theme.font.code | d("Roboto Mono", true) %}
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
             text | replace(' ', '+') + ':300,300i,400,400i,700,700i%7C' +
@@ -82,7 +82,7 @@
     {% endblock %}
     {% if page.meta and page.meta.meta %}
       {% for tag in page.meta.meta %}
-        <meta {% for key, value in tag.items() %} {{ key }}="{{value}}" {% endfor %}>
+        <meta {% for key, value in tag | items %} {{ key }}="{{value}}" {% endfor %}>
       {% endfor %}
     {% endif %}
     {% block extrahead %}{% endblock %}
@@ -219,42 +219,38 @@
       {% include "partials/javascripts/consent.html" %}
     {% endif %}
     {% block config %}
-      {%- set app = {
-        "base": base_url,
-        "features": features,
-        "translations": {},
-        "search": "assets/javascripts/workers/search.418e3274.min.js" | url
-      } -%}
+      {% set _ = namespace() %}
+      {% set _.tags = config.extra.tags %}
       {%- if config.extra.version -%}
-        {%- set mike = config.plugins.get("mike") -%}
+        {%- set mike = config.plugins.mike -%}
         {%- if not mike or mike.config.version_selector -%}
-          {%- set _ = app.update({ "version": config.extra.version }) -%}
+          {%- set _.version = config.extra.version -%}
         {%- endif -%}
       {%- endif -%}
-      {%- if config.extra.tags -%}
-        {%- set _ = app.update({ "tags": config.extra.tags }) -%}
-      {%- endif -%}
-      {%- set translations = app.translations -%}
-      {%- for key in [
-        "clipboard.copy",
-        "clipboard.copied",
-        "search.result.placeholder",
-        "search.result.none",
-        "search.result.one",
-        "search.result.other",
-        "search.result.more.one",
-        "search.result.more.other",
-        "search.result.term.missing",
-        "select.version"
-      ] -%}
-        {%- set _ = translations.update({ key: lang.t(key) }) -%}
-      {%- endfor -%}
       <script id="__config" type="application/json">
-        {{- app | tojson -}}
+        {{- {
+          "base": base_url,
+          "features": features,
+          "translations": {
+            "clipboard.copy": lang.t("clipboard.copy"),
+            "clipboard.copied": lang.t("clipboard.copied"),
+            "search.result.placeholder": lang.t("search.result.placeholder"),
+            "search.result.none": lang.t("search.result.none"),
+            "search.result.one": lang.t("search.result.one"),
+            "search.result.other": lang.t("search.result.other"),
+            "search.result.more.one": lang.t("search.result.more.one"),
+            "search.result.more.other": lang.t("search.result.more.other"),
+            "search.result.term.missing": lang.t("search.result.term.missing"),
+            "select.version": lang.t("select.version")
+          },
+          "search": "assets/javascripts/workers/search.931a43a5.min.js" | url,
+          "tags": _.tags or none,
+          "version": _.version or none
+        } | tojson -}}
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.0fbdaf96.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.73202423.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}

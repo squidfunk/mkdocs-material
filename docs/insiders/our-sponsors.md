@@ -46,13 +46,10 @@ _Be our first gold sponsor!_
 [![Neptune]](https://neptune.ai/){ target=_blank title="Neptune" }
 [![RackN]](https://rackn.com/){ target=_blank title="RackN" }
 [![CivicActions]](https://civicactions.com/){ target=_blank title="CivicActions" }
-[![bitcrowd]](https://bitcrowd.net/){ target=_blank title="bitcrowd" }
 [![GetScreen.me]](https://getscreen.me/){ target=_blank title="GetScreen.me" }
 [![BotCity]](https://botcity.dev/){ target=_blank title="BotCity" }
-[![Springer Nature Technology]](https://www.springernature.com/gp){ target=_blank title="Springer Nature Technology" }
 [![Kolena]](https://kolena.io/){ target=_blank title="Kolena" }
 [![Evergiving]](https://www.evergiving.com/){ target=_blank title="Evergiving" }
-[![Koor]](https://koor.tech/){ target=_blank title="Koor" }
 [![Astral]](https://astral.sh/){ target=_blank title="Astral" }
 [![Oikolab]](https://oikolab.com/){ target=_blank title="Oikolab" }
 [![Bühler Group]](https://www.buhlergroup.com/){ target=_blank title="Bühler Group" }
@@ -64,6 +61,10 @@ _Be our first gold sponsor!_
 [![Maxar]](https://maxar.com/){ target=_blank title="Maxar" }
 [![EquipmentShare]](https://www.equipmentshare.com/){ target=_blank title="EquipmentShare" }
 [![Hummingbot]](https://hummingbot.org/){ target=_blank title="Hummingbot" }
+[![OctoPerf]](https://octoperf.com/){ target=_blank title="OctoPerf" }
+[![Inter Comestibles]](https://intercomestibles.ch/){ target=_blank title="Inter Comestibles" }
+[![Centara]](https://www.centara.com/){ target=_blank title="Centara" }
+[![Pydantic Logfire]](https://pydantic.dev/logfire/){ target=_blank title="Pydantic Logfire" }
 
 </div>
 
@@ -89,13 +90,10 @@ _Be our first gold sponsor!_
   [Cash App]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png
   [RackN]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png
   [CivicActions]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png
-  [bitcrowd]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png
   [GetScreen.me]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png
   [BotCity]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png
-  [Springer Nature Technology]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png
   [Kolena]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png
   [Evergiving]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png
-  [Koor]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png
   [Astral]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png
   [Oikolab]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png
   [Bühler Group]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png
@@ -110,6 +108,10 @@ _Be our first gold sponsor!_
   [Hummingbot]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png
   [Future]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg
   [SIEMENS]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png
+  [OctoPerf]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png
+  [Inter Comestibles]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png
+  [Centara]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png
+  [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
 
 <hr />
 

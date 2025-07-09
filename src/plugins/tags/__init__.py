@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,10 +18,29 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+from .structure.mapping import Mapping
+from .structure.tag import Tag
+
 # -----------------------------------------------------------------------------
 # Functions
 # -----------------------------------------------------------------------------
 
-# Casefold a string for comparison when sorting
-def casefold(tag: str):
-    return tag.casefold()
+# Return tag name for sorting
+def tag_name(tag: Tag, *args):
+    return tag.name
+
+# Return casefolded tag name for sorting
+def tag_name_casefold(tag: Tag, *args):
+    return tag.name.casefold()
+
+# -----------------------------------------------------------------------------
+
+# Return item title for sorting
+def item_title(mapping: Mapping):
+    # Note that this must be coerced to a string, as the title might be sourced
+    # from metadata, which can be of any type - see https://t.ly/1AXyo
+    return str(mapping.item.title)
+
+# Return item URL for sorting
+def item_url(mapping: Mapping):
+    return mapping.item.url

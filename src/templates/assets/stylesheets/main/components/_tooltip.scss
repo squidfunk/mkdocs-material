@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -286,8 +286,12 @@
 
   // Annotation list
   .md-annotation-list {
-    list-style: none;
-    counter-reset: xxx;
+    // Here, we actually have a legitimate use case for `!important`, because
+    // we need to be sure that annotations are never rendered as a list. This
+    // might happen when Markdown extensions add an explicit type attribute
+    // to the list – see https://t.ly/Q_MGq
+    list-style: none !important; // stylelint-disable-line
+    counter-reset: annotation;
 
     // Annotation list item
     li {
@@ -306,8 +310,8 @@
         line-height: 1.25;
         color: var(--md-default-bg-color);
         text-align: center;
-        content: counter(xxx);
-        counter-increment: xxx;
+        content: counter(annotation);
+        counter-increment: annotation;
         background: var(--md-default-fg-color--lighter);
         border-radius: 2ch;
       }

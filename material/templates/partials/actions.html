@@ -3,7 +3,7 @@
 -#}
 {% if page.edit_url %}
   {% if "content.action.edit" in features %}
-    <a href="{{ page.edit_url }}" title="{{ lang.t('action.edit') }}" class="md-content__button md-icon">
+    <a href="{{ page.edit_url }}" title="{{ lang.t('action.edit') }}" class="md-content__button md-icon" rel="edit">
       {% set icon = config.theme.icon.edit or "material/file-edit-outline" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
     </a>

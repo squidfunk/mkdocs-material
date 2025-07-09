@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -82,7 +82,8 @@ class SocialPlugin(BasePlugin[SocialConfig]):
     # Retrieve configuration
     def on_config(self, config):
         self.color = colors.get("indigo")
-        self.config.cards = self.config.enabled
+        if not self.config.enabled:
+            self.config.cards = False
         if not self.config.cards:
             return
 
@@ -162,7 +163,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
         self._image_promises = []
 
     # Create social cards
-    def on_page_markdown(self, markdown, page, config, files):
+    def on_page_content(self, html, page, config, files):
         if not self.config.cards:
             return
 
@@ -444,7 +445,7 @@ class SocialPlugin(BasePlugin[SocialConfig]):
             data = data.replace("<svg", f"<svg fill=\"{fill}\"")
 
         # Convert to PNG and return image
-        svg2png(bytestring = data, write_to = file, scale = 10)
+        svg2png(bytestring = data.encode("utf-8"), write_to = file, scale = 10)
         return Image.open(file)
 
     # Retrieve font either from the card layout option or from the Material

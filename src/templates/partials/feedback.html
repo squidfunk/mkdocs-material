@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -69,7 +69,12 @@
               {% endif %}
 
               <!-- Replace {url} and {title} placeholders in note -->
-              {{ rating.note.format(url = url, title = title) }}
+              {% set note = rating.note %}
+              {% if note %}
+                {% set note = note | replace("{url}", url) %}
+                {% set note = note | replace("{title}", title) %}
+              {% endif %}
+              {{ note }}
             </div>
           {% endfor %}
         </div>

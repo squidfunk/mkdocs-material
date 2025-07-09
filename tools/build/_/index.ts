@@ -22,6 +22,7 @@
 
 import * as chokidar from "chokidar"
 import * as fs from "fs/promises"
+import * as path from "path"
 import {
   EMPTY,
   Observable,
@@ -120,7 +121,7 @@ export function resolve(
 
       /* Build overrides */
       !process.argv.includes("--all")
-        ? filter(file => !file.startsWith(".overrides/"))
+        ? filter(file => !file.startsWith(`.overrides${path.sep}`))
         : identity,
     )
 }

@@ -68,6 +68,73 @@
     {
       "oneOf": [
         {
+          "type": "object",
+          "properties": {
+            "pymdownx.blocks.caption": {
+              "title": "Caption – Python Markdown Extensions",
+              "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caption",
+              "type": "object",
+              "properties": {
+                "types": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#global-options",
+                  "type": "array",
+                  "items": {
+                    "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#configuring-figure-types",
+                    "oneOf": [
+                      {
+                        "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#configuring-figure-types",
+                        "type":"string"
+                      },
+                      {
+                        "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#configuring-figure-types",
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#configuring-figure-types",
+                            "type": "string"
+                          },
+                          "prefix": {
+                            "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#configuring-figure-types",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "uniqueItems": true,
+                  "minItems": 1
+                },
+                "prepend": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#global-options",
+                  "type": "boolean",
+                  "default": false
+                },
+                "auto": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#global-options",
+                  "type": "boolean",
+                  "default": true
+                },
+                "auto_leval": {
+                  "markdownDescription": "https://facelessuser.github.io/pymdown-extensions/extensions/blocks/plugins/caption/#global-options",
+                  "type": "integer",
+                  "default": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Caption – Python Markdown Extensions",
+          "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caption",
+          "const": "pymdownx.blocks.caption"
+        }
+      ]
+    },
+    {
+      "oneOf": [
+        {
           "title": "Caret – Python Markdown Extensions",
           "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#caret-mark-tilde",
           "const": "pymdownx.caret"

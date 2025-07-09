@@ -166,6 +166,11 @@
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#exclude_docs",
       "type": "string"
     },
+    "draft_docs": {
+      "title": "Pattern to declare draft documents",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#draft_docs",
+      "type": "string"
+    },
     "not_in_nav": {
       "title": "Pattern to declare pages that do not appear in the navigation",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#not_in_nav",

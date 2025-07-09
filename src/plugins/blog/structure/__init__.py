@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -27,10 +27,11 @@ import yaml
 from copy import copy
 from markdown import Markdown
 from material.plugins.blog.author import Author
+from material.plugins.meta.plugin import MetaPlugin
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.exceptions import PluginError
 from mkdocs.structure.files import File, Files
-from mkdocs.structure.nav import Section
+from mkdocs.structure.nav import Link, Section
 from mkdocs.structure.pages import Page, _RelativePathTreeprocessor
 from mkdocs.structure.toc import get_toc
 from mkdocs.utils.meta import YAML_RE
@@ -85,6 +86,19 @@ class Post(Page):
                 raise PluginError(
                     f"Error reading metadata of post '{path}' in '{docs}':\n"
                     f"{e}"
+                )
+
+            # Hack: if the meta plugin is registered, we need to move the call
+            # to `on_page_markdown` here, because we need to merge the metadata
+            # of the post with the metadata of any meta files prior to creating
+            # the post configuration. To our current knowledge, it's the only
+            # way to allow posts to receive metadata from meta files, because
+            # posts must be loaded prior to constructing the navigation in
+            # `on_files` but the meta plugin first runs in `on_page_markdown`.
+            plugin: MetaPlugin = config.plugins.get("material/meta")
+            if plugin:
+                plugin.on_page_markdown(
+                    self.markdown, page = self, config = config, files = None
                 )
 
         # Initialize post configuration, but remove all keys that this plugin
@@ -256,6 +270,17 @@ class Archive(View):
 # Category view
 class Category(View):
     pass
+
+# -----------------------------------------------------------------------------
+
+# Reference
+class Reference(Link):
+
+    # Initialize reference - this is essentially a crossover of pages and links,
+    # as it inherits the metadata of the page and allows for anchors
+    def __init__(self, title: str, url: str):
+        super().__init__(title, url)
+        self.meta = {}
 
 # -----------------------------------------------------------------------------
 # Helper functions

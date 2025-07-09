@@ -79,7 +79,7 @@ listings by month, you can configure the date format for the archive.
         archive_date_format: MMMM yyyy
     ```
 
-    If you do not want the full month name, you can make the the date
+    If you do not want the full month name, you can make the date
     configuration `MM/yyyy`, for example.
 
     If you want to add the day, you can add a placeholder for them.
@@ -230,7 +230,7 @@ indexes, scoped listings, shadow tags, nested tags, and much more.
             - Usage: usage.md
             - Blog:
                 - blog/index.md
-                Tags: blog/tags.md
+                - Tags: blog/tags.md
         ```
 
         The tag index will be appended to the configured page, which you should

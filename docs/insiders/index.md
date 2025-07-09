@@ -40,7 +40,7 @@ you should sponsor us, what's in it for you, and who is sponsoring us.
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][What's in it for you]
+    [:octicons-arrow-right-24: More information][What's in it for you]
 
 -   :fontawesome-solid-people-group: &nbsp;
     __Who is sponsoring__
@@ -51,7 +51,7 @@ you should sponsor us, what's in it for you, and who is sponsoring us.
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Who is sponsoring]
+    [:octicons-arrow-right-24: More information][Who is sponsoring]
 
 </div>
 
@@ -104,7 +104,7 @@ access management, and more, here is everything you need to know:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Payment and billing]
+    [:octicons-arrow-right-24: More information][Payment and billing]
 
 -   :material-key-variant: &nbsp;
     __Access management__
@@ -116,7 +116,7 @@ access management, and more, here is everything you need to know:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Access management]
+    [:octicons-arrow-right-24: More information][Access management]
 
 -   :material-clock-time-three: &nbsp;
     __Runtime and cancellation__
@@ -139,7 +139,7 @@ access management, and more, here is everything you need to know:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Privacy]
+    [:octicons-arrow-right-24: More information][Privacy]
 
 -   :material-briefcase: &nbsp;
     __License__
@@ -150,7 +150,7 @@ access management, and more, here is everything you need to know:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][License]
+    [:octicons-arrow-right-24: More information][License]
 
 -   :material-email: &nbsp;
     __Support__
@@ -193,7 +193,7 @@ get all the information you need to get started:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Changelog]
+    [:octicons-arrow-right-24: More information][Changelog]
 
 -   :material-update:&nbsp;
     __Upgrade__
@@ -205,7 +205,7 @@ get all the information you need to get started:
 
     ---
 
-    [:octicons-arrow-right-24: More infomation][Upgrade]
+    [:octicons-arrow-right-24: More information][Upgrade]
 
 </div>
 

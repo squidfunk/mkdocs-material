@@ -46,10 +46,10 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: .cache # (4)!
               restore-keys: |
                 mkdocs-material-
-          - run: pip install mkdocs-material # (4)!
+          - run: pip install mkdocs-material # (5)!
           - run: mkdocs gh-deploy --force
     ```
 
@@ -67,7 +67,10 @@ contents:
 
         You can read the [manual page] to learn more about the formatting options of the `date` command.
 
-    4.  This is the place to install further [MkDocs plugins] or Markdown
+    4.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
+
+    5.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
 
         ``` sh
@@ -105,20 +108,23 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache
+              path: .cache # (1)!
               restore-keys: |
                 mkdocs-material-
-          - run: apt-get install pngquant # (1)!
+          - run: apt-get install pngquant # (2)!
           - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
           - run: mkdocs gh-deploy --force
     env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (2)!
+      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (3)!
     ```
 
-    1.  This step is only necessary if you want to use the
+    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
+
+    2.  This step is only necessary if you want to use the
         [built-in optimize plugin] to automatically compress images.
 
-    2.  Remember to set the `GH_TOKEN` repository secret to the value of your
+    3.  Remember to set the `GH_TOKEN` repository secret to the value of your
         [personal access token] when deploying [Insiders], which can be done
         using [GitHub secrets].
 
@@ -132,6 +138,8 @@ Page is set to `gh-pages`.
 
 Your documentation should shortly appear at `<username>.github.io/<repository>`.
 
+To publish your site on a custom domain, please refer to the [MkDocs documentation].
+
   [GitHub Actions]: https://github.com/features/actions
   [MkDocs plugins]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
   [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
@@ -140,6 +148,8 @@ Your documentation should shortly appear at `<username>.github.io/<repository>`.
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
   [manual page]: https://man7.org/linux/man-pages/man1/date.1.html
+  [caching]: plugins/requirements/caching.md
+  [MkDocs documentation]: https://www.mkdocs.org/user-guide/deploying-your-docs/#custom-domains
 
 ### with MkDocs
 
@@ -174,12 +184,20 @@ contents:
       script:
         - pip install mkdocs-material
         - mkdocs build --site-dir public
+      cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+          - .cache/ # (1)!
       artifacts:
         paths:
           - public
       rules:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+
     ```
+
+    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
 
 === "Insiders"
 
@@ -190,6 +208,10 @@ contents:
       script: # (1)!
         - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
         - mkdocs build --site-dir public
+      cache:
+        key: ${CI_COMMIT_REF_SLUG}
+        paths:
+          - .cache/ # (2)!
       artifacts:
         paths:
           - public
@@ -201,11 +223,30 @@ contents:
         [personal access token] when deploying [Insiders], which can be done
         using [masked custom variables].
 
+    2.  Some Material for MkDocs plugins use [caching] to speed up repeated
+        builds, and store the results in the `.cache` directory.
+
 Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
 the file to your repository to see the workflow in action.
 
-Your documentation should shortly appear at `<username>.gitlab.io/<repository>`.
+Your documentation is not published under `<username>.gitlab.io/<repository>`
+by default since **GitLab 17.4** [^1]. However, if you prefer a cleaner URL
+structure, such as `<username>.gitlab.io/<repository>`, you need to adjust
+your configuration.
+
+To switch from a unique domain to the traditional URL structure, follow
+these steps:
+
+1.  Locate Your Repository
+2.  Go to **Settings › Pages** in the repository menu.
+3.  In the **Unique domain settings** section, **uncheck** the box labeled
+4.  **Use unique domain**.
+5.  Click **Save changes** to apply the update.
+
+Now you can reach your documentation under `<username>.gitlab.io/<repository>`.
+
+[^1]: [Release notes for Gitlab 17.4](https://about.gitlab.com/releases/2024/09/19/gitlab-17-4-released/)
 
 ## Other
 
@@ -215,27 +256,19 @@ other providers:
 
 <div class="mdx-columns" markdown>
 
-- [:material-microsoft-azure-devops: Azure][Azure]
 - [:simple-cloudflarepages: Cloudflare Pages][Cloudflare Pages]
-- [:simple-digitalocean: DigitalOcean][DigitalOcean]
 - [:material-airballoon-outline: Fly.io][Flyio]
 - [:simple-netlify: Netlify][Netlify]
-- [:simple-vercel: Vercel][Vercel]
-- [:simple-codeberg: Codeberg Pages][Codeberg Pages]
 - [:simple-scaleway: Scaleway][Scaleway]
 
 </div>
 
   [GitLab Pages]: https://gitlab.com/pages
   [GitLab CI]: https://docs.gitlab.com/ee/ci/
-  [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#create-a-custom-variable-in-the-ui
+  [masked custom variables]: https://docs.gitlab.com/ee/ci/variables/#mask-a-cicd-variable
   [default branch]: https://docs.gitlab.com/ee/user/project/repository/branches/default.html
-  [Azure]: https://bawmedical.co.uk/t/publishing-a-material-for-mkdocs-site-to-azure-with-automatic-branch-pr-preview-deployments/763
-  [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-mkdocs-material-cloudflare/
-  [DigitalOcean]: https://deborahwrites.com/guides/deploy-mkdocs-material-digitalocean-app-platform/
+  [Cloudflare Pages]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-cloudflare/
   [Flyio]: https://documentation.breadnet.co.uk/cloud/fly/mkdocs-on-fly/
-  [Netlify]: https://deborahwrites.com/projects/deploy-host-docs/deploy-mkdocs-material-netlify/
-  [Vercel]: https://deborahwrites.com/guides/deploy-mkdocs-material-vercel/
-  [Codeberg Pages]: https://andre601.ch/blog/2023/11-05-using-codeberg-pages/
+  [Netlify]: https://deborahwrites.com/guides/deploy-host-mkdocs/deploy-mkdocs-material-netlify/
   [Scaleway]: https://www.scaleway.com/en/docs/tutorials/using-bucket-website-with-mkdocs/
 

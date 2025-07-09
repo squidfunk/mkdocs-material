@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,6 +18,8 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+from __future__ import annotations
+
 from markdown.treeprocessors import Treeprocessor
 from mkdocs.structure.pages import Page
 from mkdocs.utils import get_relative_url
@@ -31,12 +33,13 @@ from xml.etree.ElementTree import Element
 class ExcerptTreeprocessor(Treeprocessor):
 
     # Initialize excerpt tree processor
-    def __init__(self, page: Page, base: Page = None):
+    def __init__(self, page: Page, base: Page | None = None):
         self.page = page
         self.base = base
 
     # Transform HTML after Markdown processing
     def run(self, root: Element):
+        assert self.base
         main = True
 
         # We're only interested in anchors, which is why we continue when the

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -131,8 +131,8 @@ const keyboard$ = watchKeyboard()
 
 /* Set up media observables */
 const viewport$ = watchViewport()
-const tablet$   = watchMedia("(min-width: 960px)")
-const screen$   = watchMedia("(min-width: 1220px)")
+const tablet$   = watchMedia("(min-width: 60em)")
+const screen$   = watchMedia("(min-width: 76.25em)")
 const print$    = watchPrint()
 
 /* Retrieve search index, if search is enabled */

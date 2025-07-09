@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -556,7 +556,9 @@
     // Hide nested navigation
     &__toggle ~ & {
       display: grid;
-      grid-template-rows: 0fr;
+      // Hack: we must set a minimum of 8px to work around a bug introduced in
+      // Safari 18.3, collapsing to a height of 0 – see https://t.ly/ViA3N
+      grid-template-rows: minmax(#{px2rem(8px)}, 0fr);
       visibility: collapse;
       opacity: 0;
       transition:
@@ -572,7 +574,7 @@
 
     // Show nested navigation when toggle is active or indeterminate
     &__toggle:is(:checked, .md-toggle--indeterminate) ~ & {
-      grid-template-rows: 1fr;
+      grid-template-rows: minmax(#{px2rem(8px)}, 1fr);
       visibility: visible;
       opacity: 1;
       transition:
@@ -727,7 +729,7 @@
       // Hack: Always show active navigation tab on breakpoint screen, despite
       // of checkbox being checked or not - see https://t.ly/Qc311
       .md-nav[data-md-level="1"] {
-        grid-template-rows: 1fr;
+        grid-template-rows: minmax(#{px2rem(8px)}, 1fr);
         visibility: visible;
         opacity: 1;
       }

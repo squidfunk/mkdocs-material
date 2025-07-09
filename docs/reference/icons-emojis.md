@@ -66,7 +66,7 @@ See additional configuration options:
 - [Emoji]
 - [Emoji with custom icons]
 
-  [Material Design]: https://materialdesignicons.com/
+  [Material Design]: https://pictogrammers.com/library/mdi/
   [FontAwesome]: https://fontawesome.com/search?m=free
   [Octicons]: https://octicons.github.com/
   [Simple Icons]: https://simpleicons.org/
@@ -91,7 +91,7 @@ the shortcodes at [Emojipedia]:
 :smile:
 
 </div>
-  [Twemoji]: https://github.com/twitter/twemoji
+  [Twemoji]: https://github.com/jdecked/twemoji
   [Emojipedia]: https://emojipedia.org/twitter/
 
 ### Using icons

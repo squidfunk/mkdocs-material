@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -31,7 +31,7 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2024 Martin Donath
+copyright: Copyright &copy; 2016 - 2025 Martin Donath
 
 # Configuration
 theme:
@@ -119,6 +119,8 @@ extra:
       link: https://hub.docker.com/r/squidfunk/mkdocs-material/
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/mkdocs-material/
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/squidfunk.bsky.social
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@squidfunk
     - icon: fontawesome/brands/x-twitter

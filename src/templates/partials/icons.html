@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -22,51 +22,51 @@
 
 <!-- Custom admonition icons -->
 {% if config.theme.icon.admonition %}
-  {% set style = ["\x3cstyle\x3e:root{"] %}
-  {% for type, icon in config.theme.icon.admonition.items() %}
+  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
+  {% for type, icon in config.theme.icon.admonition | items %}
     {% import ".icons/" ~ icon ~ ".svg" as icon %}
-    {% set _ = style.append(
+    {% set _.style = _.style ~
       "--md-admonition-icon--" ~ type ~ ":" ~
       "url('data:image/svg+xml;charset=utf-8," ~
-        icon | replace("\n", "") ~
+        icon | replace("\n", "") | urlencode ~
       "');"
-    ) %}
+    %}
   {% endfor %}
-  {% set _ = style.append("}\x3c/style\x3e") %}
-  {{ style | join }}
+  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {{ _.style }}
 {% endif %}
 
 <!-- Custom annotation icon -->
 {% if config.theme.icon.annotation %}
-  {% set style = ["\x3cstyle\x3e:root{"] %}
+  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
   {% import ".icons/" ~ config.theme.icon.annotation ~ ".svg" as icon %}
-  {% set _ = style.append(
+  {% set _.style = _.style ~
     "--md-annotation-icon:" ~
     "url('data:image/svg+xml;charset=utf-8," ~
-      icon | replace("\n", "") ~
+      icon | replace("\n", "") | urlencode ~
     "');"
-  ) %}
-  {% set _ = style.append("}\x3c/style\x3e") %}
-  {{ style | join }}
+  %}
+  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {{ _.style }}
 {% endif %}
 
 <!-- Custom tag icons -->
 {% if config.theme.icon.tag %}
-  {% set style = ["\x3cstyle\x3e"] %}
-  {% for type, icon in config.theme.icon.tag.items() %}
+  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
+  {% for type, icon in config.theme.icon.tag | items %}
     {% import ".icons/" ~ icon ~ ".svg" as icon %}
     {% if type != "default" %}
       {% set modifier = ".md-tag--" ~ type %}
     {% endif %}
-    {% set _ = style.append(
+    {% set _.style = _.style ~
       ".md-tag" ~ modifier ~ "{" ~
         "--md-tag-icon:" ~
         "url('data:image/svg+xml;charset=utf-8," ~
-          icon | replace("\n", "") ~
+          icon | replace("\n", "") | urlencode ~
         "');" ~
       "}"
-    ) %}
+    %}
   {% endfor %}
-  {% set _ = style.append("\x3c/style\x3e") %}
-  {{ style | join }}
+  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {{ _.style }}
 {% endif %}

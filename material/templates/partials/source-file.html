@@ -18,7 +18,7 @@
   </span>
 {% endmacro %}
 {% macro render_authors(authors) %}
-  {% set git_authors = config.plugins.get("git-authors") %}
+  {% set git_authors = config.plugins["git-authors"] %}
   <span class="md-source-file__fact">
     <span class="md-icon" title="{{ lang.t('source.file.contributors') }}">
       {% if authors | length == 1 %}
@@ -101,7 +101,7 @@
       {{ render_created(created) }}
     {% endif %}
     {% if git_info %}
-      {{ render_authors(git_info.get("page_authors")) }}
+      {{ render_authors(git_info["page_authors"]) }}
     {% endif %}
     {% if committers %}
       {{ render_committers(committers) }}

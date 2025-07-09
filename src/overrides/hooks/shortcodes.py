@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -54,7 +54,8 @@ def on_page_markdown(
         elif type == "plugin":       return _badge_for_plugin(args, page, files)
         elif type == "extension":    return _badge_for_extension(args, page, files)
         elif type == "utility":      return _badge_for_utility(args, page, files)
-        elif type == "example":      return _badge_for_example(args, page, files)
+        elif type == "example": return _badge_for_example(args, page, files)
+        elif type == "demo":         return _badge_for_demo(args, page, files)
         elif type == "default":
             if   args == "none":     return _badge_for_default_none(page, files)
             elif args == "computed": return _badge_for_default_computed(page, files)
@@ -212,8 +213,18 @@ def _badge_for_example_download(text: str, page: Page, files: Files):
     icon = "material-folder-download"
     href = f"https://mkdocs-material.github.io/examples/{text}.zip"
     return _badge(
-        icon = f"[:{icon}:]({href} 'Download example')",
+        icon = f"[:{icon}:]({href} 'Download example files')",
         text = f"[`.zip`]({href})",
+        type = "right"
+    )
+
+# Create badge for demo repository
+def _badge_for_demo(text: str, page: Page, files: Files):
+    icon = "material-github"
+    href = f"https://github.com/mkdocs-material/{text}"
+    return _badge(
+        icon = f"[:{icon}:]({href} 'Demo repository')",
+        text = text,
         type = "right"
     )
 

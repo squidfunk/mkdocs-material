@@ -144,8 +144,7 @@ page status] to get you started.
 
 ### Setting the page `subtitle`
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Each page can define a subtitle, which is then rendered below the title as part

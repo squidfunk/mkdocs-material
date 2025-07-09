@@ -83,10 +83,10 @@ comfortable self-hosting:
 5.  [Create a new release] to build and publish the Docker image
 6.  Install [Pull App] on your fork to stay in-sync with upstream
 
-The [`publish`][publish] workflow[^5] is automatically run when a new tag
+The [`build`][build] workflow is automatically run when a new tag
 (release) is created. When a new Insiders version is released on the upstream
 repository, the [Pull App] will create a pull request with the changes and
-pull in the new tag, which is picked up by the [`publish`][publish] workflow
+pull in the new tag, which is picked up by the [`build`][build] workflow
 that builds and publishes the Docker image automatically to your private
 registry.
 
@@ -116,12 +116,6 @@ outlined in the [Getting Started guide](../getting-started.md#with-docker).
     token created to access the Insiders repository, it's safer to create a
     dedicated token which you'll only use for publishing the Docker image.
 
-  [^5]:
-    The Insiders repository contains two GitHub Actions workflows:
-
-    - `build.yml` – Build and lint the project (disabled on forks)
-    - `publish.yml` – Build and publish the Docker image
-
 ### with git
 
 Of course, you can use Material for MkDocs Insiders directly from `git`:
@@ -145,7 +139,7 @@ pip install -e mkdocs-material
   [GitHub Actions secret]: https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository
   [Create a new release]: https://docs.github.com/en/github/administering-a-repository/managing-releases-in-a-repository#creating-a-release
   [Pull App]: https://github.com/apps/pull
-  [publish]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/publish.yml
+  [build]: https://github.com/squidfunk/mkdocs-material-insiders/blob/master/.github/workflows/build.yml
 
 ## Built-in plugins
 
@@ -159,14 +153,14 @@ plugins:
   - search
   - social
 
-  # CI=1 mkdocs build
+  # CI=true mkdocs build
   - group:
       enabled: !ENV CI
       plugins:
         - git-revision-date-localized
         - git-committers
 
-  # INSIDERS=1 mkdocs build
+  # INSIDERS=true mkdocs build
   - group:
       enabled: !ENV INSIDERS
       plugins:
@@ -176,8 +170,8 @@ plugins:
 
 Of course, you can also enable both groups with:
 
-```
-CI=1 INSIDERS=1 mkdocs build
+``` shell
+CI=true INSIDERS=true mkdocs build
 ```
 
   [built-in group plugin]: ../plugins/group.md

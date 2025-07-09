@@ -53,7 +53,7 @@ in the `mkdocs.yml`.
 !!! example "Set up a blog"
 
     If you have not done so already, create a project for your blog,
-    then edit the `mkdocs.yml` file to make sure if has the following content:
+    then edit the `mkdocs.yml` file to make sure it has the following content:
 
     ```yaml
     site_name: Blog Tutorial
@@ -143,7 +143,7 @@ header to indicate that a post is still in draft form.
     Create a second blog post in `docs/blogs/posts/draft.md` with the following
     contents:
 
-    ```hl_lines="3"
+    ```hl_lines="4"
     ---
     date:
       created: 2024-01-01
@@ -240,7 +240,7 @@ attribute in the page header:
 
     Add the `pin` attribute to your first blog post:
 
-    ```hl_lines="5"
+    ```hl_lines="6"
     ---
     date:
       created: 2023-12-31
@@ -254,13 +254,12 @@ attribute in the page header:
     its publication date is prior to other posts. A small pin icon shows that the
     post has been pinned.
 
-### Related links <!-- md:sponsors -->
+### Related links
 
 When your blog is part of a wider site such as technical documentation, you
 will want to provide links from blog posts into your other content. One way you
-can do this is to have a related links section. In the [Insiders Edition], the
-blog plugin can create one for you if you provide link targets in your page
-header:
+can do this is to have a related links section. The blog plugin can create one
+for you if you provide link targets in your page header:
 
 !!! example "Add a related links section <!-- md:sponsors -->"
 
@@ -306,16 +305,15 @@ The plugin renders related links in the left sidebar on screens that are wide
 enough and at the bottom of the post on narrow screens. Change the size of your
 browser window to see this in action.
 
-## Meta plugin <!-- md:sponsors -->
+## Meta plugin
 
-The Meta plugin is available in the [Insiders Edition].
-It helps simplify the management of metadata that is common to a group of
-files in the same subdirectory. Instead of having to repeat the
-same metadata in the page headers of a number of files, you can add a
-`.meta.yml` file in the directory and the Meta plugin will merge its contents
-into the headers of all the pages contained.
-Settings from the page header take precedence, so you can always override
-settings by adding them to a post's header.
+The Meta plugin helps simplify the management of metadata that is common to a
+group of files in the same subdirectory. Instead of having to repeat the same
+metadata in the page headers of a number of files, you can add a `.meta.yml`
+file in the directory and the Meta plugin will merge its contents into the
+headers of all the pages contained. Settings from the page header take
+precedence, so you can always override settings by adding them to a post's
+header.
 
 For example, you may want to manage drafts by keeping them in a directory
 together so that they are not only flagged as drafts but also easier to find.
@@ -342,7 +340,9 @@ output to the files to figure out which posts are drafts.)
         ```
 
     === "Windows"
-        TODO
+        ```powershell
+        $ mkdir docs\blog\posts\drafts
+        ```
 
     Now, within this folder, crate a file `.meta.yml` that contains:
 
@@ -355,6 +355,7 @@ output to the files to figure out which posts are drafts.)
     while in the version built for publication it does not appear. To move a
     post from draft status to published, simply move it outside `drafts/`.
 
+[meta]: ../../plugins/meta.md
 [Insiders Edition]: ../../insiders/index.md
 
 ## What's next?

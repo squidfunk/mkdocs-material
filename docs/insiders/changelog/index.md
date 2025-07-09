@@ -2,6 +2,14 @@
 
 ## Material for MkDocs Insiders
 
+### 4.53.16 <small>March 13, 2025</small> { id="4.53.16" }
+
+- Fixed #8019: Tooltips have precedence over instant previews
+
+### 4.53.15 <small>January 15, 2025</small> { id="4.53.15" }
+
+- Fixed #7896: Scoped tags listings not rendering in subsections
+
 ### 4.53.14 <small>September 29, 2024</small> { id="4.53.14" }
 
 - Fixed #7567: Empty headlines when using typeset plugin with anchorlinks

@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -21,7 +21,8 @@
 import json
 import logging
 import os
-import regex as re
+import re
+from backrefs import bre
 
 from html import escape
 from html.parser import HTMLParser
@@ -215,7 +216,7 @@ class SearchIndex:
             entry["tags"] = []
             for name in tags:
                 if name and isinstance(name, (str, int, float, bool)):
-                    entry["tags"].append(name)
+                    entry["tags"].append(str(name))
 
         # Set document boost
         search = page.meta.get("search") or {}
@@ -285,7 +286,7 @@ class SearchIndex:
 
     # Find and segment Chinese characters in string
     def _segment_chinese(self, data):
-        expr = re.compile(r"(\p{IsHan}+)", re.UNICODE)
+        expr = bre.compile(r"(\p{script: Han}+)", bre.UNICODE)
 
         # Replace callback
         def replace(match):

@@ -2,6 +2,144 @@
 
 ## Material for MkDocs
 
+### 9.6.15 <small>July 1, 2025</small> { id="9.6.15" }
+
+- Updated Mongolian translations
+- Improved semantic markup of "edit this page" button
+- Improved info plugin virtual environment resolution
+- Fixed #8291: Large font size setting throws of breakpoints in JavaScript
+
+### 9.6.14 <small>May 13, 2025</small> { id="9.6.14" }
+
+- Fixed #8215: Social plugin crashes when CairoSVG is updated to 2.8
+
+### 9.6.13 <small>May 10, 2025</small> { id="9.6.13" }
+
+- Fixed #8204: Annotations showing list markers in print view
+- Fixed #8153: Improve style of cardinality symbols in Mermaid.js ER diagrams
+
+### 9.6.12 <small>April 17, 2025</small> { id="9.6.12" }
+
+- Fixed #8158: Flip footnote back reference icon for right-to-left languages
+
+### 9.6.11 <small>April 1, 2025</small> { id="9.6.11" }
+
+- Updated Docker image to latest Alpine Linux
+- Bump required Jinja version to 3.1
+- Fixed #8133: Jinja filter `items` not available (9.6.10 regression)
+- Fixed #8128: Search plugin not entirely disabled via enabled setting
+
+### 9.6.10 <small>March 30, 2025</small> { id="9.6.10" }
+
+This version is a pure refactoring release, and does not contain new features
+or bug fixes. It strives to improve the compatibility of our templates with
+alternative Jinja-like template engines that we're currently exploring,
+including [minijinja].
+
+Additionally, it replaces several instances of Python function invocations
+with idiomatic use of template filters. All instances where variables have
+been mutated inside templates have been replaced. Most changes have been made
+in partials, and only a few in blocks, and all of them are fully backward
+compatible, so no changes to overrides are necessary.
+
+Note that this release does not replace the Jinja template engine with
+minijinja. However, our templates are now 99% compatible with minijinja,
+which means we can explore alternative Jinja-compatible implementations.
+Additionally, immutability and removal of almost all Python function
+invocations means much more idiomatic templating.
+
+  [minijinja]: https://github.com/mitsuhiko/minijinja
+
+### 9.6.9 <small>March 17, 2025</small> { id="9.6.9" }
+
+- Updated Serbo-Croatian translations
+- Fixed #8086: Custom SVG icons containing hashes break rendering
+- Fixed #8067: Drawer has gap on right side in Firefox on some OSs
+
+### 9.6.8 <small>March 13, 2025</small> { id="9.6.8" }
+
+- Added Welsh translations
+- Fixed #8076: Privacy plugin crashes if HTTP download fails
+
+### 9.6.7 <small>March 3, 2025</small> { id="9.6.7" }
+
+- Fixed #8056: Error in backrefs implementation (9.6.6 regression)
+- Fixed #8054: Unescaped quotes in ARIA labels of table of contents
+
+### 9.6.6 <small>March 1, 2025</small> { id="9.6.6" }
+
+- Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)
+- Fixed #8031: Replace unmaintained `regex` package in search plugin
+
+### 9.6.5 <small>February 20, 2025</small> { id="9.6.5" }
+
+- Fixed #8016: Tags listing not showing when when file name has spaces
+- Fixed #8012: Privacy plugin crashes if HTTP download fails
+
+### 9.6.4 <small>February 12, 2025</small> { id="9.6.4" }
+
+- Fixed #7985: Blog content sometimes not stretching to full width
+- Fixed #7978: Navigation rendering bug in Safari 18.3
+
+### 9.6.3 <small>February 7, 2025</small> { id="9.6.3" }
+
+- Fixed rendering of arrow heads in Mermaid.js class diagrams
+- Fixed #7960: Tags plugin crashes on numeric metadata titles
+
+### 9.6.2 <small>February 3, 2025</small> { id="9.6.2" }
+
+- Fixed #7955: Excessively long words don't break on narrow screens
+- Fixed #7947: Scope setting interferes with outdated version banner
+
+### 9.6.1 <small>January 31, 2025</small> { id="9.6.1" }
+
+- Fixed #7943: Tags plugin crashing due to merge error
+
+### 9.6.0 <small>January 31, 2025</small> { id="9.6.0" }
+
+- Added meta plugin
+- Rewrite of the tags plugin
+- Added support for allow lists in tags plugin
+- Added support for and custom sorting in tags plugin
+- Added support for related links in blog plugin
+- Added support for custom index pages in blog plugin
+- Added support for navigation subtitles
+- Fixed #7924: Anchors might require two clicks when using instant navigation
+
+### 9.5.50 <small>January 18, 2025</small> { id="9.5.50" }
+
+- Fixed #7913: Social plugin renders attribute lists in page title
+
+### 9.5.49 <small>December 16, 2024</small> { id="9.5.49" }
+
+- Adjusted title color in dark mode for all supported Mermaid.js diagrams
+- Fixed #7803: Privacy plugin crashes on generated files
+- Fixed #7781: Mermaid.js flow chart title not visible in dark mode
+
+### 9.5.48 <small>December 8, 2024</small> { id="9.5.48" }
+
+- Fixed #7774: Disabling social cards doesn't work
+
+### 9.5.47 <small>December 1, 2024</small> { id="9.5.47" }
+
+- Fixed #7750: Numeric tags break search
+- Fixed #7748: Blog plugin breaks when using future drafts (9.5.45 regression)
+
+### 9.5.46 <small>November 25, 2024</small> { id="9.5.46" }
+
+- Added support for removing `preload` hints in privacy plugin
+- Fixed #7734: Code blocks in h5 headlines are uppercased
+- Fixed #7725: Blog plugin crashing on missing timezone (9.5.45 regression)
+
+### 9.5.45 <small>November 20, 2024</small> { id="9.5.45" }
+
+- Reduced size of Docker image through multi-stage build
+- Fixed #7708: Blog plugin crashing on YAML dates with timezones
+
+### 9.5.44 <small>November 5, 2024</small> { id="9.5.44" }
+
+- Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)
+
 ### 9.5.43 <small>October 31, 2024</small> { id="9.5.43" }
 
 - Added support for external images in SVGs in privacy plugin

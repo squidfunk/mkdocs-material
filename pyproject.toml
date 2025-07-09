@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -59,7 +59,7 @@ recommended = [
   "mkdocs-rss-plugin~=1.6"
 ]
 git = [
-  "mkdocs-git-committers-plugin-2~=1.1",
+  "mkdocs-git-committers-plugin-2>=1.1,<3",
   "mkdocs-git-revision-date-localized-plugin~=1.2,>=1.2.4"
 ]
 imaging = [
@@ -78,6 +78,7 @@ Funding = "https://github.com/sponsors/squidfunk"
 "material/blog" = "material.plugins.blog.plugin:BlogPlugin"
 "material/group" = "material.plugins.group.plugin:GroupPlugin"
 "material/info" = "material.plugins.info.plugin:InfoPlugin"
+"material/meta" = "material.plugins.meta.plugin:MetaPlugin"
 "material/offline" = "material.plugins.offline.plugin:OfflinePlugin"
 "material/privacy" = "material.plugins.privacy.plugin:PrivacyPlugin"
 "material/search" = "material.plugins.search.plugin:SearchPlugin"

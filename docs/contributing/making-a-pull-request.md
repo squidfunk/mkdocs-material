@@ -193,7 +193,7 @@ sequenceDiagram
     more focused on the specific issue or feature that you worked on. Please keep
     the discussion respectful at all times.
 
-    It is important to note that not all pull requests get incorporated int the
+    It is important to note that not all pull requests get incorporated into the
     codebase. The reasons can vary. The work may bring to light other issues that
     block integration of the pull request. Sometimes it helps uncover better ways of
     doing things or shows that a more general approach is needed. All of this is
@@ -258,7 +258,7 @@ Please respect the [terms of the Insiders program] and the spirit of the
 Sponsorware approach used to maintain and develop Material for MkDocs.
 
 [the Insiders repository]: https://github.com/squidfunk/mkdocs-material-insiders/
-[terms of the Insiders program]: http://localhost:8000/mkdocs-material/insiders/faq/sponsoring/#licensing
+[terms of the Insiders program]: https://squidfunk.github.io/mkdocs-material/insiders/license/#fair-use-policy
 
 ### Setting up a development environment
 
@@ -296,7 +296,7 @@ will work against that branch in your fork by default.
 ### Merging concurrent changes
 
 If the work you do takes some time then the chances increase that changes will
-be made to the main repository while you work.It is probably a good idea to set
+be made to the main repository while you work. It is probably a good idea to set
 up the original Material for MkDocs repository as an `upstream` repository for
 your local clone.
 

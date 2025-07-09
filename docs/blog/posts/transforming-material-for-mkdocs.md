@@ -186,7 +186,7 @@ While we navigate the challenges and explore the opportunities of this project, 
 
 Thanks to the generous support from our sponsors, we're fortunate to be assembling a team capable of dedicating significant time and expertise to this endeavor. This newfound capacity allows us to delve deeper into core development while also engaging more comprehensively with our user community. A special mention goes to @kamilkrzyskow, one of our invaluable [community experts], who has been essential in supporting users and fostering discussions on our platform.
 
-  [community experts]: http://localhost:3000/mkdocs-material/insiders/community-experts-program/
+  [community experts]: ../../insiders/community-experts-program/index.md
 
 With the team's support, @squidfunk can concentrate on the heart of development, while we have begun investing in user research. This effort is helping us understand how organizations and individuals interact with our tools, guiding the project's future direction based on real feedback from numerous conversations with users and companies.
 

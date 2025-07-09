@@ -22,6 +22,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 <!-- md:version 9.2.0 -->
 <!-- md:plugin -->
 <!-- md:flag experimental -->
+<!-- md:demo create-blog -->
 
 The built-in blog plugin adds support for building a blog from a folder of
 posts, which are annotated with dates and other structured data. First, add the
@@ -447,8 +448,7 @@ slug: hello-world
 
 #### Adding related links
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.23.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Related links offer the perfect way to prominently add a _further reading_
@@ -519,7 +519,7 @@ when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
 
-#### Pinning a post :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+#### Pinning a post
 
 <!-- md:sponsors -->
 <!-- md:version insiders-4.53.0 -->
@@ -544,10 +544,10 @@ descending order.
 
 #### Setting the reading time
 
-When [enabled], the [readtime] package is used to compute the expected reading
-time of each post, which is rendered as part of the post and post excerpt.
-Nowadays, many blogs show reading times, which is why the [built-in blog plugin]
-offers this capability as well.
+When [enabled], the reading the expected reading time of each post is computed,
+which is rendered as part of the post and post excerpt. Nowadays, many blogs
+show reading times, which is why the [built-in blog plugin] offers this
+capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
 result in odd and unpleasant numbers. For this reason, reading time can be
@@ -566,13 +566,19 @@ readtime: 15
 
 This will disable automatic reading time computation.
 
-  [readtime]: https://pypi.org/project/readtime/
+!!! warning "Chinese, Japanese and Korean characters"
+
+    Reading time computation currently does not take segmentation of Chinese,
+    Japanese and Korean characters into account. This means that the reading
+    time for posts in these languages may be inaccurate. We're planning on
+    adding support in the future. In the meantime, please use the `readtime`
+    front matter property to set the reading time.
+
   [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:plugin [meta][built-in meta plugin] – built-in -->
 <!-- md:flag experimental -->
 
@@ -638,8 +644,7 @@ nav:
 
 ### Custom index pages
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.24.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 If you want to add custom content to automatically generated [archive] and

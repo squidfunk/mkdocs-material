@@ -1,6 +1,5 @@
 ---
 title: Community Experts Program
-status: new
 ---
 
 # Calling for Community Experts

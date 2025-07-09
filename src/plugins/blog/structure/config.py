@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -19,9 +19,9 @@
 # IN THE SOFTWARE.
 
 from mkdocs.config.base import Config
-from mkdocs.config.config_options import ListOfItems, Optional, Type
+from mkdocs.config.config_options import Optional, Type
 
-from .options import PostDate
+from .options import PostDate, PostLinks, UniqueListOfItems
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -29,9 +29,10 @@ from .options import PostDate
 
 # Post configuration
 class PostConfig(Config):
-    authors = ListOfItems(Type(str), default = [])
-    categories = ListOfItems(Type(str), default = [])
+    authors = UniqueListOfItems(Type(str), default = [])
+    categories = UniqueListOfItems(Type(str), default = [])
     date = PostDate()
     draft = Optional(Type(bool))
+    links = Optional(PostLinks())
     readtime = Optional(Type(int))
     slug = Optional(Type(str))

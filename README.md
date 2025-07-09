@@ -13,7 +13,7 @@
 
 <p align="center">
   <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
-    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg?branch=master"
+    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg"
     alt="Build"
   /></a>
   <a href="https://pypistats.org/packages/mkdocs-material"><img
@@ -129,17 +129,11 @@
   <a href="https://neptune.ai/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
   /></a>
-  <!-- <a href="https://cash.app/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cashapp.png" height="58"
-  /></a> -->
   <a href="https://rackn.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png" height="58"
   /></a>
   <a href="https://civicactions.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png" height="58"
-  /></a>
-  <a href="https://bitcrowd.net/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-bitcrowd.png" height="58"
   /></a>
   <a href="https://getscreen.me/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png" height="58"
@@ -147,17 +141,11 @@
   <a href="https://botcity.dev/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png" height="58"
   /></a>
-  <a href="https://www.springernature.com/gp" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sn-technology.png" height="58"
-  /></a>
   <a href="https://kolena.io/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png" height="58"
   /></a>
   <a href="https://www.evergiving.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png" height="58"
-  /></a>
-  <a href="https://koor.tech/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-koor.png" height="58"
   /></a>
   <a href="https://astral.sh/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png" height="58"
@@ -192,6 +180,18 @@
   <a href="https://hummingbot.org/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
   /></a>
+  <a href="https://octoperf.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png" height="58"
+  /></a>
+  <a href="https://intercomestibles.ch/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png" height="58"
+  /></a>
+  <a href="https://www.centara.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png" height="58"
+  /></a>
+  <a href="https://pydantic.dev/logfire/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
@@ -221,17 +221,17 @@ Don't let your users wait – get incredible value with a small footprint by usi
 one of the fastest themes available with excellent performance, yielding optimal
 search engine rankings and happy users that return.
 
-### Built for everyone
+### Maintain ownership
 
-Make accessibility a priority – users can navigate your documentation with touch
-devices, keyboards, and screen readers. Semantic markup ensures that your
-documentation works for everyone.
+Own your documentation's complete sources and outputs, guaranteeing both
+integrity and security – no need to entrust the backbone of your product
+knowledge to third-party platforms. Retain full control.
 
 ### Open Source
 
-Trust 20,000+ users – choose a mature and actively maintained solution built
-with state-of-the-art Open Source technologies. Keep ownership of your content
-without fear of vendor lock-in. Licensed under MIT.
+You're in good company – choose a mature and actively maintained solution built
+with state-of-the-art Open Source technologies, trusted by more than 50,000
+individuals and organizations. Licensed under MIT.
 
 ## Quick start
 
@@ -262,7 +262,6 @@ For detailed installation instructions, configuration options, and a demo, visit
 [AWS](https://aws.github.io/copilot-cli/),
 [Bloomberg](https://bloomberg.github.io/selekt/),
 [CERN](http://abpcomputing.web.cern.ch/),
-[CloudFlare](https://cloudflare.github.io/itty-router-openapi/),
 [Datadog](https://datadoghq.dev/integrations-core/),
 [Google](https://google.github.io/accompanist/),
 [Harvard](https://informatics.fas.harvard.edu/),
@@ -275,6 +274,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
 [Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
 [Netflix](https://netflix.github.io/titus/),
+[OpenAI](https://openai.github.io/openai-agents-python/),
 [Red Hat](https://ansible.readthedocs.io/projects/lint/),
 [Roboflow](https://inference.roboflow.com/),
 [Salesforce](https://policy-sentry.readthedocs.io/),
@@ -287,38 +287,54 @@ For detailed installation instructions, configuration options, and a demo, visit
 ### ... and successful Open Source projects
 
 [Amp](https://amp.rs/docs/),
+[Apache Iceberg](https://iceberg.apache.org/),
 [Arduino](https://arduino.github.io/arduino-cli/),
+[Asahi Linux](https://asahilinux.org/docs/),
 [Auto-GPT](https://docs.agpt.co/),
 [AutoKeras](https://autokeras.com/),
 [BFE](https://www.bfe-networks.net/),
 [CentOS](https://docs.infra.centos.org/),
 [Crystal](https://crystal-lang.org/reference/),
 [eBPF](https://ebpf-go.dev/),
+[ejabberd](https://docs.ejabberd.im/),
 [Electron](https://www.electron.build/),
 [FastAPI](https://fastapi.tiangolo.com/),
+[FlatBuffers](https://flatbuffers.dev/),
+[{fmt}](https://fmt.dev/),
 [Freqtrade](https://www.freqtrade.io/en/stable/),
 [GoReleaser](https://goreleaser.com/),
+[GraphRAG](https://microsoft.github.io/graphrag/),
+[Headscale](https://headscale.net/),
 [HedgeDoc](https://docs.hedgedoc.org/),
 [Hummingbot](https://hummingbot.org/),
 [Knative](https://knative.dev/docs/),
 [Kubernetes](https://kops.sigs.k8s.io/),
 [kSQL](https://docs.ksqldb.io/),
+[LeakCanary](https://square.github.io/leakcanary/),
+[LlamaIndex](https://docs.llamaindex.ai/),
 [NetBox](https://netboxlabs.com/docs/netbox/en/stable/),
 [Nokogiri](https://nokogiri.org/),
+[OpenAI](https://openai.github.io/openai-agents-python/),
 [OpenFaaS](https://docs.openfaas.com/),
+[OpenSSL](https://docs.openssl.org/),
 [Orchard Core](https://docs.orchardcore.net/en/latest/),
 [Percona](https://docs.percona.com/percona-monitoring-and-management/),
 [Pi-Hole](https://docs.pi-hole.net/),
+[Polars](https://docs.pola.rs/),
 [Pydantic](https://pydantic-docs.helpmanual.io/),
 [PyPI](https://docs.pypi.org/),
+[Quivr](https://core.quivr.com/),
 [Renovate](https://docs.renovatebot.com/),
 [RetroPie](https://retropie.org.uk/docs/),
+[Ruff](https://docs.astral.sh/ruff/),
 [Supervision](https://supervision.roboflow.com/latest/),
+[Textual](https://textual.textualize.io/),
 [Traefik](https://docs.traefik.io/),
 [Trivy](https://aquasecurity.github.io/trivy/),
 [Typer](https://typer.tiangolo.com/),
 [tinygrad](https://docs.tinygrad.org/),
 [Ultralytics](https://docs.ultralytics.com/),
+[UV](https://docs.astral.sh/uv/),
 [Vapor](https://docs.vapor.codes/),
 [WebKit](https://docs.webkit.org/),
 [WTF](https://wtfutil.com/),
@@ -328,7 +344,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 
 **MIT License**
 
-Copyright (c) 2016-2024 Martin Donath
+Copyright (c) 2016-2025 Martin Donath
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to

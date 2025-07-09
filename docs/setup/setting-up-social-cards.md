@@ -37,6 +37,7 @@ Social card of our [formatting] reference
 <!-- md:version 8.5.0 -->
 <!-- md:plugin -->
 <!-- md:flag experimental -->
+<!-- md:demo create-social-cards -->
 
 The built-in social plugin automatically generate a custom preview image for
 each page. Install all [dependencies for image processing] and add the
