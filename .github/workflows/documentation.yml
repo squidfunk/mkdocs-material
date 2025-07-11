@@ -61,7 +61,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
-          path: .cache
+          path: ~/.cache
           restore-keys: |
             mkdocs-material-
 
@@ -115,4 +115,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
-          path: .cache
+          path: ~/.cache
