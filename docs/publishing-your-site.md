@@ -46,7 +46,7 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache # (4)!
+              path: ~/.cache # (4)!
               restore-keys: |
                 mkdocs-material-
           - run: pip install mkdocs-material # (5)!
@@ -68,7 +68,7 @@ contents:
         You can read the [manual page] to learn more about the formatting options of the `date` command.
 
     4.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `.cache` directory.
+        builds, and store the results in the `~/.cache` directory.
 
     5.  This is the place to install further [MkDocs plugins] or Markdown
         extensions with `pip` to be used during the build:
@@ -108,7 +108,7 @@ contents:
           - uses: actions/cache@v4
             with:
               key: mkdocs-material-${{ env.cache_id }}
-              path: .cache # (1)!
+              path: ~/.cache # (1)!
               restore-keys: |
                 mkdocs-material-
           - run: apt-get install pngquant # (2)!
@@ -119,7 +119,7 @@ contents:
     ```
 
     1.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `.cache` directory.
+        builds, and store the results in the `~/.cache` directory.
 
     2.  This step is only necessary if you want to use the
         [built-in optimize plugin] to automatically compress images.
@@ -187,17 +187,16 @@ contents:
       cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
-          - .cache/ # (1)!
+          - ~/.cache/ # (1)!
       artifacts:
         paths:
           - public
       rules:
         - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-
     ```
 
     1.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `.cache` directory.
+        builds, and store the results in the `~/.cache` directory.
 
 === "Insiders"
 
@@ -211,7 +210,7 @@ contents:
       cache:
         key: ${CI_COMMIT_REF_SLUG}
         paths:
-          - .cache/ # (2)!
+          - ~/.cache/ # (2)!
       artifacts:
         paths:
           - public
@@ -224,7 +223,7 @@ contents:
         using [masked custom variables].
 
     2.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `.cache` directory.
+        builds, and store the results in the `~/.cache` directory.
 
 Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push
