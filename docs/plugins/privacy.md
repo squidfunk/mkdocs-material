@@ -39,7 +39,7 @@ assets are detected:
 
 Additionally, hints like [`preconnect`][preconnect], used to reduce latency when
 requesting external assets, are removed from the output, as they're not
-necessary when self-hosting. After the plugin has done it's work, your project
+necessary when self-hosting. After the plugin has done its work, your project
 will be free of requests to external services.
 
 There are some [limitations].
