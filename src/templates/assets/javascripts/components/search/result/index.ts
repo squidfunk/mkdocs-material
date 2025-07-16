@@ -107,7 +107,7 @@ export function mountSearchResult(
   /* Reveal to accessibility tree – see https://bit.ly/3iAA7t8 */
   watchToggle("search")
     .subscribe(active => {
-      list.setAttribute("role", active ? "list" : "hidden")
+      list.setAttribute("role", active ? "list" : "presentation")
       list.hidden = !active
     })
 
