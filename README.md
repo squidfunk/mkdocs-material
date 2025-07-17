@@ -189,6 +189,9 @@
   <a href="https://pydantic.dev/logfire/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png" height="58"
   /></a>
+  <a href="https://www.vector.com/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 

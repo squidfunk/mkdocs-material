@@ -64,6 +64,7 @@ _Be our first gold sponsor!_
 [![Inter Comestibles]](https://intercomestibles.ch/){ target=_blank title="Inter Comestibles" }
 [![Centara]](https://www.centara.com/){ target=_blank title="Centara" }
 [![Pydantic Logfire]](https://pydantic.dev/logfire/){ target=_blank title="Pydantic Logfire" }
+[![Vector Informatik]](https://www.vector.com/){ target=_blank title="Vector Informatik" }
 
 </div>
 
@@ -110,6 +111,7 @@ _Be our first gold sponsor!_
   [Inter Comestibles]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png
   [Centara]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png
   [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
+  [Vector Informatik]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png
 
 <hr />
 
