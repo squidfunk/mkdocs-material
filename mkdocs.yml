@@ -19,19 +19,19 @@
 # IN THE SOFTWARE.
 
 # Project information
-site_name: Material for MkDocs
-site_url: https://squidfunk.github.io/mkdocs-material/
+site_name: mrmeowcat's Pekora Trading Guide
+site_url: https://dxamima.github.io/pekora-trading-guide
 site_author: Martin Donath
 site_description: >-
-  Write your documentation in Markdown and create a professional static site in
+  Pekora's Trading Guide made by David, AKA Safari or mrmeowcat
   minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: dxamima/pekora-trading-guide
+repo_url: https://github.com/dxamima/pekora-trading-guide
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2025 Martin Donath
+copyright: Copyright &copy; 2025 - 2025 David
 
 # Configuration
 theme:
