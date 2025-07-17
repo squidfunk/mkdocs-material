@@ -20,7 +20,7 @@ _Be our first gold sponsor!_
 [![FastAPI]{ style="height: 120px" }](https://fastapi.tiangolo.com/){ target=_blank title="FastAPI" }
 [![Trendpop]{ style="height: 120px" }](https://www.trendpop.com/){ target=_blank title="Trendpop" }
 [![SailPoint]{ style="height: 120px" }](https://documentation.sailpoint.com/){ target=_blank title="SailPoint" }
-[![Future]{ style="height: 120px" }](https://futureplc.com/){ target=_blank title="Future" }
+[![Future]{ style="height: 120px; width: 332px" }](https://futureplc.com/){ target=_blank title="Future" }
 [![SIEMENS]{ style="height: 120px" }](https://opensource.siemens.com/){ target=_blank title="SIEMENS" }
 
 ----
