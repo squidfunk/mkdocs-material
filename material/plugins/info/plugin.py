@@ -284,7 +284,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
             try:
                 username = getpass.getuser()
             except Exception:
-                username = ""
+                username = "USERNAME"
 
             # Add information on platform
             f.writestr(
