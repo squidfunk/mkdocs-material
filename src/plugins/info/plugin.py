@@ -151,16 +151,22 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         if not isinstance(loaded_configs, list):
             loaded_configs = [loaded_configs]
 
+        # It can happen that the drive letter case is inconsistent on Windows.
+        # Therefore, assure first character to be uppercase for the following
+        # checks. See: https://t.ly/9t1SU
+        site_prefixes = list(map(capitalize, site.PREFIXES))
+        cwd = capitalize(os.getcwd())
+
         # We need to make sure the user put every file in the current working
         # directory. To assure the reproduction inside the ZIP file can be run,
         # validate that the MkDocs paths are children of the current root.
-        paths_to_validate = [
+        paths_to_validate = list(map(capitalize, [
             config.config_file_path,
             config.docs_dir,
             abs_custom_dir,
             abs_projects_dir,
             *[cfg.get("INHERIT", "") for cfg in loaded_configs]
-        ]
+        ]))
 
         # Convert relative hook paths to absolute path
         for hook in config.hooks:
@@ -169,7 +175,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
 
         # Remove valid paths from the list
         for path in list(paths_to_validate):
-            if not path or path.startswith(os.getcwd()):
+            if not path or path.startswith(cwd):
                 paths_to_validate.remove(path)
 
         # Report the invalid paths to the user
@@ -191,14 +197,14 @@ class InfoPlugin(BasePlugin[InfoConfig]):
         self.excluded_entries = []
 
         # Exclude the site_dir at project root
-        if config.site_dir.startswith(os.getcwd()):
+        if capitalize(config.site_dir).startswith(cwd):
             self.exclusion_patterns.append(_resolve_pattern(config.site_dir))
 
         # Exclude the Virtual Environment directory. site.getsitepackages() has
         # inconsistent results across operating systems, and relies on the
         # PREFIXES that will contain the absolute path to the activated venv.
-        for path in site.PREFIXES:
-            if path.startswith(os.getcwd()):
+        for path in site_prefixes:
+            if path.startswith(cwd):
                 self.exclusion_patterns.append(_resolve_pattern(path))
 
         # Guess other Virtual Environment paths in case we forget to activate
@@ -209,9 +215,9 @@ class InfoPlugin(BasePlugin[InfoConfig]):
                 if filename.lower() != "pyvenv.cfg":
                     continue
 
-                path = abs_root[0].upper() + abs_root[1:]
+                path = capitalize(abs_root)
 
-                if path not in site.PREFIXES:
+                if path not in site_prefixes:
                     print(f"Possible inactive venv: {path}")
                     self.exclusion_patterns.append(_resolve_pattern(path))
 
@@ -509,7 +515,7 @@ def _load_yaml(abs_src_path: str):
 # in the pattern creation for files and directories. The patterns are matched
 # using the search function, so they are prefixed with ^ for specificity.
 def _resolve_pattern(abspath: str, return_path: bool = False):
-    path = abspath.replace(os.getcwd(), "", 1)
+    path = capitalize(abspath).replace(capitalize(os.getcwd()), "", 1)
     path = path.replace(os.sep, "/").rstrip("/")
 
     if not path:
@@ -543,6 +549,11 @@ def _is_dotpath(path: str, log_warning: bool = False) -> bool:
         return True
     return False
 
+# It can happen that the drive letter case is inconsistent on Windows.
+# Capitalize the first character keeping the rest the same for comparison.
+# See: https://t.ly/9t1SU
+def capitalize(path: str):
+    return path[0].upper() + path[1:] if path else path
 
 # -----------------------------------------------------------------------------
 # Data
