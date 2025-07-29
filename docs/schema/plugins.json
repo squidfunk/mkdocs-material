@@ -64,6 +64,9 @@
       "description": "External plugins, schema provided by us",
       "anyOf": [
         {
+          "$ref": "plugins/external/awesome-nav.json"
+        },
+        {
           "$ref": "plugins/external/gen-files.json"
         },
         {
