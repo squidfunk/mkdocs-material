@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.16 <small>July 26, 2025</small> { id="9.6.16" }
+
+- Fixed #8349: Info plugin doesn't correctly detect virtualenv in some cases
+- Fixed #8334: Find-in-page detects matches in hidden search result list
+
 ### 9.6.15 <small>July 1, 2025</small> { id="9.6.15" }
 
 - Updated Mongolian translations

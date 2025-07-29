@@ -1,3 +1,8 @@
+mkdocs-material-9.6.16 (2025-07-26)
+
+  * Fixed #8349: Info plugin doesn't correctly detect virtualenv in some cases
+  * Fixed #8334: Find-in-page detects matches in hidden search result list
+
 mkdocs-material-9.6.15 (2025-07-01)
 
   * Updated Mongolian translations
