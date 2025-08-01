@@ -92,7 +92,7 @@
     "preact": "^10.26.9",
     "rimraf": "^6.0.1",
     "sass": "^1.89.2",
-    "simple-icons": "^15.7.0",
+    "simple-icons": "^15.8.0",
     "stylelint": "^16.22.0",
     "stylelint-config-recess-order": "5.1.1",
     "stylelint-config-recommended": "14.0.1",
