@@ -92,7 +92,7 @@ export function watchHeaderTitle(
       map(({ offset: { y } }) => {
         const { height } = getElementSize(el)
         return {
-          active: y >= height
+          active: height > 0 && y >= height
         }
       }),
       distinctUntilKeyChanged("active")
