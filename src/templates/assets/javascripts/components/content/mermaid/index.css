@@ -83,7 +83,6 @@ marker {
 .edgePath .path,
 .flowchart-link {
   stroke: var(--md-mermaid-edge-color);
-  stroke-width: .05rem;
 }
 
 /* Flowchart arrow head */
