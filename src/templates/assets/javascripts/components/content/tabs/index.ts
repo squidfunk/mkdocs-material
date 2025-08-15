@@ -284,7 +284,7 @@ export function mountContentTabs(
         // continue playing. If it's not visible, it is paused in any case
         for (const media of getElements<HTMLAudioElement>("audio, video", el)) {
           if (media.offsetWidth && media.autoplay) {
-            media.play()
+            media.play().catch(() => {}) // Just ignore errors
           } else {
             media.pause()
           }
