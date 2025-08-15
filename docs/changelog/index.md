@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.6.17 <small>August 15, 2025</small> { id="9.6.17" }
+
+- Fixed #8396: Videos do not autoplay when inside a content tab bug
+- Fixed #8394: Stroke width not effective in Mermaid.js diagrams
+- Fixed disappearing version selector when hiding page title
+
 ### 9.6.16 <small>July 26, 2025</small> { id="9.6.16" }
 
 - Fixed #8349: Info plugin doesn't correctly detect virtualenv in some cases
