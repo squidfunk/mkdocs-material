@@ -238,14 +238,14 @@
             "search.result.term.missing": lang.t("search.result.term.missing"),
             "select.version": lang.t("select.version")
           },
-          "search": "assets/javascripts/workers/search.d50fe291.min.js" | url,
+          "search": "assets/javascripts/workers/search.973d3a69.min.js" | url,
           "tags": _.tags or none,
           "version": _.version or none
         } | tojson -}}
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.8b365579.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.92b07e13.min.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}
