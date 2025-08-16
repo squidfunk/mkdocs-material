@@ -20,6 +20,25 @@
   IN THE SOFTWARE.
 -->
 
+<!--
+  Split a string with a separator - while Jinja allows to call ".split" on a
+  string, it doesn't natively bring a "split" filter implementation. We can't
+  simply add further filters, since MkDocs doesn't allow it, so we're stuck
+  with the function call. This however doesn't work with minijinja, which does
+  not allow to call functions on template variables, but has a "split" filter.
+  Thus, we just branch and extract the part that interests us here.
+-->
+{% macro split_and_get(value, sep, index) %}
+  {%- if value.split is defined -%}
+    {%- set parts = value.split(sep) -%}
+  {%- else -%}
+    {%- set parts = value | split(sep) -%}
+  {%- endif -%}
+  {{- parts[index] -}}
+{% endmacro %}
+
+<!-- ---------------------------------------------------------------------- -->
+
 <!-- Social links -->
 <div class="md-social">
   {% for social in config.extra.social %}
@@ -33,8 +52,8 @@
     <!-- Compute title and render link -->
     {% set title = social.name %}
     {% if not title and "//" in social.link %}
-      {% set (_, url) = social.link.split("//") %}
-      {% set title = url.split("/") | first %}
+      {% set url = split_and_get(social.link, "//", 1) %}
+      {% set title = split_and_get(url, "/", 0) %}
     {% endif %}
     <a
       href="{{ social.link }}"

@@ -22,23 +22,25 @@
 
 <!-- Custom admonition icons -->
 {% if config.theme.icon.admonition %}
-  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
+  {% set _ = namespace(style = "\u003cstyle\u003e:root{") %}
   {% for type, icon in config.theme.icon.admonition | items %}
-    {% import ".icons/" ~ icon ~ ".svg" as icon %}
-    {% set _.style = _.style ~
-      "--md-admonition-icon--" ~ type ~ ":" ~
-      "url('data:image/svg+xml;charset=utf-8," ~
-        icon | replace("\n", "") | urlencode ~
-      "');"
-    %}
+    {% if type and icon %}
+      {% import ".icons/" ~ icon ~ ".svg" as icon %}
+      {% set _.style = _.style ~
+        "--md-admonition-icon--" ~ type ~ ":" ~
+        "url('data:image/svg+xml;charset=utf-8," ~
+          icon | replace("\n", "") | urlencode ~
+        "');"
+      %}
+    {% endif %}
   {% endfor %}
-  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {% set _.style = _.style ~ "}\u003c/style\u003e" %}
   {{ _.style }}
 {% endif %}
 
 <!-- Custom annotation icon -->
 {% if config.theme.icon.annotation %}
-  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
+  {% set _ = namespace(style = "\u003cstyle\u003e:root{") %}
   {% import ".icons/" ~ config.theme.icon.annotation ~ ".svg" as icon %}
   {% set _.style = _.style ~
     "--md-annotation-icon:" ~
@@ -46,27 +48,29 @@
       icon | replace("\n", "") | urlencode ~
     "');"
   %}
-  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {% set _.style = _.style ~ "}\u003c/style\u003e" %}
   {{ _.style }}
 {% endif %}
 
 <!-- Custom tag icons -->
 {% if config.theme.icon.tag %}
-  {% set _ = namespace(style = "\x3cstyle\x3e:root{") %}
+  {% set _ = namespace(style = "\u003cstyle\u003e:root{") %}
   {% for type, icon in config.theme.icon.tag | items %}
-    {% import ".icons/" ~ icon ~ ".svg" as icon %}
-    {% if type != "default" %}
-      {% set modifier = ".md-tag--" ~ type %}
+    {% if type and icon %}
+      {% import ".icons/" ~ icon ~ ".svg" as icon %}
+      {% if type != "default" %}
+        {% set modifier = ".md-tag--" ~ type %}
+      {% endif %}
+      {% set _.style = _.style ~
+        ".md-tag" ~ modifier ~ "{" ~
+          "--md-tag-icon:" ~
+          "url('data:image/svg+xml;charset=utf-8," ~
+            icon | replace("\n", "") | urlencode ~
+          "');" ~
+        "}"
+      %}
     {% endif %}
-    {% set _.style = _.style ~
-      ".md-tag" ~ modifier ~ "{" ~
-        "--md-tag-icon:" ~
-        "url('data:image/svg+xml;charset=utf-8," ~
-          icon | replace("\n", "") | urlencode ~
-        "');" ~
-      "}"
-    %}
   {% endfor %}
-  {% set _.style = _.style ~ "}\x3c/style\x3e" %}
+  {% set _.style = _.style ~ "}\u003c/style\u003e" %}
   {{ _.style }}
 {% endif %}
