@@ -30,7 +30,7 @@
 >
   <div class="md-grid">
     <ul class="md-tabs__list">
-      {% for nav_item in nav %}
+      {% for nav_item in nav.items %}
         {{ item.render(nav_item) }}
       {% endfor %}
     </ul>
