@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.18 <small>August 22, 2025</small> { id="9.6.18" }
+
+- Updated Azerbaijani translations
+- Fixed last compat issues with [minijinja], now 100% compatible
+
 ### 9.6.17 <small>August 15, 2025</small> { id="9.6.17" }
 
 - Fixed #8396: Videos do not autoplay when inside a content tab
