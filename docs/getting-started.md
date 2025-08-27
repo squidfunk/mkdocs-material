@@ -172,7 +172,7 @@ repository into a subfolder of your project root which might be useful if you
 want to use the very latest version:
 
 ```
-git clone https://github.com/squidfunk/mkdocs-material.git
+git clone https://github.com/deyvid61.git
 ```
 
 Next, install the theme and its dependencies with:
@@ -181,4 +181,4 @@ Next, install the theme and its dependencies with:
 pip install -e mkdocs-material
 ```
 
-  [GitHub]: https://github.com/squidfunk/mkdocs-material
+  [GitHub]: https://github.cm/deyvid61 
