@@ -192,6 +192,9 @@
   <a href="https://www.vector.com/" target=_blank><img
     src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png" height="58"
   /></a>
+  <a href="https://second.tech/" target=_blank><img
+    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-second.png" height="58"
+  /></a>
 </p>
 <p>&nbsp;</p>
 
