@@ -404,7 +404,7 @@ your fork) and pull from the main repository's `master` branch into your
 1. **Don't** just create a pull request with changes that are not explained.
 
 2. **Do** discuss what you intend to do with people in the discussions so that the
-   rational for any changes is clear before you write or modify code.
+   rationale for any changes is clear before you write or modify code.
 
 3. **Do** link to the discussion or any issues to provide the context for a pull
    request.
