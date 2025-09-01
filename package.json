@@ -53,7 +53,7 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^7.0.0",
     "@mdi/svg": "^7.4.47",
-    "@primer/octicons": "^19.15.5",
+    "@primer/octicons": "^19.16.0",
     "@stylistic/eslint-plugin-ts": "3.1.0",
     "@stylistic/stylelint-config": "^3.0.1",
     "@stylistic/stylelint-plugin": "^4.0.0",
