@@ -1,8 +1,10 @@
 # Creating your site
 
-After you've [installed] Material for MkDocs, you can bootstrap your project
-documentation using the `mkdocs` executable. Go to the directory where you want
-your project to be located and enter:
+After you've [installed] Material for MkDocs, you can bootstrap your documentation project then preview your documentation and finaly build your site using the `mkdocs` executable.
+
+## Bootstrap your project
+
+Go to the directory where you want your project to be located and enter:
 
 ```
 mkdocs new .
@@ -10,7 +12,18 @@ mkdocs new .
 
 Alternatively, if you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+
+=== "Unix"
+
+    ```
+    docker run --rm \
+               --user $(id -u):$(id -g) \
+               --volume $(pwd):/docs \
+               squidfunk/mkdocs-material \
+               new . # bootstrap project
+    ```
+
+=== "Powershell"
 
     ```
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material new .
@@ -210,7 +223,18 @@ mkdocs serve # (1)!
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+=== "Unix"
+
+    ```
+    docker run --rm \
+               --user $(id -u):$(id -g) \
+               --volume $(pwd):/docs \
+               --publish 127.0.0.1:8000:8000 \
+               squidfunk/mkdocs-material
+               # serve by default (Ctrl + C to stop preview server)
+    ```
+
+=== "Powershell"
 
     ```
     docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
@@ -241,7 +265,17 @@ mkdocs build
 
 If you're running Material for MkDocs from within Docker, use:
 
-=== "Unix, Powershell"
+=== "Unix"
+
+    ```
+    docker run --rm \
+               --user $(id -u):$(id -g) \
+               --volume $(pwd):/docs \
+               squidfunk/mkdocs-material \
+               build # build static site in $(pwd)/site
+    ```
+
+=== "Powershell"
 
     ```
     docker run --rm -it -v ${PWD}:/docs squidfunk/mkdocs-material build
