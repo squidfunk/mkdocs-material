@@ -39,7 +39,7 @@ dynamic = [
   "keywords"
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.9"
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
@@ -63,7 +63,7 @@ git = [
   "mkdocs-git-revision-date-localized-plugin~=1.2,>=1.2.4"
 ]
 imaging = [
-  "pillow>=10.2,<12.0",
+  "pillow>=11.3,<12.0",
   "cairosvg~=2.6"
 ]
 

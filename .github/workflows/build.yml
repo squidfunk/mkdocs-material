@@ -30,7 +30,7 @@ on:
 
 env:
   NODE_VERSION: 18.x
-  PYTHON_VERSION: 3.x
+  PYTHON_VERSION: 3.14
 
 permissions:
   contents: read
@@ -101,6 +101,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          allow-prereleases: true
           cache: pip
           cache-dependency-path: |
             pyproject.toml
