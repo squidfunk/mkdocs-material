@@ -105,7 +105,7 @@ necessary links and define the icons to use.
     For popular social media systems, the link needs to be absolute and
     needs to include the scheme, most likely `https://`.
 
-    You can also use other schemes. For example, to cerate an icon that allows
+    You can also use other schemes. For example, to create an icon that allows
     people to create an email, add this:
 
     ```yaml
@@ -137,7 +137,7 @@ more involved, which is why there are companies offering components for this.
 
     "Share" and "Like" buttons that use integrations provided by social media
     companies often leave copious data traces even when the user does not
-    interact with these buttons. If you choose to integate such feature on
+    interact with these buttons. If you choose to integrate such feature on
     your site please be aware of the data protection implications and your
     duties as a provider to ensure that processing occurs only once the user
     has granted consent.
@@ -245,7 +245,7 @@ want to work directly on an existing repository.
     `Features` in the `General` section. Tick the checkbox for `Discussions`.
     You will see that `Discussions` appears in the top navigation for the
     repository. If you are using a live repository then you may want to add some
-    minimal content to the dicussions section at this point and come back to the
+    minimal content to the discussions section at this point and come back to the
     tutorial.
 
     Next, you need to install the [Giscus app] by following the link in this
