@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.19 <small>September 7, 2025</small> { id="9.6.19" }
+
+- Added support for Python 3.14
+- Updated Bahasa Malaysia translations
+
 ### 9.6.18 <small>August 22, 2025</small> { id="9.6.18" }
 
 - Updated Azerbaijani translations
