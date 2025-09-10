@@ -76,6 +76,7 @@ export function setupSearchHighlighter(
   return (query: string) => {
     query = query
       .replace(/[\s*+\-:~^]+/g, " ")
+      .replace(/&/g, "&amp;")
       .trim()
 
     /* Create search term match expression */
