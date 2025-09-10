@@ -99,7 +99,7 @@ function minsvg(data: string): string {
         name: "preset-default",
         params: {
           overrides: {
-            removeViewBox: false
+            removeViewBox: false,
           }
         }
       },
@@ -109,8 +109,10 @@ function minsvg(data: string): string {
     ]
   })
 
-  /* Return minified SVG */
-  return result.data
+  // Return minified SVG - note that we need to remove `currentColor`, which
+  // FontAwesome added to paths. It would be better to do this with a proper
+  // DOM parser, but this will do for now.
+  return result.data.replace("fill=\"currentColor\" ", "")
 }
 
 /**
