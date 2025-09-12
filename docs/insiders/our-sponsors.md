@@ -66,6 +66,7 @@ _Be our first gold sponsor!_
 [![Pydantic Logfire]](https://pydantic.dev/logfire/){ target=_blank title="Pydantic Logfire" }
 [![Vector Informatik]](https://www.vector.com/){ target=_blank title="Vector Informatik" }
 [![Second]](https://second.tech/){ target=_blank title="Second" }
+[![MVTec]](https://mvtec.com/){ target=_blank title="MVTec" }
 
 </div>
 
@@ -114,7 +115,7 @@ _Be our first gold sponsor!_
   [Pydantic Logfire]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png
   [Vector Informatik]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png
   [Second]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-second.png
-
+  [MVTec]: https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-mvtec.png
 
 <hr />
 
