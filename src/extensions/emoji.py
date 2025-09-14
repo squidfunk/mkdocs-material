@@ -20,7 +20,6 @@
 
 from __future__ import annotations
 
-import codecs
 import functools
 import material
 import os
@@ -65,7 +64,7 @@ def to_svg(
 # Load icon
 @functools.lru_cache(maxsize = None)
 def _load(file: str):
-    with codecs.open(file, encoding = "utf-8") as f:
+    with open(file, encoding = "utf-8") as f:
         return f.read()
 
 # Load twemoji index and add icons
