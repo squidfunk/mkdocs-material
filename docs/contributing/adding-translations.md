@@ -82,7 +82,7 @@ how to translate specific lines, simply leave them for other contributors to
 complete. To ensure the accuracy of your translation, consider double-checking the
 context of the words by looking at our [English translations].
 
-[English translations]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials/languages/en.html
+[English translations]: https://github.com/squidfunk/mkdocs-material/tree/master/src/templates/partials/languages/en.html
 
 ### Country flag <small>optional</small> { #country-flag }
 
