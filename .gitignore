@@ -65,3 +65,6 @@ tmp
 # IDEs & Editors
 .idea
 *~
+
+# uv Python package manager
+uv.lock
