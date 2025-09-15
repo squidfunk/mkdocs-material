@@ -1,203 +1,203 @@
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
-  </a>
+<a href="https://squidfunk.github.io/mkdocs-material/">
+<img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
+</a>
 </p>
 
 <p align="center">
-  <strong>
-    A powerful documentation framework on top of
-    <a href="https://www.mkdocs.org/">MkDocs</a>
-  </strong>
+<strong>
+A powerful documentation framework on top of
+<a href="https://www.mkdocs.org/">MkDocs</a>
+</strong>
 </p>
 
 <p align="center">
-  <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
-    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg"
-    alt="Build"
-  /></a>
-  <a href="https://pypistats.org/packages/mkdocs-material"><img
-    src="https://img.shields.io/pypi/dm/mkdocs-material.svg"
-    alt="Downloads"
-  /></a>
-  <a href="https://pypi.org/project/mkdocs-material"><img
-    src="https://img.shields.io/pypi/v/mkdocs-material.svg"
-    alt="Python Package Index"
-  /></a>
-  <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img
-    src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material"
-    alt="Docker Pulls"
-  /></a>
-  <a href="https://github.com/sponsors/squidfunk"><img
-    src="https://img.shields.io/github/sponsors/squidfunk"
-    alt="Sponsors"
-  /></a>
+<a href="https://github.com/squidfunk/mkdocs-material/actions"><img
+src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg"
+alt="Build"
+/></a>
+<a href="https://pypistats.org/packages/mkdocs-material"><img
+src="https://img.shields.io/pypi/dm/mkdocs-material.svg"
+alt="Downloads"
+/></a>
+<a href="https://pypi.org/project/mkdocs-material"><img
+src="https://img.shields.io/pypi/v/mkdocs-material.svg"
+alt="Python Package Index"
+/></a>
+<a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img
+src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material"
+alt="Docker Pulls"
+/></a>
+<a href="https://github.com/sponsors/squidfunk"><img
+src="https://img.shields.io/github/sponsors/squidfunk"
+alt="Sponsors"
+/></a>
 </p>
 
 <p align="center">
-  Write your documentation in Markdown and create a professional static site for
-  your Open Source or commercial project in minutes – searchable, customizable,
-  more than 60 languages, for all devices.
+Write your documentation in Markdown and create a professional static site for
+your Open Source or commercial project in minutes – searchable, customizable,
+more than 60 languages, for all devices.
 </p>
 
 <p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/screenshot.png" width="700" />
-  </a>
+<a href="https://squidfunk.github.io/mkdocs-material/getting-started/">
+<img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/screenshot.png" width="700" />
+</a>
 </p>
 
 <p align="center">
-  <em>
-    Check out the demo –
-    <a
-      href="https://squidfunk.github.io/mkdocs-material/"
-    >squidfunk.github.io/mkdocs-material</a>.
-  </em>
+<em>
+Check out the demo –
+<a
+href="https://squidfunk.github.io/mkdocs-material/"
+>squidfunk.github.io/mkdocs-material</a>.
+</em>
 </p>
 
 <h2></h2>
 <p id="premium-sponsors">&nbsp;</p>
 <p align="center"><strong>Silver sponsors</strong></p>
 <p align="center">
-  <a href="https://fastapi.tiangolo.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="120"
-  /></a>
-  <a href="https://www.trendpop.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png" height="120"
-  /></a>
-  <a href="https://documentation.sailpoint.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png" height="120"
-  /></a>
-  <a href="https://futureplc.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg" width="332" height="120"
-  /></a>
-  <a href="https://opensource.siemens.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png" height="120"
-  /></a>
+<a href="https://fastapi.tiangolo.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-fastapi.png" height="120"
+/></a>
+<a href="https://www.trendpop.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-trendpop.png" height="120"
+/></a>
+<a href="https://documentation.sailpoint.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sailpoint.png" height="120"
+/></a>
+<a href="https://futureplc.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-future.svg" width="332" height="120"
+/></a>
+<a href="https://opensource.siemens.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-siemens.png" height="120"
+/></a>
 </p>
 <p>&nbsp;</p>
 <p align="center"><strong>Bronze sponsors</strong></p>
 <p align="center">
-  <a href="https://cirrus-ci.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png" height="58"
-  /></a>
-  <a href="https://docs.baslerweb.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png" height="58"
-  /></a>
-  <a href="https://kx.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="58"
-  /></a>
-  <a href="https://orion-docs.prefect.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png" height="58"
-  /></a>
-  <a href="https://www.zenoss.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png" height="58"
-  /></a>
-  <a href="https://docs.posit.co" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png" height="58"
-  /></a>
-  <a href="https://n8n.io" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png" height="58"
-  /></a>
-  <a href="https://www.dogado.de" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png" height="58"
-  /></a>
-  <a href="https://wwt.com" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png" height="58"
-  /></a>
-  <a href="https://elastic.co" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png" height="58"
-  /></a>
-  <a href="https://ipfabric.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png" height="58"
-  /></a>
-  <a href="https://www.apex.ai/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png" height="58"
-  /></a>
-  <a href="https://jitterbit.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png" height="58"
-  /></a>
-  <a href="https://sparkfun.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png" height="58"
-  /></a>
-  <a href="https://eccenca.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png" height="58"
-  /></a>
-  <a href="https://neptune.ai/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
-  /></a>
-  <a href="https://rackn.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png" height="58"
-  /></a>
-  <a href="https://civicactions.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png" height="58"
-  /></a>
-  <a href="https://getscreen.me/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png" height="58"
-  /></a>
-  <a href="https://botcity.dev/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png" height="58"
-  /></a>
-  <a href="https://kolena.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png" height="58"
-  /></a>
-  <a href="https://www.evergiving.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png" height="58"
-  /></a>
-  <a href="https://astral.sh/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png" height="58"
-  /></a>
-  <a href="https://oikolab.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png" height="58"
-  /></a>
-  <a href="https://www.buhlergroup.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png" height="58"
-  /></a>
-  <a href="https://3dr.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png" height="58"
-  /></a>
-  <a href="https://spotware.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png" height="58"
-  /></a>
-  <a href="https://milfordasset.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png" height="58"
-  /></a>
-  <a href="https://www.lechler.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png" height="58"
-  /></a>
-  <a href="https://invers.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png" height="58"
-  /></a>
-  <a href="https://maxar.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png" height="58"
-  /></a>
-  <a href="https://www.equipmentshare.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png" height="58"
-  /></a>
-  <a href="https://hummingbot.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
-  /></a>
-  <a href="https://octoperf.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png" height="58"
-  /></a>
-  <a href="https://intercomestibles.ch/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png" height="58"
-  /></a>
-  <a href="https://www.centara.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png" height="58"
-  /></a>
-  <a href="https://pydantic.dev/logfire/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png" height="58"
-  /></a>
-  <a href="https://www.vector.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png" height="58"
-  /></a>
-  <a href="https://second.tech/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-second.png" height="58"
-  /></a>
-  <a href="https://mvtec.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-mvtec.png" height="58"
-  /></a>
+<a href="https://cirrus-ci.org/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-cirrus-ci.png" height="58"
+/></a>
+<a href="https://docs.baslerweb.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-basler.png" height="58"
+/></a>
+<a href="https://kx.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kx.png" height="58"
+/></a>
+<a href="https://orion-docs.prefect.io/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-prefect.png" height="58"
+/></a>
+<a href="https://www.zenoss.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-zenoss.png" height="58"
+/></a>
+<a href="https://docs.posit.co" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-posit.png" height="58"
+/></a>
+<a href="https://n8n.io" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-n8n.png" height="58"
+/></a>
+<a href="https://www.dogado.de" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-dogado.png" height="58"
+/></a>
+<a href="https://wwt.com" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-wwt.png" height="58"
+/></a>
+<a href="https://elastic.co" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-elastic.png" height="58"
+/></a>
+<a href="https://ipfabric.io/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-ip-fabric.png" height="58"
+/></a>
+<a href="https://www.apex.ai/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-apex-ai.png" height="58"
+/></a>
+<a href="https://jitterbit.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-jitterbit.png" height="58"
+/></a>
+<a href="https://sparkfun.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-sparkfun.png" height="58"
+/></a>
+<a href="https://eccenca.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-eccenca.png" height="58"
+/></a>
+<a href="https://neptune.ai/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-neptune-ai.png" height="58"
+/></a>
+<a href="https://rackn.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-rackn.png" height="58"
+/></a>
+<a href="https://civicactions.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-civic-actions.png" height="58"
+/></a>
+<a href="https://getscreen.me/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-getscreenme.png" height="58"
+/></a>
+<a href="https://botcity.dev/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-botcity.png" height="58"
+/></a>
+<a href="https://kolena.io/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-kolena.png" height="58"
+/></a>
+<a href="https://www.evergiving.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-evergiving.png" height="58"
+/></a>
+<a href="https://astral.sh/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-astral.png" height="58"
+/></a>
+<a href="https://oikolab.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-oikolab.png" height="58"
+/></a>
+<a href="https://www.buhlergroup.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-buhler.png" height="58"
+/></a>
+<a href="https://3dr.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-3dr.png" height="58"
+/></a>
+<a href="https://spotware.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-spotware.png" height="58"
+/></a>
+<a href="https://milfordasset.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-milford.png" height="58"
+/></a>
+<a href="https://www.lechler.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-lechler.png" height="58"
+/></a>
+<a href="https://invers.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-invers.png" height="58"
+/></a>
+<a href="https://maxar.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-maxar.png" height="58"
+/></a>
+<a href="https://www.equipmentshare.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-equipmentshare.png" height="58"
+/></a>
+<a href="https://hummingbot.org/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-hummingbot.png" height="58"
+/></a>
+<a href="https://octoperf.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-octoperf.png" height="58"
+/></a>
+<a href="https://intercomestibles.ch/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-intercomestibles.png" height="58"
+/></a>
+<a href="https://www.centara.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-centara.png" height="58"
+/></a>
+<a href="https://pydantic.dev/logfire/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-logfire.png" height="58"
+/></a>
+<a href="https://www.vector.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-vector.png" height="58"
+/></a>
+<a href="https://second.tech/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-second.png" height="58"
+/></a>
+<a href="https://mvtec.com/" target=_blank><img
+src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/sponsor-mvtec.png" height="58"
+/></a>
 </p>
 <p>&nbsp;</p>
 
@@ -251,13 +251,13 @@ Add the following lines to `mkdocs.yml`:
 
 ``` yaml
 theme:
-  name: material
+name: material
 ```
 
 For detailed installation instructions, configuration options, and a demo, visit
 [squidfunk.github.io/mkdocs-material][Material for MkDocs]
 
-  [Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
+[Material for MkDocs]: https://squidfunk.github.io/mkdocs-material/
 
 ## Trusted by ...
 
@@ -369,3 +369,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+
+---
+*Documentation improved for better readability and formatting.*
