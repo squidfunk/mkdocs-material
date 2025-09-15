@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.6.20 <small>September 15, 2025</small> { id="9.6.20" }
+
+- Fixed #8446: Deprecation warning as of Python 3.14 in Emoji extension
+- Fixed #8440: `&` character not escaped in search highlighting
+- Fixed #8439: FontAwesome icons color not set in social cards (regression)
+
 ### 9.6.19 <small>September 7, 2025</small> { id="9.6.19" }
 
 - Added support for Python 3.14
