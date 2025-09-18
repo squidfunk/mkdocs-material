@@ -81,9 +81,10 @@ export type Translations =
  * Versioning
  */
 export interface Versioning {
-  provider: "mike"                     /* Version provider */
+  provider: "mike" | "directory"       /* Version provider */
   default?: string | string[]          /* Default version */
   alias?: boolean                      /* Show alias */
+  declared_version: string             /* Version info from multi-version builds */
 }
 
 /**

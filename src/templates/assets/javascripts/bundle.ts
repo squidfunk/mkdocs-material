@@ -154,7 +154,7 @@ if (feature("navigation.instant"))
     .subscribe(document$)
 
 /* Set up version selector */
-if (config.version?.provider === "mike")
+if (config.version?.provider != undefined)
   setupVersionSelector({ document$ })
 
 /* Always close drawer and search on navigation */
