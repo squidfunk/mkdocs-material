@@ -125,6 +125,8 @@ extra:
 Make sure one alias matches the [default version], as this is where users are
 redirected to.
 
+(We do not currently provide support for displaying a custom banner for pre-release versions of your documentation. However, you are welcome to try implementing the custom solutions described in [this thread](https://github.com/squidfunk/mkdocs-material/discussions/5803).)
+
   [theme extension]: ../customization.md#extending-the-theme
   [overriding blocks]: ../customization.md#overriding-blocks
   [Version warning preview]: ../assets/screenshots/version-warning.png
