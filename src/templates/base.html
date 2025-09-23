@@ -394,9 +394,15 @@
 
       <!-- Versioning -->
       {%- if config.extra.version -%}
+        {%- if config.extra.version.provider == "mike" -%}
         {%- set mike = config.plugins.mike -%}
-        {%- if not mike or mike.config.version_selector -%}
-          {%- set _.version = config.extra.version -%}
+          {%- if not mike or mike.config.version_selector -%}
+            {%- set _.version = config.extra.version -%}
+          {%- endif -%}
+        {%- elif config.extra.version.provider == "directory" -%}
+          {%- if page and (page.meta.version) -%}
+            {%- set _.version = {"provider":"directory", "declared_version": page.meta.version | string} -%}
+          {%- endif -%}
         {%- endif -%}
       {%- endif -%}
 
