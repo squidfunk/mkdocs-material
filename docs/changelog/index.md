@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.6.21 <small>September 30, 2025</small> { id="9.6.21" }
+
+- Updated Serbian translations
+- Fixed #8458: Temporary pin of click dependency
+
 ### 9.6.20 <small>September 15, 2025</small> { id="9.6.20" }
 
 - Fixed #8446: Deprecation warning as of Python 3.14 in Emoji extension

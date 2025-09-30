@@ -1,4 +1,9 @@
-mkdocs-material-9.6.20 (2025-09-05)
+mkdocs-material-9.6.21 (2025-09-30)
+
+  * Updated Serbian translations
+  * Fixed #8458: Temporary pin of click dependency
+
+mkdocs-material-9.6.20 (2025-09-15)
 
   * Fixed #8446: Deprecation warning as of Python 3.14 in Emoji extension
   * Fixed #8440: `&` character not escaped in search highlighting
