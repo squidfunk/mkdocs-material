@@ -74,7 +74,7 @@
     "eslint": "8.57.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsdoc": "50.6.11",
+    "eslint-plugin-jsdoc": "60.6.0",
     "eslint-plugin-no-null": "^1.0.2",
     "github-types": "^1.0.0",
     "gitlab": "^14.2.2",
