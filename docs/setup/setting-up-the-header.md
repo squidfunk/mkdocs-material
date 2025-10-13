@@ -66,7 +66,3 @@ theme:
 When the user clicks the button, the current announcement is dismissed and not
 displayed again until the content of the announcement changes. This is handled
 automatically.
-
-[Scroll to the top of this page][top] to see it in action.
-
-  [top]: #
