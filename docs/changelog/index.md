@@ -4,7 +4,7 @@
 
 ### 9.6.22 <small>October 15, 2025</small> { id="9.6.22" }
 
-  * Updated Georgian translation
+- Updated Georgian translation
 
 ### 9.6.21 <small>September 30, 2025</small> { id="9.6.21" }
 
