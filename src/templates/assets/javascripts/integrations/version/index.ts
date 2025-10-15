@@ -82,10 +82,13 @@ export function setupVersionSelector(
     )
 
   /* Determine current version */
+  let [, current] = config.base.match(/([^/]+)\/?$/)!
+  if (config.version?.provider === "directory") {
+    current = config.version?.declared_version
+  }
   const current$ = versions$
     .pipe(
       map(versions => {
-        const [, current] = config.base.match(/([^/]+)\/?$/)!
         return versions.find(({ version, aliases }) => (
           version === current || aliases.includes(current)
         )) || versions[0]
@@ -95,10 +98,15 @@ export function setupVersionSelector(
   /* Intercept inter-version navigation */
   versions$
     .pipe(
-      map(versions => new Map(versions.map(version => [
-        `${new URL(`../${version.version}/`, config.base)}`,
-        version
-      ]))),
+      map(versions => new Map(versions.map(version => {
+        let versionPath = `../${version.version}/`
+        if (config.version?.provider === "directory") {
+          versionPath = `./${version.version}/`
+        }
+        return [
+          `${new URL(versionPath, config.base)}`,
+          version
+        ]}))),
       switchMap(urls => fromEvent<MouseEvent>(document.body, "click")
         .pipe(
           filter(ev => !ev.metaKey && !ev.ctrlKey),
@@ -129,16 +137,35 @@ export function setupVersionSelector(
             }
             return EMPTY
           }),
-          switchMap(selectedVersionBaseURL => {
-            return fetchSitemap(selectedVersionBaseURL).pipe(
+          withLatestFrom(current$),
+          switchMap(([selectedVersionBaseURL, current]) => {
+            let sitemapBase = selectedVersionBaseURL
+            let currentBase = config.base
+            if (config.version?.provider === "directory") {
+              sitemapBase = new URL(config.base)
+              currentBase = `${new URL(current.version, config.base)}/`
+            }
+            return fetchSitemap(sitemapBase).pipe(
               map(
-                sitemap =>
-                  selectedVersionCorrespondingURL({
+                sitemap => {
+                  if (config.version?.provider === "directory") {
+                    // "directory" provider will have all the versions in the same sitemap;
+                    // filter the sitemap to only URLs that are in the selected version.
+                    const filteredSitemap: typeof sitemap = new Map()
+                    for (const [url, links] of sitemap) {
+                      if (new URL(url).pathname.startsWith(selectedVersionBaseURL.pathname)) {
+                        filteredSitemap.set(url, links)
+                      }
+                    }
+                    sitemap = filteredSitemap
+                  }
+                  return selectedVersionCorrespondingURL({
                     selectedVersionSitemap: sitemap,
                     selectedVersionBaseURL,
                     currentLocation: getLocation(),
-                    currentBaseURL: config.base
-                  }) ?? selectedVersionBaseURL,
+                    currentBaseURL: currentBase
+                  }) ?? selectedVersionBaseURL
+                },
               ),
             )
           })
