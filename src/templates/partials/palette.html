@@ -49,6 +49,8 @@
         hidden
       >
         {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+        <!-- WCAG 2.1 AA: Add screen reader text for non-color distinction (1.3.3) -->
+        <span class="md-visually-hidden">{{ option.toggle.name }}</span>
       </label>
     {% endif %}
   {% endfor %}

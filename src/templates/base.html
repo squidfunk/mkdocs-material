@@ -226,6 +226,16 @@
       {% endif %}
     </div>
 
+    <!-- WCAG 2.1 AA: Live region for page navigation announcements (3.2.3) -->
+    <div
+      class="md-announce"
+      aria-live="polite"
+      aria-atomic="true"
+      data-md-component="announce-navigation"
+    >
+      <div class="md-visually-hidden"></div>
+    </div>
+
     <!-- Announcement bar -->
     <div data-md-component="announce">
       {% if self.announce() %}

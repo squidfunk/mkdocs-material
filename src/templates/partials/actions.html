@@ -30,9 +30,12 @@
       title="{{ lang.t('action.edit') }}"
       class="md-content__button md-icon"
       rel="edit"
+      aria-label="{{ lang.t('action.edit') }}"
     >
       {% set icon = config.theme.icon.edit or "material/file-edit-outline" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
+      <!-- WCAG 2.1 AA: Add screen reader text for link purpose (2.4.4) -->
+      <span class="md-visually-hidden">{{ lang.t('action.edit') }}</span>
     </a>
   {% endif %}
 
@@ -47,9 +50,12 @@
       href="{{ page.edit_url | replace(part, 'raw') }}"
       title="{{ lang.t('action.view') }}"
       class="md-content__button md-icon"
+      aria-label="{{ lang.t('action.view') }}"
     >
       {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
+      <!-- WCAG 2.1 AA: Add screen reader text for link purpose (2.4.4) -->
+      <span class="md-visually-hidden">{{ lang.t('action.view') }}</span>
     </a>
   {% endif %}
 {% endif %}

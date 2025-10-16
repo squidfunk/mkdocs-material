@@ -47,9 +47,17 @@
     </a>
 
     <!-- Button to open drawer -->
-    <label class="md-header__button md-icon" for="__drawer">
+    <label
+      class="md-header__button md-icon"
+      for="__drawer"
+      aria-label="{{ lang.t('nav.open') | d('Open navigation', true) }}"
+      role="button"
+      tabindex="0"
+    >
       {% set icon = config.theme.icon.menu or "material/menu" %}
       {% include ".icons/" ~ icon ~ ".svg" %}
+      <!-- WCAG 2.1 AA: Add screen reader text (4.1.2) -->
+      <span class="md-visually-hidden">{{ lang.t('nav.open') | d('Open navigation', true) }}</span>
     </label>
 
     <!-- Header title -->
@@ -95,9 +103,17 @@
 
       <!-- Check if search is actually enabled - see https://t.ly/DT_0V -->
       {% if search.enabled %}
-        <label class="md-header__button md-icon" for="__search">
+        <label
+          class="md-header__button md-icon"
+          for="__search"
+          aria-label="{{ lang.t('search') }}"
+          role="button"
+          tabindex="0"
+        >
           {% set icon = config.theme.icon.search or "material/magnify" %}
           {% include ".icons/" ~ icon ~ ".svg" %}
+          <!-- WCAG 2.1 AA: Add screen reader text (4.1.2) -->
+          <span class="md-visually-hidden">{{ lang.t('search') }}</span>
         </label>
 
         <!-- Search interface -->
