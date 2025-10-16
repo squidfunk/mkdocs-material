@@ -38,6 +38,19 @@
   font-size: px2rem(14px);
   line-height: 1.3;
 
+  // WCAG 2.1 AA: Visually hidden heading for accessibility (2.4.6)
+  &__heading {
+    position: absolute;
+    width: px2rem(1px);
+    height: px2rem(1px);
+    padding: 0;
+    margin: px2rem(-1px);
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
   // Navigation title
   &__title {
     display: block;

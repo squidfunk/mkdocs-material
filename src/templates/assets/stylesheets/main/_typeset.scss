@@ -165,6 +165,9 @@ kbd {
   a {
     color: var(--md-typeset-a-color);
     word-break: break-word;
+    // WCAG 2.1 AA: Add underline for non-color distinction (1.4.1)
+    text-decoration: underline;
+    text-underline-offset: px2rem(2px);
 
     // Also enable color transition on pseudo elements
     &,
@@ -175,6 +178,7 @@ kbd {
     // Text link on focus/hover
     &:is(:focus, :hover) {
       color: var(--md-accent-fg-color);
+      text-decoration-thickness: px2rem(2px);
 
       // Inline code block
       code {

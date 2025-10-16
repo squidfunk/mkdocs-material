@@ -35,7 +35,7 @@
         placeholder="{{ lang.t('search.placeholder') }}"
         autocapitalize="off"
         autocorrect="off"
-        autocomplete="off"
+        autocomplete="search"
         spellcheck="false"
         data-md-component="search-query"
         required
@@ -101,7 +101,8 @@
           <div class="md-search-result__meta">
             {{ lang.t("search.result.initializer") }}
           </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
+          <!-- WCAG 2.1 AA: Remove role="presentation" to preserve list semantics (4.1.2) -->
+          <ol class="md-search-result__list"></ol>
         </div>
       </div>
     </div>

@@ -193,6 +193,7 @@
             <a
               href="{{ index.url | url }}"
               class="md-nav__link {{ class }}"
+              {% if index == page %}aria-current="page"{% endif %}
             >
               {{ render_content(index, nav_item) }}
             </a>
@@ -268,6 +269,7 @@
       <a
         href="{{ nav_item.url | url }}"
         class="md-nav__link md-nav__link--active"
+        aria-current="page"
       >
         {{ render_content(nav_item) }}
       </a>

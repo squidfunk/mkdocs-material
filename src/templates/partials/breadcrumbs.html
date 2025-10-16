@@ -20,31 +20,34 @@
   IN THE SOFTWARE.
 -->
 
-<!-- Breadcrumbs (WCAG 2.1 AA - 2.4.5 Multiple Ways) -->
-{% include "partials/breadcrumbs.html" %}
+<!-- Breadcrumb navigation - WCAG 2.1 AA requirement (2.4.5) -->
+{% if page and page.ancestors %}
+  <nav class="md-breadcrumbs" aria-label="{{ lang.t('breadcrumbs') | d('Breadcrumbs', true) }}">
+    <ol class="md-breadcrumbs__list">
+      <!-- Home link -->
+      <li class="md-breadcrumbs__item">
+        <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" class="md-breadcrumbs__link">
+          {{ config.site_name }}
+        </a>
+      </li>
 
-<!-- Tags -->
-{% include "partials/tags.html" %}
+      <!-- Ancestor pages -->
+      {% for ancestor in page.ancestors %}
+        <li class="md-breadcrumbs__item">
+          <span class="md-breadcrumbs__separator" aria-hidden="true">›</span>
+          <a href="{{ ancestor.url | url }}" class="md-breadcrumbs__link">
+            {{ ancestor.title }}
+          </a>
+        </li>
+      {% endfor %}
 
-<!-- Actions -->
-{% include "partials/actions.html" %}
-
-<!--
-  Hack: check whether the content contains a h1 headline. If it doesn't, the
-  page title (or respectively site name) is used as the main headline.
--->
-{% if "\u003ch1" not in page.content %}
-  <h1>{{ page.title | d(config.site_name, true)}}</h1>
+      <!-- Current page -->
+      <li class="md-breadcrumbs__item">
+        <span class="md-breadcrumbs__separator" aria-hidden="true">›</span>
+        <span class="md-breadcrumbs__link md-breadcrumbs__link--active" aria-current="page">
+          {{ page.title }}
+        </span>
+      </li>
+    </ol>
+  </nav>
 {% endif %}
-
-<!-- Page content -->
-{{ page.content }}
-
-<!-- Source file information -->
-{% include "partials/source-file.html" %}
-
-<!-- Was this page helpful? -->
-{% include "partials/feedback.html" %}
-
-<!-- Comment system -->
-{% include "partials/comments.html" %}

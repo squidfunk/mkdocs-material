@@ -28,6 +28,10 @@
 
 <!-- Table of contents -->
 <nav class="md-nav md-nav--secondary" aria-label="{{ title | e }}">
+  <!-- WCAG 2.1 AA: Add heading for TOC (2.4.6) -->
+  <h2 class="md-nav__heading">
+    {{ title }}
+  </h2>
   {% set toc = page.toc %}
 
   <!--

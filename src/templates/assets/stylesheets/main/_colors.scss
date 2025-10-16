@@ -71,7 +71,8 @@
 
   // Default color shades
   --md-default-fg-color:               hsla(0, 0%, 0%, 0.87);
-  --md-default-fg-color--light:        hsla(0, 0%, 0%, 0.54);
+  // WCAG 2.1 AA: Increased from 0.54 to 0.6 for better contrast (1.4.3)
+  --md-default-fg-color--light:        hsla(0, 0%, 0%, 0.6);
   --md-default-fg-color--lighter:      hsla(0, 0%, 0%, 0.32);
   --md-default-fg-color--lightest:     hsla(0, 0%, 0%, 0.07);
   --md-default-bg-color:               hsla(0, 0%, 100%, 1);
@@ -133,7 +134,8 @@
 
   // Footer color shades
   --md-footer-fg-color:                hsla(0, 0%, 100%, 1);
-  --md-footer-fg-color--light:         hsla(0, 0%, 100%, 0.7);
+  // WCAG 2.1 AA: Increased from 0.7 to 0.75 for better contrast (1.4.3)
+  --md-footer-fg-color--light:         hsla(0, 0%, 100%, 0.75);
   --md-footer-fg-color--lighter:       hsla(0, 0%, 100%, 0.45);
   --md-footer-bg-color:                hsla(0, 0%, 0%, 0.87);
   --md-footer-bg-color--dark:          hsla(0, 0%, 0%, 0.32);
