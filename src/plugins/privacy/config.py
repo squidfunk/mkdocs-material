@@ -41,3 +41,6 @@ class PrivacyConfig(Config):
     assets_fetch = Type(bool, default = True)
     assets_fetch_dir = Type(str, default = "assets/external")
     assets_expr_map = DictOfItems(Type(str), default = {})
+
+    # Settings for fetching
+    timeout = Type(int, default = 5)

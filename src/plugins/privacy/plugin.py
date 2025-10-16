@@ -44,8 +44,6 @@ from xml.etree.ElementTree import Element, tostring
 from .config import PrivacyConfig
 from .parser import FragmentParser
 
-DEFAULT_TIMEOUT_IN_SECS = 5
-
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
@@ -428,7 +426,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                             ]
                         )
                     },
-                    timeout=DEFAULT_TIMEOUT_IN_SECS,
+                    timeout=self.config.timeout,
                 )
                 res.raise_for_status()
 
