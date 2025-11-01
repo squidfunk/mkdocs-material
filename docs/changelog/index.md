@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.6.23 <small>November 1, 2025</small> { id="9.6.23" }
+
+- Updated Burmese translation
+
 ### 9.6.22 <small>October 15, 2025</small> { id="9.6.22" }
 
 - Updated Georgian translation
