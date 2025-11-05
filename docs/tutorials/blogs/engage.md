@@ -221,7 +221,7 @@ for MkDocs use GitHub, this seems like an obvious choice.
 [Giscus]: https://giscus.app/
 [GitHub Discussions]: https://docs.github.com/en/discussions
 
-To add Giscuss to your blog you will need to go through a number of steps:
+To add Giscus to your blog you will need to go through a number of steps:
 
 1. Create a GitHub repository if there is not already one
 2. Turn on discussions and install the [Giscus app]
@@ -261,7 +261,7 @@ want to work directly on an existing repository.
        can control the Gicsus app and uninstall it if so desired.
 
 That is all the preparation you will need for the repository. Next, it is time
-to generate a piece of code that embeds Giscuss in your site. The resulting code
+to generate a piece of code that embeds Giscus in your site. The resulting code
 snippet will look something like this:
 
 ```html
@@ -294,7 +294,7 @@ snippet will look something like this:
        Because for a blog post the title is the basis of the URL, it makes
        sense to use the `Discussion title contains page <title>` option.
     4. Under `Discussion Category` choose `Announcements` to limit the creation
-       of new discussions to Giscuss and people with maintainer or admin
+       of new discussions to Giscus and people with maintainer or admin
        permissions.
     5. Under `Features`, select the following:
          1. Enable reactions for the main post
