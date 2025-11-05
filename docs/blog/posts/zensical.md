@@ -139,7 +139,7 @@ We're also working on a new Markdown toolchain based on a CommonMark-compliant p
 
 ### Maximum compatibility
 
-Compatibility with Material for MkDocs is our top priority. We understand that switching to a new static site generator can be challenging, especially for large projects with many customizations. Therefore, we've put significant effort into ensuring that Zensical understands `mkdocs.yml` configuration files, so that you can build your projects with minimal changes.
+[Compatibility with Material for MkDocs] is our top priority. We understand that switching to a new static site generator can be challenging, especially for large projects with many customizations. Therefore, we've put significant effort into ensuring that Zensical understands `mkdocs.yml` configuration files, so that you can build your projects with minimal changes.
 
 This means your existing Markdown files, template overrides, CSS and JavaScript extensions don't need to be touched, primarily because we did not change the generated HTML, and rely on Python Markdown for processing your content.
 
@@ -153,6 +153,7 @@ Our answer is the upcoming [module system], which takes a fundamentally differen
 
 We're working on shipping essential functionality as provided by MkDocs plugins as built-in modules. In early 2026, we will open the module system to third-party developers, so they can start building their own modules, as we see Zensical as the heart of a thriving ecosystem.
 
+  [Compatibility with Material for MkDocs]: https://zensical.org/compatibility/
   [feature parity]: https://zensical.org/compatibility/features/
   [search]: ../../plugins/search.md
   [offline]: ../../plugins/offline.md
@@ -214,7 +215,7 @@ Material for MkDocs grew organically in a pot that eventually became too small. 
 
 Over the next 12 months, following our [phased transition strategy], we'll reach Phase 2 and 3 – introducing our [module system] and [component system], as well as CommonMark support. By replacing Python Markdown with a Rust-based Markdown parser, we'll unlock performance improvements and the modularity needed for flexible templating. This is where Zensical truly starts to unfold its capabilities.
 
-Zensical is already powering real projects due to extensive compatibility with Material for MkDocs. We're actively working on closing the gap to reach full [feature parity].
+Zensical is already powering real projects due to extensive [compatibility with Material for MkDocs][Compatibility with Material for MkDocs]. We're actively working on closing the gap to reach full [feature parity].
 
 You can [install Zensical now], and build your existing Material for MkDocs projects with it. If you run into a bug, please don't hesitate to [open an issue] – we're here to help.
 
