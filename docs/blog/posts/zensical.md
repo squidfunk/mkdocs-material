@@ -179,7 +179,7 @@ _You should also consider joining the [waiting list], since seats are limited._
 
 We're also excited to announce that we're growing [our team]:
 
-__Timotheé Mazzucotelli, also known as @pawamoy, is joining Zensical!__
+__Timothée Mazzucotelli, also known as @pawamoy, is joining Zensical!__
 
 At Zensical, Tim is focusing on providing the same seamless experience for generating API reference documentation from source code (via docstrings) as he has done with [mkdocstrings], the second biggest project in the MkDocs ecosystem. With his expertise, and Zensical's new stack, we'll be pushing the boundaries of what's possible with API reference documentation.
 
