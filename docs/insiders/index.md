@@ -9,8 +9,6 @@ imagine what more you can achieve with Insiders. Your sponsorship helps us
 continue to innovate and improve, ensuring Material for MkDocs remains a
 cutting-edge tool. Discover how your contributions make a difference.
 
-[&nbsp; Choose a sponsoring tier <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][sponsoring-tiers]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
   [sponsoring-tiers]: sponsoring-tiers.md
 
 ## Additional information

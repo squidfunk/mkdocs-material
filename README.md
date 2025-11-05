@@ -28,10 +28,6 @@
     src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material"
     alt="Docker Pulls"
   /></a>
-  <a href="https://github.com/sponsors/squidfunk"><img
-    src="https://img.shields.io/github/sponsors/squidfunk"
-    alt="Sponsors"
-  /></a>
 </p>
 
 <p align="center">

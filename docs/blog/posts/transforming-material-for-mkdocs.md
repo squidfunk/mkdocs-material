@@ -17,11 +17,22 @@ __We are working on an amazing set of features which has required some behind-th
 
 We know it's been quite a while since our last update, which is why we're eager to share what's happening in and around Material for MkDocs with you. For the largest part of 2024, we've been focused on transforming the core of Material for MkDocs preparing the ground for new, interconnected features that are amongst the most frequently requested.
 
-This article is the first in a series where we'll explore how we aim to support our users through improved information retrieval, provide better support for multi-lingual sites and versioning, as well as improve the overall authoring experience. We outline our vision for the projects' evolution and describe what we have been working on. In this and the coming blog posts, we will share our progress with you, and we're excited to hear your thoughts.
+This article is part of a series where we'll explore how we aim to support our users through improved information retrieval, provide better support for multi-lingual sites and versioning, as well as improve the overall authoring experience. We outline our vision for the projects' evolution and describe what we have been working on. In this and the coming blog posts, we will share our progress with you, and we're excited to hear your thoughts.
 
 <!-- more -->
 
 _Please note that this post includes several technical details in the footnotes, specifically on challenges. Feel free to skip them if you're not interested in the specifics._
+
+---
+
+__This is the first article in a four-part series:__
+
+1. Transforming Material for MkDocs
+2. [Zensical – A modern static site generator built by the creators of Material for MkDocs].
+3. What happens to the features in Insiders <small>coming November 11, 2025</small>
+4. A path forward for our community <small>coming November 18, 2025</small>
+
+  [Zensical – A modern static site generator built by the creators of Material for MkDocs]: ./zensical.md
 
 ## A success story
 

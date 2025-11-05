@@ -58,9 +58,7 @@ __Rewards:__
   - :material-door-open: Access to Insiders
   - :material-charity: Non-commercial use for __1-2 projects__
 
-[&nbsp; Sponsor with __$15 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][15 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [15 a month]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210638
+_Not available anymore._
 
 ---
 
@@ -78,9 +76,7 @@ __Rewards:__
   - :material-door-open: Access to Insiders
   - :material-charity: Non-commercial use for __3+ projects__
 
-[&nbsp; Sponsor with __$35 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][35 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [35 a month]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210641
+_Not available anymore._
 
 ---
 
@@ -110,9 +106,7 @@ __Rewards:__
   - :material-run-fast: Your bug reports are __prioritized__
   - :material-star: Backlink + placement of __small logo__
 
-[&nbsp; Sponsor with __$125 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][125 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [125 a month]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210643
+_Not available anymore._
 
 ---
 
@@ -132,9 +126,7 @@ __Rewards:__
   - :material-run-fast: Your bug reports are __prioritized__
   - :material-star: Backlink + placement of __logo__
 
-[&nbsp; Sponsor with __$250 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][250 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [250 a month]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=181282
+_Not available anymore._
 
 ---
 
@@ -153,9 +145,7 @@ __Rewards:__
   - :material-star: Backlink + placement of __large logo__
   - :material-face-agent: Private __email support__
 
-[&nbsp; Sponsor with __$1,000 a month__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][1000 a month]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [1000 a month]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=334388
+_Not available anymore._
 
 ---
 
@@ -173,9 +163,7 @@ You asked a question or needed some help on a problem, and we've helped you
 quickly. You want no perks, just good karma and a warm feeling of giving
 something back.
 
-[&nbsp; Sponsor __$20 one-time__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][20 one-time]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [20 one-time]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=222886
+_Not available anymore._
 
 ---
 
@@ -193,9 +181,7 @@ __Popular topics are:__
 
   [@squidfunk]: https://github.com/squidfunk
 
-[&nbsp; Sponsor __$350 one-time__ <span class="mdx-sponsorship-count" data-mdx-component="sponsorship-count"></span>][350 one-time]{ .md-button .md-button--primary .mdx-sponsorship-button }
-
-  [350 one-time]: https://github.com/sponsors/squidfunk/sponsorships?tier_id=210891
+_Not available anymore._
 
 ---
 
