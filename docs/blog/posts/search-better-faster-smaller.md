@@ -10,7 +10,6 @@ categories:
   - Performance
 links:
   - plugins/search.md
-  - insiders/how-to-sponsor.md
 ---
 
 # Search: better, faster, smaller

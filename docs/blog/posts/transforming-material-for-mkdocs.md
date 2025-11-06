@@ -195,9 +195,7 @@ These experiences led us to prioritize enhancing our search capabilities before 
 
 While we navigate the challenges and explore the opportunities of this project, we consider it essential to demonstrate how we're building a solid foundation for its continued growth and success. Please consider this an overview rather than a formal roadmap — our detailed plans are in the works. The goals we've highlighted represent the most impactful areas we aim to address.
 
-Thanks to the generous support from our sponsors, we're fortunate to be assembling a team capable of dedicating significant time and expertise to this endeavor. This newfound capacity allows us to delve deeper into core development while also engaging more comprehensively with our user community. A special mention goes to @kamilkrzyskow, one of our invaluable [community experts], who has been essential in supporting users and fostering discussions on our platform.
-
-  [community experts]: ../../insiders/community-experts-program/index.md
+Thanks to the generous support from our sponsors, we're fortunate to be assembling a team capable of dedicating significant time and expertise to this endeavor. This newfound capacity allows us to delve deeper into core development while also engaging more comprehensively with our user community. A special mention goes to @kamilkrzyskow, one of our invaluable community experts, who has been essential in supporting users and fostering discussions on our platform.
 
 With the team's support, @squidfunk can concentrate on the heart of development, while we have begun investing in user research. This effort is helping us understand how organizations and individuals interact with our tools, guiding the project's future direction based on real feedback from numerous conversations with users and companies.
 
