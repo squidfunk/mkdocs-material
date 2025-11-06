@@ -98,7 +98,7 @@ Over the last years, we've invested substantially into [improving the search exp
   [rich search previews]: search-better-faster-smaller.md#rich-search-previews
   [tokenizer lookahead]: search-better-faster-smaller.md#tokenizer-lookahead
   [pipeline functions]: https://lunrjs.com/guides/customising.html#pipeline-functions
-  [unmaintained since 2020]: https://github.com/olivernn/lunr.js/releases/tag/
+  [unmaintained since 2020]: https://github.com/olivernn/lunr.js/tag/
 
 To address these challenges, we've embarked on developing a new search system from first principles that not only matches but already exceeds the capabilities of Lunr.js. Built from the ground up, this system is faster, more compact, and most importantly: modular. It is based on a growing core evolving around two core concepts we isolated to be essential – engines and plugins – allowing for flexible configuration and assembly of components like text indexing, vector embeddings, filtering, ranking, highlighting, and more. Every part of it can be replaced or extended, enabling users to tailor the search system to their specific needs.
 
