@@ -59,4 +59,9 @@
       height: 0;
     }
   }
+
+  // Fix for KaTeX - see https://t.ly/keo1Q
+  .katex-html svg {
+    max-width: revert;
+  }
 }
