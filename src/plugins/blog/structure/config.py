@@ -33,6 +33,7 @@ class PostConfig(Config):
     categories = UniqueListOfItems(Type(str), default = [])
     date = PostDate()
     draft = Optional(Type(bool))
+    pin = Type(bool, default = False)
     links = Optional(PostLinks())
     readtime = Optional(Type(int))
     slug = Optional(Type(str))

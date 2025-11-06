@@ -36,7 +36,7 @@ from io import BytesIO
 from markdown.extensions.toc import slugify
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin, event_priority
-from mkdocs.utils import get_yaml_loader
+from mkdocs.utils.yaml import get_yaml_loader
 from zipfile import ZipFile, ZIP_DEFLATED
 
 from .config import InfoConfig
@@ -180,7 +180,7 @@ class InfoPlugin(BasePlugin[InfoConfig]):
 
         # Report the invalid paths to the user
         if paths_to_validate:
-            log.error(f"One or more paths aren't children of root")
+            log.error("One or more paths aren't children of root")
             self._help_on_not_in_cwd(paths_to_validate)
 
         # Create in-memory archive and prompt author for a short descriptive

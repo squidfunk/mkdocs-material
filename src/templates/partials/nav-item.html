@@ -38,6 +38,21 @@
   {% endif %}
 {% endmacro %}
 
+<!-- Render navigation link title -->
+{% macro render_title(nav_item) %}
+
+  <!-- Typeset title -->
+  {% if nav_item.typeset %}
+    <span class="md-typeset">
+      {{ nav_item.typeset.title }}
+    </span>
+
+  <!-- Regular title -->
+  {% else %}
+    {{ nav_item.title }}
+  {% endif %}
+{% endmacro %}
+
 <!-- Render navigation link content -->
 {% macro render_content(nav_item, ref) %}
   {% set ref = ref or nav_item %}
@@ -49,7 +64,7 @@
 
   <!-- Navigation link title -->
   <span class="md-ellipsis">
-    {{ ref.title }}
+    {{ render_title(ref) }}
 
     <!-- Navigation link subtitle -->
     {% if nav_item.meta and nav_item.meta.subtitle %}
@@ -57,6 +72,11 @@
       <small>{{ nav_item.meta.subtitle }}</small>
     {% endif %}
   </span>
+
+  <!-- Navigation link to encrypted content -->
+  {% if nav_item.meta and nav_item.encrypted %}
+    {{ render_status(nav_item, "encrypted") }}
+  {% endif %}
 
   <!-- Navigation link status -->
   {% if nav_item.meta and nav_item.meta.status %}
@@ -221,7 +241,7 @@
         >
           <label class="md-nav__title" for="{{ path }}">
             <span class="md-nav__icon md-icon"></span>
-            {{ nav_item.title }}
+            {{ render_title(nav_item) }}
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
 

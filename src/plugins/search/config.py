@@ -39,6 +39,10 @@ pipeline = ("stemmer", "stopWordFilter", "trimmer")
 # Classes
 # -----------------------------------------------------------------------------
 
+# Search field configuration
+class SearchFieldConfig(Config):
+    boost = Type((int, float), default = 1.0)
+
 # Search plugin configuration
 class SearchConfig(Config):
     enabled = Type(bool, default = True)
@@ -47,6 +51,7 @@ class SearchConfig(Config):
     lang = Optional(LangOption())
     separator = Optional(Type(str))
     pipeline = Optional(ListOfItems(Choice(pipeline)))
+    fields = Type(dict, default = {})
 
     # Settings for text segmentation (Chinese)
     jieba_dict = Optional(Type(str))
