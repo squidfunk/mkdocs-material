@@ -34,6 +34,11 @@ class ListingTree:
     """
     A listing tree.
 
+    Listing trees are a tree structure that represent the hierarchy of tags
+    and mappings. Each tree node is a tag, and each tag can have multiple
+    mappings. Additionally, each tree can have subtrees, which are typically
+    called nested tags.
+
     This is an internal data structure that is used to render listings. It is
     also the immediate structure that is passed to the template.
     """

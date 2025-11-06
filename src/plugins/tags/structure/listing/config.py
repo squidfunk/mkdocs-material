@@ -44,12 +44,28 @@ class ListingConfig(Config):
     subsection of the documentation.
     """
 
+    shadow = Optional(Type(bool))
+    """
+    Whether to include shadow tags.
+
+    This setting allows to override the global setting for shadow tags. If this
+    setting is not specified, the global `shadow` setting is used.
+    """
+
     layout = Optional(Type(str))
     """
     The layout to use for rendering the listing.
 
     This setting allows to override the global setting for the layout. If this
     setting is not specified, the global `listings_layout` setting is used.
+    """
+
+    toc = Optional(Type(bool))
+    """
+    Whether to populate the table of contents with anchor links to tags.
+
+    This setting allows to override the global setting for the layout. If this
+    setting is not specified, the global `listings_toc` setting is used.
     """
 
     include = TagSet()

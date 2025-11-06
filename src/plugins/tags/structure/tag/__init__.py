@@ -31,6 +31,35 @@ from functools import total_ordering
 class Tag:
     """
     A tag.
+
+    Tags can be used to categorize pages and group them into a tag structure. A
+    tag is a simple string, which can be split into a hierarchy of tags by using
+    the character or string as defined in the `hierarchy_separator` setting in
+    `mkdocs.yml`. Each parent tag contains their child tags.
+
+    Example:
+
+    ```yaml
+    tags:
+      - foo/bar
+      - foo/baz
+      - qux
+    ```
+
+    The tag structure for the above example would look like this:
+
+    ```
+    .
+    ├─ foo
+    │  ├─ bar
+    │  └─ baz
+    └─ qux
+    ```
+
+    Note that this class does not split the tag name into a hierarchy of tags
+    by itself, but rather provides a simple interface to iterate over the tag
+    and its parents. Splitting is left to the caller, in order to allow for
+    changing the separator in `mkdocs.yml`.
     """
 
     def __init__(

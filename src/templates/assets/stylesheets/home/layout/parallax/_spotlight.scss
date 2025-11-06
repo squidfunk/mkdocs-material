@@ -1,0 +1,119 @@
+////
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// More than just a static site
+.mdx-spotlight {
+  margin: 2em 0;
+
+  // Spotlight feature
+  &__feature {
+    display: flex;
+    flex: 1 0 48%;
+    flex-flow: row nowrap;
+    gap: px2rem(64px);
+    margin: 0;
+    margin-bottom: px2rem(64px);
+
+    // [tablet portrait -]: Adjust layout and spacing
+    @include break-to-device(tablet portrait) {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    // [tablet landscape +]: Reverse direction for every other item
+    @include break-from-device(tablet landscape) {
+
+      // Reverse direction for every other item
+      &:nth-child(2n + 1) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    // Adjust spacing on last child
+    &:last-child {
+      margin-bottom: 1em;
+    }
+
+    // Spotlight feature image link
+    > a {
+      display: block;
+      flex-shrink: 0;
+      transition: transform 500ms cubic-bezier(0.075, 0.85, 0.175, 1);
+
+      // [tablet portrait -]: Adjust spacing
+      @include break-to-device(tablet portrait) {
+        margin-inline: auto;
+      }
+
+      // Image link on hover
+      &:hover {
+        transform: scale(1.025);
+      }
+    }
+
+    // Spotlight feature image
+    a > img {
+      display: block;
+      width: px2rem(500px);
+      max-width: 100%;
+      height: auto;
+      border-radius: px2rem(4px);
+      box-shadow: var(--md-shadow-z2);
+      transition:
+        transform 750ms 125ms cubic-bezier(0.075, 0.85, 0.175, 1),
+        opacity   750ms 125ms;
+    }
+
+    // Spotlight feature description
+    figcaption {
+      margin-top: px2rem(16px);
+      transition:
+        transform 750ms 125ms cubic-bezier(0.075, 0.85, 0.175, 1),
+        opacity   750ms 125ms;
+    }
+
+    // Spotlight feature is hidden
+    .js &[hidden] {
+
+      // Spotlight feature image link
+      > a > img {
+        opacity: 0;
+        transform: translateY(px2rem(32px));
+      }
+
+      // Spotlight feature description
+      > figcaption {
+        opacity: 0;
+        transform: translateX(px2rem(32px));
+      }
+
+      // Reverse direction for every other feature
+      &:nth-child(2n) > figcaption {
+        transform: translateX(px2rem(-32px));
+      }
+    }
+  }
+}

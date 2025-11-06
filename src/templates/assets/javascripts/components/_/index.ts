@@ -30,29 +30,15 @@ import { getElement, getElements } from "~/browser"
  * Component type
  */
 export type ComponentType =
-  | "announce"                         /* Announcement bar */
-  | "container"                        /* Container */
-  | "consent"                          /* Consent */
-  | "content"                          /* Content */
-  | "dialog"                           /* Dialog */
-  | "header"                           /* Header */
-  | "header-title"                     /* Header title */
-  | "header-topic"                     /* Header topic */
-  | "main"                             /* Main area */
-  | "outdated"                         /* Version warning */
-  | "palette"                          /* Color palette */
-  | "progress"                         /* Progress indicator */
-  | "search"                           /* Search */
-  | "search-query"                     /* Search input */
-  | "search-result"                    /* Search results */
-  | "search-share"                     /* Search sharing */
-  | "search-suggest"                   /* Search suggestions */
-  | "sidebar"                          /* Sidebar */
-  | "skip"                             /* Skip link */
-  | "source"                           /* Repository information */
-  | "tabs"                             /* Navigation tabs */
-  | "toc"                              /* Table of contents */
-  | "top"                              /* Back-to-top button */
+  | "hero"                             /* Hero */
+  | "iconsearch"                       /* Icon search */
+  | "iconsearch-query"                 /* Icon search input */
+  | "iconsearch-result"                /* Icon search results */
+  | "iconsearch-select"                /* Icon search select */
+  | "parallax"                         /* Parallax container */
+  | "sponsorship"                      /* Sponsorship */
+  | "sponsorship-count"                /* Sponsorship count */
+  | "sponsorship-total"                /* Sponsorship total */
 
 /**
  * Component
@@ -76,29 +62,15 @@ export type Component<
  * Component type map
  */
 interface ComponentTypeMap {
-  "announce": HTMLElement              /* Announcement bar */
-  "container": HTMLElement             /* Container */
-  "consent": HTMLElement               /* Consent */
-  "content": HTMLElement               /* Content */
-  "dialog": HTMLElement                /* Dialog */
-  "header": HTMLElement                /* Header */
-  "header-title": HTMLElement          /* Header title */
-  "header-topic": HTMLElement          /* Header topic */
-  "main": HTMLElement                  /* Main area */
-  "outdated": HTMLElement              /* Version warning */
-  "palette": HTMLElement               /* Color palette */
-  "progress": HTMLElement              /* Progress indicator */
-  "search": HTMLElement                /* Search */
-  "search-query": HTMLInputElement     /* Search input */
-  "search-result": HTMLElement         /* Search results */
-  "search-share": HTMLAnchorElement    /* Search sharing */
-  "search-suggest": HTMLElement        /* Search suggestions */
-  "sidebar": HTMLElement               /* Sidebar */
-  "skip": HTMLAnchorElement            /* Skip link */
-  "source": HTMLAnchorElement          /* Repository information */
-  "tabs": HTMLElement                  /* Navigation tabs */
-  "toc": HTMLElement                   /* Table of contents */
-  "top": HTMLAnchorElement             /* Back-to-top button */
+  "hero": HTMLElement                  /* Hero */
+  "iconsearch": HTMLElement            /* Icon search */
+  "iconsearch-query": HTMLInputElement /* Icon search input */
+  "iconsearch-result": HTMLElement     /* Icon search results */
+  "iconsearch-select": HTMLSelectElement
+  "parallax": HTMLElement              /* Parallax container */
+  "sponsorship": HTMLElement           /* Sponsorship */
+  "sponsorship-count": HTMLElement     /* Sponsorship count */
+  "sponsorship-total": HTMLElement     /* Sponsorship total */
 }
 
 /* ----------------------------------------------------------------------------
@@ -118,7 +90,7 @@ interface ComponentTypeMap {
 export function getComponentElement<T extends ComponentType>(
   type: T, node: ParentNode = document
 ): ComponentTypeMap[T] {
-  return getElement(`[data-md-component=${type}]`, node)
+  return getElement(`[data-mdx-component=${type}]`, node)
 }
 
 /**
@@ -134,5 +106,5 @@ export function getComponentElement<T extends ComponentType>(
 export function getComponentElements<T extends ComponentType>(
   type: T, node: ParentNode = document
 ): ComponentTypeMap[T][] {
-  return getElements(`[data-md-component=${type}]`, node)
+  return getElements(`[data-mdx-component=${type}]`, node)
 }

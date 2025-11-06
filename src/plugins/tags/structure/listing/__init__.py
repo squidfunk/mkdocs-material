@@ -192,6 +192,11 @@ class Listing:
         """
         Add mapping to listing.
 
+        Mappings are only added to listings, if the listing features tags that
+        are also featured in the mapping. The caller can decide whether hidden
+        tags should be rendered or not, e.g., automatically set by the plugin
+        when shadow tags are disabled.
+
         Arguments:
             mapping: The mapping.
             hidden: Whether to add hidden tags.
