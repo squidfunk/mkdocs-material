@@ -1,0 +1,29 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% macro render_content(nav_item) %}
+  <span class="md-ellipsis">
+    {{ nav_item.title }}
+  </span>
+{% endmacro %}
+{% macro render(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
+  {% if nav_item.children %}
+    {% set first = nav_item.children | first %}
+    {% if first.children %}
+      {{ render(first, ref) }}
+    {% else %}
+      <li class="md-path__item">
+        <a href="{{ first.url | url }}" class="md-path__link">
+          {{ render_content(ref) }}
+        </a>
+      </li>
+    {% endif %}
+  {% else %}
+    <li class="md-path__item">
+      <a href="{{ nav_item.url | url }}" class="md-path__link">
+        {{ render_content(ref) }}
+      </a>
+    </li>
+  {% endif %}
+{% endmacro %}

@@ -8,6 +8,9 @@
   <nav class="md-tags" {{ hidden }}>
     {% for tag in tags %}
       {% set class = "md-tag" %}
+      {% if tag.hidden %}
+        {% set class = class ~ " md-tag-shadow" %}
+      {% endif %}
       {% if config.extra.tags %}
         {% set class = class ~ " md-tag-icon" %}
         {% if tag.name in config.extra.tags %}

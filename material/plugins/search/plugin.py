@@ -27,9 +27,10 @@ from backrefs import bre
 from html import escape
 from html.parser import HTMLParser
 from mkdocs import utils
+from mkdocs.config.config_options import SubConfig
 from mkdocs.plugins import BasePlugin
 
-from .config import SearchConfig
+from .config import SearchConfig, SearchFieldConfig
 
 try:
     import jieba
@@ -80,6 +81,19 @@ class SearchPlugin(BasePlugin[SearchConfig]):
             self.config.pipeline = list(filter(len, re.split(
                 r"\s*,\s*", self._translate(config, "search.config.pipeline")
             )))
+
+        # Validate field configuration
+        validator = SubConfig(SearchFieldConfig)
+        for config in self.config.fields.values():
+            validator.run_validation(config)
+
+        # Merge with default fields
+        if "title" not in self.config.fields:
+            self.config.fields["title"] = { "boost": 1e3 }
+        if "text" not in self.config.fields:
+            self.config.fields["text"] = { "boost": 1e0 }
+        if "tags" not in self.config.fields:
+            self.config.fields["tags"] = { "boost": 1e6 }
 
         # Initialize search index
         self.search_index = SearchIndex(**self.config)
@@ -230,7 +244,7 @@ class SearchIndex:
     def generate_search_index(self, prev):
         config = {
             key: self.config[key]
-                for key in ["lang", "separator", "pipeline"]
+                for key in ["lang", "separator", "pipeline", "fields"]
         }
 
         # Hack: if we're running under dirty reload, the search index will only

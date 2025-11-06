@@ -27,12 +27,17 @@
       {% if page.next_page %}
         <link rel="next" href="{{ page.next_page.url | url }}">
       {% endif %}
+      {% if config.extra.alternate is iterable %}
+        {% for alt in config.extra.alternate %}
+          <link rel="alternate" href="{{ alt.link | url }}" hreflang="{{ alt.lang | d(lang.t('language')) }}">
+        {% endfor %}
+      {% endif %}
       {% if "rss" in config.plugins %}
         <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.created') }}" href="{{ 'feed_rss_created.xml' | url }}">
         <link rel="alternate" type="application/rss+xml" title="{{ lang.t('rss.updated') }}" href="{{ 'feed_rss_updated.xml' | url }}">
       {% endif %}
       <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.6.23">
+      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-9.7.0">
     {% endblock %}
     {% block htmltitle %}
       {% if page.meta and page.meta.title %}
@@ -44,10 +49,10 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.d8f969c1.min.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.css' | url }}">
       {% if config.theme.palette %}
         {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.06af60db.min.css' | url }}">
+        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.css' | url }}">
       {% endif %}
       {% include "partials/icons.html" %}
     {% endblock %}
@@ -75,11 +80,6 @@
     {% block analytics %}
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
-    {% if page.meta and page.meta.meta %}
-      {% for tag in page.meta.meta %}
-        <meta {% for key, value in tag | items %} {{ key }}="{{value}}" {% endfor %}>
-      {% endfor %}
-    {% endif %}
     {% block extrahead %}{% endblock %}
   </head>
   {% set direction = config.theme.direction or lang.t("direction") %}
@@ -179,6 +179,9 @@
           {% endblock %}
           {% block container %}
             <div class="md-content" data-md-component="content">
+              {% if "navigation.path" in features %}
+                {% include "partials/path.html" %}
+              {% endif %}
               <article class="md-content__inner md-typeset">
                 {% block content %}
                   {% include "partials/content.html" %}
@@ -215,6 +218,7 @@
     {% endif %}
     {% block config %}
       {% set _ = namespace() %}
+      {% set _.annotate = config.extra.annotate %}
       {% set _.tags = config.extra.tags %}
       {%- if config.extra.version -%}
         {%- set mike = config.plugins.mike -%}
@@ -238,14 +242,15 @@
             "search.result.term.missing": lang.t("search.result.term.missing"),
             "select.version": lang.t("select.version")
           },
-          "search": "assets/javascripts/workers/search.973d3a69.min.js" | url,
+          "search": "assets/javascripts/workers/search.js" | url,
+          "annotate": _.annotate or none,
           "tags": _.tags or none,
           "version": _.version or none
         } | tojson -}}
       </script>
     {% endblock %}
     {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.f55a23d4.min.js' | url }}"></script>
+      <script src="{{ 'assets/javascripts/bundle.js' | url }}"></script>
       {% for script in config.extra_javascript %}
         {{ script | script_tag }}
       {% endfor %}
