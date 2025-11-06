@@ -157,7 +157,7 @@ Additionally, a lot of bugs were fixed in the __1,000 commits__ that were pushed
 to the repository this year. The [changelog] includes a list of all fixes.
 Furthermore, a large amount of time was invested into refactoring the code base
 to keep it in good shape. While the `mkdocs-material` package was released
-__55__ times, `mkdocs-material` was shipped __72__ times.
+__55__ times, `mkdocs-material-insiders` was shipped __72__ times.
 
   [Insiders]: ../../insiders/index.md
   [Admonition inline blocks]: ../../reference/admonitions.md#inline-blocks
