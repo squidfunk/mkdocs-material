@@ -213,37 +213,37 @@ templating – allowing for the creation of complex custom layouts:
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 0</span>
-      <img src="../../assets/screenshots/social-cards-layer-0.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-0.png" />
     </div>
   </div>
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 1</span>
-      <img src="../../assets/screenshots/social-cards-layer-1.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-1.png" />
     </div>
   </div>
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 2</span>
-      <img src="../../assets/screenshots/social-cards-layer-2.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-2.png" />
     </div>
   </div>
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 3</span>
-      <img src="../../assets/screenshots/social-cards-layer-3.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-3.png" />
     </div>
   </div>
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 4</span>
-      <img src="../../assets/screenshots/social-cards-layer-4.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-4.png" />
     </div>
   </div>
   <div class="mdx-social__layer">
     <div class="mdx-social__image">
       <span class="mdx-social__label">Layer 5</span>
-      <img src="../../assets/screenshots/social-cards-layer-5.png" />
+      <img src="../../docs/assets/screenshots/social-cards-layer-5.png" />
     </div>
   </div>
 </div>
