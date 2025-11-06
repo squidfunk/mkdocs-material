@@ -46,6 +46,8 @@ class TagsConfig(Config):
     tags_slugify = Type(Callable, default = slugify(case = "lower"))
     tags_slugify_separator = Type(str, default = "-")
     tags_slugify_format = Type(str, default = "tag:{slug}")
+    tags_hierarchy = Type(bool, default = False)
+    tags_hierarchy_separator = Type(str, default = "/")
     tags_sort_by = Type(Callable, default = tag_name)
     tags_sort_reverse = Type(bool, default = False)
     tags_name_property = Type(str, default = "tags")
@@ -61,13 +63,26 @@ class TagsConfig(Config):
     listings_tags_sort_reverse = Type(bool, default = False)
     listings_directive = Type(str, default = "material/tags")
     listings_layout = Type(str, default = "default")
+    listings_toc = Type(bool, default = True)
+
+    # Settings for shadow tags
+    shadow = Type(bool, default = False)
+    shadow_on_serve = Type(bool, default = True)
+    shadow_tags = TagSet()
+    shadow_tags_prefix = Type(str, default = "")
+    shadow_tags_suffix = Type(str, default = "")
+
+    # Settings for export
+    export = Type(bool, default = True)
+    export_file = Type(str, default = "tags.json")
+    export_only = Type(bool, default = False)
 
     # Deprecated settings
     tags_compare = Deprecated(moved_to = "tags_sort_by")
     tags_compare_reverse = Deprecated(moved_to = "tags_sort_reverse")
     tags_pages_compare = Deprecated(moved_to = "listings_sort_by")
     tags_pages_compare_reverse = Deprecated(moved_to = "listings_sort_reverse")
-    tags_file = Deprecated(
-        option_type = Type(str),
-        message = "This setting is not required anymore"
+    tags_file = Deprecated(option_type = Type(str))
+    tags_extra_files = Deprecated(
+        option_type = DictOfItems(ListOfItems(Type(str)), default = {})
     )

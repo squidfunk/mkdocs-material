@@ -45,10 +45,15 @@ from tempfile import mkdtemp
 from urllib.parse import urlparse
 from yaml import SafeLoader
 
-from .author import Authors
+from . import view_name
+from .author import Author, Authors
 from .config import BlogConfig
 from .readtime import readtime
-from .structure import Archive, Category, Excerpt, Post, Reference, View
+from .structure import (
+  Archive, Category, Profile,
+  Excerpt, Post, View,
+  Reference
+)
 
 # -----------------------------------------------------------------------------
 # Classes
@@ -85,12 +90,6 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Initialize and resolve authors, if enabled
         if self.config.authors:
             self.authors = self._resolve_authors(config)
-
-        # Initialize table of contents settings
-        if not isinstance(self.config.archive_toc, bool):
-            self.config.archive_toc = self.config.blog_toc
-        if not isinstance(self.config.categories_toc, bool):
-            self.config.categories_toc = self.config.blog_toc
 
         # By default, drafts are rendered when the documentation is served,
         # but not when it is built, for a better user experience
@@ -134,27 +133,40 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         self.blog = self._resolve(files, config)
         self.blog.posts = sorted(
             self._resolve_posts(files, config),
-            key = lambda post: post.config.date.created,
+            key = lambda post: (
+                post.config.pin,
+                post.config.date.created
+            ),
             reverse = True
         )
 
         # Generate views for archive
         if self.config.archive:
-            self.blog.views.extend(
-                self._generate_archive(config, files)
-            )
+            views = self._generate_archive(config, files)
+            self.blog.views.extend(views)
 
         # Generate views for categories
         if self.config.categories:
+            views = self._generate_categories(config, files)
+
+            # We always sort the list of categories by name first, so that any
+            # custom sorting function that returns the same value for two items
+            # returns them in a predictable and logical order, because sorting
+            # in Python is stable, i.e., order of equal items is preserved
             self.blog.views.extend(sorted(
-                self._generate_categories(config, files),
-                key = lambda view: view.name,
-                reverse = False
+                sorted(views, key = view_name),
+                key     = self.config.categories_sort_by,
+                reverse = self.config.categories_sort_reverse
             ))
 
+        # Generate views for profiles
+        if self.config.authors_profiles:
+            views = self._generate_profiles(config, files)
+            self.blog.views.extend(views)
+
         # Generate pages for views
-        if self.config.pagination:
-            for view in self._resolve_views(self.blog):
+        for view in self._resolve_views(self.blog):
+            if self._config_pagination(view):
                 for page in self._generate_pages(view, config, files):
                     view.pages.append(page)
 
@@ -209,9 +221,18 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             if self.blog.file.inclusion.is_in_nav() and views:
                 self._attach_to(self.blog, Section(title, views), nav)
 
+        # Attach views for profiles
+        if self.config.authors_profiles:
+            title = self._translate(self.config.authors_profiles_name, config)
+            views = [_ for _ in self.blog.views if isinstance(_, Profile)]
+
+            # Attach and link views for categories, if any
+            if self.blog.file.inclusion.is_in_nav() and views:
+                self._attach_to(self.blog, Section(title, views), nav)
+
         # Attach pages for views
-        if self.config.pagination:
-            for view in self._resolve_views(self.blog):
+        for view in self._resolve_views(self.blog):
+            if self._config_pagination(view):
                 for at in range(1, len(view.pages)):
                     self._attach_at(view.parent, view, view.pages[at])
 
@@ -227,7 +248,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         # Skip if page is not a post managed by this instance - this plugin has
         # support for multiple instances, which is why this check is necessary
         if page not in self.blog.posts:
-            if not self.config.pagination:
+            if not self._config_pagination(page):
                 return
 
             # We set the contents of the view to its title if pagination should
@@ -250,12 +271,12 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Extract and assign authors to post, if enabled
         if self.config.authors:
-            for name in page.config.authors:
-                if name not in self.authors:
-                    raise PluginError(f"Couldn't find author '{name}'")
+            for id in page.config.authors:
+                if id not in self.authors:
+                    raise PluginError(f"Couldn't find author '{id}'")
 
                 # Append to list of authors
-                page.authors.append(self.authors[name])
+                page.authors.append(self.authors[id])
 
         # Extract settings for excerpts
         separator      = self.config.post_excerpt_separator
@@ -314,7 +335,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         url_filter = env.filters["url"]
 
         # Patch URL template filter to add support for paginated views, i.e.,
-        # that paginated views never link to themselves but to the main view
+        # that paginated views never link to themselves but to the main vie
         @pass_context
         def url_filter_with_pagination(context: Context, url: str | None):
             page = context["page"]
@@ -590,6 +611,37 @@ class BlogPlugin(BasePlugin[BlogConfig]):
                 file.page.posts.append(post)
                 post.categories.append(file.page)
 
+    # Generate views for profiles - analyze posts and generate the necessary
+    # views to provide a profile page for each author listing all posts
+    def _generate_profiles(self, config: MkDocsConfig, files: Files):
+        for post in self.blog.posts:
+            for id in post.config.authors:
+                author = self.authors[id]
+                path = self._format_path_for_profile(id, author)
+
+                # Create file for view, if it does not exist
+                file = files.get_file_from_path(path)
+                if not file:
+                    file = self._path_to_file(path, config)
+                    files.append(file)
+
+                    # Create file in temporary directory
+                    self._save_to_file(file.abs_src_path, f"# {author.name}")
+
+                # Temporarily remove view from navigation and assign profile
+                # URL to author, if not explicitly set
+                file.inclusion = InclusionLevel.EXCLUDED
+                if not author.url:
+                    author.url = file.url
+
+                # Create and yield view
+                if not isinstance(file.page, Profile):
+                    yield Profile(author.name, file, config)
+
+                # Assign post to profile
+                assert isinstance(file.page, Profile)
+                file.page.posts.append(post)
+
     # Generate pages for pagination - analyze view and generate the necessary
     # pages, creating a chain of views for simple rendering and replacement
     def _generate_pages(self, view: View, config: MkDocsConfig, files: Files):
@@ -597,7 +649,7 @@ class BlogPlugin(BasePlugin[BlogConfig]):
 
         # Compute pagination boundaries and create pages - pages are internally
         # handled as copies of a view, as they map to the same source location
-        step = self.config.pagination_per_page
+        step = self._config_pagination_per_page(view)
         for at in range(step, len(view.posts), step):
             path = self._format_path_for_pagination(view, 1 + at // step)
 
@@ -747,11 +799,11 @@ class BlogPlugin(BasePlugin[BlogConfig]):
         posts, pagination = view.posts, None
 
         # Create pagination, if enabled
-        if self.config.pagination:
+        if self._config_pagination(view):
             at = view.pages.index(view)
 
             # Compute pagination boundaries
-            step = self.config.pagination_per_page
+            step = self._config_pagination_per_page(view)
             p, q = at * step, at * step + step
 
             # Extract posts in pagination boundaries
@@ -771,18 +823,9 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     def _render_post(self, excerpt: Excerpt, view: View):
         excerpt.render(view, self.config.post_excerpt_separator)
 
-        # Determine whether to add posts to the table of contents of the view -
-        # note that those settings can be changed individually for each type of
-        # view, which is why we need to check the type of view and the table of
-        # contents setting for that type of view
-        toc = self.config.blog_toc
-        if isinstance(view, Archive):
-            toc = self.config.archive_toc
-        if isinstance(view, Category):
-            toc = self.config.categories_toc
-
         # Attach top-level table of contents item to view if it should be added
         # and both, the view and excerpt contain table of contents items
+        toc = self._config_toc(view)
         if toc and excerpt.toc.items and view.toc.items:
             view.toc.items[0].children.append(excerpt.toc.items[0])
 
@@ -803,6 +846,48 @@ class BlogPlugin(BasePlugin[BlogConfig]):
             items_per_page = q - p,
             url_maker = url_maker
         )
+
+    # -------------------------------------------------------------------------
+
+    # Retrieve configuration value or return default
+    def _config(self, key: str, default: any):
+        return default if self.config[key] is None else self.config[key]
+
+    # Retrieve configuration value for table of contents
+    def _config_toc(self, view: View):
+        default = self.config.blog_toc
+        if isinstance(view, Archive):
+            return self._config("archive_toc", default)
+        if isinstance(view, Category):
+            return self._config("categories_toc", default)
+        if isinstance(view, Profile):
+            return self._config("authors_profiles_toc", default)
+        else:
+            return default
+
+    # Retrieve configuration value for pagination
+    def _config_pagination(self, view: View):
+        default = self.config.pagination
+        if isinstance(view, Archive):
+            return self._config("archive_pagination", default)
+        if isinstance(view, Category):
+            return self._config("categories_pagination", default)
+        if isinstance(view, Profile):
+            return self._config("authors_profiles_pagination", default)
+        else:
+            return default
+
+    # Retrieve configuration value for pagination per page
+    def _config_pagination_per_page(self, view: View):
+        default = self.config.pagination_per_page
+        if isinstance(view, Archive):
+            return self._config("archive_pagination_per_page", default)
+        if isinstance(view, Category):
+            return self._config("categories_pagination_per_page", default)
+        if isinstance(view, Profile):
+            return self._config("authors_profiles_pagination_per_page", default)
+        else:
+            return default
 
     # -------------------------------------------------------------------------
 
@@ -839,6 +924,17 @@ class BlogPlugin(BasePlugin[BlogConfig]):
     def _format_path_for_category(self, name: str):
         path = self.config.categories_url_format.format(
             slug = self._slugify_category(name)
+        )
+
+        # Normalize path and strip slashes at the beginning and end
+        path = posixpath.normpath(path.strip("/"))
+        return posixpath.join(self.config.blog_dir, f"{path}.md")
+
+    # Format path for profile
+    def _format_path_for_profile(self, id: str, author: Author):
+        path = self.config.authors_profiles_url_format.format(
+            slug = author.slug or id,
+            name = author.name
         )
 
         # Normalize path and strip slashes at the beginning and end

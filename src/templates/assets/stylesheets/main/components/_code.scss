@@ -1,0 +1,115 @@
+////
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Code block button variables
+:root {
+  --md-code-select-icon: svg-load("material/focus-field.svg");
+  --md-code-copy-icon: svg-load("material/content-copy.svg");
+  // --md-code-wrap-icon: svg-load("material/wrap-disabled.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Code blocks
+.md-code {
+
+  // Code block content - when line spans are enabled, we can opt into using
+  // grid-based rendering, which makes highlighted lines stretch.
+  .md-typeset &__content {
+    display: grid;
+  }
+
+  // Code block navigation
+  &__nav {
+    position: absolute;
+    top: px2em(4px);
+    right: px2em(4px);
+    z-index: 1;
+    display: flex;
+    gap: px2rem(4px);
+    padding: px2rem(4px);
+    background-color: var(--md-code-bg-color--lighter);
+    border-radius: px2rem(2px);
+    transition: background-color 250ms;
+
+    // Darken color on code block hover
+    :hover > & {
+      background-color: var(--md-code-bg-color--light);
+    }
+  }
+
+  // Code block button
+  &__button {
+    display: block;
+    width: px2em(24px);
+    height: px2em(24px);
+    color: var(--md-default-fg-color--lightest);
+    cursor: pointer;
+    outline-color: var(--md-accent-fg-color);
+    outline-offset: px2rem(2px);
+    transition: color 250ms;
+
+    // Darken color on code block hover
+    :hover > * > & {
+      color: var(--md-default-fg-color--light);
+    }
+
+    // Button on focus/hover
+    &:is(.focus-visible, :hover) {
+      color: var(--md-accent-fg-color);
+    }
+
+    // Active button
+    &--active {
+      // @todo: !important sucks - find a better way to implement this
+      color: var(--md-default-fg-color) !important; // stylelint-disable-line
+    }
+
+    // Button icon - the width and height are defined in `em`, so the size is
+    // automatically adjusted for nested code blocks (e.g. in admonitions)
+    &::after {
+      display: block;
+      width: px2em(18px);
+      height: px2em(18px);
+      margin: 0 auto;
+      content: "";
+      background-color: currentcolor;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+    }
+
+    // Code block button icon for selection
+    &[data-md-type="select"]::after {
+      mask-image: var(--md-code-select-icon);
+    }
+
+    // Code block button icon for copying
+    &[data-md-type="copy"]::after {
+      mask-image: var(--md-code-copy-icon);
+    }
+  }
+}

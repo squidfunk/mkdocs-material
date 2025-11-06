@@ -243,9 +243,9 @@ class ListingManager:
         page = listing.page
         assert isinstance(page.content, str)
 
-        # Add mappings to listing
+        # Add mappings to listing, passing shadow tags configuration
         for mapping in mappings:
-            listing.add(mapping)
+            listing.add(mapping, hidden = listing.config.shadow)
 
         # Sort listings and tags - we can only do this after all mappings have
         # been added to the listing, because the tags inside the mappings do
@@ -376,9 +376,17 @@ class ListingManager:
                     f"{e}"
                 )
 
+        # Inherit shadow tags configuration, unless explicitly set
+        if not isinstance(config.shadow, bool):
+            config.shadow = self.config.shadow
+
         # Inherit layout configuration, unless explicitly set
         if not isinstance(config.layout, str):
             config.layout = self.config.listings_layout
+
+        # Inherit table of contents configuration, unless explicitly set
+        if not isinstance(config.toc, bool):
+            config.toc = self.config.listings_toc
 
         # Return listing configuration
         return config
@@ -389,17 +397,29 @@ class ListingManager:
         """
         Slugify tag.
 
+        If the tag hierarchy setting is enabled, the tag is expanded into a
+        hierarchy of tags, all of which are then slugified and joined with the
+        configured separator. Otherwise, the tag is slugified directly. This is
+        necessary to keep the tag hierarchy in the slug.
+
         Arguments:
             tag: The tag.
 
         Returns:
             The slug.
         """
+        slugify = self.config.tags_slugify
+        tags = [tag.name]
+
+        # Compute tag hierarchy, if configured
+        hierarchy = self.config.tags_hierarchy_separator
+        if self.config.tags_hierarchy:
+            tags = tag.name.split(hierarchy)
+
+        # Slugify tag hierarchy and join with separator
+        separator = self.config.tags_slugify_separator
         return self.config.tags_slugify_format.format(
-            slug = self.config.tags_slugify(
-                tag.name,
-                self.config.tags_slugify_separator
-            )
+            slug = hierarchy.join(slugify(name, separator) for name in tags)
         )
 
     # -------------------------------------------------------------------------

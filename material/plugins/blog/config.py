@@ -23,6 +23,8 @@ from mkdocs.config.config_options import Choice, Deprecated, Optional, Type
 from mkdocs.config.base import Config
 from pymdownx.slugs import slugify
 
+from . import view_name
+
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
@@ -56,6 +58,8 @@ class BlogConfig(Config):
     archive_date_format = Type(str, default = "yyyy")
     archive_url_date_format = Type(str, default = "yyyy")
     archive_url_format = Type(str, default = "archive/{date}")
+    archive_pagination = Optional(Type(bool))
+    archive_pagination_per_page = Optional(Type(int))
     archive_toc = Optional(Type(bool))
 
     # Settings for categories
@@ -64,12 +68,22 @@ class BlogConfig(Config):
     categories_url_format = Type(str, default = "category/{slug}")
     categories_slugify = Type(Callable, default = slugify(case = "lower"))
     categories_slugify_separator = Type(str, default = "-")
+    categories_sort_by = Type(Callable, default = view_name)
+    categories_sort_reverse = Type(bool, default = False)
     categories_allowed = Type(list, default = [])
+    categories_pagination = Optional(Type(bool))
+    categories_pagination_per_page = Optional(Type(int))
     categories_toc = Optional(Type(bool))
 
     # Settings for authors
     authors = Type(bool, default = True)
     authors_file = Type(str, default = "{blog}/.authors.yml")
+    authors_profiles = Type(bool, default = False)
+    authors_profiles_name = Type(str, default = "blog.authors")
+    authors_profiles_url_format = Type(str, default = "author/{slug}")
+    authors_profiles_pagination = Optional(Type(bool))
+    authors_profiles_pagination_per_page = Optional(Type(int))
+    authors_profiles_toc = Optional(Type(bool))
 
     # Settings for pagination
     pagination = Type(bool, default = True)

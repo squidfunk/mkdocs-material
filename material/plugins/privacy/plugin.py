@@ -29,7 +29,9 @@ import requests
 import sys
 
 from colorama import Fore, Style
-from concurrent.futures import Future, ThreadPoolExecutor, wait
+from concurrent.futures import Future, wait
+from concurrent.futures.thread import ThreadPoolExecutor
+from fnmatch import fnmatch
 from hashlib import sha1
 from mkdocs.config.config_options import ExtraScriptValue
 from mkdocs.config.defaults import MkDocsConfig
@@ -52,6 +54,7 @@ DEFAULT_TIMEOUT_IN_SECS = 5
 
 # Privacy plugin
 class PrivacyPlugin(BasePlugin[PrivacyConfig]):
+    supports_multiple_instances = True
 
     # Initialize thread pools and asset collections
     def on_config(self, config):
@@ -65,11 +68,19 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Initialize collections of external assets
         self.assets = Files([])
+        self.assets_done: list[File] = []
         self.assets_expr_map = {
             ".css": r"url\(\s*([\"']?)(?P<url>http?[^)'\"]+)\1\s*\)",
             ".js": r"[\"'](?P<url>http[^\"']+\.(?:css|js(?:on)?))[\"']",
             **self.config.assets_expr_map
         }
+
+        # Set log level or disable logging altogether - @todo when refactoring
+        # this plugin for the next time, we should put this into a factory
+        if not self.config.log:
+            log.disabled = True
+        else:
+            log.setLevel(self.config.log_level.upper())
 
     # Process external style sheets and scripts (run latest) - run this after
     # all other plugins, so they can add additional assets
@@ -127,7 +138,13 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
     # Process external images in page (run latest) - this stage is the earliest
     # we can start processing external images, since images are the most common
     # type of external asset when writing. Thus, we create and enqueue a job for
-    # each image we find that checks if the image needs to be downloaded.
+    # each image we find that checks if the image needs to be downloaded. Also,
+    # downloading all external images at this stage, we reconcile all concurrent
+    # jobs in `on_env`, which is the stage in which the optimize plugin will
+    # evaluate what images can and need to be optimized. This means we can pass
+    # external images through the optimization pipeline. Additionally, we run
+    # this after all other plugins, so we allow them to add additional images
+    # to the content of the page. How cool is that?
     @event_priority(-100)
     def on_page_content(self, html, *, page, config, files):
         if not self.config.enabled:
@@ -149,13 +166,27 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             if not self._is_excluded(url, page.file):
                 self._queue(url, config, concurrent = True)
 
-    # Sync all concurrent jobs
+    # Reconcile jobs and pass external assets to MkDocs (run earlier) - allow
+    # other plugins (e.g. optimize plugin) to post-process external assets
+    @event_priority(50)
     def on_env(self, env, *, config, files):
         if not self.config.enabled:
             return
 
-        # Wait until all jobs until now are finished
+        # Reconcile concurrent jobs and clear thread pool, as we will reuse the
+        # same thread pool for fetching all remaining external assets
         wait(self.pool_jobs)
+        self.pool_jobs.clear()
+
+        # Append all downloaded assets that are not style sheets or scripts to
+        # MkDocs's collection of files, making them available to other plugins
+        # for further processing. The remaining exteral assets are patched
+        # before copying, which is done at the end of the build process.
+        for file in self.assets:
+            _, extension = posixpath.splitext(file.dest_uri)
+            if extension not in [".css", ".js"]:
+                self.assets_done.append(file)
+                files.append(file)
 
     # Process external assets in template (run later)
     @event_priority(-50)
@@ -180,7 +211,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # Parse and replace links to external assets
         return self._parse_html(output, page.file, config)
 
-    # Reconcile jobs (run earlier)
+    # Reconcile jobs (run earlier) - allow other plugins (e.g. optimize plugin)
+    # to process all downloaded assets, which is why we must reconcile here
     @event_priority(50)
     def on_post_build(self, *, config):
         if not self.config.enabled:
@@ -200,10 +232,10 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     self._patch, file
                 ))
 
-            # Otherwise just copy external asset to output directory if it
-            # exists, i.e., if the download succeeded
-            else:
-                if os.path.exists(file.abs_src_path):
+            # Otherwise just copy external asset to output directory, if we
+            # haven't handed control to MkDocs in `on_env` before
+            elif file not in self.assets_done:
+                if os.path.exists(str(file.abs_src_path)):
                     file.copy_file()
 
         # Reconcile concurrent jobs for the last time, so the plugins following
@@ -235,6 +267,28 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                 f"in '{initiator.src_uri}' ",
                 Style.RESET_ALL
             ])
+
+        # Check if URL matches one of the inclusion patterns
+        if self.config.assets_include:
+            for pattern in self.config.assets_include:
+                if fnmatch(self._path_from_url(url), pattern):
+                    return False
+
+            # File is not included
+            log.debug(
+                f"Excluding external file '{url.geturl()}' {via}due to "
+                f"inclusion patterns"
+            )
+            return True
+
+        # Check if URL matches one of the exclusion patterns
+        for pattern in self.config.assets_exclude:
+            if fnmatch(self._path_from_url(url), pattern):
+                log.debug(
+                    f"Excluding external file '{url.geturl()}' {via}due to "
+                    f"exclusion patterns"
+                )
+                return True
 
         # Print warning if fetching is not enabled
         if not self.config.assets_fetch:
@@ -300,6 +354,21 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # Replace callback
         def replace(match: Match):
             el = self._parse_fragment(match.group())
+
+            # Handle external link
+            if self.config.links and el.tag == "a":
+                for key, value in self.config.links_attr_map.items():
+                    el.set(key, value)
+
+                # Set `rel=noopener` if link opens in a new window
+                if self.config.links_noopener:
+                    if el.get("target") == "_blank":
+                        rel = re.findall(r"\S+", el.get("rel", ""))
+                        if "noopener" not in rel:
+                            rel.append("noopener")
+
+                        # Set relationships after adding `noopener`
+                        el.set("rel", " ".join(rel))
 
             # Handle external style sheet or preconnect hint
             if el.tag == "link":

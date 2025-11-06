@@ -1,0 +1,234 @@
+////
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a
+/// copy of this software and associated documentation files (the "Software"),
+/// to deal in the Software without restriction, including without limitation
+/// the rights to use, copy, modify, merge, publish, distribute, sublicense,
+/// and/or sell copies of the Software, and to permit persons to whom the
+/// Software is furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in
+/// all copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL
+/// THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+/// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+/// DEALINGS
+////
+
+// ----------------------------------------------------------------------------
+// Rules
+// ----------------------------------------------------------------------------
+
+// Post variables
+:root {
+  --md-post-pin-icon: svg-load("material/pin.svg");
+}
+
+// ----------------------------------------------------------------------------
+
+// Post
+.md-post {
+
+  // Post backlink
+  &__back {
+    padding-bottom: px2rem(24px);
+    margin-bottom: px2rem(24px);
+    border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest);
+
+    // [tablet -]: Hide post backlink
+    @include break-to-device(tablet) {
+      display: none;
+    }
+
+    // Adjust for right-to-left languages
+    [dir="rtl"] & {
+
+      // Flip icon vertically
+      svg {
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  // Post authors
+  &__authors {
+    display: flex;
+    flex-direction: column;
+    gap: px2rem(12px);
+    margin: 0 px2rem(12px) px2rem(24px);
+  }
+
+  // Post metadata
+  .md-post__meta {
+
+    // Navigation link
+    a {
+      transition: color 125ms;
+
+      // Navigation link on focus/hover
+      &:is(:focus, :hover) {
+        color: var(--md-accent-fg-color);
+      }
+    }
+  }
+
+  // Post navigation title @todo - generalize
+  &__title {
+    font-weight: 700;
+    color: var(--md-default-fg-color--light);
+  }
+
+  // Post excerpt
+  &--excerpt {
+    margin-bottom: px2rem(64px);
+
+    // Post excerpt header
+    .md-post__header {
+      display: flex;
+      gap: px2rem(12px);
+      align-items: center;
+      min-height: px2rem(32px);
+    }
+
+    // Post excerpt authors
+    .md-post__authors {
+      display: inline-flex;
+      flex-direction: row;
+      gap: px2rem(4px);
+      align-items: center;
+      min-height: px2rem(48px);
+      margin: 0;
+    }
+
+    // Post excerpt metadata
+    .md-post__meta .md-meta__list {
+      margin-inline-end: px2rem(8px);
+    }
+
+    // Post excerpt content
+    .md-post__content > :first-child {
+      --md-scroll-margin: #{px2rem(120px)};
+
+      margin-top: 0;
+    }
+  }
+
+  // Add margin to table of contents
+  > .md-nav--secondary {
+    margin: 1em 0;
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Post is pinned
+.md-pin {
+  padding: px2rem(4px);
+  margin-top: px2rem(-1px);
+  background: var(--md-default-fg-color--lightest);
+  border-radius: px2rem(20px);
+
+  // Pin icon
+  &::after {
+    display: block;
+    width: px2rem(12px);
+    height: px2rem(12px);
+    margin: 0 auto;
+    content: "";
+    background-color: currentcolor;
+    mask-image: var(--md-post-pin-icon);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Post author profile
+.md-profile {
+  display: flex;
+  gap: px2rem(12px);
+  align-items: center;
+  width: 100%;
+  font-size: px2rem(14px);
+  line-height: 1.4;
+
+  // Post author description
+  &__description {
+    flex-grow: 1;
+  }
+}
+
+// ----------------------------------------------------------------------------
+
+// Content area for post
+.md-content--post {
+  display: flex;
+
+  // [tablet -]: Switch to inverted column layout
+  @include break-to-device(tablet) {
+    flex-flow: column-reverse;
+  }
+
+  // Content wrapper
+  > .md-content__inner {
+    flex-grow: 1;
+    min-width: 0;
+
+    // [screen +]: Adjust spacing between content area and sidebars
+    @include break-from-device(screen) {
+      margin-inline-start: px2rem(24px);
+    }
+  }
+}
+
+// Sidebar for post
+.md-sidebar.md-sidebar--post {
+
+  // [tablet -]: Adjust spacing
+  @include break-to-device(tablet) {
+    position: initial;
+    width: 100%;
+    padding: 0;
+
+    .md-sidebar__scrollwrap {
+      overflow: visible;
+    }
+
+    .md-sidebar__inner {
+      padding: 0;
+    }
+
+    .md-post__meta {
+      margin-inline: px2rem(12px);
+    }
+
+    .md-nav__item {
+      display: inline;
+      border: none;
+    }
+
+    .md-nav__list {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: px2rem(12px);
+      padding-block: px2rem(12px);
+    }
+
+    .md-nav__link {
+      padding: 0;
+    }
+
+    .md-nav {
+      position: initial;
+      height: auto;
+      margin-bottom: 0;
+    }
+  }
+}

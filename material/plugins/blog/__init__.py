@@ -17,3 +17,17 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+
+from .structure import View
+
+# -----------------------------------------------------------------------------
+# Functions
+# -----------------------------------------------------------------------------
+
+# Sort views by name
+def view_name(view: View):
+    return view.name
+
+# Sort views by post count
+def view_post_count(view: View):
+    return len(view.posts)

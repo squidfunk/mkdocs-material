@@ -2,6 +2,50 @@
 
 ## Material for MkDocs
 
+### 9.7.0 <small>November 11, 2025</small> { id="9.7.0" }
+
+⚠️ __Material for MkDocs is now in maintenance mode__
+
+This is the last release of Material for MkDocs that will receive new features.
+Going forward, the Material for MkDocs team focuses on [Zensical], a next-gen
+static site generator built from first principles. We will provide critical
+bug fixes and security updates for Material for MkDocs for 12 months – at least.
+
+[Read the full announcement on our blog]
+
+This release includes all features that were previously exclusively available
+as part of the Insiders edition. They are now free for everybody to use. The
+[projects] and [typeset] plugins turned out to be dead ends, which is why they
+are deprecated and not part of Material for MkDocs. The sources of those plugins
+are distributed with the project, and need to be re-enabled in `pyproject.toml`,
+so third party contributors can take on maintenance, if desired.
+
+__Changes__:
+
+- Added support for pinned blog posts and author profiles
+- Added support for customizing pagination for blog index pages
+- Added support for customizing blog category sort order
+- Added support for staying on page when switching languages
+- Added support for disabling tags in table of contents
+- Added support for nested tags and shadow tags
+- Added support for footnote tooltips
+- Added support for instant previews
+- Added support for instant prefetching
+- Added support for custom social card layouts
+- Added support for custom social card background images
+- Added support for selectable rangs in code blocks
+- Added support for custom selectors for code annotations
+- Added support for configurable log level in privacy plugin
+- Added support for processing of external links in privacy plugin
+- Added support for automatic image optimization via optimize plugin
+- Added support for navigation paths (breadcrumbs)
+- Fixed #8519: Vector accents do not render when using KaTeX
+
+  [Zensical]: https://zensical.org
+  [Read the full announcement on our blog]: https://squidfunk.github.io/mkdocs-material/blog/2025/11/05/zensical/
+  [projects]: https://squidfunk.github.io/mkdocs-material/plugins/projects/
+  [typeset]: https://squidfunk.github.io/mkdocs-material/plugins/typeset/
+
 ### 9.6.23 <small>November 1, 2025</small> { id="9.6.23" }
 
 - Updated Burmese translation

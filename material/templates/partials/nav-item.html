@@ -10,18 +10,30 @@
     <span class="{{ class }}"></span>
   {% endif %}
 {% endmacro %}
+{% macro render_title(nav_item) %}
+  {% if nav_item.typeset %}
+    <span class="md-typeset">
+      {{ nav_item.typeset.title }}
+    </span>
+  {% else %}
+    {{ nav_item.title }}
+  {% endif %}
+{% endmacro %}
 {% macro render_content(nav_item, ref) %}
   {% set ref = ref or nav_item %}
   {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
   <span class="md-ellipsis">
-    {{ ref.title }}
+    {{ render_title(ref) }}
     {% if nav_item.meta and nav_item.meta.subtitle %}
       <br>
       <small>{{ nav_item.meta.subtitle }}</small>
     {% endif %}
   </span>
+  {% if nav_item.meta and nav_item.encrypted %}
+    {{ render_status(nav_item, "encrypted") }}
+  {% endif %}
   {% if nav_item.meta and nav_item.meta.status %}
     {{ render_status(nav_item, nav_item.meta.status) }}
   {% endif %}
@@ -113,7 +125,7 @@
         <nav class="md-nav" data-md-level="{{ level }}" aria-labelledby="{{ path }}_label" aria-expanded="{{ nav_item.active | tojson }}">
           <label class="md-nav__title" for="{{ path }}">
             <span class="md-nav__icon md-icon"></span>
-            {{ nav_item.title }}
+            {{ render_title(nav_item) }}
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             {% for item in nav_item.children %}
