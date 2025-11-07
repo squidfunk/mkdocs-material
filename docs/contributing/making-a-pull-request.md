@@ -86,27 +86,25 @@ sequenceDiagram
 ```
 
 1. The first step is that you create a fork of the Material for MkDocs
-   repository, either [mkdocs-material] or [mkdocs-material-insiders]
-   (only accessible to sponsors). This provides you with a repository that you
-   can push changes to. Note that it is not possible to have more than one fork
-   of a given repository at any point in time. So, the fork you create will be
-   *the* fork you have.
+   repository. This provides you with a repository that you can push changes to.
+   Note that it is not possible to have more than one fork of a given repository
+   at any point in time. So, the fork you create will be *the* fork you have.
 
-2. Once it is made, clone it to your local machine so you can start working on
+1. Once it is made, clone it to your local machine so you can start working on
    your changes.
 
-3. All contributions should be made through a 'topic branch' with a name that
+2. All contributions should be made through a 'topic branch' with a name that
    describes the work being done. This allows you to have more than one piece
    of work in progress and, if you are working with the public version, also
    shows others clearly that the code contained is work in progress. The topic
    branch will be relatively short-lived and will disappear at the end, when
    your changes have been incorporated into the codebase.
 
-4. If you intend to make any code changes, as opposed to working on
+3. If you intend to make any code changes, as opposed to working on
    documentation only, you will need to [set up a development
    environment](#setting-up-a-development-environment).
 
-5.  Next comes the iterative process of making edits, committing them to your
+4.  Next comes the iterative process of making edits, committing them to your
     clone. Please commit in sensible chunks that constitute a piece of work
     instead of committing everything in one go.
 
@@ -116,23 +114,23 @@ sequenceDiagram
     reviewer in mind when committing. In particular, make sure to write
     meaningful commit messages.
 
-6. Push your work up to your fork regularly.
+5. Push your work up to your fork regularly.
 
-7. You should also keep an eye on changes in the Material for MkDocs repository
+6. You should also keep an eye on changes in the Material for MkDocs repository
    you cloned. This is especially important if you work takes a while. Please
    try and merge any concurrent changes into your fork and into your branch
    regularly. You *must* do this at least once before creating a pull request,
    so make your life easier and do it more often so as to minimize the risk of
    conflicting changes.
 
-8. Once you are happy that your changes are in a state that you can describe
+7. Once you are happy that your changes are in a state that you can describe
    them in a *draft* pull request, you should create this. Make sure to
    reference any previous discussions or issues that gave rise to your work.
    Creating a draft is a good way to get *early* feedback on your work from the
    maintainer or others. You can explicitly request reviews at points where you
    think this would be important.
 
-9.  Review your work as if you were the reviewer and fix any issues with your
+8.  Review your work as if you were the reviewer and fix any issues with your
     work so far. Look critically at the diffs of the files that you have changed.
     In particular, pay attention to whether the changes are as small as possible
     and whether you have follow the general coding style used in the project.
@@ -144,8 +142,6 @@ sequenceDiagram
     folder. You may also want to make sure that relevant examples from the
     [examples repository] still build fine.
 
-[mkdocs-material]: https://github.com/squidfunk/mkdocs-material
-[mkdocs-material-insiders]: https://github.com/squidfunk/mkdocs-material-insiders/
 [examples repository]: https://github.com/mkdocs-material/examples
 
 ### Finalizing
@@ -243,22 +239,13 @@ repositories on GitHub. This is so that you have a repository on GitHub that
 you can push changes to (only maintainers and collaborators have write access
 to the original repositories).
 
-Fork the [repository for the public version] if you want to make changes to
-code that is in the public version or if you want to make changes to the
-documentation. It is a good idea to change the name of the repository by
-appending `-fork` so that people who come across it know that they have found a
-temporary fork rather then the original or a permanent fork of the project.
-You may also want to add a description that clarifies what the repository is for.
+Fork the [repository] if you want to make changes to code or to the documentation.
+It is a good idea to change the name of the repository by appending `-fork` so
+that people who come across it know that they have found a temporary fork rather
+than the original or a permanent fork of the project. You may also want to add
+a description that clarifies what the repository is for.
 
-[repository for the public version]: https://github.com/squidfunk/mkdocs-material
-
-To make changes to functionality available only within the Insiders version,
-fork [the Insiders repository]. Note that the fork will be a private repository.
-Please respect the [terms of the Insiders program] and the spirit of the
-Sponsorware approach used to maintain and develop Material for MkDocs.
-
-[the Insiders repository]: https://github.com/squidfunk/mkdocs-material-insiders/
-[terms of the Insiders program]: https://squidfunk.github.io/mkdocs-material/insiders/license/#fair-use-policy
+[repository]: https://github.com/squidfunk/mkdocs-material
 
 ### Setting up a development environment
 
@@ -346,21 +333,13 @@ to build a project to serve as a test suite. It can double as documentation that
 shows how your new feature is meant to work.
 
 - Test with relevant examples from the [Material for MkDocs Examples]
-  repository. Note that to build all examples in one go you need the projects
-  plugin from Insiders but you can always build the examples individually
-  using the public version.
+  repository.
 
 [smoke tests]: https://en.wikipedia.org/wiki/Smoke_testing_(software)
 [minimal reproduction]: https://squidfunk.github.io/mkdocs-material/guides/creating-a-reproduction/
 [Material for MkDocs Examples]: https://github.com/mkdocs-material/examples
 
-- Ideally, also test the examples in the [examples repository]. If you are
-working on the Insiders edition of Material for MkDocs, you can simply start a
-build at the top level and the [projects plugin] will build all of the examples
-for you. If you are on the public version, you will need to build each
-sub-project individually. We appreciate that this is a growing collection of
-examples and you may want to prioritize those that are most relevant to the
-functionality you change.
+- Ideally, also test the examples in the [examples repository].
 
 [examples repository]: https://github.com/mkdocs-material/examples
 [projects plugin]: https://squidfunk.github.io/mkdocs-material/plugins/projects/

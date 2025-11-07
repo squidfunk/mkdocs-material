@@ -8,23 +8,11 @@ This documentation use some symbols for illustration purposes. Before you read
 on, please make sure you've made yourself familiar with the following list of
 conventions:
 
-### <!-- md:sponsors --> – Sponsors only { data-toc-label="Sponsors only" }
-
-The pumping heart symbol denotes that a specific feature or behavior is only
-available to sponsors via [Insiders]. Make sure that you have access to
-[Insiders] if you want to use the feature.
-
 ### <!-- md:version --> – Version { data-toc-label="Version" }
 
 The tag symbol in conjunction with a version number denotes when a specific
 feature or behavior was added. Make sure you're at least on this version
 if you want to use it.
-
-### <!-- md:version insiders- --> – Version (Insiders)  { data-toc-label="Version (Insiders)" }
-
-The tag symbol with a heart in conjunction with a version number denotes that a
-specific feature or behavior was added to the [Insiders] version of Material for
-MkDocs.
 
 ### <!-- md:default --> – Default value { #default data-toc-label="Default value" }
 
@@ -89,6 +77,3 @@ added by the author.
 
 Besides plugins, there are some utilities that build on top of MkDocs in order
 to provide extended functionality, like for example support for versioning.
-
-  [Insiders]: insiders/index.md
-

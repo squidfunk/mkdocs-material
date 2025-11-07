@@ -87,7 +87,6 @@ icon: material/emoticon-happy # (1)!
       </div>
     </div>
 
-  [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 

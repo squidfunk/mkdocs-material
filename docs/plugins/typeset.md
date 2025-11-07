@@ -1,6 +1,7 @@
 ---
 title: Built-in typeset plugin
 icon: material/format-title
+status: deprecated
 ---
 
 # Built-in typeset plugin
@@ -10,12 +11,20 @@ headlines within the navigation and table of contents. This means that code
 blocks, icons, emojis and any other inline formatting can be rendered exactly
 as defined in the page's content.
 
----
+!!! bug "The built-in typeset plugin is deprecated"
 
-<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
-[our awesome sponsors].
+    [Material for MkDocs is in maintenance mode]. The typeset plugin, which was
+    formely part of the [Insiders] edition, was released in <!-- md:version 9.7.0 -->, the last release that includes all features from the Insiders edition.
+    Unfortunately, the typeset plugin turned out impossible to maintain, and
+    was one of the key motivators to create [Zensical].
 
-  [our awesome sponsors]: ../insiders/index.md
+    ---
+
+    __If you're considering the typeset plugin, please be aware that known issues will <u>not</u> be fixed.__
+
+  [Material for MkDocs is in maintenance mode]: https://github.com/squidfunk/mkdocs-material/issues/8523
+  [Zensical]: ../blog/posts/zensical.md
+  [Insiders]: ../insiders/index.md
 
 ## Objective
 
@@ -44,8 +53,7 @@ interfere with other plugins.
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.27.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:plugin [typeset] – built-in -->
 <!-- md:flag experimental -->
 
@@ -72,8 +80,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.27.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].

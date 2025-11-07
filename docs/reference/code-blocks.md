@@ -86,8 +86,7 @@ theme:
 
 ### Code selection button
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.32.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 Code blocks can include a button to allow for the selection of line ranges by
@@ -163,8 +162,7 @@ theme:
 
 #### Custom selectors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.32.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 Normally, code annotations can only be [placed in comments], as comments can be

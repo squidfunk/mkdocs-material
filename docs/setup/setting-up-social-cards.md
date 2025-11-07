@@ -127,7 +127,7 @@ comes with CJK characters, e.g. one from the `Noto Sans` font family:
 
 ### Changing the layout
 
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:flag experimental -->
 
@@ -154,7 +154,7 @@ the [built-in meta plugin].
 
 ### Parametrizing the layout
 
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:flag experimental -->
 
@@ -181,7 +181,7 @@ the [built-in meta plugin].
 
 ### Disabling social cards
 
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:flag experimental -->
 
@@ -200,14 +200,8 @@ social:
 
 ## Customization
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
-
-[Insiders] ships a ground up rewrite of the [built-in social plugin] and
-introduces a brand new layout system based on a combination of YAML and
-[Jinja templates] – the same engine Material for MkDocs uses for HTML
-templating – allowing for the creation of complex custom layouts:
 
 <div class="mdx-social">
   <div class="mdx-social__layer">
@@ -256,9 +250,9 @@ just once, substantially accelerating card generation. The generated cards are
 cached to ensure they are only regenerated when their contents change.
 
 Layouts are written in YAML syntax. Before starting to create a custom layout,
-it is a good idea to [study the pre-designed layouts] (link to [Insiders]
-repository), in order to get a better understanding of how they work. Then,
-create a new layout and reference it in `mkdocs.yml`:
+it is a good idea to [study the pre-designed layouts], in order to get a better
+understanding of how they work. Then, create a new layout and reference it in
+`mkdocs.yml`:
 
 === ":octicons-file-code-16: `layouts/custom.yml`"
 
@@ -284,11 +278,10 @@ haven't defined any layers, the cards are transparent.
 
 The following sections explain how to create custom layouts.
 
-  [Insiders]: ../insiders/index.md
   [built-in social plugin]: ../plugins/social.md
   [Google Fonts]: https://fonts.google.com/
   [Jinja templates]: https://jinja.palletsprojects.com/en/3.1.x/
-  [study the pre-designed layouts]: https://github.com/squidfunk/mkdocs-material-insiders/tree/master/src/plugins/social/layouts
+  [study the pre-designed layouts]: https://github.com/squidfunk/mkdocs-material/tree/master/src/plugins/social/layouts
 
 ### Size and offset
 
@@ -318,7 +311,7 @@ useful for alignment and composition.
 
 #### Origin
 
-<!-- md:version insiders-4.35.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 The `origin` for the `x` and `y` values can be changed, so that the layer is

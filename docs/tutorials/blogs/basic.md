@@ -179,11 +179,10 @@ header to indicate that a post is still in draft form.
     stage. Remember to remove the `draft` setting in the header when it is time
     to publish it.
 
-If you are using the [Insiders Edition], you can also create
-a folder to keep your drafts in and use the [Meta plugin] to add the
-`draft` header setting to all the posts in that folder. This has the advantage
-that it is easier to see which posts are still in draft form. We will cover the
-Meta plugin later on.
+You can also create a folder to keep your drafts in and use the [Meta plugin]
+to add the `draft` header setting to all the posts in that folder. This has the
+advantage that it is easier to see which posts are still in draft form. We will
+cover the Meta plugin later on.
 
 [Meta plugin]: ../../plugins/meta.md
 
@@ -232,11 +231,10 @@ your readers will take the read the post.
 ### Pinning
 
 Sometimes, blog authors want to 'pin' a specific post so that it will always
-appear at the top of the index page, no matter what else gets published. If you
-are using the [Insiders Edition], you can achieve this by adding the `pin`
-attribute in the page header:
+appear at the top of the index page, no matter what else gets published. You can
+achieve this by adding the `pin` attribute in the page header:
 
-!!! example "Pin a post <!-- md:sponsors -->"
+!!! example "Pin a post"
 
     Add the `pin` attribute to your first blog post:
 
@@ -261,7 +259,7 @@ will want to provide links from blog posts into your other content. One way you
 can do this is to have a related links section. The blog plugin can create one
 for you if you provide link targets in your page header:
 
-!!! example "Add a related links section <!-- md:sponsors -->"
+!!! example "Add a related links section"
 
     Add the following to a blog post:
 
@@ -320,7 +318,7 @@ together so that they are not only flagged as drafts but also easier to find.
 (Otherwise, you would need to inspect the page headers or trace back from the
 output to the files to figure out which posts are drafts.)
 
-!!! example "Drafts using the Meta plugin <!-- md:sponsors -->"
+!!! example "Drafts using the Meta plugin"
 
     You first need to activate the plugin in your `mkdocs.yaml`:
 
@@ -356,7 +354,6 @@ output to the files to figure out which posts are drafts.)
     post from draft status to published, simply move it outside `drafts/`.
 
 [meta]: ../../plugins/meta.md
-[Insiders Edition]: ../../insiders/index.md
 
 ## What's next?
 

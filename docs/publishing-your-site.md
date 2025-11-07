@@ -19,114 +19,64 @@ documentation. At the root of your repository, create a new GitHub Actions
 workflow, e.g. `.github/workflows/ci.yml`, and copy and paste the following
 contents:
 
-=== "Material for MkDocs"
+``` yaml
+name: ci # (1)!
+on:
+  push:
+    branches:
+      - master # (2)!
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: ~/.cache # (4)!
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material # (5)!
+      - run: mkdocs gh-deploy --force
+```
 
-    ``` yaml
-    name: ci # (1)!
-    on:
-      push:
-        branches:
-          - master # (2)!
-          - main
-    permissions:
-      contents: write
-    jobs:
-      deploy:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v4
-          - name: Configure Git Credentials
-            run: |
-              git config user.name github-actions[bot]
-              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          - uses: actions/setup-python@v5
-            with:
-              python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV # (3)!
-          - uses: actions/cache@v4
-            with:
-              key: mkdocs-material-${{ env.cache_id }}
-              path: ~/.cache # (4)!
-              restore-keys: |
-                mkdocs-material-
-          - run: pip install mkdocs-material # (5)!
-          - run: mkdocs gh-deploy --force
+1.  You can change the name to your liking.
+
+2.  At some point, GitHub renamed `master` to `main`. If your default branch
+    is named `master`, you can safely remove `main`, vice versa.
+
+3.  Store the `cache_id` environmental variable to access it later during cache
+    `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
+
+    - The `--utc` option makes sure that each workflow runner uses the same time zone.
+    - The `%V` format assures a cache update once a week.
+    - You can change the format to `%F` to have daily cache updates.
+
+    You can read the [manual page] to learn more about the formatting options of the `date` command.
+
+4.  Some Material for MkDocs plugins use [caching] to speed up repeated
+    builds, and store the results in the `~/.cache` directory.
+
+5.  This is the place to install further [MkDocs plugins] or Markdown
+    extensions with `pip` to be used during the build:
+
+    ``` sh
+    pip install \
+      mkdocs-material \
+      mkdocs-awesome-pages-plugin \
+      ...
     ```
-
-    1.  You can change the name to your liking.
-
-    2.  At some point, GitHub renamed `master` to `main`. If your default branch
-        is named `master`, you can safely remove `main`, vice versa.
-
-    3.  Store the `cache_id` environmental variable to access it later during cache
-        `key` creation. The name is case-sensitive, so be sure to align it with `${{ env.cache_id }}`.
-
-        - The `--utc` option makes sure that each workflow runner uses the same time zone.
-        - The `%V` format assures a cache update once a week.
-        - You can change the format to `%F` to have daily cache updates.
-
-        You can read the [manual page] to learn more about the formatting options of the `date` command.
-
-    4.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `~/.cache` directory.
-
-    5.  This is the place to install further [MkDocs plugins] or Markdown
-        extensions with `pip` to be used during the build:
-
-        ``` sh
-        pip install \
-          mkdocs-material \
-          mkdocs-awesome-pages-plugin \
-          ...
-        ```
-
-=== "Insiders"
-
-    ``` yaml
-    name: ci
-    on:
-      push:
-        branches:
-          - master
-          - main
-    permissions:
-      contents: write
-    jobs:
-      deploy:
-        runs-on: ubuntu-latest
-        if: github.event.repository.fork == false
-        steps:
-          - uses: actions/checkout@v4
-          - name: Configure Git Credentials
-            run: |
-              git config user.name github-actions[bot]
-              git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          - uses: actions/setup-python@v5
-            with:
-              python-version: 3.x
-          - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-          - uses: actions/cache@v4
-            with:
-              key: mkdocs-material-${{ env.cache_id }}
-              path: ~/.cache # (1)!
-              restore-keys: |
-                mkdocs-material-
-          - run: apt-get install pngquant # (2)!
-          - run: pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-          - run: mkdocs gh-deploy --force
-    env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }} # (3)!
-    ```
-
-    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `~/.cache` directory.
-
-    2.  This step is only necessary if you want to use the
-        [built-in optimize plugin] to automatically compress images.
-
-    3.  Remember to set the `GH_TOKEN` repository secret to the value of your
-        [personal access token] when deploying [Insiders], which can be done
-        using [GitHub secrets].
 
 Now, when a new commit is pushed to either the `master` or `main` branches,
 the static site is automatically built and deployed. Push your changes to see
@@ -143,7 +93,6 @@ To publish your site on a custom domain, please refer to the [MkDocs documentati
   [GitHub Actions]: https://github.com/features/actions
   [MkDocs plugins]: https://github.com/mkdocs/mkdocs/wiki/MkDocs-Plugins
   [personal access token]: https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token
-  [Insiders]: insiders/index.md
   [built-in optimize plugin]: plugins/optimize.md
   [GitHub secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
   [publishing source branch]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
@@ -175,55 +124,26 @@ by using the [GitLab CI] task runner. At the root of your repository, create a
 task definition named `.gitlab-ci.yml` and copy and paste the following
 contents:
 
-=== "Material for MkDocs"
+``` yaml
+pages:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install mkdocs-material
+    - mkdocs build --site-dir public
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - ~/.cache/ # (1)!
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+```
 
-    ``` yaml
-    pages:
-      stage: deploy
-      image: python:latest
-      script:
-        - pip install mkdocs-material
-        - mkdocs build --site-dir public
-      cache:
-        key: ${CI_COMMIT_REF_SLUG}
-        paths:
-          - ~/.cache/ # (1)!
-      artifacts:
-        paths:
-          - public
-      rules:
-        - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    ```
-
-    1.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `~/.cache` directory.
-
-=== "Insiders"
-
-    ``` yaml
-    pages:
-      stage: deploy
-      image: python:latest
-      script: # (1)!
-        - pip install git+https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git
-        - mkdocs build --site-dir public
-      cache:
-        key: ${CI_COMMIT_REF_SLUG}
-        paths:
-          - ~/.cache/ # (2)!
-      artifacts:
-        paths:
-          - public
-      rules:
-        - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
-    ```
-
-    1.  Remember to set the `GH_TOKEN` repository secret to the value of your
-        [personal access token] when deploying [Insiders], which can be done
-        using [masked custom variables].
-
-    2.  Some Material for MkDocs plugins use [caching] to speed up repeated
-        builds, and store the results in the `~/.cache` directory.
+1.  Some Material for MkDocs plugins use [caching] to speed up repeated
+    builds, and store the results in the `~/.cache` directory.
 
 Now, when a new commit is pushed to the [default branch] (typically `master` or
 `main`), the static site is automatically built and deployed. Commit and push

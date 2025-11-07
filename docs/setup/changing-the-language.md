@@ -99,35 +99,19 @@ The following properties are available for each alternate language:
 
 #### Stay on page
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.47.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
-[Insiders] improves the user experience when switching between languages, e.g.,
-if language `en` and `de` contain a page with the same path name, the user will
-stay on the current page:
+When switching between languages, e.g., if language `en` and `de` contain a page
+with the same path name, the user will stay on the current page:
 
-=== "Insiders"
+```
+docs.example.com/en/     -> docs.example.com/de/
+docs.example.com/en/foo/ -> docs.example.com/de/foo/
+docs.example.com/en/bar/ -> docs.example.com/de/bar/
+```
 
-    ```
-    docs.example.com/en/     -> docs.example.com/de/
-    docs.example.com/en/foo/ -> docs.example.com/de/foo/
-    docs.example.com/en/bar/ -> docs.example.com/de/bar/
-    ```
-
-=== "Material for MkDocs"
-
-    ```
-    docs.example.com/en/     -> docs.example.com/de/
-    docs.example.com/en/foo/ -> docs.example.com/de/
-    docs.example.com/en/bar/ -> docs.example.com/de/
-    ```
-
-No configuration is necessary. We're working hard on improving multi-language
-support in 2024, including making switching between languages even more seamless
-in the future.
-
-  [Insiders]: ../insiders/index.md
+No configuration is necessary.
 
 ### Directionality
 

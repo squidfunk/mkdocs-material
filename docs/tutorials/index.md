@@ -11,18 +11,7 @@ gain not only an understanding of how to use Material for MkDocs, but also
 a template for your own projects. For convenience, these templates are also
 available as template repositories on GitHub.
 
-The tutorials assume that you have installed either the [public version] or the
-[Insiders edition] of Material for MkDocs and that you have worked through the
-[creating your site] setup guide.
-
-Note that where the features we use require the Insiders edition, we mark these
-with the heart icon: <!-- md:sponsors --> If you are using the public version
-then you can skip these steps. Sometimes there will be ways of achieving the
-same goal that differ between the public version and the Insider edition. In
-that case, we will show them in a tabbed view so you can see one or the other.
-
 [public version]: ../getting-started.md
-[Insiders edition]: ../insiders/getting-started.md
 [creating your site]: ../creating-your-site.md
 
 !!! note "Feedback wanted!"

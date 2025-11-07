@@ -10,12 +10,13 @@ bug fixes and security updates for Material for MkDocs for 12 months – at leas
 Read the full announcement on our blog:
 https://squidfunk.github.io/mkdocs-material/blog/2025/11/05/zensical/
 
-This release includes all features that were previously exclusively available
-as part of the Insiders edition. They are now free for everybody to use. The
-projects and typeset plugins turned out to be dead ends, which is why they
-are deprecated and not part of Material for MkDocs. The sources of those plugins
-are distributed with the project, and need to be re-enabled in pyproject.toml,
-so third party contributors can take on maintenance, if desired.
+This release includes all features that were previously exclusive to the
+Insiders edition. These features are now freely available to everyone.
+
+Note on deprecated plugins: The projects and typeset plugins are included in
+this release, but must be considered deprecated. Both plugins proved
+unsustainable to maintain and represent architectural dead ends. They are
+provided as-is without ongoing support.
 
 Changes:
 

@@ -49,40 +49,7 @@ nav:
 For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
-
-#### Advanced settings
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
-
-The following advanced settings are currently reserved to our [sponsors]
-[Insiders]. They are entirely optional, and don't affect the functionality of
-the blog, but can be helpful for customizations:
-
-- [`archive_pagination`][config.archive_pagination]
-- [`archive_pagination_per_page`][config.archive_pagination_per_page]
-- [`categories_sort_by`][config.categories_sort_by]
-- [`categories_sort_reverse`][config.categories_sort_reverse]
-- [`categories_pagination`][config.categories_pagination]
-- [`categories_pagination_per_page`][config.categories_pagination_per_page]
-- [`authors_profiles_pagination`][config.authors_profiles_pagination]
-- [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
-
-We'll add more settings here, as we discover new use cases.
-
-  [Insiders]: ../insiders/index.md
   [built-in blog plugin]: ../plugins/blog.md
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [start writing your first post]: #writing-your-first-post
-
-  [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
-  [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
-  [config.categories_sort_by]: ../plugins/blog.md#config.categories_sort_by
-  [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
-  [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
-  [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
-  [config.authors_profiles_pagination]: ../plugins/blog.md#config.authors_profiles_pagination
-  [config.authors_profiles_pagination_per_page]: ../plugins/blog.md#config.authors_profiles_pagination_per_page
 
 ### RSS
 
@@ -359,8 +326,7 @@ authors:
 
 #### Adding author profiles
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 If you wish to add a dedicated page for each author, you can enable author
@@ -521,8 +487,7 @@ all links are correct.
 
 #### Pinning a post
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.53.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 If you want to pin a post to the top of the index page, as well as the archive
