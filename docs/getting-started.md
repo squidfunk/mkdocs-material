@@ -133,28 +133,13 @@ The following plugins are bundled with the Docker image:
 
     Material for MkDocs only bundles selected plugins in order to keep the size
     of the official image small. If the plugin you want to use is not included,
-    you can add them easily:
+    you can add them easily. Create a `Dockerfile` and extend the official image:
 
-    === "Material for MkDocs"
-
-        Create a `Dockerfile` and extend the official image:
-
-        ``` Dockerfile title="Dockerfile"
-        FROM squidfunk/mkdocs-material
-        RUN pip install mkdocs-macros-plugin
-        RUN pip install mkdocs-glightbox
-        ```
-
-    === "Insiders"
-
-        Clone or fork the Insiders repository, and create a file called
-        `user-requirements.txt` in the root of the repository. Then, add the
-        plugins that should be installed to the file, e.g.:
-
-        ``` txt title="user-requirements.txt"
-        mkdocs-macros-plugin
-        mkdocs-glightbox
-        ```
+    ``` Dockerfile title="Dockerfile"
+    FROM squidfunk/mkdocs-material
+    RUN pip install mkdocs-macros-plugin
+    RUN pip install mkdocs-glightbox
+    ```
 
     Next, build the image with the following command:
 

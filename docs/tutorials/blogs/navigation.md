@@ -323,11 +323,10 @@ the page header.
 
     Note that `authors` is a list, so you can specify multiple authors.
 
-With the Insiders edition, you can create custom author index pages that
-can highlight the contributions of an author as well as provide additional
-information about them.
+You can create custom author index pages that can highlight the contributions
+of an author as well as provide additional information about them.
 
-!!! example "Add author page <!-- md:sponsors -->"
+!!! example "Add author page"
 
     First, you need to enable author profiles in the `mkdocs.yml`:
 

@@ -232,8 +232,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.tags_hierarchy -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 <!-- md:flag experimental -->
 
@@ -251,8 +250,7 @@ plugins:
 
 #### <!-- md:setting config.tags_hierarchy_separator -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `/` -->
 <!-- md:flag experimental -->
 
@@ -531,8 +529,7 @@ Using this setting, listings must now be referenced as such:
 
 #### <!-- md:setting config.listings_toc -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable tags showing up in the table of contents.
@@ -553,8 +550,7 @@ The following settings are available for shadow tags:
 
 #### <!-- md:setting config.shadow -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to specify whether the plugin should include shadow tags on
@@ -581,8 +577,7 @@ deploy previews:
 
 #### <!-- md:setting config.shadow_on_serve -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should include shadow tags on
@@ -601,8 +596,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 The plugin allows to specify a predefined list of shadow tags which can be
@@ -621,8 +615,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags_prefix -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to specify a string that is checked as a prefix for each tag.
@@ -639,8 +632,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags_suffix -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to specify a string that is checked as a suffix for each tag.
@@ -662,8 +654,7 @@ The following settings are available for exporting:
 
 #### <!-- md:setting config.export -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin creates a `tags.json` file
@@ -680,8 +671,7 @@ plugins:
 
 #### <!-- md:setting config.export_file -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `tags.json` -->
 
 Use this setting to change the path of the file where the exported tags are
@@ -700,8 +690,7 @@ The provided path is resolved from the [`site` directory][mkdocs.site_dir].
 
 #### <!-- md:setting config.export_only -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 This setting is solely provided for convenience to disable the rendering of tags
@@ -796,8 +785,7 @@ embedded in:
 
 #### <!-- md:setting listing.shadow -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 This setting specifies whether the listing should include shadow tags, which
@@ -830,8 +818,7 @@ basis:
 
 #### <!-- md:setting listing.toc -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default [`listings_toc`][config.listings_toc] -->
 
 This setting specifies whether the listing should render tags inside the table

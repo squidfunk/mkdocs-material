@@ -262,37 +262,12 @@ directly in the source of the theme and recompile it.
 
 ### Environment setup
 
-First, clone the repository for the edition you want to work on. If
-you want to clone the Insiders repository, you need to become a
-sponsor first to gain access.
+First, clone the repository:
 
-  [Insiders]: insiders/index.md
-
-=== "Material for MkDocs"
-
-    ```
-    git clone https://github.com/squidfunk/mkdocs-material
-    cd mkdocs-material
-    ```
-
-=== "Insiders"
-
-    You will need to have a GitHub access token [as described in the
-    Insiders documentation] and make it available in the `$GH_TOKEN`
-    variable.
-
-    ``` sh
-    git clone https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-insiders.git # (1)!
-    ```
-
-    1.  If you are using SSH keys for authenticating with GitHub, you can
-        clone Insiders with this command:
-
-        ```
-        git clone git@github.com:squidfunk/mkdocs-material-insiders.git
-        ```
-
-    [as described in the Insiders documentation]: insiders/getting-started.md#requirements
+```
+git clone https://github.com/squidfunk/mkdocs-material
+cd mkdocs-material
+```
 
 Next, create a new [Python virtual environment][venv] and
 [activate][venv-activate] it:
@@ -321,25 +296,15 @@ source venv/bin/activate
 
 Then, install all Python dependencies:
 
-=== "Material for MkDocs"
+```
+pip install -e ".[git, recommended, imaging]"
+pip install nodeenv
+```
 
-    ```
-    pip install -e ".[recommended]"
-    pip install nodeenv
-    ```
+In addition, you will need to install the `cairo` and `pngquant` libraries in your
+system, as described in the [image processing] requirements guide.
 
-=== "Insiders"
-
-    ```
-    pip install -e ".[recommended, imaging]"
-    pip install nodeenv
-    ```
-
-    In addition, you will need to install the `cairo` and `pngquant` libraries in your
-    system, as described in the [image processing] requirements guide.
-
-    [image processing]: plugins/requirements/image-processing.md
-
+[image processing]: plugins/requirements/image-processing.md
 
 Finally, install the [Node.js] LTS version into the Python virtual environment
 and install all Node.js dependencies:

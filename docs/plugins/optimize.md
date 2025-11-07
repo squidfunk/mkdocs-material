@@ -10,13 +10,7 @@ The optimize plugin automatically identifies and optimizes all media files when
 As a result, your site loads significantly faster and yields better rankings in
 search engines.
 
----
-
-<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
-[our awesome sponsors].
-
   [building your project]: ../creating-your-site.md#building-your-site
-  [our awesome sponsors]: ../insiders/index.md
 
 ## Objective
 
@@ -83,8 +77,7 @@ build pipelines tailored to your project:
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:plugin [optimize] – built-in -->
 <!-- md:flag multiple -->
 <!-- md:flag experimental -->
@@ -118,8 +111,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -138,8 +130,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -169,8 +160,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -188,8 +178,7 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `.cache/plugin/optimize` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -224,8 +213,7 @@ The following settings are available for optimization:
 
 #### <!-- md:setting config.optimize -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.41.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable media file optimization. Currently,
@@ -243,8 +231,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_png -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the optimization of `.png` files. It's
@@ -261,8 +248,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_png_speed -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `3` of `1-10` -->
 
 Use this setting to specify the speed/quality tradeoff that [pngquant] applies
@@ -291,8 +277,7 @@ A factor of `10` has 5% lower quality, but is 8x faster than the default `3`.
 
 #### <!-- md:setting config.optimize_png_strip -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to specify whether [pngquant] should strip optional metadata
@@ -311,8 +296,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_jpg -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the optimization of `.jpg` files. It's
@@ -329,8 +313,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_jpg_quality -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `60` of `0-100` -->
 
 Use this setting to specify the image quality that [Pillow] applies when
@@ -347,8 +330,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_jpg_progressive -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to specify whether [Pillow] should use progressive encoding
@@ -367,8 +349,7 @@ plugins:
 
 #### <!-- md:setting config.optimize_include -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.41.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to enable media file optimization for specific directories
@@ -390,8 +371,7 @@ in the `screenshots` folder and its subfolders inside the [`docs` directory]
 
 #### <!-- md:setting config.optimize_exclude -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.41.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to disable media file optimization for specific directories
@@ -417,8 +397,7 @@ The following settings are available for reporting:
 
 #### <!-- md:setting config.print_gain -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should print the number of bytes
@@ -434,8 +413,7 @@ plugins:
 
 #### <!-- md:setting config.print_gain_summary -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should print the total number of

@@ -309,8 +309,6 @@ Material for MkDocs will now change the color palette each time the operating
 system switches between light and dark appearance, even when the user doesn't
 reload the site.
 
-  [Insiders]: ../insiders/index.md
-
 ## Customization
 
 ### Custom colors

@@ -1,6 +1,7 @@
 ---
 title: Built-in projects plugin
 icon: material/folder-open
+status: deprecated
 ---
 
 # Built-in projects plugin
@@ -10,12 +11,20 @@ distinct projects, build them concurrently and preview them together as one.
 This is particularly useful when creating a multi-language project, but can also
 be used to split very large projects into smaller parts.
 
----
+!!! bug "The built-in projects plugin is deprecated"
 
-<!-- md:sponsors --> __Sponsors only__ – this plugin is currently reserved to
-[our awesome sponsors].
+    [Material for MkDocs is in maintenance mode]. The projects plugin, which was
+    formely part of the [Insiders] edition, was released in <!-- md:version 9.7.0 -->, the last release that includes all features from the Insiders edition.
+    Unfortunately, the projects plugin turned out impossible to maintain, and
+    was one of the key motivators to create [Zensical].
 
-  [our awesome sponsors]: ../insiders/index.md
+    ---
+
+    __If you're considering the projects plugin, please be aware that known issues will <u>not</u> be fixed.__
+
+  [Material for MkDocs is in maintenance mode]: https://github.com/squidfunk/mkdocs-material/issues/8523
+  [Zensical]: ../blog/posts/zensical.md
+  [Insiders]: ../insiders/index.md
 
 ## Objective
 
@@ -70,8 +79,7 @@ and building more comfortable.
 
 ## Configuration
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:plugin [projects] – built-in -->
 <!-- md:flag experimental -->
 
@@ -97,8 +105,7 @@ The following settings are available:
 
 #### <!-- md:setting config.enabled -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable the plugin when [building your project].
@@ -119,8 +126,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -150,8 +156,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -169,8 +174,7 @@ plugins:
 
 #### <!-- md:setting config.cache_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `.cache/plugin/projects` -->
 
 It is normally not necessary to specify this setting, except for when you want
@@ -191,8 +195,7 @@ The following settings are available for logging:
 
 #### <!-- md:setting config.log -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.47.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should display log messages from
@@ -209,8 +212,7 @@ plugins:
 
 #### <!-- md:setting config.log_level -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.47.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `info` -->
 
 Use this setting to control the log level that the plugin should employ when
@@ -266,8 +268,7 @@ The following settings are available for projects:
 
 #### <!-- md:setting config.projects -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable building of projects. Currently, the
@@ -285,8 +286,7 @@ plugins:
 
 #### <!-- md:setting config.projects_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `projects` -->
 
 Use this setting to change the folder where your projects are located. It's
@@ -309,8 +309,7 @@ The provided path is resolved from the root directory.
 
 #### <!-- md:setting config.projects_config_files -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.42.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `*/mkdocs.yml` -->
 
 Use this setting to change the location or name of configuration files the
@@ -358,8 +357,7 @@ The provided path is resolved from the [`projects` directory]
 
 #### <!-- md:setting config.projects_config_transform -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.42.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to transform the configuration of each project as read from
@@ -414,8 +412,7 @@ The following settings are available for hoisting:
 
 #### <!-- md:setting config.hoisting -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.39.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable hoisting of themes files to the main

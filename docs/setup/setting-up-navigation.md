@@ -52,8 +52,7 @@ especially useful for large documentation sites.
 
 #### Instant prefetching
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.36.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:feature -->
 <!-- md:flag experimental -->
 
@@ -93,8 +92,7 @@ experience.
 
 ### Instant previews
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.52.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:feature -->
 <!-- md:flag experimental -->
 
@@ -125,8 +123,7 @@ with the `data-preview` attribute:
 
 #### Automatic previews
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.53.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:extension -->
 <!-- md:flag experimental -->
 
@@ -337,8 +334,7 @@ theme:
 
 ### Navigation path <small>Breadcrumbs</small> { id=navigation-path }
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.28.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:feature -->
 <!-- md:flag experimental -->
 
@@ -542,8 +538,7 @@ hide:
 
 ### Hiding the navigation path
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.28.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 
 While the [navigation path] is rendered above the main headline, sometimes, it

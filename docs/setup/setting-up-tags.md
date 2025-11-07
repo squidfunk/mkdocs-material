@@ -27,25 +27,6 @@ For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/tags.md
 
-#### Advanced settings
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
-<!-- md:flag experimental -->
-
-The following advanced settings are currently reserved to our [sponsors]
-[Insiders]. They are entirely optional, and only add additional capabilities to
-the tags plugin:
-
-<!-- - [`listings_layout`][config.listings_layout] -->
-- [`listings_toc`][config.listings_toc]
-
-We'll add more settings here in the near future.
-
-  [Insiders]: ../insiders/index.md
-  [config.listings_layout]: ../plugins/tags.md#config.listings_layout
-  [config.listings_toc]: ../plugins/tags.md#config.listings_toc
-
 ### Tag icons and identifiers
 
 <!-- md:version 8.5.0 -->
@@ -200,15 +181,6 @@ arbitrary content before and after the marker:
 
 ### Advanced features
 
-[Insiders] ships a __ground up rewrite of the tags plugin__ which is infinitely
-more powerful than the current version in the community edition. It allows
-for an arbitrary number of tags indexes (listings), [scoped listings],
-[shadow tags], [nested tags], and much more.
-
-  [scoped listings]: #scoped-listings
-  [shadow tags]: #shadow-tags
-  [nested tags]: #nested-tags
-
 #### Configurable listings
 
 <!-- md:version 9.6.0 -->
@@ -252,8 +224,7 @@ See the [listing configuration] for all options.
 
 #### Scoped listings
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 If your documentation is large, you might want to consider using scoped listings
@@ -283,8 +254,7 @@ You can now use:
 
 #### Shadow tags
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 Shadow tags are tags that are solely meant to organization, which can be
@@ -308,14 +278,12 @@ This is an excellent opportunity for using tags for structuring.
 
 #### Nested tags
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
-[Insiders] ships support for nested tags. The
-[`tags_hierarchy_separator`][config.tags_hierarchy_separator] allows to create
-hierarchies of tags, e.g., `Foo/Bar`. Nested tags will be rendered as children
-of the parent tag:
+The [`tags_hierarchy_separator`][config.tags_hierarchy_separator] allows to
+create hierarchies of tags, e.g., `Foo/Bar`. Nested tags will be rendered as
+children of the parent tag:
 
 ``` yaml
 plugins:

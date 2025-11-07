@@ -147,11 +147,6 @@ extra:
     Thousands of hours went into this project, most of them
     without any financial return.
 
-    Thus, if you remove this notice, please consider [sponsoring][Insiders] the
-    project. __Thank you__ :octicons-heart-fill-24:{ .mdx-heart .mdx-insiders }
-
-  [Insiders]: ../insiders/index.md
-
 ## Usage
 
 ### Hiding prev/next links

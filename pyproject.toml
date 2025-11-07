@@ -74,8 +74,6 @@ Changelog = "https://squidfunk.github.io/mkdocs-material/changelog/"
 Issues = "https://github.com/squidfunk/mkdocs-material/issues"
 
 [project.entry-points."mkdocs.plugins"]
-# The commented-out plugins are deprecated, as they turned out to be dead ends.
-# If you fork Material for MkDocs, just uncomment these lines to re-enable them.
 "material/blog" = "material.plugins.blog.plugin:BlogPlugin"
 "material/group" = "material.plugins.group.plugin:GroupPlugin"
 "material/info" = "material.plugins.info.plugin:InfoPlugin"
@@ -83,11 +81,11 @@ Issues = "https://github.com/squidfunk/mkdocs-material/issues"
 "material/offline" = "material.plugins.offline.plugin:OfflinePlugin"
 "material/optimize" = "material.plugins.optimize.plugin:OptimizePlugin"
 "material/privacy" = "material.plugins.privacy.plugin:PrivacyPlugin"
-# "material/projects" = "material.plugins.projects.plugin:ProjectsPlugin"
+"material/projects" = "material.plugins.projects.plugin:ProjectsPlugin"
 "material/search" = "material.plugins.search.plugin:SearchPlugin"
 "material/social" = "material.plugins.social.plugin:SocialPlugin"
 "material/tags" = "material.plugins.tags.plugin:TagsPlugin"
-# "material/typeset" = "material.plugins.typeset.plugin:TypesetPlugin"
+"material/typeset" = "material.plugins.typeset.plugin:TypesetPlugin"
 
 [project.entry-points."mkdocs.themes"]
 material = "material.templates"
