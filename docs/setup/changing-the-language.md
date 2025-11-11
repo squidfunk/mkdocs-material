@@ -34,17 +34,9 @@ The following languages are supported:
 Note that some languages will produce unreadable anchor links due to the way
 the default slug function works. Consider using a [Unicode-aware slug function].
 
-!!! tip "Translations missing? Help us out, it takes only 5 minutes"
-
-    Material for MkDocs relies on outside contributions for adding and updating
-    translations for the more than 60 languages it supports. If your language
-    shows that some translations are missing, click on the link to add them. If
-    your language is not in the list, click here to [add a new language].
-
   [single language per document]: https://www.w3.org/International/questions/qa-html-language-declarations.en#attributes
   [language selector]: #site-language-selector
   [Unicode-aware slug function]: extensions/python-markdown.md#+toc.slugify
-  [add a new language]: https://github.com/squidfunk/mkdocs-material/issues/new?template=04-add-a-translation.yml&title=Add+translations+for+...
 
 ### Site language selector
 
