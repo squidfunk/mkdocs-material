@@ -9,7 +9,7 @@
     This is the last release of Material for MkDocs that will receive new features.
     Going forward, the Material for MkDocs team focuses on [Zensical], a next-gen
     static site generator built from first principles. We will provide critical
-    bug fixes and security updates for Material for MkDocs for 12 months – at least.
+    bug fixes and security updates for Material for MkDocs for 12 months at least.
 
     [Read the full announcement on our blog]
 
