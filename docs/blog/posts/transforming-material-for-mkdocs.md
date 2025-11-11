@@ -28,11 +28,12 @@ _Please note that this post includes several technical details in the footnotes,
 __This is the first article in a four-part series:__
 
 1. Transforming Material for MkDocs
-2. [Zensical – A modern static site generator built by the creators of Material for MkDocs].
-3. What happens to the features in Insiders <small>coming November 11, 2025</small>
+2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
+3. [Material for MkDocs Insiders – Now free for everyone]
 4. A path forward for our community <small>coming November 18, 2025</small>
 
-  [Zensical – A modern static site generator built by the creators of Material for MkDocs]: ./zensical.md
+  [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
+  [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
 
 ## A success story
 
