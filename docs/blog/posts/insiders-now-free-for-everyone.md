@@ -1,5 +1,5 @@
 ---
-date: 2025-11-05
+date: 2025-11-11
 authors:
   - squidfunk
   - alexvoss
