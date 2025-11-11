@@ -8,7 +8,7 @@ authors:
 categories:
   - General
 description: >
-  The final version of Material for MkDocs, including all features that were previously exclusive to sponsors, making Material for MkDocs Insiders
+  We just released 9.7.0 – the final version of Material for MkDocs, which includes all features that were previously exclusive to sponsors
 title: Insiders – Now free for everyone
 slug: insiders-now-free-for-everyone
 ---
