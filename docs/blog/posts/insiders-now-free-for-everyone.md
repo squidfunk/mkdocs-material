@@ -8,7 +8,7 @@ authors:
 categories:
   - General
 description: >
-  tbd
+  The final version of Material for MkDocs, including all features that were previously exclusive to sponsors, making Material for MkDocs Insiders
 title: Insiders – Now free for everyone
 slug: insiders-now-free-for-everyone
 ---
