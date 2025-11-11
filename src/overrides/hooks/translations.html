@@ -29,15 +29,6 @@
         <strong>{{ language.name }}</strong>
         <code>{{ language.code }}</code>
       </span>
-      {% if language.miss %}
-        <span>
-          <a href="{{ language.link }}">
-            {{ language.miss | length }} translations missing
-          </a>
-        </span>
-      {% else %}
-        <small>Complete</small>
-      {% endif %}
     </span>
   </div>
 {% endmacro %}
