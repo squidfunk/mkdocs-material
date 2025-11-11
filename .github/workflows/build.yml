@@ -92,6 +92,9 @@ jobs:
 
   python:
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
     steps:
 
       - name: Checkout repository
@@ -113,11 +116,7 @@ jobs:
         run: python -m build
 
       - name: Publish Python package
-        if: github.event_name == 'release'
-        env:
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+        uses: pypa/gh-action-pypi-publish@release/v1
 
   docker:
     runs-on: ubuntu-latest
