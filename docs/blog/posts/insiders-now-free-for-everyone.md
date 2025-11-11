@@ -195,6 +195,8 @@ The [9.7.0] release marks a significant shift – every Insiders feature is now 
 
 When you're ready to explore what's next, [Zensical is compatible with Material for MkDocs] and designed to be a natural evolution of the ideas and principles you already know.
 
-_You can subscribe to [our newsletter] to stay in the loop_.
+_If you loved Material for MkDocs and are excited about Zensical, we'll be providing new methods to support our work in the coming months, with the possibility of getting exclusive goodies._
+
+_Subscribe to [our newsletter] to stay in the loop._
 
   [Zensical is compatible with Material for MkDocs]: zensical.md#maximum-compatibility
