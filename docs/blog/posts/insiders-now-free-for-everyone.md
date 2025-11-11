@@ -116,7 +116,7 @@ for quite some time. With the release of [9.7.0], all these features are now ava
 You can upgrade with the following command:
 
 ```
-pip install --upgrade mkdocs-material
+pip install --upgrade --force-reinstall mkdocs-material
 ```
 
 ## Switching from Insiders
