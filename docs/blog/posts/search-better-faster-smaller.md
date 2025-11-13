@@ -263,7 +263,7 @@ carefully considered:
 
   [truncated]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/javascripts/templates/search/index.tsx#L90
   [search preview]: search-better-faster-smaller/search-preview.png
-  [Just the Docs]: https://github.com/just-the-docs/just-the-docs
+  [Just the Docs]: https://just-the-docs.com
   [Docusaurus]: https://github.com/lelouch77/docusaurus-lunr-search
 
 1.   __Context-awareness__: Although whitespace doesn't work for all languages,
