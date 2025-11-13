@@ -1241,7 +1241,7 @@ __Fixes__
 - Updated FontAwesome to v6 – [check which icons were renamed here]
 - Fixed #3545: Color palette toggle and search overlaying version selector
 
-  [check which icons were renamed here]: https://fontawesome.com/docs/web/setup/upgrade/whats-changed#icons-renamed-in-version-6
+  [check which icons were renamed here]: https://docs.fontawesome.com/v6/web/setup/upgrade/whats-changed#icons-renamed-in-version-6
 
 ### 8.1.10 <small>February 6, 2022</small> { id="8.1.10" }
 
