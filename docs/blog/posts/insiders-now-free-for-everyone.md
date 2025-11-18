@@ -7,6 +7,7 @@ authors:
   - pawamoy
 categories:
   - General
+icon: material/lock-open
 description: >
   We just released 9.7.0 – the final version of Material for MkDocs, which includes all features that were previously exclusive to sponsors
 title: Insiders – Now free for everyone
@@ -46,11 +47,13 @@ __This is the third article in a four-part series:__
 
 1. [Transforming Material for MkDocs]
 2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
-3. Material for MkDocs Insiders – Now free for everyone
-4. A path forward for our community <small>coming November 18, 2025</small>
+3. [Material for MkDocs Insiders – Now free for everyone]
+4. [Goodbye, GitHub Discussions]
 
   [Transforming Material for MkDocs]: transforming-material-for-mkdocs.md
   [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
+  [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
+  [Goodbye, GitHub Discussions]: goodbye-github-discussions.md
 
 ## Available features
 
