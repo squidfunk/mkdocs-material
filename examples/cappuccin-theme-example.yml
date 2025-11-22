@@ -1,0 +1,66 @@
+# Приклад конфігурації для теми Cappuccin
+# Example configuration for Cappuccin theme
+
+site_name: Cappuccin Theme Example
+site_description: Example site using Cappuccin theme for MkDocs Material
+
+theme:
+  name: material
+
+  # Кольорова схема Cappuccin з перемиканням між темною та світлою темами
+  palette:
+    # Темна тема Cappuccin Mocha
+    - scheme: cappuccin-mocha
+      toggle:
+        icon: material/brightness-4
+        name: Переключити на світлу тему / Switch to light mode
+
+    # Світла тема Cappuccin Latte
+    - scheme: cappuccin-latte
+      toggle:
+        icon: material/brightness-7
+        name: Переключити на темну тему / Switch to dark mode
+
+  # Додаткові налаштування Material theme
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+
+# Розширення Markdown
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+
+# Навігація
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Documentation: documentation.md
+
+# Додаткові налаштування
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/yourusername/yourrepo
