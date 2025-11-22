@@ -141,6 +141,260 @@
 
   // --------------------------------------------------------------------------
 
+  // Cappuccin Mocha theme - Catppuccin's darkest variant
+  [data-md-color-scheme="cappuccin-mocha"] {
+
+    // Indicate that the site is rendered with a dark color scheme
+    color-scheme: dark;
+
+    // Catppuccin Mocha color palette
+    // Base colors
+    --catppuccin-rosewater: #f5e0dc;
+    --catppuccin-flamingo:  #f2cdcd;
+    --catppuccin-pink:      #f5c2e7;
+    --catppuccin-mauve:     #cba6f7;
+    --catppuccin-red:       #f38ba8;
+    --catppuccin-maroon:    #eba0ac;
+    --catppuccin-peach:     #fab387;
+    --catppuccin-yellow:    #f9e2af;
+    --catppuccin-green:     #a6e3a1;
+    --catppuccin-teal:      #94e2d5;
+    --catppuccin-sky:       #89dceb;
+    --catppuccin-sapphire:  #74c7ec;
+    --catppuccin-blue:      #89b4fa;
+    --catppuccin-lavender:  #b4befe;
+
+    // Text colors
+    --catppuccin-text:      #cdd6f4;
+    --catppuccin-subtext1:  #bac2de;
+    --catppuccin-subtext0:  #a6adc8;
+
+    // Overlay colors
+    --catppuccin-overlay2:  #9399b2;
+    --catppuccin-overlay1:  #7f849c;
+    --catppuccin-overlay0:  #6c7086;
+
+    // Surface colors
+    --catppuccin-surface2:  #585b70;
+    --catppuccin-surface1:  #45475a;
+    --catppuccin-surface0:  #313244;
+
+    // Base background colors
+    --catppuccin-base:      #1e1e2e;
+    --catppuccin-mantle:    #181825;
+    --catppuccin-crust:     #11111b;
+
+    // Default color shades using Catppuccin Mocha
+    --md-default-fg-color:             var(--catppuccin-text);
+    --md-default-fg-color--light:      var(--catppuccin-subtext1);
+    --md-default-fg-color--lighter:    var(--catppuccin-subtext0);
+    --md-default-fg-color--lightest:   var(--catppuccin-overlay2);
+    --md-default-bg-color:             var(--catppuccin-base);
+    --md-default-bg-color--light:      var(--catppuccin-surface0);
+    --md-default-bg-color--lighter:    var(--catppuccin-surface1);
+    --md-default-bg-color--lightest:   var(--catppuccin-surface2);
+
+    // Code color shades
+    --md-code-fg-color:                var(--catppuccin-text);
+    --md-code-bg-color:                var(--catppuccin-mantle);
+    --md-code-bg-color--light:         var(--catppuccin-surface0);
+    --md-code-bg-color--lighter:       var(--catppuccin-surface1);
+
+    // Code highlighting color shades
+    --md-code-hl-color:                var(--catppuccin-blue);
+    --md-code-hl-color--light:         hsla(#{hex2hsl(#89b4fa)}, 0.1);
+
+    // Code highlighting syntax color shades (using Catppuccin colors)
+    --md-code-hl-number-color:         var(--catppuccin-peach);
+    --md-code-hl-special-color:        var(--catppuccin-pink);
+    --md-code-hl-function-color:       var(--catppuccin-blue);
+    --md-code-hl-constant-color:       var(--catppuccin-peach);
+    --md-code-hl-keyword-color:        var(--catppuccin-mauve);
+    --md-code-hl-string-color:         var(--catppuccin-green);
+    --md-code-hl-name-color:           var(--catppuccin-lavender);
+    --md-code-hl-operator-color:       var(--catppuccin-sky);
+    --md-code-hl-punctuation-color:    var(--catppuccin-overlay2);
+    --md-code-hl-comment-color:        var(--catppuccin-overlay0);
+    --md-code-hl-generic-color:        var(--catppuccin-pink);
+    --md-code-hl-variable-color:       var(--catppuccin-text);
+
+    // Typeset color shades
+    --md-typeset-color:                var(--catppuccin-text);
+
+    // Typeset `a` color shades
+    --md-typeset-a-color:              var(--catppuccin-blue);
+
+    // Typeset `kbd` color shades
+    --md-typeset-kbd-color:            var(--catppuccin-surface2);
+    --md-typeset-kbd-accent-color:     var(--catppuccin-surface1);
+    --md-typeset-kbd-border-color:     var(--catppuccin-overlay0);
+
+    // Typeset `mark` color shades
+    --md-typeset-mark-color:           hsla(#{hex2hsl(#f9e2af)}, 0.3);
+
+    // Typeset `table` color shades
+    --md-typeset-table-color:          var(--catppuccin-surface0);
+    --md-typeset-table-color--light:   var(--catppuccin-surface1);
+
+    // Admonition color shades
+    --md-admonition-fg-color:          var(--catppuccin-text);
+    --md-admonition-bg-color:          var(--catppuccin-base);
+
+    // Footer color shades
+    --md-footer-bg-color:              var(--catppuccin-mantle);
+    --md-footer-bg-color--dark:        var(--catppuccin-crust);
+
+    // Shadow depth 1
+    --md-shadow-z1:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.2),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.1);
+
+    // Shadow depth 2
+    --md-shadow-z2:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.3),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.25);
+
+    // Shadow depth 3
+    --md-shadow-z3:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.5),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.35);
+
+    // Hide images for light mode
+    img[src$="#only-light"],
+    img[src$="#gh-light-mode-only"] {
+      display: none;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+
+  // Cappuccin Latte theme - Catppuccin's light variant
+  [data-md-color-scheme="cappuccin-latte"] {
+
+    // Indicate that the site is rendered with a light color scheme
+    color-scheme: light;
+
+    // Catppuccin Latte color palette
+    // Base colors
+    --catppuccin-rosewater: #dc8a78;
+    --catppuccin-flamingo:  #dd7878;
+    --catppuccin-pink:      #ea76cb;
+    --catppuccin-mauve:     #8839ef;
+    --catppuccin-red:       #d20f39;
+    --catppuccin-maroon:    #e64553;
+    --catppuccin-peach:     #fe640b;
+    --catppuccin-yellow:    #df8e1d;
+    --catppuccin-green:     #40a02b;
+    --catppuccin-teal:      #179299;
+    --catppuccin-sky:       #04a5e5;
+    --catppuccin-sapphire:  #209fb5;
+    --catppuccin-blue:      #1e66f5;
+    --catppuccin-lavender:  #7287fd;
+
+    // Text colors
+    --catppuccin-text:      #4c4f69;
+    --catppuccin-subtext1:  #5c5f77;
+    --catppuccin-subtext0:  #6c6f85;
+
+    // Overlay colors
+    --catppuccin-overlay2:  #7c7f93;
+    --catppuccin-overlay1:  #8c8fa1;
+    --catppuccin-overlay0:  #9ca0b0;
+
+    // Surface colors
+    --catppuccin-surface2:  #acb0be;
+    --catppuccin-surface1:  #bcc0cc;
+    --catppuccin-surface0:  #ccd0da;
+
+    // Base background colors
+    --catppuccin-base:      #eff1f5;
+    --catppuccin-mantle:    #e6e9ef;
+    --catppuccin-crust:     #dce0e8;
+
+    // Default color shades using Catppuccin Latte
+    --md-default-fg-color:             var(--catppuccin-text);
+    --md-default-fg-color--light:      var(--catppuccin-subtext1);
+    --md-default-fg-color--lighter:    var(--catppuccin-subtext0);
+    --md-default-fg-color--lightest:   var(--catppuccin-overlay2);
+    --md-default-bg-color:             var(--catppuccin-base);
+    --md-default-bg-color--light:      var(--catppuccin-surface0);
+    --md-default-bg-color--lighter:    var(--catppuccin-surface1);
+    --md-default-bg-color--lightest:   var(--catppuccin-surface2);
+
+    // Code color shades
+    --md-code-fg-color:                var(--catppuccin-text);
+    --md-code-bg-color:                var(--catppuccin-mantle);
+    --md-code-bg-color--light:         var(--catppuccin-surface0);
+    --md-code-bg-color--lighter:       var(--catppuccin-surface1);
+
+    // Code highlighting color shades
+    --md-code-hl-color:                var(--catppuccin-blue);
+    --md-code-hl-color--light:         hsla(#{hex2hsl(#1e66f5)}, 0.1);
+
+    // Code highlighting syntax color shades (using Catppuccin colors)
+    --md-code-hl-number-color:         var(--catppuccin-peach);
+    --md-code-hl-special-color:        var(--catppuccin-pink);
+    --md-code-hl-function-color:       var(--catppuccin-blue);
+    --md-code-hl-constant-color:       var(--catppuccin-peach);
+    --md-code-hl-keyword-color:        var(--catppuccin-mauve);
+    --md-code-hl-string-color:         var(--catppuccin-green);
+    --md-code-hl-name-color:           var(--catppuccin-lavender);
+    --md-code-hl-operator-color:       var(--catppuccin-sky);
+    --md-code-hl-punctuation-color:    var(--catppuccin-overlay2);
+    --md-code-hl-comment-color:        var(--catppuccin-overlay0);
+    --md-code-hl-generic-color:        var(--catppuccin-pink);
+    --md-code-hl-variable-color:       var(--catppuccin-text);
+
+    // Typeset color shades
+    --md-typeset-color:                var(--catppuccin-text);
+
+    // Typeset `a` color shades
+    --md-typeset-a-color:              var(--catppuccin-blue);
+
+    // Typeset `kbd` color shades
+    --md-typeset-kbd-color:            var(--catppuccin-surface2);
+    --md-typeset-kbd-accent-color:     var(--catppuccin-surface1);
+    --md-typeset-kbd-border-color:     var(--catppuccin-overlay0);
+
+    // Typeset `mark` color shades
+    --md-typeset-mark-color:           hsla(#{hex2hsl(#df8e1d)}, 0.3);
+
+    // Typeset `table` color shades
+    --md-typeset-table-color:          var(--catppuccin-surface0);
+    --md-typeset-table-color--light:   var(--catppuccin-surface1);
+
+    // Admonition color shades
+    --md-admonition-fg-color:          var(--catppuccin-text);
+    --md-admonition-bg-color:          var(--catppuccin-base);
+
+    // Footer color shades
+    --md-footer-bg-color:              var(--catppuccin-mantle);
+    --md-footer-bg-color--dark:        var(--catppuccin-crust);
+
+    // Shadow depth 1
+    --md-shadow-z1:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.05),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.1);
+
+    // Shadow depth 2
+    --md-shadow-z2:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.1),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.15);
+
+    // Shadow depth 3
+    --md-shadow-z3:
+      0 #{px2rem(4px)} #{px2rem(10px)} hsla(0, 0%, 0%, 0.15),
+      0 0              #{px2rem(1px)}  hsla(0, 0%, 0%, 0.2);
+
+    // Hide images for dark mode
+    img[src$="#only-dark"],
+    img[src$="#gh-dark-mode-only"] {
+      display: none;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+
   // Switching in progress - disable all transitions temporarily
   [data-md-color-switching] *,
   [data-md-color-switching] *::before,
