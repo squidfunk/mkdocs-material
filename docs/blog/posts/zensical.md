@@ -171,7 +171,7 @@ Zensical Spark, [our offering for professionals], is the result of countless cal
 
 - You can influence the future development of Zensical by participating in [our new approach] to Open Source software development, helping us to build exactly what you need.
 
-_Let's talk! If you're working in a professional context, reach out to contact@zensical.org to schedule a call and learn how Zensical Spark enables your team to transition to Zensical smoothly and have a voice in its continued development._
+_Let's talk! If you're working in a professional context, reach out to hello@zensical.org to schedule a call and learn how Zensical Spark enables your team to transition to Zensical smoothly and have a voice in its continued development._
 
 _You should also consider joining the [waiting list], since seats are limited._
 
@@ -212,7 +212,7 @@ Material for MkDocs grew organically in a pot that eventually became too small. 
 
     We want to be transparent about the risks of staying on Material for MkDocs. With MkDocs unmaintained and facing fundamental supply chain concerns, we cannot guarantee Material for MkDocs will continue working reliably in the future. We're aware that transitioning takes time, which is why we commit to support it at least for the next 12 months, fixing critical bugs and security vulnerabilities as needed, but the path forward is with Zensical.
 
-    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at contact@zensical.org.
+    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at hello@zensical.org.
 
 ### Where we'll be in 12 months
 
@@ -224,7 +224,7 @@ You can [install Zensical now], and build your existing Material for MkDocs proj
 
 ### Connect with us
 
-If you have questions we haven't addressed, please reach out to us at contact@zensical.org. We're currently collecting questions from the community about Zensical, and will address them in an FAQ section as part of our documentation in the coming weeks.
+If you have questions we haven't addressed, please reach out to us at hello@zensical.org. We're currently collecting questions from the community about Zensical, and will address them in an FAQ section as part of our documentation in the coming weeks.
 
 We're incredibly thankful that you have been part of our journey so far. With Zensical, we're embarking on a new chapter, and we couldn't be more excited to have you with us.
 

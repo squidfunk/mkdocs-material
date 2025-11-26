@@ -149,7 +149,7 @@ Entering [maintenance mode], we're preparing Material for MkDocs for sunsetting.
 
     We want to be transparent about the risks of staying on Material for MkDocs. With [MkDocs unmaintained] and facing fundamental supply chain concerns, we cannot guarantee Material for MkDocs will continue working reliably in the future. We're aware that transitioning takes time, which is why we commit to support it at least for the next 12 months, fixing critical bugs and security vulnerabilities as needed, but the path forward is with Zensical.
 
-    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at contact@zensical.org.
+    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at hello@zensical.org.
 
   [MkDocs unmaintained]: https://github.com/squidfunk/mkdocs-material/discussions/8461
 
@@ -185,7 +185,7 @@ to ensure it evolves to meet the needs of organizations building complex, enterp
 
 [Zensical Spark] is a collaborative space where professional users have a direct voice in shaping Zensical's future. Through a [structured design process] and together with our Zensical Spark members, we identify opportunities, validate proposals, and define priorities – turning their real-world documentation challenges into features that benefit the entire community.
 
-Reach out at contact@zensical.org to schedule a call to learn more about Zensical Spark, discuss your organization's needs, and how it helps us to make Zensical sustainable.
+Reach out at hello@zensical.org to schedule a call to learn more about Zensical Spark, discuss your organization's needs, and how it helps us to make Zensical sustainable.
 
   [Zensical Spark]: https://zensical.org/spark/
   [structured design process]: https://zensical.org/spark/methodology/#our-approach
