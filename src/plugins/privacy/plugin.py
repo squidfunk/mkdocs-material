@@ -70,8 +70,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         self.assets = Files([])
         self.assets_done: list[File] = []
         self.assets_expr_map = {
-            ".css": r"url\(\s*([\"']?)(?P<url>http?[^)'\"]+)\1\s*\)",
-            ".js": r"[\"'](?P<url>http[^\"']+\.(?:css|js(?:on)?))[\"']",
+            ".css": r"url\(\s*([\"']?)(?P<url>(?:https?:)?//[^)'\"]+)\1\s*\)",
+            ".js": r"[\"'](?P<url>(?:https?:)?//[^\"']+\.(?:css|js(?:on)?))[\"']",
             **self.config.assets_expr_map
         }
 
@@ -156,7 +156,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Find all external images and download them if not excluded
         for match in re.findall(
-            r"<img[^>]+src=['\"]?http[^>]+>",
+            r"<img[^>]+src=['\"]?(?:https?:)?//[^>]+>",
             html, flags = re.I | re.M
         ):
             el = self._parse_fragment(match)
@@ -407,7 +407,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Find and replace all external asset URLs in current page
         return re.sub(
-            r"<(?:(?:a|link|image)[^>]+href|(?:script|img)[^>]+src)=['\"]?http[^>]+>",
+            r"<(?:(?:a|link|image)[^>]+href|(?:script|img)[^>]+src)=['\"]?(?:https?:)?//[^>]+>",
             replace, output, flags = re.I | re.M
         )
 
