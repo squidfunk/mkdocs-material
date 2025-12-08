@@ -188,7 +188,7 @@ to ensure it evolves to meet the needs of organizations building complex, enterp
 Reach out at hello@zensical.org to schedule a call to learn more about Zensical Spark, discuss your organization's needs, and how it helps us to make Zensical sustainable.
 
   [Zensical Spark]: https://zensical.org/spark/
-  [structured design process]: https://zensical.org/spark/methodology/#our-approach
+  [structured design process]: https://zensical.org/docs/community/how-we-work/
 
 ### Our commitment to you
 

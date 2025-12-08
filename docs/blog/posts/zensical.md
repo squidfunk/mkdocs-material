@@ -176,7 +176,7 @@ _Let's talk! If you're working in a professional context, reach out to hello@zen
 _You should also consider joining the [waiting list], since seats are limited._
 
   [our offering for professionals]: https://zensical.org/spark/
-  [our new approach]: https://zensical.org/spark/methodology/
+  [our new approach]: https://zensical.org/docs/community/how-we-work/
   [waiting list]: https://zensical.org/spark/join/
 
 ## We're growing our team
