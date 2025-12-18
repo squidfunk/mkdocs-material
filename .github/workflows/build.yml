@@ -114,9 +114,9 @@ jobs:
       - name: Build Python package
         run: python -m build
 
-      # - name: Publish Python package
-      #   if: github.event_name == 'release'
-      #   uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish Python package
+        if: github.event_name == 'release'
+        uses: pypa/gh-action-pypi-publish@release/v1
 
   docker:
     runs-on: ubuntu-latest
