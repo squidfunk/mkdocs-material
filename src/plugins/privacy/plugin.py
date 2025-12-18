@@ -479,6 +479,13 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         if not os.path.isfile(file.abs_src_path) or not self.config.cache:
             path = file.abs_src_path
 
+            # In case the URL is a protocol-relative URL that starts with `//`,
+            # we prepend `http:` as a scheme, assuming that all external assets
+            # are available via HTTP. If we'd require `https:`, some external
+            # assets might not be fetchable.
+            if file.url.startswith("//"):
+                file.url = f"http:{file.url}"
+
             # Download external asset
             log.info(f"Downloading external file: {file.url}")
             try:
