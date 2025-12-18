@@ -1,3 +1,9 @@
+mkdocs-material-9.7.1 (2025-12-18)
+
+  * Updated requests to 2.30+ to mitigate CVE in urllib
+  * Fixed privacy plugin not picking up protocol-relative URLs
+  * Fixed #8542: false positives and negatives captured in privacy plugin
+
 mkdocs-material-9.7.0 (2025-11-11)
 
 ⚠️ Material for MkDocs is now in maintenance mode
@@ -20,24 +26,24 @@ provided as-is without ongoing support.
 
 Changes:
 
-- Added support for pinned blog posts and author profiles
-- Added support for customizing pagination for blog index pages
-- Added support for customizing blog category sort order
-- Added support for staying on page when switching languages
-- Added support for disabling tags in table of contents
-- Added support for nested tags and shadow tags
-- Added support for footnote tooltips
-- Added support for instant previews
-- Added support for instant prefetching
-- Added support for custom social card layouts
-- Added support for custom social card background images
-- Added support for selectable rangs in code blocks
-- Added support for custom selectors for code annotations
-- Added support for configurable log level in privacy plugin
-- Added support for processing of external links in privacy plugin
-- Added support for automatic image optimization via optimize plugin
-- Added support for navigation paths (breadcrumbs)
-- Fixed #8519: Vector accents do not render when using KaTeX
+  * Added support for pinned blog posts and author profiles
+  * Added support for customizing pagination for blog index pages
+  * Added support for customizing blog category sort order
+  * Added support for staying on page when switching languages
+  * Added support for disabling tags in table of contents
+  * Added support for nested tags and shadow tags
+  * Added support for footnote tooltips
+  * Added support for instant previews
+  * Added support for instant prefetching
+  * Added support for custom social card layouts
+  * Added support for custom social card background images
+  * Added support for selectable rangs in code blocks
+  * Added support for custom selectors for code annotations
+  * Added support for configurable log level in privacy plugin
+  * Added support for processing of external links in privacy plugin
+  * Added support for automatic image optimization via optimize plugin
+  * Added support for navigation paths (breadcrumbs)
+  * Fixed #8519: Vector accents do not render when using KaTeX
 
 mkdocs-material-9.6.23 (2025-11-01)
 

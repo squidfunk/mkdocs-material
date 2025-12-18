@@ -2,6 +2,12 @@
 
 ## Material for MkDocs
 
+### 9.7.1 <small>December 18, 2025</small> { id="9.7.1" }
+
+- Updated requests to 2.30+ to mitigate CVE in urllib
+- Fixed privacy plugin not picking up protocol-relative URLs
+- Fixed #8542: false positives and negatives captured in privacy plugin
+
 ### 9.7.0 <small>November 11, 2025</small> { id="9.7.0" }
 
 !!! warning "Material for MkDocs is now in maintenance mode"
