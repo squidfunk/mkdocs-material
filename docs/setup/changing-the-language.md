@@ -16,7 +16,7 @@ You can set the site language in `mkdocs.yml` with:
 
 ``` yaml
 theme:
-  language: en # (1)!
+  language: ar # (1)!
 ```
 
 1.  HTML5 only allows to set a [single language per document], which is why
