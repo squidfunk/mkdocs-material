@@ -135,9 +135,8 @@ pages:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
       - ~/.cache/ # (1)!
-  artifacts:
-    paths:
-      - public
+  pages:
+    publish: public
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 ```
