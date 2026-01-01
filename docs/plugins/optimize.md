@@ -103,6 +103,8 @@ and mentions some alternative environments.
   [built-in plugins]: index.md
   [image processing]: requirements/image-processing.md
 
+And, ensure that Material for MkDocs version is at least the minimum listed above.
+
 ### General
 
 The following settings are available:
