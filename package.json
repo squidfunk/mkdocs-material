@@ -89,7 +89,7 @@
     "postcss-inline-svg": "^6.0.0",
     "postcss-logical": "5.0.4",
     "postcss-pseudo-is": "^0.3.0",
-    "preact": "^10.28.0",
+    "preact": "^10.28.2",
     "rimraf": "^6.1.2",
     "sass": "^1.97.0",
     "simple-icons": "^16.2.0",
