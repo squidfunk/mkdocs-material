@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -25,12 +25,20 @@
  * ------------------------------------------------------------------------- */
 
 /**
+ * Search field
+ */
+export interface SearchField {
+  boost?: number                       /* Field boost */
+}
+
+/**
  * Search configuration
  */
 export interface SearchConfig {
   lang: string[]                       /* Search languages */
   separator: string                    /* Search separator */
   pipeline: SearchPipelineFn[]         /* Search pipeline */
+  fields: Record<string, SearchField>  /* Search field */
 }
 
 /**

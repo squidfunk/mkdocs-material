@@ -143,8 +143,7 @@ This configuration enables the plugin only during continuous integration (CI).
 
 #### <!-- md:setting config.concurrency -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default available CPUs - 1 -->
 
 With more CPUs available, the plugin can do more work in parallel, and thus
@@ -174,8 +173,7 @@ The following settings are available for caching:
 
 #### <!-- md:setting config.cache -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to bypass the cache, in order to
@@ -220,8 +218,7 @@ The following settings are available for logging:
 
 #### <!-- md:setting config.log -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.40.2 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should only log errors when
@@ -238,8 +235,7 @@ plugins:
 
 #### <!-- md:setting config.log_level -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.40.2 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `warn` -->
 
 Use this setting to control the log level that the plugin should employ when
@@ -323,8 +319,7 @@ This configuration stores the generated images at `my/custom/dir` in the
 
 #### <!-- md:setting config.cards_layout_dir -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `layouts` -->
 
 If you want to build a [custom social card layout][custom layouts], use this
@@ -360,8 +355,7 @@ The provided path is resolved from the root directory.
 
 #### <!-- md:setting config.cards_layout -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `default` -->
 
 The plugin ships a growing list of [`default` layouts][default layouts] for
@@ -434,8 +428,7 @@ defining which parts of your layout can be parametrized. The [`default` layouts]
 
 #### <!-- md:setting config.cards_include -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.35.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to enable social card generation for subsections of your
@@ -457,8 +450,7 @@ contained in the `blog` folder and its subfolders inside the [`docs` directory]
 
 #### <!-- md:setting config.cards_exclude -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.35.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to disable social card generation for subsections of your
@@ -488,8 +480,7 @@ The following settings are available for debugging:
 
 #### <!-- md:setting config.debug -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to enable a special mode for debugging your layout, which
@@ -507,8 +498,7 @@ plugins:
 
 #### <!-- md:setting config.debug_on_build -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.34.1 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 By default, the plugin automatically disables [`debug`][config.debug] mode when
@@ -528,8 +518,7 @@ be a safety net.
 
 #### <!-- md:setting config.debug_grid -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 When [`debug`][config.debug] mode is enabled, this setting specifies whether a
@@ -546,8 +535,7 @@ plugins:
 
 #### <!-- md:setting config.debug_grid_step -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `32` -->
 
 Use this setting to specify the step size of the dot grid in pixels, if enabled,
@@ -564,8 +552,7 @@ plugins:
 
 #### <!-- md:setting config.debug_color -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `grey` -->
 
 Use this setting to specify the color of the outlines that are added to each
@@ -600,8 +587,7 @@ The following properties are available:
 
 #### <!-- md:setting meta.social.cards -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:default none -->
 
@@ -622,8 +608,7 @@ social:
 
 #### <!-- md:setting meta.social.cards_layout -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:default none -->
 <!-- md:flag experimental -->
@@ -645,8 +630,7 @@ social:
 
 #### <!-- md:setting meta.social.cards_layout_options -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:default none -->
 
@@ -668,6 +652,8 @@ social:
 Setting an option to `#!yaml null` resets the option.
 
 ### Layouts
+
+<!-- md:version 9.7.0 -->
 
 While it is possible and simple to build [custom layouts], the plugin ships
 several predefined layouts, all of which are prefixed with `default`. The
@@ -868,8 +854,7 @@ plugins:
 
 #### <!-- md:setting option.background_image -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.33.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this option to define a background image for the generated social card. Note
@@ -982,8 +967,7 @@ no further configuration needed.
 
 #### <!-- md:setting option.font_variant -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.53.3 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this option to change the font variant used to generate the social card.
@@ -1005,8 +989,7 @@ plugin is instructed to use combinations like `Condensed Regular` or
 
 #### <!-- md:setting option.logo -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.40.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 Use this option to change the logo that is used in the generated social card.
@@ -1029,8 +1012,7 @@ The provided path is resolved from the root directory.
 
 #### <!-- md:setting option.title -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.40.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 Use this option to change the title of the generated social card. This overrides
@@ -1050,8 +1032,7 @@ plugins:
 
 #### <!-- md:setting option.description -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.40.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 Use this option to change the description of the generated social card. This

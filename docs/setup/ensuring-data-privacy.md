@@ -170,7 +170,7 @@ For a list of all settings, please consult the [plugin documentation].
     when you want to host assets like images outside of your git repository
     in another location to keep them fresh and your repository lean.
 
-    Additionally, as of <!-- md:version insiders-4.30.0 -->, the
+    Additionally, as of <!-- md:version 9.7.0 -->, the
     built-in privacy plugin was entirely rewritten and now works perfectly
     with the [built-in optimize plugin], which means that external assets
     can be passed through the same optimization pipeline as the rest of your
@@ -205,6 +205,7 @@ For a list of all settings, please consult the [plugin documentation].
   [regular font]: changing-the-fonts.md#regular-font
   [example]: #example
   [built-in optimize plugin]: ../plugins/optimize.md
+  [technical limitations]: ../plugins/privacy.md#limitations
 
 ??? example "Expand to inspect example"
 
@@ -277,24 +278,6 @@ For a list of all settings, please consult the [plugin documentation].
 
   [built-in privacy plugin]: ../plugins/privacy.md
   [preconnect]: https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch
-
-#### Advanced settings
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.50.0 -->
-
-The following advanced settings are currently reserved to our [sponsors]
-[Insiders]. They are entirely optional, and don't affect the functionality of
-the blog, but can be helpful for customizations:
-
-- [`log`][config.log]
-- [`log_level`][config.log_level]
-
-We'll add more settings here, as we discover new use cases.
-
-  [Insiders]: ../insiders/index.md
-  [config.log]: ../plugins/privacy.md#config.log
-  [config.log_level]: ../plugins/privacy.md#config.log_level
 
 ## Customization
 

@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -22,6 +22,13 @@
 
 // ----------------------------------------------------------------------------
 // Rules
+// ----------------------------------------------------------------------------
+
+// Post variables
+:root {
+  --md-post-pin-icon: svg-load("material/pin.svg");
+}
+
 // ----------------------------------------------------------------------------
 
 // Post
@@ -119,6 +126,30 @@
 
 // ----------------------------------------------------------------------------
 
+// Post is pinned
+.md-pin {
+  padding: px2rem(4px);
+  margin-top: px2rem(-1px);
+  background: var(--md-default-fg-color--lightest);
+  border-radius: px2rem(20px);
+
+  // Pin icon
+  &::after {
+    display: block;
+    width: px2rem(12px);
+    height: px2rem(12px);
+    margin: 0 auto;
+    content: "";
+    background-color: currentcolor;
+    mask-image: var(--md-post-pin-icon);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+}
+
+// ----------------------------------------------------------------------------
+
 // Post author profile
 .md-profile {
   display: flex;
@@ -147,6 +178,7 @@
 
   // Content wrapper
   > .md-content__inner {
+    flex-grow: 1;
     min-width: 0;
 
     // [screen +]: Adjust spacing between content area and sidebars

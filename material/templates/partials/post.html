@@ -41,6 +41,9 @@
             {% endif %}
           </li>
         {% endif %}
+        {% if post.config.pin %}
+          <span class="md-pin"></span>
+        {% endif %}
       </ul>
       {% if post.config.draft %}
         <span class="md-draft">
@@ -57,6 +60,9 @@
           {{ lang.t("blog.continue") }}
         </a>
       </nav>
+    {% endif %}
+    {% if post.config.pin %}
+      <hr>
     {% endif %}
   </div>
 </article>

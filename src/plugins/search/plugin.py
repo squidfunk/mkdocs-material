@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -21,14 +21,16 @@
 import json
 import logging
 import os
-import regex as re
+import re
+from backrefs import bre
 
 from html import escape
 from html.parser import HTMLParser
 from mkdocs import utils
+from mkdocs.config.config_options import SubConfig
 from mkdocs.plugins import BasePlugin
 
-from .config import SearchConfig
+from .config import SearchConfig, SearchFieldConfig
 
 try:
     import jieba
@@ -79,6 +81,19 @@ class SearchPlugin(BasePlugin[SearchConfig]):
             self.config.pipeline = list(filter(len, re.split(
                 r"\s*,\s*", self._translate(config, "search.config.pipeline")
             )))
+
+        # Validate field configuration
+        validator = SubConfig(SearchFieldConfig)
+        for config in self.config.fields.values():
+            validator.run_validation(config)
+
+        # Merge with default fields
+        if "title" not in self.config.fields:
+            self.config.fields["title"] = { "boost": 1e3 }
+        if "text" not in self.config.fields:
+            self.config.fields["text"] = { "boost": 1e0 }
+        if "tags" not in self.config.fields:
+            self.config.fields["tags"] = { "boost": 1e6 }
 
         # Initialize search index
         self.search_index = SearchIndex(**self.config)
@@ -215,7 +230,7 @@ class SearchIndex:
             entry["tags"] = []
             for name in tags:
                 if name and isinstance(name, (str, int, float, bool)):
-                    entry["tags"].append(name)
+                    entry["tags"].append(str(name))
 
         # Set document boost
         search = page.meta.get("search") or {}
@@ -229,7 +244,7 @@ class SearchIndex:
     def generate_search_index(self, prev):
         config = {
             key: self.config[key]
-                for key in ["lang", "separator", "pipeline"]
+                for key in ["lang", "separator", "pipeline", "fields"]
         }
 
         # Hack: if we're running under dirty reload, the search index will only
@@ -285,7 +300,7 @@ class SearchIndex:
 
     # Find and segment Chinese characters in string
     def _segment_chinese(self, data):
-        expr = re.compile(r"(\p{IsHan}+)", re.UNICODE)
+        expr = bre.compile(r"(\p{script: Han}+)", bre.UNICODE)
 
         # Replace callback
         def replace(match):

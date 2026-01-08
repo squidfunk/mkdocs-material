@@ -2,6 +2,307 @@
 
 ## Material for MkDocs
 
+### 9.7.1 <small>December 18, 2025</small> { id="9.7.1" }
+
+- Updated requests to 2.30+ to mitigate CVE in urllib
+- Fixed privacy plugin not picking up protocol-relative URLs
+- Fixed #8542: false positives and negatives captured in privacy plugin
+
+### 9.7.0 <small>November 11, 2025</small> { id="9.7.0" }
+
+!!! warning "Material for MkDocs is now in maintenance mode"
+
+    This is the last release of Material for MkDocs that will receive new features.
+    Going forward, the Material for MkDocs team focuses on [Zensical], a next-gen
+    static site generator built from first principles. We will provide critical
+    bug fixes and security updates for Material for MkDocs for 12 months at least.
+
+    [Read the full announcement on our blog]
+
+This release includes all features that were previously exclusive to the
+Insiders edition. These features are now freely available to everyone.
+
+__Note on deprecated plugins__: The [projects] and [typeset] plugins are
+included in this release, but must be considered deprecated. Both plugins
+proved unsustainable to maintain and represent architectural dead ends. They
+are provided as-is without ongoing support.
+
+__Changes__:
+
+- Added support for projects plugin (for compat, now deprecated)
+- Added support for typeset plugin (for compat, now deprecated)
+- Added support for pinned blog posts and author profiles
+- Added support for customizing pagination for blog index pages
+- Added support for customizing blog category sort order
+- Added support for staying on page when switching languages
+- Added support for disabling tags in table of contents
+- Added support for nested tags and shadow tags
+- Added support for footnote tooltips
+- Added support for instant previews
+- Added support for instant prefetching
+- Added support for custom social card layouts
+- Added support for custom social card background images
+- Added support for selectable rangs in code blocks
+- Added support for custom selectors for code annotations
+- Added support for configurable log level in privacy plugin
+- Added support for processing of external links in privacy plugin
+- Added support for automatic image optimization via optimize plugin
+- Added support for navigation paths (breadcrumbs)
+- Fixed #8519: Vector accents do not render when using KaTeX
+
+  [Zensical]: https://zensical.org
+  [Read the full announcement on our blog]: ../blog/posts/zensical.md
+  [projects]: ../plugins/projects.md
+  [typeset]: ../plugins/typeset.md
+
+### 9.6.23 <small>November 1, 2025</small> { id="9.6.23" }
+
+- Updated Burmese translation
+
+### 9.6.22 <small>October 15, 2025</small> { id="9.6.22" }
+
+- Updated Georgian translation
+
+### 9.6.21 <small>September 30, 2025</small> { id="9.6.21" }
+
+- Updated Serbian translations
+- Fixed #8458: Temporary pin of click dependency
+
+### 9.6.20 <small>September 15, 2025</small> { id="9.6.20" }
+
+- Fixed #8446: Deprecation warning as of Python 3.14 in Emoji extension
+- Fixed #8440: `&` character not escaped in search highlighting
+- Fixed #8439: FontAwesome icons color not set in social cards (regression)
+
+### 9.6.19 <small>September 7, 2025</small> { id="9.6.19" }
+
+- Added support for Python 3.14
+- Updated Bahasa Malaysia translations
+
+### 9.6.18 <small>August 22, 2025</small> { id="9.6.18" }
+
+- Updated Azerbaijani translations
+- Fixed last compat issues with [minijinja], now 100% compatible
+
+### 9.6.17 <small>August 15, 2025</small> { id="9.6.17" }
+
+- Fixed #8396: Videos do not autoplay when inside a content tab
+- Fixed #8394: Stroke width not effective in Mermaid.js diagrams
+- Fixed disappearing version selector when hiding page title
+
+### 9.6.16 <small>July 26, 2025</small> { id="9.6.16" }
+
+- Fixed #8349: Info plugin doesn't correctly detect virtualenv in some cases
+- Fixed #8334: Find-in-page detects matches in hidden search result list
+
+### 9.6.15 <small>July 1, 2025</small> { id="9.6.15" }
+
+- Updated Mongolian translations
+- Improved semantic markup of "edit this page" button
+- Improved info plugin virtual environment resolution
+- Fixed #8291: Large font size setting throws of breakpoints in JavaScript
+
+### 9.6.14 <small>May 13, 2025</small> { id="9.6.14" }
+
+- Fixed #8215: Social plugin crashes when CairoSVG is updated to 2.8
+
+### 9.6.13 <small>May 10, 2025</small> { id="9.6.13" }
+
+- Fixed #8204: Annotations showing list markers in print view
+- Fixed #8153: Improve style of cardinality symbols in Mermaid.js ER diagrams
+
+### 9.6.12 <small>April 17, 2025</small> { id="9.6.12" }
+
+- Fixed #8158: Flip footnote back reference icon for right-to-left languages
+
+### 9.6.11 <small>April 1, 2025</small> { id="9.6.11" }
+
+- Updated Docker image to latest Alpine Linux
+- Bump required Jinja version to 3.1
+- Fixed #8133: Jinja filter `items` not available (9.6.10 regression)
+- Fixed #8128: Search plugin not entirely disabled via enabled setting
+
+### 9.6.10 <small>March 30, 2025</small> { id="9.6.10" }
+
+This version is a pure refactoring release, and does not contain new features
+or bug fixes. It strives to improve the compatibility of our templates with
+alternative Jinja-like template engines that we're currently exploring,
+including [minijinja].
+
+Additionally, it replaces several instances of Python function invocations
+with idiomatic use of template filters. All instances where variables have
+been mutated inside templates have been replaced. Most changes have been made
+in partials, and only a few in blocks, and all of them are fully backward
+compatible, so no changes to overrides are necessary.
+
+Note that this release does not replace the Jinja template engine with
+minijinja. However, our templates are now 99% compatible with minijinja,
+which means we can explore alternative Jinja-compatible implementations.
+Additionally, immutability and removal of almost all Python function
+invocations means much more idiomatic templating.
+
+  [minijinja]: https://github.com/mitsuhiko/minijinja
+
+### 9.6.9 <small>March 17, 2025</small> { id="9.6.9" }
+
+- Updated Serbo-Croatian translations
+- Fixed #8086: Custom SVG icons containing hashes break rendering
+- Fixed #8067: Drawer has gap on right side in Firefox on some OSs
+
+### 9.6.8 <small>March 13, 2025</small> { id="9.6.8" }
+
+- Added Welsh translations
+- Fixed #8076: Privacy plugin crashes if HTTP download fails
+
+### 9.6.7 <small>March 3, 2025</small> { id="9.6.7" }
+
+- Fixed #8056: Error in backrefs implementation (9.6.6 regression)
+- Fixed #8054: Unescaped quotes in ARIA labels of table of contents
+
+### 9.6.6 <small>March 1, 2025</small> { id="9.6.6" }
+
+- Fixed #8040: Privacy plugin not replacing exteral assets (9.6.5 regression)
+- Fixed #8031: Replace unmaintained `regex` package in search plugin
+
+### 9.6.5 <small>February 20, 2025</small> { id="9.6.5" }
+
+- Fixed #8016: Tags listing not showing when when file name has spaces
+- Fixed #8012: Privacy plugin crashes if HTTP download fails
+
+### 9.6.4 <small>February 12, 2025</small> { id="9.6.4" }
+
+- Fixed #7985: Blog content sometimes not stretching to full width
+- Fixed #7978: Navigation rendering bug in Safari 18.3
+
+### 9.6.3 <small>February 7, 2025</small> { id="9.6.3" }
+
+- Fixed rendering of arrow heads in Mermaid.js class diagrams
+- Fixed #7960: Tags plugin crashes on numeric metadata titles
+
+### 9.6.2 <small>February 3, 2025</small> { id="9.6.2" }
+
+- Fixed #7955: Excessively long words don't break on narrow screens
+- Fixed #7947: Scope setting interferes with outdated version banner
+
+### 9.6.1 <small>January 31, 2025</small> { id="9.6.1" }
+
+- Fixed #7943: Tags plugin crashing due to merge error
+
+### 9.6.0 <small>January 31, 2025</small> { id="9.6.0" }
+
+- Added meta plugin
+- Rewrite of the tags plugin
+- Added support for allow lists in tags plugin
+- Added support for and custom sorting in tags plugin
+- Added support for related links in blog plugin
+- Added support for custom index pages in blog plugin
+- Added support for navigation subtitles
+- Fixed #7924: Anchors might require two clicks when using instant navigation
+
+### 9.5.50 <small>January 18, 2025</small> { id="9.5.50" }
+
+- Fixed #7913: Social plugin renders attribute lists in page title
+
+### 9.5.49 <small>December 16, 2024</small> { id="9.5.49" }
+
+- Adjusted title color in dark mode for all supported Mermaid.js diagrams
+- Fixed #7803: Privacy plugin crashes on generated files
+- Fixed #7781: Mermaid.js flow chart title not visible in dark mode
+
+### 9.5.48 <small>December 8, 2024</small> { id="9.5.48" }
+
+- Fixed #7774: Disabling social cards doesn't work
+
+### 9.5.47 <small>December 1, 2024</small> { id="9.5.47" }
+
+- Fixed #7750: Numeric tags break search
+- Fixed #7748: Blog plugin breaks when using future drafts (9.5.45 regression)
+
+### 9.5.46 <small>November 25, 2024</small> { id="9.5.46" }
+
+- Added support for removing `preload` hints in privacy plugin
+- Fixed #7734: Code blocks in h5 headlines are uppercased
+- Fixed #7725: Blog plugin crashing on missing timezone (9.5.45 regression)
+
+### 9.5.45 <small>November 20, 2024</small> { id="9.5.45" }
+
+- Reduced size of Docker image through multi-stage build
+- Fixed #7708: Blog plugin crashing on YAML dates with timezones
+
+### 9.5.44 <small>November 5, 2024</small> { id="9.5.44" }
+
+- Fixed #7672: Font CSS 404's when using privacy plugin (9.5.43 regression)
+
+### 9.5.43 <small>October 31, 2024</small> { id="9.5.43" }
+
+- Added support for external images in SVGs in privacy plugin
+- Fixed #7651: Privacy plugin doesn't handle quoted URLs in CSS
+
+### 9.5.42 <small>October 20, 2024</small> { id="9.5.42" }
+
+- Fixed #7625: Invalid encoding of boolean attributes in privacy plugin
+- Fixed #7624: Crash when disabling privacy plugin (9.5.41 regression)
+
+### 9.5.41 <small>October 15, 2024</small> { id="9.5.41" }
+
+- Fixed #7619: Improved tooltip on logo disappears after instant navigation
+- Fixed #7616: Race condition in built-in privacy plugin when inlining assets
+- Fixed #7615: Comments and "Was this page helpful?" visible when printing
+
+### 9.5.40 <small>October 10, 2024</small> { id="9.5.40" }
+
+- Updated Latvian translations
+- Fixed #7597: Social cards not using site name on home page
+
+### 9.5.39 <small>September 29, 2024</small> { id="9.5.39" }
+
+- Fixed #7226: not staying on page when using mike's canonical versioning
+
+### 9.5.38 <small>September 26, 2024</small> { id="9.5.38" }
+
+- Added Albanian translations
+
+### 9.5.37 <small>September 25, 2024</small> { id="9.5.37" }
+
+- Added 4th and 5th level ordered list styles
+- Fixed #7548: Tags have no spacing in search
+
+### 9.5.36 <small>September 21, 2024</small> { id="9.5.36" }
+
+- Fixed #7544: Social cards incorrectly rendering HTML entities
+- Fixed #7542: Improved support for setting custom list styles
+
+### 9.5.35 <small>September 18, 2024</small> { id="9.5.35" }
+
+- Fixed #7498: Search not showing for Vietnamese language
+
+### 9.5.34 <small>August 31, 2024</small> { id="9.5.34" }
+
+- Updated Mermaid.js to version 11 (latest)
+
+### 9.5.33 <small>August 23, 2024</small> { id="9.5.33" }
+
+- Fixed #7453: Incorrect position of tooltip when sorting table
+
+### 9.5.32 <small>August 19, 2024</small> { id="9.5.32" }
+
+- Fixed RXSS vulnerability via deep link in search results
+- Added support for fetching latest release from GitLab
+
+### 9.5.31 <small>August 2, 2024</small> { id="9.5.31" }
+
+- Fixed #7405: DockerHub missing images > 9.5.27 due to change in Alpine/APK
+
+### 9.5.30 <small>July 23, 2024</small> { id="9.5.30" }
+
+- Fixed #7380: Navigation icons disappearing on hover in Safari
+- Fixed #7367: Blog readtime computation includes SVG text content
+
+### 9.5.29 <small>July 14, 2024</small> { id="9.5.29" }
+
+- Updated Galician translations
+- Fixed #7362: Annotations in figure captions rendering incorrectly
+
 ### 9.5.28 <small>July 2, 2024</small> { id="9.5.28" }
 
 - Fixed #7313: Improved tooltips mounted in sidebar when feature is disabled
@@ -698,7 +999,7 @@ __Fixes__
 
 ### 8.5.11 <small>November 30, 2022</small> { id="8.5.11" }
 
-- Let it snow, see https://twitter.com/squidfunk/status/1597939243090788352
+- Let it snow, see https://x.com/squidfunk/status/1597939243090788352
 
 ### 8.5.10 <small>November 11, 2022</small> { id="8.5.10" }
 
@@ -946,7 +1247,7 @@ __Fixes__
 - Updated FontAwesome to v6 – [check which icons were renamed here]
 - Fixed #3545: Color palette toggle and search overlaying version selector
 
-  [check which icons were renamed here]: https://fontawesome.com/docs/web/setup/upgrade/whats-changed#icons-renamed-in-version-6
+  [check which icons were renamed here]: https://docs.fontawesome.com/v6/web/setup/upgrade/whats-changed#icons-renamed-in-version-6
 
 ### 8.1.10 <small>February 6, 2022</small> { id="8.1.10" }
 

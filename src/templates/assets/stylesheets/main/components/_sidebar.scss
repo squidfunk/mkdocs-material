@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -44,6 +44,7 @@
     // [tablet -]: Show navigation as drawer
     @include break-to-device(tablet) {
       position: fixed;
+      inset-inline-start: px2rem(-242px);
       top: 0;
       z-index: 5;
       display: block;
@@ -54,7 +55,6 @@
         transform  250ms cubic-bezier(0.4, 0, 0.2, 1),
         box-shadow 250ms;
       transform: translateX(0);
-      inset-inline-start: px2rem(-242px);
 
       // Show sidebar when drawer is active
       [data-md-toggle="drawer"]:checked ~ .md-container & {
@@ -72,8 +72,8 @@
         position: absolute;
         inset: 0;
         margin: 0;
-        scroll-snap-type: none;
         overflow: hidden;
+        scroll-snap-type: none;
       }
     }
   }
@@ -123,15 +123,19 @@
   &__scrollwrap {
     margin: 0 px2rem(4px);
     overflow-y: auto;
+    scrollbar-color: var(--md-default-fg-color--lighter) transparent;
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
-    // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
-    // to the bottom if `scroll-snap-type` is set on the initial render. For
-    // this reason, we disable scroll snapping until this is resolved (#1667).
-    // scroll-snap-type: y mandatory;
-    scrollbar-width: thin;
-    scrollbar-gutter: stable;
-    scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+
+    // [tablet landscape +]: Show sidebars
+    @include break-from-device(tablet landscape) {
+      scrollbar-gutter: stable;
+      // Hack: Chrome 81+ exhibits a strange bug, where it scrolls the container
+      // to the bottom if `scroll-snap-type` is set on the initial render. For
+      // this reason, we disable scroll snapping until this is resolved (#1667).
+      // scroll-snap-type: y mandatory;
+      scrollbar-width: thin;
+    }
 
     // Webkit scrollbar
     &::-webkit-scrollbar {

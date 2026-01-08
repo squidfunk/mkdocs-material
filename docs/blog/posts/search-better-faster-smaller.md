@@ -10,7 +10,6 @@ categories:
   - Performance
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
 ---
 
 # Search: better, faster, smaller
@@ -264,7 +263,7 @@ carefully considered:
 
   [truncated]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/assets/javascripts/templates/search/index.tsx#L90
   [search preview]: search-better-faster-smaller/search-preview.png
-  [Just the Docs]: https://pmarsceill.github.io/just-the-docs/
+  [Just the Docs]: https://just-the-docs.com
   [Docusaurus]: https://github.com/lelouch77/docusaurus-lunr-search
 
 1.   __Context-awareness__: Although whitespace doesn't work for all languages,
@@ -627,4 +626,4 @@ for MkDocs! This is the first blog article that I decided to write after a
 short [Twitter survey] made me to. You're invited to leave a comment
 to share your experiences with the new search implementation.
 
-  [Twitter survey]: https://twitter.com/squidfunk/status/1434477478823743488
+  [X survey]: https://x.com/squidfunk/status/1434477478823743488

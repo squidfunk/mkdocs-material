@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -48,6 +48,11 @@ marker {
  * Rules: flowcharts
  * ------------------------------------------------------------------------- */
 
+/* Flowchart title */
+.flowchartTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
+
 /* Flowchart node label */
 .label {
   color: var(--md-mermaid-label-fg-color);
@@ -68,7 +73,7 @@ marker {
 
 /* Flowchart edge label */
 .edgeLabel,
-.edgeLabel rect {
+.edgeLabel p {
   color: var(--md-mermaid-edge-color);
   background-color: var(--md-mermaid-label-bg-color);
   fill: var(--md-mermaid-label-bg-color);
@@ -78,7 +83,6 @@ marker {
 .edgePath .path,
 .flowchart-link {
   stroke: var(--md-mermaid-edge-color);
-  stroke-width: .05rem;
 }
 
 /* Flowchart arrow head */
@@ -112,6 +116,11 @@ g #flowchart-pointEnd {
 /* ----------------------------------------------------------------------------
  * Rules: class diagrams
  * ------------------------------------------------------------------------- */
+
+/* Class diagram title */
+.classDiagramTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* Class group node */
 g.classGroup line,
@@ -161,19 +170,15 @@ g.classGroup text {
 }
 
 /* Class extension, composition and dependency marker */
-defs #classDiagram-extensionStart,
-defs #classDiagram-extensionEnd,
-defs #classDiagram-compositionStart,
-defs #classDiagram-compositionEnd,
-defs #classDiagram-dependencyStart,
-defs #classDiagram-dependencyEnd {
+defs marker.marker.extension.class path,
+defs marker.marker.composition.class path ,
+defs marker.marker.dependency.class path  {
   fill: var(--md-mermaid-edge-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
 
 /* Class aggregation marker */
-defs #classDiagram-aggregationStart,
-defs #classDiagram-aggregationEnd {
+defs marker.marker.aggregation.class path  {
   fill: var(--md-mermaid-label-bg-color) !important;
   stroke: var(--md-mermaid-edge-color) !important;
 }
@@ -181,6 +186,11 @@ defs #classDiagram-aggregationEnd {
 /* ----------------------------------------------------------------------------
  * Rules: state diagrams
  * ------------------------------------------------------------------------- */
+
+/* State diagram title */
+.statediagramTitleText {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* State group node */
 g.stateGroup rect {
@@ -269,64 +279,33 @@ defs #statediagram-barbEnd {
  * Rules: entity-relationship diagrams
  * ------------------------------------------------------------------------- */
 
-/* Attribute box */
-.attributeBoxEven,
-.attributeBoxOdd {
-  fill: var(--md-mermaid-node-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
+/* Entity node and path - override color or markers will shine through */
+[id^=entity] rect,
+[id^=entity] path {
+  fill: var(--md-default-bg-color);
 }
 
-/* Entity node */
-.entityBox {
-  fill: var(--md-mermaid-label-bg-color);
-  stroke: var(--md-mermaid-node-fg-color);
-}
-
-/* Entity node label */
-.entityLabel {
-  font-family: var(--md-mermaid-font-family);
-  fill: var(--md-mermaid-label-fg-color);
-}
-
-/* Entity relationship label container */
-.relationshipLabelBox {
-  background-color: var(--md-mermaid-label-bg-color);
-  opacity: 1;
-  fill: var(--md-mermaid-label-bg-color);
-  fill-opacity: 1;
-}
-
-/* Entity relationship label */
-.relationshipLabel {
-  fill: var(--md-mermaid-label-fg-color);
-}
-
-/* Entity relationship line { */
+/* Entity relationship line */
 .relationshipLine {
   stroke: var(--md-mermaid-edge-color);
 }
 
 /* Entity relationship line markers */
-defs #ZERO_OR_ONE_START *,
-defs #ZERO_OR_ONE_END *,
-defs #ZERO_OR_MORE_START *,
-defs #ZERO_OR_MORE_END *,
-defs #ONLY_ONE_START *,
-defs #ONLY_ONE_END *,
-defs #ONE_OR_MORE_START *,
-defs #ONE_OR_MORE_END * {
+defs .marker.onlyOne.er *,
+defs .marker.zeroOrOne.er *,
+defs .marker.oneOrMore.er *,
+defs .marker.zeroOrMore.er * {
   stroke: var(--md-mermaid-edge-color) !important;
-}
-
-/* Entity relationship line markers */
-defs #ZERO_OR_MORE_START circle,
-defs #ZERO_OR_MORE_END circle {
-  fill: var(--md-mermaid-label-bg-color);
 }
 
 /* ----------------------------------------------------------------------------
  * Rules: sequence diagrams
  * ------------------------------------------------------------------------- */
+
+/* Sequence diagram title */
+text:not([class]):last-child {
+  fill: var(--md-mermaid-label-fg-color);
+}
 
 /* Sequence actor */
 .actor {

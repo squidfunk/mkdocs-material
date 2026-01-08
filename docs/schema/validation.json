@@ -7,6 +7,7 @@
     "omitted_files": { "$ref": "#/$defs/omitted_files" },
     "not_found": { "$ref": "#/$defs/not_found" },
     "absolute_links": { "$ref": "#/$defs/absolute_links" },
+    "anchors": { "$ref": "#/$defs/anchors" },
     "unrecognized_links": { "$ref": "#/$defs/unrecognized_links" },
     "nav": {
       "title": "validation of navigation",
@@ -42,7 +43,10 @@
     },
     "absolute_links": {
       "title": "warning level when absolute links are used",
-      "$ref": "#/$defs/warning_levels"
+      "oneOf": [
+        { "$ref": "#/$defs/warning_levels" },
+        { "enum": ["relative_to_docs"] }
+      ]
     },
     "unrecognized_links": {
       "title": "warning level when a relative link cannot be resolved to a document",

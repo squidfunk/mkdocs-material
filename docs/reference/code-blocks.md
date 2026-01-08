@@ -71,9 +71,9 @@ theme:
     ```
     ````
 
-    Note that the language shortcode which has to come first must now also be
-    prefixed by a `.`. Similarly, the copy button can also be disabled for a
-    specific code block:
+    Note that there must be a language shortcode, which has to come first and
+    must also be prefixed by a `.`. Similarly, the copy button can also be
+    disabled for a specific code block:
 
     ```` { .yaml .no-copy }
     ``` { .yaml .no-copy }
@@ -81,10 +81,12 @@ theme:
     ```
     ````
 
+    To enable or disable the copy button without syntax highlighting, you can
+    use the `.text` language shortcode, which doesn't highlight anything.
+
 ### Code selection button
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.32.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 Code blocks can include a button to allow for the selection of line ranges by
@@ -160,8 +162,7 @@ theme:
 
 #### Custom selectors
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.32.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 Normally, code annotations can only be [placed in comments], as comments can be

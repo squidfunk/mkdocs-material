@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -18,7 +18,7 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
-FROM python:3.11-alpine3.19
+FROM python:3.11-alpine3.21 AS build
 
 # Build-time flags
 ARG WITH_PLUGINS=true
@@ -33,9 +33,9 @@ WORKDIR /tmp
 # Copy files necessary for build
 COPY material material
 COPY package.json package.json
+COPY pyproject.toml pyproject.toml
 COPY README.md README.md
 COPY *requirements.txt ./
-COPY pyproject.toml pyproject.toml
 
 # Perform build and cleanup artifacts and caches
 RUN \
@@ -48,11 +48,13 @@ RUN \
     git-fast-import \
     jpeg-dev \
     openssh \
+    pngquant \
     tini \
     zlib-dev \
 && \
   apk add --no-cache --virtual .build \
     gcc \
+    g++ \
     libffi-dev \
     musl-dev \
 && \
@@ -63,6 +65,7 @@ RUN \
   if [ "${WITH_PLUGINS}" = "true" ]; then \
     pip install --no-cache-dir \
       mkdocs-material[recommended] \
+      mkdocs-material[git] \
       mkdocs-material[imaging]; \
   fi \
 && \
@@ -89,6 +92,12 @@ RUN \
   git config --system --add safe.directory /docs \
 && \
   git config --system --add safe.directory /site
+
+#  From empty image
+FROM scratch
+
+# Copy all from build
+COPY --from=build / /
 
 # Set working directory
 WORKDIR /docs

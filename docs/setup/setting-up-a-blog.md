@@ -22,6 +22,7 @@ __Check out our [blog], which is created with the new [built-in blog plugin]!__
 <!-- md:version 9.2.0 -->
 <!-- md:plugin -->
 <!-- md:flag experimental -->
+<!-- md:demo create-blog -->
 
 The built-in blog plugin adds support for building a blog from a folder of
 posts, which are annotated with dates and other structured data. First, add the
@@ -48,41 +49,7 @@ nav:
 For a list of all settings, please consult the [plugin documentation].
 
   [plugin documentation]: ../plugins/blog.md
-
-#### Advanced settings
-
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
-
-The following advanced settings are currently reserved to our [sponsors]
-[Insiders]. They are entirely optional, and don't affect the functionality of
-the blog, but can be helpful for customizations:
-
-- [`archive_pagination`][config.archive_pagination]
-- [`archive_pagination_per_page`][config.archive_pagination_per_page]
-- [`categories_sort_by`][config.categories_sort_by]
-- [`categories_sort_reverse`][config.categories_sort_reverse]
-- [`categories_pagination`][config.categories_pagination]
-- [`categories_pagination_per_page`][config.categories_pagination_per_page]
-- [`authors_profiles_pagination`][config.authors_profiles_pagination]
-- [`authors_profiles_pagination_per_page`][config.authors_profiles_pagination_per_page]
-
-We'll add more settings here, as we discover new use cases.
-
-  [Insiders]: ../insiders/index.md
   [built-in blog plugin]: ../plugins/blog.md
-  [built-in plugins]: ../insiders/getting-started.md#built-in-plugins
-  [docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
-  [start writing your first post]: #writing-your-first-post
-
-  [config.archive_pagination]: ../plugins/blog.md#config.archive_pagination
-  [config.archive_pagination_per_page]: ../plugins/blog.md#config.archive_pagination_per_page
-  [config.categories_sort_by]: ../plugins/blog.md#config.categories_sort_by
-  [config.categories_sort_reverse]: ../plugins/blog.md#config.categories_sort_reverse
-  [config.categories_pagination]: ../plugins/blog.md#config.categories_pagination
-  [config.categories_pagination_per_page]: ../plugins/blog.md#config.categories_pagination_per_page
-  [config.authors_profiles_pagination]: ../plugins/blog.md#config.authors_profiles_pagination
-  [config.authors_profiles_pagination_per_page]: ../plugins/blog.md#config.authors_profiles_pagination_per_page
 
 ### RSS
 
@@ -182,9 +149,11 @@ The following configuration options are supported:
     ```
 
 Material for MkDocs will automatically add the [necessary metadata] to your site
-which will make the RSS feed discoverable by browsers and feed readers. Note
-that the [RSS plugin][rss] comes with several other configuration options.
-For further information, see the [documentation].
+which will make the RSS feed discoverable by browsers and feed readers.
+
+The other configuration options of this extension are not officially supported
+by Material for MkDocs, which is why they may yield unexpected results. Use them
+at your own risk.
 
   [rss]: https://guts.github.io/mkdocs-rss-plugin/
   [categories]: ../plugins/blog.md#categories
@@ -192,7 +161,6 @@ For further information, see the [documentation].
   [comment system]: adding-a-comment-system.md
   [necessary metadata]: https://guts.github.io/mkdocs-rss-plugin/configuration/#integration
   [theme extension]: ../customization.md
-  [documentation]: https://guts.github.io/mkdocs-rss-plugin/configuration/
 
 ### Blog only
 
@@ -358,8 +326,7 @@ authors:
 
 #### Adding author profiles
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 If you wish to add a dedicated page for each author, you can enable author
@@ -447,8 +414,7 @@ slug: hello-world
 
 #### Adding related links
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.23.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Related links offer the perfect way to prominently add a _further reading_
@@ -461,14 +427,14 @@ to add related links to a post:
 date: 2024-01-31
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
 ---
 
 # Hello world!
 ...
 ```
 
-You can use the exact same syntax as for the [`nav`][nav] section in
+You can use the exact same syntax as for the [`nav`][mkdocs.nav] section in
 `mkdocs.yml`, which means you can set explicit titles for links, add external
 links and even use nesting:
 
@@ -477,7 +443,7 @@ links and even use nesting:
 date: 2024-01-31
 links:
   - plugins/search.md
-  - insiders/index.md#how-to-become-a-sponsor
+  - insiders/how-to-sponsor.md
   - Nested section:
     - External link: https://example.com
     - setup/setting-up-site-search.md
@@ -488,14 +454,13 @@ links:
 ```
 
 If you look closely, you'll realize that you can even use an anchor to link to
-a specific section of a document, extending the possibilities of the [`nav`][nav]
-syntax in `mkdocs.yml`. The [built-in blog plugin] resolves the anchor and sets
-the title of the anchor as a [subtitle] of the related link.
+a specific section of a document, extending the possibilities of the
+[`nav`][mkdocs.nav] syntax in `mkdocs.yml`. The [built-in blog plugin] resolves
+the anchor and sets the title of the anchor as a [subtitle] of the related link.
 
-Note that all links must be relative to [`docs_dir`][docs_dir], as is also the
-case for the [`nav`][nav] setting.
+Note that all links must be relative to [`docs_dir`][mkdocs.docs_dir], as is
+also the case for the [`nav`][mkdocs.nav] setting.
 
-  [nav]: https://www.mkdocs.org/user-guide/configuration/#nav
   [subtitle]: ../reference/index.md#setting-the-page-subtitle
 
 #### Linking from and to posts
@@ -520,10 +485,9 @@ when the site is being built. Of course, you can also reference assets from
 posts outside of the `posts` directory. The [built-in blog plugin] ensures that
 all links are correct.
 
-#### Pinning a post :material-alert-decagram:{ .mdx-pulse title="Added on February 24, 2024" }
+#### Pinning a post
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.53.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag experimental -->
 
 If you want to pin a post to the top of the index page, as well as the archive
@@ -545,10 +509,10 @@ descending order.
 
 #### Setting the reading time
 
-When [enabled], the [readtime] package is used to compute the expected reading
-time of each post, which is rendered as part of the post and post excerpt.
-Nowadays, many blogs show reading times, which is why the [built-in blog plugin]
-offers this capability as well.
+When [enabled], the reading the expected reading time of each post is computed,
+which is rendered as part of the post and post excerpt. Nowadays, many blogs
+show reading times, which is why the [built-in blog plugin] offers this
+capability as well.
 
 Sometimes, however, the computed reading time might not feel accurate, or
 result in odd and unpleasant numbers. For this reason, reading time can be
@@ -567,13 +531,19 @@ readtime: 15
 
 This will disable automatic reading time computation.
 
-  [readtime]: https://pypi.org/project/readtime/
+!!! warning "Chinese, Japanese and Korean characters"
+
+    Reading time computation currently does not take segmentation of Chinese,
+    Japanese and Korean characters into account. This means that the reading
+    time for posts in these languages may be inaccurate. We're planning on
+    adding support in the future. In the meantime, please use the `readtime`
+    front matter property to set the reading time.
+
   [enabled]: ../plugins/blog.md#config.post_readtime
 
 #### Setting defaults
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.21.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:plugin [meta][built-in meta plugin] – built-in -->
 <!-- md:flag experimental -->
 
@@ -623,9 +593,9 @@ values defined for a post, which means you can define common properties in
 ### Adding pages
 
 Besides posts, it's also possible to add static pages to your blog by listing
-the pages in the [`nav`][nav] section of `mkdocs.yml`. All generated indexes
-are included after the last specified page. For example, to add a page on the
-authors of the blog, add the following to `mkdocs.yml`:
+the pages in the [`nav`][mkdocs.nav] section of `mkdocs.yml`. All generated
+indexes are included after the last specified page. For example, to add a page
+on the authors of the blog, add the following to `mkdocs.yml`:
 
 ``` yaml
 nav:
@@ -639,8 +609,7 @@ nav:
 
 ### Custom index pages
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.24.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 If you want to add custom content to automatically generated [archive] and

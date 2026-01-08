@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -46,6 +46,8 @@
     // Code color shades
     --md-code-fg-color:                hsla(var(--md-hue), 18%, 86%, 0.82);
     --md-code-bg-color:                hsla(var(--md-hue), 15%, 18%, 1);
+    --md-code-bg-color--light:         hsla(var(--md-hue), 15%, 18%, 0.9);
+    --md-code-bg-color--lighter:       hsla(var(--md-hue), 15%, 18%, 0.54);
 
     // Code highlighting color shades
     --md-code-hl-color:                hsla(#{hex2hsl($clr-blue-a400)}, 1);

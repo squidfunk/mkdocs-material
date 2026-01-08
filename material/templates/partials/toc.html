@@ -5,7 +5,7 @@
 {% if config.mdx_configs.toc and config.mdx_configs.toc.title %}
   {% set title = config.mdx_configs.toc.title %}
 {% endif %}
-<nav class="md-nav md-nav--secondary" aria-label="{{ title }}">
+<nav class="md-nav md-nav--secondary" aria-label="{{ title | e }}">
   {% set toc = page.toc %}
   {% set first = toc | first %}
   {% if first and first.level == 1 %}

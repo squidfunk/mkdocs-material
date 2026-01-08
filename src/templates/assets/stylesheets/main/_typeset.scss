@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -75,6 +75,7 @@ kbd {
 .md-typeset {
   font-size: px2rem(16px);
   line-height: 1.6;
+  overflow-wrap: break-word;
   color-adjust: exact;
 
   // [print]: We'll use a smaller `font-size` for printing, so code examples
@@ -146,6 +147,11 @@ kbd {
   // Headline on level 5
   h5 {
     text-transform: uppercase;
+
+    // Don't uppercase code blocks
+    code {
+      text-transform: none;
+    }
   }
 
   // Horizontal separator
@@ -172,14 +178,14 @@ kbd {
 
       // Inline code block
       code {
+        color: var(--md-accent-fg-color);
         background-color: var(--md-accent-fg-color--transparent);
       }
     }
 
     // Inline code block
     code {
-      color: currentcolor;
-      transition: background-color 125ms;
+      color: var(--md-typeset-a-color);
     }
 
     // Show outline for keyboard devices
@@ -196,6 +202,7 @@ kbd {
     font-variant-ligatures: none;
     color: var(--md-code-fg-color);
     direction: ltr;
+    transition: background-color 125ms;
 
     // [print]: Wrap text and hide scollbars
     @media print {
@@ -211,6 +218,9 @@ kbd {
     background-color: var(--md-code-bg-color);
     border-radius: px2rem(2px);
     box-decoration-break: clone;
+    transition:
+      color            125ms,
+      background-color 125ms;
 
     // Hide outline for pointer devices
     &:not(.focus-visible) {
@@ -233,11 +243,11 @@ kbd {
       overflow: auto;
       word-break: normal;
       touch-action: auto;
+      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+      scrollbar-width: thin;
       outline-color: var(--md-accent-fg-color);
       box-shadow: none;
       box-decoration-break: slice;
-      scrollbar-width: thin;
-      scrollbar-color: var(--md-default-fg-color--lighter) transparent;
 
       // Code block on hover
       &:hover {
@@ -293,6 +303,11 @@ kbd {
     border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
   }
 
+  // Instant previews
+  [data-preview] {
+    border-bottom: px2rem(1px) dotted var(--md-default-fg-color--light);
+  }
+
   // Small text
   small {
     opacity: 0.75;
@@ -315,6 +330,12 @@ kbd {
   // Unordered list
   ul {
     list-style-type: disc;
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert-layer;
+    }
   }
 
   // Unordered and ordered list
@@ -328,14 +349,30 @@ kbd {
       display: flow-root;
     }
 
-    // Nested ordered list
+    // 2nd layer nested ordered list
     ol {
       list-style-type: lower-alpha;
 
-      // Triply nested ordered list
+      // 3rd layer nested ordered list
       ol {
         list-style-type: lower-roman;
+
+        // 4th layer nested ordered list
+        ol {
+          list-style-type: upper-alpha;
+
+          // 5th layer nested ordered list
+          ol {
+            list-style-type: upper-roman;
+          }
+        }
       }
+    }
+
+    // Hack: allow to override `list-style-type` via `type`, without breaking
+    // compatibility for explicitly setting it in CSS - see https://t.ly/izJyH
+    &[type] {
+      list-style-type: revert-layer;
     }
 
     // List element
@@ -515,10 +552,10 @@ kbd {
       margin-inline-start: 0.5em;
       vertical-align: text-bottom;
       content: "";
-      transition: background-color 125ms;
       mask-image: var(--md-typeset-table-sort-icon);
       mask-repeat: no-repeat;
       mask-size: contain;
+      transition: background-color 125ms;
     }
 
     // Show sort icon on hover

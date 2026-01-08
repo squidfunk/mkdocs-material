@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -43,6 +43,7 @@ import {
   withLatestFrom
 } from "rxjs"
 
+import { feature } from "~/_"
 import {
   Viewport,
   getElement,
@@ -54,6 +55,7 @@ import {
 import { Component } from "../_"
 import { Header } from "../header"
 import { Main } from "../main"
+import { mountInlineTooltip2 } from "../tooltip2"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -216,6 +218,15 @@ export function mountSidebar(
           const nav = getElement(`[aria-labelledby="${label.id}"]`)
           nav.setAttribute("aria-expanded", `${input.checked}`)
         })
+
+    // Mount abbreviation tooltips
+    if (feature("content.tooltips"))
+      from(getElements("abbr[title]", el))
+        .pipe(
+          mergeMap(child => mountInlineTooltip2(child, { viewport$ })),
+          takeUntil(done$)
+        )
+          .subscribe()
 
     /* Create and return component */
     return watchSidebar(el, options)

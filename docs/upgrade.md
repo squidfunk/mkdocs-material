@@ -146,7 +146,7 @@ viewports]:
     ```
 
   [Tabbed]: setup/extensions/python-markdown-extensions.md#tabbed
-  [better behavior on mobile viewports]: https://twitter.com/squidfunk/status/1424740370596958214
+  [better behavior on mobile viewports]: https://x.com/squidfunk/status/1424740370596958214
 
 #### `pymdownx.superfences`
 

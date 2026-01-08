@@ -44,6 +44,11 @@
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#edit_uri",
       "type": "string"
     },
+    "edit_uri_template": {
+      "title": "More flexible variant of edit_uri",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#edit_uri_template",
+      "type": "string"
+    },
     "copyright": {
       "title": "Copyright, used in footer",
       "markdownDescription": "https://squidfunk.github.io/mkdocs-material/setup/setting-up-the-footer/#copyright-notice",
@@ -159,6 +164,11 @@
     "exclude_docs": {
       "title": "Pattern to declare files to exclude from build",
       "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#exclude_docs",
+      "type": "string"
+    },
+    "draft_docs": {
+      "title": "Pattern to declare draft documents",
+      "markdownDescription": "https://www.mkdocs.org/user-guide/configuration/#draft_docs",
       "type": "string"
     },
     "not_in_nav": {

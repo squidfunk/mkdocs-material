@@ -1,6 +1,6 @@
 # Custom cards
 
-The Insiders Edition allows you to define custom layouts for your social cards
+The social plugin allows you to define custom layouts for your social cards
 to suit your specific needs if the configuration options are not enough.
 For example, you may want to define a social card to advertise a new release
 of your product. It should have an icon indicating a launch announcement as
@@ -12,7 +12,7 @@ You can either design a custom layout from scratch or use an existing layout
 as the basis that you add to or otherwise modify. In this tutorial, you will
 use the default layout as the basis.
 
-!!! example "Copy default layout to customize <!-- md:sponsors -->"
+!!! example "Copy default layout to customize"
 
     Copy the default social card layout from your installation of Material
     for MkDocs to a new directory `layouts`. The instructions below assume you
@@ -53,7 +53,7 @@ assumes you have a changelog page with information about each release.
 Add the version number of the latest version to the page header (so it does
 not need to be parsed out of the Markdown content):
 
-!!! example "Defining the release data <!-- md:sponsors -->"
+!!! example "Defining the release data"
 
     Create a page `docs/changelog.md` with the following content:
 

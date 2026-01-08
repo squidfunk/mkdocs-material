@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -280,8 +280,15 @@ export function mountContentTabs(
     /* Pause media (audio, video) on switch - see https://bit.ly/3Bk6cel */
     push$.pipe(takeUntil(done$))
       .subscribe(() => {
-        for (const media of getElements<HTMLAudioElement>("audio, video", el))
-          media.pause()
+        // If the video or audio is visible, and has autoplay enabled, it will
+        // continue playing. If it's not visible, it is paused in any case
+        for (const media of getElements<HTMLAudioElement>("audio, video", el)) {
+          if (media.offsetWidth && media.autoplay) {
+            media.play().catch(() => {}) // Just ignore errors
+          } else {
+            media.pause()
+          }
+        }
       })
 
     /* Create and return component */

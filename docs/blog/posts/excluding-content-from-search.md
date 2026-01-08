@@ -9,7 +9,6 @@ categories:
 links:
   - blog/posts/search-better-faster-smaller.md
   - setup/setting-up-site-search.md#search-exclusion
-  - insiders/index.md#how-to-become-a-sponsor
 ---
 
 # Excluding content from search

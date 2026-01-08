@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -29,7 +29,9 @@ import requests
 import sys
 
 from colorama import Fore, Style
-from concurrent.futures import Future, ThreadPoolExecutor, wait
+from concurrent.futures import Future, wait
+from concurrent.futures.thread import ThreadPoolExecutor
+from fnmatch import fnmatch
 from hashlib import sha1
 from mkdocs.config.config_options import ExtraScriptValue
 from mkdocs.config.defaults import MkDocsConfig
@@ -44,12 +46,15 @@ from xml.etree.ElementTree import Element, tostring
 from .config import PrivacyConfig
 from .parser import FragmentParser
 
+DEFAULT_TIMEOUT_IN_SECS = 5
+
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
 
 # Privacy plugin
 class PrivacyPlugin(BasePlugin[PrivacyConfig]):
+    supports_multiple_instances = True
 
     # Initialize thread pools and asset collections
     def on_config(self, config):
@@ -63,11 +68,19 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Initialize collections of external assets
         self.assets = Files([])
+        self.assets_done: list[File] = []
         self.assets_expr_map = {
-            ".css": r"url\((\s*http?[^)]+)\)",
-            ".js": r"[\"'](http[^\"']+\.(?:css|js(?:on)?))[\"']",
+            ".css": r"url\(\s*([\"']?)(?P<url>(?:https?:)?//[^)'\"]+)\1\s*\)",
+            ".js": r"[\"'](?P<url>(?:https?:)?//[^\"']+\.(?:css|js(?:on)?))[\"']",
             **self.config.assets_expr_map
         }
+
+        # Set log level or disable logging altogether - @todo when refactoring
+        # this plugin for the next time, we should put this into a factory
+        if not self.config.log:
+            log.disabled = True
+        else:
+            log.setLevel(self.config.log_level.upper())
 
     # Process external style sheets and scripts (run latest) - run this after
     # all other plugins, so they can add additional assets
@@ -96,11 +109,9 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     # automatically loads Mermaid.js when a Mermaid diagram is
                     # found in the page - https://bit.ly/36tZXsA.
                     if "mermaid.min.js" in url.path and not config.site_url:
-                        path = url.geturl()
-                        if path not in config.extra_javascript:
-                            config.extra_javascript.append(
-                                ExtraScriptValue(path)
-                            )
+                        script = ExtraScriptValue(url.geturl())
+                        if script not in config.extra_javascript:
+                            config.extra_javascript.append(script)
 
             # The local asset references at least one external asset, which
             # means we must download and replace them later
@@ -127,7 +138,13 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
     # Process external images in page (run latest) - this stage is the earliest
     # we can start processing external images, since images are the most common
     # type of external asset when writing. Thus, we create and enqueue a job for
-    # each image we find that checks if the image needs to be downloaded.
+    # each image we find that checks if the image needs to be downloaded. Also,
+    # downloading all external images at this stage, we reconcile all concurrent
+    # jobs in `on_env`, which is the stage in which the optimize plugin will
+    # evaluate what images can and need to be optimized. This means we can pass
+    # external images through the optimization pipeline. Additionally, we run
+    # this after all other plugins, so we allow them to add additional images
+    # to the content of the page. How cool is that?
     @event_priority(-100)
     def on_page_content(self, html, *, page, config, files):
         if not self.config.enabled:
@@ -139,7 +156,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Find all external images and download them if not excluded
         for match in re.findall(
-            r"<img[^>]+src=['\"]?http[^>]+>",
+            r"<img[^>]+src=['\"]?(?:https?:)?//[^>]+>",
             html, flags = re.I | re.M
         ):
             el = self._parse_fragment(match)
@@ -148,6 +165,28 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             url = urlparse(el.get("src"))
             if not self._is_excluded(url, page.file):
                 self._queue(url, config, concurrent = True)
+
+    # Reconcile jobs and pass external assets to MkDocs (run earlier) - allow
+    # other plugins (e.g. optimize plugin) to post-process external assets
+    @event_priority(50)
+    def on_env(self, env, *, config, files):
+        if not self.config.enabled:
+            return
+
+        # Reconcile concurrent jobs and clear thread pool, as we will reuse the
+        # same thread pool for fetching all remaining external assets
+        wait(self.pool_jobs)
+        self.pool_jobs.clear()
+
+        # Append all downloaded assets that are not style sheets or scripts to
+        # MkDocs's collection of files, making them available to other plugins
+        # for further processing. The remaining exteral assets are patched
+        # before copying, which is done at the end of the build process.
+        for file in self.assets:
+            _, extension = posixpath.splitext(file.dest_uri)
+            if extension not in [".css", ".js"]:
+                self.assets_done.append(file)
+                files.append(file)
 
     # Process external assets in template (run later)
     @event_priority(-50)
@@ -172,7 +211,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # Parse and replace links to external assets
         return self._parse_html(output, page.file, config)
 
-    # Reconcile jobs (run earlier)
+    # Reconcile jobs (run earlier) - allow other plugins (e.g. optimize plugin)
+    # to process all downloaded assets, which is why we must reconcile here
     @event_priority(50)
     def on_post_build(self, *, config):
         if not self.config.enabled:
@@ -192,9 +232,11 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     self._patch, file
                 ))
 
-            # Otherwise just copy external asset to output directory
-            else:
-                file.copy_file()
+            # Otherwise just copy external asset to output directory, if we
+            # haven't handed control to MkDocs in `on_env` before
+            elif file not in self.assets_done:
+                if os.path.exists(str(file.abs_src_path)):
+                    file.copy_file()
 
         # Reconcile concurrent jobs for the last time, so the plugins following
         # in the build process always have a consistent state to work with
@@ -226,6 +268,28 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                 Style.RESET_ALL
             ])
 
+        # Check if URL matches one of the inclusion patterns
+        if self.config.assets_include:
+            for pattern in self.config.assets_include:
+                if fnmatch(self._path_from_url(url), pattern):
+                    return False
+
+            # File is not included
+            log.debug(
+                f"Excluding external file '{url.geturl()}' {via}due to "
+                f"inclusion patterns"
+            )
+            return True
+
+        # Check if URL matches one of the exclusion patterns
+        for pattern in self.config.assets_exclude:
+            if fnmatch(self._path_from_url(url), pattern):
+                log.debug(
+                    f"Excluding external file '{url.geturl()}' {via}due to "
+                    f"exclusion patterns"
+                )
+                return True
+
         # Print warning if fetching is not enabled
         if not self.config.assets_fetch:
             log.warning(f"External file: {url.geturl()} {via}")
@@ -251,7 +315,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         # quote, we need to catch this here, as we're using pretty basic
         # regular expression based extraction
         raise PluginError(
-            f"Could not parse due to possible syntax error in HTML: \n\n"
+            "Couldn't parse due to possible syntax error in HTML: \n\n"
             + fragment
         )
 
@@ -262,10 +326,16 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         if extension not in self.assets_expr_map:
             return []
 
+        # Skip if source path is not set, which might be true for generated
+        # files or for files that were added programatically in plugins
+        if not initiator.abs_src_path:
+            return []
+
         # Find and extract all external asset URLs
         expr = re.compile(self.assets_expr_map[extension], flags = re.I | re.M)
         with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
-            return [urlparse(url) for url in re.findall(expr, f.read())]
+            results = re.finditer(expr, f.read())
+            return [urlparse(result.group("url")) for result in results]
 
     # Parse template or page HTML and find all external links that need to be
     # replaced. Many of the assets should already be downloaded earlier, i.e.,
@@ -285,6 +355,21 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         def replace(match: Match):
             el = self._parse_fragment(match.group())
 
+            # Handle external link
+            if self.config.links and el.tag == "a":
+                for key, value in self.config.links_attr_map.items():
+                    el.set(key, value)
+
+                # Set `rel=noopener` if link opens in a new window
+                if self.config.links_noopener:
+                    if el.get("target") == "_blank":
+                        rel = re.findall(r"\S+", el.get("rel", ""))
+                        if "noopener" not in rel:
+                            rel.append("noopener")
+
+                        # Set relationships after adding `noopener`
+                        el.set("rel", " ".join(rel))
+
             # Handle external style sheet or preconnect hint
             if el.tag == "link":
                 url = urlparse(el.get("href"))
@@ -295,24 +380,34 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
                     if rel == "preconnect":
                         return ""
 
-                    # Replace external style sheet or favicon
-                    if rel == "stylesheet" or rel == "icon":
+                    # Replace external favicon, preload hint or style sheet
+                    if rel in ("icon", "preload", "stylesheet"):
                         file = self._queue(url, config)
-                        el.set("href", resolve(file))
+                        if file:
+                            el.set("href", resolve(file))
 
             # Handle external script or image
             if el.tag == "script" or el.tag == "img":
                 url = urlparse(el.get("src"))
                 if not self._is_excluded(url, initiator):
                     file = self._queue(url, config)
-                    el.set("src", resolve(file))
+                    if file:
+                        el.set("src", resolve(file))
+
+            # Handle external image in SVG
+            if el.tag == "image":
+                url = urlparse(el.get("href"))
+                if not self._is_excluded(url, initiator):
+                    file = self._queue(url, config)
+                    if file:
+                        el.set("href", resolve(file))
 
             # Return element as string
             return self._print(el)
 
         # Find and replace all external asset URLs in current page
         return re.sub(
-            r"<(?:(?:a|link)[^>]+href|(?:script|img)[^>]+src)=['\"]?http[^>]+>",
+            r"<(?:(?:a|link|image)[^>]+href|(?:script|img)[^>]+src)=['\"]?(?:https?:)?//[^>]+>",
             replace, output, flags = re.I | re.M
         )
 
@@ -330,7 +425,7 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
         # Return void or opening tag as string, strip closing tag
         data = tostring(el, encoding = "unicode")
-        return data.replace(" />", ">").replace(f"\"{temp}\"", "")
+        return data.replace(" />", ">").replace(f"=\"{temp}\"", "")
 
     # Enqueue external asset for download, if not already done
     def _queue(self, url: URL, config: MkDocsConfig, concurrent = False):
@@ -361,7 +456,8 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             # Fetch external asset synchronously, as it either has no extension
             # or is fetched from a context in which replacements are done
             else:
-                self._fetch(file, config)
+                if not self._fetch(file, config):
+                    return None
 
             # Register external asset as file - it might have already been
             # registered, and since MkDocs 1.6, trigger a deprecation warning
@@ -383,20 +479,39 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
         if not os.path.isfile(file.abs_src_path) or not self.config.cache:
             path = file.abs_src_path
 
+            # In case the URL is a protocol-relative URL that starts with `//`,
+            # we prepend `http:` as a scheme, assuming that all external assets
+            # are available via HTTP. If we'd require `https:`, some external
+            # assets might not be fetchable.
+            if file.url.startswith("//"):
+                file.url = f"http:{file.url}"
+
             # Download external asset
             log.info(f"Downloading external file: {file.url}")
-            res = requests.get(file.url, headers = {
+            try:
+                res = requests.get(
+                    file.url,
+                    headers = {
+                        # Set user agent explicitly, so Google Fonts gives us
+                        # *.woff2 files, which according to caniuse.com is the
+                        # only format we need to download as it covers the range
+                        # range of browsers we're officially supporting.
+                        "User-Agent": " ".join(
+                            [
+                                "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+                                "AppleWebKit/537.36 (KHTML, like Gecko)",
+                                "Chrome/98.0.4758.102 Safari/537.36",
+                            ]
+                        )
+                    },
+                    timeout=DEFAULT_TIMEOUT_IN_SECS,
+                )
+                res.raise_for_status()
 
-                # Set user agent explicitly, so Google Fonts gives us *.woff2
-                # files, which according to caniuse.com is the only format we
-                # need to download as it covers the entire range of browsers
-                # we're officially supporting.
-                "User-Agent": " ".join([
-                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
-                    "AppleWebKit/537.36 (KHTML, like Gecko)",
-                    "Chrome/98.0.4758.102 Safari/537.36"
-                ])
-            })
+            # Intercept errors of type `ConnectionError` and `HTTPError`
+            except Exception as error:
+                log.warning(f"Couldn't retrieve {file.url}: {error}")
+                return False
 
             # Compute expected file extension and append if missing
             mime = res.headers["content-type"].split(";")[0]
@@ -447,13 +562,16 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
             if not self._is_excluded(url, file):
                 self._queue(url, config, concurrent = True)
 
+        # External asset was successfully downloaded
+        return True
+
     # Patch all links to external assets in the given file
     def _patch(self, initiator: File):
         with open(initiator.abs_src_path, encoding = "utf-8-sig") as f:
 
             # Replace callback
             def replace(match: Match):
-                value = match.group(1)
+                value = match.group("url")
 
                 # Map URL to canonical path
                 path = self._path_from_url(urlparse(value))

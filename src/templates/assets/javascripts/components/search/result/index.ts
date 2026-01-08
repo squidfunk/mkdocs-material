@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -106,9 +106,10 @@ export function mountSearchResult(
 
   /* Reveal to accessibility tree – see https://bit.ly/3iAA7t8 */
   watchToggle("search")
-    .subscribe(active => list.setAttribute(
-      "role", active ? "list" : "presentation"
-    ))
+    .subscribe(active => {
+      list.setAttribute("role", active ? "list" : "presentation")
+      list.hidden = !active
+    })
 
   /* Update search result metadata */
   push$

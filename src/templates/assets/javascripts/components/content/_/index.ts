@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -24,11 +24,14 @@ import { Observable, merge } from "rxjs"
 
 import { feature } from "~/_"
 import { Viewport, getElements } from "~/browser"
+import { Sitemap } from "~/integrations"
+import { renderTooltip2 } from "~/templates"
 
 import { Component } from "../../_"
 import {
   Tooltip,
-  mountInlineTooltip2
+  mountInlineTooltip2,
+  mountTooltip2
 } from "../../tooltip2"
 import {
   Annotation,
@@ -42,6 +45,10 @@ import {
   Details,
   mountDetails
 } from "../details"
+import {
+  Link,
+  mountLink
+} from "../link"
 import {
   Mermaid,
   mountMermaid
@@ -68,6 +75,7 @@ export type Content =
   | ContentTabs
   | DataTable
   | Details
+  | Link
   | Mermaid
   | Tooltip
 
@@ -76,12 +84,13 @@ export type Content =
  * ------------------------------------------------------------------------- */
 
 /**
- * Mount options
+ * Dependencies
  */
-interface MountOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
-  target$: Observable<HTMLElement>     /* Location target observable */
-  print$: Observable<boolean>          /* Media print observable */
+interface Dependencies {
+  sitemap$: Observable<Sitemap>        // Sitemap observable
+  viewport$: Observable<Viewport>      // Viewport observable
+  target$: Observable<HTMLElement>     // Location target observable
+  print$: Observable<boolean>          // Media print observable
 }
 
 /* ----------------------------------------------------------------------------
@@ -95,42 +104,69 @@ interface MountOptions {
  * actual article, including code blocks, data tables and details.
  *
  * @param el - Content element
- * @param options - Options
+ * @param dependencies - Dependencies
  *
  * @returns Content component observable
  */
 export function mountContent(
-  el: HTMLElement, { viewport$, target$, print$ }: MountOptions
+  el: HTMLElement, dependencies: Dependencies
 ): Observable<Component<Content>> {
+  const { viewport$, target$, print$ } = dependencies
   return merge(
 
-    /* Annotations */
+    // Annotations
     ...getElements(".annotate:not(.highlight)", el)
       .map(child => mountAnnotationBlock(child, { target$, print$ })),
 
-    /* Code blocks */
+    // Code blocks
     ...getElements("pre:not(.mermaid) > code", el)
       .map(child => mountCodeBlock(child, { target$, print$ })),
 
-    /* Mermaid diagrams */
+    // Links
+    ...getElements("a", el)
+      .map(child => mountLink(child, dependencies)),
+
+    // Mermaid diagrams
     ...getElements("pre.mermaid", el)
       .map(child => mountMermaid(child)),
 
-    /* Data tables */
+    // Data tables
     ...getElements("table:not([class])", el)
       .map(child => mountDataTable(child)),
 
-    /* Details */
+    // Details
     ...getElements("details", el)
       .map(child => mountDetails(child, { target$, print$ })),
 
-    /* Content tabs */
+    // Content tabs
     ...getElements("[data-tabs]", el)
       .map(child => mountContentTabs(child, { viewport$, target$ })),
 
-    /* Tooltips */
-    ...getElements("[title]", el)
+    // Tooltips
+    ...getElements("[title]:not([data-preview])", el)
       .filter(() => feature("content.tooltips"))
-      .map(child => mountInlineTooltip2(child, { viewport$ }))
+      .map(child => mountInlineTooltip2(child, { viewport$ })),
+
+    // Footnotes
+    ...getElements(".footnote-ref", el)
+      .filter(() => feature("content.footnote.tooltips"))
+      // move into specific function! mountTooltip is a low level primitive...
+      .map(child => mountTooltip2(child, {
+        content$: new Observable<HTMLElement>(observer => {
+          // @ts-ignore
+          const hash = new URL(child.href).hash.slice(1)
+          const arr = Array.from(document.getElementById(hash)!
+            // @ts-ignore
+            // eslint-disable-next-line
+            .cloneNode(true).children) as any
+          const node = renderTooltip2(...arr)
+          observer.next(node)
+
+          // Append tooltip and remove on unsubscription
+          document.body.append(node)
+          return () => node.remove()
+        }),
+        viewport$
+      }))
   )
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -28,9 +28,11 @@ import {
   combineLatestWith,
   concat,
   debounceTime,
+  distinct,
   distinctUntilChanged,
   distinctUntilKeyChanged,
   endWith,
+  exhaustMap,
   fromEvent,
   ignoreElements,
   map,
@@ -38,11 +40,12 @@ import {
   of,
   share,
   switchMap,
+  take,
   tap,
   withLatestFrom
 } from "rxjs"
 
-import { configuration, feature } from "~/_"
+import { feature } from "~/_"
 import {
   Viewport,
   getElements,
@@ -54,7 +57,7 @@ import {
 } from "~/browser"
 import { getComponentElement } from "~/components"
 
-import { Sitemap, fetchSitemap } from "../sitemap"
+import { Sitemap } from "../sitemap"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -64,6 +67,7 @@ import { Sitemap, fetchSitemap } from "../sitemap"
  * Setup options
  */
 interface SetupOptions {
+  sitemap$: Observable<Sitemap>        // Sitemap observable
   location$: Subject<URL>              // Location subject
   viewport$: Observable<Viewport>      // Viewport observable
   progress$: Subject<number>           // Progress subject
@@ -79,11 +83,11 @@ interface SetupOptions {
  * @param ev - Mouse event
  * @param sitemap - Sitemap
  *
- * @returns URL observable
+ * @returns Anchor observable
  */
 function handle(
   ev: MouseEvent, sitemap: Sitemap
-): Observable<URL> {
+): Observable<HTMLAnchorElement> {
   if (!(ev.target instanceof Element))
     return EMPTY
 
@@ -123,7 +127,7 @@ function handle(
   // anchor links as well, scroll restoration will not work correctly (e.g.
   // following an anchor link and scrolling).
   ev.preventDefault()
-  return of(new URL(el.href))
+  return of(el)
 }
 
 /**
@@ -258,15 +262,10 @@ function inject(next: Document): Observable<Document> {
  * @returns Document observable
  */
 export function setupInstantNavigation(
-  { location$, viewport$, progress$ }: SetupOptions
+  { sitemap$, location$, viewport$, progress$ }: SetupOptions
 ): Observable<Document> {
-  const config = configuration()
   if (location.protocol === "file:")
     return EMPTY
-
-  // Load sitemap immediately, so we have it available when the user initiates
-  // the first navigation request without any perceivable delay
-  const sitemap$ = fetchSitemap(config.base)
 
   // Since we might be on a slow connection, the user might trigger multiple
   // instant navigation events that overlap. MkDocs produces relative URLs for
@@ -292,6 +291,7 @@ export function setupInstantNavigation(
       .pipe(
         combineLatestWith(sitemap$),
         switchMap(([ev, sitemap]) => handle(ev, sitemap)),
+        map(({ href }) => new URL(href)),
         share()
       )
 
@@ -366,15 +366,10 @@ export function setupInstantNavigation(
     // Handle instant navigation events that are triggered by the user clicking
     // on an anchor link with a hash fragment different from the current one, as
     // well as from popstate events, which are emitted when the user navigates
-    // back and forth between pages. We use a two-layered subscription to scope
-    // the scroll restoration to the current page, as we don't need to restore
-    // the viewport offset when the user navigates to a different page, as this
-    // is already handled by the previous observable.
+    // back and forth between pages.
     document$.pipe(
       switchMap(() => location$),
-      distinctUntilKeyChanged("pathname"),
-      switchMap(() => location$),
-      distinctUntilKeyChanged("hash")
+      distinctUntilKeyChanged("hash"),
     ),
 
     // Handle instant navigation events that are triggered by the user clicking
@@ -435,6 +430,41 @@ export function setupInstantNavigation(
     .subscribe(({ offset }) => {
       history.replaceState(offset, "")
     })
+
+  // --------------------------------------------------------------------------
+  // Navigation prefetching
+  // --------------------------------------------------------------------------
+
+  // If prefetching is enabled, prefetch pages for links that would trigger
+  // inter-site navigation on mouse events - this should improve performance,
+  // since pages will be cached. Note that we exhaust map URLs, so we ensure
+  // that loading is properly debounced and we don't fill caches up to quickly.
+  if (feature("navigation.instant.prefetch"))
+    merge(
+      fromEvent<MouseEvent>(document.body, "mousemove"),
+      fromEvent<MouseEvent>(document.body, "focusin")
+    )
+      .pipe(
+        combineLatestWith(sitemap$),
+        switchMap(([ev, sitemap]) => handle(ev, sitemap)),
+        debounceTime(25),
+        distinct(({ href }) => href),
+        exhaustMap(href => {
+          const link = document.createElement("link")
+          link.rel = "prefetch"
+          link.href = href.toString()
+
+          // Instruct browser to prefetch link by adding a link tag of type
+          // prefetch to the head, and remove it again once the page was loaded
+          document.head.appendChild(link)
+          return fromEvent(link, "load")
+            .pipe(
+              map(() => link),
+              take(1)
+            )
+        })
+      )
+        .subscribe(link => link.remove())
 
   // Return document observable
   return document$

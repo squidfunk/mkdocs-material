@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -145,7 +145,9 @@
 
 // Annotation
 .md-annotation {
+  font-style: initial;
   font-weight: 400;
+  text-align: initial;
   white-space: normal;
   vertical-align: text-bottom;
   outline: none;
@@ -179,17 +181,16 @@
     cursor: pointer;
     user-select: none;
     outline: none;
+    // Hack: Work around Firefox bug that renders a subpixel outline when
+    // rotating a mask image element - see https://t.ly/qA1s4
+    overflow: hidden; // stylelint-disable-line order/properties-order
+    border-radius: 0.01px;
 
     // Hack: increase specificity to override default for anchors in typesetted
     // content, because transitions are defined on anchor elements
     .md-annotation & {
       transition: z-index 250ms;
     }
-
-    // Hack: Work around Firefox bug that renders a subpixel outline when
-    // rotating a mask image element - see https://t.ly/qA1s4
-    overflow: hidden; // stylelint-disable-line order/properties-order
-    border-radius: 0.01px;
 
     // [screen]: Render annotation markers as icons
     @media screen {
@@ -210,8 +211,8 @@
         content: "";
         background: var(--md-default-bg-color);
         mask-image: var(--md-annotation-bg-icon);
-        mask-position: center;
         mask-repeat: no-repeat;
+        mask-position: center;
         mask-size: contain;
       }
 
@@ -227,15 +228,15 @@
         height: 2.2ch;
         content: "";
         background-color: var(--md-default-fg-color--lighter);
+        mask-image: var(--md-annotation-icon);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: contain;
         transition:
           background-color 250ms,
           transform        250ms;
         // Hack: promote to own layer to reduce jitter
         transform: scale(1.0001);
-        mask-image: var(--md-annotation-icon);
-        mask-position: center;
-        mask-repeat: no-repeat;
-        mask-size: contain;
 
         // Annotation marker for active tooltip
         .md-tooltip--active + & {
@@ -285,8 +286,12 @@
 
   // Annotation list
   .md-annotation-list {
-    list-style: none;
-    counter-reset: xxx;
+    // Here, we actually have a legitimate use case for `!important`, because
+    // we need to be sure that annotations are never rendered as a list. This
+    // might happen when Markdown extensions add an explicit type attribute
+    // to the list – see https://t.ly/Q_MGq
+    list-style: none !important; // stylelint-disable-line
+    counter-reset: annotation;
 
     // Annotation list item
     li {
@@ -295,8 +300,8 @@
       // Annotation list marker
       &::before {
         position: absolute;
-        top: px2em(4px);
         inset-inline-start: px2em(-34px);
+        top: px2em(4px);
         min-width: 2ch;
         height: 2ch;
         padding: 0 0.6ch;
@@ -305,8 +310,8 @@
         line-height: 1.25;
         color: var(--md-default-bg-color);
         text-align: center;
-        content: counter(xxx);
-        counter-increment: xxx;
+        content: counter(annotation);
+        counter-increment: annotation;
         background: var(--md-default-fg-color--lighter);
         border-radius: 2ch;
       }

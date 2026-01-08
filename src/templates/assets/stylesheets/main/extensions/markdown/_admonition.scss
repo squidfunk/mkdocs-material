@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -140,15 +140,15 @@ $admonitions: (
     // Admonition icon
     &::before {
       position: absolute;
+      inset-inline-start: px2rem(12px);
       top: px2em(10px);
       width: px2rem(20px);
       height: px2rem(20px);
       content: "";
       background-color: $clr-blue-a200;
-      inset-inline-start: px2rem(12px);
       mask-image: var(--md-admonition-icon--note);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
     }
 

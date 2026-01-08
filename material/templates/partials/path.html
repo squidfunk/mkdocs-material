@@ -1,0 +1,23 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% import "partials/path-item.html" as item with context %}
+{% if page.meta and page.meta.hide %}
+  {% set hidden = "hidden" if "path" in page.meta.hide %}
+{% endif %}
+{% set depth = page.ancestors | length %}
+{% if nav.homepage %}
+  {% set depth = depth + 1 %}
+{% endif %}
+{% if depth > 1 %}
+  <nav class="md-path" aria-label="{{ lang.t('nav') }}" {{ hidden }}>
+    <ol class="md-path__list">
+      {% if nav.homepage %}
+        {{ item.render(nav.homepage) }}
+      {% endif %}
+      {% for nav_item in page.ancestors | reverse %}
+        {{ item.render(nav_item) }}
+      {% endfor %}
+    </ol>
+  </nav>
+{% endif %}

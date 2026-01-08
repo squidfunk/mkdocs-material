@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -37,9 +37,26 @@ import { h } from "~/utilities"
 export function renderClipboardButton(id: string): HTMLElement {
   return (
     <button
-      class="md-clipboard md-icon"
+      class="md-code__button"
       title={translation("clipboard.copy")}
       data-clipboard-target={`#${id} > code`}
+      data-md-type="copy"
     ></button>
+  )
+}
+
+export function renderSelectionButton(): HTMLElement {
+  return (
+    <button
+      class="md-code__button"
+      title="Toggle line selection"
+      data-md-type="select"
+    ></button>
+  )
+}
+
+export function renderCodeBlockNavigation() {
+  return (
+    <nav class="md-code__nav"></nav>
   )
 }

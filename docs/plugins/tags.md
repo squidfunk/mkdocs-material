@@ -134,12 +134,14 @@ is enabled.
 <!-- md:version 8.2.0 -->
 <!-- md:default none -->
 
-!!! info "This setting is not needed in [Insiders]"
+!!! warning "This setting is deprecated"
 
-    Insiders ships a __ground up rewrite of the tags plugin__ which is infinitely
-    more powerful than the current version in the community edition. It allows
-    for an arbitrary number of tags indexes (listings), [scoped listings],
-    [shadow tags], [nested tags], and much more.
+    As of version <!-- md:version 9.6.0 -->, this setting is deprecated, as this
+    version ships a __ground up rewrite of the tags plugin__ which is much more
+    powerful than the previous version. Tags [listings] can be used on any page
+    now.
+
+<div style="opacity: 0.5" markdown>
 
 Use this setting to specify the location of the tags index, which is the page
 used to render a list of all tags and their associated pages. If this setting is
@@ -158,17 +160,15 @@ if you want to have a tags index.
 
 The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
-  [Insiders]: ../insiders/index.md
-  [scoped listings]: ../setup/setting-up-tags.md#scoped-listings
-  [shadow tags]: ../setup/setting-up-tags.md#shadow-tags
-  [nested tags]: ../setup/setting-up-tags.md#nested-tags
+</div>
+
+  [listings]: ../setup/setting-up-tags.md#adding-a-tags-index
 
 ---
 
 #### <!-- md:setting config.tags_slugify -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default [`pymdownx.slugs.slugify`][pymdownx.slugs.slugify] -->
 
 Use this setting to change the function for generating URL-compatible slugs
@@ -194,8 +194,7 @@ more granular control.
 
 #### <!-- md:setting config.tags_slugify_separator -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `-` -->
 
 Use this setting to change the separator that is passed to the slugification
@@ -212,8 +211,7 @@ plugins:
 
 #### <!-- md:setting config.tags_slugify_format -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `tag:{slug}` -->
 
 Use this setting to change the format string that is used when generating tag
@@ -234,8 +232,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.tags_hierarchy -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 <!-- md:flag experimental -->
 
@@ -253,8 +250,7 @@ plugins:
 
 #### <!-- md:setting config.tags_hierarchy_separator -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `/` -->
 <!-- md:flag experimental -->
 
@@ -272,8 +268,7 @@ plugins:
 
 #### <!-- md:setting config.tags_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.26.2 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.tag_name` -->
 
 Use this setting to specify a custom function for comparing tags. By default,
@@ -294,8 +289,7 @@ or number representing the tag, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.tags_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.26.2 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which tags are sorted when comparing
@@ -312,8 +306,7 @@ plugins:
 
 #### <!-- md:setting config.tags_name_property -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default [`tags`][meta.tags] -->
 
 Use this setting to change the name of the front matter property that is used by
@@ -330,8 +323,7 @@ plugins:
 
 #### <!-- md:setting config.tags_name_variable -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `tags` -->
 
 Use this setting to change the name of the template variable that is used by
@@ -348,8 +340,7 @@ plugins:
 
 #### <!-- md:setting config.tags_allowed -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 The plugin allows to check tags against a predefined list, in order to catch
@@ -377,8 +368,7 @@ The following settings are available for listings:
 
 #### <!-- md:setting config.listings -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable listings. It is normally not necessary to
@@ -400,8 +390,7 @@ is enabled.
 
 #### <!-- md:setting config.listings_map -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this define listing configurations that you can then reference in listings
@@ -431,8 +420,7 @@ See the [listings section] for a list of all available settings.
 
 #### <!-- md:setting config.listings_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.39.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.item_title` -->
 
 Use this setting to specify a custom function for comparing listing items. By
@@ -463,8 +451,7 @@ or number representing the item, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.listings_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.39.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which items are sorted when comparing
@@ -481,8 +468,7 @@ plugins:
 
 #### <!-- md:setting config.listings_tags_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material.plugins.tags.tag_name` -->
 
 Use this setting to specify a custom function for comparing tags in listings. By
@@ -503,8 +489,7 @@ or number representing the tag, that is used for sorting, and reference it in
 
 #### <!-- md:setting config.listings_tags_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which tags are sorted when comparing
@@ -521,8 +506,7 @@ plugins:
 
 #### <!-- md:setting config.listings_directive -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `material/tags` -->
 
 Use this setting to change the name of the directive the plugin will look for
@@ -545,8 +529,7 @@ Using this setting, listings must now be referenced as such:
 
 #### <!-- md:setting config.listings_toc -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable tags showing up in the table of contents.
@@ -567,8 +550,7 @@ The following settings are available for shadow tags:
 
 #### <!-- md:setting config.shadow -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to specify whether the plugin should include shadow tags on
@@ -595,8 +577,7 @@ deploy previews:
 
 #### <!-- md:setting config.shadow_on_serve -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should include shadow tags on
@@ -615,8 +596,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 The plugin allows to specify a predefined list of shadow tags which can be
@@ -635,8 +615,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags_prefix -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to specify a string that is checked as a prefix for each tag.
@@ -653,8 +632,7 @@ plugins:
 
 #### <!-- md:setting config.shadow_tags_suffix -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to specify a string that is checked as a suffix for each tag.
@@ -676,8 +654,7 @@ The following settings are available for exporting:
 
 #### <!-- md:setting config.export -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin creates a `tags.json` file
@@ -694,8 +671,7 @@ plugins:
 
 #### <!-- md:setting config.export_file -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `tags.json` -->
 
 Use this setting to change the path of the file where the exported tags are
@@ -714,8 +690,7 @@ The provided path is resolved from the [`site` directory][mkdocs.site_dir].
 
 #### <!-- md:setting config.export_only -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 This setting is solely provided for convenience to disable the rendering of tags
@@ -777,8 +752,7 @@ The following settings are available:
 
 #### <!-- md:setting listing.scope -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default `false` -->
 
 This setting specifies whether the listing should only consider pages that are
@@ -811,8 +785,7 @@ embedded in:
 
 #### <!-- md:setting listing.shadow -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.49.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 This setting specifies whether the listing should include shadow tags, which
@@ -845,8 +818,7 @@ basis:
 
 #### <!-- md:setting listing.toc -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default [`listings_toc`][config.listings_toc] -->
 
 This setting specifies whether the listing should render tags inside the table
@@ -879,8 +851,7 @@ setting on a per-listing basis:
 
 #### <!-- md:setting listing.include -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this setting to specify which tags should be included in the listing. Each
@@ -917,8 +888,7 @@ If this setting is left empty, all tags and pages are included.
 
 #### <!-- md:setting listing.exclude -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.48.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:default none -->
 
 Use this setting to specify which tags should be excluded from the listing. Each
@@ -950,3 +920,9 @@ listing entirely:
     ```
 
 If this setting is left empty, no tags or pages are excluded.
+
+## Limitations
+
+The implementation of the tags plugin is tricky due to MkDocs architecture.
+Notably, tag listing markers cannot appear within code blocks. For technical
+details, refer to #8114.

@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -31,14 +31,13 @@ repo_name: squidfunk/mkdocs-material
 repo_url: https://github.com/squidfunk/mkdocs-material
 
 # Copyright
-copyright: Copyright &copy; 2016 - 2024 Martin Donath
+copyright: Copyright &copy; 2016 - 2025 Martin Donath
 
 # Configuration
 theme:
   name: material
   custom_dir: material/overrides
   features:
-    - announce.dismiss
     - content.action.edit
     - content.action.view
     - content.code.annotate
@@ -119,6 +118,8 @@ extra:
       link: https://hub.docker.com/r/squidfunk/mkdocs-material/
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/mkdocs-material/
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/squidfunk.bsky.social
     - icon: fontawesome/brands/mastodon
       link: https://fosstodon.org/@squidfunk
     - icon: fontawesome/brands/x-twitter
@@ -187,7 +188,6 @@ nav:
     - Customization: customization.md
     - Conventions: conventions.md
     - Browser support: browser-support.md
-    - Enterprise feedback: enterprise-support.md
     - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
@@ -263,20 +263,7 @@ nav:
     - Tooltips: reference/tooltips.md
   - Insiders:
     - insiders/index.md
-    - Why sponsor us: insiders/why-sponsor-us.md
-    - What's in it for you: insiders/benefits.md
-    - Who is sponsoring: insiders/our-sponsors.md
-    - Sponsoring tiers: insiders/sponsoring-tiers.md
-    - How to sponsor: insiders/how-to-sponsor.md
-    - Additional information:
-      - Payment and billing: insiders/payment-and-billing.md
-      - Access management: insiders/access-management.md
-      - Runtime and cancellation: insiders/runtime-and-cancellation.md
-      - Privacy: insiders/privacy.md
-      - License: insiders/license.md
-      - Support: support.md
-    - Using Insiders:
-      - Getting started: insiders/getting-started.md
+    - Getting started: insiders/getting-started.md
     - Changelog:
       - insiders/changelog/index.md
       - How to upgrade: insiders/upgrade.md
@@ -291,7 +278,5 @@ nav:
       - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
-    - Community experts program:
-      - insiders/community-experts-program/index.md
   - Blog:
     - blog/index.md

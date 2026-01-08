@@ -479,9 +479,9 @@ plugins:
 <!-- md:version 9.2.0 -->
 <!-- md:default `optional` -->
 
-By default, the plugin makes post excerpts optional. When a post doesn't define
-an excerpt, views include the entire post. This setting can be used to make
-post excerpts required:
+By default, the plugin makes [post excerpts](../setup/setting-up-a-blog.md#adding-an-excerpt)
+optional. When a post doesn't define an excerpt, views include the entire post.
+This setting can be used to make post excerpts required:
 
 === "Optional"
 
@@ -598,6 +598,14 @@ plugins:
   - blog:
       post_readtime: false
 ```
+
+!!! warning "Chinese, Japanese and Korean characters"
+
+    Reading time computation currently does not take segmentation of Chinese,
+    Japanese and Korean characters into account. This means that the reading
+    time for posts in these languages may be inaccurate. We're planning on
+    adding support in the future. In the meantime, please use the `readtime`
+    front matter property to set the reading time.
 
 ---
 
@@ -750,8 +758,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.archive_pagination -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable pagination for archive pages. The value
@@ -768,8 +775,7 @@ plugins:
 
 #### <!-- md:setting config.archive_pagination_per_page -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `10` -->
 
 Use this setting to change the number of posts rendered per archive page. The
@@ -912,8 +918,7 @@ plugins:
 
 #### <!-- md:setting config.categories_sort_by -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.45.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `material.plugins.blog.view_name` -->
 
 Use this setting to specify a custom function for sorting categories. For
@@ -934,8 +939,7 @@ that can be compared while sorting, i.e., a string or number.
 
 #### <!-- md:setting config.categories_sort_reverse -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.45.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to reverse the order in which categories are sorted. By
@@ -975,8 +979,7 @@ this list. Posts can be assigned to categories by using the [`categories`]
 
 #### <!-- md:setting config.categories_pagination -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable pagination for category pages. The value
@@ -993,8 +996,7 @@ plugins:
 
 #### <!-- md:setting config.categories_pagination_per_page -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.44.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `10` -->
 
 Use this setting to change the number of posts rendered per category page. The
@@ -1094,8 +1096,7 @@ The provided path is resolved from the [`docs` directory][mkdocs.docs_dir].
 
 #### <!-- md:setting config.authors_profiles -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to enable or disable automatically generated author profiles.
@@ -1112,8 +1113,7 @@ plugins:
 
 #### <!-- md:setting config.authors_profiles_name -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default computed -->
 
 Use this setting to change the title of the authors section the plugin adds to
@@ -1130,8 +1130,7 @@ plugins:
 
 #### <!-- md:setting config.authors_profiles_url_format -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `author/{slug}` -->
 
 Use this setting to change the format string that is used when generating
@@ -1163,8 +1162,7 @@ The following placeholders are available:
 
 #### <!-- md:setting config.authors_profiles_pagination -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to enable or disable pagination for author profiles. The value
@@ -1181,8 +1179,7 @@ plugins:
 
 #### <!-- md:setting config.authors_profiles_pagination_per_page -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `10` -->
 
 Use this setting to change the number of posts rendered per archive page. The
@@ -1199,8 +1196,7 @@ plugins:
 
 #### <!-- md:setting config.authors_profiles_toc -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.46.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `false` -->
 
 Use this setting to leverage the table of contents to display post titles on all
@@ -1587,8 +1583,7 @@ draft: true
 
 #### <!-- md:setting meta.pin -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.53.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:default `false` -->
 <!-- md:flag experimental -->
@@ -1610,8 +1605,7 @@ pin: true
 
 #### <!-- md:setting meta.links -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.23.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:flag metadata -->
 <!-- md:default none -->
 <!-- md:flag experimental -->
@@ -1655,7 +1649,7 @@ a post. The property follows the same syntax as [`nav`][mkdocs.nav] in
     links:
       - plugins/search.md # (1)!
       - Insiders:
-        - insiders/index.md#how-to-become-a-sponsor
+        - insiders/how-to-sponsor.md
         - insiders/getting-started.md#requirements
     ---
 

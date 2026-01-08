@@ -87,7 +87,6 @@ icon: material/emoticon-happy # (1)!
       </div>
     </div>
 
-  [Insiders]: ../insiders/index.md
   [icon search]: icons-emojis.md#search
   [navigation tabs]: ../setup/setting-up-navigation.md#navigation-tabs
 
@@ -144,8 +143,7 @@ page status] to get you started.
 
 ### Setting the page `subtitle`
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.25.0 -->
+<!-- md:version 9.6.0 -->
 <!-- md:flag experimental -->
 
 Each page can define a subtitle, which is then rendered below the title as part

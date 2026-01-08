@@ -68,10 +68,10 @@ install those packages separately.
 
 :fontawesome-brands-youtube:{ style="color: #EE0F0F" }
 __[How to set up Material for MkDocs]__ by @james-willett – :octicons-clock-24:
-15m – Learn how to create and host a documentation site using Material for
+27m – Learn how to create and host a documentation site using Material for
 MkDocs on GitHub Pages in a step-by-step guide.
 
-  [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=Q-YA_dA8C20
+  [How to set up Material for MkDocs]: https://www.youtube.com/watch?v=xlABhbnNrfI
 
 ---
 
@@ -122,32 +122,24 @@ The following plugins are bundled with the Docker image:
   [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
   [mkdocs-redirects]: https://github.com/datarobot/mkdocs-redirects
 
+???+ warning
+
+    The Docker container is intended for local previewing purposes only and
+    is not suitable for deployment. This is because the web server used by
+    MkDocs for live previews is not designed for production use and may have
+    security vulnerabilities.
+
 ??? question "How to add plugins to the Docker image?"
 
     Material for MkDocs only bundles selected plugins in order to keep the size
     of the official image small. If the plugin you want to use is not included,
-    you can add them easily:
+    you can add them easily. Create a `Dockerfile` and extend the official image:
 
-    === "Material for MkDocs"
-
-        Create a `Dockerfile` and extend the official image:
-
-        ``` Dockerfile title="Dockerfile"
-        FROM squidfunk/mkdocs-material
-        RUN pip install mkdocs-macros-plugin
-        RUN pip install mkdocs-glightbox
-        ```
-
-    === "Insiders"
-
-        Clone or fork the Insiders repository, and create a file called
-        `user-requirements.txt` in the root of the repository. Then, add the
-        plugins that should be installed to the file, e.g.:
-
-        ``` txt title="user-requirements.txt"
-        mkdocs-macros-plugin
-        mkdocs-glightbox
-        ```
+    ``` Dockerfile title="Dockerfile"
+    FROM squidfunk/mkdocs-material
+    RUN pip install mkdocs-macros-plugin
+    RUN pip install mkdocs-glightbox
+    ```
 
     Next, build the image with the following command:
 

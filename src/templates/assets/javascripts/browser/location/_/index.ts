@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -48,8 +48,8 @@ export function getLocation(): URL {
  *
  * If instant navigation is enabled, this function creates a temporary anchor
  * element, sets the `href` attribute, appends it to the body, clicks it, and
- * then removes it again. The event will bubble up the DOM and trigger be
- * intercepted by the instant loading business logic.
+ * then removes it again. The event will bubble up the DOM and be intercepted
+ * by the instant navigation event handlers.
  *
  * Note that we must append and remove the anchor element, or the event will
  * not bubble up the DOM, making it impossible to intercept it.

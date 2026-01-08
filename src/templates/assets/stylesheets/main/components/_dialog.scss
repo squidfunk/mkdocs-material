@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -27,6 +27,7 @@
 // Dialog
 .md-dialog {
   position: fixed;
+  inset-inline-end: px2rem(16px);
   bottom: px2rem(16px);
   z-index: 4;
   min-width: px2rem(222px);
@@ -40,7 +41,6 @@
     transform 0ms   400ms,
     opacity   400ms;
   transform: translateY(100%);
-  inset-inline-end: px2rem(16px);
 
   // [print]: Hide dialog
   @media print {

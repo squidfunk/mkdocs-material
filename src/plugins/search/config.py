@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -39,6 +39,10 @@ pipeline = ("stemmer", "stopWordFilter", "trimmer")
 # Classes
 # -----------------------------------------------------------------------------
 
+# Search field configuration
+class SearchFieldConfig(Config):
+    boost = Type((int, float), default = 1.0)
+
 # Search plugin configuration
 class SearchConfig(Config):
     enabled = Type(bool, default = True)
@@ -47,6 +51,7 @@ class SearchConfig(Config):
     lang = Optional(LangOption())
     separator = Optional(Type(str))
     pipeline = Optional(ListOfItems(Choice(pipeline)))
+    fields = Type(dict, default = {})
 
     # Settings for text segmentation (Chinese)
     jieba_dict = Optional(Type(str))

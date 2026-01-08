@@ -82,7 +82,7 @@ how to translate specific lines, simply leave them for other contributors to
 complete. To ensure the accuracy of your translation, consider double-checking the
 context of the words by looking at our [English translations].
 
-[English translations]: https://github.com/squidfunk/mkdocs-material/tree/master/src/partials/languages/en.html
+[English translations]: https://github.com/squidfunk/mkdocs-material/tree/master/src/templates/partials/languages/en.html
 
 ### Country flag <small>optional</small> { #country-flag }
 
@@ -98,7 +98,7 @@ adding the shortcode for the country flag to this field. Go to our
     translations for a subdivision, please choose the most appropriate available
     flag.
 
-  [Twemoji]: https://twemoji.twitter.com/
+  [Twemoji]: https://github.com/jdecked/twemoji
   [emoji search]: ../reference/icons-emojis.md#search
 
 > __Why this might be helpful__: adding a country flag next to the country name

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -33,6 +33,7 @@ import {
   takeUntil
 } from "rxjs"
 
+import { configuration } from "~/_"
 import {
   getElement,
   getElements,
@@ -70,9 +71,31 @@ interface MountOptions {
  * @returns Annotation hosts
  */
 function findHosts(container: HTMLElement): HTMLElement[] {
-  return container.tagName === "CODE"
-    ? getElements(".c, .c1, .cm", container)
-    : [container]
+  const config = configuration()
+  if (container.tagName !== "CODE")
+    return [container]
+
+  /* Try to determine language of code block */
+  const selectors = [".c", ".c1", ".cm"]
+  if (config.annotate && typeof config.annotate === "object") {
+    const host = container.closest("[class|=language]")
+    if (host) {
+
+      /* Extract language from class name */
+      for (const value of Array.from(host.classList)) {
+        if (!value.startsWith("language-"))
+          continue
+
+        /* Obtain additional mappings, if any */
+        const [, language] = value.split("-")
+        if (language in config.annotate)
+          selectors.push(...config.annotate[language])
+      }
+    }
+  }
+
+  /* Retrieve and return annotation hosts */
+  return getElements(selectors.join(", "), container)
 }
 
 /**

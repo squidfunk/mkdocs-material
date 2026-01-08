@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -29,7 +29,7 @@ on:
       - published
 
 env:
-  NODE_VERSION: 18.x
+  NODE_VERSION: 24.x
   PYTHON_VERSION: 3.x
 
 permissions:
@@ -41,10 +41,10 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -69,10 +69,10 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ env.NODE_VERSION }}
 
@@ -92,13 +92,15 @@ jobs:
 
   python:
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
     steps:
-
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -114,17 +116,14 @@ jobs:
 
       - name: Publish Python package
         if: github.event_name == 'release'
-        env:
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: twine upload --disable-progress-bar -u ${PYPI_USERNAME} -p ${PYPI_PASSWORD} dist/*
+        uses: pypa/gh-action-pypi-publish@release/v1
 
   docker:
     runs-on: ubuntu-latest
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

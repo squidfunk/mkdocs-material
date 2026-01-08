@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -59,8 +59,8 @@
     // Hack: promote to own layer to reduce jitter
     backface-visibility: hidden;
     touch-action: pan-y;
-    scrollbar-width: thin;
     scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+    scrollbar-width: thin;
 
     // Icon search result inside tooltip
     .md-tooltip & {

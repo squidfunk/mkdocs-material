@@ -31,7 +31,7 @@ which will:
             - ...
     ```
 
-Now, then you run `mkdocs build` and look at the `site` directory, you will
+Now, when you run `mkdocs build` and look at the `site` directory, you will
 see that it contains subfolders under `assets/images/social` that reflect
 the structure of your Markdown files. Each page has a corresponding PNG file
 that contains the social card image.
@@ -43,8 +43,8 @@ the `head` element, including one entry that points to the image.
 
 The social plugin has configuration options for changing aspects such as colors,
 images, fonts, logos, the title, even the description. You can configure them
-for all social cards in the `mkdocs.yml` and, in the Insiders Edition, they can
-be overridden in the page header for individual pages.
+for all social cards in the `mkdocs.yml` and, they can be overridden in the page
+header for individual pages.
 
 !!! example "Change the background color"
 
@@ -106,15 +106,13 @@ so this is where you should make the `layouts` directory and place the
 background image. The default site of the social cards included with the plugin
 is 1200x630 pixels, so choose an image that size or one that scales well to it.
 
-## Additional layouts and styles <!-- md:sponsors -->
+## Additional layouts and styles
 
-The Insiders Edition provides additional layouts as well as the option to
-configure different styles for different (kinds of) pages.
-
-The Insiders Edition comes with a number of additional layouts for the social
-cards. For example, the `default/variant` layout adds a page icon to the card.
-You can use this to distinguish social cards visually, depending on what kind
-of page you are sharing.
+The social plugin provides additional layouts as well as the option to configure
+different styles for different (kinds of) pages. It comes with a number of
+additional layouts for the social cards. For example, the `default/variant`
+layout adds a page icon to the card. You can use this to distinguish social
+cards visually, depending on what kind of page you are sharing.
 
 For example, imagine you have a set of pages that advertise events and you want
 to include a calendar icon as a visual indication that a card advertises an
@@ -165,12 +163,11 @@ page. If that is not what you want then you will need to modify the social
 card template to gets its icons from another source. You can learn how to
 do this in the [custom social cards tutorial](custom.md).
 
-## Per-page settings <!-- md:sponsors -->
+## Per-page settings
 
-With the Insiders Edition, you can customize the card layout for each
-page by adding settings to the page header. You have effectively done this
-in the previous exercise, but using the meta plugin to affect a whole set of
-pages.
+You can customize the card layout for each page by adding settings to the page
+header. You have effectively done this in the previous exercise, but using the
+meta plugin to affect a whole set of pages.
 
 Say that in addition to regular events you also have the odd webinar and
 for this you want to set a different icon and also set the description to
@@ -192,10 +189,9 @@ indicate that the event is part of the webinar series.
 
 ## What's next?
 
-With the Insiders Edition, you can also define custom layouts if the
-configuration options introduced above as not enough to meet your needs.
-Continue to the [custom social cards tutorial](custom.md) if you want to
-find out how to do this.
+You can also define custom layouts if the configuration options introduced above
+as not enough to meet your needs. Continue to the
+[custom social cards tutorial](custom.md) if you want to find out how to do this.
 
 Social cards are particularly useful for blog posts. If you have a blog,
 you need to do nothing more than to turn on both plugins to create social cards

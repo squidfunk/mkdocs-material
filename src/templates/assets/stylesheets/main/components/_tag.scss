@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -77,6 +77,11 @@
     [id] > & {
       vertical-align: text-top;
     }
+
+    // Shadow tag
+    &-shadow {
+      opacity: 0.5;
+    }
   }
 
   // Tag icon
@@ -90,11 +95,11 @@
       vertical-align: text-bottom;
       content: "";
       background-color: var(--md-default-fg-color--lighter);
-      transition: background-color 125ms;
       mask-image: var(--md-tag-icon);
-      mask-position: center;
       mask-repeat: no-repeat;
+      mask-position: center;
       mask-size: contain;
+      transition: background-color 125ms;
     }
 
     // Linked tag on focus/hover

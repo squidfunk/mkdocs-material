@@ -6,6 +6,7 @@
   },
   "plugins": [
     "@typescript-eslint",
+    "@stylistic/ts",
     "eslint-plugin-eslint-comments",
     "eslint-plugin-import",
     "eslint-plugin-jsdoc",
@@ -166,7 +167,41 @@
     "@typescript-eslint/consistent-type-assertions": "error",
     "@typescript-eslint/dot-notation": "error",
     "@typescript-eslint/explicit-member-accessibility": "error",
-    "@typescript-eslint/indent": [
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "enumMember",
+        "format": [
+          "UPPER_CASE"
+        ]
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-extraneous-class": "error",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/no-shadow": [
+      "error",
+      {
+        "hoist": "never"
+      }
+    ],
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/no-unused-expressions": "error",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/only-throw-error": "error",
+    "@typescript-eslint/prefer-for-of": "off",
+    "@typescript-eslint/prefer-function-type": "error",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/unbound-method": "error",
+    "@typescript-eslint/unified-signatures": "error",
+
+    /* Plugin: @stylistic/ts */
+    "@stylistic/ts/indent": [
       "warn",
       2,
       {
@@ -191,7 +226,7 @@
         "offsetTernaryExpressions": true
       }
     ],
-    "@typescript-eslint/member-delimiter-style": [
+    "@stylistic/ts/member-delimiter-style": [
       "error",
       {
         "multiline": {
@@ -203,42 +238,12 @@
         }
       }
     ],
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        "selector": "enumMember",
-        "format": [
-          "UPPER_CASE"
-        ]
-      }
-    ],
-    "@typescript-eslint/no-empty-interface": "off",
-    "@typescript-eslint/no-extraneous-class": "error",
-    "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-parameter-properties": "off",
-    "@typescript-eslint/no-floating-promises": "error",
-    "@typescript-eslint/no-shadow": [
-      "error",
-      {
-        "hoist": "never"
-      }
-    ],
-    "@typescript-eslint/no-throw-literal": "error",
-    "@typescript-eslint/no-unnecessary-type-assertion": "error",
-    "@typescript-eslint/no-unused-expressions": "error",
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/prefer-for-of": "off",
-    "@typescript-eslint/prefer-function-type": "error",
-    "@typescript-eslint/semi": [
+    "@stylistic/ts/semi": [
       "error",
       "never"
     ],
-    "@typescript-eslint/triple-slash-reference": "off",
-    "@typescript-eslint/type-annotation-spacing": "error",
-    "@typescript-eslint/unbound-method": "error",
-    "@typescript-eslint/unified-signatures": "error",
+    "@stylistic/ts/type-annotation-spacing": "error",
+
     /* Plugin: eslint-plugin-eslint-comments */
     "eslint-comments/no-unused-disable": "error",
     "eslint-comments/no-unused-enable": "error",

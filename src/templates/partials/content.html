@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -21,9 +21,7 @@
 -->
 
 <!-- Tags -->
-{% if "material/tags" in config.plugins and tags %}
-  {% include "partials/tags.html" %}
-{% endif %}
+{% include "partials/tags.html" %}
 
 <!-- Actions -->
 {% include "partials/actions.html" %}
@@ -32,7 +30,7 @@
   Hack: check whether the content contains a h1 headline. If it doesn't, the
   page title (or respectively site name) is used as the main headline.
 -->
-{% if "\x3ch1" not in page.content %}
+{% if "\u003ch1" not in page.content %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 

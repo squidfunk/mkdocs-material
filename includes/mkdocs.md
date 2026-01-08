@@ -3,6 +3,7 @@
   [mkdocs.metadata]: https://www.mkdocs.org/user-guide/writing-your-docs/#yaml-style-meta-data
   [mkdocs.env]: https://www.mkdocs.org/user-guide/configuration/#environment-variables
   [mkdocs.docs_dir]: https://www.mkdocs.org/user-guide/configuration/#docs_dir
+  [mkdocs.extra_templates]: https://www.mkdocs.org/user-guide/configuration/#extra_templates
   [mkdocs.site_dir]: https://www.mkdocs.org/user-guide/configuration/#site_dir
   [mkdocs.site_url]: https://www.mkdocs.org/user-guide/configuration/#site_url
   [mkdocs.site_description]: https://www.mkdocs.org/user-guide/configuration/#site_description

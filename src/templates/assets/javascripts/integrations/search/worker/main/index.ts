@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -89,7 +89,7 @@ async function setupSearchLanguages(
 
   /* Detect `iframe-worker` and fix base URL */
   if (typeof parent !== "undefined" && "IFrameWorker" in parent) {
-    const worker = getElement<HTMLScriptElement>("script[src]")!
+    const worker = getElement<HTMLScriptElement>("script[src]")
     const [path] = worker.src.split("/worker")
 
     /* Prefix base with path */
@@ -185,6 +185,9 @@ export async function handler(
 
 /* Expose Lunr.js in global scope, or stemmers won't work */
 self.lunr = lunr
+
+/* Monkey-patch Lunr.js to mitigate https://t.ly/68TLq */
+lunr.utils.warn = console.warn
 
 /* Handle messages */
 addEventListener("message", async ev => {

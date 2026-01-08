@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -62,6 +62,25 @@ export function renderTooltip(
       </div>
     )
   }
+}
+
+/**
+ * Render a tooltip
+ *
+ * @param children - Child nodes
+ *
+ * @returns Element
+ */
+export function renderTooltip2(
+  ...children: ComponentChild[]
+): HTMLElement {
+  return (
+    <div class="md-tooltip2" role="dialog">
+      <div class="md-tooltip2__inner md-typeset">
+        {children}
+      </div>
+    </div>
+  )
 }
 
 // @todo: rename

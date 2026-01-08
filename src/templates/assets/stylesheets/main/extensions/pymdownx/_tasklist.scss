@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -44,8 +44,8 @@
     // everything in ems for correct layout at smaller font sizes
     [type="checkbox"] {
       position: absolute;
-      top: 0.45em;
       inset-inline-start: -2em;
+      top: 0.45em;
     }
   }
 
@@ -58,15 +58,15 @@
   // Tasklist indicator in unchecked state
   .task-list-indicator::before {
     position: absolute;
+    inset-inline-start: px2em(-24px);
     top: 0.15em;
     width: px2em(20px);
     height: px2em(20px);
     content: "";
     background-color: var(--md-default-fg-color--lightest);
-    inset-inline-start: px2em(-24px);
     mask-image: var(--md-tasklist-icon);
-    mask-position: center;
     mask-repeat: no-repeat;
+    mask-position: center;
     mask-size: contain;
   }
 

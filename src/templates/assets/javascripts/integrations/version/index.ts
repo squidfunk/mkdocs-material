@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -47,6 +47,8 @@ import {
 } from "~/templates"
 
 import { fetchSitemap } from "../sitemap"
+
+import { selectedVersionCorrespondingURL } from "./findurl"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -122,22 +124,23 @@ export function setupVersionSelector(
                     return EMPTY
                 }
                 ev.preventDefault()
-                return of(url)
+                return of(new URL(url))
               }
             }
             return EMPTY
           }),
-          switchMap(url => {
-            return fetchSitemap(new URL(url))
-              .pipe(
-                map(sitemap => {
-                  const location = getLocation()
-                  const path = location.href.replace(config.base, url)
-                  return sitemap.has(path.split("#")[0])
-                    ? new URL(path)
-                    : new URL(url)
-                })
-              )
+          switchMap(selectedVersionBaseURL => {
+            return fetchSitemap(selectedVersionBaseURL).pipe(
+              map(
+                sitemap =>
+                  selectedVersionCorrespondingURL({
+                    selectedVersionSitemap: sitemap,
+                    selectedVersionBaseURL,
+                    currentLocation: getLocation(),
+                    currentBaseURL: config.base
+                  }) ?? selectedVersionBaseURL,
+              ),
+            )
           })
         )
       )
@@ -155,8 +158,11 @@ export function setupVersionSelector(
   document$.pipe(switchMap(() => current$))
     .subscribe(current => {
 
+      // Always scope outdate version banner to the base URL of the site
+      const base = new URL(config.base)
+
       /* Check if version state was already determined */
-      let outdated = __md_get("__outdated", sessionStorage)
+      let outdated = __md_get("__outdated", sessionStorage, base)
       if (outdated === null) {
         outdated = true
 
@@ -174,7 +180,7 @@ export function setupVersionSelector(
             }
 
         /* Persist version state in session storage */
-        __md_set("__outdated", outdated, sessionStorage)
+        __md_set("__outdated", outdated, sessionStorage, base)
       }
 
       /* Unhide outdated version banner */

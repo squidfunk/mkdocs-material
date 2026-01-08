@@ -11,8 +11,7 @@ further useful automatic optimization techniques.
 
 ### Built-in projects plugin
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.38.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:plugin [projects] – built-in -->
 <!-- md:flag experimental -->
 
@@ -89,8 +88,7 @@ extra:
 
 ### Built-in optimize plugin
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.29.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:plugin [optimize] – built-in -->
 <!-- md:flag experimental -->
 

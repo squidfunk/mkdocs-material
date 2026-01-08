@@ -309,8 +309,6 @@ Material for MkDocs will now change the color palette each time the operating
 system switches between light and dark appearance, even when the user doesn't
 reload the site.
 
-  [Insiders]: ../insiders/index.md
-
 ## Customization
 
 ### Custom colors
@@ -340,7 +338,7 @@ add:
 === ":octicons-file-code-16: `docs/stylesheets/extra.css`"
 
     ``` css
-    :root {
+    :root  > * {
       --md-primary-fg-color:        #EE0F0F;
       --md-primary-fg-color--light: #ECB7B7;
       --md-primary-fg-color--dark:  #90030C;

@@ -39,7 +39,7 @@ attach the blog navigation to the rest of the navigation structure.
 
     You will notice that "Blog" is duplicated in the navigation structure. To
     avoid this, you can use the `navigation.indexes` feature to make the blog
-    index the seciton index page for the blog:
+    index the section index page for the blog:
 
     ```yaml hl_lines="3 4"
     theme:
@@ -79,7 +79,7 @@ listings by month, you can configure the date format for the archive.
         archive_date_format: MMMM yyyy
     ```
 
-    If you do not want the full month name, you can make the the date
+    If you do not want the full month name, you can make the date
     configuration `MM/yyyy`, for example.
 
     If you want to add the day, you can add a placeholder for them.
@@ -230,7 +230,7 @@ indexes, scoped listings, shadow tags, nested tags, and much more.
             - Usage: usage.md
             - Blog:
                 - blog/index.md
-                Tags: blog/tags.md
+                - Tags: blog/tags.md
         ```
 
         The tag index will be appended to the configured page, which you should
@@ -323,11 +323,10 @@ the page header.
 
     Note that `authors` is a list, so you can specify multiple authors.
 
-With the Insiders edition, you can create custom author index pages that
-can highlight the contributions of an author as well as provide additional
-information about them.
+You can create custom author index pages that can highlight the contributions
+of an author as well as provide additional information about them.
 
-!!! example "Add author page <!-- md:sponsors -->"
+!!! example "Add author page"
 
     First, you need to enable author profiles in the `mkdocs.yml`:
 

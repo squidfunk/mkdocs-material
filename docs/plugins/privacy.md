@@ -39,7 +39,7 @@ assets are detected:
 
 Additionally, hints like [`preconnect`][preconnect], used to reduce latency when
 requesting external assets, are removed from the output, as they're not
-necessary when self-hosting. After the plugin has done it's work, your project
+necessary when self-hosting. After the plugin has done its work, your project
 will be free of requests to external services.
 
 There are some [limitations].
@@ -221,8 +221,7 @@ The following settings are available for logging:
 
 #### <!-- md:setting config.log -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.50.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to control whether the plugin should display log messages when
@@ -238,8 +237,7 @@ plugins:
 
 #### <!-- md:setting config.log_level -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.50.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `info` -->
 
 Use this setting to control the log level that the plugin should employ when
@@ -356,8 +354,7 @@ This configuration stores the downloaded copies at `my/custom/dir` in the
 
 #### <!-- md:setting config.assets_include -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to enable downloading of external assets for specific origins,
@@ -375,8 +372,7 @@ plugins:
 
 #### <!-- md:setting config.assets_exclude -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to disable downloading of external assets for specific origins,
@@ -415,8 +411,7 @@ The following settings are available for external links:
 
 #### <!-- md:setting config.links -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 Use this setting to instruct the plugin to parse and process external links to
@@ -436,8 +431,7 @@ plugins:
 
 #### <!-- md:setting config.links_attr_map -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default none -->
 
 Use this setting to specify additional attributes that should be added to
@@ -455,8 +449,7 @@ plugins:
 
 #### <!-- md:setting config.links_noopener -->
 
-<!-- md:sponsors -->
-<!-- md:version insiders-4.37.0 -->
+<!-- md:version 9.7.0 -->
 <!-- md:default `true` -->
 
 It is normally not recommended to change this setting, as it will automatically
@@ -471,6 +464,8 @@ plugins:
 
 ## Limitations
 
+### Dynamic URLs
+
 Dynamically created URLs as part of scripts are not detected, and thus cannot be
 downloaded automatically, as the plugin does not execute scripts – it only detects fully qualified URLs for downloading and replacement. In short, don't do this:
 
@@ -484,3 +479,19 @@ Instead, always use fully qualified URLs:
 ``` js
 const url ="https://example.com/script.js"
 ```
+
+### Embedded HTML
+
+By default, embedded HTML files (e.g. in iframes) are not scanned for external
+assets. This is a limitation of MkDocs, as it considers `.html` files to be
+templates, which must be explicitly listed under
+[`extra_templates`][mkdocs.extra_templates]. Thus, to self-host external assets
+of an embedded HTML file:
+
+``` yaml
+extra_templates:
+  - iframe.html
+```
+
+Note that the path to `iframe.html` is relative to the
+[`docs_dir`][mkdocs.docs_dir] directory.

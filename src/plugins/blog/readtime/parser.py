@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+# Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to
@@ -20,6 +20,10 @@
 
 from html.parser import HTMLParser
 
+# TODO: Refactor the `void` set into a common module and import it from there
+# and not from the search plugin.
+from material.plugins.search.plugin import void
+
 # -----------------------------------------------------------------------------
 # Classes
 # -----------------------------------------------------------------------------
@@ -31,15 +35,40 @@ class ReadtimeParser(HTMLParser):
     def __init__(self):
         super().__init__(convert_charrefs = True)
 
+        # Tags to skip
+        self.skip = set([
+            "object",                  # Objects
+            "script",                  # Scripts
+            "style",                   # Styles
+            "svg"                      # SVGs
+        ])
+
+        # Current context
+        self.context = []
+
         # Keep track of text and images
         self.text   = []
         self.images = 0
 
-    # Collect images
+    # Called at the start of every HTML tag
     def handle_starttag(self, tag, attrs):
+        # Collect images
         if tag == "img":
             self.images += 1
 
-    # Collect text
+        # Ignore self-closing tags
+        if tag not in void:
+            # Add tag to context
+            self.context.append(tag)
+
+    # Called for the text contents of each tag
     def handle_data(self, data):
-        self.text.append(data)
+        # Collect text if not inside skip context
+        if not self.skip.intersection(self.context):
+            self.text.append(data)
+
+    # Called at the end of every HTML tag
+    def handle_endtag(self, tag):
+        if self.context and self.context[-1] == tag:
+            # Remove tag from context
+            self.context.pop()

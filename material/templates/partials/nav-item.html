@@ -10,18 +10,36 @@
     <span class="{{ class }}"></span>
   {% endif %}
 {% endmacro %}
-{% macro render_content(nav_item, ref = nav_item) %}
-  {% if nav_item.is_page and nav_item.meta.icon %}
+{% macro render_title(nav_item) %}
+  {% if nav_item.typeset %}
+    <span class="md-typeset">
+      {{ nav_item.typeset.title }}
+    </span>
+  {% else %}
+    {{ nav_item.title }}
+  {% endif %}
+{% endmacro %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
+  {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
   <span class="md-ellipsis">
-    {{ ref.title }}
+    {{ render_title(ref) }}
+    {% if nav_item.meta and nav_item.meta.subtitle %}
+      <br>
+      <small>{{ nav_item.meta.subtitle }}</small>
+    {% endif %}
   </span>
-  {% if nav_item.is_page and nav_item.meta.status %}
+  {% if nav_item.meta and nav_item.encrypted %}
+    {{ render_status(nav_item, "encrypted") }}
+  {% endif %}
+  {% if nav_item.meta and nav_item.meta.status %}
     {{ render_status(nav_item, nav_item.meta.status) }}
   {% endif %}
 {% endmacro %}
-{% macro render_pruned(nav_item, ref = nav_item) %}
+{% macro render_pruned(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% set first = nav_item.children | first %}
   {% if first and first.children %}
     {{ render_pruned(first, ref) }}
@@ -34,7 +52,7 @@
     </a>
   {% endif %}
 {% endmacro %}
-{% macro render(nav_item, path, level) %}
+{% macro render(nav_item, path, level, parent) %}
   {% set class = "md-nav__item" %}
   {% if nav_item.active %}
     {% set class = class ~ " md-nav__item--active" %}
@@ -45,21 +63,22 @@
     {% endif %}
   {% endif %}
   {% if nav_item.children %}
-    {% set indexes = [] %}
+    {% set _ = namespace(index = none) %}
     {% if "navigation.indexes" in features %}
-      {% for nav_item in nav_item.children %}
-        {% if nav_item.is_index and not index is defined %}
-          {% set _ = indexes.append(nav_item) %}
+      {% for item in nav_item.children %}
+        {% if item.is_index and _.index is none %}
+          {% set _.index = item %}
         {% endif %}
       {% endfor %}
     {% endif %}
+    {% set index = _.index %}
     {% if "navigation.tabs" in features %}
       {% if level == 1 and nav_item.active %}
         {% set class = class ~ " md-nav__item--section" %}
         {% set is_section = true %}
       {% endif %}
       {% if "navigation.sections" in features %}
-        {% if level == 2 and nav_item.parent.active %}
+        {% if level == 2 and parent.active %}
           {% set class = class ~ " md-nav__item--section" %}
           {% set is_section = true %}
         {% endif %}
@@ -83,14 +102,13 @@
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
         <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>
-        {% if not indexes %}
+        {% if not index %}
           {% set tabindex = "0" if not is_section %}
           <label class="md-nav__link" for="{{ path }}" id="{{ path }}_label" tabindex="{{ tabindex }}">
             {{ render_content(nav_item) }}
             <span class="md-nav__icon md-icon"></span>
           </label>
         {% else %}
-          {% set index = indexes | first %}
           {% set class = "md-nav__link--active" if index == page %}
           <div class="md-nav__link md-nav__container">
             <a href="{{ index.url | url }}" class="md-nav__link {{ class }}">
@@ -107,12 +125,12 @@
         <nav class="md-nav" data-md-level="{{ level }}" aria-labelledby="{{ path }}_label" aria-expanded="{{ nav_item.active | tojson }}">
           <label class="md-nav__title" for="{{ path }}">
             <span class="md-nav__icon md-icon"></span>
-            {{ nav_item.title }}
+            {{ render_title(nav_item) }}
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            {% for nav_item in nav_item.children %}
-              {% if not indexes or nav_item != indexes | first %}
-                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% for item in nav_item.children %}
+              {% if not index or item != index %}
+                {{ render(item, path ~ "_" ~ loop.index, level + 1, nav_item) }}
               {% endif %}
             {% endfor %}
           </ul>

@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -293,7 +293,6 @@
 
   // Code block line numbers container
   .linenodiv {
-    padding-right: px2em(8px, 13.6px);
     box-shadow: px2rem(-1px) 0 var(--md-default-fg-color--lightest) inset;
 
     // Adjust colors and alignment
@@ -301,6 +300,19 @@
       color: var(--md-default-fg-color--light);
       text-align: right;
     }
+
+    // Adjust spacing
+    span[class] {
+      padding-right: px2em(8px, 13.6px);
+    }
+
+    // .active {
+    //   display: inline-block;
+    //   background-color: var(--md-code-hl-color--light);
+    //   margin-left: -1.1764705882em; // @todo source correct values
+    //   padding-left: 1.1764705882em;
+    //   font-weight: bold;
+    // }
   }
 
   // Code block container - stretch to remaining space

@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -56,6 +56,7 @@
 @import "main/components/meta";
 @import "main/components/nav";
 @import "main/components/pagination";
+@import "main/components/path";
 @import "main/components/post";
 @import "main/components/progress";
 @import "main/components/search";
@@ -83,6 +84,7 @@
 @import "main/extensions/pymdownx/tabbed";
 @import "main/extensions/pymdownx/tasklist";
 
+@import "main/integrations/giscus";
 @import "main/integrations/mermaid";
 
 @import "main/modifiers/grid";

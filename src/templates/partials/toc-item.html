@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -24,13 +24,23 @@
 <li class="md-nav__item">
   <a href="{{ toc_item.url }}" class="md-nav__link">
     <span class="md-ellipsis">
-      {{ toc_item.title }}
+
+      <!-- Typeset title -->
+      {% if toc_item.typeset %}
+        <span class="md-typeset">
+          {{ toc_item.typeset.title }}
+        </span>
+
+      <!-- Regular title -->
+      {% else %}
+        {{ toc_item.title }}
+      {% endif %}
     </span>
   </a>
 
   <!-- Table of contents list -->
   {% if toc_item.children %}
-    <nav class="md-nav" aria-label="{{ toc_item.title | striptags }}">
+    <nav class="md-nav" aria-label="{{ toc_item.title | striptags | e }}">
       <ul class="md-nav__list">
         {% for toc_item in toc_item.children %}
           {% include "partials/toc-item.html" %}

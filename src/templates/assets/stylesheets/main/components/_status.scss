@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -46,8 +46,8 @@
     content: "";
     background-color: var(--md-default-fg-color--light);
     mask-image: var(--md-status);
-    mask-position: center;
     mask-repeat: no-repeat;
+    mask-position: center;
     mask-size: contain;
   }
 

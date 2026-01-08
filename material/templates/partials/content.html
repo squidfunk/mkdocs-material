@@ -1,11 +1,9 @@
 {#-
   This file was automatically generated - do not edit
 -#}
-{% if "material/tags" in config.plugins and tags %}
-  {% include "partials/tags.html" %}
-{% endif %}
+{% include "partials/tags.html" %}
 {% include "partials/actions.html" %}
-{% if "\x3ch1" not in page.content %}
+{% if "\u003ch1" not in page.content %}
   <h1>{{ page.title | d(config.site_name, true)}}</h1>
 {% endif %}
 {{ page.content }}

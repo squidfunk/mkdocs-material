@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -53,10 +53,7 @@ import {
 
 import { Component } from "../../_"
 import { Main } from "../../main"
-import {
-  Tooltip,
-  mountTooltip
-} from "../../tooltip"
+import { Tooltip, mountTooltip } from "../../tooltip"
 
 /* ----------------------------------------------------------------------------
  * Types
@@ -75,16 +72,9 @@ export interface Header {
  * ------------------------------------------------------------------------- */
 
 /**
- * Watch options
+ * Dependencies
  */
-interface WatchOptions {
-  viewport$: Observable<Viewport>      /* Viewport observable */
-}
-
-/**
- * Mount options
- */
-interface MountOptions {
+interface Dependencies {
   viewport$: Observable<Viewport>      /* Viewport observable */
   header$: Observable<Header>          /* Header observable */
   main$: Observable<Main>              /* Main area observable */
@@ -100,11 +90,13 @@ interface MountOptions {
  * If the user scrolls past a certain threshold, the header can be hidden when
  * scrolling down, and shown when scrolling up.
  *
- * @param options - Options
+ * @param dependencies - Dependencies
  *
  * @returns Toggle observable
  */
-function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
+function isHidden(
+  { viewport$ }: Pick<Dependencies, "viewport$">
+): Observable<boolean> {
   if (!feature("header.autohide"))
     return of(false)
 
@@ -144,16 +136,16 @@ function isHidden({ viewport$ }: WatchOptions): Observable<boolean> {
  * Watch header
  *
  * @param el - Header element
- * @param options - Options
+ * @param dependencies - Dependencies
  *
  * @returns Header observable
  */
 export function watchHeader(
-  el: HTMLElement, options: WatchOptions
+  el: HTMLElement, dependencies: Pick<Dependencies, "viewport$">
 ): Observable<Header> {
   return defer(() => combineLatest([
     watchElementSize(el),
-    isHidden(options)
+    isHidden(dependencies)
   ]))
     .pipe(
       map(([{ height }, hidden]) => ({
@@ -175,12 +167,12 @@ export function watchHeader(
  * hidden or rendered with a shadow. This depends heavily on the main area.
  *
  * @param el - Header element
- * @param options - Options
+ * @param dependencies - Dependencies
  *
  * @returns Header component observable
  */
 export function mountHeader(
-  el: HTMLElement, { header$, main$ }: MountOptions
+  el: HTMLElement, { header$, main$ }: Dependencies
 ): Observable<Component<Header | Tooltip>> {
   return defer(() => {
     const push$ = new Subject<Main>()

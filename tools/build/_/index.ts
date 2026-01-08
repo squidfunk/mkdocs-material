@@ -22,10 +22,10 @@
 
 import * as chokidar from "chokidar"
 import * as fs from "fs/promises"
+import * as path from "path"
 import {
   EMPTY,
   Observable,
-  concatAll,
   filter,
   from,
   fromEvent,
@@ -35,6 +35,7 @@ import {
   map,
   mergeWith,
   of,
+  switchMap,
   tap
 } from "rxjs"
 import glob from "tiny-glob"
@@ -110,33 +111,34 @@ export function resolve(
   return from(glob(pattern, { dot: true, ...options }))
     .pipe(
       catchError(() => EMPTY),
-      concatAll(),
+      switchMap(files => from(files).pipe(
+
+        /* Start file watcher */
+        options?.watch
+          ? mergeWith(watch(files, options))
+          : identity
+      )),
 
       /* Build overrides */
       !process.argv.includes("--all")
-        ? filter(file => !file.startsWith(".overrides/"))
+        ? filter(file => !file.startsWith(`.overrides${path.sep}`))
         : identity,
-
-      /* Start file watcher */
-      options?.watch
-        ? mergeWith(watch(pattern, options))
-        : identity
     )
 }
 
 /**
- * Watch all files matching the given pattern
+ * Watch all given files
  *
- * @param pattern - Pattern
+ * @param files - Files
  * @param options - Options
  *
  * @returns File observable
  */
 export function watch(
-  pattern: string, options: WatchOptions
+  files: string[], options: WatchOptions
 ): Observable<string> {
   return fromEvent(
-    chokidar.watch(pattern, options),
+    chokidar.watch(files, options),
     "change", file => file // see https://t.ly/dli_k
   ) as Observable<string>
 }

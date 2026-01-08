@@ -20,12 +20,14 @@
  * IN THE SOFTWARE.
  */
 
-import { minify as minhtml } from "html-minifier"
+import { minify as minhtml } from "html-minifier-terser"
 import * as path from "path"
 import {
   EMPTY,
   concat,
   defer,
+  from,
+  identity,
   map,
   merge,
   mergeMap,
@@ -47,6 +49,7 @@ import {
   transformScript,
   transformStyle
 } from "./transform"
+import glob from "tiny-glob"
 
 /* ----------------------------------------------------------------------------
  * Helper types
@@ -92,15 +95,94 @@ function minsvg(data: string): string {
   /* Optimize SVG */
   const result = optimize(data, {
     plugins: [
-      "preset-default",
-      { name: "removeDimensions", active: true },
-      { name: "removeViewBox", active: false }
+      {
+        name: "preset-default",
+        params: {
+          overrides: {
+            removeViewBox: false,
+          }
+        }
+      },
+      {
+        name: "removeDimensions"
+      }
     ]
   })
 
-  /* Return minified SVG */
-  return result.data
+  // Return minified SVG - note that we need to remove `currentColor`, which
+  // FontAwesome added to paths. It would be better to do this with a proper
+  // DOM parser, but this will do for now.
+  return result.data.replace("fill=\"currentColor\" ", "")
 }
+
+/**
+ * Return a path with POSIX style separators
+ *
+ * The default function assumes UNIX system, so it just returns the path.
+ *
+ * @param p - string path
+ * @returns String path
+ */
+let assurePosixSep = function (p: string): string {
+  return p
+};
+
+/**
+ * Return a path with POSIX style separators
+ *
+ * The Windows variant of this function replaces the separator with regex.
+ *
+ * @param p - string path
+ * @returns String path
+ */
+function assurePosixSepWin(p: string): string {
+  return p.replace(winSepRegex, path.posix.sep)
+};
+
+const winSepRegex = new RegExp(`\\${path.win32.sep}`, "g");
+
+if (path.sep === path.win32.sep) {
+  assurePosixSep = assurePosixSepWin;
+}
+
+/**
+ * Compare two path strings to decide on the order
+ *
+ * On Windows the default order of paths containing `_` from the resolve function
+ * is different than on macOS. This function restores the order to the usual.
+ * Implementation adapted based on https://t.ly/VJp78
+ *
+ * Note: The paths should have no extension like .svg, just the name. Otherwise
+ * it won't check the compare.startsWith(reference) properly.
+ *
+ * @param reference Left string to compare
+ * @param compare Right string to compare against
+ * @returns Number for the sort function to define the order
+ */
+function sortOrderForWindows(reference: string, compare: string): number {
+  reference = reference.toLowerCase();
+  compare = compare.toLowerCase();
+
+  const length = Math.min(reference.length, compare.length);
+
+  for (let i = 0; i < length; i++) {
+    const leftChar = reference[i];
+    const rightChar = compare[i];
+
+    if (leftChar !== rightChar)
+      return customAlphabet.indexOf(leftChar) - customAlphabet.indexOf(rightChar);
+  }
+
+  if (reference.length !== compare.length) {
+    if (compare.startsWith(reference) && compare[reference.length] === "-")
+      return 1;
+    return reference.length - compare.length;
+  }
+
+  return 0;
+}
+
+const customAlphabet: string = "_,-./0123456789abcdefghijklmnopqrstuvwxyz";
 
 /* ----------------------------------------------------------------------------
  * Tasks
@@ -177,7 +259,7 @@ const sources$ = copyAll("**/*.py", {
 const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".css").replace(/(overrides|templates)\//, "")),
+      of(ext(file, ".css").replace(new RegExp(`(overrides|templates)\\${path.sep}`), "")),
       transformStyle({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".css")
@@ -189,7 +271,7 @@ const stylesheets$ = resolve("**/[!_]*.scss", { cwd: "src" })
 const javascripts$ = resolve("**/{custom,bundle,search}.ts", { cwd: "src" })
   .pipe(
     mergeMap(file => zip(
-      of(ext(file, ".js").replace(/(overrides|templates)\//, "")),
+      of(ext(file, ".js").replace(new RegExp(`(overrides|templates)\\${path.sep}`), "")),
       transformScript({
         from: `src/${file}`,
         to: ext(`${base}/${file}`, ".js")
@@ -205,7 +287,9 @@ const manifest$ = merge(
   })
     .map(([pattern, observable$]) => (
       defer(() => process.argv.includes("--watch")
-        ? watch(pattern, { cwd: "src" })
+        ? from(glob(pattern, { cwd: "src" })).pipe(
+          switchMap(files => watch(files, { cwd: "src" }))
+        )
         : EMPTY
       )
         .pipe(
@@ -217,10 +301,10 @@ const manifest$ = merge(
   .pipe(
     scan((prev, mapping) => (
       mapping.reduce((next, [key, value]) => (
-        next.set(key, value.replace(
-          new RegExp(`${base}\\/(overrides|templates)\\/`),
+        next.set(assurePosixSep(key), assurePosixSep(value.replace(
+          new RegExp(`${base}\\/(overrides|templates)\\${path.sep}`),
           ""
-        ))
+        )))
       ), prev)
     ), new Map<string, string>()),
   )
@@ -249,7 +333,7 @@ const templates$ = manifest$
 
         /* Normalize line feeds and minify HTML */
         const html = data.replace(/\r\n/gm, "\n")
-        return banner + minhtml(html, {
+        return banner + await minhtml(html, {
           collapseBooleanAttributes: true,
           includeAutoGeneratedTags: false,
           minifyCSS: true,
@@ -258,13 +342,15 @@ const templates$ = manifest$
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true
         })
+          .then(html => html
 
-          /* Remove empty lines without collapsing everything */
-          .replace(/^\s*[\r\n]/gm, "")
+            /* Remove empty lines without collapsing everything */
+            .replace(/^\s*[\r\n]/gm, "")
 
-          /* Write theme version into template */
-          .replace("$md-name$", metadata.name)
-          .replace("$md-version$", metadata.version)
+            /* Write theme version into template */
+            .replace("$md-name$", metadata.name)
+            .replace("$md-version$", metadata.version)
+          )
       }
     }))
   )
@@ -277,9 +363,15 @@ const icons$ = defer(() => resolve("**/*.svg", {
 }))
   .pipe(
     reduce((index, file) => index.set(
-      file.replace(/\.svg$/, "").replace(/\//g, "-"),
-      file
-    ), new Map<string, string>())
+      file.replace(/\.svg$/, "").replace(new RegExp(`\\${path.sep}`, "g"), "-"),
+      assurePosixSep(file)
+    ), new Map<string, string>()),
+    // The icons are stored in the index file, and the output needs to be OS
+    // agnostic. Some icons contain the `_` character, which has different order
+    // in the glob output on Windows.
+    (path.sep === path.win32.sep) ? map(icons => new Map(
+      [...icons].sort((a, b) => sortOrderForWindows(a[0], b[0]))
+    )) : identity
   )
 
 /* Compute emoji mappings (based on Twemoji) */
@@ -307,7 +399,7 @@ const index$ = zip(icons$, emojis$)
           data: Object.fromEntries(icons)
         },
         emojis: {
-          base: `${cdn}/twitter/twemoji/master/assets/svg/`,
+          base: `${cdn}/jdecked/twemoji/master/assets/svg/`,
           data: Object.fromEntries(emojis)
         }
       } as IconSearchIndex
@@ -358,7 +450,7 @@ const schema$ = merge(
           "reference/icons-emojis/#search"
         ].join("/"),
         "type": "string",
-        "enum": icons.map(icon => icon.replace(".svg", ""))
+        "enum": icons.map(icon => assurePosixSep(icon.replace(".svg", "")))
       })),
       switchMap(data => write(
         "docs/schema/assets/icons.json",

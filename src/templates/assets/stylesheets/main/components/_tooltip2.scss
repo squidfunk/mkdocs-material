@@ -1,5 +1,5 @@
 ////
-/// Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+/// Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a
 /// copy of this software and associated documentation files (the "Software"),
@@ -42,10 +42,10 @@
       var(--md-tooltip-host-y) +
       var(--md-tooltip-y)
     );
-  inline-size: 100%;
   // Hack: set an explicit `z-index` so we can transition it to ensure that any
   // following elements are not overlaying the tooltip during the transition.
   z-index: 0;
+  inline-size: 100%;
   font-family: var(--md-text-font-family);
   color: var(--md-default-fg-color);
   pointer-events: none;
@@ -140,11 +140,11 @@
       );
     max-width: calc(100vw - 2 * #{px2rem(16px)});
     max-height: 40vh;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
     background-color: var(--md-default-bg-color);
     border-radius: px2rem(2px);
     box-shadow: var(--md-shadow-z2);
-    scrollbar-width: thin;
-    scrollbar-gutter: stable;
 
     // Webkit scrollbar
     &::-webkit-scrollbar {
@@ -159,6 +159,49 @@
       // Webkit scrollbar thumb on hover
       &:hover {
         background-color: var(--md-accent-fg-color);
+      }
+    }
+
+    // Tooltip is used as a dialog - this role should be set if we intend to
+    // render typesetted content inside of the tooltip, e.g., from annotations,
+    // footnotes, or from other documents as fetched via instant previews. The
+    // content is rendered in the same size as other side content.
+    [role="dialog"] > & {
+      width: var(--md-tooltip-width);
+      padding: 0 px2rem(16px);
+      overflow: auto;
+      font-size: px2rem(12.8px);
+      pointer-events: initial;
+
+      // Overlay to fade out top and bottom
+      &::before,
+      &::after {
+        position: sticky;
+        z-index: 10;
+        display: block;
+        width: 100%;
+        height: px2rem(16px);
+        content: "";
+      }
+
+      // Overlay to fade out top
+      &::before {
+        top: 0;
+        background:
+          linear-gradient(
+            var(--md-default-bg-color),
+            transparent 75%
+          );
+      }
+
+      // Overlay to fade out bottom
+      &::after {
+        bottom: 0;
+        background:
+          linear-gradient(
+            transparent,
+            var(--md-default-bg-color) 75%
+          );
       }
     }
 

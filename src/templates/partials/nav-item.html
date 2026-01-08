@@ -1,5 +1,5 @@
 <!--
-  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+  Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
@@ -38,27 +38,55 @@
   {% endif %}
 {% endmacro %}
 
+<!-- Render navigation link title -->
+{% macro render_title(nav_item) %}
+
+  <!-- Typeset title -->
+  {% if nav_item.typeset %}
+    <span class="md-typeset">
+      {{ nav_item.typeset.title }}
+    </span>
+
+  <!-- Regular title -->
+  {% else %}
+    {{ nav_item.title }}
+  {% endif %}
+{% endmacro %}
+
 <!-- Render navigation link content -->
-{% macro render_content(nav_item, ref = nav_item) %}
+{% macro render_content(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
 
   <!-- Navigation link icon -->
-  {% if nav_item.is_page and nav_item.meta.icon %}
+  {% if nav_item.meta and nav_item.meta.icon %}
     {% include ".icons/" ~ nav_item.meta.icon ~ ".svg" %}
   {% endif %}
 
   <!-- Navigation link title -->
   <span class="md-ellipsis">
-    {{ ref.title }}
+    {{ render_title(ref) }}
+
+    <!-- Navigation link subtitle -->
+    {% if nav_item.meta and nav_item.meta.subtitle %}
+      <br />
+      <small>{{ nav_item.meta.subtitle }}</small>
+    {% endif %}
   </span>
 
+  <!-- Navigation link to encrypted content -->
+  {% if nav_item.meta and nav_item.encrypted %}
+    {{ render_status(nav_item, "encrypted") }}
+  {% endif %}
+
   <!-- Navigation link status -->
-  {% if nav_item.is_page and nav_item.meta.status %}
+  {% if nav_item.meta and nav_item.meta.status %}
     {{ render_status(nav_item, nav_item.meta.status) }}
   {% endif %}
 {% endmacro %}
 
 <!-- Render navigation item (pruned) -->
-{% macro render_pruned(nav_item, ref = nav_item) %}
+{% macro render_pruned(nav_item, ref) %}
+  {% set ref = ref or nav_item %}
   {% set first = nav_item.children | first %}
 
   <!-- Recurse, if the first item has further nested items -->
@@ -79,7 +107,7 @@
 {% endmacro %}
 
 <!-- Render navigation item -->
-{% macro render(nav_item, path, level) %}
+{% macro render(nav_item, path, level, parent) %}
 
   <!-- Determine classes -->
   {% set class = "md-nav__item" %}
@@ -98,14 +126,15 @@
   {% if nav_item.children %}
 
     <!-- Determine all nested items that are index pages -->
-    {% set indexes = [] %}
+    {% set _ = namespace(index = none) %}
     {% if "navigation.indexes" in features %}
-      {% for nav_item in nav_item.children %}
-        {% if nav_item.is_index and not index is defined %}
-          {% set _ = indexes.append(nav_item) %}
+      {% for item in nav_item.children %}
+        {% if item.is_index and _.index is none %}
+          {% set _.index = item %}
         {% endif %}
       {% endfor %}
     {% endif %}
+    {% set index = _.index %}
 
     <!-- Navigation tabs -->
     {% if "navigation.tabs" in features %}
@@ -120,7 +149,7 @@
       {% if "navigation.sections" in features %}
 
         <!-- Render 2nd level items with nested items as sections -->
-        {% if level == 2 and nav_item.parent.active %}
+        {% if level == 2 and parent.active %}
           {% set class = class ~ " md-nav__item--section" %}
           {% set is_section = true %}
         {% endif %}
@@ -165,7 +194,7 @@
         />
 
         <!-- Toggle to expand nested items -->
-        {% if not indexes %}
+        {% if not index %}
           {% set tabindex = "0" if not is_section %}
           <label
             class="md-nav__link"
@@ -179,7 +208,6 @@
 
         <!-- Toggle to expand nested items with link to index page -->
         {% else %}
-          {% set index = indexes | first %}
           {% set class = "md-nav__link--active" if index == page %}
           <div class="md-nav__link md-nav__container">
             <a
@@ -213,14 +241,14 @@
         >
           <label class="md-nav__title" for="{{ path }}">
             <span class="md-nav__icon md-icon"></span>
-            {{ nav_item.title }}
+            {{ render_title(nav_item) }}
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
 
             <!-- Nested navigation item -->
-            {% for nav_item in nav_item.children %}
-              {% if not indexes or nav_item != indexes | first %}
-                {{ render(nav_item, path ~ "_" ~ loop.index, level + 1) }}
+            {% for item in nav_item.children %}
+              {% if not index or item != index %}
+                {{ render(item, path ~ "_" ~ loop.index, level + 1, nav_item) }}
               {% endif %}
             {% endfor %}
           </ul>

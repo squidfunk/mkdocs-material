@@ -78,7 +78,8 @@ plugins require the `site_url` to be set, so you should always do this.
                 "!relative scalar",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.to_svg",
                 "tag:yaml.org,2002:python/name:material.extensions.emoji.twemoji",
-                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
+                "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format",
+                "tag:yaml.org,2002:python/object/apply:pymdownx.slugs.slugify mapping"
               ]
             }
             ```
@@ -102,7 +103,7 @@ plugins require the `site_url` to be set, so you should always do this.
     If you already have a schema defined, or wish to self-host your schema to
     reduce duplication, you can add it via [$ref].
 
-  [configuration validation and auto-complete]: https://twitter.com/squidfunk/status/1487746003692400642
+  [configuration validation and auto-complete]: https://x.com/squidfunk/status/1487746003692400642
   [schema.json]: schema.json
   [vscode-yaml]: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
   [settings.json]: https://code.visualstudio.com/docs/getstarted/settings

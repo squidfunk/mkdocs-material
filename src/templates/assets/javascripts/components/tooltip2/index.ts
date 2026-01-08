@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+ * Copyright (c) 2016-2025 Martin Donath <martin.donath@squidfunk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -27,6 +27,7 @@ import {
   Subject,
   animationFrameScheduler,
   combineLatest,
+  combineLatestWith,
   debounce,
   defer,
   distinctUntilChanged,
@@ -109,11 +110,12 @@ let sequence = 0
  * host element's absolute position in the document.
  *
  * @param el - Tooltip host element
+ * @param timeout - Timeout
  *
  * @returns Tooltip observable
  */
 export function watchTooltip2(
-  el: HTMLElement
+  el: HTMLElement, timeout = 250
 ): Observable<Tooltip> {
 
   // Compute whether tooltip should be shown - we need to watch both focus and
@@ -123,7 +125,7 @@ export function watchTooltip2(
   const active$ =
     combineLatest([
       watchElementFocus(el),
-      watchElementHover(el)
+      watchElementHover(el, timeout)
     ])
       .pipe(
         map(([focus, hover]) => focus || hover),
@@ -138,7 +140,12 @@ export function watchTooltip2(
     defer(() => getElementContainers(el)).pipe(
       mergeMap(watchElementContentOffset),
       throttleTime(1),
-      map(() => getElementOffsetAbsolute(el))
+      // Note that we need to poll the value again if the active state changes,
+      // as otherwise the tooltip might be misplaced. This particularly happens
+      // when using third-party integrations like tablesort that change the
+      // position of elements – see https://t.ly/Y-V7X
+      combineLatestWith(active$),
+      map(() => getElementOffsetAbsolute(el)),
     )
 
   // Only track parent elements and compute offset of the tooltip host if the
@@ -168,11 +175,12 @@ export function watchTooltip2(
  *
  * @param el - Tooltip host element
  * @param dependencies - Dependencies
+ * @param timeout - Timeout @todo move into options
  *
  * @returns Tooltip component observable
  */
 export function mountTooltip2(
-  el: HTMLElement, dependencies: Dependencies
+  el: HTMLElement, dependencies: Dependencies, timeout = 250
 ): Observable<Component<Tooltip>> {
   const { content$, viewport$ } = dependencies
 
@@ -317,7 +325,7 @@ export function mountTooltip2(
       })
 
     // Create and return component
-    return watchTooltip2(el)
+    return watchTooltip2(el, timeout)
       .pipe(
         tap(state => push$.next(state)),
         finalize(() => push$.complete()),
@@ -357,5 +365,5 @@ export function mountInlineTooltip2(
       }
     }),
     viewport$
-  })
+  }, 0)
 }

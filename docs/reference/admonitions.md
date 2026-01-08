@@ -155,6 +155,40 @@ links, formatting, ...) after the type qualifier:
 
 </div>
 
+### Nested admonitions
+
+You can also include nested admonitions in your documentation. To do this, you
+can use your existing admonitions and indent the desired ones:
+
+``` markdown title="Nested Admonition"
+!!! note "Outer Note"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+    
+    !!! note "Inner Note"
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+        nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+        massa, nec semper lorem quam in massa.
+```
+
+<div class="result" markdown>
+
+!!! note "Outer Note"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+    
+    !!! note "Inner Note"
+
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+        nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+        massa, nec semper lorem quam in massa.
+</div>
+
 ### Removing the title
 
 Similar to [changing the title], the icon and title can be omitted entirely by
@@ -185,7 +219,7 @@ not work for [collapsible blocks]:
 ### Collapsible blocks
 
 When [Details] is enabled and an admonition block is started with `???` instead
-of `!!!`, the admonition is rendered as a collapsible block with a small toggle
+of `!!!`, the admonition is rendered as an expandable block with a small toggle
 on the right side:
 
 ``` markdown title="Admonition, collapsible"

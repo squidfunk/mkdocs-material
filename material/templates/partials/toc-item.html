@@ -4,11 +4,17 @@
 <li class="md-nav__item">
   <a href="{{ toc_item.url }}" class="md-nav__link">
     <span class="md-ellipsis">
-      {{ toc_item.title }}
+      {% if toc_item.typeset %}
+        <span class="md-typeset">
+          {{ toc_item.typeset.title }}
+        </span>
+      {% else %}
+        {{ toc_item.title }}
+      {% endif %}
     </span>
   </a>
   {% if toc_item.children %}
-    <nav class="md-nav" aria-label="{{ toc_item.title | striptags }}">
+    <nav class="md-nav" aria-label="{{ toc_item.title | striptags | e }}">
       <ul class="md-nav__list">
         {% for toc_item in toc_item.children %}
           {% include "partials/toc-item.html" %}

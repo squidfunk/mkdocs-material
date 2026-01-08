@@ -2,7 +2,32 @@
 
 ## Material for MkDocs Insiders
 
-### 4.53.11 <small>May 20, 2024</small> { id="4.53.11" }
+### 4.53.17 <small>August 22, 2025</small> { id="4.53.17" }
+
+- Fixed #8408: Code annotations bug with custom selectors
+
+### 4.53.16 <small>March 13, 2025</small> { id="4.53.16" }
+
+- Fixed #8019: Tooltips have precedence over instant previews
+
+### 4.53.15 <small>January 15, 2025</small> { id="4.53.15" }
+
+- Fixed #7896: Scoped tags listings not rendering in subsections
+
+### 4.53.14 <small>September 29, 2024</small> { id="4.53.14" }
+
+- Fixed #7567: Empty headlines when using typeset plugin with anchorlinks
+
+### 4.53.13 <small>September 14, 2024</small> { id="4.53.13" }
+
+- Fixed #7520: Social plugin errors for generated files (MkDocs 1.6+)
+
+### 4.53.12 <small>August 2, 2024</small> { id="4.53.12" }
+
+- Fixed #7410: Instant previews jump on content tabs with anchor links
+- Fixed #7408: Instant previews jump on content tabs
+
+### 4.53.11 <small>May 27, 2024</small> { id="4.53.11" }
 
 - Fixed projects plugin crashing when serving before building subprojects
 

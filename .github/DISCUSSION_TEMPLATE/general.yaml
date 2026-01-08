@@ -1,0 +1,60 @@
+body:
+- type: markdown
+  attributes:
+    value: |
+      > [!NOTE]
+      >
+      > **Discussions closed as of November 18, 2025**
+      >
+      > As outlined in our [blog post](https://squidfunk.github.io/mkdocs-material/blog/2025/11/18/goodbye-github-discussions/), we're closing our discussion board, giving the community a new home in our [Discord channel](https://discord.gg/hqXRNq9CjT) at [Zensical](https://zensical.org/). This means that it's not possible to create new discussions, or comment on existing ones. You can join our [Discord channel](https://discord.gg/hqXRNq9CjT) to continue the conversation, or, if you are a professional user, consider joining [Zensical Spark](https://zensical.org/spark/), our collaborative space for professionals.
+      >
+      > Thank you for your understanding.
+      >
+      > In case you have questions not directly related to Material for MkDocs, but to the wider ecosystem, consider creating an issue or a discussion on the respective repository. Here's a list of the most popular ecosystem projects, and their issue trackers and discussion boards:
+      >
+      > __MkDocs & Python Markdown__
+      >
+      > - [MkDocs] – [Issues][MkDocs issues], [Discussions][MkDocs discussions]
+      > - [Python Markdown] – [Issues][Python Markdown issues]
+      > - [Pymdown Extensions] – [Issues][Pymdown Extensions issues], [Discussions][Pymdown Extensions discussions]
+      >
+      > __Popular MkDocs plugins__
+      >
+      > - [Mike] – [Issues][Mike issues], [Discussions][Mike discussions]
+      > - [Macros] – [Issues][Macros issues], [Discussions][Macros discussions]
+      > - [Git Revision Date Localized] – [Issues][Git Revision Date Localized issues]
+      > - [Awesome Nav] – [Issues][Awesome Nav issues]
+      > - [Static i18n] – [Issues][Static i18n issues]
+      > - [MkDocs Literate Nav] – [Issues][MkDocs Literate Nav issues]
+      >
+      > [MkDocs]: https://github.com/mkdocs/mkdocs
+      > [MkDocs issues]: https://github.com/mkdocs/mkdocs/issues
+      > [MkDocs discussions]: https://github.com/mkdocs/mkdocs/discussions
+      > [Pymdown Extensions]: https://github.com/facelessuser/pymdown-extensions
+      > [Pymdown Extensions discussions]: https://github.com/facelessuser/pymdown-extensions/discussions
+      > [Pymdown Extensions issues]: https://github.com/facelessuser/pymdown-extensions/issues
+      > [Python Markdown]: https://github.com/Python-Markdown/markdown
+      > [Python Markdown issues]: https://github.com/Python-Markdown/markdown/issues
+      > [Mike]: https://github.com/jimporter/mike
+      > [Mike issues]: https://github.com/jimporter/mike/issues
+      > [Mike discussions]: https://github.com/jimporter/mike/discussions
+      > [Macros]: https://github.com/fralau/mkdocs-macros-plugin
+      > [Macros issues]: https://github.com/fralau/mkdocs-macros-plugin/issues
+      > [Macros discussions]: https://github.com/fralau/mkdocs-macros-plugin/discussions
+      > [Git Revision Date Localized]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+      > [Git Revision Date Localized issues]: https://github.com/timvink/mkdocs-git-revision-date-localized-plugin/issues
+      > [Awesome Nav]: https://github.com/lukasgeiter/mkdocs-awesome-nav
+      > [Awesome Nav issues]: https://github.com/lukasgeiter/mkdocs-awesome-nav/issues
+      > [Static i18n]: https://github.com/ultrabug/mkdocs-static-i18n
+      > [Static i18n issues]: https://github.com/ultrabug/mkdocs-static-i18n/issues
+      > [Static i18n discussions]: https://github.com/ultrabug/mkdocs-static-i18n/discussions
+      > [MkDocs Literate Nav]: https://github.com/oprypin/mkdocs-literate-nav
+      > [MkDocs Literate Nav issues]: https://github.com/oprypin/mkdocs-literate-nav/issues
+- type: dropdown
+  id: download
+  attributes:
+    label: "​"
+    options: []
+    default: 0
+  validations:
+    required: true
