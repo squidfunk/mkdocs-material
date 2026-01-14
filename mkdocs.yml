@@ -27,8 +27,8 @@ site_description: >-
   minutes – searchable, customizable, in 60+ languages, for all devices
 
 # Repository
-repo_name: squidfunk/mkdocs-material
-repo_url: https://github.com/squidfunk/mkdocs-material
+repo_name: shuhao0727/mkdocs-material
+repo_url: https://github.com/shuhao0727/mkdocs-material
 
 # Copyright
 copyright: Copyright &copy; 2016 - 2025 Martin Donath
@@ -113,17 +113,17 @@ extra:
     property: !ENV GOOGLE_ANALYTICS_KEY
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/squidfunk
+      link: https://github.com/shuhao0727
     - icon: fontawesome/brands/docker
-      link: https://hub.docker.com/r/squidfunk/mkdocs-material/
+      link: https://hub.docker.com/r/shuhao0727/mkdocs-material/
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/mkdocs-material/
     - icon: fontawesome/brands/bluesky
-      link: https://bsky.app/profile/squidfunk.bsky.social
+      link: https://bsky.app/profile/shuhao0727.bsky.social
     - icon: fontawesome/brands/mastodon
-      link: https://fosstodon.org/@squidfunk
+      link: https://fosstodon.org/@shuhao0727
     - icon: fontawesome/brands/x-twitter
-      link: https://x.com/squidfunk
+      link: https://x.com/shuhao0727
 
 # Extensions
 markdown_extensions:
@@ -153,7 +153,7 @@ markdown_extensions:
   - pymdownx.magiclink:
       normalize_issue_symbols: true
       repo_url_shorthand: true
-      user: squidfunk
+      user: shuhao0727
       repo: mkdocs-material
   - pymdownx.mark
   - pymdownx.smartsymbols
