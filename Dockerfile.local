@@ -1,7 +1,7 @@
 # 针对中国网络优化的 mkdocs-material Dockerfile
 # 使用国内镜像源加速构建
 
-FROM python:3.11-alpine AS build
+FROM registry.cn-hangzhou.aliyuncs.com/library/python:3.11-alpine AS build
 
 # 设置阿里云镜像源
 RUN echo "https://mirrors.aliyun.com/alpine/v3.21/main" > /etc/apk/repositories && \
