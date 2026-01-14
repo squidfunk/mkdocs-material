@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   mkdocs:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.local
     ports:
       - "6608:8000"  # 主机端口:容器端口
     volumes:

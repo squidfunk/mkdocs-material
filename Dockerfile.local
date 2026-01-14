@@ -1,0 +1,101 @@
+# 针对中国网络优化的 mkdocs-material Dockerfile
+# 使用国内镜像源加速构建
+
+FROM python:3.11-alpine AS build
+
+# 设置阿里云镜像源
+RUN echo "https://mirrors.aliyun.com/alpine/v3.21/main" > /etc/apk/repositories && \
+    echo "https://mirrors.aliyun.com/alpine/v3.21/community" >> /etc/apk/repositories
+
+# Build-time flags
+ARG WITH_PLUGINS=true
+
+# 环境变量
+ENV PACKAGES=/usr/local/lib/python3.11/site-packages
+ENV PYTHONDONTWRITEBYTECODE=1
+
+# 设置 pip 使用国内源
+ENV PIP_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
+ENV PIP_TRUSTED_HOST=pypi.tuna.tsinghua.edu.cn
+
+# 设置构建目录
+WORKDIR /tmp
+
+# 复制必要的文件
+COPY material material
+COPY package.json package.json
+COPY pyproject.toml pyproject.toml
+COPY README.md README.md
+COPY *requirements.txt ./
+
+# 执行构建并清理
+RUN \
+  apk upgrade --update-cache -a \
+&& \
+  apk add --no-cache \
+    cairo \
+    freetype-dev \
+    git \
+    git-fast-import \
+    jpeg-dev \
+    openssh \
+    pngquant \
+    tini \
+    zlib-dev \
+&& \
+  apk add --no-cache --virtual .build \
+    gcc \
+    g++ \
+    libffi-dev \
+    musl-dev \
+&& \
+  pip install --no-cache-dir --upgrade pip \
+&& \
+  pip install --no-cache-dir . \
+&& \
+  if [ "${WITH_PLUGINS}" = "true" ]; then \
+    pip install --no-cache-dir \
+      mkdocs-material[recommended] \
+      mkdocs-material[git] \
+      mkdocs-material[imaging]; \
+  fi \
+&& \
+  if [ -e user-requirements.txt ]; then \
+    pip install -U -r user-requirements.txt; \
+  fi \
+&& \
+  apk del .build \
+&& \
+  for theme in mkdocs readthedocs; do \
+    rm -rf ${PACKAGES}/mkdocs/themes/$theme; \
+    ln -s \
+      ${PACKAGES}/material/templates \
+      ${PACKAGES}/mkdocs/themes/$theme; \
+  done \
+&& \
+  rm -rf /tmp/* /root/.cache \
+&& \
+  find ${PACKAGES} \
+    -type f \
+    -path "*/__pycache__/*" \
+    -exec rm -f {} \; \
+&& \
+  git config --system --add safe.directory /docs \
+&& \
+  git config --system --add safe.directory /site
+
+# 从空镜像开始
+FROM scratch
+
+# 从构建阶段复制所有内容
+COPY --from=build / /
+
+# 设置工作目录
+WORKDIR /docs
+
+# 暴露 MkDocs 开发服务器端口
+EXPOSE 8000
+
+# 默认启动开发服务器
+ENTRYPOINT ["/sbin/tini", "--", "mkdocs"]
+CMD ["serve", "--dev-addr=0.0.0.0:8000"]
