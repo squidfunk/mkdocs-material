@@ -1,0 +1,32 @@
+# 解决 docker-compose 权限问题的命令
+
+# 1. 首先检查当前权限
+ls -la /usr/local/bin/docker-compose
+
+# 2. 修复权限（需要sudo）
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 3. 再次检查权限
+ls -la /usr/local/bin/docker-compose
+
+# 4. 测试 docker-compose 是否可用
+docker-compose --version
+
+# 5. 如果上述方法无效，尝试重新下载
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# 6. 或者使用 Docker Compose 插件（如果已安装）
+# Docker 29.0+ 版本通常包含 compose 插件
+docker compose version
+
+# 7. 如果使用插件，可以这样启动项目
+docker compose up -d
+
+# 8. 检查当前用户组，确保在 docker 组中
+groups | grep docker
+
+# 9. 如果不在 docker 组中，重新添加
+sudo usermod -aG docker $USER
+# 然后需要重新登录或运行：
+newgrp docker
