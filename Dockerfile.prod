@@ -1,0 +1,29 @@
+# 生产环境 Dockerfile
+# 使用多阶段构建：第一阶段构建静态站点，第二阶段使用Nginx提供静态文件
+
+# 第一阶段：构建静态站点
+FROM python:3.11-alpine3.21 AS builder
+
+# 设置工作目录
+WORKDIR /build
+
+# 复制项目文件
+COPY . .
+
+# 安装mkdocs-material和必要的插件
+RUN pip install --no-cache-dir mkdocs-material mkdocs-minify-plugin mkdocs-redirects mkdocs-rss-plugin
+
+# 构建静态站点到 /build/site 目录
+RUN mkdocs build
+
+# 第二阶段：使用Nginx提供静态文件
+FROM nginx:alpine
+
+# 复制构建好的静态文件到Nginx的默认目录
+COPY --from=builder /build/site /usr/share/nginx/html
+
+# 暴露端口80
+EXPOSE 80
+
+# 启动Nginx
+CMD ["nginx", "-g", "daemon off;"]

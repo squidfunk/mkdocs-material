@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mkdocs:
+    build: .
+    ports:
+      - "6608:8000"  # 主机端口:容器端口
+    volumes:
+      - ./docs:/docs  # 挂载文档源文件，便于实时更新
+      - ./mkdocs.yml:/docs/mkdocs.yml  # 挂载配置文件
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    command: serve --dev-addr=0.0.0.0:8000
