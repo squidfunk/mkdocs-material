@@ -62,7 +62,7 @@ page. For example, you can [jump to the third tab above this paragraph][tab_1].
               case: lower
     ```
 
-    Fore more information, please [see the extension guide][slugification].
+    For more information, please [see the extension guide][slugification].
 
   [tab_1]: #anchor-links--or-even-me
   [Python Markdown Extensions]: https://facelessuser.github.io/pymdown-extensions/
