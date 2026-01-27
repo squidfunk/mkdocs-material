@@ -39,17 +39,17 @@
   <!-- View button -->
   {% if "content.action.view" in features %}
     {% if "/blob/" in page.edit_url %}
-      {% set part = "blob" %}
+      {% set part = "/blob/" %}
     {% else %}
-      {% set part = "edit" %}
-    {% endif %}
-    <a
-      href="{{ page.edit_url | replace(part, 'raw') }}"
-      title="{{ lang.t('action.view') }}"
-      class="md-content__button md-icon"
-    >
-      {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
-      {% include ".icons/" ~ icon ~ ".svg" %}
-    </a>
+      {% set part = "/edit/" %}
+    {% endif %}      
+      <a
+        href="{{ page.edit_url | replace(part, '/raw/') }}"
+        title="{{ lang.t('action.view') }}"
+        class="md-content__button md-icon"
+      >
+        {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
   {% endif %}
 {% endif %}
