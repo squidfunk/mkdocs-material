@@ -17,3 +17,18 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
+
+from os import getenv
+from colorama import Fore, Style
+
+# Silence this warning with NO_MKDOCS_2_WARNING=1
+if not getenv("NO_MKDOCS_2_WARNING"):
+    print("")
+    print(f"{Fore.RED} │ ⚠ WARNING – MkDocs 2.0 is incompatible with Material for MkDocs{Style.RESET_ALL}")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}  MkDocs 1.x is unmaintained. We recommend switching to Zensical, our")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}  new static site generator, as soon as possible. We're providing an")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}  analysis of the situation in this article:")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}  ")
+    print(f"{Fore.RED} │ {Style.RESET_ALL}  \033[4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/{Style.RESET_ALL}")
+    print(f"{Style.RESET_ALL}")
