@@ -6,9 +6,8 @@ authors:
   - katharinalisalin
 categories:
   - General
-icon: fontawesome/solid-warning
 description: >
-  tbd
+  MkDocs 2.0 is a ground-up rewrite of the documentation tool tens of thousands of projects rely on, introducing potentially significant breaking changes
 slug: mkdocs-2.0
 ---
 
