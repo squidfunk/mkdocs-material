@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.7.2 <small>February 18, 2026</small> { id="9.7.2" }
+
+- Opened up version ranges of optional dependencies for forward-compatibility
+- Added warning to `mkdocs build` about impeding MkDocs 2.0 incompatibility
+
 ### 9.7.1 <small>December 18, 2025</small> { id="9.7.1" }
 
 - Updated requests to 2.30+ to mitigate CVE in urllib
