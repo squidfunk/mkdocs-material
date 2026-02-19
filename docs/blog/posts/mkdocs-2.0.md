@@ -28,7 +28,9 @@ _Please note that MkDocs 2.0 is still in pre-release, and the information in thi
 
 ## What's changing in MkDocs 2.0
 
-Based on the [official announcement], the published [roadmap], and several prior comments and statements from the project's maintainer, MkDocs 2.0 is intended as a ground-up rewrite of the project to reduce complexity — and it comes with some important trade-offs:
+Based on the [official announcement], the published [roadmap][^1], and several prior comments and statements from the project's maintainer, MkDocs 2.0 is intended as a ground-up rewrite of the project to reduce complexity — and it comes with some important trade-offs:
+
+  [^1]: The published roadmap was removed on February 19, 2026. The link now points to an issue comment that contains a screenshot of the last available version of the roadmap.
 
 - __MkDocs 2.0 won't have a plugin system__ – MkDocs 2.0 is being rewritten with a focus on theming, deliberately [removing plugin support to simplify the codebase]. We believe [the plugin ecosystem] is one of the cornerstones of MkDocs' success and wide-spread adoption, and its removal will affect workflows and customizations that teams have built over time.
 
@@ -38,7 +40,7 @@ Based on the [official announcement], the published [roadmap], and several prior
 
 - __MkDocs 2.0 is incompatible with Material for MkDocs__ – If your documentation is built with Material for MkDocs, it will cease to work with MkDocs 2.0. Material for MkDocs makes extensive use of the templating and plugin systems of MkDocs 1.x, and the changes that MkDocs 2.0 introduces are not backward-compatible.
 
-- __MkDocs 2.0 has a new configuration format__ – MkDocs 2.0 uses TOML for configuration, which is entirely different from the YAML format used in MkDocs 1.x. As a result, existing `mkdocs.yml` files will currently do not work with MkDocs 2.0. There is currently no migration path for existing projects, but the [roadmap] mentions _legacy version support_.
+- __MkDocs 2.0 has a new configuration format__ – MkDocs 2.0 uses TOML for configuration, which is entirely different from the YAML format used in MkDocs 1.x. As a result, existing `mkdocs.yml` files will currently do not work with MkDocs 2.0. There is currently no migration path for existing projects, but the [roadmap][^1] mentions _legacy version support_.
 
 - __MkDocs 2.0 is currently unlicensed__ – MkDocs 2.0 doesn't specify a license, which has implications for how it can be used and contributed to by the community. It's unclear what the rationale behind this decision is, but should be critically evaluated by teams and organizations that rely on MkDocs for their documentation projects.
 
@@ -47,7 +49,7 @@ A release date has not been announced, so planning around a specific timeline re
 Additionally, it's important to note that [MkDocs 1.x is unmaintained], with seemingly no plans to fix long-standing issues like [recent problems with live-reload].
 
   [official announcement]: https://github.com/mkdocs/mkdocs/discussions/4077
-  [roadmap]: https://www.encode.io/mkdocs/roadmap/
+  [roadmap]: https://github.com/squidfunk/mkdocs-material/issues/8478#issuecomment-3778358483
   [removing plugin support to simplify the codebase]: https://github.com/mkdocs/mkdocs/discussions/3815#discussioncomment-10398312
   [the plugin ecosystem]: https://github.com/mkdocs/catalog?tab=readme-ov-file#contents
   [navigation is passed to themes as pre-rendered HTML]: https://www.encode.io/mkdocs/styling/#templates
