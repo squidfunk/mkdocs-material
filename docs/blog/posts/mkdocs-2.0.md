@@ -40,7 +40,7 @@ Based on the [official announcement], the published [roadmap][^1], and several p
 
 - __MkDocs 2.0 is incompatible with Material for MkDocs__ – If your documentation is built with Material for MkDocs, it will cease to work with MkDocs 2.0. Material for MkDocs makes extensive use of the templating and plugin systems of MkDocs 1.x, and the changes that MkDocs 2.0 introduces are not backward-compatible.
 
-- __MkDocs 2.0 has a new configuration format__ – MkDocs 2.0 uses TOML for configuration, which is entirely different from the YAML format used in MkDocs 1.x. As a result, existing `mkdocs.yml` files will currently do not work with MkDocs 2.0. There is currently no migration path for existing projects.
+- __MkDocs 2.0 has a new configuration format__ – MkDocs 2.0 uses TOML for configuration, which is entirely different from the YAML format used in MkDocs 1.x. As a result, existing `mkdocs.yml` files will currently not work with MkDocs 2.0. There is no migration path for existing projects.
 
 - __MkDocs 2.0 is currently unlicensed__ – MkDocs 2.0 doesn't specify a license, which has implications for how it can be used and contributed to by the community. It's unclear what the rationale behind this decision is, but should be critically evaluated by teams and organizations that rely on MkDocs for their documentation projects.
 
