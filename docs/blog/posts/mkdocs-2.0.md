@@ -20,8 +20,6 @@ __Three weeks ago, MkDocs 2.0 was announced — a ground-up rewrite of the docum
 
 We've taken the time to thoroughly evaluate and test the pre-release version, and want to share what we know, what it might mean for your documentation projects, and where [Zensical], our new static site generator that is _compatible with MkDocs 1.x_, fits into the picture.
 
-Starting in Material for Mkdocs 9.7.2, a warning is printed during a build about the upcoming MkDocs 2.0 changes. To disable this warning, set the environment variable `NO_MKDOCS_2_WARNING=1`.
-
 _Please note that MkDocs 2.0 is still in pre-release, and the information in this article is based on the current state of the project. We will keep it updated as we learn more._
 
   [Zensical]: zensical.md
@@ -88,6 +86,12 @@ Additionally, we're working on a much more flexible [module system], which will 
   [a reliable, backward-compatible home]: https://zensical.org/compatibility/
   [feature parity]: https://zensical.org/compatibility/features/
   [module system]: https://zensical.org/about/roadmap/#module-system
+
+!!! tip
+
+    Starting in Material for Mkdocs 9.7.2, a warning is printed during a build about the upcoming MkDocs 2.0 changes.
+    
+    To disable this warning, set the environment variable `NO_MKDOCS_2_WARNING=1`.
 
 ## The story behind Zensical
 
