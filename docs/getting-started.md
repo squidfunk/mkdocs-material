@@ -1,4 +1,4 @@
-# Getting started
+## Getting started
 
 Material for MkDocs is a powerful documentation framework on top of [MkDocs],
 a static site generator for project documentation.[^1] If you're familiar with
