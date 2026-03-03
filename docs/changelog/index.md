@@ -2,6 +2,11 @@
 
 ## Material for MkDocs
 
+### 9.7.4 <small>March 3, 2026</small> { id="9.7.4" }
+
+- Hardened social cards plugin by switching to sandboxed environment
+- Updated MkDocs 2.0 incompatibility warning
+
 ### 9.7.3 <small>February 24, 2026</small> { id="9.7.3" }
 
 - Fixed #8567: Print MkDocs 2.0 incompatibility warning to stderr

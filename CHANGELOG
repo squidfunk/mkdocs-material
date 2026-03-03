@@ -1,3 +1,8 @@
+mkdocs-material-9.7.4 (2026-03-03)
+
+  * Hardened social cards plugin by switching to sandboxed environment
+  * Updated MkDocs 2.0 incompatibility warning
+
 mkdocs-material-9.7.3 (2026-02-24)
 
   * Fixed #8567: Print MkDocs 2.0 incompatibility warning to stderr
