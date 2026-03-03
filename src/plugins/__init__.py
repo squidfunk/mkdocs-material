@@ -26,13 +26,19 @@ from sys import stderr
 if not getenv("NO_MKDOCS_2_WARNING"):
     print(
         "\n"
-        f"{Fore.RED} │ ⚠ WARNING – MkDocs 2.0 is incompatible with Material for MkDocs{Style.RESET_ALL}\n"
-        f"{Fore.RED} │ {Style.RESET_ALL}\n"
-        f"{Fore.RED} │ {Style.RESET_ALL}  MkDocs 1.x is unmaintained. We recommend switching to Zensical, our\n"
-        f"{Fore.RED} │ {Style.RESET_ALL}  new static site generator, as soon as possible. We're providing an\n"
-        f"{Fore.RED} │ {Style.RESET_ALL}  analysis of the situation in this article:\n"
-        f"{Fore.RED} │ {Style.RESET_ALL}  \n"
-        f"{Fore.RED} │ {Style.RESET_ALL}  \033[4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/{Style.RESET_ALL}\n"
+        f"{Fore.RED} │  ⚠  WARNING – MkDocs 2.0 is incompatible with Material for MkDocs{Style.RESET_ALL}\n"
+        f"{Fore.RED} │{Style.RESET_ALL}\n"
+        f"{Fore.RED} │{Style.RESET_ALL}  MkDocs 2.0 introduces backward-incompatible changes:\n"
+        f"{Fore.RED} │{Style.RESET_ALL}\n"
+        f"{Fore.RED} │  × {Style.RESET_ALL}All plugins will stop working – the plugin system has been removed\n"
+        f"{Fore.RED} │  × {Style.RESET_ALL}All theme overrides will break – the theming system has been rewritten\n"
+        f"{Fore.RED} │  × {Style.RESET_ALL}No migration path exists – existing projects cannot be upgraded\n"
+        f"{Fore.RED} │  × {Style.RESET_ALL}Closed contribution model – community members can't report bugs\n"
+        f"{Fore.RED} │  × {Style.RESET_ALL}Currently unlicensed – unsuitable for production use\n"
+        f"{Fore.RED} │{Style.RESET_ALL}\n"
+        f"{Fore.RED} │{Style.RESET_ALL}  Our full analysis:\n"
+        f"{Fore.RED} │{Style.RESET_ALL}\n"
+        f"{Fore.RED} │{Style.RESET_ALL}  \033[4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/{Style.RESET_ALL}\n"
         f"{Style.RESET_ALL}",
         file=stderr
     )
