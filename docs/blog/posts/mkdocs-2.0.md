@@ -89,7 +89,7 @@ Here's a summary of [the timeline of events]:
 
 The moment we learned about these plans, [we immediately started working] on what would eventually become [Zensical] – a new static site generator designed to be backward-compatible with MkDocs 1.x and a reliable long-term home for your existing documentation projects.
 
-For years, we were already trying to improve MkDocs from within. We authored [12 plugins], which gave us a deep understanding of the plugin API's limitations. We conducted quantitative and qualitative analyses of the ecosystem to identify where MkDocs was falling short and talked to dozens of organizations. We raised these issues and repeatedly got nowhere. When the new direction of MkDocs 2.0 became apparent, the thinking was already done.
+For years, we were trying to improve MkDocs from within. We authored [12 plugins], which gave us a deep understanding of the plugin API's limitations. We conducted quantitative and qualitative analyses of the ecosystem to identify where MkDocs was falling short and talked to dozens of organizations. We raised these issues and repeatedly got nowhere. When the new direction of MkDocs 2.0 became apparent, the thinking was already done.
 
 We considered forking MkDocs, but quickly realized it wasn't viable: every plugin in the ecosystem has a direct dependency on `mkdocs`, which means forking MkDocs would require forking every single one of its [300 plugins] – __like moving an entire city at once__.
 
