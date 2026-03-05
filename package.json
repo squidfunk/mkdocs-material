@@ -98,7 +98,7 @@
     "stylelint-config-recommended": "14.0.1",
     "stylelint-config-standard-scss": "14.0.0",
     "stylelint-scss": "^6.14.0",
-    "svgo": "3.3.2",
+    "svgo": "3.3.3",
     "tiny-glob": "^0.2.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
