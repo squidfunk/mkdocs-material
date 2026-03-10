@@ -26,9 +26,10 @@ from sys import stderr
 if not getenv("NO_MKDOCS_2_WARNING"):
     print(
         "\n"
-        f"{Fore.RED} │  ⚠  WARNING – MkDocs 2.0 is incompatible with Material for MkDocs{Style.RESET_ALL}\n"
+        f"{Fore.RED} │  ⚠  Warning from the Material for MkDocs team{Style.RESET_ALL}\n"
         f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  MkDocs 2.0 introduces backward-incompatible changes:\n"
+        f"{Fore.RED} │{Style.RESET_ALL}  MkDocs 2.0, the underlying framework of Material for MkDocs,\n"
+        f"{Fore.RED} │{Style.RESET_ALL}  will introduce backward-incompatible changes, including:\n"
         f"{Fore.RED} │{Style.RESET_ALL}\n"
         f"{Fore.RED} │  × {Style.RESET_ALL}All plugins will stop working – the plugin system has been removed\n"
         f"{Fore.RED} │  × {Style.RESET_ALL}All theme overrides will break – the theming system has been rewritten\n"
