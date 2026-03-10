@@ -1,7 +1,7 @@
 ---
 date:
   created: 2026-02-18
-  updated: 2026-03-03
+  updated: 2026-03-10
 authors:
   - squidfunk
   - alexvoss
@@ -16,6 +16,8 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
+Last update: March 10, 2026 - see [update log].
+
 ---
 
 __Three weeks ago, MkDocs 2.0 was announced – a ground-up rewrite of the documentation tool tens of thousands of projects rely on, introducing potentially significant breaking changes.__
@@ -24,17 +26,16 @@ We've taken the time to thoroughly evaluate and test the pre-release version, an
 
 __If you've missed it__: [MkDocs 1.x is unmaintained], with issues and PRs piling up and no releases in the past 18 months, and seemingly no plans to fix long-standing issues like [live-reload problems]. More importantly, it's unclear whether security issues will be addressed, and whether the project will receive any updates at all in the future.
 
-_Please note that MkDocs 2.0 is still in pre-release, and the information in this article is based on the current state of the project. We will keep it updated as we learn more._
+_Please note that MkDocs 2.0 is still in pre-release, and the information in this article is based on the current state of the project. We keep it updated as we learn more._
 
   [Zensical]: zensical.md
+  [update log]: #updates
 
 <!-- more -->
 
 ## What's changing in MkDocs 2.0
 
-Based on the [official announcement], the published [roadmap][^1], and several prior comments and statements from the project's maintainer, MkDocs 2.0 is intended as a ground-up rewrite of the project to reduce complexity – and it comes with some important trade-offs:
-
-  [^1]: The published roadmap was removed on February 19, 2026. The link now points to an issue comment that contains a screenshot of the last available version of the roadmap.
+Based on the [official announcement], the published [roadmap], and several prior comments and statements from the project's maintainer, MkDocs 2.0 is intended as a ground-up rewrite of the project to reduce complexity – and it comes with some important trade-offs:
 
 - __MkDocs 2.0 is incompatible with Material for MkDocs__ – If your documentation is built with Material for MkDocs, it will cease to work with MkDocs 2.0. Material for MkDocs makes extensive use of the templating and plugin systems of MkDocs 1.x, and the changes that MkDocs 2.0 introduces are not backward-compatible.
 
@@ -121,6 +122,20 @@ Rather than turning this into a marketing pitch, we encourage you to read the [a
 We also encourage you to do your own research, evaluate the implications for your projects, and consider all available options. If you've relied on Material for MkDocs professionally, valued our work, and are looking for a clear path forward, we're offering [hands-on support for migration].
 
 _If you have any questions, feel free to reach out to Kathi at hello@zensical.org._
+
+## Updates
+
+- __March 10, 2026__: Access to the `mkdocs` package for the maintainers removed on March 9 [seems to have been restored](https://github.com/orgs/mkdocs-community/discussions/1#discussioncomment-16060966), including the original creator of MkDocs.
+
+- __March 9, 2026__: One of the previous maintainers [changed ownership of the `mkdocs` package on PyPI](https://github.com/mkdocs/mkdocs/discussions/4089), removing access for all other maintainers, including the original creator of MkDocs.
+
+- __March 4, 2026__: We added a paragraph explaining that prior attempts on resolving the situation were unsuccessful and why we decided to find a new path for our community.
+
+- __March 3, 2026__: We added a paragraph on the new contribution model that MkDocs 2.0 is adopting, and the implications for users and contributors from our perspective.
+
+- __February 27, 2026__: We added a note on the `NO_MKDOCS_2_WARNING` environment variable to disable the MkDocs 2.0 incompatibility warning in Material for MkDocs.
+
+- __February 19, 2026__: The published MkDocs 2.0 roadmap was deleted. The link now points to an issue comment that contains a screenshot of the last available version of the roadmap.
 
   [compatibility section]: https://zensical.org/compatibility/features/
   [hands-on support for migration]: https://zensical.org/spark/
