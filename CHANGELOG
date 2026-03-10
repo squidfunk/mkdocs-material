@@ -1,3 +1,8 @@
+mkdocs-material-9.7.5 (2026-03-10)
+
+  * Limited version range of mkdocs to <2
+  * Updated MkDocs 2.0 incompatibility warning (clarify relation with MkDocs)
+
 mkdocs-material-9.7.4 (2026-03-03)
 
   * Hardened social cards plugin by switching to sandboxed environment
