@@ -16,18 +16,21 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
-Last update: March 10, 2026 - see [update log].
+Last update: March 10, 2026 – see [update log].
 
 ---
 
 __Three weeks ago, MkDocs 2.0 was announced – a ground-up rewrite of the documentation tool tens of thousands of projects rely on, introducing potentially significant breaking changes.__
 
-We've taken the time to thoroughly evaluate and test the pre-release version, and we want to share what we know, what it might mean for your documentation projects, and where [Zensical], our new static site generator that is _compatible with MkDocs 1.x_, fits into the picture.
+Material for MkDocs depends on MkDocs as its underlying framework and central dependency. We maintain Material for MkDocs, but we have no control over MkDocs itself.
+
+We've taken the time to thoroughly evaluate and test the [MkDocs 2.0 pre-release] and want to share our findings, including what it might mean for your documentation projects, and where [Zensical], our new static site generator that is _compatible with MkDocs 1.x_, fits into the picture.
 
 __If you've missed it__: [MkDocs 1.x is unmaintained], with issues and PRs piling up and no releases in the past 18 months, and seemingly no plans to fix long-standing issues like [live-reload problems]. More importantly, it's unclear whether security issues will be addressed, and whether the project will receive any updates at all in the future.
 
 _Please note that MkDocs 2.0 is still in pre-release, and the information in this article is based on the current state of the project. We keep it updated as we learn more._
 
+  [MkDocs 2.0 pre-release]: https://github.com/encode/mkdocs
   [Zensical]: zensical.md
   [update log]: #updates
 
@@ -136,6 +139,8 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 - __February 27, 2026__: We added a note on the `NO_MKDOCS_2_WARNING` environment variable to disable the MkDocs 2.0 incompatibility warning in Material for MkDocs.
 
 - __February 19, 2026__: The published MkDocs 2.0 roadmap was deleted. The link now points to an issue comment that contains a screenshot of the last available version of the roadmap.
+
+- __February 13, 2026__: The mention of compatibility planned for MkDocs 1.x and MkDocs 2.0 projects was removed from the MkDocs 2.0 [`README.md`](https://github.com/encode/mkdocs/commit/313d3e8#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L52).
 
   [compatibility section]: https://zensical.org/compatibility/features/
   [hands-on support for migration]: https://zensical.org/spark/
