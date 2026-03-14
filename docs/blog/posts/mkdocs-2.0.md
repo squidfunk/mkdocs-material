@@ -128,9 +128,11 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 ## Updates
 
-- __March 10, 2026__: Access to the `mkdocs` package for the maintainers removed on March 9 [seems to have been restored](https://github.com/orgs/mkdocs-community/discussions/1#discussioncomment-16060966), including the original creator of MkDocs.
+- __March 10, 2026__: We released 9.7.5, which limits the version range of MkDocs to `<2`. This ensures that your builds will continue to work, even if MkDocs 2.0 is released.
 
-- __March 9, 2026__: One of the previous maintainers [changed ownership of the `mkdocs` package on PyPI](https://github.com/mkdocs/mkdocs/discussions/4089), removing access for all other maintainers, including the original creator of MkDocs.
+- __March 10, 2026__: Access to the `mkdocs` package for the maintainers removed on March 9 [seems to have been restored](https://github.com/orgs/ProperDocs/discussions/1#discussioncomment-16060966), including the original creator of MkDocs.
+
+- __March 9, 2026__: One of the previous maintainers [changed ownership of the `mkdocs` package on PyPI](https://github.com/orgs/ProperDocs/discussions/1#:~:text=Summary%3A%0AI%20have%20retaken%20the%20mkdocs%20name%20on%20PyPI%20and%20will%20attempt%20to%20resume%20the%20maintenance%20of%20MkDocs%20at%20https%3A//github.com/mkdocs%2Dcommunity/mkdocs%20(new%20repo).), removing access for all other maintainers, including the original creator of MkDocs.
 
 - __March 4, 2026__: We added a paragraph explaining that prior attempts on resolving the situation were unsuccessful and why we decided to find a new path for our community.
 
