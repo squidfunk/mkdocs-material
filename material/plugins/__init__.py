@@ -17,29 +17,3 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
-
-from colorama import Fore, Style
-from os import getenv
-from sys import stderr
-
-# Silence this warning with NO_MKDOCS_2_WARNING=1
-if not getenv("NO_MKDOCS_2_WARNING"):
-    print(
-        "\n"
-        f"{Fore.RED} │  ⚠  Warning from the Material for MkDocs team{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  MkDocs 2.0, the underlying framework of Material for MkDocs,\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  will introduce backward-incompatible changes, including:\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}All plugins will stop working – the plugin system has been removed\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}All theme overrides will break – the theming system has been rewritten\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}No migration path exists – existing projects cannot be upgraded\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}Closed contribution model – community members can't report bugs\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}Currently unlicensed – unsuitable for production use\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  Our full analysis:\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  \033[4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/{Style.RESET_ALL}\n"
-        f"{Style.RESET_ALL}",
-        file=stderr
-    )
