@@ -1,3 +1,7 @@
+mkdocs-material-9.7.6 (2026-03-19)
+
+  * Automatically disable MkDocs 2.0 warning for forks of MkDocs
+
 mkdocs-material-9.7.5 (2026-03-10)
 
   * Limited version range of mkdocs to <2

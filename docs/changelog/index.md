@@ -2,6 +2,10 @@
 
 ## Material for MkDocs
 
+### 9.7.6 <small>March 19, 2026</small> { id="9.7.6" }
+
+- Automatically disable MkDocs 2.0 warning for forks of MkDocs
+
 ### 9.7.5 <small>March 10, 2026</small> { id="9.7.5" }
 
 - Limited version range of mkdocs to <2
