@@ -95,7 +95,14 @@ The moment we learned about these plans, [we immediately started working] on wha
 
 For years, we were trying to improve MkDocs from within. We authored [12 plugins], which gave us a deep understanding of the plugin API's limitations. We conducted quantitative and qualitative analyses of the ecosystem to identify where MkDocs was falling short and talked to dozens of organizations and key ecosystem members. We raised these issues and repeatedly got nowhere. When the new direction of MkDocs 2.0 became apparent, the thinking was already done.
 
-We considered forking MkDocs, but quickly realized it wasn't viable: every plugin in the ecosystem has a direct dependency on `mkdocs`, which means forking MkDocs would require forking every single one of its [300 plugins] – __like moving an entire city at once__.
+We considered forking MkDocs, but quickly realized it wasn't viable: every plugin in the ecosystem has a direct dependency on `mkdocs`, which means forking MkDocs would require forking every single one of its [300 plugins] – __like moving an entire city at once__.[^1]
+
+  [^1]:
+    Forking is technically feasible by interposing on all MkDocs imports at runtime using Python's import hook machinery (i.e., custom `sys.meta_path` finders/loaders or `importlib` wrappers). In this model, one effectively shadows MkDocs modules by resolving import requests to alternative implementations, or by proxying and patching objects during module initialization.
+
+    However, this approach fundamentally relies on strict API and behavioral compatibility with MkDocs' internal module graph. Because imports are resolved dynamically and cached after first load, any divergence in function signatures, class layouts, side effects, or import order can introduce subtle breakage. As a result, all internal APIs – not just the public surface – must be preserved with near-exact fidelity.
+
+    In practice, this reduces the "fork" to a thin layer of indirection rather than a true divergence. Core functionality cannot be meaningfully refactored or redesigned without violating the implicit contracts embedded throughout the codebase. Consequently, the deeper systemic and structural limitations of MkDocs 1.x remain effectively unchanged under this strategy.
 
 With forking being impractical, we had to start from scratch.
 
@@ -132,7 +139,10 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 - __March 10, 2026__: Access to the `mkdocs` package for the maintainers removed on March 9 [seems to have been restored](https://github.com/orgs/ProperDocs/discussions/1#discussioncomment-16060966), including the original creator of MkDocs.
 
-- __March 9, 2026__: One of the previous maintainers [changed ownership of the `mkdocs` package on PyPI](https://github.com/orgs/ProperDocs/discussions/1#:~:text=Summary%3A%0AI%20have%20retaken%20the%20mkdocs%20name%20on%20PyPI%20and%20will%20attempt%20to%20resume%20the%20maintenance%20of%20MkDocs%20at%20https%3A//github.com/mkdocs%2Dcommunity/mkdocs%20(new%20repo).), removing access for all other maintainers, including the original creator of MkDocs.
+- __March 9, 2026__: One of the previous maintainers [changed ownership of the `mkdocs` package on PyPI](https://web.archive.org/web/20260310162839/https://github.com/mkdocs/mkdocs/discussions/4089)[^2], removing access for all other maintainers, including the original creator of MkDocs.
+
+[^2]:
+  The link points to the web archive, as the original post has been edited multiple times by the previous maintainer.
 
 - __March 4, 2026__: We added a paragraph explaining that prior attempts on resolving the situation were unsuccessful and why we decided to find a new path for our community.
 
