@@ -1,7 +1,7 @@
 ---
 date:
   created: 2026-02-18
-  updated: 2026-03-10
+  updated: 2026-03-22
 authors:
   - squidfunk
   - alexvoss
@@ -16,7 +16,7 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
-Last update: March 10, 2026 – see [update log].
+Last update: March 22, 2026 – see [update log].
 
 ---
 
@@ -135,6 +135,8 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 ## Updates
 
+- __March 22, 2026__: In _[The Slow Collapse of MkDocs]_, Florian Maas outlines the entire timeline of events starting in 2014 that eventually led to the fracturing of the MkDocs ecosystem.
+
 - __March 10, 2026__: We released 9.7.5, which limits the version range of MkDocs to `<2`. This ensures that your builds will continue to work, even if MkDocs 2.0 is released.
 
 - __March 10, 2026__: Access to the `mkdocs` package for the maintainers removed on March 9 [seems to have been restored](https://github.com/orgs/ProperDocs/discussions/1#discussioncomment-16060966), including the original creator of MkDocs.
@@ -154,6 +156,7 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 - __February 13, 2026__: The mention of compatibility planned for MkDocs 1.x and MkDocs 2.0 projects was removed from the MkDocs 2.0 [`README.md`](https://github.com/encode/mkdocs/commit/313d3e8#diff-b335630551682c19a781afebcf4d07bf978fb1f8ac04c6bf87428ed5106870f5L52).
 
+  [The Slow Collapse of MkDocs]: https://fpgmaas.com/blog/collapse-of-mkdocs/
   [compatibility section]: https://zensical.org/compatibility/features/
   [hands-on support for migration]: https://zensical.org/spark/
   [website]: https://zensical.org
