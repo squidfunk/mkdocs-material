@@ -16,7 +16,7 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
-Last update: March 22, 2026 – see [update log].
+Last update: March 27, 2026 – see [update log].
 
 ---
 
@@ -134,6 +134,8 @@ We also encourage you to do your own research, evaluate the implications for you
 _If you have any questions, feel free to reach out to Kathi at hello@zensical.org._
 
 ## Updates
+
+- __March 27, 2026__: In [Talk Python To Me #542](https://talkpython.fm/episodes/show/542), Martin Donath shares the backstory of Zensical, and reflects on the lessons learned maintaining  Material for MkDocs for almost a decade.
 
 - __March 22, 2026__: In _[The Slow Collapse of MkDocs]_, Florian Maas outlines the entire timeline of events starting in 2014 that eventually led to the fracturing of the MkDocs ecosystem.
 
