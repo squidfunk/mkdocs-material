@@ -171,13 +171,8 @@ Zensical Spark, [our offering for professionals], is the result of countless cal
 
 - You can influence the future development of Zensical by participating in [our new approach] to Open Source software development, helping us to build exactly what you need.
 
-_Let's talk! If you're working in a professional context, reach out to hello@zensical.org to schedule a call and learn how Zensical Spark enables your team to transition to Zensical smoothly and have a voice in its continued development._
-
-_You should also consider joining the [waiting list], since seats are limited._
-
   [our offering for professionals]: https://zensical.org/spark/
   [our new approach]: https://zensical.org/docs/community/how-we-work/
-  [waiting list]: https://zensical.org/spark/join/
 
 ## We're growing our team
 
