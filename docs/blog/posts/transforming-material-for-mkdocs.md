@@ -25,17 +25,19 @@ _Please note that this post includes several technical details in the footnotes,
 
 ---
 
-__This is the first article in a four-part series:__
+__This is the first article in a series:__
 
 1. [Transforming Material for MkDocs]
 2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
 3. [Material for MkDocs Insiders – Now free for everyone]
 4. [Goodbye, GitHub Discussions]
+5. [What MkDocs 2.0 means for your documentation projects]
 
   [Transforming Material for MkDocs]: transforming-material-for-mkdocs.md
   [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
   [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
   [Goodbye, GitHub Discussions]: goodbye-github-discussions.md
+  [What MkDocs 2.0 means for your documentation projects]: mkdocs-2.0.md
 
 ## A success story
 

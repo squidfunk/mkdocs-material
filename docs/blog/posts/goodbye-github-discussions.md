@@ -36,17 +36,19 @@ _You can subscribe to [our newsletter] to stay in the loop_.
 
 ---
 
-__This is the fourth and final article in a four-part series:__
+__This is the fourth article in a series:__
 
 1. [Transforming Material for MkDocs]
 2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
 3. [Material for MkDocs Insiders – Now free for everyone]
 4. [Goodbye, GitHub Discussions]
+5. [What MkDocs 2.0 means for your documentation projects]
 
   [Transforming Material for MkDocs]: transforming-material-for-mkdocs.md
   [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
   [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
   [Goodbye, GitHub Discussions]: goodbye-github-discussions.md
+  [What MkDocs 2.0 means for your documentation projects]: mkdocs-2.0.md
 
 ## GitHub Issues
 
@@ -98,13 +100,22 @@ The [Community Experts Program] helped reduce some of the support burden, but it
 
 With Material for MkDocs in [maintenance mode], __our GitHub Discussion board is now read-only__ – it remains accessible but will no longer accept new discussions or comments. All existing answers stay in place, ensuring that users can still find solutions to previously solved problems.
 
-!!! warning "Material for MkDocs is now in maintenance mode"
+!!! warning "Material for MkDocs is in maintenance mode"
 
-    We want to be transparent about the risks of staying on Material for MkDocs. With [MkDocs unmaintained] and facing fundamental supply chain concerns, we cannot guarantee Material for MkDocs will continue working reliably in the future. We're aware that transitioning takes time, which is why we commit to support it at least for the next 12 months, fixing critical bugs and security vulnerabilities as needed, but the path forward is with Zensical.
+    We want to be transparent about the risks of staying on Material for MkDocs
+    or on forks of both Material for MkDocs and MkDocs. With MkDocs 1.x
+    unmaintained and facing fundamental supply chain concerns, its future is
+    uncertain and we cannot guarantee Material for MkDocs will continue working
+    reliably. MkDocs 2.0 will introduce breaking changes –
+    something we [analyzed thoroughly in our MkDocs 2.0 article].
 
-    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at hello@zensical.org.
+    We're aware that transitioning takes time, which is why we commit to
+    supporting Material for MkDocs for at least the next 12 months, fixing
+    critical bugs and security vulnerabilities as needed. If you have questions
+    about your specific situation or need help planning a migration, don't
+    hesitate to reach out at hello@zensical.org.
 
-  [MkDocs unmaintained]: https://github.com/squidfunk/mkdocs-material/discussions/8461
+  [analyzed thoroughly in our MkDocs 2.0 article]: mkdocs-2.0.md
 
 ### What this means for you
 

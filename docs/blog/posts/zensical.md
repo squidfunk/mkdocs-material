@@ -39,17 +39,19 @@ _You can subscribe to [our newsletter] to stay in the loop_.
 
 ---
 
-__This is the second article in a four-part series:__
+__This is the second article in a series:__
 
 1. [Transforming Material for MkDocs]
 2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
 3. [Material for MkDocs Insiders – Now free for everyone]
 4. [Goodbye, GitHub Discussions]
+5. [What MkDocs 2.0 means for your documentation projects]
 
   [Transforming Material for MkDocs]: transforming-material-for-mkdocs.md
   [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
   [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
   [Goodbye, GitHub Discussions]: goodbye-github-discussions.md
+  [What MkDocs 2.0 means for your documentation projects]: mkdocs-2.0.md
 
 ## Why Zensical?
 
@@ -124,7 +126,7 @@ Disco, our modular and blazing-fast client-side search engine, is exclusively av
   <figcaption markdown>Disco on [zensical.org]</figcaption>
 </figure>
 
-In early 2026, we'll be releasing Disco as a standalone Open Source project. With the feedback of our professional users in [Zensical Spark], we're going to evolve the search experience, turning Disco into a highly configurable and customizable search engine that adapts to your needs.
+We'll release Disco as an MIT-licensed standalone Open Source project soon. With the feedback of our professional users in [Zensical Spark], we're going to evolve the search experience, turning Disco into a highly configurable and customizable search engine that adapts to your needs.
 
 _You can subscribe to [our newsletter] to receive news about Disco_.
 
@@ -163,16 +165,25 @@ We're working on shipping essential functionality as provided by MkDocs plugins 
 
 ## Zensical Spark
 
-Zensical Spark, [our offering for professionals], is the result of countless calls with professional users of Material for MkDocs. From startups to large enterprises, we enable organizations to realize complex projects in diverse environments. For this, we've created Zensical Spark as a collaborative space. If you're a professional user, Zensical Spark is for you, since:
+Material for MkDocs was originally built for individual developers and small teams, but over the years it found its way into the workflows of large organizations and professional documentation teams – far beyond what we ever anticipated. With that came a new set of requirements: scalability, dedicated support, and a direct line to the team behind the project.
 
-- You can be confident that Zensical will continue to be developed and maintained in the long term as a set of interconnected and sustainable OSI-compliant Open Source projects.
+[Zensical Spark] is our answer to that. Rather than building software that
+organizations need to adapt to, we built Zensical from the ground up around
+the needs of professional teams – handling documentation of any size,
+seamlessly, out of the box.
 
-- You can receive the support you need to successfully use, configure and customize Zensical in your organization, receiving first-class support from the Zensical team.
+As a Spark member, you get [early access to new features], [hands-on migration support], and [direct access to the Zensical team]. Your participation in Zensical Spark directly shapes the direction of the project, and your financial contribution ensures that we can continue to develop and maintain Zensical as a set of OSI-compliant Open Source projects.
 
-- You can influence the future development of Zensical by participating in [our new approach] to Open Source software development, helping us to build exactly what you need.
+[Learn more about Zensical Spark](https://zensical.org/spark/) or reach out to
+us at members@zensical.org.
 
-  [our offering for professionals]: https://zensical.org/spark/
-  [our new approach]: https://zensical.org/docs/community/how-we-work/
+_Zensical is built for everyone – individual developers, small teams, and large
+organizations alike. Zensical Spark provides you with dedicated support from the team that built Material for MkDocs for the last decade, ensuring Zensical adapts to your organization as you grow._
+
+[Zensical Spark]: https://zensical.org/spark/
+[early access to new features]: https://zensical.org/spark/tiers/#early-access-to-new-features
+[hands-on migration support]: https://zensical.org/spark/tiers/#hands-on-migration-support
+[direct access to the Zensical team]: https://zensical.org/spark/tiers/#access-to-the-zensical-team
 
 ## We're growing our team
 
@@ -201,13 +212,24 @@ _If you want to continue supporting our work, please subscribe to [our newslette
 
 ## Looking Ahead
 
-Material for MkDocs grew organically in a pot that eventually became too small. With Zensical, we're building on solid foundations designed to grow with us – and with you.
+Material for MkDocs grew organically like a plant in a pot that eventually became too small. With Zensical, we're building on solid foundations designed to grow with us – and with you.
 
-!!! warning "Material for MkDocs is now in maintenance mode"
+!!! warning "Material for MkDocs is in maintenance mode"
 
-    We want to be transparent about the risks of staying on Material for MkDocs. With MkDocs unmaintained and facing fundamental supply chain concerns, we cannot guarantee Material for MkDocs will continue working reliably in the future. We're aware that transitioning takes time, which is why we commit to support it at least for the next 12 months, fixing critical bugs and security vulnerabilities as needed, but the path forward is with Zensical.
+    We want to be transparent about the risks of staying on Material for MkDocs
+    or on forks of both Material for MkDocs and MkDocs. With MkDocs 1.x
+    unmaintained and facing fundamental supply chain concerns, its future is
+    uncertain and we cannot guarantee Material for MkDocs will continue working
+    reliably. MkDocs 2.0 will introduce breaking changes –
+    something we [analyzed thoroughly in our MkDocs 2.0 article].
 
-    If documentation plays a critical role in your organization, and you're worried how this might affect your business, consider joining [Zensical Spark](https://zensical.org/spark/), or feel free to schedule a call by reaching out at hello@zensical.org.
+    We're aware that transitioning takes time, which is why we commit to
+    supporting Material for MkDocs for at least the next 12 months, fixing
+    critical bugs and security vulnerabilities as needed. If you have questions
+    about your specific situation or need help planning a migration, don't
+    hesitate to reach out at hello@zensical.org.
+
+  [analyzed thoroughly in our MkDocs 2.0 article]: mkdocs-2.0.md
 
 ### Where we'll be in 12 months
 
