@@ -16,7 +16,7 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
-Last update: March 27, 2026 – see [update log].
+Last update: April 13, 2026 – see [update log].
 
 ---
 
@@ -35,6 +35,22 @@ _Please note that MkDocs 2.0 is still in pre-release, and the information in thi
   [update log]: #updates
 
 <!-- more -->
+
+---
+
+__This is the fifth article in a series:__
+
+1. [Transforming Material for MkDocs]
+2. [Zensical – A modern static site generator built by the creators of Material for MkDocs]
+3. [Material for MkDocs Insiders – Now free for everyone]
+4. [Goodbye, GitHub Discussions]
+5. [What MkDocs 2.0 means for your documentation projects]
+
+  [Transforming Material for MkDocs]: transforming-material-for-mkdocs.md
+  [Zensical – A modern static site generator built by the creators of Material for MkDocs]: zensical.md
+  [Material for MkDocs Insiders – Now free for everyone]: insiders-now-free-for-everyone.md
+  [Goodbye, GitHub Discussions]: goodbye-github-discussions.md
+  [What MkDocs 2.0 means for your documentation projects]: mkdocs-2.0.md
 
 ## What's changing in MkDocs 2.0
 
@@ -95,14 +111,40 @@ The moment we learned about these plans, [we immediately started working] on wha
 
 For years, we were trying to improve MkDocs from within. We authored [12 plugins], which gave us a deep understanding of the plugin API's limitations. We conducted quantitative and qualitative analyses of the ecosystem to identify where MkDocs was falling short and talked to dozens of organizations and key ecosystem members. We raised these issues and repeatedly got nowhere. When the new direction of MkDocs 2.0 became apparent, the thinking was already done.
 
-We considered forking MkDocs, but quickly realized it wasn't viable: every plugin in the ecosystem has a direct dependency on `mkdocs`, which means forking MkDocs would require forking every single one of its [300 plugins] – __like moving an entire city at once__.[^1]
+## Why forking is impractical
 
-  [^1]:
-    Forking is technically feasible by interposing on all MkDocs imports at runtime using Python's import hook machinery (i.e., custom `sys.meta_path` finders/loaders or `importlib` wrappers). In this model, one effectively shadows MkDocs modules by resolving import requests to alternative implementations, or by proxying and patching objects during module initialization.
+We considered forking MkDocs, but quickly realized it wasn't viable: every plugin in the ecosystem has a direct dependency on `mkdocs`, which means forking MkDocs would require forking every single one of its [300 plugins] – __like moving an entire city at once__.
 
-    However, this approach fundamentally relies on strict API and behavioral compatibility with MkDocs' internal module graph. Because imports are resolved dynamically and cached after first load, any divergence in function signatures, class layouts, side effects, or import order can introduce subtle breakage. As a result, all internal APIs – not just the public surface – must be preserved with near-exact fidelity.
+!!! info "Why forking MkDocs isn't a viable path"
 
-    In practice, this reduces the "fork" to a thin layer of indirection rather than a true divergence. Core functionality cannot be meaningfully refactored or redesigned without violating the implicit contracts embedded throughout the codebase. Consequently, the deeper systemic and structural limitations of MkDocs 1.x remain effectively unchanged under this strategy.
+    MkDocs is Open Source and permissively licensed, so forking it seems like the natural answer – it's exactly what Open Source is designed for. Take the codebase, fix what's broken, maintain it under a new name, and move forward. There are two reasons why we don't consider this a viable path forward for the ecosystem:
+
+    **The dependency problem.** Every plugin in the MkDocs ecosystem has a direct dependency on the `mkdocs` package. A fork would need a different package name, which means every one of the [300+ plugins] in the ecosystem would also need to be forked and updated.
+
+    You could work around this by intercepting Python's import system at runtime, making your fork silently pretend to be `mkdocs` – and some forks have done exactly that. But this only preserves the ecosystem on the surface. Plugins interact with MkDocs in two ways: through the official hook system, and by directly calling functions and accessing data structures that MkDocs exposes. Unlike many languages, Python has no concept of visibility – there is no distinction between public and internal APIs. In practice, this means that every function, class, and variable in MkDocs is potentially plugin surface. Plugins routinely reach into MkDocs internals – not because they're badly written, but because there was no other way to get the job done. Any meaningful change to the codebase risks breaking plugins in ways that are hard to predict and even harder to debug.
+
+    **The architecture problem.** Even a fork that solves the dependency problem inherits the deeper issues that have held MkDocs back for years. Anyone who has written MkDocs plugins knows the long tail of "plugin X is incompatible with plugin Y" reports – these aren't one-off bugs, they're a systemic consequence of how the plugin architecture works. As we documented in [ZAP 007], the underlying problem is that MkDocs has no model of data dependencies, which makes the following impossible without a ground-up rewrite:
+
+    - **Parallel builds** – plugins share mutable state at fixed
+      synchronization points, making safe parallelization impossible even
+      with free-threaded Python.
+    - **Differential builds** – without knowing what each plugin reads and
+      writes, there's no way to skip work that hasn't changed.
+    - **Multi-project coordination** – MkDocs has no programmatic API for
+      coordinating multiple builds, forcing fragile workarounds like
+      cross-process manifests.
+    - **Meaningful caching** – with no runtime-managed build graph, every
+      plugin has to implement its own caching, and most don't.
+    - **Fast live preview** – MkDocs must complete a full build before the
+      preview server accepts connections, because navigation requires the
+      entire site to be known upfront.
+
+    A fork inherits all of these insurmountable limitations. The only way to fix these problems is to rethink how plugins work at a fundamental level – at which point you're no longer forking MkDocs, you're building something new.
+
+    That's what we did.
+
+  [300+ plugins]: https://github.com/mkdocs/catalog?tab=readme-ov-file#contents
+  [ZAP 007]: https://zensical.org/spark/proposals/zap-007-module-system/
 
 With forking being impractical, we had to start from scratch.
 
@@ -135,9 +177,15 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 ## Updates
 
-- __March 27, 2026__: In [Talk Python To Me #542](https://talkpython.fm/episodes/show/542), Martin Donath shares the backstory of Zensical, and reflects on the lessons learned maintaining  Material for MkDocs for almost a decade.
+### April 2026
 
-- __March 22, 2026__: In _[The Slow Collapse of MkDocs]_, Florian Maas outlines the entire timeline of events starting in 2014 that eventually led to the fracturing of the MkDocs ecosystem.
+- __April 13, 2026__: We added a section on why forking MkDocs isn't a viable path forward for the ecosystem – an excerpt of [ZAP 007], which analyzes MkDocs' architectural limitations.
+
+### March 2026
+
+- __March 27, 2026__: In [Talk Python To Me #542](https://talkpython.fm/episodes/show/542), Martin Donath shares the backstory of Zensical, and reflects on the lessons learned maintaining Material for MkDocs for almost a decade.
+
+- __March 22, 2026__: In [The Slow Collapse of MkDocs], Florian Maas outlines the entire timeline of events starting in 2014 that eventually led to the fracturing of the MkDocs ecosystem.
 
 - __March 10, 2026__: We released 9.7.5, which limits the version range of MkDocs to `<2`. This ensures that your builds will continue to work, even if MkDocs 2.0 is released.
 
@@ -151,6 +199,8 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 - __March 4, 2026__: We added a paragraph explaining that prior attempts on resolving the situation were unsuccessful and why we decided to find a new path for our community.
 
 - __March 3, 2026__: We added a paragraph on the new contribution model that MkDocs 2.0 is adopting, and the implications for users and contributors from our perspective.
+
+### February 2026
 
 - __February 27, 2026__: We added a note on the `NO_MKDOCS_2_WARNING` environment variable to disable the MkDocs 2.0 incompatibility warning in Material for MkDocs.
 
