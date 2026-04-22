@@ -106,6 +106,17 @@ comments: true
 If you wish to enable comments for an entire folder, you can use the
 [built-in meta plugin].
 
+For example, add a `.meta.yml` file to the folder where comments should be
+enabled:
+
+``` yaml title=".meta.yml"
+comments: true
+```
+
+This configuration is applied recursively to pages in that folder and its
+subfolders, as described in the meta plugin documentation. To disable comments
+for a specific page, set `comments: false` in that page's front matter.
+
   [Giscus GitHub App]: https://github.com/apps/giscus
   [theme extension]: ../customization.md#extending-the-theme
   [comments]: https://github.com/squidfunk/mkdocs-material/blob/master/src/templates/partials/comments.html
