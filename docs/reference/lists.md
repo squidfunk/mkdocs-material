@@ -102,6 +102,14 @@ be re-numbered when rendered:
 
 </div>
 
+If you don't want your lists to be automatically re-numbered, you should enable
+the [`sane_lists` markdown extension](https://python-markdown.github.io/extensions/sane_lists/).
+
+```yml
+markdown_extensions:
+  - sane_lists
+```
+
 ### Using definition lists
 
 When [Definition Lists] is enabled, lists of arbitrary key-value pairs, e.g. the
