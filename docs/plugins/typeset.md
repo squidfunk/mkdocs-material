@@ -14,7 +14,7 @@ as defined in the page's content.
 !!! bug "The built-in typeset plugin is deprecated"
 
     [Material for MkDocs is in maintenance mode]. The typeset plugin, which was
-    formely part of the [Insiders] edition, was released in <!-- md:version 9.7.0 -->, the last release that includes all features from the Insiders edition.
+    formerly part of the [Insiders] edition, was released in <!-- md:version 9.7.0 -->, the last release that includes all features from the Insiders edition.
     Unfortunately, the typeset plugin turned out impossible to maintain, and
     was one of the key motivators to create [Zensical].
 
