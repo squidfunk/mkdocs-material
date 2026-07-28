@@ -189,6 +189,8 @@ jobs:
           context: .
           platforms: ${{ env.PLATFORMS }}
           push: ${{ github.event_name == 'release' }}
+          provenance: mode=max
+          sbom: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
