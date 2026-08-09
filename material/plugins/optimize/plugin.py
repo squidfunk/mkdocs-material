@@ -305,7 +305,7 @@ class OptimizePlugin(BasePlugin[OptimizeConfig]):
         return file
 
     # Optimize PNG image - we first tried to use libimagequant, but encountered
-    # the occassional segmentation fault, which means it's probably not a good
+    # the occasional segmentation fault, which means it's probably not a good
     # choice. Instead, we just rely on pngquant which seems much more stable.
     def _optimize_image_png(self, file: File, path: str, config: MkDocsConfig):
 
