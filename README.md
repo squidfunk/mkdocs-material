@@ -270,7 +270,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Hewlett Packard](https://hewlettpackard.github.io/squest/),
 [HSBC](https://hsbc.github.io/pyratings/),
 [ING](https://ing-bank.github.io/baker/),
-[Intel](https://open-amt-cloud-toolkit.github.io/docs/),
+[Intel](https://device-management-toolkit.github.io/docs/),
 [JetBrains](https://jetbrains.github.io/projector-client/mkdocs/),
 [LinkedIn](https://linkedin.github.io/school-of-sre/),
 [Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
@@ -282,7 +282,7 @@ For detailed installation instructions, configuration options, and a demo, visit
 [Salesforce](https://policy-sentry.readthedocs.io/),
 [SIEMENS](https://opensource.siemens.com/),
 [Slack](https://slackhq.github.io/circuit/),
-[Square](https://square.github.io/okhttp/),
+[Square](https://lysine.dev/okhttp/),
 [Uber](https://uber-go.github.io/fx/),
 [Zalando](https://opensource.zalando.com/skipper/)
 
