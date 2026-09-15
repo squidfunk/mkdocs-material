@@ -24,9 +24,9 @@ We are committed to working with security researchers and our community to addre
 
 ## Supported versions
 
-We release security fixes for the latest stable version of Material for MkDocs until its end-of-life date on **November 5, 2026**. We encourage all users to stay up to date with the latest release to ensure they benefit from all security patches.
+We release security fixes for the latest stable version of Material for MkDocs until its end-of-life date on **May 5, 2027**. We encourage all users to stay up to date with the latest release to ensure they benefit from all security patches.
 
-After **November 5, 2026**, Material for MkDocs will no longer receive public security updates as part of standard maintenance.
+After **May 5, 2027**, Material for MkDocs will no longer receive public security updates as part of standard maintenance.
 
 Organizations with longer support requirements are welcome to contact us at martin.donath@squidfunk.com to discuss potential extended support options.
 
