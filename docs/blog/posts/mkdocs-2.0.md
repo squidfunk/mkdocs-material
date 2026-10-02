@@ -182,11 +182,12 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
 
 ### October 2026
 
-- __October 2, 2026__: The [MkDocs 1.x repository] has been **closed for outside contributions**: new issues and pull requests can now only be created by collaborators. For everyone else, the repository is effectively read-only, with the discussion board being the only way to reach the maintainers and MkDocs community.
+- __October 2, 2026__: The [MkDocs 1.x repository] has been **closed for outside contributions**: new issues and pull requests can now only be created by [MkDocs team members]. For everyone else, the repository is effectively read-only, with the discussion board being the only way to reach the maintainers and MkDocs community.
 
     Meanwhile, development work on MkDocs 2.0 seems to continue, which is now [licensed under MIT], albeit [licensing might change in the future] again.
 
   [MkDocs 1.x repository]: https://github.com/mkdocs/mkdocs
+  [MkDocs team members]: https://github.com/orgs/mkdocs/people
   [licensed under MIT]: https://www.encode.io/mkdocs/license/
   [licensing might change in the future]: https://github.com/encode/mkdocs/issues/58
 
