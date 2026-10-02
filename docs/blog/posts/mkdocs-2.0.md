@@ -1,7 +1,7 @@
 ---
 date:
   created: 2026-02-18
-  updated: 2026-08-30
+  updated: 2026-10-02
 authors:
   - squidfunk
   - alexvoss
@@ -16,7 +16,7 @@ slug: mkdocs-2.0
 
 # What MkDocs 2.0 means for your documentation projects
 
-Last update: August 30, 2026 – see [update log].
+Last update: October 2, 2026 – see [update log].
 
 ---
 
@@ -67,6 +67,9 @@ Based on the [official announcement], the published [roadmap], and several prior
 - __MkDocs 2.0 has a closed contribution model__ – MkDocs 2.0 moves to a "maintainer-driven issues" model, where community members are [asked not to open issues or pull requests], and "feature requests are generally not accepted". It's unclear how users should report bugs or seek fixes when they encounter problems.
 
 - __MkDocs 2.0 is currently unlicensed__ – MkDocs 2.0 doesn't specify a license, which has implications for how it can be used and contributed to by the community. It's unclear what the rationale behind this decision is, but it should be critically evaluated by teams and organizations that rely on MkDocs for their documentation projects.
+{ style="opacity: 0.5" }
+
+    __Update__: MkDocs is now [licensed under MIT], albeit [licensing might change in the future] again.
 
 - __MkDocs 2.0 has a new configuration format__ – MkDocs 2.0 uses TOML for configuration, which is incompatible with the YAML format used in MkDocs 1.x. As a result, existing `mkdocs.yml` files will currently not work with MkDocs 2.0. There is no migration path for existing projects.
 
@@ -176,6 +179,16 @@ We also encourage you to do your own research, evaluate the implications for you
 _If you have any questions, feel free to reach out to Kathi at hello@zensical.org._
 
 ## Updates
+
+### October 2026
+
+- __October 2, 2026__: The [MkDocs 1.x repository] has been **closed for outside contributions**: new issues and pull requests can now only be created by collaborators. For everyone else, the repository is effectively read-only, with the discussion board being the only way to reach the maintainers and MkDocs community.
+
+    Meanwhile, development work on MkDocs 2.0 seems to continue, which is now [licensed under MIT], albeit [licensing might change in the future] again.
+
+  [MkDocs 1.x repository]: https://github.com/mkdocs/mkdocs
+  [licensed under MIT]: https://www.encode.io/mkdocs/license/
+  [licensing might change in the future]: https://github.com/encode/mkdocs/issues/58
 
 ### August 2026
 
