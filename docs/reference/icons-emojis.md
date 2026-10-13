@@ -70,7 +70,6 @@ See additional configuration options:
   [FontAwesome]: https://fontawesome.com/search?m=free
   [Octicons]: https://octicons.github.com/
   [Simple Icons]: https://simpleicons.org/
-  [Attribute Lists]: ../setup/extensions/python-markdown.md#attribute-lists
   [Emoji]: ../setup/extensions/python-markdown-extensions.md#emoji
   [Emoji with custom icons]: ../setup/extensions/python-markdown-extensions.md#+pymdownx.emoji.options.custom_icons
 

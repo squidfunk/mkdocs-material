@@ -2,6 +2,16 @@ name: Report a critical bug
 description: Something is not working? Report a bug
 body:
 
+  - type: markdown
+    attributes:
+      value: |
+          > [!WARNING]
+          > **Material for MkDocs reaches end of life on May 5, 2027.**
+          >
+          > The project is in maintenance mode. Until then, we provide critical bug fixes and security updates only. No new features are planned.
+          >
+          > Use this form to report a critical bug in Material for MkDocs. For Zensical bugs, use the [Zensical issue tracker](https://github.com/zensical/zensical/issues/new/choose).
+
   - type: textarea
     id: context
     attributes:

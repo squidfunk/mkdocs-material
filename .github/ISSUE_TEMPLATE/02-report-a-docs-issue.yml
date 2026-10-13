@@ -4,6 +4,16 @@ labels:
   - documentation
 body:
 
+  - type: markdown
+    attributes:
+      value: |
+          > [!WARNING]
+          > **Material for MkDocs reaches end of life on May 5, 2027.**
+          >
+          > The project is in maintenance mode, with critical bug fixes and security updates through that date. The documentation remains available as a reference for existing users.
+          >
+          > Use this form to report errors in the Material for MkDocs documentation. For Zensical documentation issues, use the [Zensical issue tracker](https://github.com/zensical/zensical/issues/new/choose).
+
   - type: textarea
     id: description
     attributes:
