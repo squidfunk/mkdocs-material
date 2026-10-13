@@ -56,9 +56,6 @@ MkDocs offers, including [admonitions], [annotations], [code blocks],
 [content tabs], [diagrams], [icons], [math], and more.
 
   [metadata]: #metadata
-  [built-in plugins]: index.md
-  [social]: social.md
-  [tags]: tags.md
   [admonitions]: ../reference/admonitions.md
   [annotations]: ../reference/annotations.md
   [code blocks]: ../reference/code-blocks.md

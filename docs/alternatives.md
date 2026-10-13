@@ -1,9 +1,21 @@
 # Alternatives
 
-There are tons of static site generators and themes out there and choosing the
-right one for your tech stack is a tough decision. If you're unsure if Material
-for MkDocs is the right solution for you, this section should help you evaluate
-alternative solutions.
+If you're choosing a documentation tool or planning to move from Material for
+MkDocs, the following alternatives offer different approaches.
+
+## Zensical
+
+[Zensical](https://zensical.org/) is the successor to Material for MkDocs, built
+by the same team. It is free and Open Source, licensed under MIT.
+
+For a new project, follow the [getting started guide](https://zensical.org/docs/get-started/).
+For an existing Material site, use our
+[migration guide](https://zensical.org/docs/compatibility/mkdocs/migration/).
+You can run Zensical alongside MkDocs with your existing content and configuration
+to check that your site looks and works as expected before switching.
+
+Check the [plugin compatibility guide](https://zensical.org/docs/compatibility/mkdocs/plugins/)
+for supported plugins and documented differences when planning your migration.
 
 ## Docusaurus
 

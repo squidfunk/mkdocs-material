@@ -55,7 +55,7 @@ plugins require the `site_url` to be set, so you should always do this.
   [publishing to GitHub pages]: publishing-your-site.md#github-pages
   [installation methods]: getting-started.md#installation
 
-???+ tip "Recommended: [configuration validation and auto-complete]"
+??? tip "Recommended: [configuration validation and auto-complete]"
 
     In order to minimize friction and maximize productivity, Material for MkDocs
     provides its own [schema.json][^1] for `mkdocs.yml`. If your editor supports
@@ -165,31 +165,63 @@ technical writing experience.
   [Building an optimized site]: setup/building-an-optimized-site.md
   [Markdown extensions]: setup/extensions/index.md
 
-## Templates
+## Previewing as you write
 
-If you want to jump start a new project, you can use one of our growing
-collection of templates:
+### Zensical Studio
+
+[Zensical Studio] brings workspace intelligence to **Zensical** and **MkDocs projects**
+and integrates with Visual Studio Code and similar editors[^2]. It gives you a
+synchronized side-by-side view of your Markdown source and rendered
+documentation, with the preview updating as you write:
+
+![Studio editor]
+![Studio editor dark]
+
+You can use Studio with your existing Material project and keep the same
+authoring environment when you
+[switch to Zensical](https://zensical.org/docs/compatibility/mkdocs/migration/).
+
+Zensical Studio provides:
 
 <div class="grid cards" markdown>
 
--   :octicons-repo-template-24: &nbsp; __[Blog][blog-template]__
+-   :material-link-variant: &nbsp; [Link Intelligence]
 
     ---
 
-    Create a blog
+    Links, anchors, references, and snippets are resolved across the workspace, so they can be navigated, renamed, and kept up to date.
 
--   :octicons-repo-template-24: &nbsp; __[Social cards][social-cards-template]__
+-   :material-eye-outline: &nbsp; [Markdown Preview]
 
     ---
 
-    Create documentation with social cards
+    A side-by-side preview renders the current Python Markdown document and updates while you edit, so you can stay in your editor while writing.
+
+-   :material-format-align-left: &nbsp; [Markdown Formatter]
+
+    ---
+
+    A structure-aware formatter for Python Markdown that understands nested extensions such as tabs, admonitions, lists, and code blocks.
+
+-   :material-alert-outline: &nbsp; [Markdown Linter]
+
+    ---
+
+    Workspace-wide diagnostics, including cross-file link tracking and analysis, and structural and prose linting for common Markdown issues.
 
 </div>
 
-[blog-template]: https://github.com/mkdocs-material/create-blog
-[social-cards-template]: https://github.com/mkdocs-material/create-social-cards
+[^2]: Zensical Studio will be supported in more editors in the future, including JetBrains IDEs and Neovim.
 
-## Previewing as you write
+[Studio editor]: assets/screenshots/zensical-studio.png#gh-light-mode-only
+[Studio editor dark]: assets/screenshots/zensical-studio-dark.png#gh-dark-mode-only
+[Link Intelligence]: https://zensical.org/studio/workflows/link-intelligence/
+[Markdown Formatter]: https://zensical.org/studio/write/formatting/
+[Markdown Linter]: https://zensical.org/studio/write/linting/
+[Markdown Preview]: https://zensical.org/studio/write/preview/
+[Zensical Studio]: https://zensical.org/studio
+
+### MkDocs
 
 MkDocs includes a live preview server, so you can preview your changes as you
 write your documentation. The server will automatically rebuild the site upon

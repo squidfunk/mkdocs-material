@@ -1,5 +1,18 @@
 # Changelog
 
+!!! warning "Material for MkDocs reaches end of life on May 5, 2027"
+
+    Material for MkDocs is in maintenance mode and no longer receives new features.
+    Critical bug fixes and security updates continue through **May 5, 2027**.
+    After that date, upstream maintenance ends.
+
+    You can continue using your installed version and published sites, but new
+    bugs, security vulnerabilities, or compatibility issues will no longer
+    receive fixes.
+
+    For a maintained successor, see [Zensical](https://zensical.org/) and our
+    [migration guide](https://zensical.org/docs/compatibility/mkdocs/migration/).
+
 ## Material for MkDocs
 
 ### 9.7.7 <small>July 17, 2026</small> { id="9.7.7" }

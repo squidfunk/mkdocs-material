@@ -95,6 +95,15 @@ plugins:
   - blog
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - redirects:
+      redirect_maps:
+        philosophy.md: getting-started.md
+        tutorials/index.md: setup/index.md
+        tutorials/blogs/basic.md: setup/setting-up-a-blog.md
+        tutorials/blogs/navigation.md: setup/setting-up-a-blog.md
+        tutorials/blogs/engage.md: setup/setting-up-a-blog.md
+        tutorials/social/basic.md: setup/setting-up-social-cards.md
+        tutorials/social/custom.md: setup/setting-up-social-cards.md
   - minify:
       minify_html: true
 
@@ -175,9 +184,6 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tilde
 
-not_in_nav: |
-  /tutorials/**/*.md
-
 # Page tree
 nav:
   - Home: index.md
@@ -188,18 +194,8 @@ nav:
     - Customization: customization.md
     - Conventions: conventions.md
     - Browser support: browser-support.md
-    - Philosophy: philosophy.md
     - Alternatives: alternatives.md
     - License: license.md
-    - Tutorials:
-      - tutorials/index.md
-      - "Blogs":
-        - tutorials/blogs/basic.md
-        - tutorials/blogs/navigation.md
-        - tutorials/blogs/engage.md
-      - "Social cards":
-        - tutorials/social/basic.md
-        - tutorials/social/custom.md
     - Changelog:
       - changelog/index.md
       - How to upgrade: upgrade.md

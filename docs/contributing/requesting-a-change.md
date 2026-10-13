@@ -32,12 +32,9 @@ implementation.
 
 Before you invest your time to fill out and submit a change request, we kindly
 ask you to do some preliminary work by answering some questions to determine if
-your idea is a good fit for Material for MkDocs and matches the project's
-[philosophy] and tone.
+your idea is a good fit for Material for MkDocs and its maintenance scope.
 
 __Please do the following things before creating an issue.__
-
-  [philosophy]: ../philosophy.md
 
 ### It's not a bug, it's a feature
 
