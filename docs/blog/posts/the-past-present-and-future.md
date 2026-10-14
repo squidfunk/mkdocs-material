@@ -159,7 +159,7 @@ Furthermore, a large amount of time was invested into refactoring the code base
 to keep it in good shape. While the `mkdocs-material` package was released
 __55__ times, `mkdocs-material-insiders` was shipped __72__ times.
 
-  [Insiders]: ../../insiders/index.md
+  [Insiders]: insiders-now-free-for-everyone.md
   [Admonition inline blocks]: ../../reference/admonitions.md#inline-blocks
   [Advanced search highlighting]: search-better-faster-smaller.md#accurate-highlighting
   [Anchor tracking]: ../../setup/setting-up-navigation.md#anchor-tracking

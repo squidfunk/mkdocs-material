@@ -97,6 +97,12 @@ plugins:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - redirects:
       redirect_maps:
+        insiders/index.md: blog/posts/insiders-now-free-for-everyone.md
+        insiders/getting-started.md: blog/posts/insiders-now-free-for-everyone.md
+        insiders/upgrade.md: blog/posts/insiders-now-free-for-everyone.md
+        insiders/changelog/index.md: blog/posts/insiders-now-free-for-everyone.md
+        changelog/insiders.md: blog/posts/insiders-now-free-for-everyone.md
+        sponsorship.md: blog/posts/insiders-now-free-for-everyone.md
         philosophy.md: getting-started.md
         tutorials/index.md: setup/index.md
         tutorials/blogs/basic.md: setup/setting-up-a-blog.md
@@ -257,12 +263,6 @@ nav:
     - Lists: reference/lists.md
     - Math: reference/math.md
     - Tooltips: reference/tooltips.md
-  - Insiders:
-    - insiders/index.md
-    - Getting started: insiders/getting-started.md
-    - Changelog:
-      - insiders/changelog/index.md
-      - How to upgrade: insiders/upgrade.md
   - Community:
     - Contributing:
       - contributing/index.md
