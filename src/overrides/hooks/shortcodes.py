@@ -124,9 +124,9 @@ def _badge(icon: str, text: str = "", type: str = ""):
 # Create sponsors badge
 def _badge_for_sponsors(page: Page, files: Files):
     icon = "material-heart"
-    href = _resolve_path("insiders/index.md", page, files)
+    href = _resolve_path("blog/posts/insiders-now-free-for-everyone.md", page, files)
     return _badge(
-        icon = f"[:{icon}:]({href} 'Sponsors only')",
+        icon = f"[:{icon}:]({href} 'Former Insiders feature')",
         type = "heart"
     )
 
@@ -146,11 +146,11 @@ def _badge_for_version(text: str, page: Page, files: Files):
 # Create badge for version of Insiders
 def _badge_for_version_insiders(text: str, page: Page, files: Files):
     spec = text.replace("insiders-", "")
-    path = f"insiders/changelog/index.md#{spec}"
+    path = "blog/posts/insiders-now-free-for-everyone.md"
 
     # Return badge
     icon = "material-tag-heart-outline"
-    href = _resolve_path("conventions.md#version-insiders", page, files)
+    href = _resolve_path(path, page, files)
     return _badge(
         icon = f"[:{icon}:]({href} 'Minimum version')",
         text = f"[{text}]({_resolve_path(path, page, files)})" if spec else ""
