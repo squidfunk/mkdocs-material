@@ -21,6 +21,16 @@ This article is part of a series where we'll explore how we aim to support our u
 
 <!-- more -->
 
+!!! info "October 2026 update"
+
+    The work outlined in this August 2024 article led to
+    [Zensical](https://zensical.org/), our successor to Material for MkDocs.
+    The article below records our goals and plans at the time.
+
+    Our [roadmap](https://zensical.org/roadmap/) describes the current direction;
+    the [MkDocs compatibility guide](https://zensical.org/docs/compatibility/mkdocs/)
+    covers supported features and plugins.
+
 _Please note that this post includes several technical details in the footnotes, specifically on challenges. Feel free to skip them if you're not interested in the specifics._
 
 ---

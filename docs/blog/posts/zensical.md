@@ -32,6 +32,29 @@ _You can subscribe to [our newsletter] to stay in the loop_.
 
 <!-- more -->
 
+!!! info "October 2026 update"
+
+    Zensical now builds supported Material for MkDocs projects with their
+    existing content and `mkdocs.yml`. Follow the [migration guide] to run it
+    alongside MkDocs and check your site before switching.
+
+    [Zensical Studio][Studio] brings live preview, diagnostics, and project
+    navigation to Visual Studio Code and similar editors. It works with both
+    Zensical and MkDocs, so you can keep using it throughout the transition.
+
+    On **November 5, 2026**, Zensical 0.1 begins a dependable release line,
+    Studio leaves beta, and Spark Community opens to individuals.
+    [See what changes](https://zensical.org/upcoming-changes/).
+    Material's critical maintenance continues through **May 5, 2027**.
+
+    This article records our November 2025 launch. Some plans have since
+    changed, including the Markdown toolchain: we are now developing a
+    Python Markdown-compatible parser. See the [current roadmap](https://zensical.org/roadmap/)
+    for progress and direction.
+
+  [migration guide]: https://zensical.org/docs/compatibility/mkdocs/migration/
+  [Studio]: https://zensical.org/studio/
+
   [Zensical]: https://zensical.org/
   [compatibility]: #maximum-compatibility
   [Zensical Spark]: #zensical-spark
@@ -216,18 +239,15 @@ Material for MkDocs grew organically like a plant in a pot that eventually becam
 
 !!! warning "Material for MkDocs is in maintenance mode"
 
-    We want to be transparent about the risks of staying on Material for MkDocs
-    or on forks of both Material for MkDocs and MkDocs. With MkDocs 1.x
-    unmaintained and facing fundamental supply chain concerns, its future is
-    uncertain and we cannot guarantee Material for MkDocs will continue working
-    reliably. MkDocs 2.0 will introduce breaking changes –
-    something we [analyzed thoroughly in our MkDocs 2.0 article].
+    Feature development has ended. We will continue fixing critical bugs and
+    security vulnerabilities through **May 5, 2027**, when upstream maintenance
+    ends. Existing installations and published sites can still be used afterward.
 
-    We're aware that transitioning takes time, which is why we commit to
-    supporting Material for MkDocs for at least the next 12 months, fixing
-    critical bugs and security vulnerabilities as needed. If you have questions
-    about your specific situation or need help planning a migration, don't
-    hesitate to reach out at hello@zensical.org.
+    The [migration guide] explains how to build your current project with
+    Zensical alongside MkDocs, so you can check that it works as expected
+    before switching. We also recommend reading our article on
+    [what MkDocs 2.0 means for your documentation projects][analyzed thoroughly in our MkDocs 2.0 article]
+    to help you plan your next steps.
 
   [analyzed thoroughly in our MkDocs 2.0 article]: mkdocs-2.0.md
 
