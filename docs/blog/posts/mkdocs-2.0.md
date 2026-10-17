@@ -191,6 +191,12 @@ _If you have any questions, feel free to reach out to Kathi at hello@zensical.or
   [licensed under MIT]: https://www.encode.io/mkdocs/license/
   [licensing might change in the future]: https://github.com/encode/mkdocs/issues/58
 
+### September 2026
+
+- __September 16, 2026__: We [announced a six-month extension][upcoming changes article] of Material for MkDocs' critical maintenance through **May 5, 2027**, giving teams more time to evaluate Zensical and plan their transition.
+
+  [upcoming changes article]: https://zensical.org/upcoming-changes/
+
 ### August 2026
 
 - __August 30, 2026__: MkDocs 2.0 was just published as a [pre-release on PyPI](https://pypi.org/project/mkdocs/2.0.dev2/). No official release date has been announced yet, but the pre-release hints that it might be coming soon.

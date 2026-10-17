@@ -32,6 +32,22 @@ _You can subscribe to [our newsletter] to stay in the loop_.
 
 <!-- more -->
 
+!!! info "October 2026 update"
+
+    This article records the November 2025 release of all Insiders features.
+    These features are available in the public `mkdocs-material` package,
+    without sponsorship or private-repository access.
+
+    Critical maintenance now continues through **May 5, 2027**. This supersedes
+    the original twelve-month window mentioned below; feature development
+    has ended.
+
+    Zensical now builds supported Material for MkDocs projects with their
+    existing content and `mkdocs.yml`. Our [migration guide] explains how to
+    run it alongside MkDocs and check your site before switching.
+
+  [migration guide]: https://zensical.org/docs/compatibility/mkdocs/migration/
+
   [9.7.0]: ../../changelog/index.md#9.7.0
   [Zensical]: https://zensical.org
   [maintenance mode]: https://github.com/squidfunk/mkdocs-material/issues/8523
@@ -151,18 +167,15 @@ Material for MkDocs grew organically like a plant in a pot that eventually becam
 
 !!! warning "Material for MkDocs is in maintenance mode"
 
-    We want to be transparent about the risks of staying on Material for MkDocs
-    or on forks of both Material for MkDocs and MkDocs. With MkDocs 1.x
-    unmaintained and facing fundamental supply chain concerns, its future is
-    uncertain and we cannot guarantee Material for MkDocs will continue working
-    reliably. MkDocs 2.0 will introduce breaking changes –
-    something we [analyzed thoroughly in our MkDocs 2.0 article].
+    Feature development has ended. We will continue fixing critical bugs and
+    security vulnerabilities through **May 5, 2027**, when upstream maintenance
+    ends. Existing installations and published sites can still be used afterward.
 
-    We're aware that transitioning takes time, which is why we commit to
-    supporting Material for MkDocs for at least the next 12 months, fixing
-    critical bugs and security vulnerabilities as needed. If you have questions
-    about your specific situation or need help planning a migration, don't
-    hesitate to reach out at hello@zensical.org.
+    The [migration guide] explains how to build your current project with
+    Zensical alongside MkDocs, so you can check that it works as expected
+    before switching. We also recommend reading our article on
+    [what MkDocs 2.0 means for your documentation projects][analyzed thoroughly in our MkDocs 2.0 article]
+    to help you plan your next steps.
 
   [analyzed thoroughly in our MkDocs 2.0 article]: mkdocs-2.0.md
 
