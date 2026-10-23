@@ -41,7 +41,7 @@ dynamic = [
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
-  "Development Status :: 5 - Production/Stable",
+  "Development Status :: 7 - Inactive",
   "Environment :: Web Environment",
   "Framework :: MkDocs",
   "License :: OSI Approved :: MIT License",
@@ -72,6 +72,8 @@ Documentation = "https://squidfunk.github.io/mkdocs-material/"
 Source = "https://github.com/squidfunk/mkdocs-material"
 Changelog = "https://squidfunk.github.io/mkdocs-material/changelog/"
 Issues = "https://github.com/squidfunk/mkdocs-material/issues"
+Maintenance = "https://zensical.org/upcoming-changes/#material-for-mkdocs"
+Migration = "https://zensical.org/docs/compatibility/mkdocs/migration/"
 
 [project.entry-points."mkdocs.plugins"]
 "material/blog" = "material.plugins.blog.plugin:BlogPlugin"
@@ -94,7 +96,7 @@ material = "material.templates"
 source = "nodejs"
 
 [tool.hatch.metadata.hooks.nodejs]
-fields = ["license", "description", "authors", "keywords", "urls"]
+fields = ["license", "description", "authors", "keywords"]
 
 [tool.hatch.metadata.hooks.requirements_txt]
 filename = "requirements.txt"
