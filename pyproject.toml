@@ -55,10 +55,10 @@ classifiers = [
 [project.optional-dependencies]
 recommended = [
   "mkdocs-minify-plugin>=0.7",
-  "mkdocs-redirects>=1.2",
-  "mkdocs-rss-plugin>=1.6"
+  "mkdocs-redirects>=1.2"
 ]
 git = [
+  "gitpython>=3.2.1",
   "mkdocs-git-committers-plugin-2>=1.1",
   "mkdocs-git-revision-date-localized-plugin>=1.2.4"
 ]
