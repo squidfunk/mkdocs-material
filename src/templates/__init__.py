@@ -22,6 +22,7 @@ import os
 import sys
 
 from colorama import Fore, Style
+from importlib.util import find_spec
 from pathlib import Path
 from sys import stderr
 
@@ -35,23 +36,29 @@ def is_mkdocs():
 
 # Check if we're running MkDocs and the warning hasn't been disabled
 if is_mkdocs() and not os.getenv("NO_MKDOCS_2_WARNING"):
+    properdocs_notice = ""
+    if (
+        os.getenv("DISABLE_MKDOCS_2_WARNING", "").lower() != "true"
+        and find_spec("properdocs") is not None
+    ):
+        properdocs_notice = (
+            f"{Fore.YELLOW} │{Style.RESET_ALL}\n"
+            f"{Fore.YELLOW} │{Style.RESET_ALL}  A third-party plugin may print a separate notice recommending\n"
+            f"{Fore.YELLOW} │{Style.RESET_ALL}  ProperDocs. That notice is not from the Material for MkDocs\n"
+            f"{Fore.YELLOW} │{Style.RESET_ALL}  team and does not represent a recommendation from us.\n"
+        )
+
     print(
         "\n"
-        f"{Fore.RED} │  ⚠  Warning from the Material for MkDocs team{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  MkDocs 2.0, the underlying framework of Material for MkDocs,\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  will introduce backward-incompatible changes, including:\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}All plugins will stop working – the plugin system has been removed\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}All theme overrides will break – the theming system has been rewritten\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}No migration path exists – existing projects cannot be upgraded\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}Closed contribution model – community members can't report bugs\n"
-        f"{Fore.RED} │  × {Style.RESET_ALL}Currently unlicensed – unsuitable for production use\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  Our full analysis:\n"
-        f"{Fore.RED} │{Style.RESET_ALL}\n"
-        f"{Fore.RED} │{Style.RESET_ALL}  \033[4mhttps://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/{Style.RESET_ALL}\n"
-        f"{Style.RESET_ALL}",
+        f"{Fore.YELLOW} │  {Style.BRIGHT}Material for MkDocs reaches end of life on May 5, 2027.{Style.RESET_ALL}\n"
+        f"{Fore.YELLOW} │{Style.RESET_ALL}  Critical fixes and security updates continue until that date.\n"
+        f"{Fore.YELLOW} │{Style.RESET_ALL}\n"
+        f"{Fore.YELLOW} │{Style.RESET_ALL}  Zensical is its maintained successor, built by the same team.\n"
+        f"{Fore.YELLOW} │{Style.RESET_ALL}  Try it alongside MkDocs with your existing mkdocs.yml:\n"
+        f"{Fore.YELLOW} │{Style.RESET_ALL}  {Fore.CYAN}\033[4mhttps://zensical.org/docs/compatibility/mkdocs/migration/{Style.RESET_ALL}\n"
+        f"{properdocs_notice}"
+        "\n"
+        f"{Fore.LIGHTBLACK_EX}  To disable this warning, set NO_MKDOCS_2_WARNING=1.{Style.RESET_ALL}\n",
         file=stderr
     )
 
