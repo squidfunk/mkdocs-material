@@ -22,6 +22,8 @@ package manager. If not, we recommend using [`docker`][docker].
 
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
+Python 3.11 or newer is required.
+
 Material for MkDocs is published as a [Python package] and can be installed with
 `pip`, ideally by using a [virtual environment]. Open up a terminal and install
 Material for MkDocs with:
