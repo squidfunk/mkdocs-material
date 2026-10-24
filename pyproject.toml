@@ -39,9 +39,9 @@ dynamic = [
   "keywords"
 ]
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 classifiers = [
-  "Development Status :: 5 - Production/Stable",
+  "Development Status :: 7 - Inactive",
   "Environment :: Web Environment",
   "Framework :: MkDocs",
   "License :: OSI Approved :: MIT License",
@@ -54,17 +54,16 @@ classifiers = [
 
 [project.optional-dependencies]
 recommended = [
-  "mkdocs-minify-plugin>=0.7",
-  "mkdocs-redirects>=1.2",
-  "mkdocs-rss-plugin>=1.6"
+  "mkdocs-minify-plugin>=0.7"
 ]
 git = [
+  "gitpython>=3.2.1",
   "mkdocs-git-committers-plugin-2>=1.1",
   "mkdocs-git-revision-date-localized-plugin>=1.2.4"
 ]
 imaging = [
-  "pillow>=10.2",
-  "cairosvg>=2.6"
+  "pillow>=13.0.0",
+  "cairosvg>=2.9.1"
 ]
 
 [project.urls]
@@ -72,6 +71,8 @@ Documentation = "https://squidfunk.github.io/mkdocs-material/"
 Source = "https://github.com/squidfunk/mkdocs-material"
 Changelog = "https://squidfunk.github.io/mkdocs-material/changelog/"
 Issues = "https://github.com/squidfunk/mkdocs-material/issues"
+Maintenance = "https://zensical.org/upcoming-changes/#material-for-mkdocs"
+Migration = "https://zensical.org/docs/compatibility/mkdocs/migration/"
 
 [project.entry-points."mkdocs.plugins"]
 "material/blog" = "material.plugins.blog.plugin:BlogPlugin"
@@ -94,7 +95,7 @@ material = "material.templates"
 source = "nodejs"
 
 [tool.hatch.metadata.hooks.nodejs]
-fields = ["license", "description", "authors", "keywords", "urls"]
+fields = ["license", "description", "authors", "keywords"]
 
 [tool.hatch.metadata.hooks.requirements_txt]
 filename = "requirements.txt"

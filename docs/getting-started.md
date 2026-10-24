@@ -22,6 +22,8 @@ package manager. If not, we recommend using [`docker`][docker].
 
 ### with pip <small>recommended</small> { #with-pip data-toc-label="with pip" }
 
+Python 3.11 or newer is required.
+
 Material for MkDocs is published as a [Python package] and can be installed with
 `pip`, ideally by using a [virtual environment]. Open up a terminal and install
 Material for MkDocs with:
@@ -112,14 +114,10 @@ The `mkdocs` executable is provided as an entry point and `serve` is the
 default command. If you're not familiar with Docker don't worry, we have you
 covered in the following sections.
 
-The following plugins are bundled with the Docker image:
-
-- [mkdocs-minify-plugin]
-- [mkdocs-redirects]
+The Docker image includes the [mkdocs-minify-plugin] plugin.
 
   [Docker image]: https://hub.docker.com/r/squidfunk/mkdocs-material/
   [mkdocs-minify-plugin]: https://github.com/byrnereese/mkdocs-minify-plugin
-  [mkdocs-redirects]: https://github.com/datarobot/mkdocs-redirects
 
 ???+ warning
 
