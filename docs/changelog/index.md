@@ -15,7 +15,7 @@
 
 ## Material for MkDocs
 
-### 9.8.0 <small>Draft – unreleased</small> { id="9.8.0" }
+### 9.8.0 <small>October 24, 2026</small> { id="9.8.0" }
 
 **This is primarily a security release.** It raises dependency minimums to
 address known vulnerabilities. We recommend upgrading to this release and
