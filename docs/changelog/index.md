@@ -15,6 +15,54 @@
 
 ## Material for MkDocs
 
+### 9.8.0 <small>Draft – unreleased</small> { id="9.8.0" }
+
+**This is primarily a security release.** It raises dependency minimums to
+address known vulnerabilities. We recommend upgrading to this release and
+updating your dependency lockfiles.
+
+**Python 3.11 or newer is now required.** Python 3.8–3.10 are no longer supported.
+
+- Updated Node build-time dependencies to fix vulnerabilities
+- Updated Python dependency minimums and required Python 3.11
+- Removed RSS from recommended dependencies
+- Updated project status and maintenance links
+- Updated CLI notice with end-of-life and migration guidance
+- Removed redirects from recommended dependencies
+
+Previous dependency ranges allowed versions with known vulnerabilities. The new
+minimums cover core Python dependencies and the optional `git` and `imaging`
+extras, including GitPython 3.2.1 or newer for the `git` extra.
+
+Recent releases of `mkdocs-rss-plugin` and `mkdocs-redirects` depend on ProperDocs,
+a separate static site generator that Material for MkDocs does not require.
+Removing these plugins from the `recommended` extra keeps its dependency
+footprint smaller and leaves the choice of additional tools to each project.
+If your project uses RSS feeds or redirects, declare the relevant plugin
+explicitly in your own dependencies.
+
+The CLI notice now gives the May 5, 2027 end-of-life date and links to the
+[Zensical migration guide](https://zensical.org/docs/compatibility/mkdocs/migration/).
+It also clarifies that third-party ProperDocs migration notices do not represent
+a recommendation from the Material for MkDocs team. Package metadata now marks
+the project as inactive and includes maintenance and migration links.
+
+Selected Python security advisories addressed by the new minimums:
+
+| Dependency | Affected versions | New minimum | Advisory |
+| --- | --- | --- | --- |
+| Jinja2 | `<=3.1.5` | `3.1.6` | [CVE-2025-27516](https://github.com/advisories/GHSA-cpwx-vrp4-4pq7) |
+| Markdown | `<3.8.1` | `3.8.1` | [CVE-2025-69534](https://github.com/advisories/GHSA-5wmx-573v-2qwq) |
+| Pygments | `<2.20.0` | `2.20.0` | [CVE-2026-4539](https://github.com/advisories/GHSA-5239-wwwm-4pmq) |
+| PyMdown Extensions | `<=11.0.0` | `11.0.1` | [CVE-2026-67422](https://github.com/advisories/GHSA-gm37-52c6-37mw) |
+| Requests | `<2.33.0` | `2.33.0` | [CVE-2026-25645](https://github.com/advisories/GHSA-gc5v-m9x4-r6x2) |
+| Pillow | `<13.0.0` | `13.0.0` | [CVE-2026-96636](https://github.com/advisories/GHSA-p8hx-v2p6-rp84) |
+| CairoSVG | `<=2.9.0` | `2.9.1` | [CVE-2026-107378](https://github.com/advisories/GHSA-c3jg-qh8m-j3h2) |
+| GitPython | `<=3.2.0` | `3.2.1` | [CVE-2026-114145](https://github.com/advisories/GHSA-83vg-56qc-22m7) |
+
+Pillow and CairoSVG apply to the `imaging` extra; GitPython applies to the `git`
+extra.
+
 ### 9.7.7 <small>July 17, 2026</small> { id="9.7.7" }
 
 - Fixed DOM-based XSS vulnerability in search suggestions
