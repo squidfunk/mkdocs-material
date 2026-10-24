@@ -1,33 +1,18 @@
 # Contributing
 
-Material for MkDocs is an actively maintained and constantly evolving project
-serving a diverse user base with versatile backgrounds and needs. In order to
-efficiently address the requirements of all our users, evaluate change requests,
-and fix bugs, we put in a lot of work.
+Material for MkDocs is in maintenance mode, with critical bug fixes and security
+updates through __May 5, 2027__.
 
-Our ever-growing community includes many active users, who open new
-issues and discussions several times a day, evolving our [issue tracker] and
-[discussion board] into a knowledge base – an important addition to
-our [documentation] – yielding value to both new and experienced users.
-
-  [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
+  [archived discussions]: https://github.com/squidfunk/mkdocs-material/discussions
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
-  [documentation]: https://squidfunk.github.io/mkdocs-material/
+  [Discord channel]: https://discord.gg/hqXRNq9CjT
 
 ## How you can contribute
 
-We understand that reporting bugs, raising change requests, as well as engaging
-in discussions can be time-consuming, which is why we've carefully optimized our
-issue templates and defined guidelines to improve the overall interaction
-within the project. We've invested a lot of time and effort into making our
-[issue tracker] and [discussion board] as efficient as possible.
+Use the guides below to report a problem or prepare a contribution. Report
+security vulnerabilities privately using our [security policy].
 
-Our goal is to ensure that our documentation, as well as issue tracker and
-discussion board, are __well-structured__, __easy to navigate__, and
-__searchable__, so you can find what you need quickly and efficiently. Thus,
-when you follow our guidelines, we can help you much faster.
-
-In this section, we guide your through our processes.
+  [security policy]: https://github.com/squidfunk/mkdocs-material/security/policy
 
 ### Creating an issue
 
@@ -38,7 +23,7 @@ In this section, we guide your through our processes.
 
     ---
 
-    Report a bug in Material for MkDocs by creating an issue with a
+    Report a critical bug in Material for MkDocs by creating an issue with a
     reproduction
 
     ---
@@ -62,7 +47,7 @@ In this section, we guide your through our processes.
 
     ---
 
-    Propose a change, feature request, or suggest an improvement
+    Find out where to propose new features for Zensical
 
     ---
 
@@ -73,12 +58,11 @@ In this section, we guide your through our processes.
 
     ---
 
-    Ask a question on our [discussion board] and get in touch with our
-    community
+    Get in touch with our community on the free [Discord channel]
 
     ---
 
-    [:octicons-arrow-right-24: Ask a question][discussion board]
+    [:octicons-arrow-right-24: Ask a question][Discord channel]
 
 </div>
 
@@ -87,22 +71,23 @@ In this section, we guide your through our processes.
 <div class="grid cards" markdown>
 
 -   :material-translate: &nbsp;
-    __Missing support for your language?__
+    __Found a translation error?__
 
     ---
 
-    Add or improve translations for a new or already supported language
+    Correct a translation for an existing language
 
     ---
 
-    [:octicons-arrow-right-24: Add translations][add translations]
+    [:octicons-arrow-right-24: Fix translations][fix translations]
 
 -   :material-source-pull: &nbsp;
-    __Want to create a pull request?__
+    __Want to contribute a fix?__
 
     ---
 
-    Learn how to create a comprehensive and useful pull request (PR)
+    Learn how to create a pull request for a critical bug or documentation
+    correction
 
     ---
 
@@ -113,7 +98,7 @@ In this section, we guide your through our processes.
   [report a bug]: reporting-a-bug.md
   [report a docs issue]: reporting-a-docs-issue.md
   [request a change]: requesting-a-change.md
-  [add translations]: adding-translations.md
+  [fix translations]: adding-translations.md
   [create a pull request]: making-a-pull-request.md
 
 ## Checklist
@@ -135,29 +120,28 @@ with our community.
 - Are you using the appropriate issue template, or is there another issue
   template that better fits the context of your request?
 
-- Have you checked if a similar bug report or change request has already been
-  created, or have you stumbled upon something that might be related?
+- Have you checked if a similar bug report or documentation issue has already
+  been created, or have you stumbled upon something that might be related?
 
-- Did your fill out every field as requested and did you provide all additional
+- Did you fill out every field as requested and did you provide all additional
   information we maintainers need to comprehend your request?
 
 ### Before asking a question
 
-- Is the topic a question for our [discussion board], or is it a bug report or
-  change request that should better be raised on our [issue tracker]?
+- Is the topic a question for our [Discord channel], or is it a critical bug
+  report or documentation issue for our [issue tracker]?
 
-- Is there an open discussion on the topic of your request? If the answer is yes,
-  does your question match the direction of the discussion, or should you open a
-  new discussion?
+- Have you searched the documentation, existing issues, and [archived discussions]
+  for an answer before asking the community?
 
-- Did your provide our community with all the necessary information to
+- Did you provide our community with all the necessary information to
   understand your question and help you quickly, or can you make it easier to
   help you?
 
 ### Before commenting
 
-- Is your comment relevant to the topic of the current page, post, issue, or
-  discussion, or is it a better idea to create a new issue or discussion?
+- Is your comment relevant to the current conversation, or does it belong in
+  another Discord channel or a separate issue?
 
 - Does your comment add value to the conversation? Is it constructive and
   respectful to our community and us maintainers? Could you just use a
@@ -222,14 +206,14 @@ process, ensuring that we assess the essential requirements for reviewing and
 responding to issues effectively. Each field in our issue templates is
 thoughtfully designed to help us fully understand your concerns and the nature
 of your matter. We encourage all members to utilize the search function before
-submitting new issues or starting discussions to help avoid duplicates. Your
+submitting new issues or asking the community to help avoid duplicates. Your
 cooperation is crucial in keeping our community's discussions constructive and
 organized.
 
   - __Mandatory completion of issue templates:__ We need all of the information
   required in our issue templates because it ensures that every user and
   maintainer, regardless of their experience, can understand the content and
-  severity of your bug report or change request.
+  severity of your bug report or documentation issue.
 
   - __Closing incomplete issues:__
   We _reserve the right to close issues lacking essential information_, such as
@@ -238,10 +222,10 @@ organized.
   issues can be reopened once the missing information has been provided.
 
   - __Handling duplicates:__ To maintain organized and efficient
-  communication within our [issue tracker] and [discussion board], we
-  _reserve the right to close any duplicated issues or lock duplicated
-  discussions_. Opening multiple channels to ask the same question or report the
-  same issue across different forums hinders our ability to manage and address
+  communication within our [issue tracker] and [Discord channel], we
+  _reserve the right to close duplicated issues or lock duplicated discussions_.
+  Opening multiple channels to ask the same question or report the same issue
+  across different forums hinders our ability to manage and address
   community concerns effectively. This approach is vital for efficient time
   management, as duplicated questions can consume the time of multiple team
   members simultaneously. Ensuring that each issue or discussion is unique and

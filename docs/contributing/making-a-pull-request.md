@@ -1,11 +1,10 @@
 # Pull Requests
 
-You can contribute to Material for MkDocs by making a [pull request] that
-will be reviewed by maintainers and integrated into the main repository when
-the changes made are approved. You can contribute bug fixes, changes to the
-documentation, or new functionality you have developed.
+We welcome [pull requests][pull request] for critical bug fixes and documentation
+corrections. Report security vulnerabilities privately using our [security policy].
 
 [pull request]: https://docs.github.com/en/pull-requests
+[security policy]: https://github.com/squidfunk/mkdocs-material/security/policy
 
 !!! note "Considering a pull request"
 
@@ -13,7 +12,7 @@ documentation, or new functionality you have developed.
     request, please discuss what you intend to do. If you are responding to
     what you think might be a bug, please issue a [bug report] first. If you
     intend to work on documentation, create a [documentation issue]. If you
-    want to work on a new feature, please create a [change request].
+    want to propose a new feature, follow the [Zensical change-request guide].
 
     Keep in mind the guidance given and let people advise you. It might be that
     there are easier solutions to the problem you perceive and want to address.
@@ -22,8 +21,9 @@ documentation, or new functionality you have developed.
 
 [bug report]: reporting-a-bug.md
 [documentation issue]: reporting-a-docs-issue.md
-[change request]: requesting-a-change.md
+[Zensical change-request guide]: https://zensical.org/contributing/change-requests/
 [customization]: ../customization.md
+[Discord]: https://discord.gg/hqXRNq9CjT
 
 ## Learning about pull requests
 
@@ -184,10 +184,9 @@ sequenceDiagram
 
 3.  The maintainer may make comments on your code, which you should discuss with
     them. Bear in mind when doing this that the maintainer may have a different
-    point of view compared to yours. They will often take a more long-term
-    perspective of maintaining the project in the years to come while you may be
-    more focused on the specific issue or feature that you worked on. Please keep
-    the discussion respectful at all times.
+    point of view compared to yours. They will consider how a fix affects
+    existing users while you may be more focused on the specific issue that
+    you worked on. Please keep the discussion respectful at all times.
 
     It is important to note that not all pull requests get incorporated into the
     codebase. The reasons can vary. The work may bring to light other issues that
@@ -326,11 +325,9 @@ development environment], `mkdocs serve` should be running and continuously
 building the documentation. Check that there are no error messages and, ideally,
 no (new) warnings.
 
-- Test on a project that represents the problem or a test for a newly developed
-feature. You may already have this if you have filed a bug report and created
-a [minimal reproduction]. If you are working on a new feature then you may need
-to build a project to serve as a test suite. It can double as documentation that
-shows how your new feature is meant to work.
+- Test on a project that reproduces the problem addressed by your fix. You may
+already have this if you filed a bug report and created a [minimal reproduction].
+Confirm that the fix resolves the problem and preserves existing behavior.
 
 - Test with relevant examples from the [Material for MkDocs Examples]
   repository.
@@ -382,8 +379,9 @@ your fork) and pull from the main repository's `master` branch into your
 
 1. **Don't** just create a pull request with changes that are not explained.
 
-2. **Do** discuss what you intend to do with people in the discussions so that the
-   rationale for any changes is clear before you write or modify code.
+2. **Do** discuss the proposed fix in the relevant issue so that the rationale
+   is clear before you write or modify code. For general questions, ask our
+   community on [Discord].
 
 3. **Do** link to the discussion or any issues to provide the context for a pull
    request.

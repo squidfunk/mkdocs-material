@@ -1,20 +1,16 @@
 # Bug reports
 
-Material for MkDocs is an actively maintained project that we constantly strive
-to improve. With a project of this size and complexity, bugs may occur. If you
-think you have discovered a bug, you can help us by submitting an issue in our
-public [issue tracker], following this guide.
+Use this guide to report a critical bug in the latest version of Material for
+MkDocs through our public [issue tracker]. Report security vulnerabilities
+privately using our [security policy].
 
   [issue tracker]: https://github.com/squidfunk/mkdocs-material/issues
+  [security policy]: https://github.com/squidfunk/mkdocs-material/security/policy
 
 ## Before creating an issue
 
-With more than 20,000 users, issues are created every other day. The maintainers
-of this project are trying very hard to keep the number of open issues down by
-fixing bugs as fast as possible. By following this guide, you will know exactly
-what information we need to help you quickly.
-
-__But first, please do the following things before creating an issue.__
+Before creating an issue, follow the steps below to help us reproduce and
+assess the problem.
 
 ### Upgrade to latest version
 
@@ -25,9 +21,8 @@ learn how to upgrade to the latest version.
 
 !!! warning "Bug fixes are not backported"
 
-    Please understand that only bugs that occur in the latest version of
-    Material for MkDocs will be addressed. Also, to reduce duplicate efforts,
-    fixes cannot be backported to earlier versions.
+    Fixes apply to the latest version of Material for MkDocs.
+    Fixes are not backported to earlier versions.
 
 ### Remove customizations
 
@@ -53,8 +48,8 @@ adjusted all partials you have overridden.
     our documentation explicitly mentions], you are, of course, encouraged to
     report it.
 
-__Don't be shy to ask on our [discussion board] for help if you run into
-problems.__
+For help with your project or customizations, ask our community on the free
+[Discord channel].
 
   [latest version]: ../changelog/index.md
   [upgrade guide]: ../upgrade.md
@@ -66,7 +61,8 @@ problems.__
   [hooks]: https://www.mkdocs.org/user-guide/configuration/#hooks
   [extra_css]: https://www.mkdocs.org/user-guide/configuration/#extra_css
   [extra_javascript]: https://www.mkdocs.org/user-guide/configuration/#extra_javascript
-  [discussion board]: https://github.com/squidfunk/mkdocs-material/discussions
+  [archived discussions]: https://github.com/squidfunk/mkdocs-material/discussions
+  [Discord channel]: https://discord.gg/hqXRNq9CjT
   [StackOverflow]: https://stackoverflow.com
   [that our documentation explicitly mentions]: ?q="extends+base"
 
@@ -95,9 +91,8 @@ us and yourself by doing some research:
     have reported the same problem, and there might even be a known workaround
     or fix for it. Thus, no need to create a new issue.
 
-2.  [Search our discussion board][discussion board] to learn if other users
-    are struggling with similar problems and work together with our great
-    community towards a solution. Many problems are solved here.
+2.  [Search our archived discussions][archived discussions] for explanations
+    and workarounds for similar problems.
 
 __Keep track of all <u>search terms</u> and <u>relevant links</u>, you'll need
 them in the bug report.__[^2]
@@ -179,7 +174,7 @@ dependencies.[^3] Adhere to the following principles:
     to change the [`theme.name`][theme.name] to `mkdocs` or `readthedocs` and
     check if the problem persists. If it does, the problem is likely not
     related to Material for MkDocs and should be reported upstream. When in
-    doubt, use our [discussion board] to ask for help.
+    doubt, ask our community on the [Discord channel] for help.
 
 -   __Explain the <u>what</u>, not the <u>how</u>__ – don't explain
     [how to reproduce the bug][Steps to reproduce] here, we're getting there.
@@ -215,7 +210,7 @@ Of course, prior to reporting a bug, you have read our documentation and
 to all sections of our documentation that might be relevant to the bug, as it
 helps us gradually improve it.
 
-Additionally, since you have searched our [issue tracker] and [discussion board]
+Additionally, since you have searched our [issue tracker] and [archived discussions]
 before reporting an issue, and have possibly found several issues or
 discussions, include those as well. Every link to an issue or discussion creates
 a backlink, guiding us maintainers and other users in the future.
