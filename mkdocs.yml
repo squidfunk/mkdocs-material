@@ -42,8 +42,8 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
-    # - content.code.select
-    # - content.footnote.tooltips
+    - content.code.select
+    - content.footnote.tooltips
     # - content.tabs.link
     - content.tooltips
     # - header.autohide
@@ -58,7 +58,7 @@ theme:
     - navigation.tabs
     # - navigation.tabs.sticky
     - navigation.top
-    - navigation.tracking
+    # - navigation.tracking
     - search.highlight
     - search.share
     - search.suggest
@@ -93,8 +93,12 @@ theme:
 # Plugins
 plugins:
   - blog
+  - meta
   - search:
       separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - social:
+      cards_layout: default/variant
+  - typeset
   - redirects:
       redirect_maps:
         insiders/index.md: blog/posts/insiders-now-free-for-everyone.md
@@ -110,8 +114,34 @@ plugins:
         tutorials/blogs/engage.md: setup/setting-up-a-blog.md
         tutorials/social/basic.md: setup/setting-up-social-cards.md
         tutorials/social/custom.md: setup/setting-up-social-cards.md
-  - minify:
-      minify_html: true
+        blog/2022/chinese-search-support.md: blog/posts/chinese-search-support.md
+        blog/2021/the-past-present-and-future.md: blog/posts/the-past-present-and-future.md
+        blog/2021/excluding-content-from-search.md: blog/posts/excluding-content-from-search.md
+        blog/2021/search-better-faster-smaller.md: blog/posts/search-better-faster-smaller.md
+        blog/2025/11/05/insiders-now-free-for-everyone.md: blog/posts/insiders-now-free-for-everyone.md
+        bug-report/index.md: contributing/reporting-a-bug.md
+        bug-report/reproduction.md: guides/creating-a-reproduction.md
+        reference/abbreviations.md: reference/tooltips.md
+        reference/mathjax.md: reference/math.md
+        reference/meta-tags.md: reference/index.md
+        reference/variables.md: https://mkdocs-macros-plugin.readthedocs.io/
+        upgrading.md: upgrade.md
+
+  # Continuous integration
+  - group:
+      enabled: !ENV [CI, false]
+      plugins:
+        - git-revision-date-localized:
+            enable_creation_date: true
+            type: timeago
+        - git-committers:
+            repository: squidfunk/mkdocs-material
+            token: !ENV [GH_TOKEN, ""]
+            exclude_committers:
+              - web-flow
+        - optimize
+        - minify:
+            minify_html: true
 
 # Hooks
 hooks:
@@ -120,12 +150,27 @@ hooks:
 
 # Additional configuration
 extra:
+  annotate:
+    json: [.s2]
   status:
     new: Recently added
     deprecated: Deprecated
   analytics:
     provider: google
     property: !ENV GOOGLE_ANALYTICS_KEY
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8L5YDggZiVjgvBKfv-XCdbQAEJrseRh8MBh-jS92TU2aqzw/viewform?usp=pp_url&entry.853143515={url}" target=_blank>telling us what you're missing</a>.
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/squidfunk
@@ -150,6 +195,12 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+  - material.extensions.preview:
+      targets:
+        include:
+          - changelog/index.md
+          - customization.md
+          - setup/extensions/*
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
@@ -271,7 +322,7 @@ nav:
       - Requesting a change: contributing/requesting-a-change.md
       - Adding translations: contributing/adding-translations.md
       - Making a pull request: contributing/making-a-pull-request.md
-      - Asking a question: https://github.com/squidfunk/mkdocs-material/discussions
+      - Asking a question: https://discord.gg/hqXRNq9CjT
     - Guides:
       - Creating a reproduction: guides/creating-a-reproduction.md
   - Blog:

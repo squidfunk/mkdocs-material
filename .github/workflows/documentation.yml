@@ -69,23 +69,22 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install mkdocs-material
-          pip install .[recommended,git,imaging] mkdocs-redirects
+          pip install "mkdocs-material[recommended,git,imaging]" mkdocs-redirects
+          # Avoid shadowing the installed package with the sparse checkout.
+          rm -f material/__init__.py
 
-      - name: Install Insiders build
+      - name: Install documentation overrides
         if: github.event.repository.fork == false
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-overrides.git
-          pip install -e mkdocs-material-overrides
-          cp mkdocs-material-overrides/mkdocs.yml mkdocs.yml
-          rm -rf material
-          cp -r mkdocs-material-overrides/material material
+          rm -rf material/overrides
+          cp -r mkdocs-material-overrides/material/overrides material/overrides
 
       - name: Build documentation
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
           DISABLE_MKDOCS_2_WARNING: true
         run: |
