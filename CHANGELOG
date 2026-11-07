@@ -1,4 +1,4 @@
-mkdocs-material-9.8.1 (unreleased)
+mkdocs-material-9.8.1 (2026-11-07)
 
   * Updated Docker base image to Alpine 3.24
   * Updated Docker image dependencies to fix vulnerabilities

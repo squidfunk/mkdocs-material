@@ -15,7 +15,7 @@
 
 ## Material for MkDocs
 
-### 9.8.1 <small>Unreleased</small> { id="9.8.1" }
+### 9.8.1 <small>November 7, 2026</small> { id="9.8.1" }
 
 - Updated Docker base image to Alpine 3.24
 - Updated Docker image dependencies to fix vulnerabilities
