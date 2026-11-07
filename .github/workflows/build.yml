@@ -41,15 +41,17 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         id: cache
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
@@ -69,15 +71,17 @@ jobs:
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up Node.js runtime
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Set up Node.js dependency cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         id: cache
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
@@ -92,15 +96,42 @@ jobs:
 
   python:
     runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Python runtime
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            pyproject.toml
+            requirements.txt
+
+      - name: Set up Python dependencies
+        run: pip install --upgrade build twine
+
+      - name: Build Python package
+        run: python -m build
+
+  python-publish:
+    if: github.event_name == 'release'
+    needs: python
+    runs-on: ubuntu-26.04
     environment: pypi
     permissions:
       id-token: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -115,40 +146,26 @@ jobs:
         run: python -m build
 
       - name: Publish Python package
-        if: github.event_name == 'release'
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086 # release/v1
 
   docker:
     runs-on: ubuntu-26.04
     steps:
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
-
-      - name: Login to DockerHub
-        if: github.event_name == 'release'
-        uses: docker/login-action@v4
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Login to GitHub Container Registry
-        if: github.event_name == 'release'
-        uses: docker/login-action@v4
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_TOKEN }}
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
 
       - name: Generate Docker tags and labels
         id: meta
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         with:
           images: |
             ${{ github.event.repository.full_name }}
@@ -163,7 +180,7 @@ jobs:
             latest=${{ github.event.release.prerelease == false }}
 
       - name: Build Docker image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
           context: .
           pull: true
@@ -180,13 +197,62 @@ jobs:
           docker run --rm -i -v ${PWD}:/docs ${REPO_FULL_NAME,,}:${{ steps.meta.outputs.version }} new .
           docker run --rm -i -v ${PWD}:/docs ${REPO_FULL_NAME,,}:${{ steps.meta.outputs.version }} build
 
+  docker-publish:
+    if: github.event_name == 'release'
+    needs: docker
+    runs-on: ubuntu-26.04
+    environment: dockerhub
+    permissions:
+      contents: read
+      packages: write
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+
+      - name: Login to DockerHub
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
+        with:
+          username: squidfunk
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Docker tags and labels
+        id: meta
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
+        with:
+          images: |
+            ${{ github.event.repository.full_name }}
+            ghcr.io/${{ github.event.repository.full_name }}
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=ref,event=branch
+            type=ref,event=pr
+          flavor: |
+            latest=${{ github.event.release.prerelease == false }}
+
       - name: Set platforms
-        if: github.event_name == 'release'
         run: |
           echo "PLATFORMS=linux/amd64,linux/arm64,linux/arm/v7" >> $GITHUB_ENV
 
       - name: Publish Docker image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
           context: .
           pull: true
@@ -197,12 +263,10 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Check manifest
-        if: github.event_name == 'release'
         run: |
           docker buildx imagetools inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
 
       - name: Inspect image
-        if: github.event_name == 'release'
         run: |
           docker pull ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}
           docker image inspect ${{ github.event.repository.full_name }}:${{ steps.meta.outputs.version }}

@@ -28,7 +28,7 @@ env:
   PYTHON_VERSION: 3.x
 
 permissions:
-  contents: write
+  contents: read
   id-token: write
   pages: write
 
@@ -38,8 +38,9 @@ jobs:
     runs-on: ubuntu-26.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          persist-credentials: false
           fetch-depth: 0
           sparse-checkout: |
             docs
@@ -48,7 +49,7 @@ jobs:
             src/templates/partials/languages
 
       - name: Set up Python runtime
-        uses: actions/setup-python@v7
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
         with:
           python-version: ${{ env.PYTHON_VERSION }}
           cache: pip
@@ -57,7 +58,7 @@ jobs:
             requirements.txt
 
       - name: Set up build cache
-        uses: actions/cache/restore@v6
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: ~/.cache
@@ -73,12 +74,18 @@ jobs:
           # Avoid shadowing the installed package with the sparse checkout.
           rm -f material/__init__.py
 
+      - name: Checkout documentation overrides
+        if: github.event.repository.fork == false
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: squidfunk/mkdocs-material-overrides
+          token: ${{ secrets.GH_TOKEN }}
+          path: mkdocs-material-overrides
+          persist-credentials: false
+
       - name: Install documentation overrides
         if: github.event.repository.fork == false
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git clone --depth 1 https://${GH_TOKEN}@github.com/squidfunk/mkdocs-material-overrides.git
           rm -rf material/overrides
           cp -r mkdocs-material-overrides/material/overrides material/overrides
 
@@ -98,18 +105,18 @@ jobs:
           done
 
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
           name: github-pages-${{ github.run_attempt }}
           path: site
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
         with:
           artifact_name: github-pages-${{ github.run_attempt }}
 
       - name: Save build cache
-        uses: actions/cache/save@v6
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           key: mkdocs-material-${{ hashfiles('.cache/**') }}
           path: ~/.cache
