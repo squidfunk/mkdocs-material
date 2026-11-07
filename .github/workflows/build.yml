@@ -166,6 +166,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
+          pull: true
+          no-cache: ${{ github.event_name == 'release' }}
           load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -187,6 +189,8 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: .
+          pull: true
+          no-cache: ${{ github.event_name == 'release' }}
           platforms: ${{ env.PLATFORMS }}
           push: ${{ github.event_name == 'release' }}
           tags: ${{ steps.meta.outputs.tags }}
