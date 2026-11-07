@@ -20,7 +20,6 @@
  * IN THE SOFTWARE.
  */
 
-import { ProjectSchema } from "gitlab"
 import {
   EMPTY,
   Observable,
@@ -39,9 +38,17 @@ import { SourceFacts } from "../_"
  * ------------------------------------------------------------------------- */
 
 /**
+ * GitLab project (partial)
+ */
+interface Project {
+  star_count: number                   /* Star count */
+  forks_count: number                  /* Fork count */
+}
+
+/**
  * GitLab release (partial)
  */
-interface Release { // @todo remove and use the ReleaseSchema type instead after switching from gitlab to @gitbeaker/rest
+interface Release {
   tag_name: string                     /* Tag name */
 }
 
@@ -74,7 +81,7 @@ export function fetchSourceFactsFromGitLab(
       ),
 
     /* Fetch stars and forks */
-    requestJSON<ProjectSchema>(url)
+    requestJSON<Project>(url)
       .pipe(
         catchError(() => EMPTY), // @todo refactor instant loading
         map(({ star_count, forks_count }) => ({

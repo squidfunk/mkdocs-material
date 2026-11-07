@@ -58,7 +58,7 @@ RUN \
     libffi-dev \
     musl-dev \
 && \
-  pip install --no-cache-dir --upgrade pip \
+  pip install --no-cache-dir --upgrade pip "setuptools>=84.1.0" \
 && \
   pip install --no-cache-dir . \
 && \
