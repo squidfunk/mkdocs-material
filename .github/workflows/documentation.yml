@@ -100,10 +100,13 @@ jobs:
       - name: Upload to GitHub Pages
         uses: actions/upload-pages-artifact@v5
         with:
+          name: github-pages-${{ github.run_attempt }}
           path: site
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v5
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
 
       - name: Save build cache
         uses: actions/cache/save@v6
