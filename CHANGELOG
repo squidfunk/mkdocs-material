@@ -1,3 +1,7 @@
+mkdocs-material-9.8.2 (2026-11-19)
+
+  * Fixed a security vulnerability in the privacy plugin
+
 mkdocs-material-9.8.1 (2026-11-07)
 
   * Updated Docker base image to Alpine 3.24

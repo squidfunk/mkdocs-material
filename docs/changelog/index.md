@@ -15,6 +15,10 @@
 
 ## Material for MkDocs
 
+### 9.8.2 <small>November 19, 2026</small> { id="9.8.2" }
+
+- Fixed a security vulnerability in the privacy plugin
+
 ### 9.8.1 <small>November 7, 2026</small> { id="9.8.1" }
 
 - Updated Docker base image to Alpine 3.24
