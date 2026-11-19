@@ -625,7 +625,9 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
     # that hidden folders (`.` after `/`) are unhidden. Otherwise MkDocs will
     # not consider them being part of the build and refuse to copy them.
     def _path_from_url(self, url: URL):
-        path = posixpath.normpath(url.path)
+        # Decode before normalization, so percent-encoded dot segments cannot
+        # escape the URL path's root when the path is later used on disk.
+        path = posixpath.normpath(unquote(url.path))
         path = re.sub(r"/\.", "/_", path)
 
         # Compute digest of query string, as some URLs yield different results
@@ -644,12 +646,32 @@ class PrivacyPlugin(BasePlugin[PrivacyConfig]):
 
     # Create a file for the given path
     def _path_to_file(self, path: str, config: MkDocsConfig):
-        return File(
-            posixpath.join(self.config.assets_fetch_dir, unquote(path)),
+        file = File(
+            posixpath.join(self.config.assets_fetch_dir, path),
             os.path.abspath(self.config.cache_dir),
             config.site_dir,
             False
         )
+
+        # Keep both the cached source and published destination inside their
+        # configured roots, including when existing path components are links.
+        for path, root in (
+            (file.abs_src_path, self.config.cache_dir),
+            (file.abs_dest_path, config.site_dir)
+        ):
+            root = os.path.normcase(os.path.realpath(root))
+            path = os.path.normcase(os.path.realpath(path))
+            try:
+                if os.path.commonpath((root, path)) != root:
+                    raise PluginError(
+                        "External asset path escapes its configured directory"
+                    )
+            except ValueError as error:
+                raise PluginError(
+                    "External asset path escapes its configured directory"
+                ) from error
+
+        return file
 
     # Create a file on the system with the given content
     def _save_to_file(self, path: str, content: str | bytes):
